@@ -133,6 +133,9 @@
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Veritabanı dosyasını sil?\n  Bir yedeğiniz olduğundan emin olun.";
 
+/* Parameter name in database encryption settings. This is a term, see https://en.wikipedia.org/wiki/Key_derivation_function. Example: 'Key Derivation Function: Argon2' */
+"[Database/EncryptionSettings/kdf]" = "Anahtar Türetme İşlevi";
+
 /* Error message */
 "[Database/Load/Error] Cannot find database file" = "Veritabanı dosyası bulunamadı";
 
@@ -783,6 +786,9 @@
 
 /* Title of an warning message */
 "[Generic/title] Warning" = "Dikkat";
+
+/* Warning message template. Swap the icon and message for right-to-left languages. */
+"[Generic/WarningWithIcon/template]" = "⚠️ %@";
 
 /* VoiceOver description of a group [groupTitle: String, itemCount: Int] */
 "[Group/a11y/description]" = "%@, Grup";

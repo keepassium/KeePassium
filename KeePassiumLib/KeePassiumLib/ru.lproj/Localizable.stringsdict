@@ -42,5 +42,25 @@
 		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@GenericCountEntriesSelected@</string>
 	</dict>
+	<key>[Generic/Count/Threads]</key>
+	<dict>
+		<key>GenericCountThreads</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>few</key>
+			<string>%d потока</string>
+			<key>many</key>
+			<string>%d потоков</string>
+			<key>one</key>
+			<string>%d поток</string>
+			<key>other</key>
+			<string>%d потоков</string>
+		</dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@GenericCountThreads@</string>
+	</dict>
 </dict>
 </plist>

@@ -10,6 +10,12 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "Aktivujte, k chcete počúvať.";
 
+/* Short name of the default/system font. For example: `Font: Default` */
+"[Appearance/DefaultFont/shortTitle]" = "Predvolený";
+
+/* Title of a setting option: font */
+"[Appearance/Font/title]" = "Písmo";
+
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "Veľkosť písma";
 
@@ -136,8 +142,38 @@
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "Pridaj vlastnú ikonu";
 
+/* Action: download icon of a website */
+"[Database/CustomIcon/DownloadFavicon/action]" = "Stiahnuť Favicon";
+
+/* Action/button to download favicons of websites mentioned in selected entries. */
+"[Database/CustomIcon/DownloadFavicons/action]" = "Stiahnuť Favicons";
+
+/* Report of favicon download results. */
+"[Database/CustomIcon/DownloadFavicons/stats]" = "Spracované záznamy: %1$d\nAktualizované ikony: %2$d";
+
+/* Status message: multiple website favicons are being downloaded */
+"[Database/CustomIcon/DownloadFavicons/status]" = "Sťahovanie favicons";
+
+/* Status message: a website favicon is being downloaded */
+"[Database/CustomIcon/DownloadOneFavicon/status]" = "Sťahovanie favicon";
+
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Vymazať databázový súbor?\n Uistite sa, že máte zálohu.";
+
+/* Parameter name in database encryption settings. This is a term, see https://en.wikipedia.org/wiki/Key_derivation_function. Example: 'Key Derivation Function: Argon2' */
+"[Database/EncryptionSettings/kdf]" = "Funkcia pre vytvorenie kľúča";
+
+/* Info message when changing database file format. */
+"[Database/FormatVersion/Conversion/allDataPreserved]" = "Všetky vaše údaje zostanú zachované.";
+
+/* Info message when the app needs to change database file format. [oldFormat, newFormat: String] */
+"[Database/FormatVersion/Upgrade/text]" = "KeePassium potrebuje aktualizovať formát súboru databázy (z %1$@ na %2$@). Možno budete musieť aktualizovať ďalšie aplikácie, ktoré používajú túto databázu.";
+
+/* Title of an info message when the app needs to change database file format. */
+"[Database/FormatVersion/Upgrade/title]" = "Skôr ako budeme pokračovať";
+
+/* Status of a database item (entry or group) after it was edited. */
+"[Database/Item/Edited/state]" = "Upravené";
 
 /* Notification when user tries to copy data from KDBX to older KDB database. */
 "[Database/LesserTargetFormat/warning]" = "Toto je starší formát databázy, niektoré údaje sa môžu stratiť.";
@@ -205,6 +241,9 @@
 /* Title of a warning message, shown after opening a problematic database */
 "[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "Vaša databáza je otvorená, avšak všetko neprebehlo úplne v poriadku.";
 
+/* Title of a list with database-related actions (e.g. lock database, change master key, etc) */
+"[Database/Operations/title]" = "Operácie Databázy";
+
 /* Status message: preparing database print preview. */
 "[Database/Print/preparingPreview]" = "Pripravuje sa ukážka…";
 
@@ -228,6 +267,9 @@
 
 /* Suggested solution/call to action when intermediate sync app fails. */
 "[Database/RecommendRemote/callToAction]" = "Skúste sa pripojiť k vášmu vzdialenému úložisku priamo z KeePassium.";
+
+/* Action/button */
+"[Database/Reload/action]" = "Obnoviť Databázu";
 
 /* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
 "[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "Odobrať databázu zo zoznamu?\n Súbor nebude odstránený a môžete ho znovu pridať neskôr.";
@@ -507,6 +549,9 @@
 
 /* Action: copy a reference to the selected entry field to clipboard */
 "[Entry/Field/CopyReference/action]" = "Kopírovať odkaz na pole";
+
+/* Name of an entry field */
+"[Entry/Field/name] Icon" = "Ikona";
 
 /* Name of an entry field */
 "[Entry/Field/name] Notes" = "Poznámky";
@@ -850,6 +895,9 @@
 /* Checkbox/Button to show a text field in its full size */
 "[Generic] Show more" = "Zobraziť viac";
 
+/* Action/button to select some items in a list. */
+"[Generic/Action/SelectItems]" = "Vybrať";
+
 /* Message to confirm deletion of an item. */
 "[Generic/ConfirmDelete/title] Are you sure?" = "Ste si istý?";
 
@@ -894,6 +942,9 @@
 
 /* Title of an warning message */
 "[Generic/title] Warning" = "Varovanie";
+
+/* Warning message template. Swap the icon and message for right-to-left languages. */
+"[Generic/WarningWithIcon/template]" = "⚠️ %@";
 
 /* VoiceOver description of a group [groupTitle: String, itemCount: Int] */
 "[Group/a11y/description]" = "%@, skupina";
@@ -1183,6 +1234,9 @@
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Negative/header] " = "Čo vám chýba";
 
+/* Title of a premium feature */
+"[Premium/Benefits/PasswordAudit/title]" = "Kontrola hesiel";
+
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Positive/header] " = "Čo získate";
 
@@ -1365,6 +1419,12 @@
 
 /* Title of a premium feature: ability to use multiple databases (In Title Case) */
 "[PremiumFeature/MultiDB/title] Multiple Databases" = "Viaceré databázy";
+
+/* Description/call to action for the `Password Audit` premium feature. */
+"[PremiumFeature/PasswordAudit/description]" = "Zistite, či niektoré z vašich hesiel nebolo odhalené pri známom porušení ochrany údajov.";
+
+/* Title of a premium feature: discover which passwords are known to be compromized */
+"[PremiumFeature/PasswordAudit/title]" = "Audit hesiel";
 
 /* Description/advertisement for the `Preview Attachments` premium feature */
 "[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "Prémiová verzia umožňuje náhľad obrázkov a dokumentov priamo v aplikácii.";
@@ -1611,6 +1671,9 @@
 
 /* Setting option: the app is permitted to use online features */
 "[Settings/NetworkAccessMode/Online/title]" = "Povoliť prístup k sieti";
+
+/* Action/button which resets some settings to their default state. */
+"[Settings/RestoreDefaults/action]" = "Obnoviť Predvolené";
 
 /* Section title in settings */
 "[Settings/Search/title]" = "Vyhľadávanie";

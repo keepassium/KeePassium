@@ -49,6 +49,60 @@
 /* Menu title: app settings */
 "[Menu/Preferences/title]" = "Nastavenia…";
 
+/* Action to skip selected item/items in future password audits. */
+"[PasswordAudit/Action/Exclude]" = "Vylúčiť z auditu";
+
+/* Status message: password audit in progress */
+"[PasswordAudit/Auditing/status]" = "Auditovanie hesiel";
+
+/* Error message after a failed password audit request [message: String]. */
+"[PasswordAudit/Error/text]" = "Pri komunikácii so službou HIBP sa vyskytla chyba. %@";
+
+/* Description of the password audit results, where a number appears next to each password. */
+"[PasswordAudit/ExposureCount/description]" = "Číslo ukazuje, koľkokrát bolo heslo nájdené pri známych únikoch údajov.";
+
+/* Description of the Password Audit function. */
+"[PasswordAudit/Intro/text]" = "Audit hesiel kontroluje bezpečným a privátnym spôsobom vaše heslá oproti online databáze uniknutých hesiel.";
+
+/* Result of a password audit. */
+"[PasswordAudit/Results/allGood]" = "Dobré správy! Žiadne z vašich hesiel sa neobjavilo v známych únikoch údajov.";
+
+/* Title of a list with passwords that are known to have been exposed in online breaches. */
+"[PasswordAudit/Results/title]" = "Prelomené heslá";
+
+/* Action/button: intiate password audit */
+"[PasswordAudit/Start/action]" = "Spustiť Audit";
+
+/* Title of a screen to check which passwords are known to be compromised. */
+"[PasswordAudit/title]" = "Audit Hesiel";
+
+/* Password quality description. For example: `Password quality: Weak`. [level: String] */
+"[PasswordQuality/description]" = "Kvalita hesla: %@";
+
+/* Almost good password quality */
+"[PasswordQuality/Level] Almost good" = "Takmer dobré";
+
+/* Good password quality */
+"[PasswordQuality/Level] Good" = "Dobré";
+
+/* Very good password quality */
+"[PasswordQuality/Level] Very good" = "Veľmi dobré";
+
+/* Very weak password quality */
+"[PasswordQuality/Level] Very weak" = "Veľmi slabé";
+
+/* Weak password quality */
+"[PasswordQuality/Level] Weak" = "Slabé";
+
+/* Password quality description. For example: `Very good (234 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithEntropy/description]" = "%1$@ (%2$@ entropie)";
+
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "Zobraziť heslo";
+
+/* Title of the confirmation dialog for `Delete` action for several items */
+"[Selection/Delete/confirmation]" = "Odstrániť výber?";
+
+/* Title of the confirmation dialog for `Exclude from audit` action for several items */
+"[Selection/ExcludeFromAudit/confirmation]" = "Vylúčiť výber z auditu hesiel?";
 

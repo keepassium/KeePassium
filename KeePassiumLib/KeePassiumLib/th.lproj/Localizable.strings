@@ -10,6 +10,12 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "เปิดใช้งานฟังข้อความ";
 
+/* Short name of the default/system font. For example: `Font: Default` */
+"[Appearance/DefaultFont/shortTitle]" = "ค่าเริ่มต้น";
+
+/* Title of a setting option: font */
+"[Appearance/Font/title]" = "ฟอนต์";
+
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "ขนาดข้อความ";
 
@@ -42,6 +48,9 @@
 
 /* Type of keyboard to show for App Lock passcode: digits only (PIN code). */
 "[AppLock/Passcode/KeyboardType/title] Numeric" = "ตัวเลข";
+
+/* Hint/call to action about keyboard shortcut */
+"[AppLock/Passcode/pressEscForTouchID]" = "กดปุ่ม Esc เพื่อใช้ Touch ID";
 
 /* Notification that the modified AppLock passcode has been saved. */
 "[AppLock/passcodeUpdated/title]" = "เปลี่ยนรหัสแล้วเรียบร้อย";
@@ -133,8 +142,38 @@
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "เพิ่มไอคอนที่กำหนดเอง";
 
+/* Action: download icon of a website */
+"[Database/CustomIcon/DownloadFavicon/action]" = "ดาวน์โหลดไอคอน";
+
+/* Action/button to download favicons of websites mentioned in selected entries. */
+"[Database/CustomIcon/DownloadFavicons/action]" = "ดาวน์โหลดไอคอน";
+
+/* Report of favicon download results. */
+"[Database/CustomIcon/DownloadFavicons/stats]" = "รายการที่สำเร็จ: %1$d\nไอคอนที่อัพเดตสำเร็จ: %2$d";
+
+/* Status message: multiple website favicons are being downloaded */
+"[Database/CustomIcon/DownloadFavicons/status]" = "กำลังดาวน์โหลดไอคอน";
+
+/* Status message: a website favicon is being downloaded */
+"[Database/CustomIcon/DownloadOneFavicon/status]" = "กำลังดาวน์โหลดไอคอน";
+
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "ลบไฟล์กุญแจหรือไม่?\n ตรวจสอบให้ดีว่าคุณกู้ไว้เรียบร้อยแล้ว";
+
+/* Parameter name in database encryption settings. This is a term, see https://en.wikipedia.org/wiki/Key_derivation_function. Example: 'Key Derivation Function: Argon2' */
+"[Database/EncryptionSettings/kdf]" = "ฟังก์ชันไขกุญแจ";
+
+/* Info message when changing database file format. */
+"[Database/FormatVersion/Conversion/allDataPreserved]" = "ข้อมูลทั้งหมดของคุณจะคงไว้เหมือนเดิม";
+
+/* Info message when the app needs to change database file format. [oldFormat, newFormat: String] */
+"[Database/FormatVersion/Upgrade/text]" = "KeePassium ต้องการอัพเกรดรูปแบบฐานข้อมูลของคุณ (จากรูปแบบ %1$@ ไปเป็น %2$@) ซึ่งคุณอาจจะต้องอัพเดตแอปอื่นที่จะต้องใช้ฐานข้อมูลนี้ด้วย";
+
+/* Title of an info message when the app needs to change database file format. */
+"[Database/FormatVersion/Upgrade/title]" = "ก่อนที่เราจะดำเนินการต่อ";
+
+/* Status of a database item (entry or group) after it was edited. */
+"[Database/Item/Edited/state]" = "แก้ไขแล้ว";
 
 /* Notification when user tries to copy data from KDBX to older KDB database. */
 "[Database/LesserTargetFormat/warning]" = "ฟอร์แมทของฐานข้อมูลนี้เก่าเกินไป ข้อมูลบางอย่างอาจหาย";
@@ -870,6 +909,9 @@
 
 /* Title of an warning message */
 "[Generic/title] Warning" = "คำเตือน";
+
+/* Warning message template. Swap the icon and message for right-to-left languages. */
+"[Generic/WarningWithIcon/template]" = "⚠️ %@";
 
 /* VoiceOver description of a group [groupTitle: String, itemCount: Int] */
 "[Group/a11y/description]" = "%@, กลุ่ม";

@@ -4,6 +4,27 @@
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "Služba automatického vyplňovania hesiel nemá prístup k databázovým súborom, ktoré ste pridali v hlavnej aplikácii KeePassium.\n\nPrečo? Operačný systém považuje službu automatického vyplňovania za samostatnú aplikáciu, ktorá je nezávislá na hlavnom procese Keepassium. Z bezpečnostných dôvodov môžu aplikácie pristupovať len k tým súborom, ku ktorým im dáte povolenia.\n\nZ tohoto dôvodu je nutné dať súhlas k prístupu samotne aplikácii KeePassium ako aj službe automatického vyplňovania. Toto je však potrebné vykonať iba raz.";
 
+/* Password quality description. For example: `Password quality: Weak`. [level: String] */
+"[PasswordQuality/description]" = "Kvalita hesla: %@";
+
+/* Almost good password quality */
+"[PasswordQuality/Level] Almost good" = "Takmer dobré";
+
+/* Good password quality */
+"[PasswordQuality/Level] Good" = "Dobré";
+
+/* Very good password quality */
+"[PasswordQuality/Level] Very good" = "Veľmi dobré";
+
+/* Very weak password quality */
+"[PasswordQuality/Level] Very weak" = "Veľmi slabé";
+
+/* Weak password quality */
+"[PasswordQuality/Level] Weak" = "Slabé";
+
+/* Password quality description. For example: `Very good (234 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithEntropy/description]" = "%1$@ (%2$@ entropie)";
+
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "Zobraziť heslo";
 

@@ -14,7 +14,7 @@
 "[Appearance/DefaultFont/shortTitle]" = "Predefinito";
 
 /* Title of a setting option: font */
-"[Appearance/Font/title]" = "Tipo di carattere";
+"[Appearance/Font/title]" = "Font";
 
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "Dimensione testo";
@@ -92,10 +92,10 @@
 "[ChallengeResponseError] slotNotConfigured" = "La chiave fisica non è configurata per la pratica challenge/response.";
 
 /* Progress status */
-"[Cipher/Progress] Decrypting" = "Decifrazione";
+"[Cipher/Progress] Decrypting" = "Decifrazione in corso";
 
 /* Progress status */
-"[Cipher/Progress] Encrypting" = "Cifratura";
+"[Cipher/Progress] Encrypting" = "Cifratura in corso";
 
 /* Action copy some named value to clipboard. For example: `Copy Password`. [valueName: String] */
 "[Clipboard/Copy/namedValue]" = "Copia %@";
@@ -143,28 +143,31 @@
 "[Database/CustomIcon/add]" = "Aggiungi icona personalizzata";
 
 /* Action: download icon of a website */
-"[Database/CustomIcon/DownloadFavicon/action]" = "Scarica Favicon";
+"[Database/CustomIcon/DownloadFavicon/action]" = "Scarica favicon";
 
 /* Action/button to download favicons of websites mentioned in selected entries. */
-"[Database/CustomIcon/DownloadFavicons/action]" = "Scarica Favicon";
+"[Database/CustomIcon/DownloadFavicons/action]" = "Scarica favicon";
 
 /* Report of favicon download results. */
 "[Database/CustomIcon/DownloadFavicons/stats]" = "Voci processate: %1$d\nIcone aggiornate: %2$d";
 
 /* Status message: multiple website favicons are being downloaded */
-"[Database/CustomIcon/DownloadFavicons/status]" = "Scaricamento favicon";
+"[Database/CustomIcon/DownloadFavicons/status]" = "Scarico favicon";
 
 /* Status message: a website favicon is being downloaded */
-"[Database/CustomIcon/DownloadOneFavicon/status]" = "Scaricamento favicon";
+"[Database/CustomIcon/DownloadOneFavicon/status]" = "Scarico favicon";
 
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Eliminare il file database?\nAssicurati di avere una copia di sicurezza.";
+
+/* Parameter name in database encryption settings. This is a term, see https://en.wikipedia.org/wiki/Key_derivation_function. Example: 'Key Derivation Function: Argon2' */
+"[Database/EncryptionSettings/kdf]" = "Funzione di derivazione chiave";
 
 /* Info message when changing database file format. */
 "[Database/FormatVersion/Conversion/allDataPreserved]" = "Tutti i tuoi dati saranno conservati.";
 
 /* Info message when the app needs to change database file format. [oldFormat, newFormat: String] */
-"[Database/FormatVersion/Upgrade/text]" = "KeePassium deve aggiornare il formato del file del database (da %1$@ ad %2$@). Potrebbe essere necessario aggiornare altre applicazioni che utilizzano questo database.";
+"[Database/FormatVersion/Upgrade/text]" = "KeePassium deve aggiornare il formato del file del database (da %1$@ a %2$@). Potrebbe essere necessario aggiornare altre applicazioni che utilizzano questo database.";
 
 /* Title of an info message when the app needs to change database file format. */
 "[Database/FormatVersion/Upgrade/title]" = "Prima di continuare";
@@ -239,10 +242,10 @@
 "[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "Il tuo database è pronto, ma si è verificato un errore.";
 
 /* Title of a list with database-related actions (e.g. lock database, change master key, etc) */
-"[Database/Operations/title]" = "Attività database";
+"[Database/Operations/title]" = "Operazioni database";
 
 /* Status message: preparing database print preview. */
-"[Database/Print/preparingPreview]" = "Preparazione anteprima…";
+"[Database/Print/preparingPreview]" = "Preparo anteprima…";
 
 /* Progress status: finished loading database */
 "[Database/Progress] Done" = "Fatto";
@@ -940,6 +943,9 @@
 /* Title of an warning message */
 "[Generic/title] Warning" = "Attenzione";
 
+/* Warning message template. Swap the icon and message for right-to-left languages. */
+"[Generic/WarningWithIcon/template]" = "⚠️ %@";
+
 /* VoiceOver description of a group [groupTitle: String, itemCount: Int] */
 "[Group/a11y/description]" = "%@, gruppo";
 
@@ -1415,7 +1421,7 @@
 "[PremiumFeature/MultiDB/title] Multiple Databases" = "Database multipli";
 
 /* Description/call to action for the `Password Audit` premium feature. */
-"[PremiumFeature/PasswordAudit/description]" = "Scopri se una qualsiasi delle tue password è stata esposta in una violazione di dati nota.";
+"[PremiumFeature/PasswordAudit/description]" = "Scopri se le tue password sono state esposte in una violazione di dati nota.";
 
 /* Title of a premium feature: discover which passwords are known to be compromized */
 "[PremiumFeature/PasswordAudit/title]" = "Ispezione password";

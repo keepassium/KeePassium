@@ -136,6 +136,9 @@
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "حذف ملف قاعدة البيانات؟\nتأكد من أن يكون لديك نسخة احتياطية.";
 
+/* Parameter name in database encryption settings. This is a term, see https://en.wikipedia.org/wiki/Key_derivation_function. Example: 'Key Derivation Function: Argon2' */
+"[Database/EncryptionSettings/kdf]" = "دالة اشتقاق المفتاح";
+
 /* Notification when user tries to copy data from KDBX to older KDB database. */
 "[Database/LesserTargetFormat/warning]" = "صيغة قاعدة البيانات هذه قديمة، قد تضيع بعض البيانات.";
 
@@ -840,6 +843,9 @@
 
 /* Title of an warning message */
 "[Generic/title] Warning" = "تحذير";
+
+/* Warning message template. Swap the icon and message for right-to-left languages. */
+"[Generic/WarningWithIcon/template]" = "⚠️ %@";
 
 /* VoiceOver description of a group [groupTitle: String, itemCount: Int] */
 "[Group/a11y/description]" = "%@، مجموعة";

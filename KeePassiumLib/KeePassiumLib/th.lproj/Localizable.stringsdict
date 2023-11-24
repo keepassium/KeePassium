@@ -4,39 +4,45 @@
 <dict>
 	<key>[Generic/Count/Bits]</key>
 	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@GenericCountBits@</string>
 		<key>GenericCountBits</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
-			<key>zero</key>
-			<string>%d bits</string>
-			<key>one</key>
-			<string>%d bit</string>
 			<key>other</key>
-			<string>%d bits</string>
+			<string>%d บิต</string>
 		</dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@GenericCountBits@</string>
 	</dict>
 	<key>[Generic/Count/EntriesSelected]</key>
 	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@GenericCountEntriesSelected@</string>
 		<key>GenericCountEntriesSelected</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
-			<key>zero</key>
-			<string>%d entries selected</string>
-			<key>one</key>
-			<string>%d entry selected</string>
 			<key>other</key>
-			<string>%d entries selected</string>
+			<string>%d รายการที่เลือกไว้</string>
 		</dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@GenericCountEntriesSelected@</string>
+	</dict>
+	<key>[Generic/Count/Threads]</key>
+	<dict>
+		<key>GenericCountThreads</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>other</key>
+			<string>%d threads</string>
+		</dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@GenericCountThreads@</string>
 	</dict>
 </dict>
 </plist>
