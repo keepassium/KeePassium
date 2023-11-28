@@ -15,12 +15,11 @@ protocol EntryViewerCoordinatorDelegate: AnyObject {
 }
 
 final class EntryViewerCoordinator: NSObject, Coordinator, Refreshable {
-    private enum Pages: Int {
-        static let count = 3
-
+    private enum Pages: Int, CaseIterable {
         case fields = 0
         case files = 1
         case history = 2
+        case extra = 3
     }
 
     var childCoordinators = [Coordinator]()
@@ -41,6 +40,7 @@ final class EntryViewerCoordinator: NSObject, Coordinator, Refreshable {
     private let fieldViewerVC: EntryFieldViewerVC
     private let fileViewerVC: EntryFileViewerVC
     private let historyViewerVC: EntryHistoryViewerVC
+    private let extraViewerVC: EntryExtraViewerVC
 
     private var previewController: QLPreviewController? 
     private var temporaryAttachmentURLs = [TemporaryFileURL]()
@@ -80,12 +80,14 @@ final class EntryViewerCoordinator: NSObject, Coordinator, Refreshable {
         fileViewerVC = EntryFileViewerVC.instantiateFromStoryboard()
         historyViewerVC = EntryHistoryViewerVC.instantiateFromStoryboard()
         pagesVC = EntryViewerPagesVC.instantiateFromStoryboard()
+        extraViewerVC = EntryExtraViewerVC()
 
         super.init()
 
         fieldViewerVC.delegate = self
         fileViewerVC.delegate = self
         historyViewerVC.delegate = self
+        extraViewerVC.delegate = self
         pagesVC.dataSource = self
         pagesVC.delegate = self
 
@@ -162,17 +164,34 @@ final class EntryViewerCoordinator: NSObject, Coordinator, Refreshable {
             isHistoryEntry: isHistoryEntry,
             canEditEntry: canEditEntry,
             animated: animated)
+        extraViewerVC.setContents(
+            for: entry,
+            property: makeExtraProperties(),
+            canEditEntry: canEditEntry,
+            animated: animated)
         pagesVC.setContents(
             from: entry,
             isHistoryEntry: isHistoryEntry,
             canEditEntry: canEditEntry)
         pagesVC.refresh()
     }
+
+    private func makeExtraProperties() -> [EntryExtraViewerVC.Property] {
+        guard let entry2 = entry as? Entry2 else {
+            return []
+        }
+
+        return [
+            .audit(entry2.qualityCheck),
+            .autoFill(entry2.autoType.isEnabled),
+            entry2.browserHideEntry.flatMap({ .autoFillThirdParty($0) })
+        ].compactMap { $0 }
+    }
 }
 
 extension EntryViewerCoordinator: EntryViewerPagesDataSource {
     func getPageCount(for viewController: EntryViewerPagesVC) -> Int {
-        return Pages.count
+        return Pages.allCases.count
     }
 
     func getPage(index: Int, for viewController: EntryViewerPagesVC) -> UIViewController? {
@@ -187,6 +206,8 @@ extension EntryViewerCoordinator: EntryViewerPagesDataSource {
             return fileViewerVC
         case .history:
             return historyViewerVC
+        case .extra:
+            return extraViewerVC
         }
     }
 
@@ -198,6 +219,8 @@ extension EntryViewerCoordinator: EntryViewerPagesDataSource {
             return Pages.files.rawValue
         case historyViewerVC:
             return Pages.history.rawValue
+        case extraViewerVC:
+            return Pages.extra.rawValue
         default:
             assertionFailure("Unexpected page VC")
             return nil
@@ -519,6 +542,11 @@ extension EntryViewerCoordinator {
 
         saveDatabase(databaseFile)
     }
+
+    private func copyText(text: String) {
+        entry.touch(.accessed)
+        Clipboard.general.insert(text)
+    }
 }
 
 extension EntryViewerCoordinator: EntryFieldViewerDelegate {
@@ -539,8 +567,7 @@ extension EntryViewerCoordinator: EntryFieldViewerDelegate {
         from viewableField: ViewableField,
         in viewController: EntryFieldViewerVC
     ) {
-        entry.touch(.accessed)
-        Clipboard.general.insert(text)
+        copyText(text: text)
     }
 
     func didPressExportField(
@@ -657,6 +684,57 @@ extension EntryViewerCoordinator: EntryFileViewerDelegate {
         Diag.info("Attachments deleted OK")
 
         saveDatabase()
+    }
+}
+
+extension EntryViewerCoordinator: EntryExtraViewerVCDelegate {
+    func didPressCopyField(text: String, in viewController: EntryExtraViewerVC) {
+        copyText(text: text)
+    }
+
+    func didPressExportField(text: String, at popoverAnchor: PopoverAnchor, in viewController: EntryExtraViewerVC) {
+        showExportDialog(for: text, at: popoverAnchor, in: viewController)
+    }
+
+    func didUpdateProperties(properties: [EntryExtraViewerVC.Property], in viewController: EntryExtraViewerVC) {
+        guard let entry2 = entry as? Entry2 else {
+            assertionFailure("Requires Entry2, this should be blocked in UI.")
+            return
+        }
+
+        let action = { [weak self] in
+            guard let self = self else {
+                return
+            }
+
+            properties.forEach {
+                switch $0 {
+                case .audit(let value):
+                    entry2.qualityCheck = value
+                case .autoFill(let value):
+                    entry2.autoType.isEnabled = value
+                case .autoFillThirdParty(let value):
+                    entry2.browserHideEntry = value
+                }
+            }
+
+            entry2.touch(.modified)
+            self.saveDatabase(self.databaseFile)
+            self.refresh()
+        }
+
+        let willUpdateAuditOption = properties.contains(where: { $0 == .audit(!entry2.qualityCheck) })
+        if willUpdateAuditOption {
+            requestFormatUpgradeIfNecessary(
+                in: viewController,
+                for: database,
+                and: .qualityCheckFlag
+            ) {
+                action()
+            }
+        } else {
+            action()
+        }
     }
 }
 

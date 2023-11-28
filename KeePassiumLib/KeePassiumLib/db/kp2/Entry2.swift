@@ -121,7 +121,7 @@ public class Entry2: Entry {
             var window: String
             var keystrokeSequence: String
         }
-        var isEnabled: Bool
+        public var isEnabled: Bool
         var obfuscationType: UInt32
         var defaultSequence: String
         var associations: [Association]
@@ -259,16 +259,22 @@ public class Entry2: Entry {
     public var qualityCheck: Bool 
     public var customData: CustomData2 
 
-    public override var isHiddenFromSearch: Bool {
+    public var browserHideEntry: Bool? {
         get {
-            guard let property = customData[Xml2.ThirdParty.browserHideEntry] else {
-                return false
-            }
-            return Bool(string: property.value)
+            customData[Xml2.ThirdParty.browserHideEntry].flatMap({ Bool(string: $0.value) })
         }
         set {
             let dataItem = CustomData2.Item(value: String(describing: newValue), lastModificationTime: .now)
             customData[Xml2.ThirdParty.browserHideEntry] = dataItem
+        }
+    }
+
+    public override var isHiddenFromSearch: Bool {
+        get {
+            browserHideEntry ?? false
+        }
+        set {
+            browserHideEntry = newValue
         }
     }
 

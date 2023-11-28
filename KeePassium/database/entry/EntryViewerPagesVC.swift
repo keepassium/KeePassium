@@ -60,6 +60,11 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
             pagesViewController.dataSource = self
         }
 
+        pageSelector.setTitle(LString.titleEntryTabGeneral, forSegmentAt: 0)
+        pageSelector.setTitle(LString.titleEntryTabFiles, forSegmentAt: 1)
+        pageSelector.setTitle(LString.titleEntryTabHistory, forSegmentAt: 2)
+        pageSelector.setTitle(LString.titleEntryTabMore, forSegmentAt: 3)
+
         addChild(pagesViewController)
         pagesViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         pagesViewController.view.frame = containerView.bounds
@@ -285,4 +290,23 @@ extension EntryViewerPagesVC: UIDropInteractionDelegate {
             self.delegate?.didDropFiles(files)
         }
     }
+}
+
+extension LString {
+    public static let titleEntryTabGeneral =  NSLocalizedString(
+        "[Entry/Tab/General/title]",
+        value: "General",
+        comment: "Title of entry viewer's tab with the entry's main information")
+    public static let titleEntryTabFiles =  NSLocalizedString(
+        "[Entry/Tab/Files/title]",
+        value: "Files",
+        comment: "Title of entry viewer's tab with files attached to the entry")
+    public static let titleEntryTabHistory =  NSLocalizedString(
+        "[Entry/Tab/History/title]",
+        value: "History",
+        comment: "Title of entry viewer's tab with previous revisions of the entry")
+    public static let titleEntryTabMore =  NSLocalizedString(
+        "[Entry/Tab/More/title]",
+        value: "More",
+        comment: "Title of entry viewer's tab with advanced/secondary properties")
 }

@@ -190,40 +190,12 @@ extension PasswordAuditCoordinator: PasswordAuditResultsVCDelegate {
         in viewController: PasswordAuditResultsVC,
         didApprove: @escaping () -> Void
     ) {
-        guard let db2 = databaseFile.database as? Database2 else {
-            assertionFailure("Requested format upgrade for KDB format, this should be blocked in UI.")
-            return
-        }
-        guard let newFormat = db2.formatUpgradeRequired(for: .qualityCheckFlag) else {
-            didApprove()
-            return
-        }
-
-        guard db2.formatVersion.hasMajorDifferences(with: newFormat) else {
-            Diag.debug("Minor format version upgrade required, approving silently")
-            db2.upgradeFormatVersion(to: newFormat)
-            didApprove()
-            return
-        }
-
-        let message = [
-                String.localizedStringWithFormat(
-                    LString.databaseFormatVersionUpgradeMessageTemplate,
-                    db2.formatVersion.description,
-                    newFormat.description),
-                LString.titleDatabaseFormatConversionAllDataPreserved
-            ].joined(separator: "\n\n") 
-        let confirmationAlert = UIAlertController.make(
-            title: LString.titleDatabaseFormatVersionUpgrade,
-            message: message,
-            dismissButtonTitle: LString.actionCancel
+        requestFormatUpgradeIfNecessary(
+            in: viewController,
+            for: databaseFile.database,
+            and: .qualityCheckFlag,
+            didApprove: didApprove
         )
-        confirmationAlert.addAction(title: LString.actionContinue, style: .default, preferred: true) { _ in
-            Diag.debug("DB format upgrade approved by user")
-            db2.upgradeFormatVersion(to: newFormat)
-            didApprove()
-        }
-        passwordAuditResultsVC?.present(confirmationAlert, animated: true)
     }
 }
 

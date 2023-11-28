@@ -26,7 +26,9 @@ public enum SymbolName: String {
     public static let keyFile = Self.keyDocHorizontal
     public static let actionRestore = Self.clockArrowCirclepath
     public static let appProtection = Self.lock
+    public static let autoFill = Self.return
     public static let fieldReference = Self.arrowRightCircle
+    public static let passwordAudit = Self.networkBadgeShield
 
     public static let premiumBenefitMultiDB = Self.shieldBadgePlus
     public static let premiumBenefitDBTimeout = Self.clockBadgeCheckmark
@@ -102,6 +104,7 @@ public enum SymbolName: String {
     case qrcode = "qrcode" 
     case questionmarkBubble = "questionmark.bubble" 
     case rectangleStack = "rectangle.stack" 
+    case `return` = "return" 
     case shieldBadgePlus = "shield.badge.plus" 
     case sliderVertical3 = "slider.vertical.3" 
     case starFill = "star.fill" 
