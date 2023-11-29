@@ -49,9 +49,9 @@ final class GroupEditorCoordinator: Coordinator {
         }
         group.touch(.accessed)
 
-        groupEditorVC = GroupEditorVC.instantiateFromStoryboard()
+        let groupProperties = GroupEditorVC.Property.makeAll(for: group, parent: parent)
+        groupEditorVC = GroupEditorVC(group: group, properties: groupProperties)
         groupEditorVC.delegate = self
-        groupEditorVC.group = group
         if originalGroup == nil {
             groupEditorVC.title = LString.titleCreateGroup
         } else {

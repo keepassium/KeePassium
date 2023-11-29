@@ -16,109 +16,218 @@ protocol GroupEditorDelegate: AnyObject {
     func didPressRandomizer(for textInput: TextInputView, in groupEditor: GroupEditorVC)
 }
 
-final class GroupEditorVC: UIViewController, Refreshable {
-    @IBOutlet private weak var imageView: UIImageView!
-    @IBOutlet private weak var nameTextField: ValidatingTextField!
+final class GroupEditorVC: UITableViewController {
+    private enum Section: Int, CaseIterable {
+        case titleAndIcon
+        case properties
+    }
+
+    private enum CellID {
+        static let parameterValueCell = "ParameterValueCell"
+        static let titleAndIconCell = "TitleAndIconCell"
+    }
+
+    private lazy var closeButton = UIBarButtonItem(
+        barButtonSystemItem: .cancel,
+        target: self,
+        action: #selector(didPressCancel))
+
+    private lazy var doneButton = UIBarButtonItem(
+        systemItem: .done,
+        primaryAction: UIAction { [weak self] _ in
+            self?.didPressDone()
+        },
+        menu: nil)
 
     weak var delegate: GroupEditorDelegate?
 
-    weak var group: Group? {
-        didSet {
-            refresh()
-        }
+    private let group: Group
+    private var isFirstFocus = true
+    private var properties: [Property]
+
+    init(group: Group, properties: [Property]) {
+        self.group = group
+        self.properties = properties
+        super.init(style: .plain)
     }
 
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameTextField.delegate = self
-        nameTextField.validityDelegate = self
-        nameTextField.addRandomizerEditMenu()
-        refresh()
+
+        navigationItem.leftBarButtonItem = closeButton
+        navigationItem.rightBarButtonItem = doneButton
+        tableView.allowsSelection = false
+        tableView.alwaysBounceVertical = false
+
+        registerCellClasses(tableView)
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        nameTextField.becomeFirstResponder()
-        if nameTextField.text == LString.defaultNewGroupName {
-            nameTextField.selectAll(nil)
+    private func registerCellClasses(_ tableView: UITableView) {
+        tableView.register(
+            UINib(nibName: ParameterValueCell.reuseIdentifier, bundle: nil),
+            forCellReuseIdentifier: CellID.parameterValueCell)
+        tableView.register(
+            GroupEditorTitleCell.classForCoder(),
+            forCellReuseIdentifier: CellID.titleAndIconCell
+        )
+    }
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        if properties.isEmpty {
+            return 1 
         }
-        refresh()
+        return Section.allCases.count
     }
 
-    func refresh() {
-        guard isViewLoaded,
-              let group = group
-        else {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch Section(rawValue: section) {
+        case .titleAndIcon:
+            return 1 
+        case .properties:
+            return properties.count
+        case .none:
+            fatalError("Invalid section")
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch Section(rawValue: section) {
+        case .titleAndIcon:
+            return CGFloat.leastNonzeroMagnitude 
+        default:
+            return UITableView.automaticDimension
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch Section(rawValue: section) {
+        case .titleAndIcon:
+            return nil
+        case .properties:
+            return LString.titleItemProperties
+        default:
+            return nil
+        }
+    }
+
+    override func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
+        switch Section(rawValue: indexPath.section) {
+        case .titleAndIcon:
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: CellID.titleAndIconCell,
+                for: indexPath)
+                as! GroupEditorTitleCell
+            configure(cell: cell)
+            return cell
+        case .properties:
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: CellID.parameterValueCell,
+                for: indexPath)
+                as! ParameterValueCell
+            let model = properties[indexPath.row]
+            configure(cell: cell, with: model)
+            return cell
+        case .none:
+            fatalError("Invalid section")
+        }
+    }
+
+    private func configure(cell: GroupEditorTitleCell) {
+        cell.delegate = self
+        cell.group = group
+
+        guard isFirstFocus else {
             return
         }
-        nameTextField.text = group.name
-        imageView.image = UIImage.kpIcon(forGroup: group)
-        navigationItem.rightBarButtonItem?.isEnabled = nameTextField.isValid
+
+        isFirstFocus = false
+        DispatchQueue.main.async {
+            cell.focus()
+        }
     }
 
+    private func configure(cell: ParameterValueCell, with model: Property) {
+        let menuActions = Property.possibleValues.map { altValue in
+            UIAction(
+                title: model.description(for: altValue, inheritedValue: model.inheritedValue),
+                state: model.value == altValue ? .on : .off,
+                handler: { [weak self] _ in
+                    self?.update(property: model, newValue: altValue)
+                }
+            )
+        }
 
-    @IBAction private func didPressCancel(_ sender: Any) {
+        cell.textLabel?.text = model.title
+        cell.detailTextLabel?.text = model.description
+        cell.menu = UIMenu(
+            title: model.title,
+            options: .displayInline,
+            children: [
+                UIDeferredMenuElement.uncached { [weak self] completion in
+                    self?.view.endEditing(true)
+                    completion(menuActions)
+                }
+            ]
+        )
+    }
+
+    private func update(property: Property, newValue: Bool?) {
+        guard let index = properties.firstIndex(where: {$0.kind == property.kind }) else {
+            assertionFailure("Tried to modify a non-existent property")
+            return
+        }
+        properties[index].value = newValue
+        properties[index].apply(to: group)
+        refresh()
+    }
+
+    @objc
+    private func didPressCancel(_ sender: UIBarButtonItem) {
         delegate?.didPressCancel(in: self)
     }
 
-    @IBAction private func didPressDone(_ sender: Any) {
-        guard nameTextField.isValid else {
-            nameTextField.becomeFirstResponder()
-            nameTextField.shake()
-            return
-        }
-        nameTextField.resignFirstResponder()
-        group?.name = nameTextField.text ?? ""
+    private func didPressDone() {
         delegate?.didPressDone(in: self)
-    }
-
-    @IBAction private func didTapIcon(_ gestureRecognizer: UITapGestureRecognizer) {
-        if gestureRecognizer.state == .ended {
-            didPressChangeIcon(self)
-        }
-    }
-
-    @IBAction private func didPressChangeIcon(_ sender: Any) {
-        let popoverAnchor = PopoverAnchor(sourceView: imageView, sourceRect: imageView.bounds)
-        delegate?.didPressChangeIcon(at: popoverAnchor, in: self)
     }
 }
 
-extension GroupEditorVC: ValidatingTextFieldDelegate {
+extension GroupEditorVC: Refreshable {
+    func refresh() {
+        tableView.reloadData()
+    }
+}
 
-    private func isValid(groupName: String) -> Bool {
-        guard let group = group else {
-            assertionFailure()
-            return false
-        }
+extension GroupEditorVC: GroupEditorTitleCellDelegate {
+    func didPressReturn(in cell: GroupEditorTitleCell) {
+        delegate?.didPressDone(in: self)
+    }
+
+    func didPressChangeIcon(at popoverAnchor: PopoverAnchor, in cell: GroupEditorTitleCell) {
+        delegate?.didPressChangeIcon(at: popoverAnchor, in: self)
+    }
+
+    func didPressRandomizer(for textInput: TextInputView, in cell: GroupEditorTitleCell) {
+        delegate?.didPressRandomizer(for: textInput, in: self)
+    }
+
+    func isValid(groupName: String, in cell: GroupEditorTitleCell) -> Bool {
         let isReserved = group.isNameReserved(name: groupName)
         let isValid = groupName.isNotEmpty && !isReserved
         return isValid
     }
 
-    func validatingTextFieldShouldValidate(_ sender: ValidatingTextField) -> Bool {
-        return isValid(groupName: sender.text ?? "")
+    func didChangeName(name: String, in cell: GroupEditorTitleCell) {
+        group.name = name
     }
 
-    func validatingTextField(_ sender: ValidatingTextField, validityDidChange isValid: Bool) {
-        navigationItem.rightBarButtonItem?.isEnabled = nameTextField.isValid
-    }
-
-    func validatingTextField(_ sender: ValidatingTextField, textDidChange text: String) {
-        group?.name = text
-    }
-}
-
-extension GroupEditorVC: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        didPressDone(self)
-        return true
-    }
-}
-
-extension GroupEditorVC: TextInputEditMenuDelegate {
-    func textInputDidRequestRandomizer(_ textInput: TextInputView) {
-        delegate?.didPressRandomizer(for: textInput, in: self)
+    func didChangeValidity(isValid: Bool, in cell: GroupEditorTitleCell) {
+        navigationItem.rightBarButtonItem?.isEnabled = isValid
     }
 }

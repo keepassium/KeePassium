@@ -224,6 +224,14 @@ extension LString {
         comment: "Title of list view configuration screen")
 
 
+    public static let titleGroupName = NSLocalizedString(
+        "[GroupEditor/Name/placeholder]",
+        bundle: Bundle.framework,
+        value: "Group Name",
+        comment: "Title of an input field for group name"
+    )
+
+
     public static let actionChangeIcon = NSLocalizedString(
         "[EditEntry/Icon/change]",
         bundle: Bundle.framework,

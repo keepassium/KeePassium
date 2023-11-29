@@ -736,6 +736,31 @@ extension LString {
         comment: "Possible value of the `Password AutoFill` setting. For example: 'Password AutoFill: Disabled'"
     )
 
+    public static let titleItemPropertySearch = NSLocalizedString(
+        "[Item/Properties/Search/title] Search",
+        bundle: Bundle.framework,
+        value: "Search",
+        comment: "Title of a setting: whether the item (e.g. entry) should be considered during search. Example: 'Search: Allowed'"
+    )
+    public static let itemSearchAllowed = NSLocalizedString(
+        "[Item/Properties/Search/allowed]",
+        bundle: Bundle.framework,
+        value: "Allowed",
+        comment: "Possible value of the `Search` setting. Example: 'Search: Allowed'"
+    )
+    public static let itemSearchDisabled = NSLocalizedString(
+        "[Item/Properties/Search/disabled]",
+        bundle: Bundle.framework,
+        value: "Disabled",
+        comment: "Possible value of the `Search` setting, when the item should be excluded from search results. Example: 'Search: Disabled'"
+    )
+    public static let itemPropertyInheritedTemplate = NSLocalizedString(
+        "[Item/Properties/inheritedValue]",
+        bundle: Bundle.framework,
+        value: "Inherit from parent group (%@)",
+        comment: "Default value of an item property. For example: 'Password Audit: Inherit from parent group (Allowed)'. [inheritedValue: String]"
+    )
+
 
     public static let expiryDateNever = NSLocalizedString(
         "[Entry/History/ExpiryDate] Never",
