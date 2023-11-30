@@ -329,7 +329,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         } else {
             listMenuTitle = LString.titleSortBy
         }
-        
+
         return UIMenu.make(
             title: listMenuTitle,
             reverse: true,

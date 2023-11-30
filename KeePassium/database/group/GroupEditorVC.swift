@@ -179,7 +179,7 @@ final class GroupEditorVC: UITableViewController {
     }
 
     private func update(property: Property, newValue: Bool?) {
-        guard let index = properties.firstIndex(where: {$0.kind == property.kind }) else {
+        guard let index = properties.firstIndex(where: { $0.kind == property.kind }) else {
             assertionFailure("Tried to modify a non-existent property")
             return
         }

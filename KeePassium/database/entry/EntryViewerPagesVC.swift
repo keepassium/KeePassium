@@ -235,6 +235,10 @@ extension EntryViewerPagesVC: UIDropInteractionDelegate {
         _ interaction: UIDropInteraction,
         sessionDidUpdate session: UIDropSession
     ) -> UIDropProposal {
+        guard session.localDragSession == nil else {
+            return UIDropProposal(operation: .cancel)
+        }
+
         if delegate?.canDropFiles(session.items) ?? false {
             return UIDropProposal(operation: .copy)
         } else {
@@ -293,19 +297,19 @@ extension EntryViewerPagesVC: UIDropInteractionDelegate {
 }
 
 extension LString {
-    public static let titleEntryTabGeneral =  NSLocalizedString(
+    public static let titleEntryTabGeneral = NSLocalizedString(
         "[Entry/Tab/General/title]",
         value: "General",
         comment: "Title of entry viewer's tab with the entry's main information")
-    public static let titleEntryTabFiles =  NSLocalizedString(
+    public static let titleEntryTabFiles = NSLocalizedString(
         "[Entry/Tab/Files/title]",
         value: "Files",
         comment: "Title of entry viewer's tab with files attached to the entry")
-    public static let titleEntryTabHistory =  NSLocalizedString(
+    public static let titleEntryTabHistory = NSLocalizedString(
         "[Entry/Tab/History/title]",
         value: "History",
         comment: "Title of entry viewer's tab with previous revisions of the entry")
-    public static let titleEntryTabMore =  NSLocalizedString(
+    public static let titleEntryTabMore = NSLocalizedString(
         "[Entry/Tab/More/title]",
         value: "More",
         comment: "Title of entry viewer's tab with advanced/secondary properties")

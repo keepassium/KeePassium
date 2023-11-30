@@ -7,6 +7,7 @@
 //  For commercial licensing, please contact the author.
 
 import KeePassiumLib
+import UniformTypeIdentifiers
 
 protocol EntryFileViewerDelegate: AnyObject {
     func shouldReplaceExistingFile(in viewController: EntryFileViewerVC) -> Bool
@@ -65,6 +66,8 @@ final class EntryFileViewerVC: TableViewControllerWithContextActions, Refreshabl
 
         navigationItem.rightBarButtonItem = editButtonItem
         tableView.allowsMultipleSelectionDuringEditing = true
+        tableView.dragInteractionEnabled = true
+        tableView.dragDelegate = self
 
         previewFilesBarButton = UIBarButtonItem(
             image: .symbol(.rectangleStack),
@@ -431,5 +434,34 @@ private extension EntryFileViewerVC {
             deleteFilesBarButton.title = LString.actionDeleteAll
         }
         deleteFilesBarButton.menu = makeConfirmDeleteSelectionMenu(for: deleteFilesBarButton)
+    }
+}
+
+extension EntryFileViewerVC: UITableViewDragDelegate {
+    func tableView(
+        _ tableView: UITableView,
+        itemsForBeginning session: UIDragSession,
+        at indexPath: IndexPath
+    ) -> [UIDragItem] {
+        guard indexPath.row < attachments.count else {
+            return []
+        }
+
+        let attachment = attachments[indexPath.row]
+        let type = UTType(filenameExtension: (attachment.name as NSString).pathExtension)
+        do {
+            let data: ByteArray
+            if attachment.isCompressed {
+                data = try attachment.data.gunzipped()
+            } else {
+                data = attachment.data
+            }
+            let itemProvider = NSItemProvider(item: data.asData as NSData, typeIdentifier: type?.identifier)
+            itemProvider.suggestedName = attachment.name
+            return [UIDragItem(itemProvider: itemProvider)]
+        } catch {
+            Diag.error("Failed to unzip attachment [message: \(error.localizedDescription)")
+            return []
+        }
     }
 }

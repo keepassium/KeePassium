@@ -26,7 +26,7 @@ public final class LicenseManager {
         cachedLicenseStatus = licenseStatus
         return licenseStatus
     }
-    
+
     internal func checkBusinessLicense() {
         cachedLicenseStatus = isLicensedForBusiness()
     }
