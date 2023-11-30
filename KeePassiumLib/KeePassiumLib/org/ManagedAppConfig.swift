@@ -101,8 +101,32 @@ extension ManagedAppConfig {
     }
 
     public func isManaged(key: Key) -> Bool {
-        let managedValue = getObject(key)
-        return managedValue != nil
+        switch key {
+        case .license:
+            return getString(key) != nil
+        case .autoUnlockLastDatabase,
+             .rememberDatabaseKey,
+             .rememberDatabaseFinalKey,
+             .keepKeyFileAssociations,
+             .keepHardwareKeyAssociations,
+             .lockAllDatabasesOnFailedPasscode,
+             .lockAppOnLaunch,
+             .lockDatabasesOnTimeout,
+             .useUniversalClipboard,
+             .hideProtectedFields,
+             .showBackupFiles,
+             .backupDatabaseOnSave,
+             .excludeBackupFilesFromSystemBackup,
+             .enableQuickTypeAutoFill,
+             .allowNetworkAccess,
+             .hideAppLockSetupReminder:
+            return getBool(key) != nil
+        case .appLockTimeout,
+             .databaseLockTimeout,
+             .clipboardTimeout,
+             .backupKeepingDuration:
+            return getInt(key) != nil
+        }
     }
 
     public func getBoolIfLicensed(_ key: Key) -> Bool? {
@@ -125,7 +149,11 @@ extension ManagedAppConfig {
              .allowNetworkAccess,
              .hideAppLockSetupReminder:
             result = getBool(key)
-        default:
+        case .license,
+             .appLockTimeout,
+             .databaseLockTimeout,
+             .clipboardTimeout,
+             .backupKeepingDuration:
             Diag.error("Key `\(key.rawValue)` is not boolean, ignoring")
             assertionFailure()
             return nil
@@ -154,7 +182,23 @@ extension ManagedAppConfig {
              .clipboardTimeout,
              .backupKeepingDuration:
             result = getInt(key)
-        default:
+        case .license,
+             .autoUnlockLastDatabase,
+             .rememberDatabaseKey,
+             .rememberDatabaseFinalKey,
+             .keepKeyFileAssociations,
+             .keepHardwareKeyAssociations,
+             .lockAllDatabasesOnFailedPasscode,
+             .lockAppOnLaunch,
+             .lockDatabasesOnTimeout,
+             .useUniversalClipboard,
+             .hideProtectedFields,
+             .showBackupFiles,
+             .backupDatabaseOnSave,
+             .excludeBackupFilesFromSystemBackup,
+             .enableQuickTypeAutoFill,
+             .allowNetworkAccess,
+             .hideAppLockSetupReminder:
             Diag.error("Key `\(key.rawValue)` is not an integer, ignoring.")
             assertionFailure()
             return nil
