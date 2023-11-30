@@ -728,6 +728,8 @@
 		75CBABA521C1C2D100B8AFE2 /* FileInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529310C21ADA46C00E4B0D2 /* FileInfoVC.swift */; };
 		75CD363F21521FAF0018AF46 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75CD363E21521FAE0018AF46 /* LocalAuthentication.framework */; };
 		75CD364121537A320018AF46 /* AppStoreHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CD364021537A310018AF46 /* AppStoreHelper.swift */; };
+		75CF52242B18A60400FF3A3F /* Coordinator+databaseUpgrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35538902B08DDF600D9F95D /* Coordinator+databaseUpgrade.swift */; };
+		75CF52252B18A60500FF3A3F /* Coordinator+databaseUpgrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35538902B08DDF600D9F95D /* Coordinator+databaseUpgrade.swift */; };
 		75CFBE2A21C2BDDF0029A80A /* DatabaseUnlockerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CFBE2921C2BDDF0029A80A /* DatabaseUnlockerVC.swift */; };
 		75CFBE2D21C2FE340029A80A /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F5CACC20BD18320056C969 /* UIView+extension.swift */; };
 		75D075B128B639D200F02E39 /* Clipboard+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75061ECB257EE4F7003EF34A /* Clipboard+extensions.swift */; };
@@ -4450,6 +4452,7 @@
 				75838483268B55BF000D2E8B /* UIViewController+subviews.swift in Sources */,
 				75B38C26233E5B7C006BDEFC /* Refreshable.swift in Sources */,
 				75480505238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
+				75CF52242B18A60400FF3A3F /* Coordinator+databaseUpgrade.swift in Sources */,
 				75B38C28233E5B7C006BDEFC /* DatabasePickerVC.swift in Sources */,
 				753FE83724C1A9A400063FBB /* UIViewController+alerts.swift in Sources */,
 				757FDF6426E2519E0023E028 /* OTPView.swift in Sources */,
@@ -4748,6 +4751,7 @@
 				75D0765B28B639D200F02E39 /* UITableViewCell+demoEditActions.swift in Sources */,
 				75D0765C28B639D200F02E39 /* DatabaseSaving.swift in Sources */,
 				75D0765D28B639D200F02E39 /* DataProtectionSettingsCoordinator.swift in Sources */,
+				75CF52252B18A60500FF3A3F /* Coordinator+databaseUpgrade.swift in Sources */,
 				75D0765E28B639D200F02E39 /* HelpArticle.swift in Sources */,
 				75D0765F28B639D200F02E39 /* ProgressViewHost.swift in Sources */,
 				75D0766028B639D200F02E39 /* KeyboardDismissable.swift in Sources */,
