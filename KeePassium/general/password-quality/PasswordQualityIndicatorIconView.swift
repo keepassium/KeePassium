@@ -22,6 +22,7 @@ final class PasswordQualityIndicatorIconView: UIView {
 
             iconImageView.tintColor = iconColor
             iconImageView.image = .symbol(symbolName)
+            iconImageView.preferredSymbolConfiguration = .init(textStyle: .body)
             if let qualityTitle = quality?.title {
                 accessibilityLabel = String.localizedStringWithFormat(
                     LString.titlePasswordQualityTemplate,
@@ -33,8 +34,11 @@ final class PasswordQualityIndicatorIconView: UIView {
         }
     }
 
+    public var onTap: ((PasswordQualityIndicatorIconView) -> Void)?
+
     private lazy var iconImageView: UIImageView = {
         let iconImageView = UIImageView()
+        iconImageView.contentMode = .center
         iconImageView.translatesAutoresizingMaskIntoConstraints = false
         return iconImageView
     }()
@@ -60,5 +64,15 @@ final class PasswordQualityIndicatorIconView: UIView {
         ])
         isAccessibilityElement = true
         accessibilityTraits = [.staticText]
+
+        let tapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(didRecognizeTapGesture))
+        self.addGestureRecognizer(tapGestureRecognizer)
+    }
+
+    @objc
+    private func didRecognizeTapGesture(_ sender: Any) {
+        onTap?(self)
     }
 }

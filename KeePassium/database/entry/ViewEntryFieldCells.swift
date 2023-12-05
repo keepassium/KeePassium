@@ -251,6 +251,25 @@ class ProtectedFieldCell: ViewableFieldCell {
 
         let indicatorView = PasswordQualityIndicatorIconView()
         indicatorView.quality = .init(password: field?.resolvedValue)
+        indicatorView.onTap = { [weak self] indicator in
+            guard let toastHost = self?.contentView,
+                  let quality = indicator.quality
+            else {
+                return
+            }
+            let description = String.localizedStringWithFormat(
+                LString.titlePasswordQualityTemplate,
+                quality.title)
+            let toastStyle = ToastStyle()
+            let toastView = toastHost.toastViewForMessage(
+                description,
+                title: nil,
+                image: .symbol(quality.symbolName, tint: quality.iconColor),
+                style: toastStyle)
+            toastHost.hideToast()
+            toastHost.showToast(toastView, duration: 1.0, position: .center, action: nil)
+        }
+
         guard !indicatorView.isHidden else {
             accessoryView = theButton
             refreshTextView()
@@ -260,9 +279,10 @@ class ProtectedFieldCell: ViewableFieldCell {
         let wrapperiew = UIView()
         wrapperiew.addSubview(theButton)
         wrapperiew.addSubview(indicatorView)
-        wrapperiew.frame = .init(x: 0, y: 0, width: 48, height: 24)
-        indicatorView.frame = .init(x: 0, y: 3, width: 18, height: 18)
-        theButton.frame = .init(x: 24, y: 0, width: 24, height: 24)
+        wrapperiew.frame = .init(x: 0, y: 0, width: 44 + 24, height: 24)
+        indicatorView.frame = .init(x: 0, y: 0, width: 44, height: 24)
+        theButton.frame = .init(x: 44, y: 0, width: 24, height: 24)
+
         accessoryView = wrapperiew
 
         refreshTextView()
