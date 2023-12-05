@@ -385,6 +385,7 @@
 		758D8E902274D2BE00644FA6 /* DatabaseCreatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D8E8F2274D2BE00644FA6 /* DatabaseCreatorVC.swift */; };
 		758E5EF225F2E22600E06AE7 /* DatabaseSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758E5EF125F2E22600E06AE7 /* DatabaseSaving.swift */; };
 		758E5EF325F2E22600E06AE7 /* DatabaseSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758E5EF125F2E22600E06AE7 /* DatabaseSaving.swift */; };
+		758F41A12B19F2740069BF66 /* MSALOneDriveAuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758F419C2B19F2740069BF66 /* MSALOneDriveAuthProvider.swift */; };
 		758FC11324CEF72000BAD35C /* appicon-keepass_iPhoneApp_60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0DA24CEF71500BAD35C /* appicon-keepass_iPhoneApp_60@3x.png */; };
 		758FC11424CEF72000BAD35C /* appicon-keepass_iPhoneApp_60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0DA24CEF71500BAD35C /* appicon-keepass_iPhoneApp_60@3x.png */; };
 		758FC11524CEF72000BAD35C /* appicon-classic-free_iPadApp_76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0DB24CEF71500BAD35C /* appicon-classic-free_iPadApp_76@2x.png */; };
@@ -1941,6 +1942,7 @@
 		758D272326867931006764C0 /* EntryFinderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFinderCoordinator.swift; sourceTree = "<group>"; };
 		758D8E8F2274D2BE00644FA6 /* DatabaseCreatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseCreatorVC.swift; sourceTree = "<group>"; };
 		758E5EF125F2E22600E06AE7 /* DatabaseSaving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSaving.swift; sourceTree = "<group>"; };
+		758F419C2B19F2740069BF66 /* MSALOneDriveAuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSALOneDriveAuthProvider.swift; sourceTree = "<group>"; };
 		758FC0DA24CEF71500BAD35C /* appicon-keepass_iPhoneApp_60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-keepass_iPhoneApp_60@3x.png"; sourceTree = "<group>"; };
 		758FC0DB24CEF71500BAD35C /* appicon-classic-free_iPadApp_76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-classic-free_iPadApp_76@2x.png"; sourceTree = "<group>"; };
 		758FC0DC24CEF71500BAD35C /* appicon-atom-white_iPhoneApp_60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-atom-white_iPhoneApp_60@2x.png"; sourceTree = "<group>"; };
@@ -2696,6 +2698,7 @@
 			children = (
 				754313B028B82EAA00D5F252 /* IntuneEnrollmentDelegateImpl.swift */,
 				754313B228B830F500D5F252 /* IntunePolicyDelegateImpl.swift */,
+				758F419C2B19F2740069BF66 /* MSALOneDriveAuthProvider.swift */,
 			);
 			path = intune;
 			sourceTree = "<group>";
@@ -4650,6 +4653,7 @@
 				75D0760728B639D200F02E39 /* TipBoxVC.swift in Sources */,
 				75D0760828B639D200F02E39 /* UIImage+extensions.swift in Sources */,
 				75DEE8152AA66C500024AE11 /* LString+passwordAudit.swift in Sources */,
+				758F41A12B19F2740069BF66 /* MSALOneDriveAuthProvider.swift in Sources */,
 				75D0760928B639D200F02E39 /* QuickAutoFillPrompt.swift in Sources */,
 				75D0760A28B639D200F02E39 /* AnnouncementCell.swift in Sources */,
 				F37339002AACCAFD007188D2 /* FaviconDownloading.swift in Sources */,

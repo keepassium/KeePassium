@@ -266,10 +266,11 @@ extension MainCoordinator {
 extension MainCoordinator {
     public func processIncomingURL(_ url: URL, sourceApp: String?, openInPlace: Bool?) -> Bool {
         #if INTUNE
-        if !url.isFileURL { 
+        if url.absoluteString.hasPrefix(MSALOneDriveAuthProvider.redirectURI) {
             let isHandled = MSALPublicClientApplication.handleMSALResponse(
                 url,
                 sourceApplication: sourceApp)
+            Diag.info("Processed MSAL auth callback [isHandled: \(isHandled)]")
             return isHandled
         }
         #endif

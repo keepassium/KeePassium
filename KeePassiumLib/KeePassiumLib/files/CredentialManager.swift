@@ -11,6 +11,7 @@ import Foundation
 public struct OAuthToken: Codable {
     public var accessToken: String
     public var refreshToken: String
+    public var accountIdentifier: String?
     public var acquired: Date
     public var lifespan: TimeInterval
     public var halflife: TimeInterval { lifespan / 2 }

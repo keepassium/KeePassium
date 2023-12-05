@@ -57,6 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         #if INTUNE
         BusinessModel.isIntuneEdition = true
+        OneDriveManager.shared.setAuthProvider(MSALOneDriveAuthProvider())
         #else
         BusinessModel.isIntuneEdition = false
         #endif
