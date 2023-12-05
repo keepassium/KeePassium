@@ -862,6 +862,9 @@
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "مجموعة جديدة";
 
+/* Title of an input field for group name */
+"[GroupEditor/Name/placeholder]" = "اسم المجموعة";
+
 /* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
 "[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "حسب تاريخ الإنشاء (جديد..قديم)";
 
@@ -906,6 +909,21 @@
 
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "اُستُعيدَ الإصدار السابق";
+
+/* Title of a list with advanced/expert-level properties of a database item (e.g. entry) */
+"[Item/Properties/Advanced/title]" = "مُتقدِم";
+
+/* Possible value of the `Password AutoFill` setting. For example: 'Password AutoFill: Allowed' */
+"[Item/Properties/AutoFill/allowed]" = "مَسمُوح";
+
+/* Possible value of the `Password Audit` setting. For example: 'Password Audit: Allowed' */
+"[Item/Properties/PasswordAudit/allowed]" = "مَسمُوح";
+
+/* Possible value of the `Search` setting. Example: 'Search: Allowed' */
+"[Item/Properties/Search/allowed]" = "مَسمُوح";
+
+/* Title of a setting: whether the item (e.g. entry) should be considered during search. Example: 'Search: Allowed' */
+"[Item/Properties/Search/title] Search" = "البحث";
 
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "الافتراضي (KeePass)";

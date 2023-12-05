@@ -991,6 +991,9 @@
 /* Title of the confirmation dialog for `Empty Recycle Bin` action */
 "[Group/RecycleBin/Empty/confirmTitle]" = "Окончательно удалить всё в Корзине?";
 
+/* Title of an input field for group name */
+"[GroupEditor/Name/placeholder]" = "Название группы";
+
 /* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
 "[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "По дате создания (новые..старые)";
 
@@ -1041,6 +1044,45 @@
 
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "Предыдущая версия восстановлена";
+
+/* Title of a list with advanced/expert-level properties of a database item (e.g. entry) */
+"[Item/Properties/Advanced/title]" = "Дополнительно";
+
+/* Possible value of the `Password AutoFill` setting. For example: 'Password AutoFill: Allowed' */
+"[Item/Properties/AutoFill/allowed]" = "Разрешено";
+
+/* Possible value of the `Password AutoFill` setting. For example: 'Password AutoFill: Disabled' */
+"[Item/Properties/AutoFill/disabled]" = "Отключено";
+
+/* Title of a setting: whether the item (e.g. entry) should be used in AutoFill feature. App-specific setting for KeePassXC. */
+"[Item/Properties/AutoFill/KeePassXC/title]" = "Автозаполнение паролей (KeePassXC)";
+
+/* Title of a setting: whether the item (e.g. entry) should be used in AutoFill feature */
+"[Item/Properties/AutoFill/title]" = "Автозаполнение паролей";
+
+/* Default value of an item property. For example: 'Password Audit: Inherit from parent group (Allowed)'. [inheritedValue: String] */
+"[Item/Properties/inheritedValue]" = "Наследовать от родительской группы (%@)";
+
+/* Possible value of the `Password Audit` setting. For example: 'Password Audit: Allowed' */
+"[Item/Properties/PasswordAudit/allowed]" = "Разрешён";
+
+/* Possible value of the `Password Audit` setting. For example: 'Password Audit: Disabled' */
+"[Item/Properties/PasswordAudit/disabled]" = "Отключён";
+
+/* Title of a setting: whether the item (e.g. entry) should be included in password audit */
+"[Item/Properties/PasswordAudit/title]" = "Аудит паролей";
+
+/* Possible value of the `Search` setting. Example: 'Search: Allowed' */
+"[Item/Properties/Search/allowed]" = "Разрешён";
+
+/* Possible value of the `Search` setting, when the item should be excluded from search results. Example: 'Search: Disabled' */
+"[Item/Properties/Search/disabled]" = "Отключён";
+
+/* Title of a setting: whether the item (e.g. entry) should be considered during search. Example: 'Search: Allowed' */
+"[Item/Properties/Search/title] Search" = "Поиск";
+
+/* Title of a list with item (e.g. entry) properties/settings, such as searchability, auto-typing, etc */
+"[Item/Properties/title]" = "Свойства";
 
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "По умолчанию (KeePass)";

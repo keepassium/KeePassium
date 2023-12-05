@@ -892,6 +892,9 @@
 /* Action/button to delete everything inside the Recycle Bin */
 "[Group/RecycleBin/Empty/action]" = "Opróżnij kosz";
 
+/* Title of an input field for group name */
+"[GroupEditor/Name/placeholder]" = "Nazwa grupy";
+
 /* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
 "[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "Wg daty utworzenia (Od najnowszej)";
 
@@ -939,6 +942,21 @@
 
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "Przywrócono poprzednią wersję";
+
+/* Title of a list with advanced/expert-level properties of a database item (e.g. entry) */
+"[Item/Properties/Advanced/title]" = "Zaawansowane";
+
+/* Possible value of the `Password AutoFill` setting. For example: 'Password AutoFill: Allowed' */
+"[Item/Properties/AutoFill/allowed]" = "Dozwolone";
+
+/* Possible value of the `Password Audit` setting. For example: 'Password Audit: Allowed' */
+"[Item/Properties/PasswordAudit/allowed]" = "Dozwolone";
+
+/* Possible value of the `Search` setting. Example: 'Search: Allowed' */
+"[Item/Properties/Search/allowed]" = "Dozwolone";
+
+/* Title of a setting: whether the item (e.g. entry) should be considered during search. Example: 'Search: Allowed' */
+"[Item/Properties/Search/title] Search" = "Szukaj";
 
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "Domyślne (KeePass)";

@@ -7,6 +7,15 @@
 /* Suggestion/hint for available user action */
 "[Accessibility] Double tap to copy to clipboard" = "Торкніться двічі, щоб скопіювати до буфера обміну";
 
+/* Call to action: perform accessibilty `activate` action to listen to text/content. */
+"[Accessibility/activateToListen]" = "Активуйте, щоб слухати.";
+
+/* Short name of the default/system font. For example: `Font: Default` */
+"[Appearance/DefaultFont/shortTitle]" = "За замовчуванням";
+
+/* Title of a setting option: font */
+"[Appearance/Font/title]" = "Шрифт";
+
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "Розмір тексту";
 
@@ -39,6 +48,9 @@
 
 /* Type of keyboard to show for App Lock passcode: digits only (PIN code). */
 "[AppLock/Passcode/KeyboardType/title] Numeric" = "Цифровий";
+
+/* Hint/call to action about keyboard shortcut */
+"[AppLock/Passcode/pressEscForTouchID]" = "Натисніть Esc для Touch ID";
 
 /* Notification that the modified AppLock passcode has been saved. */
 "[AppLock/passcodeUpdated/title]" = "Код доступу успішно змінено.";
@@ -130,11 +142,62 @@
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "Додати свою іконку";
 
+/* Action: download icon of a website */
+"[Database/CustomIcon/DownloadFavicon/action]" = "Завантажити значок сайту";
+
+/* Action/button to download favicons of websites mentioned in selected entries. */
+"[Database/CustomIcon/DownloadFavicons/action]" = "Завантажити значки сайтів";
+
+/* Report of favicon download results. */
+"[Database/CustomIcon/DownloadFavicons/stats]" = "Опрацьовано записів: %1$d\nОновлено значків: %2$d";
+
+/* Status message: multiple website favicons are being downloaded */
+"[Database/CustomIcon/DownloadFavicons/status]" = "Завантаження значків сайтів";
+
+/* Status message: a website favicon is being downloaded */
+"[Database/CustomIcon/DownloadOneFavicon/status]" = "Завантаження значка сайту";
+
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Видалити файл бази паролів?\nПереконайтеся, що у вас є резервна копія.";
 
+/* Action to modify database encryption settings. */
+"[Database/EncryptionSettings/Change/action]" = "Змінити параметри шифрування";
+
+/* Parameter name in database encryption settings. Example: 'Encryption Algorithm: AES-256' */
+"[Database/EncryptionSettings/dataCipher]" = "Алгоритм шифрування";
+
+/* Parameter name in database encryption settings. Defines the number of times/iterations a calculation (transform) should be executed. Example: 'Transform Rounds: 100' */
+"[Database/EncryptionSettings/iterations]" = "Цикли перетворення";
+
 /* Parameter name in database encryption settings. This is a term, see https://en.wikipedia.org/wiki/Key_derivation_function. Example: 'Key Derivation Function: Argon2' */
 "[Database/EncryptionSettings/kdf]" = "Функція формування ключа";
+
+/* Parameter name in database encryption settings. Defines the amount of memory that should be used by an algorithm. Example: 'Memory Usage: 16 MB' */
+"[Database/EncryptionSettings/memory]" = "Використання пам’яті";
+
+/* Warning for too high value of the `Memory usage` parameter in database encryption settings. */
+"[Database/EncryptionSettings/memoryAutoFillWarning]" = "Високі вимоги до пам’яті можуть зробити цю базу даних несумісною з функцією автозаповнення паролів.";
+
+/* Action/button button in database encryption settings. Resets the settings to recommended values. */
+"[Database/EncryptionSettings/reset]" = "Скинути до рекомендованих налаштувань";
+
+/* Parameter name in database encryption settings. Defines the number of computations to run in parallel/simultaneously. Example: 'Parallelism: 2 threads' */
+"[Database/EncryptionSettings/threads]" = "Паралелізм";
+
+/* Title: database encryption settings. */
+"[Database/EncryptionSettings/title]" = "Налаштування шифрування";
+
+/* Info message when changing database file format. */
+"[Database/FormatVersion/Conversion/allDataPreserved]" = "Усі ваші дані буде збережено.";
+
+/* Info message when the app needs to change database file format. [oldFormat, newFormat: String] */
+"[Database/FormatVersion/Upgrade/text]" = "KeePassium необхідно оновити формат файлу бази даних (з %1$@ на %2$@). Можливо, вам доведеться оновити інші застосунки, які використовують цю базу даних.";
+
+/* Title of an info message when the app needs to change database file format. */
+"[Database/FormatVersion/Upgrade/title]" = "Перш ніж продовжити,";
+
+/* Status of a database item (entry or group) after it was edited. */
+"[Database/Item/Edited/state]" = "Відредаговано";
 
 /* Notification when user tries to copy data from KDBX to older KDB database. */
 "[Database/LesserTargetFormat/warning]" = "Це старий формат бази даних, деякі дані можуть бути втрачені.";
@@ -151,11 +214,17 @@
 /* Error message */
 "[Database/Load/Error] Cannot open key file" = "Не вдалося відкрити файл-ключ";
 
+/* Error message, when the real file format is recognized. For example: 'Incorrect database format: JPEG.' */
+"[Database/Load/Error] Incorrect database format" = "Неправильний формат бази даних: %@.";
+
 /* Error shown when both master password and key file are empty */
 "[Database/Load/Error] Please provide at least a password or a key file" = "Будь ласка, вкажіть пароль або файл-ключ";
 
 /* Error message */
 "[Database/Load/Error] Unrecognized database format" = "Невідомий формат бази паролів";
+
+/* Error message */
+"[Database/Load/Error/encryptedByIntune]" = "Ця база даних захищена корпоративними IT-політиками й Microsoft Intune.";
 
 /* Message shown after we show a cached local database instead of the (unavailable) original database. */
 "[Database/Loading/FromCache/text]" = "База паролів недоступна.\nЦе остання локальна копія.";
@@ -196,6 +265,12 @@
 /* Title of a warning message, shown after opening a problematic database */
 "[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "База паролів готова, але є проблема.";
 
+/* Title of a list with database-related actions (e.g. lock database, change master key, etc) */
+"[Database/Operations/title]" = "Операції з базою даних";
+
+/* Status message: preparing database print preview. */
+"[Database/Print/preparingPreview]" = "Підготовка до попереднього перегляду…";
+
 /* Progress status: finished loading database */
 "[Database/Progress] Done" = "Готово";
 
@@ -214,6 +289,12 @@
 /* Database loading/saving status: replacing field references with their values */
 "[Database/Progress/resolvingFieldReferences]" = "Зіставлення посилань на поля…";
 
+/* Suggested solution/call to action when intermediate sync app fails. */
+"[Database/RecommendRemote/callToAction]" = "Спробуйте підключитися до віддаленого сховища безпосередньо з KeePassium.";
+
+/* Action/button */
+"[Database/Reload/action]" = "Перезавантажити базу даних";
+
 /* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
 "[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "Прибрати базу паролів зі списку?\nФайл залишиться недоторканим, ви зможете додати його пізніше.";
 
@@ -228,6 +309,9 @@
 
 /* File settings parameter: time after which file will be considered unreachable. Example: `Consider File Unreachable: in 10 seconds`.) */
 "[Database/Settings/ConsiderFileUnreachable/title]" = "Вважати файл недоступним";
+
+/* Title: what to do when a cloud-stored file cannot be loaded. (For example: `If File is Unreachable: Re-add File`.) */
+"[Database/Settings/FallbackStrategy/ReAddFile/title]" = "Повторно додати файл";
 
 /* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Show Error`.) */
 "[Database/Settings/FallbackStrategy/ShowError/title]" = "Показати помилку";
@@ -484,6 +568,15 @@
 /* Default name of a newly created entry field */
 "[Entry/Edit/CreateField/defaultName] Field Name" = "Назва поля";
 
+/* Notification: a reference to an entry field has been copied to clipboard */
+"[Entry/Field/CopyReference/acknowledgement]" = "Посилання на поле скопійовано в буфер обміну";
+
+/* Action: copy a reference to the selected entry field to clipboard */
+"[Entry/Field/CopyReference/action]" = "Скопіювати посилання на поле";
+
+/* Name of an entry field */
+"[Entry/Field/name] Icon" = "Значок";
+
 /* Name of an entry field */
 "[Entry/Field/name] Notes" = "Нотатки";
 
@@ -550,6 +643,9 @@
 /* Error message shown when there's internal inconsistency in KeePassium. */
 "[FileAccessError/internalError]" = "Внутрішня помилка KeePassium. Будь ласка, повідомте нам про це.";
 
+/* Error message: network access is forbidden by system or app settings. */
+"[FileAccessError/NetworkAccessDenied/generic]" = "Доступ до мережі заблоковано в налаштуваннях.";
+
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests. */
 "[FileAccessError/NoResponse/genericFileProvider]" = "Сховище файлів не відповідає.";
 
@@ -564,6 +660,12 @@
 
 /* Suggestion for error recovery */
 "[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "Використовуйте функцію експорту, щоб зберегти файл в іншому місці.";
+
+/* Error message for file with an expired access permission [fileName: String]. */
+"[FileAccessError/PermissionRequired/reason]" = "KeePassium потрібен дозвіл на доступ до «%@».";
+
+/* Action/button for error recovery */
+"[FileAccessError/PermissionRequired/recoveryAction]" = "Виберіть файл знову, щоб надати доступ";
 
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
 "[FileAccessError/Timeout/genericFileProvider]" = "Сховище файлів не відповідає.";
@@ -633,6 +735,9 @@
 
 /* Localized name of the storage service iCloud Drive (https://icloud.com/iclouddrive) */
 "[FileProvider/iCloud Drive/name]" = "iCloud Drive";
+
+/* Localized name of the storage service: MagentaCLOUD (https://www.telekom.de/zubuchoptionen/magenta-cloud) */
+"[FileProvider/MagentaCloud/name]" = "MagentaCLOUD";
 
 /* Localized name of the storage service: MEGA (https://mega.nz) */
 "[FileProvider/Mega.nz/name]" = "MEGA.nz";
@@ -715,6 +820,15 @@
 /* Title of the dialog for picking the destination group for move/copy operations */
 "[General/DestinationGroup/title] Choose a Destination" = "Виберіть місце призначення";
 
+/* Feature status: disabled/inactive. Keep it short, possibly abbreviated. */
+"[General/Feature/Off]" = "Вимк.";
+
+/* Feature status: enabled/active. Keep it short, possibly abbreviated. */
+"[General/Feature/On]" = "Увімк.";
+
+/* Placeholder for folders without files */
+"[General/FileList/Empty/title]" = "Папка порожня";
+
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "Скасувати";
 
@@ -754,6 +868,9 @@
 /* Action/button to export an item to another app */
 "[Generic] Export" = "Експорт";
 
+/* Action/button shown below error messages. Tapping the button will start the fixing/repairing workflow described in the error message. */
+"[Generic] Fix this" = "Виправити це";
+
 /* Action/button to view more help/info about some topic */
 "[Generic] Learn more" = "Детальніше…";
 
@@ -772,6 +889,9 @@
 /* Action/button to replace/overwrite an item */
 "[Generic] Overwrite" = "Перезаписати";
 
+/* Action/button to print a document */
+"[Generic] Print" = "Друкувати";
+
 /* Action/button to rename an item */
 "[Generic] Rename" = "Перейменувати";
 
@@ -780,6 +900,9 @@
 
 /* Action/button to restore a backup/archived item in its original place */
 "[Generic] Restore" = "Відновити";
+
+/* Action: repeat the previous (failed) action */
+"[Generic] Retry" = "Повторити спробу";
 
 /* Action/button to open Finder (macOS file manager) and highlight a given file */
 "[Generic] Reveal in Finder" = "Показати в Finder";
@@ -795,6 +918,9 @@
 
 /* Checkbox/Button to show a text field in its full size */
 "[Generic] Show more" = "Розгорнути";
+
+/* Action/button to select some items in a list. */
+"[Generic/Action/SelectItems]" = "Вибрати";
 
 /* Message to confirm deletion of an item. */
 "[Generic/ConfirmDelete/title] Are you sure?" = "Ви впевнені?";
@@ -859,6 +985,15 @@
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "Нова група";
 
+/* Action/button to delete everything inside the Recycle Bin */
+"[Group/RecycleBin/Empty/action]" = "Очистити кошик";
+
+/* Title of the confirmation dialog for `Empty Recycle Bin` action */
+"[Group/RecycleBin/Empty/confirmTitle]" = "Очистити кошик без можливості відновлення?";
+
+/* Title of an input field for group name */
+"[GroupEditor/Name/placeholder]" = "Назва групи";
+
 /* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
 "[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "За датою створення (нове..старе)";
 
@@ -901,8 +1036,53 @@
 /* Name of an entry field. Acronym `HOTP` should not be translated. */
 "[HOTP/FieldName]" = "Одноразовий пароль (HOTP)";
 
+/* Info message for enterprise users */
+"[Intune/OrgNeedsToManage]" = "Щоб захистити свої дані, ваша організація має керувати цим застосунком. Для завершення цієї дії ввійдіть у свій робочий або навчальний обліковий запис.";
+
+/* Info message for users who accidentally installed the enterprise version. */
+"[Intune/PersonalVersionElsewhere]" = "Версія KeePassium для особистого використання доступна в App Store.";
+
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "Попередня версія відновлена";
+
+/* Title of a list with advanced/expert-level properties of a database item (e.g. entry) */
+"[Item/Properties/Advanced/title]" = "Додатково";
+
+/* Possible value of the `Password AutoFill` setting. For example: 'Password AutoFill: Allowed' */
+"[Item/Properties/AutoFill/allowed]" = "Дозволені";
+
+/* Possible value of the `Password AutoFill` setting. For example: 'Password AutoFill: Disabled' */
+"[Item/Properties/AutoFill/disabled]" = "Вимкнено";
+
+/* Title of a setting: whether the item (e.g. entry) should be used in AutoFill feature. App-specific setting for KeePassXC. */
+"[Item/Properties/AutoFill/KeePassXC/title]" = "Автозаповнення паролів (KeePassXC)";
+
+/* Title of a setting: whether the item (e.g. entry) should be used in AutoFill feature */
+"[Item/Properties/AutoFill/title]" = "Автозаповнення паролів";
+
+/* Default value of an item property. For example: 'Password Audit: Inherit from parent group (Allowed)'. [inheritedValue: String] */
+"[Item/Properties/inheritedValue]" = "Успадкувати від головної групи (%@)";
+
+/* Possible value of the `Password Audit` setting. For example: 'Password Audit: Allowed' */
+"[Item/Properties/PasswordAudit/allowed]" = "Дозволені";
+
+/* Possible value of the `Password Audit` setting. For example: 'Password Audit: Disabled' */
+"[Item/Properties/PasswordAudit/disabled]" = "Вимкнено";
+
+/* Title of a setting: whether the item (e.g. entry) should be included in password audit */
+"[Item/Properties/PasswordAudit/title]" = "Перевірка паролів";
+
+/* Possible value of the `Search` setting. Example: 'Search: Allowed' */
+"[Item/Properties/Search/allowed]" = "Дозволені";
+
+/* Possible value of the `Search` setting, when the item should be excluded from search results. Example: 'Search: Disabled' */
+"[Item/Properties/Search/disabled]" = "Вимкнено";
+
+/* Title of a setting: whether the item (e.g. entry) should be considered during search. Example: 'Search: Allowed' */
+"[Item/Properties/Search/title] Search" = "Пошук";
+
+/* Title of a list with item (e.g. entry) properties/settings, such as searchability, auto-typing, etc */
+"[Item/Properties/title]" = "Властивості";
 
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "За замовчуванням (KeePass)";
@@ -943,11 +1123,20 @@
 /* Suggestion/hint on how to fix an accompanying error. */
 "[Org/ContactYourAdmin]" = "Зв'яжіться з системним адміністратором за допомогою.";
 
+/* Error message, euphemism for missing corporate license */
+"[Org/LicenseMissing]" = "KeePassium не вдалося знайти корпоративний обліковий запис вашої організації.";
+
+/* Notification next to the OTP code which was copied to clipboard */
+"[OTP/CopiedToClipboard/title]" = "Одноразовий пароль скопійовано в буфер обміну";
+
 /* Name of an entry field */
 "[OTP/FieldName]" = "Одноразовий пароль";
 
 /* Error shown when scanned QR code cannot be used for OTP */
 "[OTP/Scan/InvalidData]" = "Цей QR-код не підходить для налаштування одноразового пароля (OTP).";
+
+/* Error shown when a manually entered OTP secret is misformatted. */
+"[OTP/Scan/InvalidSecretCode]" = "Введений секретний код не підходить для налаштування одноразового пароля.";
 
 /* Message to confirm user intentions */
 "[OTP/Scan/OverwriteWarning]" = "Одноразовий пароль вже налаштований для цього запису. Замінити його?";
@@ -955,11 +1144,134 @@
 /* Call for action. Acronym `OTP` should not be translated. */
 "[OTP/Setup]" = "Налаштувати одноразовий пароль (OTP)";
 
+/* Button/action: proceed with manual OTP setup */
+"[OTP/Setup/EnterManually]" = "Ввести вручну";
+
+/* Call to action: type in the secret key for OTP setup. */
+"[OTP/Setup/EnterSecretCode/callToAction]" = "Введіть секретний код";
+
+/* Button/action: proceed with QR code based OTP setup */
+"[OTP/Setup/ScanQRCode]" = "Відсканувати QR-код";
+
+/* Description of an OTP code; sentence case. */
+"[OTP/Title/sentenceCase]" = "Одноразовий пароль";
+
+/* Error message from the random text generator. */
+"[PasswordGenerator/CannotGenerateText/title]" = "Не вдалося згенерувати текст";
+
+/* Description of an empty character set for password generator. 'Empty' as 'there are no characters'. */
+"[PasswordGenerator/CustomSet/Empty/title]" = "Порожньо";
+
+/* User-defined set of characters for password generator. */
+"[PasswordGenerator/CustomSet/title]" = "Користувацькі символи";
+
+/* Error message/call to action from the random text generator. */
+"[PasswordGenerator/DesiredLengthTooShort/title]" = "Збільште параметр довжини принаймні до %d.";
+
+/* Action/button: generate random text/password/phrase */
+"[PasswordGenerator/Generate/action]" = "Згенерувати";
+
+/* Description of randomly generated text/password/phrase */
+"[PasswordGenerator/GeneratedText/title]" = "Згенерований текст";
+
+/* Inclusion criterion for a password generator. For example: `Digits: Allowed` */
+"[PasswordGenerator/InclusionCondition/allowed]" = "Дозволені";
+
+/* Inclusion criterion for a password generator. For example: `Uppercase Letters: Excluded` */
+"[PasswordGenerator/InclusionCondition/excluded]" = "Виключені";
+
+/* Inclusion criterion for a password generator — a disabled/inactive one that won't be taken into account. For example: `Uppercase Letters: Inactive` */
+"[PasswordGenerator/InclusionCondition/inactive]" = "Неактивні";
+
+/* Inclusion criterion for a password generator. For example: `Special Symbols: Required` */
+"[PasswordGenerator/InclusionCondition/required]" = "Обов’язкові";
+
+/* Length (number of characters) of the random text to generate */
+"[PasswordGenerator/Length/title]" = "Довжина";
+
+/* Description of a password generator parameter. For example, the digit in 'abc222def'. */
+"[PasswordGenerator/MaxConsecutive/description]" = "Максимальна кількість ідентичних символів, що стоять один біля одного.";
+
+/* Error message/call to action from the random text generator. */
+"[PasswordGenerator/MaxConsecutiveNotSatisfiable/title]" = "Збільште максимальну кількість ідентичних символів, що стоять один біля одного.";
+
+/* One of the operation modes of the random text generator */
+"[PasswordGenerator/Mode/Basic/title]" = "Базовий";
+
+/* One of the operation modes of the random text generator */
+"[PasswordGenerator/Mode/Expert/title]" = "Експертний";
+
+/* One of the operation modes of the random text generator, where it generates random phrases. */
+"[PasswordGenerator/Mode/Passphrase/title]" = "Кодова фраза";
+
+/* Operation mode of the random text generator (for example, `Basic`, `Expert`, `Passphrase`) */
+"[PasswordGenerator/Mode/title]" = "Режим";
+
+/* Error message from the random text generator. */
+"[PasswordGenerator/NotEnoughElementsToSample/title]" = "Потрібно більше елементів для вибору.";
+
+/* Length (number of characters) of the password to generate */
+"[PasswordGenerator/PasswordLength/title]" = "Довжина пароля";
+
+/* Error message from the random text generator. `required` and `excluded` are as in [PasswordGenerator/InclusionCondition/required] and [PasswordGenerator/InclusionCondition/excluded] */
+"[PasswordGenerator/RequiredSetCompletelyExcluded/title]" = "Один із наборів символів вказано одночасно як обов’язковий і виключений.";
+
+/* Title for digits (like '123') */
+"[PasswordGenerator/Set/Digits/title]" = "Цифри";
+
+/* Title for look-alike symbols (like '1lI', that is: digit `1`, small `L`, capital `i`). */
+"[PasswordGenerator/Set/Lookalikes/title]" = "Схожі символи";
+
+/* Title for lowercase letters (like 'abc') */
+"[PasswordGenerator/Set/Lowercase/title]" = "Малі літери";
+
+/* Title for special symbols (like '@#$') */
+"[PasswordGenerator/Set/Specials/title]" = "Спеціальні символи";
+
+/* Title for uppercase letters (like 'ABC') */
+"[PasswordGenerator/Set/Uppercase/title]" = "Великі літери";
+
+/* Name of the space character. https://en.wikipedia.org/wiki/Space_(punctuation) */
+"[PasswordGenerator/SpaceCharacter/name]" = "Пробіл";
+
+/* Title of the random text/password/username generator dialog. */
+"[PasswordGenerator/title]" = "Випадковий генератор";
+
+/* Character to be inserted between words of a passphrase. */
+"[PasswordGenerator/Word Separtor/title]" = "Розділювач";
+
+/* Word capitalization style. Written in that style, if possible. */
+"[PasswordGenerator/WordCase/lowerCase]" = "нижній регістр";
+
+/* Case of letters in a word (e.g. UPPER, lower, Title Case) */
+"[PasswordGenerator/WordCase/title]" = "Регістр";
+
+/* Word capitalization style: first letters of significant words capitalized. Written in that style, if possible. */
+"[PasswordGenerator/WordCase/titleCase]" = "Кожне Слово з Великої";
+
+/* Word capitalization style. Written in that style, if possible. */
+"[PasswordGenerator/WordCase/upperCase]" = "УСІ ВЕЛИКІ";
+
+/* Number of words in a generated passphrase. In context: 'Words: 5' */
+"[PasswordGenerator/WordCount/title]" = "Слова";
+
+/* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
+"[PasswordGenerator/Wordlist/EFFLarge/title]" = "Великий список слів EFF (7776 слів)";
+
+/* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
+"[PasswordGenerator/Wordlist/EFFShort/title]" = "Короткий список слів EFF #%d (1296 слів)";
+
+/* List of words to be used for a passphrase. */
+"[PasswordGenerator/Wordlist/title]" = "Список слів";
+
 /* Explanation of the premium feature */
 "[Premium/Benefits/AttachmentPreview/details]" = "Переглядайте прикріплені файли прямо в KeePassium, не залишаючи слідів в інших додатках. (Працює з зображеннями, документами, архівами та іншими файлами.)";
 
 /* Title of a premium feature */
 "[Premium/Benefits/AttachmentPreview/title]" = "Перегляд без слідів";
+
+/* Title of a premium feature */
+"[Premium/Benefits/BusinessClouds/title]" = "Синхронізувати з корпоративним сховищем";
 
 /* Explanation of a premium feature */
 "[Premium/Benefits/CustomAppIcon/details]" = "Зробіть іконку програми унікальною чи звичною - або взагалі замаскуйте KeePassium під калькулятор.";
@@ -987,6 +1299,9 @@
 
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Negative/header] " = "Що ви втрачаєте";
+
+/* Title of a premium feature */
+"[Premium/Benefits/PasswordAudit/title]" = "Перевірте паролі";
 
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Positive/header] " = "Що ви отримаєте";
@@ -1138,6 +1453,12 @@
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "Додаток корисно %1$@ на місяць, тобто близько %2$@ в рік.";
 
+/* Description/call to action for the `Business Cloud Storage` premium feature. */
+"[PremiumFeature/BusinessClouds/description]" = "Підключіться безпосередньо до облікових записів корпоративного сховища, як-от OneDrive для бізнесу.";
+
+/* Title of a premium feature: access to company's cloud accounts like 'OneDrive for Business' */
+"[PremiumFeature/BusinessClouds/title]" = "Корпоративне хмарне сховище";
+
 /* Title of a premium feature: ability to change the app icon */
 "[PremiumFeature/CustomAppIcons/title]" = "Інша іконка додатку";
 
@@ -1165,6 +1486,12 @@
 /* Title of a premium feature: ability to use multiple databases (In Title Case) */
 "[PremiumFeature/MultiDB/title] Multiple Databases" = "Декілька баз паролів";
 
+/* Description/call to action for the `Password Audit` premium feature. */
+"[PremiumFeature/PasswordAudit/description]" = "З’ясуйте, чи ваші паролі не було розкрито під час відомого витоку даних.";
+
+/* Title of a premium feature: discover which passwords are known to be compromized */
+"[PremiumFeature/PasswordAudit/title]" = "Перевірка паролів";
+
 /* Description/advertisement for the `Preview Attachments` premium feature */
 "[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "Переглядайте зображення та документи прямо в преміум-версії програми.";
 
@@ -1179,6 +1506,9 @@
 
 /* A brief summary of the privacy policy (for offline mode) */
 "[PrivacyPolicy/Offline/text]" = "KeePassium не збирає і нікуди не відправляє жодних персональних даних.";
+
+/* A brief summary of the privacy policy (for online mode) */
+"[PrivacyPolicy/Online/text]" = "KeePassium не збирає персональних або аналітичних даних.\nДеякі функції можуть включати обмін даними із зовнішніми сервісами (на ваш запит і лише для того, щоб зробити ці сервіси доступними для вас). Такий обмін регулюється політикою конфіденційності відповідного сервісу.";
 
 /* Section: privacy policy */
 "[PrivacyPolicy/title]" = "Політика конфіденційності";
@@ -1195,8 +1525,44 @@
 /* Name of a feature that shows relevant entries directly next to the login/password forms. */
 "[QuickAutoFill/title]" = "Швидке автозаповнення";
 
+/* Network security setting */
+"[RemoteConnection/AllowUntrusted/title]" = "Дозволити ненадійний сертифікат";
+
+/* Network connection. For example `Connection: WebDAV` or `Connection: MyCloud`. */
+"[RemoteConnection/Connection/title]" = "Підключення";
+
+/* Action: connect to a network server */
+"[RemoteConnection/connectToServer]" = "Підключитися до сервера";
+
+/* Title of a section: username, password, etc */
+"[RemoteConnection/Credentials]" = "Облікові дані";
+
+/* Error message: user credentials rejected by the server */
+"[RemoteConnection/Error/AuthenticationFailed/title]" = "Помилка автентифікації";
+
+/* Network address of a file */
+"[RemoteConnection/FileURL]" = "URL-адреса файлу";
+
 /* Name of a predefined OneDrive folder which contains user's own files */
 "[RemoteConnection/OneDrive/Folder/files]" = "Файли";
+
+/* Name of a predefined OneDrive folder which contains files shared with this user */
+"[RemoteConnection/OneDrive/Folder/sharedWithMe]" = "Спільні";
+
+/* Action: authenticate to OneDrive account */
+"[RemoteConnection/SignIn/OneDrive/action]" = "Увійти у OneDrive";
+
+/* Error description: the user should manually sign in to their OneDrive account */
+"[RemoteConnection/SignIn/OneDrive/authorizationRequried]" = "Необхідно повторно ввійти у OneDrive.";
+
+/* No comment provided by engineer. */
+"[RemoteConnection/SignIn/PrivateMode/description]" = "Відкрити сторінку входу в браузері в режимі інкогніто";
+
+/* No comment provided by engineer. */
+"[RemoteConnection/SignIn/PrivateMode/title]" = "Режим інкогніто";
+
+/* Title: connection to a network storage */
+"[RemoteConnection/title]" = "Віддалене підключення";
 
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "Повторіть пароль";
@@ -1257,6 +1623,9 @@
 
 /* Title of AutoFill settings screen */
 "[Settings/AutoFill/title]" = "Натисніть \"Автозаповнення паролів\"";
+
+/* No comment provided by engineer. */
+"[Settings/AutoFill/UnavailableInIntune/description]" = "Автозаповнення недоступне в KeePassium для Intune.";
 
 /* Title of an option: automatically use the single best match found by AutoFill search */
 "[Settings/AutoFill/UsePerfectMatch/title]" = "Автоматично підставляти ідеальний варіант";
@@ -1351,6 +1720,30 @@
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "Вид списку";
 
+/* Notification when corporate user tries to change an app setting controlled by organization's IT department. */
+"[Settings/Managed/notification]" = "Цим параметром керує ваша організація.";
+
+/* Confirmation dialog message */
+"[Settings/NetworkAccess/Confirmation/text]" = "Дозволити KeePassium здійснювати мережеві підключення до зовнішніх сервісів?";
+
+/* Settings section: how/whether the app is allowed to use networks/Internet */
+"[Settings/NetworkAccess/title]" = "Доступ до мережі";
+
+/* Description of the `Stay Offline` mode. */
+"[Settings/NetworkAccessMode/Offline/description]" = "Максимальна конфіденційність";
+
+/* Setting option: the app should work offline */
+"[Settings/NetworkAccessMode/Offline/title]" = "Залишатися в автономному режимі";
+
+/* Description of the `Allow Network Access` mode. */
+"[Settings/NetworkAccessMode/Online/description]" = "Максимальна функціональність";
+
+/* Setting option: the app is permitted to use online features */
+"[Settings/NetworkAccessMode/Online/title]" = "Дозволити доступ до мережі";
+
+/* Action/button which resets some settings to their default state. */
+"[Settings/RestoreDefaults/action]" = "Відновити налаштування за замовчуванням";
+
 /* Section title in settings */
 "[Settings/Search/title]" = "Пошук";
 
@@ -1371,6 +1764,9 @@
 
 /* List sorting option, when no sorting is selected. Example: 'Sort by: None' */
 "[SortBy/None]" = "Нічого";
+
+/* Name of a cloud storage service. Must match Microsoft's translation, see  https://partner.microsoft.com/solutions/onedrive-for-business */
+"[StorageService/OneDriveForBusiness/title]" = "OneDrive для бізнесу";
 
 /* Template text of a bug report email */
 "[Support/template] (Please describe the problem here)" = "(Опишіть проблему)";
@@ -1419,6 +1815,9 @@
 
 /* Human-readable file location: the file is on device, inside the app sandbox. Example: 'File Location: Local copy' */
 "[URLReference/Location] Local copy" = "Локальна копія";
+
+/* Human-readable file location. Example: 'File Location: Remote server' */
+"[URLReference/Location/RemoteServer]" = "Віддалений сервер";
 
 /* Selector choice: don't use YubiKey to encrypt/decrypt database */
 "[YubiKey] Don't use YubiKey" = "Без YubiKey";

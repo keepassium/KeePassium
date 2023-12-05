@@ -160,6 +160,9 @@
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Apagar o arquivo de banco de dados?\n Certifique-se de ter uma cópia de segurança.";
 
+/* Parameter name in database encryption settings. This is a term, see https://en.wikipedia.org/wiki/Key_derivation_function. Example: 'Key Derivation Function: Argon2' */
+"[Database/EncryptionSettings/kdf]" = "Algoritmo de derivação de chave";
+
 /* Info message when changing database file format. */
 "[Database/FormatVersion/Conversion/allDataPreserved]" = "Todos os seus dados serão mantidos.";
 
@@ -940,6 +943,9 @@
 /* Title of an warning message */
 "[Generic/title] Warning" = "Atenção";
 
+/* Warning message template. Swap the icon and message for right-to-left languages. */
+"[Generic/WarningWithIcon/template]" = "⚠️ %@";
+
 /* VoiceOver description of a group [groupTitle: String, itemCount: Int] */
 "[Group/a11y/description]" = "%@, Grupo";
 
@@ -960,6 +966,9 @@
 
 /* Title of the confirmation dialog for `Empty Recycle Bin` action */
 "[Group/RecycleBin/Empty/confirmTitle]" = "Apagar permanentemente tudo na lixeira?";
+
+/* Title of an input field for group name */
+"[GroupEditor/Name/placeholder]" = "Nome do grupo";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
 "[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "Por data de criação (novo..antigo)";
@@ -1011,6 +1020,24 @@
 
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "Versão anterior restaurada";
+
+/* Title of a list with advanced/expert-level properties of a database item (e.g. entry) */
+"[Item/Properties/Advanced/title]" = "Avançado";
+
+/* Possible value of the `Password AutoFill` setting. For example: 'Password AutoFill: Allowed' */
+"[Item/Properties/AutoFill/allowed]" = "Permitido";
+
+/* Possible value of the `Password Audit` setting. For example: 'Password Audit: Allowed' */
+"[Item/Properties/PasswordAudit/allowed]" = "Permitido";
+
+/* Title of a setting: whether the item (e.g. entry) should be included in password audit */
+"[Item/Properties/PasswordAudit/title]" = "Auditar senhas";
+
+/* Possible value of the `Search` setting. Example: 'Search: Allowed' */
+"[Item/Properties/Search/allowed]" = "Permitido";
+
+/* Title of a setting: whether the item (e.g. entry) should be considered during search. Example: 'Search: Allowed' */
+"[Item/Properties/Search/title] Search" = "Busca";
 
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "Padrão (KeePass)";

@@ -829,6 +829,9 @@
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "새로운 그룹";
 
+/* Title of an input field for group name */
+"[GroupEditor/Name/placeholder]" = "그룹 이름";
+
 /* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
 "[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "생성 일자 (내림차순)";
 
@@ -873,6 +876,12 @@
 
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "이전 버전으로 복원됨";
+
+/* Title of a list with advanced/expert-level properties of a database item (e.g. entry) */
+"[Item/Properties/Advanced/title]" = "고급";
+
+/* Title of a setting: whether the item (e.g. entry) should be considered during search. Example: 'Search: Allowed' */
+"[Item/Properties/Search/title] Search" = "검색";
 
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "기본 (KeePass)";

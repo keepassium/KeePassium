@@ -133,6 +133,9 @@
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "刪除資料庫文件?\n 請確保您有備份檔案!";
 
+/* Parameter name in database encryption settings. This is a term, see https://en.wikipedia.org/wiki/Key_derivation_function. Example: 'Key Derivation Function: Argon2' */
+"[Database/EncryptionSettings/kdf]" = "金鑰演算函數";
+
 /* Notification when user tries to copy data from KDBX to older KDB database. */
 "[Database/LesserTargetFormat/warning]" = "這是舊版的資料庫格式，有些資料也許會遺失";
 
@@ -838,6 +841,9 @@
 /* Title of an warning message */
 "[Generic/title] Warning" = "警告";
 
+/* Warning message template. Swap the icon and message for right-to-left languages. */
+"[Generic/WarningWithIcon/template]" = "⚠️ %@";
+
 /* VoiceOver description of a group [groupTitle: String, itemCount: Int] */
 "[Group/a11y/description]" = "%@, 群組";
 
@@ -852,6 +858,9 @@
 
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "新建群組";
+
+/* Title of an input field for group name */
+"[GroupEditor/Name/placeholder]" = "群組名稱";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
 "[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "按創建日期(新...舊)";
@@ -900,6 +909,12 @@
 
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "先前的版本已經還原";
+
+/* Title of a list with advanced/expert-level properties of a database item (e.g. entry) */
+"[Item/Properties/Advanced/title]" = "進階設定";
+
+/* Title of a setting: whether the item (e.g. entry) should be considered during search. Example: 'Search: Allowed' */
+"[Item/Properties/Search/title] Search" = "搜尋";
 
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "默認(KeePass)";

@@ -43,6 +43,18 @@
 /* Title of a dialog for renaming an attached file */
 "[Entry/Files/Rename/title] Rename File" = "Cambiar nombre del archivo";
 
+/* Title of entry viewer's tab with files attached to the entry */
+"[Entry/Tab/Files/title]" = "Archivos";
+
+/* Title of entry viewer's tab with the entry's main information */
+"[Entry/Tab/General/title]" = "General";
+
+/* Title of entry viewer's tab with previous revisions of the entry */
+"[Entry/Tab/History/title]" = "Historial";
+
+/* Title of entry viewer's tab with advanced/secondary properties */
+"[Entry/Tab/More/title]" = "Más";
+
 /* Menu title. For example: `About KeePassium`. [appName: String] */
 "[Menu/About/title]" = "Acerca de %@";
 

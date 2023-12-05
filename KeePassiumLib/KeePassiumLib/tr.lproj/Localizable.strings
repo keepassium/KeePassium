@@ -805,6 +805,9 @@
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "Yeni Grup";
 
+/* Title of an input field for group name */
+"[GroupEditor/Name/placeholder]" = "Grup Adı";
+
 /* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
 "[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "Oluşturma tarihine göre (Yeniden Eskiye)";
 
@@ -852,6 +855,12 @@
 
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "Önceki sürüm geri yüklendi";
+
+/* Title of a list with advanced/expert-level properties of a database item (e.g. entry) */
+"[Item/Properties/Advanced/title]" = "İleri düzey";
+
+/* Title of a setting: whether the item (e.g. entry) should be considered during search. Example: 'Search: Allowed' */
+"[Item/Properties/Search/title] Search" = "Arama";
 
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "Varsayılan (KeePass)";

@@ -4,6 +4,27 @@
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "Автозаповнення не може автоматично відкривати файли, котрі вже додані в основну програму.\n\nЧому? З точки зору системи, Автозаповнення - це окремий додаток, незалежне від основного. З метою безпеки, додаток не може просто так відкривати файли в інших додатках, якщо тільки користувач сам не зв'яже ці файли з даним додатком. Таким чином, система гарантує, що додатки можуть працювати тільки з кількома спеціально обраними файлами.\n\nВ результаті і Автозаповнення, і основний додаток повинні отримати \"окремі запрошення\" для роботи з кожним зовнішнім файлом. На щастя, ця процедура потрібна тільки один раз.";
 
+/* Password quality description. For example: `Password quality: Weak`. [level: String] */
+"[PasswordQuality/description]" = "Якість пароля: %@";
+
+/* Almost good password quality */
+"[PasswordQuality/Level] Almost good" = "Майже хороший";
+
+/* Good password quality */
+"[PasswordQuality/Level] Good" = "Хороший";
+
+/* Very good password quality */
+"[PasswordQuality/Level] Very good" = "Дуже хороший";
+
+/* Very weak password quality */
+"[PasswordQuality/Level] Very weak" = "Дуже слабкий";
+
+/* Weak password quality */
+"[PasswordQuality/Level] Weak" = "Слабкий";
+
+/* Password quality description. For example: `Very good (234 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithEntropy/description]" = "%1$@ (%2$@ ентропії)";
+
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "Показати пароль";
 

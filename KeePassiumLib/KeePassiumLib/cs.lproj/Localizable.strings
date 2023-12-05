@@ -859,6 +859,9 @@
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "Nová skupina";
 
+/* Title of an input field for group name */
+"[GroupEditor/Name/placeholder]" = "Název skupiny";
+
 /* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
 "[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "Podle datumu vytvoření (nové...staré)";
 
@@ -906,6 +909,12 @@
 
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "Předchozí verze obnovena";
+
+/* Title of a list with advanced/expert-level properties of a database item (e.g. entry) */
+"[Item/Properties/Advanced/title]" = "Pokročilé";
+
+/* Title of a setting: whether the item (e.g. entry) should be considered during search. Example: 'Search: Allowed' */
+"[Item/Properties/Search/title] Search" = "Vyhledávání";
 
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "Původní (KeePass)";

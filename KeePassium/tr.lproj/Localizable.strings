@@ -43,6 +43,15 @@
 /* Title of a dialog for renaming an attached file */
 "[Entry/Files/Rename/title] Rename File" = "Yeniden Adlandır";
 
+/* Title of entry viewer's tab with files attached to the entry */
+"[Entry/Tab/Files/title]" = "Dosyalar";
+
+/* Title of entry viewer's tab with the entry's main information */
+"[Entry/Tab/General/title]" = "Genel";
+
+/* Title of entry viewer's tab with previous revisions of the entry */
+"[Entry/Tab/History/title]" = "Tarihçe";
+
 /* Menu title: app settings */
 "[Menu/Preferences/title]" = "Tercihler…";
 

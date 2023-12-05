@@ -23,7 +23,7 @@
 "[Database/Create/TemplateGroup/title] Finance" = "Фінанси";
 
 /* Predefined group in a new database */
-"[Database/Create/TemplateGroup/title] General" = "Загальні";
+"[Database/Create/TemplateGroup/title] General" = "Загальне";
 
 /* Predefined group in a new database */
 "[Database/Create/TemplateGroup/title] Internet" = "Інтернет";
@@ -43,12 +43,78 @@
 /* Title of a dialog for renaming an attached file */
 "[Entry/Files/Rename/title] Rename File" = "Перейменувати файл";
 
+/* Title of entry viewer's tab with files attached to the entry */
+"[Entry/Tab/Files/title]" = "Файли";
+
+/* Title of entry viewer's tab with the entry's main information */
+"[Entry/Tab/General/title]" = "Загальне";
+
+/* Title of entry viewer's tab with previous revisions of the entry */
+"[Entry/Tab/History/title]" = "Історія";
+
+/* Title of entry viewer's tab with advanced/secondary properties */
+"[Entry/Tab/More/title]" = "Більше";
+
 /* Menu title. For example: `About KeePassium`. [appName: String] */
 "[Menu/About/title]" = "Про програму %@";
 
 /* Menu title: app settings */
 "[Menu/Preferences/title]" = "Налаштування…";
 
+/* Action to skip selected item/items in future password audits. */
+"[PasswordAudit/Action/Exclude]" = "Виключити з перевірки";
+
+/* Status message: password audit in progress */
+"[PasswordAudit/Auditing/status]" = "Перевірка паролів";
+
+/* Error message after a failed password audit request [message: String]. */
+"[PasswordAudit/Error/text]" = "Сталася помилка під час обміну даними із сервісом HIBP. %@";
+
+/* Description of the password audit results, where a number appears next to each password. */
+"[PasswordAudit/ExposureCount/description]" = "Число показує скільки разів пароль було знайдено у відомих витоках даних.";
+
+/* Description of the Password Audit function. */
+"[PasswordAudit/Intro/text]" = "Ваші паролі перевіряються в онлайновій базі даних витоків паролів у безпечний і конфіденційний спосіб.\n\nKeePassium надішле інформацію, обчислену на основі ваших паролів — своєрідну часткову контрольну суму — сервісу [Have I Been Pwned](https://haveibeenpwned.com). Сервіс надасть у відповідь детальну інформацію про зламані паролі зі схожими контрольними сумами. Потім програма порівняє детальні контрольні суми локально на пристрої і визначить, які з ваших паролів знаходяться в зоні ризику.\n\nВаші фактичні паролі ніколи не надаються онлайновим сервісам.\n[Дізнатися більше…](%@)";
+
+/* Result of a password audit. */
+"[PasswordAudit/Results/allGood]" = "Гарна новина! Жоден із ваших паролів не було розкрито під час відомих витоків даних.";
+
+/* Title of a list with passwords that are known to have been exposed in online breaches. */
+"[PasswordAudit/Results/title]" = "Зламані паролі";
+
+/* Action/button: intiate password audit */
+"[PasswordAudit/Start/action]" = "Почати перевірку";
+
+/* Title of a screen to check which passwords are known to be compromised. */
+"[PasswordAudit/title]" = "Перевірка паролів";
+
+/* Password quality description. For example: `Password quality: Weak`. [level: String] */
+"[PasswordQuality/description]" = "Якість пароля: %@";
+
+/* Almost good password quality */
+"[PasswordQuality/Level] Almost good" = "Майже хороший";
+
+/* Good password quality */
+"[PasswordQuality/Level] Good" = "Хороший";
+
+/* Very good password quality */
+"[PasswordQuality/Level] Very good" = "Дуже хороший";
+
+/* Very weak password quality */
+"[PasswordQuality/Level] Very weak" = "Дуже слабкий";
+
+/* Weak password quality */
+"[PasswordQuality/Level] Weak" = "Слабкий";
+
+/* Password quality description. For example: `Very good (234 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithEntropy/description]" = "%1$@ (%2$@ ентропії)";
+
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "Показати пароль";
+
+/* Title of the confirmation dialog for `Delete` action for several items */
+"[Selection/Delete/confirmation]" = "Видалити вибране?";
+
+/* Title of the confirmation dialog for `Exclude from audit` action for several items */
+"[Selection/ExcludeFromAudit/confirmation]" = "Вилучити вибране з перевірки паролів?";
 

@@ -1,3 +1,6 @@
+/* Class = "UILabel"; text = "Search in Passwords"; ObjectID = "1LC-s7-Kdl"; Note = "An switch in settings: whether to include protected field values in search procedure."; */
+"1LC-s7-Kdl.text" = "Шукати в паролях";
+
 /* Class = "UILabel"; text = "Search in Field Names"; ObjectID = "cCm-E4-L3m"; Note = "An switch in settings: whether to include entry field names in search procedure."; */
 "cCm-E4-L3m.text" = "Шукати в назвах полів";
 

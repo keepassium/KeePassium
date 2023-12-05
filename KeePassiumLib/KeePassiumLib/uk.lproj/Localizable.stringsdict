@@ -4,57 +4,69 @@
 <dict>
 	<key>[Generic/Count/Bits]</key>
 	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@GenericCountBits@</string>
 		<key>GenericCountBits</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>few</key>
+			<string>%d біти</string>
+			<key>many</key>
+			<string>%d бітів</string>
+			<key>one</key>
+			<string>%d біт</string>
+			<key>other</key>
+			<string>%d біта</string>
 			<key>zero</key>
 			<string>%d bits</string>
-			<key>one</key>
-			<string>%d bit</string>
-			<key>other</key>
-			<string>%d bits</string>
 		</dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@GenericCountBits@</string>
 	</dict>
 	<key>[Generic/Count/EntriesSelected]</key>
 	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@GenericCountEntriesSelected@</string>
 		<key>GenericCountEntriesSelected</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>few</key>
+			<string>Вибрано %d записи</string>
+			<key>many</key>
+			<string>Вибрано %d записів</string>
+			<key>one</key>
+			<string>Вибрано %d запис</string>
+			<key>other</key>
+			<string>Вибрано %d запису</string>
 			<key>zero</key>
 			<string>%d entries selected</string>
-			<key>one</key>
-			<string>%d entry selected</string>
-			<key>other</key>
-			<string>%d entries selected</string>
 		</dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@GenericCountEntriesSelected@</string>
 	</dict>
 	<key>[Generic/Count/Threads]</key>
 	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@GenericCountThreads@</string>
 		<key>GenericCountThreads</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>few</key>
+			<string>%d потоки</string>
+			<key>many</key>
+			<string>%d потоків</string>
+			<key>one</key>
+			<string>%d потік</string>
+			<key>other</key>
+			<string>%d потоку</string>
 			<key>zero</key>
 			<string>%d threads</string>
-			<key>one</key>
-			<string>%d thread</string>
-			<key>other</key>
-			<string>%d threads</string>
 		</dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@GenericCountThreads@</string>
 	</dict>
 </dict>
 </plist>

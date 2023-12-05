@@ -136,6 +136,9 @@
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "¿Eliminar el archivo de base de datos?\n Asegúrese de que tiene una copia de seguridad.";
 
+/* Parameter name in database encryption settings. This is a term, see https://en.wikipedia.org/wiki/Key_derivation_function. Example: 'Key Derivation Function: Argon2' */
+"[Database/EncryptionSettings/kdf]" = "Función de derivación de clave";
+
 /* Notification when user tries to copy data from KDBX to older KDB database. */
 "[Database/LesserTargetFormat/warning]" = "Formato de base de datos antiguo, algunos datos podrían perderse.";
 
@@ -841,6 +844,9 @@
 /* Title of an warning message */
 "[Generic/title] Warning" = "Advertencia";
 
+/* Warning message template. Swap the icon and message for right-to-left languages. */
+"[Generic/WarningWithIcon/template]" = "⚠️ %@";
+
 /* VoiceOver description of a group [groupTitle: String, itemCount: Int] */
 "[Group/a11y/description]" = "%@, Grupo";
 
@@ -855,6 +861,9 @@
 
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "Nuevo grupo";
+
+/* Title of an input field for group name */
+"[GroupEditor/Name/placeholder]" = "Nombre del grupo";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
 "[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "Por fecha de creación (Nuevo..Viejo)";
@@ -903,6 +912,21 @@
 
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "Versión previa recuperada";
+
+/* Title of a list with advanced/expert-level properties of a database item (e.g. entry) */
+"[Item/Properties/Advanced/title]" = "Avanzado";
+
+/* Possible value of the `Password AutoFill` setting. For example: 'Password AutoFill: Allowed' */
+"[Item/Properties/AutoFill/allowed]" = "Permitidos";
+
+/* Possible value of the `Password Audit` setting. For example: 'Password Audit: Allowed' */
+"[Item/Properties/PasswordAudit/allowed]" = "Permitidos";
+
+/* Possible value of the `Search` setting. Example: 'Search: Allowed' */
+"[Item/Properties/Search/allowed]" = "Permitidos";
+
+/* Title of a setting: whether the item (e.g. entry) should be considered during search. Example: 'Search: Allowed' */
+"[Item/Properties/Search/title] Search" = "Buscar";
 
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "Por defecto (KeePass)";

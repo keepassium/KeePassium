@@ -43,6 +43,15 @@
 /* Title of a dialog for renaming an attached file */
 "[Entry/Files/Rename/title] Rename File" = "重新命名文件";
 
+/* Title of entry viewer's tab with files attached to the entry */
+"[Entry/Tab/Files/title]" = "文件";
+
+/* Title of entry viewer's tab with the entry's main information */
+"[Entry/Tab/General/title]" = "一般";
+
+/* Title of entry viewer's tab with previous revisions of the entry */
+"[Entry/Tab/History/title]" = "历史";
+
 /* Menu title. For example: `About KeePassium`. [appName: String] */
 "[Menu/About/title]" = "关于 %@";
 
