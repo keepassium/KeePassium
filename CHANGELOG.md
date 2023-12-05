@@ -1,5 +1,24 @@
 #CHANGELOG
 
+## [1.48.142] - 2023-12-06
+
+### Added
+
+- Drag and drop attachments to other apps
+- Possibility to disable/allow search, password audit and AutoFill for specific groups and entries
+
+### Improved
+
+- Tapping on password quality icon will show its meaning [thanks, everyone]
+- Entry viewer shows entry's internal UUID that can be used for field references.
+- Updated translations [thanks, everyone]
+
+### Fixed
+
+- Intune: support for conditional access grant "require app protection policy" [thanks, R.B.]
+- Intune: consider invalid AppConfig values as unmanaged
+
+
 ## [1.47.141] - 2023-11-24
 
 ### Added

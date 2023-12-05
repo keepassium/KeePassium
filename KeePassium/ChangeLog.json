@@ -1,6 +1,36 @@
 {
     "sections": [
         {
+            "version": "1.48",
+            "releaseDate": "2023-12-06T00:00:00Z",
+            "items": [
+                {
+                    "title": "🧩 Added: Drag and drop attachments to other apps",
+                    "type": 1
+                },
+                {
+                    "title": "🧩 Added: Possibility to disable/allow search, password audit and AutoFill for specific groups and entries",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Tapping on password quality icon will show its meaning [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Entry viewer shows entry's internal UUID that can be used for field references.",
+                    "type": 1
+                },
+                {
+                    "title": "🛠 Improved: Updated translations [thanks, everyone]",
+                    "type": 1
+                },
+                {
+                    "title": "🐞 Fixed: Intune: support for conditional access grant \"require app protection policy\" [thanks, R.B.]",
+                    "type": 1
+                }
+            ]
+        },
+        {
             "version": "1.47",
             "releaseDate": "2023-11-24T00:00:00Z",
             "items": [
