@@ -243,14 +243,16 @@ class ProtectedFieldCell: ViewableFieldCell {
         valueText.isSelectable = theButton.isSelected
         toggleButton = theButton
 
-        guard field?.internalName == EntryField.password else {
+        guard let field,
+              field.internalName == EntryField.password,
+              field.isAuditable else {
             accessoryView = theButton
             refreshTextView()
             return
         }
 
         let indicatorView = PasswordQualityIndicatorIconView()
-        indicatorView.quality = .init(password: field?.resolvedValue)
+        indicatorView.quality = .init(password: field.resolvedValue)
         indicatorView.onTap = { [weak self] indicator in
             guard let toastHost = self?.contentView,
                   let quality = indicator.quality

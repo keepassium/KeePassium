@@ -32,6 +32,8 @@ protocol ViewableField: AnyObject {
 
     var isValueHidden: Bool { get set }
 
+    var isAuditable: Bool { get set }
+
     var isHeightConstrained: Bool { get set }
 }
 
@@ -53,6 +55,8 @@ class BasicViewableField: ViewableField {
     var isFixed: Bool { return field?.isStandardField ?? false }
 
     var isValueHidden: Bool
+
+    var isAuditable: Bool = true
 
     var isHeightConstrained: Bool
 
@@ -143,6 +147,7 @@ class ViewableEntryFieldFactory {
         var result = [ViewableField]()
 
         let hasValidOTPConfig = TOTPGeneratorFactory.makeGenerator(for: entry) != nil
+        let isAuditable = (entry as? Entry2)?.qualityCheck ?? true
 
         var excludedFieldNames = Set<String>()
         if excludedFields.contains(.title) {
@@ -164,6 +169,7 @@ class ViewableEntryFieldFactory {
             }
 
             let viewableField = makeOne(field: field)
+            viewableField.isAuditable = isAuditable
             result.append(viewableField)
         }
 
