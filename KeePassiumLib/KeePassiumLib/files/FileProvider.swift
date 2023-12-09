@@ -7,6 +7,9 @@
 //  For commercial licensing, please contact the author.
 
 public enum FileProvider: Hashable {
+    public static var all: Set<FileProvider> = {
+        Set(providerByID.values)
+    }()
 
     private static let providerByID: [String: FileProvider] = [
         "com.apple.FileProvider.LocalStorage": .localStorage,
@@ -15,6 +18,7 @@ public enum FileProvider: Hashable {
         "net.box.BoxNet.documentPickerFileProvider": .box,
         "com.boxcryptor.ios.files": .boxcryptor,
         "com.boxcryptor.ios.BoxcryptorDocumentProviderFileProvider": .boxcryptorLegacy2020,
+        "org.cryptomator.ios.fileprovider": .cryptomator,
         "com.getdropbox.Dropbox.FileProvider": .dropbox,
         "com.skyjos.fileexplorer.fileprovider": .feFileExplorer,
         "com.google.Drive.FileProviderExtension": .googleDrive,
@@ -28,6 +32,7 @@ public enum FileProvider: Hashable {
         "com.microsoft.skydrive.onedrivefileprovider": .oneDrive,
         "com.owncloud.ios-app.ownCloud-File-Provider": .ownCloud,
         "com.pcloud.pcloud.FileProvider": .pCloud,
+        "ch.protonmail.drive.fileprovider": .protonDrive,
         "com.qnap.qfile.FileProvider": .qnapQFile,
         "com.readdle.ReaddleDocsIPad.DocsExtFileProvider": .readdleDocuments,
         "com.resilio.sync.fileprovider": .resilioSync,
@@ -49,6 +54,7 @@ public enum FileProvider: Hashable {
     case box
     case boxcryptor
     case boxcryptorLegacy2020
+    case cryptomator
     case dropbox
     case feFileExplorer
     case googleDrive
@@ -62,6 +68,7 @@ public enum FileProvider: Hashable {
     case oneDrive
     case ownCloud
     case pCloud
+    case protonDrive
     case qnapQFile
     case readdleDocuments
     case resilioSync
@@ -120,6 +127,12 @@ public enum FileProvider: Hashable {
                 bundle: Bundle.framework,
                 value: "Boxcryptor",
                 comment: "Localized name of the storage service: Boxcryptor (https://boxcryptor.com)")
+        case .cryptomator:
+            return NSLocalizedString(
+                "[FileProvider/Cryptomator/name]",
+                bundle: Bundle.framework,
+                value: "Cryptomator",
+                comment: "Localized name of the storage service: Cryptomator (https://cryptomator.org)")
         case .dropbox:
             return NSLocalizedString(
                 "[FileProvider/Dropbox/name]",
@@ -184,6 +197,13 @@ public enum FileProvider: Hashable {
                 bundle: Bundle.framework,
                 value: "pCloud",
                 comment: "Localized name of the storage service: pCloud (https://pcloud.com)")
+        case .protonDrive:
+            return NSLocalizedString(
+                "[FileProvider/ProtonDrive/name]",
+                bundle: Bundle.framework,
+                value: "Proton Drive",
+                comment: "Localized name of the storage service: Proton Drive (https://proton.me/drive)")
+
         case .qnapQFile:
             return NSLocalizedString(
                 "[FileProvider/qnapQFile/name]",

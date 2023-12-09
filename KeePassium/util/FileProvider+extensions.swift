@@ -46,9 +46,11 @@ extension FileProvider {
             return .fileProviderUSB
         case .amerigo,
             .amerigoFree,
+            .cryptomator,
             .feFileExplorer,
             .megaNz,
             .magentaCloud,
+            .protonDrive,
             .qnapQFile,
             .readdleDocuments,
             .resilioSync,

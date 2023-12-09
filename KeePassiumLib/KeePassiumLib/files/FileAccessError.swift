@@ -23,6 +23,8 @@ public enum FileAccessError: LocalizedError {
 
     case networkAccessDenied
 
+    case managedAccessDenied
+
     case authorizationRequired(message: String, recoveryAction: String)
 
     case serverSideError(message: String)
@@ -133,6 +135,12 @@ public enum FileAccessError: LocalizedError {
                 bundle: Bundle.framework,
                 value: "Network access is blocked by the settings.",
                 comment: "Error message: network access is forbidden by system or app settings.")
+        case .managedAccessDenied:
+            return NSLocalizedString(
+                "[FileAccessError/ManagedAccessDenied/title]",
+                bundle: Bundle.framework,
+                value: "Access to this storage is disabled by your oganization.",
+                comment: "Error message: organization's IT administrator has forbidden access to a data storage location.")
         case .authorizationRequired(let message, _):
             return message
         case .serverSideError(let message):

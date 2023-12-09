@@ -80,6 +80,10 @@ extension FileDataProvider {
     ) {
         let operationQueue = FileDataProvider.backgroundQueue
         let completionQueue = completionQueue ?? FileDataProvider.backgroundQueue
+        guard fileProvider?.isAllowed ?? true else {
+            completionQueue.addOperation { completion(.failure(.managedAccessDenied)) }
+            return
+        }
 
         let isAccessed = fileURL.startAccessingSecurityScopedResource()
         let dataSource = DataSourceFactory.getDataSource(for: fileURL)
@@ -152,6 +156,11 @@ extension FileDataProvider {
     ) {
         let operationQueue = queue ?? FileDataProvider.backgroundQueue
         let completionQueue = completionQueue ?? FileDataProvider.backgroundQueue
+        guard fileProvider?.isAllowed ?? true else {
+            completionQueue.addOperation { completion(.failure(.managedAccessDenied)) }
+            return
+        }
+
         let isAccessed = fileURL.startAccessingSecurityScopedResource()
         let dataSource = DataSourceFactory.getDataSource(for: fileURL)
         coordinateFileOperation(
@@ -192,7 +201,11 @@ extension FileDataProvider {
     ) {
         let operationQueue = queue ?? FileDataProvider.backgroundQueue
         let completionQueue = completionQueue ?? FileDataProvider.backgroundQueue
-
+        guard fileProvider?.isAllowed ?? true else {
+            completionQueue.addOperation { completion(.failure(.managedAccessDenied)) }
+            return
+        }
+        
         let isAccessed = fileURL.startAccessingSecurityScopedResource()
         let dataSource = DataSourceFactory.getDataSource(for: fileURL)
         coordinateFileOperation(

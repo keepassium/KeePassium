@@ -12,33 +12,33 @@ public final class ManagedAppConfig: NSObject {
     public enum Key: String, CaseIterable {
         static let managedConfig = "com.apple.configuration.managed"
 
+        case configVersion
         case license
-        case autoUnlockLastDatabase 
-        case rememberDatabaseKey 
-        case rememberDatabaseFinalKey 
-        case keepKeyFileAssociations 
-        case keepHardwareKeyAssociations 
-        case lockAllDatabasesOnFailedPasscode 
-        case appLockTimeout 
-        case lockAppOnLaunch 
-        case databaseLockTimeout 
-        case lockDatabasesOnTimeout 
-        case clipboardTimeout 
-        case useUniversalClipboard 
-        case hideProtectedFields 
-        case showBackupFiles 
-        case backupDatabaseOnSave 
-        case backupKeepingDuration 
-        case excludeBackupFilesFromSystemBackup 
-        case enableQuickTypeAutoFill 
-        case allowNetworkAccess 
-        case hideAppLockSetupReminder 
+        case autoUnlockLastDatabase
+        case rememberDatabaseKey
+        case rememberDatabaseFinalKey
+        case keepKeyFileAssociations
+        case keepHardwareKeyAssociations
+        case lockAllDatabasesOnFailedPasscode
+        case appLockTimeout
+        case lockAppOnLaunch
+        case databaseLockTimeout
+        case lockDatabasesOnTimeout
+        case clipboardTimeout
+        case useUniversalClipboard
+        case hideProtectedFields
+        case showBackupFiles
+        case backupDatabaseOnSave
+        case backupKeepingDuration
+        case excludeBackupFilesFromSystemBackup
+        case enableQuickTypeAutoFill
+        case allowNetworkAccess
+        case hideAppLockSetupReminder
+        case allowedFileProviders
     }
 
     private var currentConfig: [String: Any]? {
-        guard let rawObject = UserDefaults.standard.object(forKey: Key.managedConfig),
-              let config = rawObject as? [String: Any]
-        else {
+        guard let config = UserDefaults.standard.dictionary(forKey: Key.managedConfig) else {
             return nil
         }
         return config
@@ -46,6 +46,7 @@ public final class ManagedAppConfig: NSObject {
     private var intuneConfig: [String: Any]?
     private var previousLicenseValue: String?
     private var hasWarnedAboutMissingLicense = false
+    private var allowedFileProviders: Set<FileProvider>?
 
     override private init() {
         super.init()
@@ -63,13 +64,13 @@ public final class ManagedAppConfig: NSObject {
 
     private func userDefaultsDidChange(_ notification: Notification) {
         let newLicense = license
-        guard newLicense != previousLicenseValue else {
-            return
+        if newLicense != previousLicenseValue {
+            Diag.debug("License key changed, reloading")
+            previousLicenseValue = newLicense
+            hasWarnedAboutMissingLicense = false
+            LicenseManager.shared.checkBusinessLicense()
         }
-        previousLicenseValue = newLicense
-        Diag.debug("License key changed, reloading")
-        hasWarnedAboutMissingLicense = false
-        LicenseManager.shared.checkBusinessLicense()
+        allowedFileProviders = nil
     }
 }
 
@@ -121,11 +122,14 @@ extension ManagedAppConfig {
              .allowNetworkAccess,
              .hideAppLockSetupReminder:
             return getBool(key) != nil
-        case .appLockTimeout,
+        case .configVersion,
+             .appLockTimeout,
              .databaseLockTimeout,
              .clipboardTimeout,
              .backupKeepingDuration:
             return getInt(key) != nil
+        case .allowedFileProviders:
+            return getStringArray(key) != nil
         }
     }
 
@@ -149,11 +153,13 @@ extension ManagedAppConfig {
              .allowNetworkAccess,
              .hideAppLockSetupReminder:
             result = getBool(key)
-        case .license,
+        case .configVersion,
+             .license,
              .appLockTimeout,
              .databaseLockTimeout,
              .clipboardTimeout,
-             .backupKeepingDuration:
+             .backupKeepingDuration,
+             .allowedFileProviders:
             Diag.error("Key `\(key.rawValue)` is not boolean, ignoring")
             assertionFailure()
             return nil
@@ -177,7 +183,8 @@ extension ManagedAppConfig {
     public func getIntIfLicensed(_ key: Key) -> Int? {
         var result: Int?
         switch key {
-        case .appLockTimeout,
+        case .configVersion,
+             .appLockTimeout,
              .databaseLockTimeout,
              .clipboardTimeout,
              .backupKeepingDuration:
@@ -198,7 +205,8 @@ extension ManagedAppConfig {
              .excludeBackupFilesFromSystemBackup,
              .enableQuickTypeAutoFill,
              .allowNetworkAccess,
-             .hideAppLockSetupReminder:
+             .hideAppLockSetupReminder,
+             .allowedFileProviders:
             Diag.error("Key `\(key.rawValue)` is not an integer, ignoring.")
             assertionFailure()
             return nil
@@ -217,6 +225,31 @@ extension ManagedAppConfig {
             hasWarnedAboutMissingLicense = true
         }
         return nil
+    }
+}
+
+extension ManagedAppConfig {
+    private static let fileProvidersAll = "all"
+
+    internal func isAllowed(_ fileProvider: FileProvider) -> Bool {
+        if allowedFileProviders == nil {
+            allowedFileProviders = getAllowedFileProviders()
+        }
+        return allowedFileProviders!.contains(fileProvider)
+    }
+
+    private func getAllowedFileProviders() -> Set<FileProvider> {
+        guard let allowedProviderIDs = getStringArray(.allowedFileProviders) else {
+            return FileProvider.all
+        }
+        if allowedProviderIDs.contains(Self.fileProvidersAll) {
+            return FileProvider.all
+        }
+
+        let allowedProviders = allowedProviderIDs.compactMap {
+            FileProvider(rawValue: $0)
+        }
+        return Set(allowedProviders)
     }
 }
 
@@ -255,6 +288,17 @@ extension ManagedAppConfig {
         }
         guard let result = Int(valueString) else {
             Diag.warning("Managed value `\(key.rawValue)` is not an Int, ignoring it.")
+            return nil
+        }
+        return result
+    }
+
+    private func getStringArray(_ key: Key) -> [String]? {
+        guard let object = getObject(key) else {
+            return nil
+        }
+        guard let result = object as? [String] else {
+            Diag.warning("Managed value `\(key.rawValue)` is not a string array, ignoring it.")
             return nil
         }
         return result

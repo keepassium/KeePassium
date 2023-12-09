@@ -28,6 +28,7 @@
 		75241F44274A90AD00AE15AD /* LString+general.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75241F43274A90AD00AE15AD /* LString+general.swift */; };
 		7524E7342887620A00ECBEC8 /* FileAccessCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7593BE6027C45123008D30B5 /* FileAccessCoordinator.swift */; };
 		7524E74F288AA80500ECBEC8 /* LString+remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E74E288AA80500ECBEC8 /* LString+remote.swift */; };
+		752BEC0C2B23AE060072547A /* FileProvider+managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752BEC0B2B23AE060072547A /* FileProvider+managed.swift */; };
 		75335E7E26FF23F300D49422 /* SecureRandomNumberGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75335E7D26FF23F300D49422 /* SecureRandomNumberGenerator.swift */; };
 		7534443C278356AD00CC8248 /* WebDAVRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7534443B278356AD00CC8248 /* WebDAVRequest.swift */; };
 		7534443E27842FEC00CC8248 /* Date+http.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7534443D27842FEC00CC8248 /* Date+http.swift */; };
@@ -257,6 +258,7 @@
 		75261DA2263800DA00EE2ED9 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75271962263800A800D68A32 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		75271963263800A800D68A32 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		752BEC0B2B23AE060072547A /* FileProvider+managed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileProvider+managed.swift"; sourceTree = "<group>"; };
 		752F5DC92643FE6C0099CA6E /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		752F5DCA2643FE6C0099CA6E /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7532821824A8048B00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -562,6 +564,7 @@
 			isa = PBXGroup;
 			children = (
 				754025142950700E000ABA73 /* ManagedAppConfig.swift */,
+				752BEC0B2B23AE060072547A /* FileProvider+managed.swift */,
 			);
 			path = org;
 			sourceTree = "<group>";
@@ -1401,6 +1404,7 @@
 				75241F44274A90AD00AE15AD /* LString+general.swift in Sources */,
 				75D09C3B2174F77000F7DEF2 /* DataCipherFactory.swift in Sources */,
 				75707EC526CE7B3B00BE5EBC /* OperationQueue+extensions.swift in Sources */,
+				752BEC0C2B23AE060072547A /* FileProvider+managed.swift in Sources */,
 				759A321B252DC1E7001A1623 /* EntryFieldReference.swift in Sources */,
 				75CFA0772AC5B113008B7B3E /* DatabaseReloadContext.swift in Sources */,
 				7596174C29082D0C005845FF /* RemoteConnectionType.swift in Sources */,
