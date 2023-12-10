@@ -7,27 +7,24 @@
 //  For commercial licensing, please contact the author.
 
 import KeePassiumLib
+import UIKit
 
-class AppHistoryItemCell: UITableViewCell {
-    fileprivate static let storyboardID = "LogItemCell"
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var detailLabel: UILabel!
-}
+final class AppHistoryViewerVC: UITableViewController {
 
-class AppHistoryFallbackCell: UITableViewCell {
-    fileprivate static let storyboardID = "FallbackCell"
-}
-
-class AppHistoryViewerVC: UITableViewController {
     var appHistory: AppHistory? {
         didSet {
             updateSections()
         }
     }
 
-    enum TableSection {
+    private enum TableSection {
         case fallbackSeparator(date: Date)
         case historySection(section: AppHistory.Section)
+    }
+
+    private enum CellID {
+        static let fallbackCell = "FallbackCell"
+        static let itemCell = "ItemCell"
     }
 
     private let fallbackDate = PremiumManager.shared.fallbackDate
@@ -41,9 +38,28 @@ class AppHistoryViewerVC: UITableViewController {
         return dateFormatter
     }()
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    private lazy var itemCellConfiguration: UIListContentConfiguration = {
+        var configuration = UIListContentConfiguration.subtitleCell()
+        configuration.textProperties.font = UIFont.preferredFont(forTextStyle: .callout)
+        configuration.textProperties.color = .primaryText
+        configuration.secondaryTextProperties.color = .auxiliaryText
+        configuration.textToSecondaryTextVerticalPadding = 4
+        configuration.directionalLayoutMargins = .init(top: 8, leading: 0, bottom: 10, trailing: 2)
+        return configuration
+    }()
+
+    private lazy var fallbackCellConfiguration: UIListContentConfiguration = {
+        var configuration = UIListContentConfiguration.cell()
+        configuration.textProperties.font = UIFont.preferredFont(forTextStyle: .body)
+        configuration.textProperties.color = .primaryText
+        configuration.image = .symbol(.checkmarkSeal)
+        return configuration
+    }()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
         title = LString.titleAppHistory
+        registerCellClasses(tableView)
     }
 
     private func updateSections() {
@@ -63,6 +79,11 @@ class AppHistoryViewerVC: UITableViewController {
 
 
 extension AppHistoryViewerVC {
+    private func registerCellClasses(_ tableView: UITableView) {
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: CellID.itemCell)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: CellID.fallbackCell)
+    }
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
@@ -85,7 +106,7 @@ extension AppHistoryViewerVC {
             return nil
         case .historySection(section: let sectionInfo):
             let formattedDate = dateFormatter.string(from: sectionInfo.releaseDate)
-            return "v\(sectionInfo.version) (\(formattedDate))"
+            return "Version \(sectionInfo.version) (\(formattedDate))"
         }
     }
 
@@ -101,55 +122,69 @@ extension AppHistoryViewerVC {
     ) -> UITableViewCell {
         switch sections[indexPath.section] {
         case .fallbackSeparator(date: let fallbackDate):
-            let cell = tableView
-                .dequeueReusableCell(withIdentifier: AppHistoryFallbackCell.storyboardID)
-                as! AppHistoryFallbackCell
-            setupFallbackCell(cell, fallbackDate: fallbackDate)
+            let cell = tableView.dequeueReusableCell(withIdentifier: CellID.fallbackCell, for: indexPath)
+            configure(cell: cell, fallbackDate: fallbackDate)
             return cell
         case .historySection(section: let releaseInfo):
-            let cell = tableView
-                .dequeueReusableCell(withIdentifier: AppHistoryItemCell.storyboardID)
-                as! AppHistoryItemCell
             let item = releaseInfo.items[indexPath.row]
             let isOwned = (fallbackDate != nil) && (releaseInfo.releaseDate < fallbackDate!)
-            setupItemCell(cell, item: item, isOwned: isOwned)
+            let cell = tableView.dequeueReusableCell(withIdentifier: CellID.itemCell, for: indexPath)
+            configure(cell: cell, item: item, isOwned: isOwned)
             return cell
         }
     }
 
-    private func setupFallbackCell(_ cell: AppHistoryFallbackCell, fallbackDate: Date) {
-        if fallbackDate == .distantFuture {
-            cell.textLabel?.text = LString.perpetualLicense
-            cell.accessoryType = .none
-        } else {
-            let licensedVersion = appHistory?.versionOnDate(fallbackDate) ?? "?"
-            cell.textLabel?.text = String.localizedStringWithFormat(
-                LString.premiumStatusLicensedVersionTemplate,
-                licensedVersion)
-            cell.accessoryType = .disclosureIndicator
-        }
+    private func configure(cell: UITableViewCell, fallbackDate: Date) {
+        var configuration = fallbackCellConfiguration
+        configuration.text = fallbackDate == .distantFuture
+            ? LString.perpetualLicense
+            : appHistory?.versionOnDate(fallbackDate).flatMap {
+                String.localizedStringWithFormat(
+                    LString.premiumStatusLicensedVersionTemplate,
+                    $0)
+            }
+        cell.contentConfiguration = configuration
+        cell.accessoryType = fallbackDate == .distantFuture ? .none : .disclosureIndicator
     }
 
-    private func setupItemCell(_ cell: AppHistoryItemCell, item: AppHistory.Item, isOwned: Bool) {
-        cell.titleLabel.text = item.title
-        switch item.type {
+    private func configure(cell: UITableViewCell, item: AppHistory.Item, isOwned: Bool) {
+        var configuration = itemCellConfiguration
+        configuration.text = item.title
+        configuration.image = .symbol(item.change.symbolName)
+        configuration.imageProperties.tintColor = item.change.tintColor
+        configuration.imageProperties.preferredSymbolConfiguration = .init(scale: .large)
+        if item.credits.isEmpty {
+            configuration.secondaryText = nil
+        } else {
+            let creditsText = item.credits.joined(separator: ", ")
+            configuration.secondaryText = String.localizedStringWithFormat(
+                LString.appHistoryThanksTemplate,
+                creditsText
+            )
+        }
+        cell.contentConfiguration = configuration
+        cell.selectionStyle = .none
+
+        cell.isAccessibilityElement = true
+        cell.accessibilityLabel = [item.change.description, ": ", item.title].joined()
+
+        let itemType = LicenseManager.shared.hasActiveBusinessLicense() ? .none : item.type
+        switch itemType {
         case .none:
-            cell.detailLabel.text = ""
             cell.accessoryView = nil
-            cell.accessoryType = isOwned ? .checkmark : .none
+            cell.accessoryType = .none
             cell.tintColor = .auxiliaryText
         case .free:
             cell.accessoryView = nil
             cell.tintColor = .auxiliaryText
             if isOwned {
                 cell.accessoryType = .checkmark
-                cell.detailLabel.text = ""
             } else {
                 cell.accessoryType = .none
-                cell.detailLabel.text = LString.premiumFreePlanPrice
+                cell.accessoryView = FreeBadgeAccessory()
+                cell.accessoryView?.sizeToFit()
             }
         case .premium:
-            cell.detailLabel.text = ""
             if isOwned {
                 cell.accessoryView = nil
                 cell.accessoryType = .checkmark
@@ -196,4 +231,6 @@ extension LString {
         "[AppHistory/title]",
         value: "What's New",
         comment: "Title of the app history (changelog) screen")
+
+    static let appHistoryThanksTemplate = "Thanks, %@"
 }

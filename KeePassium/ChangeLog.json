@@ -5,28 +5,26 @@
             "releaseDate": "2023-12-06T00:00:00Z",
             "items": [
                 {
-                    "title": "🧩 Added: Drag and drop attachments to other apps",
-                    "type": 1
+                    "title": "Added: Drag and drop attachments to other apps"
                 },
                 {
-                    "title": "🧩 Added: Possibility to disable/allow search, password audit and AutoFill for specific groups and entries",
-                    "type": 1
+                    "title": "Added: Possibility to disable/allow search, password audit and AutoFill for specific groups and entries"
                 },
                 {
-                    "title": "🛠 Improved: Tapping on password quality icon will show its meaning [thanks, everyone]",
-                    "type": 1
+                    "title": "Improved: Tapping on password quality icon will show its meaning",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🛠 Improved: Entry viewer shows entry's internal UUID that can be used for field references.",
-                    "type": 1
+                    "title": "Improved: Entry viewer shows entry's internal UUID that can be used for field references."
                 },
                 {
-                    "title": "🛠 Improved: Updated translations [thanks, everyone]",
-                    "type": 1
+                    "title": "Improved: Updated translations",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Intune: support for conditional access grant \"require app protection policy\" [thanks, R.B.]",
-                    "type": 1
+                    "title": "Fixed: Support for conditional access grant \"require app protection policy\"",
+                    "credits": "R.B.",
+                    "edition": "org"
                 }
             ]
         },
@@ -35,36 +33,37 @@
             "releaseDate": "2023-11-24T00:00:00Z",
             "items": [
                 {
-                    "title": "🧩 Added: Possibility to change database encryption settings",
-                    "type": 1
+                    "title": "Added: Possibility to change database encryption settings"
                 },
                 {
-                    "title": "🧩 Added: Support for AppConfig managed settings in corporate deployments",
-                    "type": 1
+                    "title": "Added: Support for AppConfig managed settings in corporate deployments"
                 },
                 {
-                    "title": "🛠 Improved: Quick AutoFill can again copy TOTP to clipboard instead of simply showing it (closes #242) [thanks, David]",
-                    "type": 1
+                    "title": "Improved: Quick AutoFill can again copy TOTP to clipboard instead of simply showing it",
+                    "github": "Closes #242",
+                    "credits": "David"
                 },
                 {
-                    "title": "🐞 Fixed: \"Storage does not respond\" error when saving (fixes #327) [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: \"Storage does not respond\" error when saving",
+                    "github": "Fixes #327",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Sometimes the database did not lock up properly (fixes #322) [thanks, vit9696]",
-                    "type": 1
+                    "title": "Fixed: Sometimes the database did not lock up properly",
+                    "github": "Fixes #322",
+                    "credits": "vit9696"
                 },
                 {
-                    "title": "🐞 Fixed: When unlocking the app, require pressing the Unlock button when number of failed attempts matters [thanks, J.L.]",
-                    "type": 1
+                    "title": "Fixed: When unlocking the app, require pressing the Unlock button when number of failed attempts matters",
+                    "credits": "J.L."
                 },
                 {
-                    "title": "🐞 Fixed: OneDrive: better detection of \"invalid_grant\" error",
-                    "type": 1
+                    "title": "Fixed: OneDrive: better detection of \"invalid_grant\" error"
                 },
                 {
-                    "title": "🐞 Fixed: Favicon was not always refreshed after download (fixes #323) [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: Favicon was not always refreshed after download",
+                    "github": "Fixes #323",
+                    "credits": "everyone"
                 }
             ]
         },
@@ -73,68 +72,71 @@
             "releaseDate": "2023-10-24T00:00:00Z",
             "items": [
                 {
-                    "title": "🧩 Added: Password audit tool (powered by the 'Have I Been Pwned' service) [thanks, everyone]",
+                    "title": "Added: Password audit tool (powered by the 'Have I Been Pwned' service)",
+                    "credits": "everyone",
                     "type": 2
                 },
                 {
-                    "title": "🧩 Added: Password quality indicator (offline) [thanks, everyone]",
-                    "type": 1
+                    "title": "Added: Password quality indicator (offline)",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🧩 Added: Favicon downloader [thanks, everyone]",
-                    "type": 1
+                    "title": "Added: Favicon downloader",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🧩 Added: Customizable entry font [thanks, everyone]",
-                    "type": 1
+                    "title": "Added: Customizable entry font",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🧩 Added: A button to reload the currently opened DB",
-                    "type": 1
+                    "title": "Added: A button to reload the currently opened DB"
                 },
                 {
-                    "title": "🧩 Added: Drag-and-drop attachments to entry viewer",
-                    "type": 1
+                    "title": "Added: Drag-and-drop attachments to entry viewer"
                 },
                 {
-                    "title": "🛠 Improved: You can disable Quick AutoFill for specific databases (#289) [thanks, everyone]",
-                    "type": 1
+                    "title": "Improved: You can disable Quick AutoFill for specific databases",
+                    "github": "#289",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🛠 Improved: App passcode is tested while being entered, no need to tap the Unlock button [thanks, Hinrich]",
-                    "type": 1
+                    "title": "Improved: App passcode is tested while being entered, no need to tap the Unlock button",
+                    "credits": "Hinrich"
                 },
                 {
-                    "title": "🛠 Improved: macOS: copied items are marked as concealed for clipboard managers (closes #315) [thanks, piercefaulkner]",
-                    "type": 1
+                    "title": "Improved: Copied items are marked as concealed for clipboard managers",
+                    "github": "Closes #315",
+                    "credits": "piercefaulkner",
+                    "os": "macos"
                 },
                 {
-                    "title": "🛠 Improved: macOS: lock app/DB when locking the screen (closes #231) [thanks, Rodrigo]",
-                    "type": 1
+                    "title": "Improved: Lock app/DB when locking the screen",
+                    "github": "Closes #231",
+                    "credits": "Rodrigo",
+                    "os": "macos"
                 },
                 {
-                    "title": "🛠 Improved: UI improvements in DB viewer and entry editor",
-                    "type": 1
+                    "title": "Improved: UI improvements in DB viewer and entry editor"
                 },
                 {
-                    "title": "🛠 Improved: Updated all translations [thanks, everyone]",
-                    "type": 1
+                    "title": "Improved: Updated all translations",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🛠 Changed: Intune: updated MSAL version to 1.2.3",
-                    "type": 1
+                    "title": "Changed: Updated MSAL version to 1.2.3",
+                    "edition": "org"
                 },
                 {
-                    "title": "🛠 Changed: Intune: Extended the provisional license to 2023-12-31",
-                    "type": 1
+                    "title": "Changed: Extended the provisional license to 2023-12-31",
+                    "edition": "org"
                 },
                 {
-                    "title": "🐞 Fixed: 'No such file' error when saving to Dropbox (fixes #304) [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: 'No such file' error when saving to Dropbox",
+                    "github": "Fixes #304",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Better error message when YubiKey is not completely configured",
-                    "type": 1
+                    "title": "Fixed: Better error message when YubiKey is not completely configured"
                 }
             ]
         },
@@ -143,76 +145,73 @@
             "releaseDate": "2023-07-13T00:00:00Z",
             "items": [
                 {
-                    "title": "This version requires iOS 15.4 / macOS 12.0 or newer",
-                    "type": 1
+                    "title": "This version requires iOS 15.4 / macOS 12.0 or newer"
                 },
                 {
-                    "title": "🧩 Added: Uniform and scalable SF Symbols icons (closes #287) [thanks, everyone]",
-                    "type": 1
+                    "title": "Added: Uniform and scalable SF Symbols icons",
+                    "github": "Closes #287",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🧩 Added: Passphrase generator now includes EFF short list #1 [thanks, K.J.]",
-                    "type": 1
+                    "title": "Added: Passphrase generator now includes EFF short list #1",
+                    "credits": "K.J."
                 },
                 {
-                    "title": "🛠 Improved: Added expiry option \"Now\" (closes #300) [thanks, thejoker8814]",
-                    "type": 1
+                    "title": "Improved: Added expiry option \"Now\"",
+                    "github": "Closes #300",
+                    "credits": "thejoker8814"
                 },
                 {
-                    "title": "🛠 Improved: Added detection of MagentaCloud file provider",
-                    "type": 1
+                    "title": "Improved: Added detection of MagentaCloud file provider"
                 },
                 {
-                    "title": "🛠 Improved: Updated all translations",
-                    "type": 1
+                    "title": "Improved: Updated all translations"
                 },
                 {
-                    "title": "❌ Removed: Intune: removed AutoFill, because not supported by Intune SDK",
-                    "type": 1
+                    "title": "Changed: Removed AutoFill, because not supported by Intune SDK",
+                    "edition": "org"
                 },
                 {
-                    "title": "🐞 Fixed: OneDrive: periodic \"invalid_grant\" error [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: OneDrive: periodic \"invalid_grant\" error",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Error messages could be visible while loading a fallback database [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: Error messages could be visible while loading a fallback database",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Database unlocker could load a wrong fallback file sometimes",
-                    "type": 1
+                    "title": "Fixed: Database unlocker could load a wrong fallback file sometimes"
                 },
                 {
-                    "title": "🐞 Fixed: Lingering donation suggestion, required database reload [thanks everyone]",
-                    "type": 1
+                    "title": "Fixed: Lingering donation suggestion, required database reload",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Temporary files (such as print previews) could stay around for too long [thanks, Christopher]",
-                    "type": 1
+                    "title": "Fixed: Temporary files (such as print previews) could stay around for too long",
+                    "credits": "Christopher"
                 },
                 {
-                    "title": "🐞 Fixed: Excessive WebDAV credential caching (fixes #295) [thanks, Henrik]",
-                    "type": 1
+                    "title": "Fixed: Excessive WebDAV credential caching",
+                    "github": "Fixes #295",
+                    "credits": "Henrik"
                 },
                 {
-                    "title": "🐞 Fixed: Update the stored derived key on DB save [thanks, Santiago]",
-                    "type": 1
+                    "title": "Fixed: Update the stored derived key on DB save",
+                    "credits": "Santiago"
                 },
                 {
-                    "title": "🐞 Fixed: AutoFill: exclude groups that have AutoType disabled [thanks, Kelly]",
-                    "type": 1
+                    "title": "Fixed: AutoFill: exclude groups that have AutoType disabled",
+                    "credits": "Kelly"
                 },
                 {
-                    "title": "🐞 Fixed: Search: Check parent groups when omitting non-searchable ones",
-                    "type": 1
+                    "title": "Fixed: Search: Check parent groups when omitting non-searchable ones"
                 },
                 {
-                    "title": "🐞 Fixed: iCloud Drive icon on iOS 16.5 [thanks, E.M.]",
-                    "type": 1
+                    "title": "Fixed: iCloud Drive icon on iOS 16.5",
+                    "credits": "E.M."
                 },
                 {
-                    "title": "🐞 Fixed: Minor UI fixes and improvements",
-                    "type": 1
+                    "title": "Fixed: Minor UI fixes and improvements"
                 }
             ]
         },
@@ -221,24 +220,22 @@
             "releaseDate": "2023-05-29T00:00:00Z",
             "items": [
                 {
-                    "title": "🛠 Changed: Alternative app icons made available in the free version, no longer a premium feature",
-                    "type": 1
+                    "title": "Changed: Alternative app icons made available in the free version, no longer a premium feature"
                 },
                 {
-                    "title": "🛠 Improved: Updated translations",
-                    "type": 1
+                    "title": "Improved: Updated translations"
                 },
                 {
-                    "title": "🐞 Fixed: macOS: App settings were getting reset on every launch (regression in 1.43.131) [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: App settings were getting reset on every launch (regression in 1.43.131)",
+                    "credits": "everyone",
+                    "os": "macos"
                 },
                 {
-                    "title": "🐞 Fixed: AutoFill: matching entries by service name [thanks, D.S.]",
-                    "type": 1
+                    "title": "Fixed: AutoFill: matching entries by service name",
+                    "credits": "D.S."
                 },
                 {
-                    "title": "🐞 Fixed: AutoFill: processing the domain-only entry URL fields (without the scheme component)",
-                    "type": 1
+                    "title": "Fixed: AutoFill: processing the domain-only entry URL fields (without the scheme component)"
                 }
             ]
         },
@@ -247,40 +244,44 @@
             "releaseDate": "2023-05-07T00:00:00Z",
             "items": [
                 {
-                    "title": "🧩 Added: Manual TOTP setup (closes #150) [thanks, everyone]",
-                    "type": 1
+                    "title": "Added: Manual TOTP setup",
+                    "github": "Closes #150",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🛠 Improved: AutoFill: finding URLs with different subdomains and/or TLDs (#201, #279) [thanks, everyone]",
-                    "type": 1
+                    "title": "Improved: AutoFill: finding URLs with different subdomains and/or TLDs",
+                    "github": "#201, #279",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🛠 Improved: Updated all translations [thanks, everyone]",
-                    "type": 1
+                    "title": "Improved: Updated all translations",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Frequent crashes on macOS 13 (data race in URLReference) [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: Frequent crashes on macOS 13 (data race in URLReference)",
+                    "credits": "everyone",
+                    "os": "macos"
                 },
                 {
-                    "title": "🐞 Fixed: macOS: App passcode persisted after reinstallation [thanks, Maciej]",
-                    "type": 1
+                    "title": "Fixed: App passcode persisted after reinstallation",
+                    "credits": "Maciej",
+                    "os": "macos"
                 },
                 {
-                    "title": "🐞 Fixed: A URL containing a field reference could not be opened [thanks, Ken]",
-                    "type": 1
+                    "title": "Fixed: A URL containing a field reference could not be opened",
+                    "credits": "Ken"
                 },
                 {
-                    "title": "🐞 Fixed: AutoFill: search results were shown in reverse order (least relevant first)",
-                    "type": 1
+                    "title": "Fixed: AutoFill: search results were shown in reverse order (least relevant first)"
                 },
                 {
-                    "title": "🐞 Fixed: In the main app's search, only groups were sorted, not entries [thanks, Aleks]",
-                    "type": 1
+                    "title": "Fixed: In the main app's search, only groups were sorted, not entries",
+                    "credits": "Aleks"
                 },
                 {
-                    "title": "🐞 Fixed: macOS: better icons for local databases and for \"Reveal in Finder\" [thanks, YJ]",
-                    "type": 1
+                    "title": "Fixed: Better icons for local databases and for \"Reveal in Finder\"",
+                    "credits": "YJ",
+                    "os": "macos"
                 }
             ]
         },
@@ -289,56 +290,61 @@
             "releaseDate": "2023-03-22T00:00:00Z",
             "items": [
                 {
-                    "title": "📣 Evolved from a personal project into a company: meet KeePassium Labs Sàrl!",
-                    "type": 1
+                    "title": "Evolved from a personal project into a company: meet KeePassium Labs Sàrl!"
                 },
                 {
-                    "title": "📣 Added: KeePassium for Intune (beta) — a business app specialized for Microsoft Intune environment",
-                    "type": 1
+                    "title": "Added: KeePassium for Intune (beta) — a business app specialized for Microsoft Intune environment",
+                    "type": 0
                 },
                 {
-                    "title": "🛠 Improved: Updated all translations [thanks, everyone]",
-                    "type": 1
+                    "title": "Improved: Updated all translations",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: In-app OneDrive for Business connection could not access shared files (fixes #273) [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: In-app OneDrive for Business connection could not access shared files",
+                    "github": "Fixes #273",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: In-app OneDrive connection sometimes returned `invalid_grant` error (regression in 1.41.126) [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: In-app OneDrive connection sometimes returned `invalid_grant` error (regression in 1.41.126)",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Occasional timeouts while saving the database (regression in 1.41.124) [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: Occasional timeouts while saving the database (regression in 1.41.124)",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: macOS: clipboard timeout had no effect (fixes #278) [thanks, S.B.]",
-                    "type": 1
+                    "title": "Fixed: Clipboard timeout had no effect",
+                    "github": "Fixes #278",
+                    "credits": "S.B.",
+                    "os": "macos"
                 },
                 {
-                    "title": "🐞 Fixed: Revealed TOTP codes could show up on unrelated rows (fixes #277) [thanks, Timothy]",
-                    "type": 1
+                    "title": "Fixed: Revealed TOTP codes could show up on unrelated rows",
+                    "github": "Fixes #277",
+                    "credits": "Timothy"
                 },
                 {
-                    "title": "🐞 Fixed: macOS: broken titlebar colors on macOS 13 (fixes #265) [thanks, enviousjag]",
-                    "type": 1
+                    "title": "Fixed: Broken titlebar colors on macOS 13",
+                    "github": "Fixes #265",
+                    "credits": "enviousjag",
+                    "os": "macos"
                 },
                 {
-                    "title": "🐞 Fixed: macOS: fixed beta status detection for TestFlight builds [thanks, Philipp]",
-                    "type": 1
+                    "title": "Fixed: Fixed beta status detection for TestFlight builds",
+                    "credits": "Philipp",
+                    "os": "macos"
                 },
                 {
-                    "title": "🐞 Fixed: Don't suggest donation to recent version purchasers [thanks, T.H.]",
-                    "type": 1
+                    "title": "Fixed: Don't suggest donation to recent version purchasers",
+                    "credits": "T.H."
                 },
                 {
-                    "title": "🐞 Fixed: Manual editing of the WebDAV file URL was cumbersome [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: Manual editing of the WebDAV file URL was cumbersome",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Minor UI fixes and improvements",
-                    "type": 1
+                    "title": "Fixed: Minor UI fixes and improvements"
                 }
             ]
         },
@@ -347,56 +353,57 @@
             "releaseDate": "2023-02-21T00:00:00Z",
             "items": [
                 {
-                    "title": "🧩 Added: Database printing",
-                    "type": 1
+                    "title": "Added: Database printing"
                 },
                 {
-                    "title": "🧩 Added: Resolving KeePass' field placeholders (closes #260) [thanks, Mateusz]",
-                    "type": 1
+                    "title": "Added: Resolving KeePass' field placeholders",
+                    "github": "Closes #260",
+                    "credits": "Mateusz"
                 },
                 {
-                    "title": "🛠 Improved: OneDrive sign-in page will allow switching between accounts [thanks, Tom]",
-                    "type": 1
+                    "title": "Improved: OneDrive sign-in page will allow switching between accounts",
+                    "credits": "Tom"
                 },
                 {
-                    "title": "🛠 Improved: Announcements in AutoFill won't cover the search bar anymore [thanks, everyone]",
-                    "type": 1
+                    "title": "Improved: Announcements in AutoFill won't cover the search bar anymore",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🛠 Improved: Better handling of file operation timeouts, especially for WebDAV [thanks, Leonid]",
-                    "type": 1
+                    "title": "Improved: Better handling of file operation timeouts, especially for WebDAV",
+                    "credits": "Leonid"
                 },
                 {
-                    "title": "🛠 Improved: When a feature needs network access but the app is offline, KeePassium would ask for permission instead of showing an error [thanks, Raphael]",
-                    "type": 1
+                    "title": "Improved: When a feature needs network access but the app is offline, KeePassium would ask for permission instead of showing an error",
+                    "credits": "Raphael"
                 },
                 {
-                    "title": "🛠 Improved: Tapping the \"Show OTP\" button will also copy the OTP code to clipboard [thanks, Ray]",
-                    "type": 1
+                    "title": "Improved: Tapping the \"Show OTP\" button will also copy the OTP code to clipboard",
+                    "credits": "Ray"
                 },
                 {
-                    "title": "🛠 Improved: Updated FR/IT translations [thanks, everyone]",
-                    "type": 1
+                    "title": "Improved: Updated FR/IT translations",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Moving items to a YubiKey-protected database could remove that protection (fixes #276) [thanks, Santiago]",
-                    "type": 1
+                    "title": "Fixed: Moving items to a YubiKey-protected database could remove that protection",
+                    "github": "Fixes #276",
+                    "credits": "Santiago"
                 },
                 {
-                    "title": "🐞 Fixed: Access to files in shared OneDrive folders (fixes #273) [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: Access to files in shared OneDrive folders",
+                    "github": "Fixes #273",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Locking a database in AutoFill sometimes applied only to the cached file",
-                    "type": 1
+                    "title": "Fixed: Locking a database in AutoFill sometimes applied only to the cached file"
                 },
                 {
-                    "title": "🐞 Fixed: macOS: Disable main menu when the app is locked [thanks, Sander]",
-                    "type": 1
+                    "title": "Fixed: Disable main menu when the app is locked",
+                    "credits": "Sander",
+                    "os": "macos"
                 },
                 {
-                    "title": "🐞 Fixed: Minor UI improvements on iOS 15+",
-                    "type": 1
+                    "title": "Fixed: Minor UI improvements on iOS 15+"
                 }
             ]
         },
@@ -405,12 +412,12 @@
             "releaseDate": "2022-12-22T00:00:00Z",
             "items": [
                 {
-                    "title": "🐞 Fixed: Connection to personal OneDrive accounts should work in the free version (fixes #270) [thanks, Rune]",
-                    "type": 1
+                    "title": "Fixed: Connection to personal OneDrive accounts should work in the free version",
+                    "github": "Fixes #270",
+                    "credits": "Rune"
                 },
                 {
-                    "title": "🐞 Fixed: \"What's New\" section appeared empty",
-                    "type": 1
+                    "title": "Fixed: \"What's New\" section appeared empty"
                 }
             ]
         },
@@ -419,12 +426,14 @@
             "releaseDate": "2022-12-21T00:00:00Z",
             "items": [
                 {
-                    "title": "🐞 Fixed: 'Unexpected server response format' after signing in to OneDrive (fixes #268) [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: 'Unexpected server response format' after signing in to OneDrive",
+                    "github": "Fixes #268",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Repeating Face ID in AutoFill on some devices with iOS 16.2 (closes #266) [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: Repeating Face ID in AutoFill on some devices with iOS 16.2",
+                    "github": "Closes #266",
+                    "credits": "everyone"
                 }
             ]
         },
@@ -433,80 +442,81 @@
             "releaseDate": "2022-12-16T00:00:00Z",
             "items": [
                 {
-                    "title": "🧩 Added: In-app support for OneDrive sync (free for OneDrive Personal; SharePoint and OneDrive for Business require premium)",
+                    "title": "Added: In-app support for OneDrive sync (free for OneDrive Personal; SharePoint and OneDrive for Business require premium)",
                     "type": 2
                 },
                 {
-                    "title": "🧩 Added: Option to search in passwords (closes #196) [thanks, everyone]",
-                    "type": 1
+                    "title": "Added: Option to search in passwords",
+                    "github": "Closes #196",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🧩 Added: AutoFill can notify you about one-time password in the clipboard. To activate, open app settings → AutoFill Passwords → Copy OTP to Clipboard → turn it off, then back on. (fixes #242) [thanks, ixs]",
-                    "type": 1
+                    "title": "Added: AutoFill can notify you about one-time password in the clipboard. To activate, open app settings → AutoFill Passwords → Copy OTP to Clipboard → turn it off, then back on.",
+                    "github": "Fixes #242",
+                    "credits": "ixs"
                 },
                 {
-                    "title": "🧩 Added: Database settings: Separate fallback settings for AutoFill [thanks, Leonid] ",
-                    "type": 1
+                    "title": "Added: Database settings: Separate fallback settings for AutoFill",
+                    "credits": "Leonid"
                 },
                 {
-                    "title": "🧩 Added: Database settings: Option to re-add the DB as a fallback strategy [thanks, Kevin]",
-                    "type": 1
+                    "title": "Added: Database settings: Option to re-add the DB as a fallback strategy",
+                    "credits": "Kevin"
                 },
                 {
-                    "title": "🧩 Added: Support for digest authentication for WebDAV connections [thanks, Andreas]",
-                    "type": 1
+                    "title": "Added: Support for digest authentication for WebDAV connections",
+                    "credits": "Andreas"
                 },
                 {
-                    "title": "🧩 Added: Provisional business license check",
-                    "type": 1
+                    "title": "Added: Provisional business license check"
                 },
                 {
-                    "title": "🛠 Improved: Preserve the .latest backup with a timestamp before overwriting it (only if changed) [thanks, Vadim]",
-                    "type": 1
+                    "title": "Improved: Preserve the .latest backup with a timestamp before overwriting it (only if changed)",
+                    "credits": "Vadim"
                 },
                 {
-                    "title": "🛠 Improved: When opening a non-DB file as a database, recognize the most common incorrect file types",
-                    "type": 1
+                    "title": "Improved: When opening a non-DB file as a database, recognize the most common incorrect file types"
                 },
                 {
-                    "title": "🛠 Improved: Added 'Connect to Server' action to onboarding",
-                    "type": 1
+                    "title": "Improved: Added 'Connect to Server' action to onboarding"
                 },
                 {
-                    "title": "🛠 Improved: Added 'Empty Recycle Bin' context menu for the corresponding group [thanks, YJ]",
-                    "type": 1
+                    "title": "Improved: Added 'Empty Recycle Bin' context menu for the corresponding group",
+                    "credits": "YJ"
                 },
                 {
-                    "title": "🛠 Improved: Updated all translations [thanks, everyone]",
-                    "type": 1
+                    "title": "Improved: Updated all translations",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Face ID loop on some devices with iOS 16.2 (closes #266) [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: Face ID loop on some devices with iOS 16.2",
+                    "github": "Closes #266",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Replaced some toast notifications with more persistent announcements (fixes #250) [thanks, psifertex]",
-                    "type": 1
+                    "title": "Fixed: Replaced some toast notifications with more persistent announcements",
+                    "github": "Fixes #250",
+                    "credits": "psifertex"
                 },
                 {
-                    "title": "🐞 Fixed: App name was missing in macOS Activity Monitor and support emails [thanks, Felix]",
-                    "type": 1
+                    "title": "Fixed: App name was missing in macOS Activity Monitor and support emails",
+                    "credits": "Felix",
+                    "os": "macos"
                 },
                 {
-                    "title": "🐞 Fixed: macOS: improved logging of YubiKey-related errors [thanks, u/Historical_Pie_7716]",
-                    "type": 1
+                    "title": "Fixed: Improved logging of YubiKey-related errors",
+                    "credits": "u/Historical_Pie_7716",
+                    "os": "macos"
                 },
                 {
-                    "title": "🐞 Fixed: Added 'Show Password' button for WebDAV credentials [thanks, Andreas]",
-                    "type": 1
+                    "title": "Fixed: Added 'Show Password' button for WebDAV credentials",
+                    "credits": "Andreas"
                 },
                 {
-                    "title": "🐞 Fixed: Added a dedicated app URL scheme for the Pro edition",
-                    "type": 1
+                    "title": "Fixed: Added a dedicated app URL scheme for the Pro edition"
                 },
                 {
-                    "title": "🐞 Fixed: Minor UI fixes here and there",
-                    "type": 1
+                    "title": "Fixed: Minor UI fixes here and there"
                 }
             ]
         },
@@ -515,32 +525,33 @@
             "releaseDate": "2022-10-07T00:00:00Z",
             "items": [
                 {
-                    "title": "❌ Deleted two custom app icons (calc, info), due to Apple's demand.",
-                    "type": 1
+                    "title": "Changed: Deleted two custom app icons (calc, info), due to Apple's demand."
                 },
                 {
-                    "title": "🛠 Improved: macOS: On launch, show Touch ID prompt automatically [thanks, YJ]",
-                    "type": 1
+                    "title": "Improved: On launch, show Touch ID prompt automatically",
+                    "credits": "YJ",
+                    "os": "macos"
                 },
                 {
-                    "title": "🛠 Improved: macOS: In app passcode screen, pressing Esc will show Touch ID prompt (closes #253) [thanks, moenodedev]",
-                    "type": 1
+                    "title": "Improved: In app passcode screen, pressing Esc will show Touch ID prompt",
+                    "github": "Closes #253",
+                    "credits": "moenodedev",
+                    "os": "macos"
                 },
                 {
-                    "title": "🛠 Improved: Updated IT and PT-BR translations",
-                    "type": 1
+                    "title": "Improved: Updated IT and PT-BR translations"
                 },
                 {
-                    "title": "🐞 Fixed: macOS: WebDAV connection could not find the server",
-                    "type": 1
+                    "title": "Fixed: WebDAV connection could not find the server",
+                    "os": "macos"
                 },
                 {
-                    "title": "🐞 Fixed: Excluded expired entries from search (closes #252) [thanks, cryptosteve2]",
-                    "type": 1
+                    "title": "Fixed: Excluded expired entries from search",
+                    "github": "Closes #252",
+                    "credits": "cryptosteve2"
                 },
                 {
-                    "title": "🐞 Fixed: Minor UI fixes here and there",
-                    "type": 1
+                    "title": "Fixed: Minor UI fixes here and there"
                 }
             ]
         },
@@ -549,64 +560,61 @@
             "releaseDate": "2022-09-03T00:00:00Z",
             "items": [
                 {
-                    "title": "🧩 Added: \"Allow Network Access\" setting (off by default)",
-                    "type": 1
+                    "title": "Added: \"Allow Network Access\" setting (off by default)"
                 },
                 {
-                    "title": "🧩 Added: In-app support for WebDAV sync (Nextcloud, Synology, etc) [thanks, everyone]",
-                    "type": 1
+                    "title": "Added: In-app support for WebDAV sync (Nextcloud, Synology, etc)",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🧩 Added: Support for USB YubiKeys on macOS (native MacCatalyst builds only, won't work in iPad emulation mode on Apple Silicon)",
-                    "type": 1
+                    "title": "Added: Support for USB YubiKeys on macOS (native MacCatalyst builds only, won't work in iPad emulation mode on Apple Silicon)",
+                    "os": "macos"
                 },
                 {
-                    "title": "🧩 Added: Ability to copy references to entry fields (tap the field to see the copy button) [thanks, u/RandomComputerFellow]",
-                    "type": 1
+                    "title": "Added: Ability to copy references to entry fields (tap the field to see the copy button)",
+                    "credits": "u/RandomComputerFellow"
                 },
                 {
-                    "title": "🛠 Improved: Added a button to delete custom entry fields [thanks, YJ]",
-                    "type": 1
+                    "title": "Improved: Added a button to delete custom entry fields",
+                    "credits": "YJ"
                 },
                 {
-                    "title": "🛠 Improved: Added a 48-hour database timeout [thanks, BM]",
-                    "type": 1
+                    "title": "Improved: Added a 48-hour database timeout",
+                    "credits": "BM"
                 },
                 {
-                    "title": "🛠 Improved: Display full Pro app name on the home screen",
-                    "type": 1
+                    "title": "Improved: Display full Pro app name on the home screen"
                 },
                 {
-                    "title": "🛠 Improved: Minor UI improvements focused on macOS",
-                    "type": 1
+                    "title": "Improved: Minor UI improvements focused on macOS",
+                    "os": "macos"
                 },
                 {
-                    "title": "🛠 Improved: Updated all translations",
-                    "type": 1
+                    "title": "Improved: Updated all translations"
                 },
                 {
-                    "title": "🐞 Fixed: On devices restored from a backup, DB loading froze at 60% [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: On devices restored from a backup, DB loading froze at 60%",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: \"Save as\" on sync conflict could overwrite the original",
-                    "type": 1
+                    "title": "Fixed: \"Save as\" on sync conflict could overwrite the original"
                 },
                 {
-                    "title": "🐞 Fixed: macOS: Too frequent Touch ID popups. Now one needs to click a 'Touch ID unlock' button first [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: Too frequent Touch ID popups. Now one needs to click a 'Touch ID unlock' button first",
+                    "credits": "everyone",
+                    "os": "macos"
                 },
                 {
-                    "title": "🐞 Fixed: Reset keychain when memory protection key disappears",
-                    "type": 1
+                    "title": "Fixed: Reset keychain when memory protection key disappears"
                 },
                 {
-                    "title": "🐞 Fixed: macOS: Erase app settings after reinstallation [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: Erase app settings after reinstallation",
+                    "credits": "everyone",
+                    "os": "macos"
                 },
                 {
-                    "title": "🐞 Fixed: Loading DBs with several nameless attachments [thanks, u/mindhaq]",
-                    "type": 1
+                    "title": "Fixed: Loading DBs with several nameless attachments",
+                    "credits": "u/mindhaq"
                 }
             ]
         },
@@ -615,40 +623,34 @@
             "releaseDate": "2022-06-22T00:00:00Z",
             "items": [
                 {
-                    "title": "🛠 Changed: Attachment previews are no longer restricted in free version",
-                    "type": 1
+                    "title": "Changed: Attachment previews are no longer restricted in free version"
                 },
                 {
-                    "title": "🛠 Changed: Database timeout 'Never' is shown as a free option (worked as such even before)",
-                    "type": 1
+                    "title": "Changed: Database timeout 'Never' is shown as a free option (worked as such even before)"
                 },
                 {
-                    "title": "🛠 Changed: Instead, the app will suggest making a donation once in a while",
-                    "type": 1
+                    "title": "Changed: Instead, the app will suggest making a donation once in a while"
                 },
                 {
-                    "title": "🛠 Changed: Password generator: fixed sets can be deactivated instead of excluded [thanks, Fabian]",
-                    "type": 1
+                    "title": "Changed: Password generator: fixed sets can be deactivated instead of excluded",
+                    "credits": "Fabian"
                 },
                 {
-                    "title": "🛠 Improved: AutoFill: context menu of the Cancel button will show the diagnostic log",
-                    "type": 1
+                    "title": "Improved: AutoFill: context menu of the Cancel button will show the diagnostic log"
                 },
                 {
-                    "title": "🛠 Improved: Updated all translations",
-                    "type": 1
+                    "title": "Improved: Updated all translations"
                 },
                 {
-                    "title": "🐞 Fixed: macOS: sensitive data will not show up in Keychain Access app anymore",
-                    "type": 1
+                    "title": "Fixed: Sensitive data will not show up in Keychain Access app anymore",
+                    "os": "macos"
                 },
                 {
-                    "title": "🐞 Fixed: Extended diagnostics for AutoFill not showing local DBs [thanks, Dennis]",
-                    "type": 1
+                    "title": "Fixed: Extended diagnostics for AutoFill not showing local DBs",
+                    "credits": "Dennis"
                 },
                 {
-                    "title": "🐞 Fixed: Minor UI fixes here and there",
-                    "type": 1
+                    "title": "Fixed: Minor UI fixes here and there"
                 }
             ]
         },
@@ -657,24 +659,25 @@
             "releaseDate": "2022-06-02T00:00:00Z",
             "items": [
                 {
-                    "title": "🧩 Added: New password/passphrase generator [thanks, everyone]",
-                    "type": 1
+                    "title": "Added: New password/passphrase generator",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🧩 Added: Random generator is now available in context menus in entry/group editor (#155) [thanks, everyone]",
-                    "type": 1
+                    "title": "Added: Random generator is now available in context menus in entry/group editor",
+                    "github": "#155",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🧩 Added: Quick popup with random passwords in database picker (#155) [thanks, everyone]",
-                    "type": 1
+                    "title": "Added: Quick popup with random passwords in database picker",
+                    "github": "#155",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🛠 Improved: Updated all translations ",
-                    "type": 1
+                    "title": "Improved: Updated all translations"
                 },
                 {
-                    "title": "🐞 Fixed: AutoFill could not access some local files (regression in 1.32.110) [thanks, Chris]",
-                    "type": 1
+                    "title": "Fixed: AutoFill could not access some local files (regression in 1.32.110)",
+                    "credits": "Chris"
                 },
             ]
         },
@@ -683,32 +686,29 @@
             "releaseDate": "2022-05-25T00:00:00Z",
             "items": [
                 {
-                    "title": "🛠 Improved: Local files should load quickly, no matter what",
-                    "type": 1
+                    "title": "Improved: Local files should load quickly, no matter what"
                 },
                 {
-                    "title": "🛠 Improved: Updated all translations",
-                    "type": 1
+                    "title": "Improved: Updated all translations"
                 },
                 {
-                    "title": "🐞 Fixed: DB opening stuck at \"Downloading the database… 0%\" [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: DB opening stuck at \"Downloading the database… 0%\"",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: It was impossible to open local files with an unresponsive SMB share in the system (fixes #109) [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: It was impossible to open local files with an unresponsive SMB share in the system",
+                    "github": "Fixes #109",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Parsing misformatted kdbx3/4 timestamps [thanks Jim]",
-                    "type": 1
+                    "title": "Fixed: Parsing misformatted kdbx3/4 timestamps",
+                    "credits": "Jim"
                 },
                 {
-                    "title": "🐞 Fixed: Reporting missing/unresponsive file providers on iOS 15+",
-                    "type": 1
+                    "title": "Fixed: Reporting missing/unresponsive file providers on iOS 15+"
                 },
                 {
-                    "title": "🐞 Fixed: Minor UI fixes here and there",
-                    "type": 1
+                    "title": "Fixed: Minor UI fixes here and there"
                 },
             ]
         },
@@ -717,12 +717,12 @@
             "releaseDate": "2022-05-03T00:00:00Z",
             "items": [
                 {
-                    "title": "🐞 Fixed: Could not export or delete local files (regression in 1.31.105) [thanks,everyone]",
-                    "type": 1
+                    "title": "Fixed: Could not export or delete local files (regression in 1.31.105)",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: macOS: Replaced DB 'Export' menu with 'Reveal in Finder'",
-                    "type": 1
+                    "title": "Fixed: Replaced DB 'Export' menu with 'Reveal in Finder'",
+                    "os": "macos"
                 },
             ]
         },
@@ -731,96 +731,101 @@
             "releaseDate": "2022-04-30T00:00:00Z",
             "items": [
                 {
-                    "title": "🛠 Improved: Memory consumption when reading/writing files",
-                    "type": 1
+                    "title": "Improved: Memory consumption when reading/writing files"
                 },
                 {
-                    "title": "🛠 Improved: Made `TOTP Settings` field optional (closes #225) [thanks, plus-or-minus]",
-                    "type": 1
+                    "title": "Improved: Made `TOTP Settings` field optional",
+                    "github": "Closes #225",
+                    "credits": "plus-or-minus"
                 },
                 {
-                    "title": "🛠 Improved: Hidden redundant OTP config fields from entry viewer (closes #218) [thanks, plus-or-minus]",
-                    "type": 1
+                    "title": "Improved: Hidden redundant OTP config fields from entry viewer",
+                    "github": "Closes #218",
+                    "credits": "plus-or-minus"
                 },
                 {
-                    "title": "🛠 Improved: AutoFill will compare port numbers when comparing URLs [thanks, Z.X.]",
-                    "type": 1
+                    "title": "Improved: AutoFill will compare port numbers when comparing URLs",
+                    "credits": "Z.X."
                 },
                 {
-                    "title": "🛠 Improved: Wording of some UI elements (#219, #228) [thanks, plus-or-minus and Taxyovio]",
-                    "type": 1
+                    "title": "Improved: Wording of some UI elements",
+                    "github": "#219, #228",
+                    "credits": "plus-or-minus and Taxyovio"
                 },
                 {
-                    "title": "🛠 Changed: Disabled spelling autocorrection in entry editor (closes #223) [thanks, everyone]",
-                    "type": 1
+                    "title": "Changed: Disabled spelling autocorrection in entry editor",
+                    "github": "Closes #223",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🛠 Improved: Updated translations [thanks, everyone]",
-                    "type": 1
+                    "title": "Improved: Updated translations",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Crash on iPod Touch devices running iOS 15 (fixes #215)",
-                    "type": 1
+                    "title": "Fixed: Crash on iPod Touch devices running iOS 15",
+                    "github": "Fixes #215",
                 },
                 {
-                    "title": "🐞 Fixed: AutoFill crash when large DBs present in the app [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: AutoFill crash when large DBs present in the app",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: macOS: double Touch ID prompt for Quick AutoFill [thanks, Ville]",
-                    "type": 1
+                    "title": "Fixed: Double Touch ID prompt for Quick AutoFill",
+                    "credits": "Ville",
+                    "os": "macos"
                 },
                 {
-                    "title": "🐞 Fixed: Entries hidden from AutoFill could still appear there (related #100) [thanks, u/567567]",
-                    "type": 1
+                    "title": "Fixed: Entries hidden from AutoFill could still appear there",
+                    "github": "#100",
+                    "credits": "u/567567"
                 },
                 {
-                    "title": "🐞 Fixed: Keyboard focus on app launch [thanks, Nelson and raja]",
-                    "type": 1
+                    "title": "Fixed: Keyboard focus on app launch",
+                    "credits": "Nelson and raja"
                 },
                 {
-                    "title": "🐞 Fixed: Loading cached files when there is an unreachable SMB server in the system (related #109)",
-                    "type": 1
+                    "title": "Fixed: Loading cached files when there is an unreachable SMB server in the system",
+                    "github": "#109"
                 },
                 {
-                    "title": "🐞 Fixed: Some icons did not immediately refresh when changing the icon set [thanks, Kamil]",
-                    "type": 1
+                    "title": "Fixed: Some icons did not immediately refresh when changing the icon set",
+                    "credits": "Kamil"
                 },
                 {
-                    "title": "🐞 Fixed: File info sometimes did not refresh",
-                    "type": 1
+                    "title": "Fixed: File info sometimes did not refresh"
                 },
                 {
-                    "title": "🐞 Fixed: Some errors appeared as codes instead of human-readable messages [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: Some errors appeared as codes instead of human-readable messages",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Cleaned up redundant menu items on macOS",
-                    "type": 1
+                    "title": "Fixed: Cleaned up redundant menu items on macOS",
+                    "os": "macos"
                 },
                 {
-                    "title": "🐞 Fixed: Readability of last characters in expanded fields [thanks, Sachin]",
-                    "type": 1
+                    "title": "Fixed: Readability of last characters in expanded fields",
+                    "credits": "Sachin"
                 },
                 {
-                    "title": "🐞 Fixed: Parsing of MasterKeyChangeForceOnce tag in KDBX databases [thanks, M.H.]",
-                    "type": 1
+                    "title": "Fixed: Parsing of MasterKeyChangeForceOnce tag in KDBX databases",
+                    "credits": "M.H."
                 },
                 {
-                    "title": "🐞 Fixed: Closing macOS AutoFill dialog with Escape key [thanks, u/TCIHL]",
-                    "type": 1
+                    "title": "Fixed: Closing macOS AutoFill dialog with Escape key",
+                    "credits": "u/TCIHL",
+                    "os": "macos"
                 },
                 {
-                    "title": "🐞 Fixed: Parsing of MasterKeyChangeForceOnce tag in KDBX databases [thanks, M.H.]",
-                    "type": 1
+                    "title": "Fixed: Parsing of MasterKeyChangeForceOnce tag in KDBX databases",
+                    "credits": "M.H."
                 },
                 {
-                    "title": "🐞 Fixed: removed obsolete error description for read-only OneDrive [thanks, Thomas]",
-                    "type": 1
+                    "title": "Fixed: Removed obsolete error description for read-only OneDrive",
+                    "credits": "Thomas"
                 },
                 {
-                    "title": "🐞 Fixed: Minor UI improvements here and there [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: Minor UI improvements here and there",
+                    "credits": "everyone"
                 },
             ]
         },
@@ -829,76 +834,76 @@
             "releaseDate": "2021-12-25T00:00:00Z",
             "items": [
                 {
-                    "title": "🧩 Added: Offline caching: when database is unreachable, load latest local copy (#135, #17)",
-                    "type": 1
+                    "title": "Added: Offline caching: when database is unreachable, load latest local copy",
+                    "github": "#135, #17"
                 },
                 {
-                    "title": "🧩 Added: Customizable download timeout for each database",
-                    "type": 1
+                    "title": "Added: Customizable download timeout for each database"
                 },
                 {
-                    "title": "🛠 Improved: Default download timeout reduced from 15 to 10 seconds",
-                    "type": 1
+                    "title": "Improved: Default download timeout reduced from 15 to 10 seconds"
                 },
                 {
-                    "title": "🛠 Improved: Easier copying from a newly created entry [thanks, u/uschrisf and u/Vakke]",
-                    "type": 1
+                    "title": "Improved: Easier copying from a newly created entry",
+                    "credits": "u/uschrisf and u/Vakke"
                 },
                 {
-                    "title": "🛠 Improved: macOS: show the actual file path in File Info dialog",
-                    "type": 1
+                    "title": "Improved: Show the actual file path in File Info dialog",
+                    "os": "macos"
                 },
                 {
-                    "title": "🐞 Fixed: macOS: Quick AutoFill now also works on macOS (fixes #206)",
-                    "type": 1
+                    "title": "Fixed: Quick AutoFill now also works on macOS",
+                    "github": "Fixes #206",
+                    "os": "macos"
                 },
                 {
-                    "title": "🐞 Fixed: Empty window on iPad when launching in Split View mode [thanks, G]",
-                    "type": 1
+                    "title": "Fixed: Empty window on iPad when launching in Split View mode",
+                    "credits": "G"
                 },
                 {
-                    "title": "🐞 Fixed: Passwords were not colored in some cases [thanks, Jan]",
-                    "type": 1
+                    "title": "Fixed: Passwords were not colored in some cases",
+                    "credits": "Jan"
                 },
                 {
-                    "title": "🐞 Fixed: AutoFill could use a wrong directory after freemium-to-Pro upgrade [thanks, ARK]",
-                    "type": 1
+                    "title": "Fixed: AutoFill could use a wrong directory after freemium-to-Pro upgrade",
+                    "credits": "ARK"
                 },
                 {
-                    "title": "🐞 Fixed: AutoFill could lock up the database when running low on memory [thanks, Tim]",
-                    "type": 1
+                    "title": "Fixed: AutoFill could lock up the database when running low on memory",
+                    "credits": "Tim"
                 },
                 {
-                    "title": "🐞 Fixed: Deserialization of pre-1.28 database settings",
-                    "type": 1
+                    "title": "Fixed: Deserialization of pre-1.28 database settings"
                 },
                 {
-                    "title": "🐞 Fixed: macOS: `Remove Master Keys` could miss some files in AutoFill",
-                    "type": 1
+                    "title": "Fixed: `Remove Master Keys` could miss some files in AutoFill",
+                    "os": "macos"
                 },
                 {
-                    "title": "🐞 Fixed: macOS: Some texts appeared truncated",
-                    "type": 1
+                    "title": "Fixed: Some texts appeared truncated",
+                    "os": "macos"
                 },
                 {
-                    "title": "🐞 Fixed: New attachments did not export properly via `Save As` menu (fixes #211) [thanks, Andreas]",
-                    "type": 1
+                    "title": "Fixed: New attachments did not export properly via `Save As` menu",
+                    "github": "Fixes #211",
+                    "credits": "Andreas"
                 },
                 {
-                    "title": "🐞 Fixed: AutoFill failed to show biometric unlock (regression in 1.28.97) [thanks, Ville]",
-                    "type": 1
+                    "title": "Fixed: AutoFill failed to show biometric unlock (regression in 1.28.97)",
+                    "credits": "Ville"
                 },
                 {
-                    "title": "🐞 Fixed: Buttons in passcode input screen could be covered by keyboard [thanks, Ville]",
-                    "type": 1
+                    "title": "Fixed: Buttons in passcode input screen could be covered by keyboard",
+                    "credits": "Ville"
                 },
                 {
-                    "title": "🐞 Fixed: AutoFill sometimes mishandled several perfect matches (fixes #212) [thanks, loeffelpan]",
-                    "type": 1
+                    "title": "Fixed: AutoFill sometimes mishandled several perfect matches",
+                    "github": "Fixes #212",
+                    "credits": "loeffelpan"
                 },
                 {
-                    "title": "🐞 Fixed: AutoFill sometimes opened an empty window [thanks, Nico]",
-                    "type": 1
+                    "title": "Fixed: AutoFill sometimes opened an empty window",
+                    "credits": "Nico"
                 }
             ]
         },
@@ -907,32 +912,31 @@
             "releaseDate": "2021-11-29T00:00:00Z",
             "items": [
                 {
-                    "title": "🛠 Improved: New/edited entry gets highlighted in the group (now also on iPhones) [thanks, u/uschrisf]",
-                    "type": 1
+                    "title": "Improved: New/edited entry gets highlighted in the group (now also on iPhones)",
+                    "credits": "u/uschrisf"
                 },
                 {
-                    "title": "🛠 Improved: Database context menu is duplicated on the `...` button [thanks, Igor]",
-                    "type": 1
+                    "title": "Improved: Database context menu is duplicated on the `...` button",
+                    "credits": "Igor"
                 },
                 {
-                    "title": "🛠 Improved: Updated NL/PT/SK translations [thanks, everyone]",
-                    "type": 1
+                    "title": "Improved: Updated NL/PT/SK translations",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Localization was mostly broken (regression in 1.28.99) [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: Localization was mostly broken (regression in 1.28.99)",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Quick AutoFill setup prompt appeared all the time [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: Quick AutoFill setup prompt appeared all the time",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Pressing Cancel while changing the app protection passcode could erase the passcode [thanks, Kevin]",
-                    "type": 1
+                    "title": "Fixed: Pressing Cancel while changing the app protection passcode could erase the passcode",
+                    "credits": "Kevin"
                 },
                 {
-                    "title": "🐞 Fixed: Text input mode for username and URL fields",
-                    "type": 1
+                    "title": "Fixed: Text input mode for username and URL fields"
                 }
             ]
         },
@@ -941,84 +945,75 @@
             "releaseDate": "2021-11-23T00:00:00Z",
             "items": [
                 {
-                    "title": "This version requires iOS 14 or newer",
-                    "type": 1
+                    "title": "This version requires iOS 14 or newer"
                 },
                 {
-                    "title": "🧩 Added: Quick AutoFill - fill out login forms with one tap, without even opening AutoFill (closes #50)",
+                    "title": "Added: Quick AutoFill - fill out login forms with one tap, without even opening AutoFill",
+                    "github": "Closes #50",
                     "type": 2
                 },
                 {
-                    "title": "🧩 Added: Can manually configure any database as read-only (related #64)",
-                    "type": 1
+                    "title": "Added: Can manually configure any database as read-only",
+                    "github": "#64"
                 },
                 {
-                    "title": "🛠 Improved: Sensitive data is encrypted in process memory using Secure Enclave",
-                    "type": 1
+                    "title": "Improved: Sensitive data is encrypted in process memory using Secure Enclave"
                 },
                 {
-                    "title": "🛠 Improved: All app files are additionally encrypted on disk and cannot be accessed while device is locked (NSFileProtectionComplete). Reinstall the app to activate this. (closes #141)",
-                    "type": 1
+                    "title": "Improved: All app files are additionally encrypted on disk and cannot be accessed while device is locked (NSFileProtectionComplete). Reinstall the app to activate this.",
+                    "github": "Closes #141",
                 },
                 {
-                    "title": "🛠 Improved: More secure keychain-based biometric authentication",
-                    "type": 1
+                    "title": "Improved: More secure keychain-based biometric authentication"
                 },
                 {
-                    "title": "🛠 Improved: Require passcode unlock after biometric data was modified",
-                    "type": 1
+                    "title": "Improved: Require passcode unlock after biometric data was modified"
                 },
                 {
-                    "title": "🛠 Improved: Keychain-stored data is restricted to the current device",
-                    "type": 1
+                    "title": "Improved: Keychain-stored data is restricted to the current device"
                 },
                 {
-                    "title": "🛠 Improved: Improved highlight of focused text fields on macOS",
-                    "type": 1
+                    "title": "Improved: Improved highlight of focused text fields on macOS",
+                    "os": "macos"
                 },
                 {
-                    "title": "🛠 Improved: AutoFill setup instructions also available for macOS",
-                    "type": 1
+                    "title": "Improved: AutoFill setup instructions also available for macOS",
+                    "os": "macos"
                 },
                 {
-                    "title": "🛠 Improved: UI improvements here and there",
-                    "type": 1
+                    "title": "Improved: UI improvements here and there"
                 },
                 {
-                    "title": "🛠 Improved: Updated translations",
-                    "type": 1
+                    "title": "Improved: Updated translations"
                 },
                 {
-                    "title": "🐞 Fixed: AutoFill for ccSLD domains like .co.nz or .co.jp (closes #201) [thanks, Adam and waynezhang]",
-                    "type": 1
+                    "title": "Fixed: AutoFill for ccSLD domains like .co.nz or .co.jp",
+                    "github": "Closes #201",
+                    "credits": "Adam and waynezhang"
                 },
                 {
-                    "title": "🐞 Fixed: \"Clear master keys on timeout\" option was treated as always on",
-                    "type": 1
+                    "title": "Fixed: \"Clear master keys on timeout\" option was treated as always on"
                 },
                 {
-                    "title": "🐞 Fixed: search field abruptly disappeared in some cases [thanks, Andrew]",
-                    "type": 1
+                    "title": "Fixed: Search field abruptly disappeared in some cases",
+                    "credits": "Andrew"
                 },
                 {
-                    "title": "🐞 Fixed: Show diagnostics on repeated Cancel taps [thanks, Anders]",
-                    "type": 1
+                    "title": "Fixed: Show diagnostics on repeated Cancel taps",
+                    "credits": "Anders"
                 },
                 {
-                    "title": "🐞 Fixed: Occasional crashes caused by database timeout on launch",
-                    "type": 1
+                    "title": "Fixed: Occasional crashes caused by database timeout on launch"
                 },
                 {
-                    "title": "🐞 Fixed: possible memory leak when tapping \"Switch database\" repeatedly",
-                    "type": 1
+                    "title": "Fixed: Possible memory leak when tapping \"Switch database\" repeatedly"
                 },
                 {
-                    "title": "🐞 Fixed: macOS: open/create database menu did not work sometimes",
-                    "type": 1
+                    "title": "Fixed: Open/create database menu did not work sometimes",
+                    "os": "macos"
                 },
                 {
-                    "title": "🐞 Fixed: Annoying autocorrection in URL fields",
-                    "type": 1
+                    "title": "Fixed: Annoying autocorrection in URL fields"
                 }
             ]
         },
@@ -1027,56 +1022,52 @@
             "releaseDate": "2021-10-08T00:00:00Z",
             "items": [
                 {
-                    "title": "🧩 Added: Possibility to copy/move data to other databases (closes #102) [thanks, everyone]",
+                    "title": "Added: Possibility to copy/move data to other databases",
+                    "github": "Closes #102",
+                    "credits": "everyone",
                     "type": 2
                 },
                 {
-                    "title": "🧩 Added: Ukrainian translation [thanks, Max]",
-                    "type": 1
+                    "title": "Added: Ukrainian translation",
+                    "credits": "Max"
                 },
                 {
-                    "title": "🛠 Improved: Show file info in Sync Conflict alert",
-                    "type": 1
+                    "title": "Improved: Show file info in Sync Conflict alert"
                 },
                 {
-                    "title": "🛠 Improved: Optionally accept input from AutoFill providers",
-                    "type": 1
+                    "title": "Improved: Optionally accept input from AutoFill providers"
                 },
                 {
-                    "title": "🛠 Improved: Updated all translations",
-                    "type": 1
+                    "title": "Improved: Updated all translations"
                 },
                 {
-                    "title": "🐞 Fixed: Timestamped backups were zero-filled (regression in 1.25.92)",
-                    "type": 1
+                    "title": "Fixed: Timestamped backups were zero-filled (regression in 1.25.92)"
                 },
                 {
-                    "title": "🐞 Fixed: Modulo bias in password generator (fixes #195) [thanks, Ben]",
-                    "type": 1
+                    "title": "Fixed: Modulo bias in password generator",
+                    "github": "Fixes #195",
+                    "credits": "Ben"
                 },
                 {
-                    "title": "🐞 Fixed: New attachments to kdbx3 files were unreadable in KeePass [thanks, Adam]",
-                    "type": 1
+                    "title": "Fixed: New attachments to kdbx3 files were unreadable in KeePass",
+                    "credits": "Adam"
                 },
                 {
-                    "title": "🐞 Fixed: It was possible to skip premium upgrade notice (regression in 1.25.93)",
-                    "type": 1
+                    "title": "Fixed: It was possible to skip premium upgrade notice (regression in 1.25.93)"
                 },
                 {
-                    "title": "🐞 Fixed: Latest in-app backup was not updated when saving a conflicted DB",
-                    "type": 1
+                    "title": "Fixed: Latest in-app backup was not updated when saving a conflicted DB"
                 },
                 {
-                    "title": "🐞 Fixed: Auto-unlock worked only with \"Auto-open the Previous Database\" enabled [thanks, Tom]",
-                    "type": 1
+                    "title": "Fixed: Auto-unlock worked only with \"Auto-open the Previous Database\" enabled",
+                    "credits": "Tom"
                 },
                 {
-                    "title": "🐞 Fixed: Launch animation glitch [thanks, G]",
-                    "type": 1
+                    "title": "Fixed: Launch animation glitch",
+                    "credits": "G"
                 },
                 {
-                    "title": "🐞 Fixed: Minor UI fixes here and there",
-                    "type": 1
+                    "title": "Fixed: Minor UI fixes here and there"
                 }
             ]
         },
@@ -1085,24 +1076,25 @@
             "releaseDate": "2021-09-06T00:00:00Z",
             "items": [
                 {
-                    "title": "🛠 Improved: Show OTP codes in entry list (closes #8) [thanks, everyone]",
-                    "type": 1
+                    "title": "Improved: Show OTP codes in entry list",
+                    "github": "Closes #8",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🛠 Improved: Mark entries with attachments [thanks, David]",
-                    "type": 1
+                    "title": "Improved: Mark entries with attachments",
+                    "credits": "David"
                 },
                 {
-                    "title": "🐞 Fixed: AutoFill could show Touch ID prompt repeatedly [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: AutoFill could show Touch ID prompt repeatedly",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Crash when adding attachments [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: Crash when adding attachments",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Insert/delete animation of custom fields [thanks, G]",
-                    "type": 1
+                    "title": "Fixed: Insert/delete animation of custom fields",
+                    "credits": "G"
                 }
             ]
         },
@@ -1111,176 +1103,162 @@
             "releaseDate": "2021-08-27T00:00:00Z",
             "items": [
                 {
-                    "title": "🧩 Added: Detect database conflicts on save, with \"Overwrite\" and \"Save as\" options (\"Merge\" is coming later)",
-                    "type": 1
+                    "title": "Added: Detect database conflicts on save, with \"Overwrite\" and \"Save as\" options (\"Merge\" is coming later)"
                 },
                 {
-                    "title": "🧩 Added: Entry history management (closes #56) [thanks, Joahna V, Ivo and A13BioniciOS6]",
-                    "type": 1
+                    "title": "Added: Entry history management",
+                    "github": "Closes #56",
+                    "credits": "Joahna V, Ivo and A13BioniciOS6"
                 },
                 {
-                    "title": "🧩 Added: Possibility to purchase premium version without subscription \"like a CD box\"",
-                    "type": 1
+                    "title": "Added: Possibility to purchase premium version without subscription \"like a CD box\""
                 },
                 {
-                    "title": "🧩 Added: Possiblity to attach pictures from Photo Library or camera (closes #162) [thanks, everyone]",
-                    "type": 1
+                    "title": "Added: Possiblity to attach pictures from Photo Library or camera",
+                    "github": "Closes #162",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🧩 Added: View entry's attachments as a gallery",
-                    "type": 1
+                    "title": "Added: View entry's attachments as a gallery"
                 },
                 {
-                    "title": "🧩 Added: Possibility to save attachment files (in addition to view/export) (fixes #189) [thanks, Vitaly]",
-                    "type": 1
+                    "title": "Added: Possibility to save attachment files (in addition to view/export)",
+                    "github": "Fixes #189",
+                    "credits": "Vitaly"
                 },
                 {
-                    "title": "🧩 Added: Donations! Anyone can support the development now",
-                    "type": 1
+                    "title": "Added: Donations! Anyone can support the development now"
                 },
                 {
-                    "title": "🛠 Improved: Massive internal changes to simplify future development",
-                    "type": 1
+                    "title": "Improved: Massive internal changes to simplify future development"
                 },
                 {
-                    "title": "🛠 Improved: AutoFill and the main app use the same file list (iOS 14+). Finally! (#1, #122, #125)",
-                    "type": 1
+                    "title": "Improved: AutoFill and the main app use the same file list (iOS 14+). Finally!",
+                    "github": "#1, #122, #125"
                 },
                 {
-                    "title": "🛠 Improved: Integration with macOS: UI, hotkeys, navigation (for example: Cmd-F to start search, Esc to return to previous view) [thanks, Vitaly]",
-                    "type": 1
+                    "title": "Improved: Integration with macOS: UI, hotkeys, navigation (for example: Cmd-F to start search, Esc to return to previous view)",
+                    "credits": "Vitaly",
+                    "os": "macos"
                 },
                 {
-                    "title": "🛠 Changed: As an experiment, won't reduce DB timeout in free version under heavy use",
-                    "type": 1
+                    "title": "Changed: As an experiment, won't reduce DB timeout in free version under heavy use"
                 },
                 {
-                    "title": "🛠 Improved: Added a separate field for hardware keys; no more confusion with key files",
-                    "type": 1
+                    "title": "Improved: Added a separate field for hardware keys; no more confusion with key files"
                 },
                 {
-                    "title": "🛠 Improved: Entry expiration date can be edited",
-                    "type": 1
+                    "title": "Improved: Entry expiration date can be edited"
                 },
                 {
-                    "title": "🛠 Improved: Show \"What's new\" section also in KeePassium Pro",
-                    "type": 1
+                    "title": "Improved: Show \"What's new\" section also in KeePassium Pro"
                 },
                 {
-                    "title": "🛠 Improved: AutoFill will import key files if possible, instead of simply referencing them (iOS 14+) (#142)",
-                    "type": 1
+                    "title": "Improved: AutoFill will import key files if possible, instead of simply referencing them (iOS 14+)",
+                    "github": "#142"
                 },
                 {
-                    "title": "🛠 Improved: You can also select a key file for one-time use, without adding it to the list",
-                    "type": 1
+                    "title": "Improved: You can also select a key file for one-time use, without adding it to the list"
                 },
                 {
-                    "title": "🛠 Improved: Disabled editing of internal backup databases (they were always intended as read-only)",
-                    "type": 1
+                    "title": "Improved: Disabled editing of internal backup databases (they were always intended as read-only)"
                 },
                 {
-                    "title": "🛠 Improved: Search bar is visible by default (#165, #157) [thanks, everyone]",
-                    "type": 1
+                    "title": "Improved: Search bar is visible by default",
+                    "github": "#165, #157",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🛠 Improved: Can select and delete attachments in bulk",
-                    "type": 1
+                    "title": "Improved: Can select and delete attachments in bulk"
                 },
                 {
-                    "title": "🛠 Improved: Can re-add a broken database directly from the error message",
-                    "type": 1
+                    "title": "Improved: Can re-add a broken database directly from the error message"
                 },
                 {
-                    "title": "🛠 Improved: Showing database errors in a popup, better visibility on small screens",
-                    "type": 1
+                    "title": "Improved: Showing database errors in a popup, better visibility on small screens"
                 },
                 {
-                    "title": "🛠 Improved: Show database loading warnings also in AutoFill",
-                    "type": 1
+                    "title": "Improved: Show database loading warnings also in AutoFill"
                 },
                 {
-                    "title": "🛠 Improved: Added detection of Mega.nz and Boxcryptor (2021) file provider",
-                    "type": 1
+                    "title": "Improved: Added detection of Mega.nz and Boxcryptor (2021) file provider"
                 },
                 {
-                    "title": "🛠 Improved: Disabled Entry Viewer page swiping/animation on macOS",
-                    "type": 1
+                    "title": "Improved: Disabled Entry Viewer page swiping/animation on macOS",
+                    "os": "macos"
                 },
                 {
-                    "title": "🛠 Improved: Added links to online help for most common issues",
-                    "type": 1
+                    "title": "Improved: Added links to online help for most common issues"
                 },
                 {
-                    "title": "🛠 Improved: More informative licensing status display",
-                    "type": 1
+                    "title": "Improved: More informative licensing status display"
                 },
                 {
-                    "title": "🛠 Improved: Import workflow from other apps",
-                    "type": 1
+                    "title": "Improved: Import workflow from other apps"
                 },
                 {
-                    "title": "🛠 Improved: Updated all translations [thanks, everyone]",
-                    "type": 1
+                    "title": "Improved: Updated all translations",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Prevent iCloud Keychain AutoFill prompts for password fields (caused a lot of confusion) (related #44)",
-                    "type": 1
+                    "title": "Fixed: Prevent iCloud Keychain AutoFill prompts for password fields (caused a lot of confusion)",
+                    "github": "#44"
                 },
                 {
-                    "title": "🐞 Fixed: Fixed keyboard occasionally missing in AutoFill. 4th attempt, should do the trick (fixes #133)",
-                    "type": 1
+                    "title": "Fixed: Fixed keyboard occasionally missing in AutoFill. 4th attempt, should do the trick.",
+                    "github": "Fixes #133",
                 },
                 {
-                    "title": "🐞 Fixed: Entry attachment preview on macOS (closes #174) [thanks, layandreas]",
-                    "type": 1
+                    "title": "Fixed: Entry attachment preview on macOS",
+                    "github": "Closes #174",
+                    "credits": "layandreas",
+                    "os": "macos"
                 },
                 {
-                    "title": "🐞 Fixed: Help article about Perpetual Fallback license was misformatted",
-                    "type": 1
+                    "title": "Fixed: Help article about Perpetual Fallback license was misformatted"
                 },
                 {
-                    "title": "🐞 Fixed: Opening the Premium Upgrade screen from AutoFill",
-                    "type": 1
+                    "title": "Fixed: Opening the Premium Upgrade screen from AutoFill"
                 },
                 {
-                    "title": "🐞 Fixed: Double Face ID scan after a failed attempt (fixes #158) [thanks, Fotis]",
-                    "type": 1
+                    "title": "Fixed: Double Face ID scan after a failed attempt",
+                    "github": "Fixes #158",
+                    "credits": "Fotis"
                 },
                 {
-                    "title": "🐞 Fixed: Several UI improvements throughout",
-                    "type": 1
+                    "title": "Fixed: Several UI improvements throughout"
                 },
                 {
-                    "title": "🐞 Fixed: Hide Custom App Icon setting if not supported by the system [thanks, Andreas]",
-                    "type": 1
+                    "title": "Fixed: Hide Custom App Icon setting if not supported by the system",
+                    "credits": "Andreas"
                 },
                 {
-                    "title": "🐞 Fixed: Automatically trim whitespaces in OTP config field",
-                    "type": 1
+                    "title": "Fixed: Automatically trim whitespaces in OTP config field"
                 },
                 {
-                    "title": "🐞 Fixed: It was impossible to switch entry/group from a custom to (the current) standard icon",
-                    "type": 1
+                    "title": "Fixed: It was impossible to switch entry/group from a custom to (the current) standard icon"
                 },
                 {
-                    "title": "🐞 Fixed: Subscription remained active after a cancelled trial [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: Subscription remained active after a cancelled trial",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Large text did not display correctly in AutoFill [thanks, Peter]",
-                    "type": 1
+                    "title": "Fixed: Large text did not display correctly in AutoFill",
+                    "credits": "Peter"
                 },
                 {
-                    "title": "🐞 Fixed: Soft-enforce single-DB limit in free version (#52)",
-                    "type": 1
+                    "title": "Fixed: Soft-enforce single-DB limit in free version",
+                    "github": "#52"
                 },
                 {
-                    "title": "🐞 Fixed: macOS: Enable premium features when running in beta testing mode [thanks, u/remraf_1]",
-                    "type": 1
+                    "title": "Fixed: Enable premium features when running in beta testing mode",
+                    "credits": "u/remraf_1",
+                    "os": "macos"
                 },
                 {
-                    "title": "🐞 Fixed: Automatic search did not work in AutoFill (closes #176)  [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: Automatic search did not work in AutoFill",
+                    "github": "Closes #176",
+                    "credits": "everyone"
                 }
             ]
         },
@@ -1289,60 +1267,57 @@
             "releaseDate": "2021-05-06T00:00:00Z",
             "items": [
                 {
-                    "title": "🧩 Added: Possibility to add and select custom icons for groups and entries (closes #84) [thanks, Igor]",
-                    "type": 1
+                    "title": "Added: Possibility to add and select custom icons for groups and entries",
+                    "github": "Closes #84",
+                    "credits": "Igor"
                 },
                 {
-                    "title": "🧩 Added: Support for KDBX 4.1 format [thanks, Dominik]",
-                    "type": 1
+                    "title": "Added: Support for KDBX 4.1 format",
+                    "credits": "Dominik"
                 },
                 {
-                    "title": "🧩 Added: Korean translation [thanks, somni]",
-                    "type": 1
+                    "title": "Added: Korean translation",
+                    "credits": "somni"
                 },
                 {
-                    "title": "🧩 Added: Slovak translation [thanks, onegin1]",
-                    "type": 1
+                    "title": "Added: Slovak translation",
+                    "credits": "onegin1"
                 },
                 {
-                    "title": "🧩 Added: Thai translation [thanks, poonnawit]",
-                    "type": 1
+                    "title": "Added: Thai translation",
+                    "credits": "poonnawit"
                 },
                 {
-                    "title": "🧩 Added: Turkish translation [thanks, ofmenlik]",
-                    "type": 1
+                    "title": "Added: Turkish translation",
+                    "credits": "ofmenlik"
                 },
                 {
-                    "title": "🛠 Improved: Visibility of black custom icons in dark mode [thanks, Jon]",
-                    "type": 1
+                    "title": "Improved: Visibility of black custom icons in dark mode",
+                    "credits": "Jon"
                 },
                 {
-                    "title": "🛠 Improved: Updated all translations [thanks, everyone]",
-                    "type": 1
+                    "title": "Improved: Updated all translations",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🛠 Improved: Tech debt: internal improvements to streamline further development",
-                    "type": 1
+                    "title": "Improved: Tech debt: internal improvements to streamline further development"
                 },
                 {
-                    "title": "🐞 Fixed: Editor changes were not detected in some rare cases",
-                    "type": 1
+                    "title": "Fixed: Editor changes were not detected in some rare cases"
                 },
                 {
-                    "title": "🐞 Fixed: In .kdb databases, deleted Backup group would get broken until DB reload",
-                    "type": 1
+                    "title": "Fixed: In .kdb databases, deleted Backup group would get broken until DB reload"
                 },
                 {
-                    "title": "🐞 Fixed: Updating associated key components only after successful DB save [thanks, Doug]",
-                    "type": 1
+                    "title": "Fixed: Updating associated key components only after successful DB save",
+                    "credits": "Doug"
                 },
                 {
-                    "title": "🐞 Fixed: \"Hide Passwords\" switch in Appearance settings did not work [thanks, Greg]",
-                    "type": 1
+                    "title": "Fixed: \"Hide Passwords\" switch in Appearance settings did not work",
+                    "credits": "Greg"
                 },
                 {
-                    "title": "🐞 Fixed: Minor UI issues",
-                    "type": 1
+                    "title": "Fixed: Minor UI issues"
                 }
             ]
         },
@@ -1351,16 +1326,15 @@
             "releaseDate": "2021-03-29T00:00:00Z",
             "items": [
                 {
-                    "title": "🛠 Refined: Added \"1 week\" database timeout option [thanks, as]",
-                    "type": 1
+                    "title": "Refined: Added \"1 week\" database timeout option",
+                    "credits": "as"
                 },
                 {
-                    "title": "🐞 Fixed: Processing of OTP parameters defined as otpauth URL [thanks, Marcel]",
-                    "type": 1
+                    "title": "Fixed: Processing of OTP parameters defined as otpauth URL",
+                    "credits": "Marcel"
                 },
                 {
-                    "title": "🐞 Fixed: VoiceOver will announce toast notifications",
-                    "type": 1
+                    "title": "Fixed: VoiceOver will announce toast notifications"
                 }
             ]
         },
@@ -1369,80 +1343,76 @@
             "releaseDate": "2021-03-19T00:00:00Z",
             "items": [
                 {
-                    "title": "🧩 Added: Setup one-time passwords (OTP) with QR codes [thanks, Igor]",
-                    "type": 1
+                    "title": "Added: Setup one-time passwords (OTP) with QR codes",
+                    "credits": "Igor"
                 },
                 {
-                    "title": "🧩 Added: Appearance settings page",
-                    "type": 1
+                    "title": "Added: Appearance settings page"
                 },
                 {
-                    "title": "🧩 Added: Icons from KeePass (Nuvola) and KeePassXC (Icons8)",
-                    "type": 1
+                    "title": "Added: Icons from KeePass (Nuvola) and KeePassXC (Icons8)"
                 },
                 {
-                    "title": "🧩 Added: \"Copy to Clipboard\" button to diagnostic viewer [thanks, Eugene]",
-                    "type": 1
+                    "title": "Added: \"Copy to Clipboard\" button to diagnostic viewer",
+                    "credits": "Eugene"
                 },
                 {
-                    "title": "🧩 Added: \"Change Passcode\" button in settings",
-                    "type": 1
+                    "title": "Added: \"Change Passcode\" button in settings"
                 },
                 {
-                    "title": "🛠 Refined: Better-looking context menus (iOS 13+)",
-                    "type": 1
+                    "title": "Refined: Better-looking context menus (iOS 13+)"
                 },
                 {
-                    "title": "🛠 Refined: Text size moved from zoom gesture to Appearance settings (fixes #132)",
-                    "type": 1
+                    "title": "Refined: Text size moved from zoom gesture to Appearance settings",
+                    "github": "Fixes #132",
                 },
                 {
-                    "title": "🛠 Refined: Better handling of database saving errors",
-                    "type": 1
+                    "title": "Refined: Better handling of database saving errors"
                 },
                 {
-                    "title": "🛠 Refined: Less important messages are shown as subtle popups (toasts)",
-                    "type": 1
+                    "title": "Refined: Less important messages are shown as subtle popups (toasts)"
                 },
                 {
-                    "title": "🛠 Refined: Pressing Enter in AutoFill search will select the first result",
-                    "type": 1
+                    "title": "Refined: Pressing Enter in AutoFill search will select the first result"
                 },
                 {
-                    "title": "🛠 Refined: More balanced App Store review prompts",
-                    "type": 1
+                    "title": "Refined: More balanced App Store review prompts"
                 },
                 {
-                    "title": "🛠 Refined: Various improvements for macOS version (#82)",
-                    "type": 1
+                    "title": "Refined: Various improvements for macOS version",
+                    "github": "#82",
+                    "os": "macos"
                 },
                 {
-                    "title": "🛠 Refined: Updated all translations [thanks, everyone]",
-                    "type": 1
+                    "title": "Refined: Updated all translations",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Database lock timeout was not always respected on iOS 14.4 [thanks, Don and Marinus]",
-                    "type": 1
+                    "title": "Fixed: Database lock timeout was not always respected on iOS 14.4",
+                    "credits": "Don and Marinus"
                 },
                 {
-                    "title": "🐞 Fixed: Crash on iOS 14.4 when cancelling entry creation [thanks, Sandu]",
-                    "type": 1
+                    "title": "Fixed: Crash on iOS 14.4 when cancelling entry creation",
+                    "credits": "Sandu"
                 },
                 {
-                    "title": "🐞 Fixed: Crash on iPad when there is no default email client [thanks, Florian]",
-                    "type": 1
+                    "title": "Fixed: Crash on iPad when there is no default email client",
+                    "credits": "Florian"
                 },
                 {
-                    "title": "🐞 Fixed: Filter out invalid low-order ASCII characters from pasted/loaded data (fixes #148) [thanks, Mirko]",
-                    "type": 1
+                    "title": "Fixed: Filter out invalid low-order ASCII characters from pasted/loaded data",
+                    "github": "Fixes #148",
+                    "credits": "Mirko"
                 },
                 {
-                    "title": "🐞 Fixed: macOS: AutoFill disappeared immediately on show (fixes #147) [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: AutoFill disappeared immediately on show",
+                    "github": "Fixes #147",
+                    "credits": "everyone",
+                    "os": "macos"
                 },
                 {
-                    "title": "🐞 Fixed: macOS: minor UI issues here and there",
-                    "type": 1
+                    "title": "Fixed: Minor UI issues here and there",
+                    "os": "macos"
                 }
             ]
         },
@@ -1451,176 +1421,165 @@
             "releaseDate": "2021-01-30T00:00:00Z",
             "items": [
                 {
-                    "title": "🧩 Added: Support for Argon2id and .keyx key file format (KeePass 2.47) [thanks, Dominik]",
-                    "type": 1
+                    "title": "Added: Support for Argon2id and .keyx key file format (KeePass 2.47)",
+                    "credits": "Dominik"
                 },
                 {
-                    "title": "🧩 Added: Premium subscriptions now support Family Sharing",
-                    "type": 1
+                    "title": "Added: Premium subscriptions now support Family Sharing"
                 },
                 {
-                    "title": "🧩 Added: VoiceOver: added \"Copy Field\" accessibility actions in group viewer [thanks, Adam]",
-                    "type": 1
+                    "title": "Added: VoiceOver: added \"Copy Field\" accessibility actions in group viewer",
+                    "credits": "Adam"
                 },
                 {
-                    "title": "🧩 Added: VoiceOver: added Open URL and Share URL accessibility actions for URL fields",
-                    "type": 1
+                    "title": "Added: VoiceOver: added Open URL and Share URL accessibility actions for URL fields"
                 },
                 {
-                    "title": "🧩 Added: An option to exclude automatic backup files from iTunes/iCloud Backup [thanks, Patrick]",
-                    "type": 1
+                    "title": "Added: An option to exclude automatic backup files from iTunes/iCloud Backup",
+                    "credits": "Patrick"
                 },
                 {
-                    "title": "🧩 Added: Option \"Lock on App Launch\" (settings → App Protection → Timeout) [thanks, Paul]",
-                    "type": 1
+                    "title": "Added: Option \"Lock on App Launch\" (settings → App Protection → Timeout)",
+                    "credits": "Paul"
                 },
                 {
-                    "title": "🧩 Added: Option \"Remember Derived Master Keys\" (allows enforcing YubiKey scan) [thanks, Simon]",
-                    "type": 1
+                    "title": "Added: Option \"Remember Derived Master Keys\" (allows enforcing YubiKey scan)",
+                    "credits": "Simon"
                 },
                 {
-                    "title": "🧩 Added: Arabic translation [thanks, ZER0-X and Ali Madan]",
-                    "type": 1
+                    "title": "Added: Arabic translation",
+                    "credits": "ZER0-X and Ali Madan"
                 },
                 {
-                    "title": "🧩 Added: Polish translation [thanks, Michał and qxtno]",
-                    "type": 1
+                    "title": "Added: Polish translation",
+                    "credits": "Michał and qxtno"
                 },
                 {
-                    "title": "🧩 Added: Portugese (Brasilian) translation [thanks, Éctor Moreira]",
-                    "type": 1
+                    "title": "Added: Portugese (Brasilian) translation",
+                    "credits": "Éctor Moreira"
                 },
                 {
-                    "title": "🛠 Refined: VoiceOver: better descriptions for groups",
-                    "type": 1
+                    "title": "Refined: VoiceOver: better descriptions for groups"
                 },
                 {
-                    "title": "🛠 Refined: Allow changing master keys to YubiKey-only (no password, no key file)",
-                    "type": 1
+                    "title": "Refined: Allow changing master keys to YubiKey-only (no password, no key file)"
                 },
                 {
-                    "title": "🛠 Refined: Added a warning when opening database from Recently Deleted [thanks, u/opticillusion]",
-                    "type": 1
+                    "title": "Refined: Added a warning when opening database from Recently Deleted",
+                    "credits": "u/opticillusion"
                 },
                 {
-                    "title": "🛠 Refined: Added a warning when opening a backup database",
-                    "type": 1
+                    "title": "Refined: Added a warning when opening a backup database"
                 },
                 {
-                    "title": "🛠 Refined: Loading warnings include DB generator name only when it matters",
-                    "type": 1
+                    "title": "Refined: Loading warnings include DB generator name only when it matters"
                 },
                 {
-                    "title": "🛠 Refined: It is possible to skip AutoFill setup now [thanks, Michael]",
-                    "type": 1
+                    "title": "Refined: It is possible to skip AutoFill setup now",
+                    "credits": "Michael"
                 },
                 {
-                    "title": "🛠 Refined: Refined perpetual fallback license text and made it shorter",
-                    "type": 1
+                    "title": "Refined: Refined perpetual fallback license text and made it shorter"
                 },
                 {
-                    "title": "🛠 Refined: Added detection of QNAP Qfile file provider",
-                    "type": 1
+                    "title": "Refined: Added detection of QNAP Qfile file provider"
                 },
                 {
-                    "title": "🛠 Refined: Clear master keys when Remember switch is turned off",
-                    "type": 1
+                    "title": "Refined: Clear master keys when Remember switch is turned off"
                 },
                 {
-                    "title": "🛠 Refined: After a one-time purchase, show a reminder to cancel the old subscription",
-                    "type": 1
+                    "title": "Refined: After a one-time purchase, show a reminder to cancel the old subscription"
                 },
                 {
-                    "title": "🛠 Refined: Added \"Pro\" to About screen of the Pro version [thanks, Glenn]",
-                    "type": 1
+                    "title": "Refined: Added \"Pro\" to About screen of the Pro version",
+                    "credits": "Glenn"
                 },
                 {
-                    "title": "🛠 Refined: Storage provider icon/name when running as iOS app on macOS",
-                    "type": 1
+                    "title": "Refined: Storage provider icon/name when running as iOS app on macOS",
+                    "os": "macos"
                 },
                 {
-                    "title": "🛠 Refined: Updated all translations [thanks, everyone]",
-                    "type": 1
+                    "title": "Refined: Updated all translations",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: In certain conditions, it was possible to open database after a timeout (fixes #140) [thanks, Don]",
-                    "type": 1
+                    "title": "Fixed: In certain conditions, it was possible to open database after a timeout",
+                    "github": "Fixes #140",
+                    "credits": "Don"
                 },
                 {
-                    "title": "🐞 Fixed: Removed excessive animation when sorting files [thanjks, Vadim and Alan]",
-                    "type": 1
+                    "title": "Fixed: Removed excessive animation when sorting files [thanjks, Vadim and Alan]"
                 },
                 {
-                    "title": "🐞 Fixed: KeePassium won't ask for AppStore review if the user barely used the app [thanks, Timothy]",
-                    "type": 1
+                    "title": "Fixed: KeePassium won't ask for AppStore review if the user barely used the app",
+                    "credits": "Timothy"
                 },
                 {
-                    "title": "🐞 Fixed: Sometimes associated key file was not selected [thanks, Robert]",
-                    "type": 1
+                    "title": "Fixed: Sometimes associated key file was not selected",
+                    "credits": "Robert"
                 },
                 {
-                    "title": "🐞 Fixed: In case of database load error, AutoFill won't ask to re-enter the password [thanks, Tim]",
-                    "type": 1
+                    "title": "Fixed: In case of database load error, AutoFill won't ask to re-enter the password",
+                    "credits": "Tim"
                 },
                 {
-                    "title": "🐞 Fixed: Adding key files with unrecognized/dynamic UTIs [thanks, Daniel]",
-                    "type": 1
+                    "title": "Fixed: Adding key files with unrecognized/dynamic UTIs",
+                    "credits": "Daniel"
                 },
                 {
-                    "title": "🐞 Fixed: Added a debug \"Reset entry text scale to default\" button at the end of About screen (related #132)",
-                    "type": 1
+                    "title": "Fixed: Added a debug \"Reset entry text scale to default\" button at the end of About screen",
+                    "github": "#132"
                 },
                 {
-                    "title": "🐞 Fixed: Made entry field text depend on system font size (possibly fixes #132)",
-                    "type": 1
+                    "title": "Fixed: Made entry field text depend on system font size",
+                    "github": "Possibly fixes #132"
                 },
                 {
-                    "title": "🐞 Fixed: iOS 14: could access selected text menu through the passcode screen [thanks, Jacob]",
-                    "type": 1
+                    "title": "Fixed: iOS 14: could access selected text menu through the passcode screen",
+                    "credits": "Jacob"
                 },
                 {
-                    "title": "🐞 Fixed: VoiceOver: added missing labels to several buttons [thanks, Fabrice and Adam]",
-                    "type": 1
+                    "title": "Fixed: VoiceOver: added missing labels to several buttons",
+                    "credits": "Fabrice and Adam"
                 },
                 {
-                    "title": "🐞 Fixed: VoiceOver: improved accessibility of settings that require premium",
-                    "type": 1
+                    "title": "Fixed: VoiceOver: improved accessibility of settings that require premium"
                 },
                 {
-                    "title": "🐞 Fixed: VoiceOver: support email address is accessible now [thanks, Adam]",
-                    "type": 1
+                    "title": "Fixed: VoiceOver: support email address is accessible now",
+                    "credits": "Adam"
                 },
                 {
-                    "title": "🐞 Fixed: iOS 14: Keyboard was missing in AutoFill after cancelling biometric prompt — partial fix (#133)",
-                    "type": 1
+                    "title": "Fixed: iOS 14: Keyboard was missing in AutoFill after cancelling biometric prompt — partial fix",
+                    "github": "#133"
                 },
                 {
-                    "title": "🐞 Fixed: iOS 14: fixed opening mailto: links in alternative mail clients [thanks, Gianfranco]",
-                    "type": 1
+                    "title": "Fixed: iOS 14: fixed opening mailto: links in alternative mail clients",
+                    "credits": "Gianfranco"
                 },
                 {
-                    "title": "🐞 Fixed: User name generator: made the random option visually distinct [thanks, Daz]",
-                    "type": 1
+                    "title": "Fixed: User name generator: made the random option visually distinct",
+                    "credits": "Daz"
                 },
                 {
-                    "title": "🐞 Fixed: Version parsing of XML key files (fixes #143) [thanks, Kenneth and Ty]",
-                    "type": 1
+                    "title": "Fixed: Version parsing of XML key files",
+                    "github": "Fixes #143",
+                    "credits": "Kenneth and Ty"
                 },
                 {
-                    "title": "🐞 Fixed: Crash when creating DB with empty password and key file [thanks, Doug]",
-                    "type": 1
+                    "title": "Fixed: Crash when creating DB with empty password and key file",
+                    "credits": "Doug"
                 },
                 {
-                    "title": "🐞 Fixed: File reference error when running as iOS app on macOS [thanks, u/SmugAlien]",
-                    "type": 1
+                    "title": "Fixed: File reference error when running as iOS app on macOS",
+                    "credits": "u/SmugAlien",
+                    "os": "macos"
                 },
                 {
-                    "title": "🐞 Fixed: File provider assertion when running as iOS app on macOS ",
-                    "type": 1
+                    "title": "Fixed: File provider assertion when running as iOS app on macOS"
                 },
                 {
-                    "title": "🐞 Fixed: Minor UI improvements here and there",
-                    "type": 1
+                    "title": "Fixed: Minor UI improvements here and there"
                 }
             ]
         },
@@ -1629,60 +1588,59 @@
             "releaseDate": "2020-11-12T00:00:00Z",
             "items": [
                 {
-                    "title": "🧩 Added: Entry field references, resolved and displayed",
+                    "title": "Added: Entry field references, resolved and displayed",
                     "type": 2
                 },
                 {
-                    "title": "🛠 Refined: iOS 13+ will use system's monospaced font (SF Mono) instead of Menlo.",
-                    "type": 1
+                    "title": "Refined: iOS 13+ will use system's monospaced font (SF Mono) instead of Menlo."
                 },
                 {
-                    "title": "🛠 Refined: Unlocking databases protected only by YubiKey (without password and key file) [thanks, Stefan]",
-                    "type": 1
+                    "title": "Refined: Unlocking databases protected only by YubiKey (without password and key file)",
+                    "credits": "Stefan"
                 },
                 {
-                    "title": "🐞 Fixed: AutoFill did not recognize the premium fallback date [thanks, Pablo]",
-                    "type": 1
+                    "title": "Fixed: AutoFill did not recognize the premium fallback date",
+                    "credits": "Pablo"
                 },
                 {
-                    "title": "🐞 Fixed: Excluded unavailable DBs from single-DB limit (related #125) [thanks, rederensy]",
-                    "type": 1
+                    "title": "Fixed: Excluded unavailable DBs from single-DB limit",
+                    "github": "#125",
+                    "credits": "rederensy"
                 },
                 {
-                    "title": "🐞 Fixed: \"YubiKey not available\" was not always shown in AutoFill [thanks, Markus]",
-                    "type": 1
+                    "title": "Fixed: \"YubiKey not available\" was not always shown in AutoFill",
+                    "credits": "Markus"
                 },
                 {
-                    "title": "🐞 Fixed: File info dialog controls were unresponsive on iPadOS 12.4 [thanks, u/chrie1]",
-                    "type": 1
+                    "title": "Fixed: File info dialog controls were unresponsive on iPadOS 12.4",
+                    "credits": "u/chrie1"
                 },
                 {
-                    "title": "🐞 Fixed: Sometimes keyboard did not show up in AutoFill on iOS 14 (#133) [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: Sometimes keyboard did not show up in AutoFill on iOS 14",
+                    "github": "#133",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Always treat password fields as protected (related libkeepass/pykeepass#194) [thanks, Ilya]",
-                    "type": 1
+                    "title": "Fixed: Always treat password fields as protected",
+                    "github": "libkeepass/pykeepass#194",
+                    "credits": "Ilya"
                 },
                 {
-                    "title": "🐞 Fixed: Prevent VoiceOver from looking behind the passcode/cover windows on iOS 14 [thanks, Stéphane]",
-                    "type": 1
+                    "title": "Fixed: Prevent VoiceOver from looking behind the passcode/cover windows on iOS 14",
+                    "credits": "Stéphane"
                 },
                 {
-                    "title": "🐞 Fixed: Unavailable file provider (e.g. SMB) could cause app freezing [thanks, Nicole]",
-                    "type": 1
+                    "title": "Fixed: Unavailable file provider (e.g. SMB) could cause app freezing",
+                    "credits": "Nicole"
                 },
                 {
-                    "title": "🐞 Fixed: Unresolved field values for newly created fields",
-                    "type": 1
+                    "title": "Fixed: Unresolved field values for newly created fields"
                 },
                 {
-                    "title": "🐞 Fixed: Using resolved field values througout the app",
-                    "type": 1
+                    "title": "Fixed: Using resolved field values througout the app"
                 },
                 {
-                    "title": "🐞 Fixed: Minor UI issues",
-                    "type": 1
+                    "title": "Fixed: Minor UI issues"
                 }
             ]
         },
@@ -1691,16 +1649,16 @@
             "releaseDate": "2020-10-03T00:00:00Z",
             "items": [
                 {
-                    "title": "🐞 Fixed: Possible database corruption on save in v1.18 (fixes #130)",
-                    "type": 1
+                    "title": "Fixed: Possible database corruption on save in v1.18",
+                    "github": "Fixes #130",
                 },
                 {
-                    "title": "🐞 Fixed: URL fields not recognized on iOS 14 if default browser is not Safari (fixes #129) [thanks, Ivo]",
-                    "type": 1
+                    "title": "Fixed: URL fields not recognized on iOS 14 if default browser is not Safari",
+                    "github": "Fixes #129",
+                    "credits": "Ivo"
                 },
                 {
-                    "title": "🛠 Changed: Express unlock made available in the free version.",
-                    "type": 1
+                    "title": "Changed: Express unlock made available in the free version."
                 }
             ]
         },
@@ -1709,40 +1667,35 @@
             "releaseDate": "2020-10-01T00:00:00Z",
             "items": [
                 {
-                    "title": "🧩 Added: Express unlock using the stored decryption key. This also allows opening YubiKey-protected databases in AutoFill.",
+                    "title": "Added: Express unlock using the stored decryption key. This also allows opening YubiKey-protected databases in AutoFill.",
                     "type": 2
                 },
                 {
-                    "title": "🛠 Refined: Free version won't count broken databases towards the free DB limit",
-                    "type": 1
+                    "title": "Refined: Free version won't count broken databases towards the free DB limit"
                 },
                 {
-                    "title": "🛠 Refined: Add Stratospherix FileBrowser file provider",
-                    "type": 1
+                    "title": "Refined: Add Stratospherix FileBrowser file provider"
                 },
                 {
-                    "title": "🛠 Refined: Show local storage icons with/without home button, as appropriate",
-                    "type": 1
+                    "title": "Refined: Show local storage icons with/without home button, as appropriate"
                 },
                 {
-                    "title": "🐞 Fixed: Slow decryption of databases (fixes #128) [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: Slow decryption of databases",
+                    "github": "Fixes #128",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Preserve DB settings on DB deletion, if another DB uses them [thanks, Tim]",
-                    "type": 1
+                    "title": "Fixed: Preserve DB settings on DB deletion, if another DB uses them",
+                    "credits": "Tim"
                 },
                 {
-                    "title": "🐞 Fixed: Crash when unselecting a YubiKey in AutoFill",
-                    "type": 1
+                    "title": "Fixed: Crash when unselecting a YubiKey in AutoFill"
                 },
                 {
-                    "title": "🐞 Fixed: Detection of file access permission error",
-                    "type": 1
+                    "title": "Fixed: Detection of file access permission error"
                 },
                 {
-                    "title": "🐞 Fixed: Delete .latest backups when manually deleting all backups via settings",
-                    "type": 1
+                    "title": "Fixed: Delete .latest backups when manually deleting all backups via settings"
                 }
             ]
         },
@@ -1751,60 +1704,54 @@
             "releaseDate": "2020-09-19T00:00:00Z",
             "items": [
                 {
-                    "title": "🛠 Refined: Suggest re-adding the database if it is missing on iOS 14.",
-                    "type": 1
+                    "title": "Refined: Suggest re-adding the database if it is missing on iOS 14."
                 },
                 {
-                    "title": "🛠 Refined: Keep the .latest backup file regardless of its age",
-                    "type": 1
+                    "title": "Refined: Keep the .latest backup file regardless of its age"
                 },
                 {
-                    "title": "🛠 Refined: Added a Copy button to Caller ID in AutoFill [thanks, Adam]",
-                    "type": 1
+                    "title": "Refined: Added a Copy button to Caller ID in AutoFill",
+                    "credits": "Adam"
                 },
                 {
-                    "title": "🛠 Refined: Show a spinner when mass-deleting backup files",
-                    "type": 1
+                    "title": "Refined: Show a spinner when mass-deleting backup files"
                 },
                 {
-                    "title": "🛠 Refined: Increased the max length of generated passwords to 100 [thanks, u/ReevaluateAdNauseam]",
-                    "type": 1
+                    "title": "Refined: Increased the max length of generated passwords to 100",
+                    "credits": "u/ReevaluateAdNauseam"
                 },
                 {
-                    "title": "🐞 Fixed: Freezing when there are hundreds of backup files [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: Freezing when there are hundreds of backup files",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Recognizing storage providers on iOS 14",
-                    "type": 1
+                    "title": "Fixed: Recognizing storage providers on iOS 14"
                 },
                 {
-                    "title": "🐞 Fixed: Opening files with unregistered extensions [thanks, Kevin]",
-                    "type": 1
+                    "title": "Fixed: Opening files with unregistered extensions",
+                    "credits": "Kevin"
                 },
                 {
-                    "title": "🐞 Fixed: Displaying of long (multi-line) Caller ID [thanks, Adam]",
-                    "type": 1
+                    "title": "Fixed: Displaying of long (multi-line) Caller ID",
+                    "credits": "Adam"
                 },
                 {
-                    "title": "🐞 Fixed: App icon picker UI on iOS 12 [thanks, dragonblitz10]",
-                    "type": 1
+                    "title": "Fixed: App icon picker UI on iOS 12",
+                    "credits": "dragonblitz10"
                 },
                 {
-                    "title": "🐞 Fixed: Backup files were shown as external ones sometimes",
-                    "type": 1
+                    "title": "Fixed: Backup files were shown as external ones sometimes"
                 },
                 {
-                    "title": "🐞 Fixed: Opening kdbx4 with UInt32 transformRounds [thanks, Mitchell]",
-                    "type": 1
+                    "title": "Fixed: Opening kdbx4 with UInt32 transformRounds",
+                    "credits": "Mitchell"
                 },
                 {
-                    "title": "🐞 Fixed(hopefully): text missing in entry viewer [thanks, Lionel and Jean-Marc]",
-                    "type": 1
+                    "title": "Fixed(hopefully): text missing in entry viewer",
+                    "credits": "Lionel and Jean-Marc"
                 },
                 {
-                    "title": "🐞 Fixed: Splash screen background color in dark mode",
-                    "type": 1
+                    "title": "Fixed: Splash screen background color in dark mode"
                 },
             ]
         },
@@ -1813,24 +1760,24 @@
             "releaseDate": "2020-08-31T00:00:00Z",
             "items": [
                 {
-                    "title": "🧩 Added: Change entry text size with a zoom gesture [thanks, Rick and Thomas]",
-                    "type": 1
+                    "title": "Added: Change entry text size with a zoom gesture",
+                    "credits": "Rick and Thomas"
                 },
                 {
-                    "title": "🛠 Refined: preserving the expanded/collapsed state of the Notes field [thanks, Arjan and Thomas]",
-                    "type": 1
+                    "title": "Refined: Preserving the expanded/collapsed state of the Notes field",
+                    "credits": "Arjan and Thomas"
                 },
                 {
-                    "title": "🛠 Improved Export and Trash icons [thanks, Ivo]",
-                    "type": 1
+                    "title": "Refined: Better Export and Trash icons",
+                    "credits": "Ivo"
                 },
                 {
-                    "title": "🛠 Updated translations [thanks, everyone]",
-                    "type": 1
+                    "title": "Improved: Updated translations",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Help article text was black in dark mode [thanks, Christian]",
-                    "type": 1
+                    "title": "Fixed: Help article text was black in dark mode",
+                    "credits": "Christian"
                 }
             ]
         },
@@ -1839,28 +1786,26 @@
             "releaseDate": "2020-08-27T00:00:00Z",
             "items": [
                 {
-                    "title": "🧩 Added: Perpetual fallback license for subscriptions (rent-to-own license)",
+                    "title": "Added: Perpetual fallback license for subscriptions (rent-to-own license)",
                     "type": 0
                 },
                 {
-                    "title": "🧩 Added: App history screen (What's New)",
-                    "type": 1
+                    "title": "Added: App history screen (What's New)"
                 },
                 {
-                    "title": "🛠 Improved: The search is no longer sensitive to diacritics, unless you use diacritics in the query. (For example, \"hello\" would find both \"héllo\" and \"héllö\", whereas \"héllo\" would find \"héllo\" but not \"héllö\".) [thanks, hunhejj]",
-                    "type": 1
+                    "title": "Improved: The search is no longer sensitive to diacritics, unless you use diacritics in the query. (For example, \"hello\" would find both \"héllo\" and \"héllö\", whereas \"héllo\" would find \"héllo\" but not \"héllö\".)",
+                    "credits": "hunhejj"
                 },
                 {
-                    "title": "🛠 Improved: Haptic feedback in AutoFill after pasting the credentials",
-                    "type": 1
+                    "title": "Improved: Haptic feedback in AutoFill after pasting the credentials"
                 },
                 {
-                    "title": "🛠 Improved: Updated translations [thanks, everyone]",
-                    "type": 1
+                    "title": "Improved: Updated translations",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Updating broken references to external files [thanks, Paul]",
-                    "type": 1
+                    "title": "Fixed: Updating broken references to external files",
+                    "credits": "Paul"
                 }
             ]
         },
@@ -1869,172 +1814,151 @@
             "releaseDate": "2020-08-19T00:00:00Z",
             "items": [
                 {
-                    "title": "🧩 Added: Free trial for premium subscriptions",
-                    "type": 1
+                    "title": "Added: Free trial for premium subscriptions"
                 },
                 {
-                    "title": "🧩 Added: Automatic backup of the latest opened database version",
-                    "type": 1
+                    "title": "Added: Automatic backup of the latest opened database version"
                 },
                 {
-                    "title": "🧩 Added: \"Exclude from iCloud/iTunes backup\" option for local files",
-                    "type": 1
+                    "title": "Added: \"Exclude from iCloud/iTunes backup\" option for local files"
                 },
                 {
-                    "title": "🧩 Added: Alternative app icons",
+                    "title": "Added: Alternative app icons",
                     "type": 2
                 },
                 {
-                    "title": "🧩 Added: Japanese translation [thanks, Hiroto Sakai and miyar520]",
-                    "type": 1
+                    "title": "Added: Japanese translation",
+                    "credits": "Hiroto Sakai and miyar520"
                 },
                 {
-                    "title": "🧩 Added: Possibility to preserve stored master keys on database timeout [thanks, Niklas]",
+                    "title": "Added: Possibility to preserve stored master keys on database timeout",
+                    "credits": "Niklas",
                     "type": 2
                 },
                 {
-                    "title": "🧩 Added: Detailed info about database location",
-                    "type": 1
+                    "title": "Added: Detailed info about database location"
                 },
                 {
-                    "title": "🧩 Added: Info about the calling app in AutoFill [thanks, Markus]",
-                    "type": 1
+                    "title": "Added: Info about the calling app in AutoFill",
+                    "credits": "Markus"
                 },
                 {
-                    "title": "🧩 Added: File Info dialog for key files in AutoFill",
-                    "type": 1
+                    "title": "Added: File Info dialog for key files in AutoFill"
                 },
                 {
-                    "title": "🛠 Improved: Default app icon",
-                    "type": 1
+                    "title": "Improved: Default app icon"
                 },
                 {
-                    "title": "🛠 Improved: You can add database files with any extension [thanks, everyone]",
-                    "type": 1
+                    "title": "Improved: You can add database files with any extension",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🛠 Improved: Better handling of slow/unresponsive storage providers",
-                    "type": 1
+                    "title": "Improved: Better handling of slow/unresponsive storage providers"
                 },
                 {
-                    "title": "🛠 Improved: More detailed load/save progress messages",
-                    "type": 1
+                    "title": "Improved: More detailed load/save progress messages"
                 },
                 {
-                    "title": "🛠 Improved: More human-friendly error messages",
-                    "type": 1
+                    "title": "Improved: More human-friendly error messages"
                 },
                 {
-                    "title": "🛠 Improved: Clarified that Universal Clipboard timeout on external devices is fixed at 2 minutes [thanks, Christian]",
-                    "type": 1
+                    "title": "Improved: Clarified that Universal Clipboard timeout on external devices is fixed at 2 minutes",
+                    "credits": "Christian"
                 },
                 {
-                    "title": "🛠 Improved: File Info dialog contents",
-                    "type": 1
+                    "title": "Improved: File Info dialog contents"
                 },
                 {
-                    "title": "🛠 Changed: By default, automatic backups are stored for 2 months instead of forever",
-                    "type": 1
+                    "title": "Changed: By default, automatic backups are stored for 2 months instead of forever"
                 },
                 {
-                    "title": "🛠 Changed: AppLock setup reminder can be dismissed [thanks, Dan]",
-                    "type": 1
+                    "title": "Changed: AppLock setup reminder can be dismissed",
+                    "credits": "Dan"
                 },
                 {
-                    "title": "🛠 Changed: Updated translations [thanks, everyone]",
-                    "type": 1
+                    "title": "Changed: Updated translations",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Occasional freezing and crashing on start",
-                    "type": 1
+                    "title": "Fixed: Occasional freezing and crashing on start"
                 },
                 {
-                    "title": "🐞 Fixed: Freezing while accessing remote files",
-                    "type": 1
+                    "title": "Fixed: Freezing while accessing remote files"
                 },
                 {
-                    "title": "🐞 Fixed: Freezing when there are many backup files [thanks, Paul]",
-                    "type": 1
+                    "title": "Fixed: Freezing when there are many backup files",
+                    "credits": "Paul"
                 },
                 {
-                    "title": "🐞 Fixed: Excessive caching of file attributes, such as size and timestamps",
-                    "type": 1
+                    "title": "Fixed: Excessive caching of file attributes, such as size and timestamps"
                 },
                 {
-                    "title": "🐞 Fixed: Crash when selecting \"Enable AppLock\" reminder with VoiceOver [thanks, Dickson]",
-                    "type": 1
+                    "title": "Fixed: Crash when selecting \"Enable AppLock\" reminder with VoiceOver",
+                    "credits": "Dickson"
                 },
                 {
-                    "title": "🐞 Fixed: Crash when adding an entry attachment [thanks, Sophie]",
-                    "type": 1
+                    "title": "Fixed: Crash when adding an entry attachment",
+                    "credits": "Sophie"
                 },
                 {
-                    "title": "🐞 Fixed: Crash on cold launch with an argument [thanks, Helmut]",
-                    "type": 1
+                    "title": "Fixed: Crash on cold launch with an argument",
+                    "credits": "Helmut"
                 },
                 {
-                    "title": "🐞 Fixed: Crash when importing an already existing file [thanks, Marc]",
-                    "type": 1
+                    "title": "Fixed: Crash when importing an already existing file",
+                    "credits": "Marc"
                 },
                 {
-                    "title": "🐞 Fixed: After transferring to a new device, AppLock did not always accept the correct passcode [thanks, Kirsten]",
-                    "type": 1
+                    "title": "Fixed: After transferring to a new device, AppLock did not always accept the correct passcode",
+                    "credits": "Kirsten"
                 },
                 {
-                    "title": "🐞 Fixed: Sporadic crash immediately after loading a database",
-                    "type": 1
+                    "title": "Fixed: Sporadic crash immediately after loading a database"
                 },
                 {
-                    "title": "🐞 Fixed: Return key behavior when changing DB master key",
-                    "type": 1
+                    "title": "Fixed: Return key behavior when changing DB master key"
                 },
                 {
-                    "title": "🐞 Fixed: Jumpy pull-to-refresh animation [thanks, Sebastian]",
-                    "type": 1
+                    "title": "Fixed: Jumpy pull-to-refresh animation",
+                    "credits": "Sebastian"
                 },
                 {
-                    "title": "🐞 Fixed: Respect the \"Search enabled\" flag of .kdbx groups [thanks, David]",
-                    "type": 1
+                    "title": "Fixed: Respect the \"Search enabled\" flag of .kdbx groups",
+                    "credits": "David"
                 },
                 {
-                    "title": "🐞 Fixed: Default properties of newly created Recycle Bin groups",
-                    "type": 1
+                    "title": "Fixed: Default properties of newly created Recycle Bin groups"
                 },
                 {
-                    "title": "🐞 Fixed: Added 15-second timeout to all file operations",
-                    "type": 1
+                    "title": "Fixed: Added 15-second timeout to all file operations"
                 },
                 {
-                    "title": "🐞 Fixed: Handling database settings/stored keys when the target file is missing",
-                    "type": 1
+                    "title": "Fixed: Handling database settings/stored keys when the target file is missing"
                 },
                 {
-                    "title": "🐞 Fixed: KDB root group appeared expired [thanks, Stefan]",
-                    "type": 1
+                    "title": "Fixed: KDB root group appeared expired",
+                    "credits": "Stefan"
                 },
                 {
-                    "title": "🐞 Fixed: Refresh entry viewer after dismissing entry editor [thanks, Felix]",
-                    "type": 1
+                    "title": "Fixed: Refresh entry viewer after dismissing entry editor",
+                    "credits": "Felix"
                 },
                 {
-                    "title": "🐞 Fixed: Refresh search results after changing search settings [thanks, Paolo]",
-                    "type": 1
+                    "title": "Fixed: Refresh search results after changing search settings",
+                    "credits": "Paolo"
                 },
                 {
-                    "title": "🐞 Fixed: Standard field names are excluded from search [thanks, Paolo]",
-                    "type": 1
+                    "title": "Fixed: Standard field names are excluded from search",
+                    "credits": "Paolo"
                 },
                 {
-                    "title": "🐞 Fixed: Missing credits for Yubico Mobile SDK and TPInAppReceipt library",
-                    "type": 1
+                    "title": "Fixed: Missing credits for Yubico Mobile SDK and TPInAppReceipt library"
                 },
                 {
-                    "title": "🐞 Fixed: Localization of some screens",
-                    "type": 1
+                    "title": "Fixed: Localization of some screens"
                 },
                 {
-                    "title": "🐞 Minor UI fixes here and there",
-                    "type": 1
+                    "title": "Minor UI fixes here and there"
                 },
             ]
         },
@@ -2043,16 +1967,15 @@
             "releaseDate": "2020-06-10T00:00:00Z",
             "items": [
                 {
-                    "title": "🐞 Fixed: custom field changes sometimes were not saved [thanks, Michael]",
-                    "type": 1
+                    "title": "Fixed: Custom field changes sometimes were not saved",
+                    "credits": "Michael"
                 },
                 {
-                    "title": "🐞 Fixed: progress bar sometimes appeared misplaced [thanks, Michael]",
-                    "type": 1
+                    "title": "Fixed: Progress bar sometimes appeared misplaced",
+                    "credits": "Michael"
                 },
                 {
-                    "title": "🛠 Updated CZ/FR/SV localizations",
-                    "type": 1
+                    "title": "Refined: Updated CZ/FR/SV localizations"
                 }
             ]
         },
@@ -2061,100 +1984,90 @@
             "releaseDate": "2020-06-09T00:00:00Z",
             "items": [
                 {
-                    "title": "🧩 Added: Support for YubiKey 5Ci",
+                    "title": "Added: Support for YubiKey 5Ci",
                     "type": 2
                 },
                 {
-                    "title": "🧩 Added: App Lock setup is now part of initial onboarding [thanks, everyone]",
-                    "type": 1
+                    "title": "Added: App Lock setup is now part of initial onboarding",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🧩 Added: The notes field is expandable now",
-                    "type": 1
+                    "title": "Added: The notes field is expandable now"
                 },
                 {
-                    "title": "🧩 Added: New setting - whether to auto-unlock the last used database [thanks, Stanislav and Niklas]",
-                    "type": 1
+                    "title": "Added: New setting - whether to auto-unlock the last used database",
+                    "credits": "Stanislav and Niklas"
                 },
                 {
-                    "title": "🧩 Added: New settings - whether to search in field names and in protected values [thanks, Paolo]",
-                    "type": 1
+                    "title": "Added: New settings - whether to search in field names and in protected values",
+                    "credits": "Paolo"
                 },
                 {
-                    "title": "🧩 Added: New setting - show protected fields (off by default) [thanks, Jerry & Jeffrey]",
-                    "type": 1
+                    "title": "Added: New setting - show protected fields (off by default)",
+                    "credits": "Jerry & Jeffrey"
                 },
                 {
-                    "title": "🧩 Added: New setting - use Universal Clipboard (off by default) [thanks, Daniel]",
-                    "type": 1
+                    "title": "Added: New setting - use Universal Clipboard (off by default)",
+                    "credits": "Daniel"
                 },
                 {
-                    "title": "🧩 Added: After copying a field, you can also quickly share it to other apps",
-                    "type": 1
+                    "title": "Added: After copying a field, you can also quickly share it to other apps"
                 },
                 {
-                    "title": "🧩 Added: Entries marked as non-autofillable in KeePassXC won't appear in AutoFill [thanks, Igor]",
-                    "type": 1
+                    "title": "Added: Entries marked as non-autofillable in KeePassXC won't appear in AutoFill",
+                    "credits": "Igor"
                 },
                 {
-                    "title": "🧩 Added: File Export/Delete operations in the File Info dialog [thanks, Dirk]",
-                    "type": 1
+                    "title": "Added: File Export/Delete operations in the File Info dialog",
+                    "credits": "Dirk"
                 },
                 {
-                    "title": "🧩 Added: Detailed loading progress messages for .kdbx databases",
-                    "type": 1
+                    "title": "Added: Detailed loading progress messages for .kdbx databases"
                 },
                 {
-                    "title": "🛠 Changed: Improved loading of MiniKeePass databases",
-                    "type": 1
+                    "title": "Changed: Improved loading of MiniKeePass databases"
                 },
                 {
-                    "title": "🛠 Changed: Better accessibility - respect the \"bold text\" system setting",
-                    "type": 1
+                    "title": "Changed: Better accessibility - respect the \"bold text\" system setting"
                 },
                 {
-                    "title": "🛠 Changed: Support email template now includes device type (iPhone/iPad)",
-                    "type": 1
+                    "title": "Changed: Support email template now includes device type (iPhone/iPad)"
                 },
                 {
-                    "title": "🛠 Changed: Updated translations",
-                    "type": 1
+                    "title": "Changed: Updated translations"
                 },
                 {
-                    "title": "🐞 Fixed: With extra-large font, group names appeared trimmed by height",
-                    "type": 1
+                    "title": "Fixed: With extra-large font, group names appeared trimmed by height"
                 },
                 {
-                    "title": "🐞 Fixed: Biometric auth asked for a premium upgrade under a heavy use [thanks, Theo]",
-                    "type": 1
+                    "title": "Fixed: Biometric auth asked for a premium upgrade under a heavy use",
+                    "credits": "Theo"
                 },
                 {
-                    "title": "🐞 Fixed: Parsing of misformatted timestamps sometimes produced by MiniKeePass [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: Parsing of misformatted timestamps sometimes produced by MiniKeePass",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Import conflict resolution dialog did not appear for key files",
-                    "type": 1
+                    "title": "Fixed: Import conflict resolution dialog did not appear for key files"
                 },
                 {
-                    "title": "🐞 Fixed: Groups and entries always appeared as non-expiring in v1 databases [thanks, Stefan]",
-                    "type": 1
+                    "title": "Fixed: Groups and entries always appeared as non-expiring in v1 databases",
+                    "credits": "Stefan"
                 },
                 {
-                    "title": "🐞 Fixed: Database file descriptions were shown in the system in wrong language [thanks, majijiwi]",
-                    "type": 1
+                    "title": "Fixed: Database file descriptions were shown in the system in wrong language",
+                    "credits": "majijiwi"
                 },
                 {
-                    "title": "🐞 Fixed: Load entries with missing field values, treat them as empty [thanks, Oliver]",
-                    "type": 1
+                    "title": "Fixed: Load entries with missing field values, treat them as empty",
+                    "credits": "Oliver"
                 },
                 {
-                    "title": "🐞 Fixed: Support Steam TOTP configured in KeePassXC with the \"encoder\" parameter [thanks, Manan]",
-                    "type": 1
+                    "title": "Fixed: Support Steam TOTP configured in KeePassXC with the \"encoder\" parameter",
+                    "credits": "Manan"
                 },
                 {
-                    "title": "🐞 Minor UI fixes here and there",
-                    "type": 1
+                    "title": "Minor UI fixes here and there"
                 }
             ]
         },
@@ -2163,76 +2076,69 @@
             "releaseDate": "2020-04-22T00:00:00Z",
             "items": [
                 {
-                    "title": "🧩 Added: When importing a database, the app will ask whether to overwrite the existing file [thanks, everyone]",
-                    "type": 1
+                    "title": "Added: When importing a database, the app will ask whether to overwrite the existing file",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🧩 Added: New setting - whether AutoFill should auto-proceed when there is only one suitable entry [thanks, Nicolai]",
-                    "type": 1
+                    "title": "Added: New setting - whether AutoFill should auto-proceed when there is only one suitable entry",
+                    "credits": "Nicolai"
                 },
                 {
-                    "title": "🧩 Added: French translation [thanks, Steph31700 and Robin Chamberlin]",
-                    "type": 1
+                    "title": "Added: French translation",
+                    "credits": "Steph31700 and Robin Chamberlin"
                 },
                 {
-                    "title": "🧩 Added: Italian translation [thanks, iWally and spaccapirlin]",
-                    "type": 1
+                    "title": "Added: Italian translation",
+                    "credits": "iWally and spaccapirlin"
                 },
                 {
-                    "title": "🛠 Changed: When you delete a file, it is deleted permanently instead of moving to trash (sometimes trashing failed silently)",
-                    "type": 1
+                    "title": "Changed: When you delete a file, it is deleted permanently instead of moving to trash (sometimes trashing failed silently)"
                 },
                 {
-                    "title": "🐞 Fixed: Auto-unlock the last used database also on iPads (if allowed by settings) [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: Auto-unlock the last used database also on iPads (if allowed by settings)",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: It was impossible to edit/move Recycle Bin group in .kdbx databases [thanks, Amnuay]",
-                    "type": 1
+                    "title": "Fixed: It was impossible to edit/move Recycle Bin group in .kdbx databases",
+                    "credits": "Amnuay"
                 },
                 {
-                    "title": "🐞 Fixed: Sometimes it was not possible to select databases from Google Drive [thanks, K.B.]",
-                    "type": 1
+                    "title": "Fixed: Sometimes it was not possible to select databases from Google Drive",
+                    "credits": "K.B."
                 },
                 {
-                    "title": "🐞 Fixed: Always treat password fields as protected [thanks, Robin]",
-                    "type": 1
+                    "title": "Fixed: Always treat password fields as protected",
+                    "credits": "Robin"
                 },
                 {
-                    "title": "🐞 Fixed: Adding databases with mixed-case extensions [thanks, Thorsten]",
-                    "type": 1
+                    "title": "Fixed: Adding databases with mixed-case extensions",
+                    "credits": "Thorsten"
                 },
                 {
-                    "title": "🐞 Fixed: Changed master key was not remembered when it should have been",
-                    "type": 1
+                    "title": "Fixed: Changed master key was not remembered when it should have been"
                 },
                 {
-                    "title": "🐞 Fixed: Merging of databases with moved groups/entries [thanks, Daniel]",
-                    "type": 1
+                    "title": "Fixed: Merging of databases with moved groups/entries",
+                    "credits": "Daniel"
                 },
                 {
-                    "title": "🐞 Fixed: Infinite Clipboard Timeout was treated as immediate [thanks, Andreas]",
-                    "type": 1
+                    "title": "Fixed: Infinite Clipboard Timeout was treated as immediate",
+                    "credits": "Andreas"
                 },
                 {
-                    "title": "🐞 Fixed: Merging of databases with changed master key",
-                    "type": 1
+                    "title": "Fixed: Merging of databases with changed master key"
                 },
                 {
-                    "title": "🐞 Fixed: Sometimes it was impossible to delete files",
-                    "type": 1
+                    "title": "Fixed: Sometimes it was impossible to delete files"
                 },
                 {
-                    "title": "🐞 Fixed: Backup files should not count towards free DB limit",
-                    "type": 1
+                    "title": "Fixed: Backup files should not count towards free DB limit"
                 },
                 {
-                    "title": "🐞 Fixed: Colored asterisks after re-hiding passwords",
-                    "type": 1
+                    "title": "Fixed: Colored asterisks after re-hiding passwords"
                 },
                 {
-                    "title": "🐞 Minor localization fixes",
-                    "type": 1
+                    "title": "Minor localization fixes"
                 }
             ]
         },
@@ -2241,7 +2147,7 @@
             "releaseDate": "2020-01-30T00:00:00Z",
             "items": [
                 {
-                    "title": "🧩 Added: YubiKey support (Compatible with KeePassXC, NFC keys, iOS 13+)",
+                    "title": "Added: YubiKey support (Compatible with KeePassXC, NFC keys, iOS 13+)",
                     "type": 2
                 }
             ]
@@ -2251,60 +2157,56 @@
             "releaseDate": "2020-01-17T00:00:00Z",
             "items": [
                 {
-                    "title": "🧩 Added: Move/copy groups and entries to other groups",
-                    "type": 1
+                    "title": "Added: Move/copy groups and entries to other groups"
                 },
                 {
-                    "title": "🧩 Added: Long-press menu for files, groups and entries",
-                    "type": 1
+                    "title": "Added: Long-press menu for files, groups and entries"
                 },
                 {
-                    "title": "🧩 Added: Highlight digits and special symbols in stored passwords [thanks, Sean]",
-                    "type": 1
+                    "title": "Added: Highlight digits and special symbols in stored passwords",
+                    "credits": "Sean"
                 },
                 {
-                    "title": "🧩 Added: Support for Steam TOTP with GAuth URI format [thanks, Nu11u5]",
-                    "type": 1
+                    "title": "Added: Support for Steam TOTP with GAuth URI format",
+                    "credits": "Nu11u5"
                 },
                 {
-                    "title": "🧩 Added: Support for TOTP based on SHA-256 and SHA-512 [thanks, Walter]",
-                    "type": 1
+                    "title": "Added: Support for TOTP based on SHA-256 and SHA-512",
+                    "credits": "Walter"
                 },
                 {
-                    "title": "🧩 Added: \"Add Key File\" button to key file pickers [thanks, Ron]",
-                    "type": 1
+                    "title": "Added: \"Add Key File\" button to key file pickers",
+                    "credits": "Ron"
                 },
                 {
-                    "title": "🛠 Improved: Preserve the entered master password after DB unlock errors [thanks, Bertrand]",
-                    "type": 1
+                    "title": "Improved: Preserve the entered master password after DB unlock errors",
+                    "credits": "Bertrand"
                 },
                 {
-                    "title": "🐞 Fixed: Occassional freezing at \"Loading... 0%\" [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: Occassional freezing at \"Loading... 0%\"",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: occasional freezing when accessing local files on iOS 13",
-                    "type": 1
+                    "title": "Fixed: Occasional freezing when accessing local files on iOS 13"
                 },
                 {
-                    "title": "🐞 Fixed: AutoFill FaceID loop on iOS 13.1.3 [thanks, Quinn]",
-                    "type": 1
+                    "title": "Fixed: AutoFill FaceID loop on iOS 13.1.3",
+                    "credits": "Quinn"
                 },
                 {
-                    "title": "🐞 Fixed: Add missing symbols to the password generator [thanks, Justen]",
-                    "type": 1
+                    "title": "Fixed: Add missing symbols to the password generator",
+                    "credits": "Justen"
                 },
                 {
-                    "title": "🐞 Fixed: \"Failed to open file\" error after creating a new database [thanks, Craig]",
-                    "type": 1
+                    "title": "Fixed: \"Failed to open file\" error after creating a new database",
+                    "credits": "Craig"
                 },
                 {
-                    "title": "🐞 Fixed: Loading MiniKeePass DBs with minor issues [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: Loading MiniKeePass DBs with minor issues",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Overly wide popovers on iPadOS 13",
-                    "type": 1
+                    "title": "Fixed: Overly wide popovers on iPadOS 13"
                 }
             ]
         },
@@ -2313,40 +2215,37 @@
             "releaseDate": "2019-11-29T00:00:00Z",
             "items": [
                 {
-                    "title": "🛠 Improved: Unlock button be gone! Auto-unlock databases whenever possible.",
-                    "type": 1
+                    "title": "Improved: Unlock button be gone! Auto-unlock databases whenever possible."
                 },
                 {
-                    "title": "🛠 Improved: AutoFill will automatically select the only entry [thanks, Igor]",
-                    "type": 1
+                    "title": "Improved: AutoFill will automatically select the only entry",
+                    "credits": "Igor"
                 },
                 {
-                    "title": "🛠 Improved: added a confirmation dialog when locking database manually [thanks, Tim]",
-                    "type": 1
+                    "title": "Improved: Added a confirmation dialog when locking database manually",
+                    "credits": "Tim"
                 },
                 {
-                    "title": "🐞 Fixed: AutoFill stuck in FaceID loop on iOS 13.2.3 [thanks, everyone]",
-                    "type": 1
+                    "title": "Fixed: AutoFill stuck in FaceID loop on iOS 13.2.3",
+                    "credits": "everyone"
                 },
                 {
-                    "title": "🐞 Fixed: Improved handling of databases that close slowly",
-                    "type": 1
+                    "title": "Fixed: Improved handling of databases that close slowly"
                 },
                 {
-                    "title": "🐞 Fixed: Sometimes entries incorrectly appeared as expired [thanks, Felix]",
-                    "type": 1
+                    "title": "Fixed: Sometimes entries incorrectly appeared as expired",
+                    "credits": "Felix"
                 },
                 {
-                    "title": "🐞 Fixed: Double unlock screen after database creation [thanks, magebarf]",
-                    "type": 1
+                    "title": "Fixed: Double unlock screen after database creation",
+                    "credits": "magebarf"
                 },
                 {
-                    "title": "🐞 Fixed: Repetitive Welcome screen after clearing backup files [thanks, Chris]",
-                    "type": 1
+                    "title": "Fixed: Repetitive Welcome screen after clearing backup files",
+                    "credits": "Chris"
                 },
                 {
-                    "title": "🛠 Other minor refinements and fixes",
-                    "type": 1
+                    "title": "Other minor refinements and fixes"
                 }
             ]
         },
@@ -2355,32 +2254,31 @@
             "releaseDate": "2019-11-16T00:00:00Z",
             "items": [
                 {
-                    "title": "🐞 Fixed: AppLock did not always work on iOS 13.2 [thanks, loblawbob]",
-                    "type": 1
+                    "title": "Fixed: AppLock did not always work on iOS 13.2",
+                    "credits": "loblawbob"
                 },
                 {
-                    "title": "🐞 Fixed: With passcode-only AppLock, database list flashed visible on launch [thanks, Joseph]",
-                    "type": 1
+                    "title": "Fixed: With passcode-only AppLock, database list flashed visible on launch",
+                    "credits": "Joseph"
                 },
                 {
-                    "title": "🧩 Added: haptic feedback for some UI actions",
-                    "type": 1
+                    "title": "Added: Haptic feedback for some UI actions"
                 },
                 {
-                    "title": "🛠 Changed: Won't force-erase the master key from keychain on database errors [thanks, Silunare]",
-                    "type": 1
+                    "title": "Changed: Won't force-erase the master key from keychain on database errors",
+                    "credits": "Silunare"
                 },
                 {
-                    "title": "🛠 Refined: compatibility with other installed KeePass apps [thanks, Philippe]",
-                    "type": 1
+                    "title": "Refined: Compatibility with other installed KeePass apps",
+                    "credits": "Philippe"
                 },
                 {
-                    "title": "🐞 Fixed: when deleting a database, the key file association is now also removed [thanks, M.H.]",
-                    "type": 1
+                    "title": "Fixed: When deleting a database, the key file association is now also removed",
+                    "credits": "M.H."
                 },
                 {
-                    "title": "🐞 Fixed: premium features missing in Pro version's AutoFill [thanks, J.B.]",
-                    "type": 1
+                    "title": "Fixed: Premium features missing in Pro version's AutoFill",
+                    "credits": "J.B."
                 }
             ]
         },
@@ -2389,20 +2287,16 @@
             "releaseDate": "2019-10-22T00:00:00Z",
             "items": [
                 {
-                    "title": "🧩 Added: Spanish translation",
-                    "type": 1
+                    "title": "Added: Spanish translation"
                 },
                 {
-                    "title": "🛠 Changed: Default Database Timeout is now Never instead of 1 hour",
-                    "type": 1
+                    "title": "Changed: Default Database Timeout is now Never instead of 1 hour"
                 },
                 {
-                    "title": "🛠 Improved: support of larger font sizes",
-                    "type": 1
+                    "title": "Improved: Support of larger font sizes"
                 },
                 {
-                    "title": "Other bug fixes and improvements",
-                    "type": 1
+                    "title": "Improved: Other bug fixes and improvements"
                 }
             ]
         },
@@ -2411,28 +2305,23 @@
             "releaseDate": "2019-10-08T00:00:00Z",
             "items": [
                 {
-                    "title": "🧩 Added: KeePassium Pro edition, compatible with Family Sharing",
-                    "type": 1
+                    "title": "Added: KeePassium Pro edition, compatible with Family Sharing"
                 },
                 {
-                    "title": "🐞 Fixed: On iPadOS 13, the app showed an empty screen",
-                    "type": 1
+                    "title": "Fixed: On iPadOS 13, the app showed an empty screen"
                 },
                 {
-                    "title": "🐞 Fixed: Search bar did not autofocus in AutoFill (iOS 13) [thanks, tunger]",
-                    "type": 1
+                    "title": "Fixed: Search bar did not autofocus in AutoFill (iOS 13)",
+                    "credits": "tunger"
                 },
                 {
-                    "title": "🐞 Fixed: Premium Upgrade screen was not available to premium users",
-                    "type": 1
+                    "title": "Fixed: Premium Upgrade screen was not available to premium users"
                 },
                 {
-                    "title": "🐞 Fixed: Database timeout could have been set to 'Never' in free version",
-                    "type": 1
+                    "title": "Fixed: Database timeout could have been set to 'Never' in free version"
                 },
                 {
-                    "title": "🛠 Refined: colors in the Premium Upgrade screen",
-                    "type": 1
+                    "title": "Refined: Colors in the Premium Upgrade screen"
                 }
             ]
         },
@@ -2441,36 +2330,32 @@
             "releaseDate": "2019-10-03T00:00:00Z",
             "items": [
                 {
-                    "title": "🧩 Added: Swedish translation [thanks, Patrik Thunström]",
-                    "type": 1
+                    "title": "Added: Swedish translation",
+                    "credits": "Patrik Thunström"
                 },
                 {
-                    "title": "🧩 Added: Czech translation [thanks, Tomáš Piešťanský, Marcel Piestansky, and Radek Weis]",
-                    "type": 1
+                    "title": "Added: Czech translation",
+                    "credits": "Tomáš Piešťanský, Marcel Piestansky, and Radek Weis"
                 },
                 {
-                    "title": "🛠 Refined: If current database is inaccessible due to new iOS 13 permissions, the app will suggest to re-add the database [thanks, Patrik]",
-                    "type": 1
+                    "title": "Refined: If current database is inaccessible due to new iOS 13 permissions, the app will suggest to re-add the database",
+                    "credits": "Patrik"
                 },
                 {
-                    "title": "🐞 Fixed: Database unlock errors were not always shown",
-                    "type": 1
+                    "title": "Fixed: Database unlock errors were not always shown"
                 },
                 {
-                    "title": "🐞 Fixed: VoiceOver will automatically announce database unlocking errors",
-                    "type": 1
+                    "title": "Fixed: VoiceOver will automatically announce database unlocking errors"
                 },
                 {
-                    "title": "🐞 Fixed: Deleted entries are now excluded from username suggestions",
-                    "type": 1
+                    "title": "Fixed: Deleted entries are now excluded from username suggestions"
                 },
                 {
-                    "title": "🐞 Fixed: AppLock passcode colors in dark mode [thanks, Joseph and Chris]",
-                    "type": 1
+                    "title": "Fixed: AppLock passcode colors in dark mode",
+                    "credits": "Joseph and Chris"
                 },
                 {
-                    "title": "🐞 Fixed: Dismissing the AppLock setup dialog with a gesture (iOS 13)",
-                    "type": 1
+                    "title": "Fixed: Dismissing the AppLock setup dialog with a gesture (iOS 13)"
                 }
             ]
         },
@@ -2479,68 +2364,61 @@
             "releaseDate": "2019-09-22T00:00:00Z",
             "items": [
                 {
-                    "title": "🧩 Added: iOS 13 dark mode",
-                    "type": 1
+                    "title": "Added: iOS 13 dark mode"
                 },
                 {
-                    "title": "🧩 Added: In entry editor, you can quickly pick a random or a frequently used username [thanks, Mike]",
-                    "type": 1
+                    "title": "Added: In entry editor, you can quickly pick a random or a frequently used username",
+                    "credits": "Mike"
                 },
                 {
-                    "title": "🧩 Added: German translation [thanks, Lukas Wolfsteiner and @cpktmpkt]",
-                    "type": 1
+                    "title": "Added: German translation",
+                    "credits": "Lukas Wolfsteiner and @cpktmpkt"
                 },
                 {
-                    "title": "🧩 Added: Dutch translation [thanks, Heimen Stoffels]",
-                    "type": 1
+                    "title": "Added: Dutch translation",
+                    "credits": "Heimen Stoffels"
                 },
                 {
-                    "title": "🧩 Added: Chinese Simplified and Traditional translations [thanks, 3374575857]",
-                    "type": 1
+                    "title": "Added: Chinese Simplified and Traditional translations",
+                    "credits": "3374575857"
                 },
                 {
-                    "title": "🧩 Added: Russian translation",
-                    "type": 1
+                    "title": "Added: Russian translation"
                 },
                 {
-                    "title": "🛠 Changed: Expired items now shown in strikethrough font and with original icons",
-                    "type": 1
+                    "title": "Changed: Expired items now shown in strikethrough font and with original icons"
                 },
                 {
-                    "title": "🛠 Changed: New entries are pre-filled with a default user name from database settings (if any) [thanks, Mike]",
-                    "type": 1
+                    "title": "Changed: New entries are pre-filled with a default user name from database settings (if any)",
+                    "credits": "Mike"
                 },
                 {
-                    "title": "🛠 Changed: Added a \"Repeat password\" field to the Change Master Key dialog [thanks, A.G.]",
-                    "type": 1
+                    "title": "Changed: Added a \"Repeat password\" field to the Change Master Key dialog",
+                    "credits": "A.G."
                 },
                 {
-                    "title": "🛠 Refined: Accessibility of the entry Notes field [thanks, Adrian]",
-                    "type": 1
+                    "title": "Refined: Accessibility of the entry Notes field",
+                    "credits": "Adrian"
                 },
                 {
-                    "title": "🐞 Fixed: Search controller did not show up on iOS 13",
-                    "type": 1
+                    "title": "Fixed: Search controller did not show up on iOS 13"
                 },
                 {
-                    "title": "🐞 Fixed: Entry timestamps were not visible on iOS 13",
-                    "type": 1
+                    "title": "Fixed: Entry timestamps were not visible on iOS 13"
                 },
                 {
-                    "title": "🐞 Fixed: Dismissing dialogs with a gesture on iOS 13",
-                    "type": 1
+                    "title": "Fixed: Dismissing dialogs with a gesture on iOS 13"
                 },
                 {
-                    "title": "🐞 Fixed: Premium upgrade did not work on iOS 13",
-                    "type": 1
+                    "title": "Fixed: Premium upgrade did not work on iOS 13"
                 },
                 {
-                    "title": "🐞 Fixed: Custom fields could interfere with the fixed ones [thanks, Michael]",
-                    "type": 1
+                    "title": "Fixed: Custom fields could interfere with the fixed ones",
+                    "credits": "Michael"
                 },
                 {
-                    "title": "🛠 Minor UI fixes and improvements [thanks, S.Y., KK9 and raymond127]",
-                    "type": 1
+                    "title": "Minor UI fixes and improvements",
+                    "credits": "S.Y., KK9 and raymond127"
                 }
             ]
         },
@@ -2549,68 +2427,62 @@
             "releaseDate": "2019-08-14T00:00:00Z",
             "items": [
                 {
-                    "title": "🧩 Added: In-app announcements about the AppStore release and early-bird promo",
-                    "type": 1
+                    "title": "Added: In-app announcements about the AppStore release and early-bird promo"
                 },
                 {
-                    "title": "🧩 Added: Associated the app with keepassium.com domain, to allow auto-filling master passwords from Keychain",
-                    "type": 1
+                    "title": "Added: Associated the app with keepassium.com domain, to allow auto-filling master passwords from Keychain"
                 },
                 {
-                    "title": "🧩 Added: Detection whether running in TestFlight (beta) or App Store (production) environment",
-                    "type": 1
+                    "title": "Added: Detection whether running in TestFlight (beta) or App Store (production) environment"
                 },
                 {
-                    "title": "🛠 Refined: Added app version to About screen and diagnostic log [thanks, Marcel]",
-                    "type": 1
+                    "title": "Refined: Added app version to About screen and diagnostic log",
+                    "credits": "Marcel"
                 },
                 {
-                    "title": "🛠 Refined: AutoFill now also searches for full URL in custom fields [thanks, Dragonblitz10]",
-                    "type": 1
+                    "title": "Refined: AutoFill now also searches for full URL in custom fields",
+                    "credits": "Dragonblitz10"
                 },
                 {
-                    "title": "🛠 Refined: Hiding visible passwords when leaving the app [thanks, V.M.]",
-                    "type": 1
+                    "title": "Refined: Hiding visible passwords when leaving the app",
+                    "credits": "V.M."
                 },
                 {
-                    "title": "🛠 Refined: Running in TestFlight automatically enables premium features",
-                    "type": 1
+                    "title": "Refined: Running in TestFlight automatically enables premium features"
                 },
                 {
-                    "title": "🛠 Refined: Switched to prettier version numbering: major.minor.build",
-                    "type": 1
+                    "title": "Refined: Switched to prettier version numbering: major.minor.build"
                 },
                 {
-                    "title": "🐞 Fixed: Incomplete loading of AutoType sequences [thanks, Silun]",
-                    "type": 1
+                    "title": "Fixed: Incomplete loading of AutoType sequences",
+                    "credits": "Silun"
                 },
                 {
-                    "title": "🐞 Fixed: Fixed broken App Store links [thanks, Patrik]",
-                    "type": 1
+                    "title": "Fixed: Fixed broken App Store links",
+                    "credits": "Patrik"
                 },
                 {
-                    "title": "🐞 Fixed: Don't show usage stats in premium version (they are frozen anyway)",
-                    "type": 1
+                    "title": "Fixed: Don't show usage stats in premium version (they are frozen anyway)"
                 },
                 {
-                    "title": "🐞 Fixed: Entry sorting in AutoFill [thanks, rderensy]",
-                    "type": 1
+                    "title": "Fixed: Entry sorting in AutoFill",
+                    "credits": "rderensy"
                 },
                 {
-                    "title": "🐞 Fixed: AutoFill did not understand domain-name only URLs [thanks, Brett]",
-                    "type": 1
+                    "title": "Fixed: AutoFill did not understand domain-name only URLs",
+                    "credits": "Brett"
                 },
                 {
-                    "title": "🐞 Fixed: Accessibility labels in entry editor and for Add Database buttons [thanks, Adrian]",
-                    "type": 1
+                    "title": "Fixed: Accessibility labels in entry editor and for Add Database buttons",
+                    "credits": "Adrian"
                 },
                 {
-                    "title": "🐞 Fixed: Creating a new database also created an empty backup file [thanks, Phani]",
-                    "type": 1
+                    "title": "Fixed: Creating a new database also created an empty backup file",
+                    "credits": "Phani"
                 },
                 {
-                    "title": "🐞 Fixed: Jumpy/squished footer in Settings [thanks, Patrik]",
-                    "type": 1
+                    "title": "Fixed: Jumpy/squished footer in Settings",
+                    "credits": "Patrik"
                 }
             ]
         },
@@ -2619,16 +2491,13 @@
             "releaseDate": "2019-07-29T00:00:00Z",
             "items": [
                 {
-                    "title": "🛠 Refined: Extended TOTP support",
-                    "type": 1
+                    "title": "Refined: Extended TOTP support"
                 },
                 {
-                    "title": "🛠 Refined: Improved VoiceOver accessibility",
-                    "type": 1
+                    "title": "Refined: Improved VoiceOver accessibility"
                 },
                 {
-                    "title": "🛠 A few minor bug fixes and improvements",
-                    "type": 1
+                    "title": "A few minor bug fixes and improvements"
                 }
             ]
         },
@@ -2637,48 +2506,40 @@
             "releaseDate": "2019-07-23T00:00:00Z",
             "items": [
                 {
-                    "title": "🧩 Added: Switching between multiple databases",
+                    "title": "Added: Switching between multiple databases",
                     "type": 2
                 },
                 {
-                    "title": "🧩 Added: Unlimited database timeout",
+                    "title": "Added: Unlimited database timeout",
                     "type": 2
                 },
                 {
-                    "title": "🧩 Added: In-app attachment preview",
+                    "title": "Added: In-app attachment preview",
                     "type": 2
                 },
                 {
-                    "title": "🧩 Added: Biometric app protection",
-                    "type": 1
+                    "title": "Added: Biometric app protection"
                 },
                 {
-                    "title": "🧩 Added: Password AutoFill (iOS 12+)",
-                    "type": 1
+                    "title": "Added: Password AutoFill (iOS 12+)"
                 },
                 {
-                    "title": "🧩 Added: Composite master keys",
-                    "type": 1
+                    "title": "Added: Composite master keys"
                 },
                 {
-                    "title": "🧩 Added: Loading and saving kdb/kdbx3/kdbx4 files",
-                    "type": 1
+                    "title": "Added: Loading and saving kdb/kdbx3/kdbx4 files"
                 },
                 {
-                    "title": "🧩 Added: Argon2, AES, ChaCha20, Salsa20, Twofish algorithms",
-                    "type": 1
+                    "title": "Added: Argon2, AES, ChaCha20, Salsa20, Twofish algorithms"
                 },
                 {
-                    "title": "🧩 Added: View TOTP (time-based one-time passwords) created by KeePassXC (RFC6238 and Steam TOTP)",
-                    "type": 1
+                    "title": "Added: View TOTP (time-based one-time passwords) created by KeePassXC (RFC6238 and Steam TOTP)"
                 },
                 {
-                    "title": "🧩 Added: Preserving database master key in keychain",
-                    "type": 1
+                    "title": "Added: Preserving database master key in keychain"
                 },
                 {
-                    "title": "🧩 Added: App, database and clipboard timeout",
-                    "type": 1
+                    "title": "Added: App, database and clipboard timeout"
                 }
             ]
         }
