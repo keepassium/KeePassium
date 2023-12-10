@@ -75,20 +75,32 @@ public final class ManagedAppConfig: NSObject {
 }
 
 extension ManagedAppConfig {
-    public func setIntuneAppConfig(_ config: [[AnyHashable: Any]]?) {
-        guard let config = config,
-              let firstConfig = config.first 
-        else {
+
+    public func setIntuneAppConfig(_ configurations: [[AnyHashable: Any]]?) {
+        guard let configurations else {
             intuneConfig = nil
             Diag.info("No app config provided by Intune")
             return
         }
+        guard var configurations = configurations as? [[String: Any]] else {
+            intuneConfig = nil
+            Diag.info("Unexpected Intune config type")
+            return
+        }
 
-        var newIntuneConfig = intuneConfig ?? [:]
-        Key.allCases.forEach { key in
-            newIntuneConfig[key.rawValue] = firstConfig[key.rawValue] as? String
+        let defaultConfigIndex = configurations.firstIndex { config in
+            config["__IsDefault"] as? String == "true"
+        }
+
+        var newIntuneConfig = [String: Any]()
+        if defaultConfigIndex != nil {
+            newIntuneConfig = configurations.remove(at: defaultConfigIndex!)
+        }
+        configurations.forEach { configPart in
+            newIntuneConfig.merge(configPart, uniquingKeysWith: { $1 })
         }
         intuneConfig = newIntuneConfig
+        Diag.info("App configuration policy applied OK")
     }
 }
 
