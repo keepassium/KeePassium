@@ -8,7 +8,7 @@
 
 public final class LicenseManager {
     public static let shared = LicenseManager()
-    private static let provisionalLicenseCutoffDate = Date(iso8601string: "2023-12-31T23:59:59Z")!
+    private static let provisionalLicenseCutoffDate = Date(iso8601string: "2024-02-29T23:59:59Z")!
 
     private enum LicenseKeyFormat {
         case version1 
