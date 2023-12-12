@@ -14,6 +14,8 @@ public final class ManagedAppConfig: NSObject {
 
         case configVersion
         case license
+        case supportEmail
+
         case autoUnlockLastDatabase
         case rememberDatabaseKey
         case rememberDatabaseFinalKey
@@ -113,9 +115,14 @@ extension ManagedAppConfig {
         return licenseValue
     }
 
+    public var supportEmail: String? {
+        return getString(.supportEmail)
+    }
+
     public func isManaged(key: Key) -> Bool {
         switch key {
-        case .license:
+        case .license,
+             .supportEmail:
             return getString(key) != nil
         case .autoUnlockLastDatabase,
              .rememberDatabaseKey,
@@ -167,6 +174,7 @@ extension ManagedAppConfig {
             result = getBool(key)
         case .configVersion,
              .license,
+             .supportEmail,
              .appLockTimeout,
              .databaseLockTimeout,
              .clipboardTimeout,
@@ -202,6 +210,7 @@ extension ManagedAppConfig {
              .backupKeepingDuration:
             result = getInt(key)
         case .license,
+             .supportEmail,
              .autoUnlockLastDatabase,
              .rememberDatabaseKey,
              .rememberDatabaseFinalKey,

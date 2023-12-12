@@ -14,6 +14,7 @@ class SupportEmailComposer: NSObject {
     private static let freeSupportEmail = "support@keepassium.com"
     private static let betaSupportEmail = "beta@keepassium.com"
     private static let premiumSupportEmail = "premium-support@keepassium.com"
+    private static let orgSupportEmail = "org-support@keepassium.com"
 
     enum Subject: String { 
         case problem = "Problem"
@@ -75,6 +76,13 @@ class SupportEmailComposer: NSObject {
     internal static func getSupportEmail() -> String {
         if Settings.current.isTestEnvironment {
             return betaSupportEmail
+        }
+
+        if let managedEmailOverride = ManagedAppConfig.shared.supportEmail {
+            return managedEmailOverride
+        }
+        if BusinessModel.isIntuneEdition || LicenseManager.shared.hasActiveBusinessLicense() {
+            return orgSupportEmail
         }
 
         if PremiumManager.shared.isPremiumSupportAvailable() {
