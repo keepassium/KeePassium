@@ -100,7 +100,7 @@ final public class QuickTypeAutoFillStorage {
             if let serviceIDs = entry.extractSearchableData()?.toCredentialServiceIdentifiers() {
                 let recordID = QuickTypeAutoFillRecord(context: databaseFile, itemID: entry.uuid)
                 let entryCredentialIdentities = makeCredentialIdentities(
-                    userName: entry.resolvedUserName,
+                    userName: "\(entry.resolvedUserName) | \(entry.resolvedTitle)",
                     services: serviceIDs,
                     record: recordID
                 )
