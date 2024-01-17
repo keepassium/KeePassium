@@ -634,10 +634,19 @@ extension AutoFillCoordinator: FirstSetupDelegate {
         dismissAndQuit()
     }
 
-    func didPressAddDatabase(in firstSetup: FirstSetupVC, at popoverAnchor: PopoverAnchor) {
+    func didPressAddExistingDatabase(in firstSetup: FirstSetupVC) {
         watchdog.restart()
         firstSetup.dismiss(animated: true, completion: nil)
         databasePickerCoordinator.addExternalDatabase(presenter: router.navigationController)
+    }
+
+    func didPressAddRemoteDatabase(in firstSetup: FirstSetupVC) {
+        watchdog.restart()
+        firstSetup.dismiss(animated: true, completion: nil)
+        databasePickerCoordinator.maybeAddRemoteDatabase(
+            bypassPaywall: false,
+            presenter: router.navigationController
+        )
     }
 
     func didPressSkip(in firstSetup: FirstSetupVC) {

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sWN-0A-UAO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sWN-0A-UAO">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -13,21 +13,22 @@
         <!--KeePassium-->
         <scene sceneID="dOW-Pb-ioh">
             <objects>
-                <viewController storyboardIdentifier="FirstSetupVC" id="sWN-0A-UAO" customClass="FirstSetupVC" customModule="KeePassiumPro_AutoFill" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FirstSetupVC" id="sWN-0A-UAO" customClass="FirstSetupVC" customModule="KeePassium_AutoFill" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6Rn-iq-uS6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="enW-gs-tra">
-                                <rect key="frame" x="47.5" y="124" width="280" height="44"/>
-                                <color key="backgroundColor" name="ActionTint"/>
+                                <rect key="frame" x="47.5" y="144" width="280" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="3vK-JY-mNd"/>
                                     <constraint firstAttribute="height" constant="44" id="4pD-Kh-evV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                <color key="tintColor" name="ActionText"/>
                                 <state key="normal" title="Add Database"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Add Database">
+                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleCallout"/>
+                                </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="5"/>
@@ -37,20 +38,39 @@
                                     <action selector="didPressAddDatabase:" destination="sWN-0A-UAO" eventType="touchUpInside" id="hfo-Mh-zRK"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DKP-uL-37z" userLabel="Connect to Server Button">
+                                <rect key="frame" x="47.5" y="196" width="280" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="qr6-B9-MgY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                <state key="normal" title="{Connect to server}"/>
+                                <buttonConfiguration key="configuration" style="filled" title="{Connect to server}">
+                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleCallout"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didPressConnectToServer:" destination="sWN-0A-UAO" eventType="touchUpInside" id="Qdw-OV-hTK"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Please re-add databases and key files you want to use with the AutoFill feature." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0M-N3-ynf">
-                                <rect key="frame" x="16" y="65.5" width="343" height="42.5"/>
+                                <rect key="frame" x="16" y="85.5" width="343" height="42.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <color key="textColor" name="PrimaryText"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="AutoFill Setup" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pIl-6L-Msp">
-                                <rect key="frame" x="103.5" y="16" width="168" height="33.5"/>
+                                <rect key="frame" x="103.5" y="36" width="168" height="33.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <color key="textColor" name="PrimaryText"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" layoutMarginsFollowReadableWidth="YES" editable="NO" text="{Footer text}" textAlignment="natural" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAW-0G-N5G">
-                                <rect key="frame" x="16" y="184" width="343" height="435"/>
+                                <rect key="frame" x="16" y="256" width="343" height="363"/>
                                 <color key="textColor" name="AuxiliaryText"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -86,10 +106,13 @@
                             <constraint firstItem="pIl-6L-Msp" firstAttribute="top" secondItem="5e5-l3-iUK" secondAttribute="top" constant="16" id="NHu-pE-VGg"/>
                             <constraint firstItem="5e5-l3-iUK" firstAttribute="bottom" secondItem="Gck-9R-sGq" secondAttribute="bottom" constant="8" id="VNh-Lq-Jt4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="P0M-N3-ynf" secondAttribute="trailing" id="XaH-ti-MBW"/>
+                            <constraint firstItem="DKP-uL-37z" firstAttribute="top" secondItem="enW-gs-tra" secondAttribute="bottom" constant="8" id="aOE-Rb-bbi"/>
                             <constraint firstItem="enW-gs-tra" firstAttribute="top" secondItem="P0M-N3-ynf" secondAttribute="bottom" constant="16" id="cFv-aB-XZz"/>
                             <constraint firstItem="UAW-0G-N5G" firstAttribute="centerX" secondItem="6Rn-iq-uS6" secondAttribute="centerX" id="eVH-h7-Xn6"/>
                             <constraint firstItem="pIl-6L-Msp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Rn-iq-uS6" secondAttribute="leadingMargin" id="erw-Gm-AKb"/>
-                            <constraint firstItem="UAW-0G-N5G" firstAttribute="top" secondItem="enW-gs-tra" secondAttribute="bottom" constant="16" id="zjH-pK-aKO"/>
+                            <constraint firstItem="DKP-uL-37z" firstAttribute="centerX" secondItem="6Rn-iq-uS6" secondAttribute="centerX" id="g4F-9h-1QF"/>
+                            <constraint firstItem="DKP-uL-37z" firstAttribute="width" secondItem="enW-gs-tra" secondAttribute="width" id="t8o-ca-KZ4"/>
+                            <constraint firstItem="UAW-0G-N5G" firstAttribute="top" secondItem="DKP-uL-37z" secondAttribute="bottom" constant="16" id="zjH-pK-aKO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="KeePassium" id="rzY-Ci-bd9">
@@ -100,6 +123,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="connectToServerButton" destination="DKP-uL-37z" id="Sv0-Ek-Uj0"/>
                         <outlet property="footerTextView" destination="UAW-0G-N5G" id="ekS-lr-Rvb"/>
                     </connections>
                 </viewController>
@@ -109,14 +133,8 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="ActionText">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="ActionTint">
-            <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="AuxiliaryText">
-            <color red="0.23499999940395355" green="0.23499999940395355" blue="0.2630000114440918" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23500001430511475" green="0.23500001430511475" blue="0.2630000114440918" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryText">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -10,7 +10,8 @@ import KeePassiumLib
 
 protocol FirstSetupDelegate: AnyObject {
     func didPressCancel(in firstSetup: FirstSetupVC)
-    func didPressAddDatabase(in firstSetup: FirstSetupVC, at popoverAnchor: PopoverAnchor)
+    func didPressAddExistingDatabase(in firstSetup: FirstSetupVC)
+    func didPressAddRemoteDatabase(in firstSetup: FirstSetupVC)
     func didPressSkip(in firstSetup: FirstSetupVC)
 }
 
@@ -18,6 +19,8 @@ class FirstSetupVC: UIViewController {
     @IBOutlet weak var footerTextView: UITextView!
 
     private weak var delegate: FirstSetupDelegate?
+
+    @IBOutlet private weak var connectToServerButton: UIButton!
 
     static func make(delegate: FirstSetupDelegate? = nil) -> FirstSetupVC {
         let vc = FirstSetupVC.instantiateFromStoryboard()
@@ -29,6 +32,7 @@ class FirstSetupVC: UIViewController {
         super.viewDidLoad()
         navigationController?.setToolbarHidden(true, animated: true)
         footerTextView.text = LString.autoFillSetupFooterMessage
+        connectToServerButton.configuration?.title = LString.actionConnectToServer
     }
 
     @IBAction private func didPressCancelButton(_ sender: Any) {
@@ -36,10 +40,13 @@ class FirstSetupVC: UIViewController {
     }
 
     @IBAction private func didPressAddDatabase(_ sender: UIButton) {
-        let popoverAnchor = PopoverAnchor(sourceView: sender, sourceRect: sender.bounds)
-        delegate?.didPressAddDatabase(in: self, at: popoverAnchor)
+        delegate?.didPressAddExistingDatabase(in: self)
     }
 
+    @IBAction private func didPressConnectToServer(_ sender: UIButton) {
+        delegate?.didPressAddRemoteDatabase(in: self)
+    }
+    
     @IBAction private func didPressSkip(_ sender: UIButton) {
         delegate?.didPressSkip(in: self)
     }
