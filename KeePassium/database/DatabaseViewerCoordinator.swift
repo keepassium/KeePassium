@@ -32,7 +32,11 @@ protocol DatabaseViewerCoordinatorDelegate: AnyObject {
 
     func didPressReinstateDatabase(_ fileRef: URLReference, in coordinator: DatabaseViewerCoordinator)
 
-    func didPressReloadDatabase(_ databaseFile: DatabaseFile, in coordinator: DatabaseViewerCoordinator)
+    func didPressReloadDatabase(
+        _ databaseFile: DatabaseFile,
+        originalRef: URLReference,
+        in coordinator: DatabaseViewerCoordinator
+    )
 }
 
 final class DatabaseViewerCoordinator: Coordinator {
@@ -673,7 +677,7 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
     }
 
     func didPressReloadDatabase(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC) {
-        delegate?.didPressReloadDatabase(databaseFile, in: self)
+        delegate?.didPressReloadDatabase(databaseFile, originalRef: originalRef, in: self)
     }
 
     func didPressSettings(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC) {

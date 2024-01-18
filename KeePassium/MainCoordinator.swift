@@ -563,6 +563,7 @@ extension MainCoordinator {
 
     private func reloadDatabase(
         _ databaseFile: DatabaseFile,
+        originalRef: URLReference,
         from databaseViewerCoordinator: DatabaseViewerCoordinator
     ) {
         let context = DatabaseReloadContext(for: databaseFile.database)
@@ -575,12 +576,7 @@ extension MainCoordinator {
             animated: true
         ) { [weak self] in
             guard let self else { return }
-            guard let dbRef = databaseFile.fileReference else {
-                Diag.debug("Database file reference is nil, cancelling")
-                assertionFailure()
-                return
-            }
-            setDatabase(dbRef, autoOpenWith: context)
+            setDatabase(originalRef, autoOpenWith: context)
         }
     }
 }
@@ -1044,7 +1040,11 @@ extension MainCoordinator: DatabaseViewerCoordinatorDelegate {
         }
     }
 
-    func didPressReloadDatabase(_ databaseFile: DatabaseFile, in coordinator: DatabaseViewerCoordinator) {
-        reloadDatabase(databaseFile, from: coordinator)
+    func didPressReloadDatabase(
+        _ databaseFile: DatabaseFile,
+        originalRef: URLReference,
+        in coordinator: DatabaseViewerCoordinator
+    ) {
+        reloadDatabase(databaseFile, originalRef: originalRef, from: coordinator)
     }
 }
