@@ -54,7 +54,7 @@ public final class LocalDataSource: DataSource {
                 completion(.success(fileData))
             }
         } catch {
-            Diag.error("Failed to read file [message: \(error.localizedDescription)]")
+            Diag.error("Failed to read file [message: \((error as NSError).description)]")
             let fileAccessError = FileAccessError.systemError(error)
             completionQueue.addOperation {
                 completion(.failure(fileAccessError))

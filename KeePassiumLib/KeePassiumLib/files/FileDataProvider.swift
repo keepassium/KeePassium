@@ -258,6 +258,7 @@ extension FileDataProvider {
             hasTimedOut = true
             accessCoordinator.cancel()
             completionQueue.addOperation {
+                Diag.error("File coordination timed out")
                 completion(.failure(.timeout(fileProvider: fileProvider)))
             }
         }
@@ -271,18 +272,23 @@ extension FileDataProvider {
                 hasStartedCoordinating = true
                 return true
             })
-            guard canContinue else { 
+            guard canContinue else {
+                Diag.debug("File coordination timed out")
                 return
             }
 
             if let coordinatorError = coordinatorError {
                 completionQueue.addOperation {
+                    let nsError = coordinatorError as NSError
+                    Diag.error("File coordination failed [message: \(nsError.debugDescription)]")
                     completion(.failure(.systemError(coordinatorError)))
                 }
                 return
             }
 
+            Diag.debug("Starting coordinated file access")
             fileOperation(intent.url)
+            Diag.debug("Coordinated file access finished")
         }
     }
 }
