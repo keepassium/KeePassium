@@ -40,6 +40,12 @@ extension LString {
         value: "Continue",
         comment: "Action/button to proceed with the action"
     )
+    public static let actionSkip = NSLocalizedString(
+        "[Generic] Skip",
+        bundle: Bundle.framework,
+        value: "Skip",
+        comment: "Action/button to skip the current step and proceed with the next one"
+    )
     public static let actionCancel = NSLocalizedString(
         "[Generic] Cancel",
         bundle: Bundle.framework,
@@ -822,7 +828,6 @@ extension LString {
         bundle: Bundle.framework,
         value: "Help",
         comment: "Generic title of in-app help article")
-
 
     public static let actionCreateDatabase = NSLocalizedString(
         "[Database/Create/action] Create Database",

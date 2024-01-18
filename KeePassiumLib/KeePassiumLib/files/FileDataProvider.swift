@@ -205,7 +205,7 @@ extension FileDataProvider {
             completionQueue.addOperation { completion(.failure(.managedAccessDenied)) }
             return
         }
-        
+
         let isAccessed = fileURL.startAccessingSecurityScopedResource()
         let dataSource = DataSourceFactory.getDataSource(for: fileURL)
         coordinateFileOperation(

@@ -40,6 +40,14 @@ public enum SymbolName: String {
     public static let premiumBenefitSupport = Self.questionmarkBubble
     public static let premiumBenefitShiny = Self.faceSmiling
 
+    case onboardingLogo = "onboarding-logo"
+    case onboardingDataProtection = "onboarding-data-protection"
+    case onboardingVault = "onboarding-vault"
+    case onboardingPIN = "onboarding-pin"
+    case onboardingFaceID = "onboarding-faceid"
+    case onboardingTouchID = "onboarding-touchid"
+    case onboardingOpticID = "onboarding-opticid"
+
     case antCircle = "ant.circle"
     case arrowLeftAndRight = "arrow.left.and.right"
     case arrowRightCircle = "arrow.right.circle"
