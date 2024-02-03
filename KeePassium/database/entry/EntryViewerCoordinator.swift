@@ -519,6 +519,34 @@ extension EntryViewerCoordinator {
         expiryDateEditorModalRouter = modalRouter
     }
 
+    private func showLargeType(
+        text: String,
+        at popoverAnchor: PopoverAnchor,
+        in viewController: UIViewController
+    ) {
+        let largeTypeVC = LargeTypeVC(text: text, maxSize: viewController.view.frame.size)
+
+        let estimatedRowCount = largeTypeVC.getEstimatedRowCount(atSize: viewController.view.frame.size)
+        if router.isHorizontallyCompact && (estimatedRowCount > 3) {
+            largeTypeVC.modalPresentationStyle = .pageSheet
+            if let sheet = largeTypeVC.sheetPresentationController {
+                sheet.prefersEdgeAttachedInCompactHeight = true
+                sheet.detents = largeTypeVC.detents(for: viewController.view.frame.size)
+            }
+        } else {
+            largeTypeVC.modalPresentationStyle = .popover
+            guard let popoverPresentationController = largeTypeVC.popoverPresentationController else {
+                  assertionFailure()
+                  return
+            }
+            popoverPresentationController.permittedArrowDirections = [.up, .down]
+            popoverAnchor.apply(to: popoverPresentationController)
+            popoverPresentationController.delegate = largeTypeVC
+        }
+
+        viewController.present(largeTypeVC, animated: true, completion: nil)
+    }
+
     private func showDiagnostics() {
         let modalRouter = NavigationRouter.createModal(style: .pageSheet)
         let diagnosticsCoordinator = DiagnosticsViewerCoordinator(router: modalRouter)
@@ -592,6 +620,15 @@ extension EntryViewerCoordinator: EntryFieldViewerDelegate {
         Clipboard.general.insert(refString)
         HapticFeedback.play(.copiedToClipboard)
         viewController.showNotification(LString.fieldReferenceCopiedToClipboard)
+    }
+
+    func didPressShowLargeType(
+        text: String,
+        from viewableField: ViewableField,
+        at popoverAnchor: PopoverAnchor,
+        in viewController: EntryFieldViewerVC
+    ) {
+        showLargeType(text: text, at: popoverAnchor, in: viewController)
     }
 }
 
@@ -694,6 +731,10 @@ extension EntryViewerCoordinator: EntryExtraViewerVCDelegate {
 
     func didPressExportField(text: String, at popoverAnchor: PopoverAnchor, in viewController: EntryExtraViewerVC) {
         showExportDialog(for: text, at: popoverAnchor, in: viewController)
+    }
+
+    func didPressShowLargeType(text: String, at popoverAnchor: PopoverAnchor, in viewController: EntryExtraViewerVC) {
+        showLargeType(text: text, at: popoverAnchor, in: viewController)
     }
 
     func didUpdateProperties(properties: [EntryExtraViewerVC.Property], in viewController: EntryExtraViewerVC) {

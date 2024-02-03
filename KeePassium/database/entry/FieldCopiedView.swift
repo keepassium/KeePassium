@@ -11,21 +11,28 @@ import KeePassiumLib
 protocol FieldCopiedViewDelegate: AnyObject {
     func didPressExport(for indexPath: IndexPath, from view: FieldCopiedView)
     func didPressCopyFieldReference(for indexPath: IndexPath, from view: FieldCopiedView)
+    func didPressShowLargeType(for indexPath: IndexPath, from view: FieldCopiedView)
 }
 
 final class FieldCopiedView: UIView {
     weak var delegate: FieldCopiedViewDelegate?
 
+    enum Option: CaseIterable {
+        case canExport
+        case canCopyReference
+        case canShowLargeType
+    }
+
     private var indexPath: IndexPath!
     private weak var hidingTimer: Timer?
+    private var wasUserInteractionEnabled: Bool?
 
     private lazy var stackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.distribution = .equalSpacing
-        stack.spacing = 32
+        stack.spacing = 8
         stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.setContentCompressionResistancePriority(.defaultHigh + 1, for: .vertical)
         return stack
     }()
 
@@ -36,11 +43,17 @@ final class FieldCopiedView: UIView {
         label.numberOfLines = 1
         label.lineBreakMode = .byTruncatingTail
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         label.text = LString.titleCopiedToClipboard
+        label.textAlignment = .center
         return label
+    }()
+
+    private lazy var actionButtonConfiguration: UIButton.Configuration = {
+        var config = UIButton.Configuration.plain()
+        config.baseForegroundColor = .actionText
+        config.preferredSymbolConfigurationForImage = .init(textStyle: .body, scale: .large)
+        config.imagePadding = 8
+        return config
     }()
 
     private lazy var exportButton: UIButton = {
@@ -48,10 +61,9 @@ final class FieldCopiedView: UIView {
             guard let self = self else { return }
             self.delegate?.didPressExport(for: self.indexPath, from: self)
         })
-        button.tintColor = .actionText
-        button.setImage(.symbol(.squareAndArrowUp), for: .normal)
-        button.setPreferredSymbolConfiguration(.init(textStyle: .body, scale: .large), forImageIn: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        var buttonConfig = actionButtonConfiguration
+        buttonConfig.image = .symbol(.squareAndArrowUp)
+        button.configuration = buttonConfig
         button.accessibilityLabel = LString.actionShare
         return button
     }()
@@ -61,11 +73,23 @@ final class FieldCopiedView: UIView {
             guard let self = self else { return }
             self.delegate?.didPressCopyFieldReference(for: self.indexPath, from: self)
         })
-        button.tintColor = .actionText
-        button.setImage(.symbol(.fieldReference), for: .normal)
-        button.setPreferredSymbolConfiguration(.init(textStyle: .body, scale: .large), forImageIn: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        var buttonConfig = actionButtonConfiguration
+        buttonConfig.image = .symbol(.fieldReference)
+        button.configuration = buttonConfig
         button.accessibilityLabel = LString.actionCopyFieldReference
+        return button
+    }()
+
+    private lazy var showLargeTypeButton: UIButton = {
+        let button = UIButton(primaryAction: UIAction {[weak self] _ in
+            guard let self = self else { return }
+            self.delegate?.didPressShowLargeType(for: self.indexPath, from: self)
+        })
+        var buttonConfig = actionButtonConfiguration
+        buttonConfig.image = .symbol(.largeType)
+        button.configuration = buttonConfig
+        button.tintColor = .actionText
+        button.accessibilityLabel = LString.actionShowTextInLargeType
         return button
     }()
 
@@ -82,38 +106,43 @@ final class FieldCopiedView: UIView {
         backgroundColor = .actionTint
         translatesAutoresizingMaskIntoConstraints = false
 
+        addSubview(textLabel)
         addSubview(stackView)
-        stackView.addArrangedSubview(textLabel)
-        stackView.addArrangedSubview(exportButton)
         stackView.addArrangedSubview(copyFieldReferenceButton)
-        stackView.centerXAnchor
-            .constraint(equalTo: layoutMarginsGuide.centerXAnchor)
-            .activate()
-        stackView.centerYAnchor
-            .constraint(equalTo: layoutMarginsGuide.centerYAnchor)
-            .activate()
-        stackView.topAnchor
-            .constraint(lessThanOrEqualTo: topAnchor)
-            .activate()
-        stackView.bottomAnchor
-            .constraint(greaterThanOrEqualTo: bottomAnchor)
-            .activate()
-        stackView.trailingAnchor
-            .constraint(lessThanOrEqualTo: layoutMarginsGuide.trailingAnchor)
+        stackView.addArrangedSubview(exportButton)
+        stackView.addArrangedSubview(showLargeTypeButton)
+
+        NSLayoutConstraint.activate([
+            stackView.centerYAnchor.constraint(equalTo: layoutMarginsGuide.centerYAnchor),
+            stackView.topAnchor.constraint(lessThanOrEqualTo: topAnchor),
+            stackView.bottomAnchor.constraint(greaterThanOrEqualTo: bottomAnchor),
+            stackView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -32),
+            textLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            textLabel.trailingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 8),
+            textLabel.topAnchor.constraint(lessThanOrEqualTo: topAnchor),
+            textLabel.bottomAnchor.constraint(greaterThanOrEqualTo: bottomAnchor),
+            textLabel.centerYAnchor.constraint(equalTo: layoutMarginsGuide.centerYAnchor),
+        ])
+        textLabel.centerXAnchor.constraint(equalTo: layoutMarginsGuide.centerXAnchor)
+            .setPriority(.defaultHigh)
             .activate()
     }
 
     public func show(
         in tableView: UITableView,
         at indexPath: IndexPath,
-        canReference: Bool
+        options: any Collection<Option> = [.canExport, .canCopyReference, .canShowLargeType]
     ) {
         hide(animated: false)
-        copyFieldReferenceButton.isHidden = !canReference
+        exportButton.isHidden = !options.contains(.canExport)
+        copyFieldReferenceButton.isHidden = !options.contains(.canCopyReference)
+        showLargeTypeButton.isHidden = !options.contains(.canShowLargeType)
 
         guard let cell = tableView.cellForRow(at: indexPath) else { assertionFailure(); return }
         self.indexPath = indexPath
 
+        wasUserInteractionEnabled = cell.accessoryView?.isUserInteractionEnabled
+        cell.accessoryView?.isUserInteractionEnabled = false
         cell.addSubview(self)
         self.topAnchor.constraint(equalTo: cell.topAnchor).activate()
         self.bottomAnchor.constraint(equalTo: cell.bottomAnchor).activate()
@@ -142,6 +171,9 @@ final class FieldCopiedView: UIView {
     public func hide(animated: Bool) {
         hidingTimer?.invalidate()
         hidingTimer = nil
+        if let cell = superview as? UITableViewCell {
+            cell.accessoryView?.isUserInteractionEnabled = wasUserInteractionEnabled ?? true
+        }
         guard animated else {
             self.layer.removeAllAnimations()
             self.removeFromSuperview()

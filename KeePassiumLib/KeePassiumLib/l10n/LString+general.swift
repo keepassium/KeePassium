@@ -596,6 +596,12 @@ extension LString {
         value: "Field reference copied to clipboard",
         comment: "Notification: a reference to an entry field has been copied to clipboard"
     )
+    public static let actionShowTextInLargeType = NSLocalizedString(
+        "[Entry/Field/LargeType/action]",
+        bundle: Bundle.framework,
+        value: "Show in Large Type",
+        comment: "Action: display text using large font"
+    )
     public static let defaultNewEntryName = NSLocalizedString(
         "[Entry/New/defaultTitle] New Entry",
         bundle: Bundle.framework,

@@ -18,6 +18,11 @@ protocol EntryExtraViewerVCDelegate: AnyObject {
         text: String,
         at popoverAnchor: PopoverAnchor,
         in viewController: EntryExtraViewerVC)
+    func didPressShowLargeType(
+        text: String,
+        at popoverAnchor: PopoverAnchor,
+        in viewController: EntryExtraViewerVC
+    )
     func didUpdateProperties(
         properties: [EntryExtraViewerVC.Property],
         in viewController: EntryExtraViewerVC
@@ -283,7 +288,7 @@ final class EntryExtraViewerVC: UITableViewController, Refreshable {
             self.copiedCellView.show(
                 in: self.tableView,
                 at: indexPath,
-                canReference: false
+                options: [.canExport, .canShowLargeType]
             )
         }
     }
@@ -301,5 +306,14 @@ extension EntryExtraViewerVC: FieldCopiedViewDelegate {
         delegate?.didPressExportField(text: entry.uuid.uuidString, at: popoverAnchor, in: self)
     }
 
-    func didPressCopyFieldReference(for indexPath: IndexPath, from view: FieldCopiedView) { }
+    func didPressCopyFieldReference(for indexPath: IndexPath, from view: FieldCopiedView) {
+    }
+
+    func didPressShowLargeType(for indexPath: IndexPath, from view: FieldCopiedView) {
+        guard let entry else { return }
+
+        view.hide(animated: true)
+        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+        delegate?.didPressShowLargeType(text: entry.uuid.uuidString, at: popoverAnchor, in: self)
+    }
 }

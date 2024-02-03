@@ -21,6 +21,11 @@ protocol EntryFieldViewerDelegate: AnyObject {
     func didPressCopyFieldReference(
         from viewableField: ViewableField,
         in viewController: EntryFieldViewerVC)
+    func didPressShowLargeType(
+        text: String,
+        from viewableField: ViewableField,
+        at popoverAnchor: PopoverAnchor,
+        in viewController: EntryFieldViewerVC)
 
     func didPressEdit(at popoverAnchor: PopoverAnchor, in viewController: EntryFieldViewerVC)
 }
@@ -109,11 +114,15 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
         let supportsFieldReferencing = getField(at: indexPath).field?.isStandardField ?? false
         HapticFeedback.play(.copiedToClipboard)
         DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
+            guard let self else { return }
             self.copiedCellView.show(
                 in: self.tableView,
                 at: indexPath,
-                canReference: supportsFieldReferencing
+                options: [
+                    .canExport,
+                    .canShowLargeType,
+                    supportsFieldReferencing ? .canCopyReference : nil
+                ].compactMap { $0 }
             )
         }
     }
@@ -224,5 +233,18 @@ extension EntryFieldViewerVC: FieldCopiedViewDelegate {
     func didPressCopyFieldReference(for indexPath: IndexPath, from view: FieldCopiedView) {
         let field = getField(at: indexPath)
         delegate?.didPressCopyFieldReference(from: field, in: self)
+    }
+
+    func didPressShowLargeType(for indexPath: IndexPath, from view: FieldCopiedView) {
+        let field = getField(at: indexPath)
+        guard let value = field.resolvedValue else {
+            assertionFailure()
+            return
+        }
+        view.hide(animated: true)
+
+        HapticFeedback.play(.contextMenuOpened)
+        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+        delegate?.didPressShowLargeType(text: value, from: field, at: popoverAnchor, in: self)
     }
 }

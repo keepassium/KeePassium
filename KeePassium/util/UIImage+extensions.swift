@@ -28,6 +28,7 @@ public enum SymbolName: String {
     public static let appProtection = Self.lock
     public static let autoFill = Self.return
     public static let fieldReference = Self.arrowRightCircle
+    public static let largeType = Self.characterMagnify
     public static let passwordAudit = Self.networkBadgeShield
 
     public static let premiumBenefitMultiDB = Self.shieldBadgePlus
@@ -60,6 +61,7 @@ public enum SymbolName: String {
     case bookClosed = "book.closed"
     case briefcase = "briefcase"
     case camera = "camera"
+    case characterMagnify = "character.magnify"
     case checkmark = "checkmark"
     case checkmarkSeal = "checkmark.seal"
     case chevronDown = "chevron.down"

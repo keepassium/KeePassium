@@ -1207,6 +1207,7 @@
 		F36296892A8B87FC00A1E2B0 /* PasswordAuditResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36296882A8B87FC00A1E2B0 /* PasswordAuditResultCell.swift */; };
 		F37338FF2AACCAFC007188D2 /* FaviconDownloading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810530B59228DDD3CEA55C42 /* FaviconDownloading.swift */; };
 		F37339002AACCAFD007188D2 /* FaviconDownloading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810530B59228DDD3CEA55C42 /* FaviconDownloading.swift */; };
+		F3741DE82B5966780089F666 /* LargeTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3741DE72B5966780089F666 /* LargeTypeVC.swift */; };
 		F377C9AB2AA74A1A00266397 /* FaviconDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377C9AA2AA74A1A00266397 /* FaviconDownloader.swift */; };
 		F377C9AD2AA74F9000266397 /* FaviconDownloaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377C9AC2AA74F9000266397 /* FaviconDownloaderTests.swift */; };
 		F37CAA272A87D4F20000EF64 /* PasswordAuditCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37CAA262A87D4F20000EF64 /* PasswordAuditCoordinator.swift */; };
@@ -1234,6 +1235,8 @@
 		F3B69FCC2B078917006FC966 /* EntryExtraViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B69FCB2B078917006FC966 /* EntryExtraViewerVC.swift */; };
 		F3B69FCD2B078917006FC966 /* EntryExtraViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B69FCB2B078917006FC966 /* EntryExtraViewerVC.swift */; };
 		F3B69FCE2B078917006FC966 /* EntryExtraViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B69FCB2B078917006FC966 /* EntryExtraViewerVC.swift */; };
+		F3C0A6352B6D777A007F4D9E /* LargeTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3741DE72B5966780089F666 /* LargeTypeVC.swift */; };
+		F3C0A6362B6D777B007F4D9E /* LargeTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3741DE72B5966780089F666 /* LargeTypeVC.swift */; };
 		F3C71AAF2AFFAD7A00EEAC8E /* GroupEditorTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C71AAD2AFFAD7A00EEAC8E /* GroupEditorTitleCell.swift */; };
 		F3C71AB02AFFAD7A00EEAC8E /* GroupEditorTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C71AAD2AFFAD7A00EEAC8E /* GroupEditorTitleCell.swift */; };
 		F3C71AB12AFFAD7A00EEAC8E /* GroupEditorTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C71AAD2AFFAD7A00EEAC8E /* GroupEditorTitleCell.swift */; };
@@ -2376,6 +2379,7 @@
 		F35DBC832AED5B2D00B33757 /* EncryptionSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptionSettingsVC.swift; sourceTree = "<group>"; };
 		F35DBC852AED5C5400B33757 /* EncryptionSettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptionSettingsCoordinator.swift; sourceTree = "<group>"; };
 		F36296882A8B87FC00A1E2B0 /* PasswordAuditResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordAuditResultCell.swift; sourceTree = "<group>"; };
+		F3741DE72B5966780089F666 /* LargeTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeTypeVC.swift; sourceTree = "<group>"; };
 		F377C9AA2AA74A1A00266397 /* FaviconDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaviconDownloader.swift; sourceTree = "<group>"; };
 		F377C9AC2AA74F9000266397 /* FaviconDownloaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaviconDownloaderTests.swift; sourceTree = "<group>"; };
 		F37CAA262A87D4F20000EF64 /* PasswordAuditCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordAuditCoordinator.swift; sourceTree = "<group>"; };
@@ -2876,6 +2880,7 @@
 				751E0D122309AF4C0088BB10 /* EntryHistoryViewerVC.storyboard */,
 				F3B69FCB2B078917006FC966 /* EntryExtraViewerVC.swift */,
 				7589FDCC28B4EA2100CCC76B /* FieldCopiedView.swift */,
+				F3741DE72B5966780089F666 /* LargeTypeVC.swift */,
 			);
 			path = entry;
 			sourceTree = "<group>";
@@ -4264,6 +4269,7 @@
 				758BF0D820D1B1DA00897C83 /* ValidatingTextField.swift in Sources */,
 				75D76154262E1E9000B1DE7F /* SettingsCoordinator.swift in Sources */,
 				7578488F22C1DFF400BBEF9A /* SettingsBackupTimeoutPickerVC.swift in Sources */,
+				F3741DE82B5966780089F666 /* LargeTypeVC.swift in Sources */,
 				753376F123CA650C00603F4A /* PasswordStringHelper.swift in Sources */,
 				758544642351FE8D000D5E5E /* UIFont+extensions.swift in Sources */,
 				75C5C3762129DE0800CD7FE3 /* UIAlertController+extensions.swift in Sources */,
@@ -4434,6 +4440,7 @@
 				75B38C29233E5B7C006BDEFC /* FileInfoReloader.swift in Sources */,
 				75BE09202509905300C436C2 /* ItemIconPickerCoordinator.swift in Sources */,
 				75B38C2A233E5B7C006BDEFC /* EntryFileViewerVC.swift in Sources */,
+				F3C0A6352B6D777A007F4D9E /* LargeTypeVC.swift in Sources */,
 				F3C71AB02AFFAD7A00EEAC8E /* GroupEditorTitleCell.swift in Sources */,
 				75B38C2B233E5B7C006BDEFC /* String+extensions.swift in Sources */,
 				75B78710261F916E005BE7B7 /* CollectionViewControllerWithContextActions.swift in Sources */,
@@ -4689,6 +4696,7 @@
 				75D0763E28B639D200F02E39 /* TipBoxCoordinator.swift in Sources */,
 				F32141502A934AB6007A8D4E /* PasswordAuditCoordinator.swift in Sources */,
 				75D0763F28B639D200F02E39 /* DatabaseCreatorVC.swift in Sources */,
+				F3C0A6362B6D777B007F4D9E /* LargeTypeVC.swift in Sources */,
 				75D0764028B639D200F02E39 /* SettingsAppLockVC.swift in Sources */,
 				75D0764128B639D200F02E39 /* QRCodeScanner.swift in Sources */,
 				F321414E2A934AAF007A8D4E /* HIBPService.swift in Sources */,
