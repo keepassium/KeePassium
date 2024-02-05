@@ -77,6 +77,7 @@
 		75A0047B2840CF5C000B7B17 /* LString+a11y.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A0047A2840CF5C000B7B17 /* LString+a11y.swift */; };
 		75A26770228DAC440097C693 /* PremiumManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A2676F228DAC430097C693 /* PremiumManager.swift */; };
 		75A2677B229045A60097C693 /* PremiumFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A2677A229045A60097C693 /* PremiumFeature.swift */; };
+		75A4948A2B5EF54200ED018F /* Taggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A494892B5EF54200ED018F /* Taggable.swift */; };
 		75AA237826CA6DA700488C4E /* KeyHelper+loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AA237726CA6DA700488C4E /* KeyHelper+loading.swift */; };
 		75AA9B51272FF3FA00863B98 /* QuickTypeAutoFillRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AA9B50272FF3FA00863B98 /* QuickTypeAutoFillRecord.swift */; };
 		75AA9B53272FFAA600863B98 /* QuickTypeAutoFillStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AA9B52272FFAA600863B98 /* QuickTypeAutoFillStorage.swift */; };
@@ -344,6 +345,7 @@
 		75A0047A2840CF5C000B7B17 /* LString+a11y.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LString+a11y.swift"; sourceTree = "<group>"; };
 		75A2676F228DAC430097C693 /* PremiumManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumManager.swift; sourceTree = "<group>"; };
 		75A2677A229045A60097C693 /* PremiumFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumFeature.swift; sourceTree = "<group>"; };
+		75A494892B5EF54200ED018F /* Taggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Taggable.swift; sourceTree = "<group>"; };
 		75AA237726CA6DA700488C4E /* KeyHelper+loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyHelper+loading.swift"; sourceTree = "<group>"; };
 		75AA9B50272FF3FA00863B98 /* QuickTypeAutoFillRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickTypeAutoFillRecord.swift; sourceTree = "<group>"; };
 		75AA9B52272FFAA600863B98 /* QuickTypeAutoFillStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickTypeAutoFillStorage.swift; sourceTree = "<group>"; };
@@ -885,6 +887,7 @@
 				75D09BF72174F77000F7DEF2 /* CustomIcon2.swift */,
 				75D09BF92174F77000F7DEF2 /* DeletedObject2.swift */,
 				757B9B812AA0848100FFA6EA /* DatabaseFeature2.swift */,
+				75A494892B5EF54200ED018F /* Taggable.swift */,
 			);
 			path = kp2;
 			sourceTree = "<group>";
@@ -1290,6 +1293,7 @@
 				7599AC2F28940B1700FD03BC /* LocalDataSource.swift in Sources */,
 				75D6B3BD25C36F5100A6BA0D /* ProcessInfo+extensions.swift in Sources */,
 				75D09C222174F77000F7DEF2 /* CustomData2.swift in Sources */,
+				75A4948A2B5EF54200ED018F /* Taggable.swift in Sources */,
 				756AFD5D258B4C510072BEEF /* KeyFileError.swift in Sources */,
 				75012A6A26D82A58002F1911 /* DatabaseLoadingWarning.swift in Sources */,
 				75F11C33288312A3005B3DC0 /* LString+about.swift in Sources */,

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QNf-to-6jj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QNf-to-6jj">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -390,6 +390,57 @@
                                     <outlet property="progressView" destination="fQz-ku-cXx" id="jRc-fA-kT0"/>
                                     <outlet property="valueScrollView" destination="jBn-qa-M6r" id="xaX-6f-a5L"/>
                                     <outlet property="valueText" destination="p7x-lw-Hyn" id="Vuo-cf-GWG"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TagsCell" id="IOO-MF-9Ow" userLabel="GenericTextCell" customClass="TagsCell" customModule="KeePassium" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="434" width="320" height="65"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IOO-MF-9Ow" id="s38-Vh-bUH">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fG3-8M-ZhM" userLabel="Separator">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="2"/>
+                                            <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="2" id="Jbq-Wt-NIo"/>
+                                            </constraints>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="{GenericTextCell}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wky-nB-Nyy">
+                                            <rect key="frame" x="16" y="10" width="288" height="19.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                            <color key="textColor" name="AuxiliaryText"/>
+                                            <nil key="highlightedColor"/>
+                                            <attributedString key="userComments">
+                                                <fragment content="#bc-ignore!"/>
+                                            </attributedString>
+                                        </label>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" scrollEnabled="NO" editable="NO" text="{Field Value}" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="B10-Sf-FMR">
+                                            <rect key="frame" x="12" y="29.5" width="308" height="35.5"/>
+                                            <color key="textColor" name="PrimaryText"/>
+                                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            <attributedString key="userComments">
+                                                <fragment content="#bc-ignore!"/>
+                                            </attributedString>
+                                        </textView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Wky-nB-Nyy" firstAttribute="leading" secondItem="s38-Vh-bUH" secondAttribute="leadingMargin" id="206-yQ-Sbv"/>
+                                        <constraint firstAttribute="bottom" secondItem="B10-Sf-FMR" secondAttribute="bottom" id="2xz-zi-R9V"/>
+                                        <constraint firstAttribute="trailing" secondItem="fG3-8M-ZhM" secondAttribute="trailing" id="G7d-Fu-yQm"/>
+                                        <constraint firstItem="fG3-8M-ZhM" firstAttribute="top" secondItem="s38-Vh-bUH" secondAttribute="top" id="Iy2-gG-XRk"/>
+                                        <constraint firstItem="Wky-nB-Nyy" firstAttribute="top" secondItem="fG3-8M-ZhM" secondAttribute="bottom" constant="8" id="S9Q-ez-a7V"/>
+                                        <constraint firstItem="Wky-nB-Nyy" firstAttribute="trailing" secondItem="s38-Vh-bUH" secondAttribute="trailingMargin" id="VWh-lZ-aUw"/>
+                                        <constraint firstAttribute="trailing" secondItem="B10-Sf-FMR" secondAttribute="trailing" id="WM1-FL-GxW"/>
+                                        <constraint firstItem="B10-Sf-FMR" firstAttribute="top" secondItem="Wky-nB-Nyy" secondAttribute="bottom" id="rCa-7l-jfj"/>
+                                        <constraint firstItem="B10-Sf-FMR" firstAttribute="leading" secondItem="s38-Vh-bUH" secondAttribute="leadingMargin" constant="-4" id="sEi-FO-H3e"/>
+                                        <constraint firstItem="fG3-8M-ZhM" firstAttribute="leading" secondItem="s38-Vh-bUH" secondAttribute="leading" id="vcV-7F-tMp"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="Wky-nB-Nyy" id="88b-FN-zgY"/>
+                                    <outlet property="valueText" destination="B10-Sf-FMR" id="zZ6-cO-o87"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

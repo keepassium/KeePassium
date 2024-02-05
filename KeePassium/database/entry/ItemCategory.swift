@@ -32,7 +32,8 @@ enum ItemCategory: String {
             EntryField.password: 3,
             EntryField.totp: 4, 
             EntryField.url: 5,
-            EntryField.notes: 6]
+            EntryField.tags: 6,
+            EntryField.notes: 7]
     }
 
     public static func get(for entry: Entry) -> ItemCategory {

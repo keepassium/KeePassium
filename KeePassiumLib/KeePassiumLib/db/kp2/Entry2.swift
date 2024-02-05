@@ -254,10 +254,9 @@ public class Entry2: Entry {
     public var foregroundColor: String
     public var backgroundColor: String
     public var overrideURL: String
-    public var tags: String
-    public var previousParentGroupUUID: UUID 
-    public var qualityCheck: Bool 
-    public var customData: CustomData2 
+    public var previousParentGroupUUID: UUID
+    public var qualityCheck: Bool
+    public var customData: CustomData2
 
     public var browserHideEntry: Bool? {
         get {
@@ -288,11 +287,11 @@ public class Entry2: Entry {
         foregroundColor = ""
         backgroundColor = ""
         overrideURL = ""
-        tags = ""
         previousParentGroupUUID = UUID.ZERO
         qualityCheck = true
         customData = CustomData2(database: database)
         super.init(database: database)
+        tags = []
     }
     deinit {
         erase()
@@ -429,7 +428,7 @@ public class Entry2: Entry {
             case Xml2.overrideURL:
                 self.overrideURL = tag.value ?? ""
             case Xml2.tags:
-                self.tags = tag.value ?? ""
+                self.tags = parseItemTags(xml: tag)
             case Xml2.string:
                 let field = makeEntryField(name: "", value: "", isProtected: true) as! EntryField2
                 try field.load(xml: tag, streamCipher: streamCipher)
@@ -613,7 +612,7 @@ public class Entry2: Entry {
         xmlEntry.addChild(name: Xml2.foregroundColor, value: foregroundColor)
         xmlEntry.addChild(name: Xml2.backgroundColor, value: backgroundColor)
         xmlEntry.addChild(name: Xml2.overrideURL, value: overrideURL)
-        xmlEntry.addChild(name: Xml2.tags, value: tags)
+        xmlEntry.addChild(name: Xml2.tags, value: itemTagsToString(tags))
 
         let xmlTimes = AEXMLElement(name: Xml2.times)
         xmlTimes.addChild(

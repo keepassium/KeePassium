@@ -19,6 +19,8 @@ public class EntryField: Eraseable {
     public static let totp = "TOTP"
     public static let otp = "otp"
 
+    public static let tags = "tags" + UUID().uuidString
+
     public var name: String
     public var value: String {
         didSet {

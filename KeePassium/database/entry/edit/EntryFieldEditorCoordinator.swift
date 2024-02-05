@@ -54,6 +54,8 @@ final class EntryFieldEditorCoordinator: Coordinator {
     var savingProgressHost: ProgressViewHost? { return router }
     var saveSuccessHandler: (() -> Void)?
 
+    private var tagsField: EntryField?
+
     init(router: NavigationRouter, databaseFile: DatabaseFile, parent: Group, target: Entry?) {
         self.router = router
         self.databaseFile = databaseFile
@@ -74,6 +76,15 @@ final class EntryFieldEditorCoordinator: Coordinator {
         }
         entry.touch(.accessed)
         fields = EditableFieldFactory.makeAll(from: entry, in: database)
+        if database is Database2,
+           let (entryField, _) = ViewableEntryFieldFactory.makeTags(
+                from: entry,
+                parent: originalEntry?.parent,
+                includeEmpty: true)
+        {
+            self.tagsField = entryField
+            fields.append(EditableField(field: entryField))
+        }
 
         fieldEditorVC = EntryFieldEditorVC.instantiateFromStoryboard()
         fieldEditorVC.delegate = self
@@ -386,6 +397,46 @@ extension EntryFieldEditorCoordinator: EntryFieldEditorDelegate {
             }
             refresh()
         }
+    }
+
+    func didPressTags(in viewController: EntryFieldEditorVC) {
+        guard database is Database2 else {
+            assertionFailure("Tried to edit tags in KDB file, this must be blocked by UI")
+            return
+        }
+
+        let tagsCoordinator = TagSelectorCoordinator(
+            item: entry,
+            parent: originalEntry?.parent,
+            database: database,
+            router: router
+        )
+        tagsCoordinator.dismissHandler = { [weak self, tagsCoordinator] coordinator in
+            self?.applyTags(tags: tagsCoordinator.selectedTags)
+            self?.removeChildCoordinator(coordinator)
+        }
+        tagsCoordinator.start()
+        addChildCoordinator(tagsCoordinator)
+    }
+
+    private func applyTags(tags: [String]) {
+        assert(database is Database2)
+        entry.tags = tags
+        guard let (updatedField, _) = ViewableEntryFieldFactory.makeTags(
+            from: entry,
+            parent: originalEntry?.parent,
+            includeEmpty: true
+        ) else {
+            return
+        }
+
+        guard updatedField.value != tagsField?.value else {
+            return
+        }
+
+        isModified = true
+        tagsField?.value = updatedField.value
+        fieldEditorVC.refresh()
     }
 }
 

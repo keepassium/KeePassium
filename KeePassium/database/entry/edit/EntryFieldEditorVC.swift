@@ -39,6 +39,9 @@ protocol EntryFieldEditorDelegate: AnyObject {
         for field: EditableField,
         in viewController: EntryFieldEditorVC
     )
+    func didPressTags(
+        in viewController: EntryFieldEditorVC
+    )
 }
 
 final class EntryFieldEditorVC: UITableViewController, Refreshable {
@@ -302,11 +305,24 @@ extension EntryFieldEditorVC {
         if field.isFixed {
             cell = configureFixedFieldCell(field: field, tableView: tableView, at: indexPath)
         } else {
-            cell = configureCustomFieldCell(field: field, tableView: tableView, at: indexPath)
+            cell = configureNonFixedFieldCell(field: field, tableView: tableView, at: indexPath)
         }
         cell.delegate = self
         cell.validate() 
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let fieldNumber = indexPath.row
+        let field = fields[fieldNumber]
+
+        switch field.internalName {
+        case EntryField.tags:
+            delegate?.didPressTags(in: self)
+        default:
+            break
+        }
     }
 
     private func configureFixedFieldCell(
@@ -329,6 +345,19 @@ extension EntryFieldEditorVC {
             return configureProtectedSingleLineCell(field: field, tableView: tableView, at: indexPath)
         case (_, false, false):
             return configureSingleLineCell(field: field, tableView: tableView, at: indexPath)
+        }
+    }
+
+    private func configureNonFixedFieldCell(
+        field: EditableField,
+        tableView: UITableView,
+        at indexPath: IndexPath
+    ) -> EditableFieldCell & UITableViewCell {
+        switch field.internalName {
+        case EntryField.tags:
+            return configureTagsFieldEditorCell(field: field, tableView: tableView, at: indexPath)
+        default:
+            return configureCustomFieldCell(field: field, tableView: tableView, at: indexPath)
         }
     }
 
@@ -432,6 +461,20 @@ extension EntryFieldEditorVC {
             withIdentifier: EntryFieldEditorMultiLineCell.storyboardID,
             for: indexPath)
             as! EntryFieldEditorMultiLineCell
+        cell.field = field
+        return cell
+    }
+
+    private func configureTagsFieldEditorCell(
+        field: EditableField,
+        tableView: UITableView,
+        at indexPath: IndexPath
+    ) -> TagsFieldEditorCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: TagsFieldEditorCell.storyboardID,
+            for: indexPath)
+            as! TagsFieldEditorCell
+        cell.selectionStyle = .default
         cell.field = field
         return cell
     }

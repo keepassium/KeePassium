@@ -310,6 +310,40 @@ final class PasswordEntryFieldCell:
     }
 }
 
+final class TagsFieldEditorCell: UITableViewCell, EditableFieldCell, UITextFieldDelegate {
+    static let storyboardID = "TagsFieldEditorCell"
+
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var valueTextField: UITextField!
+
+    var delegate: EditableFieldCellDelegate?
+
+    weak var field: EditableField? {
+        didSet {
+            titleLabel.text = field?.visibleName
+            let attributedText = TagFormatter.format(field?.value)
+            valueTextField.attributedText = attributedText
+            valueTextField.isHidden = attributedText == nil
+
+            valueTextField.accessibilityLabel = field?.visibleName
+            valueTextField.accessibilityValue = field?.value
+        }
+    }
+
+    func validate() { }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        accessoryType = .disclosureIndicator
+        valueTextField.delegate = self
+    }
+
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return false
+    }
+}
+
 class EntryFieldEditorMultiLineCell:
     UITableViewCell,
     EditableFieldCell,

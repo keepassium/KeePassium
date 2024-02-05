@@ -59,6 +59,8 @@ final class EntryViewerCoordinator: NSObject, Coordinator, Refreshable {
 
     private var expiryDateEditorModalRouter: NavigationRouter?
 
+    private var tagsField: EntryField?
+
     init(
         entry: Entry,
         databaseFile: DatabaseFile,
@@ -145,14 +147,25 @@ final class EntryViewerCoordinator: NSObject, Coordinator, Refreshable {
 
     func refresh(animated: Bool) {
         let category = ItemCategory.get(for: entry)
-        let fields = ViewableEntryFieldFactory.makeAll(
+        var fields = ViewableEntryFieldFactory.makeAll(
             from: entry,
             in: database,
             excluding: [.title, .emptyValues, .otpConfig]
         )
+        if database is Database2,
+           let (entry, field) = ViewableEntryFieldFactory.makeTags(
+                from: entry,
+                parent: entry.parent,
+                includeEmpty: false)
+        {
+            self.tagsField = entry
+            fields.append(field)
+        }
+
         fieldViewerVC.setContents(
             fields,
             category: category,
+            tags: entry.resolvingTags(),
             isHistoryEntry: isHistoryEntry,
             canEditEntry: canEditEntry)
         fileViewerVC.setContents(

@@ -682,7 +682,13 @@ extension LString {
         value: "One-Time Password (HOTP)",
         comment: "Name of an entry field. Acronym `HOTP` should not be translated."
     )
-    public static let fieldUUID = "UUID" 
+    public static let fieldTags = NSLocalizedString(
+        "[Entry/Field/tags] Tags",
+        bundle: Bundle.framework,
+        value: "Tags",
+        comment: "Name of an entry field"
+    )
+    public static let fieldUUID = "UUID"
 
     public static let previousItemVersionRestored = NSLocalizedString(
         "[Item/History/Restored]",

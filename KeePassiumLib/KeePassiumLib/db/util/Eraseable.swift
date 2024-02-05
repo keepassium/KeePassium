@@ -16,6 +16,12 @@ public protocol EraseableStruct {
     mutating func erase()
 }
 
+extension Array where Element: StringProtocol {
+    mutating func erase() {
+        removeAll()
+    }
+}
+
 extension Array where Element: EraseableStruct {
     mutating func erase() {
         for i in 0..<count {

@@ -17,9 +17,8 @@ public class Group2: Group {
     public var lastTopVisibleEntryUUID: UUID
     public var usageCount: UInt32
     public var locationChangedTime: Date
-    public var previousParentGroupUUID: UUID 
-    public var tags: String 
-    public var customData: CustomData2 
+    public var previousParentGroupUUID: UUID
+    public var customData: CustomData2
 
     override public var isIncludeEntriesInSearch: Bool {
         return resolvingIsSearchingEnabled()
@@ -35,9 +34,9 @@ public class Group2: Group {
         usageCount = 0
         locationChangedTime = Date.now
         previousParentGroupUUID = UUID.ZERO
-        tags = ""
         customData = CustomData2(database: database)
         super.init(database: database)
+        tags = []
     }
     deinit {
         erase()
@@ -54,7 +53,7 @@ public class Group2: Group {
         usageCount = 0
         locationChangedTime = Date.now
         previousParentGroupUUID.erase()
-        tags = ""
+        tags.erase()
         customData.erase()
     }
 
@@ -200,7 +199,7 @@ public class Group2: Group {
                 self.previousParentGroupUUID = UUID(base64Encoded: tag.value) ?? UUID.ZERO
             case Xml2.tags:
                 assert(formatVersion.supports(.groupTags))
-                self.tags = tag.value ?? ""
+                self.tags = parseItemTags(xml: tag)
             case Xml2.customData:
                 assert(formatVersion.supports(.customData))
                 try customData.load(
@@ -381,7 +380,10 @@ public class Group2: Group {
                     name: Xml2.previousParentGroup,
                     value: previousParentGroupUUID.base64EncodedString())
             }
-            xmlGroup.addChild(name: Xml2.tags, value: tags)
+        }
+
+        if formatVersion.supports(.groupTags) {
+            xmlGroup.addChild(name: Xml2.tags, value: itemTagsToString(tags))
         }
 
         if formatVersion.supports(.customData),

@@ -44,6 +44,7 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
     private var canEditEntry = false
     private var category = ItemCategory.default
     private var sortedFields: [ViewableField] = []
+    private var tags: [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,12 +72,14 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
     func setContents(
         _ fields: [ViewableField],
         category: ItemCategory,
+        tags: [String],
         isHistoryEntry: Bool,
         canEditEntry: Bool
     ) {
         self.isHistoryEntry = isHistoryEntry
         self.canEditEntry = canEditEntry
         self.category = category
+        self.tags = tags
         self.sortedFields = fields.sorted {
             return category.compare($0.internalName, $1.internalName)
         }

@@ -69,6 +69,7 @@ class BasicViewableField: ViewableField {
         case EntryField.password: return LString.fieldPassword
         case EntryField.url: return LString.fieldURL
         case EntryField.notes: return LString.fieldNotes
+        case EntryField.tags: return LString.fieldTags
         default:
             return internalName
         }
@@ -178,6 +179,21 @@ class ViewableEntryFieldFactory {
         }
 
         return result
+    }
+
+    static func makeTags(from entry: Entry, parent: Group?, includeEmpty: Bool) -> (EntryField, ViewableField)? {
+        let tags = entry.tags
+        guard !tags.isEmpty || includeEmpty else {
+            return nil
+        }
+
+        let entryField = EntryField(
+            name: EntryField.tags,
+            value: TagHelper.tagsToString(tags),
+            isProtected: false
+        )
+        let viewableField = BasicViewableField(fieldOrNil: entryField, isValueHidden: false)
+        return (entryField, viewableField)
     }
 
     static private func makeOne(field: EntryField) -> ViewableField {

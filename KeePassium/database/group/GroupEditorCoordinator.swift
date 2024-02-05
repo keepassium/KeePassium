@@ -50,7 +50,12 @@ final class GroupEditorCoordinator: Coordinator {
         group.touch(.accessed)
 
         let groupProperties = GroupEditorVC.Property.makeAll(for: group, parent: parent)
-        groupEditorVC = GroupEditorVC(group: group, properties: groupProperties)
+        groupEditorVC = GroupEditorVC(
+            group: group,
+            parent: parent,
+            properties: groupProperties,
+            showTags: database is Database2
+        )
         groupEditorVC.delegate = self
         if originalGroup == nil {
             groupEditorVC.title = LString.titleCreateGroup
@@ -140,7 +145,12 @@ extension GroupEditorCoordinator: GroupEditorDelegate {
 
     func didPressDone(in groupEditor: GroupEditorVC) {
         groupEditor.resignFirstResponder()
-        saveChangesAndDismiss()
+        requestFormatUpgradeIfNecessary(
+            in: groupEditor,
+            for: database,
+            and: .groupTags) { [weak self] in
+                self?.saveChangesAndDismiss()
+            }
     }
 
     func didPressChangeIcon(at popoverAnchor: PopoverAnchor, in groupEditor: GroupEditorVC) {
@@ -149,6 +159,22 @@ extension GroupEditorCoordinator: GroupEditorDelegate {
 
     func didPressRandomizer(for textInput: TextInputView, in groupEditor: GroupEditorVC) {
         showPasswordGenerator(for: textInput, in: groupEditor)
+    }
+
+    func didPressTags(in groupEditor: GroupEditorVC) {
+        let tagsCoordinator = TagSelectorCoordinator(
+            item: group,
+            parent: originalGroup?.parent,
+            database: database,
+            router: router
+        )
+        tagsCoordinator.dismissHandler = { [weak self, tagsCoordinator] coordinator in
+            self?.group.tags = tagsCoordinator.selectedTags
+            self?.refresh()
+            self?.removeChildCoordinator(coordinator)
+        }
+        tagsCoordinator.start()
+        addChildCoordinator(tagsCoordinator)
     }
 }
 

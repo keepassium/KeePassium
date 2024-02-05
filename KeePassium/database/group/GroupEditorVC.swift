@@ -14,17 +14,33 @@ protocol GroupEditorDelegate: AnyObject {
     func didPressDone(in groupEditor: GroupEditorVC)
     func didPressChangeIcon(at popoverAnchor: PopoverAnchor, in groupEditor: GroupEditorVC)
     func didPressRandomizer(for textInput: TextInputView, in groupEditor: GroupEditorVC)
+    func didPressTags(in groupEditor: GroupEditorVC)
 }
 
 final class GroupEditorVC: UITableViewController {
     private enum Section: Int, CaseIterable {
-        case titleAndIcon
+        case basicInfo
         case properties
+
+        var title: String? {
+            switch self {
+            case .basicInfo:
+                return nil
+            case .properties:
+                return LString.titleItemProperties
+            }
+        }
+    }
+
+    private enum BasicInfo: Int, CaseIterable {
+        case titleAndIcon
+        case tags
     }
 
     private enum CellID {
         static let parameterValueCell = "ParameterValueCell"
         static let titleAndIconCell = "TitleAndIconCell"
+        static let tagsCell = "TagsCell"
     }
 
     private lazy var closeButton = UIBarButtonItem(
@@ -39,15 +55,28 @@ final class GroupEditorVC: UITableViewController {
         },
         menu: nil)
 
+    private lazy var tagsCellConfiguration: UIListContentConfiguration = {
+        var configuration = UIListContentConfiguration.subtitleCell()
+        configuration.textProperties.font = UIFont.preferredFont(forTextStyle: .callout)
+        configuration.textProperties.color = .auxiliaryText
+        configuration.textToSecondaryTextVerticalPadding = 8
+        configuration.directionalLayoutMargins = .init(top: 8, leading: 0, bottom: 10, trailing: 0)
+        return configuration
+    }()
+
     weak var delegate: GroupEditorDelegate?
 
     private let group: Group
+    private let parentGroup: Group?
     private var isFirstFocus = true
     private var properties: [Property]
+    private let showTags: Bool
 
-    init(group: Group, properties: [Property]) {
+    init(group: Group, parent: Group?, properties: [Property], showTags: Bool) {
         self.group = group
+        self.parentGroup = parent
         self.properties = properties
+        self.showTags = showTags
         super.init(style: .plain)
     }
 
@@ -60,7 +89,6 @@ final class GroupEditorVC: UITableViewController {
 
         navigationItem.leftBarButtonItem = closeButton
         navigationItem.rightBarButtonItem = doneButton
-        tableView.allowsSelection = false
         tableView.alwaysBounceVertical = false
 
         registerCellClasses(tableView)
@@ -74,6 +102,10 @@ final class GroupEditorVC: UITableViewController {
             GroupEditorTitleCell.classForCoder(),
             forCellReuseIdentifier: CellID.titleAndIconCell
         )
+        tableView.register(
+            UITableViewCell.self,
+            forCellReuseIdentifier: CellID.tagsCell
+        )
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -85,8 +117,12 @@ final class GroupEditorVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch Section(rawValue: section) {
-        case .titleAndIcon:
-            return 1 
+        case .basicInfo:
+            if showTags {
+                return BasicInfo.allCases.count
+            } else {
+                return BasicInfo.allCases.count - 1
+            }
         case .properties:
             return properties.count
         case .none:
@@ -96,21 +132,24 @@ final class GroupEditorVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch Section(rawValue: section) {
-        case .titleAndIcon:
-            return CGFloat.leastNonzeroMagnitude 
+        case .basicInfo:
+            return CGFloat.leastNonzeroMagnitude
         default:
             return UITableView.automaticDimension
         }
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch Section(rawValue: section) {
-        case .titleAndIcon:
-            return nil
-        case .properties:
-            return LString.titleItemProperties
+        return Section(rawValue: section)?.title
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        switch (indexPath.section, indexPath.row) {
+        case (Section.basicInfo.rawValue, BasicInfo.tags.rawValue):
+            delegate?.didPressTags(in: self)
         default:
-            return nil
+            break
         }
     }
 
@@ -119,13 +158,25 @@ final class GroupEditorVC: UITableViewController {
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
         switch Section(rawValue: indexPath.section) {
-        case .titleAndIcon:
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: CellID.titleAndIconCell,
-                for: indexPath)
-                as! GroupEditorTitleCell
-            configure(cell: cell)
-            return cell
+        case .basicInfo:
+            switch BasicInfo(rawValue: indexPath.row) {
+            case .titleAndIcon:
+                let cell = tableView.dequeueReusableCell(
+                    withIdentifier: CellID.titleAndIconCell,
+                    for: indexPath)
+                    as! GroupEditorTitleCell
+                configure(cell: cell)
+                return cell
+            case .tags:
+                assert(showTags, "Tried to show Tags row when tags must be hidden")
+                let cell = tableView.dequeueReusableCell(
+                    withIdentifier: CellID.tagsCell,
+                    for: indexPath)
+                configure(cell: cell)
+                return cell
+            default:
+                fatalError("Invalid row")
+            }
         case .properties:
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: CellID.parameterValueCell,
@@ -140,6 +191,7 @@ final class GroupEditorVC: UITableViewController {
     }
 
     private func configure(cell: GroupEditorTitleCell) {
+        cell.selectionStyle = .none
         cell.delegate = self
         cell.group = group
 
@@ -153,6 +205,15 @@ final class GroupEditorVC: UITableViewController {
         }
     }
 
+    private func configure(cell: UITableViewCell) {
+        var configuration = tagsCellConfiguration
+        configuration.text = LString.fieldTags
+
+        configuration.secondaryAttributedText = TagFormatter.format(tags: group.tags)
+        cell.contentConfiguration = configuration
+        cell.accessoryType = .disclosureIndicator
+    }
+
     private func configure(cell: ParameterValueCell, with model: Property) {
         let menuActions = Property.possibleValues.map { altValue in
             UIAction(
@@ -164,6 +225,7 @@ final class GroupEditorVC: UITableViewController {
             )
         }
 
+        cell.selectionStyle = .none
         cell.textLabel?.text = model.title
         cell.detailTextLabel?.text = model.description
         cell.menu = UIMenu(
