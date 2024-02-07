@@ -185,6 +185,11 @@ extension LString {
         value: "Export",
         comment: "Action/button to export an item to another app"
     )
+    public static let actionRefreshList = NSLocalizedString(
+        "[Generic/RefreshList/action]",
+        value: "Refresh List",
+        comment: "Action: refresh list of items, usually files"
+    )
     public static let actionPrint = NSLocalizedString(
         "[Generic] Print",
         bundle: Bundle.framework,
@@ -879,6 +884,31 @@ extension LString {
         value: "(Please describe the problem here)",
         comment: "Template text of a bug report email")
 
+    public static let defaultKeyFileName = NSLocalizedString(
+        "[KeyFile/Create/defaultName]",
+        bundle: Bundle.framework,
+        value: "keyfile.dat",
+        comment: "Default name for new key files. Should match the `key file` term in the glossary.")
+    public static let importKeyFileAction = NSLocalizedString(
+        "[KeyFile/Import/action]",
+        value: "Import Key File",
+        comment: "Action: import/add a key file into the app. `Key file` is a glossary term.")
+    public static let importKeyFileDescription = NSLocalizedString(
+        "[KeyFile/Import/actionDescription]",
+        value: "Add file to the app",
+        comment: "Description of the `Import Key File` action.")
+    public static let useKeyFileAction = NSLocalizedString(
+        "[KeyFile/Use/action]",
+        value: "Select Key File",
+        comment: "Action: use a key file at its storage location, without importing to the app.")
+    public static let useKeyFileDescription = NSLocalizedString(
+        "[KeyFile/Use/actionDescription]",
+        value: "Use without adding",
+        comment: "Description of the `Select Key File` action.")
+    public static let actionCreateKeyFile = NSLocalizedString(
+        "[KeyFile/Create/action]",
+        value: "Create Key File",
+        comment: "Action: create new key file.")
 
     public static let noHardwareKey = NSLocalizedString(
         "[HardwareKey/None] No Hardware Key",

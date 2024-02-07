@@ -1241,6 +1241,7 @@
 		F38A48C62A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38A48C32A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift */; };
 		F38A48C72A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38A48C32A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift */; };
 		F38A48C82A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38A48C32A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift */; };
+		F38AA37D2B6017DB0084B485 /* KeyFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756F3649260E96A1005A35DA /* KeyFilePickerCoordinator.swift */; };
 		F3AFC1B125FB7C38005FF4D7 /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AFC1B025FB7C38005FF4D7 /* QRCodeScanner.swift */; };
 		F3B0C2042B2CA8790001946D /* OnboardingPagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0C2032B2CA8790001946D /* OnboardingPagesVC.swift */; };
 		F3B157D52B29B37F003F5075 /* OnboardingStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B157D42B29B37F003F5075 /* OnboardingStep.swift */; };
@@ -4024,6 +4025,7 @@
 				758FF6D028FC2C9C007DE8EB /* SubtitleCell.swift in Sources */,
 				7526404128455DD80003DDFA /* PasswordGeneratorCells.swift in Sources */,
 				7572665124CB17410099B6E1 /* HelpViewerVC.swift in Sources */,
+				F38AA37D2B6017DB0084B485 /* KeyFilePickerCoordinator.swift in Sources */,
 				75E9E2BA290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift in Sources */,
 				75BE05F325DAA4E400B34CC0 /* SupportEmailComposer.swift in Sources */,
 				7526404328455DDC0003DDFA /* PasswordGeneratorLengthCell.swift in Sources */,

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dhm-DL-W1Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dhm-DL-W1Z">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,17 +16,6 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="18" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="LxY-4G-O5f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Omh-Sn-jl2">
-                            <rect key="frame" x="0.0" y="251" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                            <state key="normal" title="Add Key File">
-                                <color key="titleColor" name="ActionTint"/>
-                            </state>
-                            <connections>
-                                <action selector="didPressAddKeyFile:" destination="dhm-DL-W1Z" eventType="touchUpInside" id="KN1-DM-j3H"/>
-                            </connections>
-                        </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoKeyFileCell" textLabel="9UZ-FK-v73" detailTextLabel="leO-vH-qBX" imageView="mtg-wq-fAX" style="IBUITableViewCellStyleSubtitle" id="maz-Ac-JmV">
                                 <rect key="frame" x="16" y="55.5" width="343" height="57.5"/>
@@ -58,44 +47,8 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BrowseKeyFileCell" textLabel="XiA-k9-5wr" detailTextLabel="BGv-TX-maE" imageView="ei2-xw-PXd" style="IBUITableViewCellStyleSubtitle" id="zaA-nH-nq2">
-                                <rect key="frame" x="16" y="113" width="343" height="57.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zaA-nH-nq2" id="XBV-iH-t8F">
-                                    <rect key="frame" x="0.0" y="0.0" width="343" height="57.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Browse…" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="XiA-k9-5wr">
-                                            <rect key="frame" x="57.75" y="9" width="69.5" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <color key="textColor" name="PrimaryText"/>
-                                            <nil key="highlightedColor"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="Action to open a file selection dialog"/>
-                                            </attributedString>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Use key file without adding it to the list" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="BGv-TX-maE">
-                                            <rect key="frame" x="57.75" y="32.5" width="220" height="14.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                            <color key="textColor" name="AuxiliaryText"/>
-                                            <nil key="highlightedColor"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="Explanation for the &quot;Key File/Browse&quot; action."/>
-                                            </attributedString>
-                                        </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ei2-xw-PXd">
-                                            <rect key="frame" x="13.25" y="16.5" width="29.5" height="23.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="tintColor" name="IconTint"/>
-                                            <imageReference key="image" image="folder" catalog="system" symbolScale="large" renderingMode="template"/>
-                                        </imageView>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="KeyFileCell" id="bN7-mQ-yah" customClass="FileListCell" customModule="KeePassium" customModuleProvider="target">
-                                <rect key="frame" x="16" y="170.5" width="343" height="63"/>
+                                <rect key="frame" x="16" y="113" width="343" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bN7-mQ-yah" id="8rf-Nh-a9R">
                                     <rect key="frame" x="0.0" y="0.0" width="343" height="63"/>
@@ -171,11 +124,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Key Files" id="r85-yz-wYI">
-                        <barButtonItem key="rightBarButtonItem" title="Add Key File" image="plus" catalog="system" id="Lod-RE-tcd">
-                            <connections>
-                                <action selector="didPressAddKeyFile:" destination="dhm-DL-W1Z" id="p63-Ik-Vdx"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Add Key File" image="plus" catalog="system" id="Lod-RE-tcd"/>
                     </navigationItem>
                     <connections>
                         <outlet property="addKeyFileBarButton" destination="Lod-RE-tcd" id="7vF-My-nJP"/>
@@ -187,13 +136,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="folder" catalog="system" width="128" height="96"/>
         <image name="key.doc" width="11" height="14"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
-        <namedColor name="ActionTint">
-            <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="AuxiliaryText">
             <color red="0.23500001430511475" green="0.23500001430511475" blue="0.2630000114440918" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

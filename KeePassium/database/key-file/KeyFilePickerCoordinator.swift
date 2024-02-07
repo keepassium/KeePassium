@@ -23,6 +23,8 @@ class KeyFilePickerCoordinator: NSObject, Coordinator {
     private var keyFilePickerVC: KeyFilePickerVC
     private var documentPickerShouldAdd = true
 
+    private var fileExportHelper: FileExportHelper?
+
     init(router: NavigationRouter) {
         self.router = router
         keyFilePickerVC = KeyFilePickerVC.create()
@@ -86,10 +88,40 @@ extension KeyFilePickerCoordinator {
         viewController.present(modalRouter, animated: true, completion: nil)
         addChildCoordinator(fileInfoCoordinator)
     }
+
+    func createKeyFile() {
+        let keyFileData: ByteArray
+        do {
+            keyFileData = try KeyHelper.generateKeyFileData()
+        } catch {
+            keyFilePickerVC.showErrorAlert(error)
+            return
+        }
+
+        fileExportHelper = FileExportHelper(data: keyFileData, fileName: LString.defaultKeyFileName)
+        fileExportHelper!.handler = { [weak self] finalURL in
+            self?.fileExportHelper = nil
+            guard let self, let finalURL else {
+                return
+            }
+            switch FileKeeper.shared.getLocation(for: finalURL) {
+            case .internalDocuments:
+                self.keyFilePickerVC.refresh()
+            case .external:
+                self.addKeyFile(url: finalURL, mode: .openInPlace)
+            default:
+                let message = "File generated in an unexpected location, aborting"
+                Diag.warning(message)
+                assertionFailure(message)
+                return
+            }
+        }
+        fileExportHelper!.saveAs(presenter: keyFilePickerVC)
+    }
 }
 
 extension KeyFilePickerCoordinator: KeyFilePickerDelegate {
-    func didPressAddKeyFile(at popoverAnchor: PopoverAnchor, in keyFilePicker: KeyFilePickerVC) {
+    func didPressImportKeyFile(at popoverAnchor: PopoverAnchor, in keyFilePicker: KeyFilePickerVC) {
         let picker = UIDocumentPickerViewController(forOpeningContentTypes: FileType.keyFileUTIs)
         documentPickerShouldAdd = true
         picker.delegate = self
@@ -98,7 +130,7 @@ extension KeyFilePickerCoordinator: KeyFilePickerDelegate {
         router.present(picker, animated: true, completion: nil)
     }
 
-    func didPressBrowse(at popoverAnchor: PopoverAnchor, in keyFilePicker: KeyFilePickerVC) {
+    func didPressUseKeyFile(at popoverAnchor: PopoverAnchor, in keyFilePicker: KeyFilePickerVC) {
         let picker = UIDocumentPickerViewController(forOpeningContentTypes: FileType.keyFileUTIs)
         documentPickerShouldAdd = false
         picker.delegate = self
@@ -141,6 +173,11 @@ extension KeyFilePickerCoordinator: KeyFilePickerDelegate {
             }
         )
     }
+
+    func didPressCreateKeyFile(at popoverAnchor: PopoverAnchor, in keyFilePicker: KeyFilePickerVC) {
+        createKeyFile()
+
+    }
 }
 
 extension KeyFilePickerCoordinator: UIDocumentPickerDelegate {
@@ -157,13 +194,14 @@ extension KeyFilePickerCoordinator: UIDocumentPickerDelegate {
         }
     }
 
-    private func addKeyFile(url: URL) {
+    private func addKeyFile(url: URL, mode: FileKeeper.OpenMode? = nil) {
         guard !FileType.isDatabaseFile(url: url) else {
             showDatabaseAsKeyFileWarning()
             return
         }
 
-        let addingMode: FileKeeper.OpenMode = FileKeeper.canAccessAppSandbox ? .import : .openInPlace
+        let addingMode = mode ?? (FileKeeper.canAccessAppSandbox ? .import : .openInPlace)
+
         let fileKeeper = FileKeeper.shared
         fileKeeper.addFile(url: url, fileType: .keyFile, mode: addingMode) { [weak self] result in
             switch result {

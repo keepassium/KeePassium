@@ -46,7 +46,7 @@ class FirstSetupVC: UIViewController {
     @IBAction private func didPressConnectToServer(_ sender: UIButton) {
         delegate?.didPressAddRemoteDatabase(in: self)
     }
-    
+
     @IBAction private func didPressSkip(_ sender: UIButton) {
         delegate?.didPressSkip(in: self)
     }

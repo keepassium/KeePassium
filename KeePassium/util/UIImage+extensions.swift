@@ -84,6 +84,7 @@ public enum SymbolName: String {
     case faceID = "faceid"
     case faceSmiling = "face.smiling"
     case folder = "folder"
+    case folderBadgePlus = "folder.badge.plus"
     case gearshape2 = "gearshape.2"
     case globe = "globe"
     case heart = "heart"

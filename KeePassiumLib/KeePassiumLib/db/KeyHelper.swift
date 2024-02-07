@@ -9,8 +9,7 @@
 import Foundation
 
 public class KeyHelper {
-    public static let compositeKeyLength = 32
-    internal let keyFileKeyLength = 32
+    internal static let keyFileKeyLength = 32
 
     public func combineComponents(
         passwordData: SecureBytes,
@@ -31,11 +30,10 @@ public class KeyHelper {
         assert(!keyFileData.isEmpty, "keyFileData cannot be empty here")
 
         let keyFileDataSize = keyFileData.count
-        if keyFileDataSize == keyFileKeyLength {
+        if keyFileDataSize == Self.keyFileKeyLength {
             Diag.debug("Key file format is: binary")
             return keyFileData
-        } else if keyFileDataSize == 2 * keyFileKeyLength {
-
+        } else if keyFileDataSize == 2 * Self.keyFileKeyLength {
             if let key = keyFileData.interpretedAsASCIIHexString() {
                 Diag.debug("Key file format is: base64")
                 return key
@@ -49,6 +47,15 @@ public class KeyHelper {
 
         Diag.debug("Key file format is: other")
         return keyFileData.sha256
+    }
+
+    public static func generateKeyFileData() throws -> ByteArray {
+        do {
+            return try CryptoManager.getRandomBytes(count: keyFileKeyLength)
+        } catch {
+            Diag.error("Failed to generate key file data [message: \(error.localizedDescription)]")
+            throw error
+        }
     }
 
     public func processXmlKeyFile(keyFileData: SecureBytes) throws -> SecureBytes? {
