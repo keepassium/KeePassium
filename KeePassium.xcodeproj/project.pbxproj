@@ -1256,6 +1256,8 @@
 		F3C71AAF2AFFAD7A00EEAC8E /* GroupEditorTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C71AAD2AFFAD7A00EEAC8E /* GroupEditorTitleCell.swift */; };
 		F3C71AB02AFFAD7A00EEAC8E /* GroupEditorTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C71AAD2AFFAD7A00EEAC8E /* GroupEditorTitleCell.swift */; };
 		F3C71AB12AFFAD7A00EEAC8E /* GroupEditorTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C71AAD2AFFAD7A00EEAC8E /* GroupEditorTitleCell.swift */; };
+		F3D011482B77B96800A9AF96 /* SearchQueryParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D011472B77B96800A9AF96 /* SearchQueryParsingTests.swift */; };
+		F3D0114A2B77CEFB00A9AF96 /* SearchHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D011492B77CEFB00A9AF96 /* SearchHelperTests.swift */; };
 		F3D9DE452AA79CAA00FEAF50 /* FaviconDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377C9AA2AA74A1A00266397 /* FaviconDownloader.swift */; };
 		F3D9DE462AA79CAB00FEAF50 /* FaviconDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377C9AA2AA74A1A00266397 /* FaviconDownloader.swift */; };
 		F3F72EF02AB32C8900C804FC /* Favicon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F72EEF2AB32C8900C804FC /* Favicon.swift */; };
@@ -2422,6 +2424,8 @@
 		F3B5B2DC2A88FC2A0059F2D1 /* PasswordQualityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordQualityTests.swift; sourceTree = "<group>"; };
 		F3B69FCB2B078917006FC966 /* EntryExtraViewerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryExtraViewerVC.swift; sourceTree = "<group>"; };
 		F3C71AAD2AFFAD7A00EEAC8E /* GroupEditorTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupEditorTitleCell.swift; sourceTree = "<group>"; };
+		F3D011472B77B96800A9AF96 /* SearchQueryParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchQueryParsingTests.swift; sourceTree = "<group>"; };
+		F3D011492B77CEFB00A9AF96 /* SearchHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHelperTests.swift; sourceTree = "<group>"; };
 		F3F72EEF2AB32C8900C804FC /* Favicon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favicon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -3310,6 +3314,8 @@
 				F37CAA422A88F74E0000EF64 /* HIBPServiceTests.swift */,
 				F321414B2A90D2CD007A8D4E /* PasswordAuditServiceTests.swift */,
 				F3B5B2DC2A88FC2A0059F2D1 /* PasswordQualityTests.swift */,
+				F3D011472B77B96800A9AF96 /* SearchQueryParsingTests.swift */,
+				F3D011492B77CEFB00A9AF96 /* SearchHelperTests.swift */,
 			);
 			path = KeePassiumTests;
 			sourceTree = "<group>";
@@ -4941,7 +4947,9 @@
 				F321414C2A90D2CD007A8D4E /* PasswordAuditServiceTests.swift in Sources */,
 				F37CAA4E2A88F8D10000EF64 /* DumpEquatable.swift in Sources */,
 				F37CAA432A88F74E0000EF64 /* HIBPServiceTests.swift in Sources */,
+				F3D0114A2B77CEFB00A9AF96 /* SearchHelperTests.swift in Sources */,
 				F3B5B2DD2A88FC2A0059F2D1 /* PasswordQualityTests.swift in Sources */,
+				F3D011482B77B96800A9AF96 /* SearchQueryParsingTests.swift in Sources */,
 				F34B0DCE2B22673F001F7500 /* AppHistoryTests.swift in Sources */,
 				F377C9AD2AA74F9000266397 /* FaviconDownloaderTests.swift in Sources */,
 			);

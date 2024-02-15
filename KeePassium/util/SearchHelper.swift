@@ -19,11 +19,10 @@ struct GroupedEntries {
 
 typealias SearchResults = [GroupedEntries]
 
-class SearchHelper {
+final class SearchHelper {
 
     func find(database: Database, searchText: String) -> SearchResults {
         let settings = Settings.current
-        let words = searchText.split(separator: " " as Character)
 
         let compareOptions: String.CompareOptions
         if searchText.containsDiacritics() {
@@ -39,8 +38,7 @@ class SearchHelper {
             includeProtectedValues: settings.isSearchProtectedValues,
             includePasswords: settings.isSearchPasswords,
             compareOptions: compareOptions,
-            text: searchText,
-            textWords: words)
+            text: searchText)
         let scoredEntries = performSearch(in: database, query: query)
             .filter {
                 !$0.entry.isHiddenFromSearch
@@ -60,7 +58,7 @@ class SearchHelper {
         return scoredEntries
     }
 
-    public func arrangeByGroups(scoredEntries: [ScoredEntry]) -> [GroupedEntries] {
+    func arrangeByGroups(scoredEntries: [ScoredEntry]) -> [GroupedEntries] {
         var results = [GroupedEntries]()
         results.reserveCapacity(scoredEntries.count)
 
@@ -85,7 +83,7 @@ class SearchHelper {
 
 extension SearchResults {
 
-    mutating public func sort(order sortOrder: Settings.GroupSortOrder) {
+    mutating func sort(order sortOrder: Settings.GroupSortOrder) {
         sort { sortOrder.compare($0.group, $1.group) }
         for i in 0..<count {
             self[i].entries.sort { scoredEntry1, scoredEntry2 in
