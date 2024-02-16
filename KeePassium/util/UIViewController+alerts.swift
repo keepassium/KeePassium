@@ -81,9 +81,13 @@ extension UIViewController {
         title: String? = nil,
         image: UIImage? = nil,
         position: ToastPosition = .top,
+        hidePrevious: Bool = false,
         action: ToastAction? = nil,
         duration: TimeInterval = 5.0
     ) {
+        if hidePrevious {
+            getHostViewForToastNotifications().hideAllToasts()
+        }
         var style = ToastStyle()
         style.buttonColor = .actionTint
 
@@ -121,7 +125,7 @@ extension UIViewController {
         hideAllToasts()
         showNotification(
             LString.thisSettingIsManaged,
-            image: .symbol(.person2BadgeGearshape)?
+            image: .symbol(.managedParameter)?
                 .withTintColor(.iconTint, renderingMode: .alwaysOriginal)
         )
     }

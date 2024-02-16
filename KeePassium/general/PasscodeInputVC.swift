@@ -8,6 +8,7 @@
 
 import KeePassiumLib
 import LocalAuthentication
+import Zxcvbn
 
 protocol PasscodeInputDelegate: AnyObject {
     func passcodeInputDidCancel(_ sender: PasscodeInputVC)
@@ -31,7 +32,7 @@ extension PasscodeInputDelegate {
     func passcodeInputDidRequestBiometrics(_ sender: PasscodeInputVC) {}
 }
 
-class PasscodeInputVC: UIViewController {
+final class PasscodeInputVC: UIViewController {
 
     public enum Mode {
         case setup
@@ -39,14 +40,14 @@ class PasscodeInputVC: UIViewController {
         case verification
     }
 
-    @IBOutlet weak var instructionsLabel: UILabel!
-    @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var passcodeTextField: ProtectedTextField!
-    @IBOutlet weak var mainButton: UIButton!
-    @IBOutlet weak var switchKeyboardButton: UIButton!
-    @IBOutlet weak var useBiometricsButton: UIButton!
-    @IBOutlet weak var instructionsToCancelButtonConstraint: NSLayoutConstraint!
-    @IBOutlet weak var biometricsHintLabel: UILabel!
+    @IBOutlet private weak var instructionsLabel: UILabel!
+    @IBOutlet private weak var cancelButton: UIButton!
+    @IBOutlet private weak var passcodeTextField: ProtectedTextField!
+    @IBOutlet private weak var mainButton: UIButton!
+    @IBOutlet private weak var switchKeyboardButton: UIButton!
+    @IBOutlet private weak var useBiometricsButton: UIButton!
+    @IBOutlet private weak var instructionsToCancelButtonConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var biometricsHintLabel: UILabel!
 
     public var mode: Mode = .setup
     public var shouldActivateKeyboard = true
@@ -57,6 +58,7 @@ class PasscodeInputVC: UIViewController {
 
     weak var delegate: PasscodeInputDelegate?
     private var nextKeyboardType = Settings.PasscodeKeyboardType.alphanumeric
+    private let zxcvbn = DBZxcvbn()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -196,6 +198,23 @@ class PasscodeInputVC: UIViewController {
 
     @IBAction private func didPressMainButton(_ sender: Any) {
         let passcode = passcodeTextField.text ?? ""
+
+        switch mode {
+        case .verification:
+            break
+        case .setup, .change:
+            guard ManagedAppConfig.shared.isAcceptable(appPasscode: passcode) else {
+                Diag.warning("App passcode strength does not meet organization's requirements")
+                showNotification(
+                    LString.orgRequiresStrongerPasscode,
+                    title: nil,
+                    image: .symbol(.managedParameter)?.withTintColor(.iconTint, renderingMode: .alwaysOriginal),
+                    hidePrevious: true,
+                    duration: 3
+                )
+                return
+            }
+        }
         delegate?.passcodeInput(self, didEnterPasscode: passcode)
     }
 
@@ -222,8 +241,7 @@ extension PasscodeInputVC: UITextFieldDelegate, ValidatingTextFieldDelegate {
 
     func validatingTextFieldShouldValidate(_ sender: ValidatingTextField) -> Bool {
         let passcode = passcodeTextField.text ?? ""
-        let isAcceptable = delegate?
-            .passcodeInput(_sender: self, canAcceptPasscode: passcode) ?? false
+        let isAcceptable = delegate?.passcodeInput(_sender: self, canAcceptPasscode: passcode) ?? false
         mainButton.isEnabled = isAcceptable
         return isAcceptable
     }

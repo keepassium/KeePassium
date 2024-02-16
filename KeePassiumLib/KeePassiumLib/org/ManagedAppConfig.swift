@@ -37,6 +37,8 @@ public final class ManagedAppConfig: NSObject {
         case allowNetworkAccess
         case hideAppLockSetupReminder
         case allowedFileProviders
+        case minimumAppPasscodeEntropy
+        case minimumDatabasePasswordEntropy
     }
 
     private var currentConfig: [String: Any]? {
@@ -145,14 +147,16 @@ extension ManagedAppConfig {
              .appLockTimeout,
              .databaseLockTimeout,
              .clipboardTimeout,
-             .backupKeepingDuration:
+             .backupKeepingDuration,
+             .minimumAppPasscodeEntropy,
+             .minimumDatabasePasswordEntropy:
             return getInt(key) != nil
         case .allowedFileProviders:
             return getStringArray(key) != nil
         }
     }
 
-    public func getBoolIfLicensed(_ key: Key) -> Bool? {
+    internal func getBoolIfLicensed(_ key: Key) -> Bool? {
         let result: Bool?
         switch key {
         case .autoUnlockLastDatabase,
@@ -179,7 +183,9 @@ extension ManagedAppConfig {
              .databaseLockTimeout,
              .clipboardTimeout,
              .backupKeepingDuration,
-             .allowedFileProviders:
+             .allowedFileProviders,
+             .minimumAppPasscodeEntropy,
+             .minimumDatabasePasswordEntropy:
             Diag.error("Key `\(key.rawValue)` is not boolean, ignoring")
             assertionFailure()
             return nil
@@ -200,14 +206,16 @@ extension ManagedAppConfig {
         return nil
     }
 
-    public func getIntIfLicensed(_ key: Key) -> Int? {
+    internal func getIntIfLicensed(_ key: Key) -> Int? {
         var result: Int?
         switch key {
         case .configVersion,
              .appLockTimeout,
              .databaseLockTimeout,
              .clipboardTimeout,
-             .backupKeepingDuration:
+             .backupKeepingDuration,
+             .minimumAppPasscodeEntropy,
+             .minimumDatabasePasswordEntropy:
             result = getInt(key)
         case .license,
              .supportEmail,

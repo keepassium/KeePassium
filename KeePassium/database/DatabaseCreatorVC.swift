@@ -149,8 +149,9 @@ class DatabaseCreatorVC: UIViewController, BusyStateIndicating {
     func hideErrorMessage(animated: Bool) {
         view.hideToast()
     }
+}
 
-
+extension DatabaseCreatorVC {
     @IBAction private func didPressCancel(_ sender: Any) {
         delegate?.didPressCancel(in: self)
     }
@@ -161,7 +162,20 @@ class DatabaseCreatorVC: UIViewController, BusyStateIndicating {
     }
 
     private func verifyEnteredKey() -> Bool {
-        let hasPassword = passwordField.text?.isNotEmpty ?? false
+        let password = passwordField.text ?? ""
+        guard ManagedAppConfig.shared.isAcceptable(databasePassword: password) else {
+            Diag.warning("Database password strength does not meet organization's requirements")
+            showNotification(
+                LString.orgRequiresStrongerDatabasePassword,
+                title: nil,
+                image: .symbol(.managedParameter)?.withTintColor(.iconTint, renderingMode: .alwaysOriginal),
+                hidePrevious: true,
+                duration: 3
+            )
+            return false
+        }
+
+        let hasPassword = password.isNotEmpty
         let hasKeyFile = keyFile != nil
         let hasYubiKey = yubiKey != nil
         if hasPassword || hasKeyFile || hasYubiKey {
@@ -272,4 +286,11 @@ extension DatabaseCreatorVC: UITextFieldDelegate {
         }
         return true
     }
+}
+
+extension LString {
+    public static let orgRequiresStrongerDatabasePassword = NSLocalizedString(
+        "[Database/Create/orgRequiresStronger]",
+        value: "Your organization requires a more complex database password.",
+        comment: "Notification for business users when they set up too weak database password.")
 }

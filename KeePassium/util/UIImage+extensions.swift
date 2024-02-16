@@ -30,6 +30,7 @@ public enum SymbolName: String {
     public static let fieldReference = Self.arrowRightCircle
     public static let largeType = Self.characterMagnify
     public static let passwordAudit = Self.networkBadgeShield
+    public static let managedParameter = Self.person2BadgeGearshape
 
     public static let premiumBenefitMultiDB = Self.shieldBadgePlus
     public static let premiumBenefitDBTimeout = Self.clockBadgeCheckmark

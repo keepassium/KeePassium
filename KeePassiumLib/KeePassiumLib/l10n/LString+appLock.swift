@@ -22,4 +22,9 @@ extension LString {
         bundle: Bundle.framework,
         value: "Press Esc for Touch ID",
         comment: "Hint/call to action about keyboard shortcut")
+    public static let orgRequiresStrongerPasscode = NSLocalizedString(
+        "[AppLock/Passcode/orgRequiresStonger]",
+        bundle: Bundle.framework,
+        value: "Your organization requires a more complex passcode.",
+        comment: "Notification for business users when they set up too weak app protection passcode.")
 }

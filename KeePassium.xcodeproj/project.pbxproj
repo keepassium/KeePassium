@@ -17,6 +17,11 @@
 		7502561E283D370000B930D9 /* SpinnerLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7502561B283D370000B930D9 /* SpinnerLabel.swift */; };
 		7502561F283D370000B930D9 /* SpinnerLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7502561B283D370000B930D9 /* SpinnerLabel.swift */; };
 		750433AF2274CDD5000FE96B /* DatabaseCreatorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750433AE2274CDD5000FE96B /* DatabaseCreatorCoordinator.swift */; };
+		7505F6C42B8640F400EA9BFD /* ManagedAppConfig+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7505F6C32B8640F400EA9BFD /* ManagedAppConfig+extensions.swift */; };
+		7505F6C52B8640F400EA9BFD /* ManagedAppConfig+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7505F6C32B8640F400EA9BFD /* ManagedAppConfig+extensions.swift */; };
+		7505F6C62B8640F400EA9BFD /* ManagedAppConfig+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7505F6C32B8640F400EA9BFD /* ManagedAppConfig+extensions.swift */; };
+		7505F6C72B86430300EA9BFD /* ManagedAppConfig+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7505F6C32B8640F400EA9BFD /* ManagedAppConfig+extensions.swift */; };
+		7505F6C82B86430400EA9BFD /* ManagedAppConfig+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7505F6C32B8640F400EA9BFD /* ManagedAppConfig+extensions.swift */; };
 		75061ECC257EE4F7003EF34A /* Clipboard+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75061ECB257EE4F7003EF34A /* Clipboard+extensions.swift */; };
 		75061ECD257EE4F7003EF34A /* Clipboard+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75061ECB257EE4F7003EF34A /* Clipboard+extensions.swift */; };
 		75065A3522C41B5200958243 /* SettingsAutoFillVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75065A3422C41B5200958243 /* SettingsAutoFillVC.swift */; };
@@ -1387,6 +1392,7 @@
 		75025616283CF3A300B930D9 /* FileInfoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileInfoCoordinator.swift; sourceTree = "<group>"; };
 		7502561B283D370000B930D9 /* SpinnerLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerLabel.swift; sourceTree = "<group>"; };
 		750433AE2274CDD5000FE96B /* DatabaseCreatorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseCreatorCoordinator.swift; sourceTree = "<group>"; };
+		7505F6C32B8640F400EA9BFD /* ManagedAppConfig+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ManagedAppConfig+extensions.swift"; sourceTree = "<group>"; };
 		75061ECB257EE4F7003EF34A /* Clipboard+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clipboard+extensions.swift"; sourceTree = "<group>"; };
 		75065A3422C41B5200958243 /* SettingsAutoFillVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAutoFillVC.swift; sourceTree = "<group>"; };
 		750BA15224BE624B00BDF1CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -2882,6 +2888,7 @@
 				751DED722847B44B00B6D02E /* UITextInput+extensions.swift */,
 				754CE07A299FA80000C3DE50 /* DatabasePrintFormatter.swift */,
 				75D21BD82B642E480065D95E /* BusyStateIndicating.swift */,
+				7505F6C32B8640F400EA9BFD /* ManagedAppConfig+extensions.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -4105,6 +4112,7 @@
 				75BF5AF22768106F00809654 /* ParameterValueCell.swift in Sources */,
 				75814FD325F3D70B00B52A57 /* UIApplication+extensions.swift in Sources */,
 				75BC562A2581872B002B4395 /* AccessibilityHelper.swift in Sources */,
+				7505F6C72B86430300EA9BFD /* ManagedAppConfig+extensions.swift in Sources */,
 				75B24DBA21C3CADB003C9486 /* EntryFinderVC.swift in Sources */,
 				75025618283CF3A300B930D9 /* FileInfoCoordinator.swift in Sources */,
 				757FB3CD21F9C50700F016FA /* ValidatingTextField.swift in Sources */,
@@ -4216,6 +4224,7 @@
 				758BAD9524B5392300CC9265 /* PricingPlanPickerVC.swift in Sources */,
 				F3B69FCC2B078917006FC966 /* EntryExtraViewerVC.swift in Sources */,
 				75C3801B217A0B76006F74C2 /* UIViewController+storyboard.swift in Sources */,
+				7505F6C42B8640F400EA9BFD /* ManagedAppConfig+extensions.swift in Sources */,
 				754E409826306927003E4854 /* DatabaseUnlockerCoordinator.swift in Sources */,
 				7529310D21ADA46C00E4B0D2 /* FileInfoVC.swift in Sources */,
 				75136B262B67CD6B00214760 /* RemoteFileExportCoordinator.swift in Sources */,
@@ -4449,6 +4458,7 @@
 				759F6A092906BA7C0089FB34 /* PremiumBadgeAccessory.swift in Sources */,
 				757ADC5223A5180600D708D2 /* DismissablePopover.swift in Sources */,
 				756F364C260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */,
+				7505F6C52B8640F400EA9BFD /* ManagedAppConfig+extensions.swift in Sources */,
 				758BAD9624B5392300CC9265 /* PricingPlanPickerVC.swift in Sources */,
 				F33F2C5A2B32FEFC009EFB18 /* TagSelectorCoordinator.swift in Sources */,
 				75B38C00233E5B7C006BDEFC /* UIViewController+storyboard.swift in Sources */,
@@ -4812,6 +4822,7 @@
 				F3340BCA2B2B3E2D00604AED /* OnboardingStep.swift in Sources */,
 				75D0763328B639D200F02E39 /* DiagnosticsViewerVC.swift in Sources */,
 				75D0763428B639D200F02E39 /* EntryFieldEditorCoordinator.swift in Sources */,
+				7505F6C62B8640F400EA9BFD /* ManagedAppConfig+extensions.swift in Sources */,
 				F3B69FCE2B078917006FC966 /* EntryExtraViewerVC.swift in Sources */,
 				75D0763528B639D200F02E39 /* FileAddingHelper.swift in Sources */,
 				75D0763628B639D200F02E39 /* SettingsAutoFillVC.swift in Sources */,
@@ -4987,6 +4998,7 @@
 				757ADC5723A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
 				75D7DF9F233E5E310029AD87 /* PasscodeInputVC.swift in Sources */,
 				75D99DF1269CEE0800D0E9D7 /* DatabaseItemTitleView.swift in Sources */,
+				7505F6C82B86430400EA9BFD /* ManagedAppConfig+extensions.swift in Sources */,
 				7502561F283D370000B930D9 /* SpinnerLabel.swift in Sources */,
 				757FDF6526E2519E0023E028 /* OTPView.swift in Sources */,
 				751DED762847B44B00B6D02E /* UITextInput+extensions.swift in Sources */,

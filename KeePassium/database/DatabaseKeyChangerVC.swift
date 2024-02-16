@@ -166,6 +166,18 @@ final class DatabaseKeyChangerVC: UIViewController {
 
 
     @IBAction private func didPressSaveChanges(_ sender: Any) {
+        guard ManagedAppConfig.shared.isAcceptable(databasePassword: password) else {
+            Diag.warning("Database password strength does not meet organization's requirements")
+            showNotification(
+                LString.orgRequiresStrongerDatabasePassword,
+                title: nil,
+                image: .symbol(.managedParameter)?.withTintColor(.iconTint, renderingMode: .alwaysOriginal),
+                hidePrevious: true,
+                duration: 3
+            )
+            return
+        }
+
         guard areAllFieldsValid() else {
             Diag.warning("Not all fields are valid, cannot save")
             return
