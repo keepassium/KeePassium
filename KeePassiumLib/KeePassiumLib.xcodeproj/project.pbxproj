@@ -12,7 +12,7 @@
 		7505E8CF2236ED6E00E5202E /* Base32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7505E8CE2236ED6E00E5202E /* Base32.swift */; };
 		7505E8D12236FA0F00E5202E /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7505E8D02236FA0F00E5202E /* StringExtension.swift */; };
 		750AB1AA2902DD6100811980 /* WebDAVFileURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750AB1A92902DD6100811980 /* WebDAVFileURL.swift */; };
-		750AB1AC2902DD9200811980 /* OneDriveFileURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750AB1AB2902DD9200811980 /* OneDriveFileURL.swift */; };
+		750AB1AC2902DD9200811980 /* OneDriveItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750AB1AB2902DD9200811980 /* OneDriveItem.swift */; };
 		750ACB932ACDF835008EF69F /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 750ACB952ACDF835008EF69F /* Localizable.stringsdict */; };
 		75134CFC23C0F02C0065CD10 /* DatabaseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75134CFB23C0F02C0065CD10 /* DatabaseItem.swift */; };
 		751E0CDF2309A3420088BB10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CDD2309A3420088BB10 /* Localizable.strings */; };
@@ -54,6 +54,7 @@
 		756180FA2820827D00EA015D /* StringSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756180F92820827D00EA015D /* StringSet.swift */; };
 		756180FC282082D400EA015D /* PasswordGeneratorError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756180FB282082D400EA015D /* PasswordGeneratorError.swift */; };
 		756180FE2820830100EA015D /* PasswordGeneratorRequirements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756180FD2820830100EA015D /* PasswordGeneratorRequirements.swift */; };
+		7564C2A12B7B547400AA75A4 /* URL+oneDrive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7564C2A02B7B547400AA75A4 /* URL+oneDrive.swift */; };
 		75675C85277C8BEA0025910A /* WebDAVManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75675C84277C8BEA0025910A /* WebDAVManager.swift */; };
 		756AFD5D258B4C510072BEEF /* KeyFileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756AFD5C258B4C510072BEEF /* KeyFileError.swift */; };
 		75707EC526CE7B3B00BE5EBC /* OperationQueue+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75707EC426CE7B3B00BE5EBC /* OperationQueue+extensions.swift */; };
@@ -237,7 +238,7 @@
 		7505E8CE2236ED6E00E5202E /* Base32.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base32.swift; sourceTree = "<group>"; };
 		7505E8D02236FA0F00E5202E /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		750AB1A92902DD6100811980 /* WebDAVFileURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebDAVFileURL.swift; sourceTree = "<group>"; };
-		750AB1AB2902DD9200811980 /* OneDriveFileURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDriveFileURL.swift; sourceTree = "<group>"; };
+		750AB1AB2902DD9200811980 /* OneDriveItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDriveItem.swift; sourceTree = "<group>"; };
 		750ACB942ACDF835008EF69F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		75134CFB23C0F02C0065CD10 /* DatabaseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseItem.swift; sourceTree = "<group>"; };
 		75156CEB2700E42400B5D5E2 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -323,6 +324,7 @@
 		756180F92820827D00EA015D /* StringSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringSet.swift; sourceTree = "<group>"; };
 		756180FB282082D400EA015D /* PasswordGeneratorError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGeneratorError.swift; sourceTree = "<group>"; };
 		756180FD2820830100EA015D /* PasswordGeneratorRequirements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGeneratorRequirements.swift; sourceTree = "<group>"; };
+		7564C2A02B7B547400AA75A4 /* URL+oneDrive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+oneDrive.swift"; sourceTree = "<group>"; };
 		75675C84277C8BEA0025910A /* WebDAVManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebDAVManager.swift; sourceTree = "<group>"; };
 		756AFD5C258B4C510072BEEF /* KeyFileError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFileError.swift; sourceTree = "<group>"; };
 		75707EC426CE7B3B00BE5EBC /* OperationQueue+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OperationQueue+extensions.swift"; sourceTree = "<group>"; };
@@ -576,13 +578,14 @@
 			children = (
 				758FF6D3290193F0007DE8EB /* OneDriveDataSource.swift */,
 				758FF6DA2902DB64007DE8EB /* OneDriveManager.swift */,
-				750AB1AB2902DD9200811980 /* OneDriveFileURL.swift */,
+				750AB1AB2902DD9200811980 /* OneDriveItem.swift */,
 				755E14BF2B1F75DB00651F0D /* OneDriveAPI.swift */,
 				755E14BB2B1F74FF00651F0D /* OneDriveError.swift */,
 				755E14C12B1F778A00651F0D /* OneDriveDriveInfo.swift */,
 				755E14BD2B1F754A00651F0D /* OneDriveAuthConfig.swift */,
 				758F41982B18CC360069BF66 /* OneDriveAuthProvider.swift */,
 				755E14B92B1F743A00651F0D /* BasicOneDriveAuthProvider.swift */,
+				7564C2A02B7B547400AA75A4 /* URL+oneDrive.swift */,
 			);
 			name = onedrive;
 			sourceTree = "<group>";
@@ -1297,7 +1300,7 @@
 				756AFD5D258B4C510072BEEF /* KeyFileError.swift in Sources */,
 				75012A6A26D82A58002F1911 /* DatabaseLoadingWarning.swift in Sources */,
 				75F11C33288312A3005B3DC0 /* LString+about.swift in Sources */,
-				750AB1AC2902DD9200811980 /* OneDriveFileURL.swift in Sources */,
+				750AB1AC2902DD9200811980 /* OneDriveItem.swift in Sources */,
 				75D09C242174F77000F7DEF2 /* Attachment2.swift in Sources */,
 				75D09C232174F77000F7DEF2 /* Database2.swift in Sources */,
 				7534443C278356AD00CC8248 /* WebDAVRequest.swift in Sources */,
@@ -1398,6 +1401,7 @@
 				75D09BA52174F02F00F7DEF2 /* CryptoError.swift in Sources */,
 				7505E8CB2236C93300E5202E /* TOTPGenerator.swift in Sources */,
 				75D09C402174F77000F7DEF2 /* Eraseable.swift in Sources */,
+				7564C2A12B7B547400AA75A4 /* URL+oneDrive.swift in Sources */,
 				75D4080523952FD40042122A /* CompositeKey.swift in Sources */,
 				753858DB291957BF006ADA21 /* FileFormatRecognizer.swift in Sources */,
 				75E74D3426C1D2B00071B151 /* TestHelper.swift in Sources */,

@@ -11,7 +11,8 @@ import UIKit
 
 protocol DatabaseCreatorDelegate: AnyObject {
     func didPressCancel(in databaseCreatorVC: DatabaseCreatorVC)
-    func didPressContinue(in databaseCreatorVC: DatabaseCreatorVC)
+    func didPressSaveToFiles(in databaseCreatorVC: DatabaseCreatorVC)
+    func didPressSaveToServer(in databaseCreatorVC: DatabaseCreatorVC)
     func didPressErrorDetails(in databaseCreatorVC: DatabaseCreatorVC)
     func didPressPickKeyFile(
         in databaseCreatorVC: DatabaseCreatorVC,
@@ -22,7 +23,11 @@ protocol DatabaseCreatorDelegate: AnyObject {
     func shouldDismissPopovers(in databaseCreatorVC: DatabaseCreatorVC)
 }
 
-class DatabaseCreatorVC: UIViewController {
+class DatabaseCreatorVC: UIViewController, BusyStateIndicating {
+    enum DestinationType {
+        case files
+        case remoteServer
+    }
 
     public var databaseFileName: String { return fileNameField.text ?? "" }
     public var password: String { return passwordField.text ?? ""}
@@ -45,7 +50,8 @@ class DatabaseCreatorVC: UIViewController {
     @IBOutlet weak var passwordField: ProtectedTextField!
     @IBOutlet weak var keyFileField: ValidatingTextField!
     @IBOutlet weak var hardwareKeyField: ValidatingTextField!
-    @IBOutlet weak var continueButton: UIButton!
+    @IBOutlet weak var saveToFilesButton: UIButton!
+    @IBOutlet weak var saveToServerButton: UIButton!
     @IBOutlet weak var errorMessagePanel: UIView!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -92,6 +98,17 @@ class DatabaseCreatorVC: UIViewController {
         hardwareKeyField.accessibilityLabel = LString.fieldHardwareKey
 
         passwordField.becomeFirstResponder()
+        setupSaveToServerButton()
+    }
+
+    private func setupSaveToServerButton() {
+        var config = UIButton.Configuration.borderedTinted()
+        config.title = LString.actionSaveToServer
+        config.cornerStyle = .medium
+        config.image = .symbol(.network)
+        config.preferredSymbolConfigurationForImage = .init(scale: .medium)
+        config.imagePadding = 8
+        saveToServerButton.configuration = config
     }
 
     @discardableResult
@@ -115,27 +132,17 @@ class DatabaseCreatorVC: UIViewController {
         hideErrorMessage(animated: true)
     }
 
-    func showErrorMessage(_ message: String, haptics: HapticFeedback.Kind?, animated: Bool) {
+    func indicateState(isBusy: Bool) {
+        saveToFilesButton.isEnabled = !isBusy
+        saveToServerButton.isEnabled = !isBusy
+    }
+
+    func showErrorMessage(_ message: String, haptics: HapticFeedback.Kind) {
         Diag.error(message)
         UIAccessibility.post(notification: .announcement, argument: message)
+        HapticFeedback.play(haptics)
 
-        var toastStyle = ToastStyle()
-        toastStyle.backgroundColor = .warningMessage
-        toastStyle.displayShadow = false
-        let toastAction = ToastAction(
-            title: LString.actionShowDetails,
-            handler: { [weak self] in
-                self?.didPressErrorDetails()
-            }
-        )
-        let toastView = view.toastViewForMessage(
-            message,
-            title: nil,
-            image: .symbol(.exclamationMarkTriangle),
-            action: toastAction,
-            style: toastStyle
-        )
-        view.showToast(toastView, duration: 5, position: .top, action: toastAction, completion: nil)
+        showNotification(message, image: .symbol(.exclamationMarkTriangle))
         StoreReviewSuggester.registerEvent(.trouble)
     }
 
@@ -153,21 +160,32 @@ class DatabaseCreatorVC: UIViewController {
         delegate?.didPressErrorDetails(in: self)
     }
 
-    @IBAction private func didPressContinue(_ sender: Any) {
+    private func verifyEnteredKey() -> Bool {
         let hasPassword = passwordField.text?.isNotEmpty ?? false
         let hasKeyFile = keyFile != nil
         let hasYubiKey = yubiKey != nil
-        guard hasPassword || hasKeyFile || hasYubiKey else {
-            showErrorMessage(
-                NSLocalizedString(
-                    "[Database/Create] Please enter a password or choose a key file.",
-                    value: "Please enter a password or choose a key file.",
-                    comment: "Hint shown when both password and key file are empty."),
-                haptics: .wrongPassword,
-                animated: true)
-            return
+        if hasPassword || hasKeyFile || hasYubiKey {
+            return true
         }
-        delegate?.didPressContinue(in: self)
+        showErrorMessage(
+            NSLocalizedString(
+                "[Database/Create] Please enter a password or choose a key file.",
+                value: "Please enter a password or choose a key file.",
+                comment: "Hint shown when both password and key file are empty."),
+            haptics: .wrongPassword)
+        return false
+    }
+
+    @IBAction private func didPressSaveToFiles(_ sender: Any) {
+        if verifyEnteredKey() {
+            delegate?.didPressSaveToFiles(in: self)
+        }
+    }
+
+    @IBAction private func didPressSaveToServer(_ sender: Any) {
+        if verifyEnteredKey() {
+            delegate?.didPressSaveToServer(in: self)
+        }
     }
 }
 
@@ -250,7 +268,7 @@ extension DatabaseCreatorVC: UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == self.passwordField {
-            didPressContinue(textField)
+            didPressSaveToFiles(textField)
         }
         return true
     }

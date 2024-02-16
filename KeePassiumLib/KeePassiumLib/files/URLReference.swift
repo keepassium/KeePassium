@@ -8,7 +8,7 @@
 
 import UIKit
 
-public struct FileInfo {
+public struct FileInfo: Equatable {
     public var fileName: String
     public var fileSize: Int64?
     public var creationDate: Date?
@@ -30,6 +30,15 @@ public struct FileInfo {
         self.modificationDate = modificationDate
         self.isExcludedFromBackup = isExcludedFromBackup
         self.isInTrash = isInTrash
+    }
+
+    public static func == (lhs: FileInfo, rhs: FileInfo) -> Bool {
+        return lhs.fileName == rhs.fileName
+            && lhs.fileSize == rhs.fileSize
+            && lhs.creationDate == rhs.creationDate
+            && lhs.modificationDate == rhs.modificationDate
+            && lhs.isExcludedFromBackup == rhs.isExcludedFromBackup
+            && lhs.isInTrash == rhs.isInTrash
     }
 }
 

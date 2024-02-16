@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nri-WU-XVv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nri-WU-XVv">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BU0-lv-Dei" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="470"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Database File Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iK-ct-ygq">
                                                 <rect key="frame" x="20" y="111" width="280" height="19.5"/>
@@ -169,54 +169,52 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6C-CG-RVI" userLabel="Save Database">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" role="primary" translatesAutoresizingMaskIntoConstraints="NO" id="h6C-CG-RVI" userLabel="Save Database">
                                                 <rect key="frame" x="20" y="378" width="280" height="44"/>
-                                                <color key="backgroundColor" name="ActionTint"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="1Ue-I0-Bid"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                <color key="tintColor" name="ActionText"/>
                                                 <state key="normal" title="Save Database"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Save Database">
+                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleBody"/>
+                                                </buttonConfiguration>
                                                 <attributedString key="userComments">
                                                     <fragment content="Action: save the new database (will show a file picker dialog)."/>
                                                 </attributedString>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="didPressContinue:" destination="Nri-WU-XVv" eventType="touchUpInside" id="Dad-pe-dYN"/>
+                                                    <action selector="didPressSaveToFiles:" destination="Nri-WU-XVv" eventType="touchUpInside" id="o53-vE-AsX"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Will use kdbx4 format (Argon2+ChaCha20)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVR-1N-ywy">
-                                                <rect key="frame" x="20" y="430" width="280" height="16"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                <color key="textColor" name="AuxiliaryText"/>
-                                                <nil key="highlightedColor"/>
-                                                <attributedString key="userComments">
-                                                    <fragment content="Hint about the default format of new databases."/>
-                                                </attributedString>
-                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="6gJ-zZ-l4s">
+                                                <rect key="frame" x="20" y="430" width="280" height="44"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <state key="normal" title="{Send to Server}"/>
+                                                <buttonConfiguration key="configuration" style="tinted" title="{Save to Server}">
+                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleBody"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="didPressSaveToServer:" destination="Nri-WU-XVv" eventType="touchUpInside" id="dSV-x6-9Zz"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="2iK-ct-ygq" firstAttribute="trailing" secondItem="sgR-8q-2o9" secondAttribute="trailing" id="3SQ-1j-Si4"/>
                                             <constraint firstItem="VjQ-di-Ilx" firstAttribute="trailing" secondItem="sgR-8q-2o9" secondAttribute="trailing" id="921-nM-mQW"/>
-                                            <constraint firstItem="XVR-1N-ywy" firstAttribute="leading" secondItem="h6C-CG-RVI" secondAttribute="leading" id="NR7-Bl-GXx"/>
+                                            <constraint firstItem="6gJ-zZ-l4s" firstAttribute="top" secondItem="h6C-CG-RVI" secondAttribute="bottom" constant="8" symbolic="YES" id="Aym-YT-5od"/>
+                                            <constraint firstItem="6gJ-zZ-l4s" firstAttribute="height" secondItem="h6C-CG-RVI" secondAttribute="height" id="K1j-dv-jgJ"/>
                                             <constraint firstItem="h6C-CG-RVI" firstAttribute="top" secondItem="sgR-8q-2o9" secondAttribute="bottom" constant="16" id="OOE-jZ-lJc"/>
                                             <constraint firstItem="2iK-ct-ygq" firstAttribute="leading" secondItem="sgR-8q-2o9" secondAttribute="leading" id="STh-Nt-ayy"/>
+                                            <constraint firstItem="6gJ-zZ-l4s" firstAttribute="width" secondItem="h6C-CG-RVI" secondAttribute="width" id="VIO-fH-Q5u"/>
                                             <constraint firstItem="h6C-CG-RVI" firstAttribute="trailing" secondItem="sgR-8q-2o9" secondAttribute="trailing" id="VmC-90-rMN"/>
-                                            <constraint firstItem="XVR-1N-ywy" firstAttribute="trailing" secondItem="h6C-CG-RVI" secondAttribute="trailing" id="aXN-vP-blN"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="6gJ-zZ-l4s" secondAttribute="bottom" constant="16" id="YLM-28-f5F"/>
                                             <constraint firstItem="VjQ-di-Ilx" firstAttribute="top" secondItem="pxN-RE-FXX" secondAttribute="bottom" constant="16" id="cv2-ka-Nn2"/>
                                             <constraint firstItem="h6C-CG-RVI" firstAttribute="leading" secondItem="sgR-8q-2o9" secondAttribute="leading" id="dhP-OV-ETu"/>
-                                            <constraint firstItem="XVR-1N-ywy" firstAttribute="top" secondItem="h6C-CG-RVI" secondAttribute="bottom" constant="8" id="dp1-Fc-krB"/>
                                             <constraint firstItem="pxN-RE-FXX" firstAttribute="top" secondItem="2iK-ct-ygq" secondAttribute="bottom" constant="8" id="eAd-A3-LfG"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="XVR-1N-ywy" secondAttribute="bottom" constant="16" id="eJ8-WX-gpu"/>
                                             <constraint firstItem="VjQ-di-Ilx" firstAttribute="leading" secondItem="sgR-8q-2o9" secondAttribute="leading" id="fBF-tg-cR1"/>
                                             <constraint firstItem="pxN-RE-FXX" firstAttribute="leading" secondItem="sgR-8q-2o9" secondAttribute="leading" id="g0d-yE-OIO"/>
                                             <constraint firstItem="sgR-8q-2o9" firstAttribute="centerX" secondItem="BU0-lv-Dei" secondAttribute="centerX" id="jcW-XN-kxz"/>
+                                            <constraint firstItem="6gJ-zZ-l4s" firstAttribute="centerX" secondItem="BU0-lv-Dei" secondAttribute="centerX" id="oze-CU-AS2"/>
                                             <constraint firstItem="sgR-8q-2o9" firstAttribute="top" secondItem="VjQ-di-Ilx" secondAttribute="bottom" constant="8" id="pEk-Tz-Gp8"/>
                                             <constraint firstItem="pxN-RE-FXX" firstAttribute="trailing" secondItem="sgR-8q-2o9" secondAttribute="trailing" id="vFD-0a-9Fv"/>
                                             <constraint firstItem="2iK-ct-ygq" firstAttribute="top" relation="greaterThanOrEqual" secondItem="BU0-lv-Dei" secondAttribute="top" constant="16" id="weq-5i-gfn"/>
@@ -230,6 +228,7 @@
                                     <constraint firstItem="BU0-lv-Dei" firstAttribute="top" secondItem="UAC-3N-WvO" secondAttribute="top" priority="750" id="RDO-Ok-hGZ"/>
                                     <constraint firstAttribute="trailing" secondItem="BU0-lv-Dei" secondAttribute="trailing" id="Srs-YG-f0H"/>
                                     <constraint firstItem="BU0-lv-Dei" firstAttribute="leading" secondItem="UAC-3N-WvO" secondAttribute="leading" id="Vh3-AI-nBI"/>
+                                    <constraint firstItem="BU0-lv-Dei" firstAttribute="centerY" secondItem="UAC-3N-WvO" secondAttribute="centerY" priority="750" id="WPJ-P9-ar3"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -241,14 +240,8 @@
                             <constraint firstAttribute="trailing" secondItem="UAC-3N-WvO" secondAttribute="trailing" id="Cca-63-ngJ"/>
                             <constraint firstItem="UAC-3N-WvO" firstAttribute="top" secondItem="6fp-OI-Lt3" secondAttribute="top" id="VQb-aZ-lhL"/>
                             <constraint firstItem="UAC-3N-WvO" firstAttribute="bottom" secondItem="Y9D-Ze-uQR" secondAttribute="top" id="Vn9-PM-nmb"/>
-                            <constraint firstItem="BU0-lv-Dei" firstAttribute="centerY" secondItem="UAC-3N-WvO" secondAttribute="centerY" priority="750" id="WPJ-P9-ar3"/>
                             <constraint firstItem="BU0-lv-Dei" firstAttribute="width" secondItem="6fp-OI-Lt3" secondAttribute="width" id="vv0-DO-7cf"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="WPJ-P9-ar3"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="{Create Database}" id="dhd-je-Doc" userLabel="Navigation Item">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bF0-WL-fcK">
@@ -261,11 +254,12 @@
                         </attributedString>
                     </navigationItem>
                     <connections>
-                        <outlet property="continueButton" destination="h6C-CG-RVI" id="JS8-PM-Ysp"/>
                         <outlet property="fileNameField" destination="XNL-lc-2Ti" id="iKo-Vc-RF3"/>
                         <outlet property="hardwareKeyField" destination="wiB-ZM-ePr" id="pOM-z9-ya1"/>
                         <outlet property="keyFileField" destination="pvt-FS-0Yx" id="BCD-MV-f0s"/>
                         <outlet property="passwordField" destination="uHk-Yt-mBh" id="JiK-BH-kCB"/>
+                        <outlet property="saveToFilesButton" destination="h6C-CG-RVI" id="pcf-dp-2ye"/>
+                        <outlet property="saveToServerButton" destination="6gJ-zZ-l4s" id="WSH-cD-psd"/>
                         <outlet property="scrollView" destination="UAC-3N-WvO" id="Re8-AB-rKc"/>
                     </connections>
                 </viewController>
@@ -275,15 +269,6 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="ActionText">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="ActionTint">
-            <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="AuxiliaryText">
-            <color red="0.23500001430511475" green="0.23500001430511475" blue="0.2630000114440918" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="PrimaryText">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>

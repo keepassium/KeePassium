@@ -9,13 +9,17 @@
 import KeePassiumLib
 
 protocol ConnectionTypePickerDelegate: AnyObject {
+    func isConnectionTypeEnabled(
+        _ connectionType: RemoteConnectionType,
+        in viewController: ConnectionTypePickerVC) -> Bool
+
     func willSelect(
         connectionType: RemoteConnectionType,
         in viewController: ConnectionTypePickerVC) -> Bool
     func didSelect(connectionType: RemoteConnectionType, in viewController: ConnectionTypePickerVC)
 }
 
-final class ConnectionTypePickerVC: UITableViewController, Refreshable {
+final class ConnectionTypePickerVC: UITableViewController, Refreshable, BusyStateIndicating {
     private enum CellID {
         static let itemCell = "itemCell"
     }
@@ -54,7 +58,7 @@ final class ConnectionTypePickerVC: UITableViewController, Refreshable {
         tableView.reloadData()
     }
 
-    public func setState(isBusy: Bool) {
+    public func indicateState(isBusy: Bool) {
         titleView.showSpinner(isBusy, animated: true)
         self.isBusy = isBusy
         refresh()
@@ -83,7 +87,9 @@ extension ConnectionTypePickerVC {
         cell.imageView?.contentMode = .scaleAspectFit
         cell.imageView?.image = .symbol(value.iconSymbol)
         cell.selectionStyle = .default
-        cell.setEnabled(!isBusy)
+
+        let isEnabled = delegate?.isConnectionTypeEnabled(value, in: self) ?? true
+        cell.setEnabled(isEnabled && !isBusy)
 
         if value.isPremiumUpgradeRequired {
             cell.accessoryType = .none
@@ -106,8 +112,9 @@ extension ConnectionTypePickerVC {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedValue = values[indexPath.row]
+        let isEnabled = delegate?.isConnectionTypeEnabled(selectedValue, in: self) ?? true
         let canSelect = delegate?.willSelect(connectionType: selectedValue, in: self) ?? false
-        guard canSelect else {
+        guard isEnabled && canSelect else {
             tableView.deselectRow(at: indexPath, animated: true)
             return
         }

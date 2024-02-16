@@ -10,7 +10,7 @@ import Foundation
 
 public final class OneDriveDataSource: DataSource {
     private struct AuthorizedItem {
-        var item: OneDriveItemReference
+        var item: OneDriveItem
         var token: OAuthToken
     }
 
@@ -46,14 +46,14 @@ public final class OneDriveDataSource: DataSource {
             return nil
         }
 
-        guard let itemReference = OneDriveItemReference.fromURL(url) else {
+        guard let oneDriveItem = OneDriveItem.fromURL(url) else {
             Diag.error("Failed to restore OneDrive item reference")
             completionQueue.addOperation {
                 completion(.failure(.internalError))
             }
             return nil
         }
-        return AuthorizedItem(item: itemReference, token: token)
+        return AuthorizedItem(item: oneDriveItem, token: token)
     }
 
     private func saveUpdatedToken(_ newToken: OAuthToken, prefixedURL url: URL) {
@@ -162,18 +162,19 @@ public final class OneDriveDataSource: DataSource {
         ) else {
             return 
         }
-        OneDriveManager.shared.uploadFile(
+        OneDriveManager.shared.updateFile(
             authorizedItem.item,
             contents: data,
-            fileName: url.lastPathComponent,
             token: authorizedItem.token,
             tokenUpdater: { self.saveUpdatedToken($0, prefixedURL: url) },
             completionQueue: completionQueue,
             completion: { result in
                 assert(completionQueue.isCurrent)
                 switch result {
-                case .success(let finalName):
-                    assert(url.lastPathComponent == finalName, "File name changed on upload; investigate this")
+                case .success(let uploadResponse):
+                    assert(
+                        url.lastPathComponent == uploadResponse.finalName,
+                        "File name changed on upload; investigate this")
                     completion(.success)
                 case .failure(let oneDriveError):
                     completion(.failure(.systemError(oneDriveError)))

@@ -9,16 +9,23 @@
 import KeePassiumLib
 
 protocol RemoteFolderViewerDelegate: AnyObject {
+    func canSaveTo(folder: RemoteFileItem?, in viewController: RemoteFolderViewerVC) -> Bool
     func didSelectItem(_ item: RemoteFileItem, in viewController: RemoteFolderViewerVC)
+    func didPressSave(to folder: RemoteFileItem, in viewController: RemoteFolderViewerVC)
 }
 
-final class RemoteFolderViewerVC: UITableViewController {
+final class RemoteFolderViewerVC: UITableViewController, BusyStateIndicating {
     private enum CellID {
         static let folderCell = "FolderCell"
         static let fileCell = "FileCell"
     }
 
     weak var delegate: RemoteFolderViewerDelegate?
+    var selectionMode: RemoteItemSelectionMode = .file {
+        didSet {
+            refresh()
+        }
+    }
 
     var folderName = "/" {
         didSet {
@@ -26,6 +33,8 @@ final class RemoteFolderViewerVC: UITableViewController {
             titleView.label.text = folderName
         }
     }
+
+    var folder: RemoteFileItem?
     var items = [RemoteFileItem]() {
         didSet {
             sortItems()
@@ -43,6 +52,20 @@ final class RemoteFolderViewerVC: UITableViewController {
         view.spinner.startAnimating()
         return view
     }()
+    private lazy var saveButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(systemItem: .save, primaryAction: UIAction { [weak self] _ in
+            guard let self else { return }
+            guard let folder,
+                  self.delegate?.canSaveTo(folder: folder, in: self) ?? true
+            else {
+                assertionFailure("Save button must have been disabled in UI")
+                return
+            }
+            delegate?.didPressSave(to: folder, in: self)
+        })
+        return button
+    }()
+
     private var isBusy = false
 
     private let fileSizeFormatter: ByteCountFormatter = {
@@ -102,8 +125,17 @@ final class RemoteFolderViewerVC: UITableViewController {
         guard isViewLoaded else {
             return
         }
+
         tableView.backgroundView?.isHidden = !items.isEmpty
         tableView.reloadData()
+
+        switch selectionMode {
+        case .file:
+            navigationItem.rightBarButtonItem = nil
+        case .folder:
+            navigationItem.rightBarButtonItem = saveButton
+            saveButton.isEnabled = delegate?.canSaveTo(folder: folder, in: self) ?? true
+        }
     }
 
     private func sortItems() {
@@ -113,9 +145,10 @@ final class RemoteFolderViewerVC: UITableViewController {
         sortedFiles = items.filter { !$0.isFolder }
     }
 
-    public func setState(isBusy: Bool) {
+    public func indicateState(isBusy: Bool) {
         titleView.showSpinner(isBusy, animated: true)
         self.isBusy = isBusy
+        saveButton.isEnabled = !isBusy
         tableView.reloadSections([0], with: .automatic)
     }
 }
@@ -167,7 +200,6 @@ extension RemoteFolderViewerVC {
     private func configureFileCell(_ cell: SubtitleCell, item: RemoteFileItem) {
         cell.textLabel?.font = .preferredFont(forTextStyle: .body)
         cell.textLabel?.text = item.name
-
         var details = [String]()
         if let fileSize = item.fileInfo?.fileSize {
             let sizeString = fileSizeFormatter.string(fromByteCount: fileSize)
@@ -179,10 +211,19 @@ extension RemoteFolderViewerVC {
         }
 
         cell.detailTextLabel?.font = .preferredFont(forTextStyle: .footnote)
-        cell.detailTextLabel?.textColor = .secondaryLabel
         cell.detailTextLabel?.text = details.joined(separator: " · ")
         cell.accessoryType = .none
-        cell.selectionStyle = .default
+
+        switch selectionMode {
+        case .file:
+            cell.selectionStyle = .default
+            cell.textLabel?.textColor = .primaryText
+            cell.detailTextLabel?.textColor = .secondaryLabel
+        case .folder:
+            cell.selectionStyle = .none
+            cell.textLabel?.textColor = .disabledText
+            cell.detailTextLabel?.textColor = .disabledText
+        }
     }
 }
 
@@ -193,8 +234,16 @@ extension RemoteFolderViewerVC {
     ) -> IndexPath? {
         if isBusy {
             return nil
-        } else {
+        }
+        switch selectionMode {
+        case .file:
             return indexPath
+        case .folder:
+            if isFolderItem(at: indexPath) {
+                return indexPath
+            } else {
+                return nil
+            }
         }
     }
 

@@ -866,6 +866,11 @@ extension LString {
         bundle: Bundle.framework,
         value: "Save Database",
         comment: "Action/button to save the current database.")
+    public static let actionSaveToServer = NSLocalizedString(
+        "[Database/SaveToServer/action]",
+        bundle: Bundle.framework,
+        value: "Save To Server",
+        comment: "Action/button to save file to a remote server.")
     public static let tryRemoteConnection = NSLocalizedString(
         "[Database/RecommendRemote/callToAction]",
         bundle: Bundle.framework,

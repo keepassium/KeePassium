@@ -20,6 +20,11 @@
 		75061ECC257EE4F7003EF34A /* Clipboard+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75061ECB257EE4F7003EF34A /* Clipboard+extensions.swift */; };
 		75061ECD257EE4F7003EF34A /* Clipboard+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75061ECB257EE4F7003EF34A /* Clipboard+extensions.swift */; };
 		75065A3522C41B5200958243 /* SettingsAutoFillVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75065A3422C41B5200958243 /* SettingsAutoFillVC.swift */; };
+		750C0D542B64067600821CA4 /* WebDAVConnectionSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750C0D532B64067600821CA4 /* WebDAVConnectionSetupCoordinator.swift */; };
+		750C0D552B64067600821CA4 /* WebDAVConnectionSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750C0D532B64067600821CA4 /* WebDAVConnectionSetupCoordinator.swift */; };
+		750C0D562B64067600821CA4 /* WebDAVConnectionSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750C0D532B64067600821CA4 /* WebDAVConnectionSetupCoordinator.swift */; };
+		750C0D572B64067600821CA4 /* WebDAVConnectionSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750C0D532B64067600821CA4 /* WebDAVConnectionSetupCoordinator.swift */; };
+		750C0D582B64067600821CA4 /* WebDAVConnectionSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750C0D532B64067600821CA4 /* WebDAVConnectionSetupCoordinator.swift */; };
 		750C683220D767F6001A6AA0 /* EntryFieldEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750C683120D767F6001A6AA0 /* EntryFieldEditorVC.swift */; };
 		750CFBC821BA9ACD00E62B09 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7550D231215D758800360E0C /* AuthenticationServices.framework */; };
 		750CFBCB21BA9ACD00E62B09 /* CredentialProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750CFBCA21BA9ACD00E62B09 /* CredentialProviderViewController.swift */; };
@@ -39,6 +44,14 @@
 		750E72CE26A4D32600CDBFFA /* ExpiryDateEditorVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 750E72D126A4D32600CDBFFA /* ExpiryDateEditorVC.storyboard */; };
 		750E72CF26A4D32600CDBFFA /* ExpiryDateEditorVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 750E72D126A4D32600CDBFFA /* ExpiryDateEditorVC.storyboard */; };
 		751146E6233F9E2900443BCD /* KeePassiumLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751146E5233F9E2900443BCD /* KeePassiumLib.framework */; };
+		75136B262B67CD6B00214760 /* RemoteFileExportCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75136B252B67CD6B00214760 /* RemoteFileExportCoordinator.swift */; };
+		75136B272B67CD6B00214760 /* RemoteFileExportCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75136B252B67CD6B00214760 /* RemoteFileExportCoordinator.swift */; };
+		75136B282B67CD6B00214760 /* RemoteFileExportCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75136B252B67CD6B00214760 /* RemoteFileExportCoordinator.swift */; };
+		75136B2A2B6972CB00214760 /* RemoteItemSelectionMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75136B292B6972CB00214760 /* RemoteItemSelectionMode.swift */; };
+		75136B2B2B6972CB00214760 /* RemoteItemSelectionMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75136B292B6972CB00214760 /* RemoteItemSelectionMode.swift */; };
+		75136B2C2B6972CB00214760 /* RemoteItemSelectionMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75136B292B6972CB00214760 /* RemoteItemSelectionMode.swift */; };
+		75136B2D2B6972CB00214760 /* RemoteItemSelectionMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75136B292B6972CB00214760 /* RemoteItemSelectionMode.swift */; };
+		75136B2E2B6972CB00214760 /* RemoteItemSelectionMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75136B292B6972CB00214760 /* RemoteItemSelectionMode.swift */; };
 		7513992B25DDD46C00D22DBB /* default.css in Resources */ = {isa = PBXBuildFile; fileRef = 7513992625DDD46B00D22DBB /* default.css */; };
 		7513992C25DDD46C00D22DBB /* default.css in Resources */ = {isa = PBXBuildFile; fileRef = 7513992625DDD46B00D22DBB /* default.css */; };
 		7513992D25DDD46C00D22DBB /* default.css in Resources */ = {isa = PBXBuildFile; fileRef = 7513992625DDD46B00D22DBB /* default.css */; };
@@ -95,10 +108,10 @@
 		7524E7372888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E7352888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift */; };
 		7524E7382888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E7352888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift */; };
 		7524E7392888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E7352888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift */; };
-		7524E73B2888A3F500ECBEC8 /* RemoteFilePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E73A2888A3F500ECBEC8 /* RemoteFilePickerVC.swift */; };
-		7524E73C2888A3F500ECBEC8 /* RemoteFilePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E73A2888A3F500ECBEC8 /* RemoteFilePickerVC.swift */; };
-		7524E73D2888A3F500ECBEC8 /* RemoteFilePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E73A2888A3F500ECBEC8 /* RemoteFilePickerVC.swift */; };
-		7524E73E2888A3F500ECBEC8 /* RemoteFilePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E73A2888A3F500ECBEC8 /* RemoteFilePickerVC.swift */; };
+		7524E73B2888A3F500ECBEC8 /* WebDAVConnectionSetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E73A2888A3F500ECBEC8 /* WebDAVConnectionSetupVC.swift */; };
+		7524E73C2888A3F500ECBEC8 /* WebDAVConnectionSetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E73A2888A3F500ECBEC8 /* WebDAVConnectionSetupVC.swift */; };
+		7524E73D2888A3F500ECBEC8 /* WebDAVConnectionSetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E73A2888A3F500ECBEC8 /* WebDAVConnectionSetupVC.swift */; };
+		7524E73E2888A3F500ECBEC8 /* WebDAVConnectionSetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E73A2888A3F500ECBEC8 /* WebDAVConnectionSetupVC.swift */; };
 		7524E7452888B56600ECBEC8 /* RightDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E7442888B56600ECBEC8 /* RightDetailCell.swift */; };
 		7524E7462888B56600ECBEC8 /* RightDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E7442888B56600ECBEC8 /* RightDetailCell.swift */; };
 		7524E7472888B56600ECBEC8 /* RightDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E7442888B56600ECBEC8 /* RightDetailCell.swift */; };
@@ -764,7 +777,7 @@
 		75D075CD28B639D200F02E39 /* AppCoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550D24B215FDEC500360E0C /* AppCoverVC.swift */; };
 		75D075CE28B639D200F02E39 /* AboutCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D7614E262DDE0B00B1DE7F /* AboutCoordinator.swift */; };
 		75D075CF28B639D200F02E39 /* KeyFilePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532A24C21C5A035005DF56F /* KeyFilePickerVC.swift */; };
-		75D075D028B639D200F02E39 /* RemoteFilePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E73A2888A3F500ECBEC8 /* RemoteFilePickerVC.swift */; };
+		75D075D028B639D200F02E39 /* WebDAVConnectionSetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E73A2888A3F500ECBEC8 /* WebDAVConnectionSetupVC.swift */; };
 		75D075D128B639D200F02E39 /* FileProvider+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB1452481D19B0017B980 /* FileProvider+extensions.swift */; };
 		75D075D228B639D200F02E39 /* EntryViewerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753DF2C0263C4B7F0046F185 /* EntryViewerCoordinator.swift */; };
 		75D075D428B639D200F02E39 /* AccessibilityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC56282581872B002B4395 /* AccessibilityHelper.swift */; };
@@ -1022,6 +1035,16 @@
 		75D2191529C2214B00D6F327 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 75D218FF29C2206A00D6F327 /* libc++.tbd */; };
 		75D2191629C2215600D6F327 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 75D2190029C2207D00D6F327 /* libsqlite3.tbd */; };
 		75D2192F29C4C24800D6F327 /* MSAL in Frameworks */ = {isa = PBXBuildFile; productRef = 75D2192E29C4C24800D6F327 /* MSAL */; };
+		75D21BD22B642BB20065D95E /* OneDriveConnectionSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D21BD12B642BB20065D95E /* OneDriveConnectionSetupCoordinator.swift */; };
+		75D21BD32B642BB20065D95E /* OneDriveConnectionSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D21BD12B642BB20065D95E /* OneDriveConnectionSetupCoordinator.swift */; };
+		75D21BD42B642BB20065D95E /* OneDriveConnectionSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D21BD12B642BB20065D95E /* OneDriveConnectionSetupCoordinator.swift */; };
+		75D21BD52B642BB20065D95E /* OneDriveConnectionSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D21BD12B642BB20065D95E /* OneDriveConnectionSetupCoordinator.swift */; };
+		75D21BD62B642BB20065D95E /* OneDriveConnectionSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D21BD12B642BB20065D95E /* OneDriveConnectionSetupCoordinator.swift */; };
+		75D21BD92B642E480065D95E /* BusyStateIndicating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D21BD82B642E480065D95E /* BusyStateIndicating.swift */; };
+		75D21BDA2B642E480065D95E /* BusyStateIndicating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D21BD82B642E480065D95E /* BusyStateIndicating.swift */; };
+		75D21BDB2B642E480065D95E /* BusyStateIndicating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D21BD82B642E480065D95E /* BusyStateIndicating.swift */; };
+		75D21BDC2B642E480065D95E /* BusyStateIndicating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D21BD82B642E480065D95E /* BusyStateIndicating.swift */; };
+		75D21BDD2B642E480065D95E /* BusyStateIndicating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D21BD82B642E480065D95E /* BusyStateIndicating.swift */; };
 		75D3A3AF21BAE53F00255FC3 /* FileListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3A3AE21BAE53F00255FC3 /* FileListCell.swift */; };
 		75D3A3B121BAE66F00255FC3 /* FileListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3A3AE21BAE53F00255FC3 /* FileListCell.swift */; };
 		75D3AEB523BDD582003028FB /* DestinationGroupPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3AEB423BDD582003028FB /* DestinationGroupPickerVC.swift */; };
@@ -1367,6 +1390,7 @@
 		75061ECB257EE4F7003EF34A /* Clipboard+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clipboard+extensions.swift"; sourceTree = "<group>"; };
 		75065A3422C41B5200958243 /* SettingsAutoFillVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAutoFillVC.swift; sourceTree = "<group>"; };
 		750BA15224BE624B00BDF1CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		750C0D532B64067600821CA4 /* WebDAVConnectionSetupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebDAVConnectionSetupCoordinator.swift; sourceTree = "<group>"; };
 		750C683120D767F6001A6AA0 /* EntryFieldEditorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFieldEditorVC.swift; sourceTree = "<group>"; };
 		750CFBC721BA9ACD00E62B09 /* KeePassium AutoFill.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "KeePassium AutoFill.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		750CFBCA21BA9ACD00E62B09 /* CredentialProviderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialProviderViewController.swift; sourceTree = "<group>"; };
@@ -1392,6 +1416,8 @@
 		751146E2233F9E1500443BCD /* KeePassiumLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		751146E5233F9E2900443BCD /* KeePassiumLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7511722625F58DEB00F05D1A /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
+		75136B252B67CD6B00214760 /* RemoteFileExportCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFileExportCoordinator.swift; sourceTree = "<group>"; };
+		75136B292B6972CB00214760 /* RemoteItemSelectionMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteItemSelectionMode.swift; sourceTree = "<group>"; };
 		7513992625DDD46B00D22DBB /* default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = default.css; sourceTree = "<group>"; };
 		7514CC9E22D5D14B00A0D7A4 /* LongPressAwareNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressAwareNavigationController.swift; sourceTree = "<group>"; };
 		75151D3223268AB300F3C411 /* UILabel+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+extensions.swift"; sourceTree = "<group>"; };
@@ -1463,7 +1489,7 @@
 		751E0D5B2309B0520088BB10 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
 		7523F71C21C98D620025C706 /* SupportEmailComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportEmailComposer.swift; sourceTree = "<group>"; };
 		7524E7352888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFilePickerCoordinator.swift; sourceTree = "<group>"; };
-		7524E73A2888A3F500ECBEC8 /* RemoteFilePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFilePickerVC.swift; sourceTree = "<group>"; };
+		7524E73A2888A3F500ECBEC8 /* WebDAVConnectionSetupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebDAVConnectionSetupVC.swift; sourceTree = "<group>"; };
 		7524E7442888B56600ECBEC8 /* RightDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightDetailCell.swift; sourceTree = "<group>"; };
 		7524E7492888B58200ECBEC8 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		75264049284653580003DDFA /* TextInput+editMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextInput+editMenu.swift"; sourceTree = "<group>"; };
@@ -2186,6 +2212,8 @@
 		75D2190529C220A000D6F327 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		75D2190729C220A600D6F327 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/System/iOSSupport/System/Library/PrivateFrameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
 		75D2190E29C2210000D6F327 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/System/Library/Frameworks/LocalAuthentication.framework; sourceTree = DEVELOPER_DIR; };
+		75D21BD12B642BB20065D95E /* OneDriveConnectionSetupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDriveConnectionSetupCoordinator.swift; sourceTree = "<group>"; };
+		75D21BD82B642E480065D95E /* BusyStateIndicating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyStateIndicating.swift; sourceTree = "<group>"; };
 		75D3A3AE21BAE53F00255FC3 /* FileListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileListCell.swift; sourceTree = "<group>"; };
 		75D3AEB423BDD582003028FB /* DestinationGroupPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationGroupPickerVC.swift; sourceTree = "<group>"; };
 		75D5D4002235CD720003CD55 /* CrashReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashReportVC.swift; sourceTree = "<group>"; };
@@ -2562,6 +2590,15 @@
 			path = autoFill;
 			sourceTree = "<group>";
 		};
+		750C0D5F2B640A0900821CA4 /* webdav */ = {
+			isa = PBXGroup;
+			children = (
+				750C0D532B64067600821CA4 /* WebDAVConnectionSetupCoordinator.swift */,
+				7524E73A2888A3F500ECBEC8 /* WebDAVConnectionSetupVC.swift */,
+			);
+			path = webdav;
+			sourceTree = "<group>";
+		};
 		750CFBC921BA9ACD00E62B09 /* KeePassium AutoFill */ = {
 			isa = PBXGroup;
 			children = (
@@ -2844,6 +2881,7 @@
 				75264049284653580003DDFA /* TextInput+editMenu.swift */,
 				751DED722847B44B00B6D02E /* UITextInput+extensions.swift */,
 				754CE07A299FA80000C3DE50 /* DatabasePrintFormatter.swift */,
+				75D21BD82B642E480065D95E /* BusyStateIndicating.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -3036,11 +3074,14 @@
 		758FF6C828FC1867007DE8EB /* remote-files */ = {
 			isa = PBXGroup;
 			children = (
+				75D21BD72B642BDD0065D95E /* onedrive */,
+				750C0D5F2B640A0900821CA4 /* webdav */,
 				7524E7352888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift */,
-				7524E73A2888A3F500ECBEC8 /* RemoteFilePickerVC.swift */,
 				759F69FC29066E110089FB34 /* ConnectionTypePickerVC.swift */,
 				758FF6C928FC18E4007DE8EB /* RemoteFolderViewerVC.swift */,
 				7596174D29082EA2005845FF /* RemoteConnectionType+icon.swift */,
+				75136B252B67CD6B00214760 /* RemoteFileExportCoordinator.swift */,
+				75136B292B6972CB00214760 /* RemoteItemSelectionMode.swift */,
 			);
 			path = "remote-files";
 			sourceTree = "<group>";
@@ -3192,6 +3233,14 @@
 				758D272326867931006764C0 /* EntryFinderCoordinator.swift */,
 			);
 			path = controllers;
+			sourceTree = "<group>";
+		};
+		75D21BD72B642BDD0065D95E /* onedrive */ = {
+			isa = PBXGroup;
+			children = (
+				75D21BD12B642BB20065D95E /* OneDriveConnectionSetupCoordinator.swift */,
+			);
+			path = onedrive;
 			sourceTree = "<group>";
 		};
 		75D76146262DDDEC00B1DE7F /* about */ = {
@@ -4035,6 +4084,7 @@
 				7572665124CB17410099B6E1 /* HelpViewerVC.swift in Sources */,
 				F38AA37D2B6017DB0084B485 /* KeyFilePickerCoordinator.swift in Sources */,
 				75E9E2BA290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift in Sources */,
+				750C0D552B64067600821CA4 /* WebDAVConnectionSetupCoordinator.swift in Sources */,
 				75BE05F325DAA4E400B34CC0 /* SupportEmailComposer.swift in Sources */,
 				7526404328455DDC0003DDFA /* PasswordGeneratorLengthCell.swift in Sources */,
 				759BC62D2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
@@ -4107,6 +4157,7 @@
 				7502561D283D370000B930D9 /* SpinnerLabel.swift in Sources */,
 				757FDF6326E2519E0023E028 /* OTPView.swift in Sources */,
 				751DED742847B44B00B6D02E /* UITextInput+extensions.swift in Sources */,
+				75D21BDA2B642E480065D95E /* BusyStateIndicating.swift in Sources */,
 				75B24DD521C523AE003C9486 /* SearchHelper.swift in Sources */,
 				7582544B2211BB830053FCC9 /* Watchdog.swift in Sources */,
 				75BE064025DB1A1A00B34CC0 /* DiagnosticsViewerVC.swift in Sources */,
@@ -4116,15 +4167,17 @@
 				756F364B260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */,
 				75BFB1472481D19B0017B980 /* FileProvider+extensions.swift in Sources */,
 				75151D3423268AB300F3C411 /* UILabel+extensions.swift in Sources */,
+				75D21BD32B642BB20065D95E /* OneDriveConnectionSetupCoordinator.swift in Sources */,
 				7572665B24CB1B500099B6E1 /* HelpArticle.swift in Sources */,
 				757ADC5123A5180600D708D2 /* DismissablePopover.swift in Sources */,
 				75A2677E22904E0D0097C693 /* PremiumFeature+extension.swift in Sources */,
 				750CFBDE21BAD7FF00E62B09 /* UIViewController+storyboard.swift in Sources */,
 				75FCCF852631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */,
-				7524E73C2888A3F500ECBEC8 /* RemoteFilePickerVC.swift in Sources */,
+				7524E73C2888A3F500ECBEC8 /* WebDAVConnectionSetupVC.swift in Sources */,
 				75E60AE625CF5E090089219C /* DatabaseIconSet+assets.swift in Sources */,
 				758544652351FE8D000D5E5E /* UIFont+extensions.swift in Sources */,
 				7524E7372888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift in Sources */,
+				75136B2B2B6972CB00214760 /* RemoteItemSelectionMode.swift in Sources */,
 				759F69FE29066E110089FB34 /* ConnectionTypePickerVC.swift in Sources */,
 				750CFBDD21BAD7FF00E62B09 /* UIImage+extensions.swift in Sources */,
 			);
@@ -4165,6 +4218,7 @@
 				75C3801B217A0B76006F74C2 /* UIViewController+storyboard.swift in Sources */,
 				754E409826306927003E4854 /* DatabaseUnlockerCoordinator.swift in Sources */,
 				7529310D21ADA46C00E4B0D2 /* FileInfoVC.swift in Sources */,
+				75136B262B67CD6B00214760 /* RemoteFileExportCoordinator.swift in Sources */,
 				759BC62C2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
 				757D336120EF382D000A47F0 /* SettingsDatabaseTimeoutVC.swift in Sources */,
 				7550D24C215FDEC500360E0C /* AppCoverVC.swift in Sources */,
@@ -4172,7 +4226,7 @@
 				756F363F260E9668005A35DA /* KeyFilePickerVC.swift in Sources */,
 				F3B0C2042B2CA8790001946D /* OnboardingPagesVC.swift in Sources */,
 				758FF6BF28FAE32F007DE8EB /* ButtonCell.swift in Sources */,
-				7524E73B2888A3F500ECBEC8 /* RemoteFilePickerVC.swift in Sources */,
+				7524E73B2888A3F500ECBEC8 /* WebDAVConnectionSetupVC.swift in Sources */,
 				F37CAA272A87D4F20000EF64 /* PasswordAuditCoordinator.swift in Sources */,
 				75BFB1462481D19B0017B980 /* FileProvider+extensions.swift in Sources */,
 				753DF2C1263C4B7F0046F185 /* EntryViewerCoordinator.swift in Sources */,
@@ -4200,6 +4254,7 @@
 				75025617283CF3A300B930D9 /* FileInfoCoordinator.swift in Sources */,
 				752B1E9320E8AA070073AABD /* EditableField.swift in Sources */,
 				F33F2C542B32E059009EFB18 /* TagSelectorCoordinator.swift in Sources */,
+				750C0D542B64067600821CA4 /* WebDAVConnectionSetupCoordinator.swift in Sources */,
 				75EC7C04262B161F00D8C7EB /* DatabaseLoadingWarningsVC.swift in Sources */,
 				759894BC24620D33006B6709 /* FileDestructionHelper.swift in Sources */,
 				F33F2C512B32DD61009EFB18 /* TagSelectorVC.swift in Sources */,
@@ -4245,8 +4300,10 @@
 				75F5CACD20BD18320056C969 /* UIView+extension.swift in Sources */,
 				7523F71D21C98D620025C706 /* SupportEmailComposer.swift in Sources */,
 				75635F43223A2B250074D745 /* ViewEntryFieldCells.swift in Sources */,
+				75D21BD22B642BB20065D95E /* OneDriveConnectionSetupCoordinator.swift in Sources */,
 				F37CAA292A87D55B0000EF64 /* PasswordAuditVC.swift in Sources */,
 				75E9E2B4290C19FA00B79BE8 /* GroupViewerCells.swift in Sources */,
+				75D21BD92B642E480065D95E /* BusyStateIndicating.swift in Sources */,
 				7524E74A2888B58200ECBEC8 /* TextFieldCell.swift in Sources */,
 				756AE9D320CF8B5E00995846 /* ItemIconPicker.swift in Sources */,
 				7546FBDD20C3ACFD00C5D834 /* KPApplication.swift in Sources */,
@@ -4326,6 +4383,7 @@
 				7558D06223CE2F3E00547621 /* ChallengeResponseManager.swift in Sources */,
 				7524E7362888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift in Sources */,
 				750D127E20CF071600BE0CCE /* GroupEditorVC.swift in Sources */,
+				75136B2A2B6972CB00214760 /* RemoteItemSelectionMode.swift in Sources */,
 				75D99DEE269CEE0800D0E9D7 /* DatabaseItemTitleView.swift in Sources */,
 				75E60AEC25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift in Sources */,
 				758CA5442569B9EA0034EF10 /* SwitchCell.swift in Sources */,
@@ -4404,7 +4462,7 @@
 				756F3642260E9669005A35DA /* KeyFilePickerVC.swift in Sources */,
 				F30D03762A7BE8A40047525F /* PasswordQualityIndicatorView.swift in Sources */,
 				758FF6C128FAE32F007DE8EB /* ButtonCell.swift in Sources */,
-				7524E73D2888A3F500ECBEC8 /* RemoteFilePickerVC.swift in Sources */,
+				7524E73D2888A3F500ECBEC8 /* WebDAVConnectionSetupVC.swift in Sources */,
 				75BFB1482481D19B0017B980 /* FileProvider+extensions.swift in Sources */,
 				753DF2C2263C4B7F0046F185 /* EntryViewerCoordinator.swift in Sources */,
 				75BC562B2581872B002B4395 /* AccessibilityHelper.swift in Sources */,
@@ -4415,6 +4473,7 @@
 				F30D03712A7BE8A00047525F /* PasswordQuality.swift in Sources */,
 				75B786FF261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift in Sources */,
 				758BADB324B5408F00CC9265 /* PricingPlanCollectionCell.swift in Sources */,
+				75D21BD42B642BB20065D95E /* OneDriveConnectionSetupCoordinator.swift in Sources */,
 				7572665224CB17410099B6E1 /* HelpViewerVC.swift in Sources */,
 				75C1AF882731E54D00E33AAC /* DatabaseSettingsVC.swift in Sources */,
 				75B38C07233E5B7C006BDEFC /* DatabaseKeyChangerVC.swift in Sources */,
@@ -4428,6 +4487,7 @@
 				75DE677B268F6F69003D4DCC /* BiometricsHelper.swift in Sources */,
 				75B38C0D233E5B7C006BDEFC /* EditableField.swift in Sources */,
 				75025619283CF3A300B930D9 /* FileInfoCoordinator.swift in Sources */,
+				750C0D562B64067600821CA4 /* WebDAVConnectionSetupCoordinator.swift in Sources */,
 				759894BE24620D33006B6709 /* FileDestructionHelper.swift in Sources */,
 				75EC7C05262B161F00D8C7EB /* DatabaseLoadingWarningsVC.swift in Sources */,
 				75B38C0E233E5B7C006BDEFC /* UIColor+namedColors.swift in Sources */,
@@ -4443,6 +4503,7 @@
 				75B38C12233E5B7C006BDEFC /* EntryHistoryViewerVC.swift in Sources */,
 				75EEC2102747EE6A0092505F /* AutoFillSettingsCoordinator.swift in Sources */,
 				7544A188261610DE000C0492 /* PhotoPicker.swift in Sources */,
+				75136B272B67CD6B00214760 /* RemoteFileExportCoordinator.swift in Sources */,
 				75F28786245D646B00F03657 /* MFIKeyActionSheetView.swift in Sources */,
 				75BF1967283F9C51006A9826 /* AccessibleStepper.swift in Sources */,
 				75839A91246B1A78003DAB7F /* SettingsSearchVC.swift in Sources */,
@@ -4506,6 +4567,7 @@
 				75B38C2F233E5B7C006BDEFC /* AppStoreHelper.swift in Sources */,
 				75BF1962283EE1B8006A9826 /* PasswordGeneratorLabel.swift in Sources */,
 				75AF1921282B0D6D00FA4BB5 /* PasswordGeneratorCells.swift in Sources */,
+				75136B2C2B6972CB00214760 /* RemoteItemSelectionMode.swift in Sources */,
 				75B38C30233E5B7C006BDEFC /* EntryFieldViewerVC.swift in Sources */,
 				758BADBB24B5F8BF00CC9265 /* PricingPlans.swift in Sources */,
 				75B38C31233E5B7C006BDEFC /* PremiumFeature+extension.swift in Sources */,
@@ -4522,6 +4584,7 @@
 				75AD22DD27FDE59200636D66 /* YubiKeyUSB.swift in Sources */,
 				75F11C372883625D005B3DC0 /* NetworkAccessSettingsCoordinator.swift in Sources */,
 				75BE064125DB1A1A00B34CC0 /* DiagnosticsViewerVC.swift in Sources */,
+				75D21BDB2B642E480065D95E /* BusyStateIndicating.swift in Sources */,
 				7588B6C72627351800F5D372 /* EntryFieldEditorCoordinator.swift in Sources */,
 				756B15D124C19C1E004A75B6 /* FileAddingHelper.swift in Sources */,
 				75B38C34233E5B7C006BDEFC /* SettingsAutoFillVC.swift in Sources */,
@@ -4607,6 +4670,7 @@
 				75D075BD28B639D200F02E39 /* WatchdogAwareTextView.swift in Sources */,
 				75D075BE28B639D200F02E39 /* DestinationGroupPickerVC.swift in Sources */,
 				751ABAD52915B745008C18DE /* SubtitleCell.swift in Sources */,
+				750C0D582B64067600821CA4 /* WebDAVConnectionSetupCoordinator.swift in Sources */,
 				75D075BF28B639D200F02E39 /* NavigationRouter.swift in Sources */,
 				75D075C028B639D200F02E39 /* SettingsVC.swift in Sources */,
 				75D075C128B639D200F02E39 /* ExpiryDateEditorVC.swift in Sources */,
@@ -4617,6 +4681,7 @@
 				75D075C528B639D200F02E39 /* DismissablePopover.swift in Sources */,
 				75D075C628B639D200F02E39 /* KeyFilePickerCoordinator.swift in Sources */,
 				75D075C728B639D200F02E39 /* PricingPlanPickerVC.swift in Sources */,
+				75136B282B67CD6B00214760 /* RemoteFileExportCoordinator.swift in Sources */,
 				75D075C828B639D200F02E39 /* UIViewController+storyboard.swift in Sources */,
 				75D075C928B639D200F02E39 /* DatabaseUnlockerCoordinator.swift in Sources */,
 				75D075CA28B639D200F02E39 /* FileInfoVC.swift in Sources */,
@@ -4627,7 +4692,7 @@
 				F3C71AB12AFFAD7A00EEAC8E /* GroupEditorTitleCell.swift in Sources */,
 				75D075CE28B639D200F02E39 /* AboutCoordinator.swift in Sources */,
 				75D075CF28B639D200F02E39 /* KeyFilePickerVC.swift in Sources */,
-				75D075D028B639D200F02E39 /* RemoteFilePickerVC.swift in Sources */,
+				75D075D028B639D200F02E39 /* WebDAVConnectionSetupVC.swift in Sources */,
 				753E01012B11288E00378C8D /* EncryptionSettingsCoordinator.swift in Sources */,
 				7586227B2A4B798500D50B68 /* ErrorMessageView.swift in Sources */,
 				75D075D128B639D200F02E39 /* FileProvider+extensions.swift in Sources */,
@@ -4692,6 +4757,7 @@
 				F37339002AACCAFD007188D2 /* FaviconDownloading.swift in Sources */,
 				75D0760B28B639D200F02E39 /* UIView+extension.swift in Sources */,
 				7527601C2B7A5C900016B528 /* OnboardingPagesVC.swift in Sources */,
+				75136B2E2B6972CB00214760 /* RemoteItemSelectionMode.swift in Sources */,
 				75D0760C28B639D200F02E39 /* SupportEmailComposer.swift in Sources */,
 				751ABACB2915B70B008C18DE /* ConnectionTypePickerVC.swift in Sources */,
 				75D0760D28B639D200F02E39 /* ViewEntryFieldCells.swift in Sources */,
@@ -4712,6 +4778,7 @@
 				754313B128B82EAA00D5F252 /* IntuneEnrollmentDelegateImpl.swift in Sources */,
 				75D0761A28B639D200F02E39 /* FileInfoReloader.swift in Sources */,
 				75D0761B28B639D200F02E39 /* ItemIconPickerCoordinator.swift in Sources */,
+				75D21BD62B642BB20065D95E /* OneDriveConnectionSetupCoordinator.swift in Sources */,
 				75D0761C28B639D200F02E39 /* EntryFileViewerVC.swift in Sources */,
 				75D0761D28B639D200F02E39 /* String+extensions.swift in Sources */,
 				75D0761E28B639D200F02E39 /* CollectionViewControllerWithContextActions.swift in Sources */,
@@ -4734,6 +4801,7 @@
 				75D0762B28B639D200F02E39 /* Coordinator+premium.swift in Sources */,
 				F3340BCC2B2B3E3100604AED /* OnboardingStepVC.swift in Sources */,
 				75D0762C28B639D200F02E39 /* PlaceholderVC.swift in Sources */,
+				75D21BDD2B642E480065D95E /* BusyStateIndicating.swift in Sources */,
 				75D0762D28B639D200F02E39 /* InclusionCondition+extensions.swift in Sources */,
 				75D0762E28B639D200F02E39 /* DatabaseKeyChangerCoordinator.swift in Sources */,
 				75D0762F28B639D200F02E39 /* SettingsBackupVC.swift in Sources */,
@@ -4849,6 +4917,7 @@
 				7526404228455DD80003DDFA /* PasswordGeneratorCells.swift in Sources */,
 				7572665324CB17410099B6E1 /* HelpViewerVC.swift in Sources */,
 				75E9E2BC290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift in Sources */,
+				750C0D572B64067600821CA4 /* WebDAVConnectionSetupCoordinator.swift in Sources */,
 				75BE05F625DAA4E500B34CC0 /* SupportEmailComposer.swift in Sources */,
 				7526404428455DDC0003DDFA /* PasswordGeneratorLengthCell.swift in Sources */,
 				759BC62F2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
@@ -4921,6 +4990,7 @@
 				7502561F283D370000B930D9 /* SpinnerLabel.swift in Sources */,
 				757FDF6526E2519E0023E028 /* OTPView.swift in Sources */,
 				751DED762847B44B00B6D02E /* UITextInput+extensions.swift in Sources */,
+				75D21BDC2B642E480065D95E /* BusyStateIndicating.swift in Sources */,
 				75D7DFA0233E5E310029AD87 /* SearchHelper.swift in Sources */,
 				75D7DFA1233E5E310029AD87 /* Watchdog.swift in Sources */,
 				75BE064225DB1A1A00B34CC0 /* DiagnosticsViewerVC.swift in Sources */,
@@ -4930,15 +5000,17 @@
 				756F364D260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */,
 				75BFB1492481D19B0017B980 /* FileProvider+extensions.swift in Sources */,
 				75D7DFA3233E5E310029AD87 /* UILabel+extensions.swift in Sources */,
+				75D21BD52B642BB20065D95E /* OneDriveConnectionSetupCoordinator.swift in Sources */,
 				7572665D24CB1B500099B6E1 /* HelpArticle.swift in Sources */,
 				757ADC5323A5180600D708D2 /* DismissablePopover.swift in Sources */,
 				75D7DFA4233E5E310029AD87 /* PremiumFeature+extension.swift in Sources */,
 				75D7DFA6233E5E310029AD87 /* UIViewController+storyboard.swift in Sources */,
 				75FCCF872631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */,
-				7524E73E2888A3F500ECBEC8 /* RemoteFilePickerVC.swift in Sources */,
+				7524E73E2888A3F500ECBEC8 /* WebDAVConnectionSetupVC.swift in Sources */,
 				75E60AE825CF5E090089219C /* DatabaseIconSet+assets.swift in Sources */,
 				758544672351FE8D000D5E5E /* UIFont+extensions.swift in Sources */,
 				7524E7392888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift in Sources */,
+				75136B2D2B6972CB00214760 /* RemoteItemSelectionMode.swift in Sources */,
 				759F6A0029066E110089FB34 /* ConnectionTypePickerVC.swift in Sources */,
 				75D7DFA7233E5E310029AD87 /* UIImage+extensions.swift in Sources */,
 			);

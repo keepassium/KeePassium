@@ -6,7 +6,7 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-public struct OneDriveDriveInfo {
+public struct OneDriveDriveInfo: Equatable {
     public enum DriveType: String, CustomStringConvertible {
         case personal = "personal"
         case business = "business"
@@ -21,10 +21,26 @@ public struct OneDriveDriveInfo {
                 return LString.connectionTypeSharePoint
             }
         }
+
+        public var isCorporate: Bool {
+            switch self {
+            case .personal:
+                return false
+            case .business, .sharepoint:
+                return true
+            }
+        }
     }
 
     public var id: String
     public var name: String // e.g. "OneDrive"
     public var type: DriveType
     public var ownerName: String? // e.g. "AdeleV@contoso.com" or "Adele Vance" or nil
+
+    public static func == (lhs: OneDriveDriveInfo, rhs: OneDriveDriveInfo) -> Bool {
+        return lhs.id == rhs.id
+            && lhs.name == rhs.name
+            && lhs.type == rhs.type
+            && lhs.ownerName == rhs.ownerName
+    }
 }
