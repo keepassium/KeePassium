@@ -388,7 +388,8 @@ extension MainCoordinator {
     private func maybeShowOnboarding() {
         let files = FileKeeper.shared.getAllReferences(fileType: .database, includeBackup: true)
         guard files.isEmpty else {
-            return 
+            maybeStartAppPasscodeSetup()
+            return
         }
 
         let modalRouter = NavigationRouter.createModal(style: .formSheet)
@@ -470,6 +471,24 @@ extension MainCoordinator {
     private func deallocateDatabaseUnlocker() {
         databaseUnlockerRouter = nil
         childCoordinators.removeAll(where: { $0 is DatabaseUnlockerCoordinator })
+    }
+
+    private func maybeStartAppPasscodeSetup() {
+        let isPasscodeSet = (try? Keychain.shared.isAppPasscodeSet()) ?? false
+        guard ManagedAppConfig.shared.isRequireAppPasscodeSet,
+              !isPasscodeSet
+        else {
+            return
+        }
+        showAppPasscodeSetup()
+    }
+
+    private func showAppPasscodeSetup() {
+        let passcodeVC = PasscodeInputVC.instantiateFromStoryboard()
+        passcodeVC.mode = .setup
+        passcodeVC.isCancelAllowed = false
+        passcodeVC.delegate = self
+        getPresenterForModals().present(passcodeVC, animated: true)
     }
 
     private func showDonationScreen(in viewController: UIViewController) {
@@ -797,6 +816,26 @@ extension MainCoordinator: PasscodeInputDelegate {
     }
 
     func passcodeInput(_ sender: PasscodeInputVC, didEnterPasscode passcode: String) {
+        switch sender.mode {
+        case .verification:
+            verifyPasscode(passcode, viewController: sender)
+        case .setup, .change:
+            setupPasscode(passcode, viewController: sender)
+        }
+    }
+
+    private func setupPasscode(_ passcode: String, viewController: PasscodeInputVC) {
+        Diag.info("Passcode setup successful")
+        do {
+            try Keychain.shared.setAppPasscode(passcode)
+            viewController.dismiss(animated: true)
+        } catch {
+            Diag.error("Keychain error [message: \(error.localizedDescription)]")
+            viewController.showErrorAlert(error, title: LString.titleKeychainError)
+        }
+    }
+
+    private func verifyPasscode(_ passcode: String, viewController: PasscodeInputVC) {
         do {
             if try Keychain.shared.isAppPasscodeMatch(passcode) { 
                 HapticFeedback.play(.appUnlocked)
@@ -804,7 +843,7 @@ extension MainCoordinator: PasscodeInputDelegate {
                 Keychain.shared.prepareBiometricAuth(true)
             } else {
                 HapticFeedback.play(.wrongPassword)
-                sender.animateWrongPassccode()
+                viewController.animateWrongPassccode()
                 StoreReviewSuggester.registerEvent(.trouble)
                 if Settings.current.isLockAllDatabasesOnFailedPasscode {
                     DatabaseSettingsManager.shared.eraseAllMasterKeys()
@@ -820,7 +859,7 @@ extension MainCoordinator: PasscodeInputDelegate {
             let alert = UIAlertController.make(
                 title: LString.titleKeychainError,
                 message: error.localizedDescription)
-            sender.present(alert, animated: true, completion: nil)
+            viewController.present(alert, animated: true, completion: nil)
         }
     }
 

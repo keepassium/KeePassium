@@ -112,6 +112,11 @@ final class SettingsAppLockVC: UITableViewController, Refreshable {
 
     @IBAction private func didChangeAppLockEnabledSwitch(_ sender: Any) {
         if !appLockEnabledSwitch.isOn {
+            guard !ManagedAppConfig.shared.isRequireAppPasscodeSet else {
+                showManagedSettingNotification()
+                refresh()
+                return
+            }
             Settings.current.isHideAppLockSetupReminder = false
             do {
                 try Keychain.shared.removeAppPasscode() 

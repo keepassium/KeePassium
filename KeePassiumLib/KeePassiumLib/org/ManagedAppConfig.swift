@@ -39,6 +39,7 @@ public final class ManagedAppConfig: NSObject {
         case allowedFileProviders
         case minimumAppPasscodeEntropy
         case minimumDatabasePasswordEntropy
+        case requireAppPasscodeSet
     }
 
     private var currentConfig: [String: Any]? {
@@ -141,7 +142,8 @@ extension ManagedAppConfig {
              .excludeBackupFilesFromSystemBackup,
              .enableQuickTypeAutoFill,
              .allowNetworkAccess,
-             .hideAppLockSetupReminder:
+             .hideAppLockSetupReminder,
+             .requireAppPasscodeSet:
             return getBool(key) != nil
         case .configVersion,
              .appLockTimeout,
@@ -174,7 +176,8 @@ extension ManagedAppConfig {
              .excludeBackupFilesFromSystemBackup,
              .enableQuickTypeAutoFill,
              .allowNetworkAccess,
-             .hideAppLockSetupReminder:
+             .hideAppLockSetupReminder,
+             .requireAppPasscodeSet:
             result = getBool(key)
         case .configVersion,
              .license,
@@ -235,7 +238,8 @@ extension ManagedAppConfig {
              .enableQuickTypeAutoFill,
              .allowNetworkAccess,
              .hideAppLockSetupReminder,
-             .allowedFileProviders:
+             .allowedFileProviders,
+             .requireAppPasscodeSet:
             Diag.error("Key `\(key.rawValue)` is not an integer, ignoring.")
             assertionFailure()
             return nil

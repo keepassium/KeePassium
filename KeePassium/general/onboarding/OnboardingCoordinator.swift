@@ -55,6 +55,7 @@ final class OnboardingCoordinator: Coordinator {
         OnboardingStep(
             title: LString.Onboarding.appProtectionTitle,
             text: LString.Onboarding.appProtectionText1,
+            canSkip: !ManagedAppConfig.shared.isRequireAppPasscodeSet,
             illustration: biometryIllustration,
             actions: [
                 UIAction(title: LString.Onboarding.actionActivateAppProtection) { [unowned self] _ in

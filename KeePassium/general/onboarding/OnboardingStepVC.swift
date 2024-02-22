@@ -26,7 +26,9 @@ final class OnboardingStepVC: UIViewController {
         step.actions.forEach {
             buttonsStackView.addArrangedSubview(createButton(forAction: $0, primary: true))
         }
-        if let skipAction = step.skipAction {
+        if step.canSkip,
+           let skipAction = step.skipAction
+        {
             buttonsStackView.addArrangedSubview(createButton(forAction: skipAction, primary: false))
         }
 

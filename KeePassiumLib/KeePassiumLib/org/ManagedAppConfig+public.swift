@@ -9,6 +9,9 @@
 import Foundation
 
 extension ManagedAppConfig {
+    public var isRequireAppPasscodeSet: Bool {
+        getBoolIfLicensed(.requireAppPasscodeSet) ?? false
+    }
 
     public var minimumAppPasscodeEntropy: Int? {
         getIntIfLicensed(.minimumAppPasscodeEntropy)
