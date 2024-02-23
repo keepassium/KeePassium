@@ -1,21 +1,12 @@
 /* Class = "UILabel"; text = "No Key File"; ObjectID = "9UZ-FK-v73"; */
 "9UZ-FK-v73.text" = "没有密钥文件";
 
-/* Class = "UILabel"; text = "Use key file without adding it to the list"; ObjectID = "BGv-TX-maE"; Note = "Explanation for the \"Key File/Browse\" action."; */
-"BGv-TX-maE.text" = "使用密匙文件并不将其添加到列表";
-
 /* Class = "UILabel"; text = "Use only password"; ObjectID = "leO-vH-qBX"; */
 "leO-vH-qBX.text" = "仅使用密码";
 
 /* Class = "UIBarButtonItem"; title = "Add Key File"; ObjectID = "Lod-RE-tcd"; */
 "Lod-RE-tcd.title" = "添加密钥文件";
 
-/* Class = "UIButton"; normalTitle = "Add Key File"; ObjectID = "Omh-Sn-jl2"; */
-"Omh-Sn-jl2.normalTitle" = "添加密钥文件";
-
 /* Class = "UINavigationItem"; title = "Key Files"; ObjectID = "r85-yz-wYI"; */
 "r85-yz-wYI.title" = "密钥文件";
-
-/* Class = "UILabel"; text = "Browse…"; ObjectID = "XiA-k9-5wr"; Note = "Action to open a file selection dialog"; */
-"XiA-k9-5wr.text" = "浏览…";
 

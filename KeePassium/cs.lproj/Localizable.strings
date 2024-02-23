@@ -58,6 +58,15 @@
 /* Menu title: app settings */
 "[Menu/Preferences/title]" = "Předvolby…";
 
+/* Action/button */
+"[Onboarding/AddExistingDatabase/action]" = "Přidat existující databázi";
+
+/* Action/button to set up the App Protection feature. Not a call to action. */
+"[Onboarding/AppProtection/activate]" = "Zapnout zámek";
+
+/* Action/button */
+"[Onboarding/CreateNewDatabase/action]" = "Vytvořit novou databázi";
+
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "Ukázat heslo";
 

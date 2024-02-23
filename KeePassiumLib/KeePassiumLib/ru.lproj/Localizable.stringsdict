@@ -18,6 +18,8 @@
 			<string>%d бит</string>
 			<key>other</key>
 			<string>%d бит</string>
+			<key>zero</key>
+			<string>%d bits</string>
 		</dict>
 		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@GenericCountBits@</string>
@@ -38,6 +40,8 @@
 			<string>Выбрана %d запись</string>
 			<key>other</key>
 			<string>Выбрано %d записей</string>
+			<key>zero</key>
+			<string>%d entries selected</string>
 		</dict>
 		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@GenericCountEntriesSelected@</string>
@@ -58,6 +62,8 @@
 			<string>%d поток</string>
 			<key>other</key>
 			<string>%d потоков</string>
+			<key>zero</key>
+			<string>%d threads</string>
 		</dict>
 		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@GenericCountThreads@</string>

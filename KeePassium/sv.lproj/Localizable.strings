@@ -58,6 +58,15 @@
 /* Menu title: app settings */
 "[Menu/Preferences/title]" = "Inställningar…";
 
+/* Action/button */
+"[Onboarding/AddExistingDatabase/action]" = "Lägg till existerande databas";
+
+/* Action/button to set up the App Protection feature. Not a call to action. */
+"[Onboarding/AppProtection/activate]" = "Aktivera skydd för Appen";
+
+/* Action/button */
+"[Onboarding/CreateNewDatabase/action]" = "Skapa ny databas";
+
 /* Action to skip selected item/items in future password audits. */
 "[PasswordAudit/Action/Exclude]" = "Exkludera från granskning";
 

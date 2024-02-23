@@ -625,6 +625,9 @@
 /* Localized name of the storage service: Boxcryptor (https://boxcryptor.com) */
 "[FileProvider/Boxcryptor/name]" = "Boxcryptor";
 
+/* Localized name of the storage service: Cryptomator (https://cryptomator.org) */
+"[FileProvider/Cryptomator/name]" = "Cryptomator";
+
 /* Localized name of the storage service: Dropbox (https://dropbox.com) */
 "[FileProvider/Dropbox/name]" = "Dropbox";
 
@@ -657,6 +660,9 @@
 
 /* Localized name of the storage service: pCloud (https://pcloud.com) */
 "[FileProvider/pCloud/name]" = "pCloud";
+
+/* Localized name of the storage service: Proton Drive (https://proton.me/drive) */
+"[FileProvider/ProtonDrive/name]" = "Proton Drive";
 
 /* Localized name of the storage service: QNAP Qfile (https://apps.apple.com/app/qfile/id526330408) */
 "[FileProvider/qnapQFile/name]" = "Qfile";
@@ -798,6 +804,9 @@
 
 /* Checkbox/Button to show a text field in its full size */
 "[Generic] Show more" = "Mostrar más";
+
+/* Action/button to skip the current step and proceed with the next one */
+"[Generic] Skip" = "Omitir";
 
 /* Message to confirm deletion of an item. */
 "[Generic/ConfirmDelete/title] Are you sure?" = "¿Está seguro/a?";
@@ -1520,7 +1529,7 @@
 "[TipBox/description/1]" = "¿Le gusta KeePassium?";
 
 /* Text in the Donations screen. */
-"[TipBox/description/2]" = "KeePassium es una aplicación libre de código abierto a la que confiar su información más sensible. No tiene anuncios, ni espionaje, ni tonterías, respetamos su privacidad.";
+"[TipBox/description/2]" = "KeePassium es una aplicación libre, de código abierto a la que confiar su información más sensible. No tiene anuncios, ni espionaje, ni tonterías, respetamos su privacidad.";
 
 /* Text in the Donations screen. */
 "[TipBox/description/3]" = "¿Le gusta KeePassium pero no necesita las características premium?";

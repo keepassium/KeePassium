@@ -11,10 +11,10 @@
 "cBS-jW-dHU.headerTitle" = "Supporto";
 
 /* Class = "UITableViewSection"; headerTitle = "Backup"; ObjectID = "HjD-9G-X8p"; */
-"HjD-9G-X8p.headerTitle" = "Copie di sicurezza";
+"HjD-9G-X8p.headerTitle" = "Backup";
 
 /* Class = "UITableViewSection"; headerTitle = "Access Control"; ObjectID = "hui-xG-chj"; */
-"hui-xG-chj.headerTitle" = "Controllo accesso";
+"hui-xG-chj.headerTitle" = "Modalità di accesso";
 
 /* Class = "UITableViewSection"; headerTitle = "Network Access"; ObjectID = "K9j-xG-abD"; */
 "K9j-xG-abD.headerTitle" = "Accesso alla rete";

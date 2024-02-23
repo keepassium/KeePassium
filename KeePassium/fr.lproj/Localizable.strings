@@ -52,12 +52,78 @@
 /* Title of entry viewer's tab with previous revisions of the entry */
 "[Entry/Tab/History/title]" = "Historique";
 
+/* Title of entry viewer's tab with advanced/secondary properties */
+"[Entry/Tab/More/title]" = "Plus";
+
 /* Menu title. For example: `About KeePassium`. [appName: String] */
 "[Menu/About/title]" = "À propos de %@";
 
 /* Menu title: app settings */
 "[Menu/Preferences/title]" = "Préférences…";
 
+/* Action/button */
+"[Onboarding/AddExistingDatabase/action]" = "Ajouter base de données existante";
+
+/* Action/button to set up the App Protection feature. Not a call to action. */
+"[Onboarding/AppProtection/activate]" = "Activer la protection de l'application";
+
+/* Action/button */
+"[Onboarding/CreateNewDatabase/action]" = "Créer nouvelle base de données";
+
+/* Action to skip selected item/items in future password audits. */
+"[PasswordAudit/Action/Exclude]" = "Exclure de l'audit";
+
+/* Status message: password audit in progress */
+"[PasswordAudit/Auditing/status]" = "Audit des mots de passe";
+
+/* Error message after a failed password audit request [message: String]. */
+"[PasswordAudit/Error/text]" = "Une erreur est survenue lors de la communication avec le service HIBP. %@";
+
+/* Description of the password audit results, where a number appears next to each password. */
+"[PasswordAudit/ExposureCount/description]" = "Le nombre indique combien de fois le mot de passe a été trouvé dans des fuites de données connues.";
+
+/* Description of the Password Audit function. */
+"[PasswordAudit/Intro/text]" = "L'audit des mots de passe vérifie vos mots de passe par rapport à une base de données en ligne de mots de passe divulgués de manière sécurisée et privée.\n\nKeePassium enverra des informations calculées à partir de vos mots de passe (des \"sommes de contrôle\" partielles) au service [Have I Been Pwned](https://haveibeenpwned.com). Le service renverra des informations détaillées sur les mots de passe compromis qui ont des \"sommes de contrôle\" partielles similaires. L'application comparera ensuite ces \"sommes de contrôle\" détaillées dans votre téléphone et détectera quels sont vos mots de passe susceptibles d'être compromis.\n\nVos mots de passe réels ne sont jamais partagés avec le service en ligne.\n[En savoir plus…](%@)";
+
+/* Result of a password audit. */
+"[PasswordAudit/Results/allGood]" = "Bonne nouvelle ! Aucun de vos mots de passe n'est apparu dans des fuites de données connues.";
+
+/* Title of a list with passwords that are known to have been exposed in online breaches. */
+"[PasswordAudit/Results/title]" = "Mots de passe compromis";
+
+/* Action/button: intiate password audit */
+"[PasswordAudit/Start/action]" = "Lancer l'audit";
+
+/* Title of a screen to check which passwords are known to be compromised. */
+"[PasswordAudit/title]" = "Audit des mots de passe";
+
+/* Password quality description. For example: `Password quality: Weak`. [level: String] */
+"[PasswordQuality/description]" = "Qualité du mot de passe : %@";
+
+/* Almost good password quality */
+"[PasswordQuality/Level] Almost good" = "Satisfaisant";
+
+/* Good password quality */
+"[PasswordQuality/Level] Good" = "Bon";
+
+/* Very good password quality */
+"[PasswordQuality/Level] Very good" = "Très bon";
+
+/* Very weak password quality */
+"[PasswordQuality/Level] Very weak" = "Très faible";
+
+/* Weak password quality */
+"[PasswordQuality/Level] Weak" = "Faible";
+
+/* Password quality description. For example: `Very good (234 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithEntropy/description]" = "%1$@ (%2$@ d'entropie)";
+
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "Afficher le mot de passe";
+
+/* Title of the confirmation dialog for `Delete` action for several items */
+"[Selection/Delete/confirmation]" = "Supprimer la sélection ?";
+
+/* Title of the confirmation dialog for `Exclude from audit` action for several items */
+"[Selection/ExcludeFromAudit/confirmation]" = "Exclure la sélection de l'audit de mot de passe ?";
 

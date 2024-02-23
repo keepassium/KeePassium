@@ -10,6 +10,12 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "激活辅助功能以收听内容。";
 
+/* Short name of the default/system font. For example: `Font: Default` */
+"[Appearance/DefaultFont/shortTitle]" = "默认";
+
+/* Title of a setting option: font */
+"[Appearance/Font/title]" = "字体";
+
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "文本大小";
 
@@ -132,6 +138,18 @@
 
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "添加自定义图标";
+
+/* Action: download icon of a website */
+"[Database/CustomIcon/DownloadFavicon/action]" = "下载图标";
+
+/* Action/button to download favicons of websites mentioned in selected entries. */
+"[Database/CustomIcon/DownloadFavicons/action]" = "下载图标";
+
+/* Status message: multiple website favicons are being downloaded */
+"[Database/CustomIcon/DownloadFavicons/status]" = "正在下载图标";
+
+/* Status message: a website favicon is being downloaded */
+"[Database/CustomIcon/DownloadOneFavicon/status]" = "正在下载图标";
 
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "删除数据库文件?\n 请确保您有备份文件!";
@@ -634,6 +652,9 @@
 /* Localized name of the storage service: Boxcryptor (https://boxcryptor.com) */
 "[FileProvider/Boxcryptor/name]" = "Boxcryptor";
 
+/* Localized name of the storage service: Cryptomator (https://cryptomator.org) */
+"[FileProvider/Cryptomator/name]" = "Cryptomator";
+
 /* Localized name of the storage service: Dropbox (https://dropbox.com) */
 "[FileProvider/Dropbox/name]" = "Dropbox";
 
@@ -666,6 +687,9 @@
 
 /* Localized name of the storage service: pCloud (https://pcloud.com) */
 "[FileProvider/pCloud/name]" = "pCloud";
+
+/* Localized name of the storage service: Proton Drive (https://proton.me/drive) */
+"[FileProvider/ProtonDrive/name]" = "Proton Drive";
 
 /* Localized name of the storage service: QNAP Qfile (https://apps.apple.com/app/qfile/id526330408) */
 "[FileProvider/qnapQFile/name]" = "Qfile";
@@ -814,6 +838,9 @@
 /* Checkbox/Button to show a text field in its full size */
 "[Generic] Show more" = "显示更多";
 
+/* Action/button to skip the current step and proceed with the next one */
+"[Generic] Skip" = "跳过";
+
 /* Message to confirm deletion of an item. */
 "[Generic/ConfirmDelete/title] Are you sure?" = "您确定吗？";
 
@@ -936,6 +963,9 @@
 
 /* Possible value of the `Password Audit` setting. For example: 'Password Audit: Allowed' */
 "[Item/Properties/PasswordAudit/allowed]" = "已允许";
+
+/* Title of a setting: whether the item (e.g. entry) should be included in password audit */
+"[Item/Properties/PasswordAudit/title]" = "密码检查器";
 
 /* Possible value of the `Search` setting. Example: 'Search: Allowed' */
 "[Item/Properties/Search/allowed]" = "已允许";
@@ -1291,11 +1321,23 @@
 /* An option in Settings. Will be shown as 'App Lock: Timeout: Never' */
 "[Settings/AppLockTimeout/shortTitle] Never" = "永不";
 
+/* Action that opens system settings or instructions */
+"[Settings/AutoFill/Activate/action]" = "激活自动填充";
+
+/* Description for the AutoFill setup instructions */
+"[Settings/AutoFill/Activate/description]" = "在首次使用之前，您需要在系统设置中激活自动填充。";
+
 /* Title of an option: copy one-time password to clipboard when using AutoFill */
 "[Settings/AutoFill/CopyOTP/title]" = "复制 一次性密码OTP 到剪贴板";
 
+/* Title of a help article on how to activate AutoFill. */
+"[Settings/AutoFill/Setup Guide/title]" = "自动填充设置指南";
+
 /* Title of AutoFill settings screen */
 "[Settings/AutoFill/title]" = "自动填写密码";
+
+/* No comment provided by engineer. */
+"[Settings/AutoFill/UnavailableInIntune/description]" = "自动填充无法用于 KeePassium Intune 版";
 
 /* Title of an option: automatically use the single best match found by AutoFill search */
 "[Settings/AutoFill/UsePerfectMatch/title]" = "自动填充合适的内容";
@@ -1390,14 +1432,23 @@
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "列表设置";
 
+/* Settings section: how/whether the app is allowed to use networks/Internet */
+"[Settings/NetworkAccess/title]" = "网络访问";
+
 /* Section title in settings */
 "[Settings/Search/title]" = "搜索​​​​";
+
+/* Title of a sort options list. Example: 'Sort by: Name' */
+"[SortBy]" = "排序方式";
 
 /* List sorting option (for groups and entries). Example: 'Sort by: Title' */
 "[SortBy/ItemTitle]" = "标题";
 
 /* List sorting option, when no sorting is selected. Example: 'Sort by: None' */
 "[SortBy/None]" = "无";
+
+/* Name of a cloud storage service. Must match Microsoft's translation, see  https://partner.microsoft.com/solutions/onedrive-for-business */
+"[StorageService/OneDriveForBusiness/title]" = "OneDrive 商业版";
 
 /* Template text of a bug report email */
 "[Support/template] (Please describe the problem here)" = "(请在此处描述问题)";
@@ -1432,6 +1483,9 @@
 /* Call to action, title of the tip box/donation screen. */
 "[TipBox/title/3]" = "支持 KeePassium";
 
+/* Name of an entry field. Acronym `TOTP` should not be translated. */
+"[TOTP/FieldName]" = "一次性密码 (TOTP)";
+
 /* Human-readable file location. The file is situated either online / in cloud storage, or on the same device, but in some other app. Example: 'File Location: Cloud storage / Another app' */
 "[URLReference/Location] Cloud storage / Another app" = "云端存档 / 其他app应用";
 
@@ -1443,6 +1497,9 @@
 
 /* Human-readable file location: the file is on device, inside the app sandbox. Example: 'File Location: Local copy' */
 "[URLReference/Location] Local copy" = "本地副本";
+
+/* Human-readable file location. Example: 'File Location: Remote server' */
+"[URLReference/Location/RemoteServer]" = "远程服务器";
 
 /* Selector choice: don't use YubiKey to encrypt/decrypt database */
 "[YubiKey] Don't use YubiKey" = "不使用YubiKey";

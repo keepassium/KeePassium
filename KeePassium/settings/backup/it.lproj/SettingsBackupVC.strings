@@ -17,7 +17,7 @@
 "fst-lq-BDl.headerTitle" = "Backup di iTunes e iCloud";
 
 /* Class = "UILabel"; text = "Keep Backup Files"; ObjectID = "G42-gR-eKm"; Note = "Settings option: how long to keep backup copies. Example: `Keep Backup Copies: 3 days`"; */
-"G42-gR-eKm.text" = "Mantieni copie di sicurezza";
+"G42-gR-eKm.text" = "Conserva copie di sicurezza";
 
 /* Class = "UITableViewSection"; footerTitle = "Before saving a database, KeePassium will automatically make a copy, just in case."; ObjectID = "nBI-OF-9iV"; Note = "Explanation for the `Make Backup Copies` option"; */
 "nBI-OF-9iV.footerTitle" = "Prima di salvare un database, KeePassium creerà automaticamente una copia, per sicurezza.";

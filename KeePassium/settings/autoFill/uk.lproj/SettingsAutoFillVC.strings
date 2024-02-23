@@ -1,5 +1,5 @@
 /* Class = "UITableViewSection"; footerTitle = "When AutoFill finds only one, perfectly matching, entry – this entry will be pasted automatically."; ObjectID = "jYl-ks-dFG"; */
-"jYl-ks-dFG.footerTitle" = "Коли автозаповнення знаходить тільки однин, що ідеально підходить, запис, він буде обраний автоматично.";
+"jYl-ks-dFG.footerTitle" = "Коли автозаповнення знаходить тільки один запис, що ідеально підходить, він буде обраний автоматично.";
 
 /* Class = "UITableViewSection"; headerTitle = "Automatic search"; ObjectID = "jYl-ks-dFG"; */
 "jYl-ks-dFG.headerTitle" = "Автоматичний пошук";

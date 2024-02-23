@@ -1,21 +1,12 @@
 /* Class = "UILabel"; text = "No Key File"; ObjectID = "9UZ-FK-v73"; */
 "9UZ-FK-v73.text" = "Ingen nyckel-fil";
 
-/* Class = "UILabel"; text = "Use key file without adding it to the list"; ObjectID = "BGv-TX-maE"; Note = "Explanation for the \"Key File/Browse\" action."; */
-"BGv-TX-maE.text" = "Använd nyckelfil utan att spara den i listan";
-
 /* Class = "UILabel"; text = "Use only password"; ObjectID = "leO-vH-qBX"; */
 "leO-vH-qBX.text" = "Använd endast lösenord";
 
 /* Class = "UIBarButtonItem"; title = "Add Key File"; ObjectID = "Lod-RE-tcd"; */
 "Lod-RE-tcd.title" = "Lägg till nyckelfil";
 
-/* Class = "UIButton"; normalTitle = "Add Key File"; ObjectID = "Omh-Sn-jl2"; */
-"Omh-Sn-jl2.normalTitle" = "Lägg till nyckelfil";
-
 /* Class = "UINavigationItem"; title = "Key Files"; ObjectID = "r85-yz-wYI"; */
 "r85-yz-wYI.title" = "Nyckelfiler";
-
-/* Class = "UILabel"; text = "Browse…"; ObjectID = "XiA-k9-5wr"; Note = "Action to open a file selection dialog"; */
-"XiA-k9-5wr.text" = "Bläddra…";
 

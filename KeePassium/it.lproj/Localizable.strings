@@ -2,10 +2,10 @@
 "[AppHistory/title]" = "Novità";
 
 /* Hint shown when both password and key file are empty. */
-"[Database/Create] Please enter a password or choose a key file." = "Inserisci una password o scegli un file chiave.";
+"[Database/Create] Please enter a password or choose a key file." = "Inserire una password o scegliere un file chiave.";
 
 /* Note for a sample entry */
-"[Database/Create/TemplateEntry/notes] You can also store some notes, if you like." = "Puoi anche archiviare alcune note, se vuoi.";
+"[Database/Create/TemplateEntry/notes] You can also store some notes, if you like." = "Puoi anche conservare delle note, se vuoi.";
 
 /* Password for a sample entry. Translation is optional. */
 "[Database/Create/TemplateEntry/password] pa$$word" = "pa$$word";
@@ -53,13 +53,61 @@
 "[Entry/Tab/History/title]" = "Cronologia";
 
 /* Title of entry viewer's tab with advanced/secondary properties */
-"[Entry/Tab/More/title]" = "Più";
+"[Entry/Tab/More/title]" = "Altro";
 
 /* Menu title. For example: `About KeePassium`. [appName: String] */
 "[Menu/About/title]" = "Informazioni su %@";
 
 /* Menu title: app settings */
 "[Menu/Preferences/title]" = "Preferenze…";
+
+/* Action/button */
+"[Onboarding/AddExistingDatabase/action]" = "Aggiungi un database esistente";
+
+/* Action/button to set up the App Protection feature. Not a call to action. */
+"[Onboarding/AppProtection/activate]" = "Attiva protezione app";
+
+/* Text in the App Protection onboarding screen. */
+"[Onboarding/AppProtection/text1]" = "KeePassium è il tuo caveau. La protezione app assicura che solo tu possa aprirlo.";
+
+/* Title of the App Protection onboarding screen */
+"[Onboarding/AppProtection/title]" = "Solo per i tuoi occhi";
+
+/* Action/button */
+"[Onboarding/CreateNewDatabase/action]" = "Crea nuovo database";
+
+/* Text in the Data Encryption intro screen */
+"[Onboarding/DataEncryption/text1]" = "La tua cassaforte è un database criptato.";
+
+/* Text in the Data Encryption intro screen */
+"[Onboarding/DataEncryption/text2]" = "Puoi conservare i database sul cloud che preferisci o localmente sul dispositivo.";
+
+/* Title of the Data Encryption intro screen */
+"[Onboarding/DataEncryption/title]" = "Crittografia dei dati";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text1]" = "KeePassium tiene al sicuro le tue password e altri dati sensibili con la crittografia.";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text2]" = "Nessuna pubblicità e nessun tracciamento.";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text3]" = "Non sappiamo nulla di te.";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text4]" = "I tuoi dati ti appartengono.";
+
+/* Title of the introductory onboarding screen. */
+"[Onboarding/Intro/title]" = "Ti diamo il benvenuto";
+
+/* Text in the Security intro screen */
+"[Onboarding/Security/text1]" = "Le tue informazioni sono criptate in una cassaforte (database). Le casseforti sono conservate in un caveau (KeePassium).";
+
+/* Text in the Security intro screen */
+"[Onboarding/Security/text2]" = "Il caveau e le casseforti hanno chiavi diverse e solo tu le conosci.";
+
+/* Title of the Security intro screen */
+"[Onboarding/Security/title]" = "Massima sicurezza";
 
 /* Action to skip selected item/items in future password audits. */
 "[PasswordAudit/Action/Exclude]" = "Escludi dall'ispezione";
@@ -117,4 +165,31 @@
 
 /* Title of the confirmation dialog for `Exclude from audit` action for several items */
 "[Selection/ExcludeFromAudit/confirmation]" = "Escludere la selezione dall'ispezione password?";
+
+/* Action/button to create a new item tag */
+"[Tags/Create/action]" = "Crea tag";
+
+/* Call to action/hint inside a text input */
+"[Tags/Create/placeholder]" = "Inserire nome tag";
+
+/* Title of the tag creation dialog */
+"[Tags/Create/title]" = "Nuovo tag";
+
+/* Status message with a call to action */
+"[Tags/None/placeholder]" = "Non ci sono tag nel database, aggiungine qualcuna.";
+
+/* Status message: tag search result is empty */
+"[Tags/Search/emptyResult]" = "Nessun tag trovato.";
+
+/* Title of a list with all the tags existing in the database. */
+"[Tags/Section/All]" = "Tutti i tag";
+
+/* Title of a list with tags used by parent groups. */
+"[Tags/Section/Inherited]" = "Tag ereditati";
+
+/* Title of a list with tags chosen by the user for a specific entry or group. */
+"[Tags/Section/Selected]" = "Tag selezionati";
+
+/* Title: the number of times a tag is encountered in the database. */
+"[Tags/UsageCount/title]" = "Conteggio";
 

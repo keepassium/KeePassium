@@ -55,6 +55,15 @@
 /* Menu title: app settings */
 "[Menu/Preferences/title]" = "Tercihler…";
 
+/* Action/button */
+"[Onboarding/AddExistingDatabase/action]" = "Varolan Bir Veritabanını Ekle";
+
+/* Action/button to set up the App Protection feature. Not a call to action. */
+"[Onboarding/AppProtection/activate]" = "Uygulama kilidini etkinleştir";
+
+/* Action/button */
+"[Onboarding/CreateNewDatabase/action]" = "Yeni Bir Veritabanı Oluşturun";
+
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "Şifreyi Göster";
 

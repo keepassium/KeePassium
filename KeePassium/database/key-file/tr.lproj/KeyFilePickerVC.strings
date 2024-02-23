@@ -1,21 +1,12 @@
 /* Class = "UILabel"; text = "No Key File"; ObjectID = "9UZ-FK-v73"; */
 "9UZ-FK-v73.text" = "Anahtar Dosyası Yok";
 
-/* Class = "UILabel"; text = "Use key file without adding it to the list"; ObjectID = "BGv-TX-maE"; Note = "Explanation for the \"Key File/Browse\" action."; */
-"BGv-TX-maE.text" = "Listeye eklemeden anahtar dosya kullan";
-
 /* Class = "UILabel"; text = "Use only password"; ObjectID = "leO-vH-qBX"; */
 "leO-vH-qBX.text" = "Sadece şifre kullan";
 
 /* Class = "UIBarButtonItem"; title = "Add Key File"; ObjectID = "Lod-RE-tcd"; */
 "Lod-RE-tcd.title" = "Anahtar Dosyası Ekle";
 
-/* Class = "UIButton"; normalTitle = "Add Key File"; ObjectID = "Omh-Sn-jl2"; */
-"Omh-Sn-jl2.normalTitle" = "Anahtar Dosyası Ekle";
-
 /* Class = "UINavigationItem"; title = "Key Files"; ObjectID = "r85-yz-wYI"; */
 "r85-yz-wYI.title" = "Anahtar Dosyalar";
-
-/* Class = "UILabel"; text = "Browse…"; ObjectID = "XiA-k9-5wr"; Note = "Action to open a file selection dialog"; */
-"XiA-k9-5wr.text" = "Göz at…";
 

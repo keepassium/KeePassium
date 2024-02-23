@@ -61,6 +61,15 @@
 /* Menu title: app settings */
 "[Menu/Preferences/title]" = "Налаштування…";
 
+/* Action/button */
+"[Onboarding/AddExistingDatabase/action]" = "Додати свою базу паролів";
+
+/* Action/button to set up the App Protection feature. Not a call to action. */
+"[Onboarding/AppProtection/activate]" = "Активувати захист додатку";
+
+/* Action/button */
+"[Onboarding/CreateNewDatabase/action]" = "Створити нову базу";
+
 /* Action to skip selected item/items in future password audits. */
 "[PasswordAudit/Action/Exclude]" = "Виключити з перевірки";
 

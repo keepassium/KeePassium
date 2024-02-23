@@ -58,6 +58,15 @@
 /* Menu title: app settings */
 "[Menu/Preferences/title]" = "ตั้งค่าการทำงาน…";
 
+/* Action/button */
+"[Onboarding/AddExistingDatabase/action]" = "เพิ่มฐานข้อมูลที่มีอยู่แล้ว";
+
+/* Action/button to set up the App Protection feature. Not a call to action. */
+"[Onboarding/AppProtection/activate]" = "เปิดใช้งานแอปล็อก";
+
+/* Action/button */
+"[Onboarding/CreateNewDatabase/action]" = "สร้างฐานข้อมูลใหม่";
+
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "แสดงรหัสผ่าน";
 

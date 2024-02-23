@@ -50,7 +50,7 @@
 "pid-k2-idJ.text" = "Nascondi password";
 
 /* Class = "UILabel"; text = "Cache Derived Encryption Keys"; ObjectID = "siQ-LK-GXZ"; Note = "Setting: preserve (cache) calculated database keys"; */
-"siQ-LK-GXZ.text" = "Precarica chiavi di cifratura derivate";
+"siQ-LK-GXZ.text" = "Precarica chiavi crittografiche derivate";
 
 /* Class = "UILabel"; text = "Clipboard Timeout"; ObjectID = "SSu-Sr-MCg"; */
 "SSu-Sr-MCg.text" = "Timeout appunti";

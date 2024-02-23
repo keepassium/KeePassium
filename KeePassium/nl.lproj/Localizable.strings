@@ -52,11 +52,23 @@
 /* Title of entry viewer's tab with previous revisions of the entry */
 "[Entry/Tab/History/title]" = "Geschiedenis";
 
+/* Title of entry viewer's tab with advanced/secondary properties */
+"[Entry/Tab/More/title]" = "Meer";
+
 /* Menu title. For example: `About KeePassium`. [appName: String] */
 "[Menu/About/title]" = "Over %@";
 
 /* Menu title: app settings */
 "[Menu/Preferences/title]" = "Voorkeuren…";
+
+/* Action/button */
+"[Onboarding/AddExistingDatabase/action]" = "Voeg bestaande databank toe";
+
+/* Action/button to set up the App Protection feature. Not a call to action. */
+"[Onboarding/AppProtection/activate]" = "Schakel appbeveiliging in";
+
+/* Action/button */
+"[Onboarding/CreateNewDatabase/action]" = "Maak nieuwe databank";
 
 /* Action to skip selected item/items in future password audits. */
 "[PasswordAudit/Action/Exclude]" = "Uitsluiten van audit";

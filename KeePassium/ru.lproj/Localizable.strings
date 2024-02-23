@@ -61,6 +61,54 @@
 /* Menu title: app settings */
 "[Menu/Preferences/title]" = "Настройки…";
 
+/* Action/button */
+"[Onboarding/AddExistingDatabase/action]" = "Добавить свою базу";
+
+/* Action/button to set up the App Protection feature. Not a call to action. */
+"[Onboarding/AppProtection/activate]" = "Активировать защиту приложения";
+
+/* Text in the App Protection onboarding screen. */
+"[Onboarding/AppProtection/text1]" = "KeePassium — это ваше банковское хранилище. Блокировка приложения гарантирует, что только вы сможете открыть его.";
+
+/* Title of the App Protection onboarding screen */
+"[Onboarding/AppProtection/title]" = "Только для ваших глаз";
+
+/* Action/button */
+"[Onboarding/CreateNewDatabase/action]" = "Создать новую базу";
+
+/* Text in the Data Encryption intro screen */
+"[Onboarding/DataEncryption/text1]" = "Ваш сейф — это зашифрованная база паролей.";
+
+/* Text in the Data Encryption intro screen */
+"[Onboarding/DataEncryption/text2]" = "Вы можете хранить базы в своём любимом облаке или локально на устройстве.";
+
+/* Title of the Data Encryption intro screen */
+"[Onboarding/DataEncryption/title]" = "Шифрование данных";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text1]" = "KeePassium защищает ваши пароли и другую важную информацию надёжным шифрованием.";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text2]" = "Без рекламы и слежки.";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text3]" = "Мы ничего о вас не знаем.";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text4]" = "Ваши данные принадлежат вам.";
+
+/* Title of the introductory onboarding screen. */
+"[Onboarding/Intro/title]" = "Добро пожаловать";
+
+/* Text in the Security intro screen */
+"[Onboarding/Security/text1]" = "Ваша информация сохраняется в зашифрованный сейф (базу паролей). Сейфы находятся банковском хранилище (KeePassium).";
+
+/* Text in the Security intro screen */
+"[Onboarding/Security/text2]" = "Хранилище и сейфы имеют разные ключи, и только вы будете их знать.";
+
+/* Title of the Security intro screen */
+"[Onboarding/Security/title]" = "Максимальная надёжность";
+
 /* Action to skip selected item/items in future password audits. */
 "[PasswordAudit/Action/Exclude]" = "Исключить из аудита";
 
@@ -117,4 +165,31 @@
 
 /* Title of the confirmation dialog for `Exclude from audit` action for several items */
 "[Selection/ExcludeFromAudit/confirmation]" = "Исключить выбранное из аудита паролей?";
+
+/* Action/button to create a new item tag */
+"[Tags/Create/action]" = "Создать тег";
+
+/* Call to action/hint inside a text input */
+"[Tags/Create/placeholder]" = "Введите название тега";
+
+/* Title of the tag creation dialog */
+"[Tags/Create/title]" = "Новый тег";
+
+/* Status message with a call to action */
+"[Tags/None/placeholder]" = "В этой базе нет тегов, вы можете их добавить.";
+
+/* Status message: tag search result is empty */
+"[Tags/Search/emptyResult]" = "Подходящих тегов не найдено.";
+
+/* Title of a list with all the tags existing in the database. */
+"[Tags/Section/All]" = "Все теги";
+
+/* Title of a list with tags used by parent groups. */
+"[Tags/Section/Inherited]" = "Унаследованные теги";
+
+/* Title of a list with tags chosen by the user for a specific entry or group. */
+"[Tags/Section/Selected]" = "Выбранные теги";
+
+/* Title: the number of times a tag is encountered in the database. */
+"[Tags/UsageCount/title]" = "Упоминаний";
 

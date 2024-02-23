@@ -52,12 +52,78 @@
 /* Title of entry viewer's tab with previous revisions of the entry */
 "[Entry/Tab/History/title]" = "历史";
 
+/* Title of entry viewer's tab with advanced/secondary properties */
+"[Entry/Tab/More/title]" = "更多";
+
 /* Menu title. For example: `About KeePassium`. [appName: String] */
 "[Menu/About/title]" = "关于 %@";
 
 /* Menu title: app settings */
 "[Menu/Preferences/title]" = "偏好设置…";
 
+/* Action/button */
+"[Onboarding/AddExistingDatabase/action]" = "添加现有数据库";
+
+/* Action/button to set up the App Protection feature. Not a call to action. */
+"[Onboarding/AppProtection/activate]" = "启用应用解锁密码";
+
+/* Action/button */
+"[Onboarding/CreateNewDatabase/action]" = "创建新的数据库";
+
+/* Action to skip selected item/items in future password audits. */
+"[PasswordAudit/Action/Exclude]" = "从检查器中排除";
+
+/* Status message: password audit in progress */
+"[PasswordAudit/Auditing/status]" = "检查密码";
+
+/* Error message after a failed password audit request [message: String]. */
+"[PasswordAudit/Error/text]" = "与 HIBP 服务通信时发生错误。%@";
+
+/* Description of the password audit results, where a number appears next to each password. */
+"[PasswordAudit/ExposureCount/description]" = "数字表示该密码在已知数据泄漏中被发现的次数";
+
+/* Description of the Password Audit function. */
+"[PasswordAudit/Intro/text]" = "密码检查器根据在线泄露密码数据库，以安全、私密的方式检查您的密码。\n\nKeePassium 会将从您的密码中计算出的信息（部分校验和）发送到 [Have I Been Pwned](https://haveibeenpwned.com) 服务。该服务将返回具有类似校验和的密码的详细信息。然后，应用程序会比较设备本地的详细校验和，并检测出哪些密码存在风险。\n\n您的真实密码绝不会与在线服务共享。\n[了解更多......](%@)";
+
+/* Result of a password audit. */
+"[PasswordAudit/Results/allGood]" = "好消息！您的密码没有出现在已知的数据泄漏中。";
+
+/* Title of a list with passwords that are known to have been exposed in online breaches. */
+"[PasswordAudit/Results/title]" = "泄漏的密码";
+
+/* Action/button: intiate password audit */
+"[PasswordAudit/Start/action]" = "开始检查";
+
+/* Title of a screen to check which passwords are known to be compromised. */
+"[PasswordAudit/title]" = "密码检查器";
+
+/* Password quality description. For example: `Password quality: Weak`. [level: String] */
+"[PasswordQuality/description]" = "密码安全性：%@";
+
+/* Almost good password quality */
+"[PasswordQuality/Level] Almost good" = "不错";
+
+/* Good password quality */
+"[PasswordQuality/Level] Good" = "很好";
+
+/* Very good password quality */
+"[PasswordQuality/Level] Very good" = "非常好";
+
+/* Very weak password quality */
+"[PasswordQuality/Level] Very weak" = "非常差";
+
+/* Weak password quality */
+"[PasswordQuality/Level] Weak" = "较差";
+
+/* Password quality description. For example: `Very good (234 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithEntropy/description]" = "%1$@ (%2$@ 熵值)";
+
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "显示密码";
+
+/* Title of the confirmation dialog for `Delete` action for several items */
+"[Selection/Delete/confirmation]" = "删除所选内容？";
+
+/* Title of the confirmation dialog for `Exclude from audit` action for several items */
+"[Selection/ExcludeFromAudit/confirmation]" = "从密码检查器中排除已选中的项目？";
 

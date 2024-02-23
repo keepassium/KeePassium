@@ -1,17 +1,17 @@
 /* Class = "UITableViewSection"; footerTitle = "If you enter a wrong AppLock passcode, KeePassium will close all databases and clear all master keys from the keychain."; ObjectID = "5Dg-KX-m7a"; Note = "AppLock settings section: what to do when the user enters a wrong AppLock passcode."; */
-"5Dg-KX-m7a.footerTitle" = "Se immetti un codice di accesso errato, KeePassium chiuderà tutti i database e cancellerà tutte le chiavi principali dal portachiavi.";
+"5Dg-KX-m7a.footerTitle" = "Se immetti un codice errato, KeePassium chiuderà tutti i database e cancellerà tutte le chiavi principali dal portachiavi.";
 
 /* Class = "UITableViewSection"; headerTitle = "Wrong Passcode"; ObjectID = "5Dg-KX-m7a"; Note = "AppLock settings section: what to do when the user enters a wrong AppLock passcode."; */
-"5Dg-KX-m7a.headerTitle" = "Codice di accesso errato";
+"5Dg-KX-m7a.headerTitle" = "Codice errato";
 
 /* Class = "UILabel"; text = "Protect Databases"; ObjectID = "6Pk-35-Fx6"; */
 "6Pk-35-Fx6.text" = "Proteggi database";
 
 /* Class = "UITableViewSection"; footerTitle = "Allows biometric authentication as a quick (but less secure) alternative to AppLock passcode."; ObjectID = "7ae-8I-LiQ"; Note = "AppLock settings section: biometric auth (Touch ID/Face ID)"; */
-"7ae-8I-LiQ.footerTitle" = "Consente l'autenticazione biometrica come alternativa rapida (ma meno sicura) al codice di accesso per il blocco app.";
+"7ae-8I-LiQ.footerTitle" = "Consente di utilizzare l'autenticazione biometrica come alternativa rapida (ma meno sicura) al codice di blocco.";
 
 /* Class = "UITableViewSection"; headerTitle = "Biometrics"; ObjectID = "7ae-8I-LiQ"; Note = "AppLock settings section: biometric auth (Touch ID/Face ID)"; */
-"7ae-8I-LiQ.headerTitle" = "Dati biometrici";
+"7ae-8I-LiQ.headerTitle" = "Biometria";
 
 /* Class = "UITableViewSection"; footerTitle = "Protect KeePassium from unauthorized access."; ObjectID = "aBx-Ee-bMk"; Note = "Explanation for the `Enable AppLock` option."; */
 "aBx-Ee-bMk.footerTitle" = "Proteggi KeePassium da accessi non autorizzati.";

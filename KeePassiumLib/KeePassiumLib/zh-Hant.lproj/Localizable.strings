@@ -622,6 +622,9 @@
 /* Localized name of the storage service: Boxcryptor (https://boxcryptor.com) */
 "[FileProvider/Boxcryptor/name]" = "Boxcryptor";
 
+/* Localized name of the storage service: Cryptomator (https://cryptomator.org) */
+"[FileProvider/Cryptomator/name]" = "Cryptomator";
+
 /* Localized name of the storage service: Dropbox (https://dropbox.com) */
 "[FileProvider/Dropbox/name]" = "Dropbox";
 
@@ -654,6 +657,9 @@
 
 /* Localized name of the storage service: pCloud (https://pcloud.com) */
 "[FileProvider/pCloud/name]" = "pCloud";
+
+/* Localized name of the storage service: Proton Drive (https://proton.me/drive) */
+"[FileProvider/ProtonDrive/name]" = "Proton Drive";
 
 /* Localized name of the storage service: QNAP Qfile (https://apps.apple.com/app/qfile/id526330408) */
 "[FileProvider/qnapQFile/name]" = "Qfile";
@@ -795,6 +801,9 @@
 
 /* Checkbox/Button to show a text field in its full size */
 "[Generic] Show more" = "顯示更多";
+
+/* Action/button to skip the current step and proceed with the next one */
+"[Generic] Skip" = "略過";
 
 /* Message to confirm deletion of an item. */
 "[Generic/ConfirmDelete/title] Are you sure?" = "您確定嗎？";

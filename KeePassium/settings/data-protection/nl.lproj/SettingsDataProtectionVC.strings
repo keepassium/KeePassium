@@ -50,7 +50,7 @@
 "pid-k2-idJ.text" = "Verberg wachtwoorden";
 
 /* Class = "UILabel"; text = "Cache Derived Encryption Keys"; ObjectID = "siQ-LK-GXZ"; Note = "Setting: preserve (cache) calculated database keys"; */
-"siQ-LK-GXZ.text" = "Versleutelingssleutels afgeleid van de cache";
+"siQ-LK-GXZ.text" = "Bewaar afgeleide encryptiesleutels in cache";
 
 /* Class = "UILabel"; text = "Clipboard Timeout"; ObjectID = "SSu-Sr-MCg"; */
 "SSu-Sr-MCg.text" = "Klembordtime-out";

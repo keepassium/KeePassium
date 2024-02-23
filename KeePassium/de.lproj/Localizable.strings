@@ -61,6 +61,54 @@
 /* Menu title: app settings */
 "[Menu/Preferences/title]" = "Einstellungen …";
 
+/* Action/button */
+"[Onboarding/AddExistingDatabase/action]" = "Vorhandene Datenbank hinzufügen";
+
+/* Action/button to set up the App Protection feature. Not a call to action. */
+"[Onboarding/AppProtection/activate]" = "Appsperre aktivieren";
+
+/* Text in the App Protection onboarding screen. */
+"[Onboarding/AppProtection/text1]" = "KeePassium ist Ihr Tresorraum. Der App-Schutz gewährleistet, dass nur Sie diesen öffnen können.";
+
+/* Title of the App Protection onboarding screen */
+"[Onboarding/AppProtection/title]" = "Nur für Sie";
+
+/* Action/button */
+"[Onboarding/CreateNewDatabase/action]" = "Neue Datenbank erstellen";
+
+/* Text in the Data Encryption intro screen */
+"[Onboarding/DataEncryption/text1]" = "Ihr Safe ist eine verschlüsselte Datenbank.";
+
+/* Text in the Data Encryption intro screen */
+"[Onboarding/DataEncryption/text2]" = "Sie können Datenbanken in Ihrer bevorzugten Cloud oder lokal auf dem Gerät speichern.";
+
+/* Title of the Data Encryption intro screen */
+"[Onboarding/DataEncryption/title]" = "Datenverschlüsselung";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text1]" = "Mit KeePassium werden Ihre Passwörter und andere sensible Daten sicher verschlüsselt.";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text2]" = "Komplett ohne Werbung und Tracking.";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text3]" = "Wir wissen nichts über Sie.";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text4]" = "Ihre Daten gehören Ihnen.";
+
+/* Title of the introductory onboarding screen. */
+"[Onboarding/Intro/title]" = "Willkommen";
+
+/* Text in the Security intro screen */
+"[Onboarding/Security/text1]" = "Ihre Daten werden in einem Safe (Datenbank) verschlüsselt. Safes werden in einem Tresorraum (KeePassium) aufbewahrt.";
+
+/* Text in the Security intro screen */
+"[Onboarding/Security/text2]" = "Der Tresorraum und die Safes haben unterschiedliche Schlüssel, die nur Sie kennen.";
+
+/* Title of the Security intro screen */
+"[Onboarding/Security/title]" = "Maximale Sicherheit";
+
 /* Action to skip selected item/items in future password audits. */
 "[PasswordAudit/Action/Exclude]" = "Von Audit ausschließen";
 
@@ -117,4 +165,31 @@
 
 /* Title of the confirmation dialog for `Exclude from audit` action for several items */
 "[Selection/ExcludeFromAudit/confirmation]" = "Auswahl vom Passwort-Audit ausschließen?";
+
+/* Action/button to create a new item tag */
+"[Tags/Create/action]" = "Tag erstellen";
+
+/* Call to action/hint inside a text input */
+"[Tags/Create/placeholder]" = "Name des Tags eingeben";
+
+/* Title of the tag creation dialog */
+"[Tags/Create/title]" = "Neues Tag";
+
+/* Status message with a call to action */
+"[Tags/None/placeholder]" = "Es gibt keine Tags in der Datenbank, fügen Sie welche hinzu.";
+
+/* Status message: tag search result is empty */
+"[Tags/Search/emptyResult]" = "Keine passenden Tags gefunden.";
+
+/* Title of a list with all the tags existing in the database. */
+"[Tags/Section/All]" = "Alle Tags";
+
+/* Title of a list with tags used by parent groups. */
+"[Tags/Section/Inherited]" = "Vererbte Tags";
+
+/* Title of a list with tags chosen by the user for a specific entry or group. */
+"[Tags/Section/Selected]" = "Ausgewählte Tags";
+
+/* Title: the number of times a tag is encountered in the database. */
+"[Tags/UsageCount/title]" = "Verwendungen";
 

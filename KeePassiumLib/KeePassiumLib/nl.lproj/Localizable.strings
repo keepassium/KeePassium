@@ -160,8 +160,32 @@
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Verwijder databankbestand?\n Zorg ervoor dat je een back-up hebt.";
 
+/* Action to modify database encryption settings. */
+"[Database/EncryptionSettings/Change/action]" = "Wijzig encryptie-instellingen";
+
+/* Parameter name in database encryption settings. Example: 'Encryption Algorithm: AES-256' */
+"[Database/EncryptionSettings/dataCipher]" = "Encryptiealgoritme";
+
+/* Parameter name in database encryption settings. Defines the number of times/iterations a calculation (transform) should be executed. Example: 'Transform Rounds: 100' */
+"[Database/EncryptionSettings/iterations]" = "Transformaties (rondes)";
+
 /* Parameter name in database encryption settings. This is a term, see https://en.wikipedia.org/wiki/Key_derivation_function. Example: 'Key Derivation Function: Argon2' */
-"[Database/EncryptionSettings/kdf]" = "Sleutel Afleiding Functie";
+"[Database/EncryptionSettings/kdf]" = "Sleutelafleidingsfunctie";
+
+/* Parameter name in database encryption settings. Defines the amount of memory that should be used by an algorithm. Example: 'Memory Usage: 16 MB' */
+"[Database/EncryptionSettings/memory]" = "Geheugengebruik";
+
+/* Warning for too high value of the `Memory usage` parameter in database encryption settings. */
+"[Database/EncryptionSettings/memoryAutoFillWarning]" = "Bij hoge geheugenvereisten kan het automatisch invullen van wachtwoorden met deze databank mogelijk niet worden gebruikt.";
+
+/* Action/button button in database encryption settings. Resets the settings to recommended values. */
+"[Database/EncryptionSettings/reset]" = "Herstel aanbevolen instellingen";
+
+/* Parameter name in database encryption settings. Defines the number of computations to run in parallel/simultaneously. Example: 'Parallelism: 2 threads' */
+"[Database/EncryptionSettings/threads]" = "Multithreading";
+
+/* Title: database encryption settings. */
+"[Database/EncryptionSettings/title]" = "Encryptie-instellingen";
 
 /* Info message when changing database file format. */
 "[Database/FormatVersion/Conversion/allDataPreserved]" = "Al uw gegevens zullen worden bewaard.";
@@ -700,6 +724,9 @@
 /* Localized name of the storage service: Boxcryptor (https://boxcryptor.com) */
 "[FileProvider/Boxcryptor/name]" = "Boxcryptor";
 
+/* Localized name of the storage service: Cryptomator (https://cryptomator.org) */
+"[FileProvider/Cryptomator/name]" = "Cryptomator";
+
 /* Localized name of the storage service: Dropbox (https://dropbox.com) */
 "[FileProvider/Dropbox/name]" = "Dropbox";
 
@@ -735,6 +762,9 @@
 
 /* Localized name of the storage service: pCloud (https://pcloud.com) */
 "[FileProvider/pCloud/name]" = "pCloud";
+
+/* Localized name of the storage service: Proton Drive (https://proton.me/drive) */
+"[FileProvider/ProtonDrive/name]" = "Proton Drive";
 
 /* Localized name of the storage service: QNAP Qfile (https://apps.apple.com/app/qfile/id526330408) */
 "[FileProvider/qnapQFile/name]" = "Qfile";
@@ -895,6 +925,9 @@
 /* Checkbox/Button to show a text field in its full size */
 "[Generic] Show more" = "Toon meer";
 
+/* Action/button to skip the current step and proceed with the next one */
+"[Generic] Skip" = "Overslaan";
+
 /* Action/button to select some items in a list. */
 "[Generic/Action/SelectItems]" = "Selecteer";
 
@@ -1027,8 +1060,23 @@
 /* Possible value of the `Password AutoFill` setting. For example: 'Password AutoFill: Allowed' */
 "[Item/Properties/AutoFill/allowed]" = "Toegestaan";
 
+/* Possible value of the `Password AutoFill` setting. For example: 'Password AutoFill: Disabled' */
+"[Item/Properties/AutoFill/disabled]" = "Uitgeschakeld";
+
+/* Title of a setting: whether the item (e.g. entry) should be used in AutoFill feature. App-specific setting for KeePassXC. */
+"[Item/Properties/AutoFill/KeePassXC/title]" = "Wachtwoord automatisch invullen (KeePassXC)";
+
+/* Title of a setting: whether the item (e.g. entry) should be used in AutoFill feature */
+"[Item/Properties/AutoFill/title]" = "Wachtwoord automatisch invullen";
+
+/* Default value of an item property. For example: 'Password Audit: Inherit from parent group (Allowed)'. [inheritedValue: String] */
+"[Item/Properties/inheritedValue]" = "Overnemen van bovenliggende groep (%@)";
+
 /* Possible value of the `Password Audit` setting. For example: 'Password Audit: Allowed' */
 "[Item/Properties/PasswordAudit/allowed]" = "Toegestaan";
+
+/* Possible value of the `Password Audit` setting. For example: 'Password Audit: Disabled' */
+"[Item/Properties/PasswordAudit/disabled]" = "Uitgeschakeld";
 
 /* Title of a setting: whether the item (e.g. entry) should be included in password audit */
 "[Item/Properties/PasswordAudit/title]" = "Wachtwoordcontrole";
@@ -1036,8 +1084,14 @@
 /* Possible value of the `Search` setting. Example: 'Search: Allowed' */
 "[Item/Properties/Search/allowed]" = "Toegestaan";
 
+/* Possible value of the `Search` setting, when the item should be excluded from search results. Example: 'Search: Disabled' */
+"[Item/Properties/Search/disabled]" = "Uitgeschakeld";
+
 /* Title of a setting: whether the item (e.g. entry) should be considered during search. Example: 'Search: Allowed' */
 "[Item/Properties/Search/title] Search" = "Zoek";
+
+/* Title of a list with item (e.g. entry) properties/settings, such as searchability, auto-typing, etc */
+"[Item/Properties/title]" = "Kenmerken";
 
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "Standaard (KeePass)";
@@ -1674,6 +1728,9 @@
 
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "Lijstinstellingen";
+
+/* Notification when corporate user tries to change an app setting controlled by organization's IT department. */
+"[Settings/Managed/notification]" = "Deze instelling wordt beheerd door je organisatie.";
 
 /* Confirmation dialog message */
 "[Settings/NetworkAccess/Confirmation/text]" = "KeePassium toestaan netwerkverbindingen te maken naar externe diensten?";

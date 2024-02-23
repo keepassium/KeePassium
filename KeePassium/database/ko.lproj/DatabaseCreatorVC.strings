@@ -1,6 +1,9 @@
 /* Class = "UILabel"; text = "Database File Name"; ObjectID = "2iK-ct-ygq"; */
 "2iK-ct-ygq.text" = "데이터베이스 파일 이름";
 
+/* Class = "UIButton"; configuration.title = "Save Database"; ObjectID = "h6C-CG-RVI"; Note = "Action: save the new database (will show a file picker dialog)."; */
+"h6C-CG-RVI.configuration.title" = "데이터베이스 저장";
+
 /* Class = "UIButton"; normalTitle = "Save Database"; ObjectID = "h6C-CG-RVI"; Note = "Action: save the new database (will show a file picker dialog)."; */
 "h6C-CG-RVI.normalTitle" = "데이터베이스 저장";
 
@@ -18,7 +21,4 @@
 
 /* Class = "UITextField"; text = "MyPasswords"; ObjectID = "XNL-lc-2Ti"; Note = "Default name for a new database."; */
 "XNL-lc-2Ti.text" = "MyPasswords";
-
-/* Class = "UILabel"; text = "Will use kdbx4 format (Argon2+ChaCha20)"; ObjectID = "XVR-1N-ywy"; Note = "Hint about the default format of new databases."; */
-"XVR-1N-ywy.text" = "kdbx4 포맷 사용 (Argon2+ChaCha20)";
 

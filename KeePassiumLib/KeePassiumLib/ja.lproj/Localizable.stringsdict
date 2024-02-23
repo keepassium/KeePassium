@@ -12,6 +12,8 @@
 			<string>d</string>
 			<key>other</key>
 			<string>%d bit</string>
+			<key>zero</key>
+			<string>%d bits</string>
 		</dict>
 		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@GenericCountBits@</string>
@@ -26,6 +28,8 @@
 			<string>d</string>
 			<key>other</key>
 			<string>%d個を選択中</string>
+			<key>zero</key>
+			<string>%d entries selected</string>
 		</dict>
 		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@GenericCountEntriesSelected@</string>
@@ -39,6 +43,8 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>other</key>
+			<string>%d threads</string>
+			<key>zero</key>
 			<string>%d threads</string>
 		</dict>
 		<key>NSStringLocalizedFormatKey</key>

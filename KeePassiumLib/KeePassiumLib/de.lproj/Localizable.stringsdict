@@ -14,6 +14,8 @@
 			<string>%d Bit</string>
 			<key>other</key>
 			<string>%d Bits</string>
+			<key>zero</key>
+			<string>%d bits</string>
 		</dict>
 		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@GenericCountBits@</string>
@@ -30,6 +32,8 @@
 			<string>%d Eintrag ausgewählt</string>
 			<key>other</key>
 			<string>%d Einträge ausgewählt</string>
+			<key>zero</key>
+			<string>%d entries selected</string>
 		</dict>
 		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@GenericCountEntriesSelected@</string>
@@ -46,6 +50,8 @@
 			<string>%d Thread</string>
 			<key>other</key>
 			<string>%d Threads</string>
+			<key>zero</key>
+			<string>%d threads</string>
 		</dict>
 		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@GenericCountThreads@</string>

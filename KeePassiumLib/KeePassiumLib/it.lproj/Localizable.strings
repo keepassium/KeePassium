@@ -56,7 +56,7 @@
 "[AppLock/passcodeUpdated/title]" = "Codice di accesso cambiato con successo.";
 
 /* Action/button to save new or edited AppLock passcode. */
-"[AppLock/savePasscode]" = "Salva codice di accesso";
+"[AppLock/savePasscode]" = "Salva codice";
 
 /* Call to action in the passcode input dialog. */
 "[AppLock/SetupPasscode/callToAction]" = "Proteggi KeePassium da accessi non autorizzati";
@@ -92,10 +92,10 @@
 "[ChallengeResponseError] slotNotConfigured" = "La chiave fisica non è configurata per la pratica challenge/response.";
 
 /* Progress status */
-"[Cipher/Progress] Decrypting" = "Decifrazione in corso";
+"[Cipher/Progress] Decrypting" = "Decrittazione in corso";
 
 /* Progress status */
-"[Cipher/Progress] Encrypting" = "Cifratura in corso";
+"[Cipher/Progress] Encrypting" = "Criptazione in corso";
 
 /* Action copy some named value to clipboard. For example: `Copy Password`. [valueName: String] */
 "[Clipboard/Copy/namedValue]" = "Copia %@";
@@ -107,10 +107,10 @@
 "[ContactUs/subtitle]" = "Suggerimenti? Problemi? Facci sapere!";
 
 /* Error message about AES cipher. [errorCode: Int] */
-"[CryptoError] AES decryption error (code %d)" = "Errore decifrazione AES (codice %d)";
+"[CryptoError] AES decryption error (code %d)" = "Errore decrittazione AES (codice %d)";
 
 /* Error message about AES cipher. [errorCode: Int] */
-"[CryptoError] AES encryption error (code %d)" = "Errore cifratura AES (codice %d)";
+"[CryptoError] AES encryption error (code %d)" = "Errore crittografia AES (codice %d)";
 
 /* Error message about AES cipher. [errorCode: Int] */
 "[CryptoError] AES initialization error (code %d)" = "Errore inizializzazione AES (codice %d)";
@@ -160,8 +160,32 @@
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Eliminare il file database?\nAssicurati di avere una copia di sicurezza.";
 
+/* Action to modify database encryption settings. */
+"[Database/EncryptionSettings/Change/action]" = "Modifica impostazioni di crittografia";
+
+/* Parameter name in database encryption settings. Example: 'Encryption Algorithm: AES-256' */
+"[Database/EncryptionSettings/dataCipher]" = "Algoritmo crittografico";
+
+/* Parameter name in database encryption settings. Defines the number of times/iterations a calculation (transform) should be executed. Example: 'Transform Rounds: 100' */
+"[Database/EncryptionSettings/iterations]" = "Cicli trasformativi";
+
 /* Parameter name in database encryption settings. This is a term, see https://en.wikipedia.org/wiki/Key_derivation_function. Example: 'Key Derivation Function: Argon2' */
-"[Database/EncryptionSettings/kdf]" = "Funzione di derivazione chiave";
+"[Database/EncryptionSettings/kdf]" = "Funzione di derivazione di chiave";
+
+/* Parameter name in database encryption settings. Defines the amount of memory that should be used by an algorithm. Example: 'Memory Usage: 16 MB' */
+"[Database/EncryptionSettings/memory]" = "Memoria utilizzata";
+
+/* Warning for too high value of the `Memory usage` parameter in database encryption settings. */
+"[Database/EncryptionSettings/memoryAutoFillWarning]" = "Un elevato consumo di memoria potrebbe rendere questo database incompatibile con l'inserimento automatico.";
+
+/* Action/button button in database encryption settings. Resets the settings to recommended values. */
+"[Database/EncryptionSettings/reset]" = "Ripristina impostazioni predefinite";
+
+/* Parameter name in database encryption settings. Defines the number of computations to run in parallel/simultaneously. Example: 'Parallelism: 2 threads' */
+"[Database/EncryptionSettings/threads]" = "Parallelismo";
+
+/* Title: database encryption settings. */
+"[Database/EncryptionSettings/title]" = "Impostazioni di crittografia";
 
 /* Info message when changing database file format. */
 "[Database/FormatVersion/Conversion/allDataPreserved]" = "Tutti i tuoi dati saranno conservati.";
@@ -276,6 +300,9 @@
 
 /* Action/button to save the current database. */
 "[Database/Save/action] Save Database" = "Salva database";
+
+/* Action/button to save file to a remote server. */
+"[Database/SaveToServer/action]" = "Salva sul server";
 
 /* Status message: finished saving a database */
 "[Database/Saving/Status] Done" = "Fatto";
@@ -458,7 +485,7 @@
 "[Database2/Progress] Reading database content" = "Leggo contenuto database";
 
 /* Progress bar status */
-"[Database2/Progress] Writing encrypted blocks" = "Scrivo blocchi cifrati";
+"[Database2/Progress] Writing encrypted blocks" = "Scrivo blocchi criptati";
 
 /* Progress bar status: un-zipping the database content */
 "[Database2/Progress/decompressing]" = "Decomprimo database";
@@ -550,6 +577,9 @@
 /* Action: copy a reference to the selected entry field to clipboard */
 "[Entry/Field/CopyReference/action]" = "Copia riferimento campo";
 
+/* Action: display text using large font */
+"[Entry/Field/LargeType/action]" = "Mostra con testo grande";
+
 /* Name of an entry field */
 "[Entry/Field/name] Icon" = "Icona";
 
@@ -567,6 +597,9 @@
 
 /* Name of an entry field */
 "[Entry/Field/name] User Name" = "Nome utente";
+
+/* Name of an entry field */
+"[Entry/Field/tags] Tags" = "Tag";
 
 /* Status message: loading file to be attached to an entry */
 "[Entry/Files/Add] Loading attachment file" = "Carico file allegato";
@@ -618,6 +651,9 @@
 
 /* Error message shown when there's internal inconsistency in KeePassium. */
 "[FileAccessError/internalError]" = "Errore interno di KeePassium, ti preghiamo di inviarci una segnalazione in merito.";
+
+/* Error message: organization's IT administrator has forbidden access to a data storage location. */
+"[FileAccessError/ManagedAccessDenied/title]" = "L'accesso a questo archivio è impedito dalla tua istituzione.";
 
 /* Error message: network access is forbidden by system or app settings. */
 "[FileAccessError/NetworkAccessDenied/generic]" = "L'accesso alla rete è bloccato dalle impostazioni.";
@@ -700,6 +736,9 @@
 /* Localized name of the storage service: Boxcryptor (https://boxcryptor.com) */
 "[FileProvider/Boxcryptor/name]" = "Boxcryptor";
 
+/* Localized name of the storage service: Cryptomator (https://cryptomator.org) */
+"[FileProvider/Cryptomator/name]" = "Cryptomator";
+
 /* Localized name of the storage service: Dropbox (https://dropbox.com) */
 "[FileProvider/Dropbox/name]" = "Dropbox";
 
@@ -735,6 +774,9 @@
 
 /* Localized name of the storage service: pCloud (https://pcloud.com) */
 "[FileProvider/pCloud/name]" = "pCloud";
+
+/* Localized name of the storage service: Proton Drive (https://proton.me/drive) */
+"[FileProvider/ProtonDrive/name]" = "Proton Drive";
 
 /* Localized name of the storage service: QNAP Qfile (https://apps.apple.com/app/qfile/id526330408) */
 "[FileProvider/qnapQFile/name]" = "Qfile";
@@ -895,6 +937,9 @@
 /* Checkbox/Button to show a text field in its full size */
 "[Generic] Show more" = "Mostra di più";
 
+/* Action/button to skip the current step and proceed with the next one */
+"[Generic] Skip" = "Salta";
+
 /* Action/button to select some items in a list. */
 "[Generic/Action/SelectItems]" = "Seleziona";
 
@@ -930,6 +975,9 @@
 
 /* Title of a list with predefined quick-choice values (for example: 'Presets: 1 week, 1 months, 1 year') */
 "[Generic/Presets]" = "Predefinite";
+
+/* Action: refresh list of items, usually files */
+"[Generic/RefreshList/action]" = "Ricarica lista";
 
 /* Title of a search field (a noun, not verb) */
 "[Generic/Search/title]" = "Cerca";
@@ -1027,8 +1075,23 @@
 /* Possible value of the `Password AutoFill` setting. For example: 'Password AutoFill: Allowed' */
 "[Item/Properties/AutoFill/allowed]" = "Consentiti";
 
+/* Possible value of the `Password AutoFill` setting. For example: 'Password AutoFill: Disabled' */
+"[Item/Properties/AutoFill/disabled]" = "Disattivato";
+
+/* Title of a setting: whether the item (e.g. entry) should be used in AutoFill feature. App-specific setting for KeePassXC. */
+"[Item/Properties/AutoFill/KeePassXC/title]" = "Inserimento automatico (KeePassXC)";
+
+/* Title of a setting: whether the item (e.g. entry) should be used in AutoFill feature */
+"[Item/Properties/AutoFill/title]" = "Inserimento automatico";
+
+/* Default value of an item property. For example: 'Password Audit: Inherit from parent group (Allowed)'. [inheritedValue: String] */
+"[Item/Properties/inheritedValue]" = "Eredita dal gruppo genitore";
+
 /* Possible value of the `Password Audit` setting. For example: 'Password Audit: Allowed' */
 "[Item/Properties/PasswordAudit/allowed]" = "Consentiti";
+
+/* Possible value of the `Password Audit` setting. For example: 'Password Audit: Disabled' */
+"[Item/Properties/PasswordAudit/disabled]" = "Disattivato";
 
 /* Title of a setting: whether the item (e.g. entry) should be included in password audit */
 "[Item/Properties/PasswordAudit/title]" = "Ispezione password";
@@ -1036,8 +1099,14 @@
 /* Possible value of the `Search` setting. Example: 'Search: Allowed' */
 "[Item/Properties/Search/allowed]" = "Consentiti";
 
+/* Possible value of the `Search` setting, when the item should be excluded from search results. Example: 'Search: Disabled' */
+"[Item/Properties/Search/disabled]" = "Disattivato";
+
 /* Title of a setting: whether the item (e.g. entry) should be considered during search. Example: 'Search: Allowed' */
 "[Item/Properties/Search/title] Search" = "Cerca";
+
+/* Title of a list with item (e.g. entry) properties/settings, such as searchability, auto-typing, etc */
+"[Item/Properties/title]" = "Proprietà";
 
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "Predefinito (KeePass)";
@@ -1057,14 +1126,32 @@
 /* Error message about system keychain. */
 "[KeychainError/unexpectedFormat] Keychain error: unexpected data format" = "Errore portachiavi: formato dati inaspettato";
 
+/* Action: create new key file. */
+"[KeyFile/Create/action]" = "Crea file chiave";
+
+/* Default name for new key files. Should match the `key file` term in the glossary. */
+"[KeyFile/Create/defaultName]" = "filechiave.dat";
+
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Eliminare il file chiave?\nAssicurati di avere una copia.";
 
 /* Name of an input field which shows selected key file */
 "[KeyFile/Field/title]" = "File chiave";
 
+/* Action: import/add a key file into the app. `Key file` is a glossary term. */
+"[KeyFile/Import/action]" = "Importa file chiave";
+
+/* Description of the `Import Key File` action. */
+"[KeyFile/Import/actionDescription]" = "Aggiungi file all'app";
+
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
 "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Rimuovere file chiave dalla lista?\nIl file rimarrà intatto e potrai aggiungerlo di nuovo in seguito.";
+
+/* Action: use a key file at its storage location, without importing to the app. */
+"[KeyFile/Use/action]" = "Seleziona file chiave";
+
+/* Description of the `Select Key File` action. */
+"[KeyFile/Use/actionDescription]" = "Usa senza aggiungere";
 
 /* Error message when the key file is misformatted or damaged */
 "[KeyFileError/Corrupted/title]" = "File chiave corrotto";
@@ -1079,7 +1166,7 @@
 "[Org/ContactYourAdmin]" = "Contatta il tuo amministratore di sistema.";
 
 /* Error message, euphemism for missing corporate license */
-"[Org/LicenseMissing]" = "KeePassium non ha trovato l'account aziendale della tua organizzazione.";
+"[Org/LicenseMissing]" = "KeePassium non ha trovato l'account aziendale della tua istituzione.";
 
 /* Notification next to the OTP code which was copied to clipboard */
 "[OTP/CopiedToClipboard/title]" = "Password monouso copiata negli appunti";
@@ -1271,7 +1358,7 @@
 "[Premium/CallToAction/buyNow]" = "Acquista ora";
 
 /* Call to action: continue using the free version */
-"[Premium/CallToAction/free]" = "Continua a testare";
+"[Premium/CallToAction/free]" = "Continua prova";
 
 /* Call to action: start free trial */
 "[Premium/CallToAction/startTrial]" = "Prova gratis";
@@ -1674,6 +1761,9 @@
 
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "Impostazioni elenco";
+
+/* Notification when corporate user tries to change an app setting controlled by organization's IT department. */
+"[Settings/Managed/notification]" = "Questa impostazione è gestita dalla tua istituzione.";
 
 /* Confirmation dialog message */
 "[Settings/NetworkAccess/Confirmation/text]" = "Consentire a KeePassium di connettersi a servizi esterni in rete?";

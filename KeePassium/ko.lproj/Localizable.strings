@@ -58,6 +58,15 @@
 /* Menu title: app settings */
 "[Menu/Preferences/title]" = "설정…";
 
+/* Action/button */
+"[Onboarding/AddExistingDatabase/action]" = "기존 데이터베이스 추가";
+
+/* Action/button to set up the App Protection feature. Not a call to action. */
+"[Onboarding/AppProtection/activate]" = "앱 잠금 활성화";
+
+/* Action/button */
+"[Onboarding/CreateNewDatabase/action]" = "새로운 데이터베이스 생성";
+
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "패스워드 보이기";
 
