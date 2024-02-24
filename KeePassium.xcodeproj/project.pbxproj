@@ -76,7 +76,6 @@
 		751A565624CCD3FF001227D6 /* AppIconSwitcherCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751A565424CCD3FF001227D6 /* AppIconSwitcherCoordinator.swift */; };
 		751ABACB2915B70B008C18DE /* ConnectionTypePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759F69FC29066E110089FB34 /* ConnectionTypePickerVC.swift */; };
 		751ABACD2915B70E008C18DE /* RemoteFolderViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758FF6C928FC18E4007DE8EB /* RemoteFolderViewerVC.swift */; };
-		751ABACF2915B712008C18DE /* RemoteConnectionType+icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7596174D29082EA2005845FF /* RemoteConnectionType+icon.swift */; };
 		751ABAD12915B739008C18DE /* PremiumBadgeAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759F6A062906BA7C0089FB34 /* PremiumBadgeAccessory.swift */; };
 		751ABAD32915B73D008C18DE /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758FF6BE28FAE32F007DE8EB /* ButtonCell.swift */; };
 		751ABAD52915B745008C18DE /* SubtitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758FF6CE28FC2C9C007DE8EB /* SubtitleCell.swift */; };
@@ -479,10 +478,6 @@
 		7590231E2AB45949009E6213 /* Favicon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F72EEF2AB32C8900C804FC /* Favicon.swift */; };
 		7590231F2AB4594A009E6213 /* Favicon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F72EEF2AB32C8900C804FC /* Favicon.swift */; };
 		759023202AB4594A009E6213 /* Favicon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F72EEF2AB32C8900C804FC /* Favicon.swift */; };
-		7596174E29082EA2005845FF /* RemoteConnectionType+icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7596174D29082EA2005845FF /* RemoteConnectionType+icon.swift */; };
-		7596174F29082EA2005845FF /* RemoteConnectionType+icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7596174D29082EA2005845FF /* RemoteConnectionType+icon.swift */; };
-		7596175029082EA2005845FF /* RemoteConnectionType+icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7596174D29082EA2005845FF /* RemoteConnectionType+icon.swift */; };
-		7596175129082EA2005845FF /* RemoteConnectionType+icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7596174D29082EA2005845FF /* RemoteConnectionType+icon.swift */; };
 		7596771E20FB36BD00E54827 /* SettingsAppTimeoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7596771D20FB36BD00E54827 /* SettingsAppTimeoutVC.swift */; };
 		7597DBD425F58BCF00D1A126 /* SettingsAppearanceVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7597DBD725F58BCF00D1A126 /* SettingsAppearanceVC.storyboard */; };
 		7597DBD525F58BCF00D1A126 /* SettingsAppearanceVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7597DBD725F58BCF00D1A126 /* SettingsAppearanceVC.storyboard */; };
@@ -2002,7 +1997,6 @@
 		758FF6BE28FAE32F007DE8EB /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		758FF6C928FC18E4007DE8EB /* RemoteFolderViewerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFolderViewerVC.swift; sourceTree = "<group>"; };
 		758FF6CE28FC2C9C007DE8EB /* SubtitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleCell.swift; sourceTree = "<group>"; };
-		7596174D29082EA2005845FF /* RemoteConnectionType+icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemoteConnectionType+icon.swift"; sourceTree = "<group>"; };
 		7596771D20FB36BD00E54827 /* SettingsAppTimeoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAppTimeoutVC.swift; sourceTree = "<group>"; };
 		75973A4525F58CFC0033D4DA /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
 		7597DBD625F58BCF00D1A126 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SettingsAppearanceVC.storyboard; sourceTree = "<group>"; };
@@ -3086,7 +3080,6 @@
 				7524E7352888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift */,
 				759F69FC29066E110089FB34 /* ConnectionTypePickerVC.swift */,
 				758FF6C928FC18E4007DE8EB /* RemoteFolderViewerVC.swift */,
-				7596174D29082EA2005845FF /* RemoteConnectionType+icon.swift */,
 				75136B252B67CD6B00214760 /* RemoteFileExportCoordinator.swift */,
 				75136B292B6972CB00214760 /* RemoteItemSelectionMode.swift */,
 			);
@@ -4095,7 +4088,6 @@
 				75BE05F325DAA4E400B34CC0 /* SupportEmailComposer.swift in Sources */,
 				7526404328455DDC0003DDFA /* PasswordGeneratorLengthCell.swift in Sources */,
 				759BC62D2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
-				7596174F29082EA2005845FF /* RemoteConnectionType+icon.swift in Sources */,
 				7583EA8F2685D720009969E7 /* AutoFillCoordinator.swift in Sources */,
 				75BF1961283EE1B8006A9826 /* PasswordGeneratorLabel.swift in Sources */,
 				7583EA782685D223009969E7 /* DatabasePickerCoordinator.swift in Sources */,
@@ -4401,7 +4393,6 @@
 				7579A06A24F074D500C98F24 /* AppHistory.swift in Sources */,
 				F377C9AB2AA74A1A00266397 /* FaviconDownloader.swift in Sources */,
 				F35DBC842AED5B2D00B33757 /* EncryptionSettingsVC.swift in Sources */,
-				7596174E29082EA2005845FF /* RemoteConnectionType+icon.swift in Sources */,
 				757ADC4523A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75C94C5B20B4B8C2004FA29D /* EntryViewerPagesVC.swift in Sources */,
 				7589FDCD28B4EA2100CCC76B /* FieldCopiedView.swift in Sources */,
@@ -4634,7 +4625,6 @@
 				7579A06B24F074D500C98F24 /* AppHistory.swift in Sources */,
 				75D99DEB269CED7D00D0E9D7 /* NSLayoutContraint+extensions.swift in Sources */,
 				757ADC4723A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
-				7596175029082EA2005845FF /* RemoteConnectionType+icon.swift in Sources */,
 				F3D9DE452AA79CAA00FEAF50 /* FaviconDownloader.swift in Sources */,
 				75267D0025FF75E300A1CC95 /* ContextualAction.swift in Sources */,
 				75B38C46233E5B7C006BDEFC /* EntryViewerPagesVC.swift in Sources */,
@@ -4867,7 +4857,6 @@
 				75D0765528B639D200F02E39 /* AppHistory.swift in Sources */,
 				75D0765628B639D200F02E39 /* NSLayoutContraint+extensions.swift in Sources */,
 				75D0765728B639D200F02E39 /* HardwareKeyPicker.swift in Sources */,
-				751ABACF2915B712008C18DE /* RemoteConnectionType+icon.swift in Sources */,
 				75D0765828B639D200F02E39 /* ContextualAction.swift in Sources */,
 				75D0765928B639D200F02E39 /* EntryViewerPagesVC.swift in Sources */,
 				75D0765A28B639D200F02E39 /* FieldCopiedView.swift in Sources */,
@@ -4932,7 +4921,6 @@
 				75BE05F625DAA4E500B34CC0 /* SupportEmailComposer.swift in Sources */,
 				7526404428455DDC0003DDFA /* PasswordGeneratorLengthCell.swift in Sources */,
 				759BC62F2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
-				7596175129082EA2005845FF /* RemoteConnectionType+icon.swift in Sources */,
 				7583EA902685D720009969E7 /* AutoFillCoordinator.swift in Sources */,
 				75BF1963283EE1B8006A9826 /* PasswordGeneratorLabel.swift in Sources */,
 				7583EA7B2685D224009969E7 /* DatabasePickerCoordinator.swift in Sources */,

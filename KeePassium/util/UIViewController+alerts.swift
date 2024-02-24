@@ -121,10 +121,10 @@ extension UIViewController {
         }
     }
 
-    func showManagedSettingNotification() {
+    func showManagedSettingNotification(text: String = LString.thisSettingIsManaged) {
         hideAllToasts()
         showNotification(
-            LString.thisSettingIsManaged,
+            text,
             image: .symbol(.managedParameter)?
                 .withTintColor(.iconTint, renderingMode: .alwaysOriginal)
         )

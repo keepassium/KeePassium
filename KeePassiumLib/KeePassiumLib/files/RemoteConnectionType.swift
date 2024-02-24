@@ -29,6 +29,16 @@ public enum RemoteConnectionType: String, CustomStringConvertible {
             return LString.connectionTypeOneDriveForBusiness
         }
     }
+
+    public var fileProvider: FileProvider {
+        switch self {
+        case .webdav:
+            return .keepassiumWebDAV
+        case .oneDrive,
+             .oneDriveForBusiness:
+            return .keepassiumOneDrive
+        }
+    }
 }
 
 extension RemoteConnectionType {

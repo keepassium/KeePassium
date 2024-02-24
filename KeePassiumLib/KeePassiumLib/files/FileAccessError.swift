@@ -136,11 +136,7 @@ public enum FileAccessError: LocalizedError {
                 value: "Network access is blocked by the settings.",
                 comment: "Error message: network access is forbidden by system or app settings.")
         case .managedAccessDenied:
-            return NSLocalizedString(
-                "[FileAccessError/ManagedAccessDenied/title]",
-                bundle: Bundle.framework,
-                value: "Access to this storage is disabled by your oganization.",
-                comment: "Error message: organization's IT administrator has forbidden access to a data storage location.")
+            return LString.Error.storageAccessDeniedByOrg
         case .authorizationRequired(let message, _):
             return message
         case .serverSideError(let message):
@@ -239,11 +235,19 @@ extension LString.Error {
         "[FileAccessError/PermissionRequired/reason]",
         bundle: Bundle.framework,
         value: "KeePassium needs your permission to access '%@'.",
-        comment: "Error message for file with an expired access permission [fileName: String].")
+        comment: "Error message for file with an expired access permission [fileName: String]."
+    )
     fileprivate static let actionReAddFileToAllowAccess = NSLocalizedString(
         "[FileAccessError/PermissionRequired/recoveryAction]",
         bundle: Bundle.framework,
         value: "Select the file again to allow access",
-        comment: "Action/button for error recovery")
+        comment: "Action/button for error recovery"
+    )
+    public static let storageAccessDeniedByOrg = NSLocalizedString(
+        "[FileAccessError/ManagedAccessDenied/title]",
+        bundle: Bundle.framework,
+        value: "Access to this storage is disabled by your oganization.",
+        comment: "Error message: organization's IT administrator has forbidden access to a data storage location."
+    )
     // swiftlint:enable line_length
 }
