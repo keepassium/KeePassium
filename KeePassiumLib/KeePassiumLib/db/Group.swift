@@ -27,8 +27,8 @@ public class Group: DatabaseItem, Eraseable {
     }
     public var isDeleted: Bool
 
-    public var isIncludeEntriesInSearch: Bool {
-        return true 
+    public var isIncludeChildrenInSearch: Bool {
+        return true
     }
 
     private var isChildrenModified: Bool
@@ -239,23 +239,27 @@ public class Group: DatabaseItem, Eraseable {
         entries.append(contentsOf: self.entries)
     }
 
-    public func filterEntries(query: SearchQuery, result: inout [Entry]) {
+    public func filter(query: SearchQuery, foundEntries: inout [Entry], foundGroups: inout [Group]) {
         if self.isDeleted && !query.includeDeleted {
+            return
+        }
+
+        guard isIncludeChildrenInSearch else {
             return
         }
 
         if query.includeSubgroups {
             for group in groups {
-                group.filterEntries(query: query, result: &result)
+                if group.matches(query: query) {
+                    foundGroups.append(group)
+                }
+                group.filter(query: query, foundEntries: &foundEntries, foundGroups: &foundGroups)
             }
         }
 
-        guard isIncludeEntriesInSearch else {
-            return
-        }
         for entry in entries {
             if entry.matches(query: query) {
-                result.append(entry)
+                foundEntries.append(entry)
             }
         }
     }

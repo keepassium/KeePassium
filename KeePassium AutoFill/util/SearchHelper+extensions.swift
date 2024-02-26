@@ -20,12 +20,12 @@ struct FuzzySearchResults {
         guard partialMatch.isEmpty else { return nil }
         guard exactMatch.count == 1,
               let theOnlyGroup = exactMatch.first,
-              theOnlyGroup.entries.count == 1,
-              let theOnlyScoredEntry = theOnlyGroup.entries.first
+              theOnlyGroup.scoredItems.count == 1,
+              let theOnlyScoredEntry = theOnlyGroup.scoredItems.first?.item as? Entry
         else {
             return nil
         }
-        return theOnlyScoredEntry.entry
+        return theOnlyScoredEntry
     }
 }
 
@@ -35,7 +35,7 @@ extension SearchHelper {
         database: Database,
         serviceIdentifiers: [ASCredentialServiceIdentifier]
     ) -> FuzzySearchResults {
-        var relevantEntries = [ScoredEntry]()
+        var relevantEntries = [ScoredItem]()
         for si in serviceIdentifiers {
             switch si.type {
             case .domain:
@@ -51,14 +51,14 @@ extension SearchHelper {
 
         let exactMatchEntries = relevantEntries.filter { $0.similarityScore >= 0.99 }
         let partialMatchEntries = relevantEntries.filter { $0.similarityScore < 0.99 }
-        let exactMatch = arrangeByGroups(scoredEntries: exactMatchEntries)
-        let partialMatch = arrangeByGroups(scoredEntries: partialMatchEntries)
+        let exactMatch = arrangeByGroups(scoredItems: exactMatchEntries)
+        let partialMatch = arrangeByGroups(scoredItems: partialMatchEntries)
 
         let searchResults = FuzzySearchResults(exactMatch: exactMatch, partialMatch: partialMatch)
         return searchResults
     }
 
-    private func performSearch(in database: Database, url: String) -> [ScoredEntry] {
+    private func performSearch(in database: Database, url: String) -> [ScoredItem] {
         guard let url = URL.from(malformedString: url) else { return [] }
         let parsedHost = DomainNameHelper.shared.parse(url: url) 
 
@@ -77,8 +77,8 @@ extension SearchHelper {
                 !(entry.isDeleted || entry.isHiddenFromSearch)
             }
             .map { entry in
-                return ScoredEntry(
-                    entry: entry,
+                return ScoredItem(
+                    item: entry,
                     similarityScore: getSimilarity(url: url, parsedHost: parsedHost, entry: entry)
                 )
             }
@@ -88,7 +88,7 @@ extension SearchHelper {
         return relevantEntries
     }
 
-    private func performSearch(in database: Database, domain: String) -> [ScoredEntry] {
+    private func performSearch(in database: Database, domain: String) -> [ScoredItem] {
         var allEntries = [Entry]()
         guard let rootGroup = database.root else { return [] }
         rootGroup.collectAllEntries(to: &allEntries)
@@ -107,8 +107,8 @@ extension SearchHelper {
                 !(entry.isDeleted || entry.isExpired || entry.isHiddenFromSearch)
             }
             .map { entry in
-                return ScoredEntry(
-                    entry: entry,
+                return ScoredItem(
+                    item: entry,
                     similarityScore: getSimilarity(
                         domain: mainDomain,
                         entry: entry,

@@ -130,10 +130,11 @@ open class Database: Eraseable {
         return result
     }
 
-    public func search(query: SearchQuery, result: inout [Entry]) -> Int {
-        result.removeAll()
-        root?.filterEntries(query: query, result: &result)
-        return result.count
+    public func search(query: SearchQuery, foundEntries: inout [Entry], foundGroups: inout [Group]) -> Int {
+        foundEntries.removeAll()
+        foundGroups.removeAll()
+        root?.filter(query: query, foundEntries: &foundEntries, foundGroups: &foundGroups)
+        return foundEntries.count + foundGroups.count
     }
 
     public func delete(group: Group) {

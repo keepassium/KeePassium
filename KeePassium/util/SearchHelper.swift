@@ -8,16 +8,17 @@
 
 import KeePassiumLib
 
-struct ScoredEntry {
-    let entry: Entry
+struct ScoredItem {
+    let item: DatabaseItem
     let similarityScore: Double
 }
-struct GroupedEntries {
+
+struct GroupedItems {
     var group: Group
-    var entries: [ScoredEntry]
+    var scoredItems: [ScoredItem]
 }
 
-typealias SearchResults = [GroupedEntries]
+typealias SearchResults = [GroupedItems]
 
 final class SearchHelper {
 
@@ -39,44 +40,51 @@ final class SearchHelper {
             includePasswords: settings.isSearchPasswords,
             compareOptions: compareOptions,
             text: searchText)
-        let scoredEntries = performSearch(in: database, query: query)
-            .filter {
-                !$0.entry.isHiddenFromSearch
-            }
-        let searchResults = arrangeByGroups(scoredEntries: scoredEntries)
+        let scoredItems = performSearch(in: database, query: query)
+        let searchResults = arrangeByGroups(scoredItems: scoredItems)
         return searchResults
     }
 
-    private func performSearch(in database: Database, query: SearchQuery) -> [ScoredEntry] {
+    private func performSearch(in database: Database, query: SearchQuery) -> [ScoredItem] {
         var foundEntries: [Entry] = []
-        let foundCount = database.search(query: query, result: &foundEntries)
-        Diag.verbose("Found \(foundCount) entries using query")
+        var foundGroups: [Group] = []
+        let foundCount = database.search(query: query, foundEntries: &foundEntries, foundGroups: &foundGroups)
+        Diag.verbose("Found \(foundCount) groups and entries using query")
 
-        let scoredEntries = foundEntries.map { entry in
-            return ScoredEntry(entry: entry, similarityScore: 1.0)
-        }
-        return scoredEntries
+        let scoredEntries = foundEntries
+            .filter { !$0.isHiddenFromSearch }
+            .map { ScoredItem(item: $0, similarityScore: 1.0) }
+        let scoredGroups = foundGroups
+            .map { ScoredItem(item: $0, similarityScore: 1.0) }
+        return scoredEntries + scoredGroups
     }
 
-    func arrangeByGroups(scoredEntries: [ScoredEntry]) -> [GroupedEntries] {
-        var results = [GroupedEntries]()
-        results.reserveCapacity(scoredEntries.count)
+    func arrangeByGroups(scoredItems: [ScoredItem]) -> [GroupedItems] {
+        var results = [GroupedItems]()
+        results.reserveCapacity(scoredItems.count)
 
-        for scoredEntry in scoredEntries {
-            guard let parentGroup = scoredEntry.entry.parent else { assertionFailure(); return [] }
+        for scoredItem in scoredItems {
+            guard let parentGroup = scoredItem.item.parent else {
+                assertionFailure()
+                continue
+            }
             var isInserted = false
             for i in 0..<results.count {
                 if results[i].group === parentGroup {
-                    results[i].entries.append(scoredEntry)
+                    results[i].scoredItems.append(scoredItem)
                     isInserted = true
                     break
                 }
             }
             if !isInserted {
-                let newGroupResult = GroupedEntries(group: parentGroup, entries: [scoredEntry])
+                let newGroupResult = GroupedItems(
+                    group: parentGroup,
+                    scoredItems: [scoredItem]
+                )
                 results.append(newGroupResult)
             }
         }
+
         return results
     }
 }
@@ -86,11 +94,27 @@ extension SearchResults {
     mutating func sort(order sortOrder: Settings.GroupSortOrder) {
         sort { sortOrder.compare($0.group, $1.group) }
         for i in 0..<count {
-            self[i].entries.sort { scoredEntry1, scoredEntry2 in
-                if scoredEntry1.similarityScore == scoredEntry2.similarityScore {
-                    return sortOrder.compare(scoredEntry1.entry, scoredEntry2.entry)
-                } else {
-                    return (scoredEntry2.similarityScore < scoredEntry1.similarityScore)
+            self[i].scoredItems.sort { scoredItem1, scoredItem2 in
+                switch (scoredItem1.item, scoredItem2.item) {
+                case (is Group, is Entry):
+                    return true
+                case (is Entry, is Group):
+                    return false
+                case let (entry1 as Entry, entry2 as Entry):
+                    if scoredItem1.similarityScore == scoredItem2.similarityScore {
+                        return sortOrder.compare(entry1, entry2)
+                    } else {
+                        return (scoredItem2.similarityScore < scoredItem1.similarityScore)
+                    }
+                case let (group1 as Group, group2 as Group):
+                    if scoredItem1.similarityScore == scoredItem2.similarityScore {
+                        return sortOrder.compare(group1, group2)
+                    } else {
+                        return (scoredItem2.similarityScore < scoredItem1.similarityScore)
+                    }
+                default:
+                    assertionFailure("Unexpected item type, must be a Group or Entry")
+                    return false
                 }
             }
         }

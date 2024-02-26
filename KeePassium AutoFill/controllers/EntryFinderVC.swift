@@ -250,11 +250,11 @@ final class EntryFinderVC: UITableViewController {
         case .nothingFound:
             return 1 // "Nothing found" cell
         case .exactMatch:
-            return searchResults.exactMatch[sectionIndex].entries.count
+            return searchResults.exactMatch[sectionIndex].scoredItems.count
         case .matchSeparator:
             return 0
         case .partialMatch:
-            return searchResults.partialMatch[sectionIndex].entries.count
+            return searchResults.partialMatch[sectionIndex].scoredItems.count
         }
     }
 
@@ -353,7 +353,8 @@ final class EntryFinderVC: UITableViewController {
             withIdentifier: CellID.entry,
             for: indexPath)
             as! EntryFinderCell
-        cell.entry = searchResults.exactMatch[resultIndex].entries[indexPath.row].entry
+        let exactMatchSection = searchResults.exactMatch[resultIndex]
+        cell.entry = exactMatchSection.scoredItems[indexPath.row].item as? Entry
         return cell
     }
 
@@ -365,7 +366,8 @@ final class EntryFinderVC: UITableViewController {
             withIdentifier: CellID.entry,
             for: indexPath)
             as! EntryFinderCell
-        cell.entry = searchResults.partialMatch[resultIndex].entries[indexPath.row].entry
+        let partialMatchSection = searchResults.partialMatch[resultIndex]
+        cell.entry = partialMatchSection.scoredItems[indexPath.row].item as? Entry
         return cell
     }
 
@@ -391,11 +393,17 @@ final class EntryFinderVC: UITableViewController {
         case .announcement, .matchSeparator, .nothingFound:
             return
         case .exactMatch:
-            let selectedEntry = searchResults.exactMatch[sectionIndex].entries[indexPath.row].entry
-            delegate?.didSelectEntry(selectedEntry, in: self)
+            let exactMatchSection = searchResults.exactMatch[sectionIndex]
+            guard let entry = exactMatchSection.scoredItems[indexPath.row].item as? Entry else {
+                return
+            }
+            delegate?.didSelectEntry(entry, in: self)
         case .partialMatch:
-            let selectedEntry = searchResults.partialMatch[sectionIndex].entries[indexPath.row].entry
-            delegate?.didSelectEntry(selectedEntry, in: self)
+            let partialMatchSection = searchResults.partialMatch[sectionIndex]
+            guard let entry = partialMatchSection.scoredItems[indexPath.row].item as? Entry else {
+                return
+            }
+            delegate?.didSelectEntry(entry, in: self)
         }
     }
 
@@ -434,12 +442,12 @@ extension EntryFinderVC: UISearchBarDelegate {
     private func acceptFirstEntry(from searchResults: SearchResults) {
         assert(!searchResults.isEmpty)
         guard let firstGroup = searchResults.first,
-              let firstEntry = firstGroup.entries.first
+              let firstEntry = firstGroup.scoredItems.first?.item as? Entry
         else {
             assertionFailure()
             return
         }
-        delegate?.didSelectEntry(firstEntry.entry, in: self)
+        delegate?.didSelectEntry(firstEntry, in: self)
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

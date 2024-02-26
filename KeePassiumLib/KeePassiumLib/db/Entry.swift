@@ -377,55 +377,6 @@ public class Entry: DatabaseItem, Eraseable {
         }
         return groupNames.reversed().joined(separator: " / ")
     }
-
-    public func matches(query: SearchQuery) -> Bool {
-        for word in query.textWords {
-            var wordFound = false
-            switch word {
-            case let .text(word):
-                for field in fields {
-                    wordFound = field.contains(
-                        word: word,
-                        includeFieldNames: query.includeFieldNames,
-                        includeProtectedValues: query.includeProtectedValues,
-                        includePasswords: query.includePasswords,
-                        options: query.compareOptions)
-                    if wordFound {
-                        break
-                    }
-                }
-                if wordFound {
-                    continue
-                }
-
-                for att in attachments {
-                    if att.name.localizedContains(word, options: query.compareOptions) {
-                        wordFound = true
-                        break
-                    }
-                }
-
-                for tag in tags {
-                    if tag.localizedContains(word, options: query.compareOptions) {
-                        wordFound = true
-                        break
-                    }
-                }
-            case let .tag(word):
-                for tag in tags {
-                    if tag.caseInsensitiveCompare(word) == .orderedSame {
-                        wordFound = true
-                        break
-                    }
-                }
-            }
-
-            if !wordFound {
-                return false
-            }
-        }
-        return true
-    }
 }
 
 extension Array where Element == Entry {

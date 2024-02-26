@@ -122,7 +122,7 @@ final class GroupViewerVC:
 
     private var isActivateSearch: Bool = false
     private var searchHelper = SearchHelper()
-    private var searchResults = [GroupedEntries]()
+    private var searchResults = [GroupedItems]()
     private var searchController: UISearchController!
     var isSearchActive: Bool {
         guard let searchController = searchController else { return false }
@@ -393,7 +393,7 @@ final class GroupViewerVC:
     ) -> Int {
         if isSearchActive {
             if section < searchResults.count {
-                return searchResults[section].entries.count
+                return searchResults[section].scoredItems.count
             } else {
                 return (section == 0 ? 1 : 0)
             }
@@ -437,13 +437,16 @@ final class GroupViewerVC:
                 for: indexPath)
         }
 
-        let entry = searchResults[indexPath.section].entries[indexPath.row].entry
-        let entryCell = tableView.dequeueReusableCell(
-            withIdentifier: CellID.entry,
-            for: indexPath)
-            as! GroupViewerEntryCell
-        setupEntryCell(entryCell, entry: entry)
-        return entryCell
+        let section = searchResults[indexPath.section]
+        let foundItem = section.scoredItems[indexPath.row].item
+        switch foundItem {
+        case let entry as Entry:
+            return getEntryCell(for: entry, at: indexPath)
+        case let group as Group:
+            return getGroupCell(for: group, at: indexPath)
+        default:
+            fatalError("Invalid usage")
+        }
     }
 
     private func makeDatabaseItemCell(at indexPath: IndexPath) -> UITableViewCell {
@@ -594,7 +597,7 @@ final class GroupViewerVC:
 
     func getGroup(at indexPath: IndexPath) -> Group? {
         if isSearchActive {
-            return nil
+            return getSearchResult(at: indexPath) as? Group
         } else {
             let groupIndex = indexPath.row - announcements.count
             guard groupsSorted.indices.contains(groupIndex) else { return nil }
@@ -604,15 +607,19 @@ final class GroupViewerVC:
 
     func getEntry(at indexPath: IndexPath) -> Entry? {
         if isSearchActive {
-            guard indexPath.section < searchResults.count else { return  nil }
-            let searchResult = searchResults[indexPath.section]
-            guard indexPath.row < searchResult.entries.count else { return nil }
-            return searchResult.entries[indexPath.row].entry
+            return getSearchResult(at: indexPath) as? Entry
         } else {
             let entryIndex = indexPath.row - announcements.count - groupsSorted.count
             guard entriesSorted.indices.contains(entryIndex) else { return nil }
             return entriesSorted[entryIndex].value
         }
+    }
+
+    private func getSearchResult(at indexPath: IndexPath) -> DatabaseItem? {
+        guard indexPath.section < searchResults.count else { return  nil }
+        let searchResult = searchResults[indexPath.section]
+        guard indexPath.row < searchResult.scoredItems.count else { return nil }
+        return searchResult.scoredItems[indexPath.row].item
     }
 
     func getItem(at indexPath: IndexPath) -> DatabaseItem? {

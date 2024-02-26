@@ -20,7 +20,7 @@ public class Group2: Group {
     public var previousParentGroupUUID: UUID
     public var customData: CustomData2
 
-    override public var isIncludeEntriesInSearch: Bool {
+    override public var isIncludeChildrenInSearch: Bool {
         return resolvingIsSearchingEnabled()
     }
 
