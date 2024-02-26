@@ -1,5 +1,33 @@
 #CHANGELOG
 
+## [1.49.143] - 2024-02-26
+
+### Added
+
+- Tags for entries and groups (#249) [thanks, everyone]
+- Search by tags (use `tag:keyword`) (#249)
+- Search results now include groups [thanks, everyone]
+- Possibility to create key files
+- Large-type view for entry fields (tap the field to see the button)
+- New onboarding/Welcome workflow
+
+### Improved
+
+- Quick AutoFill suggestions now show entry title after username (fixes #334) [thanks, Torsten]
+- It is possible to create databases via a direct OneDrive connection [thanks, R.B.]
+- New parameters for managed AppConfig: `allowedFileProviders`, `supportEmail`, `requireAppPasscodeSet`, `minimumAppPasscodeEntropy`, `minimumDatabasePasswordEntropy` [thanks, R.B. and K.H.]
+- Improved key file picker and app history UI
+- App history (What's New) will only show changes relevant for the current app (that is, no Mac-specific things on iOS, no Intune updates in freemium version, etc)
+- Added 'Connect to server' option to AutoFill onboarding (#333) [thanks, gencys]
+- Updated translations [thanks, everyone]
+
+### Fixed
+
+- Hide password quality indicator when entry audit is disabled [thanks, everyone]
+- "Temporary database" warning could appear after a manual database reload
+- Intune: handle multiple Intune config policies
+
+
 ## [1.48.142] - 2023-12-06
 
 ### Added

@@ -1,6 +1,74 @@
 {
     "sections": [
         {
+            "version": "1.49",
+            "releaseDate": "2024-02-26T00:00:00Z",
+            "items": [
+                {
+                    "title": "Added: Tags for entries and groups",
+                    "github": "Closes #249",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Added: Search by tags (use tag:keyword)",
+                    "github": "#249"
+                },
+                {
+                    "title": "Added: Search results now include groups",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Added: Possibility to create key files"
+                },
+                {
+                    "title": "Added: Large-type view for entry fields (tap the field to see the button)"
+                },
+                {
+                    "title": "Added: New onboarding/Welcome workflow"
+                },
+                {
+                    "title": "Improved: Quick AutoFill suggestions now show entry title after username",
+                    "github": "Fixes #334",
+                    "credits": "Torsten"
+                },
+                {
+                    "title": "Improved: It is possible to create databases via a direct OneDrive connection",
+                    "credits": "R.B."
+                },
+                {
+                    "title": "Improved: New parameters for managed AppConfig: allowedFileProviders, supportEmail, requireAppPasscodeSet, minimumAppPasscodeEntropy, minimumDatabasePasswordEntropy",
+                    "credits": "R.B. and K.H.",
+                    "edition": "org"
+                },
+                {
+                    "title": "Improved: Improved key file picker and app history UI"
+                },
+                {
+                    "title": "Improved: App history (What's New) will only show changes relevant for the current app. That is, no Mac-specific things on iOS, no Intune updates in freemium version, etc."
+                },
+                {
+                    "title": "Improved: Added \"Connect to server\" option to AutoFill onboarding",
+                    "github": "#333",
+                    "credits": "gencys"
+                },
+                {
+                    "title": "Improved: Updated translations",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Fixed: Hide password quality indicator when entry audit is disabled",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Fixed: \"Temporary database\" warning could appear after a manual database reload"
+                },
+                {
+                    "title": "Fixed: Handle multiple Intune config policies",
+                    "edition": "org"
+                }
+            ]
+        },
+        {
             "version": "1.48",
             "releaseDate": "2023-12-06T00:00:00Z",
             "items": [
