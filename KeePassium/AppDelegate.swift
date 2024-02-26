@@ -19,6 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private var mainCoordinator: MainCoordinator!
 
+    #if targetEnvironment(macCatalyst)
+    private var macUtils: MacUtils?
+    #endif
+
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
@@ -45,6 +49,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         self.window = window
+
+        #if targetEnvironment(macCatalyst)
+        loadMacUtilsPlugin()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(sceneWillDeactivate),
+            name: UIScene.willDeactivateNotification,
+            object: nil
+        )
+        #endif
+
         return true
     }
 
@@ -82,6 +97,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             openInPlace: options[.openInPlace] as? Bool)
         return result
     }
+
+    #if targetEnvironment(macCatalyst)
+    private func loadMacUtilsPlugin() {
+        let bundleFileName = "MacUtils.bundle"
+        guard let bundleURL = Bundle.main.builtInPlugInsURL?.appendingPathComponent(bundleFileName) else {
+            Diag.error("Failed to find MacUtils plugin, macOS-specific functions will be limited")
+            return
+        }
+
+        guard let bundle = Bundle(url: bundleURL) else {
+            Diag.error("Failed to load MacUtils plugin, macOS-specific functions will be limited")
+            return
+        }
+
+        let className = "MacUtils.MacUtilsImpl"
+        guard let pluginClass = bundle.classNamed(className) as? MacUtils.Type else {
+            Diag.error("Failed to instantiate MacUtils plugin, macOS-specific functions will be limited")
+            return
+        }
+
+        macUtils = pluginClass.init()
+    }
+
+    @objc
+    private func sceneWillDeactivate(_ notification: Notification) {
+        macUtils?.disableSecureEventInput()
+    }
+    #endif
 }
 
 extension AppDelegate {
