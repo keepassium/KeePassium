@@ -47,22 +47,11 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
                 return Section.iOSValues
             }
         }
-        var title: String? {
-            switch self {
-            case .noHardwareKey:
-                return nil
-            case .yubiKeyNFC:
-                return "NFC"
-            case .yubiKeyMFI:
-                return "Lightning"
-            case .yubiKeyUSB:
-                return "USB"
-            }
-        }
     }
     private var isNFCAvailable = false
     private var isMFIAvailable = false
     private var isUSBAvailable = false
+    private var isMFIoverUSB = false
 
     override var canBecomeFirstResponder: Bool { true }
 
@@ -75,10 +64,12 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
         isNFCAvailable = ChallengeResponseManager.instance.supportsNFC
         isMFIAvailable = ChallengeResponseManager.instance.supportsMFI
         isUSBAvailable = ChallengeResponseManager.instance.supportsUSB
+        isMFIoverUSB = ChallengeResponseManager.instance.supportsMFIoverUSB
         #elseif AUTOFILL_EXT
         isNFCAvailable = false
         isMFIAvailable = false
         isUSBAvailable = false
+        isMFIoverUSB = false
         #endif
     }
 
@@ -121,7 +112,20 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return Section.allValues[section].title
+        switch Section.allValues[section] {
+        case .noHardwareKey:
+            return nil
+        case .yubiKeyNFC:
+            return LString.hardwareKeyPortNFC
+        case .yubiKeyMFI:
+            if isMFIoverUSB {
+                return LString.hardwareKeyPortLightningOverUSBC
+            } else {
+                return LString.hardwareKeyPortLightning
+            }
+        case .yubiKeyUSB:
+            return LString.hardwareKeyPortUSB
+        }
     }
 
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
@@ -133,6 +137,10 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
         case .yubiKeyNFC:
             guard #available(iOS 13, *) else {
                 return LString.iOSVersionTooOldForHardwareKey
+            }
+        case .yubiKeyMFI:
+            if isMFIoverUSB {
+                return LString.hardwareKeyRequiresUSBtoLightningAdapter
             }
         default:
             break
