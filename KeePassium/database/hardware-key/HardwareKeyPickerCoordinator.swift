@@ -24,7 +24,7 @@ final class HardwareKeyPickerCoordinator: Coordinator, Refreshable {
 
     init(router: NavigationRouter) {
         self.router = router
-        hardwareKeyPickerVC = HardwareKeyPicker.instantiateFromStoryboard()
+        hardwareKeyPickerVC = HardwareKeyPicker.make()
         hardwareKeyPickerVC.delegate = self
         hardwareKeyPickerVC.selectedKey = selectedKey
     }

@@ -52,5 +52,12 @@ public class YubiKey: Codable, Equatable, CustomStringConvertible {
     public var description: String {
         return "YubiKey \(interface) Slot \(slot.number)"
     }
+
+    public var localizedDescription: String {
+        return String.localizedStringWithFormat(
+            LString.yubikeySlotNTemplate,
+            slot.number
+        )
+    }
 }
 

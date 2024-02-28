@@ -35,6 +35,8 @@ extension URL {
             }
         }
 
+        public static let yubikeySetup = URL(string: "https://keepassium.com/apphelp/yubikey-setup/")!
+
         public static let invalidDatabasePassword = URL(string: "https://keepassium.com/apphelp/invalid-database-password/")!
 
         public static let databaseFileIsInTrashWarning = URL(string: "https://keepassium.com/apphelp/database-recently-deleted-warning/")!
