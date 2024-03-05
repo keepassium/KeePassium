@@ -40,6 +40,7 @@ public struct SearchQuery {
     public let includeProtectedValues: Bool
     public let includePasswords: Bool
     public let compareOptions: String.CompareOptions
+    public let flattenGroups: Bool
 
     public let text: String
     public let textWords: [Word]
@@ -51,6 +52,7 @@ public struct SearchQuery {
         includeProtectedValues: Bool,
         includePasswords: Bool,
         compareOptions: String.CompareOptions,
+        flattenGroups: Bool,
         text: String
     ) {
         self.includeSubgroups = includeSubgroups
@@ -59,6 +61,7 @@ public struct SearchQuery {
         self.includeProtectedValues = includeProtectedValues
         self.includePasswords = includePasswords
         self.compareOptions = compareOptions
+        self.flattenGroups = flattenGroups
         self.text = text
         self.textWords = Word.from(text: text)
     }

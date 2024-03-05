@@ -250,15 +250,30 @@ public class Group: DatabaseItem, Eraseable {
 
         if query.includeSubgroups {
             for group in groups {
-                if group.matches(query: query) {
-                    foundGroups.append(group)
+                if query.flattenGroups {
+                    if group.matches(query: query, scope: .tags) {
+                        var entries: [Entry] = []
+                        group.collectAllEntries(to: &entries)
+                        foundEntries.append(contentsOf: entries)
+                    } else if group.matches(query: query, scope: .fields) {
+                        foundEntries.append(contentsOf: group.entries)
+                        for subgroup in group.groups {
+                            subgroup.filter(query: query, foundEntries: &foundEntries, foundGroups: &foundGroups)
+                        }
+                    } else {
+                        group.filter(query: query, foundEntries: &foundEntries, foundGroups: &foundGroups)
+                    }
+                } else {
+                    if group.matches(query: query, scope: .any) {
+                        foundGroups.append(group)
+                    }
+                    group.filter(query: query, foundEntries: &foundEntries, foundGroups: &foundGroups)
                 }
-                group.filter(query: query, foundEntries: &foundEntries, foundGroups: &foundGroups)
             }
         }
 
         for entry in entries {
-            if entry.matches(query: query) {
+            if entry.matches(query: query, scope: .any) {
                 foundEntries.append(entry)
             }
         }

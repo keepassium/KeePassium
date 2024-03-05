@@ -918,7 +918,7 @@ extension GroupViewerVC: UISearchResultsUpdating {
     public func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text else { return }
         guard let database = group?.database else { return }
-        searchResults = searchHelper.find(database: database, searchText: searchText)
+        searchResults = searchHelper.findEntriesAndGroups(database: database, searchText: searchText)
         searchResults.sort(order: Settings.current.groupSortOrder)
         tableView.reloadData()
     }

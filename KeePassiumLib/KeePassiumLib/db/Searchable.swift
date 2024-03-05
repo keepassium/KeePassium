@@ -32,10 +32,23 @@ extension String: SearchableField {
     }
 }
 
+enum SearchScope {
+    case any
+    case fields
+    case tags
+
+    func contains(_ type: Self) -> Bool {
+        if self == .any {
+            return true
+        }
+        return self == type
+    }
+}
+
 protocol Searchable: Taggable {
     var searchableField: [SearchableField] { get }
 
-    func matches(query: SearchQuery) -> Bool
+    func matches(query: SearchQuery, scope: SearchScope) -> Bool
 }
 
 extension Entry: Searchable {
@@ -51,45 +64,41 @@ extension Group: Searchable {
 }
 
 extension Searchable {
-    func matches(query: SearchQuery) -> Bool {
+    func matches(query: SearchQuery, scope: SearchScope) -> Bool {
         for word in query.textWords {
-            var wordFound = false
             switch word {
             case let .text(word):
-                for field in searchableField {
-                    wordFound = field.contains(
-                        word: word,
-                        includeFieldNames: query.includeFieldNames,
-                        includeProtectedValues: query.includeProtectedValues,
-                        includePasswords: query.includePasswords,
-                        options: query.compareOptions)
-                    if wordFound {
-                        break
+                if scope.contains(.fields) {
+                    for field in searchableField {
+                        let isWordFound = field.contains(
+                            word: word,
+                            includeFieldNames: query.includeFieldNames,
+                            includeProtectedValues: query.includeProtectedValues,
+                            includePasswords: query.includePasswords,
+                            options: query.compareOptions)
+                        if isWordFound {
+                            return true
+                        }
                     }
                 }
-                if wordFound {
-                    continue
-                }
 
-                for tag in tags {
-                    if tag.localizedContains(word, options: query.compareOptions) {
-                        wordFound = true
-                        break
+                if scope.contains(.tags) {
+                    for tag in tags {
+                        if tag.localizedContains(word, options: query.compareOptions) {
+                            return true
+                        }
                     }
                 }
             case let .tag(word):
-                for tag in tags {
-                    if tag.caseInsensitiveCompare(word) == .orderedSame {
-                        wordFound = true
-                        break
+                if scope.contains(.tags) {
+                    for tag in tags {
+                        if tag.caseInsensitiveCompare(word) == .orderedSame {
+                            return true
+                        }
                     }
                 }
             }
-
-            if !wordFound {
-                return false
-            }
         }
-        return true
+        return false
     }
 }

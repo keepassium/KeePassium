@@ -21,8 +21,15 @@ struct GroupedItems {
 typealias SearchResults = [GroupedItems]
 
 final class SearchHelper {
+    func findEntries(database: Database, searchText: String) -> SearchResults {
+        return find(database: database, searchText: searchText, flattenGroups: true)
+    }
 
-    func find(database: Database, searchText: String) -> SearchResults {
+    func findEntriesAndGroups(database: Database, searchText: String) -> SearchResults {
+        return find(database: database, searchText: searchText, flattenGroups: false)
+    }
+
+    private func find(database: Database, searchText: String, flattenGroups: Bool) -> SearchResults {
         let settings = Settings.current
 
         let compareOptions: String.CompareOptions
@@ -39,6 +46,7 @@ final class SearchHelper {
             includeProtectedValues: settings.isSearchProtectedValues,
             includePasswords: settings.isSearchPasswords,
             compareOptions: compareOptions,
+            flattenGroups: flattenGroups,
             text: searchText)
         let scoredItems = performSearch(in: database, query: query)
         let searchResults = arrangeByGroups(scoredItems: scoredItems)
