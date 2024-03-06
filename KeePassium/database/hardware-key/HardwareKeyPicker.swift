@@ -69,6 +69,7 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
         super.init(style: .insetGrouped)
 
         title = LString.titleHardwareKeys
+        tableView.estimatedSectionHeaderHeight = 18
         tableView.register(
             HardwareKeyPickerCell.self,
             forCellReuseIdentifier: HardwareKeyPickerCell.reuseIdentifier
