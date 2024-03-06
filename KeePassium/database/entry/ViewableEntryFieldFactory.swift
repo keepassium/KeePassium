@@ -158,6 +158,10 @@ class ViewableEntryFieldFactory {
             excludedFieldNames.insert(EntryField.otpConfig1)
             excludedFieldNames.insert(EntryField.otpConfig2Seed)
             excludedFieldNames.insert(EntryField.otpConfig2Settings)
+            excludedFieldNames.insert(EntryField.timeOtpLength)
+            excludedFieldNames.insert(EntryField.timeOtpPeriod)
+            excludedFieldNames.insert(EntryField.timeOtpSecret)
+            excludedFieldNames.insert(EntryField.timeOtpAlgorithm)
         }
         let excludeEmptyValues = excludedFields.contains(.emptyValues)
         let excludeNonEditable = excludedFields.contains(.nonEditable)

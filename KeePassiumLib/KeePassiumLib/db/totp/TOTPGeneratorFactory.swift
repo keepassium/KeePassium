@@ -19,17 +19,24 @@ public class TOTPGeneratorFactory {
     }
 
     public static func makeGenerator(from fields: [EntryField]) -> TOTPGenerator? {
-        if let totpField = find(SingleFieldFormat.fieldName, in: fields) {
-            return parseSingleFieldFormat(totpField.resolvedValue)
-        } else {
-            guard let seedField = find(SplitFieldFormat.seedFieldName, in: fields) else {
-                return nil
-            }
-            let settingsField = find(SplitFieldFormat.settingsFieldName, in: fields) 
+        if let otpField = find(SingleFieldFormat.fieldName, in: fields) {
+            return parseSingleFieldFormat(otpField.resolvedValue)
+        }
+        if let seedField = find(SplitFieldFormat.seedFieldName, in: fields) {
             return SplitFieldFormat.parse(
                 seedString: seedField.resolvedValue,
-                settingsString: settingsField?.resolvedValue)
+                settingsString: find(SplitFieldFormat.settingsFieldName, in: fields)?.resolvedValue
+            )
         }
+        if let secretField = find(KeePassFormat.secretFieldName, in: fields) {
+            return KeePassFormat.parse(
+                secretString: secretField.resolvedValue,
+                lengthString: find(KeePassFormat.lengthFieldName, in: fields)?.resolvedValue,
+                periodString: find(KeePassFormat.periodFieldName, in: fields)?.resolvedValue,
+                algorithmString: find(KeePassFormat.algorithmFieldName, in: fields)?.resolvedValue
+            )
+        }
+        return nil
     }
 
     private static func parseSingleFieldFormat(_ paramString: String) -> TOTPGenerator? {
@@ -63,6 +70,10 @@ public extension EntryField {
     static let otpConfig1 = EntryField.otp
     static let otpConfig2Seed = SplitFieldFormat.seedFieldName
     static let otpConfig2Settings = SplitFieldFormat.settingsFieldName
+    static let timeOtpSecret = KeePassFormat.secretFieldName
+    static let timeOtpPeriod = KeePassFormat.periodFieldName
+    static let timeOtpAlgorithm = KeePassFormat.algorithmFieldName
+    static let timeOtpLength = KeePassFormat.lengthFieldName
 }
 
 private class SingleFieldFormat {
@@ -290,5 +301,52 @@ private class SplitFieldFormat {
             return ByteArray(data: seedData)
         }
         return nil
+    }
+}
+
+private class KeePassFormat {
+    static let secretFieldName = "TimeOtp-Secret-Base32"
+    static let lengthFieldName = "TimeOtp-Length"
+    static let periodFieldName = "TimeOtp-Period"
+    static let algorithmFieldName = "TimeOtp-Algorithm"
+
+    private static let defaultLengthValue = 6
+    private static let defaultPeriodValue = 30
+    private static let defaultAlgorithmValue: TOTPHashAlgorithm = .sha1
+
+    static func parse(
+        secretString: String,
+        lengthString: String?,
+        periodString: String?,
+        algorithmString: String?
+    ) -> TOTPGenerator? {
+        let cleanedSecretString = secretString.trimmingCharacters(in: .whitespaces)
+        guard let seedData = base32DecodeToData(cleanedSecretString) else {
+            return nil
+        }
+
+        let seed = ByteArray(data: seedData)
+        let timeStep = periodString.flatMap({ Int($0) }) ?? Self.defaultPeriodValue
+        let length = lengthString.flatMap({ Int($0) }) ?? Self.defaultLengthValue
+        let algorithm = algorithmString.flatMap {
+            switch $0 {
+            case "HMAC-SHA-1":
+                return .sha1
+            case "HMAC-SHA-256":
+                return .sha256
+            case "HMAC-SHA-512":
+                return .sha512
+            default:
+                Diag.error("Unknown TimeOtp-Algorithm [value: \($0)]")
+                return nil
+            }
+        } ?? defaultAlgorithmValue
+
+        return TOTPGeneratorRFC6238(
+            seed: seed,
+            timeStep: timeStep,
+            length: length,
+            hashAlgorithm: algorithm
+        )
     }
 }
