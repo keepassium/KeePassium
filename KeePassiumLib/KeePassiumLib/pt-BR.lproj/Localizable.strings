@@ -1012,6 +1012,9 @@
 /* Master key/unlock option: don't use hardware keys */
 "[HardwareKey/None] No Hardware Key" = "Não usar chave física";
 
+/* Title of a list with possible hardware key connections */
+"[HardwareKey/Picker/title]" = "Chaves Físicas";
+
 /* Master key/unlock option: use given slot of YubiKey */
 "[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey posição %d";
 

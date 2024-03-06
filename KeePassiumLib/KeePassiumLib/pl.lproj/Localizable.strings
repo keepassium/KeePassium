@@ -737,10 +737,10 @@
 "[General/DestinationGroup/title] Choose a Destination" = "Miejsce docelowe";
 
 /* Feature status: disabled/inactive. Keep it short, possibly abbreviated. */
-"[General/Feature/Off]" = "Włączone";
+"[General/Feature/Off]" = "Wyłącz";
 
 /* Feature status: enabled/active. Keep it short, possibly abbreviated. */
-"[General/Feature/On]" = "Włączone";
+"[General/Feature/On]" = "Włącz";
 
 /* Placeholder for folders without files */
 "[General/FileList/Empty/title]" = "Folder jest pusty";
@@ -936,6 +936,9 @@
 
 /* Master key/unlock option: don't use hardware keys */
 "[HardwareKey/None] No Hardware Key" = "Brak klucza sprzętowego";
+
+/* Title of a list with possible hardware key connections */
+"[HardwareKey/Picker/title]" = "Klucz sprzętowy";
 
 /* Master key/unlock option: use given slot of YubiKey */
 "[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "Gniazdo YubiKey %d";

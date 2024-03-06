@@ -7,6 +7,6 @@
 /* Class = "UIBarButtonItem"; rF3-mC-kj1.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Settings"; ObjectID = "rF3-mC-kj1"; */
 "rF3-mC-kj1.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Einstellungen";
 
-/* Class = "UILabel"; text = "No entries found"; ObjectID = "tpA-i1-ah8"; */
-"tpA-i1-ah8.text" = "Keine Einträge gefunden";
+/* Class = "UILabel"; text = "No entries or groups found"; ObjectID = "tpA-i1-ah8"; */
+"tpA-i1-ah8.text" = "Keine Einträge oder Gruppen gefunden";
 

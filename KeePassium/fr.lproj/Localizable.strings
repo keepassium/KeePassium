@@ -4,6 +4,9 @@
 /* Hint shown when both password and key file are empty. */
 "[Database/Create] Please enter a password or choose a key file." = "Veuillez entrer un mot de passe ou choisir un fichier clé.";
 
+/* Notification for business users when they set up too weak database password. */
+"[Database/Create/orgRequiresStronger]" = "Votre organisation a besoin d'un mot de passe de base de données plus complexe.";
+
 /* Note for a sample entry */
 "[Database/Create/TemplateEntry/notes] You can also store some notes, if you like." = "Si vous le souhaitez, vous pouvez également enregistrer quelques notes.";
 
@@ -67,8 +70,47 @@
 /* Action/button to set up the App Protection feature. Not a call to action. */
 "[Onboarding/AppProtection/activate]" = "Activer la protection de l'application";
 
+/* Text in the App Protection onboarding screen. */
+"[Onboarding/AppProtection/text1]" = "KeePassium est votre coffre-fort. La protection de l'application garantit que vous seul(e) pouvez l'ouvrir.";
+
+/* Title of the App Protection onboarding screen */
+"[Onboarding/AppProtection/title]" = "Strictement confidentiel";
+
 /* Action/button */
 "[Onboarding/CreateNewDatabase/action]" = "Créer nouvelle base de données";
+
+/* Text in the Data Encryption intro screen */
+"[Onboarding/DataEncryption/text1]" = "Votre coffre-fort est une base de données chiffrée.";
+
+/* Text in the Data Encryption intro screen */
+"[Onboarding/DataEncryption/text2]" = "Vous pouvez conserver les bases de données dans votre nuage favori ou localement sur votre appareil.";
+
+/* Title of the Data Encryption intro screen */
+"[Onboarding/DataEncryption/title]" = "Chiffrement des données";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text1]" = "KeePassium conserve vos mots de passe et autres informations sensibles de manière sécurisée.";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text2]" = "Il n'y a aucune publicité et aucun suivi.";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text3]" = "Nous ne savons rien à votre sujet.";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text4]" = "Vos données vous appartiennent.";
+
+/* Title of the introductory onboarding screen. */
+"[Onboarding/Intro/title]" = "Bienvenue";
+
+/* Text in the Security intro screen */
+"[Onboarding/Security/text1]" = "Vos informations sont chiffrées dans une boîte sécurisée (base de données). Les boîtes sécurisées sont stockées dans un coffre-fort (KeePassium).";
+
+/* Text in the Security intro screen */
+"[Onboarding/Security/text2]" = "Le coffre-fort et les boîtes sécurisées ont des clés différentes et vous seul(e) les connaissez.";
+
+/* Title of the Security intro screen */
+"[Onboarding/Security/title]" = "Sécurité maximale";
 
 /* Action to skip selected item/items in future password audits. */
 "[PasswordAudit/Action/Exclude]" = "Exclure de l'audit";
@@ -126,4 +168,31 @@
 
 /* Title of the confirmation dialog for `Exclude from audit` action for several items */
 "[Selection/ExcludeFromAudit/confirmation]" = "Exclure la sélection de l'audit de mot de passe ?";
+
+/* Action/button to create a new item tag */
+"[Tags/Create/action]" = "Créer une étiquette";
+
+/* Call to action/hint inside a text input */
+"[Tags/Create/placeholder]" = "Saisissez le nom de l'étiquette";
+
+/* Title of the tag creation dialog */
+"[Tags/Create/title]" = "Nouvelle étiquette";
+
+/* Status message with a call to action */
+"[Tags/None/placeholder]" = "Il n'y a aucune étiquette dans la base de données. Ajoutez-en une.";
+
+/* Status message: tag search result is empty */
+"[Tags/Search/emptyResult]" = "Aucune étiquette adéquate n'a été trouvée.";
+
+/* Title of a list with all the tags existing in the database. */
+"[Tags/Section/All]" = "Toutes les étiquettes";
+
+/* Title of a list with tags used by parent groups. */
+"[Tags/Section/Inherited]" = "Étiquettes héritées";
+
+/* Title of a list with tags chosen by the user for a specific entry or group. */
+"[Tags/Section/Selected]" = "Étiquettes sélectionnées";
+
+/* Title: the number of times a tag is encountered in the database. */
+"[Tags/UsageCount/title]" = "Nombre d'utilisations";
 

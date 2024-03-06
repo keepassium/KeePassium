@@ -874,6 +874,9 @@
 /* Master key/unlock option: don't use hardware keys */
 "[HardwareKey/None] No Hardware Key" = "하드웨어 키 없음";
 
+/* Title of a list with possible hardware key connections */
+"[HardwareKey/Picker/title]" = "하드웨어 키";
+
 /* Master key/unlock option: use given slot of YubiKey */
 "[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey 슬롯 %d";
 

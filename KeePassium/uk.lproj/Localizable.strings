@@ -4,6 +4,9 @@
 /* Hint shown when both password and key file are empty. */
 "[Database/Create] Please enter a password or choose a key file." = "Введіть пароль або виберіть файл-ключ.";
 
+/* Notification for business users when they set up too weak database password. */
+"[Database/Create/orgRequiresStronger]" = "Ваша організація вимагає використовувати складніший пароль для бази паролів.";
+
 /* Note for a sample entry */
 "[Database/Create/TemplateEntry/notes] You can also store some notes, if you like." = "Тут можна залишити нотатки.";
 
@@ -67,8 +70,47 @@
 /* Action/button to set up the App Protection feature. Not a call to action. */
 "[Onboarding/AppProtection/activate]" = "Активувати захист додатку";
 
+/* Text in the App Protection onboarding screen. */
+"[Onboarding/AppProtection/text1]" = "KeePassium — це ваше сховище. Захист додатка гарантує, що ніхто, крім вас, його не відкриє.";
+
+/* Title of the App Protection onboarding screen */
+"[Onboarding/AppProtection/title]" = "Лише для ваших очей";
+
 /* Action/button */
 "[Onboarding/CreateNewDatabase/action]" = "Створити нову базу";
+
+/* Text in the Data Encryption intro screen */
+"[Onboarding/DataEncryption/text1]" = "Ваш сейф — це зашифрована база паролів.";
+
+/* Text in the Data Encryption intro screen */
+"[Onboarding/DataEncryption/text2]" = "Ви можете зберігати бази паролів у вашій улюбленій хмарі або локально на пристрої.";
+
+/* Title of the Data Encryption intro screen */
+"[Onboarding/DataEncryption/title]" = "Шифрування даних";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text1]" = "KeePassium зберігає ваші паролі й інші конфіденційні дані надійно зашифрованими.";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text2]" = "Без реклами й відстеження.";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text3]" = "Ми нічого про вас не знаємо.";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text4]" = "Ваші дані належать вам.";
+
+/* Title of the introductory onboarding screen. */
+"[Onboarding/Intro/title]" = "Ласкаво просимо";
+
+/* Text in the Security intro screen */
+"[Onboarding/Security/text1]" = "Ваша інформація зашифрована в сейфі (базі паролів). Сейфи зберігаються в сховищі (KeePassium).";
+
+/* Text in the Security intro screen */
+"[Onboarding/Security/text2]" = "Сховище й сейф мають різні ключі, які відомі лише вам.";
+
+/* Title of the Security intro screen */
+"[Onboarding/Security/title]" = "Максимальна безпека";
 
 /* Action to skip selected item/items in future password audits. */
 "[PasswordAudit/Action/Exclude]" = "Виключити з перевірки";
@@ -126,4 +168,31 @@
 
 /* Title of the confirmation dialog for `Exclude from audit` action for several items */
 "[Selection/ExcludeFromAudit/confirmation]" = "Вилучити вибране з перевірки паролів?";
+
+/* Action/button to create a new item tag */
+"[Tags/Create/action]" = "Створити тег";
+
+/* Call to action/hint inside a text input */
+"[Tags/Create/placeholder]" = "Введіть назву тегу";
+
+/* Title of the tag creation dialog */
+"[Tags/Create/title]" = "Новий тег";
+
+/* Status message with a call to action */
+"[Tags/None/placeholder]" = "У базі паролів немає тегів. Ви можете їх додати.";
+
+/* Status message: tag search result is empty */
+"[Tags/Search/emptyResult]" = "Відповідних тегів не знайдено.";
+
+/* Title of a list with all the tags existing in the database. */
+"[Tags/Section/All]" = "Усі теги";
+
+/* Title of a list with tags used by parent groups. */
+"[Tags/Section/Inherited]" = "Успадковані теги";
+
+/* Title of a list with tags chosen by the user for a specific entry or group. */
+"[Tags/Section/Selected]" = "Вибрані теги";
+
+/* Title: the number of times a tag is encountered in the database. */
+"[Tags/UsageCount/title]" = "Кількість використань";
 

@@ -904,6 +904,9 @@
 /* Master key/unlock option: don't use hardware keys */
 "[HardwareKey/None] No Hardware Key" = "Žádný hardwarový klíč";
 
+/* Title of a list with possible hardware key connections */
+"[HardwareKey/Picker/title]" = "Hardwarové klíče";
+
 /* Master key/unlock option: use given slot of YubiKey */
 "[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey slot %d";
 

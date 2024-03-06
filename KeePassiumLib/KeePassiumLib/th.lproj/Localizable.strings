@@ -979,6 +979,9 @@
 /* Master key/unlock option: don't use hardware keys */
 "[HardwareKey/None] No Hardware Key" = "ไม่มีฮาร์ดแวร์คีย์";
 
+/* Title of a list with possible hardware key connections */
+"[HardwareKey/Picker/title]" = "ฮาร์ดแวร์คีย์";
+
 /* Master key/unlock option: use given slot of YubiKey */
 "[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey ช่องที่ %d";
 

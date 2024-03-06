@@ -940,6 +940,9 @@
 /* Master key/unlock option: don't use hardware keys */
 "[HardwareKey/None] No Hardware Key" = "没有硬件密钥";
 
+/* Title of a list with possible hardware key connections */
+"[HardwareKey/Picker/title]" = "硬件密钥";
+
 /* Master key/unlock option: use given slot of YubiKey */
 "[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey Slot %d";
 

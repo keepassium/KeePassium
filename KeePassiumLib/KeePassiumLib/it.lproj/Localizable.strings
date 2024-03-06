@@ -605,7 +605,7 @@
 "[Entry/Files/Add] Loading attachment file" = "Carico file allegato";
 
 /* Title of a field with entry creation date and time */
-"[Entry/History] Creation Date" = "Data creazione";
+"[Entry/History] Creation Date" = "Data di creazione";
 
 /* Title of a field with date and time when the entry will no longer be valid. 'Never' is also a possible value */
 "[Entry/History] Expiry Date" = "Data scadenza";
@@ -614,7 +614,7 @@
 "[Entry/History] Last Access Date" = "Data ultimo accesso";
 
 /* Title of a field with entry's last modification date and time */
-"[Entry/History] Last Modification Date" = "Data ultima modifica";
+"[Entry/History] Last Modification Date" = "Data di ultima modifica";
 
 /* Title of a list with previous versions/revisions of an entry. */
 "[Entry/History] Previous Versions" = "Versioni precedenti";
@@ -692,7 +692,7 @@
 "[FileInfo/Error/failed to change attributes]" = "Impossibile aggiornare attributi file.";
 
 /* Field title */
-"[FileInfo/Field/title] Creation Date" = "Data creazione";
+"[FileInfo/Field/title] Creation Date" = "Data di creazione";
 
 /* Field title */
 "[FileInfo/Field/title] File Location" = "Posizione file";
@@ -704,7 +704,7 @@
 "[FileInfo/Field/title] File Size" = "Dimensione file";
 
 /* Field title */
-"[FileInfo/Field/title] Last Modification Date" = "Data ultima modifica";
+"[FileInfo/Field/title] Last Modification Date" = "Data di ultima modifica";
 
 /* Title of a field with an error message */
 "[FileInfo/Field/valueError] Error" = "Errore";
@@ -815,16 +815,16 @@
 "[FileProvider/Yandex.Disk/name]" = "Yandex.Disk";
 
 /* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Oldest First)' */
-"[FilesSortOrder/longTitle] Creation Date (Oldest First)" = "Data creazione (meno recenti prima)";
+"[FilesSortOrder/longTitle] Creation Date (Oldest First)" = "Data di creazione (meno recenti prima)";
 
 /* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Recent First)' */
-"[FilesSortOrder/longTitle] Creation Date (Recent First)" = "Data creazione (più recenti prima)";
+"[FilesSortOrder/longTitle] Creation Date (Recent First)" = "Data di creazione (più recenti prima)";
 
 /* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Oldest First)' */
-"[FilesSortOrder/longTitle] Modification Date (Oldest First)" = "Data modifica (meno recenti prima)";
+"[FilesSortOrder/longTitle] Modification Date (Oldest First)" = "Data di modifica (meno recenti prima)";
 
 /* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Recent First)' */
-"[FilesSortOrder/longTitle] Modification Date (Recent First)" = "Data modifica (più recenti prima)";
+"[FilesSortOrder/longTitle] Modification Date (Recent First)" = "Data di modifica (più recenti prima)";
 
 /* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (A..Z)' */
 "[FilesSortOrder/longTitle] Name (A..Z)" = "Nome (A-Z)";
@@ -1019,16 +1019,16 @@
 "[GroupEditor/Name/placeholder]" = "Nome gruppo";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
-"[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "Per data creazione (più recenti prima)";
+"[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "Per data di creazione (più recenti prima)";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (Old..New)' */
-"[GroupSortOrder/longTitle] By Creation Date (Old..New)" = "Per data creazione (meno recenti prima)";
+"[GroupSortOrder/longTitle] By Creation Date (Old..New)" = "Per data di creazione (meno recenti prima)";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (New..Old)' */
-"[GroupSortOrder/longTitle] By Modification Date (New..Old)" = "Per data modifica (più recenti prima)";
+"[GroupSortOrder/longTitle] By Modification Date (New..Old)" = "Per data di modifica (più recenti prima)";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (Old..New)' */
-"[GroupSortOrder/longTitle] By Modification Date (Old..New)" = "Per data modifica (meno recenti prima)";
+"[GroupSortOrder/longTitle] By Modification Date (Old..New)" = "Per data di modifica (meno recenti prima)";
 
 /* An option in Group Viewer settings. Example: 'Sort Order: By Title (A..Z)' */
 "[GroupSortOrder/longTitle] By Title (A..Z)" = "Per titolo (A-Z)";
@@ -1050,6 +1050,9 @@
 
 /* Master key/unlock option: don't use hardware keys */
 "[HardwareKey/None] No Hardware Key" = "Nessuna chiave fisica";
+
+/* Title of a list with possible hardware key connections */
+"[HardwareKey/Picker/title]" = "Chiavi fisiche";
 
 /* Master key/unlock option: use given slot of YubiKey */
 "[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "Slot Yubikey %d";
@@ -1073,7 +1076,7 @@
 "[Item/Properties/Advanced/title]" = "Avanzate";
 
 /* Possible value of the `Password AutoFill` setting. For example: 'Password AutoFill: Allowed' */
-"[Item/Properties/AutoFill/allowed]" = "Consentiti";
+"[Item/Properties/AutoFill/allowed]" = "Consentito";
 
 /* Possible value of the `Password AutoFill` setting. For example: 'Password AutoFill: Disabled' */
 "[Item/Properties/AutoFill/disabled]" = "Disattivato";
@@ -1085,22 +1088,22 @@
 "[Item/Properties/AutoFill/title]" = "Inserimento automatico";
 
 /* Default value of an item property. For example: 'Password Audit: Inherit from parent group (Allowed)'. [inheritedValue: String] */
-"[Item/Properties/inheritedValue]" = "Eredita dal gruppo genitore";
+"[Item/Properties/inheritedValue]" = "Eredita dal gruppo genitore (%@)";
 
 /* Possible value of the `Password Audit` setting. For example: 'Password Audit: Allowed' */
-"[Item/Properties/PasswordAudit/allowed]" = "Consentiti";
+"[Item/Properties/PasswordAudit/allowed]" = "Consentita";
 
 /* Possible value of the `Password Audit` setting. For example: 'Password Audit: Disabled' */
-"[Item/Properties/PasswordAudit/disabled]" = "Disattivato";
+"[Item/Properties/PasswordAudit/disabled]" = "Disattivata";
 
 /* Title of a setting: whether the item (e.g. entry) should be included in password audit */
 "[Item/Properties/PasswordAudit/title]" = "Ispezione password";
 
 /* Possible value of the `Search` setting. Example: 'Search: Allowed' */
-"[Item/Properties/Search/allowed]" = "Consentiti";
+"[Item/Properties/Search/allowed]" = "Consentita";
 
 /* Possible value of the `Search` setting, when the item should be excluded from search results. Example: 'Search: Disabled' */
-"[Item/Properties/Search/disabled]" = "Disattivato";
+"[Item/Properties/Search/disabled]" = "Disattivata";
 
 /* Title of a setting: whether the item (e.g. entry) should be considered during search. Example: 'Search: Allowed' */
 "[Item/Properties/Search/title] Search" = "Cerca";
@@ -1736,7 +1739,7 @@
 "[Settings/DataProtection/title]" = "Protezione dati";
 
 /* An option in Group Viewer settings. Refers fo the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
-"[Settings/EntryListDetail/longTitle] Last Modified Date" = "Data ultima modifica";
+"[Settings/EntryListDetail/longTitle] Last Modified Date" = "Data di ultima modifica";
 
 /* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: None', meanining that no entry details will be shown in any lists. */
 "[Settings/EntryListDetail/longTitle] None" = "Nessuno";
@@ -1793,10 +1796,10 @@
 "[SortBy]" = "Ordina per";
 
 /* List sorting option. Example: 'Sort by: Date Created' */
-"[SortBy/DateCreated]" = "Data creazione";
+"[SortBy/DateCreated]" = "Data di creazione";
 
 /* List sorting option. Example: 'Sort by: Date Modified' */
-"[SortBy/DateModified]" = "Data modifica";
+"[SortBy/DateModified]" = "Data di modifica";
 
 /* List sorting option (for file names). Example: 'Sort by: Name' */
 "[SortBy/FileName]" = "Nome";

@@ -4,6 +4,9 @@
 /* Hint shown when both password and key file are empty. */
 "[Database/Create] Please enter a password or choose a key file." = "Bitte geben Sie ein Passwort ein oder wählen Sie eine Schlüsseldatei.";
 
+/* Notification for business users when they set up too weak database password. */
+"[Database/Create/orgRequiresStronger]" = "Ihre Organisation benötigt ein komplexeres Datenbank-Passwort.";
+
 /* Note for a sample entry */
 "[Database/Create/TemplateEntry/notes] You can also store some notes, if you like." = "Sie können auch einige Notizen speichern, wenn Sie möchten.";
 

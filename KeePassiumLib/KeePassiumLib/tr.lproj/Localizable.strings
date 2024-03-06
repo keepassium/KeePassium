@@ -850,6 +850,9 @@
 /* Master key/unlock option: don't use hardware keys */
 "[HardwareKey/None] No Hardware Key" = "Donanım Anahtarı Yok";
 
+/* Title of a list with possible hardware key connections */
+"[HardwareKey/Picker/title]" = "Donanım Anahtarları";
+
 /* Master key/unlock option: use given slot of YubiKey */
 "[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey Slot %d";
 

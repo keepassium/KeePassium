@@ -49,6 +49,9 @@
 /* Type of keyboard to show for App Lock passcode: digits only (PIN code). */
 "[AppLock/Passcode/KeyboardType/title] Numeric" = "Цифровая";
 
+/* Notification for business users when they set up too weak app protection passcode. */
+"[AppLock/Passcode/orgRequiresStonger]" = "Ваша организация требует использовать более сложный код доступа.";
+
 /* Hint/call to action about keyboard shortcut */
 "[AppLock/Passcode/pressEscForTouchID]" = "Нажмите Esc для Touch ID";
 
@@ -1045,11 +1048,26 @@
 /* Name of an input field which shows selected hardware key */
 "[HardwareKey/Field/title]" = "Аппаратный ключ";
 
+/* Connector type for older Apple devices, used through a USB adapter. https://en.wikipedia.org/wiki/Lightning_(connector) */
+"[HardwareKey/Interface/LightningViaUSBAdapter]" = "Lightning (через USB-адаптер)";
+
+/* A notice for hardware keys that need an adapter for physical connection to device. */
+"[HardwareKey/LightningOverUSB/RequiresAdapter]" = "Требуется адаптер Apple USB-C to Lightning";
+
 /* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
 "[HardwareKey/NFC/OS too old]" = "Для NFC требуется iOS 13 или более новая версия.";
 
 /* Master key/unlock option: don't use hardware keys */
 "[HardwareKey/None] No Hardware Key" = "Без аппаратного ключа";
+
+/* Title of a list with possible hardware key connections */
+"[HardwareKey/Picker/title]" = "Аппаратные ключи";
+
+/* Information notice. 'Challenge-response' is a glossary term. */
+"[HardwareKey/USB/chalRespNotSupported]" = "Это устройство не поддерживает аутентификацию вызов-ответ по USB соединению.";
+
+/* Information notice */
+"[HardwareKey/USB/iPadAppOnMac]" = "USB соединение недоступно, поскольку это iPad-приложение в среде macOS. Используйте нативное приложение для Mac.";
 
 /* Master key/unlock option: use given slot of YubiKey */
 "[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey слот %d";

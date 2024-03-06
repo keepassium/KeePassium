@@ -49,6 +49,9 @@
 /* Type of keyboard to show for App Lock passcode: digits only (PIN code). */
 "[AppLock/Passcode/KeyboardType/title] Numeric" = "Numérique";
 
+/* Notification for business users when they set up too weak app protection passcode. */
+"[AppLock/Passcode/orgRequiresStonger]" = "Votre organisation a besoin d'un code d'accès plus complexe.";
+
 /* Hint/call to action about keyboard shortcut */
 "[AppLock/Passcode/pressEscForTouchID]" = "Appuyer sur Échap. pour le Touch ID";
 
@@ -300,6 +303,9 @@
 
 /* Action/button to save the current database. */
 "[Database/Save/action] Save Database" = "Enregistrer la base de données";
+
+/* Action/button to save file to a remote server. */
+"[Database/SaveToServer/action]" = "Enregistrer sur le serveur";
 
 /* Status message: finished saving a database */
 "[Database/Saving/Status] Done" = "Fait";
@@ -574,6 +580,9 @@
 /* Action: copy a reference to the selected entry field to clipboard */
 "[Entry/Field/CopyReference/action]" = "Copier la référence du champ";
 
+/* Action: display text using large font */
+"[Entry/Field/LargeType/action]" = "Afficher en grande taille";
+
 /* Name of an entry field */
 "[Entry/Field/name] Icon" = "Icône";
 
@@ -591,6 +600,9 @@
 
 /* Name of an entry field */
 "[Entry/Field/name] User Name" = "Nom d'utilisateur";
+
+/* Name of an entry field */
+"[Entry/Field/tags] Tags" = "Étiquettes";
 
 /* Status message: loading file to be attached to an entry */
 "[Entry/Files/Add] Loading attachment file" = "Chargement du fichier joint";
@@ -642,6 +654,9 @@
 
 /* Error message shown when there's internal inconsistency in KeePassium. */
 "[FileAccessError/internalError]" = "Erreur interne KeePassium. Veuillez nous en dire plus à son sujet.";
+
+/* Error message: organization's IT administrator has forbidden access to a data storage location. */
+"[FileAccessError/ManagedAccessDenied/title]" = "L'accès à cet espace de stockage est désactivé par votre organisation.";
 
 /* Error message: network access is forbidden by system or app settings. */
 "[FileAccessError/NetworkAccessDenied/generic]" = "L'accès au réseau est bloqué par les paramètres.";
@@ -964,6 +979,9 @@
 /* Title of a list with predefined quick-choice values (for example: 'Presets: 1 week, 1 months, 1 year') */
 "[Generic/Presets]" = "Préréglages";
 
+/* Action: refresh list of items, usually files */
+"[Generic/RefreshList/action]" = "Actualiser la liste";
+
 /* Title of a search field (a noun, not verb) */
 "[Generic/Search/title]" = "Recherche";
 
@@ -1030,11 +1048,26 @@
 /* Name of an input field which shows selected hardware key */
 "[HardwareKey/Field/title]" = "Clé matérielle";
 
+/* Connector type for older Apple devices, used through a USB adapter. https://en.wikipedia.org/wiki/Lightning_(connector) */
+"[HardwareKey/Interface/LightningViaUSBAdapter]" = "Lightning (via un adaptateur USB)";
+
+/* A notice for hardware keys that need an adapter for physical connection to device. */
+"[HardwareKey/LightningOverUSB/RequiresAdapter]" = "Nécessite l'adaptateur Apple USB-C à Lightning";
+
 /* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
 "[HardwareKey/NFC/OS too old]" = "NFC nécessite iOS 13 ou supérieur.";
 
 /* Master key/unlock option: don't use hardware keys */
 "[HardwareKey/None] No Hardware Key" = "Aucune clé matérielle";
+
+/* Title of a list with possible hardware key connections */
+"[HardwareKey/Picker/title]" = "Clés matérielles";
+
+/* Information notice. 'Challenge-response' is a glossary term. */
+"[HardwareKey/USB/chalRespNotSupported]" = "Cet appareil ne prend pas en charge la fonction question-réponse via une connexion USB.";
+
+/* Information notice */
+"[HardwareKey/USB/iPadAppOnMac]" = "L'USB n'est pas disponible, car il s'agit d'une application iPad fonctionnant sur macOS. Utilisez l'application Mac native à la place.";
 
 /* Master key/unlock option: use given slot of YubiKey */
 "[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "Emplacement YubiKey %d";
@@ -1111,14 +1144,32 @@
 /* Error message about system keychain. */
 "[KeychainError/unexpectedFormat] Keychain error: unexpected data format" = "Erreur de trousseau : format de données inattendu";
 
+/* Action: create new key file. */
+"[KeyFile/Create/action]" = "Créer un fichier clé";
+
+/* Default name for new key files. Should match the `key file` term in the glossary. */
+"[KeyFile/Create/defaultName]" = "fichierclé.dat";
+
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Supprimer le fichier clé ?\n Assurez-vous d'avoir une sauvegarde.";
 
 /* Name of an input field which shows selected key file */
 "[KeyFile/Field/title]" = "Fichier clé";
 
+/* Action: import/add a key file into the app. `Key file` is a glossary term. */
+"[KeyFile/Import/action]" = "Importer un fichier clé";
+
+/* Description of the `Import Key File` action. */
+"[KeyFile/Import/actionDescription]" = "Ajouter le fichier à l'application";
+
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
 "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Retirer le fichier clé de la liste ?\n Le fichier restera intact et vous pourrez l'ajouter à nouveau ultérieurement.";
+
+/* Action: use a key file at its storage location, without importing to the app. */
+"[KeyFile/Use/action]" = "Sélectionner un fichier clé";
+
+/* Description of the `Select Key File` action. */
+"[KeyFile/Use/actionDescription]" = "Utiliser sans ajouter";
 
 /* Error message when the key file is misformatted or damaged */
 "[KeyFileError/Corrupted/title]" = "Le fichier clé est corrompu";
