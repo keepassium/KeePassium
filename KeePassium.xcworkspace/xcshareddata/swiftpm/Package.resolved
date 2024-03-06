@@ -15,7 +15,7 @@
       "location" : "https://github.com/keepassium/microsoft-authentication-library-for-objc/",
       "state" : {
         "branch" : "keepassium",
-        "revision" : "4158c0129d29ab8f5951f040cf9e0dce4877a815"
+        "revision" : "0e10cbc76a19cd1fd3d8cc4bcaa7fe428a3680ab"
       }
     },
     {
@@ -42,7 +42,7 @@
       "location" : "https://github.com/keepassium/yubikit-ios.git",
       "state" : {
         "branch" : "keepassium",
-        "revision" : "5020672508e41c09968dd3bdb2082f86fd44fea9"
+        "revision" : "352f95ec1b1f6b22da7bcd37b84e3d6fd9f70ac5"
       }
     },
     {
