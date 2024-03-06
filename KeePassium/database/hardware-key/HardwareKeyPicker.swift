@@ -190,7 +190,6 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
             if ProcessInfo.isiPadAppOnMac {
                 return LString.usbUnavailableIPadAppOnMac
             }
-            assert(UIDevice.current.systemName == "iOS")
             return LString.usbHardwareKeyNotSupported
         }
         return super.tableView(tableView, titleForFooterInSection: section)

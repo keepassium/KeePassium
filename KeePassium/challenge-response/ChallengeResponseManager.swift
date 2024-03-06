@@ -344,8 +344,6 @@ class ChallengeResponseManager {
         #if targetEnvironment(macCatalyst)
         usbYubiKey?.cancel()
         usbYubiKey = nil
-        #else
-        assertionFailure("Should not be here")
         #endif
     }
 
