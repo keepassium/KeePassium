@@ -4,6 +4,9 @@
 /* Hint shown when both password and key file are empty. */
 "[Database/Create] Please enter a password or choose a key file." = "Voer een wachtwoord in of kies een sleutelbestand.";
 
+/* Notification for business users when they set up too weak database password. */
+"[Database/Create/orgRequiresStronger]" = "Je organisatie vereist een complexer databasewachtwoord.";
+
 /* Note for a sample entry */
 "[Database/Create/TemplateEntry/notes] You can also store some notes, if you like." = "Als je wilt, kun je ook notities opslaan.";
 
@@ -67,8 +70,47 @@
 /* Action/button to set up the App Protection feature. Not a call to action. */
 "[Onboarding/AppProtection/activate]" = "Schakel appbeveiliging in";
 
+/* Text in the App Protection onboarding screen. */
+"[Onboarding/AppProtection/text1]" = "KeePassium is je kluis. Appbescherming zorgt ervoor dat alleen jij hem kunt openen.";
+
+/* Title of the App Protection onboarding screen */
+"[Onboarding/AppProtection/title]" = "Alleen voor jouw ogen";
+
 /* Action/button */
 "[Onboarding/CreateNewDatabase/action]" = "Maak nieuwe databank";
+
+/* Text in the Data Encryption intro screen */
+"[Onboarding/DataEncryption/text1]" = "Je kluisdoos is een versleutelde database.";
+
+/* Text in the Data Encryption intro screen */
+"[Onboarding/DataEncryption/text2]" = "Je kunt databases in je favoriete cloud of lokaal op je apparaat houden.";
+
+/* Title of the Data Encryption intro screen */
+"[Onboarding/DataEncryption/title]" = "Gegevensversleuteling";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text1]" = "KeePassium houdt je wachtwoorden en andere gevoelige gegevens veilig versleuteld.";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text2]" = "Er zijn geen advertenties en geen tracking.";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text3]" = "We weten niets over jou.";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text4]" = "Jouw gegevens zijn van jou.";
+
+/* Title of the introductory onboarding screen. */
+"[Onboarding/Intro/title]" = "Welkom";
+
+/* Text in the Security intro screen */
+"[Onboarding/Security/text1]" = "Je gegevens zijn versleuteld in een kluisdoos (database). Kluisdozen worden opgeslagen in een kluis (KeePassium).";
+
+/* Text in the Security intro screen */
+"[Onboarding/Security/text2]" = "De kluis en kluisdozen hebben verschillende sleutels en alleen jij weet die.";
+
+/* Title of the Security intro screen */
+"[Onboarding/Security/title]" = "Maximale beveiliging";
 
 /* Action to skip selected item/items in future password audits. */
 "[PasswordAudit/Action/Exclude]" = "Uitsluiten van audit";
@@ -126,4 +168,31 @@
 
 /* Title of the confirmation dialog for `Exclude from audit` action for several items */
 "[Selection/ExcludeFromAudit/confirmation]" = "Selectie uitsluiten van wachtwoordcontrole?";
+
+/* Action/button to create a new item tag */
+"[Tags/Create/action]" = "Maak tag";
+
+/* Call to action/hint inside a text input */
+"[Tags/Create/placeholder]" = "Voer tagnaam in";
+
+/* Title of the tag creation dialog */
+"[Tags/Create/title]" = "Nieuwe tag";
+
+/* Status message with a call to action */
+"[Tags/None/placeholder]" = "Er zijn geen tags in de database, voeg er enkele toe.";
+
+/* Status message: tag search result is empty */
+"[Tags/Search/emptyResult]" = "Geen geschikte tags gevonden.";
+
+/* Title of a list with all the tags existing in the database. */
+"[Tags/Section/All]" = "Alle tags";
+
+/* Title of a list with tags used by parent groups. */
+"[Tags/Section/Inherited]" = "Overgeërfde tags";
+
+/* Title of a list with tags chosen by the user for a specific entry or group. */
+"[Tags/Section/Selected]" = "Geselecteerde tags";
+
+/* Title: the number of times a tag is encountered in the database. */
+"[Tags/UsageCount/title]" = "Aantal keren gebruikt";
 

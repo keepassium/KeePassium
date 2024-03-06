@@ -49,6 +49,9 @@
 /* Type of keyboard to show for App Lock passcode: digits only (PIN code). */
 "[AppLock/Passcode/KeyboardType/title] Numeric" = "Numeriek";
 
+/* Notification for business users when they set up too weak app protection passcode. */
+"[AppLock/Passcode/orgRequiresStonger]" = "Je organisatie vereist een complexere toegangscode.";
+
 /* Hint/call to action about keyboard shortcut */
 "[AppLock/Passcode/pressEscForTouchID]" = "Druk op Esc voor Touch ID";
 
@@ -300,6 +303,9 @@
 
 /* Action/button to save the current database. */
 "[Database/Save/action] Save Database" = "Sla databank op";
+
+/* Action/button to save file to a remote server. */
+"[Database/SaveToServer/action]" = "Sla op server op";
 
 /* Status message: finished saving a database */
 "[Database/Saving/Status] Done" = "Klaar";
@@ -574,6 +580,9 @@
 /* Action: copy a reference to the selected entry field to clipboard */
 "[Entry/Field/CopyReference/action]" = "Kopieer veldverwijzing";
 
+/* Action: display text using large font */
+"[Entry/Field/LargeType/action]" = "Geef weer in grote letters";
+
 /* Name of an entry field */
 "[Entry/Field/name] Icon" = "Pictogram";
 
@@ -591,6 +600,9 @@
 
 /* Name of an entry field */
 "[Entry/Field/name] User Name" = "Gebruikersnaam";
+
+/* Name of an entry field */
+"[Entry/Field/tags] Tags" = "Tags";
 
 /* Status message: loading file to be attached to an entry */
 "[Entry/Files/Add] Loading attachment file" = "Bezig met laden van bijlage";
@@ -642,6 +654,9 @@
 
 /* Error message shown when there's internal inconsistency in KeePassium. */
 "[FileAccessError/internalError]" = "Interne KeePassium-fout. Meld dit aan ons.";
+
+/* Error message: organization's IT administrator has forbidden access to a data storage location. */
+"[FileAccessError/ManagedAccessDenied/title]" = "De toegang tot deze opslag is uitgeschakeld door je organisatie.";
 
 /* Error message: network access is forbidden by system or app settings. */
 "[FileAccessError/NetworkAccessDenied/generic]" = "Netwerktoegang wordt geblokkeerd door de instellingen.";
@@ -964,6 +979,9 @@
 /* Title of a list with predefined quick-choice values (for example: 'Presets: 1 week, 1 months, 1 year') */
 "[Generic/Presets]" = "Voorinstellingen";
 
+/* Action: refresh list of items, usually files */
+"[Generic/RefreshList/action]" = "Vernieuw lijst";
+
 /* Title of a search field (a noun, not verb) */
 "[Generic/Search/title]" = "Zoek";
 
@@ -1030,6 +1048,12 @@
 /* Name of an input field which shows selected hardware key */
 "[HardwareKey/Field/title]" = "Hardwarematige sleutel";
 
+/* Connector type for older Apple devices, used through a USB adapter. https://en.wikipedia.org/wiki/Lightning_(connector) */
+"[HardwareKey/Interface/LightningViaUSBAdapter]" = "Lightning (via USB-adapter)";
+
+/* A notice for hardware keys that need an adapter for physical connection to device. */
+"[HardwareKey/LightningOverUSB/RequiresAdapter]" = "Vereist een Apple USB-C-naar-Lightning-adapter";
+
 /* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
 "[HardwareKey/NFC/OS too old]" = "NFC vereist iOS 13 of hoger.";
 
@@ -1038,6 +1062,12 @@
 
 /* Title of a list with possible hardware key connections */
 "[HardwareKey/Picker/title]" = "Hardwarematige sleutels";
+
+/* Information notice. 'Challenge-response' is a glossary term. */
+"[HardwareKey/USB/chalRespNotSupported]" = "Dit apparaat ondersteunt geen actie-authenticatie via USB-verbinding.";
+
+/* Information notice */
+"[HardwareKey/USB/iPadAppOnMac]" = "USB is niet beschikbaar, omdat dit een iPad-app is die wordt uitgevoerd op macOS. Gebruik in plaats daarvan de Mac-app.";
 
 /* Master key/unlock option: use given slot of YubiKey */
 "[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey-sleuf %d";
@@ -1114,14 +1144,32 @@
 /* Error message about system keychain. */
 "[KeychainError/unexpectedFormat] Keychain error: unexpected data format" = "Sleutelhangerfout: onverwacht gegevensformaat";
 
+/* Action: create new key file. */
+"[KeyFile/Create/action]" = "Maak sleutelbestand";
+
+/* Default name for new key files. Should match the `key file` term in the glossary. */
+"[KeyFile/Create/defaultName]" = "sleutelbestand.dat";
+
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Verwijder sleutelbestand?\n Zorg ervoor dat je een back-up hebt.";
 
 /* Name of an input field which shows selected key file */
 "[KeyFile/Field/title]" = "Sleutelbestand";
 
+/* Action: import/add a key file into the app. `Key file` is a glossary term. */
+"[KeyFile/Import/action]" = "Importeer sleutelbestand";
+
+/* Description of the `Import Key File` action. */
+"[KeyFile/Import/actionDescription]" = "Voeg een bestand toe aan de app";
+
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
 "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Wil het sleutelbestand verwijderen van de lijst?\n De sleutel blijft bewaard en je kunt deze later weer toevoegen.";
+
+/* Action: use a key file at its storage location, without importing to the app. */
+"[KeyFile/Use/action]" = "Selecteer sleutelbestand";
+
+/* Description of the `Select Key File` action. */
+"[KeyFile/Use/actionDescription]" = "Gebruik zonder toevoegen";
 
 /* Error message when the key file is misformatted or damaged */
 "[KeyFileError/Corrupted/title]" = "Het sleutelbestand is beschadigd";
