@@ -1,5 +1,18 @@
 #CHANGELOG
 
+## [1.49.144] - 2024-03-06
+
+### Improved
+
+- Search in AutoFill will consider tags and groups now
+- More informative UI for hardware key selector
+
+### Fixed
+
+- Support YubiKeys with Lightning connector on USB-C devices via Apple's adapter [thanks, everyone]
+- macOS: Disable secure input mode when app loses focus (#343) [thanks, Ernest]
+
+
 ## [1.49.143] - 2024-02-26
 
 ### Added

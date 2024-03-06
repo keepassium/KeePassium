@@ -41,7 +41,7 @@
                     "edition": "org"
                 },
                 {
-                    "title": "Improved: Improved key file picker and app history UI"
+                    "title": "Improved: Improved UI for key file picker, hardware key selector, and app history"
                 },
                 {
                     "title": "Improved: App history (What's New) will only show changes relevant for the current app. That is, no Mac-specific things on iOS, no Intune updates in freemium version, etc."
@@ -56,8 +56,18 @@
                     "credits": "everyone"
                 },
                 {
+                    "title": "Fixed: Support YubiKeys with Lightning connector on USB-C devices via Apple's adapter",
+                    "credits": "everyone"
+                },
+                {
                     "title": "Fixed: Hide password quality indicator when entry audit is disabled",
                     "credits": "everyone"
+                },
+                {
+                    "title": "Fixed: Disable macOS secure input mode when app loses focus",
+                    "github": "#343",
+                    "credits": "Ernest",
+                    "os": "macos"
                 },
                 {
                     "title": "Fixed: \"Temporary database\" warning could appear after a manual database reload"
