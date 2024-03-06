@@ -2,7 +2,7 @@
     "sections": [
         {
             "version": "1.49",
-            "releaseDate": "2024-02-26T00:00:00Z",
+            "releaseDate": "2024-03-06T00:00:00Z",
             "items": [
                 {
                     "title": "Added: Tags for entries and groups",
@@ -25,6 +25,9 @@
                 },
                 {
                     "title": "Added: New onboarding/Welcome workflow"
+                },
+                {
+                    "title": "Added: Support for OTP codes configured by KeePass (TimeOtp fields)"
                 },
                 {
                     "title": "Improved: Quick AutoFill suggestions now show entry title after username",

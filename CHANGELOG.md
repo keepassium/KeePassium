@@ -1,5 +1,16 @@
 #CHANGELOG
 
+## [1.49.145] - 2024-03-06
+
+### Added
+
+- Support for OTP codes configured by KeePass (TimeOtp fields)
+
+### Improved 
+
+- Updated NL translation
+
+
 ## [1.49.144] - 2024-03-06
 
 ### Improved
