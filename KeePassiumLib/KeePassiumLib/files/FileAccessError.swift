@@ -246,7 +246,7 @@ extension LString.Error {
     public static let storageAccessDeniedByOrg = NSLocalizedString(
         "[FileAccessError/ManagedAccessDenied/title]",
         bundle: Bundle.framework,
-        value: "Access to this storage is disabled by your oganization.",
+        value: "Access to this storage is disabled by your organization.",
         comment: "Error message: organization's IT administrator has forbidden access to a data storage location."
     )
     // swiftlint:enable line_length
