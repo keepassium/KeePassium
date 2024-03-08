@@ -51,7 +51,7 @@ class DatabaseIconSetPicker: UITableViewController {
             assertionFailure()
             return 0
         }
-        return DatabaseIconSet.allValues.count
+        return DatabaseIconSet.allCases.count
     }
 
     override func tableView(
@@ -63,10 +63,7 @@ class DatabaseIconSetPicker: UITableViewController {
             for: indexPath)
             as! DatabaseIconSetPickerCell
 
-        guard let iconSet = DatabaseIconSet(rawValue: indexPath.row) else {
-            _received_wrong_icon_set_id()
-            fatalError()
-        }
+        let iconSet = DatabaseIconSet.allCases[indexPath.row]
         cell.iconView?.image = iconSet.getIcon(demoIconID)
         cell.titleLabel?.text = iconSet.title
 
@@ -77,10 +74,7 @@ class DatabaseIconSetPicker: UITableViewController {
 
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let iconSet = DatabaseIconSet(rawValue: indexPath.row) else {
-            _received_wrong_icon_set_id()
-            fatalError()
-        }
+        let iconSet = DatabaseIconSet.allCases[indexPath.row]
         Diag.debug("Selected an icon set [title: \(iconSet.title)]")
         selectedItem = iconSet
         delegate?.didSelect(iconSet: iconSet, in: self)
