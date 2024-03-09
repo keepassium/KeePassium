@@ -51,7 +51,7 @@ public final class ManagedAppConfig: NSObject {
     private var intuneConfig: [String: Any]?
     private var previousLicenseValue: String?
     private var hasWarnedAboutMissingLicense = false
-    private var allowedFileProviders: Set<FileProvider>?
+    private var allowedFileProviders: FileProviderRestrictions?
 
     override private init() {
         super.init()
@@ -263,26 +263,35 @@ extension ManagedAppConfig {
 
 extension ManagedAppConfig {
     private static let fileProvidersAll = "all"
+    private enum FileProviderRestrictions {
+        case allowAll
+        case allowSome(Set<FileProvider>)
+    }
 
     internal func isAllowed(_ fileProvider: FileProvider) -> Bool {
         if allowedFileProviders == nil {
-            allowedFileProviders = getAllowedFileProviders()
+            allowedFileProviders = parseAllowedFileProviders()
         }
-        return allowedFileProviders!.contains(fileProvider)
+        switch allowedFileProviders! {
+        case .allowAll:
+            return true
+        case .allowSome(let allowedOnes):
+            return allowedOnes.contains(fileProvider)
+        }
     }
 
-    private func getAllowedFileProviders() -> Set<FileProvider> {
+    private func parseAllowedFileProviders() -> FileProviderRestrictions {
         guard let allowedProviderIDs = getStringArray(.allowedFileProviders) else {
-            return FileProvider.all
+            return .allowAll
         }
         if allowedProviderIDs.contains(Self.fileProvidersAll) {
-            return FileProvider.all
+            return .allowAll
         }
 
         let allowedProviders = allowedProviderIDs.compactMap {
             FileProvider(rawValue: $0)
         }
-        return Set(allowedProviders)
+        return .allowSome(Set(allowedProviders))
     }
 }
 
