@@ -55,6 +55,7 @@ extension FileProvider {
             .readdleDocuments,
             .resilioSync,
             .seafilePro,
+            .secureShellFish,
             .stratospherixFileBrowser,
             .syncCom,
             .tresorit,

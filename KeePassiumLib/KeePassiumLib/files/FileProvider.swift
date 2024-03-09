@@ -37,6 +37,7 @@ public enum FileProvider: Hashable {
         "com.readdle.ReaddleDocsIPad.DocsExtFileProvider": .readdleDocuments,
         "com.resilio.sync.fileprovider": .resilioSync,
         "com.seafile.seafilePro.SeafFileProvider": seafilePro,
+        "com.appliedphasor.secure-shellfish.provider": secureShellFish,
         "com.apple.SMBClientProvider.FileProvider": .smbShare,
         "com.stratospherix.filebrowser.DocumentProviderFileProvider": .stratospherixFileBrowser,
         "com.sync.mobileapp.NewFileProvider": .syncCom,
@@ -73,6 +74,7 @@ public enum FileProvider: Hashable {
     case readdleDocuments
     case resilioSync
     case seafilePro
+    case secureShellFish
     case smbShare
     case stratospherixFileBrowser
     case syncCom
@@ -228,6 +230,12 @@ public enum FileProvider: Hashable {
                 bundle: Bundle.framework,
                 value: "Seafile Pro",
                 comment: "Localized name of the storage app: Seafile Pro (https://apps.apple.com/us/app/seafile-pro/id639202512)")
+        case .secureShellFish:
+            return NSLocalizedString(
+                "[FileProvider/Secure ShellFish/name]",
+                bundle: Bundle.framework,
+                value: "Secure ShellFish",
+                comment: "Localized name of the storage app: Secure ShellFish (https://apps.apple.com/app/ssh-files-secure-shellfish/id1336634154)")
         case .smbShare:
             return NSLocalizedString(
                 "[FileProvider/SMB/name]",
