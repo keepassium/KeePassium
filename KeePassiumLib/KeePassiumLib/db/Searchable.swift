@@ -66,26 +66,31 @@ extension Group: Searchable {
 extension Searchable {
     func matches(query: SearchQuery, scope: SearchScope) -> Bool {
         for word in query.textWords {
+            var wordFound = false
             switch word {
             case let .text(word):
                 if scope.contains(.fields) {
                     for field in searchableField {
-                        let isWordFound = field.contains(
+                        wordFound = field.contains(
                             word: word,
                             includeFieldNames: query.includeFieldNames,
                             includeProtectedValues: query.includeProtectedValues,
                             includePasswords: query.includePasswords,
                             options: query.compareOptions)
-                        if isWordFound {
-                            return true
+                        if wordFound {
+                            break
                         }
+                    }
+                    if wordFound {
+                        continue
                     }
                 }
 
                 if scope.contains(.tags) {
                     for tag in tags {
                         if tag.localizedContains(word, options: query.compareOptions) {
-                            return true
+                            wordFound = true
+                            break
                         }
                     }
                 }
@@ -93,12 +98,17 @@ extension Searchable {
                 if scope.contains(.tags) {
                     for tag in tags {
                         if tag.caseInsensitiveCompare(word) == .orderedSame {
-                            return true
+                            wordFound = true
+                            break
                         }
                     }
                 }
             }
+
+            if !wordFound {
+                return false
+            }
         }
-        return false
+        return true
     }
 }
