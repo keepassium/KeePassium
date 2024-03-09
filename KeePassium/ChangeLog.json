@@ -1,6 +1,28 @@
 {
     "sections": [
         {
+            "version": "1.50",
+            "releaseDate": "2024-03-10T00:00:00Z",
+            "items": [
+                {
+                    "title": "Added: System icon set for databases",
+                    "github": "Closes #193",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Improved: Added detection of Secure ShellFish file provider"
+                },
+                {
+                    "title": "Fixed: Some storage providers failed with \"Blocked by your organization\" error",
+                    "github": "Closes #346",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Fixed: Search words were treated as OR conditions instead of AND (regression in 1.49.144)"
+                }
+            ]
+        },
+        {
             "version": "1.49",
             "releaseDate": "2024-03-06T00:00:00Z",
             "items": [

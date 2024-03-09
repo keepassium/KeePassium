@@ -1,5 +1,21 @@
 #CHANGELOG
 
+## [1.50.146] - 2024-03-10
+
+### Added
+
+- System icon set for databases (closes #193)
+
+### Improved
+
+- Added detection of Secure ShellFish file provider
+
+### Fixed
+
+- Some storage providers failed with error "Blocked by your organization" (fixes #346) [thanks, everyone]
+- Search words were treated as OR conditions instead of AND (regression in 1.49.144)
+
+
 ## [1.49.145] - 2024-03-06
 
 ### Added
