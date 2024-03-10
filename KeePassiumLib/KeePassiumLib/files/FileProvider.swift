@@ -22,8 +22,9 @@ public enum FileProvider: Hashable {
         "com.getdropbox.Dropbox.FileProvider": .dropbox,
         "com.skyjos.fileexplorer.fileprovider": .feFileExplorer,
         "com.google.Drive.FileProviderExtension": .googleDrive,
-        "com.apple.CloudDocs.iCloudDriveFileProvider": .iCloudDrive, 
-        "com.apple.CloudDocs.MobileDocumentsFileProvider": .iCloudDriveLegacy, 
+        "com.apple.CloudDocs.iCloudDriveFileProvider": .iCloudDrive,
+        "com.apple.CloudDocs.MobileDocumentsFileProvider": .iCloudDriveLegacy,
+        "com.imagam.ifiles2.docsfileprovider": .imagamIFiles,
         "com.keepassium.fileprovider.webdav": .keepassiumWebDAV,
         "com.keepassium.fileprovider.onedrive": .keepassiumOneDrive,
         "mega.ios.MEGAPickerFileProvider": .megaNz,
@@ -31,6 +32,7 @@ public enum FileProvider: Hashable {
         "it.twsweb.Nextcloud.File-Provider-Extension": .nextcloud,
         "com.microsoft.skydrive.onedrivefileprovider": .oneDrive,
         "com.owncloud.ios-app.ownCloud-File-Provider": .ownCloud,
+        "com.openxchange.mobile.drive2.drivefileprovider": .oxDrive,
         "com.pcloud.pcloud.FileProvider": .pCloud,
         "ch.protonmail.drive.fileprovider": .protonDrive,
         "com.qnap.qfile.FileProvider": .qnapQFile,
@@ -61,6 +63,7 @@ public enum FileProvider: Hashable {
     case googleDrive
     case iCloudDrive
     case iCloudDriveLegacy
+    case imagamIFiles
     case keepassiumWebDAV
     case keepassiumOneDrive
     case megaNz
@@ -68,6 +71,7 @@ public enum FileProvider: Hashable {
     case nextcloud
     case oneDrive
     case ownCloud
+    case oxDrive
     case pCloud
     case protonDrive
     case qnapQFile
@@ -159,6 +163,8 @@ public enum FileProvider: Hashable {
                 bundle: Bundle.framework,
                 value: "iCloud Drive",
                 comment: "Localized name of the storage service iCloud Drive (https://icloud.com/iclouddrive)")
+        case .imagamIFiles:
+            return "iFiles"
         case .keepassiumWebDAV:
             return LString.connectionTypeWebDAV
         case .keepassiumOneDrive:
@@ -193,6 +199,8 @@ public enum FileProvider: Hashable {
                 bundle: Bundle.framework,
                 value: "ownCloud",
                 comment: "Localized name of the storage service: ownCloud (https://owncloud.com)")
+        case .oxDrive:
+            return "OX Drive"
         case .pCloud:
             return NSLocalizedString(
                 "[FileProvider/pCloud/name]",
