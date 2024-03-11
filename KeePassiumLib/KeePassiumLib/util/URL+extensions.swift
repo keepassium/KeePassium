@@ -79,7 +79,10 @@ public extension URL {
             attributes = try targetURL.resourceValues(forKeys: attributeKeys)
         } catch {
             Diag.error("Failed to get file info [reason: \(error.localizedDescription)]")
-            let fileAccessError = FileAccessError.systemError(error)
+            let fileAccessError = FileAccessError.make(
+                from: error,
+                fileName: self.lastPathComponent,
+                fileProvider: FileProvider.find(for: self))
             completionQueue.addOperation {
                 completion(.failure(fileAccessError))
             }

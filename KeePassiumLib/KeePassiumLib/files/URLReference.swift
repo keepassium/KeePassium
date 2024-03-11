@@ -322,7 +322,10 @@ public class URLReference:
                 }
             } catch {
                 Diag.error("Failed to create file reference [message: \(error.localizedDescription)]")
-                let fileAccessError = FileAccessError.systemError(error)
+                let fileAccessError = FileAccessError.make(
+                    from: error,
+                    fileName: url.lastPathComponent,
+                    fileProvider: nil)
                 completionQueue.addOperation {
                     completion(.failure(fileAccessError))
                 }

@@ -55,7 +55,10 @@ public final class LocalDataSource: DataSource {
             }
         } catch {
             Diag.error("Failed to read file [message: \((error as NSError).description)]")
-            let fileAccessError = FileAccessError.systemError(error)
+            let fileAccessError = FileAccessError.make(
+                from: error,
+                fileName: url.lastPathComponent,
+                fileProvider: fileProvider)
             completionQueue.addOperation {
                 completion(.failure(fileAccessError))
             }
@@ -78,7 +81,10 @@ public final class LocalDataSource: DataSource {
             }
         } catch {
             Diag.error("Failed to write file [message: \(error.localizedDescription)")
-            let fileAccessError = FileAccessError.systemError(error)
+            let fileAccessError = FileAccessError.make(
+                from: error,
+                fileName: url.lastPathComponent,
+                fileProvider: fileProvider)
             completionQueue.addOperation {
                 completion(.failure(fileAccessError))
             }

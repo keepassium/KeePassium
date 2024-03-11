@@ -59,7 +59,10 @@ extension FileDataProvider {
                     }
                 } catch {
                     Diag.error("Failed to create file reference [message: \(error.localizedDescription)]")
-                    let fileAccessError = FileAccessError.systemError(error)
+                    let fileAccessError = FileAccessError.make(
+                        from: error,
+                        fileName: url.lastPathComponent,
+                        fileProvider: FileProvider.find(for: url))
                     completionQueue.addOperation {
                         completion(.failure(fileAccessError))
                     }
