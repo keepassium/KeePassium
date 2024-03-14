@@ -85,6 +85,11 @@ extension LString {
         bundle: Bundle.framework,
         value: "Hardware keys are not available in AutoFill.",
         comment: "A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI).")
+    public static let theseHardwareKeyNotAvailableInAutoFill = NSLocalizedString(
+        "[HardwareKey/AutoFill/TheseNotAvailable]",
+        bundle: Bundle.framework,
+        value: "These hardware keys are not available in AutoFill.",
+        comment: "Information notice for a list of hardware keys.")
     public static let iOSVersionTooOldForHardwareKey = NSLocalizedString(
         "[HardwareKey/NFC/OS too old]",
         bundle: Bundle.framework,

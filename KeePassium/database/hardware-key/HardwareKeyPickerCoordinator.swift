@@ -84,7 +84,6 @@ extension HardwareKeyPickerCoordinator {
         hardwareKeyPickerVC.selectedKey = yubiKey
     }
 
-    #if MAIN_APP
     private func maybeSelectKey(_ yubiKey: YubiKey?) {
         if PremiumManager.shared.isAvailable(feature: .canUseHardwareKeys) {
             setSelectedKey(yubiKey)
@@ -95,36 +94,10 @@ extension HardwareKeyPickerCoordinator {
             offerPremiumUpgrade(for: .canUseHardwareKeys, in: hardwareKeyPickerVC)
         }
     }
-    #endif
 }
 
 extension HardwareKeyPickerCoordinator: HardwareKeyPickerDelegate {
     func didSelectKey(_ yubiKey: YubiKey?, in picker: HardwareKeyPicker) {
-        #if MAIN_APP
-        didSelectKeyInMainApp(yubiKey, in: picker)
-        #elseif AUTOFILL_EXT
-        didSelectKeyInAutoFill(yubiKey, in: picker)
-        #else
-        assertionFailure("You should not be here")
-        #endif
-    }
-
-    #if MAIN_APP
-    private func didSelectKeyInMainApp(_ yubiKey: YubiKey?, in picker: HardwareKeyPicker) {
         maybeSelectKey(yubiKey)
     }
-    #endif
-
-    #if AUTOFILL_EXT
-    private func didSelectKeyInAutoFill(_ yubiKey: YubiKey?, in picker: HardwareKeyPicker) {
-        guard yubiKey == nil else {
-            Diag.warning("Hardware keys are not available in AutoFill")
-            assertionFailure("How did we end up here?")
-            return
-        }
-        setSelectedKey(nil)
-        delegate?.didSelectKey(nil, in: self)
-        dismiss(animated: true)
-    }
-    #endif
 }

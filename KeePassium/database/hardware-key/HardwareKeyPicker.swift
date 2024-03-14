@@ -90,17 +90,10 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        #if MAIN_APP
         isNFCAvailable = ChallengeResponseManager.instance.supportsNFC
         isMFIAvailable = ChallengeResponseManager.instance.supportsMFI
         isUSBAvailable = ChallengeResponseManager.instance.supportsUSB
         isMFIoverUSB = ChallengeResponseManager.instance.supportsMFIoverUSB
-        #elseif AUTOFILL_EXT
-        isNFCAvailable = false
-        isMFIAvailable = false
-        isUSBAvailable = false
-        isMFIoverUSB = false
-        #endif
     }
 
     private func addTableFooterButton() {
@@ -173,12 +166,13 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         switch Section.allValues[section] {
         case .noHardwareKey:
-            if AppGroup.isAppExtension {
-                return LString.hardwareKeyNotAvailableInAutoFill
-            }
+            return nil
         case .yubiKeyNFC:
             guard #available(iOS 13, *) else {
                 return LString.iOSVersionTooOldForHardwareKey
+            }
+            if AppGroup.isAppExtension {
+                return LString.theseHardwareKeyNotAvailableInAutoFill
             }
         case .yubiKeyMFI:
             if isMFIoverUSB {
@@ -186,7 +180,11 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
             }
         case .yubiKeyUSB:
             if ProcessInfo.isCatalystApp {
-                return nil
+                if AppGroup.isAppExtension {
+                    return LString.theseHardwareKeyNotAvailableInAutoFill
+                } else {
+                    return nil
+                }
             }
             if ProcessInfo.isiPadAppOnMac {
                 return LString.usbUnavailableIPadAppOnMac

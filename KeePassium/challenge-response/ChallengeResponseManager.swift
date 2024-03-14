@@ -33,6 +33,7 @@ class ChallengeResponseManager {
 
     private var queue: DispatchQueue
     private var usbYubiKey: YubiKeyUSB?
+    private weak var sheetPresenter: UIView?
 
     private init() {
         queue = DispatchQueue(label: "ChallengeResponseManager")
@@ -44,15 +45,21 @@ class ChallengeResponseManager {
         nfcSessionStateObservation = nil
     }
 
-    public static func makeHandler(for yubiKey: YubiKey?) -> ChallengeHandler? {
+    public static func makeHandler(for yubiKey: YubiKey?, presenter: UIView) -> ChallengeHandler? {
         guard let yubiKey = yubiKey else {
             Diag.debug("Challenge-response is not used")
             return nil
         }
-        let challengeHandler: ChallengeHandler = { challenge, responseHandler in
+
+        var topPresenter = presenter
+        while topPresenter.superview != nil {
+            topPresenter = topPresenter.superview!
+        }
+        let challengeHandler: ChallengeHandler = { [weak topPresenter] challenge, responseHandler in
             instance.perform(
                 with: yubiKey,
                 challenge: challenge,
+                presenter: topPresenter,
                 responseHandler: responseHandler
             )
         }
@@ -155,13 +162,15 @@ class ChallengeResponseManager {
     }
 
 
-    public func perform(
+    private func perform(
         with yubiKey: YubiKey,
         challenge: SecureBytes,
+        presenter: UIView?,
         responseHandler: @escaping ResponseHandler
     ) {
         self.challenge = challenge.clone()
         self.responseHandler = responseHandler
+        self.sheetPresenter = presenter
 
         isResponseSent = false
         switch yubiKey.interface {
@@ -220,7 +229,11 @@ class ChallengeResponseManager {
         responseHandler: @escaping ResponseHandler
     ) {
         guard #available(iOS 13, *), supportsNFC else {
+            #if AUTOFILL_EXT
+            returnError(.notAvailableInAutoFill)
+            #else
             returnError(.notSupportedByDeviceOrSystem(interface: yubiKey.interface.description))
+            #endif
             return
         }
         currentKey = yubiKey
@@ -235,7 +248,11 @@ class ChallengeResponseManager {
         responseHandler: @escaping ResponseHandler
     ) {
         guard supportsUSB else {
+            #if AUTOFILL_EXT
+            returnError(.notAvailableInAutoFill)
+            #else
             returnError(.notSupportedByDeviceOrSystem(interface: yubiKey.interface.description))
+            #endif
             return
         }
         #if !targetEnvironment(macCatalyst)
@@ -524,11 +541,15 @@ class ChallengeResponseManager {
             }
             self.mfiKeyActionSheetView = MFIKeyActionSheetView.loadViewFromNib()
             guard let actionSheet = self.mfiKeyActionSheetView,
-                let parentView = UIApplication.shared.getKeyWindow()
-                else { fatalError() }
+                  let sheetPresenter = sheetPresenter
+            else {
+                Diag.error("Internal error, cannot present YubiKey dialog. Cancelling")
+                assertionFailure()
+                return
+            }
             actionSheet.delegate = self
-            actionSheet.frame = parentView.bounds
-            parentView.addSubview(actionSheet)
+            actionSheet.frame = sheetPresenter.bounds
+            sheetPresenter.addSubview(actionSheet)
             actionSheet.present(animated: true, delay: delay, completion: completion)
             self.setMFIActionSheet(state: state, message: message)
         }

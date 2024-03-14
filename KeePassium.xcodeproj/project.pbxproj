@@ -260,6 +260,16 @@
 		756B15D024C19C1E004A75B6 /* FileAddingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756B15CE24C19C1E004A75B6 /* FileAddingHelper.swift */; };
 		756B15D124C19C1E004A75B6 /* FileAddingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756B15CE24C19C1E004A75B6 /* FileAddingHelper.swift */; };
 		756B15D224C19C1E004A75B6 /* FileAddingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756B15CE24C19C1E004A75B6 /* FileAddingHelper.swift */; };
+		756D946D2BA2F27D0084BDF5 /* YubiKit in Frameworks */ = {isa = PBXBuildFile; productRef = 756D946C2BA2F27D0084BDF5 /* YubiKit */; settings = {ATTRIBUTES = (Weak, ); }; };
+		756D946F2BA2F29F0084BDF5 /* YubiKit in Frameworks */ = {isa = PBXBuildFile; productRef = 756D946E2BA2F29F0084BDF5 /* YubiKit */; };
+		756D94702BA2F2BB0084BDF5 /* ChallengeResponseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558D06123CE2F3E00547621 /* ChallengeResponseManager.swift */; };
+		756D94712BA2F2BC0084BDF5 /* ChallengeResponseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558D06123CE2F3E00547621 /* ChallengeResponseManager.swift */; };
+		756D94722BA2F2C50084BDF5 /* MFIKeyActionSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F28782245D646B00F03657 /* MFIKeyActionSheetView.xib */; };
+		756D94732BA2F2C60084BDF5 /* MFIKeyActionSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F28782245D646B00F03657 /* MFIKeyActionSheetView.xib */; };
+		756D94742BA2F2CA0084BDF5 /* MFIKeyActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F28781245D646B00F03657 /* MFIKeyActionSheetView.swift */; };
+		756D94752BA2F2CB0084BDF5 /* MFIKeyActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F28781245D646B00F03657 /* MFIKeyActionSheetView.swift */; };
+		756D94762BA2F2CE0084BDF5 /* YubiKeyUSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD22DB27FDE59200636D66 /* YubiKeyUSB.swift */; };
+		756D94772BA2F2CF0084BDF5 /* YubiKeyUSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD22DB27FDE59200636D66 /* YubiKeyUSB.swift */; };
 		756DBE2E275994B800E4270B /* ASExtensionError+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756DBE2D275994B800E4270B /* ASExtensionError+extensions.swift */; };
 		756DBE2F275994B800E4270B /* ASExtensionError+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756DBE2D275994B800E4270B /* ASExtensionError+extensions.swift */; };
 		756F363F260E9668005A35DA /* KeyFilePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532A24C21C5A035005DF56F /* KeyFilePickerVC.swift */; };
@@ -2482,6 +2492,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				756D946D2BA2F27D0084BDF5 /* YubiKit in Frameworks */,
 				750CFBD721BA9B6200E62B09 /* KeePassiumLib.framework in Frameworks */,
 				750CFBC821BA9ACD00E62B09 /* AuthenticationServices.framework in Frameworks */,
 				F331EF2A2A8509A10084473D /* Zxcvbn in Frameworks */,
@@ -2544,6 +2555,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				756D946F2BA2F29F0084BDF5 /* YubiKit in Frameworks */,
 				751146E6233F9E2900443BCD /* KeePassiumLib.framework in Frameworks */,
 				75D7DFAA233E5E310029AD87 /* AuthenticationServices.framework in Frameworks */,
 				F331EF2E2A8509B30084473D /* Zxcvbn in Frameworks */,
@@ -3443,6 +3455,7 @@
 			name = "KeePassium AutoFill";
 			packageProductDependencies = (
 				F331EF292A8509A10084473D /* Zxcvbn */,
+				756D946C2BA2F27D0084BDF5 /* YubiKit */,
 			);
 			productName = "KeePassium AutoFill";
 			productReference = 750CFBC721BA9ACD00E62B09 /* KeePassium AutoFill.appex */;
@@ -3542,6 +3555,7 @@
 			name = "KeePassium Pro AutoFill";
 			packageProductDependencies = (
 				F331EF2D2A8509B30084473D /* Zxcvbn */,
+				756D946E2BA2F29F0084BDF5 /* YubiKit */,
 			);
 			productName = "KeePassium AutoFill";
 			productReference = 75D7DFBE233E5E310029AD87 /* KeePassium Pro AutoFill.appex */;
@@ -3706,6 +3720,7 @@
 				7583EA722685D21F009969E7 /* DatabasePickerVC.storyboard in Resources */,
 				758D27212686174C006764C0 /* DatabaseUnlockerVC.storyboard in Resources */,
 				756AFD64258CF4E40072BEEF /* appstore-family-sharing.html in Resources */,
+				756D94722BA2F2C50084BDF5 /* MFIKeyActionSheetView.xib in Resources */,
 				755B863223054FAD00E9FC83 /* PasscodeInputVC.storyboard in Resources */,
 				75C51454234A792B00B44512 /* Assets.xcassets in Resources */,
 				751E0D352309AFFC0088BB10 /* EntryFinderVC.storyboard in Resources */,
@@ -4006,6 +4021,7 @@
 				7583EA752685D220009969E7 /* DatabasePickerVC.storyboard in Resources */,
 				758D27222686174C006764C0 /* DatabaseUnlockerVC.storyboard in Resources */,
 				756AFD66258CF4E40072BEEF /* appstore-family-sharing.html in Resources */,
+				756D94732BA2F2C60084BDF5 /* MFIKeyActionSheetView.xib in Resources */,
 				75D7DFAF233E5E310029AD87 /* PasscodeInputVC.storyboard in Resources */,
 				75C51455234A792C00B44512 /* Assets.xcassets in Resources */,
 				75D7DFB0233E5E310029AD87 /* EntryFinderVC.storyboard in Resources */,
@@ -4135,6 +4151,7 @@
 				75A94C4428441C5F00A94B94 /* PasswordGeneratorQuickSheetVC.swift in Sources */,
 				759894B824620AF6006B6709 /* FileExportHelper.swift in Sources */,
 				758622782A4B798500D50B68 /* ErrorMessageView.swift in Sources */,
+				756D94702BA2F2BB0084BDF5 /* ChallengeResponseManager.swift in Sources */,
 				758BADB624B5EAFF00CC9265 /* GradientSeparatorView.swift in Sources */,
 				75679ACC22F887AB00372301 /* AppInfo.swift in Sources */,
 				75480504238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
@@ -4161,6 +4178,7 @@
 				7516B0D627292A130042F40E /* UIMenu+extensions.swift in Sources */,
 				7514CC9F22D5D14B00A0D7A4 /* LongPressAwareNavigationController.swift in Sources */,
 				757ADC4623A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
+				756D94752BA2F2CB0084BDF5 /* MFIKeyActionSheetView.swift in Sources */,
 				75679ACF22FD897000372301 /* NewsCenter.swift in Sources */,
 				75D3A3B121BAE66F00255FC3 /* FileListCell.swift in Sources */,
 				75267CFF25FF75E300A1CC95 /* ContextualAction.swift in Sources */,
@@ -4175,6 +4193,7 @@
 				757FB3CD21F9C50700F016FA /* ValidatingTextField.swift in Sources */,
 				75DDB5E5228BF88C0018A50F /* FileInfoReloader.swift in Sources */,
 				7573FD8C2321664F00DCDA5A /* MultilineButton.swift in Sources */,
+				756D94762BA2F2CE0084BDF5 /* YubiKeyUSB.swift in Sources */,
 				75C1AF872731E54D00E33AAC /* DatabaseSettingsVC.swift in Sources */,
 				759ADB88285A22CD00D93BD4 /* AnnouncementView.swift in Sources */,
 				750CFBD921BAD7FF00E62B09 /* Refreshable.swift in Sources */,
@@ -4968,6 +4987,7 @@
 				7590231F2AB4594A009E6213 /* Favicon.swift in Sources */,
 				7524E7482888B56600ECBEC8 /* RightDetailCell.swift in Sources */,
 				759ADB8F285A284B00D93BD4 /* AnnouncementCell.swift in Sources */,
+				756D94712BA2F2BC0084BDF5 /* ChallengeResponseManager.swift in Sources */,
 				7526404D284653580003DDFA /* TextInput+editMenu.swift in Sources */,
 				75A94C4628441C5F00A94B94 /* PasswordGeneratorQuickSheetVC.swift in Sources */,
 				759894BA24620AF6006B6709 /* FileExportHelper.swift in Sources */,
@@ -5046,6 +5066,7 @@
 				754E409B26306927003E4854 /* DatabaseUnlockerCoordinator.swift in Sources */,
 				7538936C26D3BEBE00CAB107 /* KeyboardDismissable.swift in Sources */,
 				75D7DF9E233E5E310029AD87 /* ProgressOverlay.swift in Sources */,
+				756D94772BA2F2CF0084BDF5 /* YubiKeyUSB.swift in Sources */,
 				7524E74D2888B58200ECBEC8 /* TextFieldCell.swift in Sources */,
 				7583EA6F2685D1FB009969E7 /* DatabasePickerVC.swift in Sources */,
 				7526403F28455DC00003DDFA /* PasswordGeneratorVC.swift in Sources */,
@@ -5067,6 +5088,7 @@
 				753DF2D3263E0EF30046F185 /* PlaceholderVC.swift in Sources */,
 				756F364D260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */,
 				75BFB1492481D19B0017B980 /* FileProvider+extensions.swift in Sources */,
+				756D94742BA2F2CA0084BDF5 /* MFIKeyActionSheetView.swift in Sources */,
 				75D7DFA3233E5E310029AD87 /* UILabel+extensions.swift in Sources */,
 				75D21BD52B642BB20065D95E /* OneDriveConnectionSetupCoordinator.swift in Sources */,
 				7572665D24CB1B500099B6E1 /* HelpArticle.swift in Sources */,
@@ -6850,6 +6872,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		756D946C2BA2F27D0084BDF5 /* YubiKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 75D1C58427B415480079E97E /* XCRemoteSwiftPackageReference "yubikit-ios" */;
+			productName = YubiKit;
+		};
+		756D946E2BA2F29F0084BDF5 /* YubiKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 75D1C58427B415480079E97E /* XCRemoteSwiftPackageReference "yubikit-ios" */;
+			productName = YubiKit;
+		};
 		75D075AE28B639D200F02E39 /* YubiKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 75D075AF28B639D200F02E39 /* XCRemoteSwiftPackageReference "yubikit-ios" */;

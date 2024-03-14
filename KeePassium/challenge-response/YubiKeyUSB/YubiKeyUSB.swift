@@ -27,13 +27,16 @@ class YubiKeyUSB {
     }
 
     public static var isSupported: Bool {
-        if #available(macCatalyst 12, *),
-           ProcessInfo.isCatalystApp
-        {
-            return true
-        } else {
+        guard #available(macCatalyst 12, *),
+              ProcessInfo.isCatalystApp
+        else {
             return false
         }
+        #if MAIN_APP
+        return true
+        #elseif AUTOFILL_EXT
+        return false // app extension cannot get "input monitoring" permission
+        #endif
     }
 
 #if targetEnvironment(macCatalyst)

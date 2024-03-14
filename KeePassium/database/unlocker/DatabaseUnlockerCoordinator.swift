@@ -233,16 +233,6 @@ extension DatabaseUnlockerCoordinator {
         databaseUnlockerVC.refresh()
     }
 
-    #if AUTOFILL_EXT
-    private func challengeHandlerForAutoFill(
-        challenge: SecureBytes,
-        responseHandler: @escaping ResponseHandler
-    ) {
-        Diag.warning("YubiKey is not available in AutoFill")
-        responseHandler(SecureBytes.empty(), .notAvailableInAutoFill)
-    }
-    #endif
-
     private func canUnlockAutomatically() -> Bool {
         if reloadingContext != nil {
             return true
@@ -279,11 +269,10 @@ extension DatabaseUnlockerCoordinator {
     private func retryToUnlockDatabase() {
         assert(databaseLoader == nil)
 
-        #if AUTOFILL_EXT
-        let challengeHandler = (selectedHardwareKey != nil) ? challengeHandlerForAutoFill : nil
-        #elseif MAIN_APP
-        let challengeHandler = ChallengeResponseManager.makeHandler(for: selectedHardwareKey)
-        #endif
+        let challengeHandler = ChallengeResponseManager.makeHandler(
+            for: selectedHardwareKey,
+            presenter: router.navigationController.view
+        )
 
         let databaseSettingsManager = DatabaseSettingsManager.shared
         let dbSettings = databaseSettingsManager.getSettings(for: databaseRef)

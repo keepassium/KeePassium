@@ -108,7 +108,10 @@ class DatabaseCreatorCoordinator: NSObject, Coordinator {
             return
         }
 
-        let _challengeHandler = ChallengeResponseManager.makeHandler(for: databaseCreatorVC.yubiKey)
+        let _challengeHandler = ChallengeResponseManager.makeHandler(
+            for: databaseCreatorVC.yubiKey,
+            presenter: router.navigationController.view
+        )
         DatabaseManager.createDatabase(
             databaseURL: tmpFileURL,
             password: databaseCreatorVC.password,

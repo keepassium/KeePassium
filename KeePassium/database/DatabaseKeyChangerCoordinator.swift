@@ -116,7 +116,10 @@ extension DatabaseKeyChangerCoordinator {
         database.keyHelper.createCompositeKey(
             password: newPassword,
             keyFile: newKeyFile,
-            challengeHandler: ChallengeResponseManager.makeHandler(for: newYubiKey),
+            challengeHandler: ChallengeResponseManager.makeHandler(
+                for: newYubiKey,
+                presenter: router.navigationController.view
+            ),
             completion: { [weak self] result in
                 guard let self = self else { return }
                 switch result {
