@@ -305,40 +305,18 @@ class YubiKeyUSB {
         }
     }
 
-    private func calculateCRC(data: Data) -> UInt16 {
-        var crc: UInt16 = 0xFFFF
-        data.forEach { byte in
-            crc ^= UInt16(byte)
-            (0..<8).forEach { _ in
-                let lastBit = crc & 1
-                crc >>= 1
-                if lastBit != 0 {
-                    crc ^= 0x8408
-                }
-            }
-        }
-        return crc
-    }
-
-    private func padRight(_ data: Data, toSize: Int) -> Data {
-        var paddedData = data
-        let padding = Data(count: toSize - data.count)
-        paddedData.append(padding)
-        return paddedData
-    }
-
     private func rawSendAndReceive(
         slot: UInt8,
         data: Data,
         observer: YubiKeyStateObserver?
     ) throws -> Data {
-        let paddedData = padRight(data, toSize: YubiKeyLayer.slotDataSize)
+        let paddedData = data.withZeroPadding(toSize: YubiKeyLayer.slotDataSize)
         guard paddedData.count <= YubiKeyLayer.slotDataSize else {
             Diag.warning("YubiKey payload too large for HID frame")
             throw Error.communicationFailure
         }
 
-        let crc = calculateCRC(data: paddedData)
+        let crc = paddedData.getISO13239Checksum()
         var frame = paddedData
         frame.append(slot)
         frame.append(UInt8(crc & 0xFF))
@@ -357,8 +335,8 @@ class YubiKeyUSB {
         observer: YubiKeyStateObserver? = nil
     ) throws -> Data {
         let rawResponse = try rawSendAndReceive(slot: slot, data: data, observer: observer)
-        let responseWithCRC = rawResponse.prefix(expectedCount + 2) 
-        let payloadCRCResidue = calculateCRC(data: responseWithCRC)
+        let responseWithCRC = rawResponse.prefix(expectedCount + 2)
+        let payloadCRCResidue = responseWithCRC.getISO13239Checksum()
         guard payloadCRCResidue == YubiKeyLayer.crcValidResidue else {
             Diag.warning("USB HID response has invalid CRC")
             throw Error.communicationFailure
@@ -388,7 +366,7 @@ class YubiKeyUSB {
         observer: YubiKeyStateObserver? = nil
     ) throws -> Data {
         assert(slot == .chalHMAC1 || slot == .chalHMAC2)
-        let paddedChallenge = padRight(challenge, toSize: YubiKeyLayer.hmacChallengeSize)
+        let paddedChallenge = challenge.withPKCS7Padding(toSize: YubiKeyLayer.hmacChallengeSize)
 
         assert(paddedChallenge.count == YubiKeyLayer.hmacChallengeSize)
         let response = try sendAndReceive(
@@ -408,6 +386,40 @@ class YubiKeyUSB {
     }
 #endif
 }
+
+#if targetEnvironment(macCatalyst)
+fileprivate extension Data {
+    func getISO13239Checksum() -> UInt16 {
+        var crc: UInt16 = 0xFFFF
+        self.forEach { byte in
+            crc ^= UInt16(byte)
+            (0..<8).forEach { _ in
+                let lastBit = crc & 1
+                crc >>= 1
+                if lastBit != 0 {
+                    crc ^= 0x8408
+                }
+            }
+        }
+        return crc
+    }
+
+    func withPKCS7Padding(toSize: Int) -> Data {
+        var paddedData = self
+        let paddingLength = toSize - self.count
+        let pkcs7padding: [UInt8] = Array(repeating: UInt8(paddingLength), count: paddingLength)
+        paddedData.append(contentsOf: pkcs7padding)
+        return paddedData
+    }
+
+    func withZeroPadding(toSize: Int) -> Data {
+        var paddedData = self
+        let zeroPadding: [UInt8] = Array(repeating: 0, count: toSize - self.count)
+        paddedData.append(contentsOf: zeroPadding)
+        return paddedData
+    }
+}
+#endif
 
 #if targetEnvironment(macCatalyst)
 fileprivate extension IOHIDDevice {
