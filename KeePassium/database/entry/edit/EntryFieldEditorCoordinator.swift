@@ -177,7 +177,11 @@ final class EntryFieldEditorCoordinator: Coordinator {
         quickMode: Bool,
         in viewController: UIViewController
     ) {
-        let passGenCoordinator = PasswordGeneratorCoordinator(router: router, quickMode: quickMode)
+        let passGenCoordinator = PasswordGeneratorCoordinator(
+            router: router,
+            quickMode: quickMode,
+            hasTarget: true
+        )
         passGenCoordinator.dismissHandler = { [weak self] coordinator in
             self?.removeChildCoordinator(coordinator)
         }

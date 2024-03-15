@@ -24,7 +24,11 @@ extension Coordinator {
         } else {
             modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
         }
-        let passGenCoordinator = PasswordGeneratorCoordinator(router: modalRouter, quickMode: true)
+        let passGenCoordinator = PasswordGeneratorCoordinator(
+            router: modalRouter,
+            quickMode: true,
+            hasTarget: false
+        )
         passGenCoordinator.dismissHandler = { [weak self] coordinator in
             self?.removeChildCoordinator(coordinator)
         }

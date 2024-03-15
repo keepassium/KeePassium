@@ -24,6 +24,11 @@ public extension LString {
             bundle: Bundle.framework,
             value: "Generate",
             comment: "Action/button: generate random text/password/phrase")
+        public static let actionAccept = NSLocalizedString(
+            "[PasswordGenerator/Accept/action]",
+            bundle: Bundle.framework,
+            value: "Accept",
+            comment: "Action/button: accept/use the generated password")
 
         public static let titleGeneratedText = NSLocalizedString(
             "[PasswordGenerator/GeneratedText/title]",

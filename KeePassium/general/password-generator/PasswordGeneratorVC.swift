@@ -64,16 +64,17 @@ final public class PasswordGeneratorVC: UIViewController, Refreshable {
         static let passphraseModeWordCase = IndexPath(row: 1, section: 2)
     }
 
+    @IBOutlet private weak var passwordView: UIView!
     @IBOutlet private weak var passwordLabel: PasswordGeneratorLabel!
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var copyButton: UIBarButtonItem!
+    @IBOutlet private weak var copyButton: UIButton!
     @IBOutlet private weak var updateButton: UIBarButtonItem!
-    @IBOutlet private weak var doneButton: UIBarButtonItem!
-    @IBOutlet private weak var altDoneButton: UIBarButtonItem!
     @IBOutlet private weak var passwordQualityIndicatorView: PasswordQualityIndicatorView!
+    private weak var acceptButton: UIBarButtonItem?
 
     public weak var delegate: PasswordGeneratorDelegate?
 
+    public private(set) var isStandalone = true
     public internal(set) var config: PasswordGeneratorParams!
     public internal(set) var mode: PasswordGeneratorMode = .basic
 
@@ -84,19 +85,84 @@ final public class PasswordGeneratorVC: UIViewController, Refreshable {
         return queue
     }()
 
+    public static func make(standaloneMode: Bool) -> PasswordGeneratorVC {
+        let vc = Self.instantiateFromStoryboard()
+        vc.isStandalone = standaloneMode
+        return vc
+    }
+
     public override func viewDidLoad() {
         super.viewDidLoad()
         title = LString.PasswordGenerator.titleRandomGenerator
-
-        copyButton.accessibilityLabel = LString.actionCopy
-        updateButton.accessibilityLabel = LString.PasswordGenerator.actionGenerate
 
         tableView.delegate = self
         tableView.dataSource = self
         generate(animated: false)
 
+        setupToolbars()
+        setupPasswordView()
+
+        UIAccessibility.post(notification: .screenChanged, argument: passwordLabel)
+    }
+
+    private func setupToolbars() {
+        let updateButton = UIBarButtonItem(
+            barButtonSystemItem: .refresh,
+            target: self,
+            action: #selector(didPressRegenerate)
+        )
+        updateButton.accessibilityLabel = LString.PasswordGenerator.actionGenerate
+
+        toolbarItems = [
+            UIBarButtonItem.flexibleSpace(),
+            updateButton,
+            UIBarButtonItem.flexibleSpace(),
+        ]
+
+        if isStandalone {
+            let closeButton = UIBarButtonItem(
+                barButtonSystemItem: .close,
+                target: self,
+                action: #selector(didPressDone)
+            )
+            navigationItem.rightBarButtonItem = closeButton
+        } else {
+            let acceptButton = UIBarButtonItem(
+                title: LString.PasswordGenerator.actionAccept,
+                style: .done,
+                target: self,
+                action: #selector(didPressDone)
+            )
+            navigationItem.rightBarButtonItem = acceptButton
+            self.acceptButton = acceptButton
+        }
+    }
+
+    private func setupPasswordView() {
+        copyButton.accessibilityLabel = LString.actionCopy
+        passwordView.accessibilityElements = [
+            passwordLabel!,
+            copyButton!,
+            passwordQualityIndicatorView!
+        ]
         setupAccessibility(passwordLabel)
-        UIAccessibility.post(notification: .screenChanged, argument: passwordLabel )
+    }
+
+    private func setupAccessibility(_ label: PasswordGeneratorLabel) {
+        let acceptAction = UIAccessibilityCustomAction(name: LString.actionDone) { [weak self] action in
+            self?.didPressDone(action)
+            return true
+        }
+        let copyAction = UIAccessibilityCustomAction(name: LString.actionCopy) { [weak self] action in
+            self?.didPressCopyToClipboard(action)
+            return true
+        }
+        let generateAction = UIAccessibilityCustomAction(name: LString.PasswordGenerator.actionGenerate) {
+            [weak self] action in
+            self?.didPressRegenerate(action)
+            return true
+        }
+        label.accessibilityCustomActions = [acceptAction, copyAction, generateAction]
     }
 
     func refresh() {
@@ -138,8 +204,7 @@ extension PasswordGeneratorVC {
         passwordLabel.lineBreakMode = .byWordWrapping
         passwordLabel.accessibilityIsPhrase = true
 
-        doneButton.isEnabled = true
-        altDoneButton.isEnabled = true
+        acceptButton?.isEnabled = true
         copyButton.isEnabled = true
 
         updateQualityIndicator(password: passphrase)
@@ -156,8 +221,7 @@ extension PasswordGeneratorVC {
             font: .monospaceFont(style: .body))
         passwordLabel.accessibilityIsPhrase = false
 
-        doneButton.isEnabled = true
-        altDoneButton.isEnabled = true
+        acceptButton?.isEnabled = true
         copyButton.isEnabled = true
 
         updateQualityIndicator(password: password)
@@ -185,23 +249,6 @@ extension PasswordGeneratorVC {
         qualityEstimationQueue.addOperation(updateOperation)
     }
 
-    private func setupAccessibility(_ label: PasswordGeneratorLabel) {
-        let acceptAction = UIAccessibilityCustomAction(name: LString.actionDone) { [weak self] action in
-            self?.didPressDone(action)
-            return true
-        }
-        let copyAction = UIAccessibilityCustomAction(name: LString.actionCopy) { [weak self] action in
-            self?.didPressCopyToClipboard(action)
-            return true
-        }
-        let generateAction = UIAccessibilityCustomAction(name: LString.PasswordGenerator.actionGenerate) {
-            [weak self] action in
-            self?.didPressRegenerate(action)
-            return true
-        }
-        label.accessibilityCustomActions = [acceptAction, copyAction, generateAction]
-    }
-
     public func showError(_ error: Error) {
         passwordLabel.attributedText = nil
         passwordLabel.text = error.localizedDescription
@@ -224,8 +271,7 @@ extension PasswordGeneratorVC {
         UIAccessibility.post(notification: .announcement, argument: errorIntro)
         UIAccessibility.post(notification: .announcement, argument: errorDescription)
 
-        doneButton.isEnabled = false
-        altDoneButton.isEnabled = false
+        acceptButton?.isEnabled = false
         copyButton.isEnabled = false
         updateQualityIndicator(password: nil)
     }

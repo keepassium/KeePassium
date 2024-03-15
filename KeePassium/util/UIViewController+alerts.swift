@@ -80,18 +80,19 @@ extension UIViewController {
         _ message: String,
         title: String? = nil,
         image: UIImage? = nil,
+        in hostView: UIView? = nil,
         position: ToastPosition = .top,
         hidePrevious: Bool = false,
         action: ToastAction? = nil,
         duration: TimeInterval = 5.0
     ) {
+        let hostView = hostView ?? getHostViewForToastNotifications()
         if hidePrevious {
-            getHostViewForToastNotifications().hideAllToasts()
+            hostView.hideAllToasts()
         }
         var style = ToastStyle()
         style.buttonColor = .actionTint
 
-        let hostView = getHostViewForToastNotifications()
         let toastView = hostView.toastViewForMessage(
             message,
             title: title,

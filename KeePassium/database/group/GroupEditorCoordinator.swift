@@ -127,7 +127,7 @@ final class GroupEditorCoordinator: Coordinator {
         for textInput: TextInputView,
         in groupEditor: GroupEditorVC
     ) {
-        let passGenCoordinator = PasswordGeneratorCoordinator(router: router, quickMode: true)
+        let passGenCoordinator = PasswordGeneratorCoordinator(router: router, quickMode: true, hasTarget: true)
         passGenCoordinator.dismissHandler = { [weak self] coordinator in
             self?.removeChildCoordinator(coordinator)
         }

@@ -25,18 +25,20 @@ final class PasswordGeneratorCoordinator: Coordinator {
     private let firstVC: UIViewController
     private var passGenVC: PasswordGeneratorVC?
     private var quickSheetVC: PasswordGeneratorQuickSheetVC?
+    private let hasTarget: Bool
 
     private let passwordGenerator = PasswordGenerator()
     private let passphraseGenerator = PassphraseGenerator()
 
-    init(router: NavigationRouter, quickMode: Bool) {
+    init(router: NavigationRouter, quickMode: Bool, hasTarget: Bool) {
         self.router = router
+        self.hasTarget = hasTarget
         if quickMode {
             let quickModeVC = PasswordGeneratorQuickSheetVC()
             self.quickSheetVC = quickModeVC
             firstVC = quickModeVC
         } else {
-            let fullModeVC = PasswordGeneratorVC.instantiateFromStoryboard()
+            let fullModeVC = PasswordGeneratorVC.make(standaloneMode: !hasTarget)
             self.passGenVC = fullModeVC
             firstVC = fullModeVC
             prepareFullModeGenerator(fullModeVC)
@@ -122,7 +124,7 @@ extension PasswordGeneratorCoordinator {
         }
     }
 
-    private func performCopyToClipboard(in viewController: UIViewController) {
+    private func performCopyToClipboard(toastHost: UIView? = nil, in viewController: UIViewController) {
         let clipboardTimeout = TimeInterval(Settings.current.clipboardTimeout.seconds)
         Clipboard.general.insert(text: generatedPassword, timeout: clipboardTimeout)
         HapticFeedback.play(.copiedToClipboard)
@@ -138,6 +140,9 @@ extension PasswordGeneratorCoordinator {
             viewController.showNotification(
                 LString.titleCopiedToClipboard,
                 image: .symbol(.docOnDoc),
+                in: toastHost,
+                position: (toastHost != nil) ? .center : .top,
+                hidePrevious: true,
                 duration: 1)
         }
     }
@@ -175,7 +180,6 @@ extension PasswordGeneratorCoordinator: PasswordGeneratorDelegate {
 
     func didPressCopyToClipboard(in viewController: PasswordGeneratorVC) {
         performCopyToClipboard(in: viewController)
-        dismiss()
     }
 
     func didPressWordlistInfo(wordlist: PassphraseWordlist, in viewController: PasswordGeneratorVC) {
@@ -185,13 +189,16 @@ extension PasswordGeneratorCoordinator: PasswordGeneratorDelegate {
 }
 
 extension PasswordGeneratorCoordinator: PasswordGeneratorQuickSheetDelegate {
-    func didSelectItem(_ text: String, in viewController: PasswordGeneratorQuickSheetVC) {
-        guard let delegate = delegate else {
-            didPressCopy(text, in: viewController)
-            return
+    func didSelectItem(_ text: String, view: UIView?, in viewController: PasswordGeneratorQuickSheetVC) {
+        if hasTarget {
+            delegate?.didAcceptPassword(text, in: self)
+            dismiss()
+        } else {
+            didPressCopy(text, inView: view, in: viewController)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [self] in
+                dismiss()
+            }
         }
-        delegate.didAcceptPassword(text, in: self)
-        dismiss()
     }
 
     func shouldGenerateText(
@@ -212,17 +219,14 @@ extension PasswordGeneratorCoordinator: PasswordGeneratorQuickSheetDelegate {
         return result
     }
 
-    func didPressCopy(_ text: String, in viewController: PasswordGeneratorQuickSheetVC) {
+    func didPressCopy(_ text: String, inView parent: UIView?, in viewController: PasswordGeneratorQuickSheetVC) {
         generatedPassword = text
-        performCopyToClipboard(in: viewController)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.dismiss()
-        }
+        performCopyToClipboard(toastHost: parent, in: viewController)
     }
 
     func didRequestFullMode(in viewController: PasswordGeneratorQuickSheetVC) {
         assert(passGenVC == nil, "Already in full mode?")
-        let fullModeVC = PasswordGeneratorVC.instantiateFromStoryboard()
+        let fullModeVC = PasswordGeneratorVC.make(standaloneMode: !hasTarget)
         fullModeVC.delegate = self
         self.passGenVC = fullModeVC
         prepareFullModeGenerator(fullModeVC)

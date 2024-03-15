@@ -47,8 +47,8 @@ enum QuickRandomTextMode: Int, CaseIterable, CustomStringConvertible {
 
 protocol PasswordGeneratorQuickSheetDelegate: AnyObject {
     func didRequestFullMode(in viewController: PasswordGeneratorQuickSheetVC)
-    func didPressCopy(_ text: String, in viewController: PasswordGeneratorQuickSheetVC)
-    func didSelectItem(_ text: String, in viewController: PasswordGeneratorQuickSheetVC)
+    func didPressCopy(_ text: String, inView: UIView?, in viewController: PasswordGeneratorQuickSheetVC)
+    func didSelectItem(_ text: String, view: UIView?, in viewController: PasswordGeneratorQuickSheetVC)
     func shouldGenerateText(
         mode: QuickRandomTextMode,
         in viewController: PasswordGeneratorQuickSheetVC) -> String?
@@ -137,7 +137,7 @@ final class PasswordGeneratorQuickSheetVC: UITableViewController, Refreshable {
 extension PasswordGeneratorQuickSheetVC {
     private class Cell: UITableViewCell {
         static let reuseIdentifier = "Cell"
-        var onDidPressCopy: (() -> Void)?
+        var onDidPressCopy: ((UIView) -> Void)?
 
         override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
             super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
@@ -155,7 +155,8 @@ extension PasswordGeneratorQuickSheetVC {
             let copyButton = UIButton(
                 type: .system,
                 primaryAction: UIAction { [weak self] _ in
-                    self?.onDidPressCopy?()
+                    guard let self else { return }
+                    self.onDidPressCopy?(self.contentView)
                 }
             )
             copyButton.setImage(.symbol(.docOnDoc), for: .normal)
@@ -205,9 +206,9 @@ extension PasswordGeneratorQuickSheetVC {
             string: item.text,
             attributes: [.accessibilitySpeechSpellOut: item.mode.accessibilityShouldSpellOut]
         )
-        cell.onDidPressCopy = { [weak self] in
+        cell.onDidPressCopy = { [weak self] contentView in
             guard let self = self else { return }
-            self.delegate?.didPressCopy(item.text, in: self)
+            self.delegate?.didPressCopy(item.text, inView: contentView, in: self)
         }
         return cell
     }
@@ -217,6 +218,7 @@ extension PasswordGeneratorQuickSheetVC {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let selectedItem = items[indexPath.section]
-        delegate?.didSelectItem(selectedItem.text, in: self)
+        let selectedCell = tableView.cellForRow(at: indexPath)
+        delegate?.didSelectItem(selectedItem.text, view: selectedCell?.contentView, in: self)
     }
 }
