@@ -58,7 +58,11 @@ extension PasswordQuality {
     init?(password: String?) {
         guard let password = password,
               !password.isEmpty,
-              let match = Self.zxcvbn.passwordStrength(password),
+              password.count < 1000
+        else {
+            return nil
+        }
+        guard let match = Self.zxcvbn.passwordStrength(password),
               let entropy = Float32(match.entropy).flatMap({ Int32($0) })
         else {
             return nil

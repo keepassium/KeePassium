@@ -8,7 +8,6 @@
 
 import KeePassiumLib
 import LocalAuthentication
-import Zxcvbn
 
 protocol PasscodeInputDelegate: AnyObject {
     func passcodeInputDidCancel(_ sender: PasscodeInputVC)
@@ -58,7 +57,6 @@ final class PasscodeInputVC: UIViewController {
 
     weak var delegate: PasscodeInputDelegate?
     private var nextKeyboardType = Settings.PasscodeKeyboardType.alphanumeric
-    private let zxcvbn = DBZxcvbn()
 
     override func viewDidLoad() {
         super.viewDidLoad()
