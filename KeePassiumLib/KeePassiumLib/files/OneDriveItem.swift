@@ -175,7 +175,11 @@ extension OneDriveItem {
         var urlString = getRequestURLBase()
         switch endpoint {
         case .children:
-            urlString += childrenRequestOverride ?? "/children?select=\(OneDriveAPI.itemFields)"
+            if let childrenRequestOverride {
+                urlString += childrenRequestOverride
+            } else {
+                urlString += "/children?select=\(OneDriveAPI.itemFields)&top=\(OneDriveAPI.childrenListLimit)"
+            }
         case .itemInfo:
             break
         case .content:

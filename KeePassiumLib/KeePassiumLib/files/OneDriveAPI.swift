@@ -22,6 +22,7 @@ internal enum OneDriveAPI {
     static let callbackURLScheme = AppGroup.appURLScheme
     static let tokenRequestURL = URL(string: "https://login.microsoftonline.com/common/oauth2/v2.0/token")!
     static let itemFields = "id,name,size,createdDateTime,lastModifiedDateTime,folder,file,remoteItem"
+    static let childrenListLimit = 500
 
     static let mainEndpoint = "https://graph.microsoft.com/v1.0"
     static let defaultDrivePath = "/me/drive"
