@@ -1329,7 +1329,7 @@ public class Database2: Database {
     }
 
     public func addCustomIcon(_ image: UIImage) -> CustomIcon2? {
-        guard let normalizedImage = image.downscalingToSquare(maxSide: CustomIcon2.maxSide) else {
+        guard let normalizedImage = image.downscalingToSquare(maxSidePixels: CustomIcon2.maxSidePixels) else {
             Diag.error("Failed to normalize the image, cancelling")
             return nil
         }

@@ -9,7 +9,7 @@
 import Foundation
 
 public class CustomIcon2: Eraseable {
-    public static let maxSide = CGFloat(128)
+    public static let maxSidePixels = CGFloat(120)
 
     public private(set) var uuid: UUID
     public private(set) var data: ByteArray

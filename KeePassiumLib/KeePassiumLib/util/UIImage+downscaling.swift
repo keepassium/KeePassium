@@ -10,16 +10,20 @@ import UIKit
 
 public extension UIImage {
 
-    func downscalingToSquare(maxSide: CGFloat) -> UIImage? {
+    func downscalingToSquare(maxSidePixels: CGFloat) -> UIImage? {
+        return downscalingToSquare(maxSidePoints: maxSidePixels / UIScreen.main.scale)
+    }
+
+    func downscalingToSquare(maxSidePoints: CGFloat) -> UIImage? {
         let targetSide: CGFloat
-        if size.width > maxSide && size.height > maxSide {
-            targetSide = maxSide
+        if size.width > maxSidePoints && size.height > maxSidePoints {
+            targetSide = maxSidePoints
         } else {
             targetSide = min(size.width, size.height)
         }
 
         let targetSize = CGSize(width: targetSide, height: targetSide)
-        UIGraphicsBeginImageContextWithOptions(targetSize, false, 0.0)
+        UIGraphicsBeginImageContextWithOptions(targetSize, false, UIScreen.main.scale)
         self.draw(in: CGRect(x: 0, y: 0, width: targetSide, height: targetSide))
         let resized = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()

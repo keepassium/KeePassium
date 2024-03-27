@@ -90,7 +90,7 @@ class EntryFieldEditorTitleCell:
         guard let field else { return }
         let buttonConfig = delegate?.getActionConfiguration(for: field)
         buttonConfig?.apply(to: iconButton)
-        iconButton.configuration?.image = icon?.downscalingToSquare(maxSide: 29)
+        iconButton.configuration?.image = icon?.downscalingToSquare(maxSidePoints: 30)
 
         titleTextField.text = field.value
     }

@@ -63,7 +63,7 @@ final class GroupEditorTitleCell: UITableViewCell {
         didSet {
             nameTextField.text = group?.name
             let icon = (group != nil) ? UIImage.kpIcon(forGroup: group!) : nil
-            iconButton.configuration?.image = icon?.downscalingToSquare(maxSide: 29)
+            iconButton.configuration?.image = icon?.downscalingToSquare(maxSidePoints: 30)
             delegate?.didChangeValidity(isValid: nameTextField.isValid, in: self)
         }
     }
