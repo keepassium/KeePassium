@@ -1,6 +1,51 @@
 {
     "sections": [
         {
+            "version": "1.51",
+            "releaseDate": "2024-03-30T00:00:00Z",
+            "items": [
+                {
+                    "title": "Added: YubiKey 5Ci (Lightning side) now works in iOS AutoFill",
+                    "edition": "free,pro"
+                },
+                {
+                    "title": "Improved: Improved usability of password generator",
+                    "github": "Closes #349",
+                    "credits": "WinkelCode"
+                },
+                {
+                    "title": "Improved: Direct OneDrive connection will list up to 500 items in a directory",
+                    "credits": "Michael"
+                },
+                {
+                    "title": "Improved: Added detection of OX Drive and Imagam iFiles file providers"
+                },
+                {
+                    "title": "Improved: Added AppConfig specfile",
+                    "edition": "org"
+                },
+                {
+                    "title": "Fixed: It was impossible to edit groups in KDB databases (regression in 1.49)",
+                    "github": "Fixes #351",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Fixed: Large custom icons could be downsized incorrectly",
+                    "github": "Fixes 354",
+                    "credits": "ixs"
+                },
+                {
+                    "title": "Fixed: Lagging and freezing in entries with very long passwords",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Fixed: Possible incorrect processing of YubiKey over USB",
+                    "github": "Fixes #350",
+                    "os": "macos"
+                }
+            ]
+        },
+        {
             "version": "1.50",
             "releaseDate": "2024-03-10T00:00:00Z",
             "items": [

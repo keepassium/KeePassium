@@ -1,5 +1,27 @@
 #CHANGELOG
 
+## [1.51.147] - 2024-03-30
+
+### Added
+
+- YubiKey 5Ci (Lightning side) now works in iOS AutoFill
+
+### Improved
+
+- Improved usability of password generator (closes #349) [thanks, WinkelCode]
+- Direct OneDrive connection will list up to 500 items in a directory [thanks, Michael]
+- Added detection of OX Drive and Imagam iFiles file providers
+- Removed unused parts of YubiKit library
+- Intune: Added AppConfig specfile
+
+### Fixed
+
+- It was impossible to edit groups in KDB databases (regression in 1.49; fixes #351) [thanks, everyone]
+- Large custom icons could be downsized incorrectly (fixes #354) [thanks, ixs]
+- Freezing in entries with very long passwords [thanks, everyone]
+- macOS: possible incorrect processing of YubiKey over USB (fixes #350)
+
+
 ## [1.50.146] - 2024-03-10
 
 ### Added
