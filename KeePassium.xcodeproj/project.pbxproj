@@ -76,6 +76,9 @@
 		7516B0D627292A130042F40E /* UIMenu+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7516B0D427292A130042F40E /* UIMenu+extensions.swift */; };
 		7516B0D727292A130042F40E /* UIMenu+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7516B0D427292A130042F40E /* UIMenu+extensions.swift */; };
 		7516B0D827292A130042F40E /* UIMenu+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7516B0D427292A130042F40E /* UIMenu+extensions.swift */; };
+		75183ED12BB8A20A008F1614 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 75183ED02BB8A20A008F1614 /* PrivacyInfo.xcprivacy */; };
+		75183ED22BB8A20A008F1614 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 75183ED02BB8A20A008F1614 /* PrivacyInfo.xcprivacy */; };
+		75183ED32BB8A20A008F1614 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 75183ED02BB8A20A008F1614 /* PrivacyInfo.xcprivacy */; };
 		751A564F24CCD3C0001227D6 /* AppIconPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751A564E24CCD3C0001227D6 /* AppIconPicker.storyboard */; };
 		751A565024CCD3C0001227D6 /* AppIconPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751A564E24CCD3C0001227D6 /* AppIconPicker.storyboard */; };
 		751A565224CCD3CD001227D6 /* AppIconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751A565124CCD3CD001227D6 /* AppIconPicker.swift */; };
@@ -1474,6 +1477,7 @@
 		7514CC9E22D5D14B00A0D7A4 /* LongPressAwareNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressAwareNavigationController.swift; sourceTree = "<group>"; };
 		75151D3223268AB300F3C411 /* UILabel+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+extensions.swift"; sourceTree = "<group>"; };
 		7516B0D427292A130042F40E /* UIMenu+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIMenu+extensions.swift"; sourceTree = "<group>"; };
+		75183ED02BB8A20A008F1614 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		751A564E24CCD3C0001227D6 /* AppIconPicker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppIconPicker.storyboard; sourceTree = "<group>"; };
 		751A565124CCD3CD001227D6 /* AppIconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconPicker.swift; sourceTree = "<group>"; };
 		751A565424CCD3FF001227D6 /* AppIconSwitcherCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconSwitcherCoordinator.swift; sourceTree = "<group>"; };
@@ -2862,6 +2866,7 @@
 				754BF08B2082A6BD00E3A292 /* LaunchScreen.storyboard */,
 				754BF0892082A6BD00E3A292 /* Assets.xcassets */,
 				754BF08E2082A6BD00E3A292 /* Info.plist */,
+				75183ED02BB8A20A008F1614 /* PrivacyInfo.xcprivacy */,
 				756D15602129AFB60052C728 /* KeePassium.entitlements */,
 				754E74C2260677A70043BBDB /* KeePassium-macOS.entitlements */,
 				75A5451C28B63EA800B942FE /* KeePassiumOrg.entitlements */,
@@ -3817,6 +3822,7 @@
 				758BAD9724B53ABF00CC9265 /* PricingPlanPickerVC.storyboard in Resources */,
 				758FC11524CEF72000BAD35C /* appicon-classic-free_iPadApp_76@2x.png in Resources */,
 				751E0CF22309AEB00088BB10 /* SettingsAppLockVC.storyboard in Resources */,
+				75183ED12BB8A20A008F1614 /* PrivacyInfo.xcprivacy in Resources */,
 				758FC16524CEF72000BAD35C /* appicon-classic-pro_iPadApp_76.png in Resources */,
 				758FC13324CEF72000BAD35C /* appicon-classic-free_iPhoneApp_60@2x.png in Resources */,
 				751E0D0D2309AF400088BB10 /* EntryFileViewerVC.storyboard in Resources */,
@@ -3905,6 +3911,7 @@
 				75D9913E26CEEDC800823331 /* SyncConflictAlert.storyboard in Resources */,
 				758FC11624CEF72000BAD35C /* appicon-classic-free_iPadApp_76@2x.png in Resources */,
 				75B38C6C233E5B7C006BDEFC /* SettingsAppLockVC.storyboard in Resources */,
+				75183ED22BB8A20A008F1614 /* PrivacyInfo.xcprivacy in Resources */,
 				758FC16624CEF72000BAD35C /* appicon-classic-pro_iPadApp_76.png in Resources */,
 				758FC13424CEF72000BAD35C /* appicon-classic-free_iPhoneApp_60@2x.png in Resources */,
 				75B38C6E233E5B7C006BDEFC /* EntryFileViewerVC.storyboard in Resources */,
@@ -3967,6 +3974,7 @@
 				75D0768E28B639D200F02E39 /* appicon-atom-black_iPadProApp_83.5@2x.png in Resources */,
 				75D0768F28B639D200F02E39 /* EntryFieldEditorVC.storyboard in Resources */,
 				75D0769028B639D200F02E39 /* (null) in Resources */,
+				75183ED32BB8A20A008F1614 /* PrivacyInfo.xcprivacy in Resources */,
 				75D0769128B639D200F02E39 /* DatabaseKeyChangerVC.storyboard in Resources */,
 				75D0769228B639D200F02E39 /* EntryViewerPagesVC.storyboard in Resources */,
 				75D0769328B639D200F02E39 /* appicon-classic-pro_iPhoneApp_60@3x.png in Resources */,
