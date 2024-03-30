@@ -1,4 +1,5 @@
 {
+  "originHash" : "aa8541a92cdf3aae03bb03172ea3bc1f1cd2f8e2cfdfe17862541d1cdb83a158",
   "pins" : [
     {
       "identity" : "asn1swift",
@@ -42,7 +43,7 @@
       "location" : "https://github.com/keepassium/yubikit-ios.git",
       "state" : {
         "branch" : "keepassium",
-        "revision" : "352f95ec1b1f6b22da7bcd37b84e3d6fd9f70ac5"
+        "revision" : "9c710563699a087a233b4659039c9a65f080d1dc"
       }
     },
     {
@@ -55,5 +56,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
