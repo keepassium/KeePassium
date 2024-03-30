@@ -522,7 +522,7 @@ extension ItemRelocationCoordinator: DatabaseUnlockerCoordinatorDelegate {
         _ fileRef: URLReference,
         in coordinator: DatabaseUnlockerCoordinator
     ) {
-        guard let databasePickerCoordinator = databasePickerCoordinator else {
+        guard databasePickerCoordinator != nil else {
             Diag.warning("No database picker found, cancelling")
             return
         }

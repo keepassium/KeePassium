@@ -280,7 +280,6 @@
 		756F3645260E9670005A35DA /* KeyFilePickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D3A2309B0120088BB10 /* KeyFilePickerVC.storyboard */; };
 		756F3646260E9671005A35DA /* KeyFilePickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D3A2309B0120088BB10 /* KeyFilePickerVC.storyboard */; };
 		756F364A260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756F3649260E96A1005A35DA /* KeyFilePickerCoordinator.swift */; };
-		756F364B260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756F3649260E96A1005A35DA /* KeyFilePickerCoordinator.swift */; };
 		756F364C260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756F3649260E96A1005A35DA /* KeyFilePickerCoordinator.swift */; };
 		756F364D260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756F3649260E96A1005A35DA /* KeyFilePickerCoordinator.swift */; };
 		756F365826112A3A005A35DA /* FileDestructionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759894BB24620D33006B6709 /* FileDestructionHelper.swift */; };
@@ -4066,6 +4065,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		F34929372AD5EFC300A08C9F /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -4211,7 +4211,6 @@
 				753376F223CA650C00603F4A /* PasswordStringHelper.swift in Sources */,
 				75D99DEA269CED7D00D0E9D7 /* NSLayoutContraint+extensions.swift in Sources */,
 				753DF2D0263E0EF20046F185 /* PlaceholderVC.swift in Sources */,
-				756F364B260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */,
 				75BFB1472481D19B0017B980 /* FileProvider+extensions.swift in Sources */,
 				75151D3423268AB300F3C411 /* UILabel+extensions.swift in Sources */,
 				75D21BD32B642BB20065D95E /* OneDriveConnectionSetupCoordinator.swift in Sources */,

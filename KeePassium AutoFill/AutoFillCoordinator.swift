@@ -416,7 +416,7 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
             return
         }
 
-        if let totpForClipboard = getOTPForClipboard(for: foundEntry) {
+        if let _ = getOTPForClipboard(for: foundEntry) {
             cancelRequest(.userInteractionRequired)
         } else {
             returnCredentials(entry: foundEntry)

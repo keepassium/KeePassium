@@ -47,21 +47,23 @@ class ProtectedTextField: ValidatingTextField {
     }
 
     private func setupVisibilityAccessory() {
-        toggleButton = UIButton(type: .custom)
-        toggleButton.tintColor = UIColor.actionTint 
+        var buttonConfig = UIButton.Configuration.plain()
+        buttonConfig.imagePadding = 2
+        buttonConfig.imageReservation = 32
+        buttonConfig.baseBackgroundColor = .clear
+        buttonConfig.imagePlacement = .all
+        buttonConfig.preferredSymbolConfigurationForImage = .init(textStyle: .body, scale: .medium)
+        toggleButton = UIButton(configuration: buttonConfig)
+        toggleButton.configurationUpdateHandler = { [self] button in
+            if button.state.contains(.selected) {
+                button.configuration?.image = hideImage
+            } else {
+                button.configuration?.image = unhideImage
+            }
+        }
         toggleButton.addTarget(self, action: #selector(toggleVisibility), for: .touchUpInside)
-        toggleButton.setImage(unhideImage, for: .normal)
-        toggleButton.setImage(hideImage, for: .selected)
-        toggleButton.imageEdgeInsets = UIEdgeInsets(
-            top: verticalInsets,
-            left: horizontalInsets,
-            bottom: verticalInsets,
-            right: horizontalInsets)
-        toggleButton.frame = CGRect(
-            x: 0.0,
-            y: 0.0,
-            width: hideImage.size.width + 2 * horizontalInsets,
-            height: hideImage.size.height + 2 * verticalInsets)
+        toggleButton.translatesAutoresizingMaskIntoConstraints = false
+
         toggleButton.isSelected = !isSecureTextEntry
         toggleButton.isAccessibilityElement = true
         toggleButton.accessibilityLabel = NSLocalizedString(

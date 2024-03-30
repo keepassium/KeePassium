@@ -235,7 +235,7 @@ public class PremiumManager: NSObject {
             } else if Date.now.timeIntervalSince(expiryDate) < lapsePeriod {
                 status = .lapsed
                 wasStatusSet = true
-            } else if let fallbackDate = purchaseHistory.premiumFallbackDate {
+            } else if purchaseHistory.premiumFallbackDate != nil {
                 status = .fallback
                 wasStatusSet = true
             }

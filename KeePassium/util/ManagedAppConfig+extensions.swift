@@ -12,7 +12,6 @@ import Zxcvbn
 private let zxcvbn = DBZxcvbn()
 
 extension ManagedAppConfig {
-    
     func isAcceptable(databasePassword: String) -> Bool {
         guard let minRequredEntropy = ManagedAppConfig.shared.minimumDatabasePasswordEntropy else {
             return true

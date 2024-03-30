@@ -274,7 +274,7 @@ extension MainCoordinator {
             return isHandled
         }
         #endif
-        Diag.info("Will process incoming URL [inPlace: \(openInPlace), URL: \(url.redacted)]")
+        Diag.info("Will process incoming URL [inPlace: \(String(describing: openInPlace)), URL: \(url.redacted)]")
         guard let databaseViewerCoordinator = databaseViewerCoordinator else {
             handleIncomingURL(url, openInPlace: openInPlace ?? true)
             return true

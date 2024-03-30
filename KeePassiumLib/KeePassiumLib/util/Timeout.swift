@@ -28,6 +28,8 @@ public struct Timeout {
             return TimeInterval(value) / 1.0e9
         case .never:
             return .greatestFiniteMagnitude
+        @unknown default:
+            fatalError("Unexpected remaining time interval")
         }
     }
 

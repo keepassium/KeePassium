@@ -111,21 +111,12 @@ final class TipBoxVC: UIViewController {
     }
 
     private func makePurchaseButton(_ title: String) -> UIButton {
-        let button = UIButton(frame: .zero)
-        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
-        button.titleLabel?.lineBreakMode = .byWordWrapping
-        button.titleLabel?.numberOfLines = 1
-        button.setTitleColor(UIColor.actionTint, for: .normal)
-        button.borderColor = .actionTint
-        button.borderWidth = 1
-        button.cornerRadius = 10
-        button.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        button.setContentCompressionResistancePriority(.defaultHigh + 1, for: .horizontal)
-        button.widthAnchor
-            .constraint(greaterThanOrEqualToConstant: 70)
-            .setPriority(.required)
-            .activate()
-        button.setTitle(title, for: .normal)
+        var buttonConfig = UIButton.Configuration.filled()
+        buttonConfig.title = title
+        buttonConfig.titleLineBreakMode = .byWordWrapping
+        buttonConfig.titlePadding = 8
+        buttonConfig.background.cornerRadius = 10
+        let button = UIButton(configuration: buttonConfig)
         button.addTarget(self, action: #selector(didPressPurchaseButton(_:)), for: .touchUpInside)
         return button
     }

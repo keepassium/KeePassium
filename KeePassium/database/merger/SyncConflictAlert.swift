@@ -246,11 +246,11 @@ extension SyncConflictAlert: UITableViewDataSource {
             cell.textLabel?.text = LString.conflictResolutionSaveAsAction
             cell.detailTextLabel?.text = LString.conflictResolutionSaveAsDescription
         case .merge:
-            fatalError("Not implemented yet")
             cell.textLabel?.textColor = .actionTint
             cell.textLabel?.font = .preferredFont(forTextStyle: .body)
             cell.textLabel?.text = LString.conflictResolutionMergeAction
             cell.detailTextLabel?.text = LString.conflictResolutionMergeDescription
+            fatalError("Not implemented yet")
         case .cancelSaving:
             cell.textLabel?.textColor = .actionTint
             cell.textLabel?.font = .preferredFont(forTextStyle: .body).withWeight(.semibold)

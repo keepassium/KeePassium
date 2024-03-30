@@ -17,6 +17,6 @@ extension UIApplication {
     }
 
     public func getKeyWindow() -> UIWindow? {
-        return windows.first { $0.isKeyWindow }
+        return currentScene?.windows.first { $0.isKeyWindow }
     }
 }

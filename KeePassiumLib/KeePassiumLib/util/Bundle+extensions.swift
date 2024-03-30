@@ -12,7 +12,7 @@ extension Bundle {
     internal static let framework = Bundle(identifier: "com.keepassium.ios.KeePassiumLib")!
 
     static var mainAppURL: URL {
-        var pathComponents = main.bundleURL.pathComponents
+        let pathComponents = main.bundleURL.pathComponents
         guard let index = pathComponents.lastIndex(where: { $0.hasSuffix(".app") }) else {
             Diag.debug("Failed to find main app's path")
             assertionFailure("Failed to find the main app's path")
