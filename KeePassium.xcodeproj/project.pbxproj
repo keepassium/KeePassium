@@ -3493,7 +3493,6 @@
 				754BF0792082A6BD00E3A292 /* Resources */,
 				757687DC21940CE800305F97 /* Embed Frameworks */,
 				7550D241215D758800360E0C /* Embed App Extensions */,
-				75007566231D1C96007CC2F1 /* BartyCrouch */,
 			);
 			buildRules = (
 			);
@@ -3519,7 +3518,6 @@
 				75B38C50233E5B7C006BDEFC /* Resources */,
 				75B38C79233E5B7C006BDEFC /* Embed App Extensions */,
 				759896412341590300DF39AA /* Embed Frameworks */,
-				75B38C7D233E5B7C006BDEFC /* BartyCrouch */,
 			);
 			buildRules = (
 			);
@@ -3545,7 +3543,6 @@
 				75D0767128B639D200F02E39 /* Resources */,
 				75D076D028B639D200F02E39 /* Embed App Extensions */,
 				75D076D228B639D200F02E39 /* Embed Frameworks */,
-				75D076D428B639D200F02E39 /* BartyCrouch */,
 			);
 			buildRules = (
 			);
@@ -4071,60 +4068,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		75007566231D1C96007CC2F1 /* BartyCrouch */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = BartyCrouch;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#if which bartycrouch > /dev/null; then\n#  #bartycrouch update -x\n#  bartycrouch lint -x\n#else\n#  echo \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\n#fi\n";
-		};
-		75B38C7D233E5B7C006BDEFC /* BartyCrouch */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = BartyCrouch;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#if which bartycrouch > /dev/null; then\n#  #bartycrouch update -x\n#  bartycrouch lint -x\n#else\n#  echo \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\n#fi\n";
-		};
-		75D076D428B639D200F02E39 /* BartyCrouch */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = BartyCrouch;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#if which bartycrouch > /dev/null; then\n#  #bartycrouch update -x\n#  bartycrouch lint -x\n#else\n#  echo \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\n#fi\n";
-		};
 		F34929372AD5EFC300A08C9F /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
