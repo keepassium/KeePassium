@@ -24,7 +24,7 @@ final class DatabaseSettingsCoordinator: Coordinator {
     init(fileRef: URLReference, router: NavigationRouter) {
         self.dbRef = fileRef
         self.router = router
-        dbSettingsVC = DatabaseSettingsVC.instantiateFromStoryboard()
+        dbSettingsVC = DatabaseSettingsVC.make()
         dbSettingsVC.delegate = self
     }
 

@@ -49,6 +49,11 @@ final class DatabaseSettingsVC: UITableViewController, Refreshable {
         return formatter
     }()
 
+    public static func make() -> DatabaseSettingsVC {
+        let vc = DatabaseSettingsVC(style: .insetGrouped)
+        return vc
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = LString.titleDatabaseSettings
