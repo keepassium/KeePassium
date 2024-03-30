@@ -1,17 +1,19 @@
 //  KeePassium Password Manager
-//  Copyright © 2018–2024 KeePassium Labs <info@keepassium.com>
+//  Copyright © 2018-2024 KeePassium Labs <info@keepassium.com>
 //
 //  This program is free software: you can redistribute it and/or modify it
 //  under the terms of the GNU General Public License version 3 as published
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
-//  For commercial licensing, please contact the author.
+//  For commercial licensing, please contact us.
 
-public enum OneDriveError: LocalizedError {
+import Foundation
+
+public enum RemoteError: LocalizedError {
     case cancelledByUser
     case emptyResponse
     case misformattedResponse
     case cannotRefreshToken
-    case authorizationRequired
+    case authorizationRequired(message: String)
     case serverSideError(message: String)
     case general(error: Error)
     case appInternalError(message: String)
@@ -26,8 +28,8 @@ public enum OneDriveError: LocalizedError {
             return "Unexpected server response format."
         case .cannotRefreshToken:
             return "Cannot renew access token."
-        case .authorizationRequired:
-            return LString.titleOneDriveRequiresSignIn
+        case .authorizationRequired(let message):
+            return message
         case .serverSideError(let message):
             return message
         case .general(let error):

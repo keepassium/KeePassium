@@ -20,12 +20,14 @@ public struct OAuthToken: Codable {
         accessToken: String,
         refreshToken: String,
         acquired: Date,
-        lifespan: TimeInterval
+        lifespan: TimeInterval,
+        accountIdentifier: String? = nil
     ) {
         self.accessToken = accessToken
         self.refreshToken = refreshToken
         self.acquired = acquired
         self.lifespan = lifespan
+        self.accountIdentifier = accountIdentifier
     }
 }
 

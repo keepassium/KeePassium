@@ -10,11 +10,11 @@ public protocol OneDriveAuthProvider {
     func acquireToken(
         presenter: UIViewController,
         completionQueue: OperationQueue,
-        completion: @escaping (Result<OAuthToken, OneDriveError>) -> Void
+        completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
     )
     func acquireTokenSilent(
         token: OAuthToken,
         completionQueue: OperationQueue,
-        completion: @escaping (Result<OAuthToken, OneDriveError>) -> Void
+        completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
     )
 }

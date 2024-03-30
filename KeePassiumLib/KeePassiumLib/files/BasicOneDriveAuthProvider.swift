@@ -40,7 +40,7 @@ extension BasicOneDriveAuthProvider {
     func acquireToken(
         presenter: UIViewController,
         completionQueue: OperationQueue,
-        completion: @escaping (Result<OAuthToken, OneDriveError>) -> Void
+        completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
     ) {
         Diag.info("Authenticating with OneDrive")
         let webAuthSession = ASWebAuthenticationSession(
@@ -66,7 +66,7 @@ extension BasicOneDriveAuthProvider {
         callbackURL: URL?,
         error: Error?,
         completionQueue: OperationQueue,
-        completion: @escaping (Result<OAuthToken, OneDriveError>) -> Void
+        completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
     ) {
         if let error = error as NSError? {
             let isCancelled =
@@ -142,7 +142,7 @@ extension BasicOneDriveAuthProvider {
     func acquireTokenSilent(
         token: OAuthToken,
         completionQueue: OperationQueue,
-        completion: @escaping (Result<OAuthToken, OneDriveError>) -> Void
+        completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
     ) {
         if Date.now < (token.acquired + token.halflife) {
             completionQueue.addOperation {
@@ -182,7 +182,7 @@ extension BasicOneDriveAuthProvider {
     private func getToken(
         operation: TokenOperation,
         completionQueue: OperationQueue,
-        completion: @escaping (Result<OAuthToken, OneDriveError>) -> Void
+        completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
     ) {
         Diag.debug("Acquiring OAuth token [operation: \(operation)]")
         var urlRequest = URLRequest(url: OneDriveAPI.tokenRequestURL)

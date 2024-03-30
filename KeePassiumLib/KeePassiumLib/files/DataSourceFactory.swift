@@ -17,6 +17,8 @@ internal final class DataSourceFactory {
             return WebDAVDataSource()
         } else if url.isOneDriveFileURL {
             return OneDriveDataSource()
+        } else if url.isDropboxFileURL {
+            return DropboxDataSource()
         } else {
             Diag.warning("Unexpected URL format, assuming local file [prefix: \(urlSchemePrefix)]")
             return LocalDataSource()
@@ -28,6 +30,8 @@ internal final class DataSourceFactory {
             return .keepassiumWebDAV
         } else if url.isOneDriveFileURL {
             return .keepassiumOneDrive
+        } else if url.isDropboxFileURL {
+            return .keepassiumDropbox
         }
         return nil
     }

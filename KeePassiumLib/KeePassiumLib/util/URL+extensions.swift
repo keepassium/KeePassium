@@ -201,6 +201,8 @@ public extension URL {
             return WebDAVFileURL.getDescription(for: self)
         } else if isOneDriveFileURL {
             return self.getOneDriveLocationDescription()
+        } else if isDropboxFileURL {
+            return self.getDropboxLocationDescription()
         } else {
             assertionFailure("Description missing, remote location unknown?")
             return nil

@@ -47,7 +47,6 @@
 		75567F092A9DEE2300BBA528 /* UIFontDescriptor+serialize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75567F082A9DEE2300BBA528 /* UIFontDescriptor+serialize.swift */; };
 		7558700722E5857C00E1DD89 /* TOTPGeneratorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558700622E5857C00E1DD89 /* TOTPGeneratorFactory.swift */; };
 		755E14BA2B1F743A00651F0D /* BasicOneDriveAuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755E14B92B1F743A00651F0D /* BasicOneDriveAuthProvider.swift */; };
-		755E14BC2B1F74FF00651F0D /* OneDriveError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755E14BB2B1F74FF00651F0D /* OneDriveError.swift */; };
 		755E14BE2B1F754A00651F0D /* OneDriveAuthConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755E14BD2B1F754A00651F0D /* OneDriveAuthConfig.swift */; };
 		755E14C02B1F75DB00651F0D /* OneDriveAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755E14BF2B1F75DB00651F0D /* OneDriveAPI.swift */; };
 		755E14C22B1F778A00651F0D /* OneDriveDriveInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755E14C12B1F778A00651F0D /* OneDriveDriveInfo.swift */; };
@@ -227,8 +226,17 @@
 		75F594B8221BDC51001729FD /* SettingsMigrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F594B7221BDC51001729FD /* SettingsMigrator.swift */; };
 		75F74ABA24C082F90071281E /* ReceiptAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F74AB924C082F90071281E /* ReceiptAnalyzer.swift */; };
 		75F74ABC24C0EF370071281E /* IARError+description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F74ABB24C0EF370071281E /* IARError+description.swift */; };
+		F31114A52B9B807500236632 /* DropboxDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31114A42B9B807500236632 /* DropboxDataSource.swift */; };
+		F31115852B9C861800236632 /* DropboxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31115842B9C861800236632 /* DropboxManager.swift */; };
+		F311158B2B9C89E800236632 /* DropboxAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311158A2B9C89E800236632 /* DropboxAPI.swift */; };
+		F311159B2B9C94E800236632 /* DropboxItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311159A2B9C94E800236632 /* DropboxItem.swift */; };
+		F3146DD12BB55D75000E2D76 /* DropboxAccountInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3146DD02BB55D75000E2D76 /* DropboxAccountInfo.swift */; };
 		F35708AD2AEFD52E00FC2208 /* ThreadCountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35708AC2AEFD52E00FC2208 /* ThreadCountFormatter.swift */; };
+		F36FC5AC2BA20B5900970B7E /* URL+dropbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36FC5AB2BA20B5900970B7E /* URL+dropbox.swift */; };
+		F36FC5B02BA2F95000970B7E /* RemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36FC5AF2BA2F95000970B7E /* RemoteDataSource.swift */; };
+		F36FC5B22BA3002F00970B7E /* RemoteDataSourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36FC5B12BA3002F00970B7E /* RemoteDataSourceManager.swift */; };
 		F380E75C2A9E75F10011DF88 /* EntriesSelectedCountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380E75B2A9E75F10011DF88 /* EntriesSelectedCountFormatter.swift */; };
+		F3849DF12BA38B5A00ACC3B5 /* RemoteError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3849DF02BA38B5A00ACC3B5 /* RemoteError.swift */; };
 		F3CC869B2AEE5EEA00B4DA98 /* EncryptionSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CC869A2AEE5EEA00B4DA98 /* EncryptionSettings.swift */; };
 		F3E8583D2B7E5C2A00F12DBB /* Searchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E8583C2B7E5C2A00F12DBB /* Searchable.swift */; };
 /* End PBXBuildFile section */
@@ -319,7 +327,6 @@
 		75567F082A9DEE2300BBA528 /* UIFontDescriptor+serialize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFontDescriptor+serialize.swift"; sourceTree = "<group>"; };
 		7558700622E5857C00E1DD89 /* TOTPGeneratorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOTPGeneratorFactory.swift; sourceTree = "<group>"; };
 		755E14B92B1F743A00651F0D /* BasicOneDriveAuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicOneDriveAuthProvider.swift; sourceTree = "<group>"; };
-		755E14BB2B1F74FF00651F0D /* OneDriveError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDriveError.swift; sourceTree = "<group>"; };
 		755E14BD2B1F754A00651F0D /* OneDriveAuthConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDriveAuthConfig.swift; sourceTree = "<group>"; };
 		755E14BF2B1F75DB00651F0D /* OneDriveAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDriveAPI.swift; sourceTree = "<group>"; };
 		755E14C12B1F778A00651F0D /* OneDriveDriveInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDriveDriveInfo.swift; sourceTree = "<group>"; };
@@ -510,8 +517,17 @@
 		75F74ABB24C0EF370071281E /* IARError+description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IARError+description.swift"; sourceTree = "<group>"; };
 		75FDEF1D233ABE7800F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75FDEF49233ABED700F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F31114A42B9B807500236632 /* DropboxDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxDataSource.swift; sourceTree = "<group>"; };
+		F31115842B9C861800236632 /* DropboxManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxManager.swift; sourceTree = "<group>"; };
+		F311158A2B9C89E800236632 /* DropboxAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxAPI.swift; sourceTree = "<group>"; };
+		F311159A2B9C94E800236632 /* DropboxItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxItem.swift; sourceTree = "<group>"; };
+		F3146DD02BB55D75000E2D76 /* DropboxAccountInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxAccountInfo.swift; sourceTree = "<group>"; };
 		F35708AC2AEFD52E00FC2208 /* ThreadCountFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadCountFormatter.swift; sourceTree = "<group>"; };
+		F36FC5AB2BA20B5900970B7E /* URL+dropbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+dropbox.swift"; sourceTree = "<group>"; };
+		F36FC5AF2BA2F95000970B7E /* RemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSource.swift; sourceTree = "<group>"; };
+		F36FC5B12BA3002F00970B7E /* RemoteDataSourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSourceManager.swift; sourceTree = "<group>"; };
 		F380E75B2A9E75F10011DF88 /* EntriesSelectedCountFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesSelectedCountFormatter.swift; sourceTree = "<group>"; };
+		F3849DF02BA38B5A00ACC3B5 /* RemoteError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteError.swift; sourceTree = "<group>"; };
 		F3CC869A2AEE5EEA00B4DA98 /* EncryptionSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptionSettings.swift; sourceTree = "<group>"; };
 		F3E8583C2B7E5C2A00F12DBB /* Searchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Searchable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -585,7 +601,6 @@
 				758FF6DA2902DB64007DE8EB /* OneDriveManager.swift */,
 				750AB1AB2902DD9200811980 /* OneDriveItem.swift */,
 				755E14BF2B1F75DB00651F0D /* OneDriveAPI.swift */,
-				755E14BB2B1F74FF00651F0D /* OneDriveError.swift */,
 				755E14C12B1F778A00651F0D /* OneDriveDriveInfo.swift */,
 				755E14BD2B1F754A00651F0D /* OneDriveAuthConfig.swift */,
 				758F41982B18CC360069BF66 /* OneDriveAuthProvider.swift */,
@@ -614,18 +629,30 @@
 			name = "password-generator";
 			sourceTree = "<group>";
 		};
-		75675C83277C8BDB0025910A /* remote */ = {
+		7561E47C2BB47D5400087CFE /* webdav */ = {
 			isa = PBXGroup;
 			children = (
-				7596174B29082D0B005845FF /* RemoteConnectionType.swift */,
-				75BD4C702789BCBC00FDE499 /* CredentialManager.swift */,
 				7599AC2C2894087000FD03BC /* WebDAVDataSource.swift */,
 				750AB1A92902DD6100811980 /* WebDAVFileURL.swift */,
 				75675C84277C8BEA0025910A /* WebDAVManager.swift */,
 				7534443B278356AD00CC8248 /* WebDAVRequest.swift */,
-				7534443D27842FEC00CC8248 /* Date+http.swift */,
-				758FF6D72902DB07007DE8EB /* RemoteFileItem.swift */,
+			);
+			name = webdav;
+			sourceTree = "<group>";
+		};
+		75675C83277C8BDB0025910A /* remote */ = {
+			isa = PBXGroup;
+			children = (
+				F31114A32B9B805A00236632 /* dropbox */,
 				755E14B82B1F73F500651F0D /* onedrive */,
+				7561E47C2BB47D5400087CFE /* webdav */,
+				7596174B29082D0B005845FF /* RemoteConnectionType.swift */,
+				F36FC5AF2BA2F95000970B7E /* RemoteDataSource.swift */,
+				F36FC5B12BA3002F00970B7E /* RemoteDataSourceManager.swift */,
+				75BD4C702789BCBC00FDE499 /* CredentialManager.swift */,
+				7534443D27842FEC00CC8248 /* Date+http.swift */,
+				F3849DF02BA38B5A00ACC3B5 /* RemoteError.swift */,
+				758FF6D72902DB07007DE8EB /* RemoteFileItem.swift */,
 			);
 			name = remote;
 			sourceTree = "<group>";
@@ -1082,6 +1109,19 @@
 			path = util;
 			sourceTree = "<group>";
 		};
+		F31114A32B9B805A00236632 /* dropbox */ = {
+			isa = PBXGroup;
+			children = (
+				F3146DD02BB55D75000E2D76 /* DropboxAccountInfo.swift */,
+				F311158A2B9C89E800236632 /* DropboxAPI.swift */,
+				F31114A42B9B807500236632 /* DropboxDataSource.swift */,
+				F311159A2B9C94E800236632 /* DropboxItem.swift */,
+				F31115842B9C861800236632 /* DropboxManager.swift */,
+				F36FC5AB2BA20B5900970B7E /* URL+dropbox.swift */,
+			);
+			name = dropbox;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1256,6 +1296,7 @@
 				75D09C482174F77000F7DEF2 /* Group.swift in Sources */,
 				7538871D28BD59B500BE41B5 /* LString+intune.swift in Sources */,
 				75D09C442174F77000F7DEF2 /* Group1.swift in Sources */,
+				F31115852B9C861800236632 /* DropboxManager.swift in Sources */,
 				75D09BE12174F76500F7DEF2 /* core.c in Sources */,
 				75D09BCE2174F76500F7DEF2 /* chacha20.c in Sources */,
 				75D09C1C2174F77000F7DEF2 /* AESKDF.swift in Sources */,
@@ -1291,9 +1332,11 @@
 				75D09C2B2174F77000F7DEF2 /* Meta2.swift in Sources */,
 				75D09C1E2174F77000F7DEF2 /* Argon2KDF.swift in Sources */,
 				75AE4FDD2521DA840052251B /* UIDevice+extensions.swift in Sources */,
+				F36FC5B02BA2F95000970B7E /* RemoteDataSource.swift in Sources */,
 				75D09C3A2174F77000F7DEF2 /* DataCipher.swift in Sources */,
 				75BF5AE827680A3F00809654 /* UnreachableFileFallbackStrategy.swift in Sources */,
 				75D09BA42174F02F00F7DEF2 /* salsa20.c in Sources */,
+				F36FC5B22BA3002F00970B7E /* RemoteDataSourceManager.swift in Sources */,
 				75F4ACD5217745B300B22D8B /* DatabaseManager.swift in Sources */,
 				75D09C212174F77000F7DEF2 /* Binary2.swift in Sources */,
 				7599AC2D2894087000FD03BC /* WebDAVDataSource.swift in Sources */,
@@ -1326,6 +1369,7 @@
 				75D09C472174F77000F7DEF2 /* Database.swift in Sources */,
 				7534443E27842FEC00CC8248 /* Date+http.swift in Sources */,
 				75D09C5A2174F81900F7DEF2 /* Options.swift in Sources */,
+				F311159B2B9C94E800236632 /* DropboxItem.swift in Sources */,
 				75F4ACF0217749DC00B22D8B /* AppGroup.swift in Sources */,
 				75F4ACE02177469500B22D8B /* FileKeeper.swift in Sources */,
 				758FF6D4290193F0007DE8EB /* OneDriveDataSource.swift in Sources */,
@@ -1357,11 +1401,11 @@
 				75D09BD42174F76500F7DEF2 /* twofish.cpp in Sources */,
 				75D09BD32174F76500F7DEF2 /* Twofish.swift in Sources */,
 				75205FA5239C01CF00C1DEAA /* DatabaseSettingsManager.swift in Sources */,
-				755E14BC2B1F74FF00651F0D /* OneDriveError.swift in Sources */,
 				756180FA2820827D00EA015D /* StringSet.swift in Sources */,
 				754D7C0E238C26A7005652E1 /* YubiKey.swift in Sources */,
 				7505E8D12236FA0F00E5202E /* StringExtension.swift in Sources */,
 				75CF4C8A2A666D8B0054B05B /* LicenseManager.swift in Sources */,
+				F311158B2B9C89E800236632 /* DropboxAPI.swift in Sources */,
 				75D09C432174F77000F7DEF2 /* DateExtension-kp1.swift in Sources */,
 				75F221292A86591900CB1B5F /* BitCountFormatter.swift in Sources */,
 				F35708AD2AEFD52E00FC2208 /* ThreadCountFormatter.swift in Sources */,
@@ -1389,6 +1433,7 @@
 				75AA9B51272FF3FA00863B98 /* QuickTypeAutoFillRecord.swift in Sources */,
 				75F4ACEF217749DC00B22D8B /* UserDefaults+appGroupShared.swift in Sources */,
 				75CA6641276BAF07003384FC /* DatabaseError.swift in Sources */,
+				F31114A52B9B807500236632 /* DropboxDataSource.swift in Sources */,
 				75F4ACDF2177469500B22D8B /* TemporaryFileURL.swift in Sources */,
 				751F90A9247748A300A7418F /* Result.swift in Sources */,
 				75D09C412174F77000F7DEF2 /* Database1.swift in Sources */,
@@ -1413,6 +1458,7 @@
 				7505F6BC2B863A2E00EA9BFD /* ManagedAppConfig+public.swift in Sources */,
 				753858DB291957BF006ADA21 /* FileFormatRecognizer.swift in Sources */,
 				75E74D3426C1D2B00071B151 /* TestHelper.swift in Sources */,
+				F3146DD12BB55D75000E2D76 /* DropboxAccountInfo.swift in Sources */,
 				75CD1524285F3929003C11DA /* TimeInterval+constants.swift in Sources */,
 				75D09C5C2174F81900F7DEF2 /* Error.swift in Sources */,
 				75C8471924FAE7B60064A4EC /* Comparable+extensions.swift in Sources */,
@@ -1425,6 +1471,7 @@
 				75CFA0772AC5B113008B7B3E /* DatabaseReloadContext.swift in Sources */,
 				7596174C29082D0C005845FF /* RemoteConnectionType.swift in Sources */,
 				75D09C272174F77000F7DEF2 /* KeyHelper2.swift in Sources */,
+				F36FC5AC2BA20B5900970B7E /* URL+dropbox.swift in Sources */,
 				75E5B6FB2706004600DFFF4F /* Cloneable.swift in Sources */,
 				75D09C302174F77000F7DEF2 /* ByteArray.swift in Sources */,
 				756180FE2820830100EA015D /* PasswordGeneratorRequirements.swift in Sources */,
@@ -1441,6 +1488,7 @@
 				75D09C5F2174F81900F7DEF2 /* Document.swift in Sources */,
 				75AA237826CA6DA700488C4E /* KeyHelper+loading.swift in Sources */,
 				75F74ABC24C0EF370071281E /* IARError+description.swift in Sources */,
+				F3849DF12BA38B5A00ACC3B5 /* RemoteError.swift in Sources */,
 				75F11C3C288580D4005B3DC0 /* URL+consts.swift in Sources */,
 				759B532025FABB1500259DB0 /* DatabaseSettings.swift in Sources */,
 				75675C85277C8BEA0025910A /* WebDAVManager.swift in Sources */,

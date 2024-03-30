@@ -35,6 +35,17 @@ extension LString {
         bundle: Bundle.framework,
         value: "OneDrive for Business",
         comment: "Name of a cloud storage service. Must match Microsoft's translation, see  https://partner.microsoft.com/solutions/onedrive-for-business")
+    public static let connectionTypeDropbox = "Dropbox"
+    public static let connectionTypeDropboxBusiness = NSLocalizedString(
+        "[StorageService/DropboxBusiness/title]",
+        bundle: Bundle.framework,
+        value: "Dropbox Business",
+        comment: "Name of a cloud storage service")
+    public static let connectionTypeDropboxPro = NSLocalizedString(
+        "[StorageService/DropboxPro/title]",
+        bundle: Bundle.framework,
+        value: "Dropbox Pro",
+        comment: "Name of a cloud storage service")
 
     public static let titleConnection = NSLocalizedString(
         "[RemoteConnection/Connection/title]",
@@ -97,4 +108,15 @@ extension LString {
         bundle: Bundle.framework,
         value: "Shared",
         comment: "Name of a predefined OneDrive folder which contains files shared with this user")
+
+    public static let titleDropboxRequiresSignIn = NSLocalizedString(
+        "[RemoteConnection/SignIn/Dropbox/authorizationRequried]",
+        bundle: Bundle.framework,
+        value: "Dropbox needs you to sign in again.",
+        comment: "Error description: the user should manually sign in to their Dropbox account")
+    public static let actionSignInToDropbox = NSLocalizedString(
+        "[RemoteConnection/SignIn/Dropbox/action]",
+        bundle: Bundle.framework,
+        value: "Sign in to Dropbox",
+        comment: "Action: authenticate to Dropbox account")
 }

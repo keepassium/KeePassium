@@ -73,7 +73,7 @@ extension OneDriveAPI {
             operation: String,
             data: Data?,
             error: Error?
-        ) -> Result<[String: Any], OneDriveError> {
+        ) -> Result<[String: Any], RemoteError> {
             if let error = error {
                 Diag.error("OneDrive request failed [operation: \(operation), message: \(error.localizedDescription)]")
                 return .failure(.general(error: error))
@@ -109,15 +109,15 @@ extension OneDriveAPI {
             }
         }
 
-        static func getServerError(from json: [String: Any]) -> OneDriveError? {
-            guard let error = json[OneDriveAPI.Keys.error] else { 
+        static func getServerError(from json: [String: Any]) -> RemoteError? {
+            guard let error = json[OneDriveAPI.Keys.error] else {
                 return nil
             }
             let errorDetails = json.description
             Diag.error(errorDetails)
             if let errorDict = error as? [String: Any] {
                 let message = (errorDict[OneDriveAPI.Keys.message] as? String) ?? "UnknownError"
-                return OneDriveError.serverSideError(message: message)
+                return RemoteError.serverSideError(message: message)
             }
 
             let errorKind = (error as? String) ?? "OneDriveError"
@@ -126,7 +126,7 @@ extension OneDriveAPI {
             case ("invalid_grant", "token_expired"),
                 ("invalid_grant", .none):
                 Diag.warning("Authorization token expired")
-                return .authorizationRequired
+                return .authorizationRequired(message: LString.titleOneDriveRequiresSignIn)
             default:
                 let errorDescription = (json[OneDriveAPI.Keys.errorDescription] as?  String) ?? errorKind
                 Diag.warning("Server-side OneDrive error [message: \(errorDescription)]")

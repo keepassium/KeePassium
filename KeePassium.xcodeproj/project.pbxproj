@@ -1201,6 +1201,11 @@
 		75FCCF862631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FCCF832631D1F70025E86C /* HardwareKeyPickerCoordinator.swift */; };
 		75FCCF872631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FCCF832631D1F70025E86C /* HardwareKeyPickerCoordinator.swift */; };
 		75FEC2232175292C0034334B /* KeePassiumLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75FEC2222175292C0034334B /* KeePassiumLib.framework */; };
+		F30550272BA4B09500155709 /* RemoteDataSourceSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30550262BA4B09500155709 /* RemoteDataSourceSetupCoordinator.swift */; };
+		F30550282BA4B20400155709 /* RemoteDataSourceSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30550262BA4B09500155709 /* RemoteDataSourceSetupCoordinator.swift */; };
+		F30550292BA4B20500155709 /* RemoteDataSourceSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30550262BA4B09500155709 /* RemoteDataSourceSetupCoordinator.swift */; };
+		F305502A2BA4B20600155709 /* RemoteDataSourceSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30550262BA4B09500155709 /* RemoteDataSourceSetupCoordinator.swift */; };
+		F305502B2BA4B20700155709 /* RemoteDataSourceSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30550262BA4B09500155709 /* RemoteDataSourceSetupCoordinator.swift */; };
 		F30D035D2A7BD3CF0047525F /* PasswordQualityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30D035C2A7BD3CF0047525F /* PasswordQualityIndicatorView.swift */; };
 		F30D036F2A7BE83A0047525F /* PasswordQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30D036E2A7BE83A0047525F /* PasswordQuality.swift */; };
 		F30D03702A7BE8A00047525F /* PasswordQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30D036E2A7BE83A0047525F /* PasswordQuality.swift */; };
@@ -1211,6 +1216,11 @@
 		F30D03752A7BE8A30047525F /* PasswordQualityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30D035C2A7BD3CF0047525F /* PasswordQualityIndicatorView.swift */; };
 		F30D03762A7BE8A40047525F /* PasswordQualityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30D035C2A7BD3CF0047525F /* PasswordQualityIndicatorView.swift */; };
 		F30D03772A7BE8A40047525F /* PasswordQualityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30D035C2A7BD3CF0047525F /* PasswordQualityIndicatorView.swift */; };
+		F31114A82B9B83B300236632 /* DropboxConnectionSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31114A72B9B83B300236632 /* DropboxConnectionSetupCoordinator.swift */; };
+		F31114A92B9B84E000236632 /* DropboxConnectionSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31114A72B9B83B300236632 /* DropboxConnectionSetupCoordinator.swift */; };
+		F31114AB2B9B84E100236632 /* DropboxConnectionSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31114A72B9B83B300236632 /* DropboxConnectionSetupCoordinator.swift */; };
+		F31114B02B9B894C00236632 /* DropboxConnectionSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31114A72B9B83B300236632 /* DropboxConnectionSetupCoordinator.swift */; };
+		F31114B12B9B894D00236632 /* DropboxConnectionSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31114A72B9B83B300236632 /* DropboxConnectionSetupCoordinator.swift */; };
 		F321414C2A90D2CD007A8D4E /* PasswordAuditServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F321414B2A90D2CD007A8D4E /* PasswordAuditServiceTests.swift */; };
 		F321414D2A934AAE007A8D4E /* HIBPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37CAA2C2A87EB110000EF64 /* HIBPService.swift */; };
 		F321414E2A934AAF007A8D4E /* HIBPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37CAA2C2A87EB110000EF64 /* HIBPService.swift */; };
@@ -2439,8 +2449,10 @@
 		75FDEF74233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/SettingsBackupTimeoutPickerVC.strings; sourceTree = "<group>"; };
 		75FEC2222175292C0034334B /* KeePassiumLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		810530B59228DDD3CEA55C42 /* FaviconDownloading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaviconDownloading.swift; sourceTree = "<group>"; };
+		F30550262BA4B09500155709 /* RemoteDataSourceSetupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSourceSetupCoordinator.swift; sourceTree = "<group>"; };
 		F30D035C2A7BD3CF0047525F /* PasswordQualityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordQualityIndicatorView.swift; sourceTree = "<group>"; };
 		F30D036E2A7BE83A0047525F /* PasswordQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordQuality.swift; sourceTree = "<group>"; };
+		F31114A72B9B83B300236632 /* DropboxConnectionSetupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxConnectionSetupCoordinator.swift; sourceTree = "<group>"; };
 		F321414B2A90D2CD007A8D4E /* PasswordAuditServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordAuditServiceTests.swift; sourceTree = "<group>"; };
 		F33F2C502B32DD61009EFB18 /* TagSelectorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSelectorVC.swift; sourceTree = "<group>"; };
 		F33F2C532B32E059009EFB18 /* TagSelectorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSelectorCoordinator.swift; sourceTree = "<group>"; };
@@ -3117,10 +3129,12 @@
 		758FF6C828FC1867007DE8EB /* remote-files */ = {
 			isa = PBXGroup;
 			children = (
+				F31114A62B9B83A700236632 /* dropbox */,
 				75D21BD72B642BDD0065D95E /* onedrive */,
 				750C0D5F2B640A0900821CA4 /* webdav */,
 				7524E7352888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift */,
 				759F69FC29066E110089FB34 /* ConnectionTypePickerVC.swift */,
+				F30550262BA4B09500155709 /* RemoteDataSourceSetupCoordinator.swift */,
 				758FF6C928FC18E4007DE8EB /* RemoteFolderViewerVC.swift */,
 				75136B252B67CD6B00214760 /* RemoteFileExportCoordinator.swift */,
 				75136B292B6972CB00214760 /* RemoteItemSelectionMode.swift */,
@@ -3347,6 +3361,14 @@
 				F30D035C2A7BD3CF0047525F /* PasswordQualityIndicatorView.swift */,
 			);
 			path = "password-quality";
+			sourceTree = "<group>";
+		};
+		F31114A62B9B83A700236632 /* dropbox */ = {
+			isa = PBXGroup;
+			children = (
+				F31114A72B9B83B300236632 /* DropboxConnectionSetupCoordinator.swift */,
+			);
+			path = dropbox;
 			sourceTree = "<group>";
 		};
 		F33F2C522B32E03E009EFB18 /* tags */ = {
@@ -4144,6 +4166,7 @@
 				75BF1966283F9C51006A9826 /* AccessibleStepper.swift in Sources */,
 				75CBABA521C1C2D100B8AFE2 /* FileInfoVC.swift in Sources */,
 				75D5D4012235CD720003CD55 /* CrashReportVC.swift in Sources */,
+				F31114B12B9B894D00236632 /* DropboxConnectionSetupCoordinator.swift in Sources */,
 				7590231D2AB45948009E6213 /* Favicon.swift in Sources */,
 				7524E7462888B56600ECBEC8 /* RightDetailCell.swift in Sources */,
 				759ADB8D285A284B00D93BD4 /* AnnouncementCell.swift in Sources */,
@@ -4220,6 +4243,7 @@
 				75FC84312AC87C51005021F1 /* Coordinator+passGen.swift in Sources */,
 				75CBAB9D21C166D600B8AFE2 /* Coordinator.swift in Sources */,
 				75CFBE2D21C2FE340029A80A /* UIView+extension.swift in Sources */,
+				F30550282BA4B20400155709 /* RemoteDataSourceSetupCoordinator.swift in Sources */,
 				75BE05FB25DAA5A200B34CC0 /* URLOpener.swift in Sources */,
 				75AA237B26CBCAED00488C4E /* DatabaseFile+extensions.swift in Sources */,
 				758FF6CB28FC18E4007DE8EB /* RemoteFolderViewerVC.swift in Sources */,
@@ -4276,6 +4300,7 @@
 				758BF0DD20D220B300897C83 /* WatchdogAwareTextField.swift in Sources */,
 				751A565224CCD3CD001227D6 /* AppIconPicker.swift in Sources */,
 				75AF1932282E621600FA4BB5 /* PasswordGeneratorLengthCell.swift in Sources */,
+				F31114A82B9B83B300236632 /* DropboxConnectionSetupCoordinator.swift in Sources */,
 				754BF07F2082A6BD00E3A292 /* AppDelegate.swift in Sources */,
 				7579A06724F0730A00C98F24 /* AppHistoryViewerVC.swift in Sources */,
 				752ED68D2235547D00C20D3E /* SettingsDataProtectionVC.swift in Sources */,
@@ -4492,6 +4517,7 @@
 				7579A07024F1C55B00C98F24 /* AppHistoryCoordinator.swift in Sources */,
 				7524E7452888B56600ECBEC8 /* RightDetailCell.swift in Sources */,
 				7546FBDB20C3AC5E00C5D834 /* main.swift in Sources */,
+				F30550272BA4B09500155709 /* RemoteDataSourceSetupCoordinator.swift in Sources */,
 				757ADC5423A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
 				75FCCF842631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */,
 				75BE05FA25DAA5A200B34CC0 /* URLOpener.swift in Sources */,
@@ -4510,6 +4536,7 @@
 				75B38BF3233E5B7C006BDEFC /* NewsCenter.swift in Sources */,
 				75B38BF4233E5B7C006BDEFC /* WatchdogAwareTextField.swift in Sources */,
 				751A565324CCD3CD001227D6 /* AppIconPicker.swift in Sources */,
+				F31114AB2B9B84E100236632 /* DropboxConnectionSetupCoordinator.swift in Sources */,
 				75AF1933282E621600FA4BB5 /* PasswordGeneratorLengthCell.swift in Sources */,
 				75B38BF5233E5B7C006BDEFC /* AppDelegate.swift in Sources */,
 				7579A06824F0730A00C98F24 /* AppHistoryViewerVC.swift in Sources */,
@@ -4726,6 +4753,7 @@
 				75B38C49233E5B7C006BDEFC /* SettingsAppTimeoutVC.swift in Sources */,
 				7579A07124F1C55B00C98F24 /* AppHistoryCoordinator.swift in Sources */,
 				7524E7472888B56600ECBEC8 /* RightDetailCell.swift in Sources */,
+				F30550292BA4B20500155709 /* RemoteDataSourceSetupCoordinator.swift in Sources */,
 				75B38C4A233E5B7C006BDEFC /* main.swift in Sources */,
 				757ADC5623A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
 				75FCCF862631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */,
@@ -4904,6 +4932,7 @@
 				75D0763528B639D200F02E39 /* FileAddingHelper.swift in Sources */,
 				75D0763628B639D200F02E39 /* SettingsAutoFillVC.swift in Sources */,
 				75D0763728B639D200F02E39 /* AppProtectionSettingsCoordinator.swift in Sources */,
+				F31114A92B9B84E000236632 /* DropboxConnectionSetupCoordinator.swift in Sources */,
 				75D0763828B639D200F02E39 /* Watchdog.swift in Sources */,
 				75D0763A28B639D200F02E39 /* PremiumCoordinator.swift in Sources */,
 				75D0763B28B639D200F02E39 /* PasscodeInputVC.swift in Sources */,
@@ -4931,6 +4960,7 @@
 				75D0764C28B639D200F02E39 /* ItemRelocationCoordinator.swift in Sources */,
 				75D0764D28B639D200F02E39 /* YubiKey+extension.swift in Sources */,
 				759023202AB4594A009E6213 /* Favicon.swift in Sources */,
+				F305502B2BA4B20700155709 /* RemoteDataSourceSetupCoordinator.swift in Sources */,
 				F30D03732A7BE8A10047525F /* PasswordQuality.swift in Sources */,
 				75D0764E28B639D200F02E39 /* ChallengeResponseManager.swift in Sources */,
 				75D0764F28B639D200F02E39 /* GroupEditorVC.swift in Sources */,
@@ -4978,6 +5008,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F30D03722A7BE8A10047525F /* PasswordQuality.swift in Sources */,
+				F31114B02B9B894C00236632 /* DropboxConnectionSetupCoordinator.swift in Sources */,
 				75D7DF7C233E5E310029AD87 /* SKProduct+extension.swift in Sources */,
 				75838484268B55BF000D2E8B /* UIViewController+subviews.swift in Sources */,
 				756DBE2F275994B800E4270B /* ASExtensionError+extensions.swift in Sources */,
@@ -5072,6 +5103,7 @@
 				7526403F28455DC00003DDFA /* PasswordGeneratorVC.swift in Sources */,
 				75604EB526D8F0DB008A2B43 /* DatabaseLoadingWarningsVC.swift in Sources */,
 				75DE677C268F6F69003D4DCC /* BiometricsHelper.swift in Sources */,
+				F305502A2BA4B20600155709 /* RemoteDataSourceSetupCoordinator.swift in Sources */,
 				757ADC5723A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
 				75D7DF9F233E5E310029AD87 /* PasscodeInputVC.swift in Sources */,
 				75D99DF1269CEE0800D0E9D7 /* DatabaseItemTitleView.swift in Sources */,

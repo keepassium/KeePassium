@@ -136,14 +136,7 @@ private enum OneDriveURLHelper {
         if let driveTypeRaw = queryItems[Key.driveType],
            let driveType = OneDriveDriveInfo.DriveType(rawValue: driveTypeRaw)
         {
-            switch driveType {
-            case .personal:
-                serviceName = LString.connectionTypeOneDrive
-            case .business:
-                serviceName = LString.connectionTypeOneDriveForBusiness
-            case .sharepoint:
-                serviceName = LString.connectionTypeSharePoint
-            }
+            serviceName = driveType.description
         }
         return "\(serviceName) (\(owner)) → \(path)"
     }

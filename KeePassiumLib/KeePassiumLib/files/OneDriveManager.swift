@@ -12,15 +12,17 @@ import AuthenticationServices
  This code includes parts of https://github.com/lithium0003/ccViewer/blob/master/RemoteCloud/RemoteCloud/Storages/OneDriveStorage.swift
  by GitHub user lithium03, published under the MIT license.
  */
-final public class OneDriveManager: NSObject {
-    public typealias TokenUpdateCallback = (OAuthToken) -> Void
-
+final public class OneDriveManager: RemoteDataSourceManager {
     public static let shared = OneDriveManager()
 
     private var presentationAnchors = [ObjectIdentifier: Weak<ASPresentationAnchor>]()
 
     private let urlSession: URLSession
     private var authProvider: OneDriveAuthProvider
+
+    public var maxUploadSize: Int {
+        return OneDriveAPI.maxUploadSize
+    }
 
     private static let backgroundQueue: OperationQueue = {
         let queue = OperationQueue()
@@ -30,7 +32,7 @@ final public class OneDriveManager: NSObject {
         return queue
     }()
 
-    override private init() {
+    private init() {
         urlSession = {
             let config = URLSessionConfiguration.ephemeral
             config.allowsCellularAccess = true
@@ -43,7 +45,14 @@ final public class OneDriveManager: NSObject {
             )
         }()
         authProvider = BasicOneDriveAuthProvider(urlSession: urlSession)
-        super.init()
+    }
+
+    public func acquireTokenSilent(
+        token: OAuthToken,
+        completionQueue: OperationQueue,
+        completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
+    ) {
+        authProvider.acquireTokenSilent(token: token, completionQueue: completionQueue, completion: completion)
     }
 }
 
@@ -56,7 +65,7 @@ extension OneDriveManager {
     public func authenticate(
         presenter: UIViewController,
         completionQueue: OperationQueue = .main,
-        completion: @escaping (Result<OAuthToken, OneDriveError>) -> Void
+        completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
     ) {
         authProvider.acquireToken(
             presenter: presenter,
@@ -66,19 +75,12 @@ extension OneDriveManager {
     }
 }
 
-extension OneDriveManager: ASWebAuthenticationPresentationContextProviding {
-    public func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
-        let sessionObjectID = ObjectIdentifier(session)
-        return presentationAnchors[sessionObjectID]!.value!
-    }
-}
-
 extension OneDriveManager {
     public func getDriveInfo(
         parent: OneDriveSharedFolder?,
         freshToken token: OAuthToken,
         completionQueue: OperationQueue = .main,
-        completion: @escaping (Result<OneDriveDriveInfo, OneDriveError>) -> Void
+        completion: @escaping (Result<OneDriveDriveInfo, RemoteError>) -> Void
     ) {
         Diag.debug("Requesting drive info")
         let parentPath = parent?.urlPath ?? OneDriveAPI.defaultDrivePath
@@ -143,39 +145,11 @@ extension OneDriveManager {
 }
 
 extension OneDriveManager {
-
     public func getItems(
-        in folder: OneDriveItem,
-        token: OAuthToken,
-        tokenUpdater: TokenUpdateCallback?,
-        completionQueue: OperationQueue = .main,
-        completion: @escaping (Result<[OneDriveItem], OneDriveError>) -> Void
-    ) {
-        Diag.debug("Acquiring file list")
-        authProvider.acquireTokenSilent(token: token, completionQueue: completionQueue) { authResult in
-            switch authResult {
-            case .success(let newToken):
-                tokenUpdater?(newToken)
-                self.getItems(
-                    in: folder,
-                    freshToken: newToken,
-                    completionQueue: completionQueue,
-                    completion: completion
-                )
-            case .failure(let oneDriveError):
-                completionQueue.addOperation {
-                    completion(.failure(oneDriveError))
-                }
-                return
-            }
-        }
-    }
-
-    private func getItems(
         in folder: OneDriveItem,
         freshToken token: OAuthToken,
         completionQueue: OperationQueue,
-        completion: @escaping (Result<[OneDriveItem], OneDriveError>) -> Void
+        completion: @escaping (Result<[OneDriveItem], RemoteError>) -> Void
     ) {
         let requestURL = folder.getRequestURL(.children)
         var urlRequest = URLRequest(url: requestURL)
@@ -294,39 +268,11 @@ extension OneDriveManager {
 }
 
 extension OneDriveManager {
-
     public func getItemInfo(
-        _ item: OneDriveItem,
-        token: OAuthToken,
-        tokenUpdater: TokenUpdateCallback?,
-        completionQueue: OperationQueue = .main,
-        completion: @escaping (Result<OneDriveItem, OneDriveError>) -> Void
-    ) {
-        Diag.debug("Acquiring file list")
-        authProvider.acquireTokenSilent(token: token, completionQueue: completionQueue) { authResult in
-            switch authResult {
-            case .success(let newToken):
-                tokenUpdater?(newToken)
-                self.getItemInfo(
-                    item,
-                    freshToken: newToken,
-                    completionQueue: completionQueue,
-                    completion: completion
-                )
-            case .failure(let oneDriveError):
-                completionQueue.addOperation {
-                    completion(.failure(oneDriveError))
-                }
-                return
-            }
-        }
-    }
-
-    private func getItemInfo(
         _ item: OneDriveItem,
         freshToken token: OAuthToken,
         completionQueue: OperationQueue,
-        completion: @escaping (Result<OneDriveItem, OneDriveError>) -> Void
+        completion: @escaping (Result<OneDriveItem, RemoteError>) -> Void
     ) {
         let fileInfoRequestURL = item.getRequestURL(.itemInfo)
         var urlRequest = URLRequest(url: fileInfoRequestURL)
@@ -414,7 +360,7 @@ extension OneDriveManager {
         _ fileItem: OneDriveItem,
         freshToken token: OAuthToken,
         completionQueue: OperationQueue,
-        completion: @escaping (Result<OneDriveItem, OneDriveError>) -> Void
+        completion: @escaping (Result<OneDriveItem, RemoteError>) -> Void
     ) {
         guard let parent = fileItem.parent else {
             completionQueue.addOperation {
@@ -498,39 +444,11 @@ extension OneDriveManager {
     }
 }
 extension OneDriveManager {
-
     public func getFileContents(
-        _ item: OneDriveItem,
-        token: OAuthToken,
-        tokenUpdater: TokenUpdateCallback?,
-        completionQueue: OperationQueue = .main,
-        completion: @escaping (Result<Data, OneDriveError>) -> Void
-    ) {
-        Diag.debug("Downloading file")
-        authProvider.acquireTokenSilent(token: token, completionQueue: completionQueue) { authResult in
-            switch authResult {
-            case .success(let newToken):
-                tokenUpdater?(newToken)
-                self.getFileContents(
-                    item,
-                    freshToken: newToken,
-                    completionQueue: completionQueue,
-                    completion: completion
-                )
-            case .failure(let oneDriveError):
-                completionQueue.addOperation {
-                    completion(.failure(oneDriveError))
-                }
-                return
-            }
-        }
-    }
-
-    private func getFileContents(
         _ item: OneDriveItem,
         freshToken token: OAuthToken,
         completionQueue: OperationQueue,
-        completion: @escaping (Result<Data, OneDriveError>) -> Void
+        completion: @escaping (Result<Data, RemoteError>) -> Void
     ) {
         let fileContentsURL = item.getRequestURL(.content)
         var urlRequest = URLRequest(url: fileContentsURL)
@@ -577,48 +495,8 @@ extension OneDriveManager {
         var itemID: String
         var finalName: String
     }
-    public typealias UploadCompletionHandler = (Result<UploadResponse, OneDriveError>) -> Void
 
     public func updateFile(
-        _ fileItem: OneDriveItem,
-        contents: ByteArray,
-        token: OAuthToken,
-        tokenUpdater: TokenUpdateCallback?,
-        completionQueue: OperationQueue = .main,
-        completion: @escaping UploadCompletionHandler
-    ) {
-        Diag.debug("Uploading file")
-        assert(!fileItem.isFolder)
-
-        guard contents.count < OneDriveAPI.maxUploadSize else {
-            Diag.error("Such a large upload is not supported. Please contact support. [fileSize: \(contents.count)]")
-            completionQueue.addOperation {
-                completion(.failure(.serverSideError(message: "Upload is too large")))
-            }
-            return
-        }
-
-        authProvider.acquireTokenSilent(token: token, completionQueue: completionQueue) { authResult in
-            switch authResult {
-            case .success(let newToken):
-                tokenUpdater?(newToken)
-                self.updateFile(
-                    fileItem,
-                    contents: contents,
-                    freshToken: newToken,
-                    completionQueue: completionQueue,
-                    completion: completion
-                )
-            case .failure(let oneDriveError):
-                completionQueue.addOperation {
-                    completion(.failure(oneDriveError))
-                }
-                return
-            }
-        }
-    }
-
-    private func updateFile(
         _ item: OneDriveItem,
         contents: ByteArray,
         freshToken token: OAuthToken,
@@ -739,56 +617,13 @@ extension OneDriveManager {
 }
 
 extension OneDriveManager {
-    public typealias CreateCompletionHandler = (Result<OneDriveItem, OneDriveError>) -> Void
-
     public func createFile(
-        in folder: OneDriveItem,
-        contents: ByteArray,
-        fileName: String,
-        token: OAuthToken,
-        tokenUpdater: TokenUpdateCallback?,
-        completionQueue: OperationQueue = .main,
-        completion: @escaping CreateCompletionHandler
-    ) {
-        Diag.debug("Creating a file")
-        assert(folder.isFolder)
-
-        guard contents.count < OneDriveAPI.maxUploadSize else {
-            Diag.error("Such a large upload is not supported. Please contact support. [fileSize: \(contents.count)]")
-            completionQueue.addOperation {
-                completion(.failure(.serverSideError(message: "Upload is too large")))
-            }
-            return
-        }
-
-        authProvider.acquireTokenSilent(token: token, completionQueue: completionQueue) { authResult in
-            switch authResult {
-            case .success(let newToken):
-                tokenUpdater?(newToken)
-                self.createFile(
-                    in: folder,
-                    contents: contents,
-                    fileName: fileName,
-                    freshToken: newToken,
-                    completionQueue: completionQueue,
-                    completion: completion
-                )
-            case .failure(let oneDriveError):
-                completionQueue.addOperation {
-                    completion(.failure(oneDriveError))
-                }
-                return
-            }
-        }
-    }
-
-    private func createFile(
         in folder: OneDriveItem,
         contents: ByteArray,
         fileName: String,
         freshToken token: OAuthToken,
         completionQueue: OperationQueue,
-        completion: @escaping CreateCompletionHandler
+        completion: @escaping CreateCompletionHandler<OneDriveItem>
     ) {
         Diag.debug("Creating new file")
 

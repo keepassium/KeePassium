@@ -48,6 +48,90 @@ final class RemoteFileExportCoordinator: Coordinator {
             self.dismissHandler?(self)
         })
     }
+
+    private func upload<Coordinator: RemoteDataSourceSetupCoordinator>(
+        _ folder: Coordinator.Manager.ItemType,
+        oauthToken: OAuthToken,
+        manager: Coordinator.Manager,
+        stateIndicator: BusyStateIndicating?,
+        coordinator: Coordinator
+    ) {
+        Diag.debug("Will upload new file")
+        stateIndicator?.indicateState(isBusy: true)
+        manager.getItems(in: folder, token: oauthToken, tokenUpdater: nil, completionQueue: .main) {
+            [weak self, weak coordinator, weak stateIndicator] result in
+            guard let self, let coordinator else { return }
+            stateIndicator?.indicateState(isBusy: false)
+            switch result {
+            case .success(let existingItems):
+                checkExistenceAndCreate(
+                    fileName: self.fileName,
+                    in: folder,
+                    existingItems: existingItems,
+                    oauthToken: oauthToken,
+                    stateIndicator: stateIndicator,
+                    manager: manager,
+                    presenter: coordinator.getModalPresenter()
+                )
+            case .failure(let error):
+                Diag.debug("Failed to get existing items [message: \(error.localizedDescription)]")
+                coordinator.getModalPresenter().showErrorAlert(error)
+            }
+        }
+    }
+
+    private func checkExistenceAndCreate<ItemType: RemoteFileItem>(
+        fileName: String,
+        in folder: ItemType,
+        existingItems: [ItemType],
+        oauthToken: OAuthToken,
+        stateIndicator: BusyStateIndicating?,
+        manager: some RemoteDataSourceManager<ItemType>,
+        presenter: UIViewController
+    ) {
+        let doCreateFile = { [weak presenter] in
+            stateIndicator?.indicateState(isBusy: true)
+            manager.createFile(
+                in: folder,
+                contents: self.data,
+                fileName: fileName,
+                token: oauthToken,
+                tokenUpdater: nil,
+                completion: { [weak self, weak stateIndicator] result in
+                    guard let self else { return }
+                    stateIndicator?.indicateState(isBusy: false)
+                    switch result {
+                    case .success(let newFileItem):
+                        Diag.debug("File created successfully")
+                        let itemURL = newFileItem.toURL()
+                        let credential = NetworkCredential(oauthToken: oauthToken)
+                        self.delegate?.didFinishExport(to: itemURL, credential: credential, in: self)
+                    case .failure(let error):
+                        Diag.debug("File creation failed [message: \(error.localizedDescription)]")
+                        presenter?.showErrorAlert(error)
+                    }
+                }
+            )
+        }
+
+        let fileAlreadyExists = existingItems.contains(where: {
+            !$0.isFolder && $0.name == self.fileName
+        })
+        if !fileAlreadyExists {
+            doCreateFile()
+            return
+        }
+
+        let overwriteAlert = UIAlertController(
+            title: LString.fileAlreadyExists,
+            message: fileName,
+            preferredStyle: .alert)
+        overwriteAlert.addAction(title: LString.actionOverwrite, style: .destructive) { _ in
+            doCreateFile()
+        }
+        overwriteAlert.addAction(title: LString.actionCancel, style: .cancel, handler: nil)
+        presenter.present(overwriteAlert, animated: true)
+    }
 }
 
 extension RemoteFileExportCoordinator: ConnectionTypePickerDelegate {
@@ -79,16 +163,57 @@ extension RemoteFileExportCoordinator: ConnectionTypePickerDelegate {
             case .webdav:
                 assertionFailure("Not implemented yet")
             case .oneDrive, .oneDriveForBusiness:
-                startOneDriveSetup(connectionType: connectionType, stateIndicator: viewController)
+                startOneDriveSetup(stateIndicator: viewController)
+            case .dropbox, .dropboxBusiness:
+                startDropboxSetup(stateIndicator: viewController)
             }
         }
     }
 }
 
+extension RemoteFileExportCoordinator: DropboxConnectionSetupCoordinatorDelegate {
+    private func startDropboxSetup(stateIndicator: BusyStateIndicating) {
+        let setupCoordinator = DropboxConnectionSetupCoordinator(
+            router: router,
+            stateIndicator: stateIndicator,
+            selectionMode: .folder
+        )
+        setupCoordinator.delegate = self
+        setupCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        setupCoordinator.start()
+        addChildCoordinator(setupCoordinator)
+    }
+
+    func didPickRemoteFile(
+        url: URL,
+        oauthToken: OAuthToken,
+        stateIndicator: BusyStateIndicating?,
+        in coordinator: DropboxConnectionSetupCoordinator
+    ) {
+        assertionFailure("Expected didPickRemoteFolder instead")
+    }
+
+    func didPickRemoteFolder(
+        _ folder: DropboxItem,
+        oauthToken: OAuthToken,
+        stateIndicator: BusyStateIndicating?,
+        in coordinator: DropboxConnectionSetupCoordinator)
+    {
+        upload(
+            folder,
+            oauthToken: oauthToken,
+            manager: DropboxManager.shared,
+            stateIndicator: stateIndicator,
+            coordinator: coordinator
+        )
+    }
+}
+
 extension RemoteFileExportCoordinator: OneDriveConnectionSetupCoordinatorDelegate {
-    private func startOneDriveSetup(connectionType: RemoteConnectionType, stateIndicator: BusyStateIndicating) {
+    private func startOneDriveSetup(stateIndicator: BusyStateIndicating) {
         let setupCoordinator = OneDriveConnectionSetupCoordinator(
-            connectionType: connectionType,
             stateIndicator: stateIndicator,
             selectionMode: .folder,
             oldRef: nil,
@@ -117,78 +242,12 @@ extension RemoteFileExportCoordinator: OneDriveConnectionSetupCoordinatorDelegat
         stateIndicator: BusyStateIndicating?,
         in coordinator: OneDriveConnectionSetupCoordinator
     ) {
-        Diag.debug("Will upload new file")
-        stateIndicator?.indicateState(isBusy: true)
-        OneDriveManager.shared.getItems(in: folder, token: oauthToken, tokenUpdater: nil) {
-            [weak self, weak coordinator, weak stateIndicator] result in
-            guard let self, let coordinator else { return }
-            stateIndicator?.indicateState(isBusy: false)
-            switch result {
-            case .success(let existingItems):
-                checkExistenceAndCreate(
-                    fileName: self.fileName,
-                    in: folder,
-                    existingItems: existingItems,
-                    oauthToken: oauthToken,
-                    stateIndicator: stateIndicator,
-                    presenter: coordinator.getModalPresenter()
-                )
-            case .failure(let oneDriveError):
-                Diag.debug("Failed to get existing items [message: \(oneDriveError.localizedDescription)]")
-                coordinator.getModalPresenter().showErrorAlert(oneDriveError)
-            }
-        }
-    }
-
-    private func checkExistenceAndCreate(
-        fileName: String,
-        in folder: OneDriveItem,
-        existingItems: [OneDriveItem],
-        oauthToken: OAuthToken,
-        stateIndicator: BusyStateIndicating?,
-        presenter: UIViewController
-    ) {
-        let doCreateFile = { [weak presenter] in
-            stateIndicator?.indicateState(isBusy: true)
-            OneDriveManager.shared.createFile(
-                in: folder,
-                contents: self.data,
-                fileName: fileName,
-                token: oauthToken,
-                tokenUpdater: nil,
-                completion: { [weak self, weak stateIndicator] result in
-                    guard let self else { return }
-                    stateIndicator?.indicateState(isBusy: false)
-                    switch result {
-                    case .success(let newFileItem):
-                        Diag.debug("File created successfully")
-                        let itemURL = newFileItem.toURL()
-                        let credential = NetworkCredential(oauthToken: oauthToken)
-                        self.delegate?.didFinishExport(to: itemURL, credential: credential, in: self)
-                    case .failure(let oneDriveError):
-                        Diag.debug("File creation failed [message: \(oneDriveError.localizedDescription)]")
-                        presenter?.showErrorAlert(oneDriveError)
-                    }
-                }
-            )
-        }
-
-        let fileAlreadyExists = existingItems.contains(where: {
-            !$0.isFolder && $0.name == self.fileName
-        })
-        if !fileAlreadyExists {
-            doCreateFile()
-            return
-        }
-
-        let overwriteAlert = UIAlertController(
-            title: LString.fileAlreadyExists,
-            message: fileName,
-            preferredStyle: .alert)
-        overwriteAlert.addAction(title: LString.actionOverwrite, style: .destructive) { _ in
-            doCreateFile()
-        }
-        overwriteAlert.addAction(title: LString.actionCancel, style: .cancel, handler: nil)
-        presenter.present(overwriteAlert, animated: true)
+        upload(
+            folder,
+            oauthToken: oauthToken,
+            manager: OneDriveManager.shared,
+            stateIndicator: stateIndicator,
+            coordinator: coordinator
+        )
     }
 }

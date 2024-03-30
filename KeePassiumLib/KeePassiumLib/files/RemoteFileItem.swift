@@ -10,4 +10,8 @@ public protocol RemoteFileItem {
     var name: String { get }
     var isFolder: Bool { get }
     var fileInfo: FileInfo? { get }
+    var supportsItemCreation: Bool { get }
+
+    static func fromURL(_ url: URL) -> Self?
+    func toURL() -> URL
 }

@@ -28,6 +28,8 @@ extension FileProvider {
             return .fileProviderWebDAV
         case .keepassiumOneDrive:
             return .fileProviderOneDrive
+        case .keepassiumDropbox:
+            return .fileProviderDropbox
         case .nextcloud:
             return .fileProviderNextCloud
         case .oneDrive:

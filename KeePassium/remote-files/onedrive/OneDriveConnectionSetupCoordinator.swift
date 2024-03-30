@@ -23,30 +23,32 @@ protocol OneDriveConnectionSetupCoordinatorDelegate: AnyObject {
     )
 }
 
-final class OneDriveConnectionSetupCoordinator: Coordinator {
+final class OneDriveConnectionSetupCoordinator: RemoteDataSourceSetupCoordinator {
+    typealias Manager = OneDriveManager
+
     var childCoordinators = [Coordinator]()
     var dismissHandler: CoordinatorDismissHandler?
 
     weak var delegate: OneDriveConnectionSetupCoordinatorDelegate?
 
-    private let router: NavigationRouter
-    private let connectionType: RemoteConnectionType
-    private let stateIndicator: BusyStateIndicating
-    private let selectionMode: RemoteItemSelectionMode
-    private var oldRef: URLReference?
-    private weak var firstVC: UIViewController?
+    let router: NavigationRouter
 
-    private var token: OAuthToken?
+    let stateIndicator: BusyStateIndicating
+    let selectionMode: RemoteItemSelectionMode
+    let manager = OneDriveManager.shared
+
+    private var oldRef: URLReference?
+    weak var firstVC: UIViewController?
+
+    var token: OAuthToken?
     private var driveInfo: OneDriveDriveInfo?
 
     init(
-        connectionType: RemoteConnectionType,
         stateIndicator: BusyStateIndicating,
         selectionMode: RemoteItemSelectionMode = .file,
         oldRef: URLReference?,
         router: NavigationRouter
     ) {
-        self.connectionType = connectionType
         self.stateIndicator = stateIndicator
         self.selectionMode = selectionMode
         self.oldRef = oldRef
@@ -59,56 +61,15 @@ final class OneDriveConnectionSetupCoordinator: Coordinator {
     }
 
     func start() {
-        firstVC = nil
+        driveInfo = nil
         startSignIn()
-    }
-
-    func getModalPresenter() -> UIViewController {
-        return router.navigationController
-    }
-
-    func showErrorAlert(_ error: OneDriveError) {
-        getModalPresenter().showErrorAlert(error)
-    }
-
-    func dismiss() {
-        if let firstVC {
-            router.pop(viewController: firstVC, animated: true)
-            self.firstVC = nil
-        }
     }
 }
 
 extension OneDriveConnectionSetupCoordinator {
-    private func startSignIn() {
-        token = nil
-        driveInfo = nil
-
+    func onAuthorized(token: OAuthToken) {
         stateIndicator.indicateState(isBusy: true)
-        let presenter = router.navigationController
-        OneDriveManager.shared.authenticate(presenter: presenter) {
-            [weak self] result in
-            guard let self else { return }
-            stateIndicator.indicateState(isBusy: false)
-            switch result {
-            case .success(let token):
-                self.token = token
-                self.onAuthorized(token: token)
-            case .failure(let oneDriveError):
-                self.token = nil
-                switch oneDriveError {
-                case .cancelledByUser:
-                    break
-                default:
-                    self.showErrorAlert(oneDriveError)
-                }
-            }
-        }
-    }
-
-    private func onAuthorized(token: OAuthToken) {
-        stateIndicator.indicateState(isBusy: true)
-        OneDriveManager.shared.getDriveInfo(parent: nil, freshToken: token) { [weak self] result in
+        manager.getDriveInfo(parent: nil, freshToken: token) { [weak self] result in
             guard let self else { return }
             self.stateIndicator.indicateState(isBusy: false)
             switch result {
@@ -134,19 +95,8 @@ extension OneDriveConnectionSetupCoordinator {
             return
         }
 
-        if driveInfo.type.isCorporate {
-            let presenter = router.navigationController
-            performPremiumActionOrOfferUpgrade(
-                for: .canUseBusinessClouds,
-                allowBypass: true,
-                bypassTitle: LString.actionIgnoreAndContinue,
-                in: presenter
-            ) { [weak self] in
-                guard let self else { return }
-                self.showWelcomeFolder()
-            }
-        } else {
-            showWelcomeFolder()
+        maybeSuggestPremium(isCorporateStorage: driveInfo.type.isCorporate) { [weak self] _ in
+            self?.showWelcomeFolder()
         }
     }
 
@@ -157,7 +107,7 @@ extension OneDriveConnectionSetupCoordinator {
             onFailure()
             return
         }
-        OneDriveManager.shared.getItemInfo(
+        manager.getItemInfo(
             oneDriveItem,
             token: token,
             tokenUpdater: nil
@@ -194,51 +144,9 @@ extension OneDriveConnectionSetupCoordinator {
             firstVC = vc
         }
     }
-
-    private func showFolder(folder: OneDriveItem, presenter: UIViewController) {
-        guard let token else {
-            Diag.warning("Not signed into any OneDrive account, cancelling")
-            assertionFailure()
-            return
-        }
-
-        stateIndicator.indicateState(isBusy: true)
-        OneDriveManager.shared.getItems(
-            in: folder,
-            token: token,
-            tokenUpdater: nil
-        ) { [weak self, weak presenter] result in
-            guard let self, let presenter else { return }
-            self.stateIndicator.indicateState(isBusy: false)
-            switch result {
-            case .success(let items):
-                let vc = RemoteFolderViewerVC.make()
-                vc.folder = folder
-                vc.items = items
-                vc.folderName = folder.name
-                vc.delegate = self
-                vc.selectionMode = selectionMode
-                self.router.push(vc, animated: true, onPop: nil)
-            case .failure(let oneDriveError):
-                presenter.showErrorAlert(oneDriveError)
-            }
-        }
-    }
 }
 
 extension OneDriveConnectionSetupCoordinator: RemoteFolderViewerDelegate {
-    func canSaveTo(folder: RemoteFileItem?, in viewController: RemoteFolderViewerVC) -> Bool {
-        guard let folder else {
-            return false
-        }
-        guard let oneDriveFolder = folder as? OneDriveItem else {
-            Diag.warning("Unexpected item type, ignoring")
-            assertionFailure()
-            return false
-        }
-        return oneDriveFolder.supportsItemCreation
-    }
-
     func didPressSave(to folder: RemoteFileItem, in viewController: RemoteFolderViewerVC) {
         guard let token else {
             Diag.warning("Not signed into any OneDrive account, cancelling")
@@ -281,7 +189,7 @@ extension OneDriveConnectionSetupCoordinator: RemoteFolderViewerDelegate {
         }
 
         stateIndicator.indicateState(isBusy: true)
-        OneDriveManager.shared.updateItemInfo(
+        manager.updateItemInfo(
             oneDriveItem,
             freshToken: token,
             completionQueue: .main,

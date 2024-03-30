@@ -109,15 +109,13 @@ extension RemoteFilePickerCoordinator: ConnectionTypePickerDelegate {
     }
 
     func didSelect(connectionType: RemoteConnectionType, in viewController: ConnectionTypePickerVC) {
-
         switch connectionType {
         case .webdav:
             startWebDAVSetup()
         case .oneDrive, .oneDriveForBusiness:
-            startOneDriveSetup(
-                connectionType: connectionType,
-                stateIndicator: viewController
-            )
+            startOneDriveSetup(stateIndicator: viewController)
+        case .dropbox, .dropboxBusiness:
+            startDropboxSetup(stateIndicator: viewController)
         }
     }
 }
@@ -143,10 +141,44 @@ extension RemoteFilePickerCoordinator: WebDAVConnectionSetupCoordinatorDelegate 
     }
 }
 
+extension RemoteFilePickerCoordinator: DropboxConnectionSetupCoordinatorDelegate {
+    private func startDropboxSetup(stateIndicator: BusyStateIndicating) {
+        let setupCoordinator = DropboxConnectionSetupCoordinator(
+            router: router,
+            stateIndicator: stateIndicator
+        )
+        setupCoordinator.delegate = self
+        setupCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        setupCoordinator.start()
+        addChildCoordinator(setupCoordinator)
+    }
+
+    func didPickRemoteFile(
+        url: URL,
+        oauthToken: OAuthToken,
+        stateIndicator: BusyStateIndicating?,
+        in coordinator: DropboxConnectionSetupCoordinator
+    ) {
+        let credential = NetworkCredential(oauthToken: oauthToken)
+        delegate?.didPickRemoteFile(url: url, credential: credential, in: self)
+        dismiss()
+    }
+
+    func didPickRemoteFolder(
+        _ folder: DropboxItem,
+        oauthToken: OAuthToken,
+        stateIndicator: BusyStateIndicating?,
+        in coordinator: DropboxConnectionSetupCoordinator
+    ) {
+        assertionFailure("Expected didPickRemoteItem instead")
+    }
+}
+
 extension RemoteFilePickerCoordinator: OneDriveConnectionSetupCoordinatorDelegate {
-    private func startOneDriveSetup(connectionType: RemoteConnectionType, stateIndicator: BusyStateIndicating) {
+    private func startOneDriveSetup(stateIndicator: BusyStateIndicating) {
         let setupCoordinator = OneDriveConnectionSetupCoordinator(
-            connectionType: connectionType,
             stateIndicator: stateIndicator,
             oldRef: oldRef,
             router: router
