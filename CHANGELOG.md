@@ -1,5 +1,16 @@
 #CHANGELOG
 
+## [1.52.148] - 2024-04-04
+
+### Added
+
+- Direct in-app Dropbox support (free for Dropbox Basic and Pro; Dropbox Business requires premium) (#344, #340, #304, #171)
+
+### Fixed
+
+- Intune: Added new MTD scheme required by Intune SDK
+
+
 ## [1.51.147] - 2024-03-30
 
 ### Added

@@ -1,6 +1,20 @@
 {
     "sections": [
         {
+            "version": "1.52",
+            "releaseDate": "2024-04-04T00:00:00Z",
+            "items": [
+                {
+                    "title": "Added: Direct in-app Dropbox support. (Free for Dropbox Basic/Pro; Dropbox Business requires premium)",
+                    "github": "#344, #340, #304, #171"
+                },
+                {
+                    "title": "Fixed: Added new MTD scheme required by Intune SDK",
+                    "edition": "org"
+                },
+            ]
+        },
+        {
             "version": "1.51",
             "releaseDate": "2024-03-30T00:00:00Z",
             "items": [
