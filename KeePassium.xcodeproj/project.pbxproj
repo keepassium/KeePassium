@@ -6181,7 +6181,7 @@
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "KeePassium AutoFill/KeePassium_AutoFill-macOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 147;
+				CURRENT_PROJECT_VERSION = 148;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "KeePassium AutoFill/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "$(TARGET_NAME)";
@@ -6195,7 +6195,7 @@
 				);
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.51;
+				MARKETING_VERSION = 1.52;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "";
@@ -6218,7 +6218,7 @@
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "KeePassium AutoFill/KeePassium_AutoFill-macOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 147;
+				CURRENT_PROJECT_VERSION = 148;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "KeePassium AutoFill/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "$(TARGET_NAME)";
@@ -6232,7 +6232,7 @@
 				);
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.51;
+				MARKETING_VERSION = 1.52;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.keepassium.ios.KeePassium-AutoFill";
@@ -6386,7 +6386,7 @@
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "KeePassium/KeePassium-macOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 147;
+				CURRENT_PROJECT_VERSION = 148;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -6404,7 +6404,7 @@
 				);
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.51;
+				MARKETING_VERSION = 1.52;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -6425,7 +6425,7 @@
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "KeePassium/KeePassium-macOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 147;
+				CURRENT_PROJECT_VERSION = 148;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -6443,7 +6443,7 @@
 				);
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.51;
+				MARKETING_VERSION = 1.52;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -6464,7 +6464,7 @@
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "KeePassium/KeePassium-macOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 147;
+				CURRENT_PROJECT_VERSION = 148;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -6481,7 +6481,7 @@
 				);
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.51;
+				MARKETING_VERSION = 1.52;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios.pro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -6502,7 +6502,7 @@
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "KeePassium/KeePassium-macOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 147;
+				CURRENT_PROJECT_VERSION = 148;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -6519,7 +6519,7 @@
 				);
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.51;
+				MARKETING_VERSION = 1.52;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios.pro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -6540,7 +6540,7 @@
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassiumOrg.entitlements;
 				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "KeePassium/KeePassiumOrg-macOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 147;
+				CURRENT_PROJECT_VERSION = 148;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -6559,7 +6559,7 @@
 				);
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.51;
+				MARKETING_VERSION = 1.52;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.intune;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -6581,7 +6581,7 @@
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassiumOrg.entitlements;
 				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "KeePassium/KeePassiumOrg-macOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 147;
+				CURRENT_PROJECT_VERSION = 148;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -6600,7 +6600,7 @@
 				);
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.51;
+				MARKETING_VERSION = 1.52;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.intune;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -6622,7 +6622,7 @@
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "KeePassium AutoFill/KeePassium_AutoFill-macOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 147;
+				CURRENT_PROJECT_VERSION = 148;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "$(SRCROOT)/KeePassium AutoFill/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "$(TARGET_NAME)";
@@ -6636,7 +6636,7 @@
 				);
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.51;
+				MARKETING_VERSION = 1.52;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "";
@@ -6659,7 +6659,7 @@
 				CODE_SIGN_ENTITLEMENTS = "KeePassium AutoFill/KeePassium_AutoFill.entitlements";
 				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "KeePassium AutoFill/KeePassium_AutoFill-macOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 147;
+				CURRENT_PROJECT_VERSION = 148;
 				DEVELOPMENT_TEAM = 84W4PHXS24;
 				INFOPLIST_FILE = "$(SRCROOT)/KeePassium AutoFill/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "$(TARGET_NAME)";
@@ -6673,7 +6673,7 @@
 				);
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.51;
+				MARKETING_VERSION = 1.52;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.keepassium.ios.pro.KeePassium-AutoFill";
