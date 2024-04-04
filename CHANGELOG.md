@@ -1,6 +1,13 @@
 #CHANGELOG
 
-## [1.52.148] - 2024-04-04
+## [1.52.149] - 2024-04-04
+
+### Fixed
+
+- Fixed Intune build which referenced an outdated type
+
+
+## [1.52.148] - 2024-04-04  [WITHDRAWN]
 
 ### Added
 
