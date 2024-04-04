@@ -11,11 +11,11 @@ import KeePassiumLib
 import MSAL
 
 final class MSALOneDriveAuthProvider: OneDriveAuthProvider {
-    typealias CompletionHandler = (Result<OAuthToken, OneDriveError>) -> Void
+    typealias CompletionHandler = (Result<OAuthToken, RemoteError>) -> Void
     internal static let redirectURI = "msauth.com.keepassium.intune://auth"
 
     private let msalApplication: MSALPublicClientApplication?
-    private let msalInitializationError: OneDriveError?
+    private let msalInitializationError: RemoteError?
 
     private let config = OneDriveAuthConfig(
         redirectURI: redirectURI,
@@ -45,7 +45,7 @@ final class MSALOneDriveAuthProvider: OneDriveAuthProvider {
             msalInitializationError = nil
         } catch {
             msalApplication = nil
-            msalInitializationError = OneDriveError.getEquivalent(for: error)
+            msalInitializationError = RemoteError.getEquivalent(for: error)
 
             let nsError = error as NSError
             Diag.error("Failed to initialize MSAL [message: \(nsError.description)]")
@@ -117,7 +117,7 @@ final class MSALOneDriveAuthProvider: OneDriveAuthProvider {
     ) {
         guard let authResult, error == nil else {
             let msalError = error!
-            let mappedError = OneDriveError.getEquivalent(for: msalError)
+            let mappedError = RemoteError.getEquivalent(for: msalError)
             Diag.error("Failed to acquire token [message: \(msalError.localizedDescription)]")
             completionQueue.addOperation {
                 completion(.failure(mappedError))
@@ -147,8 +147,8 @@ final class MSALOneDriveAuthProvider: OneDriveAuthProvider {
     }
 }
 
-fileprivate extension OneDriveError {
-    static func getEquivalent(for error: Error) -> OneDriveError {
+fileprivate extension RemoteError {
+    static func getEquivalent(for error: Error) -> RemoteError {
         let nsError = error as NSError
         guard nsError.domain == MSALErrorDomain else {
             return .general(error: error)
@@ -158,7 +158,7 @@ fileprivate extension OneDriveError {
         case MSALError.userCanceled.rawValue:
             return .cancelledByUser
         case MSALError.interactionRequired.rawValue:
-            return .authorizationRequired
+            return .authorizationRequired(message: LString.titleOneDriveRequiresSignIn)
         case MSALError.serverError.rawValue:
             return .serverSideError(message: nsError.localizedDescription)
         default:

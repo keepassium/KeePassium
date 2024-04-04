@@ -71,8 +71,8 @@ extension RemoteDataSourceSetupCoordinator {
                     self.firstVC = vc
                 }
                 self.router.push(vc, animated: true, onPop: nil)
-            case .failure(let oneDriveError):
-                presenter.showErrorAlert(oneDriveError)
+            case .failure(let remoteError):
+                presenter.showErrorAlert(remoteError)
             }
         }
     }

@@ -110,7 +110,7 @@ extension DropboxAPI {
             }
             let errorDetails = json.description
             Diag.error(errorDetails)
-            let message = (json[DropboxAPI.Keys.errorSummary] as? String) ?? "UnknownError"
+            let message = (json[DropboxAPI.Keys.errorSummary] as? String) ?? "DropboxError"
             guard let errorDict = error as? [String: Any] else {
                 return RemoteError.serverSideError(message: message)
             }

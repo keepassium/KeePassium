@@ -230,9 +230,9 @@ extension BasicOneDriveAuthProvider {
                         completion(.failure(.misformattedResponse))
                     }
                 }
-            case .failure(let oneDriveError):
+            case .failure(let remoteError):
                 completionQueue.addOperation {
-                    completion(.failure(oneDriveError))
+                    completion(.failure(remoteError))
                 }
             }
         }

@@ -75,8 +75,8 @@ extension OneDriveConnectionSetupCoordinator {
             switch result {
             case .success(let driveInfo):
                 onDriveInfoAcquired(driveInfo)
-            case .failure(let oneDriveError):
-                router.navigationController.showErrorAlert(oneDriveError)
+            case .failure(let remoteError):
+                router.navigationController.showErrorAlert(remoteError)
             }
         }
     }
@@ -116,8 +116,8 @@ extension OneDriveConnectionSetupCoordinator {
             case .success(let oneDriveItem):
                 Diag.info("Old file reference reinstated successfully")
                 didSelectFile(oneDriveItem, stateIndicator: stateIndicator)
-            case .failure(let oneDriveError):
-                Diag.debug("Failed to reinstate old file reference [message: \(oneDriveError.localizedDescription)]")
+            case .failure(let remoteError):
+                Diag.debug("Failed to reinstate old file reference [message: \(remoteError.localizedDescription)]")
                 onFailure()
             }
         }
@@ -199,9 +199,9 @@ extension OneDriveConnectionSetupCoordinator: RemoteFolderViewerDelegate {
                 switch result {
                 case .success(let fileItem):
                     self.onSelectedFileInfoUpdated(fileItem, in: viewController)
-                case .failure(let oneDriveError):
-                    Diag.info("Failed to update shared item [message: \(oneDriveError.localizedDescription)]")
-                    viewController.showErrorAlert(oneDriveError)
+                case .failure(let remoteError):
+                    Diag.info("Failed to update shared item [message: \(remoteError.localizedDescription)]")
+                    viewController.showErrorAlert(remoteError)
                 }
             }
         )

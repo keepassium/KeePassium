@@ -104,9 +104,9 @@ extension OneDriveManager {
                         completion(.failure(.misformattedResponse))
                     }
                 }
-            case .failure(let oneDriveError):
+            case .failure(let remoteError):
                 completionQueue.addOperation {
-                    completion(.failure(oneDriveError))
+                    completion(.failure(remoteError))
                 }
             }
         }
@@ -171,9 +171,9 @@ extension OneDriveManager {
                         completion(.failure(.misformattedResponse))
                     }
                 }
-            case .failure(let oneDriveError):
+            case .failure(let remoteError):
                 completionQueue.addOperation {
-                    completion(.failure(oneDriveError))
+                    completion(.failure(remoteError))
                 }
             }
         }
@@ -300,9 +300,9 @@ extension OneDriveManager {
                         completion(.failure(.misformattedResponse))
                     }
                 }
-            case .failure(let oneDriveError):
+            case .failure(let remoteError):
                 completionQueue.addOperation {
-                    completion(.failure(oneDriveError))
+                    completion(.failure(remoteError))
                 }
             }
         }
@@ -388,9 +388,9 @@ extension OneDriveManager {
                 completionQueue.addOperation {
                     completion(.success(mutableFileItem))
                 }
-            case .failure(let oneDriveError):
+            case .failure(let remoteError):
                 completionQueue.addOperation {
-                    completion(.failure(oneDriveError))
+                    completion(.failure(remoteError))
                 }
             }
         }
@@ -535,9 +535,9 @@ extension OneDriveManager {
                         completion(.failure(.misformattedResponse))
                     }
                 }
-            case .failure(let oneDriveError):
+            case .failure(let remoteError):
                 completionQueue.addOperation {
-                    completion(.failure(oneDriveError))
+                    completion(.failure(remoteError))
                 }
             }
         }
@@ -593,9 +593,9 @@ extension OneDriveManager {
                         completion(.failure(.misformattedResponse))
                     }
                 }
-            case .failure(let oneDriveError):
+            case .failure(let remoteError):
                 completionQueue.addOperation {
-                    completion(.failure(oneDriveError))
+                    completion(.failure(remoteError))
                 }
             }
         }
@@ -660,8 +660,8 @@ extension OneDriveManager {
                                     itemID: uploadResponse.itemID
                                 )
                                 completion(.success(newFileItem))
-                            case .failure(let oneDriveError):
-                                completion(.failure(oneDriveError))
+                            case .failure(let remoteError):
+                                completion(.failure(remoteError))
                             }
                         }
                     )
@@ -670,9 +670,9 @@ extension OneDriveManager {
                         completion(.failure(.misformattedResponse))
                     }
                 }
-            case .failure(let oneDriveError):
+            case .failure(let remoteError):
                 completionQueue.addOperation {
-                    completion(.failure(oneDriveError))
+                    completion(.failure(remoteError))
                 }
             }
         }
