@@ -139,6 +139,8 @@ final public class PasswordGeneratorVC: UIViewController, Refreshable {
     }
 
     private func setupPasswordView() {
+        passwordQualityIndicatorView.alwaysShowEntropy = true
+
         passwordView.heightAnchor
             .constraint(lessThanOrEqualTo: view.heightAnchor, multiplier: 0.5)
             .activate()

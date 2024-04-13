@@ -13,35 +13,15 @@ import UIKit
 final class PasswordQualityIndicatorView: UIView {
     var quality: PasswordQuality? {
         didSet {
-            guard let quality = quality else {
-                isHidden = true
-                return
-            }
-
-            isHidden = false
-            let qualityIndex = PasswordQuality.allCases.firstIndex(of: quality) ?? 0
-            indicatorViews.enumerated().forEach { index, view in
-                view.backgroundColor = index <= qualityIndex ? quality.strengthColor : .auxiliaryText
-            }
-
-            let qualityDescription: String
-            if quality == PasswordQuality.veryGood(0) {
-                let formattedBitCount = BitCountFormatter.string(fromBitCount: Int64(quality.entropy))
-                qualityDescription = String.localizedStringWithFormat(
-                    LString.passwordQualityWithEntropyTemplate,
-                    quality.title,
-                    formattedBitCount)
-            } else {
-                qualityDescription = quality.title
-            }
-            qualityLabel.text = qualityDescription
-            accessibilityLabel = String.localizedStringWithFormat(
-                LString.titlePasswordQualityTemplate,
-                qualityDescription
-            )
+            refresh()
         }
     }
 
+    var alwaysShowEntropy: Bool = false {
+        didSet {
+            refresh()
+        }
+    }
     var isBusy: Bool {
         didSet {
             if isBusy {
@@ -111,6 +91,35 @@ final class PasswordQualityIndicatorView: UIView {
         isAccessibilityElement = true
         accessibilityTraits = [.staticText]
     }
+
+    private func refresh() {
+        guard let quality = quality else {
+            isHidden = true
+            return
+        }
+
+        isHidden = false
+        let qualityIndex = PasswordQuality.allCases.firstIndex(of: quality) ?? 0
+        indicatorViews.enumerated().forEach { index, view in
+            view.backgroundColor = index <= qualityIndex ? quality.strengthColor : .auxiliaryText
+        }
+
+        let qualityDescription: String
+        if alwaysShowEntropy || (quality == PasswordQuality.veryGood(0)) {
+            let formattedBitCount = BitCountFormatter.string(fromBitCount: Int64(quality.entropy))
+            qualityDescription = String.localizedStringWithFormat(
+                LString.passwordQualityWithEntropyTemplate,
+                quality.title,
+                formattedBitCount)
+        } else {
+            qualityDescription = quality.title
+        }
+        qualityLabel.text = qualityDescription
+        accessibilityLabel = String.localizedStringWithFormat(
+            LString.titlePasswordQualityTemplate,
+            qualityDescription
+        )
+    }
 }
 
 extension LString {
@@ -119,6 +128,11 @@ extension LString {
         "[PasswordQuality/LevelWithEntropy/description]",
         value: "%@ (%@ of entropy)",
         comment: "Password quality description. For example: `Very good (234 bits of entropy)`. [level: String, formattedBitCount: String]"
+    )
+    public static let passwordQualityWithApproximateEntropyTemplate = NSLocalizedString(
+        "[PasswordQuality/LevelWithApproximateEntropy/description]",
+        value: "%@ (~%@ of entropy)",
+        comment: "Password quality description. Note the tilda that refers to an estimated/approximate value. For example: `Very good (~123 bits of entropy)`. [level: String, formattedBitCount: String]"
     )
     public static let titlePasswordQualityTemplate = NSLocalizedString(
         "[PasswordQuality/description]",
