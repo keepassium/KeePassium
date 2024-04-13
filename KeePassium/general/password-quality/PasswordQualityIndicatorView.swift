@@ -73,6 +73,7 @@ final class PasswordQualityIndicatorView: UIView {
         label.textAlignment = .right
         label.text = " " 
         label.textColor = .secondaryLabel
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
     }()
 

@@ -139,6 +139,10 @@ final public class PasswordGeneratorVC: UIViewController, Refreshable {
     }
 
     private func setupPasswordView() {
+        passwordView.heightAnchor
+            .constraint(lessThanOrEqualTo: view.heightAnchor, multiplier: 0.5)
+            .activate()
+
         copyButton.accessibilityLabel = LString.actionCopy
         passwordView.accessibilityElements = [
             passwordLabel!,
