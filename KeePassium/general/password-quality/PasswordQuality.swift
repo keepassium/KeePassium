@@ -13,7 +13,6 @@ import Zxcvbn
 enum PasswordQuality {
     case veryWeak(Int32)
     case weak(Int32)
-    case almostGood(Int32)
     case good(Int32)
     case veryGood(Int32)
 
@@ -21,7 +20,6 @@ enum PasswordQuality {
         switch self {
         case let .weak(entropy),
              let .veryWeak(entropy),
-             let .almostGood(entropy),
              let .good(entropy),
              let .veryGood(entropy):
             return entropy
@@ -31,7 +29,7 @@ enum PasswordQuality {
 
 extension PasswordQuality: CaseIterable {
     static var allCases: [PasswordQuality] {
-        return [.veryWeak(0), .weak(0), .almostGood(0), .good(0), .veryGood(0)]
+        return [.veryWeak(0), .weak(0), .good(0), .veryGood(0)]
     }
 }
 
@@ -40,7 +38,6 @@ extension PasswordQuality: Equatable {
         switch (lhs, rhs) {
         case (.veryWeak, .veryWeak),
              (.weak, .weak),
-             (.almostGood, .almostGood),
              (.good, .good),
              (.veryGood, .veryGood):
             return true
@@ -68,19 +65,14 @@ extension PasswordQuality {
             return nil
         }
 
-        switch match.score {
-        case 0:
+        if entropy <= 40 {
             self = .veryWeak(entropy)
-        case 1:
+        } else if entropy < 75 {
             self = .weak(entropy)
-        case 2:
-            self = .almostGood(entropy)
-        case 3:
+        } else if entropy < 100 {
             self = .good(entropy)
-        case 4:
+        } else {
             self = .veryGood(entropy)
-        default:
-            return nil
         }
     }
 }
@@ -89,10 +81,8 @@ extension PasswordQuality {
     var strengthColor: UIColor {
         switch self {
         case .veryWeak:
-            return .auxiliaryText
-        case .weak:
             return .init(red: 228 / 255, green: 8 / 255, blue: 8 / 255, alpha: 1)
-        case .almostGood:
+        case .weak:
             return .init(red: 255 / 255, green: 216 / 255, blue: 0 / 255, alpha: 1)
         case .good, .veryGood:
             return .init(red: 44 / 255, green: 177 / 255, blue: 23 / 255, alpha: 1)
@@ -111,11 +101,6 @@ extension PasswordQuality {
                 "[PasswordQuality/Level] Weak",
                 value: "Weak",
                 comment: "Weak password quality")
-        case .almostGood:
-            return NSLocalizedString(
-                "[PasswordQuality/Level] Almost good",
-                value: "Almost good",
-                comment: "Almost good password quality")
         case .good:
             return NSLocalizedString(
                 "[PasswordQuality/Level] Good",
@@ -133,7 +118,7 @@ extension PasswordQuality {
         switch self {
         case .veryWeak:
             return .init(red: 228 / 255, green: 8 / 255, blue: 8 / 255, alpha: 1)
-        case .weak, .almostGood:
+        case .weak:
             return .init(red: 255 / 255, green: 216 / 255, blue: 0 / 255, alpha: 1)
         case .good, .veryGood:
             return nil
@@ -146,8 +131,6 @@ extension PasswordQuality {
             return SymbolName.exclamationMarkOctagonFill
         case .weak:
             return SymbolName.exclamationMarkTriangleFill
-        case .almostGood:
-            return SymbolName.exclamationMarkTriangle
         case .good, .veryGood:
             return nil
         }
