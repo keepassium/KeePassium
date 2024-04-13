@@ -127,6 +127,9 @@ extension OneDriveAPI {
                 ("invalid_grant", .none):
                 Diag.warning("Authorization token expired")
                 return .authorizationRequired(message: LString.titleOneDriveRequiresSignIn)
+            case ("invalid_grant", _):
+                Diag.warning("OneDrive authentication problem")
+                return .authorizationRequired(message: LString.titleOneDriveRequiresSignIn)
             default:
                 let errorDescription = (json[OneDriveAPI.Keys.errorDescription] as?  String) ?? errorKind
                 Diag.warning("Server-side OneDrive error [message: \(errorDescription)]")
