@@ -68,6 +68,12 @@
       </defaultValue>
       <constraint nullable="true"></constraint>
     </string>
+    <string keyName="lockDatabasesOnReboot">
+      <defaultValue>
+        <value></value>
+      </defaultValue>
+      <constraint nullable="true"></constraint>
+    </string>
     <string keyName="databaseLockTimeout">
       <defaultValue>
         <value></value>
@@ -450,6 +456,25 @@
         </label>
         <description>
           <language value="en-US">Enforces app protection when the app is first launched (after device restart), even if appLockTimeout has not expired yet.</language>
+        </description>
+        <options>
+          <option value="" selected="true">
+            <language value="en-US">(Not configured)</language>
+          </option>
+          <option value="yes">
+            <language value="en-US">Yes</language>
+          </option>
+          <option value="no">
+            <language value="en-US">No</language>
+          </option>
+        </options>
+      </field>
+      <field keyName="lockDatabasesOnReboot" type="select">
+        <label>
+          <language value="en-US">Lock databases on device restart</language>
+        </label>
+        <description>
+          <language value="en-US">Trigger database lock timeout after device reboot.</language>
         </description>
         <options>
           <option value="" selected="true">

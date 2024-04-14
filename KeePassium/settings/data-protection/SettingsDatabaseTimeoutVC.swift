@@ -10,8 +10,6 @@ import KeePassiumLib
 import UIKit
 
 final class SettingsDatabaseTimeoutCell: UITableViewCell {
-    static let storyboardID = "Cell"
-
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var premiumBadge: UIImageView!
@@ -25,9 +23,27 @@ protocol SettingsDatabaseTimeoutViewControllerDelegate: AnyObject {
 }
 
 final class SettingsDatabaseTimeoutVC: UITableViewController, Refreshable {
+    private let timeoutCellID = "TimeoutCell"
+    private let switchCellID = "SwitchCell"
+
+    enum SectionID: Int, CaseIterable {
+        case lockOnReboot = 0
+        case timeout = 1
+    }
+
     private var premiumStatus: PremiumManager.Status = .initialGracePeriod
 
     weak var delegate: SettingsDatabaseTimeoutViewControllerDelegate?
+
+    public static func make() -> Self {
+        return Self.instantiateFromStoryboard()
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = LString.databaseTimeoutTitle
+        tableView.register(SwitchCell.classForCoder(), forCellReuseIdentifier: switchCellID)
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -38,31 +54,61 @@ final class SettingsDatabaseTimeoutVC: UITableViewController, Refreshable {
         premiumStatus = PremiumManager.shared.status
         tableView.reloadData()
     }
+}
 
-
+extension SettingsDatabaseTimeoutVC {
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return SectionID.allCases.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Settings.DatabaseLockTimeout.allValues.count
+        switch SectionID(rawValue: section)! {
+        case .timeout:
+            return Settings.DatabaseLockTimeout.allValues.count
+        case .lockOnReboot:
+            return 1
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch SectionID(rawValue: section)! {
+        case .timeout:
+            return LString.databaseTimeoutTitle
+        case .lockOnReboot:
+            return nil
+        }
     }
 
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        guard section == 0 else { return nil }
-        return LString.databaseTimeoutDescription
+        switch SectionID(rawValue: section)! {
+        case .timeout:
+            return LString.databaseTimeoutDescription
+        case .lockOnReboot:
+            return nil
+        }
     }
 
     override func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: SettingsDatabaseTimeoutCell.storyboardID,
-            for: indexPath)
+        switch SectionID(rawValue: indexPath.section)! {
+        case .timeout:
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: timeoutCellID,
+                for: indexPath)
             as! SettingsDatabaseTimeoutCell
+            configureTimeoutCell(cell, index: indexPath.row)
+            return cell
+        case .lockOnReboot:
+            let cell = tableView.dequeueReusableCell(withIdentifier: switchCellID, for: indexPath) as! SwitchCell
+            configureLockOnRebootCell(cell)
+            return cell
+        }
+    }
 
-        let timeout = Settings.DatabaseLockTimeout.allValues[indexPath.row]
+    private func configureTimeoutCell(_ cell: SettingsDatabaseTimeoutCell, index: Int) {
+        let timeout = Settings.DatabaseLockTimeout.allValues[index]
         cell.titleLabel?.text = timeout.fullTitle
         cell.detailLabel?.text = timeout.description
         let settings = Settings.current
@@ -77,12 +123,26 @@ final class SettingsDatabaseTimeoutVC: UITableViewController, Refreshable {
         } else {
             cell.accessoryType = .none
         }
-        return cell
+    }
+
+    private func configureLockOnRebootCell(_ cell: SwitchCell) {
+        cell.textLabel?.text = LString.lockDatabasesOnRebootTitle
+        cell.theSwitch.isOn = Settings.current.isLockDatabasesOnReboot
+        cell.onDidToggleSwitch = { [weak self] theSwitch in
+            Settings.current.isLockDatabasesOnReboot = theSwitch.isOn
+            self?.refresh()
+            self?.showNotificationIfManaged(setting: .lockDatabasesOnReboot)
+        }
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let timeout = Settings.DatabaseLockTimeout.allValues[indexPath.row]
-        delegate?.didSelectTimeout(timeout, in: self)
+        switch SectionID(rawValue: indexPath.section)! {
+        case .timeout:
+            let timeout = Settings.DatabaseLockTimeout.allValues[indexPath.row]
+            delegate?.didSelectTimeout(timeout, in: self)
+        case .lockOnReboot:
+            break
+        }
     }
 }

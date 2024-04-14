@@ -254,6 +254,16 @@ extension LString {
         value: "Associations between key files and databases have been removed.",
         comment: "Text of the success message for `Clear Key File Associations` button")
 
+    public static let lockDatabasesOnRebootTitle = NSLocalizedString(
+        "[Settings/DataProtection/LockOnReboot/title]",
+        bundle: Bundle.framework,
+        value: "Lock on Device Restart",
+        comment: "Setting switch: whether to lock databases after device reboot.")
+    public static let databaseTimeoutTitle = NSLocalizedString(
+        "[Settings/DatabaseLockTimeout/title]",
+        bundle: Bundle.framework,
+        value: "Database Timeout",
+        comment: "Title of a setting: the time after which databases will be locked.")
     public static let databaseTimeoutDescription = NSLocalizedString(
         "[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again.",
         bundle: Bundle.framework,

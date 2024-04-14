@@ -37,18 +37,18 @@ public class Keychain {
     public static let shared = Keychain()
 
     private static let accessGroup: String? = nil
-    private enum Service: String {
-        static let allValues: [Service] = [.general, databaseSettings, .premium, .networkCredentials]
-
+    private enum Service: String, CaseIterable {
         case general = "KeePassium"
         case databaseSettings = "KeePassium.dbSettings"
         case premium = "KeePassium.premium"
         case networkCredentials = "KeePassium.networkCredentials"
+        case timestamps = "KeePassium.timestamps"
     }
     private let keychainFormatVersion = "formatVersion"
     private let appPasscodeAccount = "appPasscode"
     private let biometricControlAccount = "biometricControlItem"
     private let premiumPurchaseHistory = "premiumPurchaseHistory"
+    private let deviceBootTimestamp = "deviceBootTimestamp"
 
     private let premiumExpiryDateAccount = "premiumExpiryDate"
     private let premiumProductAccount = "premiumProductID"
@@ -434,6 +434,26 @@ internal extension Keychain {
 
     func removeAllNetworkCredentials() throws {
         try remove(service: .networkCredentials, account: nil) 
+    }
+}
+
+extension Keychain {
+    public func getDeviceBootTimestamp() throws -> Date? {
+        guard let data = try get(service: .timestamps, account: deviceBootTimestamp) else {
+            return nil
+        }
+        guard let timeIntervalBitPattern = UInt64(data: ByteArray(data: data)) else {
+            Diag.error("Stored date is misformatted")
+            return nil
+        }
+        let timeInterval = TimeInterval(bitPattern: timeIntervalBitPattern)
+        return Date(timeIntervalSinceReferenceDate: timeInterval)
+    }
+
+    public func setDeviceBootTimestamp(_ timestamp: Date) throws {
+        let timeIntervalBitPattern = timestamp.timeIntervalSinceReferenceDate.bitPattern
+        let timeIntervalData = timeIntervalBitPattern.data.asData
+        try set(service: .timestamps, account: deviceBootTimestamp, data: timeIntervalData)
     }
 }
 

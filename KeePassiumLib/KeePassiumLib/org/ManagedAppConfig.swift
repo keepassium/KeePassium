@@ -26,6 +26,7 @@ public final class ManagedAppConfig: NSObject {
         case lockAppOnLaunch
         case databaseLockTimeout
         case lockDatabasesOnTimeout
+        case lockDatabasesOnReboot
         case clipboardTimeout
         case useUniversalClipboard
         case hideProtectedFields
@@ -136,6 +137,7 @@ extension ManagedAppConfig {
              .lockAllDatabasesOnFailedPasscode,
              .lockAppOnLaunch,
              .lockDatabasesOnTimeout,
+             .lockDatabasesOnReboot,
              .useUniversalClipboard,
              .hideProtectedFields,
              .showBackupFiles,
@@ -178,6 +180,7 @@ extension ManagedAppConfig {
              .lockAllDatabasesOnFailedPasscode,
              .lockAppOnLaunch,
              .lockDatabasesOnTimeout,
+             .lockDatabasesOnReboot,
              .useUniversalClipboard,
              .hideProtectedFields,
              .showBackupFiles,

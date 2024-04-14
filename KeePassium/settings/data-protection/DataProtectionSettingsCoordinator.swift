@@ -53,7 +53,7 @@ final class DataProtectionSettingsCoordinator: Coordinator, Refreshable {
 
 extension DataProtectionSettingsCoordinator {
     private func showDatabaseTimeoutSettingsPage() {
-        let databaseTimeoutVC = SettingsDatabaseTimeoutVC.instantiateFromStoryboard()
+        let databaseTimeoutVC = SettingsDatabaseTimeoutVC.make()
         databaseTimeoutVC.delegate = self
         router.push(databaseTimeoutVC, animated: true, onPop: nil)
     }

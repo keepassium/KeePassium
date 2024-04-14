@@ -24,4 +24,18 @@ extension UIDevice {
         return keyWindow.safeAreaInsets.bottom.isZero
         #endif
     }
+
+    public func bootTime() -> Date? {
+        var bootTime = timeval()
+        var bootTimeSize = MemoryLayout<timeval>.stride
+        guard sysctlbyname("kern.boottime", &bootTime, &bootTimeSize, nil, 0) == KERN_SUCCESS,
+              bootTimeSize == MemoryLayout<timeval>.stride,
+              bootTime.tv_sec != 0
+        else {
+            return nil
+        }
+        let fullEpochSeconds = TimeInterval(bootTime.tv_sec)
+        let fractionEpochSecond = TimeInterval(bootTime.tv_usec) / 1e6
+        return Date(timeIntervalSince1970: fullEpochSeconds + fractionEpochSecond)
+    }
 }
