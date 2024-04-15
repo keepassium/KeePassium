@@ -67,7 +67,6 @@ public enum PremiumFeature: Int {
         switch self {
         case .canUseMultipleDatabases,
              .canUseHardwareKeys,
-             .canKeepMasterKeyOnDatabaseTimeout,
              .canViewFieldReferences,
              .canRelocateAcrossDatabases,
              .canUseQuickTypeAutoFill,
@@ -75,7 +74,8 @@ public enum PremiumFeature: Int {
              .canAuditPasswords:
             return isEntitled
         case .canChangeAppIcon,
-             .canUseLongDatabaseTimeouts:
+             .canUseLongDatabaseTimeouts,
+             .canKeepMasterKeyOnDatabaseTimeout:
             return true
         case .canPreviewAttachments:
             return true 
