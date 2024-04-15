@@ -86,7 +86,6 @@ extension ConnectionTypePickerVC {
         cell.textLabel?.text = connectionType.description
         cell.imageView?.contentMode = .scaleAspectFit
         cell.imageView?.image = .symbol(connectionType.fileProvider.iconSymbol)
-        cell.selectionStyle = .default
 
         let isAllowed = connectionType.fileProvider.isAllowed
         cell.detailTextLabel?.text = isAllowed ? nil : LString.Error.storageAccessDeniedByOrg

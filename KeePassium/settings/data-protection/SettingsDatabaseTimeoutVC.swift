@@ -15,14 +15,14 @@ final class SettingsDatabaseTimeoutCell: UITableViewCell {
     @IBOutlet weak var premiumBadge: UIImageView!
 }
 
-protocol SettingsDatabaseTimeoutViewControllerDelegate: AnyObject {
+protocol SettingsDatabaseTimeoutVCDelegate: AnyObject {
     func didSelectTimeout(
         _ timeout: Settings.DatabaseLockTimeout,
         in viewController: SettingsDatabaseTimeoutVC
     )
 }
 
-final class SettingsDatabaseTimeoutVC: UITableViewController, Refreshable {
+final class SettingsDatabaseTimeoutVC: UITableViewController {
     private let timeoutCellID = "TimeoutCell"
     private let switchCellID = "SwitchCell"
 
@@ -31,25 +31,18 @@ final class SettingsDatabaseTimeoutVC: UITableViewController, Refreshable {
         case timeout = 1
     }
 
-    weak var delegate: SettingsDatabaseTimeoutViewControllerDelegate?
+    weak var delegate: SettingsDatabaseTimeoutVCDelegate?
 
     public static func make() -> Self {
-        return Self.instantiateFromStoryboard()
+        return Self(style: .grouped)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = LString.databaseTimeoutTitle
+
+        tableView.register(SubtitleCell.classForCoder(), forCellReuseIdentifier: timeoutCellID)
         tableView.register(SwitchCell.classForCoder(), forCellReuseIdentifier: switchCellID)
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        refresh()
-    }
-
-    func refresh() {
-        tableView.reloadData()
     }
 }
 
@@ -91,10 +84,8 @@ extension SettingsDatabaseTimeoutVC {
     ) -> UITableViewCell {
         switch SectionID(rawValue: indexPath.section)! {
         case .timeout:
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: timeoutCellID,
-                for: indexPath)
-            as! SettingsDatabaseTimeoutCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: timeoutCellID, for: indexPath)
+                as! SubtitleCell
             configureTimeoutCell(cell, index: indexPath.row)
             return cell
         case .lockOnReboot:
@@ -104,13 +95,11 @@ extension SettingsDatabaseTimeoutVC {
         }
     }
 
-    private func configureTimeoutCell(_ cell: SettingsDatabaseTimeoutCell, index: Int) {
+    private func configureTimeoutCell(_ cell: SubtitleCell, index: Int) {
         let timeout = Settings.DatabaseLockTimeout.allValues[index]
-        cell.titleLabel?.text = timeout.fullTitle
-        cell.detailLabel?.text = timeout.description
-        let settings = Settings.current
-        cell.premiumBadge.isHidden = true
-        if timeout == settings.databaseLockTimeout {
+        cell.textLabel?.text = timeout.fullTitle
+        cell.detailTextLabel?.text = timeout.description
+        if timeout == Settings.current.databaseLockTimeout {
             cell.accessoryType = .checkmark
         } else {
             cell.accessoryType = .none
@@ -122,7 +111,6 @@ extension SettingsDatabaseTimeoutVC {
         cell.theSwitch.isOn = Settings.current.isLockDatabasesOnReboot
         cell.onDidToggleSwitch = { [weak self] theSwitch in
             Settings.current.isLockDatabasesOnReboot = theSwitch.isOn
-            self?.refresh()
             self?.showNotificationIfManaged(setting: .lockDatabasesOnReboot)
         }
     }

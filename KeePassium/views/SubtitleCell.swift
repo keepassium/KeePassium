@@ -24,7 +24,7 @@ final class SubtitleCell: UITableViewCell {
     }
 
     private func setupCell() {
-        selectionStyle = .none
+        selectionStyle = .default
 
         textLabel?.font = .preferredFont(forTextStyle: .body)
         textLabel?.textColor = .label

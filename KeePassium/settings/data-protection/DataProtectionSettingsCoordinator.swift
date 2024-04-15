@@ -93,13 +93,12 @@ extension DataProtectionSettingsCoordinator: SettingsDataProtectionViewCoordinat
     }
 }
 
-extension DataProtectionSettingsCoordinator: SettingsDatabaseTimeoutViewControllerDelegate {
+extension DataProtectionSettingsCoordinator: SettingsDatabaseTimeoutVCDelegate {
     func didSelectTimeout(
         _ timeout: Settings.DatabaseLockTimeout,
         in viewController: SettingsDatabaseTimeoutVC
     ) {
         Settings.current.databaseLockTimeout = timeout
-        viewController.refresh()
 
         Watchdog.shared.restart() 
 
