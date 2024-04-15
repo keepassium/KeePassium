@@ -79,11 +79,6 @@ struct PricingPlanBenefit {
         title: LString.premiumBenefitMultipleDatabasesTitle,
         description: LString.premiumBenefitMultipleDatabasesDescription
     )
-    static let longDatabaseTimeout = PricingPlanBenefit(
-        symbolName: .premiumBenefitDBTimeout,
-        title: LString.premiumBenefitLongDatabaseTimeoutsTitle,
-        description: LString.premiumBenefitLongDatabaseTimeoutsDescription
-    )
     static let yubikeyChallengeResponse = PricingPlanBenefit(
         symbolName: .premiumBenefitHardwareKeys,
         title: LString.premiumBenefitHardwareKeysTitle,
@@ -198,7 +193,6 @@ class FreePricingPlan: PricingPlan {
             PricingPlanBenefit.passwordAudit,
             PricingPlanBenefit.businessClouds,
             PricingPlanBenefit.viewFieldReferences,
-            PricingPlanBenefit.longDatabaseTimeout,
         ]
         self.smallPrint = nil
     }
@@ -261,7 +255,6 @@ class PricingPlanPremiumMonthly: RealPricingPlan {
             PricingPlanBenefit.passwordAudit,
             PricingPlanBenefit.businessClouds,
             PricingPlanBenefit.viewFieldReferences,
-            PricingPlanBenefit.longDatabaseTimeout,
         ]
         self.smallPrint = LString.subscriptionConditions
         self.maybeOfferTrial() 
@@ -291,7 +284,6 @@ class PricingPlanPremiumYearly: RealPricingPlan {
             PricingPlanBenefit.passwordAudit,
             PricingPlanBenefit.businessClouds,
             PricingPlanBenefit.viewFieldReferences,
-            PricingPlanBenefit.longDatabaseTimeout,
         ]
         self.smallPrint = LString.subscriptionConditions
         self.maybeOfferTrial() 
@@ -319,7 +311,6 @@ class PricingPlanVersionPurchase: RealPricingPlan {
             PricingPlanBenefit.passwordAudit,
             PricingPlanBenefit.businessClouds,
             PricingPlanBenefit.viewFieldReferences,
-            PricingPlanBenefit.longDatabaseTimeout,
         ]
         self.smallPrint = nil
     }
@@ -346,7 +337,6 @@ class PricingPlanPremiumForever: RealPricingPlan {
             PricingPlanBenefit.passwordAudit,
             PricingPlanBenefit.businessClouds,
             PricingPlanBenefit.viewFieldReferences,
-            PricingPlanBenefit.longDatabaseTimeout,
         ]
         self.smallPrint = nil
     }

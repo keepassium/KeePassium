@@ -107,7 +107,7 @@ class Watchdog {
         delegate.showAppCover(self)
         if delegate.isAppLocked { return }
 
-        let databaseTimeout = Settings.current.premiumDatabaseLockTimeout
+        let databaseTimeout = Settings.current.databaseLockTimeout
         if databaseTimeout == .immediately && !isIgnoringMinimizationOnce {
             Diag.debug("Going to background: Database Lock engaged")
             engageDatabaseLock(animate: false)
@@ -182,7 +182,7 @@ class Watchdog {
             return
         }
 
-        let timeout = Settings.current.premiumDatabaseLockTimeout
+        let timeout = Settings.current.databaseLockTimeout
         switch timeout {
         case .never:
             return
@@ -247,7 +247,7 @@ class Watchdog {
             databaseLockTimer.invalidate()
         }
 
-        let timeout = Settings.current.premiumDatabaseLockTimeout
+        let timeout = Settings.current.databaseLockTimeout
         Diag.verbose("Database Lock timeout: \(timeout.seconds)")
         switch timeout {
         case .never, .immediately:

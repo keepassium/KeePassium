@@ -31,8 +31,6 @@ final class SettingsDatabaseTimeoutVC: UITableViewController, Refreshable {
         case timeout = 1
     }
 
-    private var premiumStatus: PremiumManager.Status = .initialGracePeriod
-
     weak var delegate: SettingsDatabaseTimeoutViewControllerDelegate?
 
     public static func make() -> Self {
@@ -51,7 +49,6 @@ final class SettingsDatabaseTimeoutVC: UITableViewController, Refreshable {
     }
 
     func refresh() {
-        premiumStatus = PremiumManager.shared.status
         tableView.reloadData()
     }
 }
@@ -112,13 +109,8 @@ extension SettingsDatabaseTimeoutVC {
         cell.titleLabel?.text = timeout.fullTitle
         cell.detailLabel?.text = timeout.description
         let settings = Settings.current
-        let isAvailable = settings.isShownAvailable(timeout: timeout, for: premiumStatus)
-        cell.premiumBadge.isHidden = isAvailable
-        cell.accessibilityLabel = AccessibilityHelper.decorateAccessibilityLabel(
-            premiumFeature: cell.titleLabel?.text,
-            isEnabled: isAvailable)
-
-        if timeout == settings.premiumDatabaseLockTimeout {
+        cell.premiumBadge.isHidden = true
+        if timeout == settings.databaseLockTimeout {
             cell.accessoryType = .checkmark
         } else {
             cell.accessoryType = .none

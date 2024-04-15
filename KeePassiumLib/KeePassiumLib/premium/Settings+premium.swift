@@ -9,23 +9,6 @@
 import Foundation
 
 public extension Settings {
-
-    private static let lightUseDatabaseLockTimeout = DatabaseLockTimeout.after1hour
-
-    var premiumDatabaseLockTimeout: Settings.DatabaseLockTimeout {
-        let actualTimeout = Settings.current.databaseLockTimeout
-        switch PremiumManager.shared.status {
-        case .initialGracePeriod,
-             .freeLightUse,
-             .freeHeavyUse:
-            return min(actualTimeout, Settings.lightUseDatabaseLockTimeout)
-        case .subscribed,
-             .lapsed,
-             .fallback:
-            return actualTimeout
-        }
-    }
-
     var premiumIsKeepKeyFileAssociations: Bool {
         return isKeepKeyFileAssociations
     }
@@ -45,32 +28,6 @@ public extension Settings {
             return actualValue
         } else {
             return false
-        }
-    }
-
-    func isAvailable(timeout: Settings.DatabaseLockTimeout, for status: PremiumManager.Status) -> Bool {
-        switch status {
-        case .initialGracePeriod,
-             .freeLightUse,
-             .freeHeavyUse:
-            return timeout <= Settings.lightUseDatabaseLockTimeout
-        case .subscribed,
-             .lapsed,
-             .fallback:
-            return true
-        }
-    }
-
-    func isShownAvailable(timeout: Settings.DatabaseLockTimeout, for status: PremiumManager.Status) -> Bool {
-        switch status {
-        case .initialGracePeriod,
-             .freeLightUse,
-             .freeHeavyUse:
-            return timeout <= Settings.lightUseDatabaseLockTimeout
-        case .subscribed,
-             .lapsed,
-             .fallback:
-            return true
         }
     }
 }

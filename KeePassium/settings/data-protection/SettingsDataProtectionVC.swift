@@ -69,7 +69,7 @@ final class SettingsDataProtectionVC: UITableViewController, Refreshable {
         rememberUsedKeyFiles.isOn = settings.premiumIsKeepKeyFileAssociations
         universalClipboardSwitch.isOn = settings.isUniversalClipboardEnabled
         hideProtectedFieldsSwitch.isOn = settings.isHideProtectedFields
-        databaseTimeoutCell.detailTextLabel?.text = settings.premiumDatabaseLockTimeout.shortTitle
+        databaseTimeoutCell.detailTextLabel?.text = settings.databaseLockTimeout.shortTitle
 
         lockDatabaseOnTimeoutSwitch.isOn = settings.premiumIsLockDatabasesOnTimeout
         let canKeepMasterKeyOnDatabaseTimeout =

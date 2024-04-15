@@ -98,18 +98,6 @@ extension DataProtectionSettingsCoordinator: SettingsDatabaseTimeoutViewControll
         _ timeout: Settings.DatabaseLockTimeout,
         in viewController: SettingsDatabaseTimeoutVC
     ) {
-        let premiumStatus = PremiumManager.shared.status
-        if Settings.current.isAvailable(timeout: timeout, for: premiumStatus) {
-            finishDatabaseTimeoutSelection(timeout, in: viewController)
-        } else {
-            offerPremiumUpgrade(for: .canUseLongDatabaseTimeouts, in: viewController)
-        }
-    }
-
-    private func finishDatabaseTimeoutSelection(
-        _ timeout: Settings.DatabaseLockTimeout,
-        in viewController: SettingsDatabaseTimeoutVC
-    ) {
         Settings.current.databaseLockTimeout = timeout
         viewController.refresh()
 
