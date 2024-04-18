@@ -46,6 +46,7 @@
 		754D7C0E238C26A7005652E1 /* YubiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754D7C0D238C26A7005652E1 /* YubiKey.swift */; };
 		75567F092A9DEE2300BBA528 /* UIFontDescriptor+serialize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75567F082A9DEE2300BBA528 /* UIFontDescriptor+serialize.swift */; };
 		7558700722E5857C00E1DD89 /* TOTPGeneratorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558700622E5857C00E1DD89 /* TOTPGeneratorFactory.swift */; };
+		755D0A202BD05D8C0095BD9C /* PassphraseWordlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755D0A1F2BD05D8C0095BD9C /* PassphraseWordlistManager.swift */; };
 		755E14BA2B1F743A00651F0D /* BasicOneDriveAuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755E14B92B1F743A00651F0D /* BasicOneDriveAuthProvider.swift */; };
 		755E14BE2B1F754A00651F0D /* OneDriveAuthConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755E14BD2B1F754A00651F0D /* OneDriveAuthConfig.swift */; };
 		755E14C02B1F75DB00651F0D /* OneDriveAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755E14BF2B1F75DB00651F0D /* OneDriveAPI.swift */; };
@@ -326,6 +327,7 @@
 		754D7C0D238C26A7005652E1 /* YubiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YubiKey.swift; sourceTree = "<group>"; };
 		75567F082A9DEE2300BBA528 /* UIFontDescriptor+serialize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFontDescriptor+serialize.swift"; sourceTree = "<group>"; };
 		7558700622E5857C00E1DD89 /* TOTPGeneratorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOTPGeneratorFactory.swift; sourceTree = "<group>"; };
+		755D0A1F2BD05D8C0095BD9C /* PassphraseWordlistManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassphraseWordlistManager.swift; sourceTree = "<group>"; };
 		755E14B92B1F743A00651F0D /* BasicOneDriveAuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicOneDriveAuthProvider.swift; sourceTree = "<group>"; };
 		755E14BD2B1F754A00651F0D /* OneDriveAuthConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDriveAuthConfig.swift; sourceTree = "<group>"; };
 		755E14BF2B1F75DB00651F0D /* OneDriveAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDriveAPI.swift; sourceTree = "<group>"; };
@@ -625,6 +627,7 @@
 				75AF1934282EE78F00FA4BB5 /* PassphraseGenerator.swift */,
 				75AF192D282E5BC000FA4BB5 /* PassphraseGeneratorParams.swift */,
 				75AF193E282EF76C00FA4BB5 /* PassphraseWordlist.swift */,
+				755D0A1F2BD05D8C0095BD9C /* PassphraseWordlistManager.swift */,
 			);
 			name = "password-generator";
 			sourceTree = "<group>";
@@ -1323,6 +1326,7 @@
 				75D09C212174F77000F7DEF2 /* Binary2.swift in Sources */,
 				7599AC2D2894087000FD03BC /* WebDAVDataSource.swift in Sources */,
 				755E14C22B1F778A00651F0D /* OneDriveDriveInfo.swift in Sources */,
+				755D0A202BD05D8C0095BD9C /* PassphraseWordlistManager.swift in Sources */,
 				75241F3C274A8E9300AE15AD /* LString+tipBox.swift in Sources */,
 				7599AC2F28940B1700FD03BC /* LocalDataSource.swift in Sources */,
 				75D6B3BD25C36F5100A6BA0D /* ProcessInfo+extensions.swift in Sources */,

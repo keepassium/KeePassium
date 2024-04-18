@@ -182,9 +182,9 @@ extension PasswordGeneratorCoordinator: PasswordGeneratorDelegate {
         performCopyToClipboard(in: viewController)
     }
 
-    func didPressWordlistInfo(wordlist: PassphraseWordlist, in viewController: PasswordGeneratorVC) {
+    func didPressWordlistInfo(sourceURL: URL, in viewController: PasswordGeneratorVC) {
         let urlOpener = URLOpener(viewController)
-        urlOpener.open(url: wordlist.sourceURL)
+        urlOpener.open(url: sourceURL)
     }
 }
 

@@ -8,13 +8,14 @@
 
 import KeePassiumLib
 import UIKit
+import UniformTypeIdentifiers
 
 public protocol PasswordGeneratorDelegate: AnyObject {
     func didPressDone(in viewController: PasswordGeneratorVC)
     func didPressCopyToClipboard(in viewController: PasswordGeneratorVC)
     func didChangeConfig(_ config: PasswordGeneratorParams, in viewController: PasswordGeneratorVC)
     func didChangeMode(_ mode: PasswordGeneratorMode, in viewController: PasswordGeneratorVC)
-    func didPressWordlistInfo(wordlist: PassphraseWordlist, in viewController: PasswordGeneratorVC)
+    func didPressWordlistInfo(sourceURL: URL, in viewController: PasswordGeneratorVC)
     func shouldGeneratePassword(
         mode: PasswordGeneratorMode,
         config: PasswordGeneratorParams,
@@ -450,7 +451,15 @@ extension PasswordGeneratorVC: UITableViewDelegate {
     ) {
         switch (mode, indexPath) {
         case (.passphrase, CellIndex.passphraseModeWordList):
-            delegate?.didPressWordlistInfo(wordlist: config.passphraseModeConfig.wordlist, in: self)
+            switch config.passphraseModeConfig.wordlist {
+            case .custom:
+                deleteWordlist(wordlist: config.passphraseModeConfig.wordlist)
+            default:
+                guard let sourceURL = config.passphraseModeConfig.wordlist.sourceURL else {
+                    return
+                }
+                delegate?.didPressWordlistInfo(sourceURL: sourceURL, in: self)
+            }
         default:
             break
         }
@@ -489,6 +498,11 @@ extension PasswordGeneratorVC: UITableViewDelegate {
         sheet.modalPresentationStyle = .popover
         popoverAnchor.apply(to: sheet.popoverPresentationController)
         present(sheet, animated: true)
+    }
+
+    private func deleteWordlist(wordlist: PassphraseWordlist) {
+        PassphraseWordlistManager.delete(wordlist)
+        setWordlist(.effLarge)
     }
 
     private func setMode(_ mode: PasswordGeneratorMode) {
@@ -723,7 +737,7 @@ extension PasswordGeneratorVC {
         case CellIndex.passphraseModeWordCase:
             configurePassphraseModeWordCaseCell(cell)
         case CellIndex.passphraseModeWordList:
-            configurePassphraseModeWordListCell(cell)
+            configurePassphraseModeWordListCell(cell, at: indexPath)
         default:
             assertionFailure("Unexpected cell")
         }
@@ -755,11 +769,23 @@ extension PasswordGeneratorVC {
         cell.detailTextLabel?.text = wordCase.description
         cell.accessoryType = .disclosureIndicator
     }
-    private func configurePassphraseModeWordListCell(_ cell: UITableViewCell) {
+    private func configurePassphraseModeWordListCell(_ cell: UITableViewCell, at indexPath: IndexPath) {
         cell.textLabel?.text = LString.PasswordGenerator.titleWordlist
         cell.imageView?.image = .symbol(.bookClosed)
         cell.detailTextLabel?.text = config.passphraseModeConfig.wordlist.description
-        cell.accessoryType = .detailDisclosureButton
+        switch config.passphraseModeConfig.wordlist {
+        case .custom:
+            cell.accessoryType = .none
+            let button = DeleteWordlistAccessory(primaryAction: UIAction { [weak self] _ in
+                guard let self else { return }
+                self.tableView(self.tableView, accessoryButtonTappedForRowWith: indexPath)
+            })
+            cell.accessoryView = button
+        default:
+            cell.accessoryType = .detailDisclosureButton
+            cell.accessoryView = nil
+        }
+        cell.accessoryView?.sizeToFit()
     }
 
     private func showWordlistSelector(at popoverAnchor: PopoverAnchor) {
@@ -768,15 +794,30 @@ extension PasswordGeneratorVC {
             message: nil,
             preferredStyle: .actionSheet
         )
-        for wordlist in PassphraseWordlist.allCases {
+        let allWordlists = PassphraseWordlistManager.getAll()
+        for wordlist in allWordlists {
             sheet.addAction(title: wordlist.description, style: .default) { [weak self] _ in
                 self?.setWordlist(wordlist)
             }
+        }
+        sheet.addAction(title: LString.actionImportWordlist, style: .default) { [weak self] _ in
+            self?.showWordlistImportDialog()
         }
         sheet.addAction(title: LString.actionCancel, style: .cancel, handler: nil)
         sheet.modalPresentationStyle = .popover
         popoverAnchor.apply(to: sheet.popoverPresentationController)
         present(sheet, animated: true)
+    }
+
+    private func showWordlistImportDialog() {
+        let types = UTType.types(
+            tag: PassphraseWordlistManager.customWordlistExtension,
+            tagClass: UTTagClass.filenameExtension,
+            conformingTo: nil
+        )
+        let documentPickerController = UIDocumentPickerViewController(forOpeningContentTypes: types)
+        documentPickerController.delegate = self
+        present(documentPickerController, animated: true, completion: nil)
     }
 
     private func setWordlist(_ wordlist: PassphraseWordlist) {
@@ -842,10 +883,33 @@ extension PasswordGeneratorVC {
     }
 }
 
+extension PasswordGeneratorVC: UIDocumentPickerDelegate {
+    public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard let firstURL = urls.first else {
+            return
+        }
+
+        do {
+            let wordlist = try PassphraseWordlistManager.import(from: firstURL)
+            setWordlist(wordlist)
+        } catch {
+            Diag.error("Wordlist import failed [message: \(error.localizedDescription)]")
+            showErrorAlert(error, title: LString.titleFileImportError)
+        }
+    }
+}
 
 extension String {
     func removingRepetitions() -> String {
         var present = Set<Character>()
         return self.filter { present.insert($0).inserted }
     }
+}
+
+extension LString {
+    public static let actionImportWordlist = NSLocalizedString(
+        "[PasswordGenerator/Wordlist/Import/menuAction]",
+        value: "Import Wordlist…",
+        comment: "Menu action to add a user-provided word list file to the app."
+    )
 }

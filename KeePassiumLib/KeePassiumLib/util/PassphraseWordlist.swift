@@ -8,10 +8,11 @@
 
 import Foundation
 
-public enum PassphraseWordlist: Int, Codable, CaseIterable, CustomStringConvertible {
-    case effLarge = 0
-    case effShort1 = 1
-    case effShort2 = 2
+public enum PassphraseWordlist: Codable, CustomStringConvertible, Equatable {
+    case effLarge
+    case effShort1
+    case effShort2
+    case custom(String)
 
     public var description: String {
         switch self {
@@ -27,10 +28,12 @@ public enum PassphraseWordlist: Int, Codable, CaseIterable, CustomStringConverti
                 LString.PasswordGenerator.Wordlist.effShortWordlistTitleTemplate,
                 2
             )
+        case let .custom(name):
+            return name
         }
     }
 
-    private var fileName: String {
+    internal var fileName: String {
         switch self {
         case .effLarge:
             return "eff-large-wordlist.txt"
@@ -38,10 +41,12 @@ public enum PassphraseWordlist: Int, Codable, CaseIterable, CustomStringConverti
             return "eff-short-wordlist-1.txt"
         case .effShort2:
             return "eff-short-wordlist-2-0.txt"
+        case let .custom(name):
+            return name
         }
     }
 
-    public var sourceURL: URL {
+    public var sourceURL: URL? {
         switch self {
         case .effLarge:
             return URL(string: "https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt")!
@@ -49,33 +54,7 @@ public enum PassphraseWordlist: Int, Codable, CaseIterable, CustomStringConverti
             return URL(string: "https://www.eff.org/files/2016/09/08/eff_short_wordlist_1.txt")!
         case .effShort2:
             return URL(string: "https://www.eff.org/files/2016/09/08/eff_short_wordlist_2_0.txt")!
-        }
-    }
-}
-
-extension PassphraseWordlist {
-
-    public func load() -> StringSet? {
-        Diag.debug("Will load wordlist [fileName: \(fileName)]")
-        guard let resourcePath = Bundle.framework.url(
-            forResource: fileName,
-            withExtension: "",
-            subdirectory: ""
-        ) else {
-            Diag.error("Failed to find wordlist file [fileName: \(fileName)]")
-            return nil
-        }
-
-        do {
-            let data = try String(contentsOf: resourcePath)
-            var stringSet = StringSet()
-            data.enumerateLines { line, _ in
-                stringSet.insert(line)
-            }
-            Diag.debug("Wordlist loaded successfully")
-            return stringSet
-        } catch {
-            Diag.error("Failed to load wordlist [message: \(error.localizedDescription)]")
+        case .custom:
             return nil
         }
     }
@@ -83,7 +62,7 @@ extension PassphraseWordlist {
 
 
 extension LString.PasswordGenerator {
-    enum Wordlist {
+    public enum Wordlist {
         public static let effLargeWordlistTitle = NSLocalizedString(
             "[PasswordGenerator/Wordlist/EFFLarge/title]",
             bundle: Bundle.framework,

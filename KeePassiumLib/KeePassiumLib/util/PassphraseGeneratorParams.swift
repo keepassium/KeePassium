@@ -16,7 +16,7 @@ public class PassphraseGeneratorParams: Codable, Equatable {
     public var wordCase: PassphraseGenerator.WordCase = .lowerCase
     public var wordlist: PassphraseWordlist = .effLarge {
         didSet {
-            loadedStringSet = wordlist.load()
+            loadedStringSet = PassphraseWordlistManager.load(wordlist)
         }
     }
 
@@ -33,7 +33,7 @@ public class PassphraseGeneratorParams: Codable, Equatable {
 extension PassphraseGeneratorParams: PasswordGeneratorRequirementsConvertible {
     public func toRequirements() -> PasswordGeneratorRequirements {
         if loadedStringSet == nil {
-            loadedStringSet = wordlist.load()
+            loadedStringSet = PassphraseWordlistManager.load(wordlist)
         }
         let stringSet = loadedStringSet ?? StringSet()
         let conditionalSet = ConditionalStringSet(stringSet, condition: .allowed)

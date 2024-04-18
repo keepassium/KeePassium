@@ -1302,6 +1302,11 @@
 		F3D0114A2B77CEFB00A9AF96 /* SearchHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D011492B77CEFB00A9AF96 /* SearchHelperTests.swift */; };
 		F3D9DE452AA79CAA00FEAF50 /* FaviconDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377C9AA2AA74A1A00266397 /* FaviconDownloader.swift */; };
 		F3D9DE462AA79CAB00FEAF50 /* FaviconDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377C9AA2AA74A1A00266397 /* FaviconDownloader.swift */; };
+		F3E194682BCF23DB00FD03EE /* DeleteWordlistAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E194672BCF23DB00FD03EE /* DeleteWordlistAccessory.swift */; };
+		F3E194692BCF23DB00FD03EE /* DeleteWordlistAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E194672BCF23DB00FD03EE /* DeleteWordlistAccessory.swift */; };
+		F3E1946A2BCF23DB00FD03EE /* DeleteWordlistAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E194672BCF23DB00FD03EE /* DeleteWordlistAccessory.swift */; };
+		F3E1946B2BCF23DB00FD03EE /* DeleteWordlistAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E194672BCF23DB00FD03EE /* DeleteWordlistAccessory.swift */; };
+		F3E1946C2BCF23DB00FD03EE /* DeleteWordlistAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E194672BCF23DB00FD03EE /* DeleteWordlistAccessory.swift */; };
 		F3F72EF02AB32C8900C804FC /* Favicon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F72EEF2AB32C8900C804FC /* Favicon.swift */; };
 /* End PBXBuildFile section */
 
@@ -2463,6 +2468,7 @@
 		F3C71AAD2AFFAD7A00EEAC8E /* GroupEditorTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupEditorTitleCell.swift; sourceTree = "<group>"; };
 		F3D011472B77B96800A9AF96 /* SearchQueryParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchQueryParsingTests.swift; sourceTree = "<group>"; };
 		F3D011492B77CEFB00A9AF96 /* SearchHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHelperTests.swift; sourceTree = "<group>"; };
+		F3E194672BCF23DB00FD03EE /* DeleteWordlistAccessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteWordlistAccessory.swift; sourceTree = "<group>"; };
 		F3F72EEF2AB32C8900C804FC /* Favicon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favicon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -3060,15 +3066,16 @@
 		7588B6C02627319700F5D372 /* password-generator */ = {
 			isa = PBXGroup;
 			children = (
+				75FC842D2AC87B9E005021F1 /* Coordinator+passGen.swift */,
+				F3E194672BCF23DB00FD03EE /* DeleteWordlistAccessory.swift */,
+				75AF1922282B0DBF00FA4BB5 /* InclusionCondition+extensions.swift */,
+				75AF191F282B0D6D00FA4BB5 /* PasswordGeneratorCells.swift */,
 				757E78D92824135D009017BF /* PasswordGeneratorCoordinator.swift */,
+				75BF195F283EE1B8006A9826 /* PasswordGeneratorLabel.swift */,
+				75AF1931282E621600FA4BB5 /* PasswordGeneratorLengthCell.swift */,
+				75A94C4228441C5F00A94B94 /* PasswordGeneratorQuickSheetVC.swift */,
 				757E78DF282414D5009017BF /* PasswordGeneratorVC.storyboard */,
 				757E78E22824150B009017BF /* PasswordGeneratorVC.swift */,
-				75AF191F282B0D6D00FA4BB5 /* PasswordGeneratorCells.swift */,
-				75AF1931282E621600FA4BB5 /* PasswordGeneratorLengthCell.swift */,
-				75AF1922282B0DBF00FA4BB5 /* InclusionCondition+extensions.swift */,
-				75BF195F283EE1B8006A9826 /* PasswordGeneratorLabel.swift */,
-				75A94C4228441C5F00A94B94 /* PasswordGeneratorQuickSheetVC.swift */,
-				75FC842D2AC87B9E005021F1 /* Coordinator+passGen.swift */,
 			);
 			path = "password-generator";
 			sourceTree = "<group>";
@@ -4096,6 +4103,7 @@
 				750CFBCB21BA9ACD00E62B09 /* CredentialProviderViewController.swift in Sources */,
 				75A5312423C0D35500900ED1 /* NavigationRouter.swift in Sources */,
 				75EEC22227484DD90092505F /* QuickAutoFillPrompt.swift in Sources */,
+				F3E194692BCF23DB00FD03EE /* DeleteWordlistAccessory.swift in Sources */,
 				758FF6D028FC2C9C007DE8EB /* SubtitleCell.swift in Sources */,
 				7526404128455DD80003DDFA /* PasswordGeneratorCells.swift in Sources */,
 				7572665124CB17410099B6E1 /* HelpViewerVC.swift in Sources */,
@@ -4207,6 +4215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75061ECC257EE4F7003EF34A /* Clipboard+extensions.swift in Sources */,
+				F3E194682BCF23DB00FD03EE /* DeleteWordlistAccessory.swift in Sources */,
 				75679ACE22FD897000372301 /* NewsCenter.swift in Sources */,
 				758BF0DD20D220B300897C83 /* WatchdogAwareTextField.swift in Sources */,
 				751A565224CCD3CD001227D6 /* AppIconPicker.swift in Sources */,
@@ -4443,6 +4452,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75061ECD257EE4F7003EF34A /* Clipboard+extensions.swift in Sources */,
+				F3E1946A2BCF23DB00FD03EE /* DeleteWordlistAccessory.swift in Sources */,
 				F3340BC92B2B3E2C00604AED /* OnboardingStep.swift in Sources */,
 				75B38BF3233E5B7C006BDEFC /* NewsCenter.swift in Sources */,
 				75B38BF4233E5B7C006BDEFC /* WatchdogAwareTextField.swift in Sources */,
@@ -4841,6 +4851,7 @@
 				7505F6C62B8640F400EA9BFD /* ManagedAppConfig+extensions.swift in Sources */,
 				F3B69FCE2B078917006FC966 /* EntryExtraViewerVC.swift in Sources */,
 				75D0763528B639D200F02E39 /* FileAddingHelper.swift in Sources */,
+				F3E1946C2BCF23DB00FD03EE /* DeleteWordlistAccessory.swift in Sources */,
 				75D0763628B639D200F02E39 /* SettingsAutoFillVC.swift in Sources */,
 				75D0763728B639D200F02E39 /* AppProtectionSettingsCoordinator.swift in Sources */,
 				F31114A92B9B84E000236632 /* DropboxConnectionSetupCoordinator.swift in Sources */,
@@ -4943,6 +4954,7 @@
 				75D7DF81233E5E310029AD87 /* CredentialProviderViewController.swift in Sources */,
 				75A5312623C0D35500900ED1 /* NavigationRouter.swift in Sources */,
 				75EEC22427484DD90092505F /* QuickAutoFillPrompt.swift in Sources */,
+				F3E1946B2BCF23DB00FD03EE /* DeleteWordlistAccessory.swift in Sources */,
 				758FF6D228FC2C9C007DE8EB /* SubtitleCell.swift in Sources */,
 				7526404228455DD80003DDFA /* PasswordGeneratorCells.swift in Sources */,
 				7572665324CB17410099B6E1 /* HelpViewerVC.swift in Sources */,
