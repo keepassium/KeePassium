@@ -14,12 +14,18 @@ public struct DropboxItem: RemoteFileItem {
     public var fileInfo: FileInfo?
     public var pathDisplay: String
     public var info: DropboxAccountInfo
-    public let supportsItemCreation: Bool = true
+    public var supportsItemCreation: Bool {
+        return isFolder
+    }
 }
 
 extension DropboxItem {
     public static func root(info: DropboxAccountInfo) -> Self {
         return DropboxItem(name: LString.connectionTypeDropbox, isFolder: true, pathDisplay: "", info: info)
+    }
+
+    public var belongsToCorporateAccount: Bool {
+        return info.type.isCorporate
     }
 
     public var escapedPath: String {

@@ -116,6 +116,8 @@ extension RemoteFilePickerCoordinator: ConnectionTypePickerDelegate {
             startOneDriveSetup(stateIndicator: viewController)
         case .dropbox, .dropboxBusiness:
             startDropboxSetup(stateIndicator: viewController)
+        case .googleDrive, .googleWorkspace:
+            startGoogleDriveSetup(stateIndicator: viewController)
         }
     }
 }
@@ -138,6 +140,41 @@ extension RemoteFilePickerCoordinator: WebDAVConnectionSetupCoordinatorDelegate 
     ) {
         delegate?.didPickRemoteFile(url: url, credential: credential, in: self)
         dismiss()
+    }
+}
+
+extension RemoteFilePickerCoordinator: GoogleDriveConnectionSetupCoordinatorDelegate {
+    private func startGoogleDriveSetup(stateIndicator: BusyStateIndicating) {
+        let setupCoordinator = GoogleDriveConnectionSetupCoordinator(
+            router: router,
+            stateIndicator: stateIndicator
+        )
+        setupCoordinator.delegate = self
+        setupCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        setupCoordinator.start()
+        addChildCoordinator(setupCoordinator)
+    }
+
+    func didPickRemoteFile(
+        url: URL,
+        oauthToken: OAuthToken,
+        stateIndicator: BusyStateIndicating?,
+        in coordinator: GoogleDriveConnectionSetupCoordinator
+    ) {
+        let credential = NetworkCredential(oauthToken: oauthToken)
+        delegate?.didPickRemoteFile(url: url, credential: credential, in: self)
+        dismiss()
+    }
+
+    func didPickRemoteFolder(
+        _ folder: GoogleDriveItem,
+        oauthToken: OAuthToken,
+        stateIndicator: BusyStateIndicating?,
+        in coordinator: GoogleDriveConnectionSetupCoordinator
+    ) {
+        assertionFailure("Expected didPickRemoteItem instead")
     }
 }
 

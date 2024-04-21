@@ -7,19 +7,19 @@
 //  For commercial licensing, please contact us.
 
 import AuthenticationServices
-import CryptoKit
 import Foundation
 
-final public class DropboxManager: NSObject {
+final public class GoogleDriveManager: NSObject, RemoteDataSourceManager {
+    public typealias ItemType = GoogleDriveItem
     public typealias TokenUpdateCallback = (OAuthToken) -> Void
 
     public struct UploadResponse {
         var name: String
-        var file: DropboxItem
+        var file: GoogleDriveItem
     }
 
     private enum TokenOperation: CustomStringConvertible {
-        case authorization(code: String, codeVerifier: String)
+        case authorization(code: String)
         case refresh(token: OAuthToken)
         var description: String {
             switch self {
@@ -31,14 +31,17 @@ final public class DropboxManager: NSObject {
         }
     }
 
-    public static let shared = DropboxManager()
+    public static let shared = GoogleDriveManager()
+    public var maxUploadSize: Int {
+        return GoogleDriveAPI.maxUploadSize
+    }
 
     private var presentationAnchors = [ObjectIdentifier: Weak<ASPresentationAnchor>]()
     private let urlSession: URLSession
 
     private static let backgroundQueue: OperationQueue = {
         let queue = OperationQueue()
-        queue.name = "com.keepassium.DropboxManager"
+        queue.name = "com.keepassium.GoogleDriveManager"
         queue.qualityOfService = .userInitiated
         queue.maxConcurrentOperationCount = 4
         return queue
@@ -53,25 +56,25 @@ final public class DropboxManager: NSObject {
             return URLSession(
                 configuration: config,
                 delegate: nil,
-                delegateQueue: DropboxManager.backgroundQueue
+                delegateQueue: GoogleDriveManager.backgroundQueue
             )
         }()
         super.init()
     }
+}
 
+extension GoogleDriveManager {
     public func authenticate(
         presenter: UIViewController,
-        completionQueue: OperationQueue = .main,
+        completionQueue: OperationQueue,
         completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
     ) {
-        Diag.info("Authenticating with Dropbox")
-        let codeVerifier = "\(UUID().uuidString)-\(UUID().uuidString)"
+        Diag.info("Authenticating with Google Drive")
         let webAuthSession = ASWebAuthenticationSession(
-            url: getAuthURL(codeVerifier: codeVerifier),
-            callbackURLScheme: DropboxAPI.callbackURLScheme,
+            url: getAuthURL(),
+            callbackURLScheme: GoogleDriveAPI.callbackURLScheme,
             completionHandler: { [self] (callbackURL: URL?, error: Error?) in
                 handleAuthResponse(
-                    codeVerifier: codeVerifier,
                     callbackURL: callbackURL,
                     error: error,
                     completionQueue: completionQueue,
@@ -86,84 +89,21 @@ final public class DropboxManager: NSObject {
         webAuthSession.start()
     }
 
-    private func parseFileListResponse(
-        _ json: [String: Any],
-        folder: DropboxItem
-    ) -> [DropboxItem]? {
-        guard let items = json[DropboxAPI.Keys.entries] as? [[String: Any]] else {
-            Diag.error("Failed to parse file list response: value field missing")
-            return nil
-        }
-
-        let result = items.compactMap { infoDict -> DropboxItem? in
-            return parseItem(infoDict, info: folder.info)
-        }
-        return result
-    }
-
-    private func parseItem(_ infoDict: [String: Any], info: DropboxAccountInfo) -> DropboxItem? {
-        guard let name = infoDict[DropboxAPI.Keys.name] as? String,
-              let pathDisplay = infoDict[DropboxAPI.Keys.pathDisplay] as? String
-        else {
-            Diag.debug("Failed to parse file item: id or name or path field missing; skipping the file")
-            return nil
-        }
-
-        let tag = infoDict[DropboxAPI.Keys.tag] as? String
-
-        return DropboxItem(
-            name: name,
-            isFolder: tag == "folder",
-            fileInfo: tag == "folder" ? nil : FileInfo(
-                fileName: name,
-                fileSize: infoDict[DropboxAPI.Keys.size] as? Int64,
-                creationDate: Date(
-                    iso8601string: infoDict[DropboxAPI.Keys.clientModified] as? String),
-                modificationDate: Date(
-                    iso8601string: infoDict[DropboxAPI.Keys.clientModified] as? String),
-                isInTrash: false
-            ),
-            pathDisplay: pathDisplay,
-            info: info
-        )
-    }
-
-    private func createCodeChallenge(codeVerifier: String) -> String {
-        let ascii = codeVerifier.compactMap({ $0.asciiValue })
-        let data = Data(ascii)
-        var hash = [UInt8](repeating: 0, count: Int(CC_SHA256_DIGEST_LENGTH))
-        data.withUnsafeBytes {
-            _ = CC_SHA256($0.baseAddress, CC_LONG(data.count), &hash)
-        }
-        let base64 = Data(hash).base64EncodedString()
-            .replacingOccurrences(of: "/", with: "_")
-            .replacingOccurrences(of: "+", with: "-")
-            .replacingOccurrences(of: "=", with: "")
-            .addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
-        return base64 ?? ""
-    }
-
-    private func getAuthURL(codeVerifier: String) -> URL {
-       let codeChallenge = createCodeChallenge(codeVerifier: codeVerifier)
-
+    private func getAuthURL() -> URL {
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
-        urlComponents.host = "www.dropbox.com"
-        urlComponents.path = "/oauth2/authorize"
+        urlComponents.host = "accounts.google.com"
+        urlComponents.path = "/o/oauth2/v2/auth"
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: DropboxAPI.clientID),
-            URLQueryItem(name: "response_type", value: "code"),
-            URLQueryItem(name: "redirect_uri", value: DropboxAPI.authRedirectURI),
-            URLQueryItem(name: "disable_signup", value: "true"),
-            URLQueryItem(name: "code_challenge", value: codeChallenge),
-            URLQueryItem(name: "code_challenge_method", value: "S256"),
-            URLQueryItem(name: "token_access_type", value: "offline")
+            URLQueryItem(name: GoogleDriveAPI.Keys.clientID, value: GoogleDriveAPI.clientID),
+            URLQueryItem(name: GoogleDriveAPI.Keys.responseType, value: "code"),
+            URLQueryItem(name: GoogleDriveAPI.Keys.scope, value: GoogleDriveAPI.authScope.joined(separator: " ")),
+            URLQueryItem(name: GoogleDriveAPI.Keys.redirectURI, value: GoogleDriveAPI.authRedirectURI),
         ]
         return urlComponents.url!
     }
 
     private func handleAuthResponse(
-        codeVerifier: String,
         callbackURL: URL?,
         error: Error?,
         completionQueue: OperationQueue,
@@ -171,8 +111,8 @@ final public class DropboxManager: NSObject {
     ) {
         if let error = error as NSError? {
             let isCancelled =
-            (error.domain == ASWebAuthenticationSessionErrorDomain) &&
-            (error.code == ASWebAuthenticationSessionError.canceledLogin.rawValue)
+                (error.domain == ASWebAuthenticationSessionErrorDomain) &&
+                (error.code == ASWebAuthenticationSessionError.canceledLogin.rawValue)
             if isCancelled {
                 completionQueue.addOperation {
                     Diag.info("Authentication cancelled by user")
@@ -198,7 +138,7 @@ final public class DropboxManager: NSObject {
             return
         }
 
-        guard let codeItem = queryItems[DropboxAPI.Keys.code],
+        guard let codeItem = queryItems[GoogleDriveAPI.Keys.code],
               let authCodeString = codeItem.value
         else {
             completionQueue.addOperation {
@@ -208,9 +148,32 @@ final public class DropboxManager: NSObject {
             return
         }
         getToken(
-            operation: .authorization(code: authCodeString, codeVerifier: codeVerifier),
+            operation: .authorization(code: authCodeString),
             completionQueue: completionQueue,
             completion: completion)
+    }
+
+    public func acquireTokenSilent(
+        token: OAuthToken,
+        completionQueue: OperationQueue,
+        completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
+    ) {
+        if Date.now < (token.acquired + token.halflife) {
+            completionQueue.addOperation {
+                completion(.success(token))
+            }
+        } else if token.refreshToken.isEmpty {
+            completionQueue.addOperation {
+                Diag.error("OAuth token expired and there is no refresh token")
+                completion(.failure(.cannotRefreshToken))
+            }
+        } else {
+            getToken(
+                operation: .refresh(token: token),
+                completionQueue: completionQueue,
+                completion: completion
+            )
+        }
     }
 
     private func getToken(
@@ -219,31 +182,34 @@ final public class DropboxManager: NSObject {
         completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
     ) {
         Diag.debug("Acquiring OAuth token [operation: \(operation)]")
-        var urlRequest = URLRequest(url: DropboxAPI.tokenRequestURL)
+        var urlRequest: URLRequest
+        switch operation {
+        case .authorization:
+            urlRequest = URLRequest(url: GoogleDriveAPI.tokenRequestURL)
+        case .refresh:
+            urlRequest = URLRequest(url: GoogleDriveAPI.tokenRefreshURL)
+        }
         urlRequest.httpMethod = "POST"
         urlRequest.setValue(
             "application/x-www-form-urlencoded; charset=UTF-8",
-            forHTTPHeaderField: DropboxAPI.Keys.contentType)
+            forHTTPHeaderField: GoogleDriveAPI.Keys.contentType)
 
         var postParams = [
-            "client_id=\(DropboxAPI.clientID)"
+            "client_id=\(GoogleDriveAPI.clientID.addingPercentEncoding(withAllowedCharacters: .alphanumerics)!)"
         ]
 
         let refreshToken: String?
         let accountId: String?
         switch operation {
-        case let .authorization(authCode, codeVerifier):
+        case let .authorization(authCode):
             refreshToken = nil
             accountId = nil
             postParams.append(
                 "redirect_uri=" +
-                DropboxAPI.authRedirectURI.addingPercentEncoding(withAllowedCharacters: .alphanumerics)!)
+                GoogleDriveAPI.authRedirectURI.addingPercentEncoding(withAllowedCharacters: .alphanumerics)!)
             postParams.append(
                 "code=" +
                 authCode.addingPercentEncoding(withAllowedCharacters: .alphanumerics)!)
-            postParams.append(
-                "code_verifier=" +
-                codeVerifier.addingPercentEncoding(withAllowedCharacters: .alphanumerics)!)
             postParams.append("grant_type=authorization_code")
         case .refresh(let token):
             refreshToken = token.refreshToken
@@ -257,11 +223,11 @@ final public class DropboxManager: NSObject {
         let postData = postParams
             .joined(separator: "&")
             .data(using: .utf8, allowLossyConversion: false)!
-        urlRequest.setValue(String(postData.count), forHTTPHeaderField: DropboxAPI.Keys.contentLength)
+        urlRequest.setValue(String(postData.count), forHTTPHeaderField: GoogleDriveAPI.Keys.contentLength)
         urlRequest.httpBody = postData
 
         let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
-            let result = DropboxAPI.ResponseParser
+            let result = GoogleDriveAPI.ResponseParser
                     .parseJSONResponse(operation: operation.description, data: data, error: error)
             switch result {
             case .success(let json):
@@ -293,19 +259,15 @@ final public class DropboxManager: NSObject {
         currentRefreshToken: String?,
         accountId: String?
     ) -> OAuthToken? {
-        guard let accountId = (json[DropboxAPI.Keys.accountId] as? String) ?? accountId else {
-            Diag.error("Failed to parse token response: account_id missing")
-            return nil
-        }
-        guard let accessToken = json[DropboxAPI.Keys.accessToken] as? String else {
+        guard let accessToken = json[GoogleDriveAPI.Keys.accessToken] as? String else {
             Diag.error("Failed to parse token response: access_token missing")
             return nil
         }
-        guard let expires_in = json[DropboxAPI.Keys.expiresIn] as? Int else {
+        guard let expires_in = json[GoogleDriveAPI.Keys.expiresIn] as? Int else {
             Diag.error("Failed to parse token response: expires_in missing")
             return nil
         }
-        let newRefreshToken = json[DropboxAPI.Keys.refreshToken] as? String
+        let newRefreshToken = json[GoogleDriveAPI.Keys.refreshToken] as? String
         guard let refreshToken = (newRefreshToken ?? currentRefreshToken) else {
             Diag.error("Failed to parse token response: refresh_token missing")
             return nil
@@ -322,29 +284,25 @@ final public class DropboxManager: NSObject {
     }
 }
 
-extension DropboxManager: RemoteDataSourceManager {
-    public var maxUploadSize: Int {
-        return DropboxAPI.maxUploadSize
-    }
-
+extension GoogleDriveManager {
     public func getAccountInfo(
         freshToken token: OAuthToken,
         completionQueue: OperationQueue,
-        completion: @escaping (Result<DropboxAccountInfo, RemoteError>) -> Void
+        completion: @escaping (Result<GoogleDriveAccountInfo, RemoteError>) -> Void
     ) {
-        var urlRequest = URLRequest(url: DropboxAPI.accountInfoURL)
-        urlRequest.httpMethod = "POST"
-        urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: DropboxAPI.Keys.authorization)
+        var urlRequest = URLRequest(url: GoogleDriveAPI.accountInfoURL)
+        urlRequest.httpMethod = "GET"
+        urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: GoogleDriveAPI.Keys.authorization)
 
-        let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
-            let result = DropboxAPI.ResponseParser
+        let dataTask = urlSession.dataTask(with: urlRequest) { [self] data, response, error in
+            let result = GoogleDriveAPI.ResponseParser
                 .parseJSONResponse(operation: "accountInfo", data: data, error: error)
             switch result {
             case .success(let json):
-                if let accountInfo = self.parseAccountInfoResponse(json) {
+                if let info = parseAccountInfo(json) {
                     Diag.debug("Account info acquired successfully")
                     completionQueue.addOperation {
-                        completion(.success(accountInfo))
+                        completion(.success(info))
                     }
                 } else {
                     completionQueue.addOperation {
@@ -360,36 +318,30 @@ extension DropboxManager: RemoteDataSourceManager {
         dataTask.resume()
     }
 
-    private func parseAccountInfoResponse(_ json: [String: Any]) -> DropboxAccountInfo? {
-        guard let accountId = json[DropboxAPI.Keys.accountId] as? String else {
-            Diag.error("Failed to parse account info response: account_id missing")
+    private func parseAccountInfo(_ infoDict: [String: Any]) -> GoogleDriveAccountInfo? {
+        let canCreateDrives = infoDict[GoogleDriveAPI.Keys.canCreateDrives] as? Bool ?? false
+        guard let userDict = infoDict[GoogleDriveAPI.Keys.user] as? [String: Any] else {
+            Diag.debug("Failed to parse account info, user field missing")
             return nil
         }
-        guard let email = json[DropboxAPI.Keys.email] as? String else {
-            Diag.error("Failed to parse account info response: email missing")
+        guard let email = userDict[GoogleDriveAPI.Keys.emailAddress] as? String else {
+            Diag.debug("Failed to parse user info, email field missing")
             return nil
         }
-        guard let accountTypeDict = (json[DropboxAPI.Keys.accountType] as? [String: Any]) else {
-            Diag.error("Failed to parse account info response: account_type missing")
-            return nil
-        }
-        let accountTypeTag = (accountTypeDict[DropboxAPI.Keys.tag] as? String)
-        guard let accountType = DropboxAccountInfo.AccountType.from(accountTypeTag) else {
-            Diag.error("Failed to parse account info response: unrecognized type [value: \(accountTypeTag ?? "nil")]")
-            return nil
-        }
-        return DropboxAccountInfo(accountId: accountId, email: email, type: accountType)
+        return GoogleDriveAccountInfo(email: email, canCreateDrives: canCreateDrives)
     }
+}
 
+extension GoogleDriveManager {
     public func getItems(
-        in folder: DropboxItem,
+        in folder: GoogleDriveItem,
         freshToken token: OAuthToken,
         completionQueue: OperationQueue,
-        completion: @escaping (Result<[DropboxItem], RemoteError>) -> Void
+        completion: @escaping (Result<[GoogleDriveItem], RemoteError>) -> Void
     ) {
         getItems(
             in: folder,
-            cursor: nil,
+            nextPageToken: nil,
             itemsSoFar: [],
             freshToken: token,
             completionQueue: completionQueue,
@@ -398,58 +350,32 @@ extension DropboxManager: RemoteDataSourceManager {
     }
 
     private func getItems(
-        in folder: DropboxItem,
-        cursor: String?,
-        itemsSoFar: [DropboxItem],
+        in folder: GoogleDriveItem,
+        nextPageToken: String?,
+        itemsSoFar: [GoogleDriveItem],
         freshToken token: OAuthToken,
         completionQueue: OperationQueue,
-        completion: @escaping (Result<[DropboxItem], RemoteError>) -> Void
+        completion: @escaping (Result<[GoogleDriveItem], RemoteError>) -> Void
     ) {
-        let url = cursor == nil ? DropboxAPI.folderListURL : DropboxAPI.folderListContinueURL
+        let url = folder.getRequestURL(.children(nextPageToken: nextPageToken))
         var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = "POST"
-        urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: DropboxAPI.Keys.authorization)
-        urlRequest.setValue("application/json", forHTTPHeaderField: DropboxAPI.Keys.contentType)
-
-        let json: String
-        if let cursor = cursor {
-            json = """
-            {
-                "cursor": "\(cursor)"
-            }
-            """
-        } else {
-            json = """
-            {
-                "include_deleted": false,
-                "include_has_explicit_shared_members": false,
-                "include_media_info": false,
-                "include_mounted_folders": true,
-                "include_non_downloadable_files": false,
-                "path": "\(folder.pathDisplay)",
-                "recursive": false
-            }
-            """
-        }
-        urlRequest.httpBody = json.data(using: .utf8)
+        urlRequest.httpMethod = "GET"
+        urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: GoogleDriveAPI.Keys.authorization)
 
         let dataTask = urlSession.dataTask(with: urlRequest) {
             [self] data,
             response,
             error in
-            let result = DropboxAPI.ResponseParser
+            let result = GoogleDriveAPI.ResponseParser
                 .parseJSONResponse(operation: "listFiles", data: data, error: error)
             switch result {
             case .success(let json):
-                let cursor = json[DropboxAPI.Keys.cursor] as? String
-                let hasMore = json[DropboxAPI.Keys.hasMore] as? Bool
                 if let fileItems = parseFileListResponse(json, folder: folder) {
                     Diag.debug("File list acquired successfully")
-                    if let hasMore = hasMore,
-                       hasMore {
+                    if let nextPageToken = json[GoogleDriveAPI.Keys.nextPageToken] as? String {
                         self.getItems(
                             in: folder,
-                            cursor: cursor,
+                            nextPageToken: nextPageToken,
                             itemsSoFar: itemsSoFar + fileItems,
                             freshToken: token,
                             completionQueue: completionQueue,
@@ -474,84 +400,32 @@ extension DropboxManager: RemoteDataSourceManager {
         dataTask.resume()
     }
 
-    public func acquireTokenSilent(
-        token: OAuthToken,
-        completionQueue: OperationQueue,
-        completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
-    ) {
-        if Date.now < (token.acquired + token.halflife) {
-            completionQueue.addOperation {
-                completion(.success(token))
-            }
-        } else if token.refreshToken.isEmpty {
-            completionQueue.addOperation {
-                Diag.error("OAuth token expired and there is no refresh token")
-                completion(.failure(.cannotRefreshToken))
-            }
-        } else {
-            getToken(
-                operation: .refresh(token: token),
-                completionQueue: completionQueue,
-                completion: completion
-            )
+    private func parseFileListResponse(
+        _ json: [String: Any],
+        folder: GoogleDriveItem
+    ) -> [GoogleDriveItem]? {
+        guard let items = json[GoogleDriveAPI.Keys.files] as? [[String: Any]] else {
+            Diag.error("Failed to parse file list response: value field missing")
+            return nil
         }
+
+        let result = items.compactMap { infoDict -> GoogleDriveItem? in
+            return parseItem(infoDict, accountInfo: folder.accountInfo)
+        }
+        return result
     }
+}
 
-    public func getItemInfo(
-        _ item: DropboxItem,
-        freshToken token: OAuthToken,
-        completionQueue: OperationQueue,
-        completion: @escaping (Result<DropboxItem, RemoteError>) -> Void
-    ) {
-        var urlRequest = URLRequest(url: DropboxAPI.itemMetadataURL)
-        urlRequest.httpMethod = "POST"
-        urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: DropboxAPI.Keys.authorization)
-        urlRequest.setValue("application/json", forHTTPHeaderField: DropboxAPI.Keys.contentType)
-
-        let json = """
-        {
-            "include_deleted": false,
-            "include_has_explicit_shared_members": false,
-            "include_media_info": false,
-            "path": "\(item.pathDisplay)"
-        }
-        """
-        urlRequest.httpBody = json.data(using: .utf8)
-
-        let dataTask = urlSession.dataTask(with: urlRequest) { [self] data, response, error in
-            let result = DropboxAPI.ResponseParser
-                .parseJSONResponse(operation: "itemInfo", item: item, data: data, error: error)
-            switch result {
-            case .success(let json):
-                if let fileItem = parseItem(json, info: item.info) {
-                    Diag.debug("File info acquired successfully")
-                    completionQueue.addOperation {
-                        completion(.success(fileItem))
-                    }
-                } else {
-                    completionQueue.addOperation {
-                        completion(.failure(.misformattedResponse))
-                    }
-                }
-            case .failure(let error):
-                completionQueue.addOperation {
-                    completion(.failure(error))
-                }
-            }
-        }
-        dataTask.resume()
-    }
-
+extension GoogleDriveManager {
     public func getFileContents(
-        _ item: DropboxItem,
+        _ item: GoogleDriveItem,
         freshToken token: OAuthToken,
         completionQueue: OperationQueue,
         completion: @escaping (Result<Data, RemoteError>) -> Void
     ) {
-        var urlRequest = URLRequest(url: DropboxAPI.fileDownloadURL)
-        urlRequest.httpMethod = "POST"
-        urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: DropboxAPI.Keys.authorization)
-        urlRequest.setValue("{\"path\": \"\(item.escapedPath)\"}", forHTTPHeaderField: DropboxAPI.Keys.apiArg)
+        var urlRequest = URLRequest(url: item.getRequestURL(.content))
+        urlRequest.httpMethod = "GET"
+        urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: GoogleDriveAPI.Keys.authorization)
 
         let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
             if let error = error {
@@ -591,34 +465,28 @@ extension DropboxManager: RemoteDataSourceManager {
         }
         dataTask.resume()
     }
+}
 
-    public func updateFile(
-        _ item: DropboxItem,
-        contents: ByteArray,
+extension GoogleDriveManager {
+    public func getItemInfo(
+        _ item: GoogleDriveItem,
         freshToken token: OAuthToken,
         completionQueue: OperationQueue,
-        completion: @escaping UploadCompletionHandler
+        completion: @escaping (Result<GoogleDriveItem, RemoteError>) -> Void
     ) {
-        var urlRequest = URLRequest(url: DropboxAPI.fileUploadURL)
-        urlRequest.httpMethod = "POST"
-        urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: DropboxAPI.Keys.authorization)
-        urlRequest.setValue("application/octet-stream", forHTTPHeaderField: DropboxAPI.Keys.contentType)
-        urlRequest.setValue(
-            "{\"mode\":\"overwrite\",\"path\":\"\(item.escapedPath)\"}",
-            forHTTPHeaderField: DropboxAPI.Keys.apiArg)
-
-        urlRequest.httpBody = contents.asData
+        var urlRequest = URLRequest(url: item.getRequestURL(.itemInfo))
+        urlRequest.httpMethod = "GET"
+        urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: GoogleDriveAPI.Keys.authorization)
 
         let dataTask = urlSession.dataTask(with: urlRequest) { [self] data, response, error in
-            let result = DropboxAPI.ResponseParser
-                .parseJSONResponse(operation: "uploadSession", item: item, data: data, error: error)
+            let result = GoogleDriveAPI.ResponseParser
+                .parseJSONResponse(operation: "itemInfo", data: data, error: error)
             switch result {
             case .success(let json):
-                if let name = json[DropboxAPI.Keys.name] as? String,
-                   let file = self.parseItem(json, info: item.info) {
-                    Diag.debug("Upload finished successfully")
+                if let file = parseItem(json, accountInfo: item.accountInfo) {
+                    Diag.debug("File metadata acquired successfully")
                     completionQueue.addOperation {
-                        completion(.success(UploadResponse(name: name, file: file)))
+                        completion(.success(file))
                     }
                 } else {
                     completionQueue.addOperation {
@@ -634,32 +502,173 @@ extension DropboxManager: RemoteDataSourceManager {
         dataTask.resume()
     }
 
+    private func parseItem(_ infoDict: [String: Any], accountInfo: GoogleDriveAccountInfo) -> GoogleDriveItem? {
+        guard let name = infoDict[GoogleDriveAPI.Keys.name] as? String,
+              var itemID = infoDict[GoogleDriveAPI.Keys.id] as? String,
+              var itemMimeType = infoDict[GoogleDriveAPI.Keys.mimeType] as? String
+        else {
+            Diag.debug("Failed to parse file item: id, name or mimeType field missing; skipping the file")
+            return nil
+        }
+
+        var isShortcut = false
+        if let shortcutInfo = infoDict[GoogleDriveAPI.Keys.shortcutDetails] as? [String: Any] {
+            guard let targetID = shortcutInfo[GoogleDriveAPI.Keys.targetID] as? String else {
+                Diag.error("Failed to resolve shortcut: target ID missing")
+                return nil
+            }
+            guard let targetMimeType = shortcutInfo[GoogleDriveAPI.Keys.targetMimeType] as? String else {
+                Diag.error("Failed to resolve shortcut: target MIME type missing")
+                return nil
+            }
+            isShortcut = true
+            itemID = targetID
+            itemMimeType = targetMimeType
+        }
+
+        let isFolder = itemMimeType == GoogleDriveAPI.Keys.folderMimeType
+        let fileInfo = { () -> FileInfo? in
+            guard !isFolder else {
+                return nil
+            }
+
+            let isTrashed = infoDict[GoogleDriveAPI.Keys.trashed] as? Bool ?? false
+            return FileInfo(
+                fileName: name,
+                fileSize: (infoDict[GoogleDriveAPI.Keys.size] as? String).flatMap({ Int64($0) }),
+                creationDate: Date(
+                    iso8601string: infoDict[GoogleDriveAPI.Keys.createdTime] as? String),
+                modificationDate: Date(
+                    iso8601string: infoDict[GoogleDriveAPI.Keys.modifiedTime] as? String),
+                isInTrash: isTrashed
+            )
+        }()
+
+        let driveID = infoDict[GoogleDriveAPI.Keys.driveID] as? String
+        return GoogleDriveItem(
+            name: name,
+            id: itemID,
+            isFolder: isFolder,
+            isShortcut: isShortcut,
+            fileInfo: fileInfo,
+            accountInfo: accountInfo,
+            sharedDriveID: driveID
+        )
+    }
+}
+
+extension GoogleDriveManager {
+    public func updateFile(
+        _ item: GoogleDriveItem,
+        contents: ByteArray,
+        freshToken token: OAuthToken,
+        completionQueue: OperationQueue,
+        completion: @escaping UploadCompletionHandler
+    ) {
+        Diag.debug("Uploading file")
+
+        var urlRequest = URLRequest(url: item.getRequestURL(.update))
+        urlRequest.httpMethod = "PATCH"
+        urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: GoogleDriveAPI.Keys.authorization)
+        urlRequest.setValue("application/octet-stream", forHTTPHeaderField: GoogleDriveAPI.Keys.contentType)
+        urlRequest.httpBody = contents.asData
+
+        let dataTask = urlSession.dataTask(with: urlRequest) { [self] data, response, error in
+            let result = GoogleDriveAPI.ResponseParser
+                .parseJSONResponse(operation: "updateFile", data: data, error: error)
+            switch result {
+            case .success(let json):
+                if let file = parseItem(json, accountInfo: item.accountInfo) {
+                    Diag.debug("Upload finished successfully")
+                    completionQueue.addOperation {
+                        completion(.success(UploadResponse(name: file.name, file: file)))
+                    }
+                } else {
+                    completionQueue.addOperation {
+                        completion(.failure(.misformattedResponse))
+                    }
+                }
+            case .failure(let error):
+                completionQueue.addOperation {
+                    completion(.failure(error))
+                }
+            }
+        }
+        dataTask.resume()
+    }
+}
+
+extension GoogleDriveManager {
     public func createFile(
-        in folder: DropboxItem,
+        in folder: GoogleDriveItem,
         contents: ByteArray,
         fileName: String,
         freshToken token: OAuthToken,
         completionQueue: OperationQueue,
-        completion: @escaping CreateCompletionHandler<ItemType>
+        completion: @escaping CreateCompletionHandler<GoogleDriveItem>
     ) {
-        let item = DropboxItem(
-            name: fileName,
-            isFolder: false,
-            pathDisplay: "\(folder.pathDisplay)/\(fileName)",
-            info: folder.info
-        )
-        updateFile(item, contents: contents, freshToken: token, completionQueue: completionQueue) { result in
+        Diag.debug("Creating new file")
+
+        var urlRequest = URLRequest(url: folder.getRequestURL(.create))
+        urlRequest.httpMethod = "POST"
+        urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: GoogleDriveAPI.Keys.authorization)
+        urlRequest.setValue("application/json; charset=UTF-8", forHTTPHeaderField: GoogleDriveAPI.Keys.contentType)
+
+        var params: [String: Any] = [
+            GoogleDriveAPI.Keys.name: fileName,
+            GoogleDriveAPI.Keys.parents: [folder.id],
+        ]
+        if let driveID = folder.sharedDriveID {
+            params[GoogleDriveAPI.Keys.driveID] = driveID
+        }
+        let postData = try! JSONSerialization.data(withJSONObject: params)
+        urlRequest.httpBody = postData
+        urlRequest.setValue(String(postData.count), forHTTPHeaderField: GoogleDriveAPI.Keys.contentLength)
+
+        let dataTask = urlSession.dataTask(with: urlRequest) { [self] data, response, error in
+            let result = GoogleDriveAPI.ResponseParser
+                .parseJSONResponse(operation: "createFile", data: data, error: error)
             switch result {
-            case let .success(data):
-                completion(.success(data.file))
-            case let .failure(error):
-                completion(.failure(error))
+            case .success(let json):
+                if let newFile = parseItem(json, accountInfo: folder.accountInfo) {
+                    Diag.debug("File created successfully, uploading content")
+                    self.updateFile(
+                        newFile,
+                        contents: contents,
+                        freshToken: token,
+                        completionQueue: completionQueue,
+                        completion: adaptCreateCompletionAsUploadCompletion(completion)
+                    )
+                } else {
+                    completionQueue.addOperation {
+                        completion(.failure(.misformattedResponse))
+                    }
+                }
+            case .failure(let error):
+                completionQueue.addOperation {
+                    completion(.failure(error))
+                }
             }
         }
+        dataTask.resume()
+    }
+
+    private func adaptCreateCompletionAsUploadCompletion(
+        _ createCompletion: @escaping CreateCompletionHandler<GoogleDriveItem>
+    ) -> UploadCompletionHandler {
+        let uploadCompletion: UploadCompletionHandler = { result in
+            switch result {
+            case .success(let uploadResponse):
+                createCompletion(.success(uploadResponse.file))
+            case .failure(let remoteError):
+                createCompletion(.failure(remoteError))
+            }
+        }
+        return uploadCompletion
     }
 }
 
-extension DropboxManager: ASWebAuthenticationPresentationContextProviding {
+extension GoogleDriveManager: ASWebAuthenticationPresentationContextProviding {
     public func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
         let sessionObjectID = ObjectIdentifier(session)
         return presentationAnchors[sessionObjectID]!.value!

@@ -46,6 +46,12 @@ extension LString {
         bundle: Bundle.framework,
         value: "Dropbox Pro",
         comment: "Name of a cloud storage service")
+    public static let connectionTypeGoogleDrive = "Google Drive"
+    public static let connectionTypeGoogleWorkspace = NSLocalizedString(
+        "[StorageService/GoogleWorkspace/title]",
+        bundle: Bundle.framework,
+        value: "Google Workspace",
+        comment: "Name of a cloud storage service")
 
     public static let titleConnection = NSLocalizedString(
         "[RemoteConnection/Connection/title]",
@@ -119,4 +125,21 @@ extension LString {
         bundle: Bundle.framework,
         value: "Sign in to Dropbox",
         comment: "Action: authenticate to Dropbox account")
+
+    public static let titleGoogleDriveRequiresSignIn = NSLocalizedString(
+        "[RemoteConnection/SignIn/GoogleDrive/authorizationRequried]",
+        bundle: Bundle.framework,
+        value: "Google Drive needs you to sign in again.",
+        comment: "Error description: the user should manually sign in to their Google Drive account")
+    public static let titleGoogleDriveFolderMyDrive = NSLocalizedString(
+        "[RemoteConnection/GoogleDrive/Folder/myDrive]",
+        bundle: Bundle.framework,
+        value: "My Drive",
+        comment: "Name of a predefined Google Drive folder which contains user's own files")
+    public static let titleGoogleDriveFolderSharedWithMe = NSLocalizedString(
+        "[RemoteConnection/GoogleDrive/Folder/sharedWithMe]",
+        bundle: Bundle.framework,
+        value: "Shared With Me",
+        comment: "Name of a predefined GoogleDrive folder which contains files shared with this user")
+
 }

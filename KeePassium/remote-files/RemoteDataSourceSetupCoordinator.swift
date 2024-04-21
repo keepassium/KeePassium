@@ -19,10 +19,11 @@ protocol RemoteDataSourceSetupCoordinator<Manager>: Coordinator, RemoteFolderVie
     var stateIndicator: BusyStateIndicating { get }
     var selectionMode: RemoteItemSelectionMode { get }
     var token: OAuthToken? { get set }
+    var accountInfo: Manager.AccountInfo? { get set }
 
     func getModalPresenter() -> UIViewController
     func showErrorAlert(_ error: RemoteError)
-    func onAuthorized(token: OAuthToken)
+    func onAccountInfoAcquired(_ accountInfo: Manager.AccountInfo)
 }
 
 extension RemoteDataSourceSetupCoordinator {
@@ -43,43 +44,53 @@ extension RemoteDataSourceSetupCoordinator {
         self.firstVC = nil
     }
 
-    func showFolder(folder: Manager.ItemType, presenter: UIViewController) {
+    func showFolder(folder: Manager.ItemType, stateIndicator: BusyStateIndicating?) {
         guard let token else {
             Diag.warning("Not signed into any \(Manager.self) account, cancelling")
             assertionFailure()
             return
         }
 
+        let stateIndicator = stateIndicator ?? self.stateIndicator
         stateIndicator.indicateState(isBusy: true)
         manager.getItems(
             in: folder,
             token: token,
             tokenUpdater: nil,
             completionQueue: .main
-        ) { [weak self, weak presenter] result in
-            guard let self, let presenter else { return }
-            self.stateIndicator.indicateState(isBusy: false)
+        ) { [weak self, weak stateIndicator] result in
+            guard let self else { return }
+            stateIndicator?.indicateState(isBusy: false)
             switch result {
             case .success(let items):
-                let vc = RemoteFolderViewerVC.make()
-                vc.folder = folder
-                vc.items = items
-                vc.folderName = folder.name
-                vc.delegate = self
-                vc.selectionMode = selectionMode
-                if self.firstVC == nil {
-                    self.firstVC = vc
-                }
-                self.router.push(vc, animated: true, onPop: nil)
+                showFolder(items: items, parent: folder, title: folder.name)
             case .failure(let remoteError):
-                presenter.showErrorAlert(remoteError)
+                showErrorAlert(remoteError)
             }
         }
+    }
+
+    func showFolder(
+        items: [Manager.ItemType],
+        parent: Manager.ItemType?,
+        title: String
+    ) {
+        let vc = RemoteFolderViewerVC.make()
+        vc.folder = parent
+        vc.items = items
+        vc.folderName = title
+        vc.delegate = self
+        vc.selectionMode = selectionMode
+        if self.firstVC == nil {
+            self.firstVC = vc
+        }
+        router.push(vc, animated: true, onPop: nil)
     }
 
     func startSignIn() {
         firstVC = nil
         token = nil
+        accountInfo = nil
 
         stateIndicator.indicateState(isBusy: true)
         let presenter = router.navigationController
@@ -103,6 +114,20 @@ extension RemoteDataSourceSetupCoordinator {
         }
     }
 
+    func onAuthorized(token: OAuthToken) {
+        stateIndicator.indicateState(isBusy: true)
+        manager.getAccountInfo(freshToken: token, completionQueue: .main) { [weak self] result in
+            guard let self else { return }
+            self.stateIndicator.indicateState(isBusy: false)
+            switch result {
+            case .success(let accountInfo):
+                onAccountInfoAcquired(accountInfo)
+            case .failure(let error):
+                router.navigationController.showErrorAlert(error)
+            }
+        }
+    }
+
     func canSaveTo(folder: RemoteFileItem?, in viewController: RemoteFolderViewerVC) -> Bool {
         guard let folder else {
             return false
@@ -113,6 +138,37 @@ extension RemoteDataSourceSetupCoordinator {
             return false
         }
         return itemTypeFolder.supportsItemCreation
+    }
+
+    func selectItem(
+        _ item: RemoteFileItem,
+        in viewController: RemoteFolderViewerVC,
+        completion: @escaping (URL, OAuthToken) -> Void
+    ) {
+        guard let token else {
+            Diag.warning("Not signed into any Dropbox account, cancelling")
+            assertionFailure()
+            return
+        }
+        guard let typedItem = item as? Manager.ItemType else {
+            Diag.warning("Unexpected type of selected item")
+            assertionFailure()
+            return
+        }
+
+        if item.isFolder {
+            showFolder(folder: typedItem, stateIndicator: viewController)
+            return
+        }
+
+        let fileURL = typedItem.toURL()
+        if typedItem.belongsToCorporateAccount {
+            performPremiumActionOrOfferUpgrade(for: .canUseBusinessClouds, in: viewController) {
+                completion(fileURL, token)
+            }
+        } else {
+            completion(fileURL, token)
+        }
     }
 
     func maybeSuggestPremium(isCorporateStorage: Bool, action: @escaping (RouterNavigationController) -> Void) {

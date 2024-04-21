@@ -166,8 +166,50 @@ extension RemoteFileExportCoordinator: ConnectionTypePickerDelegate {
                 startOneDriveSetup(stateIndicator: viewController)
             case .dropbox, .dropboxBusiness:
                 startDropboxSetup(stateIndicator: viewController)
+            case .googleDrive, .googleWorkspace:
+                startGoogleDriveSetup(stateIndicator: viewController)
             }
         }
+    }
+}
+
+extension RemoteFileExportCoordinator: GoogleDriveConnectionSetupCoordinatorDelegate {
+    private func startGoogleDriveSetup(stateIndicator: BusyStateIndicating) {
+        let setupCoordinator = GoogleDriveConnectionSetupCoordinator(
+            router: router,
+            stateIndicator: stateIndicator,
+            selectionMode: .folder
+        )
+        setupCoordinator.delegate = self
+        setupCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        setupCoordinator.start()
+        addChildCoordinator(setupCoordinator)
+    }
+
+    func didPickRemoteFile(
+        url: URL,
+        oauthToken: OAuthToken,
+        stateIndicator: BusyStateIndicating?,
+        in coordinator: GoogleDriveConnectionSetupCoordinator
+    ) {
+        assertionFailure("Expected didPickRemoteFolder instead")
+    }
+
+    func didPickRemoteFolder(
+        _ folder: GoogleDriveItem,
+        oauthToken: OAuthToken,
+        stateIndicator: BusyStateIndicating?,
+        in coordinator: GoogleDriveConnectionSetupCoordinator)
+    {
+        upload(
+            folder,
+            oauthToken: oauthToken,
+            manager: GoogleDriveManager.shared,
+            stateIndicator: stateIndicator,
+            coordinator: coordinator
+        )
     }
 }
 

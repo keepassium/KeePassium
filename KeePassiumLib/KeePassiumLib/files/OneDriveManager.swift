@@ -76,14 +76,13 @@ extension OneDriveManager {
 }
 
 extension OneDriveManager {
-    public func getDriveInfo(
-        parent: OneDriveSharedFolder?,
+    public func getAccountInfo(
         freshToken token: OAuthToken,
-        completionQueue: OperationQueue = .main,
+        completionQueue: OperationQueue,
         completion: @escaping (Result<OneDriveDriveInfo, RemoteError>) -> Void
     ) {
         Diag.debug("Requesting drive info")
-        let parentPath = parent?.urlPath ?? OneDriveAPI.defaultDrivePath
+        let parentPath = OneDriveAPI.defaultDrivePath
         let driveInfoURL = URL(string: OneDriveAPI.mainEndpoint + parentPath)!
         var urlRequest = URLRequest(url: driveInfoURL)
         urlRequest.httpMethod = "GET"

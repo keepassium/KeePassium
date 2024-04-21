@@ -28,6 +28,7 @@ public enum FileProvider: Hashable {
         "com.keepassium.fileprovider.webdav": .keepassiumWebDAV,
         "com.keepassium.fileprovider.onedrive": .keepassiumOneDrive,
         "com.keepassium.fileprovider.dropbox": .keepassiumDropbox,
+        "com.keepassium.fileprovider.googledrive": .keepassiumGoogleDrive,
         "mega.ios.MEGAPickerFileProvider": .megaNz,
         "de.telekom.Mediencenter.FileProviderExtension": .magentaCloud,
         "it.twsweb.Nextcloud.File-Provider-Extension": .nextcloud,
@@ -68,6 +69,7 @@ public enum FileProvider: Hashable {
     case keepassiumWebDAV
     case keepassiumOneDrive
     case keepassiumDropbox
+    case keepassiumGoogleDrive
     case megaNz
     case magentaCloud
     case nextcloud
@@ -173,6 +175,8 @@ public enum FileProvider: Hashable {
             return LString.connectionTypeOneDrive
         case .keepassiumDropbox:
             return LString.connectionTypeDropbox
+        case .keepassiumGoogleDrive:
+            return LString.connectionTypeGoogleDrive
         case .megaNz:
             return NSLocalizedString(
                 "[FileProvider/Mega.nz/name]",

@@ -40,6 +40,10 @@ public struct OneDriveItem: RemoteFileItem {
         return parent != nil
     }
 
+    public var belongsToCorporateAccount: Bool {
+        return driveInfo.type.isCorporate
+    }
+
     init(
         name: String,
         itemID: String,

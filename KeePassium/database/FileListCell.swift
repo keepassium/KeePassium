@@ -98,6 +98,8 @@ class FileListCell: UITableViewCell {
         let iconSymbol = urlRef.getIconSymbol(fileType: fileType)
         fileIconView?.image = .symbol(iconSymbol)
         fileIconView?.sizeToFit()
+
+        fileNameLabel.text = fileInfo.fileName
         if let modificationDate = fileInfo.modificationDate {
             let dateString = DateFormatter.localizedString(
                 from: modificationDate,

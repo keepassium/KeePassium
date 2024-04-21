@@ -19,6 +19,8 @@ internal final class DataSourceFactory {
             return OneDriveDataSource()
         } else if url.isDropboxFileURL {
             return DropboxDataSource()
+        } else if url.isGoogleDriveFileURL {
+            return GoogleDriveDataSource()
         } else {
             Diag.warning("Unexpected URL format, assuming local file [prefix: \(urlSchemePrefix)]")
             return LocalDataSource()
@@ -32,6 +34,8 @@ internal final class DataSourceFactory {
             return .keepassiumOneDrive
         } else if url.isDropboxFileURL {
             return .keepassiumDropbox
+        } else if url.isGoogleDriveFileURL {
+            return .keepassiumGoogleDrive
         }
         return nil
     }

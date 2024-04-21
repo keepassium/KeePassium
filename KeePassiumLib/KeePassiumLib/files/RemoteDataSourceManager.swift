@@ -13,6 +13,7 @@ public typealias CreateCompletionHandler<ItemType> = (Result<ItemType, RemoteErr
 
 public protocol RemoteDataSourceManager<ItemType> {
     associatedtype ItemType: RemoteFileItem
+    associatedtype AccountInfo
     associatedtype UploadResponse
     typealias UploadCompletionHandler = (Result<UploadResponse, RemoteError>) -> Void
 
@@ -66,6 +67,12 @@ public protocol RemoteDataSourceManager<ItemType> {
         presenter: UIViewController,
         completionQueue: OperationQueue,
         completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
+    )
+
+    func getAccountInfo(
+        freshToken token: OAuthToken,
+        completionQueue: OperationQueue,
+        completion: @escaping (Result<AccountInfo, RemoteError>) -> Void
     )
 }
 

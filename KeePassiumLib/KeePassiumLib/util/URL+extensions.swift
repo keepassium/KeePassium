@@ -203,6 +203,8 @@ public extension URL {
             return self.getOneDriveLocationDescription()
         } else if isDropboxFileURL {
             return self.getDropboxLocationDescription()
+        } else if isGoogleDriveFileURL {
+            return self.getGoogleDriveLocationDescription()
         } else {
             assertionFailure("Description missing, remote location unknown?")
             return nil

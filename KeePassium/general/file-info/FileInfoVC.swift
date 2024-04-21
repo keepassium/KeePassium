@@ -176,7 +176,7 @@ final class FileInfoVC: UITableViewController, Refreshable {
         var fields = [FileInfoField]()
         fields.append(FileInfoField(
             name: LString.FileInfo.fieldFileName,
-            value: fileRef.visibleFileName
+            value: fileInfo?.fileName ?? fileRef.visibleFileName
         ))
         fields.append(FileInfoField(
             name: LString.FileInfo.fieldFileLocation,

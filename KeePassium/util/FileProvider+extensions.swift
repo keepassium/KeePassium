@@ -30,6 +30,8 @@ extension FileProvider {
             return .fileProviderOneDrive
         case .keepassiumDropbox:
             return .fileProviderDropbox
+        case .keepassiumGoogleDrive:
+            return .fileProviderGoogleDrive
         case .nextcloud:
             return .fileProviderNextCloud
         case .oneDrive:

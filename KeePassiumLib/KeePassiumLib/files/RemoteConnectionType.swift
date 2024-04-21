@@ -10,6 +10,8 @@ public enum RemoteConnectionType: String, CustomStringConvertible {
     public static let allValues: [RemoteConnectionType] = [
         .dropbox,
         .dropboxBusiness,
+        .googleDrive,
+        .googleWorkspace,
         .oneDrive,
         .oneDriveForBusiness,
         .webdav,
@@ -21,6 +23,8 @@ public enum RemoteConnectionType: String, CustomStringConvertible {
     case oneDriveForBusiness = "oneDriveForBusiness"
     case dropbox = "dropbox"
     case dropboxBusiness = "dropboxBusiness"
+    case googleDrive = "googleDrive"
+    case googleWorkspace = "googleWorkspace"
     // swiftlint:enable redundant_string_enum_value
 
     public var description: String {
@@ -35,6 +39,10 @@ public enum RemoteConnectionType: String, CustomStringConvertible {
             return LString.connectionTypeDropbox
         case .dropboxBusiness:
             return LString.connectionTypeDropboxBusiness
+        case .googleDrive:
+            return LString.connectionTypeGoogleDrive
+        case .googleWorkspace:
+            return LString.connectionTypeGoogleWorkspace
         }
     }
 
@@ -48,6 +56,8 @@ public enum RemoteConnectionType: String, CustomStringConvertible {
         case .dropbox,
              .dropboxBusiness:
             return .keepassiumDropbox
+        case .googleDrive, .googleWorkspace:
+            return .keepassiumGoogleDrive
         }
     }
 }
@@ -57,10 +67,12 @@ extension RemoteConnectionType {
         switch self {
         case .webdav,
              .oneDrive,
-             .dropbox:
+             .dropbox,
+             .googleDrive:
             return false
         case .oneDriveForBusiness,
-             .dropboxBusiness:
+             .dropboxBusiness,
+             .googleWorkspace:
             return true
         }
     }
