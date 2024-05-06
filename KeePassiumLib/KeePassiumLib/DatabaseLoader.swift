@@ -437,6 +437,7 @@ public class DatabaseLoader: ProgressObserver {
                 dbFileName: dbFile.visibleFileName,
                 dbFileData: dbFile.data,
                 compositeKey: compositeKey,
+                useStreams: dbFile.status.contains(.useStreams),
                 warnings: warnings)
             Diag.info("Database loaded OK")
 

@@ -104,6 +104,7 @@ open class Database: Eraseable {
         dbFileName: String,
         dbFileData: ByteArray,
         compositeKey: CompositeKey,
+        useStreams: Bool,
         warnings: DatabaseLoadingWarnings
     ) throws {
         fatalError("Pure virtual method")

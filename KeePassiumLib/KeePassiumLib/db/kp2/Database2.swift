@@ -8,14 +8,10 @@
 
 import Foundation
 
-protocol Database2XMLTimeFormatter {
-    func dateToXMLString(_ date: Date) -> String
-}
-protocol Database2XMLTimeParser {
-    func xmlStringToDate(_ string: String?) -> Date?
-}
-
 public class Database2: Database {
+    typealias XMLTimeFormatter = (_ date: Date) -> String
+    typealias XMLTimeParser = (_ string: String?) -> Date?
+
     public enum FormatVersion: Comparable, CustomStringConvertible {
         case v3
         case v4
@@ -46,7 +42,7 @@ public class Database2: Database {
         }
     }
 
-    public enum FormatError: LocalizedError {
+    public enum FormatError: LocalizedError, Equatable {
         case prematureDataEnd
         case negativeBlockSize(blockIndex: Int)
         case parsingError(reason: String)
@@ -167,9 +163,10 @@ public class Database2: Database {
         Diag.debug("DB memory cleaned up")
     }
 
-    internal static func makeNewV4() -> Database2 {
+    internal static func makeNewV4(_ version: FormatVersion = .v4) -> Database2 {
+        assert(version == .v4 || version == .v4_1, "Unexpected format version")
         let db = Database2()
-        db.header.loadDefaultValuesV4()
+        db.header.loadDefaultValuesV4(version)
         db.meta.loadDefaultValuesV4()
 
         let rootGroup = Group2(database: db)
@@ -217,7 +214,7 @@ public class Database2: Database {
     }
 
     internal func addDeletedObject(uuid: UUID) {
-        let deletedObject = DeletedObject2(database: self, uuid: uuid)
+        let deletedObject = DeletedObject2(uuid: uuid)
         deletedObjects.append(deletedObject)
     }
 
@@ -225,6 +222,7 @@ public class Database2: Database {
         dbFileName: String,
         dbFileData: ByteArray,
         compositeKey: CompositeKey,
+        useStreams: Bool,
         warnings: DatabaseLoadingWarnings
     ) throws {
         Diag.info("Loading KDBX database")
@@ -281,8 +279,7 @@ public class Database2: Database {
 
             try removeGarbageAfterXML(data: xmlData) 
 
-            try load(xmlData: xmlData, timeParser: self, warnings: warnings)
-
+            try load(xmlData: xmlData, useStreams: useStreams, warnings: warnings)
             if let backupGroup = getBackupGroup(createIfMissing: false) {
                 backupGroup.deepSetDeleted(true)
             }
@@ -538,123 +535,6 @@ public class Database2: Database {
         }
         Diag.warning("Removed random padding from XML data")
         data.trim(toCount: _closingTagIndex + finalTagSize)
-    }
-
-    func load(
-        xmlData: ByteArray,
-        timeParser: Database2XMLTimeParser,
-        warnings: DatabaseLoadingWarnings
-    ) throws {
-        var parsingOptions = AEXMLOptions()
-        parsingOptions.documentHeader.standalone = "yes"
-        parsingOptions.parserSettings.shouldTrimWhitespace = false
-        do {
-            Diag.debug("Parsing XML")
-            progress.localizedDescription = LString.Progress.database2ParsingXML
-            let xmlDoc = try AEXMLDocument(xml: xmlData.asData, options: parsingOptions)
-            if let xmlError = xmlDoc.error {
-                Diag.error("Cannot parse XML: \(xmlError.localizedDescription)")
-                throw Xml2.ParsingError.xmlError(details: xmlError.localizedDescription)
-            }
-            guard xmlDoc.root.name == Xml2.keePassFile else {
-                Diag.error("Not a KeePass XML document [xmlRoot: \(xmlDoc.root.name)]")
-                throw Xml2.ParsingError.notKeePassDocument
-            }
-
-            let rootGroup = Group2(database: self)
-            rootGroup.parent = nil
-
-            for tag in xmlDoc.root.children {
-                switch tag.name {
-                case Xml2.meta:
-                    try meta.load(
-                        xml: tag,
-                        formatVersion: header.formatVersion,
-                        streamCipher: header.streamCipher,
-                        timeParser: self,
-                        warnings: warnings
-                    ) 
-
-                    if meta.headerHash != nil && (header.hash != meta.headerHash!) {
-                        Diag.error("kdbx3 meta meta hash mismatch")
-                        throw Header2.HeaderError.hashMismatch
-                    }
-                    Diag.verbose("Meta loaded OK")
-                case Xml2.root:
-                    try loadRoot(
-                        xml: tag,
-                        root: rootGroup,
-                        timeParser: timeParser,
-                        warnings: warnings
-                    ) 
-                    Diag.verbose("XML root loaded OK")
-                default:
-                    throw Xml2.ParsingError.unexpectedTag(actual: tag.name, expected: "KeePassFile/*")
-                }
-            }
-
-            progress.completedUnitCount += ProgressSteps.parsing
-
-            self.root = rootGroup
-            Diag.debug("XML content loaded OK")
-        } catch let error as Header2.HeaderError {
-            Diag.error("Header error [reason: \(error.localizedDescription)]")
-            if Diag.isDeepDebugMode() {
-                header.protectedStreamKey?.withDecryptedByteArray {
-                    Diag.debug("Inner encryption key: `\($0.asHexString)`")
-                }
-            }
-            throw FormatError.parsingError(reason: error.localizedDescription)
-        } catch let error as Xml2.ParsingError {
-            Diag.error("XML parsing error [reason: \(error.localizedDescription)]")
-            throw FormatError.parsingError(reason: error.localizedDescription)
-        } catch let error as AEXMLError {
-            Diag.error("Raw XML parsing error [reason: \(error.localizedDescription)]")
-            throw FormatError.parsingError(reason: error.localizedDescription)
-        }
-    }
-
-    internal func loadRoot(
-        xml: AEXMLElement,
-        root: Group2,
-        timeParser: Database2XMLTimeParser,
-        warnings: DatabaseLoadingWarnings
-    ) throws {
-        assert(xml.name == Xml2.root)
-        Diag.debug("Loading XML root")
-        for tag in xml.children {
-            switch tag.name {
-            case Xml2.group:
-                try root.load(
-                    xml: tag,
-                    formatVersion: header.formatVersion,
-                    streamCipher: header.streamCipher,
-                    timeParser: timeParser,
-                    warnings: warnings
-                ) 
-            case Xml2.deletedObjects:
-                try loadDeletedObjects(xml: tag, timeParser: timeParser)
-            default:
-                throw Xml2.ParsingError.unexpectedTag(actual: tag.name, expected: "Root/*")
-            }
-        }
-    }
-
-    private func loadDeletedObjects(
-        xml: AEXMLElement,
-        timeParser: Database2XMLTimeParser
-    ) throws {
-        assert(xml.name == Xml2.deletedObjects)
-        for tag in xml.children {
-            switch tag.name {
-            case Xml2.deletedObject:
-                let deletedObject = DeletedObject2(database: self)
-                try deletedObject.load(xml: tag, timeParser: timeParser)
-                deletedObjects.append(deletedObject)
-            default:
-                throw Xml2.ParsingError.unexpectedTag(actual: tag.name, expected: "DeletedObjects/*")
-            }
-        }
     }
 
     func deriveMasterKey(compositeKey: CompositeKey, cipher: DataCipher, canUseFinalKey: Bool) throws {
@@ -969,7 +849,8 @@ public class Database2: Database {
         header.write(to: outStream) 
 
         meta.headerHash = header.hash
-        let xmlString = try self.toXml(timeFormatter: self).xml 
+        let timeFormatter = getTimeFormatter(for: formatVersion)
+        let xmlString = try self.toXml(timeFormatter: timeFormatter).xml
         let xmlData = ByteArray(utf8String: xmlString)
         Diag.debug("XML generation OK")
 
@@ -1183,7 +1064,7 @@ public class Database2: Database {
         writingProgress.completedUnitCount = writingProgress.totalUnitCount
     }
 
-    func toXml(timeFormatter: Database2XMLTimeFormatter) throws -> AEXMLDocument {
+    func toXml(timeFormatter: XMLTimeFormatter) throws -> AEXMLDocument {
         Diag.debug("Will generate XML")
         var options = AEXMLOptions()
         options.documentHeader.encoding = "utf-8"
@@ -1366,7 +1247,7 @@ public class Database2: Database {
             return false
         }
         meta.deleteCustomIcon(uuid: uuid)
-        deletedObjects.append(DeletedObject2(database: self, uuid: uuid))
+        deletedObjects.append(DeletedObject2(uuid: uuid))
         removeUnusedCustomIconRefs()
         Diag.debug("Custom icon deleted OK")
         return true
@@ -1386,40 +1267,332 @@ public class Database2: Database {
     }
 }
 
-extension Database2: Database2XMLTimeParser {
-    func xmlStringToDate(_ string: String?) -> Date? {
-        let trimmedString = string?.trimmingCharacters(in: .whitespacesAndNewlines)
-
-        switch header.formatVersion {
+extension Database2 {
+    private func getTimeParser(for formatVersion: FormatVersion) -> XMLTimeParser {
+        switch formatVersion {
         case .v3:
-            if let formatAppropriateDate = Date(iso8601string: trimmedString) {
-                return formatAppropriateDate
-            }
-            if let altFormatDate = Date(base64Encoded: trimmedString) {
-                Diag.warning("Found Base64-formatted timestamp in \(header.formatVersion) DB.")
-                return altFormatDate
-            }
-            return nil
+            return Self.xmlStringToDateV3
         case .v4, .v4_1:
-            if let formatAppropriateDate = Date(base64Encoded: trimmedString) {
-                return formatAppropriateDate
+            return Self.xmlStringToDateV4
+        }
+    }
+
+    static private func xmlStringToDateV3(_ string: String?) -> Date? {
+        let trimmedString = string?.trimmingCharacters(in: .whitespacesAndNewlines)
+        if let formatAppropriateDate = Date(iso8601string: trimmedString) {
+            return formatAppropriateDate
+        }
+        if let altFormatDate = Date(base64Encoded: trimmedString) {
+            Diag.warning("Found Base64-formatted timestamp in v3 DB.")
+            return altFormatDate
+        }
+        return nil
+    }
+
+    static private func xmlStringToDateV4(_ string: String?) -> Date? {
+        let trimmedString = string?.trimmingCharacters(in: .whitespacesAndNewlines)
+        if let formatAppropriateDate = Date(base64Encoded: trimmedString) {
+            return formatAppropriateDate
+        }
+        if let altFormatDate = Date(iso8601string: trimmedString) {
+            Diag.warning("Found ISO8601-formatted timestamp in v4 DB.")
+            return altFormatDate
+        }
+        return nil
+    }
+
+    private func getTimeFormatter(for formatVersion: FormatVersion) -> XMLTimeFormatter {
+        switch formatVersion {
+        case .v3:
+            return Self.dateToXMLStringV3
+        case .v4, .v4_1:
+            return Self.dateToXMLStringV4
+        }
+    }
+    static private func dateToXMLStringV3(_ date: Date) -> String {
+        return date.iso8601String()
+    }
+    static private func dateToXMLStringV4(_ date: Date) -> String {
+        return date.base64EncodedString()
+    }
+}
+
+extension Database2 {
+    internal func load(
+        xmlData: ByteArray,
+        useStreams: Bool,
+        warnings: DatabaseLoadingWarnings
+    ) throws {
+        do {
+            progress.localizedDescription = LString.Progress.database2ParsingXML
+            let timeParser = getTimeParser(for: formatVersion)
+
+            let startTime = Date.now
+            if useStreams {
+                try loadAsStream(xmlData: xmlData, timeParser: timeParser, progress: progress, warnings: warnings)
+            } else {
+                try loadAsDOM(xmlData: xmlData, timeParser: timeParser, warnings: warnings)
             }
-            if let altFormatDate = Date(iso8601string: trimmedString) {
-                Diag.warning("Found ISO8601-formatted timestamp in \(header.formatVersion) DB.")
-                return altFormatDate
+            let timeSpent = Date.now.timeIntervalSince(startTime)
+            Diag.info(String(format: "XML loaded in %.4f s", timeSpent))
+
+            progress.completedUnitCount += ProgressSteps.parsing
+
+            Diag.debug("XML content loaded OK")
+        } catch let error as Header2.HeaderError {
+            Diag.error("Header error [reason: \(error.localizedDescription)]")
+            if Diag.isDeepDebugMode() {
+                header.protectedStreamKey?.withDecryptedByteArray {
+                    Diag.debug("Inner encryption key: `\($0.asHexString)`")
+                }
             }
-            return nil
+            throw FormatError.parsingError(reason: error.localizedDescription)
+        } catch let error as Xml2.ParsingError {
+            Diag.error("XML parsing error [reason: \(error.localizedDescription)]")
+            throw FormatError.parsingError(reason: error.localizedDescription)
+        } catch let error as AEXMLError {
+            Diag.error("Raw XML parsing error [reason: \(error.localizedDescription)]")
+            throw FormatError.parsingError(reason: error.localizedDescription)
         }
     }
 }
 
-extension Database2: Database2XMLTimeFormatter {
-    func dateToXMLString(_ date: Date) -> String {
-        switch header.formatVersion {
-        case .v3:
-            return date.iso8601String()
-        case .v4, .v4_1:
-            return date.base64EncodedString()
+extension Database2 {
+    private func loadAsDOM(
+        xmlData: ByteArray,
+        timeParser: XMLTimeParser,
+        warnings: DatabaseLoadingWarnings
+    ) throws {
+        Diag.debug("Parsing XML (DOM)")
+
+        var parsingOptions = AEXMLOptions()
+        parsingOptions.documentHeader.standalone = "yes"
+        parsingOptions.parserSettings.shouldTrimWhitespace = false
+
+        let xmlDoc = try AEXMLDocument(xml: xmlData.asData, options: parsingOptions)
+        if let xmlError = xmlDoc.error {
+            Diag.error("Cannot parse XML: \(xmlError.localizedDescription)")
+            throw Xml2.ParsingError.xmlError(details: xmlError.localizedDescription)
+        }
+        guard xmlDoc.root.name == Xml2.keePassFile else {
+            Diag.error("Not a KeePass XML document [xmlRoot: \(xmlDoc.root.name)]")
+            throw Xml2.ParsingError.unexpectedTag(actual: xmlDoc.root.name, expected: Xml2.keePassFile)
+        }
+
+        let rootGroup = Group2(database: self)
+        rootGroup.parent = nil
+
+        for tag in xmlDoc.root.children {
+            switch tag.name {
+            case Xml2.meta:
+                try meta.load(
+                    xml: tag,
+                    formatVersion: header.formatVersion,
+                    streamCipher: header.streamCipher,
+                    timeParser: timeParser,
+                    warnings: warnings
+                )
+
+                if meta.headerHash != nil && (header.hash != meta.headerHash!) {
+                    Diag.error("kdbx3 meta meta hash mismatch")
+                    throw Header2.HeaderError.hashMismatch
+                }
+                Diag.verbose("Meta loaded OK")
+            case Xml2.root:
+                try loadRoot(
+                    xml: tag,
+                    root: rootGroup,
+                    timeParser: timeParser,
+                    warnings: warnings
+                )
+                Diag.verbose("XML root loaded OK")
+            default:
+                throw Xml2.ParsingError.unexpectedTag(actual: tag.name, expected: "KeePassFile/*")
+            }
+        }
+        self.root = rootGroup
+    }
+
+    private func loadRoot(
+        xml: AEXMLElement,
+        root: Group2,
+        timeParser: XMLTimeParser,
+        warnings: DatabaseLoadingWarnings
+    ) throws {
+        assert(xml.name == Xml2.root)
+        Diag.debug("Loading XML root")
+        for tag in xml.children {
+            switch tag.name {
+            case Xml2.group:
+                try root.load(
+                    xml: tag,
+                    formatVersion: header.formatVersion,
+                    streamCipher: header.streamCipher,
+                    timeParser: timeParser,
+                    warnings: warnings
+                )
+            case Xml2.deletedObjects:
+                try loadDeletedObjects(xml: tag, timeParser: timeParser)
+            default:
+                throw Xml2.ParsingError.unexpectedTag(actual: tag.name, expected: "Root/*")
+            }
+        }
+    }
+
+    private func loadDeletedObjects(
+        xml: AEXMLElement,
+        timeParser: XMLTimeParser
+    ) throws {
+        assert(xml.name == Xml2.deletedObjects)
+        for tag in xml.children {
+            switch tag.name {
+            case Xml2.deletedObject:
+                let deletedObject = DeletedObject2()
+                try deletedObject.load(xml: tag, timeParser: timeParser)
+                deletedObjects.append(deletedObject)
+            default:
+                throw Xml2.ParsingError.unexpectedTag(actual: tag.name, expected: "DeletedObjects/*")
+            }
+        }
+    }
+}
+
+typealias DatabaseXMLParserStream = XMLParserStream<Database2.DocumentParsingContext>
+
+extension Database2 {
+    final class DocumentParsingContext: XMLDocumentContext {
+        var formatVersion: Database2.FormatVersion
+        var streamCipher: StreamCipher
+        var timeParser: XMLTimeParser
+        var progress: ProgressEx
+        var warnings: DatabaseLoadingWarnings
+
+        init(
+            formatVersion: Database2.FormatVersion,
+            streamCipher: StreamCipher,
+            timeParser: @escaping XMLTimeParser,
+            progress: ProgressEx,
+            warnings: DatabaseLoadingWarnings
+        ) {
+            self.formatVersion = formatVersion
+            self.streamCipher = streamCipher
+            self.timeParser = timeParser
+            self.progress = progress
+            self.warnings = warnings
+        }
+    }
+
+    final class ParsingContext: XMLReaderContext {
+        var isKeePassFile = false
+        var isRootLoaded = false
+        var isRootGroupLoaded = false
+    }
+
+    private func loadAsStream(
+        xmlData: ByteArray,
+        timeParser: @escaping XMLTimeParser,
+        progress: ProgressEx,
+        warnings: DatabaseLoadingWarnings
+    ) throws {
+        Diag.debug("Parsing XML (stream)")
+        let docContext = DocumentParsingContext(
+            formatVersion: header.formatVersion,
+            streamCipher: header.streamCipher,
+            timeParser: timeParser,
+            progress: progress,
+            warnings: warnings
+        )
+        let docParser = XMLDocumentReader(xmlData: xmlData.asData, documentContext: docContext)
+        let readerContext = ParsingContext()
+        docParser.pushReader(parseKeePassFileElement, context: readerContext)
+        do {
+            try docParser.parse()
+            guard readerContext.isKeePassFile else {
+                docParser.popReader()
+                Diag.error("XML does not contain any elements, cancelling")
+                throw Xml2.ParsingError.unexpectedTag(actual: "nil", expected: Xml2.keePassFile)
+            }
+        } catch let xmlError as NSError where (xmlError.domain == XMLParser.errorDomain) {
+            let parserMessage = xmlError.userInfo["NSXMLParserErrorMessage"] as? String
+            let detailedMessage = [parserMessage, xmlError.description]
+                .compactMap { $0 }
+                .joined()
+            Diag.error("Failed to parse XML: \(detailedMessage)")
+            throw Xml2.ParsingError.xmlError(details: xmlError.localizedDescription)
+        }
+    }
+
+    private func parseKeePassFileElement(_ xml: DatabaseXMLParserStream) throws {
+        let context = xml.readerContext as! ParsingContext
+        switch (xml.name, xml.event) {
+        case (Xml2.keePassFile, .start):
+            context.isKeePassFile = true
+        case (Xml2.meta, .start):
+            try meta.loadFromXML(xml)
+        case (Xml2.root, .start):
+            try xml.pushReader(parseRootElement, context: context)
+        case (Xml2.keePassFile, .end):
+            guard context.isRootLoaded else {
+                Diag.error("No Root element found, cancelling")
+                throw Xml2.ParsingError.unexpectedTag(actual: "/KeePassFile", expected: "Root")
+            }
+            Diag.verbose("XML file loaded OK")
+            xml.popReader()
+        default:
+            throw Xml2.ParsingError.unexpectedTag(
+                actual: xml.name,
+                expected: context.isKeePassFile ? "KeePassFile/*" : "KeePassFile"
+            )
+        }
+    }
+
+    private func parseRootElement(_ xml: DatabaseXMLParserStream) throws {
+        let context = xml.readerContext as! ParsingContext
+        switch (xml.name, xml.event) {
+        case (Xml2.root, .start):
+            Diag.verbose("Loading XML: root")
+            guard !context.isRootLoaded else {
+                Diag.error("Encountered another Root element, cancelling")
+                throw Xml2.ParsingError.unexpectedTag(actual: "Root", expected: "/KeePassFile")
+            }
+        case (Xml2.group, .start):
+            guard !context.isRootGroupLoaded else {
+                Diag.error("Encountered another root group, cancelling")
+                throw Xml2.ParsingError.unexpectedTag(actual: "Group", expected: "/Root")
+            }
+            try Group2.readFromXML(xml, database: self) { [unowned self, unowned context] root in
+                context.isRootGroupLoaded = true
+                self.root = root
+            }
+        case (Xml2.deletedObjects, .start):
+            try xml.pushReader(parseDeletedObjectsElement, context: nil)
+        case (Xml2.root, .end):
+            guard context.isRootGroupLoaded else {
+                Diag.error("No root group found, cancelling")
+                throw Xml2.ParsingError.unexpectedTag(actual: "/Root", expected: "Group")
+            }
+            context.isRootLoaded = true
+            Diag.verbose("XML root loaded OK")
+            xml.popReader()
+        default:
+            throw Xml2.ParsingError.unexpectedTag(actual: xml.name, expected: "Root/*")
+        }
+    }
+
+    private func parseDeletedObjectsElement(_ xml: DatabaseXMLParserStream) throws {
+        switch (xml.name, xml.event) {
+        case (Xml2.deletedObjects, .start):
+            Diag.verbose("Loading XML: deleted objects")
+            deletedObjects.removeAll()
+        case (Xml2.deletedObject, .start):
+            try DeletedObject2.readFromXML(xml) { [unowned self] object in
+                deletedObjects.append(object)
+            }
+        case (Xml2.deletedObjects, .end):
+            Diag.verbose("XML deleted objects loaded OK")
+            xml.popReader()
+        default:
+            throw Xml2.ParsingError.unexpectedTag(actual: xml.name, expected: "DeletedObjects/*")
         }
     }
 }

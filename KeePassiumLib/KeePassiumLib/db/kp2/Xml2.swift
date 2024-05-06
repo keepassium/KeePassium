@@ -9,9 +9,8 @@
 import Foundation
 
 internal struct Xml2 {
-    enum ParsingError: LocalizedError {
-        case xmlError(details: String) 
-        case notKeePassDocument
+    enum ParsingError: LocalizedError, Equatable {
+        case xmlError(details: String)
         case unexpectedTag(actual: String, expected: String?)
         case malformedValue(tag: String, value: String?)
 
@@ -25,12 +24,6 @@ internal struct Xml2 {
                         value: "XML error: %@",
                         comment: "Generic error while parsing XML. [errorDetails: String]"),
                     details)
-            case .notKeePassDocument:
-                return NSLocalizedString(
-                    "[Database2/Xml2/ParsingError] Not a KeePass XML",
-                    bundle: Bundle.framework,
-                    value: "Not a KeePass XML",
-                    comment: "Error message about XML parsing")
             case let .unexpectedTag(actual, expected):
                 if let expected = expected {
                     return String.localizedStringWithFormat(

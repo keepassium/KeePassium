@@ -57,11 +57,13 @@ public class CustomData2: Eraseable {
         }
         return copy
     }
+}
 
+extension CustomData2 {
     func load(
         xml: AEXMLElement,
         streamCipher: StreamCipher,
-        timeParser: Database2XMLTimeParser,
+        timeParser: Database2.XMLTimeParser,
         xmlParentName: String
     ) throws {
         assert(xml.name == Xml2.customData)
@@ -89,7 +91,7 @@ public class CustomData2: Eraseable {
     private func loadItem(
         xml: AEXMLElement,
         streamCipher: StreamCipher,
-        timeParser: Database2XMLTimeParser,
+        timeParser: Database2.XMLTimeParser,
         xmlParentName: String = "?"
     ) throws {
         assert(xml.name == Xml2.item)
@@ -103,7 +105,7 @@ public class CustomData2: Eraseable {
             case Xml2.value:
                 value = tag.value ?? ""
             case Xml2.lastModificationTime:
-                optionalTimestamp = timeParser.xmlStringToDate(tag.value)
+                optionalTimestamp = timeParser(tag.value)
             default:
                 Diag.error("Unexpected XML tag in CustomData/Item: \(tag.name)")
                 throw Xml2.ParsingError.unexpectedTag(
@@ -126,7 +128,7 @@ public class CustomData2: Eraseable {
         dict[_key] = Item(value: _value, lastModificationTime: optionalTimestamp)
     }
 
-    func toXml(timeFormatter: Database2XMLTimeFormatter) -> AEXMLElement {
+    func toXml(timeFormatter: Database2.XMLTimeFormatter) -> AEXMLElement {
         Diag.verbose("Generating XML: custom data")
         let xml = AEXMLElement(name: Xml2.customData)
         if dict.isEmpty {
@@ -139,11 +141,90 @@ public class CustomData2: Eraseable {
             let item = keyValuePair.value
             xmlItem.addChild(name: Xml2.value, value: item.value)
             if let timestamp = item.lastModificationTime {
-                let timestampString = timeFormatter.dateToXMLString(timestamp)
+                let timestampString = timeFormatter(timestamp)
                 xmlItem.addChild(name: Xml2.lastModificationTime, value: timestampString)
             }
         }
         return xml
+    }
+}
+
+extension CustomData2 {
+    private final class ParsingContext: XMLReaderContext {
+        var parentElementName: String
+        var itemKey: String?
+        var itemValue: String?
+        var itemTimestamp: Date?
+        init(parentElementName: String) {
+            self.parentElementName = parentElementName
+        }
+    }
+
+    func loadFromXML(_ xml: DatabaseXMLParserStream, xmlParentName: String) throws {
+        try xml.pushReader(
+            parseCustomDataElement,
+            context: ParsingContext(parentElementName: xmlParentName)
+        )
+    }
+
+    private func parseCustomDataElement(_ xml: DatabaseXMLParserStream) throws {
+        switch (xml.name, xml.event) {
+        case (Xml2.customData, .start):
+            Diag.verbose("Loading XML: custom data")
+        case (Xml2.item, .start):
+            try xml.pushReader(parseItemElement, context: xml.readerContext)
+        case (Xml2.customData, .end):
+            Diag.verbose("Custom data loaded OK [count: \(dict.count)]")
+            xml.popReader()
+        case (_, .start): break
+        default:
+            Diag.error("Unexpected XML tag in CustomData: \(xml.name)")
+            let parentElementName = (xml.readerContext as! ParsingContext).parentElementName
+            throw Xml2.ParsingError.unexpectedTag(
+                actual: xml.name,
+                expected: parentElementName + "/CustomData/*")
+        }
+    }
+
+    private func parseItemElement(_ xml: DatabaseXMLParserStream) throws {
+        let context = xml.readerContext as! ParsingContext
+        switch (xml.name, xml.event) {
+        case (Xml2.item, .start):
+            context.itemKey = nil
+            context.itemValue = nil
+            context.itemTimestamp = nil
+        case (Xml2.key, .end):
+            context.itemKey = xml.value ?? ""
+        case (Xml2.value, .end):
+            context.itemValue = xml.value ?? ""
+        case (Xml2.lastModificationTime, .end):
+            let timeParser = xml.documentContext.timeParser
+            context.itemTimestamp = timeParser(xml.value)
+        case (Xml2.item, .end):
+            let parentElementName = (xml.readerContext as! ParsingContext).parentElementName
+            guard let itemKey = context.itemKey else {
+                Diag.error("Missing \(parentElementName)/CustomData/Item/Key")
+                throw Xml2.ParsingError.malformedValue(
+                    tag: parentElementName + "/CustomData/Item/Key",
+                    value: nil)
+            }
+            guard let itemValue = context.itemValue else {
+                Diag.error("Missing \(parentElementName)/CustomData/Item/Value")
+                throw Xml2.ParsingError.malformedValue(
+                    tag: parentElementName + "/CustomData/Item/Value",
+                    value: nil)
+            }
+            dict[itemKey] = Item(value: itemValue, lastModificationTime: context.itemTimestamp)
+            Diag.verbose("Item loaded OK")
+            xml.popReader()
+        case (_, .start): break
+        default:
+            Diag.error("Unexpected XML tag in CustomData/Item: \(xml.name)")
+            let parentElementName = (xml.readerContext as! ParsingContext).parentElementName
+            throw Xml2.ParsingError.unexpectedTag(
+                actual: xml.name,
+                expected: parentElementName + "/CustomData/Item/*")
+        }
     }
 }
 

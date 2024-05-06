@@ -43,7 +43,7 @@ public class Diag {
         }
     }
 
-    private static let level = Level.debug 
+    private static let level = Level.verbose
     private static let instance = Diag()
     private let queue = DispatchQueue(label: "com.KeePassium.diagnostics")
     private var items = [Item]()

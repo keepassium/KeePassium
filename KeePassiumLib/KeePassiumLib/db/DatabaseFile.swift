@@ -11,6 +11,7 @@ public class DatabaseFile: Eraseable {
     public enum StatusFlag {
         case readOnly
         case localFallback
+        case useStreams
     }
     public typealias Status = Set<StatusFlag>
 

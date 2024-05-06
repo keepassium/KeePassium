@@ -316,6 +316,7 @@ extension DatabaseUnlockerCoordinator {
         #if AUTOFILL_EXT
         let fallbackTimeoutDuration = databaseSettingsManager
             .getFallbackTimeout(currentDatabaseRef, forAutoFill: true)
+        databaseStatus.insert(.useStreams)
         #elseif MAIN_APP
         let fallbackTimeoutDuration = databaseSettingsManager
             .getFallbackTimeout(currentDatabaseRef, forAutoFill: false)

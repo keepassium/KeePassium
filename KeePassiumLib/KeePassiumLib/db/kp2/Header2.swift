@@ -240,8 +240,9 @@ final class Header2: Eraseable {
         publicCustomData.erase()
     }
 
-    func loadDefaultValuesV4() {
-        formatVersion = .v4
+    func loadDefaultValuesV4(_ version: Database2.FormatVersion = .v4) {
+        assert(version == .v4 || version == .v4_1)
+        self.formatVersion = version
         applyEncryptionSettings(settings: EncryptionSettings.default)
 
 

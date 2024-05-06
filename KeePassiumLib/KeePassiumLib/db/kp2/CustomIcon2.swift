@@ -15,10 +15,10 @@ public class CustomIcon2: Eraseable {
     public private(set) var data: ByteArray
     public private(set) var name: String?
     public private(set) var lastModificationTime: Date?
-
     public var description: String {
         return "CustomIcon(UUID: \(uuid.uuidString), Data: \(data.count) bytes"
     }
+
     init() {
         uuid = UUID.ZERO
         data = ByteArray()
@@ -61,8 +61,10 @@ public class CustomIcon2: Eraseable {
         name = newName
         lastModificationTime = Date.now
     }
+}
 
-    func load(xml: AEXMLElement, timeParser: Database2XMLTimeParser) throws {
+extension CustomIcon2 {
+    func load(xml: AEXMLElement, timeParser: Database2.XMLTimeParser) throws {
         assert(xml.name == Xml2.icon)
         Diag.verbose("Loading XML: custom icon")
 
@@ -80,7 +82,7 @@ public class CustomIcon2: Eraseable {
             case Xml2.name:
                 xmlName = tag.value
             case Xml2.lastModificationTime:
-                xmlLastModificationTime = timeParser.xmlStringToDate(tag.value)
+                xmlLastModificationTime = timeParser(tag.value)
             default:
                 Diag.error("Unexpected XML tag in CustomIcon: \(tag.name)")
                 throw Xml2.ParsingError.unexpectedTag(actual: tag.name, expected: "CustomIcon/*")
@@ -102,7 +104,7 @@ public class CustomIcon2: Eraseable {
 
     func toXml(
         formatVersion: Database2.FormatVersion,
-        timeFormatter: Database2XMLTimeFormatter
+        timeFormatter: Database2.XMLTimeFormatter
     ) -> AEXMLElement {
         Diag.verbose("Generating XML: custom icon")
         let xmlIcon = AEXMLElement(name: Xml2.icon)
@@ -120,10 +122,70 @@ public class CustomIcon2: Eraseable {
         {
             xmlIcon.addChild(
                 name: Xml2.lastModificationTime,
-                value: timeFormatter.dateToXMLString(lastModificationTime)
+                value: timeFormatter(lastModificationTime)
             )
         }
 
         return xmlIcon
+    }
+}
+
+extension CustomIcon2 {
+    typealias ParsingCompletionHandler = (CustomIcon2) -> Void
+    private class ParsingContext: XMLReaderContext {
+        var uuid: UUID?
+        var data: ByteArray?
+        var name: String?
+        var lastModificationTime: Date?
+        var completion: ParsingCompletionHandler
+        init(completion: @escaping ParsingCompletionHandler) {
+            self.completion = completion
+        }
+    }
+
+    static func readFromXML(_ xml: DatabaseXMLParserStream, completion: @escaping (CustomIcon2) -> Void) throws {
+        assert(xml.name == Xml2.icon)
+        let icon = CustomIcon2()
+        try xml.pushReader(
+            icon.parseIconElement,
+            context: ParsingContext(completion: completion)
+        )
+    }
+
+    private func parseIconElement(_ xml: DatabaseXMLParserStream) throws {
+        let context = xml.readerContext as! ParsingContext
+
+        switch (xml.name, xml.event) {
+        case (Xml2.icon, .start):
+            Diag.verbose("Loading XML: custom icon")
+        case (Xml2.uuid, .end):
+            context.uuid = UUID(base64Encoded: xml.value)
+        case (Xml2.data, .end):
+            context.data = ByteArray(base64Encoded: xml.value ?? "")
+        case (Xml2.name, .end):
+            context.name = xml.value
+        case (Xml2.lastModificationTime, .end):
+            let timeParser = xml.documentContext.timeParser
+            context.lastModificationTime = timeParser(xml.value)
+        case (Xml2.icon, .end):
+            guard let data = context.data else {
+                Diag.error("Missing CustomIcon/Data")
+                throw Xml2.ParsingError.malformedValue(tag: "CustomIcon/Data", value: nil)
+            }
+            if context.uuid == nil {
+                Diag.warning("Missing CustomIcon/UUID. Will generate a new one.")
+            }
+            self.uuid = context.uuid ?? UUID()
+            self.data = data
+            self.name = context.name
+            self.lastModificationTime = context.lastModificationTime
+            context.completion(self)
+            Diag.verbose("Custom icon loaded OK")
+            xml.popReader()
+        case (_, .start): break
+        default:
+            Diag.error("Unexpected XML tag in CustomIcon: \(xml.name)")
+            throw Xml2.ParsingError.unexpectedTag(actual: xml.name, expected: "CustomIcon/*")
+        }
     }
 }

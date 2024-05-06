@@ -92,6 +92,8 @@
 		751ABAD52915B745008C18DE /* SubtitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758FF6CE28FC2C9C007DE8EB /* SubtitleCell.swift */; };
 		751ABAD72915B7B5008C18DE /* DatabaseItem+ActionPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9E2B8290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift */; };
 		751ABAD92915B7ED008C18DE /* GroupViewerCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9E2B3290C19FA00B79BE8 /* GroupViewerCells.swift */; };
+		751C7D502BDFE3A0006A58F4 /* XMLParsingSanityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C7D4F2BDFE3A0006A58F4 /* XMLParsingSanityTests.swift */; };
+		751C7D542BE03582006A58F4 /* XMLParsingCompletenessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C7D532BE03582006A58F4 /* XMLParsingCompletenessTests.swift */; };
 		751DED732847B44B00B6D02E /* UITextInput+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751DED722847B44B00B6D02E /* UITextInput+extensions.swift */; };
 		751DED742847B44B00B6D02E /* UITextInput+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751DED722847B44B00B6D02E /* UITextInput+extensions.swift */; };
 		751DED752847B44B00B6D02E /* UITextInput+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751DED722847B44B00B6D02E /* UITextInput+extensions.swift */; };
@@ -1518,6 +1520,8 @@
 		751C41E22700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SettingsVC.strings; sourceTree = "<group>"; };
 		751C41E32700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SettingsClipboardTimeoutVC.strings; sourceTree = "<group>"; };
 		751C41E52700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SettingsDataProtectionVC.strings; sourceTree = "<group>"; };
+		751C7D4F2BDFE3A0006A58F4 /* XMLParsingSanityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParsingSanityTests.swift; sourceTree = "<group>"; };
+		751C7D532BE03582006A58F4 /* XMLParsingCompletenessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParsingCompletenessTests.swift; sourceTree = "<group>"; };
 		751DED722847B44B00B6D02E /* UITextInput+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextInput+extensions.swift"; sourceTree = "<group>"; };
 		751E0CE72309AE5D0088BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SettingsDataProtectionVC.storyboard; sourceTree = "<group>"; };
 		751E0CED2309AE8D0088BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SettingsVC.storyboard; sourceTree = "<group>"; };
@@ -3425,6 +3429,8 @@
 				F3B5B2DC2A88FC2A0059F2D1 /* PasswordQualityTests.swift */,
 				F3D011472B77B96800A9AF96 /* SearchQueryParsingTests.swift */,
 				F3D011492B77CEFB00A9AF96 /* SearchHelperTests.swift */,
+				751C7D4F2BDFE3A0006A58F4 /* XMLParsingSanityTests.swift */,
+				751C7D532BE03582006A58F4 /* XMLParsingCompletenessTests.swift */,
 			);
 			path = KeePassiumTests;
 			sourceTree = "<group>";
@@ -5085,9 +5091,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				751C7D542BE03582006A58F4 /* XMLParsingCompletenessTests.swift in Sources */,
 				F321414C2A90D2CD007A8D4E /* PasswordAuditServiceTests.swift in Sources */,
 				F37CAA4E2A88F8D10000EF64 /* DumpEquatable.swift in Sources */,
 				F37CAA432A88F74E0000EF64 /* HIBPServiceTests.swift in Sources */,
+				751C7D502BDFE3A0006A58F4 /* XMLParsingSanityTests.swift in Sources */,
 				F3D0114A2B77CEFB00A9AF96 /* SearchHelperTests.swift in Sources */,
 				F3B5B2DD2A88FC2A0059F2D1 /* PasswordQualityTests.swift in Sources */,
 				F3D011482B77B96800A9AF96 /* SearchQueryParsingTests.swift in Sources */,

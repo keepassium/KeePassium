@@ -19,6 +19,10 @@
 		750AB1AC2902DD9200811980 /* OneDriveItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750AB1AB2902DD9200811980 /* OneDriveItem.swift */; };
 		750ACB932ACDF835008EF69F /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 750ACB952ACDF835008EF69F /* Localizable.stringsdict */; };
 		75134CFC23C0F02C0065CD10 /* DatabaseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75134CFB23C0F02C0065CD10 /* DatabaseItem.swift */; };
+		751C7D412BDA8C4D006A58F4 /* XMLReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C7D402BDA8C4D006A58F4 /* XMLReader.swift */; };
+		751C7D472BDBFE52006A58F4 /* Meta2+MemoryProtection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C7D462BDBFE52006A58F4 /* Meta2+MemoryProtection.swift */; };
+		751C7D492BDDABEB006A58F4 /* EntryField2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C7D482BDDABEB006A58F4 /* EntryField2.swift */; };
+		751C7D4B2BDE4AE8006A58F4 /* Entry2+AutoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C7D4A2BDE4AE8006A58F4 /* Entry2+AutoType.swift */; };
 		751E0CDF2309A3420088BB10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CDD2309A3420088BB10 /* Localizable.strings */; };
 		751E0D68230D12660088BB10 /* Bundle+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751E0D67230D12660088BB10 /* Bundle+extensions.swift */; };
 		751F90A9247748A300A7418F /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751F90A8247748A300A7418F /* Result.swift */; };
@@ -262,6 +266,10 @@
 		750ACB942ACDF835008EF69F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		75134CFB23C0F02C0065CD10 /* DatabaseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseItem.swift; sourceTree = "<group>"; };
 		75156CEB2700E42400B5D5E2 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		751C7D402BDA8C4D006A58F4 /* XMLReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLReader.swift; sourceTree = "<group>"; };
+		751C7D462BDBFE52006A58F4 /* Meta2+MemoryProtection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meta2+MemoryProtection.swift"; sourceTree = "<group>"; };
+		751C7D482BDDABEB006A58F4 /* EntryField2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryField2.swift; sourceTree = "<group>"; };
+		751C7D4A2BDE4AE8006A58F4 /* Entry2+AutoType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entry2+AutoType.swift"; sourceTree = "<group>"; };
 		751E0CDE2309A3420088BB10 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		751E0D63230B49190088BB10 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		751E0D67230D12660088BB10 /* Bundle+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+extensions.swift"; sourceTree = "<group>"; };
@@ -598,6 +606,14 @@
 			path = base32;
 			sourceTree = "<group>";
 		};
+		751C7D3F2BDA8C0B006A58F4 /* xml */ = {
+			isa = PBXGroup;
+			children = (
+				751C7D402BDA8C4D006A58F4 /* XMLReader.swift */,
+			);
+			name = xml;
+			sourceTree = "<group>";
+		};
 		7540251329506FF6000ABA73 /* org */ = {
 			isa = PBXGroup;
 			children = (
@@ -929,8 +945,11 @@
 				F3CC869A2AEE5EEA00B4DA98 /* EncryptionSettings.swift */,
 				75D09BEF2174F77000F7DEF2 /* Header2.swift */,
 				75D09BFA2174F77000F7DEF2 /* Meta2.swift */,
+				751C7D462BDBFE52006A58F4 /* Meta2+MemoryProtection.swift */,
 				75D09BF82174F77000F7DEF2 /* Group2.swift */,
 				75D09BF42174F77000F7DEF2 /* Entry2.swift */,
+				751C7D4A2BDE4AE8006A58F4 /* Entry2+AutoType.swift */,
+				751C7D482BDDABEB006A58F4 /* EntryField2.swift */,
 				75D09BF62174F77000F7DEF2 /* KeyHelper2.swift */,
 				75D09BF52174F77000F7DEF2 /* Xml2.swift */,
 				75D09BF02174F77000F7DEF2 /* Binary2.swift */,
@@ -954,6 +973,7 @@
 				756180F82820823A00EA015D /* password-generator */,
 				75B813D025FA6EE600A86B7C /* progress */,
 				75B813D225FA6F6000A86B7C /* settings */,
+				751C7D3F2BDA8C0B006A58F4 /* xml */,
 				75F4ACEE217749DB00B22D8B /* AppGroup.swift */,
 				75EA2D1621B2FB4000826FC6 /* Diag.swift */,
 				75F4ACE82177485D00B22D8B /* Keychain.swift */,
@@ -1317,6 +1337,7 @@
 				75D09C262174F77000F7DEF2 /* Xml2.swift in Sources */,
 				75AF1935282EE78F00FA4BB5 /* PassphraseGenerator.swift in Sources */,
 				F380E75C2A9E75F10011DF88 /* EntriesSelectedCountFormatter.swift in Sources */,
+				751C7D412BDA8C4D006A58F4 /* XMLReader.swift in Sources */,
 				75D09C2D2174F77000F7DEF2 /* VarDict.swift in Sources */,
 				75AF192A282E5B2F00FA4BB5 /* BasicPasswordGeneratorParams.swift in Sources */,
 				75A2677B229045A60097C693 /* PremiumFeature.swift in Sources */,
@@ -1370,6 +1391,7 @@
 				758F41992B18CC360069BF66 /* OneDriveAuthProvider.swift in Sources */,
 				75F74ABA24C082F90071281E /* ReceiptAnalyzer.swift in Sources */,
 				75241F3E274A8ED300AE15AD /* LString+appLock.swift in Sources */,
+				751C7D472BDBFE52006A58F4 /* Meta2+MemoryProtection.swift in Sources */,
 				75E9E2AE290AB9B100B79BE8 /* OTPCodeFormatter.swift in Sources */,
 				75D09C2E2174F77000F7DEF2 /* UUID+extension.swift in Sources */,
 				7524E7342887620A00ECBEC8 /* FileAccessCoordinator.swift in Sources */,
@@ -1429,6 +1451,7 @@
 				75D09C3C2174F77000F7DEF2 /* ChaCha20DataCipher.swift in Sources */,
 				75D09C602174F81900F7DEF2 /* Parser.swift in Sources */,
 				75D09C3E2174F77000F7DEF2 /* StreamCipherFactory.swift in Sources */,
+				751C7D4B2BDE4AE8006A58F4 /* Entry2+AutoType.swift in Sources */,
 				F3E8583D2B7E5C2A00F12DBB /* Searchable.swift in Sources */,
 				75D09C2A2174F77000F7DEF2 /* DeletedObject2.swift in Sources */,
 				75E83020251CBAC80061B7DC /* DatabaseSaver.swift in Sources */,
@@ -1443,6 +1466,7 @@
 				75F4ACE12177469500B22D8B /* FileType.swift in Sources */,
 				7524E74F288AA80500ECBEC8 /* LString+remote.swift in Sources */,
 				75AA9B51272FF3FA00863B98 /* QuickTypeAutoFillRecord.swift in Sources */,
+				751C7D492BDDABEB006A58F4 /* EntryField2.swift in Sources */,
 				75F4ACEF217749DC00B22D8B /* UserDefaults+appGroupShared.swift in Sources */,
 				75CA6641276BAF07003384FC /* DatabaseError.swift in Sources */,
 				F31114A52B9B807500236632 /* DropboxDataSource.swift in Sources */,

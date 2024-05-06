@@ -142,12 +142,14 @@ public class Group2: Group {
         super.move(to: newGroup)
         self.locationChangedTime = Date.now
     }
+}
 
+extension Group2 {
     func load(
         xml: AEXMLElement,
         formatVersion: Database2.FormatVersion,
         streamCipher: StreamCipher,
-        timeParser: Database2XMLTimeParser,
+        timeParser: Database2.XMLTimeParser,
         warnings: DatabaseLoadingWarnings
     ) throws {
         assert(xml.name == Xml2.group)
@@ -245,13 +247,13 @@ public class Group2: Group {
         value: String?,
         tag: String,
         fallbackToEpoch: Bool,
-        timeParser: Database2XMLTimeParser
+        timeParser: Database2.XMLTimeParser
     ) throws -> Date {
         if (value == nil || value!.isEmpty) && fallbackToEpoch {
             Diag.warning("\(tag) is empty, will use 1970-01-01 instead")
             return Date(timeIntervalSince1970: 0.0)
         }
-        guard let time = timeParser.xmlStringToDate(value) else {
+        guard let time = timeParser(value) else {
             Diag.error("Cannot parse \(tag) as Date")
             throw Xml2.ParsingError.malformedValue(
                 tag: tag,
@@ -260,7 +262,7 @@ public class Group2: Group {
         return time
     }
 
-    func loadTimes(xml: AEXMLElement, timeParser: Database2XMLTimeParser) throws {
+    func loadTimes(xml: AEXMLElement, timeParser: Database2.XMLTimeParser) throws {
         assert(xml.name == Xml2.times)
         Diag.verbose("Loading XML: group times")
 
@@ -310,7 +312,7 @@ public class Group2: Group {
     func toXml(
         formatVersion: Database2.FormatVersion,
         streamCipher: StreamCipher,
-        timeFormatter: Database2XMLTimeFormatter
+        timeFormatter: Database2.XMLTimeFormatter
     ) throws -> AEXMLElement {
         Diag.verbose("Generating XML: group")
         let xmlGroup = AEXMLElement(name: Xml2.group)
@@ -327,16 +329,16 @@ public class Group2: Group {
         let xmlTimes = AEXMLElement(name: Xml2.times)
         xmlTimes.addChild(
             name: Xml2.creationTime,
-            value: timeFormatter.dateToXMLString(creationTime))
+            value: timeFormatter(creationTime))
         xmlTimes.addChild(
             name: Xml2.lastModificationTime,
-            value: timeFormatter.dateToXMLString(lastModificationTime))
+            value: timeFormatter(lastModificationTime))
         xmlTimes.addChild(
             name: Xml2.lastAccessTime,
-            value: timeFormatter.dateToXMLString(lastAccessTime))
+            value: timeFormatter(lastAccessTime))
         xmlTimes.addChild(
             name: Xml2.expiryTime,
-            value: timeFormatter.dateToXMLString(expiryTime))
+            value: timeFormatter(expiryTime))
         xmlTimes.addChild(
             name: Xml2.expires,
             value: canExpire ? Xml2._true : Xml2._false)
@@ -345,7 +347,7 @@ public class Group2: Group {
             value: String(usageCount))
         xmlTimes.addChild(
             name: Xml2.locationChanged,
-            value: timeFormatter.dateToXMLString(locationChangedTime))
+            value: timeFormatter(locationChangedTime))
         xmlGroup.addChild(xmlTimes)
         xmlGroup.addChild(
             name: Xml2.isExpanded,
@@ -411,5 +413,152 @@ public class Group2: Group {
             xmlGroup.addChild(groupXML)
         }
         return xmlGroup
+    }
+}
+
+extension Group2 {
+    typealias ParsingCompletion = (Group2) -> Void
+    final private class ParsingContext: XMLReaderContext {
+        var isRecycleBin = false
+        var database: Database2
+        var completion: ParsingCompletion
+        init(database: Database2, completion: @escaping ParsingCompletion) {
+            self.database = database
+            self.completion = completion
+        }
+    }
+
+    static func readFromXML(
+        _ xml: DatabaseXMLParserStream,
+        database: Database2,
+        completion: @escaping ParsingCompletion
+    ) throws {
+        assert(xml.name == Xml2.group)
+        guard !xml.documentContext.progress.isCancelled else {
+            Diag.info("Cancelled by user request")
+            throw ProgressInterruption.cancelled(reason: .userRequest)
+        }
+        Diag.verbose("Loading XML: group")
+        let group = Group2(database: database)
+        let context = ParsingContext(database: database, completion: completion)
+        try xml.pushReader(group.parseGroupElement, context: context, repeatEvent: false)
+    }
+
+    private func parseGroupElement(_ xml: DatabaseXMLParserStream) throws {
+        let context = xml.readerContext as! ParsingContext
+        switch (xml.name, xml.event) {
+        case (Xml2.group, .start):
+            try Self.readFromXML(xml, database: context.database) { [unowned self] subgroup in
+                self.add(group: subgroup)
+            }
+        case (Xml2.times, .start):
+            try xml.pushReader(parseTimesElement, context: nil)
+        case (Xml2.customData, .start):
+            let formatVersion = xml.documentContext.formatVersion
+            assert(formatVersion.supports(.customData))
+            try customData.loadFromXML(xml, xmlParentName: "Group")
+        case (Xml2.entry, .start):
+            try Entry2.readFromXML(xml, database: context.database) { [unowned self] entry in
+                self.add(entry: entry)
+            }
+        case (Xml2.uuid, .end):
+            self.uuid = UUID(base64Encoded: xml.value) ?? UUID.ZERO
+            let meta: Meta2 = context.database.meta
+            if uuid == meta.recycleBinGroupUUID && meta.isRecycleBinEnabled {
+                Diag.verbose("Is a backup group")
+                context.isRecycleBin = true
+            }
+        case (Xml2.name, .end):
+            self.name = xml.value ?? ""
+        case (Xml2.notes, .end):
+            self.notes = xml.value ?? ""
+        case (Xml2.iconID, .end):
+            if let iconID = IconID(xml.value) {
+                self.iconID = iconID
+            } else {
+                self.iconID = isExpanded ? Group.defaultOpenIconID : Group.defaultIconID
+            }
+        case (Xml2.customIconUUID, .end):
+            self.customIconUUID = UUID(base64Encoded: xml.value) ?? UUID.ZERO
+        case (Xml2.isExpanded, .end):
+            self.isExpanded = Bool(string: xml.value)
+        case (Xml2.defaultAutoTypeSequence, .end):
+            self.defaultAutoTypeSequence = xml.value ?? ""
+        case (Xml2.enableAutoType, .end):
+            self.isAutoTypeEnabled = Bool(optString: xml.value) // value can be "True"/"False"/"null"
+        case (Xml2.enableSearching, .end):
+            self.isSearchingEnabled = Bool(optString: xml.value) // value can be "True"/"False"/"null"
+        case (Xml2.lastTopVisibleEntry, .end):
+            self.lastTopVisibleEntryUUID = UUID(base64Encoded: xml.value) ?? UUID.ZERO
+        case (Xml2.previousParentGroup, .end):
+            let formatVersion = xml.documentContext.formatVersion
+            assert(formatVersion.supports(.previousParentGroup))
+            self.previousParentGroupUUID = UUID(base64Encoded: xml.value) ?? UUID.ZERO
+        case (Xml2.tags, .end):
+            let formatVersion = xml.documentContext.formatVersion
+            assert(formatVersion.supports(.groupTags))
+            self.tags = TagHelper.stringToTags(xml.value)
+
+        case (Xml2.group, .end):
+            if context.isRecycleBin {
+                deepSetDeleted(true)
+            }
+            Diag.verbose("Group loaded OK")
+            context.completion(self)
+            xml.popReader()
+        case (_, .start): break
+        default:
+            Diag.error("Unexpected XML tag in Group: \(xml.name)")
+            throw Xml2.ParsingError.unexpectedTag(actual: xml.name, expected: "Group/*")
+        }
+    }
+
+    private func parseTimesElement(_ xml: DatabaseXMLParserStream) throws {
+        let timeParser = xml.documentContext.timeParser
+        switch (xml.name, xml.event) {
+        case (Xml2.times, .start):
+            Diag.verbose("Loading XML: group times")
+        case (Xml2.lastModificationTime, .end):
+            lastModificationTime = try parseTimestamp(
+                value: xml.value,
+                tag: "Group/Times/LastModificationTime",
+                fallbackToEpoch: true,
+                timeParser: timeParser)
+        case (Xml2.creationTime, .end):
+            creationTime = try parseTimestamp(
+                value: xml.value,
+                tag: "Group/Times/CreationTime",
+                fallbackToEpoch: true,
+                timeParser: timeParser)
+        case (Xml2.lastAccessTime, .end):
+            lastAccessTime = try parseTimestamp(
+                value: xml.value,
+                tag: "Group/Times/LastAccessTime",
+                fallbackToEpoch: true,
+                timeParser: timeParser)
+        case (Xml2.expiryTime, .end):
+            expiryTime = try parseTimestamp(
+                value: xml.value,
+                tag: "Group/Times/ExpiryTime",
+                fallbackToEpoch: true,
+                timeParser: timeParser)
+        case (Xml2.expires, .end):
+            canExpire = Bool(string: xml.value)
+        case (Xml2.usageCount, .end):
+            usageCount = UInt32(xml.value) ?? 0
+        case (Xml2.locationChanged, .end):
+            locationChangedTime = try parseTimestamp(
+                value: xml.value,
+                tag: "Group/Times/LocationChanged",
+                fallbackToEpoch: true,
+                timeParser: timeParser)
+        case (Xml2.times, .end):
+            Diag.verbose("Group times loaded OK")
+            xml.popReader()
+        case (_, .start): break
+        default:
+            Diag.error("Unexpected XML tag in Group/Times: \(xml.name)")
+            throw Xml2.ParsingError.unexpectedTag(actual: xml.name, expected: "Group/Times/*")
+        }
     }
 }

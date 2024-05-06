@@ -144,6 +144,7 @@ public class Database1: Database {
         dbFileName: String,
         dbFileData: ByteArray,
         compositeKey: CompositeKey,
+        useStreams: Bool,
         warnings: DatabaseLoadingWarnings
     ) throws {
         Diag.info("Loading KP1 database")

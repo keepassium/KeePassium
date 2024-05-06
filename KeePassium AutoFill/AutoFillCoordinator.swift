@@ -376,7 +376,7 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
         quickTypeDatabaseLoader = DatabaseLoader(
             dbRef: dbRef,
             compositeKey: masterKey,
-            status: [.readOnly],
+            status: [.readOnly, .useStreams],
             timeout: Timeout(duration: timeoutDuration),
             delegate: self
         )
