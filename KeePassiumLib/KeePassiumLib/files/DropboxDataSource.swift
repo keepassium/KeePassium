@@ -13,7 +13,7 @@ final class DropboxDataSource: RemoteDataSource {
     typealias Manager = DropboxManager
 
     let usedFileProvider: FileProvider = .keepassiumDropbox
-    let recoveryAction: String = LString.titleDropboxRequiresSignIn
+    let recoveryAction: String = LString.actionSignInToDropbox
 
     let manager: DropboxManager
 

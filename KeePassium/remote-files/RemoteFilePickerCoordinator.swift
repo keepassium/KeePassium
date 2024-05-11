@@ -46,6 +46,10 @@ final class RemoteFilePickerCoordinator: Coordinator {
         switch oldRef?.fileProvider {
         case .some(.keepassiumWebDAV):
             connectionType = .webdav
+        case .some(.keepassiumDropbox):
+            connectionType = .dropbox
+        case .some(.keepassiumGoogleDrive):
+            connectionType = .googleDrive
         case .some(.keepassiumOneDrive):
             connectionType = .oneDrive
         default:
@@ -147,7 +151,8 @@ extension RemoteFilePickerCoordinator: GoogleDriveConnectionSetupCoordinatorDele
     private func startGoogleDriveSetup(stateIndicator: BusyStateIndicating) {
         let setupCoordinator = GoogleDriveConnectionSetupCoordinator(
             router: router,
-            stateIndicator: stateIndicator
+            stateIndicator: stateIndicator,
+            oldRef: oldRef
         )
         setupCoordinator.delegate = self
         setupCoordinator.dismissHandler = { [weak self] coordinator in

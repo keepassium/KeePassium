@@ -138,6 +138,18 @@ extension GoogleDriveManager {
             return
         }
 
+        let error = queryItems.getValue(name: GoogleDriveAPI.Keys.error)
+        switch error {
+        case "access_denied":
+            completionQueue.addOperation {
+                Diag.error("Access denied, authentication cancelled")
+                completion(.failure(.cancelledByUser))
+            }
+            return
+        default:
+            break
+        }
+
         guard let codeItem = queryItems[GoogleDriveAPI.Keys.code],
               let authCodeString = codeItem.value
         else {

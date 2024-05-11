@@ -13,7 +13,7 @@ public final class OneDriveDataSource: RemoteDataSource {
     typealias Manager = OneDriveManager
 
     let usedFileProvider: FileProvider = .keepassiumOneDrive
-    let recoveryAction: String = LString.titleOneDriveRequiresSignIn
+    let recoveryAction: String = LString.actionSignInToOneDrive
 
     let manager: OneDriveManager
 

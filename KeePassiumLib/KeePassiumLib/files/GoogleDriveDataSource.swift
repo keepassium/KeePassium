@@ -13,7 +13,7 @@ final class GoogleDriveDataSource: RemoteDataSource {
     typealias Manager = GoogleDriveManager
 
     let usedFileProvider: FileProvider = .keepassiumGoogleDrive
-    let recoveryAction: String = LString.titleGoogleDriveRequiresSignIn
+    let recoveryAction: String = LString.actionSignInToGoogleDrive
 
     let manager: GoogleDriveManager
 

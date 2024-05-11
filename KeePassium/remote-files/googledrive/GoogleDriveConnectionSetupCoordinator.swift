@@ -40,16 +40,19 @@ final class GoogleDriveConnectionSetupCoordinator: NSObject, RemoteDataSourceSet
     var token: OAuthToken?
     var accountInfo: GoogleDriveAccountInfo?
     weak var firstVC: UIViewController?
+    private var oldRef: URLReference?
 
     weak var delegate: GoogleDriveConnectionSetupCoordinatorDelegate?
 
     init(
         router: NavigationRouter,
         stateIndicator: BusyStateIndicating,
+        oldRef: URLReference?,
         selectionMode: RemoteItemSelectionMode = .file
     ) {
         self.router = router
         self.stateIndicator = stateIndicator
+        self.oldRef = oldRef
         self.selectionMode = selectionMode
     }
 
@@ -64,6 +67,16 @@ final class GoogleDriveConnectionSetupCoordinator: NSObject, RemoteDataSourceSet
 
     func onAccountInfoAcquired(_ accountInfo: GoogleDriveAccountInfo) {
         self.accountInfo = accountInfo
+        if let oldRef,
+           let url = oldRef.url,
+           oldRef.fileProvider == .keepassiumGoogleDrive
+        {
+            trySelectFile(url, onFailure: { [weak self] in
+                guard let self else { return }
+                self.oldRef = nil
+                self.onAccountInfoAcquired(accountInfo)
+            })
+        }
         maybeSuggestPremium(isCorporateStorage: accountInfo.isWorkspaceAccount) { [weak self] _ in
             self?.showFolder(
                 items: [
@@ -73,6 +86,25 @@ final class GoogleDriveConnectionSetupCoordinator: NSObject, RemoteDataSourceSet
                 parent: nil,
                 title: accountInfo.serviceName
             )
+        }
+    }
+
+    private func trySelectFile(_ fileURL: URL, onFailure: @escaping () -> Void) {
+        guard let token,
+              let item = GoogleDriveItem.fromURL(fileURL)
+        else {
+            onFailure()
+            return
+        }
+        manager.getItemInfo(item, token: token, tokenUpdater: nil) { [self, onFailure] result in
+            switch result {
+            case .success:
+                Diag.info("Old file reference reinstated successfully")
+                delegate?.didPickRemoteFile(url: fileURL, oauthToken: token, stateIndicator: stateIndicator, in: self)
+            case .failure(let remoteError):
+                Diag.debug("Failed to reinstate old file reference [message: \(remoteError.localizedDescription)]")
+                onFailure()
+            }
         }
     }
 }

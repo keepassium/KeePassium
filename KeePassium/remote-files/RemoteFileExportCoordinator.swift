@@ -178,6 +178,7 @@ extension RemoteFileExportCoordinator: GoogleDriveConnectionSetupCoordinatorDele
         let setupCoordinator = GoogleDriveConnectionSetupCoordinator(
             router: router,
             stateIndicator: stateIndicator,
+            oldRef: nil,
             selectionMode: .folder
         )
         setupCoordinator.delegate = self

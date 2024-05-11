@@ -55,6 +55,7 @@ internal enum GoogleDriveAPI {
         static let contentType = "Content-Type"
         static let contentLength = "Content-Length"
         static let error = "error"
+        static let errorDescription = "error_description"
         static let message = "message"
         static let status = "status"
         static let authorization = "Authorization"
@@ -132,22 +133,36 @@ extension GoogleDriveAPI {
         }
 
         static func getServerError(from json: [String: Any]) -> RemoteError? {
-            guard let error = json[GoogleDriveAPI.Keys.error] as? [String: Any] else {
+            guard let error = json[GoogleDriveAPI.Keys.error] else {
                 return nil
             }
             let errorDetails = json.description
             Diag.error(errorDetails)
-            let message = (error[GoogleDriveAPI.Keys.message] as? String) ?? "UnknownError"
-            guard let status = json[GoogleDriveAPI.Keys.status] as? String else {
-                return RemoteError.serverSideError(message: message)
+            if let errorDict = error as? [String: Any] {
+                let message = (errorDict[GoogleDriveAPI.Keys.message] as? String) ?? "UnknownError"
+                let status = errorDict[GoogleDriveAPI.Keys.status] as? String
+                let errorDescription = "status: \(status ?? "nil"), message: \(message)"
+                switch status {
+                case "UNAUTHENTICATED":
+                    Diag.warning("User not authenticated [\(errorDescription)]")
+                    return .authorizationRequired(message: LString.titleGoogleDriveRequiresSignIn)
+                case "PERMISSION_DENIED":
+                    return .authorizationRequired(message: message)
+                default:
+                    Diag.warning("Server-side Gooogle Drive error [\(errorDescription)]")
+                    return RemoteError.serverSideError(message: message)
+                }
             }
-            switch status {
-            case "PERMISSION_DENIED":
+
+            let errorKind = (error as? String) ?? "GoogleDriveError"
+            switch errorKind {
+            case "invalid_grant":
                 Diag.warning("Authorization token expired")
                 return .authorizationRequired(message: LString.titleGoogleDriveRequiresSignIn)
             default:
-                Diag.warning("Server-side Gooogle Drive error [message: \(status)]")
-                return .serverSideError(message: status)
+                let errorDescription = (json[GoogleDriveAPI.Keys.errorDescription] as?  String) ?? errorKind
+                Diag.warning("Server-side Google Drive error [message: \(errorDescription)]")
+                return .serverSideError(message: errorDescription)
             }
         }
     }

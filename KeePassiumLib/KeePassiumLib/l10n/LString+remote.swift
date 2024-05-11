@@ -131,6 +131,11 @@ extension LString {
         bundle: Bundle.framework,
         value: "Google Drive needs you to sign in again.",
         comment: "Error description: the user should manually sign in to their Google Drive account")
+    public static let actionSignInToGoogleDrive = NSLocalizedString(
+        "[RemoteConnection/SignIn/GoogleDrive/action]",
+        bundle: Bundle.framework,
+        value: "Sign in to Google Drive",
+        comment: "Action: authenticate to Google Drive account")
     public static let titleGoogleDriveFolderMyDrive = NSLocalizedString(
         "[RemoteConnection/GoogleDrive/Folder/myDrive]",
         bundle: Bundle.framework,
