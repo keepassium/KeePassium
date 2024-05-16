@@ -524,6 +524,11 @@ final class GroupViewerVC:
             dateFormatter.dateStyle = .short
             dateFormatter.timeStyle = .short
             return dateFormatter.string(from: entry.lastModificationTime)
+        case .tags:
+            guard let entry2 = entry as? Entry2 else {
+                return nil
+            }
+            return entry2.resolvingTags().joined(separator: ", ")
         }
     }
 
@@ -648,7 +653,7 @@ final class GroupViewerVC:
 
     private func makeListSettingsMenu() -> UIMenu {
         let currentDetail = Settings.current.entryListDetail
-        let entrySubtitleActions = Settings.EntryListDetail.allValues.map { entryListDetail in
+        let entrySubtitleActions = Settings.EntryListDetail.allCases.map { entryListDetail in
             UIAction(
                 title: entryListDetail.longTitle,
                 state: (currentDetail == entryListDetail) ? .on : .off,

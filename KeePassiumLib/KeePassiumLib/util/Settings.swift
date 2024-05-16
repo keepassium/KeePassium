@@ -429,15 +429,14 @@ public class Settings {
         }
     }
 
-    public enum EntryListDetail: Int {
-        public static let allValues = [none, userName, password, url, notes, lastModifiedDate]
-
+    public enum EntryListDetail: Int, CaseIterable {
         case none
         case userName
         case password
         case url
         case notes
         case lastModifiedDate
+        case tags
 
         public var longTitle: String {
             // swiftlint:disable line_length
@@ -477,7 +476,13 @@ public class Settings {
                     "[Settings/EntryListDetail/longTitle] Last Modified Date",
                     bundle: Bundle.framework,
                     value: "Last Modified Date",
-                    comment: "An option in Group Viewer settings. Refers fo the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'.")
+                    comment: "An option in Group Viewer settings. Refers to the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'.")
+            case .tags:
+                return NSLocalizedString(
+                    "[Settings/EntryListDetail/longTitle] Tags",
+                    bundle: Bundle.framework,
+                    value: "Tags",
+                    comment: "An option in Group Viewer settings. Refers to the tags field of the entry. Will be shown as 'Entry Subtitle: Tags'.")
             }
             // swiftlint:enable line_length
         }
