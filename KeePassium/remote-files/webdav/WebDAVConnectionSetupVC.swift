@@ -103,12 +103,6 @@ final class WebDAVConnectionSetupVC: UITableViewController {
         navigationItem.rightBarButtonItem = doneButton
     }
 
-    public func setState(isBusy: Bool) {
-        titleView.showSpinner(isBusy, animated: true)
-        self.isBusy = isBusy
-        refresh()
-    }
-
     private func refresh() {
         titleView.label.text = RemoteConnectionType.webdav.description
         tableView.reloadData()
@@ -136,6 +130,14 @@ final class WebDAVConnectionSetupVC: UITableViewController {
     }
 }
 
+extension WebDAVConnectionSetupVC: BusyStateIndicating {
+    func indicateState(isBusy: Bool) {
+        titleView.showSpinner(isBusy, animated: true)
+        self.isBusy = isBusy
+        refresh()
+    }
+}
+
 extension WebDAVConnectionSetupVC {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return CellIndex.sectionSizes.count
@@ -151,7 +153,7 @@ extension WebDAVConnectionSetupVC {
     ) -> String? {
         switch section {
         case CellIndex.url.section:
-            return LString.titleFileURL
+            return LString.titleServerURL
         case CellIndex.username.section:
             return LString.titleCredentials
         default:
@@ -219,7 +221,7 @@ extension WebDAVConnectionSetupVC {
     }
 
     private func configureWebdavURLCell(_ cell: TextFieldCell) {
-        cell.textField.placeholder = "https://host:port/path/file.kdbx"
+        cell.textField.placeholder = "https://host:port/path/"
         cell.textField.textContentType = .URL
         cell.textField.isSecureTextEntry = false
         cell.textField.autocapitalizationType = .none
@@ -280,7 +282,6 @@ extension WebDAVConnectionSetupVC {
         guard var urlComponents = URLComponents(string: text),
               urlComponents.scheme?.isNotEmpty ?? false,
               urlComponents.host?.isNotEmpty ?? false,
-              urlComponents.path.count > 1,
               let inputURL = urlComponents.url
         else { 
             self.webdavURL = nil

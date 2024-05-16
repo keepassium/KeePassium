@@ -14,7 +14,7 @@ struct AuthorizedItem<ItemType> {
 }
 
 protocol RemoteDataSource: DataSource {
-    associatedtype ItemType: RemoteFileItem
+    associatedtype ItemType: SerializableRemoteFileItem
     associatedtype Manager: RemoteDataSourceManager<ItemType>
 
     var manager: Manager { get }

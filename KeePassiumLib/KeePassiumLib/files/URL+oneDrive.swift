@@ -21,7 +21,7 @@ extension URL {
     }
 }
 
-extension OneDriveItem {
+extension OneDriveItem: SerializableRemoteFileItem  {
     public static func fromURL(_ prefixedURL: URL) -> OneDriveItem? {
         return OneDriveURLHelper.urlToItem(prefixedURL)
     }

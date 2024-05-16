@@ -70,6 +70,12 @@ extension LString {
         bundle: Bundle.framework,
         value: "File URL",
         comment: "Network address of a file")
+
+    public static let titleServerURL = NSLocalizedString(
+        "[RemoteConnection/ServerURL]",
+        bundle: Bundle.framework,
+        value: "Server URL",
+        comment: "Network address of a WebDAV server")
     public static let titleCredentials = NSLocalizedString(
         "[RemoteConnection/Credentials]",
         bundle: Bundle.framework,

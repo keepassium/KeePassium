@@ -110,6 +110,30 @@ public final class WebDAVManager: NSObject {
 
         uploadTask.resume()
     }
+
+    public func getItems(
+        in folder: WebDAVItem,
+        credential: NetworkCredential,
+        timeout: Timeout,
+        completionQueue: OperationQueue,
+        completion: @escaping (Result<[WebDAVItem], Error>) -> Void
+    ) {
+        let listRequest = WebDAVListRequest(
+            credential: credential.toURLCredential(),
+            allowUntrustedCertificate: credential.allowUntrustedCertificate,
+            folder: folder,
+            timeout: timeout,
+            completionQueue: completionQueue,
+            completion: completion
+        )
+
+        objc_sync_enter(self)
+        let listTask = urlSession.dataTask(with: listRequest.makeURLRequest())
+        webdavRequests[listTask.taskIdentifier] = listRequest
+        objc_sync_exit(self)
+
+        listTask.resume()
+    }
 }
 
 extension WebDAVManager: URLSessionDataDelegate, URLSessionTaskDelegate {

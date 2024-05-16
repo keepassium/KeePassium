@@ -115,7 +115,7 @@ extension RemoteFilePickerCoordinator: ConnectionTypePickerDelegate {
     func didSelect(connectionType: RemoteConnectionType, in viewController: ConnectionTypePickerVC) {
         switch connectionType {
         case .webdav:
-            startWebDAVSetup()
+            startWebDAVSetup(stateIndicator: viewController)
         case .oneDrive, .oneDriveForBusiness:
             startOneDriveSetup(stateIndicator: viewController)
         case .dropbox, .dropboxBusiness:
@@ -127,8 +127,10 @@ extension RemoteFilePickerCoordinator: ConnectionTypePickerDelegate {
 }
 
 extension RemoteFilePickerCoordinator: WebDAVConnectionSetupCoordinatorDelegate {
-    private func startWebDAVSetup() {
-        let setupCoordinator = WebDAVConnectionSetupCoordinator(router: router)
+    private func startWebDAVSetup(stateIndicator: BusyStateIndicating) {
+        let setupCoordinator = WebDAVConnectionSetupCoordinator(
+            router: router
+        )
         setupCoordinator.delegate = self
         setupCoordinator.dismissHandler = { [weak self] coordinator in
             self?.removeChildCoordinator(coordinator)

@@ -24,9 +24,16 @@ final class WebDAVConnectionSetupCoordinator: Coordinator {
 
     private let router: NavigationRouter
     private let setupVC: WebDAVConnectionSetupVC
+    private var firstVC: UIViewController?
+    private var selectionMode: RemoteItemSelectionMode
+    private var credential: NetworkCredential?
 
-    init(router: NavigationRouter) {
+    init(
+        router: NavigationRouter,
+        selectionMode: RemoteItemSelectionMode = .file
+    ) {
         self.router = router
+        self.selectionMode = selectionMode
         self.setupVC = WebDAVConnectionSetupVC.make()
         setupVC.delegate = self
     }
@@ -47,6 +54,79 @@ final class WebDAVConnectionSetupCoordinator: Coordinator {
     func dismiss() {
         router.pop(viewController: setupVC, animated: true)
     }
+
+    private func showFolder(folder: WebDAVItem, credential: NetworkCredential, stateIndicator: BusyStateIndicating) {
+        stateIndicator.indicateState(isBusy: true)
+        WebDAVManager.shared.getItems(
+            in: folder,
+            credential: credential,
+            timeout: Timeout(duration: FileDataProvider.defaultTimeoutDuration),
+            completionQueue: .main
+        ) { [weak self, weak stateIndicator] result in
+            guard let self else { return }
+            stateIndicator?.indicateState(isBusy: false)
+            switch result {
+            case .success(let items):
+                showFolder(items: items, parent: folder, title: folder.name)
+            case .failure(let remoteError):
+                showErrorAlert(remoteError)
+            }
+        }
+    }
+
+    private func showFolder(
+        items: [WebDAVItem],
+        parent: WebDAVItem?,
+        title: String
+    ) {
+        let vc = RemoteFolderViewerVC.make()
+        vc.folder = parent
+        vc.items = items
+        vc.folderName = title
+        vc.delegate = self
+        vc.selectionMode = selectionMode
+        if self.firstVC == nil {
+            self.firstVC = vc
+        }
+        router.push(vc, animated: true, onPop: nil)
+    }
+
+    private func showErrorAlert(_ error: Error) {
+        router.navigationController.showErrorAlert(error)
+    }
+}
+
+extension WebDAVConnectionSetupCoordinator: RemoteFolderViewerDelegate {
+    func canSaveTo(folder: RemoteFileItem?, in viewController: RemoteFolderViewerVC) -> Bool {
+        return false
+    }
+
+    func didSelectItem(_ item: RemoteFileItem, in viewController: RemoteFolderViewerVC) {
+        guard let credential = credential else {
+            Diag.warning("Not signed into WebDav, cancelling")
+            assertionFailure()
+            return
+        }
+
+        guard let webDAVItem = item as? WebDAVItem else {
+            Diag.warning("Unexpected type of selected item")
+            assertionFailure()
+            return
+        }
+
+        if item.isFolder {
+            showFolder(folder: webDAVItem, credential: credential, stateIndicator: viewController)
+            return
+        }
+
+        let prefixedURL = WebDAVFileURL.build(nakedURL: webDAVItem.url)
+        checkAndPickWebDAVConnection(
+              url: prefixedURL,
+              credential: credential,
+              viewController: viewController)
+    }
+
+    func didPressSave(to folder: RemoteFileItem, in viewController: RemoteFolderViewerVC) {}
 }
 
 extension WebDAVConnectionSetupCoordinator: WebDAVConnectionSetupVCDelegate {
@@ -55,26 +135,23 @@ extension WebDAVConnectionSetupCoordinator: WebDAVConnectionSetupVCDelegate {
         credential: NetworkCredential,
         in viewController: WebDAVConnectionSetupVC
     ) {
-        let prefixedURL = WebDAVFileURL.build(nakedURL: nakedWebdavURL)
-        checkAndPickWebDAVConnection(
-            url: prefixedURL,
-            credential: credential,
-            viewController: viewController)
+        self.credential = credential
+        showFolder(folder: .root(url: nakedWebdavURL), credential: credential, stateIndicator: viewController)
     }
 
     private func checkAndPickWebDAVConnection(
         url: URL,
         credential: NetworkCredential,
-        viewController: WebDAVConnectionSetupVC
+        viewController: UIViewController & BusyStateIndicating
     ) {
-        viewController.setState(isBusy: true)
+        viewController.indicateState(isBusy: true)
         WebDAVManager.shared.getFileInfo(
             url: url.withoutSchemePrefix(),
             credential: credential,
             timeout: Timeout(duration: FileDataProvider.defaultTimeoutDuration),
             completion: { [weak self, weak viewController] result in
                 guard let self = self, let viewController = viewController else { return }
-                viewController.setState(isBusy: false)
+                viewController.indicateState(isBusy: false)
                 switch result {
                 case .success:
                     Diag.info("Remote file picked successfully")

@@ -93,7 +93,7 @@ public enum GoogleDriveURLHelper {
     }
 }
 
-extension GoogleDriveItem {
+extension GoogleDriveItem: SerializableRemoteFileItem  {
     public static func fromURL(_ prefixedURL: URL) -> GoogleDriveItem? {
         return GoogleDriveURLHelper.urlToItem(prefixedURL)
     }

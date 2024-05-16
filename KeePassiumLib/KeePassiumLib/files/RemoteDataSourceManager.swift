@@ -12,7 +12,7 @@ public typealias TokenUpdateCallback = (OAuthToken) -> Void
 public typealias CreateCompletionHandler<ItemType> = (Result<ItemType, RemoteError>) -> Void
 
 public protocol RemoteDataSourceManager<ItemType> {
-    associatedtype ItemType: RemoteFileItem
+    associatedtype ItemType: SerializableRemoteFileItem
     associatedtype AccountInfo
     associatedtype UploadResponse
     typealias UploadCompletionHandler = (Result<UploadResponse, RemoteError>) -> Void

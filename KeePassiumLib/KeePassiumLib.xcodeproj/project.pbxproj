@@ -113,6 +113,10 @@
 		75BFB1442481B2FA0017B980 /* FileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB1432481B2FA0017B980 /* FileProvider.swift */; };
 		75C01EFF2474AC290099698C /* Synchronizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C01EFE2474AC290099698C /* Synchronizable.swift */; };
 		75C01F03247554EA0099698C /* FileAccessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C01F02247554EA0099698C /* FileAccessError.swift */; };
+		75C3CDD32BF3916400C5C8CD /* WebDAVInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C3CDD22BF3916400C5C8CD /* WebDAVInfoRequest.swift */; };
+		75C3CDD52BF3918A00C5C8CD /* WebDAVDownloadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C3CDD42BF3918A00C5C8CD /* WebDAVDownloadRequest.swift */; };
+		75C3CDD72BF391BA00C5C8CD /* WebDAVUploadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C3CDD62BF391BA00C5C8CD /* WebDAVUploadRequest.swift */; };
+		75C3CDD92BF391D400C5C8CD /* WebDAVListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C3CDD82BF391D400C5C8CD /* WebDAVListRequest.swift */; };
 		75C8471924FAE7B60064A4EC /* Comparable+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8471824FAE7B50064A4EC /* Comparable+extensions.swift */; };
 		75CA6641276BAF07003384FC /* DatabaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA6640276BAF06003384FC /* DatabaseError.swift */; };
 		75CD1524285F3929003C11DA /* TimeInterval+constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CD1523285F3929003C11DA /* TimeInterval+constants.swift */; };
@@ -249,6 +253,7 @@
 		F380E75C2A9E75F10011DF88 /* EntriesSelectedCountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380E75B2A9E75F10011DF88 /* EntriesSelectedCountFormatter.swift */; };
 		F3849DF12BA38B5A00ACC3B5 /* RemoteError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3849DF02BA38B5A00ACC3B5 /* RemoteError.swift */; };
 		F3CC869B2AEE5EEA00B4DA98 /* EncryptionSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CC869A2AEE5EEA00B4DA98 /* EncryptionSettings.swift */; };
+		F3D604792BECE7DD00F32BF8 /* WebDAVItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D604782BECE7DD00F32BF8 /* WebDAVItem.swift */; };
 		F3E8583D2B7E5C2A00F12DBB /* Searchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E8583C2B7E5C2A00F12DBB /* Searchable.swift */; };
 /* End PBXBuildFile section */
 
@@ -406,6 +411,10 @@
 		75BFB1432481B2FA0017B980 /* FileProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileProvider.swift; sourceTree = "<group>"; };
 		75C01EFE2474AC290099698C /* Synchronizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Synchronizable.swift; sourceTree = "<group>"; };
 		75C01F02247554EA0099698C /* FileAccessError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileAccessError.swift; sourceTree = "<group>"; };
+		75C3CDD22BF3916400C5C8CD /* WebDAVInfoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebDAVInfoRequest.swift; sourceTree = "<group>"; };
+		75C3CDD42BF3918A00C5C8CD /* WebDAVDownloadRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebDAVDownloadRequest.swift; sourceTree = "<group>"; };
+		75C3CDD62BF391BA00C5C8CD /* WebDAVUploadRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebDAVUploadRequest.swift; sourceTree = "<group>"; };
+		75C3CDD82BF391D400C5C8CD /* WebDAVListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebDAVListRequest.swift; sourceTree = "<group>"; };
 		75C8471824FAE7B50064A4EC /* Comparable+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+extensions.swift"; sourceTree = "<group>"; };
 		75CA6640276BAF06003384FC /* DatabaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseError.swift; sourceTree = "<group>"; };
 		75CD1523285F3929003C11DA /* TimeInterval+constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+constants.swift"; sourceTree = "<group>"; };
@@ -550,6 +559,7 @@
 		F380E75B2A9E75F10011DF88 /* EntriesSelectedCountFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesSelectedCountFormatter.swift; sourceTree = "<group>"; };
 		F3849DF02BA38B5A00ACC3B5 /* RemoteError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteError.swift; sourceTree = "<group>"; };
 		F3CC869A2AEE5EEA00B4DA98 /* EncryptionSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptionSettings.swift; sourceTree = "<group>"; };
+		F3D604782BECE7DD00F32BF8 /* WebDAVItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebDAVItem.swift; sourceTree = "<group>"; };
 		F3E8583C2B7E5C2A00F12DBB /* Searchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Searchable.swift; sourceTree = "<group>"; };
 		FA629D43BA5B83BDC62D8F55 /* URL+googleDrive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+googleDrive.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -666,7 +676,12 @@
 				7599AC2C2894087000FD03BC /* WebDAVDataSource.swift */,
 				750AB1A92902DD6100811980 /* WebDAVFileURL.swift */,
 				75675C84277C8BEA0025910A /* WebDAVManager.swift */,
+				F3D604782BECE7DD00F32BF8 /* WebDAVItem.swift */,
 				7534443B278356AD00CC8248 /* WebDAVRequest.swift */,
+				75C3CDD22BF3916400C5C8CD /* WebDAVInfoRequest.swift */,
+				75C3CDD62BF391BA00C5C8CD /* WebDAVUploadRequest.swift */,
+				75C3CDD42BF3918A00C5C8CD /* WebDAVDownloadRequest.swift */,
+				75C3CDD82BF391D400C5C8CD /* WebDAVListRequest.swift */,
 			);
 			name = webdav;
 			sourceTree = "<group>";
@@ -1407,9 +1422,11 @@
 				75F4ACF0217749DC00B22D8B /* AppGroup.swift in Sources */,
 				75F4ACE02177469500B22D8B /* FileKeeper.swift in Sources */,
 				758FF6D4290193F0007DE8EB /* OneDriveDataSource.swift in Sources */,
+				75C3CDD52BF3918A00C5C8CD /* WebDAVDownloadRequest.swift in Sources */,
 				75D09C282174F77000F7DEF2 /* CustomIcon2.swift in Sources */,
 				75AF193F282EF76C00FA4BB5 /* PassphraseWordlist.swift in Sources */,
 				754840EE2A52C957001EEF21 /* URLQueryItems+extensions.swift in Sources */,
+				F3D604792BECE7DD00F32BF8 /* WebDAVItem.swift in Sources */,
 				75AF1926282E593400FA4BB5 /* InclusionCondition.swift in Sources */,
 				75F4ACE42177469500B22D8B /* FileKeeperObserver.swift in Sources */,
 				75D09B8E2174F02F00F7DEF2 /* Salsa20.swift in Sources */,
@@ -1470,11 +1487,13 @@
 				75F4ACEF217749DC00B22D8B /* UserDefaults+appGroupShared.swift in Sources */,
 				75CA6641276BAF07003384FC /* DatabaseError.swift in Sources */,
 				F31114A52B9B807500236632 /* DropboxDataSource.swift in Sources */,
+				75C3CDD92BF391D400C5C8CD /* WebDAVListRequest.swift in Sources */,
 				75F4ACDF2177469500B22D8B /* TemporaryFileURL.swift in Sources */,
 				751F90A9247748A300A7418F /* Result.swift in Sources */,
 				75D09C412174F77000F7DEF2 /* Database1.swift in Sources */,
 				75384B9922CCB76800157598 /* UsageMonitor.swift in Sources */,
 				75F594B8221BDC51001729FD /* SettingsMigrator.swift in Sources */,
+				75C3CDD72BF391BA00C5C8CD /* WebDAVUploadRequest.swift in Sources */,
 				75D09C422174F77000F7DEF2 /* Header1.swift in Sources */,
 				75B813D425FA6FD000A86B7C /* StoreReviewSuggester.swift in Sources */,
 				75D09BD22174F76500F7DEF2 /* ChaCha20.swift in Sources */,
@@ -1487,6 +1506,7 @@
 				75D09BD62174F76500F7DEF2 /* thread.c in Sources */,
 				75D09BE32174F76500F7DEF2 /* argon2.c in Sources */,
 				75D09BA52174F02F00F7DEF2 /* CryptoError.swift in Sources */,
+				75C3CDD32BF3916400C5C8CD /* WebDAVInfoRequest.swift in Sources */,
 				7505E8CB2236C93300E5202E /* TOTPGenerator.swift in Sources */,
 				75D09C402174F77000F7DEF2 /* Eraseable.swift in Sources */,
 				7564C2A12B7B547400AA75A4 /* URL+oneDrive.swift in Sources */,

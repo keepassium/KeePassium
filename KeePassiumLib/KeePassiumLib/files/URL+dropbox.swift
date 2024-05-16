@@ -94,7 +94,7 @@ public enum DropboxURLHelper {
     }
 }
 
-extension DropboxItem {
+extension DropboxItem: SerializableRemoteFileItem {
     public static func fromURL(_ prefixedURL: URL) -> DropboxItem? {
         return DropboxURLHelper.urlToItem(prefixedURL)
     }
