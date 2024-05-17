@@ -219,6 +219,7 @@ extension RemoteFileExportCoordinator: DropboxConnectionSetupCoordinatorDelegate
         let setupCoordinator = DropboxConnectionSetupCoordinator(
             router: router,
             stateIndicator: stateIndicator,
+            oldRef: nil,
             selectionMode: .folder
         )
         setupCoordinator.delegate = self

@@ -198,6 +198,18 @@ final public class DropboxManager: NSObject {
             return
         }
 
+        let error = queryItems.getValue(name: DropboxAPI.Keys.error)
+        switch error {
+        case "access_denied":
+            completionQueue.addOperation {
+                Diag.error("Access denied, authentication cancelled")
+                completion(.failure(.cancelledByUser))
+            }
+            return
+        default:
+            break
+        }
+
         guard let codeItem = queryItems[DropboxAPI.Keys.code],
               let authCodeString = codeItem.value
         else {

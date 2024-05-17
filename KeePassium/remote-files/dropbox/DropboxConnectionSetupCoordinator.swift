@@ -41,16 +41,19 @@ final class DropboxConnectionSetupCoordinator: NSObject, RemoteDataSourceSetupCo
     var accountInfo: DropboxAccountInfo?
 
     weak var firstVC: UIViewController?
+    private var oldRef: URLReference?
 
     weak var delegate: DropboxConnectionSetupCoordinatorDelegate?
 
     init(
         router: NavigationRouter,
         stateIndicator: BusyStateIndicating,
+        oldRef: URLReference?,
         selectionMode: RemoteItemSelectionMode = .file
     ) {
         self.router = router
         self.stateIndicator = stateIndicator
+        self.oldRef = oldRef
         self.selectionMode = selectionMode
     }
 
@@ -65,12 +68,41 @@ final class DropboxConnectionSetupCoordinator: NSObject, RemoteDataSourceSetupCo
 
     func onAccountInfoAcquired(_ accountInfo: DropboxAccountInfo) {
         self.accountInfo = accountInfo
+        if let oldRef,
+           let url = oldRef.url,
+           oldRef.fileProvider == .keepassiumDropbox
+        {
+            trySelectFile(url, onFailure: { [weak self] in
+                guard let self else { return }
+                self.oldRef = nil
+                self.onAccountInfoAcquired(accountInfo)
+            })
+        }
         maybeSuggestPremium(isCorporateStorage: accountInfo.type.isCorporate) { [weak self] _ in
             guard let self else { return }
             self.showFolder(
                 folder: DropboxItem.root(info: accountInfo),
                 stateIndicator: self.stateIndicator
             )
+        }
+    }
+
+    private func trySelectFile(_ fileURL: URL, onFailure: @escaping () -> Void) {
+        guard let token,
+              let item = DropboxItem.fromURL(fileURL)
+        else {
+            onFailure()
+            return
+        }
+        manager.getItemInfo(item, token: token, tokenUpdater: nil) { [self, onFailure] result in
+            switch result {
+            case .success:
+                Diag.info("Old file reference reinstated successfully")
+                delegate?.didPickRemoteFile(url: fileURL, oauthToken: token, stateIndicator: stateIndicator, in: self)
+            case .failure(let remoteError):
+                Diag.debug("Failed to reinstate old file reference [message: \(remoteError.localizedDescription)]")
+                onFailure()
+            }
         }
     }
 }

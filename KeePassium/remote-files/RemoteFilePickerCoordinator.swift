@@ -189,7 +189,8 @@ extension RemoteFilePickerCoordinator: DropboxConnectionSetupCoordinatorDelegate
     private func startDropboxSetup(stateIndicator: BusyStateIndicating) {
         let setupCoordinator = DropboxConnectionSetupCoordinator(
             router: router,
-            stateIndicator: stateIndicator
+            stateIndicator: stateIndicator,
+            oldRef: oldRef
         )
         setupCoordinator.delegate = self
         setupCoordinator.dismissHandler = { [weak self] coordinator in
