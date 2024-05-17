@@ -170,6 +170,7 @@ public class DatabaseSaver: ProgressObserver {
         }
 
         Diag.info("Checking original database for out-of-band changes")
+        progress.status = LString.Progress.checkingDatabaseForModifications
         let phase2Timeout = Timeout(duration: timeoutDuration)
         FileDataProvider.read(
             databaseFile.fileURL,
@@ -210,6 +211,7 @@ public class DatabaseSaver: ProgressObserver {
         }
 
         Diag.info("Resolving a sync conflict")
+        progress.status = LString.Progress.resolvingSyncConflict
         askDelegateToResolveConflict(remoteURL: remoteURL, remoteData: remoteData) { [self] strategy in
             switch strategy {
             case .overwrite(let resolvedData):
@@ -231,6 +233,7 @@ public class DatabaseSaver: ProgressObserver {
         assert(operationQueue.isCurrent)
 
         Diag.info("Writing database file")
+        progress.status = LString.Progress.writingDatabaseFile
         let phase3Timeout = Timeout(duration: timeoutDuration)
         FileDataProvider.write(
             resolvedData,

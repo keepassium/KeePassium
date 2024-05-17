@@ -139,6 +139,21 @@ public enum LString {
             bundle: Bundle.framework,
             value: "Resolving field references…",
             comment: "Database loading/saving status: replacing field references with their values")
+        static let checkingDatabaseForModifications = NSLocalizedString(
+            "[Database/Progress/checkingDatabaseForModifications]",
+            bundle: Bundle.framework,
+            value: "Checking database for modifications…",
+            comment: "Database loading/saving status: checking whether our database was modified from another device.")
+        static let resolvingSyncConflict = NSLocalizedString(
+            "[Database/Progress/resolvingSyncConflict]",
+            bundle: Bundle.framework,
+            value: "Resolving a sync conflict…",
+            comment: "Database saving status: deciding how to handle conflicting changes.")
+        static let writingDatabaseFile = NSLocalizedString(
+            "[Database/Progress/writingDatabaseFile]",
+            bundle: Bundle.framework,
+            value: "Writing database file…",
+            comment: "Database saving status")
         static let done = NSLocalizedString(
             "[Database/Progress] Done",
             bundle: Bundle.framework,
