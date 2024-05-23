@@ -92,6 +92,15 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
             pagesViewController.viewControllers?.first?.navigationItem.rightBarButtonItem
     }
 
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        if let titleView = navigationItem.titleView {
+            navigationItem.titleView = nil
+            navigationItem.titleView = titleView
+        }
+    }
+
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         refresh()
