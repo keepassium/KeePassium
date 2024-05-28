@@ -34,6 +34,7 @@ final class RemoteFileExportCoordinator: Coordinator {
         self.router = router
         connectionTypePicker = ConnectionTypePickerVC.make()
         connectionTypePicker.delegate = self
+        connectionTypePicker.showsOtherLocations = false
     }
 
     deinit {
@@ -170,6 +171,10 @@ extension RemoteFileExportCoordinator: ConnectionTypePickerDelegate {
                 startGoogleDriveSetup(stateIndicator: viewController)
             }
         }
+    }
+
+    func didSelectOtherLocations(in viewController: ConnectionTypePickerVC) {
+        assertionFailure("Not implemented, this option is supposed to be hidden")
     }
 }
 

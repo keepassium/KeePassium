@@ -6,6 +6,7 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
+// swiftlint:disable line_length
 extension LString {
 
     public static let actionConnectToServer = NSLocalizedString(
@@ -52,12 +53,27 @@ extension LString {
         bundle: Bundle.framework,
         value: "Google Workspace",
         comment: "Name of a cloud storage service")
+    public static let connectionTypeOtherLocations = NSLocalizedString(
+        "[StorageService/OtherServices/title]",
+        bundle: Bundle.framework,
+        value: "Other Services",
+        comment: "Title of a file storage service option (for example: Dropbox, OneDrive, Other Services)")
 
     public static let titleConnection = NSLocalizedString(
         "[RemoteConnection/Connection/title]",
         bundle: Bundle.framework,
         value: "Connection",
         comment: "Network connection. For example `Connection: WebDAV` or `Connection: MyCloud`.")
+    public static let directConnectionDescription = NSLocalizedString(
+        "[RemoteConnection/Direct/description]",
+        bundle: Bundle.framework,
+        value: "KeePassium will communicate directly with your online storage. This ensures reliable file transfer.",
+        comment: "Description of the `Direct connection` sync method.")
+    public static let integrationViaFilesAppDescription = NSLocalizedString(
+        "[RemoteConnection/ViaFilesApp/description]",
+        bundle: Bundle.framework,
+        value: "KeePassium will assign file synchronization to the app of your storage provider. Some apps work better than others.",
+        comment: "Description of the `Integration via Files app` sync method.")
 
     public static let titleAllowUntrustedCertificate = NSLocalizedString(
         "[RemoteConnection/AllowUntrusted/title]",
@@ -154,3 +170,4 @@ extension LString {
         comment: "Name of a predefined GoogleDrive folder which contains files shared with this user")
 
 }
+// swiftlint:enable line_length

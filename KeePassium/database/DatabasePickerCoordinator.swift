@@ -548,4 +548,8 @@ extension DatabasePickerCoordinator: RemoteFilePickerCoordinatorDelegate {
         CredentialManager.shared.store(credential: credential, for: url)
         addDatabaseFile(url, mode: .openInPlace)
     }
+
+    func didSelectSystemFilePicker(in coordinator: RemoteFilePickerCoordinator) {
+        maybeAddExternalDatabase(presenter: databasePickerVC)
+    }
 }

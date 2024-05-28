@@ -17,15 +17,25 @@ protocol ConnectionTypePickerDelegate: AnyObject {
         connectionType: RemoteConnectionType,
         in viewController: ConnectionTypePickerVC) -> Bool
     func didSelect(connectionType: RemoteConnectionType, in viewController: ConnectionTypePickerVC)
+    func didSelectOtherLocations(in viewController: ConnectionTypePickerVC)
 }
 
 final class ConnectionTypePickerVC: UITableViewController, Refreshable, BusyStateIndicating {
-    private enum CellID {
-        static let itemCell = "itemCell"
+    private enum Cells {
+        static let itemCellID = "itemCell"
+
+        static let sectionCount = 2
+        static let connectionTypesSection = 0
+        static let otherLocationsSection = 1
     }
 
     public weak var delegate: ConnectionTypePickerDelegate?
 
+    public var showsOtherLocations = false {
+        didSet {
+            refresh()
+        }
+    }
     public let values = RemoteConnectionType.allValues
     public var selectedValue: RemoteConnectionType?
 
@@ -50,7 +60,7 @@ final class ConnectionTypePickerVC: UITableViewController, Refreshable, BusyStat
 
         tableView.register(
             SubtitleCell.classForCoder(),
-            forCellReuseIdentifier: CellID.itemCell)
+            forCellReuseIdentifier: Cells.itemCellID)
         tableView.allowsSelection = true
     }
 
@@ -67,11 +77,33 @@ final class ConnectionTypePickerVC: UITableViewController, Refreshable, BusyStat
 
 extension ConnectionTypePickerVC {
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        if showsOtherLocations {
+            return Cells.sectionCount
+        } else {
+            return Cells.sectionCount - 1
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return values.count
+        switch section {
+        case Cells.connectionTypesSection:
+            return values.count
+        case Cells.otherLocationsSection:
+            return 1
+        default:
+            fatalError("Unexpected section ID")
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        switch section {
+        case Cells.connectionTypesSection:
+            return LString.directConnectionDescription
+        case Cells.otherLocationsSection:
+            return LString.integrationViaFilesAppDescription
+        default:
+            return nil
+        }
     }
 
     override func tableView(
@@ -79,9 +111,21 @@ extension ConnectionTypePickerVC {
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
         let cell = tableView
-            .dequeueReusableCell(withIdentifier: CellID.itemCell, for: indexPath)
-            as! SubtitleCell
+            .dequeueReusableCell(withIdentifier: Cells.itemCellID, for: indexPath)
+        as! SubtitleCell
 
+        switch indexPath.section {
+        case Cells.connectionTypesSection:
+            configureConnectionTypeCell(cell, at: indexPath)
+        case Cells.otherLocationsSection:
+            configureOtherLocationsCell(cell, at: indexPath)
+        default:
+            fatalError("Unexpected cell index")
+        }
+        return cell
+    }
+
+    private func configureConnectionTypeCell(_ cell: SubtitleCell, at indexPath: IndexPath) {
         let connectionType = values[indexPath.row]
         cell.textLabel?.text = connectionType.description
         cell.imageView?.contentMode = .scaleAspectFit
@@ -100,7 +144,15 @@ extension ConnectionTypePickerVC {
             cell.accessoryView = nil
             cell.accessoryType = .disclosureIndicator
         }
-        return cell
+    }
+
+    private func configureOtherLocationsCell(_ cell: SubtitleCell, at indexPath: IndexPath) {
+        cell.textLabel?.text = LString.connectionTypeOtherLocations
+        cell.imageView?.contentMode = .scaleAspectFit
+        cell.imageView?.image = nil
+        cell.detailTextLabel?.text = nil
+        cell.accessoryType = .disclosureIndicator
+        cell.setEnabled(true)
     }
 }
 
@@ -109,25 +161,40 @@ extension ConnectionTypePickerVC {
         if isBusy {
             return nil
         }
-        let selectedConnectionType = values[indexPath.row]
-        guard selectedConnectionType.fileProvider.isAllowed else {
-            showManagedSettingNotification(text: LString.Error.storageAccessDeniedByOrg)
-            return nil
+        switch indexPath.section {
+        case Cells.connectionTypesSection:
+            let selectedConnectionType = values[indexPath.row]
+            guard selectedConnectionType.fileProvider.isAllowed else {
+                showManagedSettingNotification(text: LString.Error.storageAccessDeniedByOrg)
+                return nil
+            }
+            return indexPath
+        case Cells.otherLocationsSection:
+            return indexPath
+        default:
+            fatalError()
         }
-        return indexPath
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedConnectionType = values[indexPath.row]
-        let isEnabled = delegate?.isConnectionTypeEnabled(selectedConnectionType, in: self) ?? true
-        let canSelect = delegate?.willSelect(connectionType: selectedConnectionType, in: self) ?? false
-        guard isEnabled && canSelect else {
-            tableView.deselectRow(at: indexPath, animated: true)
-            return
-        }
+        switch indexPath.section {
+        case Cells.connectionTypesSection:
+            let selectedConnectionType = values[indexPath.row]
+            let isEnabled = delegate?.isConnectionTypeEnabled(selectedConnectionType, in: self) ?? true
+            let canSelect = delegate?.willSelect(connectionType: selectedConnectionType, in: self) ?? false
+            guard isEnabled && canSelect else {
+                tableView.deselectRow(at: indexPath, animated: true)
+                return
+            }
 
-        self.selectedValue = selectedConnectionType
-        tableView.reloadData()
-        delegate?.didSelect(connectionType: selectedConnectionType, in: self)
+            self.selectedValue = selectedConnectionType
+            tableView.reloadData()
+            delegate?.didSelect(connectionType: selectedConnectionType, in: self)
+        case Cells.otherLocationsSection:
+            Diag.debug("Switching to system file picker")
+            delegate?.didSelectOtherLocations(in: self)
+        default:
+            fatalError()
+        }
     }
 }

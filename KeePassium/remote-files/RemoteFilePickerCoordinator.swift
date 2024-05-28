@@ -14,6 +14,9 @@ protocol RemoteFilePickerCoordinatorDelegate: AnyObject {
         credential: NetworkCredential,
         in coordinator: RemoteFilePickerCoordinator
     )
+    func didSelectSystemFilePicker(
+        in coordinator: RemoteFilePickerCoordinator
+    )
 }
 
 final class RemoteFilePickerCoordinator: Coordinator {
@@ -31,6 +34,7 @@ final class RemoteFilePickerCoordinator: Coordinator {
         self.oldRef = oldRef
         connectionTypePicker = ConnectionTypePickerVC.make()
         connectionTypePicker.delegate = self
+        connectionTypePicker.showsOtherLocations = true
     }
 
     deinit {
@@ -83,8 +87,8 @@ final class RemoteFilePickerCoordinator: Coordinator {
         connectionTypePicker.navigationItem.leftBarButtonItem = cancelButton
     }
 
-    private func dismiss() {
-        router.pop(viewController: connectionTypePicker, animated: true)
+    private func dismiss(completion: (() -> Void)? = nil) {
+        router.pop(viewController: connectionTypePicker, animated: true, completion: completion)
     }
 
     @objc
@@ -122,6 +126,12 @@ extension RemoteFilePickerCoordinator: ConnectionTypePickerDelegate {
             startDropboxSetup(stateIndicator: viewController)
         case .googleDrive, .googleWorkspace:
             startGoogleDriveSetup(stateIndicator: viewController)
+        }
+    }
+
+    func didSelectOtherLocations(in viewController: ConnectionTypePickerVC) {
+        dismiss { [self] in
+            delegate?.didSelectSystemFilePicker(in: self)
         }
     }
 }
