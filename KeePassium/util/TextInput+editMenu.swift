@@ -8,7 +8,34 @@
 
 import KeePassiumLib
 
-typealias TextInputView = UITextInput & UIView
+protocol TextInputView: UITextInput & UIView {
+    func replaceText(in range: Range<String.Index>, withText: String)
+}
+
+extension UITextField: TextInputView {
+    func replaceText(in range: Range<String.Index>, withText: String) {
+        let newText = text?.replacingCharacters(in: range, with: withText) ?? ""
+        text = newText
+        sendActions(for: .editingChanged)
+
+        let selectionEndIndex = newText.index(range.lowerBound, offsetBy: withText.count)
+        let offset = newText.distance(from: newText.startIndex, to: selectionEndIndex)
+        if let cursorPos = position(from: beginningOfDocument, offset: offset) {
+            selectedTextRange = textRange(from: cursorPos, to: cursorPos)
+        }
+    }
+}
+
+extension UITextView: TextInputView {
+    func replaceText(in range: Range<String.Index>, withText: String) {
+        let newText = text?.replacingCharacters(in: range, with: withText) ?? ""
+        text = newText
+        NotificationCenter.default.post(name: UITextView.textDidChangeNotification, object: self)
+
+        let selectionEnd = newText.index(range.lowerBound, offsetBy: withText.count)
+        selectedRange = NSRange(selectionEnd..<selectionEnd, in: text)
+    }
+}
 
 protocol TextInputEditMenuDelegate: AnyObject {
     func textInputDidRequestRandomizer(_ textInput: TextInputView)
@@ -17,9 +44,10 @@ protocol TextInputEditMenuDelegate: AnyObject {
 extension UITextField {
     internal func addRandomizerEditMenu() {
         assert(delegate is TextInputEditMenuDelegate, "Field delegate does not handle randomizer menu")
-        let randomizerMenu = UIMenuItem(
-            title: LString.PasswordGenerator.editMenuTitle,
-            action: #selector(didPressRandomizerEditMenu(_:)))
+        let menuTitle = ProcessInfo.isRunningOnMac
+            ? LString.PasswordGenerator.editMenuTitleFull
+            : LString.PasswordGenerator.editMenuTitleShort
+        let randomizerMenu = UIMenuItem(title: menuTitle, action: #selector(didPressRandomizerEditMenu(_:)))
         UIMenuController.shared.menuItems = [randomizerMenu]
     }
 
@@ -36,9 +64,10 @@ extension UITextField {
 extension UITextView {
     internal func addRandomizerEditMenu() {
         assert(delegate is TextInputEditMenuDelegate, "Field delegate does not handle randomizer menu")
-        let randomizerMenu = UIMenuItem(
-            title: LString.PasswordGenerator.editMenuTitle,
-            action: #selector(didPressRandomizerEditMenu(_:)))
+        let menuTitle = ProcessInfo.isRunningOnMac
+            ? LString.PasswordGenerator.editMenuTitleFull
+            : LString.PasswordGenerator.editMenuTitleShort
+        let randomizerMenu = UIMenuItem(title: menuTitle, action: #selector(didPressRandomizerEditMenu(_:)))
         UIMenuController.shared.menuItems = [randomizerMenu]
     }
 

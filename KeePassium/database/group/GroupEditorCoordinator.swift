@@ -195,7 +195,7 @@ extension GroupEditorCoordinator: PasswordGeneratorCoordinatorDelegate {
             assertionFailure()
             return
         }
-        textInput.replace(textInput.selectedOrFullTextRange, withText: password)
+        textInput.replaceText(in: textInput.selectedOrFullTextRange, withText: password)
         refresh()
     }
 }

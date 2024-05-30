@@ -17,7 +17,8 @@ public extension LString {
             value: "Random Generator",
             comment: "Title of the random text/password/username generator dialog.")
 
-        public static let editMenuTitle = "🎲"
+        public static let editMenuTitleShort = "🎲"
+        public static let editMenuTitleFull = titleRandomGenerator
 
         public static let actionGenerate = NSLocalizedString(
             "[PasswordGenerator/Generate/action]",

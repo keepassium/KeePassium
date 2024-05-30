@@ -489,7 +489,7 @@ extension EntryFieldEditorCoordinator: PasswordGeneratorCoordinatorDelegate {
             assertionFailure("There is no target for the generated password")
             return
         }
-        targetInput.replace(targetInput.selectedOrFullTextRange, withText: password)
+        targetInput.replaceText(in: targetInput.selectedOrFullTextRange, withText: password)
         self.isModified = true
         fieldEditorVC.revalidate()
         fieldEditorVC.refresh()

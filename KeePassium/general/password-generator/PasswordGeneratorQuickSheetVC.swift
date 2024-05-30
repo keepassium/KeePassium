@@ -97,7 +97,10 @@ final class PasswordGeneratorQuickSheetVC: UITableViewController, Refreshable {
         )
 
         preferredContentSizeObservation = tableView.observe(\.contentSize) { [weak self] _, _ in
-            guard let self = self else { return }
+            guard let self else { return }
+            guard self.navigationController?.viewControllers.count == 1 else {
+                return
+            }
             let newPreferredSize = CGSize(
                 width: 400,
                 height: self.tableView.contentSize.height

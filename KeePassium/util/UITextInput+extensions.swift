@@ -10,11 +10,18 @@ import UIKit
 
 extension UITextInput {
 
-    var selectedOrFullTextRange: UITextRange {
-        return selectedTextRange
+    var selectedOrFullTextRange: Range<String.Index> {
+        let range = selectedTextRange
             ?? textRange(
                 from: self.beginningOfDocument,
                 to: self.endOfDocument)
             ?? UITextRange()
+        let location = offset(from: beginningOfDocument, to: range.start)
+        let length = offset(from: range.start, to: range.end)
+        let text = textRange(from: beginningOfDocument, to: endOfDocument).flatMap({ self.text(in: $0) }) ?? ""
+
+        let startIndex = text.index(text.startIndex, offsetBy: location)
+        let endIndex = text.index(startIndex, offsetBy: length)
+        return startIndex ..< endIndex
     }
 }
