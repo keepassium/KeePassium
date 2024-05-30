@@ -1,5 +1,34 @@
 #CHANGELOG
 
+## [1.52.150] - 2024-05-30
+
+### Added
+
+- Direct in-app Google Drive support (free for personal and most academic accounts; Workspace Business and Enterprise require premium) (#203, #110, #17)
+- Support for custom wordlists in password generator (#335) [thanks, everyone]
+- Option to lock databases on device restart (closes #209) [thanks, everyone]
+- WebDAV file selection dialog instead of entering file URL manually (#247)
+
+### Improved
+
+- AutoFill can load larger databases (due to more efficient XML parsing)
+- All DB timeouts and "Clear master keys on timeout" option no longer require premium
+- Added tags as entry subtitle option (closes #364) [thanks, Stefan]
+- More informative progress messages while saving
+- UI improvements here and there
+
+### Fixed
+
+- Password entropy estimation is now consistent with KeePassXC (fixes #359) [thanks, RTClarkV]
+- Generated passwords could be silently affected by smart punctuation (fixes #286) [thanks, Douglas]
+- Improved access to the same WebDAV server using different user accounts (closes #367) [thanks, William and Marco]
+- Fine-tuned which kdbx formats support group tags [thanks, L.M.]
+- Better handling of MFA expiration in OneDrive connection [thanks, Milos]
+- Handling of very long passphrases in password generator (fixes #360) [thanks, Ironwally]
+- Re-authentication workflow for direct Dropbox connections
+- Entry title could disappear on iPad (fixes #366) [thanks, Tobias]
+
+
 ## [1.52.149] - 2024-04-04
 
 ### Fixed

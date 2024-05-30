@@ -2,11 +2,79 @@
     "sections": [
         {
             "version": "1.52",
-            "releaseDate": "2024-04-04T00:00:00Z",
+            "releaseDate": "2024-05-30T00:00:00Z",
             "items": [
                 {
-                    "title": "Added: Direct in-app Dropbox support. (Free for Dropbox Basic/Pro; Dropbox Business requires premium)",
+                    "title": "Added: Direct in-app Dropbox support. (Free for Basic and Pro accounts; Dropbox Business requires premium)",
                     "github": "#344, #340, #304, #171"
+                },
+                {
+                    "title": "Added: Direct in-app Google Drive support. (Free for personal and most academic accounts; Workspace Business and Enterprise require premium)",
+                    "github": "#203, #110, #17"
+                },
+                {
+                    "title": "Added: Support for custom wordlists in password generator",
+                    "github": "#335",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Added: Option to lock databases on device restart",
+                    "github": "Closes #209",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Added: WebDAV file selection dialog instead of entering file URL manually",
+                    "github": "#347"
+                },
+                {
+                    "title": "Improved: AutoFill can load larger databases"
+                },
+                {
+                    "title": "Improved: All DB timeouts and \"Clear master keys on timeout\" option no longer require premium"
+                },
+                {
+                    "title": "Improved: Added tags as entry subtitle option",
+                    "github": "Closes #364",
+                    "credits": "Stefan"
+                },
+                {
+                    "title": "Improved: More informative progress messages while saving"
+                },
+                {
+                    "title": "Improved: UI improvements here and there"
+                },
+                {
+                    "title": "Fixed: Password entropy estimation is now consistent with KeePassXC",
+                    "github": "Fixes #359",
+                    "credits": "RTClarkV"
+                },
+                {
+                    "title": "Fixed: Generated passwords could be silently affected by smart punctuation",
+                    "github": "Fixes #286",
+                    "credits": "Douglas"
+                },
+                {
+                    "title": "Fixed: Improved access to the same WebDAV server using different user accounts",
+                    "github": "Closes #367",
+                    "credits": "William and Marco"
+                },
+                {
+                    "title": "Fixed: Fine-tuned which kdbx formats support group tags",
+                    "credits": "L.M."
+                },
+                {
+                    "title": "Fixed: Better handling of MFA expiration in OneDrive connection",
+                    "credits": "Milos"
+                },
+                {
+                    "title": "Fixed: Handling of very long passphrases in password generator",
+                    "github": "Fixes #360",
+                    "credits": "Ironwally"
+                },
+                {
+                    "title": "Fixed: Entry title could disappear on iPad",
+                    "github": "Fixes #366",
+                    "credits": "Tobias"
                 },
                 {
                     "title": "Fixed: Added new MTD scheme required by Intune SDK",
