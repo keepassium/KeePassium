@@ -770,8 +770,17 @@
           <option value="net.box.BoxNet.documentPickerFileProvider">
             <language value="en-US">Box (via Files integration)</language>
           </option>
+          <option value="com.keepassium.fileprovider.dropbox">
+            <language value="en-US">Dropbox (direct connection)</language>
+          </option>
           <option value="com.getdropbox.Dropbox.FileProvider">
             <language value="en-US">Dropbox (via Files integration)</language>
+          </option>
+          <option value="com.keepassium.fileprovider.googledrive">
+            <language value="en-US">Google Drive (direct connection)</language>
+          </option>
+          <option value="com.google.Drive.FileProviderExtension">
+            <language value="en-US">Google Drive (via Files integration)</language>
           </option>
           <option value="com.apple.CloudDocs.iCloudDriveFileProvider">
             <language value="en-US">iCloud Drive (via Files integration)</language>
