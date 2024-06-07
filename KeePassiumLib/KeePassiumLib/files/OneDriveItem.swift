@@ -182,7 +182,7 @@ extension OneDriveItem {
             if let childrenRequestOverride {
                 urlString += childrenRequestOverride
             } else {
-                urlString += "/children?select=\(OneDriveAPI.itemFields)&top=\(OneDriveAPI.childrenListLimit)"
+                urlString += "/children?select=\(OneDriveAPI.itemFields)&top=\(OneDriveAPI.childrenListLimit)&orderby=name%20asc"
             }
         case .itemInfo:
             break
