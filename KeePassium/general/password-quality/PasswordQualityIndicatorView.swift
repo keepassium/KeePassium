@@ -108,7 +108,7 @@ final class PasswordQualityIndicatorView: UIView {
         if alwaysShowEntropy || (quality == PasswordQuality.veryGood(0)) {
             let formattedBitCount = BitCountFormatter.string(fromBitCount: Int64(quality.entropy))
             qualityDescription = String.localizedStringWithFormat(
-                LString.passwordQualityWithEntropyTemplate,
+                LString.passwordQualityWithApproximateEntropyTemplate,
                 quality.title,
                 formattedBitCount)
         } else {
