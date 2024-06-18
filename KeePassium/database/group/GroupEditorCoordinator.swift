@@ -50,11 +50,7 @@ final class GroupEditorCoordinator: Coordinator {
         }
         group.touch(.accessed)
 
-        if let db2 = database as? Database2 {
-            isSupportTags = db2.formatVersion.supports(.groupTags)
-        } else {
-            isSupportTags = false
-        }
+        isSupportTags = database is Database2
 
         let groupProperties = GroupEditorVC.Property.makeAll(for: group, parent: parent)
         groupEditorVC = GroupEditorVC(

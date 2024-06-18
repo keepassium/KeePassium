@@ -32,7 +32,7 @@ public enum DatabaseFeature2 {
 
 extension Database2.FormatVersion {
 
-    public func supports(_ feature: DatabaseFeature2) -> Bool {
+    func supports(_ feature: DatabaseFeature2) -> Bool {
         return  feature.formatVersionRequired.contains(self)
     }
 
