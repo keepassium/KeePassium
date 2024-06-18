@@ -52,7 +52,10 @@ class BasicViewableField: ViewableField {
     var resolvedValue: String? { return field?.resolvedValue }
     var decoratedValue: String? { return field?.premiumDecoratedValue }
     var isProtected: Bool { return field?.isProtected ?? false }
-    var isFixed: Bool { return field?.isStandardField ?? false }
+    var isFixed: Bool {
+        guard let field else { return false }
+        return field.isStandardField || field.name == EntryField.tags
+    }
 
     var isValueHidden: Bool
 

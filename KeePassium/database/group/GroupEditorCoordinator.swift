@@ -174,9 +174,10 @@ extension GroupEditorCoordinator: GroupEditorDelegate {
         let tagsCoordinator = TagSelectorCoordinator(
             item: group,
             parent: originalGroup?.parent,
-            database: database,
+            databaseFile: databaseFile,
             router: router
         )
+        tagsCoordinator.delegate = self
         tagsCoordinator.dismissHandler = { [weak self, tagsCoordinator] coordinator in
             self?.group.tags = tagsCoordinator.selectedTags
             self?.refresh()
@@ -197,6 +198,13 @@ extension GroupEditorCoordinator: PasswordGeneratorCoordinatorDelegate {
         }
         textInput.replaceText(in: textInput.selectedOrFullTextRange, withText: password)
         refresh()
+    }
+}
+
+extension GroupEditorCoordinator: TagSelectorCoordinatorDelegate {
+    func didUpdateTags(in coordinator: TagSelectorCoordinator) {
+        refresh()
+        delegate?.didUpdateGroup(group, in: self)
     }
 }
 

@@ -35,6 +35,15 @@ extension LString {
         value: "Enter tag name",
         comment: "Call to action/hint inside a text input")
 
+    static let titleEditTag = NSLocalizedString(
+        "[Tags/Edit/title]",
+        value: "Edit Tag",
+        comment: "Title of a dialog for editing a tag")
+    static let confirmDeleteTag = NSLocalizedString(
+        "[Tags/Delete/Confirm/message]",
+        value: "Delete this tag from all groups and entries?",
+        comment: "Question to confirm global deletion")
+
     static let statusNoTagsFound = NSLocalizedString(
         "[Tags/Search/emptyResult]",
         value: "No suitable tags found.",

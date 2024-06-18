@@ -10,6 +10,11 @@ import Foundation
 import KeePassiumLib
 import UIKit
 
+protocol TagSelectorCoordinatorDelegate: AnyObject {
+    func didRelocateDatabase(_ databaseFile: DatabaseFile, to url: URL)
+    func didUpdateTags(in coordinator: TagSelectorCoordinator)
+}
+
 final class TagSelectorCoordinator: Coordinator {
 
     var childCoordinators = [Coordinator]()
@@ -19,7 +24,7 @@ final class TagSelectorCoordinator: Coordinator {
     private let item: DatabaseItem
     private let parent: DatabaseItem?
     private let tagSelectorVC: TagSelectorVC
-    private let database: Database
+    private let databaseFile: DatabaseFile
     private var data: [TagSelectorVC.Section] = []
 
     var selectedTags: [String] {
@@ -32,10 +37,17 @@ final class TagSelectorCoordinator: Coordinator {
         return titlesOfSelectedTags
     }
 
-    init(item: DatabaseItem, parent: DatabaseItem?, database: Database, router: NavigationRouter) {
+    var databaseSaver: DatabaseSaver?
+    var fileExportHelper: FileExportHelper?
+    var savingProgressHost: ProgressViewHost? { return router }
+    var saveSuccessHandler: (() -> Void)?
+
+    weak var delegate: TagSelectorCoordinatorDelegate?
+
+    init(item: DatabaseItem, parent: DatabaseItem?, databaseFile: DatabaseFile, router: NavigationRouter) {
         self.item = item
         self.parent = parent
-        self.database = database
+        self.databaseFile = databaseFile
         self.router = router
         tagSelectorVC = TagSelectorVC.create()
         tagSelectorVC.delegate = self
@@ -61,7 +73,7 @@ final class TagSelectorCoordinator: Coordinator {
 
         var allEntries = [Entry]()
         var allGroups = [Group]()
-        database.root?.collectAllChildren(groups: &allGroups, entries: &allEntries)
+        databaseFile.database.root?.collectAllChildren(groups: &allGroups, entries: &allEntries)
         let allTags = allEntries.flatMap({ $0.tags }) + allGroups.flatMap({ $0.tags })
 
         var tagOccurences = [String: Int]()
@@ -85,11 +97,47 @@ final class TagSelectorCoordinator: Coordinator {
             })
         ]
     }
+
+    private func saveAndReload() {
+        saveDatabase(databaseFile) { [weak self] in
+            guard let self else { return }
+            self.data = self.processData()
+            tagSelectorVC.refresh()
+            self.delegate?.didUpdateTags(in: self)
+        }
+    }
+
+    private func applyToAllDatabaseItems(handler: @escaping (DatabaseItem) -> Void) {
+        databaseFile.database.root?.applyToAllChildren(
+            groupHandler: handler,
+            entryHandler: handler
+        )
+        handler(item)
+    }
 }
 
 extension TagSelectorCoordinator: TagSelectorVCDelegate {
     func didPressDismiss(in viewController: TagSelectorVC) {
         router.dismiss(animated: true)
+    }
+
+    func didPressDeleteTag(_ tag: Tag, in viewController: TagSelectorVC) {
+        applyToAllDatabaseItems { item in
+            item.tags.removeAll(where: { $0 == tag.title })
+        }
+        saveAndReload()
+    }
+
+    func didPressRenameTag(_ tag: Tag, newTitle: String, in viewController: TagSelectorVC) {
+        let oldTag = tag.title
+        let newTags = TagHelper.stringToTags(newTitle)
+        applyToAllDatabaseItems { item in
+            if let firstIndex = item.tags.firstIndex(of: oldTag) {
+                item.tags.removeAll(where: { $0 == oldTag })
+                item.tags.insert(contentsOf: newTags, at: firstIndex)
+            }
+        }
+        saveAndReload()
     }
 
     func didToggleTag(_ tag: Tag, in viewController: TagSelectorVC) {
@@ -155,5 +203,15 @@ extension TagSelectorCoordinator: TagSelectorVCDelegate {
 
     func getSections(for viewController: TagSelectorVC) -> [TagSelectorVC.Section] {
         return data
+    }
+}
+
+extension TagSelectorCoordinator: DatabaseSaving {
+    func didRelocate(databaseFile: DatabaseFile, to newURL: URL) {
+        delegate?.didRelocateDatabase(databaseFile, to: newURL)
+    }
+
+    func getDatabaseSavingErrorParent() -> UIViewController {
+        return tagSelectorVC
     }
 }

@@ -14,6 +14,8 @@ protocol TagSelectorVCDelegate: AnyObject {
     func didPressDismiss(in viewController: TagSelectorVC)
     func didToggleTag(_ tag: Tag, in viewController: TagSelectorVC)
     func didMoveTag(_ tag: Tag, to row: Int, in viewController: TagSelectorVC)
+    func didPressDeleteTag(_ tag: Tag, in viewController: TagSelectorVC)
+    func didPressRenameTag(_ tag: Tag, newTitle: String, in viewController: TagSelectorVC)
 
     func didPressAddTag(tagText: String?, in viewController: TagSelectorVC)
     func isTagTextValid(_ tagText: String?, in viewController: TagSelectorVC) -> Bool
@@ -21,7 +23,7 @@ protocol TagSelectorVCDelegate: AnyObject {
     func getSections(for viewController: TagSelectorVC) -> [TagSelectorVC.Section]
 }
 
-final class TagSelectorVC: UITableViewController {
+final class TagSelectorVC: TableViewControllerWithContextActions {
 
     enum Section {
         case selected([Tag])
@@ -156,18 +158,31 @@ final class TagSelectorVC: UITableViewController {
     }
 
     @objc private func didPressAdd(_ sender: UIBarButtonItem) {
-        let alert = UIAlertController(title: LString.titleNewTag, message: nil, preferredStyle: .alert)
-        let saveAction = UIAlertAction(title: LString.actionCreateTag, style: .default) {
-            [weak self, weak alert] _ in
+        showTagEditor(title: LString.titleNewTag, actionTitle: LString.actionCreateTag) { [weak self] text in
             guard let self else { return }
-            let textField = alert?.textFields?.first
-            self.delegate?.didPressAddTag(tagText: textField?.text, in: self)
+            self.delegate?.didPressAddTag(tagText: text, in: self)
+        }
+    }
+
+    private func showTagEditor(
+        title: String,
+        actionTitle: String,
+        value: String? = nil,
+        doneHandler: @escaping (String) -> Void
+    ) {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        let doneAction = UIAlertAction(title: actionTitle, style: .default) {
+            [weak self, weak alert] _ in
+            guard let self, let alert else { return }
+            let textField = alert.textFields?.first
+            doneHandler(textField?.text ?? "")
             self.refresh(animated: true)
         }
-        saveAction.isEnabled = false
-        alert.addAction(saveAction)
+        doneAction.isEnabled = delegate?.isTagTextValid(value, in: self) ?? false
+        alert.addAction(doneAction)
 
         alert.addTextField { [weak self] textField in
+            textField.text = value
             textField.placeholder = LString.sampleTagsPlaceholder
             NotificationCenter.default.addObserver(
                 forName: UITextField.textDidChangeNotification,
@@ -175,12 +190,12 @@ final class TagSelectorVC: UITableViewController {
                 queue: OperationQueue.main
             ) { [weak self] _ in
                 guard let self else { return }
-                saveAction.isEnabled = self.delegate?.isTagTextValid(textField.text, in: self) ?? false
+                doneAction.isEnabled = self.delegate?.isTagTextValid(textField.text, in: self) ?? false
             }
         }
         alert.addAction(title: LString.actionCancel, style: .cancel, handler: nil)
 
-        alert.preferredAction = saveAction
+        alert.preferredAction = doneAction
         present(alert, animated: true)
     }
 
@@ -217,6 +232,49 @@ final class TagSelectorVC: UITableViewController {
                     )
                 }
             }
+        }
+    }
+
+    override func getContextActionsForRow(at indexPath: IndexPath, forSwipe: Bool) -> [ContextualAction] {
+        switch filteredData[indexPath.section] {
+        case .selected, .inherited:
+            return []
+        case .all:
+            let tag = filteredData[indexPath.section].tags[indexPath.row]
+            let deleteAction = ContextualAction(
+                title: LString.actionDelete,
+                imageName: .trash,
+                style: .destructive,
+                color: .destructiveTint
+            ) { [weak self] in
+                let sheet = UIAlertController(
+                    title: tag.title,
+                    message: LString.confirmDeleteTag,
+                    preferredStyle: .alert
+                )
+                sheet.addAction(title: LString.actionDelete, style: .destructive) { [weak self] _ in
+                    guard let self else { return }
+                    self.delegate?.didPressDeleteTag(tag, in: self)
+                }
+                sheet.addAction(title: LString.actionCancel, style: .cancel, handler: nil)
+                self?.present(sheet, animated: true)
+            }
+            let editAction = ContextualAction(
+                title: LString.actionEdit,
+                imageName: .squareAndPencil,
+                style: .default,
+                color: .actionTint
+            ) { [weak self] in
+                self?.showTagEditor(
+                    title: LString.titleEditTag,
+                    actionTitle: LString.actionRename,
+                    value: tag.title
+                ) {  [weak self] title in
+                    guard let self = self else { return }
+                    self.delegate?.didPressRenameTag(tag, newTitle: title, in: self)
+                }
+            }
+            return [editAction, deleteAction]
         }
     }
 }

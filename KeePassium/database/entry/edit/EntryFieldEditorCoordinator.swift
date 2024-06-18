@@ -420,9 +420,10 @@ extension EntryFieldEditorCoordinator: EntryFieldEditorDelegate {
         let tagsCoordinator = TagSelectorCoordinator(
             item: entry,
             parent: originalEntry?.parent,
-            database: database,
+            databaseFile: databaseFile,
             router: router
         )
+        tagsCoordinator.delegate = self
         tagsCoordinator.dismissHandler = { [weak self, tagsCoordinator] coordinator in
             self?.applyTags(tags: tagsCoordinator.selectedTags)
             self?.removeChildCoordinator(coordinator)
@@ -433,7 +434,15 @@ extension EntryFieldEditorCoordinator: EntryFieldEditorDelegate {
 
     private func applyTags(tags: [String]) {
         assert(database is Database2)
+        guard entry.tags != tags else {
+            return
+        }
         entry.tags = tags
+        isModified = true
+        refreshTags()
+    }
+
+    private func refreshTags() {
         guard let (updatedField, _) = ViewableEntryFieldFactory.makeTags(
             from: entry,
             parent: originalEntry?.parent,
@@ -445,10 +454,15 @@ extension EntryFieldEditorCoordinator: EntryFieldEditorDelegate {
         guard updatedField.value != tagsField?.value else {
             return
         }
-
-        isModified = true
         tagsField?.value = updatedField.value
         fieldEditorVC.refresh()
+    }
+}
+
+extension EntryFieldEditorCoordinator: TagSelectorCoordinatorDelegate {
+    func didUpdateTags(in coordinator: TagSelectorCoordinator) {
+        refreshTags()
+        delegate?.didUpdateEntry(entry, in: self)
     }
 }
 

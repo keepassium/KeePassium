@@ -339,7 +339,9 @@ extension EntryFieldEditorVC {
             return configureProtectedSingleLineCell(field: field, tableView: tableView, at: indexPath)
         case (EntryField.url, _, _):
             return configureURLCell(field: field, tableView: tableView, at: indexPath)
-        case (_, true, _): 
+        case (EntryField.tags, _, _):
+            return configureTagsFieldEditorCell(field: field, tableView: tableView, at: indexPath)
+        case (_, true, _):
             return configureMultilineCell(field: field, tableView: tableView, at: indexPath)
         case (_, false, true):
             return configureProtectedSingleLineCell(field: field, tableView: tableView, at: indexPath)
@@ -353,12 +355,7 @@ extension EntryFieldEditorVC {
         tableView: UITableView,
         at indexPath: IndexPath
     ) -> EditableFieldCell & UITableViewCell {
-        switch field.internalName {
-        case EntryField.tags:
-            return configureTagsFieldEditorCell(field: field, tableView: tableView, at: indexPath)
-        default:
-            return configureCustomFieldCell(field: field, tableView: tableView, at: indexPath)
-        }
+        return configureCustomFieldCell(field: field, tableView: tableView, at: indexPath)
     }
 
     private func configureCustomFieldCell(
