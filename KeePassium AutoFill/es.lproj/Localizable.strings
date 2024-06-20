@@ -4,6 +4,30 @@
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "«Autorrelleno» (AutoFill) no puede acceder automáticamente a los archivos de la aplicación principal de KeePassium.\n\n¿Por qué? Internamente, el sistema trata «Autorrelleno» como una aplicación separada, independiente del proceso principal de KeePassium. Por razones de seguridad, una aplicación no puede simplemente acceder a ningún archivo externo, a menos que se vinculen explícitamente estos archivos con esa aplicación. Así, el sistema garantiza que la aplicación solo puede acceder a los archivos permitidos.\n\nComo resultado, tanto la aplicación «Autorrelleno», como la aplicación principal de KeePassium deben recibir sus propios permisos para cada archivo externo. Afortunadamente, solo se necesita hacerlo una vez por cada nueva base de datos.";
 
+/* Menu action to add a user-provided word list file to the app. */
+"[PasswordGenerator/Wordlist/Import/menuAction]" = "Importar lista de palabras…";
+
+/* Password quality description. For example: `Password quality: Weak`. [level: String] */
+"[PasswordQuality/description]" = "Calidad de la contraseña: %@";
+
+/* Good password quality */
+"[PasswordQuality/Level] Good" = "Buena";
+
+/* Very good password quality */
+"[PasswordQuality/Level] Very good" = "Muy buena";
+
+/* Very weak password quality */
+"[PasswordQuality/Level] Very weak" = "Muy débil";
+
+/* Weak password quality */
+"[PasswordQuality/Level] Weak" = "Débil";
+
+/* Password quality description. Note the tilda that refers to an estimated/approximate value. For example: `Very good (~123 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithApproximateEntropy/description]" = "%1$@ (~%2$@ de entropía)";
+
+/* Password quality description. For example: `Very good (234 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithEntropy/description]" = "%1$@ (%2$@ de entropía)";
+
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "Mostrar contraseña";
 

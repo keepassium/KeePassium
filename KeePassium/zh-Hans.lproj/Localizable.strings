@@ -4,6 +4,9 @@
 /* Hint shown when both password and key file are empty. */
 "[Database/Create] Please enter a password or choose a key file." = "请输入一个密码或者选择一个密钥文件。";
 
+/* Notification for business users when they set up too weak database password. */
+"[Database/Create/orgRequiresStronger]" = "您的组织需要更复杂的数据库密码。";
+
 /* Note for a sample entry */
 "[Database/Create/TemplateEntry/notes] You can also store some notes, if you like." = "如果您愿意, 您也可以填写一些备注。";
 
@@ -67,8 +70,47 @@
 /* Action/button to set up the App Protection feature. Not a call to action. */
 "[Onboarding/AppProtection/activate]" = "启用应用解锁密码";
 
+/* Text in the App Protection onboarding screen. */
+"[Onboarding/AppProtection/text1]" = "KeePassium 是您的保险库。应用保护确保您只能打开它。";
+
+/* Title of the App Protection onboarding screen */
+"[Onboarding/AppProtection/title]" = "仅有您能打开";
+
 /* Action/button */
 "[Onboarding/CreateNewDatabase/action]" = "创建新的数据库";
+
+/* Text in the Data Encryption intro screen */
+"[Onboarding/DataEncryption/text1]" = "您的保险箱是一个加密的数据库。";
+
+/* Text in the Data Encryption intro screen */
+"[Onboarding/DataEncryption/text2]" = "您可以在您最所选的云端服务器或本地设备上保存数据库。";
+
+/* Title of the Data Encryption intro screen */
+"[Onboarding/DataEncryption/title]" = "数据加密";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text1]" = "KeePassium 将您的密码和其他敏感信息安全地加密存储。";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text2]" = "没有广告，也没有活动跟踪。";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text3]" = "我们对您一无所知。";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text4]" = "您的数据属于您自己。";
+
+/* Title of the introductory onboarding screen. */
+"[Onboarding/Intro/title]" = "欢迎使用";
+
+/* Text in the Security intro screen */
+"[Onboarding/Security/text1]" = "您的信息被加密在保险箱中 (数据库)；保险箱则被存储在保险库中 (KeePassium)。";
+
+/* Text in the Security intro screen */
+"[Onboarding/Security/text2]" = "保险箱和保险库分别对应不同的密钥，只有您知道它们。";
+
+/* Title of the Security intro screen */
+"[Onboarding/Security/title]" = "最强的安全性";
 
 /* Action to skip selected item/items in future password audits. */
 "[PasswordAudit/Action/Exclude]" = "从检查器中排除";
@@ -100,9 +142,6 @@
 /* Password quality description. For example: `Password quality: Weak`. [level: String] */
 "[PasswordQuality/description]" = "密码安全性：%@";
 
-/* Almost good password quality */
-"[PasswordQuality/Level] Almost good" = "不错";
-
 /* Good password quality */
 "[PasswordQuality/Level] Good" = "很好";
 
@@ -126,4 +165,31 @@
 
 /* Title of the confirmation dialog for `Exclude from audit` action for several items */
 "[Selection/ExcludeFromAudit/confirmation]" = "从密码检查器中排除已选中的项目？";
+
+/* Action/button to create a new item tag */
+"[Tags/Create/action]" = "创建标签";
+
+/* Call to action/hint inside a text input */
+"[Tags/Create/placeholder]" = "输入标签名称";
+
+/* Title of the tag creation dialog */
+"[Tags/Create/title]" = "新建标签";
+
+/* Status message with a call to action */
+"[Tags/None/placeholder]" = "数据库中没有标签，请添加一些。";
+
+/* Status message: tag search result is empty */
+"[Tags/Search/emptyResult]" = "未找到合适的标签。";
+
+/* Title of a list with all the tags existing in the database. */
+"[Tags/Section/All]" = "所有标签";
+
+/* Title of a list with tags used by parent groups. */
+"[Tags/Section/Inherited]" = "继承的标签";
+
+/* Title of a list with tags chosen by the user for a specific entry or group. */
+"[Tags/Section/Selected]" = "所选标签";
+
+/* Title: the number of times a tag is encountered in the database. */
+"[Tags/UsageCount/title]" = "使用次数";
 

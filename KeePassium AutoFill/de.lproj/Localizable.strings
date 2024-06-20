@@ -4,11 +4,11 @@
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "Die AutoFill-Funktion kann nicht automatisch auf die Dateien zugreifen, die Sie bereits in der eigentlichen KeePassium-App haben.\n\nWarum? Hinter den Kulissen behandelt das System AutoFill als separate App, unabhängig vom Hauptprozess von KeePassium. Aus Sicherheitsgründen kann eine App keine externen Dateien abrufen – es sei denn, Sie verknüpfen diese Dateien ausdrücklich mit dieser App. Das System garantiert also, dass die App nur auf die Dateien zugreifen kann, für die Sie die Erlaubnis gegeben haben.\n\nInfolgedessen müssen AutoFill und die KeePassium-App ihre eigenen Berechtigungen für jede externe Datei erhalten. Zum Glück muss das nur einmal gemacht werden.";
 
+/* Menu action to add a user-provided word list file to the app. */
+"[PasswordGenerator/Wordlist/Import/menuAction]" = "Importieren der Wortliste …";
+
 /* Password quality description. For example: `Password quality: Weak`. [level: String] */
 "[PasswordQuality/description]" = "Passwortstärke: %@";
-
-/* Almost good password quality */
-"[PasswordQuality/Level] Almost good" = "Fast gut";
 
 /* Good password quality */
 "[PasswordQuality/Level] Good" = "Gut";
@@ -21,6 +21,9 @@
 
 /* Weak password quality */
 "[PasswordQuality/Level] Weak" = "Schwach";
+
+/* Password quality description. Note the tilda that refers to an estimated/approximate value. For example: `Very good (~123 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithApproximateEntropy/description]" = "%1$@ (~%2$@ Entropie)";
 
 /* Password quality description. For example: `Very good (234 bits of entropy)`. [level: String, formattedBitCount: String] */
 "[PasswordQuality/LevelWithEntropy/description]" = "%1$@ (%2$@ Entropie)";

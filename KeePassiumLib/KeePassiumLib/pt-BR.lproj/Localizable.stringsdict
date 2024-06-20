@@ -47,9 +47,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>%d thread</string>
+			<string>%d segmento</string>
 			<key>other</key>
-			<string>%d threads</string>
+			<string>%d segmentos</string>
 			<key>zero</key>
 			<string>%d threads</string>
 		</dict>

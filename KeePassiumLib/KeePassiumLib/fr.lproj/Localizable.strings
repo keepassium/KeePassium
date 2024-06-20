@@ -199,6 +199,9 @@
 /* Title of an info message when the app needs to change database file format. */
 "[Database/FormatVersion/Upgrade/title]" = "Avant de continuer";
 
+/* Title of an icon collection: icons provided by the system */
+"[Database/IconSet/System/title]" = "Système";
+
 /* Status of a database item (entry or group) after it was edited. */
 "[Database/Item/Edited/state]" = "Modifié";
 
@@ -280,6 +283,9 @@
 /* Progress status */
 "[Database/Progress] Loading key file..." = "Chargement du fichier clé...";
 
+/* Database loading/saving status: checking whether our database was modified from another device. */
+"[Database/Progress/checkingDatabaseForModifications]" = "Vérification des modifications dans la base de données…";
+
 /* Database loading status: fetching the database file from disk/cloud */
 "[Database/Progress/downloading]" = "Téléchargement du fichier de la base de données...";
 
@@ -291,6 +297,12 @@
 
 /* Database loading/saving status: replacing field references with their values */
 "[Database/Progress/resolvingFieldReferences]" = "Résolution des références de champ…";
+
+/* Database saving status: deciding how to handle conflicting changes. */
+"[Database/Progress/resolvingSyncConflict]" = "Résolution d'un conflit de synchronisation…";
+
+/* Database saving status */
+"[Database/Progress/writingDatabaseFile]" = "Écriture du fichier de base de données…";
 
 /* Suggested solution/call to action when intermediate sync app fails. */
 "[Database/RecommendRemote/callToAction]" = "Essayez de vous connecter à votre stockage distant directement depuis KeePassium.";
@@ -510,9 +522,6 @@
 
 /* Error message about XML parsing. [tag: String] */
 "[Database2/Xml2/ParsingError] Nil value in %@" = "Valeur nulle dans %@";
-
-/* Error message about XML parsing */
-"[Database2/Xml2/ParsingError] Not a KeePass XML" = "Pas un XML KeePass";
 
 /* Error message about XML parsing. [actualTag: String] */
 "[Database2/Xml2/ParsingError] Unexpected tag '%@'" = "Tag inattendu '%@'";
@@ -793,6 +802,9 @@
 /* Localized name of the storage app: Seafile Pro (https://apps.apple.com/us/app/seafile-pro/id639202512) */
 "[FileProvider/Seafile Pro/name]" = "Seafile Pro";
 
+/* Localized name of the storage app: Secure ShellFish (https://apps.apple.com/app/ssh-files-secure-shellfish/id1336634154) */
+"[FileProvider/Secure ShellFish/name]" = "Secure ShellFish";
+
 /* Localized name of the storage service: SMB server (network share) via native iOS integration. */
 "[FileProvider/SMB/name]" = "Serveur SMB";
 
@@ -1045,6 +1057,9 @@
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Les clés matérielles ne sont pas disponibles dans la Saisie automatique.";
 
+/* Information notice for a list of hardware keys. */
+"[HardwareKey/AutoFill/TheseNotAvailable]" = "Ces clés matérielles ne sont pas disponibles dans la Saisie automatique.";
+
 /* Name of an input field which shows selected hardware key */
 "[HardwareKey/Field/title]" = "Clé matérielle";
 
@@ -1216,6 +1231,9 @@
 /* Description of an OTP code; sentence case. */
 "[OTP/Title/sentenceCase]" = "Mot de passe à usage unique";
 
+/* Action/button: accept/use the generated password */
+"[PasswordGenerator/Accept/action]" = "Accepter";
+
 /* Error message from the random text generator. */
 "[PasswordGenerator/CannotGenerateText/title]" = "Impossible de générer le texte";
 
@@ -1320,6 +1338,9 @@
 
 /* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
 "[PasswordGenerator/Wordlist/EFFShort/title]" = "Liste courte de mots EFF n°%d (1296 mots)";
+
+/* Error message when importing a text file [lineNumber: Int, problemDescription: String] */
+"[PasswordGenerator/Wordlist/ImportError/reason]" = "Le fichier n'a pas pu être importé en raison d'un problème à la ligne %1$d (%2$@)";
 
 /* List of words to be used for a passphrase. */
 "[PasswordGenerator/Wordlist/title]" = "Liste de mots";
@@ -1597,17 +1618,41 @@
 /* Title of a section: username, password, etc */
 "[RemoteConnection/Credentials]" = "Identifiants";
 
+/* Description of the `Direct connection` sync method. */
+"[RemoteConnection/Direct/description]" = "KeePassium communiquera directement avec votre stockage en ligne. Cela garantira un transfert de fichiers fiable.";
+
 /* Error message: user credentials rejected by the server */
 "[RemoteConnection/Error/AuthenticationFailed/title]" = "Authentification échouée";
 
 /* Network address of a file */
 "[RemoteConnection/FileURL]" = "Adresse URL du fichier";
 
+/* Name of a predefined Google Drive folder which contains user's own files */
+"[RemoteConnection/GoogleDrive/Folder/myDrive]" = "Mon Drive";
+
+/* Name of a predefined GoogleDrive folder which contains files shared with this user */
+"[RemoteConnection/GoogleDrive/Folder/sharedWithMe]" = "Partagés avec moi";
+
 /* Name of a predefined OneDrive folder which contains user's own files */
 "[RemoteConnection/OneDrive/Folder/files]" = "Fichiers";
 
 /* Name of a predefined OneDrive folder which contains files shared with this user */
 "[RemoteConnection/OneDrive/Folder/sharedWithMe]" = "Partagé";
+
+/* Network address of a WebDAV server */
+"[RemoteConnection/ServerURL]" = "URL du serveur";
+
+/* Action: authenticate to Dropbox account */
+"[RemoteConnection/SignIn/Dropbox/action]" = "Se connecter à Dropbox";
+
+/* Error description: the user should manually sign in to their Dropbox account */
+"[RemoteConnection/SignIn/Dropbox/authorizationRequried]" = "Dropbox a besoin que vous vous connectiez à nouveau.";
+
+/* Action: authenticate to Google Drive account */
+"[RemoteConnection/SignIn/GoogleDrive/action]" = "Se connecter à Google Drive";
+
+/* Error description: the user should manually sign in to their Google Drive account */
+"[RemoteConnection/SignIn/GoogleDrive/authorizationRequried]" = "Google Drive a besoin que vous vous connectiez à nouveau.";
 
 /* Action: authenticate to OneDrive account */
 "[RemoteConnection/SignIn/OneDrive/action]" = "Connectez-vous à OneDrive";
@@ -1623,6 +1668,9 @@
 
 /* Title: connection to a network storage */
 "[RemoteConnection/title]" = "Connexion à distance";
+
+/* Description of the `Integration via Files app` sync method. */
+"[RemoteConnection/ViaFilesApp/description]" = "KeePassium attribuera la synchronisation des fichiers à l'application de votre fournisseur de stockage. Certaines applications fonctionnent mieux que d'autres.";
 
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "Répétez le mot de passe";
@@ -1747,13 +1795,19 @@
 /* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
 "[Settings/DatabaseLockTimeout/shortTitle] Never" = "Jamais";
 
+/* Title of a setting: the time after which databases will be locked. */
+"[Settings/DatabaseLockTimeout/title]" = "Délai d'expiration de la base de données";
+
+/* Setting switch: whether to lock databases after device reboot. */
+"[Settings/DataProtection/LockOnReboot/title]" = "Verrouiller au redémarrage de l'appareil";
+
 /* Subtitle for `Data Protection` section in settings */
 "[Settings/DataProtection/subtitle]" = "Clés principales, fichiers de clés";
 
 /* Settings section: protection of databases, their keys and data inside them */
 "[Settings/DataProtection/title]" = "Protection des données";
 
-/* An option in Group Viewer settings. Refers fo the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
+/* An option in Group Viewer settings. Refers to the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
 "[Settings/EntryListDetail/longTitle] Last Modified Date" = "Dernière modification";
 
 /* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: None', meanining that no entry details will be shown in any lists. */
@@ -1764,6 +1818,9 @@
 
 /* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: Password'. */
 "[Settings/EntryListDetail/longTitle] Password" = "Mot de passe";
+
+/* An option in Group Viewer settings. Refers to the tags field of the entry. Will be shown as 'Entry Subtitle: Tags'. */
+"[Settings/EntryListDetail/longTitle] Tags" = "Étiquettes";
 
 /* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: URL'. */
 "[Settings/EntryListDetail/longTitle] URL" = "Adresse URL";
@@ -1825,8 +1882,20 @@
 /* List sorting option, when no sorting is selected. Example: 'Sort by: None' */
 "[SortBy/None]" = "Aucune";
 
+/* Name of a cloud storage service */
+"[StorageService/DropboxBusiness/title]" = "Dropbox Business";
+
+/* Name of a cloud storage service */
+"[StorageService/DropboxPro/title]" = "Dropbox Pro";
+
+/* Name of a cloud storage service */
+"[StorageService/GoogleWorkspace/title]" = "Google Workspace";
+
 /* Name of a cloud storage service. Must match Microsoft's translation, see  https://partner.microsoft.com/solutions/onedrive-for-business */
 "[StorageService/OneDriveForBusiness/title]" = "OneDrive Entreprise";
+
+/* Title of a file storage service option (for example: Dropbox, OneDrive, Other Services) */
+"[StorageService/OtherServices/title]" = "Autres services";
 
 /* Template text of a bug report email */
 "[Support/template] (Please describe the problem here)" = "(Veuillez décrire le problème ici)";

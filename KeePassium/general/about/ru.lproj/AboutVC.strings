@@ -83,7 +83,7 @@
 "Kdg-Hz-XOQ.text" = "Fancy deboss pattern, автор Daniel Beaton";
 
 /* Class = "UILabel"; text = "Passphrase wordlists by EFF"; ObjectID = "kvO-9B-1Sy"; */
-"kvO-9B-1Sy.text" = "Списки парольных фраз от EFF";
+"kvO-9B-1Sy.text" = "Списки парольных слов от EFF";
 
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "KWA-h1-ddu"; */
 "KWA-h1-ddu.text" = "Лицензия MIT";

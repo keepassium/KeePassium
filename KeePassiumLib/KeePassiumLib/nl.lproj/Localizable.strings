@@ -199,6 +199,9 @@
 /* Title of an info message when the app needs to change database file format. */
 "[Database/FormatVersion/Upgrade/title]" = "Voordat we verdergaan";
 
+/* Title of an icon collection: icons provided by the system */
+"[Database/IconSet/System/title]" = "Systeem";
+
 /* Status of a database item (entry or group) after it was edited. */
 "[Database/Item/Edited/state]" = "Bewerkt";
 
@@ -511,9 +514,6 @@
 /* Error message about XML parsing. [tag: String] */
 "[Database2/Xml2/ParsingError] Nil value in %@" = "Nil-waarde in %@";
 
-/* Error message about XML parsing */
-"[Database2/Xml2/ParsingError] Not a KeePass XML" = "Geen KeePass-XML";
-
 /* Error message about XML parsing. [actualTag: String] */
 "[Database2/Xml2/ParsingError] Unexpected tag '%@'" = "Onverwachte tag '%@'";
 
@@ -793,6 +793,9 @@
 /* Localized name of the storage app: Seafile Pro (https://apps.apple.com/us/app/seafile-pro/id639202512) */
 "[FileProvider/Seafile Pro/name]" = "Seafile Pro";
 
+/* Localized name of the storage app: Secure ShellFish (https://apps.apple.com/app/ssh-files-secure-shellfish/id1336634154) */
+"[FileProvider/Secure ShellFish/name]" = "Secure ShellFish";
+
 /* Localized name of the storage service: SMB server (network share) via native iOS integration. */
 "[FileProvider/SMB/name]" = "SMB-server";
 
@@ -1045,6 +1048,9 @@
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Hardwarematige sleutels zijn niet beschikbaar in AutoFill.";
 
+/* Information notice for a list of hardware keys. */
+"[HardwareKey/AutoFill/TheseNotAvailable]" = "Hardwarematige sleutels zijn niet beschikbaar in automatisch aanvullen.";
+
 /* Name of an input field which shows selected hardware key */
 "[HardwareKey/Field/title]" = "Hardwarematige sleutel";
 
@@ -1215,6 +1221,9 @@
 
 /* Description of an OTP code; sentence case. */
 "[OTP/Title/sentenceCase]" = "Eenmalig wachtwoord";
+
+/* Action/button: accept/use the generated password */
+"[PasswordGenerator/Accept/action]" = "Accepteer";
 
 /* Error message from the random text generator. */
 "[PasswordGenerator/CannotGenerateText/title]" = "Er kan geen tekst worden gegenereerd";
@@ -1603,11 +1612,23 @@
 /* Network address of a file */
 "[RemoteConnection/FileURL]" = "Bestandsurl";
 
+/* Name of a predefined Google Drive folder which contains user's own files */
+"[RemoteConnection/GoogleDrive/Folder/myDrive]" = "Mijn Drive";
+
+/* Name of a predefined GoogleDrive folder which contains files shared with this user */
+"[RemoteConnection/GoogleDrive/Folder/sharedWithMe]" = "Gedeeld met mij";
+
 /* Name of a predefined OneDrive folder which contains user's own files */
 "[RemoteConnection/OneDrive/Folder/files]" = "Bestanden";
 
 /* Name of a predefined OneDrive folder which contains files shared with this user */
 "[RemoteConnection/OneDrive/Folder/sharedWithMe]" = "Gedeeld";
+
+/* Action: authenticate to Dropbox account */
+"[RemoteConnection/SignIn/Dropbox/action]" = "Meld u aan bij Dropbox";
+
+/* Error description: the user should manually sign in to their Dropbox account */
+"[RemoteConnection/SignIn/Dropbox/authorizationRequried]" = "U moet opnieuw inloggen bij Dropbox.";
 
 /* Action: authenticate to OneDrive account */
 "[RemoteConnection/SignIn/OneDrive/action]" = "Meld u aan bij OneDrive";
@@ -1747,13 +1768,16 @@
 /* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
 "[Settings/DatabaseLockTimeout/shortTitle] Never" = "Nooit";
 
+/* Title of a setting: the time after which databases will be locked. */
+"[Settings/DatabaseLockTimeout/title]" = "Databanktime-out";
+
 /* Subtitle for `Data Protection` section in settings */
 "[Settings/DataProtection/subtitle]" = "Hoofdsleutels, sleutelbestanden";
 
 /* Settings section: protection of databases, their keys and data inside them */
 "[Settings/DataProtection/title]" = "Gegevensbescherming";
 
-/* An option in Group Viewer settings. Refers fo the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
+/* An option in Group Viewer settings. Refers to the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
 "[Settings/EntryListDetail/longTitle] Last Modified Date" = "Laatst gewijzigd op";
 
 /* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: None', meanining that no entry details will be shown in any lists. */
@@ -1764,6 +1788,9 @@
 
 /* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: Password'. */
 "[Settings/EntryListDetail/longTitle] Password" = "Wachtwoord";
+
+/* An option in Group Viewer settings. Refers to the tags field of the entry. Will be shown as 'Entry Subtitle: Tags'. */
+"[Settings/EntryListDetail/longTitle] Tags" = "Tags";
 
 /* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: URL'. */
 "[Settings/EntryListDetail/longTitle] URL" = "URL";
@@ -1824,6 +1851,15 @@
 
 /* List sorting option, when no sorting is selected. Example: 'Sort by: None' */
 "[SortBy/None]" = "Geen";
+
+/* Name of a cloud storage service */
+"[StorageService/DropboxBusiness/title]" = "Dropbox Business";
+
+/* Name of a cloud storage service */
+"[StorageService/DropboxPro/title]" = "Dropbox Pro";
+
+/* Name of a cloud storage service */
+"[StorageService/GoogleWorkspace/title]" = "Google Workspace";
 
 /* Name of a cloud storage service. Must match Microsoft's translation, see  https://partner.microsoft.com/solutions/onedrive-for-business */
 "[StorageService/OneDriveForBusiness/title]" = "OneDrive voor bedrijven";

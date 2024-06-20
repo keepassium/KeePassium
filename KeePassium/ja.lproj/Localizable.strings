@@ -97,9 +97,6 @@
 /* Password quality description. For example: `Password quality: Weak`. [level: String] */
 "[PasswordQuality/description]" = "パスワードの強度: %@";
 
-/* Almost good password quality */
-"[PasswordQuality/Level] Almost good" = "おおむね良い";
-
 /* Good password quality */
 "[PasswordQuality/Level] Good" = "良い";
 

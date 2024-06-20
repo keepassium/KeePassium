@@ -436,9 +436,6 @@
 /* Error message about XML parsing. [tag: String] */
 "[Database2/Xml2/ParsingError] Nil value in %@" = "Brak wartości w %@";
 
-/* Error message about XML parsing */
-"[Database2/Xml2/ParsingError] Not a KeePass XML" = "To nie jest XML z KeePass";
-
 /* Error message about XML parsing. [actualTag: String] */
 "[Database2/Xml2/ParsingError] Unexpected tag '%@'" = "Nieoczekiwany tag '%@'";
 
@@ -1513,13 +1510,16 @@
 /* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
 "[Settings/DatabaseLockTimeout/shortTitle] Never" = "Nigdy";
 
+/* Title of a setting: the time after which databases will be locked. */
+"[Settings/DatabaseLockTimeout/title]" = "Limit czasu bazy";
+
 /* Subtitle for `Data Protection` section in settings */
 "[Settings/DataProtection/subtitle]" = "Klucz główny, plik klucza";
 
 /* Settings section: protection of databases, their keys and data inside them */
 "[Settings/DataProtection/title]" = "Ochrona danych";
 
-/* An option in Group Viewer settings. Refers fo the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
+/* An option in Group Viewer settings. Refers to the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
 "[Settings/EntryListDetail/longTitle] Last Modified Date" = "Data ostatniej modyfikacji";
 
 /* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: None', meanining that no entry details will be shown in any lists. */
@@ -1584,6 +1584,12 @@
 
 /* List sorting option, when no sorting is selected. Example: 'Sort by: None' */
 "[SortBy/None]" = "Brak";
+
+/* Name of a cloud storage service */
+"[StorageService/DropboxBusiness/title]" = "Dropbox Business";
+
+/* Name of a cloud storage service */
+"[StorageService/DropboxPro/title]" = "Dropbox Pro";
 
 /* Name of a cloud storage service. Must match Microsoft's translation, see  https://partner.microsoft.com/solutions/onedrive-for-business */
 "[StorageService/OneDriveForBusiness/title]" = "OneDrive dla biznesu";

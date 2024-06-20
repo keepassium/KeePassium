@@ -4,11 +4,11 @@
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "La Saisie automatique ne peut pas accéder automatiquement aux fichiers que vous avez déjà dans l'application principale KeePassium.\n\nPourquoi ? En coulisses, le système traite la fonction de Saisie automatique comme une application distincte, indépendante du processus principal de KeePassium. Pour des raisons de sécurité, une application ne peut simplement pas accéder à des fichiers externes – sauf si vous liez explicitement ces fichiers à cette application. Ainsi, le système garantit que l'application ne peut accéder qu'aux quelques fichiers dont vous avez autorisé l'accès.\n\nPar conséquent, la fonction de Saisie automatique et l'application principale KeePassium doivent avoir leurs propres autorisations pour chaque fichier externe. Heureusement, il s'agit d'une procédure unique.";
 
+/* Menu action to add a user-provided word list file to the app. */
+"[PasswordGenerator/Wordlist/Import/menuAction]" = "Importer une liste de mots…";
+
 /* Password quality description. For example: `Password quality: Weak`. [level: String] */
 "[PasswordQuality/description]" = "Qualité du mot de passe : %@";
-
-/* Almost good password quality */
-"[PasswordQuality/Level] Almost good" = "Satisfaisant";
 
 /* Good password quality */
 "[PasswordQuality/Level] Good" = "Bon";
@@ -21,6 +21,9 @@
 
 /* Weak password quality */
 "[PasswordQuality/Level] Weak" = "Faible";
+
+/* Password quality description. Note the tilda that refers to an estimated/approximate value. For example: `Very good (~123 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithApproximateEntropy/description]" = "%1$@ (~%2$@ d'entropie)";
 
 /* Password quality description. For example: `Very good (234 bits of entropy)`. [level: String, formattedBitCount: String] */
 "[PasswordQuality/LevelWithEntropy/description]" = "%1$@ (%2$@ d'entropie)";

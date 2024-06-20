@@ -4,11 +4,11 @@
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "Služba automatického vyplňovania hesiel nemá prístup k databázovým súborom, ktoré ste pridali v hlavnej aplikácii KeePassium.\n\nPrečo? Operačný systém považuje službu automatického vyplňovania za samostatnú aplikáciu, ktorá je nezávislá na hlavnom procese Keepassium. Z bezpečnostných dôvodov môžu aplikácie pristupovať len k tým súborom, ku ktorým im dáte povolenia.\n\nZ tohoto dôvodu je nutné dať súhlas k prístupu samotne aplikácii KeePassium ako aj službe automatického vyplňovania. Toto je však potrebné vykonať iba raz.";
 
+/* Menu action to add a user-provided word list file to the app. */
+"[PasswordGenerator/Wordlist/Import/menuAction]" = "Importovať zoznam…";
+
 /* Password quality description. For example: `Password quality: Weak`. [level: String] */
 "[PasswordQuality/description]" = "Kvalita hesla: %@";
-
-/* Almost good password quality */
-"[PasswordQuality/Level] Almost good" = "Takmer dobré";
 
 /* Good password quality */
 "[PasswordQuality/Level] Good" = "Dobré";
@@ -21,6 +21,9 @@
 
 /* Weak password quality */
 "[PasswordQuality/Level] Weak" = "Slabé";
+
+/* Password quality description. Note the tilda that refers to an estimated/approximate value. For example: `Very good (~123 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithApproximateEntropy/description]" = "%1$@ (~%2$@ entropie)";
 
 /* Password quality description. For example: `Very good (234 bits of entropy)`. [level: String, formattedBitCount: String] */
 "[PasswordQuality/LevelWithEntropy/description]" = "%1$@ (%2$@ entropie)";

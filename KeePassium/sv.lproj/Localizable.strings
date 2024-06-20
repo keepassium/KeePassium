@@ -4,6 +4,9 @@
 /* Hint shown when both password and key file are empty. */
 "[Database/Create] Please enter a password or choose a key file." = "Var vänlig ange ett lösenord eller välj en nyckelfil.";
 
+/* Notification for business users when they set up too weak database password. */
+"[Database/Create/orgRequiresStronger]" = "Din organisation behöver ett mer komplext databaslösenord.";
+
 /* Note for a sample entry */
 "[Database/Create/TemplateEntry/notes] You can also store some notes, if you like." = "Du kan även lagra anteckningar, om du vill.";
 
@@ -52,6 +55,9 @@
 /* Title of entry viewer's tab with previous revisions of the entry */
 "[Entry/Tab/History/title]" = "Historik";
 
+/* Title of entry viewer's tab with advanced/secondary properties */
+"[Entry/Tab/More/title]" = "Mer";
+
 /* Menu title. For example: `About KeePassium`. [appName: String] */
 "[Menu/About/title]" = "Om %@";
 
@@ -64,8 +70,47 @@
 /* Action/button to set up the App Protection feature. Not a call to action. */
 "[Onboarding/AppProtection/activate]" = "Aktivera skydd för Appen";
 
+/* Text in the App Protection onboarding screen. */
+"[Onboarding/AppProtection/text1]" = "KeePassium är ditt valv. Appskydd garanterar att bara du kan öppna det.";
+
+/* Title of the App Protection onboarding screen */
+"[Onboarding/AppProtection/title]" = "Visa inte för någon";
+
 /* Action/button */
 "[Onboarding/CreateNewDatabase/action]" = "Skapa ny databas";
+
+/* Text in the Data Encryption intro screen */
+"[Onboarding/DataEncryption/text1]" = "Din säkerhetsbox är en krypterad databas.";
+
+/* Text in the Data Encryption intro screen */
+"[Onboarding/DataEncryption/text2]" = "Du kan behålla databaser i ditt favoritmoln eller lokalt på enheten.";
+
+/* Title of the Data Encryption intro screen */
+"[Onboarding/DataEncryption/title]" = "Datakryptering";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text1]" = "KeePassium behåller dina lösenord och annan känslig information säkert krypterade.";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text2]" = "Inga annonser och ingen spårning.";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text3]" = "Vi vet ingenting om dig.";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text4]" = "Dina data tillhör dig.";
+
+/* Title of the introductory onboarding screen. */
+"[Onboarding/Intro/title]" = "Välkommen";
+
+/* Text in the Security intro screen */
+"[Onboarding/Security/text1]" = "Din information krypteras i en säkerhetsbox (databas). Säkerhetsboxar lagras i ett valv (KeePassium).";
+
+/* Text in the Security intro screen */
+"[Onboarding/Security/text2]" = "Valvet och säkerhetsboxarna har olika nycklar och bara du känner till dem.";
+
+/* Title of the Security intro screen */
+"[Onboarding/Security/title]" = "Maximal säkerhet";
 
 /* Action to skip selected item/items in future password audits. */
 "[PasswordAudit/Action/Exclude]" = "Exkludera från granskning";
@@ -94,11 +139,11 @@
 /* Title of a screen to check which passwords are known to be compromised. */
 "[PasswordAudit/title]" = "Lösenordsgranskning";
 
+/* Menu action to add a user-provided word list file to the app. */
+"[PasswordGenerator/Wordlist/Import/menuAction]" = "Importera ordlista …";
+
 /* Password quality description. For example: `Password quality: Weak`. [level: String] */
 "[PasswordQuality/description]" = "Lösenordsstyrka: %@";
-
-/* Almost good password quality */
-"[PasswordQuality/Level] Almost good" = "Nästan bra";
 
 /* Good password quality */
 "[PasswordQuality/Level] Good" = "Bra";
@@ -112,6 +157,9 @@
 /* Weak password quality */
 "[PasswordQuality/Level] Weak" = "Svagt";
 
+/* Password quality description. Note the tilda that refers to an estimated/approximate value. For example: `Very good (~123 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithApproximateEntropy/description]" = "%1$@ (~%2$@ av entropi)";
+
 /* Password quality description. For example: `Very good (234 bits of entropy)`. [level: String, formattedBitCount: String] */
 "[PasswordQuality/LevelWithEntropy/description]" = "%1$@ (%2$@ av entropi)";
 
@@ -123,4 +171,31 @@
 
 /* Title of the confirmation dialog for `Exclude from audit` action for several items */
 "[Selection/ExcludeFromAudit/confirmation]" = "Exkludera markering från lösenordsgranskning?";
+
+/* Action/button to create a new item tag */
+"[Tags/Create/action]" = "Skapa tagg";
+
+/* Call to action/hint inside a text input */
+"[Tags/Create/placeholder]" = "Ange taggens namn";
+
+/* Title of the tag creation dialog */
+"[Tags/Create/title]" = "Ny tagg";
+
+/* Status message with a call to action */
+"[Tags/None/placeholder]" = "Det finns inga taggar i databasen. Lägg till några.";
+
+/* Status message: tag search result is empty */
+"[Tags/Search/emptyResult]" = "Inga lämpliga taggar hittades.";
+
+/* Title of a list with all the tags existing in the database. */
+"[Tags/Section/All]" = "Alla taggar";
+
+/* Title of a list with tags used by parent groups. */
+"[Tags/Section/Inherited]" = "Ärvda taggar";
+
+/* Title of a list with tags chosen by the user for a specific entry or group. */
+"[Tags/Section/Selected]" = "Valda taggar";
+
+/* Title: the number of times a tag is encountered in the database. */
+"[Tags/UsageCount/title]" = "Antal användningar";
 

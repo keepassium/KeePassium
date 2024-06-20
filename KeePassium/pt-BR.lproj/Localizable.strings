@@ -4,6 +4,9 @@
 /* Hint shown when both password and key file are empty. */
 "[Database/Create] Please enter a password or choose a key file." = "Por favor, insira uma senha ou escolha um arquivo de chave.";
 
+/* Notification for business users when they set up too weak database password. */
+"[Database/Create/orgRequiresStronger]" = "Sua organização requer uma senha de banco de dados mais complexa.";
+
 /* Note for a sample entry */
 "[Database/Create/TemplateEntry/notes] You can also store some notes, if you like." = "Você também pode armazenar algumas anotações, se quiser.";
 
@@ -67,8 +70,47 @@
 /* Action/button to set up the App Protection feature. Not a call to action. */
 "[Onboarding/AppProtection/activate]" = "Ative a proteção do aplicativo";
 
+/* Text in the App Protection onboarding screen. */
+"[Onboarding/AppProtection/text1]" = "O KeePassium é o seu cofre. A proteção do aplicativo garante que somente você possa abri-lo.";
+
+/* Title of the App Protection onboarding screen */
+"[Onboarding/AppProtection/title]" = "Somente para seus olhos";
+
 /* Action/button */
 "[Onboarding/CreateNewDatabase/action]" = "Criar novo banco de dados";
+
+/* Text in the Data Encryption intro screen */
+"[Onboarding/DataEncryption/text1]" = "Sua caixa segura é um banco de dados criptografado.";
+
+/* Text in the Data Encryption intro screen */
+"[Onboarding/DataEncryption/text2]" = "Você pode manter bancos de dados em sua nuvem favorita ou localmente no dispositivo.";
+
+/* Title of the Data Encryption intro screen */
+"[Onboarding/DataEncryption/title]" = "Criptografia de dados";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text1]" = "O KeePassium mantém suas senhas e outras informações confidenciais criptografadas com segurança.";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text2]" = "Não há anúncios nem rastreamento.";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text3]" = "Não sabemos nada sobre você.";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text4]" = "Seus dados pertencem a você.";
+
+/* Title of the introductory onboarding screen. */
+"[Onboarding/Intro/title]" = "Bem-vindo";
+
+/* Text in the Security intro screen */
+"[Onboarding/Security/text1]" = "Sua informação é criptografada em uma caixa segura (banco de dados). Caixas seguras são armazenadas em um cofre (KeePassium).";
+
+/* Text in the Security intro screen */
+"[Onboarding/Security/text2]" = "O cofre e as caixas seguras têm chaves diferentes e só você as conhecerá.";
+
+/* Title of the Security intro screen */
+"[Onboarding/Security/title]" = "Segurança máxima";
 
 /* Action to skip selected item/items in future password audits. */
 "[PasswordAudit/Action/Exclude]" = "Retirar da auditoria";
@@ -97,11 +139,11 @@
 /* Title of a screen to check which passwords are known to be compromised. */
 "[PasswordAudit/title]" = "Auditar senhas";
 
+/* Menu action to add a user-provided word list file to the app. */
+"[PasswordGenerator/Wordlist/Import/menuAction]" = "Importar lista de palavras...";
+
 /* Password quality description. For example: `Password quality: Weak`. [level: String] */
 "[PasswordQuality/description]" = "Qualidade da senha: %@";
-
-/* Almost good password quality */
-"[PasswordQuality/Level] Almost good" = "quase boa";
 
 /* Good password quality */
 "[PasswordQuality/Level] Good" = "boa";
@@ -115,6 +157,9 @@
 /* Weak password quality */
 "[PasswordQuality/Level] Weak" = "fraca";
 
+/* Password quality description. Note the tilda that refers to an estimated/approximate value. For example: `Very good (~123 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithApproximateEntropy/description]" = "%1$@ (~%2$@ de entropia)";
+
 /* Password quality description. For example: `Very good (234 bits of entropy)`. [level: String, formattedBitCount: String] */
 "[PasswordQuality/LevelWithEntropy/description]" = "%1$@ (%2$@ de entropia)";
 
@@ -126,4 +171,31 @@
 
 /* Title of the confirmation dialog for `Exclude from audit` action for several items */
 "[Selection/ExcludeFromAudit/confirmation]" = "Não auditar as senhas selecionadas?";
+
+/* Action/button to create a new item tag */
+"[Tags/Create/action]" = "Criar etiqueta";
+
+/* Call to action/hint inside a text input */
+"[Tags/Create/placeholder]" = "Inserir o nome da etiqueta";
+
+/* Title of the tag creation dialog */
+"[Tags/Create/title]" = "Nova etiqueta";
+
+/* Status message with a call to action */
+"[Tags/None/placeholder]" = "Não há etiquetas no banco de dados, adicione algumas.";
+
+/* Status message: tag search result is empty */
+"[Tags/Search/emptyResult]" = "Nenhuma etiqueta adequada encontrada.";
+
+/* Title of a list with all the tags existing in the database. */
+"[Tags/Section/All]" = "Todas as etiquetas";
+
+/* Title of a list with tags used by parent groups. */
+"[Tags/Section/Inherited]" = "Etiquetas herdadas";
+
+/* Title of a list with tags chosen by the user for a specific entry or group. */
+"[Tags/Section/Selected]" = "Etiquetas selecionadas";
+
+/* Title: the number of times a tag is encountered in the database. */
+"[Tags/UsageCount/title]" = "Contagem de uso";
 

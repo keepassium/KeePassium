@@ -4,6 +4,9 @@
 /* Hint shown when both password and key file are empty. */
 "[Database/Create] Please enter a password or choose a key file." = "Prosím, zadajte heslo alebo vyberte súbor s kľúčom.";
 
+/* Notification for business users when they set up too weak database password. */
+"[Database/Create/orgRequiresStronger]" = "Vaša organizácia vyžaduje zložitejšie heslo do databázy.";
+
 /* Note for a sample entry */
 "[Database/Create/TemplateEntry/notes] You can also store some notes, if you like." = "Tu si môžete pridať ľubovoľné poznámky, ak chcete.";
 
@@ -52,6 +55,9 @@
 /* Title of entry viewer's tab with previous revisions of the entry */
 "[Entry/Tab/History/title]" = "História";
 
+/* Title of entry viewer's tab with advanced/secondary properties */
+"[Entry/Tab/More/title]" = "Viac";
+
 /* Menu title. For example: `About KeePassium`. [appName: String] */
 "[Menu/About/title]" = "O aplikácii %@";
 
@@ -64,8 +70,47 @@
 /* Action/button to set up the App Protection feature. Not a call to action. */
 "[Onboarding/AppProtection/activate]" = "Zapnúť zámok";
 
+/* Text in the App Protection onboarding screen. */
+"[Onboarding/AppProtection/text1]" = "KeePassium je váš trezor. Ochrana aplikácie zaručuje, že ho môžete otvoriť len vy.";
+
+/* Title of the App Protection onboarding screen */
+"[Onboarding/AppProtection/title]" = "Iba pre vaše oči";
+
 /* Action/button */
 "[Onboarding/CreateNewDatabase/action]" = "Vytvoriť novú databázu";
+
+/* Text in the Data Encryption intro screen */
+"[Onboarding/DataEncryption/text1]" = "Vaša schránka je zašifrovaná databáza.";
+
+/* Text in the Data Encryption intro screen */
+"[Onboarding/DataEncryption/text2]" = "Databázy môžete uchovávať v obľúbenom cloude alebo lokálne v zariadení.";
+
+/* Title of the Data Encryption intro screen */
+"[Onboarding/DataEncryption/title]" = "Šifrovanie údajov";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text1]" = "KeePassium uchováva vaše heslá a ďalšie citlivé informácie bezpečne zašifrované.";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text2]" = "Nie sú tu žiadne reklamy ani sledovanie.";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text3]" = "Nič o vás nevieme.";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text4]" = "Vaše údaje patria vám.";
+
+/* Title of the introductory onboarding screen. */
+"[Onboarding/Intro/title]" = "Vitajte";
+
+/* Text in the Security intro screen */
+"[Onboarding/Security/text1]" = "Vaše informácie sú zašifrované v bezpečnej schránke (databáze). Bezpečnostné schránky sú uložené v trezore (KeePassium).";
+
+/* Text in the Security intro screen */
+"[Onboarding/Security/text2]" = "Trezor a bezpečnostné schránky majú rôzne kľúče a poznáte ich len vy.";
+
+/* Title of the Security intro screen */
+"[Onboarding/Security/title]" = "Maximálna bezpečnosť";
 
 /* Action to skip selected item/items in future password audits. */
 "[PasswordAudit/Action/Exclude]" = "Vylúčiť z auditu";
@@ -94,11 +139,11 @@
 /* Title of a screen to check which passwords are known to be compromised. */
 "[PasswordAudit/title]" = "Audit Hesiel";
 
+/* Menu action to add a user-provided word list file to the app. */
+"[PasswordGenerator/Wordlist/Import/menuAction]" = "Importovať zoznam…";
+
 /* Password quality description. For example: `Password quality: Weak`. [level: String] */
 "[PasswordQuality/description]" = "Kvalita hesla: %@";
-
-/* Almost good password quality */
-"[PasswordQuality/Level] Almost good" = "Takmer dobré";
 
 /* Good password quality */
 "[PasswordQuality/Level] Good" = "Dobré";
@@ -112,6 +157,9 @@
 /* Weak password quality */
 "[PasswordQuality/Level] Weak" = "Slabé";
 
+/* Password quality description. Note the tilda that refers to an estimated/approximate value. For example: `Very good (~123 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithApproximateEntropy/description]" = "%1$@ (~%2$@ entropie)";
+
 /* Password quality description. For example: `Very good (234 bits of entropy)`. [level: String, formattedBitCount: String] */
 "[PasswordQuality/LevelWithEntropy/description]" = "%1$@ (%2$@ entropie)";
 
@@ -123,4 +171,31 @@
 
 /* Title of the confirmation dialog for `Exclude from audit` action for several items */
 "[Selection/ExcludeFromAudit/confirmation]" = "Vylúčiť výber z auditu hesiel?";
+
+/* Action/button to create a new item tag */
+"[Tags/Create/action]" = "Vytvoriť štítok";
+
+/* Call to action/hint inside a text input */
+"[Tags/Create/placeholder]" = "Zadajte názov štítku";
+
+/* Title of the tag creation dialog */
+"[Tags/Create/title]" = "Nový štítok";
+
+/* Status message with a call to action */
+"[Tags/None/placeholder]" = "V databáze nie sú žiadne štítky, pridajte ich.";
+
+/* Status message: tag search result is empty */
+"[Tags/Search/emptyResult]" = "Nenašli sa žiadne vhodné štítky.";
+
+/* Title of a list with all the tags existing in the database. */
+"[Tags/Section/All]" = "Všetky štítky";
+
+/* Title of a list with tags used by parent groups. */
+"[Tags/Section/Inherited]" = "Zdedené štítky";
+
+/* Title of a list with tags chosen by the user for a specific entry or group. */
+"[Tags/Section/Selected]" = "Vybrané štítky";
+
+/* Title: the number of times a tag is encountered in the database. */
+"[Tags/UsageCount/title]" = "Počet použití";
 

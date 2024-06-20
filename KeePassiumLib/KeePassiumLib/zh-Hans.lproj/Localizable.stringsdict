@@ -43,7 +43,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>other</key>
-			<string>%d threads</string>
+			<string>%d 线程</string>
 			<key>zero</key>
 			<string>%d threads</string>
 		</dict>

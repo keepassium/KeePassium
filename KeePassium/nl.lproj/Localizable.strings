@@ -142,9 +142,6 @@
 /* Password quality description. For example: `Password quality: Weak`. [level: String] */
 "[PasswordQuality/description]" = "Wachtwoordkwaliteit: %@";
 
-/* Almost good password quality */
-"[PasswordQuality/Level] Almost good" = "Bijna goed";
-
 /* Good password quality */
 "[PasswordQuality/Level] Good" = "Goed";
 
@@ -156,6 +153,9 @@
 
 /* Weak password quality */
 "[PasswordQuality/Level] Weak" = "Zwak";
+
+/* Password quality description. Note the tilda that refers to an estimated/approximate value. For example: `Very good (~123 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithApproximateEntropy/description]" = "%1$@ (~%2$@ van entropie)";
 
 /* Password quality description. For example: `Very good (234 bits of entropy)`. [level: String, formattedBitCount: String] */
 "[PasswordQuality/LevelWithEntropy/description]" = "%1$@ (%2$@ van entropie)";

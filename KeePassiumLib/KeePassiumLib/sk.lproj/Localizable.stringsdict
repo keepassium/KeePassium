@@ -55,13 +55,13 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>few</key>
-			<string>%d threads</string>
+			<string>%d vlákna</string>
 			<key>many</key>
-			<string>%d threads</string>
+			<string>%d vlákna</string>
 			<key>one</key>
-			<string>%d thread</string>
+			<string>%d vlákno</string>
 			<key>other</key>
-			<string>%d threads</string>
+			<string>%d vlákien</string>
 			<key>zero</key>
 			<string>%d threads</string>
 		</dict>

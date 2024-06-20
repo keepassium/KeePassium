@@ -130,6 +130,9 @@
 /* Class = "UILabel"; text = "Linecons by Andrian Valeanu"; ObjectID = "SOX-Re-yl9"; */
 "SOX-Re-yl9.text" = "Linecons por Andrian Valeanu";
 
+/* Class = "UILabel"; text = "zxcvbn-ios by Dropbox"; ObjectID = "SUh-L1-IvF"; */
+"SUh-L1-IvF.text" = "zxcvbn-ios de Dropbox";
+
 /* Class = "UILabel"; text = "Contact Support"; ObjectID = "TOl-DA-gYc"; Note = "Action: contact us"; */
 "TOl-DA-gYc.text" = "Contactar con el servicio de asistencia";
 
@@ -150,6 +153,9 @@
 
 /* Class = "UILabel"; text = "Yubico Mobile iOS SDK by Yubico AB"; ObjectID = "Xee-Y1-Dcw"; */
 "Xee-Y1-Dcw.text" = "SDK Yubico Mobile para iOS de Yubico AB";
+
+/* Class = "UILabel"; text = "SwiftDomainParser by Dashlane"; ObjectID = "y9Z-rr-JL8"; */
+"y9Z-rr-JL8.text" = "SwiftDomainParser de Dashlane";
 
 /* Class = "UILabel"; text = "MIT license"; ObjectID = "Z7s-Ch-895"; */
 "Z7s-Ch-895.text" = "Licencia MIT";

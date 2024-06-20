@@ -139,11 +139,11 @@
 /* Title of a screen to check which passwords are known to be compromised. */
 "[PasswordAudit/title]" = "Аудит паролей";
 
+/* Menu action to add a user-provided word list file to the app. */
+"[PasswordGenerator/Wordlist/Import/menuAction]" = "Импортировать список слов…";
+
 /* Password quality description. For example: `Password quality: Weak`. [level: String] */
 "[PasswordQuality/description]" = "Качество пароля: %@";
-
-/* Almost good password quality */
-"[PasswordQuality/Level] Almost good" = "Почти хороший";
 
 /* Good password quality */
 "[PasswordQuality/Level] Good" = "Хороший";
@@ -156,6 +156,9 @@
 
 /* Weak password quality */
 "[PasswordQuality/Level] Weak" = "Слабый";
+
+/* Password quality description. Note the tilda that refers to an estimated/approximate value. For example: `Very good (~123 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithApproximateEntropy/description]" = "%1$@ (~%2$@ энтропии)";
 
 /* Password quality description. For example: `Very good (234 bits of entropy)`. [level: String, formattedBitCount: String] */
 "[PasswordQuality/LevelWithEntropy/description]" = "%1$@ (%2$@ энтропии)";
