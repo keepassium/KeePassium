@@ -24,7 +24,7 @@ final class GroupEditorCoordinator: Coordinator {
     private let database: Database
     private let parent: Group
     private let originalGroup: Group?
-    private let isSupportTags: Bool
+    private let canSupportTags: Bool
 
     private let groupEditorVC: GroupEditorVC
 
@@ -50,14 +50,14 @@ final class GroupEditorCoordinator: Coordinator {
         }
         group.touch(.accessed)
 
-        isSupportTags = database is Database2
+        canSupportTags = database is Database2
 
         let groupProperties = GroupEditorVC.Property.makeAll(for: group, parent: parent)
         groupEditorVC = GroupEditorVC(
             group: group,
             parent: parent,
             properties: groupProperties,
-            showTags: isSupportTags
+            showTags: canSupportTags
         )
         groupEditorVC.delegate = self
         if originalGroup == nil {
@@ -148,13 +148,12 @@ extension GroupEditorCoordinator: GroupEditorDelegate {
 
     func didPressDone(in groupEditor: GroupEditorVC) {
         groupEditor.resignFirstResponder()
-        guard isSupportTags else {
+        if canSupportTags && group.tags.count > 0 {
+            requestFormatUpgradeIfNecessary(in: groupEditor, for: database, and: .groupTags) { [weak self] in
+                self?.saveChangesAndDismiss()
+            }
+        } else {
             saveChangesAndDismiss()
-            return
-        }
-        requestFormatUpgradeIfNecessary(in: groupEditor, for: database, and: .groupTags) {
-            [weak self] in
-            self?.saveChangesAndDismiss()
         }
     }
 
