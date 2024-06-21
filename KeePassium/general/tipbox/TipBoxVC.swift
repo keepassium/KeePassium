@@ -140,12 +140,8 @@ final class TipBoxVC: UIViewController {
 
 extension TipBoxVC {
     private func getDescription() -> NSAttributedString {
-        let lines = TestHelper.getCurrent(from: [
-            [LString.tipBoxDescription1, LString.tipBoxCallToAction1],
-            [LString.tipBoxDescription2, LString.tipBoxCallToAction2],
-            [LString.tipBoxDescription3, LString.tipBoxCallToAction3],
-        ])
-        let text = lines.joined(separator: "\n")
+        let text = [LString.tipBoxDescription2, LString.tipBoxCallToAction2]
+            .joined(separator: "\n")
         return makeAttributedString(text: text)
     }
 

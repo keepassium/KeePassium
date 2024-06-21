@@ -1114,19 +1114,10 @@ extension DatabaseViewerCoordinator {
             return nil
         }
 
-        let texts = TestHelper.getCurrent(from: [
-            (nil, nil),
-            (LString.tipBoxDescription1, LString.tipBoxCallToAction1),
-            (LString.tipBoxDescription2, LString.tipBoxCallToAction2),
-            (LString.tipBoxDescription3, LString.tipBoxCallToAction3)
-        ])
-        guard texts.1 != nil else { 
-            return nil
-        }
         let announcement = AnnouncementItem(
             title: nil,
-            body: texts.0,
-            actionTitle: texts.1,
+            body: LString.tipBoxDescription2,
+            actionTitle: LString.tipBoxCallToAction2,
             image: .symbol(.heart)?.withTintColor(.systemRed, renderingMode: .alwaysOriginal),
             onDidPressAction: { [weak self] _ in
                 self?.showTipBox()

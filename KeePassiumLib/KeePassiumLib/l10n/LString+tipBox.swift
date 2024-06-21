@@ -8,12 +8,6 @@
 
 // swiftlint:disable line_length
 extension LString {
-    public static let tipBoxTitle1 = NSLocalizedString(
-        "[TipBox/title/1]",
-        bundle: Bundle.framework,
-        value: "Tip Jar",
-        comment: "Title of the tip box/donation screen."
-    )
     public static let tipBoxTitle2 = NSLocalizedString(
         "[TipBox/title/2]",
         bundle: Bundle.framework,
