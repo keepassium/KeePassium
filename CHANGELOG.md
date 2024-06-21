@@ -1,5 +1,19 @@
 #CHANGELOG
 
+## [1.52.151] - 2024-06-21
+
+### Improved
+
+- Added support for database-wide tag renaming/deletion
+- Sort OneDrive folder contents by name [thanks, Craig]
+- Updated all translations [thanks, everyone]
+
+### Fixed
+
+- Entropy values are now shown as approximate [thanks, everyone]
+- Entry tags could disappear after TOTP setup (closes #368) [thanks, Peter]
+
+
 ## [1.52.150] - 2024-05-30
 
 ### Added

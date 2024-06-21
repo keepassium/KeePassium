@@ -2,7 +2,7 @@
     "sections": [
         {
             "version": "1.52",
-            "releaseDate": "2024-05-30T00:00:00Z",
+            "releaseDate": "2024-06-21T00:00:00Z",
             "items": [
                 {
                     "title": "Added: Direct in-app Dropbox support. (Free for Basic and Pro accounts; Dropbox Business requires premium)",
@@ -33,12 +33,23 @@
                     "title": "Improved: All DB timeouts and \"Clear master keys on timeout\" option no longer require premium"
                 },
                 {
+                    "title": "Improved: Added support for database-wide tag renaming/deletion",
+                },
+                {
                     "title": "Improved: Added tags as entry subtitle option",
                     "github": "Closes #364",
                     "credits": "Stefan"
                 },
                 {
+                    "title": "Improved: OneDrive folder contents is sorted by name",
+                    "credits": "Craig",
+                },
+                {
                     "title": "Improved: More informative progress messages while saving"
+                },
+                {
+                    "title": "Improved: Updated translations",
+                    "credits": "everyone"
                 },
                 {
                     "title": "Improved: UI improvements here and there"
@@ -47,6 +58,10 @@
                     "title": "Fixed: Password entropy estimation is now consistent with KeePassXC",
                     "github": "Fixes #359",
                     "credits": "RTClarkV"
+                },
+                {
+                    "title": "Fixed: Entropy values are now shown as approximate",
+                    "credits": "everyone",
                 },
                 {
                     "title": "Fixed: Generated passwords could be silently affected by smart punctuation",
@@ -75,6 +90,11 @@
                     "title": "Fixed: Entry title could disappear on iPad",
                     "github": "Fixes #366",
                     "credits": "Tobias"
+                },
+                {
+                    "title": "Fixed: Entry tags could disappear after TOTP setup",
+                    "credits": "Peter",
+                    "github": "Closes #368",
                 },
                 {
                     "title": "Fixed: Added new MTD scheme required by Intune SDK",
