@@ -17,7 +17,6 @@ struct FuzzySearchResults {
     var isEmpty: Bool { return exactMatch.isEmpty && partialMatch.isEmpty }
 
     var perfectMatch: Entry? {
-        guard partialMatch.isEmpty else { return nil }
         guard exactMatch.count == 1,
               let theOnlyGroup = exactMatch.first,
               theOnlyGroup.scoredItems.count == 1,
