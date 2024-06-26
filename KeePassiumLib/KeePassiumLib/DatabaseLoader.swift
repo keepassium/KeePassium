@@ -59,8 +59,11 @@ public class DatabaseLoader: ProgressObserver {
                     LString.Error.incorrectDatabaseFormatTemplate,
                     fileFormat.description
                 )
-            case .unrecognizedFormat:
-                return LString.Error.unrecognizedDatabaseFormat
+            case .unrecognizedFormat(let hexSignature):
+                return String.localizedStringWithFormat(
+                    LString.Error.incorrectDatabaseFormatTemplate,
+                    hexSignature
+                )
             case .lowMemory:
                 return ProgressEx.CancellationReason.lowMemoryWarning.localizedDescription
             case .databaseError(let reason):
