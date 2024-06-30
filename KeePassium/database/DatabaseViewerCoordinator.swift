@@ -219,7 +219,7 @@ extension DatabaseViewerCoordinator {
                 sourceView: primaryRouter.navigationController.view,
                 sourceRect: primaryRouter.navigationController.view.bounds)
             primaryRouter.dismissModals(animated: true) { [self] in
-                showGroupEditor(for: nil, at: popoverAnchor)
+                showGroupEditor(.create(smart: false), at: popoverAnchor)
             }
         }
     }
@@ -537,7 +537,7 @@ extension DatabaseViewerCoordinator {
         addChildCoordinator(databaseKeyChangeCoordinator)
     }
 
-    private func showGroupEditor(for groupToEdit: Group?, at popoverAnchor: PopoverAnchor?) {
+    private func showGroupEditor(_ mode: GroupEditorCoordinator.Mode, at popoverAnchor: PopoverAnchor?) {
         Diag.info("Will edit group")
         guard let parent = currentGroup else {
             Diag.warning("Parent group is not defined")
@@ -550,7 +550,8 @@ extension DatabaseViewerCoordinator {
             router: modalRouter,
             databaseFile: databaseFile,
             parent: parent,
-            target: groupToEdit)
+            mode: mode
+        )
         groupEditorCoordinator.dismissHandler = { [weak self] coordinator in
             self?.removeChildCoordinator(coordinator)
         }
@@ -713,8 +714,8 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
         return shouldRemainSelected
     }
 
-    func didPressCreateGroup(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC) {
-        showGroupEditor(for: nil, at: popoverAnchor)
+    func didPressCreateGroup(smart: Bool, at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC) {
+        showGroupEditor(.create(smart: smart), at: popoverAnchor)
     }
 
     func didPressCreateEntry(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC) {
@@ -726,7 +727,7 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
         at popoverAnchor: PopoverAnchor,
         in viewController: GroupViewerVC
     ) {
-        showGroupEditor(for: group, at: popoverAnchor)
+        showGroupEditor(.modify(group: group), at: popoverAnchor)
     }
 
     func didPressEditEntry(
@@ -805,7 +806,7 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
         if isRecycleBin {
             result.canEditItem = group is Group2
         } else {
-            result.canEditItem = !group.isDeleted
+            result.canEditItem = !group.isDeleted && !(group is Group1 && group.isRoot)
         }
 
         result.canDeleteItem = !group.isRoot

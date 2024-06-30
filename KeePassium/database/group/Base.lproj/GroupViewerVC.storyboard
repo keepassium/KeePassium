@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rxg-rI-fqC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rxg-rI-fqC">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -74,43 +74,53 @@
                                                 <constraint firstAttribute="height" constant="29" id="SzB-UC-A4I"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="749" layoutMarginsFollowReadableWidth="YES" text="{Group Name}" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7uR-HK-1Dd">
-                                            <rect key="frame" x="61" y="15.5" width="108.5" height="20.5"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <color key="textColor" name="PrimaryText"/>
-                                            <nil key="highlightedColor"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="#bc-ignore!"/>
-                                            </attributedString>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="{nItems}" textAlignment="right" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ttY-yZ-yRg">
-                                            <rect key="frame" x="277" y="15.5" width="63.5" height="20.5"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <color key="textColor" name="AuxiliaryText"/>
-                                            <nil key="highlightedColor"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="#bc-ignore!"/>
-                                            </attributedString>
-                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uog-G1-Xpq" userLabel="HStack">
+                                            <rect key="frame" x="61" y="15.5" width="279.5" height="20.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="749" layoutMarginsFollowReadableWidth="YES" text="{Group Name}" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7uR-HK-1Dd">
+                                                    <rect key="frame" x="0.0" y="0.0" width="136" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <attributedString key="userComments">
+                                                        <fragment content="#bc-ignore!"/>
+                                                    </attributedString>
+                                                </label>
+                                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iig-Wt-bdn" userLabel="Smart Group Indicator">
+                                                    <rect key="frame" x="140" y="-2.5" width="0.0" height="26"/>
+                                                    <color key="tintColor" name="AuxiliaryText"/>
+                                                    <imageReference key="image" image="magnifyingglass.circle" catalog="system" renderingMode="template"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large" weight="regular">
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    </preferredSymbolConfiguration>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="{nItems}" textAlignment="right" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ttY-yZ-yRg">
+                                                    <rect key="frame" x="144" y="0.0" width="135.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="AuxiliaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <attributedString key="userComments">
+                                                        <fragment content="#bc-ignore!"/>
+                                                    </attributedString>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="ttY-yZ-yRg" secondAttribute="trailing" id="3v4-43-FUA"/>
-                                        <constraint firstItem="ttY-yZ-yRg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="rfV-hX-YdO" secondAttribute="top" constant="4" id="EqS-jc-DJF"/>
+                                        <constraint firstItem="uog-G1-Xpq" firstAttribute="top" relation="greaterThanOrEqual" secondItem="rfV-hX-YdO" secondAttribute="topMargin" id="0CW-sr-LHN"/>
+                                        <constraint firstItem="uog-G1-Xpq" firstAttribute="centerY" secondItem="rfV-hX-YdO" secondAttribute="centerY" id="5jm-RF-9Od"/>
                                         <constraint firstItem="raf-Bf-GLo" firstAttribute="top" relation="greaterThanOrEqual" secondItem="rfV-hX-YdO" secondAttribute="topMargin" id="Ttz-S5-UxA"/>
                                         <constraint firstItem="raf-Bf-GLo" firstAttribute="leading" secondItem="rfV-hX-YdO" secondAttribute="leadingMargin" id="W0W-gF-7gb"/>
-                                        <constraint firstItem="7uR-HK-1Dd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="rfV-hX-YdO" secondAttribute="top" constant="4" id="YO5-cY-mfX"/>
-                                        <constraint firstItem="7uR-HK-1Dd" firstAttribute="centerY" secondItem="rfV-hX-YdO" secondAttribute="centerY" id="f8U-SN-xJe"/>
+                                        <constraint firstItem="uog-G1-Xpq" firstAttribute="trailing" secondItem="rfV-hX-YdO" secondAttribute="trailingMargin" id="Yae-wW-nZE"/>
                                         <constraint firstItem="raf-Bf-GLo" firstAttribute="centerY" secondItem="rfV-hX-YdO" secondAttribute="centerY" priority="750" id="h4T-9p-C1I"/>
-                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="7uR-HK-1Dd" secondAttribute="bottom" constant="4" id="h5e-ir-2y1"/>
-                                        <constraint firstItem="7uR-HK-1Dd" firstAttribute="leading" secondItem="raf-Bf-GLo" secondAttribute="trailing" constant="16" id="iBo-wl-w0T"/>
-                                        <constraint firstItem="ttY-yZ-yRg" firstAttribute="centerY" secondItem="rfV-hX-YdO" secondAttribute="centerY" id="nP8-K0-43f"/>
-                                        <constraint firstItem="ttY-yZ-yRg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7uR-HK-1Dd" secondAttribute="trailing" constant="16" id="qge-Ze-pDx"/>
-                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ttY-yZ-yRg" secondAttribute="bottom" constant="4" id="qsC-0h-wnl"/>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="uog-G1-Xpq" secondAttribute="bottom" id="sVj-Yh-Xvu"/>
+                                        <constraint firstItem="uog-G1-Xpq" firstAttribute="leading" secondItem="raf-Bf-GLo" secondAttribute="trailing" constant="16" id="yqW-my-PCR"/>
                                         <constraint firstItem="raf-Bf-GLo" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="rfV-hX-YdO" secondAttribute="bottomMargin" id="zKw-7Q-MzU"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="iconView" destination="raf-Bf-GLo" id="MUA-jz-ISC"/>
+                                    <outlet property="smartGroupIndicator" destination="iig-Wt-bdn" id="7IO-Aq-rFL"/>
                                     <outlet property="subtitleLabel" destination="ttY-yZ-yRg" id="0xa-aq-sUj"/>
                                     <outlet property="titleLabel" destination="7uR-HK-1Dd" id="KFx-3e-9Bz"/>
                                 </connections>
@@ -279,6 +289,7 @@
         <image name="die.face.3" catalog="system" width="128" height="114"/>
         <image name="gearshape" catalog="system" width="128" height="123"/>
         <image name="list.bullet" catalog="system" width="128" height="87"/>
+        <image name="magnifyingglass.circle" catalog="system" width="128" height="123"/>
         <image name="paperclip" catalog="system" width="121" height="128"/>
         <image name="shield" catalog="system" width="128" height="121"/>
         <namedColor name="ActionTint">

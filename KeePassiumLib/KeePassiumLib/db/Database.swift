@@ -39,6 +39,7 @@ public struct SearchQuery {
     public let includeFieldNames: Bool
     public let includeProtectedValues: Bool
     public let includePasswords: Bool
+    public let excludeGroupUUID: UUID?
     public let compareOptions: String.CompareOptions
     public let flattenGroups: Bool
 
@@ -51,6 +52,7 @@ public struct SearchQuery {
         includeFieldNames: Bool,
         includeProtectedValues: Bool,
         includePasswords: Bool,
+        excludeGroupUUID: UUID?,
         compareOptions: String.CompareOptions,
         flattenGroups: Bool,
         text: String
@@ -60,6 +62,7 @@ public struct SearchQuery {
         self.includeFieldNames = includeFieldNames
         self.includeProtectedValues = includeProtectedValues
         self.includePasswords = includePasswords
+        self.excludeGroupUUID = excludeGroupUUID
         self.compareOptions = compareOptions
         self.flattenGroups = flattenGroups
         self.text = text

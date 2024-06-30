@@ -43,6 +43,11 @@ class ValidatingTextView: WatchdogAwareTextView {
         setupView()
     }
 
+    override init(frame: CGRect, textContainer: NSTextContainer?) {
+        super.init(frame: frame, textContainer: textContainer)
+        setupView()
+    }
+
     private func setupView() {
         validBackgroundColor = backgroundColor
         setupDefaultBorder()

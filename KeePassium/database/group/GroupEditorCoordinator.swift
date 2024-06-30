@@ -15,6 +15,11 @@ protocol GroupEditorCoordinatorDelegate: AnyObject {
 }
 
 final class GroupEditorCoordinator: Coordinator {
+    private let smartGroupDefaultQuery = "tag:2FA"
+    enum Mode {
+        case create(smart: Bool)
+        case modify(group: Group)
+    }
     var childCoordinators = [Coordinator]()
     var dismissHandler: CoordinatorDismissHandler?
     weak var delegate: GroupEditorCoordinatorDelegate?
@@ -24,7 +29,9 @@ final class GroupEditorCoordinator: Coordinator {
     private let database: Database
     private let parent: Group
     private let originalGroup: Group?
+    private let isSmartGroup: Bool
     private let canSupportTags: Bool
+    private let supportsNotes: Bool
 
     private let groupEditorVC: GroupEditorVC
 
@@ -35,29 +42,44 @@ final class GroupEditorCoordinator: Coordinator {
     var savingProgressHost: ProgressViewHost? { return router }
     var saveSuccessHandler: (() -> Void)?
 
-    init(router: NavigationRouter, databaseFile: DatabaseFile, parent: Group, target: Group?) {
+    init(router: NavigationRouter, databaseFile: DatabaseFile, parent: Group, mode: Mode) {
         self.router = router
         self.databaseFile = databaseFile
         self.database = databaseFile.database
         self.parent = parent
-        self.originalGroup = target
 
-        if let _target = target {
-            group = _target.clone(makeNewUUID: false)
-        } else {
+        switch mode {
+        case .create(let isSmart):
+            self.originalGroup = nil
             group = parent.createGroup(detached: true)
             group.name = LString.defaultNewGroupName
+            if isSmart {
+                group.notes = smartGroupDefaultQuery
+            }
+            isSmartGroup = isSmart
+        case .modify(let targetGroup):
+            self.originalGroup = targetGroup
+            group = targetGroup.clone(makeNewUUID: false)
+            isSmartGroup = targetGroup.isSmartGroup
         }
+
         group.touch(.accessed)
 
         canSupportTags = database is Database2
+        supportsNotes = database is Database2
+        assert(!isSmartGroup || supportsNotes, "Got a smart group without Notes support, this is impossible")
+        let extraFields: [GroupEditorVC.ExtraField?] = [
+            canSupportTags ? .tags : nil,
+            supportsNotes ? .notes : nil
+        ]
+        let groupProperties = isSmartGroup ? [] : GroupEditorVC.Property.makeAll(for: group, parent: parent)
 
-        let groupProperties = GroupEditorVC.Property.makeAll(for: group, parent: parent)
         groupEditorVC = GroupEditorVC(
             group: group,
             parent: parent,
+            extraFields: extraFields.compactMap({ $0 }),
             properties: groupProperties,
-            showTags: canSupportTags
+            isSmartGroup: isSmartGroup
         )
         groupEditorVC.delegate = self
         if originalGroup == nil {

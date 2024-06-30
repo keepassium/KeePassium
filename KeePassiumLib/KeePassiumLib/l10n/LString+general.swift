@@ -528,6 +528,12 @@ extension LString {
         value: "Create Group",
         comment: "Action/button to create a new sub-group in the current group"
     )
+    public static let actionCreateSmartGroup = NSLocalizedString(
+        "[Group/Smart/Create/action]",
+        bundle: Bundle.framework,
+        value: "Create Smart Group",
+        comment: "Action/button to create a new Smart Group"
+    )
     public static let defaultNewGroupName = NSLocalizedString(
         "[Group/New/defaultName] New Group",
         bundle: Bundle.framework,
@@ -557,6 +563,24 @@ extension LString {
         bundle: Bundle.framework,
         value: "Permanently delete everything in the Recycle Bin?",
         comment: "Title of the confirmation dialog for `Empty Recycle Bin` action"
+    )
+    public static let titleGroupNotes = NSLocalizedString(
+        "[Group/Notes/title]",
+        bundle: Bundle.framework,
+        value: "Notes",
+        comment: "Title for the Notes field in group editor"
+    )
+    public static let titleSmartGroupQuery = NSLocalizedString(
+        "[Group/Smart/Query/title]",
+        bundle: Bundle.framework,
+        value: "Smart Group Filter",
+        comment: "Title for the Smart Group search conditions in group editor"
+    )
+    public static let titleAboutSmartGroups = NSLocalizedString(
+        "[Group/Smart/about]",
+        bundle: Bundle.framework,
+        value: "About smart groups…",
+        comment: "Action/button to show a help article"
     )
 
     public static let actionCreateEntry = NSLocalizedString(
@@ -626,11 +650,23 @@ extension LString {
         comment: "Default name for a photo attachment"
     )
 
+    public static let titleGroupMenu = NSLocalizedString(
+        "[Group/Menu/a11y/title]",
+        bundle: Bundle.framework,
+        value: "Group Menu",
+        comment: "VoiceOver description of a menu with group-related actions"
+    )
     public static let titleGroupDescriptionTemplate = NSLocalizedString(
         "[Group/a11y/description]",
         bundle: Bundle.framework,
         value: "%@, Group",
         comment: "VoiceOver description of a group [groupTitle: String, itemCount: Int]"
+    )
+    public static let titleSmartGroupDescriptionTemplate = NSLocalizedString(
+        "[Group/Smart/a11y/description]",
+        bundle: Bundle.framework,
+        value: "%@, Smart group",
+        comment: "VoiceOver description of a smart group [groupTitle: String]"
     )
 
     public static let fieldIcon = NSLocalizedString(

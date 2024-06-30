@@ -18,29 +18,61 @@ protocol GroupEditorDelegate: AnyObject {
 }
 
 final class GroupEditorVC: UITableViewController {
+    enum ExtraField {
+        case tags
+        case notes
+    }
     private enum Section: Int, CaseIterable {
-        case basicInfo
+        case general
         case properties
 
-        var title: String? {
-            switch self {
-            case .basicInfo:
-                return nil
-            case .properties:
-                return LString.titleItemProperties
-            }
+        static func count(hasProperties: Bool) -> Int {
+            return hasProperties ? allCases.count : allCases.count - 1
+        }
+        static func generalCount(with extraFields: Set<ExtraField>) -> Int {
+            return 1 + extraFields.count
         }
     }
 
-    private enum BasicInfo: Int, CaseIterable {
-        case titleAndIcon
+    private enum Row {
+        case title
         case tags
+        case notes
+        case properties(index: Int)
+
+        static func at(_ indexPath: IndexPath, with extraFields: Set<ExtraField>) -> Self? {
+            let hasTags = extraFields.contains(.tags)
+            let hasNotes = extraFields.contains(.notes)
+            switch (indexPath.section, indexPath.row) {
+            case (Section.general.rawValue, 0):
+                return .title
+            case (Section.general.rawValue, 1):
+                if hasTags {
+                    return .tags
+                } else if  hasNotes {
+                    return .notes
+                } else {
+                    return nil
+                }
+            case (Section.general.rawValue, 2):
+                if hasTags && hasNotes {
+                    return .notes
+                } else {
+                    return nil
+                }
+            case (Section.properties.rawValue, _):
+                return .properties(index: indexPath.row)
+            default:
+                return nil
+            }
+        }
     }
 
     private enum CellID {
         static let parameterValueCell = "ParameterValueCell"
         static let titleAndIconCell = "TitleAndIconCell"
         static let tagsCell = "TagsCell"
+        static let notesCell = "NotesCell"
     }
 
     private lazy var closeButton = UIBarButtonItem(
@@ -68,15 +100,23 @@ final class GroupEditorVC: UITableViewController {
 
     private let group: Group
     private let parentGroup: Group?
+    private let extraFields: Set<ExtraField>
     private var isFirstFocus = true
     private var properties: [Property]
-    private let showTags: Bool
+    private let isSmartGroup: Bool
 
-    init(group: Group, parent: Group?, properties: [Property], showTags: Bool) {
+    init(
+        group: Group,
+        parent: Group?,
+        extraFields: any Collection<ExtraField>,
+        properties: [Property],
+        isSmartGroup: Bool
+    ) {
         self.group = group
         self.parentGroup = parent
+        self.extraFields = Set(extraFields)
         self.properties = properties
-        self.showTags = showTags
+        self.isSmartGroup = isSmartGroup
         super.init(style: .plain)
     }
 
@@ -90,6 +130,7 @@ final class GroupEditorVC: UITableViewController {
         navigationItem.leftBarButtonItem = closeButton
         navigationItem.rightBarButtonItem = doneButton
         tableView.alwaysBounceVertical = false
+        tableView.separatorStyle = .none
 
         registerCellClasses(tableView)
     }
@@ -106,23 +147,20 @@ final class GroupEditorVC: UITableViewController {
             UITableViewCell.self,
             forCellReuseIdentifier: CellID.tagsCell
         )
+        tableView.register(
+            GroupEditorNotesCell.self,
+            forCellReuseIdentifier: CellID.notesCell
+        )
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        if properties.isEmpty {
-            return 1 
-        }
-        return Section.allCases.count
+        return Section.count(hasProperties: !properties.isEmpty)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch Section(rawValue: section) {
-        case .basicInfo:
-            if showTags {
-                return BasicInfo.allCases.count
-            } else {
-                return BasicInfo.allCases.count - 1
-            }
+        case .general:
+            return Section.generalCount(with: extraFields)
         case .properties:
             return properties.count
         case .none:
@@ -132,21 +170,17 @@ final class GroupEditorVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch Section(rawValue: section) {
-        case .basicInfo:
+        case .general:
             return CGFloat.leastNonzeroMagnitude
         default:
             return UITableView.automaticDimension
         }
     }
 
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return Section(rawValue: section)?.title
-    }
-
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        switch (indexPath.section, indexPath.row) {
-        case (Section.basicInfo.rawValue, BasicInfo.tags.rawValue):
+        switch Row.at(indexPath, with: extraFields) {
+        case .tags:
             delegate?.didPressTags(in: self)
         default:
             break
@@ -157,36 +191,39 @@ final class GroupEditorVC: UITableViewController {
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        switch Section(rawValue: indexPath.section) {
-        case .basicInfo:
-            switch BasicInfo(rawValue: indexPath.row) {
-            case .titleAndIcon:
-                let cell = tableView.dequeueReusableCell(
-                    withIdentifier: CellID.titleAndIconCell,
-                    for: indexPath)
-                    as! GroupEditorTitleCell
-                configure(cell: cell)
-                return cell
-            case .tags:
-                assert(showTags, "Tried to show Tags row when tags must be hidden")
-                let cell = tableView.dequeueReusableCell(
-                    withIdentifier: CellID.tagsCell,
-                    for: indexPath)
-                configure(cell: cell)
-                return cell
-            default:
-                fatalError("Invalid row")
-            }
-        case .properties:
+        switch Row.at(indexPath, with: extraFields) {
+        case .title:
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: CellID.titleAndIconCell,
+                for: indexPath)
+                as! GroupEditorTitleCell
+            configure(cell: cell)
+            return cell
+        case .tags:
+            assert(extraFields.contains(.tags), "Tried to show Tags row when tags must be hidden")
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: CellID.tagsCell,
+                for: indexPath)
+            configure(cell: cell)
+            return cell
+        case .notes:
+            assert(extraFields.contains(.notes), "Tried to show Notes row when tags must be hidden")
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: CellID.notesCell,
+                for: indexPath)
+                as! GroupEditorNotesCell
+            configure(cell: cell)
+            return cell
+        case .properties(let index):
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: CellID.parameterValueCell,
                 for: indexPath)
                 as! ParameterValueCell
-            let model = properties[indexPath.row]
+            let model = properties[index]
             configure(cell: cell, with: model)
             return cell
         case .none:
-            fatalError("Invalid section")
+            fatalError("Unexpected index path")
         }
     }
 
@@ -203,6 +240,13 @@ final class GroupEditorVC: UITableViewController {
         DispatchQueue.main.async {
             cell.focus()
         }
+    }
+
+    private func configure(cell: GroupEditorNotesCell) {
+        cell.selectionStyle = .none
+        cell.isSmartGroup = isSmartGroup
+        cell.notes = group.notes
+        cell.delegate = self
     }
 
     private func configure(cell: UITableViewCell) {
@@ -291,5 +335,15 @@ extension GroupEditorVC: GroupEditorTitleCellDelegate {
 
     func didChangeValidity(isValid: Bool, in cell: GroupEditorTitleCell) {
         navigationItem.rightBarButtonItem?.isEnabled = isValid
+    }
+}
+
+extension GroupEditorVC: GroupEditorNotesCellDelegate {
+    func didChangeNotes(notes: String, in cell: GroupEditorNotesCell) {
+        group.notes = notes
+    }
+
+    func didPressAboutSmartGroups(in cell: GroupEditorNotesCell) {
+        URLOpener(self).open(url: URL.AppHelp.smartGroups)
     }
 }

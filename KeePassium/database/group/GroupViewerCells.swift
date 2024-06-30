@@ -12,6 +12,21 @@ final class GroupViewerGroupCell: UITableViewCell {
     @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet private weak var smartGroupIndicator: UIImageView!
+
+    var isSmartGroup: Bool = false {
+        didSet {
+            setVisible(subtitleLabel, !isSmartGroup)
+            setVisible(smartGroupIndicator, isSmartGroup)
+        }
+    }
+    private func setVisible(_ stackChild: UIView, _ visible: Bool) {
+        let isAlreadyVisible = !stackChild.isHidden
+        guard visible != isAlreadyVisible else {
+            return
+        }
+        stackChild.isHidden = !visible
+    }
 }
 
 final class GroupViewerEntryCell: UITableViewCell {

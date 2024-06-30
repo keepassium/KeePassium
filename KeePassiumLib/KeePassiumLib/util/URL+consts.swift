@@ -43,6 +43,8 @@ extension URL {
         public static let temporaryBackupDatabaseWarning = URL(string: "https://keepassium.com/apphelp/temporary-backup-database-warning/")!
 
         public static let hibpMoreInfoURLString = "https://www.troyhunt.com/ive-just-launched-pwned-passwords-version-2/#cloudflareprivacyandkanonymity"
+
+        public static let smartGroups = URL(string: "https://keepassium.com/apphelp/smart-groups/")!
     }
 
 }

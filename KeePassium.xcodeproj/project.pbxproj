@@ -1293,6 +1293,9 @@
 		F38A48C72A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38A48C32A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift */; };
 		F38A48C82A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38A48C32A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift */; };
 		F38AA37D2B6017DB0084B485 /* KeyFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756F3649260E96A1005A35DA /* KeyFilePickerCoordinator.swift */; };
+		F3A2186D2C27045E006AB8F8 /* GroupEditorNotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A2186C2C27045E006AB8F8 /* GroupEditorNotesCell.swift */; };
+		F3A2186E2C27045E006AB8F8 /* GroupEditorNotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A2186C2C27045E006AB8F8 /* GroupEditorNotesCell.swift */; };
+		F3A2186F2C27045E006AB8F8 /* GroupEditorNotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A2186C2C27045E006AB8F8 /* GroupEditorNotesCell.swift */; };
 		F3AFC1B125FB7C38005FF4D7 /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AFC1B025FB7C38005FF4D7 /* QRCodeScanner.swift */; };
 		F3B0C2042B2CA8790001946D /* OnboardingPagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0C2032B2CA8790001946D /* OnboardingPagesVC.swift */; };
 		F3B157D52B29B37F003F5075 /* OnboardingStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B157D42B29B37F003F5075 /* OnboardingStep.swift */; };
@@ -2470,6 +2473,7 @@
 		F37CAA422A88F74E0000EF64 /* HIBPServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HIBPServiceTests.swift; sourceTree = "<group>"; };
 		F37CAA4D2A88F8D10000EF64 /* DumpEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DumpEquatable.swift; sourceTree = "<group>"; };
 		F38A48C32A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordQualityIndicatorIconView.swift; sourceTree = "<group>"; };
+		F3A2186C2C27045E006AB8F8 /* GroupEditorNotesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupEditorNotesCell.swift; sourceTree = "<group>"; };
 		F3AFC1B025FB7C38005FF4D7 /* QRCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanner.swift; sourceTree = "<group>"; };
 		F3B0C2032B2CA8790001946D /* OnboardingPagesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPagesVC.swift; sourceTree = "<group>"; };
 		F3B157D42B29B37F003F5075 /* OnboardingStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep.swift; sourceTree = "<group>"; };
@@ -3001,9 +3005,10 @@
 			isa = PBXGroup;
 			children = (
 				759A430B26206D7F0074C375 /* GroupEditorCoordinator.swift */,
+				F3A2186C2C27045E006AB8F8 /* GroupEditorNotesCell.swift */,
+				F3C71AAD2AFFAD7A00EEAC8E /* GroupEditorTitleCell.swift */,
 				750D127D20CF071600BE0CCE /* GroupEditorVC.swift */,
 				7546EC102B17750F00E38DB7 /* GroupEditorVC+Property.swift */,
-				F3C71AAD2AFFAD7A00EEAC8E /* GroupEditorTitleCell.swift */,
 				75E9E2B3290C19FA00B79BE8 /* GroupViewerCells.swift */,
 				751E0CFD2309AF0D0088BB10 /* GroupViewerVC.storyboard */,
 				75C94C5620B373BA004FA29D /* GroupViewerVC.swift */,
@@ -4346,6 +4351,7 @@
 				754E408C263067DD003E4854 /* DatabaseUnlockerVC.swift in Sources */,
 				750C683220D767F6001A6AA0 /* EntryFieldEditorVC.swift in Sources */,
 				75151D3323268AB300F3C411 /* UILabel+extensions.swift in Sources */,
+				F3A2186D2C27045E006AB8F8 /* GroupEditorNotesCell.swift in Sources */,
 				F3F72EF02AB32C8900C804FC /* Favicon.swift in Sources */,
 				75AA237A26CBCAED00488C4E /* DatabaseFile+extensions.swift in Sources */,
 				7598D79126BBFD5C0019C625 /* TipBoxVC.swift in Sources */,
@@ -4584,6 +4590,7 @@
 				75B38C1B233E5B7C006BDEFC /* UILabel+extensions.swift in Sources */,
 				7590231E2AB45949009E6213 /* Favicon.swift in Sources */,
 				F37338FF2AACCAFC007188D2 /* FaviconDownloading.swift in Sources */,
+				F3A2186E2C27045E006AB8F8 /* GroupEditorNotesCell.swift in Sources */,
 				7572664D24CB15530099B6E1 /* HelpViewerCoordinator.swift in Sources */,
 				75AA237C26CBCAED00488C4E /* DatabaseFile+extensions.swift in Sources */,
 				755B435E26BD606700C24386 /* TipBoxVC.swift in Sources */,
@@ -4950,6 +4957,7 @@
 				75D0766828B639D200F02E39 /* URLOpener.swift in Sources */,
 				75D0766928B639D200F02E39 /* UIApplication+extensions.swift in Sources */,
 				F30D03742A7BE8A30047525F /* PasswordQualityIndicatorView.swift in Sources */,
+				F3A2186F2C27045E006AB8F8 /* GroupEditorNotesCell.swift in Sources */,
 				75D0766A28B639D200F02E39 /* DatabaseIconSet+assets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

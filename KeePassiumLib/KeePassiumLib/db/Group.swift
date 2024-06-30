@@ -37,6 +37,17 @@ public class Group: DatabaseItem, Eraseable {
 
     public var isRoot: Bool { return database?.root === self }
 
+    public var isSmartGroup: Bool {
+        return entries.isEmpty && groups.isEmpty && !notes.isEmpty
+    }
+
+    public var smartGroupQuery: String {
+        guard let query = notes.split(maxSplits: 1, whereSeparator: \.isNewline).first else {
+            return ""
+        }
+        return query.trimmingCharacters(in: .whitespaces)
+    }
+
     public func isNameReserved(name: String) -> Bool {
         return false
     }

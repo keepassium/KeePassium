@@ -14,18 +14,27 @@ class WatchdogAwareTextView: UITextView {
         super.init(coder: aDecoder)
     }
 
+    override init(frame: CGRect, textContainer: NSTextContainer?) {
+        super.init(frame: frame, textContainer: textContainer)
+        registerNotifications()
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(onTextChanged),
-            name: UITextView.textDidChangeNotification,
-            object: self)
+        registerNotifications()
     }
 
     deinit {
         NotificationCenter.default.removeObserver(
             self, name: UITextView.textDidChangeNotification, object: self)
+    }
+
+    private func registerNotifications() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(onTextChanged),
+            name: UITextView.textDidChangeNotification,
+            object: self)
     }
 
     @objc

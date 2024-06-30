@@ -21,15 +21,30 @@ struct GroupedItems {
 typealias SearchResults = [GroupedItems]
 
 final class SearchHelper {
-    func findEntries(database: Database, searchText: String) -> SearchResults {
-        return find(database: database, searchText: searchText, flattenGroups: true)
+    func findEntries(database: Database, searchText: String, excludeGroupUUID: UUID? = nil) -> SearchResults {
+        return find(
+            database: database,
+            searchText: searchText,
+            flattenGroups: true,
+            excludeGroupUUID: excludeGroupUUID
+        )
     }
 
-    func findEntriesAndGroups(database: Database, searchText: String) -> SearchResults {
-        return find(database: database, searchText: searchText, flattenGroups: false)
+    func findEntriesAndGroups(database: Database, searchText: String, excludeGroupUUID: UUID? = nil) -> SearchResults {
+        return find(
+            database: database,
+            searchText: searchText,
+            flattenGroups: false,
+            excludeGroupUUID: excludeGroupUUID
+        )
     }
 
-    private func find(database: Database, searchText: String, flattenGroups: Bool) -> SearchResults {
+    private func find(
+        database: Database,
+        searchText: String,
+        flattenGroups: Bool,
+        excludeGroupUUID: UUID?
+    ) -> SearchResults {
         let settings = Settings.current
 
         let compareOptions: String.CompareOptions
@@ -45,6 +60,7 @@ final class SearchHelper {
             includeFieldNames: settings.isSearchFieldNames,
             includeProtectedValues: settings.isSearchProtectedValues,
             includePasswords: settings.isSearchPasswords,
+            excludeGroupUUID: excludeGroupUUID,
             compareOptions: compareOptions,
             flattenGroups: flattenGroups,
             text: searchText)
@@ -63,6 +79,7 @@ final class SearchHelper {
             .filter { !$0.isHiddenFromSearch }
             .map { ScoredItem(item: $0, similarityScore: 1.0) }
         let scoredGroups = foundGroups
+            .filter { $0.uuid != query.excludeGroupUUID }
             .map { ScoredItem(item: $0, similarityScore: 1.0) }
         return scoredEntries + scoredGroups
     }

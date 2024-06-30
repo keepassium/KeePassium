@@ -24,6 +24,7 @@ protocol GroupViewerDelegate: AnyObject {
     func didSelectEntry(_ entry: Entry?, in viewController: GroupViewerVC) -> Bool
 
     func didPressCreateGroup(
+        smart: Bool,
         at popoverAnchor: PopoverAnchor,
         in viewController: GroupViewerVC
     )
@@ -100,6 +101,12 @@ final class GroupViewerVC:
     var isGroupEmpty: Bool {
         return groupsSorted.isEmpty && entriesSorted.isEmpty
     }
+    var isSmartGroup: Bool {
+        return group?.isSmartGroup ?? false
+    }
+    var supportsSmartGroups: Bool {
+        return group is Group2
+    }
 
     var canDownloadFavicons: Bool = true
     var canChangeEncryptionSettings: Bool = true
@@ -109,7 +116,7 @@ final class GroupViewerVC:
     private var groupsSorted = [Weak<Group>]()
     private var entriesSorted = [Weak<Entry>]()
 
-    private var createItemButton: UIBarButtonItem!
+    private var groupActionsButton: UIBarButtonItem!
 
     private var actionPermissions = DatabaseItem.ActionPermissions()
 
@@ -123,8 +130,11 @@ final class GroupViewerVC:
     private var isActivateSearch: Bool = false
     private var searchHelper = SearchHelper()
     private var searchResults = [GroupedItems]()
-    private var searchController: UISearchController!
+    private var searchController: UISearchController?
     var isSearchActive: Bool {
+        if isSmartGroup {
+            return true
+        }
         guard let searchController = searchController else { return false }
         return searchController.isActive && (searchController.searchBar.text?.isNotEmpty ?? false)
     }
@@ -145,12 +155,9 @@ final class GroupViewerVC:
         tableView.register(AnnouncementCell.classForCoder(), forCellReuseIdentifier: CellID.announcement)
         tableView.selectionFollowsFocus = true
 
-        createItemButton = UIBarButtonItem(
-            title: LString.actionCreate,
-            image: .symbol(.plus),
-            primaryAction: nil,
-            menu: nil)
-        navigationItem.setRightBarButton(createItemButton, animated: false)
+        groupActionsButton = UIBarButtonItem()
+        navigationItem.rightBarButtonItem = groupActionsButton
+
         navigationItem.titleView = titleView
         reloadDatabaseButton.title = LString.actionReloadDatabase
         passwordGeneratorButton.title = LString.PasswordGenerator.titleRandomGenerator
@@ -195,18 +202,23 @@ final class GroupViewerVC:
     }
 
     private func setupSearch() {
+        if let group = group, group.isSmartGroup {
+            updateSearchResults(searchText: group.smartGroupQuery)
+            return
+        }
+
         searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
 
-        searchController.searchBar.searchBarStyle = .default
-        searchController.searchBar.returnKeyType = .search
-        searchController.searchBar.barStyle = .default
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.hidesNavigationBarDuringPresentation = true
-        searchController.delegate = self
+        searchController?.searchBar.searchBarStyle = .default
+        searchController?.searchBar.returnKeyType = .search
+        searchController?.searchBar.barStyle = .default
+        searchController?.obscuresBackgroundDuringPresentation = false
+        searchController?.hidesNavigationBarDuringPresentation = true
+        searchController?.delegate = self
 
         definesPresentationContext = true
-        searchController.searchResultsUpdater = self
+        searchController?.searchResultsUpdater = self
     }
 
     override var keyCommands: [UIKeyCommand]? {
@@ -223,8 +235,8 @@ final class GroupViewerVC:
     @objc func activateSearch() {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            self.searchController.isActive = true
-            self.searchController.searchBar.becomeFirstResponderWhenSafe()
+            self.searchController?.isActive = true
+            self.searchController?.searchBar.becomeFirstResponderWhenSafe()
         }
     }
 
@@ -238,14 +250,10 @@ final class GroupViewerVC:
         actionPermissions =
             delegate?.getActionPermissions(for: group) ??
             DatabaseItem.ActionPermissions()
-        createItemButton.isEnabled =
-            actionPermissions.canCreateGroup ||
-            actionPermissions.canCreateEntry
-
-        createItemButton.menu = makeCreateItemMenu(for: createItemButton)
+        configureGroupActionsMenuButton(groupActionsButton)
         configureDatabaseMenuButton(databaseMenuButton)
 
-        if isSearchActive {
+        if isSearchActive, let searchController = searchController {
             updateSearchResults(for: searchController)
         } else {
             sortGroupItems()
@@ -470,13 +478,21 @@ final class GroupViewerVC:
             for: indexPath)
             as! GroupViewerGroupCell
 
-        let itemCount = group.groups.count + group.entries.count
-        cell.titleLabel.setText(group.name, strikethrough: group.isExpired)
-        cell.subtitleLabel?.setText("\(itemCount)", strikethrough: group.isExpired)
         cell.iconView?.image = UIImage.kpIcon(forGroup: group)
-        cell.accessibilityLabel = String.localizedStringWithFormat(
-            LString.titleGroupDescriptionTemplate,
-            group.name)
+        cell.titleLabel.setText(group.name, strikethrough: group.isExpired)
+        cell.isSmartGroup = group.isSmartGroup
+        if group.isSmartGroup {
+            cell.subtitleLabel.text = ""
+            cell.accessibilityLabel = String.localizedStringWithFormat(
+                LString.titleSmartGroupDescriptionTemplate,
+                group.name)
+        } else {
+            let itemCount = group.groups.count + group.entries.count
+            cell.subtitleLabel?.setText("\(itemCount)", strikethrough: group.isExpired)
+            cell.accessibilityLabel = String.localizedStringWithFormat(
+                LString.titleGroupDescriptionTemplate,
+                group.name)
+        }
         return cell
     }
 
@@ -781,16 +797,28 @@ final class GroupViewerVC:
     }
 
 
-    private func makeCreateItemMenu(for button: UIBarButtonItem) -> UIMenu {
-        let popoverAnchor = PopoverAnchor(barButtonItem: button)
+    private func configureGroupActionsMenuButton(_ button: UIBarButtonItem) {
+        button.title = LString.titleGroupMenu
+        button.image = .symbol(.ellipsisCircle)
 
+        let popoverAnchor = PopoverAnchor(barButtonItem: button)
         let createGroupAction = UIAction(
             title: LString.actionCreateGroup,
             image: nil,
             attributes: actionPermissions.canCreateGroup ? [] : [.disabled],
             handler: { [weak self, popoverAnchor] _ in
+                guard let self else { return }
+                delegate?.didPressCreateGroup(smart: false, at: popoverAnchor, in: self)
+            }
+        )
+
+        let createSmartGroupAction = UIAction(
+            title: LString.actionCreateSmartGroup,
+            image: nil,
+            attributes: actionPermissions.canCreateGroup ? [] : [.disabled],
+            handler: { [weak self, popoverAnchor] _ in
                 guard let self = self else { return }
-                self.delegate?.didPressCreateGroup(at: popoverAnchor, in: self)
+                delegate?.didPressCreateGroup(smart: true, at: popoverAnchor, in: self)
             }
         )
 
@@ -799,16 +827,38 @@ final class GroupViewerVC:
             image: nil,
             attributes: actionPermissions.canCreateEntry ? [] : [.disabled],
             handler: { [weak self, popoverAnchor] _ in
-                guard let self = self else { return }
-                self.delegate?.didPressCreateEntry(at: popoverAnchor, in: self)
+                guard let self else { return }
+                delegate?.didPressCreateEntry(at: popoverAnchor, in: self)
             }
         )
 
-        return UIMenu.make(
+        let editGroupAction = UIAction(
+            title: LString.actionEdit,
+            image: nil,
+            attributes: actionPermissions.canEditItem ? [] : [.disabled],
+            handler: { [weak self, popoverAnchor] _ in
+                guard let self,
+                      let group = self.group
+                else { return }
+                delegate?.didPressEditGroup(group, at: popoverAnchor, in: self)
+            }
+        )
+
+        if isSmartGroup {
+            createGroupAction.attributes.insert(.disabled)
+            createSmartGroupAction.attributes.insert(.disabled)
+            createEntryAction.attributes.insert(.disabled)
+        }
+        button.menu = UIMenu.make(
             title: "",
             reverse: false,
             options: [],
-            children: [createGroupAction, createEntryAction]
+            children: [
+                createEntryAction,
+                createGroupAction,
+                supportsSmartGroups ? createSmartGroupAction : nil,
+                UIMenu(options: .displayInline, children: [editGroupAction])
+            ].compactMap({ $0 })
         )
     }
 
@@ -922,8 +972,19 @@ extension GroupViewerVC: SettingsObserver {
 extension GroupViewerVC: UISearchResultsUpdating {
     public func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text else { return }
-        guard let database = group?.database else { return }
-        searchResults = searchHelper.findEntriesAndGroups(database: database, searchText: searchText)
+        updateSearchResults(searchText: searchText)
+    }
+
+    private func updateSearchResults(searchText: String) {
+        guard let group,
+              let database = group.database
+        else { return }
+
+        searchResults = searchHelper.findEntriesAndGroups(
+            database: database,
+            searchText: searchText,
+            excludeGroupUUID: group.isSmartGroup ? group.uuid : nil
+        )
         searchResults.sort(order: Settings.current.groupSortOrder)
         tableView.reloadData()
     }
