@@ -168,16 +168,16 @@ class ReceiptAnalyzer {
             let sortedPurchases = receipt.purchases.sorted(by: { $0.purchaseDate > $1.purchaseDate })
             sortedPurchases.forEach { purchase in
                 var flags = [String]()
-                if let cancellationDateString = purchase.cancellationDateString {
-                    flags.append("- cancelled on \(cancellationDateString)")
+                if let cancellationDate = purchase.cancellationDate {
+                    flags.append("- cancelled on \(cancellationDate.iso8601String())")
                 }
                 if purchase.subscriptionTrialPeriod || purchase.subscriptionIntroductoryPricePeriod {
                     flags.append("- trial")
                 }
                 Diag.debug(
                     """
-                    \(purchase.productIdentifier): purchased on \(purchase.purchaseDateString) \
-                    until \(purchase.subscriptionExpirationDateString ?? "(no date)") \
+                    \(purchase.productIdentifier): purchased on \(purchase.purchaseDate.iso8601String()) \
+                    until \(purchase.subscriptionExpirationDate?.iso8601String() ?? "(no date)") \
                     \(flags.joined(separator: " "))
                     """
                 )
@@ -229,7 +229,7 @@ class ReceiptAnalyzer {
         for lifetimeProduct in InAppProduct.allForever {
             let productPurchases = receipt.purchases(ofProductIdentifier: lifetimeProduct.rawValue)
             for purchase in productPurchases {
-                guard purchase.cancellationDateString == nil else {
+                guard purchase.cancellationDate == nil else {
                     continue
                 }
 
@@ -295,7 +295,7 @@ class ReceiptAnalyzer {
 
     private func getLatestPurchasedVersion(_ receipt: InAppReceipt) -> InAppPurchase? {
         let versionPurchases = receipt.purchases.filter { purchase in
-            guard purchase.cancellationDateString == nil else { return false }
+            guard purchase.cancellationDate == nil else { return false }
             guard let product = InAppProduct(rawValue: purchase.productIdentifier) else {
                 Diag.error("Unexpected in-app product ID, ignoring [id: \(purchase.productIdentifier)]")
                 assertionFailure()
@@ -319,7 +319,7 @@ class ReceiptAnalyzer {
         }
 
         let validSubscriptions = receipt.autoRenewablePurchases
-            .filter { $0.cancellationDateString == nil } 
+            .filter { $0.cancellationDate == nil }
         purchaseHistory.premiumFallbackDate = getSubscriptionFallbackDate(validSubscriptions)
 
         if let latestSubscription = getLatestExpiringSubscription(validSubscriptions) {

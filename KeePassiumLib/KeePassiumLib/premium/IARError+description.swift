@@ -18,6 +18,8 @@ extension IARError: LocalizedError {
             return "Validation failed. \(reason.localizedDescription)"
         case .purchaseExpired:
             return "Purchase expired."
+        case .receiptRefreshingInProgress:
+            return "Receipt refreshing in progress."
         }
     }
 }
