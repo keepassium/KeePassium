@@ -28,6 +28,11 @@ class DatabaseIconSetPicker: UITableViewController {
     }
     private var demoIconID: IconID = .key
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = LString.titleDatabaseIcons
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         randomizeDemoIcon()
