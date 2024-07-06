@@ -112,6 +112,7 @@ final class TagSelectorVC: TableViewControllerWithContextActions {
         registerCellClasses(tableView)
         tableView.backgroundView = noDataLabel
         tableView.allowsMultipleSelection = true
+        tableView.allowsMultipleSelectionDuringEditing = true
     }
 
     required init?(coder: NSCoder) {
@@ -410,6 +411,10 @@ extension TagSelectorVC {
         }
 
         return IndexPath(row: 0, section: sourceIndexPath.section)
+    }
+
+    override func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
+        restoreRowSelection()
     }
 }
 
