@@ -564,11 +564,13 @@ extension DropboxManager: RemoteDataSourceManager {
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: DropboxAPI.Keys.authorization)
         urlRequest.setValue("{\"path\": \"\(item.escapedPath)\"}", forHTTPHeaderField: DropboxAPI.Keys.apiArg)
+        urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
 
         let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
             if let error = error {
                 completionQueue.addOperation {
-                    Diag.error("Failed to download file [message: \(error.localizedDescription)]")
+                    let nsError = error as NSError
+                    Diag.error("Failed to download file [message: \(nsError.debugDescription)]")
                     completion(.failure(.general(error: error)))
                 }
                 return
