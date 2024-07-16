@@ -86,9 +86,10 @@ final class WebDAVListRequest: WebDAVRequestBase {
     }
 }
 
-final private class PropFindResponseParser {
+final internal class PropFindResponseParser {
     private let baseURL: URL
     private var items = [WebDAVItem]()
+    private var namespace = "d:"
 
     typealias ResponseParserStream = XMLParserStream<PropFindParserContext>
     final class PropFindParserContext: XMLDocumentContext { }
@@ -111,11 +112,19 @@ final private class PropFindResponseParser {
     }
 
     private func parseDocumentRoot(_ xml: ResponseParserStream) throws {
-        switch (xml.name.lowercased(), xml.event) {
-        case ("d:response", .start):
+        let elementName = xml.name.lowercased()
+        switch (elementName, xml.event) {
+        case ("\(namespace):response", .start):
             try xml.pushReader(parseResponseElement, context: ResponseReaderContext())
-        case ("d:multistatus", .end):
+        case ("\(namespace):multistatus", .end):
             xml.popReader()
+        case (_, .start):
+            guard elementName.hasSuffix(":multistatus") else { break }
+            if let davNamespace = elementName.split(separator: ":", maxSplits: 1).first {
+                namespace = String(davNamespace)
+            } else {
+                Diag.warning("No custom DAV namespace found, assuming default")
+            }
         default:
             break
         }
@@ -124,13 +133,13 @@ final private class PropFindResponseParser {
     private func parseResponseElement(_ xml: ResponseParserStream) throws {
         let context = xml.readerContext as! ResponseReaderContext
         switch (xml.name.lowercased(), xml.event) {
-        case ("d:response", .start):
+        case ("\(namespace):response", .start):
             break
-        case ("d:href", .end):
+        case ("\(namespace):href", .end):
             context.href = xml.value
-        case ("d:collection", .end):
+        case ("\(namespace):collection", .end):
             context.isCollection = true
-        case ("d:response", .end):
+        case ("\(namespace):response", .end):
             defer { xml.popReader() }
             guard let href = context.href else {
                 Diag.error("Response element without href element, ignoring")
