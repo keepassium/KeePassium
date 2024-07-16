@@ -49,6 +49,7 @@ public final class SettingsMigrator {
 
     private static func upgradeVersion4toVersion5(_ settings: Settings) {
         settings.migrateFileReferencesToKeychain()
+        settings.migrateUserActivityTimestampToKeychain()
         FileKeeper.shared.migrateFileReferencesToKeychain()
         settings.settingsVersion = 5
     }

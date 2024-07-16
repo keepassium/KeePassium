@@ -53,6 +53,7 @@ public class Keychain {
     private let biometricControlAccount = "biometricControlItem"
     private let premiumPurchaseHistory = "premiumPurchaseHistory"
     private let deviceBootTimestamp = "deviceBootTimestamp"
+    private let userActivityTimestamp = "userActivityTimestamp"
 
     private let premiumExpiryDateAccount = "premiumExpiryDate"
     private let premiumProductAccount = "premiumProductID"
@@ -491,7 +492,23 @@ internal extension Keychain {
 
 extension Keychain {
     public func getDeviceBootTimestamp() throws -> Date? {
-        guard let data = try get(service: .timestamps, account: deviceBootTimestamp) else {
+        return try getTimestamp(account: deviceBootTimestamp)
+    }
+
+    public func setDeviceBootTimestamp(_ timestamp: Date) throws {
+        try setTimestamp(timestamp, account: deviceBootTimestamp)
+    }
+
+    internal func getUserActivityTimestamp() throws -> Date? {
+        return try getTimestamp(account: userActivityTimestamp)
+    }
+
+    internal func setUserActivityTimestamp(_ timestamp: Date) throws {
+        try setTimestamp(timestamp, account: userActivityTimestamp)
+    }
+
+    private func getTimestamp(account: String) throws -> Date? {
+        guard let data = try get(service: .timestamps, account: account) else {
             return nil
         }
         guard let timeIntervalBitPattern = UInt64(data: ByteArray(data: data)) else {
@@ -502,10 +519,10 @@ extension Keychain {
         return Date(timeIntervalSinceReferenceDate: timeInterval)
     }
 
-    public func setDeviceBootTimestamp(_ timestamp: Date) throws {
+    private func setTimestamp(_ timestamp: Date, account: String) throws {
         let timeIntervalBitPattern = timestamp.timeIntervalSinceReferenceDate.bitPattern
         let timeIntervalData = timeIntervalBitPattern.data.asData
-        try set(service: .timestamps, account: deviceBootTimestamp, data: timeIntervalData)
+        try set(service: .timestamps, account: account, data: timeIntervalData)
     }
 }
 

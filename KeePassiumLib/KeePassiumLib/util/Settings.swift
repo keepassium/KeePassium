@@ -848,15 +848,6 @@ public class Settings {
         }
     }
 
-    internal func migrateFileReferencesToKeychain() {
-        Diag.debug("Migrating file references to keychain")
-        if let startDatabaseRefData = UserDefaults.appGroupShared.data(forKey: .startupDatabase) {
-            let startDatabaseRef = URLReference.deserialize(from: startDatabaseRefData)
-            self.startupDatabase = startDatabaseRef
-            UserDefaults.appGroupShared.removeObject(forKey: Keys.startupDatabase.rawValue)
-        }
-    }
-
     public var isAutoUnlockStartupDatabase: Bool {
         get {
             if let managedValue = ManagedAppConfig.shared.getBoolIfLicensed(.autoUnlockLastDatabase) {
@@ -1003,27 +994,39 @@ public class Settings {
         }
     }
 
+    private var cachedUserActivityTimestamp: Date?
+    private let timestampCacheValidityInterval = 1.0
+
     public var recentUserActivityTimestamp: Date {
         get {
-            if let storedTimestamp = UserDefaults.appGroupShared
-                    .object(forKey: Keys.recentUserActivityTimestamp.rawValue) as? Date
+            if let cachedUserActivityTimestamp,
+               abs(cachedUserActivityTimestamp.timeIntervalSinceNow) < timestampCacheValidityInterval
             {
-                return storedTimestamp
+                return cachedUserActivityTimestamp
             }
-            return Date.now
+
+            do {
+                let storedTimestamp = try Keychain.shared.getUserActivityTimestamp()
+                cachedUserActivityTimestamp = storedTimestamp
+                return storedTimestamp ?? Date.distantPast
+            } catch {
+                Diag.error("Failed to get user activity timestamp [message: \(error.localizedDescription)]")
+                return Date.distantPast
+            }
         }
         set {
-            if contains(key: Keys.recentUserActivityTimestamp) {
-                let oldWholeSeconds = floor(recentUserActivityTimestamp.timeIntervalSinceReferenceDate)
-                let newWholeSeconds = floor(newValue.timeIntervalSinceReferenceDate)
-                if newWholeSeconds == oldWholeSeconds {
-                    return
-                }
+            if let cachedUserActivityTimestamp,
+               abs(cachedUserActivityTimestamp.timeIntervalSinceNow) < timestampCacheValidityInterval
+            {
+                return
             }
-            UserDefaults.appGroupShared.set(
-                newValue,
-                forKey: Keys.recentUserActivityTimestamp.rawValue)
-            postChangeNotification(changedKey: Keys.recentUserActivityTimestamp)
+            do {
+                try Keychain.shared.setUserActivityTimestamp(newValue)
+                cachedUserActivityTimestamp = newValue
+                postChangeNotification(changedKey: Keys.recentUserActivityTimestamp)
+            } catch {
+                Diag.error("Failed to set user activity timestamp [message: \(error.localizedDescription)]")
+            }
         }
     }
 
@@ -1730,6 +1733,27 @@ public class Settings {
                 Notifications.userInfoKey: changedKey.rawValue
             ]
         )
+    }
+}
+
+internal extension Settings {
+    func migrateFileReferencesToKeychain() {
+        Diag.debug("Migrating file references to keychain")
+        if let startDatabaseRefData = UserDefaults.appGroupShared.data(forKey: .startupDatabase) {
+            let startDatabaseRef = URLReference.deserialize(from: startDatabaseRefData)
+            self.startupDatabase = startDatabaseRef
+            UserDefaults.appGroupShared.removeObject(forKey: Keys.startupDatabase.rawValue)
+        }
+    }
+
+    func migrateUserActivityTimestampToKeychain() {
+        let defaults = UserDefaults.appGroupShared
+        guard let storedTimestamp = defaults.object(forKey: Keys.recentUserActivityTimestamp.rawValue) as? Date
+        else {
+            return
+        }
+        defaults.removeObject(forKey: Keys.recentUserActivityTimestamp.rawValue)
+        recentUserActivityTimestamp = storedTimestamp
     }
 }
 
