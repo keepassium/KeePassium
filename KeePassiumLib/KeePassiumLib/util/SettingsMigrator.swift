@@ -6,7 +6,8 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-open class SettingsMigrator {
+public final class SettingsMigrator {
+    static let initialSettingsVersion = 4
 
     public static func processAppLaunch(with settings: Settings) {
         if settings.isFirstLaunch {
@@ -30,7 +31,9 @@ open class SettingsMigrator {
             settings.settingsVersion = Settings.latestVersion
         case 3:
             upgradeVersion3toVersion4(settings)
-        case 4: 
+        case 4:
+            upgradeVersion4toVersion5(settings)
+        case 5:
             break
         default:
             break
@@ -42,5 +45,11 @@ open class SettingsMigrator {
             Keychain.shared.prepareBiometricAuth(true)
         }
         settings.settingsVersion = 4
+    }
+
+    private static func upgradeVersion4toVersion5(_ settings: Settings) {
+        settings.migrateFileReferencesToKeychain()
+        FileKeeper.shared.migrateFileReferencesToKeychain()
+        settings.settingsVersion = 5
     }
 }

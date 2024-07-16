@@ -48,7 +48,7 @@ public class SettingsNotifications {
 }
 
 public class Settings {
-    public static let latestVersion = 4
+    public static let latestVersion = 5
     public static let current = Settings()
 
     public enum Keys: String {
@@ -763,7 +763,7 @@ public class Settings {
             let storedVersion = UserDefaults.appGroupShared
                 .object(forKey: Keys.settingsVersion.rawValue)
                 as? Int
-            return storedVersion ?? Settings.latestVersion
+            return storedVersion ?? SettingsMigrator.initialSettingsVersion
         }
         set {
             let oldValue = settingsVersion
@@ -837,20 +837,23 @@ public class Settings {
 
     public var startupDatabase: URLReference? {
         get {
-            if let data = UserDefaults.appGroupShared.data(forKey: Keys.startupDatabase.rawValue) {
-                return URLReference.deserialize(from: data)
-            } else {
-                return nil
-            }
+            try? Keychain.shared.getFileReference(of: .startDatabase)
         }
         set {
             let oldValue = startupDatabase
-            UserDefaults.appGroupShared.set(
-                newValue?.serialize(),
-                forKey: Keys.startupDatabase.rawValue)
+            try? Keychain.shared.setFileReference(newValue, for: .startDatabase)
             if newValue != oldValue {
                 postChangeNotification(changedKey: Keys.startupDatabase)
             }
+        }
+    }
+
+    internal func migrateFileReferencesToKeychain() {
+        Diag.debug("Migrating file references to keychain")
+        if let startDatabaseRefData = UserDefaults.appGroupShared.data(forKey: .startupDatabase) {
+            let startDatabaseRef = URLReference.deserialize(from: startDatabaseRefData)
+            self.startupDatabase = startDatabaseRef
+            UserDefaults.appGroupShared.removeObject(forKey: Keys.startupDatabase.rawValue)
         }
     }
 

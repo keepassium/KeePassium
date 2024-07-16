@@ -42,7 +42,7 @@ public struct FileInfo: Equatable {
     }
 }
 
-public class URLReference:
+final public class URLReference:
     Equatable,
     Hashable,
     Codable,
@@ -195,6 +195,13 @@ public class URLReference:
         case cachedURL = "url"
     }
 
+    public init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        data = try container.decode(Data.self, forKey: .data)
+        location = try container.decode(Location.self, forKey: .location)
+        cachedURL = try container.decode(URL.self, forKey: .cachedURL)
+        self.processReference()
+    }
 
     internal init(from url: URL, location: Location, allowOptimization: Bool = true) throws {
         let isAccessed = url.startAccessingSecurityScopedResource()
@@ -284,11 +291,7 @@ public class URLReference:
     }
 
     public static func deserialize(from data: Data) -> URLReference? {
-        guard let ref = try? JSONDecoder().decode(URLReference.self, from: data) else {
-            return nil
-        }
-        ref.processReference()
-        return ref
+        return try? JSONDecoder().decode(URLReference.self, from: data)
     }
 
     public var debugDescription: String {

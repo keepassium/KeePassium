@@ -49,43 +49,6 @@ public class FileKeeper {
         case overwrite
     }
 
-    private enum UserDefaultsKey {
-        static let freemiumDocumentsDirURLReference = "documentsDirURLReference"
-        static let proDocumentsDirURLReference = "documentsDirURLReferencePro"
-        static var documentsDirURLReference: String {
-            if BusinessModel.type == .prepaid {
-                return proDocumentsDirURLReference
-            } else {
-                return freemiumDocumentsDirURLReference
-            }
-        }
-
-        static var mainAppPrefix: String {
-            if BusinessModel.type == .prepaid {
-                return "com.keepassium.pro.recentFiles"
-            } else {
-                return "com.keepassium.recentFiles"
-            }
-        }
-
-        static var autoFillExtensionPrefix: String {
-            if FileKeeper.platformSupportsSharedReferences {
-                return mainAppPrefix
-            }
-
-            if BusinessModel.type == .prepaid {
-                return "com.keepassium.pro.autoFill.recentFiles"
-            } else {
-                return "com.keepassium.autoFill.recentFiles"
-            }
-        }
-
-        static let internalDatabases = ".internal.databases"
-        static let internalKeyFiles = ".internal.keyFiles"
-        static let externalDatabases = ".external.databases"
-        static let externalKeyFiles = ".external.keyFiles"
-    }
-
     public static let platformSupportsSharedReferences: Bool = {
         if ProcessInfo.isRunningOnMac {
             return false 
@@ -162,7 +125,7 @@ public class FileKeeper {
             storeURL(
                 dirFromFileManager,
                 location: .internalDocuments,
-                key: UserDefaultsKey.documentsDirURLReference
+                category: URLReference.Category.documentsDir
             )
             return dirFromFileManager
         }
@@ -173,13 +136,13 @@ public class FileKeeper {
         }
         switch BusinessModel.type {
         case .freemium:
-            if let docDirUrl = loadURL(key: UserDefaultsKey.documentsDirURLReference) {
+            if let docDirUrl = loadURL(category: .documentsDir) {
                 return docDirUrl
             }
         case .prepaid:
-            if let proDocDirURL = loadURL(key: UserDefaultsKey.proDocumentsDirURLReference) {
+            if let proDocDirURL = loadURL(category: .proDocumentsDir) {
                 return proDocDirURL
-            } else if let freeDocDirURL = loadURL(key: UserDefaultsKey.freemiumDocumentsDirURLReference) {
+            } else if let freeDocDirURL = loadURL(category: .freemiumDocumentsDir) {
                 Diag.warning("Falling back to freemium documents directory")
                 return freeDocDirURL
             }
@@ -188,13 +151,16 @@ public class FileKeeper {
         return dirFromFileManager
     }
 
-    private static func storeURL(_ url: URL, location: URLReference.Location, key: String) {
+    private static func storeURL(_ url: URL, location: URLReference.Location, category: URLReference.Category) {
         DispatchQueue.global(qos: .background).async {
             URLReference.create(for: url, location: location, allowOptimization: false) { result in
                 switch result {
                 case .success(let urlRef):
-                    let data = urlRef.serialize()
-                    UserDefaults.appGroupShared.set(data, forKey: key)
+                    do {
+                        try Keychain.shared.setFileReference(urlRef, for: category)
+                    } catch {
+                        Diag.warning("Failed to store URL [category: \(category), message: \(error.localizedDescription)]")
+                    }
                 case .failure(let error):
                     assertionFailure("This should not happen")
                     Diag.warning("Failed to store URL reference [message: \(error.localizedDescription)]")
@@ -203,15 +169,19 @@ public class FileKeeper {
         }
     }
 
-    private static func loadURL(key: String) -> URL? {
-        guard let urlReferenceData = UserDefaults.appGroupShared.data(forKey: key) else {
-            Diag.warning("No stored reference found")
+    private static func loadURL(category: URLReference.Category) -> URL? {
+        let urlReference: URLReference
+        do {
+            guard let _urlRef = try Keychain.shared.getFileReference(of: category) else {
+                Diag.warning("No stored reference found")
+                return nil
+            }
+            urlReference = _urlRef
+        } catch {
+            Diag.warning("Failed to load URL [category: \(category), message: \(error.localizedDescription)]")
             return nil
         }
-        guard let urlReference = URLReference.deserialize(from: urlReferenceData) else {
-            Diag.warning("Failed to deserialize stored reference")
-            return nil
-        }
+
         do {
             let url = try urlReference.resolveSync() 
             return url
@@ -258,42 +228,13 @@ public class FileKeeper {
         return .external
     }
 
-    private func userDefaultsKey(for fileType: FileType, external isExternal: Bool) -> String {
-        let keySuffix: String
-        switch fileType {
-        case .database:
-            if isExternal {
-                keySuffix = UserDefaultsKey.externalDatabases
-            } else {
-                keySuffix = UserDefaultsKey.internalDatabases
-            }
-        case .keyFile:
-            if isExternal {
-                keySuffix = UserDefaultsKey.externalKeyFiles
-            } else {
-                keySuffix = UserDefaultsKey.internalKeyFiles
-            }
-        }
-        if AppGroup.isMainApp {
-            return UserDefaultsKey.mainAppPrefix + keySuffix
-        } else {
-            return UserDefaultsKey.autoFillExtensionPrefix + keySuffix
-        }
-    }
-
     private func getStoredReferences(
         fileType: FileType,
         forExternalAndRemoteFiles isExternal: Bool
     ) -> [URLReference] {
-        let key = userDefaultsKey(for: fileType, external: isExternal)
-        guard let refsData = UserDefaults.appGroupShared.array(forKey: key) else {
+        let category = URLReference.Category(for: fileType, external: isExternal)
+        guard let refs = try? Keychain.shared.getFileReferences(of: category) else {
             return []
-        }
-        var refs: [URLReference] = []
-        for data in refsData {
-            if let ref = URLReference.deserialize(from: data as! Data) {
-                refs.append(ref)
-            }
         }
         let result = referenceCache.update(with: refs, fileType: fileType, isExternal: isExternal)
         return result
@@ -304,9 +245,8 @@ public class FileKeeper {
         fileType: FileType,
         forExternalFiles isExternal: Bool
     ) {
-        let serializedRefs = refs.map { $0.serialize() }
-        let key = userDefaultsKey(for: fileType, external: isExternal)
-        UserDefaults.appGroupShared.set(serializedRefs, forKey: key)
+        let category = URLReference.Category(for: fileType, external: isExternal)
+        try? Keychain.shared.setFileReferences(refs, for: category)
     }
 
     private func findStoredExternalReferenceFor(url: URL, fileType: FileType) -> URLReference? {
@@ -1148,6 +1088,53 @@ public class FileKeeper {
         }
         completionQueue.addOperation {
             completion?()
+        }
+    }
+}
+
+extension FileKeeper {
+    internal func migrateFileReferencesToKeychain() {
+        Diag.debug("Migrating file references to keychain")
+        migrateSingleRef(.freemiumDocumentsDir)
+        migrateSingleRef(.proDocumentsDir)
+        for fileType in FileType.allCases {
+            for external in [true, false] {
+                for autoFill in [false, true] {
+                    let category = URLReference.Category(for: fileType, external: external, autoFill: autoFill)
+                    migrateRefArray(category)
+                }
+            }
+        }
+    }
+
+    private func migrateSingleRef(_ category: URLReference.Category) {
+        guard let oldData = UserDefaults.appGroupShared.data(forKey: category.rawValue) else {
+            return
+        }
+        let fileRef = URLReference.deserialize(from: oldData)
+        UserDefaults.appGroupShared.removeObject(forKey: category.rawValue)
+
+        do {
+            try Keychain.shared.setFileReference(fileRef, for: category)
+        } catch {
+            Diag.error("Failed to migrate, ignoring [category: \(category)]")
+        }
+    }
+
+    private func migrateRefArray(_ category: URLReference.Category) {
+        let oldStorage = UserDefaults.appGroupShared
+        guard let oldDataArray = oldStorage.array(forKey: category.rawValue) else {
+            return
+        }
+        let fileRefs = oldDataArray.compactMap {
+            URLReference.deserialize(from: $0 as! Data)
+        }
+        oldStorage.removeObject(forKey: category.rawValue)
+
+        do {
+            try Keychain.shared.setFileReferences(fileRefs, for: category)
+        } catch {
+            Diag.error("Failed to migrate, ignoring [category: \(category)]")
         }
     }
 }

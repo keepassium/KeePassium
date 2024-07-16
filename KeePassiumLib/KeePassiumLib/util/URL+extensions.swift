@@ -50,11 +50,6 @@ public extension URL {
         }
     }
 
-    var redacted: URL {
-        let isDirectory = self.isDirectory
-        return self.deletingLastPathComponent().appendingPathComponent("_redacted_", isDirectory: isDirectory)
-    }
-
     func readLocalFileInfo(
         canUseCache: Bool,
         completionQueue: OperationQueue = .main,
@@ -99,6 +94,30 @@ public extension URL {
         completionQueue.addOperation {
             completion(.success(latestInfo))
         }
+    }
+}
+
+public extension URL {
+    private static let sensitiveQueryParams = ["email", "owner"]
+    private static let redactedValue = "_redacted_"
+
+    var redacted: URL {
+        let isDirectory = self.isDirectory
+        let redactedPathURL = self.deletingLastPathComponent()
+            .appendingPathComponent(Self.redactedValue, isDirectory: isDirectory)
+
+        guard var components = URLComponents(url: redactedPathURL, resolvingAgainstBaseURL: false) else {
+            return redactedPathURL
+        }
+        let originalQueryItems = components.queryItems
+        components.queryItems = originalQueryItems?.compactMap {
+            if Self.sensitiveQueryParams.contains($0.name) {
+                return URLQueryItem(name: $0.name, value: Self.redactedValue)
+            } else {
+                return $0
+            }
+        }
+        return components.url ?? redactedPathURL
     }
 }
 

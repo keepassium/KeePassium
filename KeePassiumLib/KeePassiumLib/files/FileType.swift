@@ -8,7 +8,7 @@
 
 import UniformTypeIdentifiers
 
-public enum FileType {
+public enum FileType: CaseIterable {
     public static let attachmentUTIs: [UTType] = [.data, .content]
 
     public static let databaseUTIs: [UTType] = [
