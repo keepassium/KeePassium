@@ -683,6 +683,11 @@ extension MainCoordinator: WatchdogDelegate {
         appCoverWindow.isHidden = true
         self.appCoverWindow = nil
         print("App cover hidden")
+
+        mainWindow.makeKeyAndVisible()
+        if isAppLockVisible {
+            appLockWindow?.makeKeyAndVisible()
+        }
     }
 
     private func canUseBiometrics() -> Bool {

@@ -27,6 +27,11 @@ final class GroupViewerGroupCell: UITableViewCell {
         }
         stackChild.isHidden = !visible
     }
+
+     override func awakeFromNib() {
+        super.awakeFromNib()
+        multipleSelectionBackgroundView = UIView()
+    }
 }
 
 final class GroupViewerEntryCell: UITableViewCell {
@@ -56,6 +61,7 @@ final class GroupViewerEntryCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         resetView()
+        multipleSelectionBackgroundView = UIView()
     }
 
     override func prepareForReuse() {

@@ -10,11 +10,16 @@
 
 extension LString {
 
-  public static let entriesSelectedCountTemplate = NSLocalizedString(
+    public static let entriesSelectedCountTemplate = NSLocalizedString(
         "[Generic/Count/EntriesSelected]",
         bundle: Bundle.framework,
         comment: "Number of entries selected. For example: 'No entries selected', '1 entry selected'. IMPORTANT: Please fill out all the plural forms."
     )
+    public static let itemsSelectedCountTemplate = NSLocalizedString(
+          "[Generic/Count/ItemsSelected]",
+          bundle: Bundle.framework,
+          comment: "Number of list items selected. For example: 'No items selected', '1 entry selected'. IMPORTANT: Please fill out all the plural forms."
+      )
 
     public static let bitCountTemplate = NSLocalizedString(
         "[Generic/Count/Bits]",
@@ -142,6 +147,12 @@ extension LString {
         value: "Select",
         comment: "Action/button to select some items in a list."
     )
+    public static let actionReorderItems = NSLocalizedString(
+        "[Generic/Action/ReorderItems]",
+        bundle: Bundle.framework,
+        value: "Reorder",
+        comment: "Action/button to change the order of items in a list (move them higher/lower)."
+    )
 
     public static let actionFileSaveAs = NSLocalizedString(
         "[Generic/File/Save as]",
@@ -239,7 +250,6 @@ extension LString {
         value: "Remove",
         comment: "Action/button to remove a file from the app (the file remains, but the app forgets about it)"
     )
-
     public static let actionUpgradeToPremium = NSLocalizedString(
         "[Premium/Upgrade/action] Upgrade to Premium",
         bundle: Bundle.framework,

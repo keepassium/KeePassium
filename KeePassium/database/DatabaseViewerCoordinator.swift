@@ -594,17 +594,17 @@ extension DatabaseViewerCoordinator {
     }
 
     private func showItemRelocator(
-        for item: DatabaseItem,
+        for items: [DatabaseItem],
         mode: ItemRelocationMode,
         at popoverAnchor: PopoverAnchor
     ) {
         Diag.info("Will relocate item [mode: \(mode)]")
-        let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
+        let modalRouter = NavigationRouter.createModal(style: .formSheet, at: popoverAnchor)
         let itemRelocationCoordinator = ItemRelocationCoordinator(
             router: modalRouter,
             databaseFile: databaseFile,
             mode: mode,
-            itemsToRelocate: [Weak(item)])
+            itemsToRelocate: items.map({ Weak($0) }))
         itemRelocationCoordinator.dismissHandler = { [weak self] coordinator in
             self?.removeChildCoordinator(coordinator)
         }
@@ -763,13 +763,26 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
         saveDatabase(databaseFile)
     }
 
-    func didPressRelocateItem(
-        _ item: DatabaseItem,
+    func didPressRelocateItems(
+        _ items: [DatabaseItem],
         mode: ItemRelocationMode,
         at popoverAnchor: PopoverAnchor,
         in viewController: GroupViewerVC
     ) {
-        showItemRelocator(for: item, mode: mode, at: popoverAnchor)
+        showItemRelocator(for: items, mode: mode, at: popoverAnchor)
+    }
+
+    func didPressDeleteItems(_ items: [DatabaseItem], in viewController: GroupViewerVC) {
+        items.compactMap({ $0 as? Entry }).forEach {
+            database.delete(entry: $0)
+        }
+        items.compactMap({ $0 as? Group }).forEach {
+            database.delete(group: $0)
+        }
+        items.forEach {
+            $0.touch(.accessed)
+        }
+        saveDatabase(databaseFile)
     }
 
     func didPressEmptyRecycleBinGroup(
@@ -785,6 +798,22 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
         }
         recycleBinGroup.touch(.accessed)
         saveDatabase(databaseFile)
+    }
+
+    func didReorderItems(in group: Group, groups: [Group], entries: [Entry]) {
+        let areGroupsReordered = !group.groups.elementsEqual(groups, by: { $0.uuid == $1.uuid })
+        let areEntriesReordered = !group.entries.elementsEqual(entries, by: { $0.uuid == $1.uuid })
+        guard areGroupsReordered || areEntriesReordered else {
+            return
+        }
+
+        group.touch(.modified)
+        group.groups = groups
+        group.entries = entries
+
+        saveDatabase(databaseFile) { [weak self] in
+            self?.refresh()
+        }
     }
 
     func getActionPermissions(for group: Group) -> DatabaseItem.ActionPermissions {
