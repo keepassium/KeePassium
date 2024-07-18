@@ -1,6 +1,48 @@
 {
     "sections": [
         {
+            "version": "1.53",
+            "releaseDate": "2024-07-18T00:00:00Z",
+            "items": [
+                {
+                    "title": "Added: Reordering of groups and entries"
+                },
+                {
+                    "title": "Added: Multi-select and bulk operations on groups and entries"
+                },
+                {
+                    "title": "Added: Support for smart groups",
+                    "github": "#8, #190, #264"
+                },
+                {
+                    "title": "Improved: AutoFill will use perfect-match entry even if there are partial matches",
+                    "github": "#76",
+                    "credits": "BoKKeR111"
+                },
+                {
+                    "title": "Fixed: Direct Dropbox connection could randomly fail with \"Network connection lost\"",
+                    "github": "Fixes #377"
+                },
+                {
+                    "title": "Fixed: Processing WebDAV file lists with custom namespaces",
+                    "github": "Fixes #378",
+                    "credits": "QueenGit"
+                },
+                {
+                    "title": "Fixed: Better protection of user activity timestamp and file references",
+                    "github": "#299",
+                    "credits": "eonist"
+                },
+                {
+                    "title": "Fixed: Localization of app and DB icon settings",
+                    "credits": "katullo11"
+                },
+                {
+                    "title": "Fixed: Minor UI fixes here and there"
+                }
+            ]
+        },
+        {
             "version": "1.52",
             "releaseDate": "2024-06-21T00:00:00Z",
             "items": [
