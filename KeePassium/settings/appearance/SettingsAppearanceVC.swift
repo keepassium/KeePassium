@@ -35,7 +35,7 @@ final class SettingsAppearanceVC: UITableViewController, Refreshable {
 
         appIconCell.textLabel?.text = LString.titleAppIcon
         databaseIconsCell.textLabel?.text = LString.titleDatabaseIcons
-        
+
         let textScaleRange = Settings.current.textScaleAllowedRange
         entryTextScaleSlider.minimumValue = Float(textScaleRange.lowerBound)
         entryTextScaleSlider.maximumValue = Float(textScaleRange.upperBound)

@@ -1239,7 +1239,7 @@ extension GroupViewerVC {
     }
 
     override func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
-        if let selectedRows = tableView.indexPathsForSelectedRows, 
+        if let selectedRows = tableView.indexPathsForSelectedRows,
            selectedRows.contains(indexPath)
         {
             return nil

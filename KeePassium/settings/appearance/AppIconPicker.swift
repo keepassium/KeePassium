@@ -36,7 +36,7 @@ class AppIconPicker: UITableViewController, Refreshable {
         super.viewDidLoad()
         title = LString.titleAppIcon
     }
-    
+
     func refresh() {
         tableView.reloadData()
     }

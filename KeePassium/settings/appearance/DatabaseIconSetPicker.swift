@@ -32,7 +32,7 @@ class DatabaseIconSetPicker: UITableViewController {
         super.viewDidLoad()
         title = LString.titleDatabaseIcons
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         randomizeDemoIcon()
