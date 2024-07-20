@@ -1134,8 +1134,13 @@ extension GroupViewerVC {
             bulkDeleteButton,
         ] : defaultToolbarItems
 
-        let sectionIndices = IndexSet(Section.allCases.compactMap { $0.rawValue })
-        tableView.reloadSections(sectionIndices, with: .automatic)
+        if animated {
+            let sectionCount = numberOfSections(in: tableView)
+            let sectionIndices = IndexSet(0..<sectionCount)
+            tableView.reloadSections(sectionIndices, with: .automatic)
+        } else {
+            tableView.reloadData()
+        }
     }
 
     private func getSelectedItems() -> [DatabaseItem] {
@@ -1281,7 +1286,7 @@ extension GroupViewerVC: SettingsObserver {
 extension GroupViewerVC: UISearchResultsUpdating {
     public func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text else { return }
-        stopSelectionMode(animated: true)
+        stopSelectionMode(animated: false)
         updateSearchResults(searchText: searchText)
     }
 
