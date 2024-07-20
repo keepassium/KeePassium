@@ -1,5 +1,12 @@
 #CHANGELOG
 
+## [1.53.153] - 2024-07-20
+
+### Fixed
+
+- Crash when starting search (fixes #379) [thanks, everyone]
+
+
 ## [1.53.152] - 2024-07-18
 
 ### Added
@@ -16,7 +23,7 @@
 
 - Direct Dropbox connection sometimes failed with "network connection lost" (fixes #377)
 - Processing WebDAV file lists with custom namespaces (fixes #378) [thanks, QueenGit]
-- Better protection of file references and user activity timestamp (keepassium/KeePassium#299)
+- Better protection of file references and user activity timestamp (#299) [thanks, eonist]
 - Localization of app and DB icon settings [thanks, katullo11]
 - Minor UI fixes here and there
 
