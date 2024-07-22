@@ -8,6 +8,4 @@
 
 #if INTUNE
 
-// Redacted: proprietary parts of the Intune edition
-
 #endif

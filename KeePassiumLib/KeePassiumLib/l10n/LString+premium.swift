@@ -419,5 +419,25 @@ extension LString {
         comment: "Title of a premium feature")
     public static let premiumBenefitPasswordAuditDescription = premiumFeaturePasswordAuditDescription
 
+    public static let premiumFeatureLinkedDatabasesTitle = NSLocalizedString(
+        "[PremiumFeature/LinkedDatabases/title]",
+        bundle: Bundle.framework,
+        value: "Linked Databases",
+        comment: "Title of a premium feature: ability to open databases referenced in another database (In Title Case)")
+    public static let premiumFeatureLinkedDatabasesDescription = NSLocalizedString(
+        "[PremiumFeature/LinkedDatabases/description]",
+        bundle: Bundle.framework,
+        value: "Upgrade to premium and open linked databases in one step.",
+        comment: "Description/advertisement for the `Linked Databases` premium feature")
+    public static let premiumBenefitLinkedDatabasesTitle = NSLocalizedString(
+        "[Premium/Benefits/LinkedDatabases/title]",
+        bundle: Bundle.framework,
+        value: "Open linked databases",
+        comment: "Title of a premium feature")
+    public static let premiumBenefitLinkedDatabasesDescription = NSLocalizedString(
+        "[Premium/Benefits/LinkedDatabases/details]",
+        bundle: Bundle.framework,
+        value: "Open another database in one step — using credentials stored in an entry.",
+        comment: "Explanation of the premium feature")
 }
 // swiftlint:enable line_length

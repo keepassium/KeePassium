@@ -52,6 +52,7 @@
 		754840EE2A52C957001EEF21 /* URLQueryItems+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754840ED2A52C957001EEF21 /* URLQueryItems+extensions.swift */; };
 		754ABE9C25AB898B00B98A63 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 754ABE9A25AB898B00B98A63 /* InfoPlist.strings */; };
 		754D7C0E238C26A7005652E1 /* YubiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754D7C0D238C26A7005652E1 /* YubiKey.swift */; };
+		755015ED2C4BE9C5000B7254 /* SpecialEntryParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755015EC2C4BE9C5000B7254 /* SpecialEntryParser.swift */; };
 		75567F092A9DEE2300BBA528 /* UIFontDescriptor+serialize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75567F082A9DEE2300BBA528 /* UIFontDescriptor+serialize.swift */; };
 		7558700722E5857C00E1DD89 /* TOTPGeneratorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558700622E5857C00E1DD89 /* TOTPGeneratorFactory.swift */; };
 		755D0A202BD05D8C0095BD9C /* PassphraseWordlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755D0A1F2BD05D8C0095BD9C /* PassphraseWordlistManager.swift */; };
@@ -348,6 +349,7 @@
 		754ABF3025AB973D00B98A63 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		754ABF3125AB976E00B98A63 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		754D7C0D238C26A7005652E1 /* YubiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YubiKey.swift; sourceTree = "<group>"; };
+		755015EC2C4BE9C5000B7254 /* SpecialEntryParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialEntryParser.swift; sourceTree = "<group>"; };
 		75567F082A9DEE2300BBA528 /* UIFontDescriptor+serialize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFontDescriptor+serialize.swift"; sourceTree = "<group>"; };
 		7558700622E5857C00E1DD89 /* TOTPGeneratorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOTPGeneratorFactory.swift; sourceTree = "<group>"; };
 		755D0A1F2BD05D8C0095BD9C /* PassphraseWordlistManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassphraseWordlistManager.swift; sourceTree = "<group>"; };
@@ -940,6 +942,7 @@
 				756AFD5C258B4C510072BEEF /* KeyFileError.swift */,
 				75012A6926D82A58002F1911 /* DatabaseLoadingWarning.swift */,
 				75CFA0762AC5B113008B7B3E /* DatabaseReloadContext.swift */,
+				755015EC2C4BE9C5000B7254 /* SpecialEntryParser.swift */,
 			);
 			path = db;
 			sourceTree = "<group>";
@@ -1531,6 +1534,7 @@
 				7596174C29082D0C005845FF /* RemoteConnectionType.swift in Sources */,
 				75D09C272174F77000F7DEF2 /* KeyHelper2.swift in Sources */,
 				F36FC5AC2BA20B5900970B7E /* URL+dropbox.swift in Sources */,
+				755015ED2C4BE9C5000B7254 /* SpecialEntryParser.swift in Sources */,
 				75E5B6FB2706004600DFFF4F /* Cloneable.swift in Sources */,
 				75D09C302174F77000F7DEF2 /* ByteArray.swift in Sources */,
 				756180FE2820830100EA015D /* PasswordGeneratorRequirements.swift in Sources */,

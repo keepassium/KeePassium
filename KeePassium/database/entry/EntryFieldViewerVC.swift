@@ -28,6 +28,7 @@ protocol EntryFieldViewerDelegate: AnyObject {
         in viewController: EntryFieldViewerVC)
 
     func didPressEdit(at popoverAnchor: PopoverAnchor, in viewController: EntryFieldViewerVC)
+    func didPressOpenLinkedDatabase(_ info: LinkedDatabaseInfo, in viewController: EntryFieldViewerVC)
 }
 
 final class EntryFieldViewerVC: UITableViewController, Refreshable {
@@ -35,6 +36,11 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
         let view = FieldCopiedView(frame: .zero)
         return view
     }()
+
+    enum Section: Int, CaseIterable {
+        case announcements
+        case fields
+    }
 
     weak var delegate: EntryFieldViewerDelegate?
 
@@ -45,6 +51,7 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
     private var category = ItemCategory.default
     private var sortedFields: [ViewableField] = []
     private var tags: [String] = []
+    private var announcements: [AnnouncementItem] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +59,9 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
 
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
+        tableView.register(
+            AnnouncementCell.classForCoder(),
+            forCellReuseIdentifier: AnnouncementCell.reuseIdentifier)
 
         copiedCellView.delegate = self
 
@@ -73,6 +83,7 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
         _ fields: [ViewableField],
         category: ItemCategory,
         tags: [String],
+        linkedDBInfo: LinkedDatabaseInfo?,
         isHistoryEntry: Bool,
         canEditEntry: Bool
     ) {
@@ -82,6 +93,11 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
         self.tags = tags
         self.sortedFields = fields.sorted {
             return category.compare($0.internalName, $1.internalName)
+        }
+
+        announcements.removeAll()
+        if let linkedDBInfo {
+            announcements.append(makeLinkedDatabaseAnnouncement(linkedDBInfo))
         }
         refresh()
     }
@@ -93,6 +109,26 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
         tableView.reloadData()
     }
 
+    private func makeLinkedDatabaseAnnouncement(_ info: LinkedDatabaseInfo) -> AnnouncementItem {
+        let dbRef = info.databaseRef
+        let fpIcon: UIImage?
+        if PremiumManager.shared.isAvailable(feature: .canOpenLinkedDatabases) {
+            fpIcon = UIImage.symbol(dbRef.fileProvider?.iconSymbol ?? .fileProviderGeneric)
+        } else {
+            fpIcon = UIImage.premiumBadge
+        }
+        return AnnouncementItem(
+            title: dbRef.visibleFileName,
+            body: nil,
+            actionTitle: LString.actionOpenDatabase,
+            image: fpIcon,
+            onDidPressAction: { [weak self] _ in
+                guard let self else { return }
+                delegate?.didPressOpenLinkedDatabase(info, in: self)
+            },
+            onDidPressClose: nil
+        )
+    }
 
     @objc func didPressEdit(_ sender: UIBarButtonItem) {
         guard canEditEntry else {
@@ -105,16 +141,23 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
     }
 
     private func didTapRow(at indexPath: IndexPath) {
-        let fieldNumber = indexPath.row
-        let field = sortedFields[fieldNumber]
-        guard let text = field.resolvedValue else { return }
+        switch Section(rawValue: indexPath.section) {
+        case .announcements:
+            return
+        case .fields:
+            guard let field = getField(at: indexPath),
+                  let text = field.resolvedValue
+            else { return }
 
-        delegate?.didPressCopyField(text: text, from: field, in: self)
-        animateCopyingToClipboard(at: indexPath)
+            delegate?.didPressCopyField(text: text, from: field, in: self)
+            animateCopyingToClipboard(at: indexPath)
+        default:
+            fatalError("Unexpected section")
+        }
     }
 
     func animateCopyingToClipboard(at indexPath: IndexPath) {
-        let supportsFieldReferencing = getField(at: indexPath).field?.isStandardField ?? false
+        let supportsFieldReferencing = getField(at: indexPath)?.field?.isStandardField ?? false
         HapticFeedback.play(.copiedToClipboard)
         DispatchQueue.main.async { [weak self] in
             guard let self else { return }
@@ -132,18 +175,46 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
 
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return Section.allCases.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sortedFields.count
+        switch Section(rawValue: section) {
+        case .announcements:
+            return announcements.count
+        case .fields:
+            return sortedFields.count
+        default:
+            fatalError("Unexpected section")
+        }
     }
 
     override func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        let field = getField(at: indexPath)
+        switch Section(rawValue: indexPath.section) {
+        case .announcements:
+            return makeAnnouncementCell(at: indexPath, in: tableView)
+        case .fields:
+            return makeFieldCell(at: indexPath, in: tableView)
+        default:
+            fatalError("Unexpected section")
+        }
+    }
+
+    private func makeAnnouncementCell(at indexPath: IndexPath, in tableView: UITableView) -> UITableViewCell {
+        let cell = tableView
+            .dequeueReusableCell(withIdentifier: AnnouncementCell.reuseIdentifier, for: indexPath)
+            as! AnnouncementCell
+        let announcement = announcements[indexPath.row]
+        cell.announcementView.apply(announcement)
+        cell.accessoryType = .detailButton
+        return cell
+    }
+
+    private func makeFieldCell(at indexPath: IndexPath, in tableView: UITableView) -> UITableViewCell {
+        let field = sortedFields[indexPath.row]
         let cell = ViewableFieldCellFactory.dequeueAndConfigureCell(
             from: tableView,
             for: indexPath,
@@ -172,7 +243,11 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
         }
     }
 
-    private func getField(at indexPath: IndexPath) -> ViewableField {
+    private func getField(at indexPath: IndexPath) -> ViewableField? {
+        guard indexPath.section == Section.fields.rawValue else {
+            assertionFailure()
+            return nil
+        }
         let fieldNumber = indexPath.row
         let field = sortedFields[fieldNumber]
         return field
@@ -180,6 +255,15 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         didTapRow(at: indexPath)
+    }
+
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        switch Section(rawValue: indexPath.section) {
+        case .announcements:
+            URLOpener(self).open(url: URL.AppHelp.linkedDatabases)
+        default:
+            break
+        }
     }
 }
 
@@ -221,8 +305,9 @@ extension EntryFieldViewerVC: ViewableFieldCellDelegate {
 
 extension EntryFieldViewerVC: FieldCopiedViewDelegate {
     func didPressExport(for indexPath: IndexPath, from view: FieldCopiedView) {
-        let field = getField(at: indexPath)
-        guard let value = field.resolvedValue else {
+        guard let field = getField(at: indexPath),
+              let value = field.resolvedValue
+        else {
             assertionFailure()
             return
         }
@@ -234,13 +319,17 @@ extension EntryFieldViewerVC: FieldCopiedViewDelegate {
     }
 
     func didPressCopyFieldReference(for indexPath: IndexPath, from view: FieldCopiedView) {
-        let field = getField(at: indexPath)
+        guard let field = getField(at: indexPath) else {
+            assertionFailure()
+            return
+        }
         delegate?.didPressCopyFieldReference(from: field, in: self)
     }
 
     func didPressShowLargeType(for indexPath: IndexPath, from view: FieldCopiedView) {
-        let field = getField(at: indexPath)
-        guard let value = field.resolvedValue else {
+        guard let field = getField(at: indexPath),
+              let value = field.resolvedValue
+        else {
             assertionFailure()
             return
         }

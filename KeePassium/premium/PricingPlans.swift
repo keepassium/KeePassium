@@ -104,6 +104,11 @@ struct PricingPlanBenefit {
         title: LString.premiumBenefitQuickAutoFillTitle,
         description: LString.premiumBenefitQuickAutoFillDescription
     )
+    static let linkedDatabases = PricingPlanBenefit(
+        symbolName: .premiumBenefitLinkedDatabases,
+        title: LString.premiumBenefitLinkedDatabasesTitle,
+        description: LString.premiumBenefitLinkedDatabasesDescription
+    )
 }
 
 class PricingPlanFactory {
@@ -192,6 +197,7 @@ class FreePricingPlan: PricingPlan {
             PricingPlanBenefit.yubikeyChallengeResponse,
             PricingPlanBenefit.passwordAudit,
             PricingPlanBenefit.businessClouds,
+            PricingPlanBenefit.linkedDatabases,
             PricingPlanBenefit.viewFieldReferences,
         ]
         self.smallPrint = nil
@@ -254,6 +260,7 @@ class PricingPlanPremiumMonthly: RealPricingPlan {
             PricingPlanBenefit.yubikeyChallengeResponse,
             PricingPlanBenefit.passwordAudit,
             PricingPlanBenefit.businessClouds,
+            PricingPlanBenefit.linkedDatabases,
             PricingPlanBenefit.viewFieldReferences,
         ]
         self.smallPrint = LString.subscriptionConditions
@@ -283,6 +290,7 @@ class PricingPlanPremiumYearly: RealPricingPlan {
             PricingPlanBenefit.yubikeyChallengeResponse,
             PricingPlanBenefit.passwordAudit,
             PricingPlanBenefit.businessClouds,
+            PricingPlanBenefit.linkedDatabases,
             PricingPlanBenefit.viewFieldReferences,
         ]
         self.smallPrint = LString.subscriptionConditions
@@ -310,6 +318,7 @@ class PricingPlanVersionPurchase: RealPricingPlan {
             PricingPlanBenefit.yubikeyChallengeResponse,
             PricingPlanBenefit.passwordAudit,
             PricingPlanBenefit.businessClouds,
+            PricingPlanBenefit.linkedDatabases,
             PricingPlanBenefit.viewFieldReferences,
         ]
         self.smallPrint = nil
@@ -336,6 +345,7 @@ class PricingPlanPremiumForever: RealPricingPlan {
             PricingPlanBenefit.yubikeyChallengeResponse,
             PricingPlanBenefit.passwordAudit,
             PricingPlanBenefit.businessClouds,
+            PricingPlanBenefit.linkedDatabases,
             PricingPlanBenefit.viewFieldReferences,
         ]
         self.smallPrint = nil

@@ -39,6 +39,7 @@ public enum SymbolName: String {
     public static let premiumBenefitQuickAutoFill = Self.bolt
     public static let premiumBenefitBusinessClouds = Self.briefcase
     public static let premiumBenefitPasswordAudit = Self.networkBadgeShield
+    public static let premiumBenefitLinkedDatabases = Self.squareOnSquare
     public static let premiumBenefitSupport = Self.questionmarkBubble
     public static let premiumBenefitShiny = Self.faceSmiling
 
@@ -132,6 +133,7 @@ public enum SymbolName: String {
     case squareAndPencil = "square.and.pencil"
     case squareAndArrowDown = "square.and.arrow.down"
     case squareAndArrowUp = "square.and.arrow.up"
+    case squareOnSquare = "square.on.square"
     case textformat = "textformat"
     case touchID = "touchid"
     case trash = "trash"

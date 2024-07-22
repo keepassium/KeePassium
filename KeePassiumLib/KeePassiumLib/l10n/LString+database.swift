@@ -364,5 +364,11 @@ extension LString {
         bundle: Bundle.framework,
         value: "Edited",
         comment: "Status of a database item (entry or group) after it was edited.")
+
+    public static let titleEntryPointsToDatabase = NSLocalizedString(
+        "[Database/Entry/LinkedDatabase/message]",
+        bundle: Bundle.framework,
+        value: "This entry points to another database.",
+        comment: "Info message for entries that contain information for opening a different database.")
 }
 // swiftlint:enable line_length

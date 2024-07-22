@@ -23,7 +23,7 @@ extension UIAlertController {
     @discardableResult
     func addAction(
         title: String?,
-        style: UIAlertAction.Style,
+        style: UIAlertAction.Style = .default,
         preferred: Bool = false,
         handler: ((UIAlertAction) -> Void)?
     ) -> UIAlertController {

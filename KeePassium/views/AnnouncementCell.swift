@@ -9,6 +9,8 @@
 import UIKit
 
 final class AnnouncementCell: UITableViewCell {
+    static let reuseIdentifier = "AnnouncementCell"
+
     lazy var announcementView: AnnouncementView = {
         let view = AnnouncementView(frame: .zero)
         return view
@@ -53,6 +55,9 @@ final class AnnouncementCell: UITableViewCell {
         announcementView.trailingAnchor
             .constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor)
             .setPriority(.defaultHigh)
+            .activate()
+        announcementView.centerXAnchor
+            .constraint(equalTo: contentView.layoutMarginsGuide.centerXAnchor)
             .activate()
         announcementView.widthAnchor
             .constraint(lessThanOrEqualTo: readableContentGuide.widthAnchor)

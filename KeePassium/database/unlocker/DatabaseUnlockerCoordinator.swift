@@ -216,8 +216,10 @@ extension DatabaseUnlockerCoordinator {
 
     private func setKeyFile(_ fileRef: URLReference?) {
         selectedKeyFileRef = fileRef
-        DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { dbSettings in
-            dbSettings.maybeSetAssociatedKeyFile(fileRef)
+        if reloadingContext == nil {
+            DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { dbSettings in
+                dbSettings.maybeSetAssociatedKeyFile(fileRef)
+            }
         }
 
         databaseUnlockerVC.setKeyFile(fileRef)
@@ -226,8 +228,10 @@ extension DatabaseUnlockerCoordinator {
 
     private func setHardwareKey(_ yubiKey: YubiKey?) {
         selectedHardwareKey = yubiKey
-        DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { dbSettings in
-            dbSettings.maybeSetAssociatedYubiKey(yubiKey)
+        if reloadingContext == nil {
+            DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { dbSettings in
+                dbSettings.maybeSetAssociatedYubiKey(yubiKey)
+            }
         }
         databaseUnlockerVC.setYubiKey(yubiKey)
         databaseUnlockerVC.refresh()
@@ -596,8 +600,10 @@ extension DatabaseUnlockerCoordinator: DatabaseLoaderDelegate {
         self.databaseLoader = nil
         HapticFeedback.play(.databaseUnlocked)
 
-        DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { dbSettings in
-            dbSettings.maybeSetMasterKey(of: databaseFile.database)
+        if reloadingContext == nil {
+            DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { dbSettings in
+                dbSettings.maybeSetMasterKey(of: databaseFile.database)
+            }
         }
         databaseUnlockerVC.clearPasswordField()
 

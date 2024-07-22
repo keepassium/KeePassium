@@ -32,6 +32,8 @@ extension PremiumFeature {
             return LString.premiumFeatureBusinessCloudsTitle
         case .canAuditPasswords:
             return LString.premiumFeaturePasswordAuditTitle
+        case .canOpenLinkedDatabases:
+            return LString.premiumFeatureLinkedDatabasesTitle
         case .canUseExpressUnlock,
              .canViewFieldReferences:
             assertionFailure("Implicit feature, no upgrade notice required")
@@ -55,6 +57,8 @@ extension PremiumFeature {
             return LString.premiumFeatureBusinessCloudsDescription
         case .canAuditPasswords:
             return LString.premiumFeaturePasswordAuditDescription
+        case .canOpenLinkedDatabases:
+            return LString.premiumFeatureLinkedDatabasesDescription
         case .canKeepMasterKeyOnDatabaseTimeout,
              .canChangeAppIcon,
              .canUseExpressUnlock,

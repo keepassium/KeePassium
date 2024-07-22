@@ -37,6 +37,12 @@ protocol DatabaseViewerCoordinatorDelegate: AnyObject {
         originalRef: URLReference,
         in coordinator: DatabaseViewerCoordinator
     )
+
+    func didPressSwitchTo(
+        databaseRef: URLReference,
+        compositeKey: CompositeKey,
+        in coordinator: DatabaseViewerCoordinator
+    )
 }
 
 final class DatabaseViewerCoordinator: Coordinator {
@@ -93,6 +99,7 @@ final class DatabaseViewerCoordinator: Coordinator {
     var saveSuccessHandler: (() -> Void)?
 
     let faviconDownloader: FaviconDownloader
+    let specialEntryParser: SpecialEntryParser
 
     init(
         splitViewController: RootSplitVC,
@@ -117,6 +124,7 @@ final class DatabaseViewerCoordinator: Coordinator {
         self.placeholderRouter = NavigationRouter(placeholderWrapperVC)
 
         faviconDownloader = FaviconDownloader()
+        specialEntryParser = SpecialEntryParser()
     }
 
     deinit {
@@ -931,6 +939,14 @@ extension DatabaseViewerCoordinator: EntryViewerCoordinatorDelegate {
 
     func didRelocateDatabase(_ databaseFile: DatabaseFile, to url: URL) {
         delegate?.didRelocateDatabase(databaseFile, to: url)
+    }
+
+    func didPressOpenLinkedDatabase(_ info: LinkedDatabaseInfo, in coordinator: EntryViewerCoordinator) {
+        delegate?.didPressSwitchTo(
+            databaseRef: info.databaseRef,
+            compositeKey: info.compositeKey,
+            in: self
+        )
     }
 }
 

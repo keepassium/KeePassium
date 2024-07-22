@@ -19,6 +19,8 @@ public enum PremiumFeature: Int {
         .canUseQuickTypeAutoFill,
         .canUseBusinessClouds,
         .canAuditPasswords,
+        .canOpenLinkedDatabases
+
     ]
     public static let introductionDate: [PremiumFeature: Date] = [
         .canUseMultipleDatabases: Date(iso8601string: "2019-07-31T00:00:00Z")!,
@@ -33,6 +35,7 @@ public enum PremiumFeature: Int {
         .canUseQuickTypeAutoFill: Date(iso8601string: "2021-11-19T00:00:00Z")!,
         .canUseBusinessClouds: Date(iso8601string: "2022-10-20T00:00:00Z")!,
         .canAuditPasswords: Date(iso8601string: "2023-09-08T00:00:00Z")!,
+        .canOpenLinkedDatabases: Date(iso8601string: "2024-07-22T00:00:00Z")!,
     ]
 
     case canUseMultipleDatabases = 0
@@ -59,6 +62,8 @@ public enum PremiumFeature: Int {
 
     case canAuditPasswords = 12
 
+    case canOpenLinkedDatabases = 13
+
     public func isAvailable(in status: PremiumManager.Status, fallbackDate: Date?) -> Bool {
         let isEntitled = status == .subscribed ||
             status == .lapsed ||
@@ -71,7 +76,8 @@ public enum PremiumFeature: Int {
              .canRelocateAcrossDatabases,
              .canUseQuickTypeAutoFill,
              .canUseBusinessClouds,
-             .canAuditPasswords:
+             .canAuditPasswords,
+             .canOpenLinkedDatabases:
             return isEntitled
         case .canChangeAppIcon,
              .canUseLongDatabaseTimeouts,

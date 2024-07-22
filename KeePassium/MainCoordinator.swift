@@ -582,7 +582,7 @@ extension MainCoordinator {
 
     private func reloadDatabase(
         _ databaseFile: DatabaseFile,
-        originalRef: URLReference,
+        targetRef: URLReference,
         from databaseViewerCoordinator: DatabaseViewerCoordinator
     ) {
         let context = DatabaseReloadContext(for: databaseFile.database)
@@ -595,7 +595,25 @@ extension MainCoordinator {
             animated: true
         ) { [weak self] in
             guard let self else { return }
-            setDatabase(originalRef, autoOpenWith: context)
+            setDatabase(targetRef, autoOpenWith: context)
+        }
+    }
+
+    private func switchToDatabase(
+        _ fileRef: URLReference,
+        key: CompositeKey,
+        in databaseViewerCoordinator: DatabaseViewerCoordinator
+    ) {
+        let context = DatabaseReloadContext(key: key)
+
+        isReloadingDatabase = true
+        databaseViewerCoordinator.closeDatabase(
+            shouldLock: false,
+            reason: .userRequest,
+            animated: true
+        ) { [weak self] in
+            guard let self else { return }
+            setDatabase(fileRef, autoOpenWith: context)
         }
     }
 }
@@ -1089,6 +1107,14 @@ extension MainCoordinator: DatabaseViewerCoordinatorDelegate {
         originalRef: URLReference,
         in coordinator: DatabaseViewerCoordinator
     ) {
-        reloadDatabase(databaseFile, originalRef: originalRef, from: coordinator)
+        reloadDatabase(databaseFile, targetRef: originalRef, from: coordinator)
+    }
+
+    func didPressSwitchTo(
+        databaseRef: URLReference,
+        compositeKey: CompositeKey,
+        in coordinator: DatabaseViewerCoordinator
+    ) {
+        switchToDatabase(databaseRef, key: compositeKey, in: coordinator)
     }
 }

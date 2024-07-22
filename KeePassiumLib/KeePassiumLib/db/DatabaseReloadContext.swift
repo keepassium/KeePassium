@@ -12,8 +12,12 @@ public final class DatabaseReloadContext: Eraseable {
     public let compositeKey: CompositeKey
     public var groupUUID: UUID?
 
-    public init(for database: Database) {
-        self.compositeKey = database.compositeKey.clone()
+    public convenience init(for database: Database) {
+        self.init(key: database.compositeKey.clone())
+    }
+
+    public init(key: CompositeKey) {
+        self.compositeKey = key
     }
 
     deinit {
