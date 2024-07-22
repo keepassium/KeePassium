@@ -93,6 +93,7 @@ final class DatabaseViewerCoordinator: Coordinator {
     private var progressOverlay: ProgressOverlay?
     private var settingsNotifications: SettingsNotifications!
 
+    var hasUnsavedBulkChanges = false
     var databaseSaver: DatabaseSaver?
     var fileExportHelper: FileExportHelper?
     var savingProgressHost: ProgressViewHost? { return self }
@@ -790,7 +791,7 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
         items.forEach {
             $0.touch(.accessed)
         }
-        saveDatabase(databaseFile)
+        hasUnsavedBulkChanges = true
     }
 
     func didPressEmptyRecycleBinGroup(
@@ -814,13 +815,20 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
         guard areGroupsReordered || areEntriesReordered else {
             return
         }
-
         group.touch(.modified)
         group.groups = groups
         group.entries = entries
+        hasUnsavedBulkChanges = true
+    }
 
+    func didFinishBulkUpdates(in viewController: GroupViewerVC) {
+        guard hasUnsavedBulkChanges else {
+            return
+        }
         saveDatabase(databaseFile) { [weak self] in
-            self?.refresh()
+            guard let self else { return }
+            hasUnsavedBulkChanges = false
+            refresh()
         }
     }
 

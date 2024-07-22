@@ -76,6 +76,8 @@ protocol GroupViewerDelegate: AnyObject {
         in viewController: GroupViewerVC
     )
 
+    func didFinishBulkUpdates(in viewController: GroupViewerVC)
+
     func getActionPermissions(for group: Group) -> DatabaseItem.ActionPermissions
     func getActionPermissions(for entry: Entry) -> DatabaseItem.ActionPermissions
 }
@@ -1074,9 +1076,10 @@ final class GroupViewerVC:
         )
         let actionTitle = items.count > 1 ? LString.actionDeleteAll : LString.actionDelete
         confirmationAlert.addAction(title: actionTitle, style: .destructive) { [weak self] _ in
-            guard let self = self else { return }
-            self.stopSelectionMode(animated: false)
-            self.delegate?.didPressDeleteItems(items, in: self)
+            guard let self else { return }
+            stopSelectionMode(animated: false, andSave: false)
+            delegate?.didPressDeleteItems(items, in: self)
+            delegate?.didFinishBulkUpdates(in: self)
         }
         confirmationAlert.addAction(title: LString.actionCancel, style: .cancel, handler: nil)
         confirmationAlert.modalPresentationStyle = .popover
@@ -1087,18 +1090,21 @@ final class GroupViewerVC:
     @objc
     private func didPressBulkRelocate(_ sender: UIBarButtonItem) {
         let popoverAnchor = PopoverAnchor(barButtonItem: sender)
-        delegate?.didPressRelocateItems(getSelectedItems(), mode: .move, at: popoverAnchor, in: self)
-        stopSelectionMode(animated: false)
+        let selectedItems = getSelectedItems()
+
+        stopSelectionMode(animated: false, andSave: true)
+
+        delegate?.didPressRelocateItems(selectedItems, mode: .move, at: popoverAnchor, in: self)
     }
 
     @objc
     private func didPressDoneSelectReorder(_ sender: UIBarButtonItem) {
-        stopSelectionMode(animated: true)
+        stopSelectionMode(animated: true, andSave: true)
     }
 }
 
 extension GroupViewerVC {
-    private func stopSelectionMode(animated: Bool) {
+    private func stopSelectionMode(animated: Bool, andSave shouldSave: Bool) {
         setEditingState(false, animated: animated)
         if isSearchActive {
             return
@@ -1113,6 +1119,9 @@ extension GroupViewerVC {
             groups: groupsSorted.compactMap({ $0.value }),
             entries: entriesSorted.compactMap({ $0.value })
         )
+        if shouldSave {
+            delegate?.didFinishBulkUpdates(in: self)
+        }
     }
 
     private func startSelectionMode(animated: Bool) {
@@ -1285,8 +1294,11 @@ extension GroupViewerVC: SettingsObserver {
 
 extension GroupViewerVC: UISearchResultsUpdating {
     public func updateSearchResults(for searchController: UISearchController) {
+        if isEditing {
+            stopSelectionMode(animated: false, andSave: true)
+        }
+
         guard let searchText = searchController.searchBar.text else { return }
-        stopSelectionMode(animated: false)
         updateSearchResults(searchText: searchText)
     }
 
