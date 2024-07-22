@@ -892,6 +892,11 @@ extension LString {
         value: "Help",
         comment: "Generic title of in-app help article")
 
+    public static let actionAddDatabase = NSLocalizedString(
+        "[Database/Add/action]",
+        bundle: Bundle.framework,
+        value: "Add Database",
+        comment: "Action: add database (either an existing file or create a new one)")
     public static let actionCreateDatabase = NSLocalizedString(
         "[Database/Create/action] Create Database",
         bundle: Bundle.framework,

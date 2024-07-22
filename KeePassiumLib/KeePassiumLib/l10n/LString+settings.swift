@@ -8,6 +8,12 @@
 
 // swiftlint:disable line_length
 extension LString {
+    public static let titleSettings = NSLocalizedString(
+        "[Settings/title]",
+        bundle: Bundle.framework,
+        value: "Settings",
+        comment: "Title of the app settings screen")
+
     public static let actionRestoreDefaults = NSLocalizedString(
         "[Settings/RestoreDefaults/action]",
         bundle: Bundle.framework,

@@ -117,6 +117,7 @@ final class GroupViewerVC:
     @IBOutlet private weak var databaseMenuButton: UIBarButtonItem!
     @IBOutlet private weak var reloadDatabaseButton: UIBarButtonItem!
     @IBOutlet private weak var passwordGeneratorButton: UIBarButtonItem!
+    @IBOutlet private weak var appSettingsButton: UIBarButtonItem!
 
     weak var group: Group? {
         didSet {
@@ -211,8 +212,10 @@ final class GroupViewerVC:
         navigationItem.rightBarButtonItem = groupActionsButton
 
         navigationItem.titleView = titleView
+        sortOrderButton.title = LString.titleSortOrder
         reloadDatabaseButton.title = LString.actionReloadDatabase
         passwordGeneratorButton.title = LString.PasswordGenerator.titleRandomGenerator
+        appSettingsButton.title = LString.titleSettings
 
         settingsNotifications = SettingsNotifications(observer: self)
 
@@ -313,7 +316,6 @@ final class GroupViewerVC:
         configureDatabaseMenuButton(databaseMenuButton)
 
         sortOrderButton.menu = makeListSettingsMenu()
-        sortOrderButton.image = .symbol(.listBullet)
     }
 
     private func refreshDynamicCells() {

@@ -70,9 +70,11 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
     private enum CellID: String {
         case fileItem = "FileItemCell"
     }
+    @IBOutlet private weak var aboutButton: UIBarButtonItem!
     @IBOutlet private weak var addDatabaseBarButton: UIBarButtonItem!
     @IBOutlet private weak var sortOrderButton: UIBarButtonItem!
     @IBOutlet private weak var passwordGeneratorButton: UIBarButtonItem!
+    @IBOutlet private weak var appSettingsButton: UIBarButtonItem!
 
     public weak var delegate: DatabasePickerDelegate?
     public var mode: DatabasePickerMode = .light
@@ -119,11 +121,16 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = LString.titleDatabases
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableView.automaticDimension
         setupEmptyView(tableView)
 
+        aboutButton.title = LString.titleAboutKeePassium
+        addDatabaseBarButton.title = LString.actionAddDatabase
+        sortOrderButton.title = LString.titleSortOrder
         passwordGeneratorButton.title = LString.PasswordGenerator.titleRandomGenerator
+        appSettingsButton.title = LString.titleSettings
 
         settingsNotifications = SettingsNotifications(observer: self)
 

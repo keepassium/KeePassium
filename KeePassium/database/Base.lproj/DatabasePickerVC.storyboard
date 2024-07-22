@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vWt-yt-cgE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vWt-yt-cgE">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Databases-->
+        <!--{Databases}-->
         <scene sceneID="ZB8-UY-hSW">
             <objects>
                 <tableViewController storyboardIdentifier="DatabasePickerVC" id="vWt-yt-cgE" customClass="DatabasePickerVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
@@ -99,7 +99,6 @@
                                 <fragment content="Action: show sorting settings of database files"/>
                             </attributedString>
                             <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Sort Order" localized="YES"/>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
                             </userDefinedRuntimeAttributes>
                         </barButtonItem>
@@ -115,7 +114,6 @@
                                 <fragment content="Action: show app settings"/>
                             </attributedString>
                             <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Settings" localized="YES"/>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
                                 <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="settings_button"/>
                             </userDefinedRuntimeAttributes>
@@ -124,31 +122,19 @@
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Databases" id="UI0-Lh-wTj">
-                        <barButtonItem key="leftBarButtonItem" image="info.circle" catalog="system" id="2o3-sG-Pcm" userLabel="Help Bar Button">
-                            <attributedString key="userComments">
-                                <fragment content="Action: show help pages (at the moment shows the About screen)"/>
-                            </attributedString>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Help" localized="YES"/>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
-                            </userDefinedRuntimeAttributes>
+                    <navigationItem key="navigationItem" title="{Databases}" id="UI0-Lh-wTj">
+                        <barButtonItem key="leftBarButtonItem" image="info.circle" catalog="system" id="2o3-sG-Pcm" userLabel="About Button">
                             <connections>
                                 <action selector="didPressHelpButton:" destination="vWt-yt-cgE" id="C2G-nG-7ZZ"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Add Database" image="plus" catalog="system" id="qPq-UR-uZs">
-                            <attributedString key="userComments">
-                                <fragment content="Action: add database (either an existing file or create a new one)"/>
-                            </attributedString>
-                        </barButtonItem>
-                        <attributedString key="userComments">
-                            <fragment content="Title of the database picker list"/>
-                        </attributedString>
+                        <barButtonItem key="rightBarButtonItem" title="{Add Database}" image="plus" catalog="system" id="qPq-UR-uZs"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
+                        <outlet property="aboutButton" destination="2o3-sG-Pcm" id="zak-2n-tnm"/>
                         <outlet property="addDatabaseBarButton" destination="qPq-UR-uZs" id="a7h-6a-Mnv"/>
+                        <outlet property="appSettingsButton" destination="oee-CI-r2x" id="vBM-DG-sKs"/>
                         <outlet property="passwordGeneratorButton" destination="XJs-ol-dGz" id="SgO-qU-nJa"/>
                         <outlet property="sortOrderButton" destination="lnO-nD-gvh" id="JWF-cH-xup"/>
                     </connections>

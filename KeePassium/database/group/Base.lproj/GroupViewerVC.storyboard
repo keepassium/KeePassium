@@ -257,7 +257,6 @@
                         <barButtonItem style="plain" id="rF3-mC-kj1">
                             <imageReference key="image" image="gearshape" catalog="system" renderingMode="template"/>
                             <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Settings" localized="YES"/>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
                                 <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="settings_button"/>
                             </userDefinedRuntimeAttributes>
@@ -271,6 +270,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="appSettingsButton" destination="rF3-mC-kj1" id="7Jw-Pf-SZH"/>
                         <outlet property="databaseMenuButton" destination="F0x-qf-7Sc" id="P3J-2v-egU"/>
                         <outlet property="passwordGeneratorButton" destination="Av5-YA-R2a" id="PVr-BX-TvD"/>
                         <outlet property="reloadDatabaseButton" destination="FA1-F1-VM7" id="dmi-qJ-EHA"/>

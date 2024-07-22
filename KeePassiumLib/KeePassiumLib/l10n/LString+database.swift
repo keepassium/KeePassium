@@ -307,6 +307,12 @@ extension LString {
         comment: "Title of a list with previous versions/revisions of an entry.")
 
 
+    public static let titleDatabases = NSLocalizedString(
+        "[Database/List/title]",
+        bundle: Bundle.framework,
+        value: "Databases",
+        comment: "Title of the database picker list")
+
     public static let titleShowBackupFiles = NSLocalizedString(
         "Show Backup Files",
         bundle: Bundle.framework,
