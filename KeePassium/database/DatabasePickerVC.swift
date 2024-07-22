@@ -122,6 +122,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         super.viewDidLoad()
 
         title = LString.titleDatabases
+        tableView.accessibilityLabel = LString.titleDatabases
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableView.automaticDimension
         setupEmptyView(tableView)
@@ -196,6 +197,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         }
         settingsNotifications.startObserving()
         refresh()
+        UIAccessibility.post(notification: .screenChanged, argument: tableView)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
