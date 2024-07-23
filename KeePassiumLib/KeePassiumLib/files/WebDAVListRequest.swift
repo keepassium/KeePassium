@@ -89,7 +89,7 @@ final class WebDAVListRequest: WebDAVRequestBase {
 final internal class PropFindResponseParser {
     private let baseURL: URL
     private var items = [WebDAVItem]()
-    private var namespace = "d:"
+    private var davPrefix = "d:"
 
     typealias ResponseParserStream = XMLParserStream<PropFindParserContext>
     final class PropFindParserContext: XMLDocumentContext { }
@@ -114,14 +114,19 @@ final internal class PropFindResponseParser {
     private func parseDocumentRoot(_ xml: ResponseParserStream) throws {
         let elementName = xml.name.lowercased()
         switch (elementName, xml.event) {
-        case ("\(namespace):response", .start):
+        case ("\(davPrefix)response", .start):
             try xml.pushReader(parseResponseElement, context: ResponseReaderContext())
-        case ("\(namespace):multistatus", .end):
+        case ("\(davPrefix)multistatus", .end):
             xml.popReader()
-        case (_, .start):
-            guard elementName.hasSuffix(":multistatus") else { break }
-            if let davNamespace = elementName.split(separator: ":", maxSplits: 1).first {
-                namespace = String(davNamespace)
+        case (_, .start): // should be last, so that specific tags are already handled
+            guard elementName.hasSuffix("multistatus") else { break }
+            // This assumes that `…:multistatus` element is in DAV namespace,
+            // so we just use its prefix instead of parsing the attributes.
+            // Special case: `multistatus` without any prefix.
+            if elementName == "multistatus" {
+                davPrefix = ""
+            } else if let davNamespace = elementName.split(separator: ":", maxSplits: 1).first {
+                davPrefix = String(davNamespace) + ":"
             } else {
                 Diag.warning("No custom DAV namespace found, assuming default")
             }
@@ -133,13 +138,13 @@ final internal class PropFindResponseParser {
     private func parseResponseElement(_ xml: ResponseParserStream) throws {
         let context = xml.readerContext as! ResponseReaderContext
         switch (xml.name.lowercased(), xml.event) {
-        case ("\(namespace):response", .start):
+        case ("\(davPrefix)response", .start):
             break
-        case ("\(namespace):href", .end):
+        case ("\(davPrefix)href", .end):
             context.href = xml.value
-        case ("\(namespace):collection", .end):
+        case ("\(davPrefix)collection", .end):
             context.isCollection = true
-        case ("\(namespace):response", .end):
+        case ("\(davPrefix)response", .end):
             defer { xml.popReader() }
             guard let href = context.href else {
                 Diag.error("Response element without href element, ignoring")
