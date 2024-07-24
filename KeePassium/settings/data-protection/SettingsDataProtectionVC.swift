@@ -66,19 +66,17 @@ final class SettingsDataProtectionVC: UITableViewController, Refreshable {
         rememberFinalKeysSwitch.isEnabled = settings.isRememberDatabaseKey
         rememberFinalKeysSwitch.isOn = settings.isRememberDatabaseFinalKey
 
-        rememberUsedKeyFiles.isOn = settings.premiumIsKeepKeyFileAssociations
+        rememberUsedKeyFiles.isOn = settings.isKeepKeyFileAssociations
         universalClipboardSwitch.isOn = settings.isUniversalClipboardEnabled
         hideProtectedFieldsSwitch.isOn = settings.isHideProtectedFields
         databaseTimeoutCell.detailTextLabel?.text = settings.databaseLockTimeout.shortTitle
 
-        lockDatabaseOnTimeoutSwitch.isOn = settings.premiumIsLockDatabasesOnTimeout
-        let canKeepMasterKeyOnDatabaseTimeout =
-            PremiumManager.shared.isAvailable(feature: .canKeepMasterKeyOnDatabaseTimeout)
-        lockDatabaseOnTimeoutPremiumBadge.isHidden = canKeepMasterKeyOnDatabaseTimeout
+        lockDatabaseOnTimeoutSwitch.isOn = settings.isLockDatabasesOnTimeout
+        lockDatabaseOnTimeoutPremiumBadge.isHidden = true
         lockDatabaseOnTimeoutLabel.accessibilityLabel =
             AccessibilityHelper.decorateAccessibilityLabel(
                 premiumFeature: lockDatabaseOnTimeoutLabel.text,
-                isEnabled: canKeepMasterKeyOnDatabaseTimeout
+                isEnabled: true
             )
 
         clipboardTimeoutCell.detailTextLabel?.text = settings.clipboardTimeout.shortTitle

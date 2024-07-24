@@ -61,26 +61,16 @@ class AppIconPicker: UITableViewController, Refreshable {
         cell.iconView?.image = UIImage(named: appIcon.asset)
         cell.titleLabel?.text = appIcon.name
 
-        let isAvailable = !isRequiresPurchase(appIcon)
-        cell.premiumBadge.isHidden = isAvailable
+        cell.premiumBadge.isHidden = true
         cell.accessibilityLabel = AccessibilityHelper.decorateAccessibilityLabel(
             premiumFeature: appIcon.name,
-            isEnabled: isAvailable
+            isEnabled: true
         )
 
         let isCurrent = (UIApplication.shared.alternateIconName == appIcon.key)
         cell.accessoryType = isCurrent ? .checkmark : .none
         return cell
     }
-
-
-    private func isRequiresPurchase(_ appIcon: AppIcon) -> Bool {
-        guard AppIcon.isPremium(appIcon) else {
-            return false
-        }
-        return !PremiumManager.shared.isAvailable(feature: .canChangeAppIcon)
-    }
-
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

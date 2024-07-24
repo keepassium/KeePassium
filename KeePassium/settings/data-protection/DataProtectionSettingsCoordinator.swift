@@ -63,17 +63,6 @@ extension DataProtectionSettingsCoordinator {
         clipboardTimeoutVC.delegate = self
         router.push(clipboardTimeoutVC, animated: true, onPop: nil)
     }
-
-    private func maybeSetLockDatabasesOnTimeout(_ value: Bool, in viewController: UIViewController) {
-        performPremiumActionOrOfferUpgrade(
-            for: .canKeepMasterKeyOnDatabaseTimeout,
-            in: viewController,
-            actionHandler: { [weak self] in
-                Settings.current.isLockDatabasesOnTimeout = value
-                self?.refresh()
-            }
-        )
-    }
 }
 
 extension DataProtectionSettingsCoordinator: SettingsDataProtectionViewCoordinatorDelegate {
@@ -89,7 +78,8 @@ extension DataProtectionSettingsCoordinator: SettingsDataProtectionViewCoordinat
         newValue: Bool,
         in viewController: SettingsDataProtectionVC
     ) {
-        maybeSetLockDatabasesOnTimeout(newValue, in: viewController)
+        Settings.current.isLockDatabasesOnTimeout = newValue
+        refresh()
     }
 }
 

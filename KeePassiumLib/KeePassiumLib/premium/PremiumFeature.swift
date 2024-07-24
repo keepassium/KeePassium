@@ -9,11 +9,7 @@
 public enum PremiumFeature: Int {
     public static let all: [PremiumFeature] = [
         .canUseMultipleDatabases,
-        .canUseLongDatabaseTimeouts,
-        .canPreviewAttachments,
         .canUseHardwareKeys,
-        .canKeepMasterKeyOnDatabaseTimeout,
-        .canChangeAppIcon,
         .canRelocateAcrossDatabases,
         .canUseQuickTypeAutoFill,
         .canUseBusinessClouds,
@@ -23,12 +19,7 @@ public enum PremiumFeature: Int {
     ]
     public static let introductionDate: [PremiumFeature: Date] = [
         .canUseMultipleDatabases: Date(iso8601string: "2019-07-31T00:00:00Z")!,
-        .canUseLongDatabaseTimeouts: Date(iso8601string: "2019-07-31T00:00:00Z")!,
-        .canPreviewAttachments: Date(iso8601string: "2019-07-31T00:00:00Z")!,
         .canUseHardwareKeys: Date(iso8601string: "2020-01-14T00:00:00Z")!,
-        .canKeepMasterKeyOnDatabaseTimeout: Date(iso8601string: "2020-07-14T00:00:00Z")!,
-        .canChangeAppIcon: Date(iso8601string: "2020-08-04T00:00:00Z")!,
-        .canUseExpressUnlock: Date(iso8601string: "2020-10-01T00:00:00Z")!,
         .canRelocateAcrossDatabases: Date(iso8601string: "2021-10-08T00:00:00Z")!,
         .canUseQuickTypeAutoFill: Date(iso8601string: "2021-11-19T00:00:00Z")!,
         .canUseBusinessClouds: Date(iso8601string: "2022-10-20T00:00:00Z")!,
@@ -38,17 +29,17 @@ public enum PremiumFeature: Int {
 
     case canUseMultipleDatabases = 0
 
-    case canUseLongDatabaseTimeouts = 2
+    /* case canUseLongDatabaseTimeouts = 2 */
 
-    case canPreviewAttachments = 3
+    /* case canPreviewAttachments = 3 */
 
     case canUseHardwareKeys = 4
 
-    case canKeepMasterKeyOnDatabaseTimeout = 5
+    /* case canKeepMasterKeyOnDatabaseTimeout = 5 */
 
-    case canChangeAppIcon = 6
+    /* case canChangeAppIcon = 6 */
 
-    case canUseExpressUnlock = 7
+    /* case canUseExpressUnlock = 7 */
 
     /* case canViewFieldReferences = 8 */
 
@@ -76,14 +67,6 @@ public enum PremiumFeature: Int {
              .canAuditPasswords,
              .canOpenLinkedDatabases:
             return isEntitled
-        case .canChangeAppIcon,
-             .canUseLongDatabaseTimeouts,
-             .canKeepMasterKeyOnDatabaseTimeout:
-            return true
-        case .canPreviewAttachments:
-            return true 
-        case .canUseExpressUnlock:
-            return true 
         }
     }
 

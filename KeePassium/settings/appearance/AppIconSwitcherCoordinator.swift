@@ -43,13 +43,7 @@ class AppIconSwitcherCoordinator: Coordinator {
 extension AppIconSwitcherCoordinator: AppIconPickerDelegate {
     func didSelectIcon(_ appIcon: AppIcon, in appIconPicker: AppIconPicker) {
         assert(UIApplication.shared.supportsAlternateIcons)
-        if AppIcon.isPremium(appIcon) {
-            performPremiumActionOrOfferUpgrade(for: .canChangeAppIcon, in: picker) { [weak self] in
-                self?.setAppIcon(appIcon)
-            }
-        } else {
-            setAppIcon(appIcon)
-        }
+        setAppIcon(appIcon)
     }
 
     private func setAppIcon(_ appIcon: AppIcon) {

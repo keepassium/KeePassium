@@ -14,16 +14,8 @@ extension PremiumFeature {
         switch self {
         case .canUseMultipleDatabases:
             return LString.premiumFeatureMultipleDatabasesTitle
-        case .canUseLongDatabaseTimeouts:
-            return LString.premiumFeatureLongDatabaseTimeoutsTitle
-        case .canPreviewAttachments:
-            return LString.premiumFeaturePreviewAttachmentsTitle
         case .canUseHardwareKeys:
             return LString.premiumFeatureHardwareKeysTitle
-        case .canKeepMasterKeyOnDatabaseTimeout:
-            return LString.premiumFeatureGenericTitle
-        case .canChangeAppIcon:
-            return LString.premiumFeatureChangeAppIconTitle
         case .canRelocateAcrossDatabases:
             return LString.premiumFeatureGenericTitle
         case .canUseQuickTypeAutoFill:
@@ -34,9 +26,6 @@ extension PremiumFeature {
             return LString.premiumFeaturePasswordAuditTitle
         case .canOpenLinkedDatabases:
             return LString.premiumFeatureLinkedDatabasesTitle
-        case .canUseExpressUnlock:
-            assertionFailure("Implicit feature, no upgrade notice required")
-            return LString.premiumFeatureGenericTitle
         }
     }
 
@@ -44,10 +33,6 @@ extension PremiumFeature {
         switch self {
         case .canUseMultipleDatabases:
             return LString.premiumFeatureMultipleDatabasesDescription
-        case .canUseLongDatabaseTimeouts:
-            return LString.premiumFeatureLongDatabaseTimeoutsDescription
-        case .canPreviewAttachments:
-            return LString.premiumFeaturePreviewAttachmentsDescription
         case .canUseHardwareKeys:
             return LString.premiumFeatureHardwareKeysDescription
         case .canUseQuickTypeAutoFill:
@@ -58,10 +43,7 @@ extension PremiumFeature {
             return LString.premiumFeaturePasswordAuditDescription
         case .canOpenLinkedDatabases:
             return LString.premiumFeatureLinkedDatabasesDescription
-        case .canKeepMasterKeyOnDatabaseTimeout,
-             .canChangeAppIcon,
-             .canUseExpressUnlock,
-             .canRelocateAcrossDatabases:
+        case .canRelocateAcrossDatabases:
             return LString.premiumFeatureGenericDescription
         }
     }

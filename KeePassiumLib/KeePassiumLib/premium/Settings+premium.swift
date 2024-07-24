@@ -9,19 +9,6 @@
 import Foundation
 
 public extension Settings {
-    var premiumIsKeepKeyFileAssociations: Bool {
-        return isKeepKeyFileAssociations
-    }
-
-    var premiumIsLockDatabasesOnTimeout: Bool {
-        let actualValue = Settings.current.isLockDatabasesOnTimeout
-        if PremiumManager.shared.isAvailable(feature: .canKeepMasterKeyOnDatabaseTimeout) {
-            return actualValue
-        } else {
-            return true
-        }
-    }
-
     var premiumIsQuickTypeEnabled: Bool {
         let actualValue = Settings.current.isQuickTypeEnabled
         if PremiumManager.shared.isAvailable(feature: .canUseQuickTypeAutoFill) {

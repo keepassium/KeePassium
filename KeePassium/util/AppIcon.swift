@@ -51,11 +51,6 @@ extension AppIcon {
         key: "appicon-keepass",
         asset: "appicon-keepass-listitem")
 
-    public static func isPremium(_ icon: AppIcon) -> Bool {
-        let isFree = (icon == classicFree) || (icon == atomBlue)
-        return !isFree
-    }
-
     public static var current: UIImage? {
         if let key = UIApplication.shared.alternateIconName,
            let icon = AppIcon.all.first(where: { $0.key == key })

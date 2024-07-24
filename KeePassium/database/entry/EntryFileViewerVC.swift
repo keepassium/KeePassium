@@ -12,8 +12,6 @@ import UniformTypeIdentifiers
 protocol EntryFileViewerDelegate: AnyObject {
     func shouldReplaceExistingFile(in viewController: EntryFileViewerVC) -> Bool
 
-    func canPreviewFiles(in viewController: EntryFileViewerVC) -> Bool
-
     func didPressAddFile(at popoverAnchor: PopoverAnchor, in viewController: EntryFileViewerVC)
     func didPressAddPhoto(
         fromCamera: Bool,
@@ -424,8 +422,7 @@ private extension EntryFileViewerVC {
 
     private func updateToolbar() {
         let hasAttachments = !attachments.isEmpty
-        let isPreviewAllowed = delegate?.canPreviewFiles(in: self) ?? true
-        previewFilesBarButton.isEnabled = hasAttachments && isPreviewAllowed
+        previewFilesBarButton.isEnabled = hasAttachments
         addFileBarButton.isEnabled = canEditFiles
         deleteFilesBarButton.isEnabled = canEditFiles && isEditing && hasAttachments
         if tableView.indexPathsForSelectedRows != nil {

@@ -704,21 +704,14 @@ extension EntryViewerCoordinator: EntryFileViewerDelegate {
         saveDatabase()
     }
 
-    func canPreviewFiles(in viewController: EntryFileViewerVC) -> Bool {
-        return PremiumManager.shared.isAvailable(feature: .canPreviewAttachments)
-    }
-
     func didPressView(
         file attachment: Attachment,
         at popoverAnchor: PopoverAnchor,
         in viewController: EntryFileViewerVC
     ) {
-        if canPreviewFiles(in: viewController) {
-            showPreview(for: [attachment], at: popoverAnchor, in: viewController)
-        } else {
-            showExportDialog(for: attachment, at: popoverAnchor, in: viewController)
-        }
+        showPreview(for: [attachment], at: popoverAnchor, in: viewController)
     }
+
     func didPressViewAll(
         files attachments: [Attachment],
         at popoverAnchor: PopoverAnchor,

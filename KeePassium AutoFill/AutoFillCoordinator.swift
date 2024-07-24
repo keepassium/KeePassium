@@ -519,7 +519,7 @@ extension AutoFillCoordinator: WatchdogDelegate {
     }
 
     func mustCloseDatabase(_ sender: Watchdog, animate: Bool) {
-        if Settings.current.premiumIsLockDatabasesOnTimeout {
+        if Settings.current.isLockDatabasesOnTimeout {
             entryFinderCoordinator?.lockDatabase()
         } else {
             entryFinderCoordinator?.stop(animated: animate, completion: nil)

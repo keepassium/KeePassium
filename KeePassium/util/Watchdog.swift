@@ -276,7 +276,7 @@ class Watchdog {
         self.databaseLockTimer?.invalidate()
         self.databaseLockTimer = nil
 
-        let isLockDatabases = Settings.current.premiumIsLockDatabasesOnTimeout
+        let isLockDatabases = Settings.current.isLockDatabasesOnTimeout
         if isLockDatabases {
             DatabaseSettingsManager.shared.eraseAllMasterKeys()
         }

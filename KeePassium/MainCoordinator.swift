@@ -822,7 +822,7 @@ extension MainCoordinator: WatchdogDelegate {
 
     func mustCloseDatabase(_ sender: Watchdog, animate: Bool) {
         databaseViewerCoordinator?.closeDatabase(
-            shouldLock: Settings.current.premiumIsLockDatabasesOnTimeout,
+            shouldLock: Settings.current.isLockDatabasesOnTimeout,
             reason: .databaseTimeout,
             animated: animate,
             completion: nil
