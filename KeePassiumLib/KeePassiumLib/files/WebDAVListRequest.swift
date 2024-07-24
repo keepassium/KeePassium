@@ -118,11 +118,8 @@ final internal class PropFindResponseParser {
             try xml.pushReader(parseResponseElement, context: ResponseReaderContext())
         case ("\(davPrefix)multistatus", .end):
             xml.popReader()
-        case (_, .start): // should be last, so that specific tags are already handled
+        case (_, .start):
             guard elementName.hasSuffix("multistatus") else { break }
-            // This assumes that `…:multistatus` element is in DAV namespace,
-            // so we just use its prefix instead of parsing the attributes.
-            // Special case: `multistatus` without any prefix.
             if elementName == "multistatus" {
                 davPrefix = ""
             } else if let davNamespace = elementName.split(separator: ":", maxSplits: 1).first {

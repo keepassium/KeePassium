@@ -361,17 +361,6 @@ extension LString {
         value: "Make KeePassium look unique, familiar, or disguise it as a calculator — the choice is yours.",
         comment: "Explanation of a premium feature")
 
-    public static let premiumBenefitFieldReferecesTitle = NSLocalizedString(
-        "[Premium/Benefits/ViewFieldReferences/title]",
-        bundle: Bundle.framework,
-        value: "Show field references",
-        comment: "Title of a premium feature")
-    public static let premiumBenefitFieldReferencesDescription = NSLocalizedString(
-        "[Premium/Benefits/ViewFieldReferences/details]",
-        bundle: Bundle.framework,
-        value: "Use field references to show information from other entries, instead of creating multiple copies of the same information.",
-        comment: "Explanation of a premium feature")
-
     public static let premiumFeatureQuickAutoFillTitle = NSLocalizedString(
         "[PremiumFeature/QuickAutoFill/title]",
         bundle: Bundle.framework,

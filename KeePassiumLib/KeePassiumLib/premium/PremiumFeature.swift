@@ -14,7 +14,6 @@ public enum PremiumFeature: Int {
         .canUseHardwareKeys,
         .canKeepMasterKeyOnDatabaseTimeout,
         .canChangeAppIcon,
-        .canViewFieldReferences,
         .canRelocateAcrossDatabases,
         .canUseQuickTypeAutoFill,
         .canUseBusinessClouds,
@@ -30,7 +29,6 @@ public enum PremiumFeature: Int {
         .canKeepMasterKeyOnDatabaseTimeout: Date(iso8601string: "2020-07-14T00:00:00Z")!,
         .canChangeAppIcon: Date(iso8601string: "2020-08-04T00:00:00Z")!,
         .canUseExpressUnlock: Date(iso8601string: "2020-10-01T00:00:00Z")!,
-        .canViewFieldReferences: Date(iso8601string: "2020-11-12T00:00:00Z")!,
         .canRelocateAcrossDatabases: Date(iso8601string: "2021-10-08T00:00:00Z")!,
         .canUseQuickTypeAutoFill: Date(iso8601string: "2021-11-19T00:00:00Z")!,
         .canUseBusinessClouds: Date(iso8601string: "2022-10-20T00:00:00Z")!,
@@ -52,7 +50,7 @@ public enum PremiumFeature: Int {
 
     case canUseExpressUnlock = 7
 
-    case canViewFieldReferences = 8
+    /* case canViewFieldReferences = 8 */
 
     case canRelocateAcrossDatabases = 9
 
@@ -72,7 +70,6 @@ public enum PremiumFeature: Int {
         switch self {
         case .canUseMultipleDatabases,
              .canUseHardwareKeys,
-             .canViewFieldReferences,
              .canRelocateAcrossDatabases,
              .canUseQuickTypeAutoFill,
              .canUseBusinessClouds,

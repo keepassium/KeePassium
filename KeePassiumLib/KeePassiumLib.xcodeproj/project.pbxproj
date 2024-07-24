@@ -211,7 +211,6 @@
 		75D4080523952FD40042122A /* CompositeKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D4080423952FD40042122A /* CompositeKey.swift */; };
 		75D5DC452894931E0021DA52 /* DataSourceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D5DC442894931E0021DA52 /* DataSourceFactory.swift */; };
 		75D6B3BD25C36F5100A6BA0D /* ProcessInfo+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D6B3BC25C36F5100A6BA0D /* ProcessInfo+extensions.swift */; };
-		75DBD04A253A525E00538B8F /* EntryField+premium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DBD049253A525E00538B8F /* EntryField+premium.swift */; };
 		75E5B6FB2706004600DFFF4F /* Cloneable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E5B6FA2706004500DFFF4F /* Cloneable.swift */; };
 		75E60AE125CF5D310089219C /* DatabaseIconSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E60AE025CF5D310089219C /* DatabaseIconSet.swift */; };
 		75E74D3426C1D2B00071B151 /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E74D3326C1D2B00071B151 /* TestHelper.swift */; };
@@ -514,7 +513,6 @@
 		75D4080423952FD40042122A /* CompositeKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositeKey.swift; sourceTree = "<group>"; };
 		75D5DC442894931E0021DA52 /* DataSourceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceFactory.swift; sourceTree = "<group>"; };
 		75D6B3BC25C36F5100A6BA0D /* ProcessInfo+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProcessInfo+extensions.swift"; sourceTree = "<group>"; };
-		75DBD049253A525E00538B8F /* EntryField+premium.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntryField+premium.swift"; sourceTree = "<group>"; };
 		75E4CA89232D0B2200EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75E5B6FA2706004500DFFF4F /* Cloneable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloneable.swift; sourceTree = "<group>"; };
 		75E60AE025CF5D310089219C /* DatabaseIconSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseIconSet.swift; sourceTree = "<group>"; };
@@ -743,7 +741,6 @@
 				75F74AB924C082F90071281E /* ReceiptAnalyzer.swift */,
 				75A2677A229045A60097C693 /* PremiumFeature.swift */,
 				7538167D22B15FC7000FA4BD /* Settings+premium.swift */,
-				75DBD049253A525E00538B8F /* EntryField+premium.swift */,
 				75384B9822CCB76800157598 /* UsageMonitor.swift */,
 				759896422341CED300DF39AA /* BusinessModel.swift */,
 				75F74ABB24C0EF370071281E /* IARError+description.swift */,
@@ -1439,7 +1436,6 @@
 				75393ABA238D3AC400C63C54 /* ChallengeResponse.swift in Sources */,
 				75AF192E282E5BC000FA4BB5 /* PassphraseGeneratorParams.swift in Sources */,
 				75F4ACEC2177485D00B22D8B /* Weak.swift in Sources */,
-				75DBD04A253A525E00538B8F /* EntryField+premium.swift in Sources */,
 				75E9E2B2290ABB1600B79BE8 /* LocalNotifications.swift in Sources */,
 				75D09C1D2174F77000F7DEF2 /* KDFParams.swift in Sources */,
 				7599FE1726C2A51100E3DD67 /* TipBox.swift in Sources */,

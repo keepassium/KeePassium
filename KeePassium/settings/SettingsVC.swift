@@ -93,7 +93,7 @@ final class SettingsVC: UITableViewController, Refreshable {
         clearsSelectionOnViewWillAppear = true
 
         title = LString.titleSettings
-        
+
         if BusinessModel.type == .prepaid || LicenseManager.shared.hasActiveBusinessLicense() {
             isPremiumSectionHidden = true
             premiumSectionFooter = nil

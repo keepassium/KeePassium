@@ -34,8 +34,7 @@ extension PremiumFeature {
             return LString.premiumFeaturePasswordAuditTitle
         case .canOpenLinkedDatabases:
             return LString.premiumFeatureLinkedDatabasesTitle
-        case .canUseExpressUnlock,
-             .canViewFieldReferences:
+        case .canUseExpressUnlock:
             assertionFailure("Implicit feature, no upgrade notice required")
             return LString.premiumFeatureGenericTitle
         }
@@ -62,7 +61,6 @@ extension PremiumFeature {
         case .canKeepMasterKeyOnDatabaseTimeout,
              .canChangeAppIcon,
              .canUseExpressUnlock,
-             .canViewFieldReferences,
              .canRelocateAcrossDatabases:
             return LString.premiumFeatureGenericDescription
         }

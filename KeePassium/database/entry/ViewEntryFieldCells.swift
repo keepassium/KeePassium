@@ -134,7 +134,7 @@ class ViewableFieldCell: UITableViewCell, ViewableFieldCellBase {
     }
 
     func getUserVisibleValue() -> String? {
-        return field?.decoratedValue
+        return field?.resolvedValue
     }
 
     @objc func didTapValueTextView(_ sender: UITextView) {
@@ -297,7 +297,7 @@ class ProtectedFieldCell: ViewableFieldCell {
 
     override func getUserVisibleValue() -> String? {
         guard let field = field else { return nil }
-        return field.isValueHidden ? hiddenValueMask : field.decoratedValue
+        return field.isValueHidden ? hiddenValueMask : field.resolvedValue
     }
 
     private func refreshTextView() {

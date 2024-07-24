@@ -597,14 +597,13 @@ final class GroupViewerVC:
         case .none:
             return nil
         case .userName:
-            return entry.getField(EntryField.userName)?.premiumDecoratedValue
+            return entry.resolvedUserName
         case .password:
-            return entry.getField(EntryField.password)?.premiumDecoratedValue
+            return entry.resolvedPassword
         case .url:
-            return entry.getField(EntryField.url)?.premiumDecoratedValue
+            return entry.resolvedURL
         case .notes:
-            return entry.getField(EntryField.notes)?
-                .premiumDecoratedValue
+            return entry.resolvedNotes
                 .replacingOccurrences(of: "\r", with: " ")
                 .replacingOccurrences(of: "\n", with: " ")
         case .lastModifiedDate:

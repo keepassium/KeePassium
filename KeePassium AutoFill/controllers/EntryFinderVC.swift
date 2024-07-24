@@ -32,8 +32,8 @@ final class EntryFinderCell: UITableViewCell {
                 iconView?.image = nil
                 return
             }
-            titleLabel?.text = entry.getField(EntryField.title)?.premiumDecoratedValue
-            subtitleLabel?.text = entry.getField(EntryField.userName)?.premiumDecoratedValue
+            titleLabel?.text = entry.resolvedTitle
+            subtitleLabel?.text = entry.resolvedUserName
             iconView?.image = UIImage.kpIcon(forEntry: entry)
         }
     }

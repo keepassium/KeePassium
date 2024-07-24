@@ -94,11 +94,6 @@ struct PricingPlanBenefit {
         title: LString.premiumBenefitPasswordAuditTitle,
         description: LString.premiumBenefitPasswordAuditDescription
     )
-    static let viewFieldReferences = PricingPlanBenefit(
-        symbolName: .premiumBenefitFieldReferences,
-        title: LString.premiumBenefitFieldReferecesTitle,
-        description: LString.premiumBenefitFieldReferencesDescription
-    )
     static let quickAutoFill = PricingPlanBenefit(
         symbolName: .premiumBenefitQuickAutoFill,
         title: LString.premiumBenefitQuickAutoFillTitle,
@@ -198,7 +193,6 @@ class FreePricingPlan: PricingPlan {
             PricingPlanBenefit.passwordAudit,
             PricingPlanBenefit.businessClouds,
             PricingPlanBenefit.linkedDatabases,
-            PricingPlanBenefit.viewFieldReferences,
         ]
         self.smallPrint = nil
     }
@@ -261,7 +255,6 @@ class PricingPlanPremiumMonthly: RealPricingPlan {
             PricingPlanBenefit.passwordAudit,
             PricingPlanBenefit.businessClouds,
             PricingPlanBenefit.linkedDatabases,
-            PricingPlanBenefit.viewFieldReferences,
         ]
         self.smallPrint = LString.subscriptionConditions
         self.maybeOfferTrial() 
@@ -291,7 +284,6 @@ class PricingPlanPremiumYearly: RealPricingPlan {
             PricingPlanBenefit.passwordAudit,
             PricingPlanBenefit.businessClouds,
             PricingPlanBenefit.linkedDatabases,
-            PricingPlanBenefit.viewFieldReferences,
         ]
         self.smallPrint = LString.subscriptionConditions
         self.maybeOfferTrial() 
@@ -319,7 +311,6 @@ class PricingPlanVersionPurchase: RealPricingPlan {
             PricingPlanBenefit.passwordAudit,
             PricingPlanBenefit.businessClouds,
             PricingPlanBenefit.linkedDatabases,
-            PricingPlanBenefit.viewFieldReferences,
         ]
         self.smallPrint = nil
     }
@@ -346,7 +337,6 @@ class PricingPlanPremiumForever: RealPricingPlan {
             PricingPlanBenefit.passwordAudit,
             PricingPlanBenefit.businessClouds,
             PricingPlanBenefit.linkedDatabases,
-            PricingPlanBenefit.viewFieldReferences,
         ]
         self.smallPrint = nil
     }
