@@ -224,12 +224,12 @@ extension AppDelegate {
         )
 
         let createEntryMenuItem = UIKeyCommand(
-            title: LString.actionCreateEntry,
+            title: LString.titleNewEntry,
             action: #selector(createEntry),
             input: "n",
             modifierFlags: [.command])
         let createGroupMenuItem = UIKeyCommand(
-            title: LString.actionCreateGroup,
+            title: LString.titleNewGroup,
             action: #selector(createGroup),
             input: "g",
             modifierFlags: [.command])

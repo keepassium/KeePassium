@@ -42,6 +42,7 @@ final class DatabaseKeyChangerVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = LString.titleMasterKey
         databaseNameLabel.text = databaseFile.visibleFileName
         databaseIcon.image = .symbol(databaseFile.getIconSymbol())
 

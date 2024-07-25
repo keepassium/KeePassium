@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ymj-cN-i1q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ymj-cN-i1q">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Change Master Key-->
+        <!--Database Key ChangerVC-->
         <scene sceneID="eXI-X0-3mp">
             <objects>
                 <viewController storyboardIdentifier="DatabaseKeyChangerVC" modalPresentationStyle="formSheet" hidesBottomBarWhenPushed="YES" id="Ymj-cN-i1q" customClass="DatabaseKeyChangerVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
@@ -228,15 +228,12 @@
                             <constraint firstItem="3zV-VG-oSJ" firstAttribute="width" secondItem="58Q-hF-v4J" secondAttribute="width" id="yn1-u6-sH9"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Change Master Key" id="JKD-iF-iwA">
+                    <navigationItem key="navigationItem" id="JKD-iF-iwA">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="Udi-7K-crW">
                             <connections>
                                 <action selector="didPressSaveChanges:" destination="Ymj-cN-i1q" id="qev-tB-xiq"/>
                             </connections>
                         </barButtonItem>
-                        <attributedString key="userComments">
-                            <fragment content="Title of the dialog for changing the database's master key."/>
-                        </attributedString>
                     </navigationItem>
                     <connections>
                         <outlet property="databaseIcon" destination="a4q-gk-OB4" id="6Nm-70-GcT"/>

@@ -48,19 +48,25 @@ final class GroupEditorCoordinator: Coordinator {
         self.database = databaseFile.database
         self.parent = parent
 
+        let editorTitle: String
         switch mode {
         case .create(let isSmart):
             self.originalGroup = nil
             group = parent.createGroup(detached: true)
-            group.name = LString.defaultNewGroupName
-            if isSmart {
-                group.notes = smartGroupDefaultQuery
-            }
             isSmartGroup = isSmart
+            if isSmartGroup {
+                group.name = LString.defaultNewSmartGroupName
+                group.notes = smartGroupDefaultQuery
+                editorTitle = LString.titleNewSmartGroup
+            } else {
+                group.name = LString.defaultNewGroupName
+                editorTitle = LString.titleNewGroup
+            }
         case .modify(let targetGroup):
             self.originalGroup = targetGroup
             group = targetGroup.clone(makeNewUUID: false)
             isSmartGroup = targetGroup.isSmartGroup
+            editorTitle = isSmartGroup ? LString.titleSmartGroup : LString.titleGroup
         }
 
         group.touch(.accessed)
@@ -81,12 +87,8 @@ final class GroupEditorCoordinator: Coordinator {
             properties: groupProperties,
             isSmartGroup: isSmartGroup
         )
+        groupEditorVC.title = editorTitle
         groupEditorVC.delegate = self
-        if originalGroup == nil {
-            groupEditorVC.title = LString.titleCreateGroup
-        } else {
-            groupEditorVC.title = LString.titleEditGroup
-        }
     }
 
     deinit {

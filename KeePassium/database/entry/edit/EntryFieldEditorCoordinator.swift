@@ -76,6 +76,7 @@ final class EntryFieldEditorCoordinator: Coordinator {
         }
 
         fieldEditorVC = EntryFieldEditorVC.instantiateFromStoryboard()
+        fieldEditorVC.title = isCreationMode ? LString.titleNewEntry : LString.titleEntry
 
         entry.touch(.accessed)
         (fields, tagsField) = setupFields(entry: entry)

@@ -898,7 +898,7 @@ final class GroupViewerVC:
 
         let popoverAnchor = PopoverAnchor(barButtonItem: button)
         let createGroupAction = UIAction(
-            title: LString.actionCreateGroup,
+            title: LString.titleNewGroup,
             image: .symbol(.folderBadgePlus),
             attributes: actionPermissions.canCreateGroup ? [] : [.disabled],
             handler: { [weak self, popoverAnchor] _ in
@@ -908,7 +908,7 @@ final class GroupViewerVC:
         )
 
         let createSmartGroupAction = UIAction(
-            title: LString.actionCreateSmartGroup,
+            title: LString.titleNewSmartGroup,
             image: .symbol(.folderGridBadgePlus),
             attributes: actionPermissions.canCreateGroup ? [] : [.disabled],
             handler: { [weak self, popoverAnchor] _ in
@@ -918,7 +918,7 @@ final class GroupViewerVC:
         )
 
         let createEntryAction = UIAction(
-            title: LString.actionCreateEntry,
+            title: LString.titleNewEntry,
             image: .symbol(.docBadgePlus),
             attributes: actionPermissions.canCreateEntry ? [] : [.disabled],
             handler: { [weak self, popoverAnchor] _ in

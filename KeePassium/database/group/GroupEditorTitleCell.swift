@@ -109,7 +109,7 @@ final class GroupEditorTitleCell: UITableViewCell {
 
     public func focus() {
         nameTextField.becomeFirstResponder()
-        if nameTextField.text == LString.defaultNewGroupName {
+        if [LString.defaultNewGroupName, LString.defaultNewSmartGroupName].contains(nameTextField.text) {
             nameTextField.selectAll(nil)
         }
     }

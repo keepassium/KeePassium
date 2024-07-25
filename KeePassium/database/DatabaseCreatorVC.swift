@@ -70,7 +70,7 @@ class DatabaseCreatorVC: UIViewController, BusyStateIndicating {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = LString.titleCreateDatabase
+        navigationItem.title = LString.titleNewDatabase
 
         view.backgroundColor = ImageAsset.backgroundPattern.asColor()
         view.layer.isOpaque = false

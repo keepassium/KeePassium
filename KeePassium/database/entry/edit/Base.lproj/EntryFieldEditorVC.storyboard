@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dyC-HY-kh4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dyC-HY-kh4">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Edit Entry-->
+        <!--Entry Field EditorVC-->
         <scene sceneID="dEd-KK-5Fq">
             <objects>
                 <tableViewController storyboardIdentifier="EntryFieldEditorVC" id="dyC-HY-kh4" customClass="EntryFieldEditorVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
@@ -472,7 +472,7 @@
                             <outlet property="delegate" destination="dyC-HY-kh4" id="tQJ-WP-lgN"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Edit Entry" id="l3s-Bv-fA1" userLabel="Edit Entry">
+                    <navigationItem key="navigationItem" id="l3s-Bv-fA1" userLabel="Edit Entry">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="pJ7-8j-CZA">
                             <connections>
                                 <action selector="didPressCancel:" destination="dyC-HY-kh4" id="bFu-Eh-1kr"/>
