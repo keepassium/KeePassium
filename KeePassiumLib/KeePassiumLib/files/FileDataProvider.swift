@@ -289,9 +289,9 @@ extension FileDataProvider {
                 return
             }
 
-            Diag.debug("Starting coordinated file access")
+            Diag.verbose("Starting coordinated file access")
             fileOperation(intent.url)
-            Diag.debug("Coordinated file access finished")
+            Diag.verbose("Coordinated file access finished")
         }
     }
 }

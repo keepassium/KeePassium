@@ -147,7 +147,7 @@ class SettingsBackupVC: UITableViewController {
             guard var url = try? ref.resolveSync() else {
                 continue
             }
-            guard url.setExcludedFromBackup(isExclude) else {
+            guard url.setFileAttribute(.excludedFromBackup, to: isExclude) else {
                 Diag.debug("Failed to exclude backup file from backup [file: \(url.lastPathComponent)]")
                 continue
             }

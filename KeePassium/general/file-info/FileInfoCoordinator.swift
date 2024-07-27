@@ -75,22 +75,20 @@ final class FileInfoCoordinator: Coordinator {
     }
 
     func refresh() {
-        fileInfoVC.showBusyIndicator(true, animated: false)
-        fileInfoVC.updateFileInfo(fileInfo, error: nil) 
+        fileInfoVC.showBusyIndicator(true, animated: true)
+        fileInfoVC.updateFileInfo(fileInfo, error: nil)
 
         fileRef.refreshInfo { [weak self] result in
             guard let self = self else { return }
             let fileInfoVC = self.fileInfoVC
-            fileInfoVC.showBusyIndicator(false, animated: false)
+            fileInfoVC.showBusyIndicator(false, animated: true)
             switch result {
             case .success(let fileInfo):
                 self.fileInfo = fileInfo
                 fileInfoVC.canExport = self.canExport
-                fileInfoVC.isExcludedFromBackup = fileInfo.isExcludedFromBackup
                 fileInfoVC.updateFileInfo(fileInfo, error: nil)
             case .failure(let accessError):
                 fileInfoVC.canExport = false
-                fileInfoVC.isExcludedFromBackup = nil
                 fileInfoVC.updateFileInfo(nil, error: accessError)
             }
         }
@@ -99,22 +97,22 @@ final class FileInfoCoordinator: Coordinator {
 }
 
 extension FileInfoCoordinator {
-    private func setExcludedFromBackup(_ isExcluded: Bool) {
+    func setFileAttribute(_ attribute: FileInfo.Attribute, to value: Bool) {
         fileRef.resolveAsync(timeout: Timeout(duration: 1.0)) { [weak self] result in
-            guard let self = self else { return }
+            guard let self else { return }
             switch result {
             case .success(var url):
-                if url.setExcludedFromBackup(isExcluded) {
-                    Diag.info("File is \(isExcluded ? "" : "not ")excluded from iTunes/iCloud backup")
-                } else {
+                guard url.setFileAttribute(attribute, to: value) else {
                     Diag.error("Failed to change file attributes.")
-                    self.fileInfoVC.showErrorAlert(LString.errorFailedToChangeFileAttributes)
+                    fileInfoVC.showErrorAlert(LString.errorFailedToChangeFileAttributes)
+                    return
                 }
+                Diag.info("File attribute changed [\(attribute): \(value)]")
             case .failure(let error):
                 Diag.error(error.localizedDescription)
-                self.fileInfoVC.showErrorAlert(error)
+                fileInfoVC.showErrorAlert(error)
             }
-            self.refresh()
+            refresh()
         }
     }
 }
@@ -144,14 +142,15 @@ extension FileInfoCoordinator: FileInfoDelegate {
         )
     }
 
-    func canExcludeFromBackup(in viewController: FileInfoVC) -> Bool {
-        let isLocalFile = fileRef.location.isInternal ||
-                fileRef.fileProvider == .some(.localStorage)
-        let isExclusionAttributeDefined = (fileInfo?.isExcludedFromBackup != nil)
-        return isLocalFile && isExclusionAttributeDefined
+    func shouldShowAttribute(_ attribute: FileInfo.Attribute, in viewController: FileInfoVC) -> Bool {
+        guard fileRef.location.isInternal || fileRef.fileProvider == .some(.localStorage) else {
+            return false
+        }
+        let isAvailable = fileInfo?.attributes[attribute] != nil
+        return isAvailable
     }
 
-    func didChangeExcludeFromBackup(shouldExclude: Bool, in viewController: FileInfoVC) {
-        setExcludedFromBackup(shouldExclude)
+    func didChangeAttribute(_ attribute: FileInfo.Attribute, to value: Bool, in viewController: FileInfoVC) {
+        setFileAttribute(attribute, to: value)
     }
 }

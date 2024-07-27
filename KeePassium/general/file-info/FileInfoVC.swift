@@ -11,8 +11,8 @@ import KeePassiumLib
 protocol FileInfoDelegate: AnyObject {
     func didPressEliminate(at popoverAnchor: PopoverAnchor, in viewController: FileInfoVC)
     func didPressExport(at popoverAnchor: PopoverAnchor, in viewController: FileInfoVC)
-    func canExcludeFromBackup(in viewController: FileInfoVC) -> Bool
-    func didChangeExcludeFromBackup(shouldExclude: Bool, in viewController: FileInfoVC)
+    func shouldShowAttribute(_ attribute: FileInfo.Attribute, in viewController: FileInfoVC) -> Bool
+    func didChangeAttribute(_ attribute: FileInfo.Attribute, to value: Bool, in viewController: FileInfoVC)
 }
 
 final class FileInfoVC: UITableViewController, Refreshable {
@@ -22,19 +22,23 @@ final class FileInfoVC: UITableViewController, Refreshable {
         static let switchCell = "SwitchCell"
     }
 
+    private enum Section {
+        case info
+        case attributes([FileInfo.Attribute])
+    }
+
     public weak var delegate: FileInfoDelegate?
 
     public var canExport: Bool = false
-    public var isExcludedFromBackup: Bool? 
     public var fileRef: URLReference!
     public var fileType: FileType!
 
     private var exportBarButton: UIBarButtonItem! 
     private var eliminateBarButton: UIBarButtonItem! 
     private var fields = [FileInfoField]()
-    private var canExcludeFromBackup: Bool {
-        delegate?.canExcludeFromBackup(in: self) ?? false
-    }
+    private var attributes = FileInfo.Attributes()
+    private var sections = [Section]()
+
     private lazy var titleView: SpinnerLabel = {
         let view = SpinnerLabel(frame: .zero)
         view.label.text = LString.FileInfo.title
@@ -46,7 +50,6 @@ final class FileInfoVC: UITableViewController, Refreshable {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(SwitchCell.classForCoder(), forCellReuseIdentifier: CellID.switchCell)
-        tableView.sectionFooterHeight = 0
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -87,6 +90,15 @@ final class FileInfoVC: UITableViewController, Refreshable {
 
     func refresh() {
         setupToolbar()
+
+        let visibleAttributes = FileInfo.Attribute.allCases.filter {
+            attributes.keys.contains($0) && delegate?.shouldShowAttribute($0, in: self) ?? false
+        }
+        if visibleAttributes.isEmpty {
+            sections = [.info]
+        } else {
+            sections = [.info, .attributes(visibleAttributes)]
+        }
         tableView.reloadData()
     }
 
@@ -95,6 +107,7 @@ final class FileInfoVC: UITableViewController, Refreshable {
     }
 
     public func updateFileInfo(_ fileInfo: FileInfo?, error: FileAccessError?) {
+        attributes = fileInfo?.attributes ?? [:]
         var newFields = makeFields(fileInfo: fileInfo)
         if let error = error {
             newFields.append(FileInfoField(
@@ -102,26 +115,8 @@ final class FileInfoVC: UITableViewController, Refreshable {
                 value: error.localizedDescription
             ))
         }
-
-        let oldSectionCount = tableView.numberOfSections
-        let newSectionCount = self.numberOfSections(in: tableView)
-
         fields = newFields
-        if newSectionCount > oldSectionCount {
-            tableView.performBatchUpdates({ [self] in
-                tableView.reloadSections([0], with: .fade)
-                tableView.insertSections([1], with: .fade)
-            }, completion: nil)
-        } else if newSectionCount < oldSectionCount {
-            tableView.performBatchUpdates({ [self] in
-                tableView.deleteSections([1], with: .fade)
-                tableView.reloadSections([0], with: .automatic)
-            }, completion: nil)
-        } else {
-            let sections = IndexSet(integersIn: 0..<newSectionCount)
-            tableView.reloadSections(sections, with: .none)
-        }
-        setupToolbar()
+        refresh()
     }
 
     private func setupToolbar() {
@@ -219,57 +214,57 @@ final class FileInfoVC: UITableViewController, Refreshable {
 
 extension FileInfoVC {
     override func numberOfSections(in tableView: UITableView) -> Int {
-        if canExcludeFromBackup {
-            return 2
-        } else {
-            return 1
-        }
+        return sections.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
+        switch sections[section] {
+        case .info:
             return fields.count
-        case 1:
-            return canExcludeFromBackup ? 1 : 0
-        default:
-            assertionFailure()
-            return 0
+        case let .attributes(attributes):
+            return attributes.count
         }
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
+        switch sections[section] {
+        case .info:
             return nil
-        case 1:
-            return LString.titleFileBackupSettings
-        default:
-            return super.tableView(tableView, titleForHeaderInSection: section)
+        case .attributes:
+            return LString.titleFileAttributes
         }
+    }
+
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        switch sections[section] {
+        case .attributes(let attributes):
+            if attributes.contains(where: { $0 == .hidden }) {
+                return LString.descriptionHiddenFileAttribute
+            }
+        default:
+            break
+        }
+        return nil
     }
 
     override func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        switch indexPath.section {
-        case 0:
+        switch sections[indexPath.section] {
+        case .info:
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: CellID.fieldCell,
                 for: indexPath)
             configureFieldCell(cell, field: fields[indexPath.row])
             return cell
-        case 1:
-            assert(isExcludedFromBackup != nil)
+        case let .attributes(attributes):
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: CellID.switchCell,
                 for: indexPath)
                 as! SwitchCell
-            configureExcludeFromBackupCell(cell)
+            configureAttributeCell(cell, attribute: attributes[indexPath.row])
             return cell
-        default:
-            preconditionFailure("Unexpected section number")
         }
     }
 
@@ -278,13 +273,25 @@ extension FileInfoVC {
         cell.detailTextLabel?.text = field.value
     }
 
-    private func configureExcludeFromBackupCell(_ cell: SwitchCell) {
-        cell.imageView?.image = .symbol(.xmarkICloud)
-        cell.textLabel?.text = LString.titleExcludeFromBackup
-        cell.theSwitch.isOn = isExcludedFromBackup ?? cell.theSwitch.isOn
+    private func configureAttributeCell(_ cell: SwitchCell, attribute: FileInfo.Attribute) {
+        assert(attributes[attribute] != nil)
+        cell.imageView?.image = attribute.icon
+        cell.textLabel?.text = attribute.title
+        cell.theSwitch.isOn = (attributes[attribute] == true)
         cell.onDidToggleSwitch = { [weak self] cellSwitch in
-            guard let self = self else { return }
-            self.delegate?.didChangeExcludeFromBackup(shouldExclude: cellSwitch.isOn, in: self)
+            guard let self else { return }
+            delegate?.didChangeAttribute(attribute, to: cellSwitch.isOn, in: self)
+        }
+    }
+}
+
+extension FileInfo.Attribute {
+    var icon: UIImage? {
+        switch self {
+        case .excludedFromBackup:
+            return UIImage.symbol(.xmarkICloud)
+        case .hidden:
+            return UIImage.symbol(.eye)
         }
     }
 }

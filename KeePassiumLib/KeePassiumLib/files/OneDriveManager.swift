@@ -212,7 +212,7 @@ extension OneDriveManager {
                         iso8601string: infoDict[OneDriveAPI.Keys.createdDateTime] as? String),
                     modificationDate: Date(
                         iso8601string: infoDict[OneDriveAPI.Keys.lastModifiedDateTime] as? String),
-                    isExcludedFromBackup: nil,
+                    attributes: [:],
                     isInTrash: false
                 ),
                 driveInfo: folder.driveInfo
@@ -346,7 +346,7 @@ extension OneDriveManager {
                 fileSize: json[OneDriveAPI.Keys.size] as? Int64,
                 creationDate: Date(iso8601string: json[OneDriveAPI.Keys.createdDateTime] as? String),
                 modificationDate: Date(iso8601string: json[OneDriveAPI.Keys.lastModifiedDateTime] as? String),
-                isExcludedFromBackup: nil,
+                attributes: [:],
                 isInTrash: false
             ),
             driveInfo: itemDriveInfo

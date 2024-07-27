@@ -879,7 +879,7 @@ public class FileKeeper {
                 ofItemAtPath: backupFileURL.path)
 
             let isExcludeFromBackup = Settings.current.isExcludeBackupFilesFromSystemBackup
-            backupFileURL.setExcludedFromBackup(isExcludeFromBackup)
+            backupFileURL.setFileAttribute(.excludedFromBackup, to: isExcludeFromBackup)
             if let newlyTimestampedSHA256 = newlyTimestampedSHA256 {
                 do {
                     try backupFileURL.setExtendedAttribute(

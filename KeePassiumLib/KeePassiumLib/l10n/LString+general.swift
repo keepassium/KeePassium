@@ -877,7 +877,24 @@ extension LString {
         value: "Backup",
         comment: "Section header: file backup settings"
     )
-
+    public static let titleFileAttributes = NSLocalizedString(
+        "[FileInfo/Attributes/header]",
+        bundle: Bundle.framework,
+        value: "File Attributes",
+        comment: "Section header for attributes of a file (e.g. hidden, excluded from backup, etc)"
+    )
+    public static let titleHiddenFileAttribute = NSLocalizedString(
+        "[FileInfo/Attributes/Hidden/title]",
+        bundle: Bundle.framework,
+        value: "Hidden",
+        comment: "Title of a setting: is the file hidden"
+    )
+    public static let descriptionHiddenFileAttribute = NSLocalizedString(
+        "[FileInfo/Attributes/Hidden/warning]",
+        bundle: Bundle.framework,
+        value: "Hidden files are less visible to a casual user, but don't improve data security.",
+        comment: "Warning message for 'hidden' files."
+    )
     public static let errorFailedToChangeFileAttributes = NSLocalizedString(
         "[FileInfo/Error/failed to change attributes]",
         bundle: Bundle.framework,

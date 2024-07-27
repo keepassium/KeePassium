@@ -8,40 +8,6 @@
 
 import UIKit
 
-public struct FileInfo: Equatable {
-    public var fileName: String
-    public var fileSize: Int64?
-    public var creationDate: Date?
-    public var modificationDate: Date?
-    public var isExcludedFromBackup: Bool?
-    public var isInTrash: Bool
-
-    public init(
-        fileName: String,
-        fileSize: Int64? = nil,
-        creationDate: Date? = nil,
-        modificationDate: Date? = nil,
-        isExcludedFromBackup: Bool? = nil,
-        isInTrash: Bool
-    ) {
-        self.fileName = fileName
-        self.fileSize = fileSize
-        self.creationDate = creationDate
-        self.modificationDate = modificationDate
-        self.isExcludedFromBackup = isExcludedFromBackup
-        self.isInTrash = isInTrash
-    }
-
-    public static func == (lhs: FileInfo, rhs: FileInfo) -> Bool {
-        return lhs.fileName == rhs.fileName
-            && lhs.fileSize == rhs.fileSize
-            && lhs.creationDate == rhs.creationDate
-            && lhs.modificationDate == rhs.modificationDate
-            && lhs.isExcludedFromBackup == rhs.isExcludedFromBackup
-            && lhs.isInTrash == rhs.isInTrash
-    }
-}
-
 final public class URLReference:
     Equatable,
     Hashable,

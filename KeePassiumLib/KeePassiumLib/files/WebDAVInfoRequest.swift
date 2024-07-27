@@ -66,7 +66,7 @@ final class WebDAVInfoRequest: WebDAVRequestBase {
             fileSize: Int64(contentLength),
             creationDate: nil,
             modificationDate: lastModifiedDate,
-            isExcludedFromBackup: nil,
+            attributes: [:],
             isInTrash: false
         )
         completionQueue.addOperation {
