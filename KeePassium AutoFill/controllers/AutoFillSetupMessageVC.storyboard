@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Auto Fill Setup MessageVC-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="AutoFillSetupMessageVC" id="Y6W-OH-hqX" customClass="AutoFillSetupMessageVC" customModule="KeePassium_AutoFill" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="{Message}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRf-km-i62">
+                                <rect key="frame" x="16" y="36" width="288" height="20.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" name="PrimaryText"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="IVn-lK-y8z">
+                                <rect key="frame" x="16" y="517" width="288" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="414" id="8ff-Fz-In6"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="{OK}"/>
+                                <connections>
+                                    <action selector="didPressOK:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="7PO-gq-mub"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="288" placeholderIntrinsicHeight="150" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="44" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="dgc-Gf-eyB" customClass="ContentSizedTableView" customModule="KeePassium_AutoFill" customModuleProvider="target">
+                                <rect key="frame" x="16" y="72.5" width="288" height="150"/>
+                                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="IPn-DA-An4"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" systemColor="separatorColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="IVn-lK-y8z" secondAttribute="bottom" constant="16" id="2uL-dx-Xhc"/>
+                            <constraint firstItem="IVn-lK-y8z" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="3AH-pt-bbw"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="IVn-lK-y8z" secondAttribute="trailing" constant="16" id="4eT-wO-VXR"/>
+                            <constraint firstItem="IVn-lK-y8z" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" priority="250" id="6cI-TF-p6a"/>
+                            <constraint firstItem="IVn-lK-y8z" firstAttribute="top" relation="greaterThanOrEqual" secondItem="dgc-Gf-eyB" secondAttribute="bottom" constant="16" id="BpD-gd-fDu"/>
+                            <constraint firstItem="QRf-km-i62" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="16" id="C6Z-2v-MQ8"/>
+                            <constraint firstItem="IVn-lK-y8z" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="Uk6-KC-fuz"/>
+                            <constraint firstItem="dgc-Gf-eyB" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="XIU-Aj-OTw"/>
+                            <constraint firstItem="dgc-Gf-eyB" firstAttribute="top" secondItem="QRf-km-i62" secondAttribute="bottom" constant="16" id="gmP-sh-upq"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="dgc-Gf-eyB" secondAttribute="trailing" priority="250" constant="16" id="hTv-N1-JGM"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="QRf-km-i62" secondAttribute="trailing" constant="16" id="pdZ-7a-B2A"/>
+                            <constraint firstItem="dgc-Gf-eyB" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" priority="250" constant="16" id="qMa-JS-rcP"/>
+                            <constraint firstItem="QRf-km-i62" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="s34-x8-sno"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bodyLabel" destination="QRf-km-i62" id="a8P-1V-O9X"/>
+                        <outlet property="button" destination="IVn-lK-y8z" id="z0b-I8-HvA"/>
+                        <outlet property="tableView" destination="dgc-Gf-eyB" id="m7w-sM-RJK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="-2"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="PrimaryText">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <systemColor name="separatorColor">
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

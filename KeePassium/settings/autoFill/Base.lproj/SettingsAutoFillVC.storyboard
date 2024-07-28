@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ei6-22-NXN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ei6-22-NXN">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -21,27 +21,25 @@
                         <sections>
                             <tableViewSection headerTitle="" id="r0b-qe-g8J">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="aSq-s6-gVc" imageView="WKL-cx-hvq" style="IBUITableViewCellStyleDefault" id="Q6S-wx-6gy">
-                                        <rect key="frame" x="0.0" y="39.5" width="320" height="48.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" textLabel="aSq-s6-gVc" imageView="8XU-6z-Ptd" style="IBUITableViewCellStyleDefault" id="Q6S-wx-6gy">
+                                        <rect key="frame" x="0.0" y="39.5" width="320" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q6S-wx-6gy" id="7Nt-pA-o5w">
-                                            <rect key="frame" x="0.0" y="0.0" width="293.5" height="48.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="261.5" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{Setup instructions}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="aSq-s6-gVc">
-                                                    <rect key="frame" x="56" y="0.0" width="229.5" height="48.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{Activate AutoFill}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="aSq-s6-gVc">
+                                                    <rect key="frame" x="56.75" y="0.0" width="196.75" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="ActionTint"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WKL-cx-hvq">
-                                                    <rect key="frame" x="15" y="11" width="26" height="26"/>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8XU-6z-Ptd">
+                                                    <rect key="frame" x="14.25" y="8" width="27.5" height="27"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <imageReference key="image" image="info.circle" catalog="system" symbolScale="large"/>
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large" weight="regular">
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    </preferredSymbolConfiguration>
+                                                    <imageReference key="image" image="gear" catalog="system" symbolScale="large"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -51,7 +49,7 @@
                             <tableViewSection headerTitle="" footerTitle="{Quick AutoFill description}" id="KaG-pD-D9z">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="ymn-Ga-UJN">
-                                        <rect key="frame" x="0.0" y="135" width="320" height="51.5"/>
+                                        <rect key="frame" x="0.0" y="130" width="320" height="51.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ymn-Ga-UJN" id="wZ9-Hz-1qs">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
@@ -113,7 +111,7 @@
                             <tableViewSection headerTitle="Automatic search" footerTitle="When AutoFill finds only one, perfectly matching, entry – this entry will be pasted automatically." id="jYl-ks-dFG" userLabel="Automatic search">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="R2t-YZ-TJF">
-                                        <rect key="frame" x="0.0" y="262" width="320" height="65"/>
+                                        <rect key="frame" x="0.0" y="257" width="320" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="R2t-YZ-TJF" id="Gjp-69-EKT">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
@@ -164,7 +162,7 @@
                             <tableViewSection headerTitle="One-time passwords" footerTitle="When AutoFill inserts the username and password, it can also copy the one-time password (OTP) for you." id="XYL-1l-Jx6">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="GKe-BK-Kaa">
-                                        <rect key="frame" x="0.0" y="434.5" width="320" height="51.5"/>
+                                        <rect key="frame" x="0.0" y="429.5" width="320" height="51.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GKe-BK-Kaa" id="vYX-KL-3FJ">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
@@ -242,7 +240,7 @@
         <image name="bolt" catalog="system" width="100" height="128"/>
         <image name="chevron.forward.2" catalog="system" width="128" height="108"/>
         <image name="ellipsis.rectangle" catalog="system" width="128" height="79"/>
-        <image name="info.circle" catalog="system" width="128" height="123"/>
+        <image name="gear" catalog="system" width="128" height="122"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <namedColor name="ActionTint">
             <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

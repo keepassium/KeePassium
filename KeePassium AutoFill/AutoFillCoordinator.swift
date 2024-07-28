@@ -28,6 +28,7 @@ class AutoFillCoordinator: NSObject, Coordinator {
 
     private var hasUI = false
     private var isStarted = false
+    private var isInDeviceAutoFillSettings = false
 
     private var databasePickerCoordinator: DatabasePickerCoordinator!
     private var entryFinderCoordinator: EntryFinderCoordinator?
@@ -104,6 +105,11 @@ class AutoFillCoordinator: NSObject, Coordinator {
         watchdog.didBecomeActive()
     }
 
+    func prepareConfigurationUI() {
+        log.trace("Coordinator prepares configuration UI")
+        isInDeviceAutoFillSettings = true
+    }
+
     func start() {
         guard !isStarted else {
             return
@@ -111,6 +117,14 @@ class AutoFillCoordinator: NSObject, Coordinator {
         isStarted = true
 
         log.trace("Coordinator is starting the UI")
+        if isInDeviceAutoFillSettings {
+            rootController.showChildViewController(router.navigationController)
+            DispatchQueue.main.async { [weak self] in
+                self?.showUncheckKeychainMessage()
+            }
+            return
+        }
+
         if !isAppLockVisible {
             rootController.showChildViewController(router.navigationController)
             if isNeedsOnboarding() {
@@ -257,6 +271,14 @@ extension AutoFillCoordinator {
         let firstSetupVC = FirstSetupVC.make(delegate: self)
         firstSetupVC.navigationItem.hidesBackButton = true
         router.present(firstSetupVC, animated: false, completion: nil)
+    }
+
+    private func showUncheckKeychainMessage() {
+        let setupMessageVC = AutoFillSetupMessageVC.instantiateFromStoryboard()
+        setupMessageVC.completionHanlder = { [weak self] in
+            self?.extensionContext.completeExtensionConfigurationRequest()
+        }
+        router.push(setupMessageVC, animated: true, onPop: nil)
     }
 
     private func showCrashReport() {

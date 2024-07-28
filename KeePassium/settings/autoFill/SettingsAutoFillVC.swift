@@ -32,6 +32,8 @@ final class SettingsAutoFillVC: UITableViewController {
 
     private var settingsNotifications: SettingsNotifications!
     private var isAutoFillEnabled = false
+    private var setupURL = URL.AppHelp.autoFillSetupGuide
+    private var hasSetupFailed = false
 
 
     override func viewDidLoad() {
@@ -77,10 +79,17 @@ final class SettingsAutoFillVC: UITableViewController {
         #else
         isAutoFillEnabled = QuickTypeAutoFillStorage.isEnabled
         #endif
-        if isAutoFillEnabled {
+
+        setupInstructionsCell.imageView?.preferredSymbolConfiguration = .init(scale: .large)
+        setupInstructionsCell.imageView?.image = .symbol(isAutoFillEnabled ? .infoCircle : .gear)
+        if isAutoFillEnabled || hasSetupFailed {
             setupInstructionsCell.textLabel?.text = LString.titleAutoFillSetupGuide
+            setupInstructionsCell.accessoryType = .none
+            setupURL = URL.AppHelp.autoFillSetupGuide
         } else {
             setupInstructionsCell.textLabel?.text = LString.actionActivateAutoFill
+            setupInstructionsCell.accessoryType = .detailButton
+            setupURL = URL.Prefs.autoFillPreferences
         }
 
         quickAutoFillCell.setEnabled(isAutoFillEnabled)
@@ -100,7 +109,23 @@ final class SettingsAutoFillVC: UITableViewController {
     }
 
 
-    private func didPressSetupInstructions() {
+    private func didPressOpenSystemSettings() {
+        URLOpener(AppGroup.applicationShared).open(
+            url: setupURL,
+            completionHandler: { [weak self] success in
+                guard let self else { return }
+                if !success {
+                    Diag.error("Failed to open AutoFill setup page")
+                    HapticFeedback.play(.error)
+                    hasSetupFailed = true
+                    refresh()
+                    setupInstructionsCell.shake()
+                }
+            }
+        )
+    }
+
+    private func didPressMoreInfo() {
         URLOpener(AppGroup.applicationShared).open(
             url: URL.AppHelp.autoFillSetupGuide,
             completionHandler: { success in
@@ -156,7 +181,17 @@ extension SettingsAutoFillVC {
         let cell = tableView.cellForRow(at: indexPath)
         switch cell {
         case setupInstructionsCell:
-            didPressSetupInstructions()
+            didPressOpenSystemSettings()
+        default:
+            return
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        switch cell {
+        case setupInstructionsCell:
+            didPressMoreInfo()
         default:
             return
         }

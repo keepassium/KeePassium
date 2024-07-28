@@ -10,6 +10,14 @@ import Foundation
 import UIKit
 
 struct OnboardingStep {
+    enum Identifier {
+        case intro
+        case dataProtection
+        case appProtection
+        case autoFill
+        case databaseSetup
+    }
+    let id: Identifier
     let title: String?
     let text: String?
     let canSkip: Bool
@@ -18,6 +26,7 @@ struct OnboardingStep {
     let skipAction: UIAction?
 
     init(
+        id: Identifier,
         title: String? = nil,
         text: String? = nil,
         canSkip: Bool = true,
@@ -25,6 +34,7 @@ struct OnboardingStep {
         actions: [UIAction],
         skipAction: UIAction? = nil
     ) {
+        self.id = id
         self.title = title
         self.text = text
         self.canSkip = canSkip

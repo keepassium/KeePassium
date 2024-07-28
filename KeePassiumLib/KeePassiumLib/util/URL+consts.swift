@@ -9,6 +9,20 @@
 import UIKit
 
 extension URL {
+    public enum Prefs {
+        private static let autoFillPreferencesURL_macOS =
+            URL(string: "x-apple.systempreferences:com.apple.Passwords-Settings.extension?Options")!
+
+        private static let autoFillPreferencesURL_iOS = URL(string: "App-prefs:PASSWORDS&path=PASSWORD_OPTIONS")!
+
+        public static var autoFillPreferences: URL {
+            if ProcessInfo.isRunningOnMac {
+                return autoFillPreferencesURL_macOS
+            } else {
+                return autoFillPreferencesURL_iOS
+            }
+        }
+    }
     public enum AppHelp {
         public static let helpIndex = URL(string: "https://keepassium.com/apphelp/")!
 

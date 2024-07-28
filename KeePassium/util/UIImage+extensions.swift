@@ -50,6 +50,7 @@ public enum SymbolName: String {
     case onboardingFaceID = "onboarding-faceid"
     case onboardingTouchID = "onboarding-touchid"
     case onboardingOpticID = "onboarding-opticid"
+    case onboardingAutoFill = "onboarding-autofill"
 
     case antCircle = "ant.circle"
     case arrowLeftAndRight = "arrow.left.and.right"
@@ -91,6 +92,7 @@ public enum SymbolName: String {
     case folder = "folder"
     case folderBadgePlus = "folder.badge.plus"
     case folderGridBadgePlus = "square.grid.3x1.folder.badge.plus"
+    case gear = "gear"
     case gearshape2 = "gearshape.2"
     case globe = "globe"
     case heart = "heart"

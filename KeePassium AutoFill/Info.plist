@@ -82,6 +82,18 @@
 		<string>MainInterface</string>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.authentication-services-credential-provider-ui</string>
+        <key>NSExtensionAttributes</key>
+        <dict>
+            <key>ASCredentialProviderExtensionShowsConfigurationUI</key>
+            <true/>
+            <key>ASCredentialProviderExtensionCapabilities</key>
+            <dict>
+                <key>ProvidesPasswords</key>
+                <true/>
+                <key>ShowsConfigurationUI</key>
+                <true/>
+            </dict>
+        </dict>
 	</dict>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Use FaceID to unlock KeePassium</string>

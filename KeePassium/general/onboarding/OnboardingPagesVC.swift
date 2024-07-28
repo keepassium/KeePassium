@@ -23,6 +23,13 @@ final class OnboardingPagesVC: UIPageViewController {
 
     private let steps: [OnboardingStep]
 
+    public var currentStep: OnboardingStep? {
+        guard let currentIndex else {
+            return nil
+        }
+        return steps[currentIndex]
+    }
+
     public var canSkipRemainingSteps: Bool {
         let remainingSteps = steps.suffix(from: currentIndex ?? 0)
         return remainingSteps.allSatisfy { $0.canSkip }
@@ -38,6 +45,7 @@ final class OnboardingPagesVC: UIPageViewController {
         pageControl.pageIndicatorTintColor = .secondaryLabel
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         pageControl.isAccessibilityElement = false
+        pageControl.isUserInteractionEnabled = false
         return pageControl
     }()
 

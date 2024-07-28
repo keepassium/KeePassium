@@ -24,9 +24,11 @@ final class OnboardingCoordinator: Coordinator {
 
     private let router: NavigationRouter
     private var onboardingStepsVC: OnboardingPagesVC!
+    private var autoFillCheckTimer: Timer?
 
     private lazy var onboardingSteps: [OnboardingStep] = [
         OnboardingStep(
+            id: .intro,
             title: LString.Onboarding.introTitle,
             text: [
                 LString.Onboarding.introText1,
@@ -40,6 +42,23 @@ final class OnboardingCoordinator: Coordinator {
             ]
         ),
         OnboardingStep(
+            id: .autoFill,
+            title: LString.Onboarding.autoFillTitle,
+            text: [
+                LString.Onboarding.autoFillText1,
+                LString.Onboarding.autoFillText2,
+            ].joined(separator: "\n"),
+            canSkip: true,
+            illustration: UIImage.symbol(.onboardingAutoFill),
+            actions: [
+                UIAction(title: LString.Onboarding.actionActivateAutoFill) { [unowned self] _ in
+                    self.startAutoFillSetup()
+                },
+            ],
+            skipAction: UIAction(title: LString.actionSkip) { [weak self] _ in self?.showNext() }
+        ),
+        OnboardingStep(
+            id: .dataProtection,
             title: LString.Onboarding.securityTitle,
             text: [
                 LString.Onboarding.securityText1,
@@ -53,6 +72,7 @@ final class OnboardingCoordinator: Coordinator {
             ]
         ),
         OnboardingStep(
+            id: .appProtection,
             title: LString.Onboarding.appProtectionTitle,
             text: LString.Onboarding.appProtectionText1,
             canSkip: !ManagedAppConfig.shared.isRequireAppPasscodeSet,
@@ -65,6 +85,7 @@ final class OnboardingCoordinator: Coordinator {
             skipAction: UIAction(title: LString.actionSkip) { [weak self] _ in self?.showNext() }
         ),
         OnboardingStep(
+            id: .databaseSetup,
             title: LString.Onboarding.databasesTitle,
             text: [
                 LString.Onboarding.databasesText1,
@@ -100,10 +121,20 @@ final class OnboardingCoordinator: Coordinator {
 
     init(router: NavigationRouter) {
         self.router = router
+
+        if isAutoFillEnabledInSystem() || BusinessModel.isIntuneEdition  {
+            onboardingSteps.removeAll(where: { $0.id == .autoFill })
+        }
+
         onboardingStepsVC = OnboardingPagesVC(steps: onboardingSteps)
         onboardingStepsVC.onStateUpdate = { [weak self] onboardingStepsVC in
             self?.router.isModalInPresentation = !onboardingStepsVC.canSkipRemainingSteps
         }
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(appDidBecomeActive),
+            name: UIApplication.didBecomeActiveNotification,
+            object: nil)
     }
 
     deinit {
@@ -135,6 +166,50 @@ final class OnboardingCoordinator: Coordinator {
     private func showNext() {
         if !onboardingStepsVC.showNext() {
             dismiss()
+        }
+    }
+}
+
+extension OnboardingCoordinator {
+    private func startAutoFillSetup() {
+        let urlOpener = URLOpener(AppGroup.applicationShared)
+        urlOpener.open(url: URL.Prefs.autoFillPreferences) { [weak self, weak urlOpener] success in
+            if success {
+                self?.startAutoFillCheckTimer()
+            } else {
+                Diag.error("Failed to open system AutoFill settings, falling back to online guide")
+                urlOpener?.open(url: URL.AppHelp.autoFillSetupGuide)
+            }
+        }
+    }
+
+    private func isAutoFillEnabledInSystem() -> Bool {
+        return QuickTypeAutoFillStorage.isEnabled
+    }
+
+    private func startAutoFillCheckTimer() {
+        guard autoFillCheckTimer == nil else { return }
+        autoFillCheckTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+            self?.checkIfAutoFillSetupComplete()
+        }
+    }
+
+    @objc
+    private func appDidBecomeActive(_ notification: Notification) {
+        checkIfAutoFillSetupComplete()
+    }
+
+    private func checkIfAutoFillSetupComplete() {
+        guard onboardingStepsVC.currentStep?.id == .autoFill else {
+            autoFillCheckTimer?.invalidate()
+            autoFillCheckTimer = nil
+            return
+        }
+        if isAutoFillEnabledInSystem() {
+            Diag.info("AutoFill successfully enabled in system settings")
+            autoFillCheckTimer?.invalidate()
+            autoFillCheckTimer = nil
+            showNext()
         }
     }
 }
@@ -228,6 +303,27 @@ extension LString {
             "[Onboarding/AppProtection/activate]",
             value: "Activate App Protection",
             comment: "Action/button to set up the App Protection feature. Not a call to action."
+        )
+
+        public static let autoFillTitle = NSLocalizedString(
+            "[Onboarding/AutoFill/title]",
+            value: "Password AutoFill",
+            comment: "Title of the Password AutoFill onboarding screen"
+        )
+        public static let autoFillText1 = NSLocalizedString(
+            "[Onboarding/AutoFill/text1]",
+            value: "With AutoFill you can breeze through sign-in pages with a single button press.",
+            comment: "Text in the Password AutoFill onboarding screen."
+        )
+        public static let autoFillText2 = NSLocalizedString(
+            "[Onboarding/AutoFill/text2]",
+            value: "To start, activate Password AutoFill in system settings.",
+            comment: "Text in the Password AutoFill onboarding screen."
+        )
+        public static let actionActivateAutoFill = NSLocalizedString(
+            "[Onboarding/AutoFill/activate]",
+            value: "Activate AutoFill",
+            comment: "Action/button to set up the Password AutoFill feature. Not a call to action."
         )
 
         public static let databasesTitle = NSLocalizedString(

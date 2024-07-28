@@ -72,4 +72,8 @@ class CredentialProviderViewController: ASCredentialProviderViewController {
     ) {
         autoFillCoordinator.provideWithoutUserInteraction(for: credentialIdentity)
     }
+
+    override func prepareInterfaceForExtensionConfiguration() {
+        autoFillCoordinator.prepareConfigurationUI()
+    }
 }
