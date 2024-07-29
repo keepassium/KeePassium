@@ -37,6 +37,7 @@ class Watchdog {
     private var appLockTimer: Timer?
     private var databaseLockTimer: Timer?
     private var isIgnoringMinimizationOnce = false
+    public private(set) var isFirstLaunchAfterRestart = false
 
     private let screenIsLockedNotificationName = Notification.Name(rawValue: "com.apple.screenIsLocked")
     private let screenIsUnlockedNotificationName = Notification.Name(rawValue: "com.apple.screenIsUnlocked")
@@ -205,6 +206,7 @@ class Watchdog {
     private func hasRebootedSinceLastTime() -> Bool {
         guard let currentBootTimestamp = UIDevice.current.bootTime() else {
             Diag.warning("Cannot get boot time, assuming changed")
+            isFirstLaunchAfterRestart = true
             return true
         }
         do {
@@ -216,9 +218,11 @@ class Watchdog {
                 return false
             }
             try Keychain.shared.setDeviceBootTimestamp(currentBootTimestamp)
+            isFirstLaunchAfterRestart = true
             return true
         } catch {
             Diag.error("Keychain access error, assuming boot time changed")
+            isFirstLaunchAfterRestart = true
             return true
         }
     }

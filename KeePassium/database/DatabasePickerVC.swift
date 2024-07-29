@@ -198,6 +198,16 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         settingsNotifications.startObserving()
         refresh()
         UIAccessibility.post(notification: .screenChanged, argument: tableView)
+
+        if mode == .autoFill,
+           Watchdog.shared.isFirstLaunchAfterRestart
+        {
+            showNotification(
+                LString.messageLocalFilesMissing,
+                image: .symbol(.exclamationMarkTriangle),
+                position: .center
+            )
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {

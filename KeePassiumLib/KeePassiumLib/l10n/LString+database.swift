@@ -312,6 +312,11 @@ extension LString {
         bundle: Bundle.framework,
         value: "Databases",
         comment: "Title of the database picker list")
+    public static let messageLocalFilesMissing = NSLocalizedString(
+        "[Database/List/LocalMissing/message]",
+        bundle: Bundle.framework,
+        value: "If some local files are not listed, launch the main KeePassium app first.",
+        comment: "Recommendation for solving a problem with a list of files.")
 
     public static let titleShowBackupFiles = NSLocalizedString(
         "Show Backup Files",
