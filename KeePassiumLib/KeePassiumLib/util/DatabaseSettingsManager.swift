@@ -149,13 +149,13 @@ public class DatabaseSettingsManager {
         _ databaseRef: URLReference
     ) -> Set<UnreachableFileFallbackStrategy> {
         switch databaseRef.location {
-        case .internalDocuments,
-             .internalBackup,
+        case .internalBackup,
              .internalInbox:
             return [.showError]
         case .external:
             return [.showError, .useCache, .reAddDatabase]
-        case .remote:
+        case .internalDocuments,
+             .remote:
             return [.showError, .useCache]
         }
     }
