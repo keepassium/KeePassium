@@ -190,7 +190,9 @@ extension DatabaseSettingsVC {
 
     private func configureReadOnlyCell(_ cell: SwitchCell) {
         cell.textLabel?.text = LString.titleFileAccessReadOnly
-        cell.theSwitch.isEnabled = delegate?.canChangeReadOnly(in: self) ?? false
+        let isEnabled = delegate?.canChangeReadOnly(in: self) ?? false
+        cell.setEnabled(isEnabled)
+        cell.theSwitch.isEnabled = isEnabled
         cell.theSwitch.isOn = isReadOnlyAccess
 
         cell.textLabel?.isAccessibilityElement = false
