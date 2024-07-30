@@ -113,10 +113,8 @@ final class GroupViewerVC:
 
     weak var delegate: GroupViewerDelegate?
 
-    @IBOutlet private weak var sortOrderButton: UIBarButtonItem!
-    @IBOutlet private weak var databaseMenuButton: UIBarButtonItem!
+    @IBOutlet private weak var toolsMenuButton: UIBarButtonItem!
     @IBOutlet private weak var reloadDatabaseButton: UIBarButtonItem!
-    @IBOutlet private weak var passwordGeneratorButton: UIBarButtonItem!
     @IBOutlet private weak var appSettingsButton: UIBarButtonItem!
 
     weak var group: Group? {
@@ -212,9 +210,7 @@ final class GroupViewerVC:
         navigationItem.rightBarButtonItem = groupActionsButton
 
         navigationItem.titleView = titleView
-        sortOrderButton.title = LString.titleSortOrder
         reloadDatabaseButton.title = LString.actionReloadDatabase
-        passwordGeneratorButton.title = LString.PasswordGenerator.titleRandomGenerator
         appSettingsButton.title = LString.titleSettings
 
         settingsNotifications = SettingsNotifications(observer: self)
@@ -313,9 +309,7 @@ final class GroupViewerVC:
 
         actionPermissions = delegate?.getActionPermissions(for: group) ?? DatabaseItem.ActionPermissions()
         updateGroupActionsMenuButton()
-        configureDatabaseMenuButton(databaseMenuButton)
-
-        sortOrderButton.menu = makeListSettingsMenu()
+        updateToolsMenuButton(toolsMenuButton)
     }
 
     private func refreshDynamicCells() {
@@ -343,8 +337,8 @@ final class GroupViewerVC:
         entriesSorted.append(contentsOf: weakEntriesSorted)
     }
 
-    private func configureDatabaseMenuButton(_ barButton: UIBarButtonItem) {
-        barButton.title = LString.titleDatabaseOperations
+    private func updateToolsMenuButton(_ barButton: UIBarButtonItem) {
+        barButton.title = LString.titleTools
         let lockDatabaseAction = UIAction(
             title: LString.actionLockDatabase,
             image: .symbol(.lock),
@@ -386,6 +380,15 @@ final class GroupViewerVC:
                 self.delegate?.didPressFaviconsDownload(in: self)
             }
         )
+        let passwordGeneratorAction = UIAction(
+            title: LString.PasswordGenerator.titleRandomGenerator,
+            image: .symbol(.dieFace3),
+            handler: { [weak self, weak barButton] _ in
+                guard let self, let barButton else { return }
+                let popoverAnchor = PopoverAnchor(barButtonItem: barButton)
+                self.delegate?.didPressPasswordGenerator(at: popoverAnchor, in: self)
+            }
+        )
 
         let encryptionSettingsAction = UIAction(
             title: LString.titleEncryptionSettings,
@@ -402,15 +405,26 @@ final class GroupViewerVC:
             encryptionSettingsAction.attributes.insert(.disabled)
         }
 
-        let frequentMenu = UIMenu(
+        let shouldReverseMenu: Bool
+        if #available(iOS 16, *) {
+            barButton.preferredMenuElementOrder = .fixed
+            shouldReverseMenu = false
+        } else {
+            shouldReverseMenu = true
+        }
+
+        let frequentMenu = UIMenu.make(
+            reverse: shouldReverseMenu,
             options: [.displayInline],
             children: [
+                passwordGeneratorAction,
                 passwordAuditAction,
                 canDownloadFavicons ? faviconsDownloadAction : nil,
                 printDatabaseAction,
             ].compactMap { $0 }
         )
-        let rareMenu = UIMenu(
+        let rareMenu = UIMenu.make(
+            reverse: shouldReverseMenu,
             options: [.displayInline],
             children: [
                 changeMasterKeyAction,
@@ -419,13 +433,10 @@ final class GroupViewerVC:
         )
         let lockMenu = UIMenu(options: [.displayInline], children: [lockDatabaseAction])
 
-        var menuElements = [frequentMenu, rareMenu, lockMenu]
-        if #available(iOS 16, *) {
-            barButton.preferredMenuElementOrder = .fixed
-        } else {
-            menuElements.reverse()
-        }
-        let menu = UIMenu(children: menuElements)
+        let menu = UIMenu.make(
+            reverse: shouldReverseMenu,
+            children: [frequentMenu, rareMenu, lockMenu]
+        )
         barButton.menu = menu
     }
 
@@ -763,9 +774,9 @@ final class GroupViewerVC:
 
     private func makeListSettingsMenu() -> UIMenu {
         let currentDetail = Settings.current.entryListDetail
-        let entrySubtitleActions = Settings.EntryListDetail.allCases.map { entryListDetail in
+        let entrySubtitleActions = Settings.EntryListDetail.allValues.map { entryListDetail in
             UIAction(
-                title: entryListDetail.longTitle,
+                title: entryListDetail.title,
                 state: (currentDetail == entryListDetail) ? .on : .off,
                 handler: { [weak self] _ in
                     Settings.current.entryListDetail = entryListDetail
@@ -775,21 +786,41 @@ final class GroupViewerVC:
         }
         let entrySubtitleMenu = UIMenu.make(
             title: LString.titleEntrySubtitle,
-            reverse: true,
+            subtitle: currentDetail.title,
+            reverse: false,
             options: [],
             children: entrySubtitleActions
         )
 
+        let groupSortOrder = Settings.current.groupSortOrder
+        let reorderItemsAction = UIAction(
+            title: LString.actionReorderItems,
+            image: .symbol(.arrowUpArrowDown),
+            handler: { [weak self] _ in
+                self?.startSelectionMode(animated: true)
+            }
+        )
+        if isSmartGroup
+            || isGroupEmpty
+            || groupSortOrder != .noSorting
+            || !actionPermissions.canEditDatabase
+            || !actionPermissions.canEditItem
+        {
+            reorderItemsAction.attributes.insert(.disabled)
+        }
+
         let sortOrderMenuItems = UIMenu.makeDatabaseItemSortMenuItems(
-            current: Settings.current.groupSortOrder,
+            current: groupSortOrder,
+            reorderAction: reorderItemsAction,
             handler: { [weak self] newSortOrder in
                 Settings.current.groupSortOrder = newSortOrder
                 self?.refresh()
             }
         )
         let sortOrderMenu = UIMenu.make(
-            title: LString.titleSortBy,
-            reverse: true,
+            title: LString.titleSortOrder,
+            subtitle: groupSortOrder.title,
+            reverse: false,
             options: [],
             macOptions: [],
             children: sortOrderMenuItems
@@ -797,8 +828,8 @@ final class GroupViewerVC:
         return UIMenu.make(
             title: "",
             reverse: true,
-            options: [],
-            children: [sortOrderMenu, entrySubtitleMenu]
+            options: [.displayInline],
+            children: [entrySubtitleMenu, sortOrderMenu]
         )
     }
 
@@ -946,27 +977,15 @@ final class GroupViewerVC:
                 self?.startSelectionMode(animated: true)
             }
         )
-        let reorderItemsAction = UIAction(
-            title: LString.actionReorderItems,
-            image: .symbol(.arrowUpArrowDown),
-            handler: { [weak self] _ in
-                self?.startSelectionMode(animated: true)
-            }
-        )
 
         if isSmartGroup {
             createGroupAction.attributes.insert(.disabled)
             createSmartGroupAction.attributes.insert(.disabled)
             createEntryAction.attributes.insert(.disabled)
             selectItemsAction.attributes.insert(.disabled)
-            reorderItemsAction.attributes.insert(.disabled)
         }
         if !actionPermissions.canEditDatabase || !actionPermissions.canEditItem || isGroupEmpty {
-            reorderItemsAction.attributes.insert(.disabled)
             selectItemsAction.attributes.insert(.disabled)
-        }
-        if Settings.current.groupSortOrder != .noSorting {
-            reorderItemsAction.attributes.insert(.disabled)
         }
 
         button.menu = UIMenu.make(
@@ -977,8 +996,8 @@ final class GroupViewerVC:
                 createEntryAction,
                 createGroupAction,
                 supportsSmartGroups ? createSmartGroupAction : nil,
-                UIMenu(options: .displayInline, children: [selectItemsAction, reorderItemsAction]),
-                UIMenu(options: .displayInline, children: [editGroupAction]),
+                UIMenu(options: .displayInline, children: [editGroupAction, selectItemsAction]),
+                makeListSettingsMenu()
             ].compactMap({ $0 })
         )
     }
@@ -1058,11 +1077,6 @@ final class GroupViewerVC:
     @IBAction private func didPressSettings(_ sender: UIBarButtonItem) {
         let popoverAnchor = PopoverAnchor(barButtonItem: sender)
         delegate?.didPressSettings(at: popoverAnchor, in: self)
-    }
-
-    @IBAction private func didPressPasswordGenerator(_ sender: UIBarButtonItem) {
-        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
-        delegate?.didPressPasswordGenerator(at: popoverAnchor, in: self)
     }
 
     @objc

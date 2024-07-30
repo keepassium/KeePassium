@@ -71,9 +71,9 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         case fileItem = "FileItemCell"
     }
     @IBOutlet private weak var aboutButton: UIBarButtonItem!
-    @IBOutlet private weak var addDatabaseBarButton: UIBarButtonItem!
-    @IBOutlet private weak var sortOrderButton: UIBarButtonItem!
+    @IBOutlet private weak var listActionsButton: UIBarButtonItem!
     @IBOutlet private weak var passwordGeneratorButton: UIBarButtonItem!
+    @IBOutlet private weak var refreshButton: UIBarButtonItem!
     @IBOutlet private weak var appSettingsButton: UIBarButtonItem!
 
     public weak var delegate: DatabasePickerDelegate?
@@ -128,8 +128,8 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         setupEmptyView(tableView)
 
         aboutButton.title = LString.titleAboutKeePassium
-        addDatabaseBarButton.title = LString.actionAddDatabase
-        sortOrderButton.title = LString.titleSortOrder
+        listActionsButton.title = LString.titleMoreActions
+        refreshButton.title = LString.actionRefreshList
         passwordGeneratorButton.title = LString.PasswordGenerator.titleRandomGenerator
         appSettingsButton.title = LString.titleSettings
 
@@ -232,10 +232,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
     }
 
     func refresh() {
-        sortOrderButton.menu = makeListSettingsMenu()
-
-        addDatabaseBarButton.primaryAction = nil
-        addDatabaseBarButton.menu = makeAddDatabaseMenu()
+        listActionsButton.menu = makeListActionsMenu()
 
         let includeBackup: Bool
         switch mode {
@@ -309,7 +306,53 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
     }
 
 
-    private func makeListSettingsMenu() -> UIMenu {
+    private func makeListActionsMenu() -> UIMenu {
+        let needPremium = delegate?.needsPremiumToAddDatabase(in: self) ?? true
+        var menuItems = [UIMenuElement]()
+
+        #if MAIN_APP
+        switch mode {
+        case .full, .light:
+            let createDatabaseAction = UIAction(
+                title: LString.titleNewDatabase,
+                image: needPremium ? .premiumBadge : .symbol(.plus),
+                handler: { [weak self] _ in
+                    guard let self = self else { return }
+                    self.delegate?.didPressCreateDatabase(in: self)
+                }
+            )
+            menuItems.append(createDatabaseAction)
+        case .autoFill:
+            assertionFailure("Tried to use .autoFill mode in main app")
+        }
+        #endif
+
+        let openDatabaseAction = UIAction(
+            title: LString.actionOpenDatabase,
+            image: needPremium ? .premiumBadge : .symbol(.folder),
+            handler: { [weak self] _ in
+                guard let self = self else { return }
+                self.delegate?.didPressAddExistingDatabase(in: self)
+            }
+        )
+        menuItems.append(openDatabaseAction)
+
+        let addRemoteDatabaseAction = UIAction(
+            title: LString.actionConnectToServer,
+            image: needPremium ? UIImage.premiumBadge : UIImage.symbol(.network),
+            attributes: [],
+            handler: { [weak self] _ in
+                guard let self = self else { return }
+                self.delegate?.didPressAddRemoteDatabase(in: self)
+            }
+        )
+        let addRemoteDatabaseMenu = UIMenu.make(
+            title: "",
+            reverse: false,
+            options: .displayInline,
+            children: [addRemoteDatabaseAction])
+        menuItems.append(addRemoteDatabaseMenu)
+
         let showBackupAction = UIAction(
             title: LString.titleShowBackupFiles,
             attributes: [],
@@ -321,94 +364,27 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
                 self?.showNotificationIfManaged(setting: .backupFilesVisible)
             }
         )
-        let backupMenu = UIMenu.make(
-            title: LString.titleFileBackupSettings,
-            options: [.displayInline],
-            children: [showBackupAction]
-        )
+        menuItems.append(showBackupAction)
 
+        let currentSortOrder = Settings.current.filesSortOrder
         let sortMenuItems = UIMenu.makeFileSortMenuItems(
-            current: Settings.current.filesSortOrder,
+            current: currentSortOrder,
             handler: { [weak self] newSortOrder in
                 Settings.current.filesSortOrder = newSortOrder
                 self?.refresh()
             }
         )
         let sortOptionsMenu = UIMenu.make(
-            title: LString.titleSortBy,
-            reverse: true,
-            options: [.displayInline],
+            title: LString.titleSortOrder,
+            subtitle: currentSortOrder.title,
+            reverse: false,
+            options: [],
             macOptions: [],
             children: sortMenuItems
         )
+        menuItems.append(sortOptionsMenu)
 
-        let listMenuTitle: String
-        if #available(iOS 16, *) {
-            listMenuTitle = ""
-        } else {
-            listMenuTitle = LString.titleSortBy
-        }
-
-        return UIMenu.make(
-            title: listMenuTitle,
-            reverse: true,
-            children: [sortOptionsMenu, backupMenu])
-    }
-
-    private func makeAddDatabaseMenu() -> UIMenu {
-        let needPremium = delegate?.needsPremiumToAddDatabase(in: self) ?? true
-
-        var databaseMenuItems = [UIMenuElement]()
-        let addDatabaseAction = UIAction(
-            title: LString.actionOpenDatabase,
-            image: needPremium ? .premiumBadge : .symbol(.folder),
-            handler: { [weak self] _ in
-                guard let self = self else { return }
-                self.delegate?.didPressAddExistingDatabase(in: self)
-            }
-        )
-        databaseMenuItems.append(addDatabaseAction)
-
-        #if MAIN_APP
-        switch mode {
-        case .full, .light:
-            let createDatabaseAction = UIAction(
-                title: LString.actionCreateDatabase,
-                image: needPremium ? .premiumBadge : .symbol(.plus),
-                handler: { [weak self] _ in
-                    guard let self = self else { return }
-                    self.delegate?.didPressCreateDatabase(in: self)
-                }
-            )
-            databaseMenuItems.append(createDatabaseAction)
-        case .autoFill:
-            assertionFailure("Tried to use .autoFill mode in main app")
-        }
-        #endif
-
-        let databaseMenu = UIMenu.make(
-            title: "",
-            reverse: false,
-            options: .displayInline,
-            children: databaseMenuItems)
-
-        let addRemoteDatabaseAction = UIAction(
-            title: LString.actionConnectToServer,
-            image: needPremium ? UIImage.premiumBadge : UIImage.symbol(.network),
-            attributes: [],
-            handler: { [weak self] _ in
-                guard let self = self else { return }
-                self.delegate?.didPressAddRemoteDatabase(in: self)
-            }
-        )
-        let networkMenu = UIMenu.make(
-            title: "",
-            reverse: false,
-            options: [.displayInline],
-            children: [addRemoteDatabaseAction]
-        )
-
-        return UIMenu.make(reverse: false, children: [databaseMenu, networkMenu])
+        return UIMenu.make(reverse: false, children: menuItems)
     }
 
 
@@ -427,6 +403,10 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
     @IBAction private func didPressPasswordGeneratorButton(_ sender: UIBarButtonItem) {
         let popoverAnchor = PopoverAnchor(barButtonItem: sender)
         delegate?.didPressPasswordGenerator(at: popoverAnchor, in: self)
+    }
+
+    @IBAction private func didPressRefresh(_ sender: UIBarButtonItem) {
+        refresh()
     }
 
     @objc func didPressCancel(_ sender: UIBarButtonItem) {

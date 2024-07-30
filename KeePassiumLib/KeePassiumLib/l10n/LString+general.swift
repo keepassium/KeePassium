@@ -256,11 +256,23 @@ extension LString {
         value: "Upgrade to Premium",
         comment: "Action/button to start choosing premium versions and possibly buying one")
 
+    public static let titleTools = NSLocalizedString(
+        "[Generic/Tools/title]",
+        bundle: Bundle.framework,
+        value: "Tools",
+        comment: "Title of a menu with various utilities"
+    )
     public static let titleMoreActions = NSLocalizedString(
         "[Generic] More Actions",
         bundle: Bundle.framework,
         value: "More Actions",
         comment: "Checkbox/Button to show additional actions"
+    )
+    public static let titleViewOptions = NSLocalizedString(
+        "[Generic/ViewOptions/title]",
+        bundle: Bundle.framework,
+        value: "View Options",
+        comment: "Title of a screen/list view configuration: sort order, visible items, etc"
     )
     public static let titlePresets = NSLocalizedString(
         "[Generic/Presets]",
@@ -873,6 +885,11 @@ extension LString {
         bundle: Bundle.framework,
         value: "Last Modification Date",
         comment: "Title of a field with entry's last modification date and time")
+    public static let itemModificationDate = NSLocalizedString(
+        "[Entry/History] Modification Date",
+        bundle: Bundle.framework,
+        value: "Modification Date",
+        comment: "Title of a field with entry's modification date and time")
     public static let itemLastAccessDate = NSLocalizedString(
         "[Entry/History] Last Access Date",
         bundle: Bundle.framework,
@@ -936,11 +953,6 @@ extension LString {
         bundle: Bundle.framework,
         value: "New Database",
         comment: "Title of database creation dialog")
-    public static let actionAddDatabase = NSLocalizedString(
-        "[Database/Add/action]",
-        bundle: Bundle.framework,
-        value: "Add Database",
-        comment: "Action: add database (either an existing file or create a new one)")
     public static let actionCreateDatabase = NSLocalizedString(
         "[Database/Create/action] Create Database",
         bundle: Bundle.framework,

@@ -202,7 +202,7 @@ extension AppDelegate {
         builder.insertSibling(preferencesMenu, afterMenu: .about)
 
         let createDatabaseMenuItem = UIKeyCommand(
-            title: LString.actionCreateDatabase,
+            title: LString.titleNewDatabase,
             action: #selector(createDatabase),
             input: "n",
             modifierFlags: [.command, .shift])

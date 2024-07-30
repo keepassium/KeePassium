@@ -12,6 +12,7 @@ extension UIMenu {
 
     public static func make(
         title: String = "",
+        subtitle: String? = nil,
         reverse: Bool = false,
         options: UIMenu.Options = [],
         macOptions: UIMenu.Options? = nil,
@@ -20,11 +21,13 @@ extension UIMenu {
         if ProcessInfo.isRunningOnMac {
             return UIMenu(
                 title: title,
+                subtitle: subtitle,
                 options: macOptions ?? options,
                 children: children)
         } else {
             return UIMenu(
                 title: title,
+                subtitle: subtitle,
                 options: options,
                 children: reverse ? children.reversed() : children)
         }
@@ -34,8 +37,8 @@ extension UIMenu {
         current: Settings.FilesSortOrder,
         handler: @escaping (Settings.FilesSortOrder) -> Void
     ) -> [UIMenuElement] {
-        let sortByNone = UIAction(
-            title: LString.titleSortByNone,
+        let sortOrderCustom = UIAction(
+            title: Settings.FilesSortOrder.noSorting.title,
             attributes: [],
             state: (current == .noSorting) ? .on : .off,
             handler: { _ in
@@ -44,28 +47,28 @@ extension UIMenu {
         )
 
         let sortByName = makeFileSortAction(
-            title: LString.titleSortByFileName,
+            title: Settings.FilesSortOrder.nameAsc.title,
             current: current,
             ascending: .nameAsc,
             descending: .nameDesc,
             handler: handler
         )
         let sortByDateCreated = makeFileSortAction(
-            title: LString.titleSortByDateCreated,
+            title: Settings.FilesSortOrder.creationTimeAsc.title,
             current: current,
             ascending: .creationTimeAsc,
             descending: .creationTimeDesc,
             handler: handler
         )
         let sortByDateModified = makeFileSortAction(
-            title: LString.titleSortByDateModified,
+            title: Settings.FilesSortOrder.modificationTimeAsc.title,
             current: current,
             ascending: .modificationTimeAsc,
             descending: .modificationTimeDesc,
             handler: handler
         )
 
-        return [sortByNone, sortByName, sortByDateCreated, sortByDateModified]
+        return [sortOrderCustom, sortByName, sortByDateCreated, sortByDateModified]
     }
 
     private static func makeFileSortAction(
@@ -111,10 +114,11 @@ extension UIMenu {
 
     public static func makeDatabaseItemSortMenuItems(
         current: Settings.GroupSortOrder,
+        reorderAction: UIAction?,
         handler: @escaping (Settings.GroupSortOrder) -> Void
     ) -> [UIMenuElement] {
-        let sortByNone = UIAction(
-            title: LString.titleSortByNone,
+        let sortOrderCustom = UIAction(
+            title: Settings.GroupSortOrder.noSorting.title,
             attributes: [],
             state: (current == .noSorting) ? .on : .off,
             handler: { _ in
@@ -123,27 +127,31 @@ extension UIMenu {
         )
 
         let sortByItemTitle = makeGroupSortAction(
-            title: LString.titleSortByItemTitle,
+            title: Settings.GroupSortOrder.nameAsc.title,
             current: current,
             ascending: .nameAsc,
             descending: .nameDesc,
             handler: handler
         )
         let sortByDateCreated = makeGroupSortAction(
-            title: LString.titleSortByDateCreated,
+            title: Settings.GroupSortOrder.creationTimeAsc.title,
             current: current,
             ascending: .creationTimeAsc,
             descending: .creationTimeDesc,
             handler: handler
         )
         let sortByDateModified = makeGroupSortAction(
-            title: LString.titleSortByDateModified,
+            title: Settings.GroupSortOrder.modificationTimeAsc.title,
             current: current,
             ascending: .modificationTimeAsc,
             descending: .modificationTimeDesc,
             handler: handler
         )
-        return [sortByNone, sortByItemTitle, sortByDateCreated, sortByDateModified]
+        var result: [UIMenuElement] = [sortByItemTitle, sortByDateCreated, sortByDateModified, sortOrderCustom]
+        if let reorderAction {
+            result.append(UIMenu.make(options: .displayInline, children: [reorderAction]))
+        }
+        return result
     }
 
     private static func makeGroupSortAction(

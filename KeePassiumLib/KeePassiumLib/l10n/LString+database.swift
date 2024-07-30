@@ -250,6 +250,21 @@ extension LString {
         bundle: Bundle.framework,
         value: "Sort Order",
         comment: "Title of a settings section: sort order of groups and entries in a list")
+    public static let titleSortByNone = NSLocalizedString(
+        "[SortBy/None]",
+        bundle: Bundle.framework,
+        value: "None",
+        comment: "List sorting option, when no sorting is selected. Example: 'Sort by: None'")
+    public static let titleSortOrderCustom = NSLocalizedString(
+        "[SortOrder/Custom]",
+        bundle: Bundle.framework,
+        value: "Custom",
+        comment: "List sorting option, when items are manually ordered by the user. Example: 'Sort order: Custom'")
+    public static let titleSortByFileName = NSLocalizedString(
+        "[SortBy/FileName]",
+        bundle: Bundle.framework,
+        value: "Name",
+        comment: "List sorting option (for file names). Example: 'Sort by: Name'")
     public static let titleListSettings = NSLocalizedString(
         "[Settings/ListSettings/title]",
         bundle: Bundle.framework,

@@ -94,18 +94,15 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem image="list.bullet" catalog="system" id="lnO-nD-gvh" userLabel="Sort Order">
-                            <attributedString key="userComments">
-                                <fragment content="Action: show sorting settings of database files"/>
-                            </attributedString>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
-                            </userDefinedRuntimeAttributes>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Sw6-F7-OkZ"/>
                         <barButtonItem title="{PassGen}" image="die.face.3" catalog="system" id="XJs-ol-dGz">
                             <connections>
                                 <action selector="didPressPasswordGeneratorButton:" destination="vWt-yt-cgE" id="KaO-rW-ZHX"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Sw6-F7-OkZ"/>
+                        <barButtonItem systemItem="refresh" id="u5z-QH-ib8">
+                            <connections>
+                                <action selector="didPressRefresh:" destination="vWt-yt-cgE" id="6Z1-Bg-AA5"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Yyg-IS-vi0"/>
@@ -128,15 +125,15 @@
                                 <action selector="didPressHelpButton:" destination="vWt-yt-cgE" id="C2G-nG-7ZZ"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="{Add Database}" image="plus" catalog="system" id="qPq-UR-uZs"/>
+                        <barButtonItem key="rightBarButtonItem" image="ellipsis.circle" catalog="system" id="qPq-UR-uZs" userLabel="List Actions Button"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="aboutButton" destination="2o3-sG-Pcm" id="zak-2n-tnm"/>
-                        <outlet property="addDatabaseBarButton" destination="qPq-UR-uZs" id="a7h-6a-Mnv"/>
                         <outlet property="appSettingsButton" destination="oee-CI-r2x" id="vBM-DG-sKs"/>
+                        <outlet property="listActionsButton" destination="qPq-UR-uZs" id="iZ1-4e-1r8"/>
                         <outlet property="passwordGeneratorButton" destination="XJs-ol-dGz" id="SgO-qU-nJa"/>
-                        <outlet property="sortOrderButton" destination="lnO-nD-gvh" id="JWF-cH-xup"/>
+                        <outlet property="refreshButton" destination="u5z-QH-ib8" id="iNe-uB-ZQy"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7yP-IW-NS6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -147,11 +144,10 @@
     <color key="tintColor" name="ActionTint"/>
     <resources>
         <image name="die.face.3" catalog="system" width="128" height="114"/>
+        <image name="ellipsis.circle" catalog="system" width="128" height="123"/>
         <image name="fp.generic" width="13" height="13"/>
         <image name="gearshape" catalog="system" width="128" height="123"/>
         <image name="info.circle" catalog="system" width="128" height="123"/>
-        <image name="list.bullet" catalog="system" width="128" height="87"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="ActionTint">
             <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

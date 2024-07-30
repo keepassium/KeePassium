@@ -429,7 +429,9 @@ public class Settings {
         }
     }
 
-    public enum EntryListDetail: Int, CaseIterable {
+    public enum EntryListDetail: Int {
+        public static let allValues = [`none`, userName, password, url, notes, tags, lastModifiedDate]
+
         case none
         case userName
         case password
@@ -438,7 +440,7 @@ public class Settings {
         case lastModifiedDate
         case tags
 
-        public var longTitle: String {
+        public var title: String {
             // swiftlint:disable line_length
             switch self {
             case .none:
@@ -448,41 +450,17 @@ public class Settings {
                     value: "None",
                     comment: "An option in Group Viewer settings. Will be shown as 'Entry Subtitle: None', meanining that no entry details will be shown in any lists.")
             case .userName:
-                return NSLocalizedString(
-                    "[Settings/EntryListDetail/longTitle] User Name",
-                    bundle: Bundle.framework,
-                    value: "User Name",
-                    comment: "An option in Group Viewer settings. It refers to login information rather than person's name. Will be shown as 'Entry Subtitle: User Name'.")
+                return LString.fieldUserName
             case .password:
-                return NSLocalizedString(
-                    "[Settings/EntryListDetail/longTitle] Password",
-                    bundle: Bundle.framework,
-                    value: "Password",
-                    comment: "An option in Group Viewer settings. Will be shown as 'Entry Subtitle: Password'.")
+                return LString.fieldPassword
             case .url:
-                return NSLocalizedString(
-                    "[Settings/EntryListDetail/longTitle] URL",
-                    bundle: Bundle.framework,
-                    value: "URL",
-                    comment: "An option in Group Viewer settings. Will be shown as 'Entry Subtitle: URL'.")
+                return LString.fieldURL
             case .notes:
-                return NSLocalizedString(
-                    "[Settings/EntryListDetail/longTitle] Notes",
-                    bundle: Bundle.framework,
-                    value: "Notes",
-                    comment: "An option in Group Viewer settings. Refers to comments/notes field of the entry. Will be shown as 'Entry Subtitle: Notes'.")
+                return LString.fieldNotes
             case .lastModifiedDate:
-                return NSLocalizedString(
-                    "[Settings/EntryListDetail/longTitle] Last Modified Date",
-                    bundle: Bundle.framework,
-                    value: "Last Modified Date",
-                    comment: "An option in Group Viewer settings. Refers to the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'.")
+                return LString.itemLastModificationDate
             case .tags:
-                return NSLocalizedString(
-                    "[Settings/EntryListDetail/longTitle] Tags",
-                    bundle: Bundle.framework,
-                    value: "Tags",
-                    comment: "An option in Group Viewer settings. Refers to the tags field of the entry. Will be shown as 'Entry Subtitle: Tags'.")
+                return LString.fieldTags
             }
             // swiftlint:enable line_length
         }
@@ -514,53 +492,17 @@ public class Settings {
             }
         }
 
-        public var longTitle: String {
-            // swiftlint:disable line_length
+        public var title: String {
             switch self {
             case .noSorting:
-                return NSLocalizedString(
-                    "[GroupSortOrder/longTitle] No Sorting",
-                    bundle: Bundle.framework,
-                    value: "No Sorting",
-                    comment: "An option in Group Viewer settings. Example: 'Sort Order: No Sorting'")
-            case .nameAsc:
-                return NSLocalizedString(
-                    "[GroupSortOrder/longTitle] By Title (A..Z)",
-                    bundle: Bundle.framework,
-                    value: "By Title (A..Z)",
-                    comment: "An option in Group Viewer settings. Example: 'Sort Order: By Title (A..Z)'")
-            case .nameDesc:
-                return NSLocalizedString(
-                    "[GroupSortOrder/longTitle] By Title (Z..A)",
-                    bundle: Bundle.framework,
-                    value: "By Title (Z..A)",
-                    comment: "An option in Group Viewer settings. Example: 'Sort Order: By Title (Z..A)'")
-            case .creationTimeAsc:
-                return NSLocalizedString(
-                    "[GroupSortOrder/longTitle] By Creation Date (Old..New)",
-                    bundle: Bundle.framework,
-                    value: "By Creation Date (Old..New)",
-                    comment: "An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (Old..New)'")
-            case .creationTimeDesc:
-                return NSLocalizedString(
-                    "[GroupSortOrder/longTitle] By Creation Date (New..Old)",
-                    bundle: Bundle.framework,
-                    value: "By Creation Date (New..Old)",
-                    comment: "An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)'")
-            case .modificationTimeAsc:
-                return NSLocalizedString(
-                    "[GroupSortOrder/longTitle] By Modification Date (Old..New)",
-                    bundle: Bundle.framework,
-                    value: "By Modification Date (Old..New)",
-                    comment: "An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (Old..New)'")
-            case .modificationTimeDesc:
-                return NSLocalizedString(
-                    "[GroupSortOrder/longTitle] By Modification Date (New..Old)",
-                    bundle: Bundle.framework,
-                    value: "By Modification Date (New..Old)",
-                    comment: "An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (New..Old)'")
+                return LString.titleSortOrderCustom
+            case .nameAsc, .nameDesc:
+                return LString.fieldTitle
+            case .creationTimeAsc, .creationTimeDesc:
+                return LString.itemCreationDate
+            case .modificationTimeAsc, .modificationTimeDesc:
+                return LString.itemLastModificationDate
             }
-            // swiftlint:enable line_length
         }
         public func compare(_ group1: Group, _ group2: Group) -> Bool {
             switch self {
@@ -626,53 +568,17 @@ public class Settings {
             }
         }
 
-        public var longTitle: String {
-            // swiftlint:disable line_length
+        public var title: String {
             switch self {
             case .noSorting:
-                return NSLocalizedString(
-                    "[FilesSortOrder/longTitle] No Sorting",
-                    bundle: Bundle.framework,
-                    value: "No Sorting",
-                    comment: "A sorting option for a list of files. Example: 'Sort Order: No Sorting'")
-            case .nameAsc:
-                return NSLocalizedString(
-                    "[FilesSortOrder/longTitle] Name (A..Z)",
-                    bundle: Bundle.framework,
-                    value: "Name (A..Z)",
-                    comment: "A sorting option for a list of files, by file name. Example: 'Sort Order: Name (A..Z)'")
-            case .nameDesc:
-                return NSLocalizedString(
-                    "[FilesSortOrder/longTitle] Name (Z..A)",
-                    bundle: Bundle.framework,
-                    value: "Name (Z..A)",
-                    comment: "A sorting option for a list of files, by file name. Example: 'Sort Order: Name (Z..A)'")
-            case .creationTimeAsc:
-                return NSLocalizedString(
-                    "[FilesSortOrder/longTitle] Creation Date (Oldest First)",
-                    bundle: Bundle.framework,
-                    value: "Creation Date (Oldest First)",
-                    comment: "A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Oldest First)'")
-            case .creationTimeDesc:
-                return NSLocalizedString(
-                    "[FilesSortOrder/longTitle] Creation Date (Recent First)",
-                    bundle: Bundle.framework,
-                    value: "Creation Date (Recent First)",
-                    comment: "A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Recent First)'")
-            case .modificationTimeAsc:
-                return NSLocalizedString(
-                    "[FilesSortOrder/longTitle] Modification Date (Oldest First)",
-                    bundle: Bundle.framework,
-                    value: "Modification Date (Oldest First)",
-                    comment: "A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Oldest First)'")
-            case .modificationTimeDesc:
-                return NSLocalizedString(
-                    "[FilesSortOrder/longTitle] Modification Date (Recent First)",
-                    bundle: Bundle.framework,
-                    value: "Modification Date (Recent First)",
-                    comment: "A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Recent First)'")
+                return LString.titleSortByNone
+            case .nameAsc, .nameDesc:
+                return LString.titleSortByFileName
+            case .creationTimeAsc, .creationTimeDesc:
+                return LString.itemCreationDate
+            case .modificationTimeAsc, .modificationTimeDesc:
+                return LString.itemLastModificationDate
             }
-            // swiftlint:enable line_length
         }
 
         public func compare(_ lhs: URLReference, _ rhs: URLReference) -> Bool {
@@ -1827,38 +1733,4 @@ fileprivate extension UserDefaults {
     func data(forKey key: Settings.Keys) -> Data? {
         return data(forKey: key.rawValue)
     }
-}
-
-extension LString {
-    public static let titleSortBy = NSLocalizedString(
-        "[SortBy]",
-        bundle: Bundle.framework,
-        value: "Sort By",
-        comment: "Title of a sort options list. Example: 'Sort by: Name'")
-    public static let titleSortByNone = NSLocalizedString(
-        "[SortBy/None]",
-        bundle: Bundle.framework,
-        value: "None",
-        comment: "List sorting option, when no sorting is selected. Example: 'Sort by: None'")
-    public static let titleSortByFileName = NSLocalizedString(
-        "[SortBy/FileName]",
-        bundle: Bundle.framework,
-        value: "Name",
-        comment: "List sorting option (for file names). Example: 'Sort by: Name'")
-    public static let titleSortByItemTitle = NSLocalizedString(
-        "[SortBy/ItemTitle]",
-        bundle: Bundle.framework,
-        value: "Title",
-        comment: "List sorting option (for groups and entries). Example: 'Sort by: Title'")
-    public static let titleSortByDateCreated = NSLocalizedString(
-        "[SortBy/DateCreated]",
-        bundle: Bundle.framework,
-        value: "Date Created",
-        comment: "List sorting option. Example: 'Sort by: Date Created'")
-    public static let titleSortByDateModified = NSLocalizedString(
-        "[SortBy/DateModified]",
-        bundle: Bundle.framework,
-        value: "Date Modified",
-        comment: "List sorting option. Example: 'Sort by: Date Modified'")
-
 }
