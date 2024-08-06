@@ -148,9 +148,7 @@ final class EntryFinderVC: UITableViewController {
             callerIDText
         )
         callerIDView.copyHandler = { (view: CallerIDView) in
-            Clipboard.general.insert(
-                text: callerIDText,
-                timeout: TimeInterval(Settings.current.clipboardTimeout.seconds))
+            Clipboard.general.copyWithTimeout(callerIDText)
             HapticFeedback.play(.copiedToClipboard)
             view.blink()
         }

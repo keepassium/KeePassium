@@ -210,10 +210,7 @@ class AutoFillCoordinator: NSObject, Coordinator {
         watchdog.restart()
 
         if let otpString = getOTPForClipboard(for: entry) {
-            let isCopied = Clipboard.general.insert(
-                text: otpString,
-                timeout: TimeInterval(Settings.current.clipboardTimeout.seconds)
-            )
+            let isCopied = Clipboard.general.copyWithTimeout(otpString)
             let formattedOTP = OTPCodeFormatter.decorate(otpCode: otpString)
             if isCopied {
                 LocalNotifications.showTOTPNotification(

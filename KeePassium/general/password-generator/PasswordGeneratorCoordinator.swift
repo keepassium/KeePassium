@@ -125,8 +125,7 @@ extension PasswordGeneratorCoordinator {
     }
 
     private func performCopyToClipboard(toastHost: UIView? = nil, in viewController: UIViewController) {
-        let clipboardTimeout = TimeInterval(Settings.current.clipboardTimeout.seconds)
-        Clipboard.general.insert(text: generatedPassword, timeout: clipboardTimeout)
+        Clipboard.general.copyWithTimeout(generatedPassword)
         HapticFeedback.play(.copiedToClipboard)
         if UIAccessibility.isVoiceOverRunning {
             UIAccessibility.post(

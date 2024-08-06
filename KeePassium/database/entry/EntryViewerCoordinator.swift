@@ -589,7 +589,7 @@ extension EntryViewerCoordinator {
 
     private func copyText(text: String) {
         entry.touch(.accessed)
-        Clipboard.general.insert(text)
+        Clipboard.general.copyWithTimeout(text)
     }
 }
 
@@ -633,7 +633,7 @@ extension EntryViewerCoordinator: EntryFieldViewerDelegate {
             assertionFailure("Tried to create a reference to non-referenceable field")
             return
         }
-        Clipboard.general.insert(refString)
+        Clipboard.general.copyWithTimeout(refString)
         HapticFeedback.play(.copiedToClipboard)
         viewController.showNotification(LString.fieldReferenceCopiedToClipboard)
     }

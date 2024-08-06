@@ -50,7 +50,7 @@ class DiagnosticsViewerCoordinator: NSObject, Coordinator {
 
 extension DiagnosticsViewerCoordinator: DiagnosticsViewerDelegate {
     func didPressCopy(text: String, in diagnosticsViewer: DiagnosticsViewerVC) {
-        Clipboard.general.insert(text: text, timeout: nil)
+        Clipboard.general.copyWithoutExpiry(text)
         HapticFeedback.play(.copiedToClipboard)
         diagnosticsViewer.showNotification(LString.diagnosticLogCopiedToClipboard)
     }

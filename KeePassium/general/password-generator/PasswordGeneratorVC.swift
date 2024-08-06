@@ -718,8 +718,7 @@ extension PasswordGeneratorVC {
             title: LString.actionCopy,
             image: .symbol(.docOnDoc)
         ) { _ in
-            let timeout = Double(Settings.current.clipboardTimeout.seconds)
-            Clipboard.general.insert(text: textForCopying, timeout: timeout)
+            Clipboard.general.copyWithTimeout(textForCopying)
         }
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
             UIMenu(title: "", children: [copyAction])

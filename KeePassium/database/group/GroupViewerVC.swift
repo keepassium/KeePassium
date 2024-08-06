@@ -643,7 +643,7 @@ final class GroupViewerVC:
                 field.name)
             let action = UIAccessibilityCustomAction(name: actionName) { [weak field] _ -> Bool in
                 if let fieldValue = field?.resolvedValue {
-                    Clipboard.general.insert(fieldValue)
+                    Clipboard.general.copyWithTimeout(fieldValue)
                     UIAccessibility.post(
                         notification: .announcement,
                         argument: LString.titleCopiedToClipboard

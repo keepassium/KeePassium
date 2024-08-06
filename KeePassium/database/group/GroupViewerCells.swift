@@ -108,7 +108,7 @@ final class GroupViewerEntryCell: UITableViewCell {
         let justSwitched = !showOTPButton.isHidden
         if justSwitched {
             animateOTPValue(visible: true)
-            Clipboard.general.insert(otpValue)
+            Clipboard.general.copyWithTimeout(otpValue)
             HapticFeedback.play(.copiedToClipboard)
             otpCopiedHandler?()
         }
