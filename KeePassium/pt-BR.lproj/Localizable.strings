@@ -76,6 +76,12 @@
 /* Title of the App Protection onboarding screen */
 "[Onboarding/AppProtection/title]" = "Somente para seus olhos";
 
+/* Action/button to set up the Password AutoFill feature. Not a call to action. */
+"[Onboarding/AutoFill/activate]" = "Ativar Preenchimento Automático";
+
+/* Title of the Password AutoFill onboarding screen */
+"[Onboarding/AutoFill/title]" = "Preenchimento automático de senha";
+
 /* Action/button */
 "[Onboarding/CreateNewDatabase/action]" = "Criar novo banco de dados";
 
@@ -180,6 +186,12 @@
 
 /* Title of the tag creation dialog */
 "[Tags/Create/title]" = "Nova etiqueta";
+
+/* Question to confirm global deletion */
+"[Tags/Delete/Confirm/message]" = "Apagar esta etiqueta de todos os grupos e entradas?";
+
+/* Title of a dialog for editing a tag */
+"[Tags/Edit/title]" = "Editar etiqueta";
 
 /* Status message with a call to action */
 "[Tags/None/placeholder]" = "Não há etiquetas no banco de dados, adicione algumas.";

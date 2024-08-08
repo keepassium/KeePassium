@@ -64,6 +64,9 @@
 /* Action/button to set up the App Protection feature. Not a call to action. */
 "[Onboarding/AppProtection/activate]" = "เปิดใช้งานแอปล็อก";
 
+/* Action/button to set up the Password AutoFill feature. Not a call to action. */
+"[Onboarding/AutoFill/activate]" = "เปิดใช้ป้อนรหัสอัตโนมัติ";
+
 /* Action/button */
 "[Onboarding/CreateNewDatabase/action]" = "สร้างฐานข้อมูลใหม่";
 

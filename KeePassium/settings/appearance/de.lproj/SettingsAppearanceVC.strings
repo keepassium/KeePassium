@@ -1,11 +1,5 @@
-/* Class = "UILabel"; text = "Database Icons"; ObjectID = "4Yu-VJ-n8p"; Note = "Section in settings: icons for database"; */
-"4Yu-VJ-n8p.text" = "Datenbank-Icons";
-
 /* Class = "UIButton"; accessibilityLabel = "Reset text size to default"; ObjectID = "5U9-NZ-sJe"; Note = "Action: set text size to standard size"; */
 "5U9-NZ-sJe.accessibilityLabel" = "Textgröße auf Standard zurücksetzen";
-
-/* Class = "UILabel"; text = "App Icon"; ObjectID = "fSx-Do-lgu"; Note = "Section in settings: icon for the app"; */
-"fSx-Do-lgu.text" = "App-Symbol";
 
 /* Class = "UITableViewSection"; footerTitle = "Hide passwords and other protected fields behind asterisks (recommended)."; ObjectID = "Lh3-CB-Urp"; */
 "Lh3-CB-Urp.footerTitle" = "Verstecke Passwörter und andere geschützte Felder hinter Sternchen (empfohlen).";

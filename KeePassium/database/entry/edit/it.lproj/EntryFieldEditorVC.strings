@@ -5,7 +5,7 @@
 "7iU-ut-hd7.accessibilityLabel" = "Valore campo personalizzato";
 
 /* Class = "UITableViewCell"; CcF-c8-r4M.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Custom field editor"; ObjectID = "CcF-c8-r4M"; */
-"CcF-c8-r4M.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Editore campo personalizzato";
+"CcF-c8-r4M.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Editor campo personalizzato";
 
 /* Class = "UITextField"; accessibilityLabel = "Custom field name"; ObjectID = "ecN-Xd-ff5"; */
 "ecN-Xd-ff5.accessibilityLabel" = "Nome campo personalizzato";
@@ -18,9 +18,6 @@
 
 /* Class = "UIBarButtonItem"; HGI-xq-zUf.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Add Custom Field"; ObjectID = "HGI-xq-zUf"; */
 "HGI-xq-zUf.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Aggiungi campo personalizzato";
-
-/* Class = "UINavigationItem"; title = "Edit Entry"; ObjectID = "l3s-Bv-fA1"; */
-"l3s-Bv-fA1.title" = "Modifica voce";
 
 /* Class = "UITextField"; accessibilityLabel = "Entry title"; ObjectID = "mGc-If-zfn"; */
 "mGc-If-zfn.accessibilityLabel" = "Titolo voce";

@@ -76,6 +76,18 @@
 /* Title of the App Protection onboarding screen */
 "[Onboarding/AppProtection/title]" = "Лише для ваших очей";
 
+/* Action/button to set up the Password AutoFill feature. Not a call to action. */
+"[Onboarding/AutoFill/activate]" = "Увімкнути Автозаповнення";
+
+/* Text in the Password AutoFill onboarding screen. */
+"[Onboarding/AutoFill/text1]" = "Завдяки автозаповненню ви можете вводити дані на сторінках входу одним натисканням кнопки.";
+
+/* Text in the Password AutoFill onboarding screen. */
+"[Onboarding/AutoFill/text2]" = "Щоб почати, активуйте автозаповнення паролів у налаштуваннях системи.";
+
+/* Title of the Password AutoFill onboarding screen */
+"[Onboarding/AutoFill/title]" = "Автозаповнення паролів";
+
 /* Action/button */
 "[Onboarding/CreateNewDatabase/action]" = "Створити нову базу";
 
@@ -180,6 +192,12 @@
 
 /* Title of the tag creation dialog */
 "[Tags/Create/title]" = "Новий тег";
+
+/* Question to confirm global deletion */
+"[Tags/Delete/Confirm/message]" = "Видалити цей тег з усіх груп і записів?";
+
+/* Title of a dialog for editing a tag */
+"[Tags/Edit/title]" = "Редагування тегу";
 
 /* Status message with a call to action */
 "[Tags/None/placeholder]" = "У базі паролів немає тегів. Ви можете їх додати.";

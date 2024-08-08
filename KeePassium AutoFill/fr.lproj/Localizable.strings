@@ -4,6 +4,21 @@
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "La Saisie automatique ne peut pas accéder automatiquement aux fichiers que vous avez déjà dans l'application principale KeePassium.\n\nPourquoi ? En coulisses, le système traite la fonction de Saisie automatique comme une application distincte, indépendante du processus principal de KeePassium. Pour des raisons de sécurité, une application ne peut simplement pas accéder à des fichiers externes – sauf si vous liez explicitement ces fichiers à cette application. Ainsi, le système garantit que l'application ne peut accéder qu'aux quelques fichiers dont vous avez autorisé l'accès.\n\nPar conséquent, la fonction de Saisie automatique et l'application principale KeePassium doivent avoir leurs propres autorisations pour chaque fichier externe. Heureusement, il s'agit d'une procédure unique.";
 
+/* Must match Apple's translation, as found in iOS 15 Settings → Passwords → AutoFill Passwords. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/allowFillingFrom]" = "Autoriser le remplissage par :";
+
+/* Call to action: deselect the `Keychain` option. Keychain is a glossary term. */
+"[AutoFill/Setup/UncheckKeychain/callToAction]" = "Décocher Trousseau";
+
+/* Instruction to deselect the `Keychain` option. Keychain is a glossary term. */
+"[AutoFill/Setup/UncheckKeychain/message]" = "Pour faire de KeePassium votre gestionnaire de mots de passe par défaut, décochez Trousseau.";
+
+/* Must match Apple's translation, as found in iOS 17 Settings → Passwords → Password Options. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/usePasswordsAndPasskeysFrom]" = "Utiliser des mots de passe et des clés d’identification provenant de:";
+
+/* Apple Keychain software; is a glossary term. */
+"[Generic/Keychain/title]" = "Trousseau";
+
 /* Menu action to add a user-provided word list file to the app. */
 "[PasswordGenerator/Wordlist/Import/menuAction]" = "Importer une liste de mots…";
 

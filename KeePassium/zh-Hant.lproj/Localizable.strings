@@ -64,6 +64,9 @@
 /* Action/button to set up the App Protection feature. Not a call to action. */
 "[Onboarding/AppProtection/activate]" = "啟用應用解鎖密碼";
 
+/* Action/button to set up the Password AutoFill feature. Not a call to action. */
+"[Onboarding/AutoFill/activate]" = "啟用自動填寫密碼";
+
 /* Action/button */
 "[Onboarding/CreateNewDatabase/action]" = "新建資料庫";
 

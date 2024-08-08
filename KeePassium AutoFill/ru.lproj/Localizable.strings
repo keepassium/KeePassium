@@ -4,6 +4,21 @@
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "Автозаполнение не может автоматически открывать файлы, уже добавленные в основное приложение.\n\nПочему? С точки зрения системы, Автозаполнение — это отдельное приложение, независимое от основного. В целях безопасности, приложение не может просто так открывать файлы в других приложениях, если только пользователь не свяжет эти файлы с данным приложением. Таким образом, система гарантирует, что приложения могут работать только с несколькими специально выбранными файлами.\n\nВ результате и Автозаполнение, и основное приложение должны получить \"отдельные приглашения\" для работы с каждым внешним файлом. К счастью, эта процедура нужна только один раз.";
 
+/* Must match Apple's translation, as found in iOS 15 Settings → Passwords → AutoFill Passwords. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/allowFillingFrom]" = "Разрешить заполнение с:";
+
+/* Call to action: deselect the `Keychain` option. Keychain is a glossary term. */
+"[AutoFill/Setup/UncheckKeychain/callToAction]" = "Отключите Связку ключей";
+
+/* Instruction to deselect the `Keychain` option. Keychain is a glossary term. */
+"[AutoFill/Setup/UncheckKeychain/message]" = "Чтобы сделать KeePassium своим основным менеджером паролей, снимите флажок со Связки ключей.";
+
+/* Must match Apple's translation, as found in iOS 17 Settings → Passwords → Password Options. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/usePasswordsAndPasskeysFrom]" = "Использовать пароли и ключи входа от:";
+
+/* Apple Keychain software; is a glossary term. */
+"[Generic/Keychain/title]" = "Связка ключей";
+
 /* Menu action to add a user-provided word list file to the app. */
 "[PasswordGenerator/Wordlist/Import/menuAction]" = "Импортировать список слов…";
 

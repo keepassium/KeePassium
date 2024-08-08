@@ -8,7 +8,7 @@
 "gji-1x-co5.normalTitle" = "Blocca database";
 
 /* Class = "UILabel"; text = "Will use the remembered master key."; ObjectID = "K3Y-ON-C19"; Note = "Hint shown below the Unlock button, when not asking for master password/key file."; */
-"K3Y-ON-C19.text" = "Userà la chiave principale memorizzata.";
+"K3Y-ON-C19.text" = "Verrà usata la chiave principale memorizzata.";
 
 /* Class = "UIButton"; normalTitle = "Unlock"; ObjectID = "l45-hq-1lr"; */
 "l45-hq-1lr.normalTitle" = "Sblocca";

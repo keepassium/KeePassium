@@ -4,6 +4,15 @@
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "Autouzupełnianie nie może automatycznie uzyskać dostępu do plików znajdujących się w głównej aplikacji KeePassium.\n\nDlaczego? System traktuje Autouzupełnianie jako oddzielną aplikację, niezależną do głównego procesu KeePassium. Ze względów bezpieczeństwa aplikacja nie może mieć dostępu do zewnętrznych plików - chyba, że celowo dołączysz te pliki do tej aplikacji. To gwarantuje, że aplikacja może mieć dostęp do tylko plików, na które zezwolisz.\n\nW rezultacie zarówno Autouzupełnianie, jak i główna aplikacja KeePassium, muszą otrzymać własne uprawnienia do zewnętrznego pliku. Na szczęście jest to jednorazowa procedura.";
 
+/* Must match Apple's translation, as found in iOS 15 Settings → Passwords → AutoFill Passwords. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/allowFillingFrom]" = "Pozwalaj wypełniać z:";
+
+/* Must match Apple's translation, as found in iOS 17 Settings → Passwords → Password Options. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/usePasswordsAndPasskeysFrom]" = "Dostawcy haseł i kluczy:";
+
+/* Apple Keychain software; is a glossary term. */
+"[Generic/Keychain/title]" = "Pęk kluczy";
+
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "Pokaż hasło";
 

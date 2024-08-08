@@ -4,6 +4,15 @@
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "자동 완성은 일반 KeePassium 앱의 파일에 자동으로 접근할 수 없습니다.\n\n이는 시스템이 자동 완성을 일반 KeePassium 프로세스와는 독립된 별개의 앱으로 취급하기 때문입니다. 보안 상의 이유로, 사용자가 명시적으로 파일을 연결하지 않는 한 앱에서는 외부 파일에 접근할 수 없습니다. 그러므로 시스템은 앱이 사용자가 허가한 일부 파일에만 접근할 수 있다는 것을 보장할 수 있게 됩니다.\n\n결과적으로, 일반 KeePassium 앱과 자동 완성 둘 다 각각의 외부 파일에 대한 권한을 가지고 있어야 합니다. 이 작업은 한 번만 진행하면 됩니다.";
 
+/* Must match Apple's translation, as found in iOS 15 Settings → Passwords → AutoFill Passwords. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/allowFillingFrom]" = "다음에서 자동 완성 허용";
+
+/* Must match Apple's translation, as found in iOS 17 Settings → Passwords → Password Options. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/usePasswordsAndPasskeysFrom]" = "다음에서 제공한 암호 및 패스키 사용";
+
+/* Apple Keychain software; is a glossary term. */
+"[Generic/Keychain/title]" = "키체인";
+
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "패스워드 보이기";
 

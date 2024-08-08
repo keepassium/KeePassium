@@ -76,6 +76,18 @@
 /* Title of the App Protection onboarding screen */
 "[Onboarding/AppProtection/title]" = "Strictement confidentiel";
 
+/* Action/button to set up the Password AutoFill feature. Not a call to action. */
+"[Onboarding/AutoFill/activate]" = "Activer la Saisie automatique";
+
+/* Text in the Password AutoFill onboarding screen. */
+"[Onboarding/AutoFill/text1]" = "Avec la saisie automatique, vous pouvez parcourir les pages de connexion en appuyant sur un seul bouton.";
+
+/* Text in the Password AutoFill onboarding screen. */
+"[Onboarding/AutoFill/text2]" = "Pour commencer, activez la saisie automatique du mot de passe dans les paramètres du système.";
+
+/* Title of the Password AutoFill onboarding screen */
+"[Onboarding/AutoFill/title]" = "Remplissage automatique des mots de passe";
+
 /* Action/button */
 "[Onboarding/CreateNewDatabase/action]" = "Créer nouvelle base de données";
 
@@ -180,6 +192,12 @@
 
 /* Title of the tag creation dialog */
 "[Tags/Create/title]" = "Nouvelle étiquette";
+
+/* Question to confirm global deletion */
+"[Tags/Delete/Confirm/message]" = "Supprimer cette étiquette de tous les groupes et entrées ?";
+
+/* Title of a dialog for editing a tag */
+"[Tags/Edit/title]" = "Modifier l'étiquette";
 
 /* Status message with a call to action */
 "[Tags/None/placeholder]" = "Il n'y a aucune étiquette dans la base de données. Ajoutez-en une.";

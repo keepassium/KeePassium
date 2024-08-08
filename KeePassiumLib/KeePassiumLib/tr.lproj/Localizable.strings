@@ -7,6 +7,12 @@
 /* Suggestion/hint for available user action */
 "[Accessibility] Double tap to copy to clipboard" = "Kopyalamak için çift tıkla";
 
+/* Section in settings: icon for the app */
+"[Appearance/AppIcon/title]" = "Uygulama Simgesi";
+
+/* Section in settings: icons for database */
+"[Appearance/DatabaseIcons/title]" = "Veritabanı simgeleri";
+
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "Metin Boyutu";
 
@@ -124,9 +130,6 @@
 /* Action/button to create a new database */
 "[Database/Create/action] Create Database" = "Veritabanı Oluştur";
 
-/* Title of a form for creating a database */
-"[Database/Create/title] Create Database" = "Veritabanı Oluştur";
-
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "Özel Simge Ekle";
 
@@ -135,6 +138,9 @@
 
 /* Parameter name in database encryption settings. This is a term, see https://en.wikipedia.org/wiki/Key_derivation_function. Example: 'Key Derivation Function: Argon2' */
 "[Database/EncryptionSettings/kdf]" = "Anahtar Türetme İşlevi";
+
+/* Title of the database picker list */
+"[Database/List/title]" = "Veritabanları";
 
 /* Error message */
 "[Database/Load/Error] Cannot find database file" = "Veritabanı dosyası bulunamadı";
@@ -171,6 +177,9 @@
 
 /* Imperative/recommendation: title of a warning when changing database password. */
 "[Database/MasterKey/RememberYourPassword/title]" = "Veritabanı şifrenizi unutmayın";
+
+/* Glossary term: noun, a master key for encrypting the database */
+"[Database/MasterKey/title]" = "Ana Anahtar";
 
 /* Action/button */
 "[Database/Open/action] Open Database" = "Veritabanını Aç";
@@ -424,6 +433,9 @@
 /* Action/button to create a new entry in the current group */
 "[Entry/Create/action] Create Entry" = "Kayıt Oluştur";
 
+/* Action/button to modify an entry */
+"[Entry/Edit/action]" = "Kayıt Düzenle";
+
 /* Default name of a newly created entry field */
 "[Entry/Edit/CreateField/defaultName] Field Name" = "Alan Adı";
 
@@ -465,6 +477,9 @@
 
 /* Default title of a new entry */
 "[Entry/New/defaultTitle] New Entry" = "Yeni Kayıt";
+
+/* Glossary term: noun, an entry in database. */
+"[Entry/title]" = "Girdi";
 
 /* Warning shown when opening files from Recycle Bin location. Translation of 'Recently Deleted' should match that in the Files app. [fileName: String] */
 "[File/In Trash/warning]" = "'%@' isimli dosya, yakın zamanda silinenler arasında ve buradan da yakında silinebilir. Verinizi tutmak için çöp kutusundan başka bir yere taşıyın.";
@@ -640,27 +655,6 @@
 /* Localized name of the storage service: Yandex.Disk (https://disk.yandex.com) */
 "[FileProvider/Yandex.Disk/name]" = "Yandex.Disk";
 
-/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Oldest First)' */
-"[FilesSortOrder/longTitle] Creation Date (Oldest First)" = "Oluşturma Tarihi (En Eski En Önce)";
-
-/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Recent First)' */
-"[FilesSortOrder/longTitle] Creation Date (Recent First)" = "Oluşturma Tarihi (En Yeni En Önce)";
-
-/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Oldest First)' */
-"[FilesSortOrder/longTitle] Modification Date (Oldest First)" = "Değiştirilme tarihi (En Eski En Önce)";
-
-/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Recent First)' */
-"[FilesSortOrder/longTitle] Modification Date (Recent First)" = "Değiştirilme Tarihi (En Yeni En Önce)";
-
-/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (A..Z)' */
-"[FilesSortOrder/longTitle] Name (A..Z)" = "İsim (A...Z)";
-
-/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (Z..A)' */
-"[FilesSortOrder/longTitle] Name (Z..A)" = "İsim (Z...A)";
-
-/* A sorting option for a list of files. Example: 'Sort Order: No Sorting' */
-"[FilesSortOrder/longTitle] No Sorting" = "Sıralama yok";
-
 /* Title of the dialog for picking the destination group for move/copy operations */
 "[General/DestinationGroup/title] Choose a Destination" = "Bir Klasör Seçin";
 
@@ -793,6 +787,9 @@
 /* Title of an warning message */
 "[Generic/title] Warning" = "Dikkat";
 
+/* Title of a screen/list view configuration: sort order, visible items, etc */
+"[Generic/ViewOptions/title]" = "Görüntü Seçenekleri";
+
 /* Warning message template. Swap the icon and message for right-to-left languages. */
 "[Generic/WarningWithIcon/template]" = "⚠️ %@";
 
@@ -802,38 +799,20 @@
 /* Action/button to create a new sub-group in the current group */
 "[Group/Create/action] Create Group" = "Grup Oluştur";
 
-/* Title of a form for creating a group */
-"[Group/Create/title] Create Group" = "Grup Oluştur";
-
 /* Title of a form for editing a group */
 "[Group/Edit/title] Edit Group" = "Grubu Düzenle";
 
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "Yeni Grup";
 
+/* Title for the Notes field in group editor */
+"[Group/Notes/title]" = "Notlar";
+
+/* Glossary term: noun, a group in database. */
+"[Group/title]" = "Grup";
+
 /* Title of an input field for group name */
 "[GroupEditor/Name/placeholder]" = "Grup Adı";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
-"[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "Oluşturma tarihine göre (Yeniden Eskiye)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (Old..New)' */
-"[GroupSortOrder/longTitle] By Creation Date (Old..New)" = "Oluşturma tarihine göre (Eskiden Yeniye)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (New..Old)' */
-"[GroupSortOrder/longTitle] By Modification Date (New..Old)" = "Değiştirilme tarihine göre (Yeniden Eskiye)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (Old..New)' */
-"[GroupSortOrder/longTitle] By Modification Date (Old..New)" = "Değiştirilme tarihine göre (Eskiden Yeniye)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Title (A..Z)' */
-"[GroupSortOrder/longTitle] By Title (A..Z)" = "Başlığa göre (A...Z)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Title (Z..A)' */
-"[GroupSortOrder/longTitle] By Title (Z..A)" = "Başlığa göre (Z...A)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: No Sorting' */
-"[GroupSortOrder/longTitle] No Sorting" = "Sıralama yok";
 
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Donanım anahtarı, otomatik doldurmada kullanılamaz.";
@@ -920,24 +899,6 @@
 "[OTP/Setup]" = "Tek kullanımlık parola oluştur (OTP)";
 
 /* Explanation of the premium feature */
-"[Premium/Benefits/AttachmentPreview/details]" = "Ekli dosyaları doğrudan KeePassium'un içinde görüntüleyin ve diğer uygulamalara iz bırakmayın. (Fotoğraflar, dökümanlar, arşivler ve daha birçok belgeye uyumludur.)";
-
-/* Title of a premium feature */
-"[Premium/Benefits/AttachmentPreview/title]" = "İz Bırakmadan Görüntüle";
-
-/* Explanation of a premium feature */
-"[Premium/Benefits/CustomAppIcon/details]" = "KeePassium'u eşsiz benzersiz, keyfinize göre görünecek şekilde dizayn edin. Hesap Makinesi gibi gözükmesini dahi sağlayabilirsiniz. Seçim sizin.";
-
-/* Title of a premium feature */
-"[Premium/Benefits/CustomAppIcon/title]" = "Uygulama Simgesini Değiştir";
-
-/* Explanation of the premium feature */
-"[Premium/Benefits/DatabaseTimeout/details]" = "Ana şifrenizi girmekten bıktınız mı? Veritabanınızı daha uzun süre açık tutun ve tek dokunuşla kilidini açın.";
-
-/* Title of a premium feature */
-"[Premium/Benefits/DatabaseTimeout/title]" = "Zaman Kazanın";
-
-/* Explanation of the premium feature */
 "[Premium/Benefits/HardwareKeys/details]" = "Bilgilerinizi YubiKey gibi bir donanım anahtarıyla koruyun.";
 
 /* Title of a premium feature */
@@ -954,12 +915,6 @@
 
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Positive/header] " = "Avantajlarınız";
-
-/* Explanation of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/details]" = "Aynı bilgilerin birden çok kopyasını oluşturmak yerine, diğer girdilerden gelen bilgileri göstermek için alan referanslarını kullanın.";
-
-/* Title of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/title]" = "Alan referanslarını göster";
 
 /* Call to action */
 "[Premium/CallToAction/buyNow]" = "Hemen Satın Alın";
@@ -1102,9 +1057,6 @@
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "Uygulamanın kullanışlı olması: %1$@/ay, yani yaklaşık %2$@/yıl.";
 
-/* Title of a premium feature: ability to change the app icon */
-"[PremiumFeature/CustomAppIcons/title]" = "Özelleştirilebilir Uygulama Simgeleri";
-
 /* A generic description of a premium feature */
 "[PremiumFeature/Generic/description]" = "Premium'a geçin ve KeePassium'un tüm avantajlarından yararlanın.";
 
@@ -1117,23 +1069,11 @@
 /* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
 "[PremiumFeature/HardwareKeys/title] Hardware Keys" = "Donanım Anahtarları";
 
-/* Description/advertisement for the `Long Database Timeouts` premium feature */
-"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "Karmaşık ana şifrelerinizi girerken zaman kazanın; premium sürümde veritabanınızı daha uzun süre açık tutun.";
-
-/* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
-"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "Uzun Süreli Veritabanı Zaman Aşımları";
-
 /* Description/advertisement for the `Multiple Databases` premium feature */
 "[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "Premium versiyonda veritabanları arasında kolayca geçiş yapın.";
 
 /* Title of a premium feature: ability to use multiple databases (In Title Case) */
 "[PremiumFeature/MultiDB/title] Multiple Databases" = "Çoklu Veritabanı";
-
-/* Description/advertisement for the `Preview Attachments` premium feature */
-"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "Premium sürümde görüntüleri ve belgeleri doğrudan uygulamada önizleyin.";
-
-/* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
-"[PremiumFeature/Preview/title] Preview Attachments" = "Bağlılıkları Önizle";
 
 /* A brief summary of the privacy policy (for offline mode) */
 "[PrivacyPolicy/Offline/text]" = "KeePassium herhangi bir kişisel veya analitik veri toplamaz ve kimseyle paylaşmaz.";
@@ -1270,23 +1210,8 @@
 /* Settings section: protection of databases, their keys and data inside them */
 "[Settings/DataProtection/title]" = "Veri Koruma";
 
-/* An option in Group Viewer settings. Refers to the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
-"[Settings/EntryListDetail/longTitle] Last Modified Date" = "Son Değiştirilme Tarihi";
-
 /* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: None', meanining that no entry details will be shown in any lists. */
 "[Settings/EntryListDetail/longTitle] None" = "Hiç biri";
-
-/* An option in Group Viewer settings. Refers to comments/notes field of the entry. Will be shown as 'Entry Subtitle: Notes'. */
-"[Settings/EntryListDetail/longTitle] Notes" = "Notlar";
-
-/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: Password'. */
-"[Settings/EntryListDetail/longTitle] Password" = "Şifre";
-
-/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: URL'. */
-"[Settings/EntryListDetail/longTitle] URL" = "URL";
-
-/* An option in Group Viewer settings. It refers to login information rather than person's name. Will be shown as 'Entry Subtitle: User Name'. */
-"[Settings/EntryListDetail/longTitle] User Name" = "Kullanıcı Adı";
 
 /* Title of a settings section: which entry field to show along with entry title */
 "[Settings/GroupViewer] Entry Subtitle" = "Kayıt Altbaşlığı";
@@ -1300,8 +1225,8 @@
 /* Section title in settings */
 "[Settings/Search/title]" = "Arama";
 
-/* List sorting option (for groups and entries). Example: 'Sort by: Title' */
-"[SortBy/ItemTitle]" = "Başlık";
+/* Title of the app settings screen */
+"[Settings/title]" = "Ayarlar";
 
 /* List sorting option, when no sorting is selected. Example: 'Sort by: None' */
 "[SortBy/None]" = "Hiç biri";
@@ -1332,9 +1257,6 @@
 
 /* Notification after a successful donation. */
 "[TipBox/thankYou]" = "Teşekkür ederiz!";
-
-/* Title of the tip box/donation screen. */
-"[TipBox/title/1]" = "Tip Box";
 
 /* Title of the tip box/donation screen. */
 "[TipBox/title/2]" = "Bağışlar";

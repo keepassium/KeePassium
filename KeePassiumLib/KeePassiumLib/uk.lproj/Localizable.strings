@@ -10,6 +10,12 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "Активуйте, щоб слухати.";
 
+/* Section in settings: icon for the app */
+"[Appearance/AppIcon/title]" = "Значок програми";
+
+/* Section in settings: icons for database */
+"[Appearance/DatabaseIcons/title]" = "Іконки бази даних";
+
 /* Short name of the default/system font. For example: `Font: Default` */
 "[Appearance/DefaultFont/shortTitle]" = "За замовчуванням";
 
@@ -139,9 +145,6 @@
 /* Action/button to create a new database */
 "[Database/Create/action] Create Database" = "Створити базу паролів";
 
-/* Title of a form for creating a database */
-"[Database/Create/title] Create Database" = "Створити базу паролів";
-
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "Додати свою іконку";
 
@@ -190,6 +193,9 @@
 /* Title: database encryption settings. */
 "[Database/EncryptionSettings/title]" = "Налаштування шифрування";
 
+/* Info message for entries that contain information for opening a different database. */
+"[Database/Entry/LinkedDatabase/message]" = "Цей запис указує на іншу базу паролів.";
+
 /* Info message when changing database file format. */
 "[Database/FormatVersion/Conversion/allDataPreserved]" = "Усі ваші дані буде збережено.";
 
@@ -207,6 +213,12 @@
 
 /* Notification when user tries to copy data from KDBX to older KDB database. */
 "[Database/LesserTargetFormat/warning]" = "Це старий формат бази даних, деякі дані можуть бути втрачені.";
+
+/* Recommendation for solving a problem with a list of files. */
+"[Database/List/LocalMissing/message]" = "Якщо деяких локальних файлів немає в списку, спочатку запустіть головний застосунок KeePassium.";
+
+/* Title of the database picker list */
+"[Database/List/title]" = "Бази даних";
 
 /* Error message */
 "[Database/Load/Error] Cannot find database file" = "Не вдалося знайти файл бази паролів";
@@ -252,6 +264,12 @@
 
 /* Imperative/recommendation: title of a warning when changing database password. */
 "[Database/MasterKey/RememberYourPassword/title]" = "Запам'ятайте пароль від бази!";
+
+/* Glossary term: noun, a master key for encrypting the database */
+"[Database/MasterKey/title]" = "Майстер-ключ";
+
+/* Title of database creation dialog */
+"[Database/New/title]" = "Нова база паролів";
 
 /* Action/button */
 "[Database/Open/action] Open Database" = "Відкрити базу паролів";
@@ -580,6 +598,9 @@
 /* Action/button to create a new entry in the current group */
 "[Entry/Create/action] Create Entry" = "Створити запис";
 
+/* Action/button to modify an entry */
+"[Entry/Edit/action]" = "Редагування запису";
+
 /* Default name of a newly created entry field */
 "[Entry/Edit/CreateField/defaultName] Field Name" = "Назва поля";
 
@@ -628,6 +649,9 @@
 /* Title of a field with entry's last modification date and time */
 "[Entry/History] Last Modification Date" = "Дата останньої зміни";
 
+/* Title of a field with entry's modification date and time */
+"[Entry/History] Modification Date" = "Дата зміни";
+
 /* Title of a list with previous versions/revisions of an entry. */
 "[Entry/History] Previous Versions" = "Попередні версії";
 
@@ -636,6 +660,9 @@
 
 /* Default title of a new entry */
 "[Entry/New/defaultTitle] New Entry" = "Новий запис";
+
+/* Glossary term: noun, an entry in database. */
+"[Entry/title]" = "Запис";
 
 /* Warning shown when opening files from Recycle Bin location. Translation of 'Recently Deleted' should match that in the Files app. [fileName: String] */
 "[File/In Trash/warning]" = "'%@' розташований в нещодавно вилучених і може бути незабаром видалений. Щоб зберегти свої дані, перемістіть файл в більш постійне місце.";
@@ -696,6 +723,15 @@
 
 /* Error message: file provider does not respond to requests (quickly enough). For example: `Google Drive does not respond` */
 "[FileAccessError/Timeout/knownFileProvider]" = "%@ не відповідає.";
+
+/* Section header for attributes of a file (e.g. hidden, excluded from backup, etc) */
+"[FileInfo/Attributes/header]" = "Атрибути файлу";
+
+/* Title of a setting: is the file hidden */
+"[FileInfo/Attributes/Hidden/title]" = "Приховано";
+
+/* Warning message for 'hidden' files. */
+"[FileInfo/Attributes/Hidden/warning]" = "Приховані файли менш видимі для звичайного користувача, але не покращують безпеку даних.";
 
 /* Section header: file backup settings */
 "[FileInfo/Backup/header]" = "Резервна копія";
@@ -829,27 +865,6 @@
 /* Localized name of the storage service: Yandex.Disk (https://disk.yandex.com) */
 "[FileProvider/Yandex.Disk/name]" = "Yandex.Disk";
 
-/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Oldest First)' */
-"[FilesSortOrder/longTitle] Creation Date (Oldest First)" = "Дата створення (спочатку найстаріші)";
-
-/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Recent First)' */
-"[FilesSortOrder/longTitle] Creation Date (Recent First)" = "Дата створення (спочатку найновіші)";
-
-/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Oldest First)' */
-"[FilesSortOrder/longTitle] Modification Date (Oldest First)" = "Дата змінення (спочатку найстаріші)";
-
-/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Recent First)' */
-"[FilesSortOrder/longTitle] Modification Date (Recent First)" = "Дата змінення (спочатку найновіші)";
-
-/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (A..Z)' */
-"[FilesSortOrder/longTitle] Name (A..Z)" = "Назва (А..я)";
-
-/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (Z..A)' */
-"[FilesSortOrder/longTitle] Name (Z..A)" = "Назва (Я..а)";
-
-/* A sorting option for a list of files. Example: 'Sort Order: No Sorting' */
-"[FilesSortOrder/longTitle] No Sorting" = "Без сортування";
-
 /* Title of the dialog for picking the destination group for move/copy operations */
 "[General/DestinationGroup/title] Choose a Destination" = "Виберіть місце призначення";
 
@@ -955,6 +970,9 @@
 /* Action/button to skip the current step and proceed with the next one */
 "[Generic] Skip" = "Пропустити";
 
+/* Action/button to change the order of items in a list (move them higher/lower). */
+"[Generic/Action/ReorderItems]" = "Перевпорядкувати";
+
 /* Action/button to select some items in a list. */
 "[Generic/Action/SelectItems]" = "Вибрати";
 
@@ -1006,6 +1024,12 @@
 /* Title of an warning message */
 "[Generic/title] Warning" = "Увага";
 
+/* Title of a menu with various utilities */
+"[Generic/Tools/title]" = "Інструменти";
+
+/* Title of a screen/list view configuration: sort order, visible items, etc */
+"[Generic/ViewOptions/title]" = "Параметри перегляду";
+
 /* Warning message template. Swap the icon and message for right-to-left languages. */
 "[Generic/WarningWithIcon/template]" = "⚠️ %@";
 
@@ -1015,14 +1039,17 @@
 /* Action/button to create a new sub-group in the current group */
 "[Group/Create/action] Create Group" = "Створити групу";
 
-/* Title of a form for creating a group */
-"[Group/Create/title] Create Group" = "Створити групу";
-
 /* Title of a form for editing a group */
 "[Group/Edit/title] Edit Group" = "Редагувати групу";
 
+/* VoiceOver description of a menu with group-related actions */
+"[Group/Menu/a11y/title]" = "Меню групи";
+
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "Нова група";
+
+/* Title for the Notes field in group editor */
+"[Group/Notes/title]" = "Нотатки";
 
 /* Action/button to delete everything inside the Recycle Bin */
 "[Group/RecycleBin/Empty/action]" = "Очистити кошик";
@@ -1030,29 +1057,29 @@
 /* Title of the confirmation dialog for `Empty Recycle Bin` action */
 "[Group/RecycleBin/Empty/confirmTitle]" = "Очистити кошик без можливості відновлення?";
 
+/* VoiceOver description of a smart group [groupTitle: String] */
+"[Group/Smart/a11y/description]" = "%@, смарт-група";
+
+/* Action/button to show a help article */
+"[Group/Smart/about]" = "Про смарт-групи…";
+
+/* Action/button to create a new Smart Group */
+"[Group/Smart/Create/action]" = "Створити смарт-групу";
+
+/* Default name of a new smart group */
+"[Group/Smart/New/defaultName]" = "Нова смарт-група";
+
+/* Title for the Smart Group search conditions in group editor */
+"[Group/Smart/Query/title]" = "Фільтр смарт-групи";
+
+/* Glossary term: noun, a smart group in database. */
+"[Group/Smart/title]" = "Смарт-група";
+
+/* Glossary term: noun, a group in database. */
+"[Group/title]" = "Група";
+
 /* Title of an input field for group name */
 "[GroupEditor/Name/placeholder]" = "Назва групи";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
-"[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "За датою створення (нове..старе)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (Old..New)' */
-"[GroupSortOrder/longTitle] By Creation Date (Old..New)" = "За датою створення (старе..нове)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (New..Old)' */
-"[GroupSortOrder/longTitle] By Modification Date (New..Old)" = "За датою зміни (нове..старе)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (Old..New)' */
-"[GroupSortOrder/longTitle] By Modification Date (Old..New)" = "За датою зміни (старе..нове)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Title (A..Z)' */
-"[GroupSortOrder/longTitle] By Title (A..Z)" = "За назвою (А..Я)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Title (Z..A)' */
-"[GroupSortOrder/longTitle] By Title (Z..A)" = "За назвою (я..А)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: No Sorting' */
-"[GroupSortOrder/longTitle] No Sorting" = "Без сортування";
 
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Апаратні ключі недоступні для автозаповнення.";
@@ -1345,32 +1372,20 @@
 /* List of words to be used for a passphrase. */
 "[PasswordGenerator/Wordlist/title]" = "Список слів";
 
-/* Explanation of the premium feature */
-"[Premium/Benefits/AttachmentPreview/details]" = "Переглядайте прикріплені файли прямо в KeePassium, не залишаючи слідів в інших додатках. (Працює з зображеннями, документами, архівами та іншими файлами.)";
-
-/* Title of a premium feature */
-"[Premium/Benefits/AttachmentPreview/title]" = "Перегляд без слідів";
-
 /* Title of a premium feature */
 "[Premium/Benefits/BusinessClouds/title]" = "Синхронізувати з корпоративним сховищем";
-
-/* Explanation of a premium feature */
-"[Premium/Benefits/CustomAppIcon/details]" = "Зробіть іконку програми унікальною чи звичною - або взагалі замаскуйте KeePassium під калькулятор.";
-
-/* Title of a premium feature */
-"[Premium/Benefits/CustomAppIcon/title]" = "Змініть іконку програми";
-
-/* Explanation of the premium feature */
-"[Premium/Benefits/DatabaseTimeout/details]" = "Набридло вводити майстер-пароль? Тримайте базу паролів відкритою довше, щоб розблокувати її одним натисканням.";
-
-/* Title of a premium feature */
-"[Premium/Benefits/DatabaseTimeout/title]" = "Економте свій час";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/HardwareKeys/details]" = "Захистіть свої секрети апаратним ключем YubiKey.";
 
 /* Title of a premium feature */
 "[Premium/Benefits/HardwareKeys/title]" = "Використовуйте апаратні ключі";
+
+/* Explanation of the premium feature */
+"[Premium/Benefits/LinkedDatabases/details]" = "Відкрийте іншу базу паролів за один крок, використовуючи облікові дані, збережені в записі.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/LinkedDatabases/title]" = "Відкриття прив’язаних баз паролів";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/MultiDB/details]" = "Додайте кілька баз паролів і перемикайтеся між ними за декілька натискань.";
@@ -1386,12 +1401,6 @@
 
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Positive/header] " = "Що ви отримаєте";
-
-/* Explanation of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/details]" = "Замість створення декількох копій однієї і тієї ж інформації використовуйте посилання на поля для її показу з інших записів.";
-
-/* Title of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/title]" = "Показати посилання на поля";
 
 /* Call to action */
 "[Premium/CallToAction/buyNow]" = "Придбати";
@@ -1540,9 +1549,6 @@
 /* Title of a premium feature: access to company's cloud accounts like 'OneDrive for Business' */
 "[PremiumFeature/BusinessClouds/title]" = "Корпоративне хмарне сховище";
 
-/* Title of a premium feature: ability to change the app icon */
-"[PremiumFeature/CustomAppIcons/title]" = "Інша іконка додатку";
-
 /* A generic description of a premium feature */
 "[PremiumFeature/Generic/description]" = "Перейдіть на повну версію KeePassium та користуйтеся усіма можливостями програми.";
 
@@ -1555,11 +1561,11 @@
 /* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
 "[PremiumFeature/HardwareKeys/title] Hardware Keys" = "Апаратні ключі";
 
-/* Description/advertisement for the `Long Database Timeouts` premium feature */
-"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "Економте час на введення складних майстер-паролів — тримайте базу відкритою довше в преміум-версії додатка.";
+/* Description/advertisement for the `Linked Databases` premium feature */
+"[PremiumFeature/LinkedDatabases/description]" = "Перейдіть на преміум і відкривайте прив’язані бази паролів за один крок.";
 
-/* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
-"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "Відкладене закриття баз паролів";
+/* Title of a premium feature: ability to open databases referenced in another database (In Title Case) */
+"[PremiumFeature/LinkedDatabases/title]" = "Прив’язані бази паролів";
 
 /* Description/advertisement for the `Multiple Databases` premium feature */
 "[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "Перемикайтеся між базами легко і швидко в преміум-версії.";
@@ -1572,12 +1578,6 @@
 
 /* Title of a premium feature: discover which passwords are known to be compromized */
 "[PremiumFeature/PasswordAudit/title]" = "Перевірка паролів";
-
-/* Description/advertisement for the `Preview Attachments` premium feature */
-"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "Переглядайте зображення та документи прямо в преміум-версії програми.";
-
-/* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
-"[PremiumFeature/Preview/title] Preview Attachments" = "Перегляд прикріплених файлів";
 
 /* Description/call to action for the `Quick AutoFill` premium feature. */
 "[PremiumFeature/QuickAutoFill/description]" = "Заповнюйте форми одним натисканням, навіть не відкриваючи KeePassium.";
@@ -1807,26 +1807,8 @@
 /* Settings section: protection of databases, their keys and data inside them */
 "[Settings/DataProtection/title]" = "Захист даних";
 
-/* An option in Group Viewer settings. Refers to the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
-"[Settings/EntryListDetail/longTitle] Last Modified Date" = "Дата останньої зміни";
-
 /* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: None', meanining that no entry details will be shown in any lists. */
 "[Settings/EntryListDetail/longTitle] None" = "Нічого";
-
-/* An option in Group Viewer settings. Refers to comments/notes field of the entry. Will be shown as 'Entry Subtitle: Notes'. */
-"[Settings/EntryListDetail/longTitle] Notes" = "Нотатки";
-
-/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: Password'. */
-"[Settings/EntryListDetail/longTitle] Password" = "Пароль";
-
-/* An option in Group Viewer settings. Refers to the tags field of the entry. Will be shown as 'Entry Subtitle: Tags'. */
-"[Settings/EntryListDetail/longTitle] Tags" = "Теги";
-
-/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: URL'. */
-"[Settings/EntryListDetail/longTitle] URL" = "URL";
-
-/* An option in Group Viewer settings. It refers to login information rather than person's name. Will be shown as 'Entry Subtitle: User Name'. */
-"[Settings/EntryListDetail/longTitle] User Name" = "Ім'я користувача";
 
 /* Title of a settings section: which entry field to show along with entry title */
 "[Settings/GroupViewer] Entry Subtitle" = "Показувати під записами";
@@ -1864,23 +1846,17 @@
 /* Section title in settings */
 "[Settings/Search/title]" = "Пошук";
 
-/* Title of a sort options list. Example: 'Sort by: Name' */
-"[SortBy]" = "Сортувати за";
-
-/* List sorting option. Example: 'Sort by: Date Created' */
-"[SortBy/DateCreated]" = "Дата створення";
-
-/* List sorting option. Example: 'Sort by: Date Modified' */
-"[SortBy/DateModified]" = "Дата змінення";
+/* Title of the app settings screen */
+"[Settings/title]" = "Налаштування";
 
 /* List sorting option (for file names). Example: 'Sort by: Name' */
 "[SortBy/FileName]" = "Назва";
 
-/* List sorting option (for groups and entries). Example: 'Sort by: Title' */
-"[SortBy/ItemTitle]" = "Назва";
-
 /* List sorting option, when no sorting is selected. Example: 'Sort by: None' */
 "[SortBy/None]" = "Нічого";
+
+/* List sorting option, when items are manually ordered by the user. Example: 'Sort order: Custom' */
+"[SortOrder/Custom]" = "Власні параметри";
 
 /* Name of a cloud storage service */
 "[StorageService/DropboxBusiness/title]" = "Dropbox Business";
@@ -1920,9 +1896,6 @@
 
 /* Notification after a successful donation. */
 "[TipBox/thankYou]" = "Дякуємо!";
-
-/* Title of the tip box/donation screen. */
-"[TipBox/title/1]" = "Чайові";
 
 /* Title of the tip box/donation screen. */
 "[TipBox/title/2]" = "Чайові";

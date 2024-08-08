@@ -61,6 +61,9 @@
 /* Action/button to set up the App Protection feature. Not a call to action. */
 "[Onboarding/AppProtection/activate]" = "تمكين قفل التطبيق";
 
+/* Action/button to set up the Password AutoFill feature. Not a call to action. */
+"[Onboarding/AutoFill/activate]" = "تنشيط التعبئة التلقائية";
+
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "إظهار كلمة المرور";
 

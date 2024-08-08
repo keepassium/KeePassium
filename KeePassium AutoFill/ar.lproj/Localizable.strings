@@ -4,6 +4,15 @@
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "التعبئة التلقائية لا يمكنها الوصول تلقائياً إلى الملفات التي لديك بالفعل في تطبيق KeePassium الرئيسي.\n\nلماذا؟ وراء المشاهد، يتعامل النظام مع التعبئة التلقائية كتطبيق منفصل، مستقل عن عملية KeePassium الرئيسية. لأسباب أمنية، لا يمكن لأي تطبيق الوصول ببساطة إلى أي ملفات خارجية - ما لم تقم بربط هذه الملفات فعلياً بهذا التطبيق. وبالتالي يضمن النظام أن التطبيق يمكنه فقط الوصول إلى الملفات القليلة التي سُمح له بها.\n\nونتيجة لذلك، يجب إعطاء كل من تطبيق التعبئة التلقائية و KeePassium الاذونات الخاصة لكل ملف خارجي. لحسن الحظ، هذا إجراء لمرة واحدة فقط.";
 
+/* Must match Apple's translation, as found in iOS 15 Settings → Passwords → AutoFill Passwords. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/allowFillingFrom]" = "السماح بالتعبئة من:";
+
+/* Must match Apple's translation, as found in iOS 17 Settings → Passwords → Password Options. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/usePasswordsAndPasskeysFrom]" = "استخدام كلمات السر ومفاتيح المرور من";
+
+/* Apple Keychain software; is a glossary term. */
+"[Generic/Keychain/title]" = "سلسلة المفاتيح";
+
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "إظهار كلمة المرور";
 

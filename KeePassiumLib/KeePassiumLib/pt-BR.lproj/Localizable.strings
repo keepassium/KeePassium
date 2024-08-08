@@ -10,6 +10,12 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "Ative para ouvir.";
 
+/* Section in settings: icon for the app */
+"[Appearance/AppIcon/title]" = "Ícone do aplicativo";
+
+/* Section in settings: icons for database */
+"[Appearance/DatabaseIcons/title]" = "Ícones nos bancos de dados";
+
 /* Short name of the default/system font. For example: `Font: Default` */
 "[Appearance/DefaultFont/shortTitle]" = "Padrão";
 
@@ -139,9 +145,6 @@
 /* Action/button to create a new database */
 "[Database/Create/action] Create Database" = "Criar banco de dados";
 
-/* Title of a form for creating a database */
-"[Database/Create/title] Create Database" = "Criar banco de dados";
-
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "Adicionar ícone personalizado";
 
@@ -208,6 +211,9 @@
 /* Notification when user tries to copy data from KDBX to older KDB database. */
 "[Database/LesserTargetFormat/warning]" = "Alguns dados podem ser perdidos pois o banco de dados de destino está em um formato mais antigo.";
 
+/* Title of the database picker list */
+"[Database/List/title]" = "Bancos de dados";
+
 /* Error message */
 "[Database/Load/Error] Cannot find database file" = "Arquivo de banco de dados não encontrado";
 
@@ -252,6 +258,9 @@
 
 /* Imperative/recommendation: title of a warning when changing database password. */
 "[Database/MasterKey/RememberYourPassword/title]" = "Lembre-se da senha do seu banco de dados";
+
+/* Glossary term: noun, a master key for encrypting the database */
+"[Database/MasterKey/title]" = "Chave-mestra";
 
 /* Action/button */
 "[Database/Open/action] Open Database" = "Abrir banco de dados";
@@ -580,6 +589,9 @@
 /* Action/button to create a new entry in the current group */
 "[Entry/Create/action] Create Entry" = "Nova entrada";
 
+/* Action/button to modify an entry */
+"[Entry/Edit/action]" = "Editar entrada";
+
 /* Default name of a newly created entry field */
 "[Entry/Edit/CreateField/defaultName] Field Name" = "Nome do campo";
 
@@ -636,6 +648,9 @@
 
 /* Default title of a new entry */
 "[Entry/New/defaultTitle] New Entry" = "Nova entrada";
+
+/* Glossary term: noun, an entry in database. */
+"[Entry/title]" = "Entrada";
 
 /* Warning shown when opening files from Recycle Bin location. Translation of 'Recently Deleted' should match that in the Files app. [fileName: String] */
 "[File/In Trash/warning]" = "'%@' está na pasta Apagados Recentemente e pode ser eliminado em breve. Para salvar seus dados, mova o arquivo para outra pasta.";
@@ -829,27 +844,6 @@
 /* Localized name of the storage service: Yandex.Disk (https://disk.yandex.com) */
 "[FileProvider/Yandex.Disk/name]" = "Yandex.Disk";
 
-/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Oldest First)' */
-"[FilesSortOrder/longTitle] Creation Date (Oldest First)" = "Data de criação (antigos primeiro)";
-
-/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Recent First)' */
-"[FilesSortOrder/longTitle] Creation Date (Recent First)" = "Data de criação (recentes primeiro)";
-
-/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Oldest First)' */
-"[FilesSortOrder/longTitle] Modification Date (Oldest First)" = "Data de modificação (antigos primeiro)";
-
-/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Recent First)' */
-"[FilesSortOrder/longTitle] Modification Date (Recent First)" = "Data de modificação (recentes primeiro)";
-
-/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (A..Z)' */
-"[FilesSortOrder/longTitle] Name (A..Z)" = "Nome (A..Z)";
-
-/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (Z..A)' */
-"[FilesSortOrder/longTitle] Name (Z..A)" = "Nome (Z..A)";
-
-/* A sorting option for a list of files. Example: 'Sort Order: No Sorting' */
-"[FilesSortOrder/longTitle] No Sorting" = "Não ordenar";
-
 /* Title of the dialog for picking the destination group for move/copy operations */
 "[General/DestinationGroup/title] Choose a Destination" = "Escolha um destino";
 
@@ -1006,6 +1000,9 @@
 /* Title of an warning message */
 "[Generic/title] Warning" = "Atenção";
 
+/* Title of a screen/list view configuration: sort order, visible items, etc */
+"[Generic/ViewOptions/title]" = "Opções de Visualização";
+
 /* Warning message template. Swap the icon and message for right-to-left languages. */
 "[Generic/WarningWithIcon/template]" = "⚠️ %@";
 
@@ -1015,14 +1012,14 @@
 /* Action/button to create a new sub-group in the current group */
 "[Group/Create/action] Create Group" = "Novo grupo";
 
-/* Title of a form for creating a group */
-"[Group/Create/title] Create Group" = "Novo grupo";
-
 /* Title of a form for editing a group */
 "[Group/Edit/title] Edit Group" = "Editar Grupo";
 
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "Novo grupo";
+
+/* Title for the Notes field in group editor */
+"[Group/Notes/title]" = "Anotações";
 
 /* Action/button to delete everything inside the Recycle Bin */
 "[Group/RecycleBin/Empty/action]" = "Esvaziar lixeira";
@@ -1030,29 +1027,11 @@
 /* Title of the confirmation dialog for `Empty Recycle Bin` action */
 "[Group/RecycleBin/Empty/confirmTitle]" = "Apagar permanentemente tudo na lixeira?";
 
+/* Glossary term: noun, a group in database. */
+"[Group/title]" = "Grupo";
+
 /* Title of an input field for group name */
 "[GroupEditor/Name/placeholder]" = "Nome do grupo";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
-"[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "Por data de criação (novo..antigo)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (Old..New)' */
-"[GroupSortOrder/longTitle] By Creation Date (Old..New)" = "Por data de criação (antigo..novo)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (New..Old)' */
-"[GroupSortOrder/longTitle] By Modification Date (New..Old)" = "Por data de modificação (novo..antigo)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (Old..New)' */
-"[GroupSortOrder/longTitle] By Modification Date (Old..New)" = "Por data de modificação (antigo..novo)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Title (A..Z)' */
-"[GroupSortOrder/longTitle] By Title (A..Z)" = "Por título (A..Z)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Title (Z..A)' */
-"[GroupSortOrder/longTitle] By Title (Z..A)" = "Por título (Z..A)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: No Sorting' */
-"[GroupSortOrder/longTitle] No Sorting" = "Não ordenar";
 
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "As chaves físicas não são compatíveis com o Preenchimento Automático.";
@@ -1345,26 +1324,8 @@
 /* List of words to be used for a passphrase. */
 "[PasswordGenerator/Wordlist/title]" = "Dicionário";
 
-/* Explanation of the premium feature */
-"[Premium/Benefits/AttachmentPreview/details]" = "Abra anexos diretamente no KeePassium sem deixar vestígios em outros apps. (Funciona com imagens, documentos, arquivos e mais.)";
-
-/* Title of a premium feature */
-"[Premium/Benefits/AttachmentPreview/title]" = "Pré-visualização sem vestígios";
-
 /* Title of a premium feature */
 "[Premium/Benefits/BusinessClouds/title]" = "Conecte-se a armazenamentos corporativos";
-
-/* Explanation of a premium feature */
-"[Premium/Benefits/CustomAppIcon/details]" = "Faça KeePassium parecer único, familiar ou disfarçado de calculadora — você decide.";
-
-/* Title of a premium feature */
-"[Premium/Benefits/CustomAppIcon/title]" = "Mude o ícone do app";
-
-/* Explanation of the premium feature */
-"[Premium/Benefits/DatabaseTimeout/details]" = "Cansado de digitar a senha do banco de dados? Deixe-o aberto por mais tempo e o desbloqueie com um toque.";
-
-/* Title of a premium feature */
-"[Premium/Benefits/DatabaseTimeout/title]" = "Poupe tempo";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/HardwareKeys/details]" = "Proteja seus segredos com uma chave física, como a YubiKey.";
@@ -1386,12 +1347,6 @@
 
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Positive/header] " = "Você aproveita";
-
-/* Explanation of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/details]" = "Use referências para mostrar informações de outras entradas, em vez de criar várias cópias dos mesmos dados.";
-
-/* Title of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/title]" = "Referências em campos";
 
 /* Call to action */
 "[Premium/CallToAction/buyNow]" = "Compre agora";
@@ -1540,9 +1495,6 @@
 /* Title of a premium feature: access to company's cloud accounts like 'OneDrive for Business' */
 "[PremiumFeature/BusinessClouds/title]" = "Nuvem corporativa";
 
-/* Title of a premium feature: ability to change the app icon */
-"[PremiumFeature/CustomAppIcons/title]" = "Ícones Personalizados";
-
 /* A generic description of a premium feature */
 "[PremiumFeature/Generic/description]" = "Atualize para Premium e aproveite KeePassium ao máximo.";
 
@@ -1555,12 +1507,6 @@
 /* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
 "[PremiumFeature/HardwareKeys/title] Hardware Keys" = "Chaves Físicas";
 
-/* Description/advertisement for the `Long Database Timeouts` premium feature */
-"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "Ganhe tempo em vez de repetir as senhas complicadas dos seus bancos de dados — deixe-os abertos por mais tempo na versão Premium.";
-
-/* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
-"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "Bancos de dados abertos por mais tempo";
-
 /* Description/advertisement for the `Multiple Databases` premium feature */
 "[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "Alterne facilmente entre bancos de dados na versão Premium.";
 
@@ -1572,12 +1518,6 @@
 
 /* Title of a premium feature: discover which passwords are known to be compromized */
 "[PremiumFeature/PasswordAudit/title]" = "Auditoria de senhas";
-
-/* Description/advertisement for the `Preview Attachments` premium feature */
-"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "Visualize imagens e documentos sem sair do app, na versão Premium.";
-
-/* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
-"[PremiumFeature/Preview/title] Preview Attachments" = "Visualizar Anexos";
 
 /* Description/call to action for the `Quick AutoFill` premium feature. */
 "[PremiumFeature/QuickAutoFill/description]" = "Faça login com um só toque, sem nem abrir o KeePassium.";
@@ -1807,26 +1747,8 @@
 /* Settings section: protection of databases, their keys and data inside them */
 "[Settings/DataProtection/title]" = "Proteção de dados";
 
-/* An option in Group Viewer settings. Refers to the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
-"[Settings/EntryListDetail/longTitle] Last Modified Date" = "Data da última modificação";
-
 /* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: None', meanining that no entry details will be shown in any lists. */
 "[Settings/EntryListDetail/longTitle] None" = "Nenhum";
-
-/* An option in Group Viewer settings. Refers to comments/notes field of the entry. Will be shown as 'Entry Subtitle: Notes'. */
-"[Settings/EntryListDetail/longTitle] Notes" = "Anotações";
-
-/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: Password'. */
-"[Settings/EntryListDetail/longTitle] Password" = "Senha";
-
-/* An option in Group Viewer settings. Refers to the tags field of the entry. Will be shown as 'Entry Subtitle: Tags'. */
-"[Settings/EntryListDetail/longTitle] Tags" = "Etiquetas";
-
-/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: URL'. */
-"[Settings/EntryListDetail/longTitle] URL" = "URL";
-
-/* An option in Group Viewer settings. It refers to login information rather than person's name. Will be shown as 'Entry Subtitle: User Name'. */
-"[Settings/EntryListDetail/longTitle] User Name" = "Nome de usuário";
 
 /* Title of a settings section: which entry field to show along with entry title */
 "[Settings/GroupViewer] Entry Subtitle" = "Subtítulo da entrada";
@@ -1864,20 +1786,11 @@
 /* Section title in settings */
 "[Settings/Search/title]" = "Busca";
 
-/* Title of a sort options list. Example: 'Sort by: Name' */
-"[SortBy]" = "Ordenar por";
-
-/* List sorting option. Example: 'Sort by: Date Created' */
-"[SortBy/DateCreated]" = "Data de criação";
-
-/* List sorting option. Example: 'Sort by: Date Modified' */
-"[SortBy/DateModified]" = "Data de modificação";
+/* Title of the app settings screen */
+"[Settings/title]" = "Ajustes";
 
 /* List sorting option (for file names). Example: 'Sort by: Name' */
 "[SortBy/FileName]" = "Nome";
-
-/* List sorting option (for groups and entries). Example: 'Sort by: Title' */
-"[SortBy/ItemTitle]" = "Título";
 
 /* List sorting option, when no sorting is selected. Example: 'Sort by: None' */
 "[SortBy/None]" = "Nenhum";
@@ -1920,9 +1833,6 @@
 
 /* Notification after a successful donation. */
 "[TipBox/thankYou]" = "Muito obrigado!";
-
-/* Title of the tip box/donation screen. */
-"[TipBox/title/1]" = "Caixinha de gorjetas";
 
 /* Title of the tip box/donation screen. */
 "[TipBox/title/2]" = "Doações";

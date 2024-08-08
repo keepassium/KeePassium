@@ -19,12 +19,9 @@
 /* Class = "UIBarButtonItem"; HGI-xq-zUf.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Add Custom Field"; ObjectID = "HGI-xq-zUf"; */
 "HGI-xq-zUf.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Lägg till eget fält";
 
-/* Class = "UINavigationItem"; title = "Edit Entry"; ObjectID = "l3s-Bv-fA1"; */
-"l3s-Bv-fA1.title" = "Redigera konto";
-
 /* Class = "UITextField"; accessibilityLabel = "Entry title"; ObjectID = "mGc-If-zfn"; */
-"mGc-If-zfn.accessibilityLabel" = "Kontots namn";
+"mGc-If-zfn.accessibilityLabel" = "Postnamn";
 
 /* Class = "UITextField"; placeholder = "Entry Title"; ObjectID = "mGc-If-zfn"; */
-"mGc-If-zfn.placeholder" = "Kontonamn";
+"mGc-If-zfn.placeholder" = "Postnamn";
 

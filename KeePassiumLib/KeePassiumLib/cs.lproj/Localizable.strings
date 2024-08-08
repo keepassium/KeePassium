@@ -7,6 +7,12 @@
 /* Suggestion/hint for available user action */
 "[Accessibility] Double tap to copy to clipboard" = "Dvojitým poklepáním zkopírujete do schránky";
 
+/* Section in settings: icon for the app */
+"[Appearance/AppIcon/title]" = "Ikona aplikace";
+
+/* Section in settings: icons for database */
+"[Appearance/DatabaseIcons/title]" = "Ikony databáze";
+
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "Velikost písma";
 
@@ -124,9 +130,6 @@
 /* Action/button to create a new database */
 "[Database/Create/action] Create Database" = "Vytvořit databázi";
 
-/* Title of a form for creating a database */
-"[Database/Create/title] Create Database" = "Vytvořit databázi";
-
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "Přidat vlastní ikonu";
 
@@ -138,6 +141,9 @@
 
 /* Notification when user tries to copy data from KDBX to older KDB database. */
 "[Database/LesserTargetFormat/warning]" = "Formát této databáze je zastaralý, některá data mohou být ztracena.";
+
+/* Title of the database picker list */
+"[Database/List/title]" = "Databáze";
 
 /* Error message */
 "[Database/Load/Error] Cannot find database file" = "Nelze najít databázi";
@@ -177,6 +183,9 @@
 
 /* Imperative/recommendation: title of a warning when changing database password. */
 "[Database/MasterKey/RememberYourPassword/title]" = "Zapamatujte si své heslo k databázi";
+
+/* Glossary term: noun, a master key for encrypting the database */
+"[Database/MasterKey/title]" = "Hlavní klíč";
 
 /* Action/button */
 "[Database/Open/action] Open Database" = "Otevřít databázi";
@@ -478,6 +487,9 @@
 /* Action/button to create a new entry in the current group */
 "[Entry/Create/action] Create Entry" = "Vytvořit záznam";
 
+/* Action/button to modify an entry */
+"[Entry/Edit/action]" = "Upravit záznam";
+
 /* Default name of a newly created entry field */
 "[Entry/Edit/CreateField/defaultName] Field Name" = "Název pole";
 
@@ -519,6 +531,9 @@
 
 /* Default title of a new entry */
 "[Entry/New/defaultTitle] New Entry" = "Nový záznam";
+
+/* Glossary term: noun, an entry in database. */
+"[Entry/title]" = "Záznam";
 
 /* Warning shown when opening files from Recycle Bin location. Translation of 'Recently Deleted' should match that in the Files app. [fileName: String] */
 "[File/In Trash/warning]" = "'%@' je umístěn v nedávno smazaných souborech a může být brzy odstraněn. Chcete-li soubor zachovat, přesuňte jej na trvalejší místo.";
@@ -694,27 +709,6 @@
 /* Localized name of the storage service: Yandex.Disk (https://disk.yandex.com) */
 "[FileProvider/Yandex.Disk/name]" = "Yandex.Disk";
 
-/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Oldest First)' */
-"[FilesSortOrder/longTitle] Creation Date (Oldest First)" = "Datum vytvoření (od nejstarší)";
-
-/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Recent First)' */
-"[FilesSortOrder/longTitle] Creation Date (Recent First)" = "Datum vytvoření (od nejnovější)";
-
-/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Oldest First)' */
-"[FilesSortOrder/longTitle] Modification Date (Oldest First)" = "Datum úpravy (od nejstarší)";
-
-/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Recent First)' */
-"[FilesSortOrder/longTitle] Modification Date (Recent First)" = "Datum úpravy (od nejnovější)";
-
-/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (A..Z)' */
-"[FilesSortOrder/longTitle] Name (A..Z)" = "Název (A..Z)";
-
-/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (Z..A)' */
-"[FilesSortOrder/longTitle] Name (Z..A)" = "Název (Z..A)";
-
-/* A sorting option for a list of files. Example: 'Sort Order: No Sorting' */
-"[FilesSortOrder/longTitle] No Sorting" = "Bez řazení";
-
 /* Title of the dialog for picking the destination group for move/copy operations */
 "[General/DestinationGroup/title] Choose a Destination" = "Vyberte cíl";
 
@@ -847,6 +841,9 @@
 /* Title of an warning message */
 "[Generic/title] Warning" = "Varování";
 
+/* Title of a screen/list view configuration: sort order, visible items, etc */
+"[Generic/ViewOptions/title]" = "Volby zobrazení";
+
 /* Warning message template. Swap the icon and message for right-to-left languages. */
 "[Generic/WarningWithIcon/template]" = "⚠️ %@";
 
@@ -856,38 +853,20 @@
 /* Action/button to create a new sub-group in the current group */
 "[Group/Create/action] Create Group" = "Vytvořit skupinu";
 
-/* Title of a form for creating a group */
-"[Group/Create/title] Create Group" = "Vytvořit skupinu";
-
 /* Title of a form for editing a group */
 "[Group/Edit/title] Edit Group" = "Upravit skupinu";
 
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "Nová skupina";
 
+/* Title for the Notes field in group editor */
+"[Group/Notes/title]" = "Poznámky";
+
+/* Glossary term: noun, a group in database. */
+"[Group/title]" = "Skupina";
+
 /* Title of an input field for group name */
 "[GroupEditor/Name/placeholder]" = "Název skupiny";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
-"[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "Podle datumu vytvoření (nové...staré)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (Old..New)' */
-"[GroupSortOrder/longTitle] By Creation Date (Old..New)" = "Podle datumu vytvoření (staré...nové)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (New..Old)' */
-"[GroupSortOrder/longTitle] By Modification Date (New..Old)" = "Podle datumu úpravy (nové...staré)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (Old..New)' */
-"[GroupSortOrder/longTitle] By Modification Date (Old..New)" = "Podle datumu úpravy (staré...nové)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Title (A..Z)' */
-"[GroupSortOrder/longTitle] By Title (A..Z)" = "Podle názvu (A...Z)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Title (Z..A)' */
-"[GroupSortOrder/longTitle] By Title (Z..A)" = "Podle názvu (Z...A)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: No Sorting' */
-"[GroupSortOrder/longTitle] No Sorting" = "Bez řazení";
 
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Hardwarové klíče není možné použít pro automatické vyplňování.";
@@ -977,24 +956,6 @@
 "[OTP/Setup]" = "Nastavit jednorázové heslo (OTP)";
 
 /* Explanation of the premium feature */
-"[Premium/Benefits/AttachmentPreview/details]" = "Na vaše přílohy můžete nahlížet přímo zde v aplikaci a nezanechávat tak stopy v jiných aplikacích. (Náhled podporuje obrázky, dokumenty, archivované soubory a další.)";
-
-/* Title of a premium feature */
-"[Premium/Benefits/AttachmentPreview/title]" = "Nahlížejte beze stop";
-
-/* Explanation of a premium feature */
-"[Premium/Benefits/CustomAppIcon/details]" = "Zvolte si pro KeePassium unikátní ikonu nebo ji třeba maskujte jako kalkulačku – volba je na vás.";
-
-/* Title of a premium feature */
-"[Premium/Benefits/CustomAppIcon/title]" = "Změňte ikonu aplikace";
-
-/* Explanation of the premium feature */
-"[Premium/Benefits/DatabaseTimeout/details]" = "Unavuje vás neustále zadávat hlavní heslo? Mějte svou databázi otevřenou po delší dobu a odemkněte ji jedním klepnutím.";
-
-/* Title of a premium feature */
-"[Premium/Benefits/DatabaseTimeout/title]" = "Šetřete svůj čas";
-
-/* Explanation of the premium feature */
 "[Premium/Benefits/HardwareKeys/details]" = "Chraňte svá hesla pomocí hardwarového klíče, jako je YubiKey.";
 
 /* Title of a premium feature */
@@ -1011,12 +972,6 @@
 
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Positive/header] " = "Co obdržíte";
-
-/* Explanation of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/details]" = "Pomocí odkazů na pole můžete zobrazit informace z jiných záznamů namísto vytváření dalších kopií stejných informací.";
-
-/* Title of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/title]" = "Zobrazit odkazy na pole";
 
 /* Call to action */
 "[Premium/CallToAction/buyNow]" = "Koupit nyní";
@@ -1159,9 +1114,6 @@
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "Aplikace používána %1$@/měsíc, což je %2$@/ročně.";
 
-/* Title of a premium feature: ability to change the app icon */
-"[PremiumFeature/CustomAppIcons/title]" = "Vlastní ikony aplikace";
-
 /* A generic description of a premium feature */
 "[PremiumFeature/Generic/description]" = "Upgradujte na Premium a užijte si KeePassium se všemi funkcemi.";
 
@@ -1174,23 +1126,11 @@
 /* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
 "[PremiumFeature/HardwareKeys/title] Hardware Keys" = "Hardwarové klíče";
 
-/* Description/advertisement for the `Long Database Timeouts` premium feature */
-"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "Ušetřete čas zadáváním vašeho hlavního hesla – prémiová verze umožňuje ponechat databázi déle otevřenou.";
-
-/* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
-"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "Dlouhý časový zámek";
-
 /* Description/advertisement for the `Multiple Databases` premium feature */
 "[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "V prémiové verzi můžete snadno přepínat mezi více databázemi.";
 
 /* Title of a premium feature: ability to use multiple databases (In Title Case) */
 "[PremiumFeature/MultiDB/title] Multiple Databases" = "Více databází";
-
-/* Description/advertisement for the `Preview Attachments` premium feature */
-"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "Prémiová verze umožňuje náhled obrázků a dokumentů přímo v aplikaci.";
-
-/* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
-"[PremiumFeature/Preview/title] Preview Attachments" = "Náhled příloh";
 
 /* Description/call to action for the `Quick AutoFill` premium feature. */
 "[PremiumFeature/QuickAutoFill/description]" = "Vyplňujte přihlašovací formuláře jediným klepnutím, dokonce i bez otevření KeePassium.";
@@ -1348,23 +1288,8 @@
 /* Settings section: protection of databases, their keys and data inside them */
 "[Settings/DataProtection/title]" = "Ochrana dat";
 
-/* An option in Group Viewer settings. Refers to the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
-"[Settings/EntryListDetail/longTitle] Last Modified Date" = "Datum poslední změny";
-
 /* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: None', meanining that no entry details will be shown in any lists. */
 "[Settings/EntryListDetail/longTitle] None" = "Žádné";
-
-/* An option in Group Viewer settings. Refers to comments/notes field of the entry. Will be shown as 'Entry Subtitle: Notes'. */
-"[Settings/EntryListDetail/longTitle] Notes" = "Poznámky";
-
-/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: Password'. */
-"[Settings/EntryListDetail/longTitle] Password" = "Heslo";
-
-/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: URL'. */
-"[Settings/EntryListDetail/longTitle] URL" = "URL";
-
-/* An option in Group Viewer settings. It refers to login information rather than person's name. Will be shown as 'Entry Subtitle: User Name'. */
-"[Settings/EntryListDetail/longTitle] User Name" = "Uživatelské jméno";
 
 /* Title of a settings section: which entry field to show along with entry title */
 "[Settings/GroupViewer] Entry Subtitle" = "Podtitulek záznamu";
@@ -1378,20 +1303,11 @@
 /* Section title in settings */
 "[Settings/Search/title]" = "Vyhledávání";
 
-/* Title of a sort options list. Example: 'Sort by: Name' */
-"[SortBy]" = "Seřadit dle";
-
-/* List sorting option. Example: 'Sort by: Date Created' */
-"[SortBy/DateCreated]" = "Datum Vytvoření";
-
-/* List sorting option. Example: 'Sort by: Date Modified' */
-"[SortBy/DateModified]" = "Datum Změny";
+/* Title of the app settings screen */
+"[Settings/title]" = "Nastavení";
 
 /* List sorting option (for file names). Example: 'Sort by: Name' */
 "[SortBy/FileName]" = "Název";
-
-/* List sorting option (for groups and entries). Example: 'Sort by: Title' */
-"[SortBy/ItemTitle]" = "Název";
 
 /* List sorting option, when no sorting is selected. Example: 'Sort by: None' */
 "[SortBy/None]" = "Žádné";
@@ -1425,9 +1341,6 @@
 
 /* Notification after a successful donation. */
 "[TipBox/thankYou]" = "Děkujeme!";
-
-/* Title of the tip box/donation screen. */
-"[TipBox/title/1]" = "Spropitné";
 
 /* Title of the tip box/donation screen. */
 "[TipBox/title/2]" = "Příspěvky";

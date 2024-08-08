@@ -19,9 +19,6 @@
 /* Class = "UIBarButtonItem"; HGI-xq-zUf.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Add Custom Field"; ObjectID = "HGI-xq-zUf"; */
 "HGI-xq-zUf.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Ajouter un champ personnalisé";
 
-/* Class = "UINavigationItem"; title = "Edit Entry"; ObjectID = "l3s-Bv-fA1"; */
-"l3s-Bv-fA1.title" = "Modifier l'entrée";
-
 /* Class = "UITextField"; accessibilityLabel = "Entry title"; ObjectID = "mGc-If-zfn"; */
 "mGc-If-zfn.accessibilityLabel" = "Nom de l'entrée";
 

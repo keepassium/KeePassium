@@ -8,7 +8,7 @@
 "Gck-9R-sGq.normalTitle" = "Salta";
 
 /* Class = "UILabel"; text = "Please re-add databases and key files you want to use with the AutoFill feature."; ObjectID = "P0M-N3-ynf"; */
-"P0M-N3-ynf.text" = "Aggiungi di nuovo i database e i file chiave che vuoi utilizzare con il completamento automatico.";
+"P0M-N3-ynf.text" = "Aggiungi di nuovo i database e i file chiave che vuoi utilizzare con l'inserimento automatico.";
 
 /* Class = "UILabel"; text = "AutoFill Setup"; ObjectID = "pIl-6L-Msp"; */
 "pIl-6L-Msp.text" = "Configurazione inserimento automatico";

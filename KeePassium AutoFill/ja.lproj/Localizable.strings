@@ -4,6 +4,15 @@
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "自動入力は、メインアプリ内のファイルに勝手にはアクセスできません。\n\nなぜか。自動入力はメインアプリとは別のアプリとして扱われており、安全のため外部のファイルに直接はアクセスできない仕組みになっているためです――ユーザーが明示的に指定しない限りは。この指定を通して、ユーザーが意図したファイルだけにしかアプリがアクセスできないことが保証されています。\n\nその結果、メインアプリと自動入力はそれぞれ別々にファイルアクセスの許可を必要とします。ただ、これは一度すれば済む手続きです。";
 
+/* Must match Apple's translation, as found in iOS 15 Settings → Passwords → AutoFill Passwords. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/allowFillingFrom]" = "入力を許可:";
+
+/* Must match Apple's translation, as found in iOS 17 Settings → Passwords → Password Options. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/usePasswordsAndPasskeysFrom]" = "使用するパスワードとパスキーの取得元";
+
+/* Apple Keychain software; is a glossary term. */
+"[Generic/Keychain/title]" = "キーチェーン";
+
 /* Password quality description. For example: `Password quality: Weak`. [level: String] */
 "[PasswordQuality/description]" = "パスワードの強度: %@";
 

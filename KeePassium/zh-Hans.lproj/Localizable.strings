@@ -76,6 +76,12 @@
 /* Title of the App Protection onboarding screen */
 "[Onboarding/AppProtection/title]" = "仅有您能打开";
 
+/* Action/button to set up the Password AutoFill feature. Not a call to action. */
+"[Onboarding/AutoFill/activate]" = "激活自动填充";
+
+/* Title of the Password AutoFill onboarding screen */
+"[Onboarding/AutoFill/title]" = "密码自动填充";
+
 /* Action/button */
 "[Onboarding/CreateNewDatabase/action]" = "创建新的数据库";
 

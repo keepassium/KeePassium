@@ -17,5 +17,5 @@
 "NSPhotoLibraryAddUsageDescription" = "KeePassium behöver tillåtelse för att exportera filer till Bilder.";
 
 /* (No Comment) */
-"NSPhotoLibraryUsageDescription" = "KeePassium behöver åtkomst till ditt fotobibliotek för att kunna lägga till egenvalda ikoner till grupper och konton";
+"NSPhotoLibraryUsageDescription" = "KeePassium behöver åtkomst till ditt fotobibliotek för att kunna lägga till egenvalda ikoner till grupper och poster";
 

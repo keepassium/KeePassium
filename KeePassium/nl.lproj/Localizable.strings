@@ -76,6 +76,18 @@
 /* Title of the App Protection onboarding screen */
 "[Onboarding/AppProtection/title]" = "Alleen voor jouw ogen";
 
+/* Action/button to set up the Password AutoFill feature. Not a call to action. */
+"[Onboarding/AutoFill/activate]" = "Activeer automatisch invullen";
+
+/* Text in the Password AutoFill onboarding screen. */
+"[Onboarding/AutoFill/text1]" = "Met Vul automatisch in kun je snel door aanmeldpagina's gaan met een druk op een knop.";
+
+/* Text in the Password AutoFill onboarding screen. */
+"[Onboarding/AutoFill/text2]" = "Activeer Wachtwoord automatisch invullen in de systeeminstellingen om te beginnen.";
+
+/* Title of the Password AutoFill onboarding screen */
+"[Onboarding/AutoFill/title]" = "Wachtwoord automatisch invullen";
+
 /* Action/button */
 "[Onboarding/CreateNewDatabase/action]" = "Maak nieuwe databank";
 
@@ -139,6 +151,9 @@
 /* Title of a screen to check which passwords are known to be compromised. */
 "[PasswordAudit/title]" = "Wachtwoordcontrole";
 
+/* Menu action to add a user-provided word list file to the app. */
+"[PasswordGenerator/Wordlist/Import/menuAction]" = "Woordenlijst importeren…";
+
 /* Password quality description. For example: `Password quality: Weak`. [level: String] */
 "[PasswordQuality/description]" = "Wachtwoordkwaliteit: %@";
 
@@ -177,6 +192,12 @@
 
 /* Title of the tag creation dialog */
 "[Tags/Create/title]" = "Nieuwe tag";
+
+/* Question to confirm global deletion */
+"[Tags/Delete/Confirm/message]" = "Dit label verwijderen uit alle groepen en items?";
+
+/* Title of a dialog for editing a tag */
+"[Tags/Edit/title]" = "Label bewerken";
 
 /* Status message with a call to action */
 "[Tags/None/placeholder]" = "Er zijn geen tags in de database, voeg er enkele toe.";

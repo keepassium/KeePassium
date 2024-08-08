@@ -10,6 +10,12 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "Activeer om te luisteren.";
 
+/* Section in settings: icon for the app */
+"[Appearance/AppIcon/title]" = "App-pictogram";
+
+/* Section in settings: icons for database */
+"[Appearance/DatabaseIcons/title]" = "Databankpictogrammen";
+
 /* Short name of the default/system font. For example: `Font: Default` */
 "[Appearance/DefaultFont/shortTitle]" = "Standaard";
 
@@ -139,9 +145,6 @@
 /* Action/button to create a new database */
 "[Database/Create/action] Create Database" = "Maak databank";
 
-/* Title of a form for creating a database */
-"[Database/Create/title] Create Database" = "Maak databank";
-
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "Voeg aangepast pictogram toe";
 
@@ -190,6 +193,9 @@
 /* Title: database encryption settings. */
 "[Database/EncryptionSettings/title]" = "Encryptie-instellingen";
 
+/* Info message for entries that contain information for opening a different database. */
+"[Database/Entry/LinkedDatabase/message]" = "Dit item verwijst naar een andere databank.";
+
 /* Info message when changing database file format. */
 "[Database/FormatVersion/Conversion/allDataPreserved]" = "Al uw gegevens zullen worden bewaard.";
 
@@ -207,6 +213,12 @@
 
 /* Notification when user tries to copy data from KDBX to older KDB database. */
 "[Database/LesserTargetFormat/warning]" = "Dit is een ouder databankformaat; bepaalde gegevens gaan mogelijk verloren.";
+
+/* Recommendation for solving a problem with a list of files. */
+"[Database/List/LocalMissing/message]" = "Als sommige lokale bestanden niet in de lijst staan, start dan eerst de KeePassium-app.";
+
+/* Title of the database picker list */
+"[Database/List/title]" = "Databanken";
 
 /* Error message */
 "[Database/Load/Error] Cannot find database file" = "Kan databankbestand niet vinden";
@@ -253,6 +265,12 @@
 /* Imperative/recommendation: title of a warning when changing database password. */
 "[Database/MasterKey/RememberYourPassword/title]" = "Onthoud uw databasewachtwoord";
 
+/* Glossary term: noun, a master key for encrypting the database */
+"[Database/MasterKey/title]" = "Hoofdsleutel";
+
+/* Title of database creation dialog */
+"[Database/New/title]" = "Nieuwe databank";
+
 /* Action/button */
 "[Database/Open/action] Open Database" = "Open databank";
 
@@ -283,6 +301,9 @@
 /* Progress status */
 "[Database/Progress] Loading key file..." = "Bezig met laden van sleutelbestand...";
 
+/* Database loading/saving status: checking whether our database was modified from another device. */
+"[Database/Progress/checkingDatabaseForModifications]" = "Databank controleren op wijzigingen…";
+
 /* Database loading status: fetching the database file from disk/cloud */
 "[Database/Progress/downloading]" = "Bezig met ophalen van databankbestand...";
 
@@ -294,6 +315,12 @@
 
 /* Database loading/saving status: replacing field references with their values */
 "[Database/Progress/resolvingFieldReferences]" = "Veldverwijzingen oplossen …";
+
+/* Database saving status: deciding how to handle conflicting changes. */
+"[Database/Progress/resolvingSyncConflict]" = "Synchronisatieconflict oplossen…";
+
+/* Database saving status */
+"[Database/Progress/writingDatabaseFile]" = "Databankbestand schrijven…";
 
 /* Suggested solution/call to action when intermediate sync app fails. */
 "[Database/RecommendRemote/callToAction]" = "Probeer rechtstreeks vanuit KeePassium verbinding te maken met uw externe opslag.";
@@ -571,6 +598,9 @@
 /* Action/button to create a new entry in the current group */
 "[Entry/Create/action] Create Entry" = "Maak item";
 
+/* Action/button to modify an entry */
+"[Entry/Edit/action]" = "Bewerk item";
+
 /* Default name of a newly created entry field */
 "[Entry/Edit/CreateField/defaultName] Field Name" = "Veldnaam";
 
@@ -619,6 +649,9 @@
 /* Title of a field with entry's last modification date and time */
 "[Entry/History] Last Modification Date" = "Laatst gewijzigd op";
 
+/* Title of a field with entry's modification date and time */
+"[Entry/History] Modification Date" = "Wijzigingsdatum";
+
 /* Title of a list with previous versions/revisions of an entry. */
 "[Entry/History] Previous Versions" = "Vorige versies";
 
@@ -627,6 +660,9 @@
 
 /* Default title of a new entry */
 "[Entry/New/defaultTitle] New Entry" = "Nieuw item";
+
+/* Glossary term: noun, an entry in database. */
+"[Entry/title]" = "Item";
 
 /* Warning shown when opening files from Recycle Bin location. Translation of 'Recently Deleted' should match that in the Files app. [fileName: String] */
 "[File/In Trash/warning]" = "'%@' bevindt zich in Recent verwijderd en kan binnenkort worden verwijderd. Verplaats het bestand naar een meer permanente locatie om uw gegevens te bewaren.";
@@ -687,6 +723,15 @@
 
 /* Error message: file provider does not respond to requests (quickly enough). For example: `Google Drive does not respond` */
 "[FileAccessError/Timeout/knownFileProvider]" = "%@ reageert niet.";
+
+/* Section header for attributes of a file (e.g. hidden, excluded from backup, etc) */
+"[FileInfo/Attributes/header]" = "Bestandseigenschappen";
+
+/* Title of a setting: is the file hidden */
+"[FileInfo/Attributes/Hidden/title]" = "Verborgen";
+
+/* Warning message for 'hidden' files. */
+"[FileInfo/Attributes/Hidden/warning]" = "Verborgen bestanden zijn minder zichtbaar voor een terloopse gebruiker, maar verbeteren de gegevensbeveiliging niet.";
 
 /* Section header: file backup settings */
 "[FileInfo/Backup/header]" = "Back-up";
@@ -820,27 +865,6 @@
 /* Localized name of the storage service: Yandex.Disk (https://disk.yandex.com) */
 "[FileProvider/Yandex.Disk/name]" = "Yandex.Disk";
 
-/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Oldest First)' */
-"[FilesSortOrder/longTitle] Creation Date (Oldest First)" = "Aanmaakdatum (oudste eerst)";
-
-/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Recent First)' */
-"[FilesSortOrder/longTitle] Creation Date (Recent First)" = "Aanmaakdatum (nieuwste eerst)";
-
-/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Oldest First)' */
-"[FilesSortOrder/longTitle] Modification Date (Oldest First)" = "Wijzigingsdatum (oudste eerst)";
-
-/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Recent First)' */
-"[FilesSortOrder/longTitle] Modification Date (Recent First)" = "Wijzigingsdatum (nieuwste eerst)";
-
-/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (A..Z)' */
-"[FilesSortOrder/longTitle] Name (A..Z)" = "Naam (A..Z)";
-
-/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (Z..A)' */
-"[FilesSortOrder/longTitle] Name (Z..A)" = "Naam (Z..A)";
-
-/* A sorting option for a list of files. Example: 'Sort Order: No Sorting' */
-"[FilesSortOrder/longTitle] No Sorting" = "Niet sorteren";
-
 /* Title of the dialog for picking the destination group for move/copy operations */
 "[General/DestinationGroup/title] Choose a Destination" = "Kies een bestemming";
 
@@ -946,6 +970,9 @@
 /* Action/button to skip the current step and proceed with the next one */
 "[Generic] Skip" = "Overslaan";
 
+/* Action/button to change the order of items in a list (move them higher/lower). */
+"[Generic/Action/ReorderItems]" = "Herordenen";
+
 /* Action/button to select some items in a list. */
 "[Generic/Action/SelectItems]" = "Selecteer";
 
@@ -997,6 +1024,12 @@
 /* Title of an warning message */
 "[Generic/title] Warning" = "Waarschuwing";
 
+/* Title of a menu with various utilities */
+"[Generic/Tools/title]" = "Extra";
+
+/* Title of a screen/list view configuration: sort order, visible items, etc */
+"[Generic/ViewOptions/title]" = "Weergaveopties";
+
 /* Warning message template. Swap the icon and message for right-to-left languages. */
 "[Generic/WarningWithIcon/template]" = "⚠️ %@";
 
@@ -1006,14 +1039,17 @@
 /* Action/button to create a new sub-group in the current group */
 "[Group/Create/action] Create Group" = "Maak groep";
 
-/* Title of a form for creating a group */
-"[Group/Create/title] Create Group" = "Maak groep";
-
 /* Title of a form for editing a group */
 "[Group/Edit/title] Edit Group" = "Bewerk groep";
 
+/* VoiceOver description of a menu with group-related actions */
+"[Group/Menu/a11y/title]" = "Groepsmenu";
+
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "Nieuwe groep";
+
+/* Title for the Notes field in group editor */
+"[Group/Notes/title]" = "Notities";
 
 /* Action/button to delete everything inside the Recycle Bin */
 "[Group/RecycleBin/Empty/action]" = "Prullenbak legen";
@@ -1021,29 +1057,29 @@
 /* Title of the confirmation dialog for `Empty Recycle Bin` action */
 "[Group/RecycleBin/Empty/confirmTitle]" = "Alles in de prullenbak permanent verwijderen?";
 
+/* VoiceOver description of a smart group [groupTitle: String] */
+"[Group/Smart/a11y/description]" = "%@, slimme groep";
+
+/* Action/button to show a help article */
+"[Group/Smart/about]" = "Over slimme groepen…";
+
+/* Action/button to create a new Smart Group */
+"[Group/Smart/Create/action]" = "Slimme groep maken";
+
+/* Default name of a new smart group */
+"[Group/Smart/New/defaultName]" = "Nieuwe slimme groep";
+
+/* Title for the Smart Group search conditions in group editor */
+"[Group/Smart/Query/title]" = "Filter slimme groep";
+
+/* Glossary term: noun, a smart group in database. */
+"[Group/Smart/title]" = "Slimme groep";
+
+/* Glossary term: noun, a group in database. */
+"[Group/title]" = "Groep";
+
 /* Title of an input field for group name */
 "[GroupEditor/Name/placeholder]" = "Groepsnaam";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
-"[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "Op aanmaakdatum (nieuw..oud)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (Old..New)' */
-"[GroupSortOrder/longTitle] By Creation Date (Old..New)" = "Op aanmaakdatum (oud..nieuw)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (New..Old)' */
-"[GroupSortOrder/longTitle] By Modification Date (New..Old)" = "Op wijzigingsdatum (nieuw..oud)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (Old..New)' */
-"[GroupSortOrder/longTitle] By Modification Date (Old..New)" = "Op wijzigingsdatum (oud..nieuw)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Title (A..Z)' */
-"[GroupSortOrder/longTitle] By Title (A..Z)" = "Op naam (A..Z)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Title (Z..A)' */
-"[GroupSortOrder/longTitle] By Title (Z..A)" = "Op naam (Z..A)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: No Sorting' */
-"[GroupSortOrder/longTitle] No Sorting" = "Niet sorteren";
 
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Hardwarematige sleutels zijn niet beschikbaar in AutoFill.";
@@ -1330,35 +1366,26 @@
 /* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
 "[PasswordGenerator/Wordlist/EFFShort/title]" = "EFF korte woordenlijst #%d (1296 woorden)";
 
+/* Error message when importing a text file [lineNumber: Int, problemDescription: String] */
+"[PasswordGenerator/Wordlist/ImportError/reason]" = "Bestand kon niet worden geïmporteerd vanwege een probleem op regel %1$d (%2$@)";
+
 /* List of words to be used for a passphrase. */
 "[PasswordGenerator/Wordlist/title]" = "Woordenlijst";
 
-/* Explanation of the premium feature */
-"[Premium/Benefits/AttachmentPreview/details]" = "Bekijk bijlagen direct in KeePassium en laat geen sporen achter in andere apps. (werkt met afbeeldingen, documenten, archieven en nog veel meer)";
-
-/* Title of a premium feature */
-"[Premium/Benefits/AttachmentPreview/title]" = "Voorbeeld zonder spoor";
-
 /* Title of a premium feature */
 "[Premium/Benefits/BusinessClouds/title]" = "Synchroniseer met bedrijfsopslag";
-
-/* Explanation of a premium feature */
-"[Premium/Benefits/CustomAppIcon/details]" = "Laat KeePassium er uniek of vertrouwd uitzien of vermom het als rekenmachine - de keuze is aan u.";
-
-/* Title of a premium feature */
-"[Premium/Benefits/CustomAppIcon/title]" = "Pictogram wijzigen";
-
-/* Explanation of the premium feature */
-"[Premium/Benefits/DatabaseTimeout/details]" = "Ben je het zat om je hoofdwachtwoord te typen? Houd je databank langer open en ontgrendel deze met één tik.";
-
-/* Title of a premium feature */
-"[Premium/Benefits/DatabaseTimeout/title]" = "Bespaar tijd";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/HardwareKeys/details]" = "Bescherm je geheimen met een hardwarematige sleutel, zoals YubiKey.";
 
 /* Title of a premium feature */
 "[Premium/Benefits/HardwareKeys/title]" = "Gebruik hardwarematige sleutels";
+
+/* Explanation of the premium feature */
+"[Premium/Benefits/LinkedDatabases/details]" = "Open een andere databank in één stap, met inloggegevens opgeslagen in een item.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/LinkedDatabases/title]" = "Gekoppelde databank openen";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/MultiDB/details]" = "Voeg meerdere databanken toe en schakel snel over.";
@@ -1374,12 +1401,6 @@
 
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Positive/header] " = "Wat je krijgt";
-
-/* Explanation of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/details]" = "Gebruik veldverwijzingen om informatie van andere items weer te geven, in plaats van meerdere kopieën van dezelfde informatie te maken.";
-
-/* Title of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/title]" = "Veldverwijzingen tonen";
 
 /* Call to action */
 "[Premium/CallToAction/buyNow]" = "Nu kopen";
@@ -1528,9 +1549,6 @@
 /* Title of a premium feature: access to company's cloud accounts like 'OneDrive for Business' */
 "[PremiumFeature/BusinessClouds/title]" = "Zakelijke cloudopslag";
 
-/* Title of a premium feature: ability to change the app icon */
-"[PremiumFeature/CustomAppIcons/title]" = "Aangepaste app-pictogrammen";
-
 /* A generic description of a premium feature */
 "[PremiumFeature/Generic/description]" = "Upgrade naar premium en geniet nóg meer van KeePassium.";
 
@@ -1543,11 +1561,11 @@
 /* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
 "[PremiumFeature/HardwareKeys/title] Hardware Keys" = "Hardwarematige sleutels";
 
-/* Description/advertisement for the `Long Database Timeouts` premium feature */
-"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "Bespaar tijd bij het invoeren van complexe hoofdwachtwoorden — in de Premium-versie kun je je databank langer open houden.";
+/* Description/advertisement for the `Linked Databases` premium feature */
+"[PremiumFeature/LinkedDatabases/description]" = "Upgrade naar premium en open gekoppelde databanken in één stap.";
 
-/* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
-"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "Lage databank-time-outs";
+/* Title of a premium feature: ability to open databases referenced in another database (In Title Case) */
+"[PremiumFeature/LinkedDatabases/title]" = "Gekoppelde databanken";
 
 /* Description/advertisement for the `Multiple Databases` premium feature */
 "[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "In de Premium-versie kun je eenvoudig schakelen tusses databanken.";
@@ -1560,12 +1578,6 @@
 
 /* Title of a premium feature: discover which passwords are known to be compromized */
 "[PremiumFeature/PasswordAudit/title]" = "Wachtwoordcontrole";
-
-/* Description/advertisement for the `Preview Attachments` premium feature */
-"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "In de Premium-versie kun je afbeeldingen en documenten direct voorvertonen in de app.";
-
-/* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
-"[PremiumFeature/Preview/title] Preview Attachments" = "Bijlagen voorvertonen";
 
 /* Description/call to action for the `Quick AutoFill` premium feature. */
 "[PremiumFeature/QuickAutoFill/description]" = "Vul loginvelden in met een tik zonder KeePassium te openen.";
@@ -1606,6 +1618,9 @@
 /* Title of a section: username, password, etc */
 "[RemoteConnection/Credentials]" = "Inloggegevens";
 
+/* Description of the `Direct connection` sync method. */
+"[RemoteConnection/Direct/description]" = "KeePassium communiceert rechtstreeks met je online opslag. Dit zorgt voor betrouwbare bestandsoverdracht.";
+
 /* Error message: user credentials rejected by the server */
 "[RemoteConnection/Error/AuthenticationFailed/title]" = "Authenticatie mislukt";
 
@@ -1624,11 +1639,20 @@
 /* Name of a predefined OneDrive folder which contains files shared with this user */
 "[RemoteConnection/OneDrive/Folder/sharedWithMe]" = "Gedeeld";
 
+/* Network address of a WebDAV server */
+"[RemoteConnection/ServerURL]" = "Server-URL";
+
 /* Action: authenticate to Dropbox account */
 "[RemoteConnection/SignIn/Dropbox/action]" = "Meld u aan bij Dropbox";
 
 /* Error description: the user should manually sign in to their Dropbox account */
 "[RemoteConnection/SignIn/Dropbox/authorizationRequried]" = "U moet opnieuw inloggen bij Dropbox.";
+
+/* Action: authenticate to Google Drive account */
+"[RemoteConnection/SignIn/GoogleDrive/action]" = "Aanmelden bij Google Drive";
+
+/* Error description: the user should manually sign in to their Google Drive account */
+"[RemoteConnection/SignIn/GoogleDrive/authorizationRequried]" = "Je moet je opnieuw aanmelden voor Google Drive.";
 
 /* Action: authenticate to OneDrive account */
 "[RemoteConnection/SignIn/OneDrive/action]" = "Meld u aan bij OneDrive";
@@ -1644,6 +1668,9 @@
 
 /* Title: connection to a network storage */
 "[RemoteConnection/title]" = "Externe verbinding";
+
+/* Description of the `Integration via Files app` sync method. */
+"[RemoteConnection/ViaFilesApp/description]" = "KeePassium wijst bestandssynchronisatie toe aan de app van je opslagdienst. Sommige apps werken beter dan andere.";
 
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "Herhaal wachtwoord";
@@ -1771,32 +1798,17 @@
 /* Title of a setting: the time after which databases will be locked. */
 "[Settings/DatabaseLockTimeout/title]" = "Databanktime-out";
 
+/* Setting switch: whether to lock databases after device reboot. */
+"[Settings/DataProtection/LockOnReboot/title]" = "Vergrendelen bij opnieuw starten van apparaat";
+
 /* Subtitle for `Data Protection` section in settings */
 "[Settings/DataProtection/subtitle]" = "Hoofdsleutels, sleutelbestanden";
 
 /* Settings section: protection of databases, their keys and data inside them */
 "[Settings/DataProtection/title]" = "Gegevensbescherming";
 
-/* An option in Group Viewer settings. Refers to the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
-"[Settings/EntryListDetail/longTitle] Last Modified Date" = "Laatst gewijzigd op";
-
 /* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: None', meanining that no entry details will be shown in any lists. */
 "[Settings/EntryListDetail/longTitle] None" = "Geen";
-
-/* An option in Group Viewer settings. Refers to comments/notes field of the entry. Will be shown as 'Entry Subtitle: Notes'. */
-"[Settings/EntryListDetail/longTitle] Notes" = "Notities";
-
-/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: Password'. */
-"[Settings/EntryListDetail/longTitle] Password" = "Wachtwoord";
-
-/* An option in Group Viewer settings. Refers to the tags field of the entry. Will be shown as 'Entry Subtitle: Tags'. */
-"[Settings/EntryListDetail/longTitle] Tags" = "Tags";
-
-/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: URL'. */
-"[Settings/EntryListDetail/longTitle] URL" = "URL";
-
-/* An option in Group Viewer settings. It refers to login information rather than person's name. Will be shown as 'Entry Subtitle: User Name'. */
-"[Settings/EntryListDetail/longTitle] User Name" = "Gebruikersnaam";
 
 /* Title of a settings section: which entry field to show along with entry title */
 "[Settings/GroupViewer] Entry Subtitle" = "Itemonderschrift";
@@ -1834,23 +1846,17 @@
 /* Section title in settings */
 "[Settings/Search/title]" = "Zoek";
 
-/* Title of a sort options list. Example: 'Sort by: Name' */
-"[SortBy]" = "Sorteer op";
-
-/* List sorting option. Example: 'Sort by: Date Created' */
-"[SortBy/DateCreated]" = "Aanmaakdatum";
-
-/* List sorting option. Example: 'Sort by: Date Modified' */
-"[SortBy/DateModified]" = "Bewerkingsdatum";
+/* Title of the app settings screen */
+"[Settings/title]" = "Instellingen";
 
 /* List sorting option (for file names). Example: 'Sort by: Name' */
 "[SortBy/FileName]" = "Naam";
 
-/* List sorting option (for groups and entries). Example: 'Sort by: Title' */
-"[SortBy/ItemTitle]" = "Titel";
-
 /* List sorting option, when no sorting is selected. Example: 'Sort by: None' */
 "[SortBy/None]" = "Geen";
+
+/* List sorting option, when items are manually ordered by the user. Example: 'Sort order: Custom' */
+"[SortOrder/Custom]" = "Aangepast";
 
 /* Name of a cloud storage service */
 "[StorageService/DropboxBusiness/title]" = "Dropbox Business";
@@ -1863,6 +1869,9 @@
 
 /* Name of a cloud storage service. Must match Microsoft's translation, see  https://partner.microsoft.com/solutions/onedrive-for-business */
 "[StorageService/OneDriveForBusiness/title]" = "OneDrive voor bedrijven";
+
+/* Title of a file storage service option (for example: Dropbox, OneDrive, Other Services) */
+"[StorageService/OtherServices/title]" = "Andere diensten";
 
 /* Template text of a bug report email */
 "[Support/template] (Please describe the problem here)" = "(beschrijf hier het probleem)";
@@ -1887,9 +1896,6 @@
 
 /* Notification after a successful donation. */
 "[TipBox/thankYou]" = "Bedankt!";
-
-/* Title of the tip box/donation screen. */
-"[TipBox/title/1]" = "Fooienpot";
 
 /* Title of the tip box/donation screen. */
 "[TipBox/title/2]" = "Donaties";

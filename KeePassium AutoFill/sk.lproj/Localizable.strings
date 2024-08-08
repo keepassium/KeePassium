@@ -4,6 +4,21 @@
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "Služba automatického vyplňovania hesiel nemá prístup k databázovým súborom, ktoré ste pridali v hlavnej aplikácii KeePassium.\n\nPrečo? Operačný systém považuje službu automatického vyplňovania za samostatnú aplikáciu, ktorá je nezávislá na hlavnom procese Keepassium. Z bezpečnostných dôvodov môžu aplikácie pristupovať len k tým súborom, ku ktorým im dáte povolenia.\n\nZ tohoto dôvodu je nutné dať súhlas k prístupu samotne aplikácii KeePassium ako aj službe automatického vyplňovania. Toto je však potrebné vykonať iba raz.";
 
+/* Must match Apple's translation, as found in iOS 15 Settings → Passwords → AutoFill Passwords. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/allowFillingFrom]" = "Povoliť automatické vypĺňanie z:";
+
+/* Call to action: deselect the `Keychain` option. Keychain is a glossary term. */
+"[AutoFill/Setup/UncheckKeychain/callToAction]" = "Zrušiť označenie kľúčenky";
+
+/* Instruction to deselect the `Keychain` option. Keychain is a glossary term. */
+"[AutoFill/Setup/UncheckKeychain/message]" = "Ak chcete, aby bol KeePassium predvoleným správcom hesiel, zrušte začiarknutie políčka kľúčenky.";
+
+/* Must match Apple's translation, as found in iOS 17 Settings → Passwords → Password Options. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/usePasswordsAndPasskeysFrom]" = "Použiť heslá a prihlasovacie kľúče z:";
+
+/* Apple Keychain software; is a glossary term. */
+"[Generic/Keychain/title]" = "Kľúčenka";
+
 /* Menu action to add a user-provided word list file to the app. */
 "[PasswordGenerator/Wordlist/Import/menuAction]" = "Importovať zoznam…";
 

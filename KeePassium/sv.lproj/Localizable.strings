@@ -14,7 +14,7 @@
 "[Database/Create/TemplateEntry/password] pa$$word" = "pa$$word";
 
 /* Title for a sample entry */
-"[Database/Create/TemplateEntry/title] Sample Entry" = "Exempelkonto";
+"[Database/Create/TemplateEntry/title] Sample Entry" = "Exempelpost";
 
 /* User name for a sample entry. Set it to a typical person name for your language ( https://en.wikipedia.org/wiki/List_of_placeholder_names_by_language). */
 "[Database/Create/TemplateEntry/userName] john.smith" = "sven.svensson";
@@ -41,7 +41,7 @@
 "[Entry/Files/Add] Replace existing attachment?" = "Ersätt existerande bilaga?";
 
 /* Explanation for replacing the only attachment of KeePass1 entry */
-"[Entry/Files/Add] This database supports only one attachment per entry, and there is already one." = "Databasen stödjer endast en bilaga per konto, och det finns redan en.";
+"[Entry/Files/Add] This database supports only one attachment per entry, and there is already one." = "Databasen stödjer endast en bilaga per post, och det finns redan en.";
 
 /* Title of a dialog for renaming an attached file */
 "[Entry/Files/Rename/title] Rename File" = "Byt namn på fil";
@@ -75,6 +75,18 @@
 
 /* Title of the App Protection onboarding screen */
 "[Onboarding/AppProtection/title]" = "Visa inte för någon";
+
+/* Action/button to set up the Password AutoFill feature. Not a call to action. */
+"[Onboarding/AutoFill/activate]" = "Aktivera Autofyll";
+
+/* Text in the Password AutoFill onboarding screen. */
+"[Onboarding/AutoFill/text1]" = "I Autofyll kan du logga in på sidor enkelt med ett enda tryck.";
+
+/* Text in the Password AutoFill onboarding screen. */
+"[Onboarding/AutoFill/text2]" = "För att starta ska du aktivera Autofyll lösenord i systeminställningarna.";
+
+/* Title of the Password AutoFill onboarding screen */
+"[Onboarding/AutoFill/title]" = "Autofyll lösenord";
 
 /* Action/button */
 "[Onboarding/CreateNewDatabase/action]" = "Skapa ny databas";
@@ -180,6 +192,12 @@
 
 /* Title of the tag creation dialog */
 "[Tags/Create/title]" = "Ny tagg";
+
+/* Question to confirm global deletion */
+"[Tags/Delete/Confirm/message]" = "Vill du radera taggen från alla grupper och poster?";
+
+/* Title of a dialog for editing a tag */
+"[Tags/Edit/title]" = "Redigera tagg";
 
 /* Status message with a call to action */
 "[Tags/None/placeholder]" = "Det finns inga taggar i databasen. Lägg till några.";

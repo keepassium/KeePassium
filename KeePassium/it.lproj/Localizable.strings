@@ -65,7 +65,7 @@
 "[Menu/Preferences/title]" = "Preferenze…";
 
 /* Action/button */
-"[Onboarding/AddExistingDatabase/action]" = "Aggiungi un database esistente";
+"[Onboarding/AddExistingDatabase/action]" = "Aggiungi database esistente";
 
 /* Action/button to set up the App Protection feature. Not a call to action. */
 "[Onboarding/AppProtection/activate]" = "Attiva protezione app";
@@ -75,6 +75,18 @@
 
 /* Title of the App Protection onboarding screen */
 "[Onboarding/AppProtection/title]" = "Solo per i tuoi occhi";
+
+/* Action/button to set up the Password AutoFill feature. Not a call to action. */
+"[Onboarding/AutoFill/activate]" = "Attiva inserimento automatico";
+
+/* Text in the Password AutoFill onboarding screen. */
+"[Onboarding/AutoFill/text1]" = "Con Inserimento automatico puoi liberarti delle schermate di accesso con un solo tasto.";
+
+/* Text in the Password AutoFill onboarding screen. */
+"[Onboarding/AutoFill/text2]" = "Per iniziare, attiva Inserimento automatico password nelle impostazioni di sistema.";
+
+/* Title of the Password AutoFill onboarding screen */
+"[Onboarding/AutoFill/title]" = "Inserimento automatico";
 
 /* Action/button */
 "[Onboarding/CreateNewDatabase/action]" = "Crea nuovo database";
@@ -181,8 +193,14 @@
 /* Title of the tag creation dialog */
 "[Tags/Create/title]" = "Nuovo tag";
 
+/* Question to confirm global deletion */
+"[Tags/Delete/Confirm/message]" = "Eliminare questo tag da tutti i gruppi e voci?";
+
+/* Title of a dialog for editing a tag */
+"[Tags/Edit/title]" = "Modifica tag";
+
 /* Status message with a call to action */
-"[Tags/None/placeholder]" = "Non ci sono tag nel database, aggiungine qualcuna.";
+"[Tags/None/placeholder]" = "Non ci sono tag nel database, aggiungine qualcuno.";
 
 /* Status message: tag search result is empty */
 "[Tags/Search/emptyResult]" = "Nessun tag trovato.";

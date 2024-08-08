@@ -10,6 +10,12 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "Aktivera för att lyssna.";
 
+/* Section in settings: icon for the app */
+"[Appearance/AppIcon/title]" = "App-ikon";
+
+/* Section in settings: icons for database */
+"[Appearance/DatabaseIcons/title]" = "Databasikoner";
+
 /* Short name of the default/system font. For example: `Font: Default` */
 "[Appearance/DefaultFont/shortTitle]" = "Förvalt";
 
@@ -139,9 +145,6 @@
 /* Action/button to create a new database */
 "[Database/Create/action] Create Database" = "Skapa databas";
 
-/* Title of a form for creating a database */
-"[Database/Create/title] Create Database" = "Skapa databas";
-
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "Lägg till egenvald ikon";
 
@@ -152,7 +155,7 @@
 "[Database/CustomIcon/DownloadFavicons/action]" = "Ladda ner Favicons";
 
 /* Report of favicon download results. */
-"[Database/CustomIcon/DownloadFavicons/stats]" = "Konton bearbetade: %1$d\nIkoner uppdaterade: %2$d";
+"[Database/CustomIcon/DownloadFavicons/stats]" = "Poster bearbetade: %1$d\nIkoner uppdaterade: %2$d";
 
 /* Status message: multiple website favicons are being downloaded */
 "[Database/CustomIcon/DownloadFavicons/status]" = "Laddar ner Favicons";
@@ -190,6 +193,9 @@
 /* Title: database encryption settings. */
 "[Database/EncryptionSettings/title]" = "Krypteringsinställningar";
 
+/* Info message for entries that contain information for opening a different database. */
+"[Database/Entry/LinkedDatabase/message]" = "Den här posten pekar på en annan databas.";
+
 /* Info message when changing database file format. */
 "[Database/FormatVersion/Conversion/allDataPreserved]" = "All din data kommer bevaras.";
 
@@ -207,6 +213,12 @@
 
 /* Notification when user tries to copy data from KDBX to older KDB database. */
 "[Database/LesserTargetFormat/warning]" = "Det här är ett äldre databasformat, viss data kan gå förlorade.";
+
+/* Recommendation for solving a problem with a list of files. */
+"[Database/List/LocalMissing/message]" = "Om några lokala filer inte anges kan du först starta KeePassium-huvudappen.";
+
+/* Title of the database picker list */
+"[Database/List/title]" = "Databaser";
 
 /* Error message */
 "[Database/Load/Error] Cannot find database file" = "Kan inte hitta databasfilen";
@@ -252,6 +264,12 @@
 
 /* Imperative/recommendation: title of a warning when changing database password. */
 "[Database/MasterKey/RememberYourPassword/title]" = "Kom ihåg lösenordet för databasen";
+
+/* Glossary term: noun, a master key for encrypting the database */
+"[Database/MasterKey/title]" = "Huvudnyckel";
+
+/* Title of database creation dialog */
+"[Database/New/title]" = "Ny databas";
 
 /* Action/button */
 "[Database/Open/action] Open Database" = "Öppna databas";
@@ -398,7 +416,7 @@
 "[Database1/FormatError] Error parsing field %@. Corrupted database file?" = "Tolkningsfel av fält %@. Är databasfilen skadad?";
 
 /* Error message */
-"[Database1/FormatError] Found an entry outside any group. Corrupted DB file?" = "Hittade ett konto som inte tillhör någon grupp. Är databasfilen skadad?";
+"[Database1/FormatError] Found an entry outside any group. Corrupted DB file?" = "Hittade en post som inte tillhör någon grupp. Är databasfilen skadad?";
 
 /* Error message */
 "[Database1/FormatError] Unexpected end of file. Corrupted database file?" = "Oväntat slut på filen. Är databasfilen skadad?";
@@ -482,16 +500,16 @@
 "[Database2/Loading/Error] Error unpacking database: %@" = "Fel vid uppackning av databas: %@";
 
 /* A warning about missing attachments after loading the database. [lastUsedAppName: String, attachmentNames: String] */
-"[Database2/Loading/Warning/missingBinaries]" = "Bilagor för vissa konton saknar data. Detta är et tecken på att databasen blivit skadad, troligen av den senaste använda appen (%1$@). KeePassium kommer behålla de tomma bilagorna, men kan inte återställa dem. Du bör återställa din databas från en backupkopia.\n\nSaknade bilagor: %2$@";
+"[Database2/Loading/Warning/missingBinaries]" = "Bilagor för vissa poster saknar data. Detta är ett tecken på att databasen blivit skadad, troligen av den senaste använda appen (%1$@). KeePassium kommer behålla de tomma bilagorna, men kan inte återställa dem. Du bör återställa din databas från en backupkopia.\n\nSaknade bilagor: %2$@";
 
 /* A warning about nameless attachments, shown after loading the database. [listOfEntryNames: String] */
-"[Database2/Loading/Warning/namelessAttachments]" = "Några konton har bilagor utan ett namn. Det är ett tecken på tidigare skador på databasen.\n\nGranska bilagor för följande konton (och deras historik):\n%@";
+"[Database2/Loading/Warning/namelessAttachments]" = "Några poster har bilagor utan ett namn. Det är ett tecken på tidigare skador på databasen.\n\nGranska bilagor för följande poster (och deras historik):\n%@";
 
 /* A warning about misformatted custom fields after loading the database. [entryPaths: String] */
-"[Database2/Loading/Warning/namelessCustomFields]" = "Några konton har anpassade fält med saknade namn. Detta kan vara ett tecken på skadad databas. Vänligen kontrollera följande konton:\n\n%@";
+"[Database2/Loading/Warning/namelessCustomFields]" = "Några poster har anpassade fält med tomma namn. Detta kan vara ett tecken på skadad databas. Kontrollera följande poster:\n\n%@";
 
 /* A warning about unused attachments after loading the database. [lastUsedAppName: String] */
-"[Database2/Loading/Warning/unusedAttachments]" = "Databasen innehåller bilagor som inte är kopplade till något konto. Troligen har de glömts av den senast använda appen (%@). Detta kan också vara ett tecken på en skadad databas.\nSäkerställ att du har en backup på din databas innan du ändrar vidtar åtgärder.";
+"[Database2/Loading/Warning/unusedAttachments]" = "Databasen innehåller bilagor som inte är kopplade till någon post. Troligen har de glömts av den senast använda appen (%@). Detta kan också vara ett tecken på en skadad databas.\nSäkerställ att du har en backup på din databas innan du ändrar något.";
 
 /* Progress bar status */
 "[Database2/Progress] Loading database" = "Laddar databas";
@@ -578,7 +596,10 @@
 "[Entry/Attachments/title] Attached Files" = "Bifogade filer";
 
 /* Action/button to create a new entry in the current group */
-"[Entry/Create/action] Create Entry" = "Skapa konto";
+"[Entry/Create/action] Create Entry" = "Skapa post";
+
+/* Action/button to modify an entry */
+"[Entry/Edit/action]" = "Redigera post";
 
 /* Default name of a newly created entry field */
 "[Entry/Edit/CreateField/defaultName] Field Name" = "Fältnamn";
@@ -628,6 +649,9 @@
 /* Title of a field with entry's last modification date and time */
 "[Entry/History] Last Modification Date" = "Senast redigerad";
 
+/* Title of a field with entry's modification date and time */
+"[Entry/History] Modification Date" = "Ändringsdatum";
+
 /* Title of a list with previous versions/revisions of an entry. */
 "[Entry/History] Previous Versions" = "Tidigare versioner";
 
@@ -635,7 +659,10 @@
 "[Entry/History/ExpiryDate] Never" = "Aldrig";
 
 /* Default title of a new entry */
-"[Entry/New/defaultTitle] New Entry" = "Nytt konto";
+"[Entry/New/defaultTitle] New Entry" = "Ny post";
+
+/* Glossary term: noun, an entry in database. */
+"[Entry/title]" = "Post";
 
 /* Warning shown when opening files from Recycle Bin location. Translation of 'Recently Deleted' should match that in the Files app. [fileName: String] */
 "[File/In Trash/warning]" = "'%@' finns i Nyligen borttagna och kanske snart tas bort. För att bevara dina data kan du flytta filen till en mer permanent plats.";
@@ -696,6 +723,15 @@
 
 /* Error message: file provider does not respond to requests (quickly enough). For example: `Google Drive does not respond` */
 "[FileAccessError/Timeout/knownFileProvider]" = "%@ svarar inte.";
+
+/* Section header for attributes of a file (e.g. hidden, excluded from backup, etc) */
+"[FileInfo/Attributes/header]" = "Filattribut";
+
+/* Title of a setting: is the file hidden */
+"[FileInfo/Attributes/Hidden/title]" = "Dold";
+
+/* Warning message for 'hidden' files. */
+"[FileInfo/Attributes/Hidden/warning]" = "Dolda filer är mindre synliga för vanliga användare, men förbättrar inte datasäkerheten.";
 
 /* Section header: file backup settings */
 "[FileInfo/Backup/header]" = "Backup";
@@ -829,27 +865,6 @@
 /* Localized name of the storage service: Yandex.Disk (https://disk.yandex.com) */
 "[FileProvider/Yandex.Disk/name]" = "Yandex.Disk";
 
-/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Oldest First)' */
-"[FilesSortOrder/longTitle] Creation Date (Oldest First)" = "Skapad (Äldst först)";
-
-/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Recent First)' */
-"[FilesSortOrder/longTitle] Creation Date (Recent First)" = "Skapad (Yngst först)";
-
-/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Oldest First)' */
-"[FilesSortOrder/longTitle] Modification Date (Oldest First)" = "Ändrad (Äldst först)";
-
-/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Recent First)' */
-"[FilesSortOrder/longTitle] Modification Date (Recent First)" = "Ändrad (Yngst först)";
-
-/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (A..Z)' */
-"[FilesSortOrder/longTitle] Name (A..Z)" = "Namn (A..Ö)";
-
-/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (Z..A)' */
-"[FilesSortOrder/longTitle] Name (Z..A)" = "Namn (Ö..A)";
-
-/* A sorting option for a list of files. Example: 'Sort Order: No Sorting' */
-"[FilesSortOrder/longTitle] No Sorting" = "Ingen sortering";
-
 /* Title of the dialog for picking the destination group for move/copy operations */
 "[General/DestinationGroup/title] Choose a Destination" = "Välj en målmapp";
 
@@ -955,6 +970,9 @@
 /* Action/button to skip the current step and proceed with the next one */
 "[Generic] Skip" = "Hoppa över";
 
+/* Action/button to change the order of items in a list (move them higher/lower). */
+"[Generic/Action/ReorderItems]" = "Ändra ordning";
+
 /* Action/button to select some items in a list. */
 "[Generic/Action/SelectItems]" = "Välj";
 
@@ -1006,6 +1024,12 @@
 /* Title of an warning message */
 "[Generic/title] Warning" = "Varning";
 
+/* Title of a menu with various utilities */
+"[Generic/Tools/title]" = "Verktyg";
+
+/* Title of a screen/list view configuration: sort order, visible items, etc */
+"[Generic/ViewOptions/title]" = "Visningsalternativ";
+
 /* Warning message template. Swap the icon and message for right-to-left languages. */
 "[Generic/WarningWithIcon/template]" = "⚠️ %@";
 
@@ -1015,14 +1039,17 @@
 /* Action/button to create a new sub-group in the current group */
 "[Group/Create/action] Create Group" = "Skapa grupp";
 
-/* Title of a form for creating a group */
-"[Group/Create/title] Create Group" = "Skapa grupp";
-
 /* Title of a form for editing a group */
 "[Group/Edit/title] Edit Group" = "Redigera grupp";
 
+/* VoiceOver description of a menu with group-related actions */
+"[Group/Menu/a11y/title]" = "Gruppmeny";
+
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "Ny grupp";
+
+/* Title for the Notes field in group editor */
+"[Group/Notes/title]" = "Anteckningar";
 
 /* Action/button to delete everything inside the Recycle Bin */
 "[Group/RecycleBin/Empty/action]" = "Töm papperskorgen";
@@ -1030,29 +1057,29 @@
 /* Title of the confirmation dialog for `Empty Recycle Bin` action */
 "[Group/RecycleBin/Empty/confirmTitle]" = "Radera allt i papperskorgen permanent?";
 
+/* VoiceOver description of a smart group [groupTitle: String] */
+"[Group/Smart/a11y/description]" = "%@, smart grupp";
+
+/* Action/button to show a help article */
+"[Group/Smart/about]" = "Om smarta grupper …";
+
+/* Action/button to create a new Smart Group */
+"[Group/Smart/Create/action]" = "Skapa smart grupp";
+
+/* Default name of a new smart group */
+"[Group/Smart/New/defaultName]" = "Ny smart grupp";
+
+/* Title for the Smart Group search conditions in group editor */
+"[Group/Smart/Query/title]" = "Filter för smart grupp";
+
+/* Glossary term: noun, a smart group in database. */
+"[Group/Smart/title]" = "Smart grupp";
+
+/* Glossary term: noun, a group in database. */
+"[Group/title]" = "Grupp";
+
 /* Title of an input field for group name */
 "[GroupEditor/Name/placeholder]" = "Gruppnamn";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
-"[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "På Skapandedatum (Ny..Gammal)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (Old..New)' */
-"[GroupSortOrder/longTitle] By Creation Date (Old..New)" = "På Skapandedatum (Gammal..Ny)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (New..Old)' */
-"[GroupSortOrder/longTitle] By Modification Date (New..Old)" = "På Ändringsdatum (Ny..Gammal)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (Old..New)' */
-"[GroupSortOrder/longTitle] By Modification Date (Old..New)" = "På Ändringsdatum (Gammal..Ny)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Title (A..Z)' */
-"[GroupSortOrder/longTitle] By Title (A..Z)" = "På Titel (A..Ö)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Title (Z..A)' */
-"[GroupSortOrder/longTitle] By Title (Z..A)" = "På Titel (Ö..A)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: No Sorting' */
-"[GroupSortOrder/longTitle] No Sorting" = "Ingen sortering";
 
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Hårdvarunycklar är ej tillgängliga i Autofyll.";
@@ -1214,7 +1241,7 @@
 "[OTP/Scan/InvalidSecretCode]" = "Inmatad hemlighet är inte korrekt för OTP-konfiguration.";
 
 /* Message to confirm user intentions */
-"[OTP/Scan/OverwriteWarning]" = "Engångslösenordet är redan konfigurerat för detta konto. Vill du skriva över det?";
+"[OTP/Scan/OverwriteWarning]" = "Engångslösenordet är redan konfigurerat för posten. Vill du skriva över det?";
 
 /* Call for action. Acronym `OTP` should not be translated. */
 "[OTP/Setup]" = "Ställ in engångslösenord (OTP)";
@@ -1345,32 +1372,20 @@
 /* List of words to be used for a passphrase. */
 "[PasswordGenerator/Wordlist/title]" = "Ordlista";
 
-/* Explanation of the premium feature */
-"[Premium/Benefits/AttachmentPreview/details]" = "Förhandsgranska bilagor direkt i KeePassium utan att lämna några spår i andra appar. (Fungerar med bilder, dokument, arkiv och mer.)";
-
-/* Title of a premium feature */
-"[Premium/Benefits/AttachmentPreview/title]" = "Förhandsgranska utan ett spår";
-
 /* Title of a premium feature */
 "[Premium/Benefits/BusinessClouds/title]" = "Synkronisera med företagslagring";
-
-/* Explanation of a premium feature */
-"[Premium/Benefits/CustomAppIcon/details]" = "Gör KeePassium unikt, igenkännbart, eller få det att se ut som en kalkylator – valet är ditt.";
-
-/* Title of a premium feature */
-"[Premium/Benefits/CustomAppIcon/title]" = "Ändra app-ikon";
-
-/* Explanation of the premium feature */
-"[Premium/Benefits/DatabaseTimeout/details]" = "Trött på att skriva in ditt huvudlösenord? Håll din databas öppen längre och lås upp den med en tryckning.";
-
-/* Title of a premium feature */
-"[Premium/Benefits/DatabaseTimeout/title]" = "Spara tid";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/HardwareKeys/details]" = "Skydda din data med en hårdvarunyckel, såsom YubiKey.";
 
 /* Title of a premium feature */
 "[Premium/Benefits/HardwareKeys/title]" = "Använd hårdvarunycklar";
+
+/* Explanation of the premium feature */
+"[Premium/Benefits/LinkedDatabases/details]" = "Öppna en annan databas i ett steg med inloggningsuppgifter som lagrats i en post.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/LinkedDatabases/title]" = "Öppna länkade databaser";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/MultiDB/details]" = "Lägg till flera databaser och växla smidigt mellan dem.";
@@ -1386,12 +1401,6 @@
 
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Positive/header] " = "Vad du får";
-
-/* Explanation of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/details]" = "Använd fältreferenser för att visa information från andra poster istället för att skapa flera kopior med samma information.";
-
-/* Title of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/title]" = "Visa fältreferenser";
 
 /* Call to action */
 "[Premium/CallToAction/buyNow]" = "Köp nu";
@@ -1540,9 +1549,6 @@
 /* Title of a premium feature: access to company's cloud accounts like 'OneDrive for Business' */
 "[PremiumFeature/BusinessClouds/title]" = "Företagslagring i molnet";
 
-/* Title of a premium feature: ability to change the app icon */
-"[PremiumFeature/CustomAppIcons/title]" = "Valbara app-ikoner";
-
 /* A generic description of a premium feature */
 "[PremiumFeature/Generic/description]" = "Uppgradera till premium och upplev KeePassium när det är som bäst.";
 
@@ -1555,11 +1561,11 @@
 /* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
 "[PremiumFeature/HardwareKeys/title] Hardware Keys" = "Hårdvarunycklar";
 
-/* Description/advertisement for the `Long Database Timeouts` premium feature */
-"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "Spara tid på att ange krångliga huvudlösenord – håll dina databaser öppna längre i premiumversionen.";
+/* Description/advertisement for the `Linked Databases` premium feature */
+"[PremiumFeature/LinkedDatabases/description]" = "Uppgradera till Premium och öppna länkade databaser i ett steg.";
 
-/* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
-"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "Långa databastimeouts";
+/* Title of a premium feature: ability to open databases referenced in another database (In Title Case) */
+"[PremiumFeature/LinkedDatabases/title]" = "Länkade databaser";
 
 /* Description/advertisement for the `Multiple Databases` premium feature */
 "[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "Växla enkelt mellan databaser i premiumversionen.";
@@ -1572,12 +1578,6 @@
 
 /* Title of a premium feature: discover which passwords are known to be compromized */
 "[PremiumFeature/PasswordAudit/title]" = "Lösenordsgranskning";
-
-/* Description/advertisement for the `Preview Attachments` premium feature */
-"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "Förhandsgranska bilder och dokument direkt i appen, i premiumversionen.";
-
-/* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
-"[PremiumFeature/Preview/title] Preview Attachments" = "Förhandsgranska bilagor";
 
 /* Description/call to action for the `Quick AutoFill` premium feature. */
 "[PremiumFeature/QuickAutoFill/description]" = "Logga in med en tryckning, utan att ens öppna KeePassium.";
@@ -1601,7 +1601,7 @@
 "[Progress/CancellationReason/lowMemory]" = "Inte tillräckligt med minne för att fortsätta.\nDetta kan hända med stora databaser eller för högt ställda databasinställningar (Argon2-parametrar för minnet).";
 
 /* Description of the Quick AutoFill feature. */
-"[QuickAutoFill/description]" = "Snabb Autofyll visar relevanta konton precis bredvid lösenordsfältet, utan att öppna KeePassium.";
+"[QuickAutoFill/description]" = "Snabb Autofyll visar relevanta poster precis bredvid lösenordsfältet, utan att öppna KeePassium.";
 
 /* Name of a feature that shows relevant entries directly next to the login/password forms. */
 "[QuickAutoFill/title]" = "Snabb Autofyll";
@@ -1766,7 +1766,7 @@
 "[Settings/ClearMasterKeys/Cleared/title] Cleared" = "Rensad";
 
 /* Description of the clipboard/pasteboard timeout. */
-"[Settings/ClipboardTimeout/description] When you copy some text from an entry, the app will automatically clear your clipboard (pasteboard) after this time." = "När du kopierar något fält från ett konto kommer appen automatiskt rensa ditt urklipp efter en stund.";
+"[Settings/ClipboardTimeout/description] When you copy some text from an entry, the app will automatically clear your clipboard (pasteboard) after this time." = "När du kopierar text från en post kommer appen automatiskt rensa ditt urklipp efter en stund.";
 
 /* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
 "[Settings/ClipboardTimeout/fullTitle] Never" = "Aldrig";
@@ -1807,29 +1807,11 @@
 /* Settings section: protection of databases, their keys and data inside them */
 "[Settings/DataProtection/title]" = "Dataskydd";
 
-/* An option in Group Viewer settings. Refers to the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
-"[Settings/EntryListDetail/longTitle] Last Modified Date" = "Senaste ändringsdatum";
-
 /* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: None', meanining that no entry details will be shown in any lists. */
 "[Settings/EntryListDetail/longTitle] None" = "Inget";
 
-/* An option in Group Viewer settings. Refers to comments/notes field of the entry. Will be shown as 'Entry Subtitle: Notes'. */
-"[Settings/EntryListDetail/longTitle] Notes" = "Anteckningar";
-
-/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: Password'. */
-"[Settings/EntryListDetail/longTitle] Password" = "Lösenord";
-
-/* An option in Group Viewer settings. Refers to the tags field of the entry. Will be shown as 'Entry Subtitle: Tags'. */
-"[Settings/EntryListDetail/longTitle] Tags" = "Taggar";
-
-/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: URL'. */
-"[Settings/EntryListDetail/longTitle] URL" = "URL";
-
-/* An option in Group Viewer settings. It refers to login information rather than person's name. Will be shown as 'Entry Subtitle: User Name'. */
-"[Settings/EntryListDetail/longTitle] User Name" = "Användarnamn";
-
 /* Title of a settings section: which entry field to show along with entry title */
-"[Settings/GroupViewer] Entry Subtitle" = "Visa som andra rad i kontolistan";
+"[Settings/GroupViewer] Entry Subtitle" = "Undertext för post";
 
 /* Title of a settings section: sort order of groups and entries in a list */
 "[Settings/GroupViewer] Sort Order" = "Sortering";
@@ -1864,23 +1846,17 @@
 /* Section title in settings */
 "[Settings/Search/title]" = "Sök";
 
-/* Title of a sort options list. Example: 'Sort by: Name' */
-"[SortBy]" = "Sortera Efter";
-
-/* List sorting option. Example: 'Sort by: Date Created' */
-"[SortBy/DateCreated]" = "Skapad";
-
-/* List sorting option. Example: 'Sort by: Date Modified' */
-"[SortBy/DateModified]" = "Ändrad";
+/* Title of the app settings screen */
+"[Settings/title]" = "Inställningar";
 
 /* List sorting option (for file names). Example: 'Sort by: Name' */
 "[SortBy/FileName]" = "Namn";
 
-/* List sorting option (for groups and entries). Example: 'Sort by: Title' */
-"[SortBy/ItemTitle]" = "Titel";
-
 /* List sorting option, when no sorting is selected. Example: 'Sort by: None' */
 "[SortBy/None]" = "Inget";
+
+/* List sorting option, when items are manually ordered by the user. Example: 'Sort order: Custom' */
+"[SortOrder/Custom]" = "Anpassat";
 
 /* Name of a cloud storage service */
 "[StorageService/DropboxBusiness/title]" = "Dropbox Business";
@@ -1920,9 +1896,6 @@
 
 /* Notification after a successful donation. */
 "[TipBox/thankYou]" = "Tack!";
-
-/* Title of the tip box/donation screen. */
-"[TipBox/title/1]" = "Dricks";
 
 /* Title of the tip box/donation screen. */
 "[TipBox/title/2]" = "Bidrag";

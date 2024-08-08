@@ -64,6 +64,9 @@
 /* Action/button to set up the App Protection feature. Not a call to action. */
 "[Onboarding/AppProtection/activate]" = "Zapnout zámek";
 
+/* Action/button to set up the Password AutoFill feature. Not a call to action. */
+"[Onboarding/AutoFill/activate]" = "Aktivovat Automatické Vyplňování";
+
 /* Action/button */
 "[Onboarding/CreateNewDatabase/action]" = "Vytvořit novou databázi";
 

@@ -7,6 +7,12 @@
 /* Suggestion/hint for available user action */
 "[Accessibility] Double tap to copy to clipboard" = "點兩下複製至剪貼板";
 
+/* Section in settings: icon for the app */
+"[Appearance/AppIcon/title]" = "應用程式圖示";
+
+/* Section in settings: icons for database */
+"[Appearance/DatabaseIcons/title]" = "資料庫圖示";
+
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "文字大小";
 
@@ -124,9 +130,6 @@
 /* Action/button to create a new database */
 "[Database/Create/action] Create Database" = "新建資料庫";
 
-/* Title of a form for creating a database */
-"[Database/Create/title] Create Database" = "新建資料庫";
-
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "添加自定義圖示";
 
@@ -138,6 +141,9 @@
 
 /* Notification when user tries to copy data from KDBX to older KDB database. */
 "[Database/LesserTargetFormat/warning]" = "這是舊版的資料庫格式，有些資料也許會遺失";
+
+/* Title of the database picker list */
+"[Database/List/title]" = "資料庫";
 
 /* Error message */
 "[Database/Load/Error] Cannot find database file" = "找不到資料庫檔案";
@@ -177,6 +183,9 @@
 
 /* Imperative/recommendation: title of a warning when changing database password. */
 "[Database/MasterKey/RememberYourPassword/title]" = "請記住資料庫的密碼";
+
+/* Glossary term: noun, a master key for encrypting the database */
+"[Database/MasterKey/title]" = "主密碼";
 
 /* Action/button */
 "[Database/Open/action] Open Database" = "打開資料庫";
@@ -478,6 +487,9 @@
 /* Action/button to create a new entry in the current group */
 "[Entry/Create/action] Create Entry" = "新建項目";
 
+/* Action/button to modify an entry */
+"[Entry/Edit/action]" = "編輯項目";
+
 /* Default name of a newly created entry field */
 "[Entry/Edit/CreateField/defaultName] Field Name" = "字段名稱";
 
@@ -519,6 +531,9 @@
 
 /* Default title of a new entry */
 "[Entry/New/defaultTitle] New Entry" = "新項目";
+
+/* Glossary term: noun, an entry in database. */
+"[Entry/title]" = "項目";
 
 /* Warning shown when opening files from Recycle Bin location. Translation of 'Recently Deleted' should match that in the Files app. [fileName: String] */
 "[File/In Trash/warning]" = "“%@” 位於 “最近刪除” 中，可能很快就會被刪除。要保留數據，請將文件移到永久的位置。";
@@ -694,27 +709,6 @@
 /* Localized name of the storage service: Yandex.Disk (https://disk.yandex.com) */
 "[FileProvider/Yandex.Disk/name]" = "Yandex.Disk";
 
-/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Oldest First)' */
-"[FilesSortOrder/longTitle] Creation Date (Oldest First)" = "創建日期(最初始的)";
-
-/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Recent First)' */
-"[FilesSortOrder/longTitle] Creation Date (Recent First)" = "創建日期(最近的一次)";
-
-/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Oldest First)' */
-"[FilesSortOrder/longTitle] Modification Date (Oldest First)" = "修改日期(最早的開始)";
-
-/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Recent First)' */
-"[FilesSortOrder/longTitle] Modification Date (Recent First)" = "修改日期(最近的一個)";
-
-/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (A..Z)' */
-"[FilesSortOrder/longTitle] Name (A..Z)" = "姓名 (A..Z)";
-
-/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (Z..A)' */
-"[FilesSortOrder/longTitle] Name (Z..A)" = "姓名(Z..A)";
-
-/* A sorting option for a list of files. Example: 'Sort Order: No Sorting' */
-"[FilesSortOrder/longTitle] No Sorting" = "不排序";
-
 /* Title of the dialog for picking the destination group for move/copy operations */
 "[General/DestinationGroup/title] Choose a Destination" = "選擇目的地";
 
@@ -847,6 +841,9 @@
 /* Title of an warning message */
 "[Generic/title] Warning" = "警告";
 
+/* Title of a screen/list view configuration: sort order, visible items, etc */
+"[Generic/ViewOptions/title]" = "顯示方式選項";
+
 /* Warning message template. Swap the icon and message for right-to-left languages. */
 "[Generic/WarningWithIcon/template]" = "⚠️ %@";
 
@@ -856,38 +853,20 @@
 /* Action/button to create a new sub-group in the current group */
 "[Group/Create/action] Create Group" = "新建群組";
 
-/* Title of a form for creating a group */
-"[Group/Create/title] Create Group" = "新建群組";
-
 /* Title of a form for editing a group */
 "[Group/Edit/title] Edit Group" = "編輯群組";
 
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "新建群組";
 
+/* Title for the Notes field in group editor */
+"[Group/Notes/title]" = "備註";
+
+/* Glossary term: noun, a group in database. */
+"[Group/title]" = "群組";
+
 /* Title of an input field for group name */
 "[GroupEditor/Name/placeholder]" = "群組名稱";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
-"[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "按創建日期(新...舊)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (Old..New)' */
-"[GroupSortOrder/longTitle] By Creation Date (Old..New)" = "按創建日期(舊...新)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (New..Old)' */
-"[GroupSortOrder/longTitle] By Modification Date (New..Old)" = "按修改日期(新...舊)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (Old..New)' */
-"[GroupSortOrder/longTitle] By Modification Date (Old..New)" = "按修改日期(舊...新)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Title (A..Z)' */
-"[GroupSortOrder/longTitle] By Title (A..Z)" = "按標題 (A..Z)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Title (Z..A)' */
-"[GroupSortOrder/longTitle] By Title (Z..A)" = "按標題 (Z..A)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: No Sorting' */
-"[GroupSortOrder/longTitle] No Sorting" = "不排序";
 
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "硬體金鑰不支持自動填充。";
@@ -977,24 +956,6 @@
 "[OTP/Setup]" = "一次性密碼 (OTP)";
 
 /* Explanation of the premium feature */
-"[Premium/Benefits/AttachmentPreview/details]" = "直接在KeePassium上預覽附件, 並且不留痕跡。(適用於圖像, 文檔, 檔案等。)";
-
-/* Title of a premium feature */
-"[Premium/Benefits/AttachmentPreview/title]" = "無痕預覽";
-
-/* Explanation of a premium feature */
-"[Premium/Benefits/CustomAppIcon/details]" = "讓 KeePassium 看起來獨特，熟悉或偽裝成計算機 - 由您選擇。";
-
-/* Title of a premium feature */
-"[Premium/Benefits/CustomAppIcon/title]" = "變更應用程式圖示";
-
-/* Explanation of the premium feature */
-"[Premium/Benefits/DatabaseTimeout/details]" = "厭倦了輸入您的主密碼？保持資料庫打開時間更長, 只需輕輕一按即可解鎖。";
-
-/* Title of a premium feature */
-"[Premium/Benefits/DatabaseTimeout/title]" = "節省您的時間";
-
-/* Explanation of the premium feature */
 "[Premium/Benefits/HardwareKeys/details]" = "使用硬體金鑰來保護你的資料，比如 YubiKey 。";
 
 /* Title of a premium feature */
@@ -1011,12 +972,6 @@
 
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Positive/header] " = "擁有了什麼功能";
-
-/* Explanation of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/details]" = "使用字段引用其他項目中的資訊，而不是創建同樣的多個副本。";
-
-/* Title of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/title]" = "顯示字段引用";
 
 /* Call to action */
 "[Premium/CallToAction/buyNow]" = "立即購買";
@@ -1159,9 +1114,6 @@
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "程式已使用: %1$@/月, 大約%2$@/年";
 
-/* Title of a premium feature: ability to change the app icon */
-"[PremiumFeature/CustomAppIcons/title]" = "自定義應用程序圖示";
-
 /* A generic description of a premium feature */
 "[PremiumFeature/Generic/description]" = "立即訂閱進階版並享受更好的KeePassium 。";
 
@@ -1174,23 +1126,11 @@
 /* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
 "[PremiumFeature/HardwareKeys/title] Hardware Keys" = "硬體金鑰";
 
-/* Description/advertisement for the `Long Database Timeouts` premium feature */
-"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "節省輸入複雜主密碼的時間 - 在進階版中保持資料庫打開更長時間。";
-
-/* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
-"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "更長的資料庫逾時時間";
-
 /* Description/advertisement for the `Multiple Databases` premium feature */
 "[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "在進階版本中快速切換多個資料庫。";
 
 /* Title of a premium feature: ability to use multiple databases (In Title Case) */
 "[PremiumFeature/MultiDB/title] Multiple Databases" = "多個資料庫";
-
-/* Description/advertisement for the `Preview Attachments` premium feature */
-"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "升級進階版支持直接在程式中預覽圖像和文檔。";
-
-/* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
-"[PremiumFeature/Preview/title] Preview Attachments" = "附件預覽";
 
 /* Description/call to action for the `Quick AutoFill` premium feature. */
 "[PremiumFeature/QuickAutoFill/description]" = "一鍵填寫登入表單，無需開啟 KeePassium。";
@@ -1348,23 +1288,8 @@
 /* Settings section: protection of databases, their keys and data inside them */
 "[Settings/DataProtection/title]" = "資料保護";
 
-/* An option in Group Viewer settings. Refers to the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
-"[Settings/EntryListDetail/longTitle] Last Modified Date" = "上次修改的日期";
-
 /* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: None', meanining that no entry details will be shown in any lists. */
 "[Settings/EntryListDetail/longTitle] None" = "無";
-
-/* An option in Group Viewer settings. Refers to comments/notes field of the entry. Will be shown as 'Entry Subtitle: Notes'. */
-"[Settings/EntryListDetail/longTitle] Notes" = "備註";
-
-/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: Password'. */
-"[Settings/EntryListDetail/longTitle] Password" = "密碼";
-
-/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: URL'. */
-"[Settings/EntryListDetail/longTitle] URL" = "網址";
-
-/* An option in Group Viewer settings. It refers to login information rather than person's name. Will be shown as 'Entry Subtitle: User Name'. */
-"[Settings/EntryListDetail/longTitle] User Name" = "用戶名稱";
 
 /* Title of a settings section: which entry field to show along with entry title */
 "[Settings/GroupViewer] Entry Subtitle" = "項目副標題";
@@ -1378,20 +1303,11 @@
 /* Section title in settings */
 "[Settings/Search/title]" = "搜尋";
 
-/* Title of a sort options list. Example: 'Sort by: Name' */
-"[SortBy]" = "排序方式";
-
-/* List sorting option. Example: 'Sort by: Date Created' */
-"[SortBy/DateCreated]" = "按建立日期";
-
-/* List sorting option. Example: 'Sort by: Date Modified' */
-"[SortBy/DateModified]" = "按編輯日期";
+/* Title of the app settings screen */
+"[Settings/title]" = "設置";
 
 /* List sorting option (for file names). Example: 'Sort by: Name' */
 "[SortBy/FileName]" = "按檔名";
-
-/* List sorting option (for groups and entries). Example: 'Sort by: Title' */
-"[SortBy/ItemTitle]" = "標題";
 
 /* List sorting option, when no sorting is selected. Example: 'Sort by: None' */
 "[SortBy/None]" = "無";
@@ -1425,9 +1341,6 @@
 
 /* Notification after a successful donation. */
 "[TipBox/thankYou]" = "感謝您！";
-
-/* Title of the tip box/donation screen. */
-"[TipBox/title/1]" = "支持 KeePassium";
 
 /* Title of the tip box/donation screen. */
 "[TipBox/title/2]" = "贊助";

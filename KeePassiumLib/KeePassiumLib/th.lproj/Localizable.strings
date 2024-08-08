@@ -10,6 +10,12 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "เปิดใช้งานฟังข้อความ";
 
+/* Section in settings: icon for the app */
+"[Appearance/AppIcon/title]" = "ไอคอนของแอป";
+
+/* Section in settings: icons for database */
+"[Appearance/DatabaseIcons/title]" = "ไอคอนของฐานข้อมูล";
+
 /* Short name of the default/system font. For example: `Font: Default` */
 "[Appearance/DefaultFont/shortTitle]" = "ค่าเริ่มต้น";
 
@@ -136,9 +142,6 @@
 /* Action/button to create a new database */
 "[Database/Create/action] Create Database" = "สร้างฐานข้อมูล";
 
-/* Title of a form for creating a database */
-"[Database/Create/title] Create Database" = "สร้างฐานข้อมูล";
-
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "เพิ่มไอคอนที่กำหนดเอง";
 
@@ -177,6 +180,9 @@
 
 /* Notification when user tries to copy data from KDBX to older KDB database. */
 "[Database/LesserTargetFormat/warning]" = "ฟอร์แมทของฐานข้อมูลนี้เก่าเกินไป ข้อมูลบางอย่างอาจหาย";
+
+/* Title of the database picker list */
+"[Database/List/title]" = "ฐานข้อมูล";
 
 /* Error message */
 "[Database/Load/Error] Cannot find database file" = "ไม่สามารถหาฐานข้อมูลได้";
@@ -222,6 +228,9 @@
 
 /* Imperative/recommendation: title of a warning when changing database password. */
 "[Database/MasterKey/RememberYourPassword/title]" = "จำรหัสผ่านฐานข้อมูลของคุณ";
+
+/* Glossary term: noun, a master key for encrypting the database */
+"[Database/MasterKey/title]" = "กุญแจหลัก";
 
 /* Action/button */
 "[Database/Open/action] Open Database" = "เปิดฐานข้อมูล";
@@ -529,6 +538,9 @@
 /* Action/button to create a new entry in the current group */
 "[Entry/Create/action] Create Entry" = "สร้างรายการ";
 
+/* Action/button to modify an entry */
+"[Entry/Edit/action]" = "แก้ไขรายการ";
+
 /* Default name of a newly created entry field */
 "[Entry/Edit/CreateField/defaultName] Field Name" = "ชื่อ";
 
@@ -576,6 +588,9 @@
 
 /* Default title of a new entry */
 "[Entry/New/defaultTitle] New Entry" = "รายการใหม่";
+
+/* Glossary term: noun, an entry in database. */
+"[Entry/title]" = "รายการ";
 
 /* Warning shown when opening files from Recycle Bin location. Translation of 'Recently Deleted' should match that in the Files app. [fileName: String] */
 "[File/In Trash/warning]" = "'%@' ถูกเก็บไว้ที่ที่เพิ่งลบล่าสุด และอาจจะถูกลบไปในเร็ว ๆ นี้ หากต้องการเก็บข้อมูลไว้ ให้เก็บไฟล์ไปยังที่สำหรับจัดเก็บถาวรกว่านี้";
@@ -754,27 +769,6 @@
 /* Localized name of the storage service: Yandex.Disk (https://disk.yandex.com) */
 "[FileProvider/Yandex.Disk/name]" = "Yandex.Disk";
 
-/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Oldest First)' */
-"[FilesSortOrder/longTitle] Creation Date (Oldest First)" = "วันที่สร้าง (เก่าที่สุดมาก่อน)";
-
-/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Recent First)' */
-"[FilesSortOrder/longTitle] Creation Date (Recent First)" = "วันที่สร้าง (ล่าสุดมาก่อน)";
-
-/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Oldest First)' */
-"[FilesSortOrder/longTitle] Modification Date (Oldest First)" = "วันที่แก้ไข (เก่าที่สุดมาก่อน)";
-
-/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Recent First)' */
-"[FilesSortOrder/longTitle] Modification Date (Recent First)" = "วันที่แก้ไข (ล่าสุดมาก่อน)";
-
-/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (A..Z)' */
-"[FilesSortOrder/longTitle] Name (A..Z)" = "ชื่อ (A..Z)";
-
-/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (Z..A)' */
-"[FilesSortOrder/longTitle] Name (Z..A)" = "ชื่อ (Z..A)";
-
-/* A sorting option for a list of files. Example: 'Sort Order: No Sorting' */
-"[FilesSortOrder/longTitle] No Sorting" = "ไม่จัดเรียง";
-
 /* Title of the dialog for picking the destination group for move/copy operations */
 "[General/DestinationGroup/title] Choose a Destination" = "เลือกปลายทาง";
 
@@ -916,6 +910,9 @@
 /* Title of an warning message */
 "[Generic/title] Warning" = "คำเตือน";
 
+/* Title of a screen/list view configuration: sort order, visible items, etc */
+"[Generic/ViewOptions/title]" = "ตัวเลือกมุมมอง";
+
 /* Warning message template. Swap the icon and message for right-to-left languages. */
 "[Generic/WarningWithIcon/template]" = "⚠️ %@";
 
@@ -925,14 +922,14 @@
 /* Action/button to create a new sub-group in the current group */
 "[Group/Create/action] Create Group" = "สร้างกลุ่ม";
 
-/* Title of a form for creating a group */
-"[Group/Create/title] Create Group" = "สร้างกลุ่ม";
-
 /* Title of a form for editing a group */
 "[Group/Edit/title] Edit Group" = "แก้ไขกลุ่ม";
 
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "สร้างกลุ่มใหม่";
+
+/* Title for the Notes field in group editor */
+"[Group/Notes/title]" = "หมายเหตุ";
 
 /* Action/button to delete everything inside the Recycle Bin */
 "[Group/RecycleBin/Empty/action]" = "ล้างข้อมูลในถังรีไซเคิล";
@@ -940,29 +937,11 @@
 /* Title of the confirmation dialog for `Empty Recycle Bin` action */
 "[Group/RecycleBin/Empty/confirmTitle]" = "ต้องการลบข้อมูลทุกอย่างในถังรีไซเคิลโดยถาวรหรือไม่";
 
+/* Glossary term: noun, a group in database. */
+"[Group/title]" = "กลุ่ม";
+
 /* Title of an input field for group name */
 "[GroupEditor/Name/placeholder]" = "ชื่อกลุ่ม";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
-"[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "ตามวันที่สร้าง (ใหม่..เก่า)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (Old..New)' */
-"[GroupSortOrder/longTitle] By Creation Date (Old..New)" = "ตามวันที่สร้าง (เก่า..ใหม่)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (New..Old)' */
-"[GroupSortOrder/longTitle] By Modification Date (New..Old)" = "ตามวันที่แก้ไข (ใหม่..เก่า)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (Old..New)' */
-"[GroupSortOrder/longTitle] By Modification Date (Old..New)" = "ตามวันที่แก้ไข (เก่า..ใหม่)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Title (A..Z)' */
-"[GroupSortOrder/longTitle] By Title (A..Z)" = "ตามชื่อ (A..Z)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Title (Z..A)' */
-"[GroupSortOrder/longTitle] By Title (Z..A)" = "ตามชื่อ (Z..A)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: No Sorting' */
-"[GroupSortOrder/longTitle] No Sorting" = "ไม่จัดเรียง";
 
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "ฮาร์ดแวร์คีย์ไม่สามารถใช้ในการป้อนรหัสผ่านอัตโนมัติได้";
@@ -1171,26 +1150,8 @@
 /* List of words to be used for a passphrase. */
 "[PasswordGenerator/Wordlist/title]" = "ชุดคำศัพท์";
 
-/* Explanation of the premium feature */
-"[Premium/Benefits/AttachmentPreview/details]" = "แสดงตัวอย่างไฟล์แนบได้โดยตรงใน KeePassium และไม่ทิ้งร่องรอยให้แอปอื่นเห็น (ใช้กับรูปภาพ, เอกสาร, บันทึกสำคัญ และอื่น ๆ)";
-
-/* Title of a premium feature */
-"[Premium/Benefits/AttachmentPreview/title]" = "แสดงตัวอย่างโดยไม่ทิ้งร่องรอย";
-
 /* Title of a premium feature */
 "[Premium/Benefits/BusinessClouds/title]" = "ซิงค์กับที่จัดเก็บขององค์กร";
-
-/* Explanation of a premium feature */
-"[Premium/Benefits/CustomAppIcon/details]" = "สามารถตั้งแอป KeePassium ให้ดูไม่เหมือนแอปอื่น, คล้าย ๆ, หรือแอปเครื่องคิดเลขปลอมก็ได้ — แล้วแต่คุณเลย";
-
-/* Title of a premium feature */
-"[Premium/Benefits/CustomAppIcon/title]" = "เปลี่ยนไอคอนของแอป";
-
-/* Explanation of the premium feature */
-"[Premium/Benefits/DatabaseTimeout/details]" = "เหนื่อยที่จะต้องพิมพ์รหัสผ่านหลักใช่ไหม? สามารถตั้งให้ฐานข้อมูลคุณเปิดทิ้งไว้นาน ๆ ได้ด้วยการแตะหนึ่งครั้ง";
-
-/* Title of a premium feature */
-"[Premium/Benefits/DatabaseTimeout/title]" = "ประหยัดเวลาของคุณ";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/HardwareKeys/details]" = "ปกป้องความลับของคุณด้วยฮาร์ดแวร์คีย์ อย่างเช่นใช้ YubiKey";
@@ -1209,12 +1170,6 @@
 
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Positive/header] " = "อะไรที่คุณจะได้รับ";
-
-/* Explanation of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/details]" = "ใช้ช่องอ้างอิงเพื่อแสดงข้อมูลจากรายการอื่น โดยไม่ต้องทำสำเนาอีกเมื่อมีข้อมูลซ้ำกัน";
-
-/* Title of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/title]" = "แสดงช่องอ้างอิง";
 
 /* Call to action */
 "[Premium/CallToAction/buyNow]" = "ซื้อตอนนี้";
@@ -1363,9 +1318,6 @@
 /* Title of a premium feature: access to company's cloud accounts like 'OneDrive for Business' */
 "[PremiumFeature/BusinessClouds/title]" = "ที่จัดเก็บบนคลาวด์ขององค์กร";
 
-/* Title of a premium feature: ability to change the app icon */
-"[PremiumFeature/CustomAppIcons/title]" = "กำหนดไอคอนของแอป";
-
 /* A generic description of a premium feature */
 "[PremiumFeature/Generic/description]" = "อัพเกรดเป็นพรีเมียมและใช้งาน KeePassium ในแบบที่ดีที่สุด";
 
@@ -1378,23 +1330,11 @@
 /* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
 "[PremiumFeature/HardwareKeys/title] Hardware Keys" = "ฮาร์ดแวร์คีย์";
 
-/* Description/advertisement for the `Long Database Timeouts` premium feature */
-"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "จะไม่เสียเวลาเพื่อมาใส่รหัสผ่านหลักที่มีความซับซ้อน — สามารถเปิดฐานข้อมูลทิ้งไว้นาน ๆ ได้เมื่อใช้เวอร์ชันพรีเมียม";
-
-/* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
-"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "ฐานข้อมูลที่หมดเวลาใช้ระยะเวลายาวนาน";
-
 /* Description/advertisement for the `Multiple Databases` premium feature */
 "[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "สามารถสลับไปมาระหว่างฐานข้อมูลได้ในเวอร์ชันพรีเมียม";
 
 /* Title of a premium feature: ability to use multiple databases (In Title Case) */
 "[PremiumFeature/MultiDB/title] Multiple Databases" = "ฐานข้อมูลหลายจำนวน";
-
-/* Description/advertisement for the `Preview Attachments` premium feature */
-"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "สามารถแสดงตัวอย่างรูปภาพและเอกสารได้โดยตรงในแอป เมื่อใช้เวอร์ชันพรีเมียม";
-
-/* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
-"[PremiumFeature/Preview/title] Preview Attachments" = "ดูตัวอย่างไฟล์แนบ";
 
 /* Description/call to action for the `Quick AutoFill` premium feature. */
 "[PremiumFeature/QuickAutoFill/description]" = "ป้อนรหัสผ่านอัตโนมัติด้วยการกดครั้งเดียว โดยไม่ต้องเปิด KeePassium";
@@ -1585,23 +1525,8 @@
 /* Settings section: protection of databases, their keys and data inside them */
 "[Settings/DataProtection/title]" = "ปกป้องข้อมูล";
 
-/* An option in Group Viewer settings. Refers to the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
-"[Settings/EntryListDetail/longTitle] Last Modified Date" = "วันที่แก้ไขครั้งล่าสุด";
-
 /* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: None', meanining that no entry details will be shown in any lists. */
 "[Settings/EntryListDetail/longTitle] None" = "ไม่มี";
-
-/* An option in Group Viewer settings. Refers to comments/notes field of the entry. Will be shown as 'Entry Subtitle: Notes'. */
-"[Settings/EntryListDetail/longTitle] Notes" = "หมายเหตุ";
-
-/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: Password'. */
-"[Settings/EntryListDetail/longTitle] Password" = "รหัสผ่าน";
-
-/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: URL'. */
-"[Settings/EntryListDetail/longTitle] URL" = "URL";
-
-/* An option in Group Viewer settings. It refers to login information rather than person's name. Will be shown as 'Entry Subtitle: User Name'. */
-"[Settings/EntryListDetail/longTitle] User Name" = "ชื่อผู้ใช้งาน";
 
 /* Title of a settings section: which entry field to show along with entry title */
 "[Settings/GroupViewer] Entry Subtitle" = "คำอธิบายหลังชื่อ";
@@ -1633,20 +1558,11 @@
 /* Section title in settings */
 "[Settings/Search/title]" = "ค้นหา";
 
-/* Title of a sort options list. Example: 'Sort by: Name' */
-"[SortBy]" = "เรียงลำดับตาม";
-
-/* List sorting option. Example: 'Sort by: Date Created' */
-"[SortBy/DateCreated]" = "วันที่สร้าง";
-
-/* List sorting option. Example: 'Sort by: Date Modified' */
-"[SortBy/DateModified]" = "วันที่แก้ไข";
+/* Title of the app settings screen */
+"[Settings/title]" = "การตั้งค่า";
 
 /* List sorting option (for file names). Example: 'Sort by: Name' */
 "[SortBy/FileName]" = "ชื่อ";
-
-/* List sorting option (for groups and entries). Example: 'Sort by: Title' */
-"[SortBy/ItemTitle]" = "ชื่อ";
 
 /* List sorting option, when no sorting is selected. Example: 'Sort by: None' */
 "[SortBy/None]" = "ไม่มี";
@@ -1683,9 +1599,6 @@
 
 /* Notification after a successful donation. */
 "[TipBox/thankYou]" = "ขอบคุณ!";
-
-/* Title of the tip box/donation screen. */
-"[TipBox/title/1]" = "กล่องใส่ทิป";
 
 /* Title of the tip box/donation screen. */
 "[TipBox/title/2]" = "บริจาค";

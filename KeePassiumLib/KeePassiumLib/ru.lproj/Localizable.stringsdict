@@ -46,6 +46,28 @@
 		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@GenericCountEntriesSelected@</string>
 	</dict>
+	<key>[Generic/Count/ItemsSelected]</key>
+	<dict>
+		<key>GenericCountItemsSelected</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>few</key>
+			<string>Выбрано %d элемента</string>
+			<key>many</key>
+			<string>Выбрано %d элементов</string>
+			<key>one</key>
+			<string>Выбран %d элемент</string>
+			<key>other</key>
+			<string>Выбрано %d элементов</string>
+			<key>zero</key>
+			<string>%d items selected</string>
+		</dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@GenericCountItemsSelected@</string>
+	</dict>
 	<key>[Generic/Count/Threads]</key>
 	<dict>
 		<key>GenericCountThreads</key>

@@ -67,6 +67,9 @@
 /* Action/button to set up the App Protection feature. Not a call to action. */
 "[Onboarding/AppProtection/activate]" = "Włącz AppLock";
 
+/* Action/button to set up the Password AutoFill feature. Not a call to action. */
+"[Onboarding/AutoFill/activate]" = "Aktywuj autouzupełnianie";
+
 /* Action/button */
 "[Onboarding/CreateNewDatabase/action]" = "Utwórz nową bazę";
 

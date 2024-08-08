@@ -4,6 +4,15 @@
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "Otomatik Doldurma, ana KeePassium uygulamasında halihazırda var olan bilgilere otomatik olarak erişemez.\n\nPeki neden? Arka plandaki işleyişte; sistem Otomatik Doldurmayı ana KeePassium uygulamasından bağımsız apayrı bir uygulama gibi görmekte. Güvenlik kaynaklı sebeplerden ötürü, siz spesifik olarak aralarında bağıntı kurup izin vermedikçe; bir uygulama hiçbir dış dosyaya kolayca erişemez. Böylece sistem, uygulamanın sadece sizin izin verdiğiniz dosyalara erişebildiğini garanti eder.\n\nSonuç olarak, hem Otomatik Doldurma hem de KeePassium uygulaması veritabanınızı okumak ve değiştirmek için ayrı ayrı yetkilendirilmeye ihtiyaç duyar. Şükür ki, bu tek seferlik bir bürokrasidir.";
 
+/* Must match Apple's translation, as found in iOS 15 Settings → Passwords → AutoFill Passwords. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/allowFillingFrom]" = "Şuradan doldurmaya izin ver:";
+
+/* Must match Apple's translation, as found in iOS 17 Settings → Passwords → Password Options. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/usePasswordsAndPasskeysFrom]" = "Şuradaki parolaları ve geçiş anahtarlarını kullan:";
+
+/* Apple Keychain software; is a glossary term. */
+"[Generic/Keychain/title]" = "Anahtar Zinciri";
+
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "Şifreyi Göster";
 

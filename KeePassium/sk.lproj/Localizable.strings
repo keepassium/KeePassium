@@ -76,6 +76,18 @@
 /* Title of the App Protection onboarding screen */
 "[Onboarding/AppProtection/title]" = "Iba pre vaše oči";
 
+/* Action/button to set up the Password AutoFill feature. Not a call to action. */
+"[Onboarding/AutoFill/activate]" = "Aktivovať automatické dopĺňanie";
+
+/* Text in the Password AutoFill onboarding screen. */
+"[Onboarding/AutoFill/text1]" = "Pomocou funkcie automatického vyplňovania môžete prechádzať prihlasovacie stránky jedným stlačením tlačidla.";
+
+/* Text in the Password AutoFill onboarding screen. */
+"[Onboarding/AutoFill/text2]" = "Ak chcete začať, aktivujte funkciu automatického vyplňovania hesiel v systémových nastaveniach.";
+
+/* Title of the Password AutoFill onboarding screen */
+"[Onboarding/AutoFill/title]" = "Automatické vypĺňanie hesiel";
+
 /* Action/button */
 "[Onboarding/CreateNewDatabase/action]" = "Vytvoriť novú databázu";
 
@@ -180,6 +192,12 @@
 
 /* Title of the tag creation dialog */
 "[Tags/Create/title]" = "Nový štítok";
+
+/* Question to confirm global deletion */
+"[Tags/Delete/Confirm/message]" = "Vymazať tento štítok zo všetkých skupín a záznamov?";
+
+/* Title of a dialog for editing a tag */
+"[Tags/Edit/title]" = "Upraviť štítok";
 
 /* Status message with a call to action */
 "[Tags/None/placeholder]" = "V databáze nie sú žiadne štítky, pridajte ich.";

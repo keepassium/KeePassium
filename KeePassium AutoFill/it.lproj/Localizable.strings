@@ -4,6 +4,21 @@
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "L'inserimento automatico non può accedere automaticamente ai file che hai già nell'app principale di KeePassium.\n\nPerché? Dietro le quinte, il sistema tratta l'inserimento automatico come un'app separata, indipendente dal processo principale di KeePassium. Per ragioni di sicurezza, un’app non può semplicemente accedere a qualsiasi file esterno, a meno che non si colleghino esplicitamente questi file all'app. In questo modo, il sistema garantisce che l'applicazione possa accedere solo ai file per cui ha il permesso.\n\nDi conseguenza, sia l'inserimento automatico che l'app principale di KeePassium devono avere la loro autorizzazione per ogni file esterno. Per fortuna si tratta di una procedura da eseguire una sola volta.";
 
+/* Must match Apple's translation, as found in iOS 15 Settings → Passwords → AutoFill Passwords. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/allowFillingFrom]" = "Consenti inserimento da:";
+
+/* Call to action: deselect the `Keychain` option. Keychain is a glossary term. */
+"[AutoFill/Setup/UncheckKeychain/callToAction]" = "Deseleziona Portachiavi";
+
+/* Instruction to deselect the `Keychain` option. Keychain is a glossary term. */
+"[AutoFill/Setup/UncheckKeychain/message]" = "Per assicurare che KeePassium sia il tuo gestore password di default, deseleziona Portachiavi.";
+
+/* Must match Apple's translation, as found in iOS 17 Settings → Passwords → Password Options. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/usePasswordsAndPasskeysFrom]" = "Utilizza le password e le passkey da:";
+
+/* Apple Keychain software; is a glossary term. */
+"[Generic/Keychain/title]" = "Portachiavi";
+
 /* Menu action to add a user-provided word list file to the app. */
 "[PasswordGenerator/Wordlist/Import/menuAction]" = "Importa lista vocaboli…";
 

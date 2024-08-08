@@ -31,12 +31,30 @@
 			<key>one</key>
 			<string>%d konto markerat</string>
 			<key>other</key>
-			<string>%d konton markerade</string>
+			<string>%d poster markerade</string>
 			<key>zero</key>
 			<string>%d entries selected</string>
 		</dict>
 		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@GenericCountEntriesSelected@</string>
+	</dict>
+	<key>[Generic/Count/ItemsSelected]</key>
+	<dict>
+		<key>GenericCountItemsSelected</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d objekt valt</string>
+			<key>other</key>
+			<string>%d objekt valda</string>
+			<key>zero</key>
+			<string>%d items selected</string>
+		</dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@GenericCountItemsSelected@</string>
 	</dict>
 	<key>[Generic/Count/Threads]</key>
 	<dict>

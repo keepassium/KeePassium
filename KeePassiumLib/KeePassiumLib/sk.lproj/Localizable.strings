@@ -10,6 +10,12 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "Aktivujte, k chcete počúvať.";
 
+/* Section in settings: icon for the app */
+"[Appearance/AppIcon/title]" = "Ikona aplikácie";
+
+/* Section in settings: icons for database */
+"[Appearance/DatabaseIcons/title]" = "Ikony databázy";
+
 /* Short name of the default/system font. For example: `Font: Default` */
 "[Appearance/DefaultFont/shortTitle]" = "Predvolený";
 
@@ -139,9 +145,6 @@
 /* Action/button to create a new database */
 "[Database/Create/action] Create Database" = "Vytvoriť databázu";
 
-/* Title of a form for creating a database */
-"[Database/Create/title] Create Database" = "Vytvoriť databázu";
-
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "Pridaj vlastnú ikonu";
 
@@ -190,6 +193,9 @@
 /* Title: database encryption settings. */
 "[Database/EncryptionSettings/title]" = "Nastavenia šifrovania";
 
+/* Info message for entries that contain information for opening a different database. */
+"[Database/Entry/LinkedDatabase/message]" = "Tento záznam odkazuje na inú databázu.";
+
 /* Info message when changing database file format. */
 "[Database/FormatVersion/Conversion/allDataPreserved]" = "Všetky vaše údaje zostanú zachované.";
 
@@ -207,6 +213,12 @@
 
 /* Notification when user tries to copy data from KDBX to older KDB database. */
 "[Database/LesserTargetFormat/warning]" = "Toto je starší formát databázy, niektoré údaje sa môžu stratiť.";
+
+/* Recommendation for solving a problem with a list of files. */
+"[Database/List/LocalMissing/message]" = "Ak niektoré miestne súbory nie sú uvedené, spustite najprv hlavnú aplikáciu KeePassium.";
+
+/* Title of the database picker list */
+"[Database/List/title]" = "Databázy";
 
 /* Error message */
 "[Database/Load/Error] Cannot find database file" = "Nenájdený databázový súbor";
@@ -252,6 +264,12 @@
 
 /* Imperative/recommendation: title of a warning when changing database password. */
 "[Database/MasterKey/RememberYourPassword/title]" = "Zapamätajte si svoje heslo k databáze";
+
+/* Glossary term: noun, a master key for encrypting the database */
+"[Database/MasterKey/title]" = "Hlavný kľúč";
+
+/* Title of database creation dialog */
+"[Database/New/title]" = "Nová databáza";
 
 /* Action/button */
 "[Database/Open/action] Open Database" = "Otvoriť databázu";
@@ -580,6 +598,9 @@
 /* Action/button to create a new entry in the current group */
 "[Entry/Create/action] Create Entry" = "Vytvoriť záznam";
 
+/* Action/button to modify an entry */
+"[Entry/Edit/action]" = "Upraviť záznam";
+
 /* Default name of a newly created entry field */
 "[Entry/Edit/CreateField/defaultName] Field Name" = "Názov poľa";
 
@@ -628,6 +649,9 @@
 /* Title of a field with entry's last modification date and time */
 "[Entry/History] Last Modification Date" = "Dátum poslednej zmeny";
 
+/* Title of a field with entry's modification date and time */
+"[Entry/History] Modification Date" = "Dátum zmeny";
+
 /* Title of a list with previous versions/revisions of an entry. */
 "[Entry/History] Previous Versions" = "Predchádzajúce verzie";
 
@@ -636,6 +660,9 @@
 
 /* Default title of a new entry */
 "[Entry/New/defaultTitle] New Entry" = "Nový záznam";
+
+/* Glossary term: noun, an entry in database. */
+"[Entry/title]" = "Záznam";
 
 /* Warning shown when opening files from Recycle Bin location. Translation of 'Recently Deleted' should match that in the Files app. [fileName: String] */
 "[File/In Trash/warning]" = "'%@' je umiestnený v nedávno zmazaných súboroch a môže byť čoskoro odstránený. Ak chcete súbor zachovať, presuňte ho na trvalejšie miesto.";
@@ -696,6 +723,15 @@
 
 /* Error message: file provider does not respond to requests (quickly enough). For example: `Google Drive does not respond` */
 "[FileAccessError/Timeout/knownFileProvider]" = "%@ neodpovedá.";
+
+/* Section header for attributes of a file (e.g. hidden, excluded from backup, etc) */
+"[FileInfo/Attributes/header]" = "Atribúty súboru";
+
+/* Title of a setting: is the file hidden */
+"[FileInfo/Attributes/Hidden/title]" = "Skryté";
+
+/* Warning message for 'hidden' files. */
+"[FileInfo/Attributes/Hidden/warning]" = "Skryté súbory sú pre bežného používateľa menej viditeľné, ale nezvyšujú bezpečnosť údajov.";
 
 /* Section header: file backup settings */
 "[FileInfo/Backup/header]" = "Záloha";
@@ -829,27 +865,6 @@
 /* Localized name of the storage service: Yandex.Disk (https://disk.yandex.com) */
 "[FileProvider/Yandex.Disk/name]" = "Yandex.Disk";
 
-/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Oldest First)' */
-"[FilesSortOrder/longTitle] Creation Date (Oldest First)" = "Dátum vytvorenia (od najstaršieho)";
-
-/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Recent First)' */
-"[FilesSortOrder/longTitle] Creation Date (Recent First)" = "Dátum vytvorenia (od najnovšieho)";
-
-/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Oldest First)' */
-"[FilesSortOrder/longTitle] Modification Date (Oldest First)" = "Dátum úpravy (od najstaršieho)";
-
-/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Recent First)' */
-"[FilesSortOrder/longTitle] Modification Date (Recent First)" = "Dátum úpravy (od najnovšieho)";
-
-/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (A..Z)' */
-"[FilesSortOrder/longTitle] Name (A..Z)" = "Názov (A..Z)";
-
-/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (Z..A)' */
-"[FilesSortOrder/longTitle] Name (Z..A)" = "Názov (Z..A)";
-
-/* A sorting option for a list of files. Example: 'Sort Order: No Sorting' */
-"[FilesSortOrder/longTitle] No Sorting" = "Bez zoradenia";
-
 /* Title of the dialog for picking the destination group for move/copy operations */
 "[General/DestinationGroup/title] Choose a Destination" = "Vyberte cieľ";
 
@@ -955,6 +970,9 @@
 /* Action/button to skip the current step and proceed with the next one */
 "[Generic] Skip" = "Preskočiť";
 
+/* Action/button to change the order of items in a list (move them higher/lower). */
+"[Generic/Action/ReorderItems]" = "Usporiadať";
+
 /* Action/button to select some items in a list. */
 "[Generic/Action/SelectItems]" = "Vybrať";
 
@@ -1006,6 +1024,12 @@
 /* Title of an warning message */
 "[Generic/title] Warning" = "Varovanie";
 
+/* Title of a menu with various utilities */
+"[Generic/Tools/title]" = "Nástroje";
+
+/* Title of a screen/list view configuration: sort order, visible items, etc */
+"[Generic/ViewOptions/title]" = "Možnosti zobrazenia";
+
 /* Warning message template. Swap the icon and message for right-to-left languages. */
 "[Generic/WarningWithIcon/template]" = "⚠️ %@";
 
@@ -1015,14 +1039,17 @@
 /* Action/button to create a new sub-group in the current group */
 "[Group/Create/action] Create Group" = "Vytvoriť skupinu";
 
-/* Title of a form for creating a group */
-"[Group/Create/title] Create Group" = "Vytvoriť skupinu";
-
 /* Title of a form for editing a group */
 "[Group/Edit/title] Edit Group" = "Upraviť skupinu";
 
+/* VoiceOver description of a menu with group-related actions */
+"[Group/Menu/a11y/title]" = "Ponuka skupiny";
+
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "Nová skupina";
+
+/* Title for the Notes field in group editor */
+"[Group/Notes/title]" = "Poznámky";
 
 /* Action/button to delete everything inside the Recycle Bin */
 "[Group/RecycleBin/Empty/action]" = "Vyprázdniť kôš";
@@ -1030,29 +1057,29 @@
 /* Title of the confirmation dialog for `Empty Recycle Bin` action */
 "[Group/RecycleBin/Empty/confirmTitle]" = "Natrvalo odstrániť všetko v koši?";
 
+/* VoiceOver description of a smart group [groupTitle: String] */
+"[Group/Smart/a11y/description]" = "%@, Chytrá skupina";
+
+/* Action/button to show a help article */
+"[Group/Smart/about]" = "O chytrých skupinách…";
+
+/* Action/button to create a new Smart Group */
+"[Group/Smart/Create/action]" = "Vytvoriť chytrú skupinu";
+
+/* Default name of a new smart group */
+"[Group/Smart/New/defaultName]" = "Nová chytrá skupina";
+
+/* Title for the Smart Group search conditions in group editor */
+"[Group/Smart/Query/title]" = "Filter chytrej skupiny";
+
+/* Glossary term: noun, a smart group in database. */
+"[Group/Smart/title]" = "Chytrá skupina";
+
+/* Glossary term: noun, a group in database. */
+"[Group/title]" = "Skupina";
+
 /* Title of an input field for group name */
 "[GroupEditor/Name/placeholder]" = "Názov skupiny";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
-"[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "Podľa dátumu vytvorenia (nové..staré)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (Old..New)' */
-"[GroupSortOrder/longTitle] By Creation Date (Old..New)" = "Podľa dátumu vytvorenia (staré..nové)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (New..Old)' */
-"[GroupSortOrder/longTitle] By Modification Date (New..Old)" = "Podľa dátumu úpravy (nové..staré)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (Old..New)' */
-"[GroupSortOrder/longTitle] By Modification Date (Old..New)" = "Podľa dátumu úpravy (staré..nové)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Title (A..Z)' */
-"[GroupSortOrder/longTitle] By Title (A..Z)" = "Podľa názvu (A..Z)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Title (Z..A)' */
-"[GroupSortOrder/longTitle] By Title (Z..A)" = "Podľa názvu (Z..A)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: No Sorting' */
-"[GroupSortOrder/longTitle] No Sorting" = "Bez zoradenia";
 
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Hardvérové ​​kľúče nie sú dostupné pre automatické vyplňovanie.";
@@ -1345,32 +1372,20 @@
 /* List of words to be used for a passphrase. */
 "[PasswordGenerator/Wordlist/title]" = "Zoznam slov";
 
-/* Explanation of the premium feature */
-"[Premium/Benefits/AttachmentPreview/details]" = "Zobrazte si ukážku príloh priamo v aplikácii KeePassium a nezanechávajte stopy v iných aplikáciách. (Náhľad podporuje obrázky, dokumenty, archívy a ďalšie.)";
-
-/* Title of a premium feature */
-"[Premium/Benefits/AttachmentPreview/title]" = "Náhľad bez zanechania stôp";
-
 /* Title of a premium feature */
 "[Premium/Benefits/BusinessClouds/title]" = "Synchronizácia s firemným úložiskom";
-
-/* Explanation of a premium feature */
-"[Premium/Benefits/CustomAppIcon/details]" = "Zvoľte si pre KeePassium unikátnu ikonu alebo ju napríklad maskujte ako kalkulačku – voľba je na vás.";
-
-/* Title of a premium feature */
-"[Premium/Benefits/CustomAppIcon/title]" = "Zmeňte ikonu aplikácie";
-
-/* Explanation of the premium feature */
-"[Premium/Benefits/DatabaseTimeout/details]" = "Unavuje vás neustále zadávať hlavné heslo? Majte svoju databázu otvorenú po dlhšiu dobu a odomknite ju jedným kliknutím.";
-
-/* Title of a premium feature */
-"[Premium/Benefits/DatabaseTimeout/title]" = "Šetrite svoj čas";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/HardwareKeys/details]" = "Chráňte svoje heslá pomocou hardvérového kľúča, ako je napríklad YubiKey.";
 
 /* Title of a premium feature */
 "[Premium/Benefits/HardwareKeys/title]" = "Použite hardvérové kľúče";
+
+/* Explanation of the premium feature */
+"[Premium/Benefits/LinkedDatabases/details]" = "Otvorte inú databázu pomocou poverení uložených v zázname v jednom kroku.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/LinkedDatabases/title]" = "Otvoriť prepojené databázy";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/MultiDB/details]" = "Pridajte viac databáz a prepínajte sa medzi nimi rýchlejšie.";
@@ -1386,12 +1401,6 @@
 
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Positive/header] " = "Čo získate";
-
-/* Explanation of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/details]" = "Pomocou odkazov na polia môžete zobraziť informácie z iných záznamov namiesto vytvárania ďalších kópií rovnakých informácií.";
-
-/* Title of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/title]" = "Zobraziť odkazy na polia";
 
 /* Call to action */
 "[Premium/CallToAction/buyNow]" = "Kúpiť teraz";
@@ -1540,9 +1549,6 @@
 /* Title of a premium feature: access to company's cloud accounts like 'OneDrive for Business' */
 "[PremiumFeature/BusinessClouds/title]" = "Firemné cloudové úložisko";
 
-/* Title of a premium feature: ability to change the app icon */
-"[PremiumFeature/CustomAppIcons/title]" = "Vlastné ikony aplikácie";
-
 /* A generic description of a premium feature */
 "[PremiumFeature/Generic/description]" = "Prejdite na Premium a užite si KeePassium so všetkými funkciami.";
 
@@ -1555,11 +1561,11 @@
 /* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
 "[PremiumFeature/HardwareKeys/title] Hardware Keys" = "Hardvérové ​​kľúče";
 
-/* Description/advertisement for the `Long Database Timeouts` premium feature */
-"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "Ušetrite čas spojený so zadávaním vášho hlavného hesla – prémiová verzia umožňuje ponechať databázu otvorenú dlhšie.";
+/* Description/advertisement for the `Linked Databases` premium feature */
+"[PremiumFeature/LinkedDatabases/description]" = "Aktualizujte svoju verziu na Premium a otvorte prepojené databázy v jednom kroku.";
 
-/* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
-"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "Dĺžka časového zámku";
+/* Title of a premium feature: ability to open databases referenced in another database (In Title Case) */
+"[PremiumFeature/LinkedDatabases/title]" = "Prepojené databázy";
 
 /* Description/advertisement for the `Multiple Databases` premium feature */
 "[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "V prémiové verzii môžete ľahko prepínať medzi viacerými databázami.";
@@ -1572,12 +1578,6 @@
 
 /* Title of a premium feature: discover which passwords are known to be compromized */
 "[PremiumFeature/PasswordAudit/title]" = "Audit hesiel";
-
-/* Description/advertisement for the `Preview Attachments` premium feature */
-"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "Prémiová verzia umožňuje náhľad obrázkov a dokumentov priamo v aplikácii.";
-
-/* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
-"[PremiumFeature/Preview/title] Preview Attachments" = "Zobraziť ukážku príloh";
 
 /* Description/call to action for the `Quick AutoFill` premium feature. */
 "[PremiumFeature/QuickAutoFill/description]" = "Vyplňte prihlasovacie formuláre jediným klepnutím bez toho, aby ste museli otvárať KeePassium.";
@@ -1616,7 +1616,7 @@
 "[RemoteConnection/connectToServer]" = "Pripojiť k serveru";
 
 /* Title of a section: username, password, etc */
-"[RemoteConnection/Credentials]" = "Nastavenia prístupu";
+"[RemoteConnection/Credentials]" = "Poverenia";
 
 /* Description of the `Direct connection` sync method. */
 "[RemoteConnection/Direct/description]" = "KeePassium bude komunikovať priamo s vaším online úložiskom. Tým sa zabezpečí spoľahlivý prenos súborov.";
@@ -1807,26 +1807,8 @@
 /* Settings section: protection of databases, their keys and data inside them */
 "[Settings/DataProtection/title]" = "Ochrana dát";
 
-/* An option in Group Viewer settings. Refers to the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
-"[Settings/EntryListDetail/longTitle] Last Modified Date" = "Dátum poslednej úpravy";
-
 /* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: None', meanining that no entry details will be shown in any lists. */
 "[Settings/EntryListDetail/longTitle] None" = "Žiadny";
-
-/* An option in Group Viewer settings. Refers to comments/notes field of the entry. Will be shown as 'Entry Subtitle: Notes'. */
-"[Settings/EntryListDetail/longTitle] Notes" = "Poznámky";
-
-/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: Password'. */
-"[Settings/EntryListDetail/longTitle] Password" = "Heslo";
-
-/* An option in Group Viewer settings. Refers to the tags field of the entry. Will be shown as 'Entry Subtitle: Tags'. */
-"[Settings/EntryListDetail/longTitle] Tags" = "Štítky";
-
-/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: URL'. */
-"[Settings/EntryListDetail/longTitle] URL" = "Adresa URL";
-
-/* An option in Group Viewer settings. It refers to login information rather than person's name. Will be shown as 'Entry Subtitle: User Name'. */
-"[Settings/EntryListDetail/longTitle] User Name" = "Užívateľské meno";
 
 /* Title of a settings section: which entry field to show along with entry title */
 "[Settings/GroupViewer] Entry Subtitle" = "Podtitulok záznamu";
@@ -1864,23 +1846,17 @@
 /* Section title in settings */
 "[Settings/Search/title]" = "Vyhľadávanie";
 
-/* Title of a sort options list. Example: 'Sort by: Name' */
-"[SortBy]" = "Zoradiť podľa";
-
-/* List sorting option. Example: 'Sort by: Date Created' */
-"[SortBy/DateCreated]" = "Dátum vytvorenia";
-
-/* List sorting option. Example: 'Sort by: Date Modified' */
-"[SortBy/DateModified]" = "Dátum úpravy";
+/* Title of the app settings screen */
+"[Settings/title]" = "Nastavenie";
 
 /* List sorting option (for file names). Example: 'Sort by: Name' */
 "[SortBy/FileName]" = "Názov";
 
-/* List sorting option (for groups and entries). Example: 'Sort by: Title' */
-"[SortBy/ItemTitle]" = "Názov";
-
 /* List sorting option, when no sorting is selected. Example: 'Sort by: None' */
 "[SortBy/None]" = "Žiadny";
+
+/* List sorting option, when items are manually ordered by the user. Example: 'Sort order: Custom' */
+"[SortOrder/Custom]" = "Vlastné";
 
 /* Name of a cloud storage service */
 "[StorageService/DropboxBusiness/title]" = "Dropbox Business";
@@ -1920,9 +1896,6 @@
 
 /* Notification after a successful donation. */
 "[TipBox/thankYou]" = "Ďakujeme vám!";
-
-/* Title of the tip box/donation screen. */
-"[TipBox/title/1]" = "Sprepitné";
 
 /* Title of the tip box/donation screen. */
 "[TipBox/title/2]" = "Príspevky";

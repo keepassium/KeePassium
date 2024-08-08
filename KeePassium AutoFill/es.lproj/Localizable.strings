@@ -4,6 +4,21 @@
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "«Autorrelleno» (AutoFill) no puede acceder automáticamente a los archivos de la aplicación principal de KeePassium.\n\n¿Por qué? Internamente, el sistema trata «Autorrelleno» como una aplicación separada, independiente del proceso principal de KeePassium. Por razones de seguridad, una aplicación no puede simplemente acceder a ningún archivo externo, a menos que se vinculen explícitamente estos archivos con esa aplicación. Así, el sistema garantiza que la aplicación solo puede acceder a los archivos permitidos.\n\nComo resultado, tanto la aplicación «Autorrelleno», como la aplicación principal de KeePassium deben recibir sus propios permisos para cada archivo externo. Afortunadamente, solo se necesita hacerlo una vez por cada nueva base de datos.";
 
+/* Must match Apple's translation, as found in iOS 15 Settings → Passwords → AutoFill Passwords. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/allowFillingFrom]" = "Permitir relleno automático desde:";
+
+/* Call to action: deselect the `Keychain` option. Keychain is a glossary term. */
+"[AutoFill/Setup/UncheckKeychain/callToAction]" = "Desbloquear Cadena de claves";
+
+/* Instruction to deselect the `Keychain` option. Keychain is a glossary term. */
+"[AutoFill/Setup/UncheckKeychain/message]" = "Para que KeePassium sea tu gestor de contraseñas por defecto, desmarca Cadena de claves.";
+
+/* Must match Apple's translation, as found in iOS 17 Settings → Passwords → Password Options. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/usePasswordsAndPasskeysFrom]" = "Usar contraseñas y llaves de acceso de:";
+
+/* Apple Keychain software; is a glossary term. */
+"[Generic/Keychain/title]" = "Cadena de claves";
+
 /* Menu action to add a user-provided word list file to the app. */
 "[PasswordGenerator/Wordlist/Import/menuAction]" = "Importar lista de palabras…";
 

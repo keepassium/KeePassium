@@ -1,5 +1,5 @@
 /* Class = "UITableViewSection"; footerTitle = "When AutoFill finds only one, perfectly matching, entry – this entry will be pasted automatically."; ObjectID = "jYl-ks-dFG"; */
-"jYl-ks-dFG.footerTitle" = "När Autofyll hittar endast ett enda matchande konto kommer det anges automatiskt.";
+"jYl-ks-dFG.footerTitle" = "När Autofyll endast hittar en post som matchar perfekt, kommer det anges automatiskt.";
 
 /* Class = "UITableViewSection"; headerTitle = "Automatic search"; ObjectID = "jYl-ks-dFG"; */
 "jYl-ks-dFG.headerTitle" = "Automatisk sökning";

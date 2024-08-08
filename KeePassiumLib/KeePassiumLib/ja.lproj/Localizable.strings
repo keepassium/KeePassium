@@ -10,6 +10,12 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "有効にする。";
 
+/* Section in settings: icon for the app */
+"[Appearance/AppIcon/title]" = "Appのアイコン";
+
+/* Section in settings: icons for database */
+"[Appearance/DatabaseIcons/title]" = "データベースのアイコン";
+
 /* Short name of the default/system font. For example: `Font: Default` */
 "[Appearance/DefaultFont/shortTitle]" = "デフォルト";
 
@@ -136,9 +142,6 @@
 /* Action/button to create a new database */
 "[Database/Create/action] Create Database" = "データベースを作成";
 
-/* Title of a form for creating a database */
-"[Database/Create/title] Create Database" = "データベースを作成";
-
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "カスタムアイコンを追加";
 
@@ -177,6 +180,9 @@
 
 /* Notification when user tries to copy data from KDBX to older KDB database. */
 "[Database/LesserTargetFormat/warning]" = "これは古いデータベース形式です。一部のデータが失われる可能性があります。";
+
+/* Title of the database picker list */
+"[Database/List/title]" = "データベース";
 
 /* Error message */
 "[Database/Load/Error] Cannot find database file" = "データベースが見つかりません";
@@ -222,6 +228,9 @@
 
 /* Imperative/recommendation: title of a warning when changing database password. */
 "[Database/MasterKey/RememberYourPassword/title]" = "データベースのパスワードを記憶";
+
+/* Glossary term: noun, a master key for encrypting the database */
+"[Database/MasterKey/title]" = "マスターキー";
 
 /* Action/button */
 "[Database/Open/action] Open Database" = "データベースを開く";
@@ -538,6 +547,9 @@
 /* Action/button to create a new entry in the current group */
 "[Entry/Create/action] Create Entry" = "エントリーを作成";
 
+/* Action/button to modify an entry */
+"[Entry/Edit/action]" = "エントリーを編集";
+
 /* Default name of a newly created entry field */
 "[Entry/Edit/CreateField/defaultName] Field Name" = "項目名";
 
@@ -588,6 +600,9 @@
 
 /* Default title of a new entry */
 "[Entry/New/defaultTitle] New Entry" = "新規エントリー";
+
+/* Glossary term: noun, an entry in database. */
+"[Entry/title]" = "エントリー";
 
 /* Warning shown when opening files from Recycle Bin location. Translation of 'Recently Deleted' should match that in the Files app. [fileName: String] */
 "[File/In Trash/warning]" = "'%@' は「最近削除した項目」にあり、いずれ削除されます。お使いのデータを残すには別のフォルダに移動してください。";
@@ -775,27 +790,6 @@
 /* Localized name of the storage service: Yandex.Disk (https://disk.yandex.com) */
 "[FileProvider/Yandex.Disk/name]" = "Yandex.Disk";
 
-/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Oldest First)' */
-"[FilesSortOrder/longTitle] Creation Date (Oldest First)" = "作成日（古い順）";
-
-/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Recent First)' */
-"[FilesSortOrder/longTitle] Creation Date (Recent First)" = "作成日（新しい順）";
-
-/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Oldest First)' */
-"[FilesSortOrder/longTitle] Modification Date (Oldest First)" = "変更日（古い順）";
-
-/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Recent First)' */
-"[FilesSortOrder/longTitle] Modification Date (Recent First)" = "変更日（新しい順）";
-
-/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (A..Z)' */
-"[FilesSortOrder/longTitle] Name (A..Z)" = "名前（昇順）";
-
-/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (Z..A)' */
-"[FilesSortOrder/longTitle] Name (Z..A)" = "名前（降順）";
-
-/* A sorting option for a list of files. Example: 'Sort Order: No Sorting' */
-"[FilesSortOrder/longTitle] No Sorting" = "並び替えない";
-
 /* Title of the dialog for picking the destination group for move/copy operations */
 "[General/DestinationGroup/title] Choose a Destination" = "保存先を選択";
 
@@ -949,14 +943,14 @@
 /* Title of an warning message */
 "[Generic/title] Warning" = "警告";
 
+/* Title of a screen/list view configuration: sort order, visible items, etc */
+"[Generic/ViewOptions/title]" = "表示オプション";
+
 /* VoiceOver description of a group [groupTitle: String, itemCount: Int] */
 "[Group/a11y/description]" = "%@, グループ";
 
 /* Action/button to create a new sub-group in the current group */
 "[Group/Create/action] Create Group" = "グループを作成";
-
-/* Title of a form for creating a group */
-"[Group/Create/title] Create Group" = "グループを作成";
 
 /* Title of a form for editing a group */
 "[Group/Edit/title] Edit Group" = "グループを編集";
@@ -964,35 +958,20 @@
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "新規グループ";
 
+/* Title for the Notes field in group editor */
+"[Group/Notes/title]" = "メモ";
+
 /* Action/button to delete everything inside the Recycle Bin */
 "[Group/RecycleBin/Empty/action]" = "ゴミ箱を空にする";
 
 /* Title of the confirmation dialog for `Empty Recycle Bin` action */
 "[Group/RecycleBin/Empty/confirmTitle]" = "ゴミ箱の内容を完全に削除しますか？";
 
+/* Glossary term: noun, a group in database. */
+"[Group/title]" = "グループ";
+
 /* Title of an input field for group name */
 "[GroupEditor/Name/placeholder]" = "グループ名";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
-"[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "作成日（新しい順）";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (Old..New)' */
-"[GroupSortOrder/longTitle] By Creation Date (Old..New)" = "作成日（古い順）";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (New..Old)' */
-"[GroupSortOrder/longTitle] By Modification Date (New..Old)" = "変更日（新しい順）";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (Old..New)' */
-"[GroupSortOrder/longTitle] By Modification Date (Old..New)" = "変更日（古い順）";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Title (A..Z)' */
-"[GroupSortOrder/longTitle] By Title (A..Z)" = "名前（昇順）";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Title (Z..A)' */
-"[GroupSortOrder/longTitle] By Title (Z..A)" = "名前（降順）";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: No Sorting' */
-"[GroupSortOrder/longTitle] No Sorting" = "並び替えない";
 
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "ハードウェアキーは自動入力では使用できません。";
@@ -1225,26 +1204,8 @@
 /* List of words to be used for a passphrase. */
 "[PasswordGenerator/Wordlist/title]" = "ワードリスト";
 
-/* Explanation of the premium feature */
-"[Premium/Benefits/AttachmentPreview/details]" = "添付ファイルを直接Appで表示するので、他のAppに痕跡を残しません。(画像や文書、圧縮ファイルなどで有効です。)";
-
-/* Title of a premium feature */
-"[Premium/Benefits/AttachmentPreview/title]" = "痕跡を残さず閲覧";
-
 /* Title of a premium feature */
 "[Premium/Benefits/BusinessClouds/title]" = "企業ストレージと同期";
-
-/* Explanation of a premium feature */
-"[Premium/Benefits/CustomAppIcon/details]" = "KeePassiumの装いを独特にできますし、電卓に偽装させてもいい。お好みで選べます。";
-
-/* Title of a premium feature */
-"[Premium/Benefits/CustomAppIcon/title]" = "Appのアイコンを変更";
-
-/* Explanation of the premium feature */
-"[Premium/Benefits/DatabaseTimeout/details]" = "マスターパスワードの入力にうんざりですか？ もっと長時間データベースが開いたままにできて、ロック解除がワンタッチで可能になります。";
-
-/* Title of a premium feature */
-"[Premium/Benefits/DatabaseTimeout/title]" = "時間を節約";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/HardwareKeys/details]" = "YubiKeyなどのハードウェアの鍵を使って秘密を守ります。";
@@ -1266,12 +1227,6 @@
 
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Positive/header] " = "できること";
-
-/* Explanation of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/details]" = "同じ内容のコピーを何個も作る代わりに、フィールドの参照を使って他エントリの情報を表示する。";
-
-/* Title of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/title]" = "フィールド参照を表示";
 
 /* Call to action */
 "[Premium/CallToAction/buyNow]" = "今すぐ購入";
@@ -1420,9 +1375,6 @@
 /* Title of a premium feature: access to company's cloud accounts like 'OneDrive for Business' */
 "[PremiumFeature/BusinessClouds/title]" = "企業向けクラウドストレージ";
 
-/* Title of a premium feature: ability to change the app icon */
-"[PremiumFeature/CustomAppIcons/title]" = "Appのアイコンの変更";
-
 /* A generic description of a premium feature */
 "[PremiumFeature/Generic/description]" = "プレミアム版にアップグレードすると、KeePassiumを最高の状態でお使いいただけます。";
 
@@ -1435,12 +1387,6 @@
 /* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
 "[PremiumFeature/HardwareKeys/title] Hardware Keys" = "ハードウェアキー";
 
-/* Description/advertisement for the `Long Database Timeouts` premium feature */
-"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "マスターパスワードの入力時間を節約します：プレミアム版ではもっと長い時間データベースを開けたままにできます。";
-
-/* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
-"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "長時間経過後のデータベースの自動ロック";
-
 /* Description/advertisement for the `Multiple Databases` premium feature */
 "[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "プレミアム版ではデータベースの切り替えが簡単にできます。";
 
@@ -1452,12 +1398,6 @@
 
 /* Title of a premium feature: discover which passwords are known to be compromized */
 "[PremiumFeature/PasswordAudit/title]" = "パスワードの監査";
-
-/* Description/advertisement for the `Preview Attachments` premium feature */
-"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "プレミアム版では画像や文書を直接Appで見ることができます。";
-
-/* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
-"[PremiumFeature/Preview/title] Preview Attachments" = "添付ファイルのプレビュー";
 
 /* Description/call to action for the `Quick AutoFill` premium feature. */
 "[PremiumFeature/QuickAutoFill/description]" = "KeePassiumを開くことなく、1回のタップでログインフォームに入力します。";
@@ -1657,23 +1597,8 @@
 /* Settings section: protection of databases, their keys and data inside them */
 "[Settings/DataProtection/title]" = "データの保護";
 
-/* An option in Group Viewer settings. Refers to the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
-"[Settings/EntryListDetail/longTitle] Last Modified Date" = "変更日";
-
 /* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: None', meanining that no entry details will be shown in any lists. */
 "[Settings/EntryListDetail/longTitle] None" = "なし";
-
-/* An option in Group Viewer settings. Refers to comments/notes field of the entry. Will be shown as 'Entry Subtitle: Notes'. */
-"[Settings/EntryListDetail/longTitle] Notes" = "メモ";
-
-/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: Password'. */
-"[Settings/EntryListDetail/longTitle] Password" = "パスワード";
-
-/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: URL'. */
-"[Settings/EntryListDetail/longTitle] URL" = "URL";
-
-/* An option in Group Viewer settings. It refers to login information rather than person's name. Will be shown as 'Entry Subtitle: User Name'. */
-"[Settings/EntryListDetail/longTitle] User Name" = "ユーザー名";
 
 /* Title of a settings section: which entry field to show along with entry title */
 "[Settings/GroupViewer] Entry Subtitle" = "エントリーの小見出し";
@@ -1708,20 +1633,11 @@
 /* Section title in settings */
 "[Settings/Search/title]" = "検索";
 
-/* Title of a sort options list. Example: 'Sort by: Name' */
-"[SortBy]" = "並び替え";
-
-/* List sorting option. Example: 'Sort by: Date Created' */
-"[SortBy/DateCreated]" = "作成日";
-
-/* List sorting option. Example: 'Sort by: Date Modified' */
-"[SortBy/DateModified]" = "変更日";
+/* Title of the app settings screen */
+"[Settings/title]" = "設定";
 
 /* List sorting option (for file names). Example: 'Sort by: Name' */
 "[SortBy/FileName]" = "名前";
-
-/* List sorting option (for groups and entries). Example: 'Sort by: Title' */
-"[SortBy/ItemTitle]" = "タイトル";
 
 /* List sorting option, when no sorting is selected. Example: 'Sort by: None' */
 "[SortBy/None]" = "なし";
@@ -1752,9 +1668,6 @@
 
 /* Notification after a successful donation. */
 "[TipBox/thankYou]" = "ご支援ありがとうございます。";
-
-/* Title of the tip box/donation screen. */
-"[TipBox/title/1]" = "KeePassiumを支援";
 
 /* Title of the tip box/donation screen. */
 "[TipBox/title/2]" = "寄付";

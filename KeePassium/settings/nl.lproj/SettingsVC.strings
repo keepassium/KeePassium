@@ -4,9 +4,6 @@
 /* Class = "UITableViewSection"; headerTitle = "Premium"; ObjectID = "A5N-B3-t3t"; */
 "A5N-B3-t3t.headerTitle" = "Premium";
 
-/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "Bk0-Xf-O7B"; */
-"Bk0-Xf-O7B.title" = "Instellingen";
-
 /* Class = "UITableViewSection"; headerTitle = "Support"; ObjectID = "cBS-jW-dHU"; */
 "cBS-jW-dHU.headerTitle" = "Ondersteuning";
 

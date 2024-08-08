@@ -64,6 +64,9 @@
 /* Action/button to set up the App Protection feature. Not a call to action. */
 "[Onboarding/AppProtection/activate]" = "Appロックを使用";
 
+/* Action/button to set up the Password AutoFill feature. Not a call to action. */
+"[Onboarding/AutoFill/activate]" = "自動入力をオン";
+
 /* Action/button */
 "[Onboarding/CreateNewDatabase/action]" = "新規データベースを作成";
 

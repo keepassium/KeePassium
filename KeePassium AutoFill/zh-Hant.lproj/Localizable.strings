@@ -4,6 +4,15 @@
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "自動填充功能無法自動訪問主KeePassium應用程式中已有的資料庫。\n\n為什麼？ 在系統後台，系統將自動填充視為一個獨立的應用程式，獨立於主要的KeePassium處理程式。 出於安全原因，應用程式無法簡單地訪問任何外部文件 - 除非您明確將這些檔案添加到該應用程式。系統安全特性保證應用程式只能訪問您允許的少數文件。\n\n因此，需要為自動填充和KeePassium應用程式賦予所需的資料庫檔案以及金鑰檔案權限。 幸運的是，這只要設置一次。";
 
+/* Must match Apple's translation, as found in iOS 15 Settings → Passwords → AutoFill Passwords. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/allowFillingFrom]" = "允許填寫來源：";
+
+/* Must match Apple's translation, as found in iOS 17 Settings → Passwords → Password Options. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/usePasswordsAndPasskeysFrom]" = "使用以下來源的密碼和通行密鑰";
+
+/* Apple Keychain software; is a glossary term. */
+"[Generic/Keychain/title]" = "鑰匙圈";
+
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "顯示密碼";
 

@@ -10,6 +10,12 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "تنشيط للاستماع.";
 
+/* Section in settings: icon for the app */
+"[Appearance/AppIcon/title]" = "أيقونة التطبيق";
+
+/* Section in settings: icons for database */
+"[Appearance/DatabaseIcons/title]" = "أيقونات قاعدة البيانات";
+
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "حجم النص";
 
@@ -127,9 +133,6 @@
 /* Action/button to create a new database */
 "[Database/Create/action] Create Database" = "إنشاء قاعدة بيانات";
 
-/* Title of a form for creating a database */
-"[Database/Create/title] Create Database" = "إنشاء قاعدة بيانات";
-
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "إضافة أيقونة مُخصصة";
 
@@ -141,6 +144,9 @@
 
 /* Notification when user tries to copy data from KDBX to older KDB database. */
 "[Database/LesserTargetFormat/warning]" = "صيغة قاعدة البيانات هذه قديمة، قد تضيع بعض البيانات.";
+
+/* Title of the database picker list */
+"[Database/List/title]" = "قواعد البيانات";
 
 /* Error message */
 "[Database/Load/Error] Cannot find database file" = "يتعذَّر العثور على ملف قاعدة البيانات";
@@ -180,6 +186,9 @@
 
 /* Imperative/recommendation: title of a warning when changing database password. */
 "[Database/MasterKey/RememberYourPassword/title]" = "تذكَّر كلمة مرور قاعدة البيانات الخاصة بك";
+
+/* Glossary term: noun, a master key for encrypting the database */
+"[Database/MasterKey/title]" = "‮المفتاح الرئيس";
 
 /* Action/button */
 "[Database/Open/action] Open Database" = "فتح قاعدة البيانات";
@@ -481,6 +490,9 @@
 /* Action/button to create a new entry in the current group */
 "[Entry/Create/action] Create Entry" = "إنشاء سجل";
 
+/* Action/button to modify an entry */
+"[Entry/Edit/action]" = "تحرير السجل";
+
 /* Default name of a newly created entry field */
 "[Entry/Edit/CreateField/defaultName] Field Name" = "اسم الحقل";
 
@@ -522,6 +534,9 @@
 
 /* Default title of a new entry */
 "[Entry/New/defaultTitle] New Entry" = "سجل جديد";
+
+/* Glossary term: noun, an entry in database. */
+"[Entry/title]" = "سجل";
 
 /* Warning shown when opening files from Recycle Bin location. Translation of 'Recently Deleted' should match that in the Files app. [fileName: String] */
 "[File/In Trash/warning]" = "إنَّ '%@' موجود في \"المحذوفة مؤخرًا\" وقد يتمُّ حذفه قريبًا. للحِفاظ على بياناتك، انقل المَلف إلى موقع أكثر ديمومة.";
@@ -697,27 +712,6 @@
 /* Localized name of the storage service: Yandex.Disk (https://disk.yandex.com) */
 "[FileProvider/Yandex.Disk/name]" = "Yandex.Disk";
 
-/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Oldest First)' */
-"[FilesSortOrder/longTitle] Creation Date (Oldest First)" = "تاريخ الإنشاء (الأقدم أولاً)";
-
-/* A sorting option for a list of files, by file creation date. Example: 'Sort Order: Creation Date (Recent First)' */
-"[FilesSortOrder/longTitle] Creation Date (Recent First)" = "تاريخ الإنشاء (الأجدد أولاً)";
-
-/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Oldest First)' */
-"[FilesSortOrder/longTitle] Modification Date (Oldest First)" = "تاريخ آخر تعديل (الأقدم أولاً)";
-
-/* A sorting option for a list of files, by file's last modification date. Example: 'Sort Order: Modification Date (Recent First)' */
-"[FilesSortOrder/longTitle] Modification Date (Recent First)" = "تاريخ آخر تعديل (الأجدد أولاً)";
-
-/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (A..Z)' */
-"[FilesSortOrder/longTitle] Name (A..Z)" = "الاسم (A..Z)";
-
-/* A sorting option for a list of files, by file name. Example: 'Sort Order: Name (Z..A)' */
-"[FilesSortOrder/longTitle] Name (Z..A)" = "الاسم (Z..A)";
-
-/* A sorting option for a list of files. Example: 'Sort Order: No Sorting' */
-"[FilesSortOrder/longTitle] No Sorting" = "بدون فرز";
-
 /* Title of the dialog for picking the destination group for move/copy operations */
 "[General/DestinationGroup/title] Choose a Destination" = "اختر وجهة";
 
@@ -850,6 +844,9 @@
 /* Title of an warning message */
 "[Generic/title] Warning" = "تحذير";
 
+/* Title of a screen/list view configuration: sort order, visible items, etc */
+"[Generic/ViewOptions/title]" = "خيارات العرض";
+
 /* Warning message template. Swap the icon and message for right-to-left languages. */
 "[Generic/WarningWithIcon/template]" = "⚠️ %@";
 
@@ -859,38 +856,20 @@
 /* Action/button to create a new sub-group in the current group */
 "[Group/Create/action] Create Group" = "إنشاء مجموعة";
 
-/* Title of a form for creating a group */
-"[Group/Create/title] Create Group" = "إنشاء مجموعة";
-
 /* Title of a form for editing a group */
 "[Group/Edit/title] Edit Group" = "تحرير المجموعة";
 
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "مجموعة جديدة";
 
+/* Title for the Notes field in group editor */
+"[Group/Notes/title]" = "المُلاحظات";
+
+/* Glossary term: noun, a group in database. */
+"[Group/title]" = "المجموعة";
+
 /* Title of an input field for group name */
 "[GroupEditor/Name/placeholder]" = "اسم المجموعة";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (New..Old)' */
-"[GroupSortOrder/longTitle] By Creation Date (New..Old)" = "حسب تاريخ الإنشاء (جديد..قديم)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Creation Date (Old..New)' */
-"[GroupSortOrder/longTitle] By Creation Date (Old..New)" = "حسب تاريخ الإنشاء (قديم..جديد)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (New..Old)' */
-"[GroupSortOrder/longTitle] By Modification Date (New..Old)" = "حسب تاريخ التعديل (جديد..قديم)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Modification Date (Old..New)' */
-"[GroupSortOrder/longTitle] By Modification Date (Old..New)" = "حسب تاريخ التعديل (قديم..جديد)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Title (A..Z)' */
-"[GroupSortOrder/longTitle] By Title (A..Z)" = "حسب العنوان (A..Z)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: By Title (Z..A)' */
-"[GroupSortOrder/longTitle] By Title (Z..A)" = "حسب العنوان (Z..A)";
-
-/* An option in Group Viewer settings. Example: 'Sort Order: No Sorting' */
-"[GroupSortOrder/longTitle] No Sorting" = "بدون فرز";
 
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "أجهزة المفاتيح غير مُتاحة في التعبئة التلقائية.";
@@ -1088,24 +1067,6 @@
 "[PasswordGenerator/Wordlist/title]" = "قَائِمَةُ الكَلِمات";
 
 /* Explanation of the premium feature */
-"[Premium/Benefits/AttachmentPreview/details]" = "معاينة الملفات المرفقة مباشرة في KeePassium ولا تترك أي أثر في تطبيقات أخرى. (يعمل مع الصور والمستندات والأرشيف والمزيد)";
-
-/* Title of a premium feature */
-"[Premium/Benefits/AttachmentPreview/title]" = "المُعاينة بدون أثر";
-
-/* Explanation of a premium feature */
-"[Premium/Benefits/CustomAppIcon/details]" = "اجعل KeePassium يبدو فريداً، مألوفاً، أو متخفياً كآلة حاسبة - الخيار لك.";
-
-/* Title of a premium feature */
-"[Premium/Benefits/CustomAppIcon/title]" = "تغيير ايقونة التطبيق";
-
-/* Explanation of the premium feature */
-"[Premium/Benefits/DatabaseTimeout/details]" = "تعبت من كتابة كلمة المرور الرئيسة؟ حافظ على فتح قاعدة البيانات الخاصة بك لفترة أطول لفتحها بنقرة واحدة.";
-
-/* Title of a premium feature */
-"[Premium/Benefits/DatabaseTimeout/title]" = "احفظ وقتك";
-
-/* Explanation of the premium feature */
 "[Premium/Benefits/HardwareKeys/details]" = "قم بحماية أسرارك بمفتاح الأجهزة، مثل YubiKey.";
 
 /* Title of a premium feature */
@@ -1122,12 +1083,6 @@
 
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Positive/header] " = "ما تحصل عليه";
-
-/* Explanation of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/details]" = "استخدام المراجع لإظهار المعلومات من إدخالات أخرى، بدلاً من إنشاء نسخ متعددة من نفس المعلومات.";
-
-/* Title of a premium feature */
-"[Premium/Benefits/ViewFieldReferences/title]" = "إظهار مراجع الحقل";
 
 /* Call to action */
 "[Premium/CallToAction/buyNow]" = "إشتري الآن";
@@ -1270,9 +1225,6 @@
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "التطبيق كان مفيد: %1$@ في الشهر، أي حوالي %2$@ في السنة.";
 
-/* Title of a premium feature: ability to change the app icon */
-"[PremiumFeature/CustomAppIcons/title]" = "تخصيص أيقونة التطبيق";
-
 /* A generic description of a premium feature */
 "[PremiumFeature/Generic/description]" = "قم بالترقية إلى المميز والاستمتاع بـ KeePassium في أفضل حالاتها.";
 
@@ -1285,23 +1237,11 @@
 /* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
 "[PremiumFeature/HardwareKeys/title] Hardware Keys" = "حهاز مفاتيح";
 
-/* Description/advertisement for the `Long Database Timeouts` premium feature */
-"[PremiumFeature/LongDBTimeouts/description] Save time entering your complex master passwords — keep your database open longer in the premium version." = "وفر وقت إدخال كلمات المرور الرئيسة المعقدة الخاصة بك - ابقي قاعدة البيانات الخاصة بك مفتوحة لفترة أطول في الإصدار المميز.";
-
-/* Title of a premium feature: ability to set long delays in Database Lock Timeout settings (In Title Case) */
-"[PremiumFeature/LongDBTimeouts/title] Long Database Timeouts" = "مهلة أطول لقاعدة البيانات";
-
 /* Description/advertisement for the `Multiple Databases` premium feature */
 "[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "التبديل بسهولة بين قواعد البيانات في النسخة المميزة.";
 
 /* Title of a premium feature: ability to use multiple databases (In Title Case) */
 "[PremiumFeature/MultiDB/title] Multiple Databases" = "قواعد بيانات مُتعدِدة";
-
-/* Description/advertisement for the `Preview Attachments` premium feature */
-"[PremiumFeature/Preview/description] Preview images and documents directly in the app, in the premium version." = "معاينة الصور والمستندات مباشرة من التطبيق، في الإصدار المميز.";
-
-/* Title of a premium feature: ability to preview some attached files directly in the app (In Title Case) */
-"[PremiumFeature/Preview/title] Preview Attachments" = "مُعاينة المُرفقات";
 
 /* Description/call to action for the `Quick AutoFill` premium feature. */
 "[PremiumFeature/QuickAutoFill/description]" = "ملء نماذج تسجيل الدخول بضغطة واحدة، حتى بدون فتح KeePassium.";
@@ -1459,23 +1399,8 @@
 /* Settings section: protection of databases, their keys and data inside them */
 "[Settings/DataProtection/title]" = "حماية البيانات";
 
-/* An option in Group Viewer settings. Refers to the most recent time when the entry was modified. Will be shown as 'Entry Subtitle: Last Modified Date'. */
-"[Settings/EntryListDetail/longTitle] Last Modified Date" = "تاريخ آخر تعديل";
-
 /* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: None', meanining that no entry details will be shown in any lists. */
 "[Settings/EntryListDetail/longTitle] None" = "لا شيء";
-
-/* An option in Group Viewer settings. Refers to comments/notes field of the entry. Will be shown as 'Entry Subtitle: Notes'. */
-"[Settings/EntryListDetail/longTitle] Notes" = "المُلاحظات";
-
-/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: Password'. */
-"[Settings/EntryListDetail/longTitle] Password" = "كلمة المرور";
-
-/* An option in Group Viewer settings. Will be shown as 'Entry Subtitle: URL'. */
-"[Settings/EntryListDetail/longTitle] URL" = "عنوان URL";
-
-/* An option in Group Viewer settings. It refers to login information rather than person's name. Will be shown as 'Entry Subtitle: User Name'. */
-"[Settings/EntryListDetail/longTitle] User Name" = "اسم المُستخدِم";
 
 /* Title of a settings section: which entry field to show along with entry title */
 "[Settings/GroupViewer] Entry Subtitle" = "وصف السجل";
@@ -1492,20 +1417,11 @@
 /* Section title in settings */
 "[Settings/Search/title]" = "البحث";
 
-/* Title of a sort options list. Example: 'Sort by: Name' */
-"[SortBy]" = "الفرز حَسَب";
-
-/* List sorting option. Example: 'Sort by: Date Created' */
-"[SortBy/DateCreated]" = "تاريخ الإنشاء";
-
-/* List sorting option. Example: 'Sort by: Date Modified' */
-"[SortBy/DateModified]" = "تاريخ التعديل";
+/* Title of the app settings screen */
+"[Settings/title]" = "الإعدادات";
 
 /* List sorting option (for file names). Example: 'Sort by: Name' */
 "[SortBy/FileName]" = "الاسم";
-
-/* List sorting option (for groups and entries). Example: 'Sort by: Title' */
-"[SortBy/ItemTitle]" = "العنوان";
 
 /* List sorting option, when no sorting is selected. Example: 'Sort by: None' */
 "[SortBy/None]" = "لا شيء";
@@ -1539,9 +1455,6 @@
 
 /* Notification after a successful donation. */
 "[TipBox/thankYou]" = "شُكرًا لك!";
-
-/* Title of the tip box/donation screen. */
-"[TipBox/title/1]" = "وعاء إكراميَّة";
 
 /* Title of the tip box/donation screen. */
 "[TipBox/title/2]" = "التبرع";

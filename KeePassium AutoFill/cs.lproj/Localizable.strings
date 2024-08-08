@@ -4,6 +4,15 @@
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "Služba automatického vyplňování hesel nemá přístup k databázovým souborům, které jste přidali v hlavní aplikaci KeePassium.\n\nProč? Operační systém považuje službu automatického vyplňování za samostatnou aplikaci, která je nezávislá na té hlavní. Z bezpečnostních důvodů mohou aplikace přistupovat pouze k těm souborům, ke kterým jim dáte svolení.\n\nZ tohoto důvodu je nutné dát svolení k přístupu jak samotné aplikaci KeePassium, tak službě automatického vyplňování. Tohle je však potřeba provést pouze jednou.";
 
+/* Must match Apple's translation, as found in iOS 15 Settings → Passwords → AutoFill Passwords. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/allowFillingFrom]" = "Povolit vyplňování z:";
+
+/* Must match Apple's translation, as found in iOS 17 Settings → Passwords → Password Options. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/usePasswordsAndPasskeysFrom]" = "Používat hesla a přístupové klíče z:";
+
+/* Apple Keychain software; is a glossary term. */
+"[Generic/Keychain/title]" = "Klíčenka";
+
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "Ukázat heslo";
 
