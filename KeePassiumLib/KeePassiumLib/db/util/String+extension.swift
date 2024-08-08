@@ -53,4 +53,9 @@ extension String {
             return self + "/"
         }
     }
+
+    public func matchesCaseInsensitive(wildcard pattern: String) -> Bool {
+        let predicate = NSComparisonPredicate(format: "self LIKE[c] %@", pattern)
+        return predicate.evaluate(with: self)
+    }
 }

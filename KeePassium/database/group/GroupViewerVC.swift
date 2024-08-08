@@ -266,6 +266,7 @@ final class GroupViewerVC:
         searchController?.searchBar.searchBarStyle = .default
         searchController?.searchBar.returnKeyType = .search
         searchController?.searchBar.barStyle = .default
+        searchController?.searchBar.smartQuotesType = .no
         searchController?.obscuresBackgroundDuringPresentation = false
         searchController?.hidesNavigationBarDuringPresentation = true
         searchController?.delegate = self

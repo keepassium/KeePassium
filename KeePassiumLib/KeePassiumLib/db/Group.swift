@@ -251,7 +251,7 @@ public class Group: DatabaseItem, Eraseable {
     }
 
     public func filter(query: SearchQuery, foundEntries: inout [Entry], foundGroups: inout [Group]) {
-        if self.isDeleted && !query.includeDeleted {
+        guard !isDeleted else {
             return
         }
 
@@ -259,27 +259,25 @@ public class Group: DatabaseItem, Eraseable {
             return
         }
 
-        if query.includeSubgroups {
-            for group in groups {
-                if query.flattenGroups {
-                    if group.matches(query: query, scope: .tags) {
-                        var entries: [Entry] = []
-                        group.collectAllEntries(to: &entries)
-                        foundEntries.append(contentsOf: entries)
-                    } else if group.matches(query: query, scope: .fields) {
-                        foundEntries.append(contentsOf: group.entries)
-                        for subgroup in group.groups {
-                            subgroup.filter(query: query, foundEntries: &foundEntries, foundGroups: &foundGroups)
-                        }
-                    } else {
-                        group.filter(query: query, foundEntries: &foundEntries, foundGroups: &foundGroups)
+        for group in groups {
+            if query.flattenGroups {
+                if group.matches(query: query, scope: .tags) {
+                    var entries: [Entry] = []
+                    group.collectAllEntries(to: &entries)
+                    foundEntries.append(contentsOf: entries)
+                } else if group.matches(query: query, scope: .fields) {
+                    foundEntries.append(contentsOf: group.entries)
+                    for subgroup in group.groups {
+                        subgroup.filter(query: query, foundEntries: &foundEntries, foundGroups: &foundGroups)
                     }
                 } else {
-                    if group.matches(query: query, scope: .any) {
-                        foundGroups.append(group)
-                    }
                     group.filter(query: query, foundEntries: &foundEntries, foundGroups: &foundGroups)
                 }
+            } else {
+                if group.matches(query: query, scope: .any) {
+                    foundGroups.append(group)
+                }
+                group.filter(query: query, foundEntries: &foundEntries, foundGroups: &foundGroups)
             }
         }
 

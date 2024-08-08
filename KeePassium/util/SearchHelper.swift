@@ -54,14 +54,15 @@ final class SearchHelper {
             compareOptions = [.caseInsensitive, .diacriticInsensitive]
         }
 
+        var fieldScope = SearchQuery.FieldScope()
+        if settings.isSearchFieldNames { fieldScope.insert(.fieldNames) }
+        if settings.isSearchProtectedValues { fieldScope.insert(.protectedValues) }
+        if settings.isSearchPasswords { fieldScope.insert(.passwordField) }
+
         let query = SearchQuery(
-            includeSubgroups: true,
-            includeDeleted: false,
-            includeFieldNames: settings.isSearchFieldNames,
-            includeProtectedValues: settings.isSearchProtectedValues,
-            includePasswords: settings.isSearchPasswords,
-            excludeGroupUUID: excludeGroupUUID,
+            fieldScope: fieldScope,
             compareOptions: compareOptions,
+            excludeGroupUUID: excludeGroupUUID,
             flattenGroups: flattenGroups,
             text: searchText)
         let scoredItems = performSearch(in: database, query: query)

@@ -102,26 +102,24 @@ public class EntryField: Eraseable {
     }
 
     public func contains(
-        word: Substring,
-        includeFieldNames: Bool,
-        includeProtectedValues: Bool,
-        includePasswords: Bool,
+        textWord: Substring,
+        scope: SearchQuery.FieldScope,
         options: String.CompareOptions
     ) -> Bool {
-        if name == EntryField.password && !includePasswords {
-            return false 
+        if name == EntryField.password && !scope.contains(.passwordField) {
+            return false
         }
 
-        if includeFieldNames
+        if scope.contains(.fieldNames)
            && !isStandardField
-           && name.localizedContains(word, options: options)
+           && name.localizedContains(textWord, options: options)
         {
             return true
         }
 
-        let includeFieldValue = !isProtected || includeProtectedValues
+        let includeFieldValue = !isProtected || scope.contains(.protectedValues)
         if includeFieldValue {
-            return resolvedValue.localizedContains(word, options: options)
+            return resolvedValue.localizedContains(textWord, options: options)
         }
         return false
     }
