@@ -38,6 +38,19 @@ final class GroupEditorNotesCell: UITableViewCell {
         return titleLabel
     }()
 
+    private lazy var presetsButton = {
+        var config = UIButton.Configuration.plain()
+        config.title = LString.titlePresets
+        config.contentInsets.trailing = 0
+        config.buttonSize = .medium
+        let button = UIButton(configuration: config)
+        button.menu = makePresetsMenu()
+        button.showsMenuAsPrimaryAction = true
+        button.contentHorizontalAlignment = .trailing
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
     private lazy var infoButton = {
         var config = UIButton.Configuration.plain()
         config.title = LString.titleAboutSmartGroups
@@ -62,6 +75,7 @@ final class GroupEditorNotesCell: UITableViewCell {
         didSet { refresh() }
     }
 
+    private var presetsCollapsingConstraint: NSLayoutConstraint?
     private var textBottomConstraint: NSLayoutConstraint?
 
     required init?(coder: NSCoder) {
@@ -84,13 +98,16 @@ final class GroupEditorNotesCell: UITableViewCell {
         selectionStyle = .none
 
         contentView.addSubview(titleLabel)
+        contentView.addSubview(presetsButton)
         contentView.addSubview(textView)
         contentView.addSubview(infoButton)
 
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: presetsButton.leadingAnchor),
+            presetsButton.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
+            presetsButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
             textView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
             textView.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
             textView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
@@ -100,8 +117,25 @@ final class GroupEditorNotesCell: UITableViewCell {
             infoButton.layoutMarginsGuide.bottomAnchor
                 .constraint(equalTo: contentView.layoutMarginsGuide.bottomAnchor),
         ])
+        presetsCollapsingConstraint = presetsButton.widthAnchor.constraint(equalToConstant: 0)
         textBottomConstraint = textView.bottomAnchor
             .constraint(equalTo: contentView.layoutMarginsGuide.bottomAnchor)
+    }
+
+    private func makePresetsMenu() -> UIMenu {
+        let menu = UIMenu.make(reverse: false, children: [
+            makePresetMenuAction(LString.titleSmartGroupAllEntries, query: "is:entry"),
+            makePresetMenuAction(LString.titleSmartGroupExpiredEntries, query: "is:entry is:expired"),
+            makePresetMenuAction(LString.titleSmartGroupOTPEntries, query: "otp:*"),
+        ])
+        return menu
+    }
+    private func makePresetMenuAction(_ title: String, query: String) -> UIAction {
+        return UIAction(title: title) { [weak self] _ in
+            guard let self else { return }
+            textView.text = query
+            textView.onTextChanged()
+        }
     }
 
     override func becomeFirstResponder() -> Bool {
@@ -116,6 +150,8 @@ final class GroupEditorNotesCell: UITableViewCell {
         let isPlainGroup = !isSmartGroup
         titleLabel.text = isPlainGroup ? LString.titleGroupNotes : LString.titleSmartGroupQuery
         infoButton.isHidden = isPlainGroup
+        presetsButton.isHidden = isPlainGroup
+        presetsCollapsingConstraint?.isActive = presetsButton.isHidden
         textBottomConstraint?.isActive = isPlainGroup
     }
 }

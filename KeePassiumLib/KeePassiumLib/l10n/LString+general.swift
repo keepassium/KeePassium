@@ -613,6 +613,25 @@ extension LString {
         value: "About smart groups…",
         comment: "Action/button to show a help article"
     )
+    public static let titleSmartGroupAllEntries = NSLocalizedString(
+        "[Group/Smart/Preset/allEntries]",
+        bundle: Bundle.framework,
+        value: "All Entries",
+        comment: "Title of a list: all entries in the database"
+    )
+    public static let titleSmartGroupOTPEntries = NSLocalizedString(
+        "[Group/Smart/Preset/otpEntries]",
+        bundle: Bundle.framework,
+        value: "Entries with OTP",
+        comment: "Title of a list: entries with one-time passwords (OTP)"
+    )
+    public static let titleSmartGroupExpiredEntries = NSLocalizedString(
+        "[Group/Smart/Preset/expiredEntries]",
+        bundle: Bundle.framework,
+        value: "Expired Entries",
+        comment: "Title of a list: entries that are beyond their expiration date."
+    )
+
 
     public static let actionCreateEntry = NSLocalizedString(
         "[Entry/Create/action] Create Entry",
