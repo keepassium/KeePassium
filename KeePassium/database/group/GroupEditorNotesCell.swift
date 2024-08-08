@@ -111,6 +111,7 @@ final class GroupEditorNotesCell: UITableViewCell {
 
     private func refresh() {
         textView.text = notes
+        textView.smartQuotesType = isSmartGroup ? .no : .default
 
         let isPlainGroup = !isSmartGroup
         titleLabel.text = isPlainGroup ? LString.titleGroupNotes : LString.titleSmartGroupQuery
