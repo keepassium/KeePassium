@@ -94,8 +94,8 @@
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     </preferredSymbolConfiguration>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="{nItems}" textAlignment="right" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ttY-yZ-yRg">
-                                                    <rect key="frame" x="144" y="0.0" width="135.5" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" layoutMarginsFollowReadableWidth="YES" text="{nItems}" textAlignment="right" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ttY-yZ-yRg">
+                                                    <rect key="frame" x="216" y="0.0" width="63.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" name="AuxiliaryText"/>
                                                     <nil key="highlightedColor"/>
@@ -115,7 +115,7 @@
                                         <constraint firstItem="raf-Bf-GLo" firstAttribute="centerY" secondItem="rfV-hX-YdO" secondAttribute="centerY" priority="750" id="h4T-9p-C1I"/>
                                         <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="uog-G1-Xpq" secondAttribute="bottom" id="sVj-Yh-Xvu"/>
                                         <constraint firstItem="uog-G1-Xpq" firstAttribute="leading" secondItem="raf-Bf-GLo" secondAttribute="trailing" constant="16" id="yqW-my-PCR"/>
-                                        <constraint firstItem="raf-Bf-GLo" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="rfV-hX-YdO" secondAttribute="bottomMargin" id="zKw-7Q-MzU"/>
+                                        <constraint firstItem="raf-Bf-GLo" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="rfV-hX-YdO" secondAttribute="bottomMargin" id="zKw-7Q-MzU"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
