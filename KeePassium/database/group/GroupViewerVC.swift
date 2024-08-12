@@ -138,8 +138,8 @@ final class GroupViewerVC:
 
     private var titleView = DatabaseItemTitleView()
 
-    private var groupsSorted = [Weak<Group>]()
-    private var entriesSorted = [Weak<Entry>]()
+    private var groupsSorted = [Group]()
+    private var entriesSorted = [Entry]()
 
     private var groupActionsButton: UIBarButtonItem!
 
@@ -197,6 +197,13 @@ final class GroupViewerVC:
     }()
 
     private var defaultToolbarItems: [UIBarButtonItem] = []
+
+    deinit {
+        announcements.removeAll()
+        entriesSorted.removeAll()
+        groupsSorted.removeAll()
+        searchResults.removeAll()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -322,20 +329,11 @@ final class GroupViewerVC:
     }
 
     private func sortGroupItems() {
-        groupsSorted.removeAll()
-        entriesSorted.removeAll()
-        guard let group = self.group else { return }
+        guard let group else { return }
 
         let groupSortOrder = Settings.current.groupSortOrder
-        let weakGroupsSorted = group.groups
-            .sorted { groupSortOrder.compare($0, $1) }
-            .map { Weak($0) }
-        let weakEntriesSorted = group.entries
-            .sorted { groupSortOrder.compare($0, $1) }
-            .map { Weak($0) }
-
-        groupsSorted.append(contentsOf: weakGroupsSorted)
-        entriesSorted.append(contentsOf: weakEntriesSorted)
+        groupsSorted = group.groups.sorted { groupSortOrder.compare($0, $1) }
+        entriesSorted = group.entries.sorted { groupSortOrder.compare($0, $1) }
     }
 
     private func updateToolsMenuButton(_ barButton: UIBarButtonItem) {
@@ -500,14 +498,10 @@ final class GroupViewerVC:
             case .groups where isGroupEmpty:
                 return tableView.dequeueReusableCell(withIdentifier: CellID.emptyGroup, for: indexPath)
             case .groups:
-                guard let group = groupsSorted[indexPath.row].value else {
-                    fatalError()
-                }
+                let group = groupsSorted[indexPath.row]
                 return getGroupCell(for: group, at: indexPath)
             case .entries:
-                guard let entry = entriesSorted[indexPath.row].value else {
-                    fatalError()
-                }
+                let entry = entriesSorted[indexPath.row]
                 return getEntryCell(for: entry, at: indexPath)
             default:
                 fatalError("Invalid section")
@@ -679,7 +673,7 @@ final class GroupViewerVC:
     }
 
     private func getIndexPath(for group: Group) -> IndexPath? {
-        guard let groupIndex = groupsSorted.firstIndex(where: { $0.value === group }) else {
+        guard let groupIndex = groupsSorted.firstIndex(where: { $0 === group }) else {
             return nil
         }
         let indexPath = IndexPath(row: groupIndex, section: Section.groups.rawValue)
@@ -687,7 +681,7 @@ final class GroupViewerVC:
     }
 
     private func getIndexPath(for entry: Entry) -> IndexPath? {
-        guard let entryIndex = entriesSorted.firstIndex(where: { $0.value === entry }) else {
+        guard let entryIndex = entriesSorted.firstIndex(where: { $0 === entry }) else {
             return nil
         }
         let indexPath = IndexPath(row: entryIndex, section: Section.entries.rawValue)
@@ -716,7 +710,7 @@ final class GroupViewerVC:
             switch Section(rawValue: indexPath.section) {
             case .groups:
                 if groupsSorted.indices.contains(indexPath.row) {
-                    return groupsSorted[indexPath.row].value
+                    return groupsSorted[indexPath.row]
                 }
                 return nil
             default:
@@ -733,7 +727,7 @@ final class GroupViewerVC:
             switch Section(rawValue: indexPath.section) {
             case .entries:
                 if entriesSorted.indices.contains(indexPath.row) {
-                    return entriesSorted[indexPath.row].value
+                    return entriesSorted[indexPath.row]
                 }
                 return nil
             default:
@@ -1132,8 +1126,8 @@ extension GroupViewerVC {
 
         delegate?.didReorderItems(
             in: group,
-            groups: groupsSorted.compactMap({ $0.value }),
-            entries: entriesSorted.compactMap({ $0.value })
+            groups: groupsSorted,
+            entries: entriesSorted
         )
         if shouldSave {
             delegate?.didFinishBulkUpdates(in: self)
@@ -1243,13 +1237,13 @@ extension GroupViewerVC {
                 return
             }
             groupsSorted.remove(at: sourceIndexPath.row)
-            groupsSorted.insert(Weak(group), at: destinationIndexPath.row)
+            groupsSorted.insert(group, at: destinationIndexPath.row)
         case .entries:
             guard let entry = getEntry(at: sourceIndexPath) else {
                 return
             }
             entriesSorted.remove(at: sourceIndexPath.row)
-            entriesSorted.insert(Weak(entry), at: destinationIndexPath.row)
+            entriesSorted.insert(entry, at: destinationIndexPath.row)
         default:
             fatalError("Unexpected section number")
         }
