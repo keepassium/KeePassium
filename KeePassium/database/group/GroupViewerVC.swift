@@ -603,13 +603,13 @@ final class GroupViewerVC:
         case .none:
             return nil
         case .userName:
-            return entry.resolvedUserName
+            return entry.getField(EntryField.userName)?.decoratedResolvedValue
         case .password:
-            return entry.resolvedPassword
+            return entry.getField(EntryField.password)?.decoratedResolvedValue
         case .url:
-            return entry.resolvedURL
+            return entry.getField(EntryField.url)?.decoratedResolvedValue
         case .notes:
-            return entry.resolvedNotes
+            return entry.getField(EntryField.notes)?.decoratedResolvedValue
                 .replacingOccurrences(of: "\r", with: " ")
                 .replacingOccurrences(of: "\n", with: " ")
         case .lastModifiedDate:

@@ -20,6 +20,7 @@ protocol ViewableField: AnyObject {
 
     var value: String? { get }
     var resolvedValue: String? { get }
+    var decoratedResolvedValue: String? { get }
 
     var isProtected: Bool { get }
 
@@ -49,6 +50,7 @@ class BasicViewableField: ViewableField {
     var internalName: String { return field?.name ?? "" }
     var value: String? { return field?.value }
     var resolvedValue: String? { return field?.resolvedValue }
+    var decoratedResolvedValue: String? { return field?.decoratedResolvedValue }
     var isProtected: Bool { return field?.isProtected ?? false }
     var isFixed: Bool {
         guard let field else { return false }
@@ -112,6 +114,9 @@ class TOTPViewableField: DynamicViewableField {
         return totpGenerator?.generate() ?? ""
     }
     override var resolvedValue: String? {
+        return value
+    }
+    override var decoratedResolvedValue: String? {
         return value
     }
 

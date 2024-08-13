@@ -39,6 +39,14 @@ public class EntryField: Eraseable {
         return resolvedValueInternal!
     }
 
+    public var decoratedResolvedValue: String {
+        if hasReferences {
+            return "→ " + resolvedValue
+        } else {
+            return resolvedValue
+        }
+    }
+
     private(set) public var resolveStatus = EntryFieldReference.ResolveStatus.noReferences
 
     public var hasReferences: Bool {
