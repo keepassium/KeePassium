@@ -165,11 +165,11 @@ public class DatabaseSettingsManager {
         forAutoFill: Bool
     ) -> UnreachableFileFallbackStrategy {
         switch databaseRef.location {
-        case .internalDocuments,
-             .internalBackup,
+        case .internalBackup,
              .internalInbox:
             return .showError
-        case .external,
+        case .internalDocuments,
+             .external,
              .remote:
             if forAutoFill,
                let autoFillValue = getSettings(for: databaseRef)?.autofillFallbackStrategy
