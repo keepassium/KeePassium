@@ -310,6 +310,11 @@ public class FileKeeper {
     }
 
     func scanLocalDirectory(_ dirURL: URL, fileType: FileType) -> [URLReference] {
+        guard FileProvider.localStorage.isAllowed else {
+            Diag.debug("Local storage disabled by the organization.")
+            return []
+        }
+
         var refs: [URLReference] = []
         let location = getLocation(for: dirURL)
         assert(location.isInternal, "This should be used only on local directories.")
