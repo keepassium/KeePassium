@@ -30,6 +30,12 @@ extension FaviconDownloading {
         in viewController: UIViewController,
         completion: @escaping (UIImage?) -> Void
     ) {
+        guard ManagedAppConfig.shared.isFaviconDownloadAllowed else {
+            viewController.showManagedFeatureBlockedNotification()
+            Diag.error("Blocked by organization's policy, cancelling")
+            completion(nil)
+            return
+        }
         viewController.requestingNetworkAccessPermission { [weak self] isNetworkAllowed in
             guard let self else { return }
             guard isNetworkAllowed else {
@@ -66,6 +72,13 @@ extension FaviconDownloading {
         in viewController: UIViewController,
         completion: @escaping ([FaviconDownloader.DownloadedFavicon]?) -> Void
     ) {
+        guard ManagedAppConfig.shared.isFaviconDownloadAllowed else {
+            viewController.showManagedFeatureBlockedNotification()
+            Diag.error("Blocked by organization's policy, cancelling")
+            completion(nil)
+            return
+        }
+
         viewController.requestingNetworkAccessPermission { [weak self] isNetworkAllowed in
             guard let self else { return }
             guard isNetworkAllowed else {

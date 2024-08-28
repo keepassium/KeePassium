@@ -125,6 +125,14 @@ extension UIViewController {
     }
 
     func showManagedSettingNotification(text: String = LString.thisSettingIsManaged) {
+        showManagedNotification(text: text)
+    }
+
+    func showManagedFeatureBlockedNotification() {
+        showManagedNotification(text: LString.thisFeatureIsBlockedByOrg)
+    }
+
+    private func showManagedNotification(text: String) {
         hideAllToasts()
         showNotification(
             text,

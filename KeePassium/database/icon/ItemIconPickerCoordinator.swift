@@ -54,7 +54,9 @@ class ItemIconPickerCoordinator: Coordinator {
 
     func start() {
         iconPicker.isImportAllowed = database is Database2
-        iconPicker.isDownloadAllowed = database is Database2 && customFaviconUrl != nil
+        iconPicker.isDownloadAllowed = database is Database2
+            && customFaviconUrl != nil
+            && ManagedAppConfig.shared.isFaviconDownloadAllowed
         refresh()
         iconPicker.selectIcon(for: item)
 

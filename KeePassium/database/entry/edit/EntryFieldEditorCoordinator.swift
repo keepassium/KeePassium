@@ -85,7 +85,7 @@ final class EntryFieldEditorCoordinator: Coordinator {
         fieldEditorVC.fields = fields
         fieldEditorVC.entryIcon = UIImage.kpIcon(forEntry: entry)
         fieldEditorVC.allowsCustomFields = entry.isSupportsExtraFields
-        fieldEditorVC.allowsFaviconDownload = database is Database2
+        fieldEditorVC.supportsFaviconDownload = database is Database2
         fieldEditorVC.itemCategory = ItemCategory.get(for: entry)
         fieldEditorVC.shouldFocusOnTitleField = isCreationMode
     }

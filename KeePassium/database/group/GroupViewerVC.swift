@@ -401,6 +401,9 @@ final class GroupViewerVC:
         if !ManagedAppConfig.shared.isPasswordAuditAllowed {
             passwordAuditAction.attributes.insert(.disabled)
         }
+        if !ManagedAppConfig.shared.isFaviconDownloadAllowed {
+            faviconsDownloadAction.attributes.insert(.disabled)
+        }
         if !actionPermissions.canEditDatabase {
             changeMasterKeyAction.attributes.insert(.disabled)
             faviconsDownloadAction.attributes.insert(.disabled)

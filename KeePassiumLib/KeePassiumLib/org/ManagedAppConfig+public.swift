@@ -24,4 +24,8 @@ extension ManagedAppConfig {
     public var isPasswordAuditAllowed: Bool {
         return getBoolIfLicensed(.allowPasswordAudit) ?? true
     }
+
+    public var isFaviconDownloadAllowed: Bool {
+        return getBoolIfLicensed(.allowFaviconDownload) ?? true
+    }
 }

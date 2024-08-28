@@ -402,5 +402,10 @@ extension LString {
         bundle: Bundle.framework,
         value: "This setting is managed by your organization.",
         comment: "Notification when corporate user tries to change an app setting controlled by organization's IT department.")
+    public static let thisFeatureIsBlockedByOrg = NSLocalizedString(
+        "[Settings/Managed/BlockedFeature/notification]",
+        bundle: Bundle.framework,
+        value: "This feature is blocked by your organization.",
+        comment: "Notification when corporate user tries to use a feature forbidden by organization's IT department.")
 }
 // swiftlint:enable line_length

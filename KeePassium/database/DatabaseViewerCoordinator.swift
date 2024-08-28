@@ -456,7 +456,7 @@ extension DatabaseViewerCoordinator {
     private func showPasswordAudit(in viewController: UIViewController) {
         guard ManagedAppConfig.shared.isPasswordAuditAllowed else {
             assertionFailure("This action should have been disabled in UI")
-            viewController.showManagedSettingNotification()
+            viewController.showManagedFeatureBlockedNotification()
             return
         }
         let modalRouter = NavigationRouter.createModal(style: .formSheet)

@@ -59,7 +59,7 @@ final class EntryFieldEditorVC: UITableViewController, Refreshable {
 
     var itemCategory = ItemCategory.default
     var allowsCustomFields = false
-    var allowsFaviconDownload = true
+    var supportsFaviconDownload = true
 
     private weak var iconButton: UIButton?
 
@@ -586,8 +586,11 @@ extension EntryFieldEditorVC: EditableFieldCellDelegate {
         )
 
         var faviconDownloadAttributes = UIMenuElement.Attributes()
-        if !allowsFaviconDownload {
+        if !supportsFaviconDownload {
             faviconDownloadAttributes.insert(.hidden)
+        }
+        if !ManagedAppConfig.shared.isFaviconDownloadAllowed {
+            faviconDownloadAttributes.insert(.disabled)
         }
 
         if let urlField = fields.first(where: { $0.internalName == EntryField.url }),

@@ -64,6 +64,13 @@ final class FaviconDownloader {
         progressHandler: ((ProgressEx) -> Void)? = nil,
         completionHandler: @escaping (DownloadFaviconResult) -> Void
     ) {
+        guard ManagedAppConfig.shared.isFaviconDownloadAllowed else {
+            Diag.error("Forbidden by organization's policy, cancelling")
+            DispatchQueue.main.async {
+                completionHandler(.failure(.canceled))
+            }
+            return
+        }
         guard Settings.current.isNetworkAccessAllowed else {
             Diag.error("Network access denied, cancelling")
             DispatchQueue.main.async {
@@ -105,6 +112,13 @@ final class FaviconDownloader {
         completionHandler: @escaping (DownloadFaviconsResult) -> Void
     ) {
         Diag.info("Starting favicons download")
+        guard ManagedAppConfig.shared.isFaviconDownloadAllowed else {
+            Diag.error("Forbidden by organization's policy, cancelling")
+            DispatchQueue.main.async {
+                completionHandler(.failure(.canceled))
+            }
+            return
+        }
         guard Settings.current.isNetworkAccessAllowed else {
             Diag.error("Network access denied, cancelling")
             DispatchQueue.main.async {
