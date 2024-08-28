@@ -453,11 +453,12 @@ extension DatabaseViewerCoordinator {
         addChildCoordinator(settingsCoordinator)
     }
 
-    private func showPasswordAuditOrOfferPremium(in viewController: UIViewController) {
-        showPasswordAudit(in: viewController)
-    }
-
     private func showPasswordAudit(in viewController: UIViewController) {
+        guard ManagedAppConfig.shared.isPasswordAuditAllowed else {
+            assertionFailure("This action should have been disabled in UI")
+            viewController.showManagedSettingNotification()
+            return
+        }
         let modalRouter = NavigationRouter.createModal(style: .formSheet)
         let passwordAuditCoordinator = PasswordAuditCoordinator(
             databaseFile: databaseFile,
@@ -695,7 +696,7 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
     }
 
     func didPressPasswordAudit(in viewController: GroupViewerVC) {
-        showPasswordAuditOrOfferPremium(in: viewController)
+        showPasswordAudit(in: viewController)
     }
 
     func didPressFaviconsDownload(in viewController: GroupViewerVC) {

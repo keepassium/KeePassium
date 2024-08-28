@@ -54,6 +54,11 @@ final class PasswordAuditService {
 
     func performAudit(completionHandler: @escaping (PasswordAuditResult) -> Void) {
         Diag.info("Starting password audit")
+        guard ManagedAppConfig.shared.isPasswordAuditAllowed else {
+            Diag.error("Forbidden by organization's policy, cancelling")
+            completionHandler(.failure(.canceled))
+            return
+        }
         guard Settings.current.isNetworkAccessAllowed else {
             Diag.error("Network access denied, cancelling")
             completionHandler(.failure(.canceled))

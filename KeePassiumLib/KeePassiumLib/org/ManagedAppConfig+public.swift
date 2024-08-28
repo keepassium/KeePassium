@@ -20,4 +20,8 @@ extension ManagedAppConfig {
     public var minimumDatabasePasswordEntropy: Int? {
         getIntIfLicensed(.minimumDatabasePasswordEntropy)
     }
+
+    public var isPasswordAuditAllowed: Bool {
+        return getBoolIfLicensed(.allowPasswordAudit) ?? true
+    }
 }

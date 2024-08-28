@@ -41,6 +41,7 @@ public final class ManagedAppConfig: NSObject {
         case minimumAppPasscodeEntropy
         case minimumDatabasePasswordEntropy
         case requireAppPasscodeSet
+        case allowPasswordAudit
     }
 
     private var currentConfig: [String: Any]? {
@@ -146,7 +147,8 @@ extension ManagedAppConfig {
              .enableQuickTypeAutoFill,
              .allowNetworkAccess,
              .hideAppLockSetupReminder,
-             .requireAppPasscodeSet:
+             .requireAppPasscodeSet,
+             .allowPasswordAudit:
             return getBool(key) != nil
         case .configVersion,
              .appLockTimeout,
@@ -189,7 +191,8 @@ extension ManagedAppConfig {
              .enableQuickTypeAutoFill,
              .allowNetworkAccess,
              .hideAppLockSetupReminder,
-             .requireAppPasscodeSet:
+             .requireAppPasscodeSet,
+             .allowPasswordAudit:
             result = getBool(key)
         default:
             Diag.error("Key `\(key.rawValue)` is not boolean, ignoring")
