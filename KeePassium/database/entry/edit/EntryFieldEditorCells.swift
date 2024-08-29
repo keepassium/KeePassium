@@ -416,6 +416,7 @@ class EntryFieldEditorCustomFieldCell:
     public static let storyboardID = "CustomFieldCell"
     @IBOutlet private weak var nameTextField: ValidatingTextField!
     @IBOutlet private weak var valueTextView: ValidatingTextView!
+    @IBOutlet private weak var protectionSwitchLabel: UILabel!
     @IBOutlet private weak var protectionSwitch: UISwitch!
     @IBOutlet private weak var deleteButton: UIButton!
 
@@ -437,7 +438,11 @@ class EntryFieldEditorCustomFieldCell:
         valueTextView.font = UIFont.entryTextFont()
         valueTextView.adjustsFontForContentSizeCategory = true
 
+        protectionSwitchLabel.text = LString.titleProtectedField
+        protectionSwitchLabel.isAccessibilityElement = false
+        protectionSwitch.accessibilityLabel = LString.titleProtectedField
         protectionSwitch.addTarget(self, action: #selector(protectionDidChange), for: .valueChanged)
+
         deleteButton.accessibilityLabel = LString.actionDelete
         deleteButton.addTarget(self, action: #selector(didPressDelete), for: .touchUpInside)
 

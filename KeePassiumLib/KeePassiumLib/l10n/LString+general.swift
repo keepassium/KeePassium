@@ -706,6 +706,12 @@ extension LString {
         value: "Field Name",
         comment: "Default name of a newly created entry field"
     )
+    public static let titleProtectedField = NSLocalizedString(
+        "[Entry/Field/Protected/title]",
+        bundle: Bundle.framework,
+        value: "Protected Field",
+        comment: "Title of a setting: whether the entry's field is protected (shown as asterisks)."
+    )
     public static let defaultNewPhotoAttachmentName = NSLocalizedString(
         "[Entry/Attachment/Photo/defaultName]",
         bundle: Bundle.framework,
