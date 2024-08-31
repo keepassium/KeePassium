@@ -1,6 +1,15 @@
 {
-  "originHash" : "586cb79ac08c4a621ab70b9de0a1f37f8fc203fa25a134216b57ae80c0030a02",
+  "originHash" : "aa8541a92cdf3aae03bb03172ea3bc1f1cd2f8e2cfdfe17862541d1cdb83a158",
   "pins" : [
+    {
+      "identity" : "asn1swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/keepassium/ASN1Swift",
+      "state" : {
+        "revision" : "b53bee03a942623db25afc5bfb80227b2cb3b425",
+        "version" : "1.2.4"
+      }
+    },
     {
       "identity" : "microsoft-authentication-library-for-objc",
       "kind" : "remoteSourceControl",
@@ -8,6 +17,24 @@
       "state" : {
         "branch" : "keepassium",
         "revision" : "0e10cbc76a19cd1fd3d8cc4bcaa7fe428a3680ab"
+      }
+    },
+    {
+      "identity" : "swiftdomainparser",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/keepassium/SwiftDomainParser",
+      "state" : {
+        "branch" : "keepassium",
+        "revision" : "17642aa186caca61ab008dc5a4ebda770d93033a"
+      }
+    },
+    {
+      "identity" : "tpinappreceipt",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/keepassium/TPInAppReceipt",
+      "state" : {
+        "branch" : "keepassium",
+        "revision" : "2f8a1cae6b578423d9941b89a0f07c6cce1e1c22"
       }
     },
     {
