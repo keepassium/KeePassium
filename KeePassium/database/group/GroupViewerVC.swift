@@ -132,6 +132,7 @@ final class GroupViewerVC:
     var supportsSmartGroups: Bool {
         return group is Group2
     }
+    private var shouldHighlightOTP: Bool = false
 
     var canDownloadFavicons: Bool = true
     var canChangeEncryptionSettings: Bool = true
@@ -261,6 +262,36 @@ final class GroupViewerVC:
         cellRefreshTimer = nil
     }
 
+    private func isOTPSmartGroup() -> Bool {
+        guard isSmartGroup else {
+            return false
+        }
+        if group?.notes == "otp:*" {
+            return true
+        }
+
+        let itemsFoundCount = searchResults.reduce(0) { currentCount, groupedItem in
+            currentCount + groupedItem.scoredItems.count
+        }
+        let maxNonOTPItems = Int(0.1 * Double(itemsFoundCount))
+        var nonOTPItems = 0
+        for groupedItems in searchResults {
+            for scoredItem in groupedItems.scoredItems {
+                if let entry2 = scoredItem.item as? Entry2,
+                   let _ = TOTPGeneratorFactory.makeGenerator(for: entry2)
+                {
+                    continue
+                } else {
+                    nonOTPItems += 1
+                }
+                if nonOTPItems > maxNonOTPItems {
+                    return false
+                }
+            }
+        }
+        return true
+    }
+
     private func setupSearch() {
         if let group = group, group.isSmartGroup {
             updateSearchResults(searchText: group.smartGroupQuery)
@@ -313,6 +344,7 @@ final class GroupViewerVC:
         } else {
             sortGroupItems()
         }
+        shouldHighlightOTP = isOTPSmartGroup()
         tableView.reloadData()
 
         actionPermissions = delegate?.getActionPermissions(for: group) ?? DatabaseItem.ActionPermissions()
@@ -595,8 +627,10 @@ final class GroupViewerVC:
         cell.subtitleLabel?.setText(getDetailInfo(for: entry), strikethrough: entry.isExpired)
         cell.iconView?.image = UIImage.kpIcon(forEntry: entry)
 
+        cell.shouldHighlightOTP = shouldHighlightOTP
         cell.totpGenerator = TOTPGeneratorFactory.makeGenerator(for: entry)
         cell.otpCopiedHandler = { [weak self] in
+            self?.hideAllToasts()
             self?.showNotification(LString.otpCodeCopiedToClipboard)
         }
 
@@ -1329,6 +1363,7 @@ extension GroupViewerVC: UISearchResultsUpdating {
             excludeGroupUUID: group.isSmartGroup ? group.uuid : nil
         )
         searchResults.sort(order: Settings.current.groupSortOrder)
+        shouldHighlightOTP = isOTPSmartGroup()
         tableView.reloadData()
     }
 }

@@ -56,7 +56,7 @@ final class OTPView: UILabel {
     }
 
     private func setupView() {
-        font = UIFont.preferredFont(forTextStyle: .body)
+        font = UIFont.preferredFont(forTextStyle: .title3)
         textColor = normalColor
         text = nil
         contentMode = .center

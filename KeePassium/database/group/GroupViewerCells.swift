@@ -56,6 +56,12 @@ final class GroupViewerEntryCell: UITableViewCell {
         }
     }
 
+    var shouldHighlightOTP: Bool = false {
+        didSet {
+            refresh()
+        }
+    }
+
     var otpCopiedHandler: (() -> Void)?
 
     override func awakeFromNib() {
@@ -95,9 +101,17 @@ final class GroupViewerEntryCell: UITableViewCell {
             setVisible(otpView, false)
             return
         }
-        if otpView.isHidden {
-            setVisible(showOTPButton, true)
-            return
+
+        if shouldHighlightOTP {
+            otpView.normalColor = .actionTint
+            setVisible(showOTPButton, false)
+            setVisible(otpView, true)
+        } else {
+            otpView.normalColor = .primaryText
+            if otpView.isHidden {
+                setVisible(showOTPButton, true)
+                return
+            }
         }
 
         let otpValue = totpGenerator.generate()
@@ -105,13 +119,26 @@ final class GroupViewerEntryCell: UITableViewCell {
         otpView.remainingTime = totpGenerator.remainingTime
         otpView.refresh()
 
+        otpView.tapHandler = { [weak self] in
+            guard let self else { return }
+            if shouldHighlightOTP {
+                copyOTP(otpValue)
+            } else {
+                animateOTPValue(visible: false)
+            }
+        }
+
         let justSwitched = !showOTPButton.isHidden
         if justSwitched {
             animateOTPValue(visible: true)
-            Clipboard.general.copyWithTimeout(otpValue)
-            HapticFeedback.play(.copiedToClipboard)
-            otpCopiedHandler?()
+            copyOTP(otpValue)
         }
+    }
+
+    private func copyOTP(_ otpValue: String) {
+        Clipboard.general.copyWithTimeout(otpValue)
+        HapticFeedback.play(.copiedToClipboard)
+        otpCopiedHandler?()
     }
 
     private func animateOTPValue(visible: Bool) {
