@@ -20,8 +20,12 @@ public class Clipboard {
 
     @discardableResult
     public func copyWithTimeout(_ string: String) -> Bool {
-        let timeout = TimeInterval(Settings.current.clipboardTimeout.seconds)
-        return insert(string, timeout: timeout)
+        let timeout = Settings.current.clipboardTimeout
+        guard timeout != .immediately else {
+            Diag.debug("Clipboard is disabled")
+            return false
+        }
+        return insert(string, timeout: TimeInterval(timeout.seconds))
     }
 
     @discardableResult

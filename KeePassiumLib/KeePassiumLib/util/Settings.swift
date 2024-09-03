@@ -301,11 +301,12 @@ public class Settings {
         }
     }
 
-    public enum ClipboardTimeout: Int {
-        public static let allValues = [
+    public enum ClipboardTimeout: Int, CaseIterable {
+        public static let visibleValues = [
             after10seconds, after20seconds, after30seconds, after1minute, after2minutes,
             after3minutes, after5minutes, after10minutes, after20minutes, never]
         case never = -1
+        case immediately = 0
         case after10seconds = 10
         case after20seconds = 20
         case after30seconds = 30
@@ -321,7 +322,7 @@ public class Settings {
         }
 
         static func nearest(forSeconds seconds: Int) -> ClipboardTimeout {
-            let result = Self.allValues.min(by: { item1, item2 in
+            let result = Self.allCases.min(by: { item1, item2 in
                 return abs(item1.seconds - seconds) < abs(item2.seconds - seconds)
             })
             return result! 

@@ -32,7 +32,7 @@ final class SettingsClipboardTimeoutVC: UITableViewController, Refreshable {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Settings.ClipboardTimeout.allValues.count
+        return Settings.ClipboardTimeout.visibleValues.count
     }
 
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
@@ -43,7 +43,7 @@ final class SettingsClipboardTimeoutVC: UITableViewController, Refreshable {
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
-        let timeout = Settings.ClipboardTimeout.allValues[indexPath.row]
+        let timeout = Settings.ClipboardTimeout.visibleValues[indexPath.row]
         cell.textLabel?.text = timeout.fullTitle
         if timeout == Settings.current.clipboardTimeout {
             cell.accessoryType = .checkmark
@@ -54,7 +54,7 @@ final class SettingsClipboardTimeoutVC: UITableViewController, Refreshable {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let timeout = Settings.ClipboardTimeout.allValues[indexPath.row]
+        let timeout = Settings.ClipboardTimeout.visibleValues[indexPath.row]
         delegate?.didSelectTimeout(timeout, in: self)
     }
 }
