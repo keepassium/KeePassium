@@ -1368,6 +1368,10 @@ extension GroupViewerVC {
         default:
             fatalError("Unexpected section number")
         }
+
+        if ProcessInfo.isRunningOnMac && !tableView.isEditing {
+            stopSelectionMode(animated: true, andSave: true)
+        }
     }
 }
 
