@@ -64,6 +64,8 @@ internal enum OneDriveAPI {
         static let uploadUrl = "uploadUrl"
         static let user = "user"
         static let value = "value"
+        static let hashes = "hashes"
+        static let hash = "sha256Hash"
     }
 }
 

@@ -6,6 +6,7 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
+import CryptoKit
 import Foundation
 
 public extension URL {
@@ -89,6 +90,7 @@ public extension URL {
             return
         }
 
+        let contentHash = try? FileHasher.sha256(fileURL: self).asHexString
         let latestInfo = FileInfo(
             fileName: targetURL.lastPathComponent,
             fileSize: Int64(attributes.fileSize ?? -1),
@@ -98,7 +100,9 @@ public extension URL {
                 .excludedFromBackup: attributes.isExcludedFromBackup,
                 .hidden: attributes.isHidden
             ],
-            isInTrash: self.isInTrashDirectory)
+            isInTrash: self.isInTrashDirectory,
+            hash: contentHash
+        )
         completionQueue.addOperation {
             completion(.success(latestInfo))
         }

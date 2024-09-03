@@ -27,6 +27,10 @@ protocol DatabaseSettingsDelegate: AnyObject {
         forAutoFill: Bool,
         in viewController: DatabaseSettingsVC
     )
+    func didChangeSettings(
+        newExternalUpdateBehavior: ExternalUpdateBehavior,
+        in viewController: DatabaseSettingsVC
+    )
 }
 
 final class DatabaseSettingsVC: UITableViewController, Refreshable {
@@ -41,6 +45,7 @@ final class DatabaseSettingsVC: UITableViewController, Refreshable {
     var availableFallbackStrategies: Set<UnreachableFileFallbackStrategy> = []
     var fallbackTimeout: TimeInterval!
     var autoFillFallbackTimeout: TimeInterval!
+    var externalUpdateBehavior: ExternalUpdateBehavior!
 
     private let fallbackTimeoutFormatter: RelativeDateTimeFormatter = {
         let formatter = RelativeDateTimeFormatter()
@@ -95,11 +100,12 @@ extension DatabaseSettingsVC {
         static let parameterValueCell = "ParameterValueCell"
     }
     private enum CellIndex {
-        static let sectionSizes = [1, 2, 3]
+        static let sectionSizes = [1, 3, 3]
 
         static let readOnly = IndexPath(row: 0, section: 0)
-        static let fileUnreachableTimeout = IndexPath(row: 0, section: 1)
-        static let fileUnreachableAction = IndexPath(row: 1, section: 1)
+        static let externalUpdateBehavior = IndexPath(row: 0, section: 1)
+        static let fileUnreachableTimeout = IndexPath(row: 1, section: 1)
+        static let fileUnreachableAction = IndexPath(row: 2, section: 1)
         static let quickTypeEnabled = IndexPath(row: 0, section: 2)
         static let autoFillFileUnreachableTimeout = IndexPath(row: 1, section: 2)
         static let autoFillFileUnreachableAction = IndexPath(row: 2, section: 2)
@@ -182,6 +188,13 @@ extension DatabaseSettingsVC {
                 for: indexPath)
                 as! ParameterValueCell
             configureOfflineAccessCell(cell, strategy: autoFillFallbackStrategy, forAutoFill: true)
+            return cell
+        case CellIndex.externalUpdateBehavior:
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: CellID.parameterValueCell,
+                for: indexPath)
+                as! ParameterValueCell
+            configureExternalUpdateBehaviorCell(cell, behavior: externalUpdateBehavior)
             return cell
         default:
             preconditionFailure("Unexpected cell index")
@@ -293,5 +306,33 @@ extension DatabaseSettingsVC {
             }
             self.delegate?.didChangeSettings(isQuickTypeEnabled: theSwitch.isOn, in: self)
         }
+    }
+
+    private func configureExternalUpdateBehaviorCell(
+        _ cell: ParameterValueCell,
+        behavior externalUpdateBehavior: ExternalUpdateBehavior
+    ) {
+        cell.textLabel?.text = LString.titleIfDatabaseModifiedExternally
+        cell.detailTextLabel?.text = externalUpdateBehavior.title
+
+        let actions = ExternalUpdateBehavior.allCases.map { behavior in
+            UIAction(
+                title: behavior.title,
+                state: behavior == externalUpdateBehavior ? .on : .off,
+                handler: { [weak self] _ in
+                    guard let self = self else { return }
+                    self.delegate?.didChangeSettings(
+                        newExternalUpdateBehavior: behavior,
+                        in: self
+                    )
+                    self.refresh()
+                }
+            )
+        }
+        cell.menu = UIMenu(
+            title: LString.titleIfDatabaseModifiedExternally,
+            options: .displayInline,
+            children: actions
+        )
     }
 }

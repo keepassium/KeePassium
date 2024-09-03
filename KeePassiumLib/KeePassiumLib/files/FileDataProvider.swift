@@ -74,6 +74,50 @@ extension FileDataProvider {
     }
 
     public static func readFileInfo(
+        _ fileRef: URLReference,
+        canUseCache: Bool,
+        timeout: Timeout,
+        completionQueue: OperationQueue? = nil,
+        completion: @escaping FileOperationCompletion<FileInfo>
+    ) {
+        if canUseCache,
+           let fileURL = fileRef.url
+        {
+            readFileInfo(
+                at: fileURL,
+                fileProvider: fileRef.fileProvider,
+                canUseCache: true,
+                timeout: timeout,
+                completionQueue: completionQueue,
+                completion: completion
+            )
+            return
+        }
+
+        let operationQueue = Self.backgroundQueue
+        let completionQueue = completionQueue ?? Self.backgroundQueue
+        fileRef.resolveAsync(timeout: timeout, callbackQueue: operationQueue) {
+            assert(operationQueue.isCurrent)
+            switch $0 {
+            case .success(let prefixedFileURL):
+                readFileInfo(
+                    at: prefixedFileURL,
+                    fileProvider: fileRef.fileProvider,
+                    canUseCache: canUseCache,
+                    timeout: timeout,
+                    completionQueue: completionQueue,
+                    completion: completion
+                )
+            case .failure(let fileAccessError):
+                Diag.error("Failed to resolve file reference [message: \(fileAccessError.localizedDescription)]")
+                completionQueue.addOperation {
+                    completion(.failure(fileAccessError))
+                }
+            }
+        }
+    }
+
+    public static func readFileInfo(
         at fileURL: URL,
         fileProvider: FileProvider?,
         canUseCache: Bool,

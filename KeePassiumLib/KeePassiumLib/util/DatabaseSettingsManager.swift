@@ -189,6 +189,9 @@ public class DatabaseSettingsManager {
         return getSettings(for: databaseRef)?.fallbackTimeout ?? URLReference.defaultTimeoutDuration
     }
 
+    public func getExternalUpdateBehavior(_ databaseRef: URLReference) -> ExternalUpdateBehavior {
+        return getSettings(for: databaseRef)?.externalUpdateBehavior ?? .checkAndNotify
+    }
 
     private func getSettings(for descriptor: URLReference.Descriptor?) -> DatabaseSettings? {
         guard let descriptor = descriptor else {

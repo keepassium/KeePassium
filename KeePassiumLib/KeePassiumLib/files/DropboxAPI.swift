@@ -54,6 +54,7 @@ internal enum DropboxAPI {
         static let cursor = "cursor"
         static let hasMore = "has_more"
         static let accountType = "account_type"
+        static let contentHash = "content_hash"
     }
 }
 

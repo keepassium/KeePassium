@@ -121,7 +121,8 @@ final public class DropboxManager: NSObject {
                     iso8601string: infoDict[DropboxAPI.Keys.clientModified] as? String),
                 modificationDate: Date(
                     iso8601string: infoDict[DropboxAPI.Keys.clientModified] as? String),
-                isInTrash: false
+                isInTrash: false,
+                hash: infoDict[DropboxAPI.Keys.contentHash] as? String
             ),
             pathDisplay: pathDisplay,
             info: info
@@ -347,6 +348,7 @@ extension DropboxManager: RemoteDataSourceManager {
         var urlRequest = URLRequest(url: DropboxAPI.accountInfoURL)
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: DropboxAPI.Keys.authorization)
+        urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
 
         let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
             let result = DropboxAPI.ResponseParser
@@ -519,6 +521,7 @@ extension DropboxManager: RemoteDataSourceManager {
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: DropboxAPI.Keys.authorization)
         urlRequest.setValue("application/json", forHTTPHeaderField: DropboxAPI.Keys.contentType)
+        urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
 
         let json = """
         {

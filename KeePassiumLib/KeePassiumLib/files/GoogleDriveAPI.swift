@@ -41,7 +41,7 @@ internal enum GoogleDriveAPI {
     static let tokenRefreshURL = URL(string: "https://oauth2.googleapis.com/token")!
     static let accountInfoURL = URL(string: "https://www.googleapis.com/drive/v3/about?fields=user(emailAddress),canCreateDrives")!
 
-    static let fileFields = "id,mimeType,name,createdTime,modifiedTime,size,shortcutDetails,driveId,trashed"
+    static let fileFields = "id,mimeType,name,createdTime,modifiedTime,size,shortcutDetails,driveId,trashed,md5Checksum"
 
     internal enum Keys {
         static let clientID = "client_id"
@@ -87,6 +87,7 @@ internal enum GoogleDriveAPI {
         static let alt = "alt"
         static let uploadType = "uploadType"
         static let parents = "parents"
+        static let md5Checksum = "md5Checksum"
     }
 }
 

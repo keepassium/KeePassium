@@ -158,6 +158,12 @@ final class DatabaseViewerCoordinator: Coordinator {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2 * vcAnimationDuration) { [weak self] in
             self?.showInitialMessages()
         }
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(appDidBecomeActive),
+            name: UIApplication.didBecomeActiveNotification,
+            object: nil)
     }
 
     public func stop(animated: Bool, completion: (() -> Void)?) {
@@ -186,6 +192,13 @@ final class DatabaseViewerCoordinator: Coordinator {
 
     private func getPresenterForModals() -> UIViewController {
         return splitViewController.presentedViewController ?? splitViewController
+    }
+
+    @objc
+    private func appDidBecomeActive(_ notification: Notification) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            self?.maybeCheckDatabaseForExternalChanges()
+        }
     }
 }
 
@@ -1214,4 +1227,85 @@ extension DatabaseViewerCoordinator: EncryptionSettingsCoordinatorDelegate { }
 
 extension DatabaseViewerCoordinator: FaviconDownloading {
     var faviconDownloadingProgressHost: ProgressViewHost? { return self }
+}
+
+extension DatabaseViewerCoordinator {
+    private func maybeCheckDatabaseForExternalChanges() {
+        let dbRef = originalRef
+        guard let groupViewerVC = primaryRouter.navigationController.topViewController as? GroupViewerVC else {
+            return
+        }
+
+        let behavior = DatabaseSettingsManager.shared.getExternalUpdateBehavior(dbRef)
+        switch behavior {
+        case .dontCheck:
+            return
+        case .checkAndNotify, .checkAndReload:
+            break
+        }
+
+        let currentHash: FileInfo.ContentHash?
+        if let fileInfo = dbRef.getCachedInfoSync(canFetch: false) {
+            currentHash = fileInfo.hash
+            guard currentHash != nil else {
+                Diag.debug("File provider does not support content hash, skipping")
+                return
+            }
+        } else {
+            Diag.info("Current content hash unknown, but should be. Checking again")
+            currentHash = nil
+        }
+
+        groupViewerVC.databaseChangesCheckStatus = .inProgress
+        let timeoutDuration = DatabaseSettingsManager.shared.getFallbackTimeout(dbRef, forAutoFill: false)
+        FileDataProvider.readFileInfo(
+            dbRef,
+            canUseCache: false,
+            timeout: Timeout(duration: timeoutDuration),
+            completionQueue: .main
+        ) { [weak self, weak groupViewerVC] result in
+            guard let self, let groupViewerVC else {
+                return
+            }
+            switch result {
+            case let .success(info):
+                guard let newHash = info.hash else {
+                    groupViewerVC.databaseChangesCheckStatus = .idle
+                    return
+                }
+                if newHash != currentHash {
+                    processDatabaseChange(behavior: behavior, viewController: groupViewerVC)
+                } else {
+                    groupViewerVC.databaseChangesCheckStatus = .upToDate
+                }
+            case let .failure(error):
+                Diag.error("Reading database file info failed [message: \(error.localizedDescription)]")
+                groupViewerVC.databaseChangesCheckStatus = .failed
+            }
+        }
+    }
+
+    private func processDatabaseChange(behavior: ExternalUpdateBehavior, viewController: GroupViewerVC) {
+        viewController.databaseChangesCheckStatus = .idle
+        switch behavior {
+        case .dontCheck:
+            assertionFailure("Should not happen")
+        case .checkAndNotify:
+            Diag.info("Database changed elsewhere, suggesting reload")
+            let toastHost = getPresenterForModals()
+            let action = ToastAction(title: LString.actionReloadDatabase) { [weak self] in
+                guard let self else { return }
+                toastHost.hideAllToasts()
+                delegate?.didPressReloadDatabase(databaseFile, originalRef: originalRef, in: self)
+            }
+            toastHost.showNotification(
+                LString.databaseChangedExternallyMessage,
+                title: nil,
+                action: action
+            )
+        case .checkAndReload:
+            Diag.info("Database changed elsewhere, reloading automatically")
+            delegate?.didPressReloadDatabase(databaseFile, originalRef: originalRef, in: self)
+        }
+    }
 }

@@ -47,6 +47,7 @@ final class DatabaseSettingsCoordinator: Coordinator {
         dbSettingsVC.availableFallbackStrategies = dsm.getAvailableFallbackStrategies(dbRef)
         dbSettingsVC.fallbackTimeout = dsm.getFallbackTimeout(dbRef, forAutoFill: false)
         dbSettingsVC.autoFillFallbackTimeout = dsm.getFallbackTimeout(dbRef, forAutoFill: true)
+        dbSettingsVC.externalUpdateBehavior = dsm.getExternalUpdateBehavior(dbRef)
     }
 }
 
@@ -123,6 +124,17 @@ extension DatabaseSettingsCoordinator: DatabaseSettingsDelegate {
             }
             viewController.fallbackTimeout = newFallbackTimeout
         }
+        delegate?.didChangeDatabaseSettings(in: self)
+    }
+
+    func didChangeSettings(
+        newExternalUpdateBehavior: ExternalUpdateBehavior,
+        in viewController: DatabaseSettingsVC
+    ) {
+        DatabaseSettingsManager.shared.updateSettings(for: dbRef) { dbSettings in
+            dbSettings.externalUpdateBehavior = newExternalUpdateBehavior
+        }
+        viewController.externalUpdateBehavior = newExternalUpdateBehavior
         delegate?.didChangeDatabaseSettings(in: self)
     }
 }

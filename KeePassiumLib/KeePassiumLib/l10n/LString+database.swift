@@ -170,6 +170,29 @@ extension LString {
         value: "Re-add File",
         comment: "Title: what to do when a cloud-stored file cannot be loaded. (For example: `If File is Unreachable: Re-add File`.)")
 
+    public static let titleIfDatabaseModifiedExternally = NSLocalizedString(
+        "[Database/Settings/ExternalChanges/title]",
+        bundle: Bundle.framework,
+        value: "Database Modified Externally",
+        comment: "File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Notify`)")
+
+    public static let titleIfDatabaseModifiedExternallyDontCheck = NSLocalizedString(
+        "[Database/Settings/ExternalChanges/dontCheck]",
+        bundle: Bundle.framework,
+        value: "Don't check",
+        comment: "File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Don't check`)")
+
+    public static let titleIfDatabaseModifiedExternallyNotify = NSLocalizedString(
+        "[Database/Settings/ExternalChanges/notify]",
+        bundle: Bundle.framework,
+        value: "Notify",
+        comment: "File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Notify`)")
+
+    public static let titleIfDatabaseModifiedExternallyReload = NSLocalizedString(
+        "[Database/Settings/ExternalChanges/reload]",
+        bundle: Bundle.framework,
+        value: "Reload Automatically",
+        comment: "File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Reload Automatically`)")
 
     public static let actionChangeEncryptionSettings = NSLocalizedString(
         "[Database/EncryptionSettings/Change/action]",

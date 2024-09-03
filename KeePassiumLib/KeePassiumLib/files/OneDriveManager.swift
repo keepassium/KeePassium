@@ -213,7 +213,8 @@ extension OneDriveManager {
                     modificationDate: Date(
                         iso8601string: infoDict[OneDriveAPI.Keys.lastModifiedDateTime] as? String),
                     attributes: [:],
-                    isInTrash: false
+                    isInTrash: false,
+                    hash: parseFileHash(json: infoDict)
                 ),
                 driveInfo: folder.driveInfo
             )
@@ -221,6 +222,15 @@ extension OneDriveManager {
             return fileItem
         }
         return result
+    }
+
+    private func parseFileHash(json: [String: Any]) -> String? {
+        guard let file = json[OneDriveAPI.Keys.file] as? [String: Any],
+              let hashes = file[OneDriveAPI.Keys.hashes] as? [String: Any],
+              let hash = hashes[OneDriveAPI.Keys.hash] as? String else {
+            return nil
+        }
+        return hash
     }
 
     private func updateWithRemoteItemInfo(
@@ -347,7 +357,8 @@ extension OneDriveManager {
                 creationDate: Date(iso8601string: json[OneDriveAPI.Keys.createdDateTime] as? String),
                 modificationDate: Date(iso8601string: json[OneDriveAPI.Keys.lastModifiedDateTime] as? String),
                 attributes: [:],
-                isInTrash: false
+                isInTrash: false,
+                hash: parseFileHash(json: json)
             ),
             driveInfo: itemDriveInfo
         )

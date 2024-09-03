@@ -552,7 +552,8 @@ extension GoogleDriveManager {
                     iso8601string: infoDict[GoogleDriveAPI.Keys.createdTime] as? String),
                 modificationDate: Date(
                     iso8601string: infoDict[GoogleDriveAPI.Keys.modifiedTime] as? String),
-                isInTrash: isTrashed
+                isInTrash: isTrashed,
+                hash: infoDict[GoogleDriveAPI.Keys.md5Checksum] as? String
             )
         }()
 

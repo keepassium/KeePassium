@@ -47,6 +47,7 @@
 		753858DB291957BF006ADA21 /* FileFormatRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753858DA291957BF006ADA21 /* FileFormatRecognizer.swift */; };
 		7538871D28BD59B500BE41B5 /* LString+intune.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538871C28BD59B500BE41B5 /* LString+intune.swift */; };
 		75393ABA238D3AC400C63C54 /* ChallengeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75393AB9238D3AC400C63C54 /* ChallengeResponse.swift */; };
+		753A4A132C80B878008896C6 /* FileHasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753A4A122C80B878008896C6 /* FileHasher.swift */; };
 		753E9A6225FEBE3000541121 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753E9A6125FEBE2F00541121 /* Toast.swift */; };
 		754025152950700E000ABA73 /* ManagedAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754025142950700E000ABA73 /* ManagedAppConfig.swift */; };
 		754057FB2C54F1B9000700D2 /* FileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754057FA2C54F1B9000700D2 /* FileInfo.swift */; };
@@ -250,6 +251,7 @@
 		F311159B2B9C94E800236632 /* DropboxItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311159A2B9C94E800236632 /* DropboxItem.swift */; };
 		F3146DD12BB55D75000E2D76 /* DropboxAccountInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3146DD02BB55D75000E2D76 /* DropboxAccountInfo.swift */; };
 		F35708AD2AEFD52E00FC2208 /* ThreadCountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35708AC2AEFD52E00FC2208 /* ThreadCountFormatter.swift */; };
+		F36065072C67939200AD424B /* ExternalUpdateBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36065062C67939200AD424B /* ExternalUpdateBehavior.swift */; };
 		F36A057A2BB950C30087401F /* GoogleDriveAccountInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36A05792BB950C30087401F /* GoogleDriveAccountInfo.swift */; };
 		F36FC5AC2BA20B5900970B7E /* URL+dropbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36FC5AB2BA20B5900970B7E /* URL+dropbox.swift */; };
 		F36FC5B02BA2F95000970B7E /* RemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36FC5AF2BA2F95000970B7E /* RemoteDataSource.swift */; };
@@ -330,6 +332,7 @@
 		753878052ACE0606007D212A /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = uk; path = uk.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		7538871C28BD59B500BE41B5 /* LString+intune.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LString+intune.swift"; sourceTree = "<group>"; };
 		75393AB9238D3AC400C63C54 /* ChallengeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeResponse.swift; sourceTree = "<group>"; };
+		753A4A122C80B878008896C6 /* FileHasher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHasher.swift; sourceTree = "<group>"; };
 		753E9A6125FEBE2F00541121 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		754025142950700E000ABA73 /* ManagedAppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedAppConfig.swift; sourceTree = "<group>"; };
 		754057FA2C54F1B9000700D2 /* FileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileInfo.swift; sourceTree = "<group>"; };
@@ -560,6 +563,7 @@
 		F311159A2B9C94E800236632 /* DropboxItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxItem.swift; sourceTree = "<group>"; };
 		F3146DD02BB55D75000E2D76 /* DropboxAccountInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxAccountInfo.swift; sourceTree = "<group>"; };
 		F35708AC2AEFD52E00FC2208 /* ThreadCountFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadCountFormatter.swift; sourceTree = "<group>"; };
+		F36065062C67939200AD424B /* ExternalUpdateBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalUpdateBehavior.swift; sourceTree = "<group>"; };
 		F36A05792BB950C30087401F /* GoogleDriveAccountInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleDriveAccountInfo.swift; sourceTree = "<group>"; };
 		F36FC5AB2BA20B5900970B7E /* URL+dropbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+dropbox.swift"; sourceTree = "<group>"; };
 		F36FC5AF2BA2F95000970B7E /* RemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSource.swift; sourceTree = "<group>"; };
@@ -797,6 +801,7 @@
 			children = (
 				75E60AE025CF5D310089219C /* DatabaseIconSet.swift */,
 				75205FA2239BDB6700C1DEAA /* DatabaseSettings.swift */,
+				F36065062C67939200AD424B /* ExternalUpdateBehavior.swift */,
 				75205FA4239C01CF00C1DEAA /* DatabaseSettingsManager.swift */,
 			);
 			name = "db-settings";
@@ -1038,6 +1043,7 @@
 				F35708AC2AEFD52E00FC2208 /* ThreadCountFormatter.swift */,
 				F380E75B2A9E75F10011DF88 /* EntriesSelectedCountFormatter.swift */,
 				75AEADD32ABC67A8008785D2 /* UIImage+downscaling.swift */,
+				753A4A122C80B878008896C6 /* FileHasher.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1476,6 +1482,7 @@
 				756180FA2820827D00EA015D /* StringSet.swift in Sources */,
 				754D7C0E238C26A7005652E1 /* YubiKey.swift in Sources */,
 				7505E8D12236FA0F00E5202E /* StringExtension.swift in Sources */,
+				753A4A132C80B878008896C6 /* FileHasher.swift in Sources */,
 				75CF4C8A2A666D8B0054B05B /* LicenseManager.swift in Sources */,
 				F311158B2B9C89E800236632 /* DropboxAPI.swift in Sources */,
 				75D09C432174F77000F7DEF2 /* DateExtension-kp1.swift in Sources */,
@@ -1492,6 +1499,7 @@
 				751C7D4B2BDE4AE8006A58F4 /* Entry2+AutoType.swift in Sources */,
 				75AB9D292C65010B00792FFA /* SearchQuery+Words.swift in Sources */,
 				F3E8583D2B7E5C2A00F12DBB /* Searchable.swift in Sources */,
+				F36065072C67939200AD424B /* ExternalUpdateBehavior.swift in Sources */,
 				75D09C2A2174F77000F7DEF2 /* DeletedObject2.swift in Sources */,
 				75E83020251CBAC80061B7DC /* DatabaseSaver.swift in Sources */,
 				75D09C462174F77000F7DEF2 /* KeyHelper1.swift in Sources */,

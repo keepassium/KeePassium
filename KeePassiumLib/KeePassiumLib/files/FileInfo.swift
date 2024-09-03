@@ -10,6 +10,7 @@ import Foundation
 
 public struct FileInfo: Equatable {
     public typealias Attributes = [Attribute: Bool?]
+    public typealias ContentHash = String
 
     public var fileName: String
     public var fileSize: Int64?
@@ -18,6 +19,7 @@ public struct FileInfo: Equatable {
     public var attributes = Attributes()
     public var isHidden: Bool?
     public var isInTrash: Bool
+    public var hash: ContentHash?
 
     public init(
         fileName: String,
@@ -25,7 +27,8 @@ public struct FileInfo: Equatable {
         creationDate: Date? = nil,
         modificationDate: Date? = nil,
         attributes: Attributes = [:],
-        isInTrash: Bool
+        isInTrash: Bool,
+        hash: ContentHash?
     ) {
         self.fileName = fileName
         self.fileSize = fileSize
@@ -33,6 +36,7 @@ public struct FileInfo: Equatable {
         self.modificationDate = modificationDate
         self.attributes = attributes
         self.isInTrash = isInTrash
+        self.hash = hash
     }
 
     public static func == (lhs: FileInfo, rhs: FileInfo) -> Bool {
@@ -42,6 +46,7 @@ public struct FileInfo: Equatable {
             && lhs.modificationDate == rhs.modificationDate
             && lhs.isInTrash == rhs.isInTrash
             && lhs.attributes.allSatisfy { rhs.attributes[$0.key] == $0.value }
+            && lhs.hash == rhs.hash
     }
 }
 

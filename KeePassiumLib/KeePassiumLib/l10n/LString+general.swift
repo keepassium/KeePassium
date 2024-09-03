@@ -632,7 +632,6 @@ extension LString {
         comment: "Title of a list: entries that are beyond their expiration date."
     )
 
-
     public static let actionCreateEntry = NSLocalizedString(
         "[Entry/Create/action] Create Entry",
         bundle: Bundle.framework,
@@ -736,6 +735,19 @@ extension LString {
         bundle: Bundle.framework,
         value: "%@, Smart group",
         comment: "VoiceOver description of a smart group [groupTitle: String]"
+    )
+
+    public static let sectionGroups = NSLocalizedString(
+        "[Group/Section/Groups/title]",
+        bundle: Bundle.framework,
+        value: "Groups",
+        comment: "Title of the Groups section visible while editing"
+    )
+    public static let sectionEntries = NSLocalizedString(
+        "[Group/Section/Entries/title]",
+        bundle: Bundle.framework,
+        value: "Entries",
+        comment: "Title of the Entries section visible while editing"
     )
 
     public static let fieldIcon = NSLocalizedString(
@@ -1220,5 +1232,32 @@ extension LString {
         bundle: Bundle.framework,
         value: "©Andrei Popleteev",
         comment: "Copyright notice")
+
+    public static let statusCheckingDatabaseForExternalChanges = NSLocalizedString(
+        "[Database/ExternalChange/Status/checkInProgress]",
+        bundle: Bundle.framework,
+        value: "Checking for changes…",
+        comment: "Status message: checking if currently loaded database is the latest version"
+    )
+
+    public static let statusDatabaseFileUpdateFailed = NSLocalizedString(
+        "[Database/ExternalChange/Status/failed]",
+        bundle: Bundle.framework,
+        value: "Refresh failed",
+        comment: "Status message: failed to check if currently loaded database is the latest version"
+    )
+    public static let statusDatabaseFileIsUpToDate = NSLocalizedString(
+        "[Database/ExternalChange/Status/upToDate]",
+        bundle: Bundle.framework,
+        value: "Up to date",
+        comment: "Status message: currently loaded database is the latest version"
+    )
+
+    public static let databaseChangedExternallyMessage = NSLocalizedString(
+        "[Database/ExternalChange/notification]",
+        bundle: Bundle.framework,
+        value: "Database file has changed. Reload?",
+        comment: "Notification message about external changes to the loaded file."
+    )
 }
 // swiftlint:enable line_length

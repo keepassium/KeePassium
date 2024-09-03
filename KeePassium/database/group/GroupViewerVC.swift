@@ -104,18 +104,38 @@ final class GroupViewerVC:
             case .announcements:
                 return nil
             case .groups:
-                return "Groups"
+                return LString.sectionGroups
             case .entries:
-                return "Entries"
+                return LString.sectionEntries
             }
         }
+    }
+
+    enum DatabaseChangesCheckStatus {
+        case idle
+        case inProgress
+        case failed
+        case upToDate
     }
 
     weak var delegate: GroupViewerDelegate?
 
     @IBOutlet private weak var toolsMenuButton: UIBarButtonItem!
-    @IBOutlet private weak var reloadDatabaseButton: UIBarButtonItem!
+    @IBOutlet private var reloadDatabaseButton: UIBarButtonItem!
     @IBOutlet private weak var appSettingsButton: UIBarButtonItem!
+
+    private lazy var statusLabelItem: UIBarButtonItem = {
+        let label = UILabel()
+        label.textColor = .primaryText
+        label.font = .preferredFont(forTextStyle: .footnote)
+        label.adjustsFontForContentSizeCategory = true
+        label.textAlignment = .center
+        label.numberOfLines = 2
+        label.lineBreakMode = .byWordWrapping
+
+        label.text = LString.statusCheckingDatabaseForExternalChanges
+        return UIBarButtonItem(customView: label)
+    }()
 
     weak var group: Group? {
         didSet {
@@ -136,6 +156,14 @@ final class GroupViewerVC:
 
     var canDownloadFavicons: Bool = true
     var canChangeEncryptionSettings: Bool = true
+
+    var databaseChangesCheckStatus: DatabaseChangesCheckStatus = .idle {
+        didSet {
+            adjustToolbarButtons()
+        }
+    }
+
+    private var databaseChangesCheckStatusTimer: Timer?
 
     private var titleView = DatabaseItemTitleView()
 
@@ -231,6 +259,8 @@ final class GroupViewerVC:
         }
 
         defaultToolbarItems = toolbarItems ?? []
+
+        databaseChangesCheckStatus = .idle
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -665,6 +695,57 @@ final class GroupViewerVC:
         }
     }
 
+    private func adjustToolbarButtons() {
+        databaseChangesCheckStatusTimer?.invalidate()
+        databaseChangesCheckStatusTimer = nil
+
+        guard !tableView.isEditing else {
+            return
+        }
+
+        let change = { [unowned self] (toRemove: UIBarButtonItem, toAdd: UIBarButtonItem) in
+            defaultToolbarItems.removeAll(where: { $0 == toRemove })
+            if !defaultToolbarItems.contains(where: { $0 == toAdd }) {
+                defaultToolbarItems.insert(toAdd, at: 2)
+            }
+            self.toolbarItems = defaultToolbarItems
+        }
+        let changeText = { [unowned self] (text: String) in
+            guard let label = statusLabelItem.customView as? UILabel else {
+                assertionFailure()
+                return
+            }
+            UIView.transition(with: label, duration: 0.3, options: .transitionCrossDissolve) {
+                label.text = text
+            }
+        }
+
+        switch databaseChangesCheckStatus {
+        case .idle:
+            change(statusLabelItem, reloadDatabaseButton)
+        case .inProgress:
+            changeText(LString.statusCheckingDatabaseForExternalChanges)
+            change(reloadDatabaseButton, statusLabelItem)
+        case .failed:
+            changeText("⚠️ " + LString.statusDatabaseFileUpdateFailed)
+            change(reloadDatabaseButton, statusLabelItem)
+            databaseChangesCheckStatusTimer = Timer.scheduledTimer(
+                withTimeInterval: 2.0,
+                repeats: false
+            ) { [weak self] _ in
+                self?.databaseChangesCheckStatus = .idle
+            }
+        case .upToDate:
+            changeText(LString.statusDatabaseFileIsUpToDate)
+            change(reloadDatabaseButton, statusLabelItem)
+            databaseChangesCheckStatusTimer = Timer.scheduledTimer(
+                withTimeInterval: 2.0,
+                repeats: false
+            ) { [weak self] _ in
+                self?.databaseChangesCheckStatus = .idle
+            }
+        }
+    }
 
     @available(iOS 13, *)
     private func getAccessibilityActions(for entry: Entry) -> [UIAccessibilityCustomAction] {
