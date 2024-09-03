@@ -81,6 +81,7 @@ extension AutoFillSetupMessageVC: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+// swiftlint:disable line_length
 extension LString {
     public static let titleKeychain = NSLocalizedString(
         "[Generic/Keychain/title]",
@@ -108,3 +109,4 @@ extension LString {
         comment: "Must match Apple's translation, as found in iOS 17 Settings → Passwords → Password Options. If unsure, leave untranslated."
     )
 }
+// swiftlint:enable line_length
