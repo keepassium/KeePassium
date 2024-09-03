@@ -100,8 +100,12 @@ final class MainCoordinator: Coordinator {
         removeAllChildCoordinators()
     }
 
-    func start(hasIncomingURL: Bool) {
+    func start(hasIncomingURL: Bool, proposeReset: Bool) {
         Diag.info(AppInfo.description)
+        guard !proposeReset else {
+            showAppResetPrompt()
+            return
+        }
         PremiumManager.shared.startObservingTransactions()
 
         FileKeeper.shared.delegate = self
@@ -138,6 +142,22 @@ final class MainCoordinator: Coordinator {
         #endif
 
         runAfterStartTasks()
+    }
+
+    private func showAppResetPrompt() {
+        Diag.info("Proposing app reset")
+        let alert = UIAlertController(
+            title: AppInfo.name,
+            message: LString.confirmAppReset,
+            preferredStyle: .alert
+        )
+        alert.addAction(title: LString.actionResetApp, style: .destructive, preferred: false) { [weak self] _ in
+            self?.resetApp()
+        }
+        alert.addAction(title: LString.actionCancel, style: .cancel) { [weak self] _ in
+            self?.start(hasIncomingURL: false, proposeReset: false)
+        }
+        getPresenterForModals().present(alert, animated: true)
     }
 
     private func runAfterStartTasks() {
@@ -369,6 +389,18 @@ extension MainCoordinator {
 }
 
 extension MainCoordinator {
+
+    private func resetApp() {
+        Keychain.shared.reset()
+        UserDefaults.eraseAppGroupShared()
+        FileKeeper.shared.deleteBackupFiles(
+            olderThan: -TimeInterval.infinity,
+            keepLatest: false,
+            completionQueue: .main
+        ) { [weak self] in
+            self?.start(hasIncomingURL: false, proposeReset: false)
+        }
+    }
 
     private func setDatabase(
         _ databaseRef: URLReference?,

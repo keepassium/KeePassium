@@ -396,6 +396,16 @@ extension LString {
         value: "About KeePassium",
         comment: "Menu item that shows info about KeePassium app")
 
+    public static let actionResetApp = NSLocalizedString(
+        "[App/ResetEverything/action]",
+        bundle: Bundle.framework,
+        value: "Reset",
+        comment: "Action which resets the app as if it was just installed.")
+    public static let confirmAppReset = NSLocalizedString(
+        "[App/ResetEverything/title]",
+        bundle: Bundle.framework,
+        value: "Reset the app?",
+        comment: "Confirmation message before resetting the app to just-installed state.")
 
     public static let thisSettingIsManaged = NSLocalizedString(
         "[Settings/Managed/notification]",

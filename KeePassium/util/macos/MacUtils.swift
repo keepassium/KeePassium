@@ -15,4 +15,6 @@ protocol MacUtils: NSObjectProtocol {
     func disableSecureEventInput()
 
     func isSecureEventInputEnabled() -> Bool
+
+    func isControlKeyPressed() -> Bool
 }

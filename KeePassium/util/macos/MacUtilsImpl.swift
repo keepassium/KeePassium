@@ -20,4 +20,8 @@ class MacUtilsImpl: NSObject, MacUtils {
     func isSecureEventInputEnabled() -> Bool {
         return IsSecureEventInputEnabled()
     }
+
+    func isControlKeyPressed() -> Bool {
+        return (GetCurrentKeyModifiers() & UInt32(controlKey)) != 0
+    }
 }

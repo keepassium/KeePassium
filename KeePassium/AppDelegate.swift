@@ -38,20 +38,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let incomingURL: URL? = launchOptions?[.url] as? URL
         let hasIncomingURL = incomingURL != nil
 
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            window.makeKeyAndVisible()
-            mainCoordinator = MainCoordinator(window: window)
-            mainCoordinator.start(hasIncomingURL: hasIncomingURL)
-        } else {
-            mainCoordinator = MainCoordinator(window: window)
-            mainCoordinator.start(hasIncomingURL: hasIncomingURL)
-            window.makeKeyAndVisible()
-        }
-
-        self.window = window
-
+        var proposeAppReset = false
         #if targetEnvironment(macCatalyst)
         loadMacUtilsPlugin()
+        if let macUtils, macUtils.isControlKeyPressed() {
+            proposeAppReset = true
+        }
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(sceneWillDeactivate),
@@ -59,6 +51,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             object: nil
         )
         #endif
+
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            window.makeKeyAndVisible()
+            mainCoordinator = MainCoordinator(window: window)
+            mainCoordinator.start(hasIncomingURL: hasIncomingURL, proposeReset: proposeAppReset)
+        } else {
+            mainCoordinator = MainCoordinator(window: window)
+            mainCoordinator.start(hasIncomingURL: hasIncomingURL, proposeReset: proposeAppReset)
+            window.makeKeyAndVisible()
+        }
+
+        self.window = window
 
         return true
     }
