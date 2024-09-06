@@ -32,6 +32,14 @@ public enum FileAccessError: LocalizedError {
     case networkError(message: String)
 
     case systemError(_ originalError: Error?)
+}
+
+extension FileAccessError {
+    #if targetEnvironment(macCatalyst)
+    private static let fileProviderErrorDomain = "NSFileProviderErrorDomain"
+    #else
+    private static let fileProviderErrorDomain = NSFileProviderError.errorDomain
+    #endif
 
     public var isTimeout: Bool {
         switch self {
@@ -162,6 +170,24 @@ public enum FileAccessError: LocalizedError {
         }
     }
 
+    public var helpAnchor: String? {
+        switch self {
+        case .fileProviderDoesNotRespond:
+            return URL.AppHelp.fileProviderUnresponsive.absoluteString
+        case .systemError(let originalError):
+            let nsError = originalError as? NSError
+            switch (nsError?.domain, nsError?.code) {
+            case (Self.fileProviderErrorDomain, -1005):
+                return URL.AppHelp.fileDoesNotExist.absoluteString
+            default:
+                break
+            }
+        default:
+            break
+        }
+        return nil
+    }
+
     public static func make(
         from originalError: Error,
         fileName: String,
@@ -198,8 +224,8 @@ public enum FileAccessError: LocalizedError {
                 recoveryAction: LString.Error.actionReAddFileToAllowAccess
             )
 
-        case ("NSFileProviderInternalErrorDomain", 0), 
-             ("NSFileProviderErrorDomain", -2001): 
+        case ("NSFileProviderInternalErrorDomain", 0),
+            (Self.fileProviderErrorDomain, -2001):
             return .fileProviderNotFound(fileProvider: fileProvider)
 
         default:

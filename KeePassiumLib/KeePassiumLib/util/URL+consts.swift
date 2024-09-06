@@ -51,8 +51,6 @@ extension URL {
 
         public static let yubikeySetup = URL(string: "https://keepassium.com/apphelp/yubikey-setup/")!
 
-        public static let invalidDatabasePassword = URL(string: "https://keepassium.com/apphelp/invalid-database-password/")!
-
         public static let databaseFileIsInTrashWarning = URL(string: "https://keepassium.com/apphelp/database-recently-deleted-warning/")!
         public static let temporaryBackupDatabaseWarning = URL(string: "https://keepassium.com/apphelp/temporary-backup-database-warning/")!
 
@@ -61,6 +59,10 @@ extension URL {
         public static let smartGroups = URL(string: "https://keepassium.com/apphelp/smart-groups/")!
 
         public static let linkedDatabases = URL(string: "https://keepassium.com/apphelp/linked-databases/")!
+
+        public static let invalidDatabasePassword = URL(string: "https://keepassium.com/apphelp/invalid-database-password/")!
+        public static let fileDoesNotExist = URL(string: "https://keepassium.com/apphelp/does-not-exist/")!
+        public static let fileProviderUnresponsive = URL(string: "https://keepassium.com/apphelp/file-provider-unresponsive/")!
     }
 
 }

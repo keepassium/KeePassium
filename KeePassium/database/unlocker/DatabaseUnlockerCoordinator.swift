@@ -362,6 +362,7 @@ extension DatabaseUnlockerCoordinator {
             databaseUnlockerVC.showErrorMessage(
                 error.localizedDescription,
                 reason: error.failureReason,
+                helpAnchor: error.helpAnchor,
                 haptics: .error
             )
         }
@@ -381,6 +382,7 @@ extension DatabaseUnlockerCoordinator {
             databaseUnlockerVC.showErrorMessage(
                 error.localizedDescription,
                 reason: error.failureReason,
+                helpAnchor: error.helpAnchor,
                 haptics: .error
             )
             return

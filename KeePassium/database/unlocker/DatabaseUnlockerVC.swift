@@ -121,6 +121,7 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
     func showErrorMessage(
         _ text: String,
         reason: String? = nil,
+        helpAnchor: String? = nil,
         haptics: HapticFeedback.Kind? = nil,
         action: ErrorMessageView.Action? = nil
     ) {
@@ -134,7 +135,14 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
             HapticFeedback.play(haptics)
         }
         errorMessageView.message = text
-        errorMessageView.action = action
+        if let action {
+            errorMessageView.action = action
+        } else if let helpAnchor, let helpURL = URL(string: helpAnchor) {
+            errorMessageView.action = .init(title: LString.actionViewHelpArticle) { [weak self] in
+                guard let self else { return }
+                URLOpener(self).open(url: helpURL)
+            }
+        }
         errorMessageView.show(animated: true)
         UIAccessibility.post(notification: .screenChanged, argument: errorMessageView)
 

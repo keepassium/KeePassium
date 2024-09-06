@@ -231,6 +231,12 @@ extension LString {
         value: "Learn more…",
         comment: "Action/button to view more help/info about some topic"
     )
+    public static let actionViewHelpArticle = NSLocalizedString(
+        "[Generic/ViewHelpArticle/action]",
+        bundle: Bundle.framework,
+        value: "View help article",
+        comment: "Action/button to open an online support article (about a specific error)"
+    )
     public static let actionFixThis = NSLocalizedString(
         "[Generic] Fix this",
         bundle: Bundle.framework,
