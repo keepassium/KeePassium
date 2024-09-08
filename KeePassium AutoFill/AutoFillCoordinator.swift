@@ -230,7 +230,9 @@ class AutoFillCoordinator: NSObject, Coordinator {
             password: entry.resolvedPassword)
         extensionContext.completeRequest(
             withSelectedCredential: passwordCredential,
-            completionHandler: nil
+            completionHandler: { [self] expired in
+                log.debug("Did return credentials (exp: \(expired))")
+            }
         )
         if hasUI {
             HapticFeedback.play(.credentialsPasted)

@@ -29,14 +29,6 @@ class CredentialProviderViewController: ASCredentialProviderViewController {
         }
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        log.trace("viewDidAppear")
-        if ProcessInfo.isRunningOnMac {
-            autoFillCoordinator.start()
-        }
-    }
-
     override func viewDidDisappear(_ animated: Bool) {
         log.trace("viewDidDisappear")
         super.viewDidDisappear(animated)
@@ -58,22 +50,32 @@ class CredentialProviderViewController: ASCredentialProviderViewController {
     }
 
     override func prepareCredentialList(for serviceIdentifiers: [ASCredentialServiceIdentifier]) {
+        log.trace("prepareCredentialList")
         autoFillCoordinator.serviceIdentifiers = serviceIdentifiers
+        if ProcessInfo.isRunningOnMac {
+            autoFillCoordinator.start()
+        }
     }
 
     override func prepareInterfaceToProvideCredential(
         for credentialIdentity: ASPasswordCredentialIdentity
     ) {
+        log.trace("prepareInterfaceToProvideCredential")
         autoFillCoordinator.prepareUI(for: credentialIdentity)
     }
 
     override func provideCredentialWithoutUserInteraction(
         for credentialIdentity: ASPasswordCredentialIdentity
     ) {
+        log.trace("provideCredentialWithoutUserInteraction")
         autoFillCoordinator.provideWithoutUserInteraction(for: credentialIdentity)
     }
 
     override func prepareInterfaceForExtensionConfiguration() {
+        log.trace("prepareInterfaceForExtensionConfiguration")
         autoFillCoordinator.prepareConfigurationUI()
+        if ProcessInfo.isRunningOnMac {
+            autoFillCoordinator.start()
+        }
     }
 }
