@@ -78,6 +78,7 @@ class AutoFillCoordinator: NSObject, Coordinator {
         BusinessModel.isIntuneEdition = false
         #endif
 
+        Swizzler.swizzle()
         SettingsMigrator.processAppLaunch(with: Settings.current)
         Diag.info(AppInfo.description)
 

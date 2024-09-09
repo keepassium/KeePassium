@@ -117,6 +117,8 @@
 		75BD4C712789BCBC00FDE499 /* CredentialManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BD4C702789BCBC00FDE499 /* CredentialManager.swift */; };
 		75BF5AE827680A3F00809654 /* UnreachableFileFallbackStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BF5AE727680A3F00809654 /* UnreachableFileFallbackStrategy.swift */; };
 		75BFB1442481B2FA0017B980 /* FileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB1432481B2FA0017B980 /* FileProvider.swift */; };
+		75BFDCA12C8E4DB700D30A9D /* Swizzler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFDCA02C8E4DB700D30A9D /* Swizzler.swift */; };
+		75BFDCA32C8E4F9000D30A9D /* UITextInput+CopyTimeout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFDCA22C8E4F9000D30A9D /* UITextInput+CopyTimeout.swift */; };
 		75C01EFF2474AC290099698C /* Synchronizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C01EFE2474AC290099698C /* Synchronizable.swift */; };
 		75C01F03247554EA0099698C /* FileAccessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C01F02247554EA0099698C /* FileAccessError.swift */; };
 		75C3CDD32BF3916400C5C8CD /* WebDAVInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C3CDD22BF3916400C5C8CD /* WebDAVInfoRequest.swift */; };
@@ -421,6 +423,8 @@
 		75BD4C702789BCBC00FDE499 /* CredentialManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialManager.swift; sourceTree = "<group>"; };
 		75BF5AE727680A3F00809654 /* UnreachableFileFallbackStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreachableFileFallbackStrategy.swift; sourceTree = "<group>"; };
 		75BFB1432481B2FA0017B980 /* FileProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileProvider.swift; sourceTree = "<group>"; };
+		75BFDCA02C8E4DB700D30A9D /* Swizzler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swizzler.swift; sourceTree = "<group>"; };
+		75BFDCA22C8E4F9000D30A9D /* UITextInput+CopyTimeout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextInput+CopyTimeout.swift"; sourceTree = "<group>"; };
 		75C01EFE2474AC290099698C /* Synchronizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Synchronizable.swift; sourceTree = "<group>"; };
 		75C01F02247554EA0099698C /* FileAccessError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileAccessError.swift; sourceTree = "<group>"; };
 		75C3CDD22BF3916400C5C8CD /* WebDAVInfoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebDAVInfoRequest.swift; sourceTree = "<group>"; };
@@ -1044,6 +1048,8 @@
 				F380E75B2A9E75F10011DF88 /* EntriesSelectedCountFormatter.swift */,
 				75AEADD32ABC67A8008785D2 /* UIImage+downscaling.swift */,
 				753A4A122C80B878008896C6 /* FileHasher.swift */,
+				75BFDCA22C8E4F9000D30A9D /* UITextInput+CopyTimeout.swift */,
+				75BFDCA02C8E4DB700D30A9D /* Swizzler.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1375,6 +1381,7 @@
 				75134CFC23C0F02C0065CD10 /* DatabaseItem.swift in Sources */,
 				75D09BD02174F76500F7DEF2 /* aeskdf.cpp in Sources */,
 				75A0047B2840CF5C000B7B17 /* LString+a11y.swift in Sources */,
+				75BFDCA12C8E4DB700D30A9D /* Swizzler.swift in Sources */,
 				75D09C262174F77000F7DEF2 /* Xml2.swift in Sources */,
 				75AF1935282EE78F00FA4BB5 /* PassphraseGenerator.swift in Sources */,
 				F380E75C2A9E75F10011DF88 /* EntriesSelectedCountFormatter.swift in Sources */,
@@ -1451,6 +1458,7 @@
 				75F4ACE02177469500B22D8B /* FileKeeper.swift in Sources */,
 				758FF6D4290193F0007DE8EB /* OneDriveDataSource.swift in Sources */,
 				75C3CDD52BF3918A00C5C8CD /* WebDAVDownloadRequest.swift in Sources */,
+				75BFDCA32C8E4F9000D30A9D /* UITextInput+CopyTimeout.swift in Sources */,
 				75D09C282174F77000F7DEF2 /* CustomIcon2.swift in Sources */,
 				75AF193F282EF76C00FA4BB5 /* PassphraseWordlist.swift in Sources */,
 				754840EE2A52C957001EEF21 /* URLQueryItems+extensions.swift in Sources */,

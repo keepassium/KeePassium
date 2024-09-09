@@ -82,6 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #endif
 
         AppGroup.applicationShared = application
+        Swizzler.swizzle()
 
         SettingsMigrator.processAppLaunch(with: Settings.current)
     }
