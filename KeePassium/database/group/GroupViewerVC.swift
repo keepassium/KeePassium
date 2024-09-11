@@ -1378,7 +1378,8 @@ extension GroupViewerVC {
 #if targetEnvironment(macCatalyst)
 extension GroupViewerVC {
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if let selectedRows = tableView.indexPathsForSelectedRows,
+        if tableView.isEditing,
+           let selectedRows = tableView.indexPathsForSelectedRows,
            selectedRows.contains(indexPath)
         {
             tableView.deselectRow(at: indexPath, animated: false)
@@ -1388,7 +1389,8 @@ extension GroupViewerVC {
     }
 
     override func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
-        if let selectedRows = tableView.indexPathsForSelectedRows,
+        if tableView.isEditing,
+           let selectedRows = tableView.indexPathsForSelectedRows,
            selectedRows.contains(indexPath)
         {
             return nil
@@ -1397,8 +1399,10 @@ extension GroupViewerVC {
     }
 
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        tableView.indexPathsForSelectedRows?.forEach {
-            tableView.cellForRow(at: $0)?.isHighlighted = true
+        if tableView.isEditing {
+            tableView.indexPathsForSelectedRows?.forEach {
+                tableView.cellForRow(at: $0)?.isHighlighted = true
+            }
         }
         return true
     }
