@@ -10,6 +10,12 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "Активируйте, чтобы прослушать.";
 
+/* Action which resets the app as if it was just installed. */
+"[App/ResetEverything/action]" = "Сбросить";
+
+/* Confirmation message before resetting the app to just-installed state. */
+"[App/ResetEverything/title]" = "Сбросить приложение?";
+
 /* Section in settings: icon for the app */
 "[Appearance/AppIcon/title]" = "Значок приложения";
 
@@ -196,6 +202,18 @@
 /* Info message for entries that contain information for opening a different database. */
 "[Database/Entry/LinkedDatabase/message]" = "Эта запись указывает на другую базу паролей.";
 
+/* Notification message about external changes to the loaded file. */
+"[Database/ExternalChange/notification]" = "Файл базы был изменён извне. Обновить?";
+
+/* Status message: checking if currently loaded database is the latest version */
+"[Database/ExternalChange/Status/checkInProgress]" = "Проверка на изменения…";
+
+/* Status message: failed to check if currently loaded database is the latest version */
+"[Database/ExternalChange/Status/failed]" = "Обновить не удалось";
+
+/* Status message: currently loaded database is the latest version */
+"[Database/ExternalChange/Status/upToDate]" = "Последняя версия";
+
 /* Info message when changing database file format. */
 "[Database/FormatVersion/Conversion/allDataPreserved]" = "Все ваши данные будут сохранены.";
 
@@ -345,6 +363,18 @@
 
 /* File settings parameter: time after which file will be considered unreachable. Example: `Consider File Unreachable: in 10 seconds`.) */
 "[Database/Settings/ConsiderFileUnreachable/title]" = "Считать файл недоступным";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Don't check`) */
+"[Database/Settings/ExternalChanges/dontCheck]" = "Не проверять";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Notify`) */
+"[Database/Settings/ExternalChanges/notify]" = "Уведомить";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Reload Automatically`) */
+"[Database/Settings/ExternalChanges/reload]" = "Автоматически перезагрузить";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Notify`) */
+"[Database/Settings/ExternalChanges/title]" = "Сторонние изменения базы";
 
 /* Title: what to do when a cloud-stored file cannot be loaded. (For example: `If File is Unreachable: Re-add File`.) */
 "[Database/Settings/FallbackStrategy/ReAddFile/title]" = "Добавить файл заново";
@@ -630,6 +660,9 @@
 
 /* Name of an entry field */
 "[Entry/Field/name] User Name" = "Имя";
+
+/* Title of a setting: whether the entry's field is protected (shown as asterisks). */
+"[Entry/Field/Protected/title]" = "Защищённое поле";
 
 /* Name of an entry field */
 "[Entry/Field/tags] Tags" = "Теги";
@@ -1027,6 +1060,9 @@
 /* Title of a menu with various utilities */
 "[Generic/Tools/title]" = "Инструменты";
 
+/* Action/button to open an online support article (about a specific error) */
+"[Generic/ViewHelpArticle/action]" = "Посмотреть помощь";
+
 /* Title of a screen/list view configuration: sort order, visible items, etc */
 "[Generic/ViewOptions/title]" = "Параметры вида";
 
@@ -1057,6 +1093,12 @@
 /* Title of the confirmation dialog for `Empty Recycle Bin` action */
 "[Group/RecycleBin/Empty/confirmTitle]" = "Окончательно удалить всё в Корзине?";
 
+/* Title of the Entries section visible while editing */
+"[Group/Section/Entries/title]" = "Записи";
+
+/* Title of the Groups section visible while editing */
+"[Group/Section/Groups/title]" = "Группы";
+
 /* VoiceOver description of a smart group [groupTitle: String] */
 "[Group/Smart/a11y/description]" = "%@, смарт-группа";
 
@@ -1068,6 +1110,15 @@
 
 /* Default name of a new smart group */
 "[Group/Smart/New/defaultName]" = "Новая смарт-группа";
+
+/* Title of a list: all entries in the database */
+"[Group/Smart/Preset/allEntries]" = "Все записи";
+
+/* Title of a list: entries that are beyond their expiration date. */
+"[Group/Smart/Preset/expiredEntries]" = "Устаревшие записи";
+
+/* Title of a list: entries with one-time passwords (OTP) */
+"[Group/Smart/Preset/otpEntries]" = "Записи с OTP";
 
 /* Title for the Smart Group search conditions in group editor */
 "[Group/Smart/Query/title]" = "Фильтр смарт-группы";
@@ -1818,6 +1869,9 @@
 
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "Вид списка";
+
+/* Notification when corporate user tries to use a feature forbidden by organization's IT department. */
+"[Settings/Managed/BlockedFeature/notification]" = "Эта функция заблокирована вашей организацией.";
 
 /* Notification when corporate user tries to change an app setting controlled by organization's IT department. */
 "[Settings/Managed/notification]" = "Этим параметром управляет ваша организация.";

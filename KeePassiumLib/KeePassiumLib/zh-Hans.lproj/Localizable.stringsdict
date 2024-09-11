@@ -43,7 +43,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>other</key>
-			<string>%d items selected</string>
+			<string>已选择 %d 个项目</string>
 			<key>zero</key>
 			<string>%d items selected</string>
 		</dict>

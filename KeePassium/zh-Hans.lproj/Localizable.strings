@@ -79,6 +79,12 @@
 /* Action/button to set up the Password AutoFill feature. Not a call to action. */
 "[Onboarding/AutoFill/activate]" = "激活自动填充";
 
+/* Text in the Password AutoFill onboarding screen. */
+"[Onboarding/AutoFill/text1]" = "使用自动填充功能，您可以一键轻松搞定登录页面。";
+
+/* Text in the Password AutoFill onboarding screen. */
+"[Onboarding/AutoFill/text2]" = "首先，在系统设置中激活密码自动填充。";
+
 /* Title of the Password AutoFill onboarding screen */
 "[Onboarding/AutoFill/title]" = "密码自动填充";
 
@@ -145,6 +151,9 @@
 /* Title of a screen to check which passwords are known to be compromised. */
 "[PasswordAudit/title]" = "密码检查器";
 
+/* Menu action to add a user-provided word list file to the app. */
+"[PasswordGenerator/Wordlist/Import/menuAction]" = "导入词表…";
+
 /* Password quality description. For example: `Password quality: Weak`. [level: String] */
 "[PasswordQuality/description]" = "密码安全性：%@";
 
@@ -159,6 +168,9 @@
 
 /* Weak password quality */
 "[PasswordQuality/Level] Weak" = "较差";
+
+/* Password quality description. Note the tilda that refers to an estimated/approximate value. For example: `Very good (~123 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithApproximateEntropy/description]" = "%1$@（熵值约为 %2$@）";
 
 /* Password quality description. For example: `Very good (234 bits of entropy)`. [level: String, formattedBitCount: String] */
 "[PasswordQuality/LevelWithEntropy/description]" = "%1$@ (%2$@ 熵值)";
@@ -180,6 +192,12 @@
 
 /* Title of the tag creation dialog */
 "[Tags/Create/title]" = "新建标签";
+
+/* Question to confirm global deletion */
+"[Tags/Delete/Confirm/message]" = "是否从所有组和条目中删除此标签？";
+
+/* Title of a dialog for editing a tag */
+"[Tags/Edit/title]" = "编辑标签";
 
 /* Status message with a call to action */
 "[Tags/None/placeholder]" = "数据库中没有标签，请添加一些。";

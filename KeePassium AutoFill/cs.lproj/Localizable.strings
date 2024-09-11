@@ -7,11 +7,41 @@
 /* Must match Apple's translation, as found in iOS 15 Settings → Passwords → AutoFill Passwords. If unsure, leave untranslated. */
 "[AutoFill/Setup/UncheckKeychain/allowFillingFrom]" = "Povolit vyplňování z:";
 
+/* Call to action: deselect the `Keychain` option. Keychain is a glossary term. */
+"[AutoFill/Setup/UncheckKeychain/callToAction]" = "Odškrtněte Klíčenku";
+
+/* Instruction to deselect the `Keychain` option. Keychain is a glossary term. */
+"[AutoFill/Setup/UncheckKeychain/message]" = "Pokud chcete, aby byl KeePassium výchozím správcem hesel, zrušte zaškrtnutí Klíčenky.";
+
 /* Must match Apple's translation, as found in iOS 17 Settings → Passwords → Password Options. If unsure, leave untranslated. */
 "[AutoFill/Setup/UncheckKeychain/usePasswordsAndPasskeysFrom]" = "Používat hesla a přístupové klíče z:";
 
 /* Apple Keychain software; is a glossary term. */
 "[Generic/Keychain/title]" = "Klíčenka";
+
+/* Menu action to add a user-provided word list file to the app. */
+"[PasswordGenerator/Wordlist/Import/menuAction]" = "Importovat seznam slov…";
+
+/* Password quality description. For example: `Password quality: Weak`. [level: String] */
+"[PasswordQuality/description]" = "Kvalita hesla: %@";
+
+/* Good password quality */
+"[PasswordQuality/Level] Good" = "Dobré";
+
+/* Very good password quality */
+"[PasswordQuality/Level] Very good" = "Velmi dobré";
+
+/* Very weak password quality */
+"[PasswordQuality/Level] Very weak" = "Velmi slabé";
+
+/* Weak password quality */
+"[PasswordQuality/Level] Weak" = "Slabé";
+
+/* Password quality description. Note the tilda that refers to an estimated/approximate value. For example: `Very good (~123 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithApproximateEntropy/description]" = "%1$@ (~%2$@ entropie)";
+
+/* Password quality description. For example: `Very good (234 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithEntropy/description]" = "%1$@ (%2$@ entropie)";
 
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "Ukázat heslo";

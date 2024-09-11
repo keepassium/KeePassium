@@ -4,57 +4,91 @@
 <dict>
 	<key>[Generic/Count/Bits]</key>
 	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@GenericCountBits@</string>
 		<key>GenericCountBits</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>few</key>
+			<string>%d bity</string>
+			<key>many</key>
+			<string>%d bitu</string>
+			<key>one</key>
+			<string>%d bit</string>
+			<key>other</key>
+			<string>%d bitů</string>
 			<key>zero</key>
 			<string>%d bits</string>
-			<key>one</key>
-			<string>%d bit</string>
-			<key>other</key>
-			<string>%d bits</string>
 		</dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@GenericCountBits@</string>
 	</dict>
 	<key>[Generic/Count/EntriesSelected]</key>
 	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@GenericCountEntriesSelected@</string>
 		<key>GenericCountEntriesSelected</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>few</key>
+			<string>Vybrány %d záznamy</string>
+			<key>many</key>
+			<string>Vybráno %d záznamu</string>
+			<key>one</key>
+			<string>Vybrán %d záznam</string>
+			<key>other</key>
+			<string>Vybráno %d záznamů</string>
 			<key>zero</key>
 			<string>%d entries selected</string>
-			<key>one</key>
-			<string>%d entry selected</string>
-			<key>other</key>
-			<string>%d entries selected</string>
 		</dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@GenericCountEntriesSelected@</string>
+	</dict>
+	<key>[Generic/Count/ItemsSelected]</key>
+	<dict>
+		<key>GenericCountItemsSelected</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>few</key>
+			<string>Vybrány %d položky</string>
+			<key>many</key>
+			<string>Vybráno %d položky</string>
+			<key>one</key>
+			<string>Vybrána %d položka</string>
+			<key>other</key>
+			<string>Vybráno %d položek</string>
+			<key>zero</key>
+			<string>%d items selected</string>
+		</dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@GenericCountItemsSelected@</string>
 	</dict>
 	<key>[Generic/Count/Threads]</key>
 	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@GenericCountThreads@</string>
 		<key>GenericCountThreads</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>few</key>
+			<string>%d vlákna</string>
+			<key>many</key>
+			<string>%d vlákna</string>
+			<key>one</key>
+			<string>%d vlákno</string>
+			<key>other</key>
+			<string>%d vláken</string>
 			<key>zero</key>
 			<string>%d threads</string>
-			<key>one</key>
-			<string>%d thread</string>
-			<key>other</key>
-			<string>%d threads</string>
 		</dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@GenericCountThreads@</string>
 	</dict>
 </dict>
 </plist>

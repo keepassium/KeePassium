@@ -4,6 +4,9 @@
 /* Hint shown when both password and key file are empty. */
 "[Database/Create] Please enter a password or choose a key file." = "Prosím, zadejte heslo nebo vyberte soubor s klíčem.";
 
+/* Notification for business users when they set up too weak database password. */
+"[Database/Create/orgRequiresStronger]" = "Vaše organizace vyžaduje složitější heslo k databázi.";
+
 /* Note for a sample entry */
 "[Database/Create/TemplateEntry/notes] You can also store some notes, if you like." = "Zde si můžete přidat libovolné poznámky, pokud chcete.";
 
@@ -52,6 +55,9 @@
 /* Title of entry viewer's tab with previous revisions of the entry */
 "[Entry/Tab/History/title]" = "Historie";
 
+/* Title of entry viewer's tab with advanced/secondary properties */
+"[Entry/Tab/More/title]" = "Další";
+
 /* Menu title. For example: `About KeePassium`. [appName: String] */
 "[Menu/About/title]" = "O aplikaci %@";
 
@@ -64,12 +70,150 @@
 /* Action/button to set up the App Protection feature. Not a call to action. */
 "[Onboarding/AppProtection/activate]" = "Zapnout zámek";
 
+/* Text in the App Protection onboarding screen. */
+"[Onboarding/AppProtection/text1]" = "KeePassium je váš trezor. Zabezpečení aplikace zajišťuje, že ji můžete otevřít jen vy.";
+
+/* Title of the App Protection onboarding screen */
+"[Onboarding/AppProtection/title]" = "Pouze pro Vaše oči";
+
 /* Action/button to set up the Password AutoFill feature. Not a call to action. */
 "[Onboarding/AutoFill/activate]" = "Aktivovat Automatické Vyplňování";
+
+/* Text in the Password AutoFill onboarding screen. */
+"[Onboarding/AutoFill/text1]" = "Pomocí funkce Automatické vyplňování můžete rychle procházet přihlašovací stránky jediným stisknutím tlačítka.";
+
+/* Text in the Password AutoFill onboarding screen. */
+"[Onboarding/AutoFill/text2]" = "Pro začátek v nastavení systému aktivujte funkci Automatické vyplňování hesel.";
+
+/* Title of the Password AutoFill onboarding screen */
+"[Onboarding/AutoFill/title]" = "Automatické vyplňování hesla";
 
 /* Action/button */
 "[Onboarding/CreateNewDatabase/action]" = "Vytvořit novou databázi";
 
+/* Text in the Data Encryption intro screen */
+"[Onboarding/DataEncryption/text1]" = "Vaše bezpečnostní schránka je šifrovaná databáze.";
+
+/* Text in the Data Encryption intro screen */
+"[Onboarding/DataEncryption/text2]" = "Databáze můžete uchovávat ve svém oblíbeném cloudu nebo lokálně v zařízení.";
+
+/* Title of the Data Encryption intro screen */
+"[Onboarding/DataEncryption/title]" = "Šifrování dat";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text1]" = "KeePassium uchovává vaše hesla a další citlivé informace bezpečně zašifrované.";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text2]" = "Nejsou zde žádné reklamy ani monitorování.";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text3]" = "Nic o vás nevíme.";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text4]" = "Vaše data patří vám.";
+
+/* Title of the introductory onboarding screen. */
+"[Onboarding/Intro/title]" = "Vítáme vás";
+
+/* Text in the Security intro screen */
+"[Onboarding/Security/text1]" = "Vaše informace jsou zašifrovány v bezpečnostní schránce (databázi). Bezpečnostní schránky jsou uloženy v trezoru (KeePassium).";
+
+/* Text in the Security intro screen */
+"[Onboarding/Security/text2]" = "Trezor a bezpečnostní schránky mají různé klíče, které znáte pouze vy.";
+
+/* Title of the Security intro screen */
+"[Onboarding/Security/title]" = "Maximální zabezpečení";
+
+/* Action to skip selected item/items in future password audits. */
+"[PasswordAudit/Action/Exclude]" = "Vyloučit z auditu";
+
+/* Status message: password audit in progress */
+"[PasswordAudit/Auditing/status]" = "Probíhá audit hesel";
+
+/* Error message after a failed password audit request [message: String]. */
+"[PasswordAudit/Error/text]" = "Při komunikaci se službou HIBP došlo k chybě. %@";
+
+/* Description of the password audit results, where a number appears next to each password. */
+"[PasswordAudit/ExposureCount/description]" = "Číslo ukazuje, kolikrát bylo heslo nalezeno ve známých únicích dat.";
+
+/* Description of the Password Audit function. */
+"[PasswordAudit/Intro/text]" = "Audit hesel bezpečným a diskrétním způsobem kontroluje hesla vůči online databázi uniklých hesel.\n\nKeePassium odešle informaci vypočítanou z vašich hesel – něco jako částečný kontrolní součet – službě [Have I Been Pwned](https://haveibeenpwned.com). Služba vrátí podrobné informace o kompromitovaných heslech s podobnými kontrolními součty. Aplikace pak lokálně v zařízení porovná podrobné kontrolní součty a zjistí, která z vašich hesel jsou ohrožena.\n\nVaše skutečná hesla nejsou s online službou nikdy sdílena.\n[Další informace…](%@)";
+
+/* Result of a password audit. */
+"[PasswordAudit/Results/allGood]" = "Dobré zprávy! Žádné z vašich hesel se neobjevilo ve známých únicích dat.";
+
+/* Title of a list with passwords that are known to have been exposed in online breaches. */
+"[PasswordAudit/Results/title]" = "Kompromitovaná hesla";
+
+/* Action/button: intiate password audit */
+"[PasswordAudit/Start/action]" = "Zahájit audit";
+
+/* Title of a screen to check which passwords are known to be compromised. */
+"[PasswordAudit/title]" = "Audit hesel";
+
+/* Menu action to add a user-provided word list file to the app. */
+"[PasswordGenerator/Wordlist/Import/menuAction]" = "Importovat seznam slov…";
+
+/* Password quality description. For example: `Password quality: Weak`. [level: String] */
+"[PasswordQuality/description]" = "Kvalita hesla: %@";
+
+/* Good password quality */
+"[PasswordQuality/Level] Good" = "Dobré";
+
+/* Very good password quality */
+"[PasswordQuality/Level] Very good" = "Velmi dobré";
+
+/* Very weak password quality */
+"[PasswordQuality/Level] Very weak" = "Velmi slabé";
+
+/* Weak password quality */
+"[PasswordQuality/Level] Weak" = "Slabé";
+
+/* Password quality description. Note the tilda that refers to an estimated/approximate value. For example: `Very good (~123 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithApproximateEntropy/description]" = "%1$@ (~%2$@ entropie)";
+
+/* Password quality description. For example: `Very good (234 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithEntropy/description]" = "%1$@ (%2$@ entropie)";
+
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "Ukázat heslo";
+
+/* Title of the confirmation dialog for `Delete` action for several items */
+"[Selection/Delete/confirmation]" = "Odstranit výběr?";
+
+/* Title of the confirmation dialog for `Exclude from audit` action for several items */
+"[Selection/ExcludeFromAudit/confirmation]" = "Vyloučit výběr z auditu hesel?";
+
+/* Action/button to create a new item tag */
+"[Tags/Create/action]" = "Vytvořit štítek";
+
+/* Call to action/hint inside a text input */
+"[Tags/Create/placeholder]" = "Zadejte název štítku";
+
+/* Title of the tag creation dialog */
+"[Tags/Create/title]" = "Nový štítek";
+
+/* Question to confirm global deletion */
+"[Tags/Delete/Confirm/message]" = "Odstranit tento štítek ze všech skupin a záznamů?";
+
+/* Title of a dialog for editing a tag */
+"[Tags/Edit/title]" = "Upravit štítek";
+
+/* Status message with a call to action */
+"[Tags/None/placeholder]" = "V databázi nejsou žádné štítky. Přidejte je.";
+
+/* Status message: tag search result is empty */
+"[Tags/Search/emptyResult]" = "Nebyly nalezeny žádné vhodné štítky.";
+
+/* Title of a list with all the tags existing in the database. */
+"[Tags/Section/All]" = "Všechny štítky";
+
+/* Title of a list with tags used by parent groups. */
+"[Tags/Section/Inherited]" = "Převzaté štítky";
+
+/* Title of a list with tags chosen by the user for a specific entry or group. */
+"[Tags/Section/Selected]" = "Vybrané štítky";
+
+/* Title: the number of times a tag is encountered in the database. */
+"[Tags/UsageCount/title]" = "Počet použití";
 

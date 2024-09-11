@@ -10,6 +10,12 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "Activar para escuchar.";
 
+/* Action which resets the app as if it was just installed. */
+"[App/ResetEverything/action]" = "Restablecer";
+
+/* Confirmation message before resetting the app to just-installed state. */
+"[App/ResetEverything/title]" = "¿Restablecer la aplicación?";
+
 /* Section in settings: icon for the app */
 "[Appearance/AppIcon/title]" = "Icono de la aplicación";
 
@@ -196,6 +202,18 @@
 /* Info message for entries that contain information for opening a different database. */
 "[Database/Entry/LinkedDatabase/message]" = "Esta entrada apunta a otra base de datos.";
 
+/* Notification message about external changes to the loaded file. */
+"[Database/ExternalChange/notification]" = "El archivo de base de datos ha cambiado. ¿Volver a cargar?";
+
+/* Status message: checking if currently loaded database is the latest version */
+"[Database/ExternalChange/Status/checkInProgress]" = "Comprobando cambios…";
+
+/* Status message: failed to check if currently loaded database is the latest version */
+"[Database/ExternalChange/Status/failed]" = "Error al actualizar";
+
+/* Status message: currently loaded database is the latest version */
+"[Database/ExternalChange/Status/upToDate]" = "Actualizado";
+
 /* Info message when changing database file format. */
 "[Database/FormatVersion/Conversion/allDataPreserved]" = "Todos sus datos se conservarán.";
 
@@ -345,6 +363,18 @@
 
 /* File settings parameter: time after which file will be considered unreachable. Example: `Consider File Unreachable: in 10 seconds`.) */
 "[Database/Settings/ConsiderFileUnreachable/title]" = "Considerar archivo no disponible";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Don't check`) */
+"[Database/Settings/ExternalChanges/dontCheck]" = "No comprobar";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Notify`) */
+"[Database/Settings/ExternalChanges/notify]" = "Notificar";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Reload Automatically`) */
+"[Database/Settings/ExternalChanges/reload]" = "Recargar automáticamente";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Notify`) */
+"[Database/Settings/ExternalChanges/title]" = "Base de datos modificada externamente";
 
 /* Title: what to do when a cloud-stored file cannot be loaded. (For example: `If File is Unreachable: Re-add File`.) */
 "[Database/Settings/FallbackStrategy/ReAddFile/title]" = "Volver a añadir archivo";
@@ -630,6 +660,9 @@
 
 /* Name of an entry field */
 "[Entry/Field/name] User Name" = "Nombre de usuario";
+
+/* Title of a setting: whether the entry's field is protected (shown as asterisks). */
+"[Entry/Field/Protected/title]" = "Campo Protegido";
 
 /* Name of an entry field */
 "[Entry/Field/tags] Tags" = "Etiquetas";
@@ -1027,6 +1060,9 @@
 /* Title of a menu with various utilities */
 "[Generic/Tools/title]" = "Herramientas";
 
+/* Action/button to open an online support article (about a specific error) */
+"[Generic/ViewHelpArticle/action]" = "Ver artículo de ayuda";
+
 /* Title of a screen/list view configuration: sort order, visible items, etc */
 "[Generic/ViewOptions/title]" = "Opciones de visualización";
 
@@ -1057,6 +1093,12 @@
 /* Title of the confirmation dialog for `Empty Recycle Bin` action */
 "[Group/RecycleBin/Empty/confirmTitle]" = "¿Eliminar permanentemente todo lo que hay en la Papelera de reciclaje?";
 
+/* Title of the Entries section visible while editing */
+"[Group/Section/Entries/title]" = "Entradas";
+
+/* Title of the Groups section visible while editing */
+"[Group/Section/Groups/title]" = "Grupos";
+
 /* VoiceOver description of a smart group [groupTitle: String] */
 "[Group/Smart/a11y/description]" = "%@, Grupo inteligente";
 
@@ -1068,6 +1110,15 @@
 
 /* Default name of a new smart group */
 "[Group/Smart/New/defaultName]" = "Nuevo Grupo inteligente";
+
+/* Title of a list: all entries in the database */
+"[Group/Smart/Preset/allEntries]" = "Todas las entradas";
+
+/* Title of a list: entries that are beyond their expiration date. */
+"[Group/Smart/Preset/expiredEntries]" = "Entradas caducadas";
+
+/* Title of a list: entries with one-time passwords (OTP) */
+"[Group/Smart/Preset/otpEntries]" = "Entradas con OTP";
 
 /* Title for the Smart Group search conditions in group editor */
 "[Group/Smart/Query/title]" = "Filtro de Grupo inteligente";
@@ -1818,6 +1869,9 @@
 
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "Ajustes de lista";
+
+/* Notification when corporate user tries to use a feature forbidden by organization's IT department. */
+"[Settings/Managed/BlockedFeature/notification]" = "Esta función está bloqueada por su organización.";
 
 /* Notification when corporate user tries to change an app setting controlled by organization's IT department. */
 "[Settings/Managed/notification]" = "Este ajuste está administrado por su organización.";

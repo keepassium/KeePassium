@@ -10,6 +10,12 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "有効にする。";
 
+/* Action which resets the app as if it was just installed. */
+"[App/ResetEverything/action]" = "リセット";
+
+/* Confirmation message before resetting the app to just-installed state. */
+"[App/ResetEverything/title]" = "アプリをリセットしますか？";
+
 /* Section in settings: icon for the app */
 "[Appearance/AppIcon/title]" = "Appのアイコン";
 
@@ -54,6 +60,9 @@
 
 /* Type of keyboard to show for App Lock passcode: digits only (PIN code). */
 "[AppLock/Passcode/KeyboardType/title] Numeric" = "数字";
+
+/* Notification for business users when they set up too weak app protection passcode. */
+"[AppLock/Passcode/orgRequiresStonger]" = "あなたの組織では、より複雑なパスコードが必要です。";
 
 /* Hint/call to action about keyboard shortcut */
 "[AppLock/Passcode/pressEscForTouchID]" = "Escを押してTouch IDを使用";
@@ -163,8 +172,47 @@
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "データベースを削除しますか？\n バックアップがあることを確認してください。";
 
+/* Action to modify database encryption settings. */
+"[Database/EncryptionSettings/Change/action]" = "暗号化設定を変更";
+
+/* Parameter name in database encryption settings. Example: 'Encryption Algorithm: AES-256' */
+"[Database/EncryptionSettings/dataCipher]" = "暗号化アルゴリズム";
+
+/* Parameter name in database encryption settings. Defines the number of times/iterations a calculation (transform) should be executed. Example: 'Transform Rounds: 100' */
+"[Database/EncryptionSettings/iterations]" = "変換のラウンド数";
+
 /* Parameter name in database encryption settings. This is a term, see https://en.wikipedia.org/wiki/Key_derivation_function. Example: 'Key Derivation Function: Argon2' */
 "[Database/EncryptionSettings/kdf]" = "鍵導出関数";
+
+/* Parameter name in database encryption settings. Defines the amount of memory that should be used by an algorithm. Example: 'Memory Usage: 16 MB' */
+"[Database/EncryptionSettings/memory]" = "メモリ使用量";
+
+/* Warning for too high value of the `Memory usage` parameter in database encryption settings. */
+"[Database/EncryptionSettings/memoryAutoFillWarning]" = "高いメモリ要件により、このデータベースはパスワードの自動入力に利用できません。";
+
+/* Action/button button in database encryption settings. Resets the settings to recommended values. */
+"[Database/EncryptionSettings/reset]" = "初期設定値にリセット";
+
+/* Parameter name in database encryption settings. Defines the number of computations to run in parallel/simultaneously. Example: 'Parallelism: 2 threads' */
+"[Database/EncryptionSettings/threads]" = "並列処理";
+
+/* Title: database encryption settings. */
+"[Database/EncryptionSettings/title]" = "暗号化の設定";
+
+/* Info message for entries that contain information for opening a different database. */
+"[Database/Entry/LinkedDatabase/message]" = "このエントリは別のデータベースとリンクしています。";
+
+/* Notification message about external changes to the loaded file. */
+"[Database/ExternalChange/notification]" = "データベースファイルが変更されました。再読み込みしますか？";
+
+/* Status message: checking if currently loaded database is the latest version */
+"[Database/ExternalChange/Status/checkInProgress]" = "変更を確認中です…";
+
+/* Status message: failed to check if currently loaded database is the latest version */
+"[Database/ExternalChange/Status/failed]" = "更新に失敗しました";
+
+/* Status message: currently loaded database is the latest version */
+"[Database/ExternalChange/Status/upToDate]" = "最新の状態です";
 
 /* Info message when changing database file format. */
 "[Database/FormatVersion/Conversion/allDataPreserved]" = "データはすべて保存されます。";
@@ -175,11 +223,17 @@
 /* Title of an info message when the app needs to change database file format. */
 "[Database/FormatVersion/Upgrade/title]" = "続ける前に";
 
+/* Title of an icon collection: icons provided by the system */
+"[Database/IconSet/System/title]" = "システム";
+
 /* Status of a database item (entry or group) after it was edited. */
 "[Database/Item/Edited/state]" = "編集済み";
 
 /* Notification when user tries to copy data from KDBX to older KDB database. */
 "[Database/LesserTargetFormat/warning]" = "これは古いデータベース形式です。一部のデータが失われる可能性があります。";
+
+/* Recommendation for solving a problem with a list of files. */
+"[Database/List/LocalMissing/message]" = "ローカルファイルが表示されていない場合は、一度KeePassiumを起動してください。";
 
 /* Title of the database picker list */
 "[Database/List/title]" = "データベース";
@@ -232,6 +286,9 @@
 /* Glossary term: noun, a master key for encrypting the database */
 "[Database/MasterKey/title]" = "マスターキー";
 
+/* Title of database creation dialog */
+"[Database/New/title]" = "新規データベース";
+
 /* Action/button */
 "[Database/Open/action] Open Database" = "データベースを開く";
 
@@ -262,6 +319,9 @@
 /* Progress status */
 "[Database/Progress] Loading key file..." = "キーファイルを読み込み中...";
 
+/* Database loading/saving status: checking whether our database was modified from another device. */
+"[Database/Progress/checkingDatabaseForModifications]" = "データベースの変更を確認中...";
+
 /* Database loading status: fetching the database file from disk/cloud */
 "[Database/Progress/downloading]" = "データベースをダウンロード中...";
 
@@ -273,6 +333,12 @@
 
 /* Database loading/saving status: replacing field references with their values */
 "[Database/Progress/resolvingFieldReferences]" = "フィールド参照を解決しています…";
+
+/* Database saving status: deciding how to handle conflicting changes. */
+"[Database/Progress/resolvingSyncConflict]" = "同期の競合を解消中...";
+
+/* Database saving status */
+"[Database/Progress/writingDatabaseFile]" = "データベースファイルを書き込み中...";
 
 /* Suggested solution/call to action when intermediate sync app fails. */
 "[Database/RecommendRemote/callToAction]" = "KeePassiumから直接リモートストレージに接続してみてください。";
@@ -286,6 +352,9 @@
 /* Action/button to save the current database. */
 "[Database/Save/action] Save Database" = "保存";
 
+/* Action/button to save file to a remote server. */
+"[Database/SaveToServer/action]" = "サーバーに保存";
+
 /* Status message: finished saving a database */
 "[Database/Saving/Status] Done" = "完了";
 
@@ -294,6 +363,18 @@
 
 /* File settings parameter: time after which file will be considered unreachable. Example: `Consider File Unreachable: in 10 seconds`.) */
 "[Database/Settings/ConsiderFileUnreachable/title]" = "アクセスを試行";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Don't check`) */
+"[Database/Settings/ExternalChanges/dontCheck]" = "確認しない";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Notify`) */
+"[Database/Settings/ExternalChanges/notify]" = "通知する";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Reload Automatically`) */
+"[Database/Settings/ExternalChanges/reload]" = "自動的に再読み込みする";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Notify`) */
+"[Database/Settings/ExternalChanges/title]" = "外部から変更されたデータベース";
 
 /* Title: what to do when a cloud-stored file cannot be loaded. (For example: `If File is Unreachable: Re-add File`.) */
 "[Database/Settings/FallbackStrategy/ReAddFile/title]" = "ファイルを再追加";
@@ -559,6 +640,9 @@
 /* Action: copy a reference to the selected entry field to clipboard */
 "[Entry/Field/CopyReference/action]" = "項目の参照をコピー";
 
+/* Action: display text using large font */
+"[Entry/Field/LargeType/action]" = "大きな文字で表示";
+
 /* Name of an entry field */
 "[Entry/Field/name] Icon" = "アイコン";
 
@@ -577,26 +661,35 @@
 /* Name of an entry field */
 "[Entry/Field/name] User Name" = "ユーザー名";
 
+/* Title of a setting: whether the entry's field is protected (shown as asterisks). */
+"[Entry/Field/Protected/title]" = "保護されたフィールド";
+
+/* Name of an entry field */
+"[Entry/Field/tags] Tags" = "タグ";
+
 /* Status message: loading file to be attached to an entry */
 "[Entry/Files/Add] Loading attachment file" = "添付ファイルを読み込み中";
 
 /* Title of a field with entry creation date and time */
-"[Entry/History] Creation Date" = "作成日";
+"[Entry/History] Creation Date" = "作成日時";
 
 /* Title of a field with date and time when the entry will no longer be valid. 'Never' is also a possible value */
 "[Entry/History] Expiry Date" = "有効期限";
 
 /* Title of a field with date and time when the entry was last accessed/viewed */
-"[Entry/History] Last Access Date" = "最終アクセス日";
+"[Entry/History] Last Access Date" = "最終アクセス日時";
 
 /* Title of a field with entry's last modification date and time */
-"[Entry/History] Last Modification Date" = "変更日";
+"[Entry/History] Last Modification Date" = "最終更新日時";
+
+/* Title of a field with entry's modification date and time */
+"[Entry/History] Modification Date" = "更新日時";
 
 /* Title of a list with previous versions/revisions of an entry. */
 "[Entry/History] Previous Versions" = "以前のバージョン";
 
 /* Expiry Date of an entry which does not expire. */
-"[Entry/History/ExpiryDate] Never" = "しない";
+"[Entry/History/ExpiryDate] Never" = "なし";
 
 /* Default title of a new entry */
 "[Entry/New/defaultTitle] New Entry" = "新規エントリー";
@@ -631,6 +724,9 @@
 /* Error message shown when there's internal inconsistency in KeePassium. */
 "[FileAccessError/internalError]" = "KeePassium内部エラーです。サポートにお問い合わせください。";
 
+/* Error message: organization's IT administrator has forbidden access to a data storage location. */
+"[FileAccessError/ManagedAccessDenied/title]" = "このストレージへのアクセスは組織によって無効になっています。";
+
 /* Error message: network access is forbidden by system or app settings. */
 "[FileAccessError/NetworkAccessDenied/generic]" = "ネットワークアクセスは設定によってブロックされています。";
 
@@ -661,6 +757,15 @@
 /* Error message: file provider does not respond to requests (quickly enough). For example: `Google Drive does not respond` */
 "[FileAccessError/Timeout/knownFileProvider]" = "%@ は応答しません。";
 
+/* Section header for attributes of a file (e.g. hidden, excluded from backup, etc) */
+"[FileInfo/Attributes/header]" = "ファイル属性";
+
+/* Title of a setting: is the file hidden */
+"[FileInfo/Attributes/Hidden/title]" = "非表示";
+
+/* Warning message for 'hidden' files. */
+"[FileInfo/Attributes/Hidden/warning]" = "ファイルの非表示は、ユーザーには見えにくくなりますがセキュリティは向上しません。";
+
 /* Section header: file backup settings */
 "[FileInfo/Backup/header]" = "バックアップ";
 
@@ -668,7 +773,7 @@
 "[FileInfo/Error/failed to change attributes]" = "ファイル属性の更新に失敗しました。";
 
 /* Field title */
-"[FileInfo/Field/title] Creation Date" = "作成日";
+"[FileInfo/Field/title] Creation Date" = "作成日時";
 
 /* Field title */
 "[FileInfo/Field/title] File Location" = "ファイルの場所";
@@ -680,7 +785,7 @@
 "[FileInfo/Field/title] File Size" = "ファイルサイズ";
 
 /* Field title */
-"[FileInfo/Field/title] Last Modification Date" = "変更日";
+"[FileInfo/Field/title] Last Modification Date" = "最終更新日時";
 
 /* Title of a field with an error message */
 "[FileInfo/Field/valueError] Error" = "エラー";
@@ -765,6 +870,9 @@
 
 /* Localized name of the storage app: Seafile Pro (https://apps.apple.com/us/app/seafile-pro/id639202512) */
 "[FileProvider/Seafile Pro/name]" = "Seafile Pro";
+
+/* Localized name of the storage app: Secure ShellFish (https://apps.apple.com/app/ssh-files-secure-shellfish/id1336634154) */
+"[FileProvider/Secure ShellFish/name]" = "Secure ShellFish";
 
 /* Localized name of the storage service: SMB server (network share) via native iOS integration. */
 "[FileProvider/SMB/name]" = "SMBサーバー";
@@ -895,6 +1003,9 @@
 /* Action/button to skip the current step and proceed with the next one */
 "[Generic] Skip" = "スキップ";
 
+/* Action/button to change the order of items in a list (move them higher/lower). */
+"[Generic/Action/ReorderItems]" = "並べ替え";
+
 /* Action/button to select some items in a list. */
 "[Generic/Action/SelectItems]" = "選択";
 
@@ -931,6 +1042,9 @@
 /* Title of a list with predefined quick-choice values (for example: 'Presets: 1 week, 1 months, 1 year') */
 "[Generic/Presets]" = "プリセット";
 
+/* Action: refresh list of items, usually files */
+"[Generic/RefreshList/action]" = "リストを更新";
+
 /* Title of a search field (a noun, not verb) */
 "[Generic/Search/title]" = "検索";
 
@@ -943,8 +1057,17 @@
 /* Title of an warning message */
 "[Generic/title] Warning" = "警告";
 
+/* Title of a menu with various utilities */
+"[Generic/Tools/title]" = "ツール";
+
+/* Action/button to open an online support article (about a specific error) */
+"[Generic/ViewHelpArticle/action]" = "ヘルプ記事を表示";
+
 /* Title of a screen/list view configuration: sort order, visible items, etc */
 "[Generic/ViewOptions/title]" = "表示オプション";
+
+/* Warning message template. Swap the icon and message for right-to-left languages. */
+"[Generic/WarningWithIcon/template]" = "⚠️ %@";
 
 /* VoiceOver description of a group [groupTitle: String, itemCount: Int] */
 "[Group/a11y/description]" = "%@, グループ";
@@ -954,6 +1077,9 @@
 
 /* Title of a form for editing a group */
 "[Group/Edit/title] Edit Group" = "グループを編集";
+
+/* VoiceOver description of a menu with group-related actions */
+"[Group/Menu/a11y/title]" = "グループメニュー";
 
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "新規グループ";
@@ -967,6 +1093,39 @@
 /* Title of the confirmation dialog for `Empty Recycle Bin` action */
 "[Group/RecycleBin/Empty/confirmTitle]" = "ゴミ箱の内容を完全に削除しますか？";
 
+/* Title of the Entries section visible while editing */
+"[Group/Section/Entries/title]" = "エントリー";
+
+/* Title of the Groups section visible while editing */
+"[Group/Section/Groups/title]" = "グループ";
+
+/* VoiceOver description of a smart group [groupTitle: String] */
+"[Group/Smart/a11y/description]" = "%@, スマートグループ";
+
+/* Action/button to show a help article */
+"[Group/Smart/about]" = "スマートグループについて…";
+
+/* Action/button to create a new Smart Group */
+"[Group/Smart/Create/action]" = "スマートグループを作成";
+
+/* Default name of a new smart group */
+"[Group/Smart/New/defaultName]" = "新規スマートグループ";
+
+/* Title of a list: all entries in the database */
+"[Group/Smart/Preset/allEntries]" = "すべてのエントリー";
+
+/* Title of a list: entries that are beyond their expiration date. */
+"[Group/Smart/Preset/expiredEntries]" = "期限切れのエントリー";
+
+/* Title of a list: entries with one-time passwords (OTP) */
+"[Group/Smart/Preset/otpEntries]" = "OTPを使用したエントリー";
+
+/* Title for the Smart Group search conditions in group editor */
+"[Group/Smart/Query/title]" = "スマートグループフィルター";
+
+/* Glossary term: noun, a smart group in database. */
+"[Group/Smart/title]" = "スマートグループ";
+
 /* Glossary term: noun, a group in database. */
 "[Group/title]" = "グループ";
 
@@ -976,8 +1135,17 @@
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "ハードウェアキーは自動入力では使用できません。";
 
+/* Information notice for a list of hardware keys. */
+"[HardwareKey/AutoFill/TheseNotAvailable]" = "ハードウェアキーは自動入力では使用できません。";
+
 /* Name of an input field which shows selected hardware key */
 "[HardwareKey/Field/title]" = "ハードウェアキー";
+
+/* Connector type for older Apple devices, used through a USB adapter. https://en.wikipedia.org/wiki/Lightning_(connector) */
+"[HardwareKey/Interface/LightningViaUSBAdapter]" = "Lightning (USB アダプター経由)";
+
+/* A notice for hardware keys that need an adapter for physical connection to device. */
+"[HardwareKey/LightningOverUSB/RequiresAdapter]" = "Apple USB-C - Lightningアダプタが必要です";
 
 /* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
 "[HardwareKey/NFC/OS too old]" = "NFCはiOS 13以降が必要です。";
@@ -987,6 +1155,12 @@
 
 /* Title of a list with possible hardware key connections */
 "[HardwareKey/Picker/title]" = "ハードウェアキー";
+
+/* Information notice. 'Challenge-response' is a glossary term. */
+"[HardwareKey/USB/chalRespNotSupported]" = "このデバイスはUSB接続によるチャレンジ-レスポンスをサポートしていません。";
+
+/* Information notice */
+"[HardwareKey/USB/iPadAppOnMac]" = "macOS上で動作するiPadアプリのためUSBは利用できません。ネイティブのMacアプリを使用してください。";
 
 /* Master key/unlock option: use given slot of YubiKey */
 "[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey スロット %d";
@@ -1010,19 +1184,40 @@
 "[Item/Properties/Advanced/title]" = "高度な設定";
 
 /* Possible value of the `Password AutoFill` setting. For example: 'Password AutoFill: Allowed' */
-"[Item/Properties/AutoFill/allowed]" = "任意";
+"[Item/Properties/AutoFill/allowed]" = "オン";
+
+/* Possible value of the `Password AutoFill` setting. For example: 'Password AutoFill: Disabled' */
+"[Item/Properties/AutoFill/disabled]" = "オフ";
+
+/* Title of a setting: whether the item (e.g. entry) should be used in AutoFill feature. App-specific setting for KeePassXC. */
+"[Item/Properties/AutoFill/KeePassXC/title]" = "パスワードの自動入力 (KeePassXC)";
+
+/* Title of a setting: whether the item (e.g. entry) should be used in AutoFill feature */
+"[Item/Properties/AutoFill/title]" = "パスワードの自動入力";
+
+/* Default value of an item property. For example: 'Password Audit: Inherit from parent group (Allowed)'. [inheritedValue: String] */
+"[Item/Properties/inheritedValue]" = "親グループから継承 (%@)";
 
 /* Possible value of the `Password Audit` setting. For example: 'Password Audit: Allowed' */
-"[Item/Properties/PasswordAudit/allowed]" = "任意";
+"[Item/Properties/PasswordAudit/allowed]" = "オン";
+
+/* Possible value of the `Password Audit` setting. For example: 'Password Audit: Disabled' */
+"[Item/Properties/PasswordAudit/disabled]" = "オフ";
 
 /* Title of a setting: whether the item (e.g. entry) should be included in password audit */
 "[Item/Properties/PasswordAudit/title]" = "パスワードの監査";
 
 /* Possible value of the `Search` setting. Example: 'Search: Allowed' */
-"[Item/Properties/Search/allowed]" = "任意";
+"[Item/Properties/Search/allowed]" = "オン";
+
+/* Possible value of the `Search` setting, when the item should be excluded from search results. Example: 'Search: Disabled' */
+"[Item/Properties/Search/disabled]" = "オフ";
 
 /* Title of a setting: whether the item (e.g. entry) should be considered during search. Example: 'Search: Allowed' */
 "[Item/Properties/Search/title] Search" = "検索";
+
+/* Title of a list with item (e.g. entry) properties/settings, such as searchability, auto-typing, etc */
+"[Item/Properties/title]" = "設定";
 
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "デフォルト (KeePass)";
@@ -1042,14 +1237,32 @@
 /* Error message about system keychain. */
 "[KeychainError/unexpectedFormat] Keychain error: unexpected data format" = "キーチェーンエラー: 予期しないデータ形式";
 
+/* Action: create new key file. */
+"[KeyFile/Create/action]" = "キーファイルを作成";
+
+/* Default name for new key files. Should match the `key file` term in the glossary. */
+"[KeyFile/Create/defaultName]" = "keyfile.dat";
+
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "キーファイルを削除しますか？\n バックアップがあることを確認してください。";
 
 /* Name of an input field which shows selected key file */
 "[KeyFile/Field/title]" = "キーファイル";
 
+/* Action: import/add a key file into the app. `Key file` is a glossary term. */
+"[KeyFile/Import/action]" = "キーファイルを読み込む";
+
+/* Description of the `Import Key File` action. */
+"[KeyFile/Import/actionDescription]" = "Appにファイルを追加";
+
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
 "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "キーファイルを一覧から削除しますか？ファイルの本体はそのまま残りますので、後で再度追加できます。";
+
+/* Action: use a key file at its storage location, without importing to the app. */
+"[KeyFile/Use/action]" = "キーファイルを選択";
+
+/* Description of the `Select Key File` action. */
+"[KeyFile/Use/actionDescription]" = "追加せずに使用";
 
 /* Error message when the key file is misformatted or damaged */
 "[KeyFileError/Corrupted/title]" = "キーファイルが壊れています";
@@ -1096,6 +1309,9 @@
 /* Description of an OTP code; sentence case. */
 "[OTP/Title/sentenceCase]" = "ワンタイムパスワード";
 
+/* Action/button: accept/use the generated password */
+"[PasswordGenerator/Accept/action]" = "OK";
+
 /* Error message from the random text generator. */
 "[PasswordGenerator/CannotGenerateText/title]" = "テキストを生成できません";
 
@@ -1115,7 +1331,7 @@
 "[PasswordGenerator/GeneratedText/title]" = "テキストを生成";
 
 /* Inclusion criterion for a password generator. For example: `Digits: Allowed` */
-"[PasswordGenerator/InclusionCondition/allowed]" = "任意";
+"[PasswordGenerator/InclusionCondition/allowed]" = "使用可";
 
 /* Inclusion criterion for a password generator. For example: `Uppercase Letters: Excluded` */
 "[PasswordGenerator/InclusionCondition/excluded]" = "使用不可";
@@ -1201,6 +1417,9 @@
 /* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
 "[PasswordGenerator/Wordlist/EFFShort/title]" = "EFFのショートワードリスト #%d (1296個)";
 
+/* Error message when importing a text file [lineNumber: Int, problemDescription: String] */
+"[PasswordGenerator/Wordlist/ImportError/reason]" = "行 %1$d (%2$@) に問題があるためファイルを読み込めませんでした。";
+
 /* List of words to be used for a passphrase. */
 "[PasswordGenerator/Wordlist/title]" = "ワードリスト";
 
@@ -1212,6 +1431,12 @@
 
 /* Title of a premium feature */
 "[Premium/Benefits/HardwareKeys/title]" = "ハードウェアキーを使う";
+
+/* Explanation of the premium feature */
+"[Premium/Benefits/LinkedDatabases/details]" = "エントリに保存されている資格情報を使用して、別のデータベースを1ステップで開きます。";
+
+/* Title of a premium feature */
+"[Premium/Benefits/LinkedDatabases/title]" = "リンクされたデータベースを開く";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/MultiDB/details]" = "複数のデータベースを作って、素速く切り替えます。";
@@ -1387,6 +1612,12 @@
 /* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
 "[PremiumFeature/HardwareKeys/title] Hardware Keys" = "ハードウェアキー";
 
+/* Description/advertisement for the `Linked Databases` premium feature */
+"[PremiumFeature/LinkedDatabases/description]" = "プレミアム版にアップグレードし、リンクされたデータベースを1ステップで開きます。";
+
+/* Title of a premium feature: ability to open databases referenced in another database (In Title Case) */
+"[PremiumFeature/LinkedDatabases/title]" = "リンクされたデータベース";
+
 /* Description/advertisement for the `Multiple Databases` premium feature */
 "[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "プレミアム版ではデータベースの切り替えが簡単にできます。";
 
@@ -1438,17 +1669,41 @@
 /* Title of a section: username, password, etc */
 "[RemoteConnection/Credentials]" = "アカウント";
 
+/* Description of the `Direct connection` sync method. */
+"[RemoteConnection/Direct/description]" = "KeePassiumはオンラインストレージと直接通信します。これにより信頼性の高いファイル転送が保証されます。";
+
 /* Error message: user credentials rejected by the server */
 "[RemoteConnection/Error/AuthenticationFailed/title]" = "認証失敗";
 
 /* Network address of a file */
 "[RemoteConnection/FileURL]" = "ファイルのURL";
 
+/* Name of a predefined Google Drive folder which contains user's own files */
+"[RemoteConnection/GoogleDrive/Folder/myDrive]" = "マイドライブ";
+
+/* Name of a predefined GoogleDrive folder which contains files shared with this user */
+"[RemoteConnection/GoogleDrive/Folder/sharedWithMe]" = "共有ドライブ";
+
 /* Name of a predefined OneDrive folder which contains user's own files */
 "[RemoteConnection/OneDrive/Folder/files]" = "ファイル";
 
 /* Name of a predefined OneDrive folder which contains files shared with this user */
 "[RemoteConnection/OneDrive/Folder/sharedWithMe]" = "共有";
+
+/* Network address of a WebDAV server */
+"[RemoteConnection/ServerURL]" = "サーバーのURL";
+
+/* Action: authenticate to Dropbox account */
+"[RemoteConnection/SignIn/Dropbox/action]" = "Dropboxにサインイン";
+
+/* Error description: the user should manually sign in to their Dropbox account */
+"[RemoteConnection/SignIn/Dropbox/authorizationRequried]" = "Dropboxに再度サインインする必要があります。";
+
+/* Action: authenticate to Google Drive account */
+"[RemoteConnection/SignIn/GoogleDrive/action]" = "Google Driveにサインイン";
+
+/* Error description: the user should manually sign in to their Google Drive account */
+"[RemoteConnection/SignIn/GoogleDrive/authorizationRequried]" = "Google ドライブに再度サインインする必要があります。";
 
 /* Action: authenticate to OneDrive account */
 "[RemoteConnection/SignIn/OneDrive/action]" = "OneDriveにサインイン";
@@ -1464,6 +1719,9 @@
 
 /* Title: connection to a network storage */
 "[RemoteConnection/title]" = "リモート接続";
+
+/* Description of the `Integration via Files app` sync method. */
+"[RemoteConnection/ViaFilesApp/description]" = "KeePassium は、ストレージプロバイダーのアプリにファイル同期を委ねます。一部のアプリは他のアプリよりもうまく動作します。";
 
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "パスワードの確認";
@@ -1502,13 +1760,13 @@
 "[Settings/AppLockTimeout/fullTitle] Immediately" = "即時";
 
 /* An option in Settings. Will be shown as 'App Lock: Timeout: Never' */
-"[Settings/AppLockTimeout/fullTitle] Never" = "しない";
+"[Settings/AppLockTimeout/fullTitle] Never" = "なし";
 
 /* An option in Settings. Will be shown as 'App Lock: Timeout: Immediately' */
 "[Settings/AppLockTimeout/shortTitle] Immediately" = "即時";
 
 /* An option in Settings. Will be shown as 'App Lock: Timeout: Never' */
-"[Settings/AppLockTimeout/shortTitle] Never" = "しない";
+"[Settings/AppLockTimeout/shortTitle] Never" = "なし";
 
 /* Action that opens system settings or instructions */
 "[Settings/AutoFill/Activate/action]" = "自動入力をオン";
@@ -1562,10 +1820,10 @@
 "[Settings/ClipboardTimeout/description] When you copy some text from an entry, the app will automatically clear your clipboard (pasteboard) after this time." = "コピーした後、クリップボード (コピー内容) を指定時間後に自動的に消去します。";
 
 /* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
-"[Settings/ClipboardTimeout/fullTitle] Never" = "しない";
+"[Settings/ClipboardTimeout/fullTitle] Never" = "なし";
 
 /* An option in Settings. Will be shown as 'Clipboard Timeout: Never' */
-"[Settings/ClipboardTimeout/shortTitle] Never" = "しない";
+"[Settings/ClipboardTimeout/shortTitle] Never" = "なし";
 
 /* Title of a settings section: backup of databases */
 "[Settings/DatabaseBackup/title]" = "データベースのバックアップ";
@@ -1580,16 +1838,19 @@
 "[Settings/DatabaseLockTimeout/fullTitle] Immediately" = "即時";
 
 /* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
-"[Settings/DatabaseLockTimeout/fullTitle] Never" = "しない";
+"[Settings/DatabaseLockTimeout/fullTitle] Never" = "なし";
 
 /* An option in Settings. Will be shown as 'Database Lock: Timeout: Immediately' */
 "[Settings/DatabaseLockTimeout/shortTitle] Immediately" = "即時";
 
 /* An option in Settings. Will be shown as 'Database Lock: Timeout: Never' */
-"[Settings/DatabaseLockTimeout/shortTitle] Never" = "しない";
+"[Settings/DatabaseLockTimeout/shortTitle] Never" = "なし";
 
 /* Title of a setting: the time after which databases will be locked. */
 "[Settings/DatabaseLockTimeout/title]" = "データベースのタイムアウト";
+
+/* Setting switch: whether to lock databases after device reboot. */
+"[Settings/DataProtection/LockOnReboot/title]" = "端末の再起動時にロック";
 
 /* Subtitle for `Data Protection` section in settings */
 "[Settings/DataProtection/subtitle]" = "マスターキー、キーファイル";
@@ -1608,6 +1869,12 @@
 
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "リストの設定";
+
+/* Notification when corporate user tries to use a feature forbidden by organization's IT department. */
+"[Settings/Managed/BlockedFeature/notification]" = "この機能は組織によってブロックされています。";
+
+/* Notification when corporate user tries to change an app setting controlled by organization's IT department. */
+"[Settings/Managed/notification]" = "この設定は組織によって管理されています。";
 
 /* Confirmation dialog message */
 "[Settings/NetworkAccess/Confirmation/text]" = "KeePassium に外部サービスへのネットワーク接続を許可しますか？";
@@ -1642,8 +1909,23 @@
 /* List sorting option, when no sorting is selected. Example: 'Sort by: None' */
 "[SortBy/None]" = "なし";
 
+/* List sorting option, when items are manually ordered by the user. Example: 'Sort order: Custom' */
+"[SortOrder/Custom]" = "カスタム";
+
+/* Name of a cloud storage service */
+"[StorageService/DropboxBusiness/title]" = "Dropbox Business";
+
+/* Name of a cloud storage service */
+"[StorageService/DropboxPro/title]" = "Dropbox Pro";
+
+/* Name of a cloud storage service */
+"[StorageService/GoogleWorkspace/title]" = "Google Workspace";
+
 /* Name of a cloud storage service. Must match Microsoft's translation, see  https://partner.microsoft.com/solutions/onedrive-for-business */
 "[StorageService/OneDriveForBusiness/title]" = "OneDrive for Business";
+
+/* Title of a file storage service option (for example: Dropbox, OneDrive, Other Services) */
+"[StorageService/OtherServices/title]" = "その他のサービス";
 
 /* Template text of a bug report email */
 "[Support/template] (Please describe the problem here)" = "（トラブルの内容を記述してください）";

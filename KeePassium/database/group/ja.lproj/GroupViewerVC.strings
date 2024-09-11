@@ -1,3 +1,6 @@
 /* Class = "UILabel"; text = "This group is empty"; ObjectID = "QXa-eN-7am"; */
 "QXa-eN-7am.text" = "このグループは空です";
 
+/* Class = "UILabel"; text = "No entries or groups found"; ObjectID = "tpA-i1-ah8"; */
+"tpA-i1-ah8.text" = "見つかりませんでした";
+

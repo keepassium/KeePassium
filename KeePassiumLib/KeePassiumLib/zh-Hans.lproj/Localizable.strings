@@ -10,6 +10,12 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "激活辅助功能以收听内容。";
 
+/* Action which resets the app as if it was just installed. */
+"[App/ResetEverything/action]" = "重置";
+
+/* Confirmation message before resetting the app to just-installed state. */
+"[App/ResetEverything/title]" = "是否重置应用？";
+
 /* Section in settings: icon for the app */
 "[Appearance/AppIcon/title]" = "应用图标";
 
@@ -193,6 +199,21 @@
 /* Title: database encryption settings. */
 "[Database/EncryptionSettings/title]" = "加密设置";
 
+/* Info message for entries that contain information for opening a different database. */
+"[Database/Entry/LinkedDatabase/message]" = "此条目指向其他数据库。";
+
+/* Notification message about external changes to the loaded file. */
+"[Database/ExternalChange/notification]" = "数据库文件已更改。是否重新载入？";
+
+/* Status message: checking if currently loaded database is the latest version */
+"[Database/ExternalChange/Status/checkInProgress]" = "正在检查更改…";
+
+/* Status message: failed to check if currently loaded database is the latest version */
+"[Database/ExternalChange/Status/failed]" = "刷新失败";
+
+/* Status message: currently loaded database is the latest version */
+"[Database/ExternalChange/Status/upToDate]" = "最新";
+
 /* Info message when changing database file format. */
 "[Database/FormatVersion/Conversion/allDataPreserved]" = "您的所有数据都将被保存。";
 
@@ -210,6 +231,9 @@
 
 /* Notification when user tries to copy data from KDBX to older KDB database. */
 "[Database/LesserTargetFormat/warning]" = "这是旧版的数据库格式，有些数据可能会丢失。";
+
+/* Recommendation for solving a problem with a list of files. */
+"[Database/List/LocalMissing/message]" = "如果未列出某些本地文件，请先启动 KeePassium 主应用。";
 
 /* Title of the database picker list */
 "[Database/List/title]" = "数据库";
@@ -262,6 +286,9 @@
 /* Glossary term: noun, a master key for encrypting the database */
 "[Database/MasterKey/title]" = "主密码";
 
+/* Title of database creation dialog */
+"[Database/New/title]" = "新建数据库";
+
 /* Action/button */
 "[Database/Open/action] Open Database" = "打开数据库";
 
@@ -292,6 +319,9 @@
 /* Progress status */
 "[Database/Progress] Loading key file..." = "载入密钥文件中...";
 
+/* Database loading/saving status: checking whether our database was modified from another device. */
+"[Database/Progress/checkingDatabaseForModifications]" = "正在检查数据库的修改…";
+
 /* Database loading status: fetching the database file from disk/cloud */
 "[Database/Progress/downloading]" = "加载数据库文件...";
 
@@ -303,6 +333,12 @@
 
 /* Database loading/saving status: replacing field references with their values */
 "[Database/Progress/resolvingFieldReferences]" = "正在解析字段引用…";
+
+/* Database saving status: deciding how to handle conflicting changes. */
+"[Database/Progress/resolvingSyncConflict]" = "正在解决同步冲突…";
+
+/* Database saving status */
+"[Database/Progress/writingDatabaseFile]" = "正在写入数据库文件…";
 
 /* Suggested solution/call to action when intermediate sync app fails. */
 "[Database/RecommendRemote/callToAction]" = "尝试直接通过 KeePassium 连接到您的远程存储。";
@@ -327,6 +363,18 @@
 
 /* File settings parameter: time after which file will be considered unreachable. Example: `Consider File Unreachable: in 10 seconds`.) */
 "[Database/Settings/ConsiderFileUnreachable/title]" = "无法访问文件";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Don't check`) */
+"[Database/Settings/ExternalChanges/dontCheck]" = "不检查";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Notify`) */
+"[Database/Settings/ExternalChanges/notify]" = "通知";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Reload Automatically`) */
+"[Database/Settings/ExternalChanges/reload]" = "自动重新加载";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Notify`) */
+"[Database/Settings/ExternalChanges/title]" = "外部修改的数据库";
 
 /* Title: what to do when a cloud-stored file cannot be loaded. (For example: `If File is Unreachable: Re-add File`.) */
 "[Database/Settings/FallbackStrategy/ReAddFile/title]" = "重新添加文件";
@@ -613,6 +661,9 @@
 /* Name of an entry field */
 "[Entry/Field/name] User Name" = "用户名称";
 
+/* Title of a setting: whether the entry's field is protected (shown as asterisks). */
+"[Entry/Field/Protected/title]" = "受保护字段";
+
 /* Name of an entry field */
 "[Entry/Field/tags] Tags" = "标签";
 
@@ -630,6 +681,9 @@
 
 /* Title of a field with entry's last modification date and time */
 "[Entry/History] Last Modification Date" = "最后修改日期";
+
+/* Title of a field with entry's modification date and time */
+"[Entry/History] Modification Date" = "修改日期";
 
 /* Title of a list with previous versions/revisions of an entry. */
 "[Entry/History] Previous Versions" = "之前的版本";
@@ -702,6 +756,15 @@
 
 /* Error message: file provider does not respond to requests (quickly enough). For example: `Google Drive does not respond` */
 "[FileAccessError/Timeout/knownFileProvider]" = "%@没有响应。";
+
+/* Section header for attributes of a file (e.g. hidden, excluded from backup, etc) */
+"[FileInfo/Attributes/header]" = "文件属性";
+
+/* Title of a setting: is the file hidden */
+"[FileInfo/Attributes/Hidden/title]" = "隐藏";
+
+/* Warning message for 'hidden' files. */
+"[FileInfo/Attributes/Hidden/warning]" = "对于普通用户来说，隐藏文件的可见度较低，但并不能提高数据的安全性。";
 
 /* Section header: file backup settings */
 "[FileInfo/Backup/header]" = "备份";
@@ -940,6 +1003,9 @@
 /* Action/button to skip the current step and proceed with the next one */
 "[Generic] Skip" = "跳过";
 
+/* Action/button to change the order of items in a list (move them higher/lower). */
+"[Generic/Action/ReorderItems]" = "重新排序";
+
 /* Action/button to select some items in a list. */
 "[Generic/Action/SelectItems]" = "选择";
 
@@ -991,6 +1057,12 @@
 /* Title of an warning message */
 "[Generic/title] Warning" = "警告";
 
+/* Title of a menu with various utilities */
+"[Generic/Tools/title]" = "工具";
+
+/* Action/button to open an online support article (about a specific error) */
+"[Generic/ViewHelpArticle/action]" = "查看帮助文章";
+
 /* Title of a screen/list view configuration: sort order, visible items, etc */
 "[Generic/ViewOptions/title]" = "显示选项";
 
@@ -1006,6 +1078,9 @@
 /* Title of a form for editing a group */
 "[Group/Edit/title] Edit Group" = "编辑群组";
 
+/* VoiceOver description of a menu with group-related actions */
+"[Group/Menu/a11y/title]" = "群组菜单";
+
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "新建群组";
 
@@ -1017,6 +1092,39 @@
 
 /* Title of the confirmation dialog for `Empty Recycle Bin` action */
 "[Group/RecycleBin/Empty/confirmTitle]" = "是否永久删除回收站中的所有内容？";
+
+/* Title of the Entries section visible while editing */
+"[Group/Section/Entries/title]" = "条目";
+
+/* Title of the Groups section visible while editing */
+"[Group/Section/Groups/title]" = "群组";
+
+/* VoiceOver description of a smart group [groupTitle: String] */
+"[Group/Smart/a11y/description]" = "%@，智能群组";
+
+/* Action/button to show a help article */
+"[Group/Smart/about]" = "关于智能群组…";
+
+/* Action/button to create a new Smart Group */
+"[Group/Smart/Create/action]" = "创建智能群组";
+
+/* Default name of a new smart group */
+"[Group/Smart/New/defaultName]" = "新建智能群组";
+
+/* Title of a list: all entries in the database */
+"[Group/Smart/Preset/allEntries]" = "所有条目";
+
+/* Title of a list: entries that are beyond their expiration date. */
+"[Group/Smart/Preset/expiredEntries]" = "过期条目";
+
+/* Title of a list: entries with one-time passwords (OTP) */
+"[Group/Smart/Preset/otpEntries]" = "带 OTP 的条目";
+
+/* Title for the Smart Group search conditions in group editor */
+"[Group/Smart/Query/title]" = "智能群组筛选器";
+
+/* Glossary term: noun, a smart group in database. */
+"[Group/Smart/title]" = "智能群组";
 
 /* Glossary term: noun, a group in database. */
 "[Group/title]" = "群组";
@@ -1243,11 +1351,92 @@
 /* Error message/call to action from the random text generator. */
 "[PasswordGenerator/MaxConsecutiveNotSatisfiable/title]" = "增加连续相同字符的最大数量。";
 
+/* One of the operation modes of the random text generator */
+"[PasswordGenerator/Mode/Basic/title]" = "基础";
+
+/* One of the operation modes of the random text generator */
+"[PasswordGenerator/Mode/Expert/title]" = "专家";
+
+/* One of the operation modes of the random text generator, where it generates random phrases. */
+"[PasswordGenerator/Mode/Passphrase/title]" = "口令";
+
+/* Operation mode of the random text generator (for example, `Basic`, `Expert`, `Passphrase`) */
+"[PasswordGenerator/Mode/title]" = "模式";
+
+/* Error message from the random text generator. */
+"[PasswordGenerator/NotEnoughElementsToSample/title]" = "需要更多元素以供挑选。";
+
+/* Length (number of characters) of the password to generate */
+"[PasswordGenerator/PasswordLength/title]" = "密码长度";
+
+/* Error message from the random text generator. `required` and `excluded` are as in [PasswordGenerator/InclusionCondition/required] and [PasswordGenerator/InclusionCondition/excluded] */
+"[PasswordGenerator/RequiredSetCompletelyExcluded/title]" = "其中一个字符集既是必需又是排除。";
+
+/* Title for digits (like '123') */
+"[PasswordGenerator/Set/Digits/title]" = "位数";
+
+/* Title for look-alike symbols (like '1lI', that is: digit `1`, small `L`, capital `i`). */
+"[PasswordGenerator/Set/Lookalikes/title]" = "相似字符";
+
+/* Title for lowercase letters (like 'abc') */
+"[PasswordGenerator/Set/Lowercase/title]" = "小写字母";
+
+/* Title for special symbols (like '@#$') */
+"[PasswordGenerator/Set/Specials/title]" = "特殊符号";
+
+/* Title for uppercase letters (like 'ABC') */
+"[PasswordGenerator/Set/Uppercase/title]" = "大写字母";
+
+/* Name of the space character. https://en.wikipedia.org/wiki/Space_(punctuation) */
+"[PasswordGenerator/SpaceCharacter/name]" = "空格";
+
+/* Title of the random text/password/username generator dialog. */
+"[PasswordGenerator/title]" = "随机生成器";
+
+/* Character to be inserted between words of a passphrase. */
+"[PasswordGenerator/Word Separtor/title]" = "分隔符";
+
+/* Word capitalization style. Written in that style, if possible. */
+"[PasswordGenerator/WordCase/lowerCase]" = "小写";
+
+/* Case of letters in a word (e.g. UPPER, lower, Title Case) */
+"[PasswordGenerator/WordCase/title]" = "大小写";
+
+/* Word capitalization style: first letters of significant words capitalized. Written in that style, if possible. */
+"[PasswordGenerator/WordCase/titleCase]" = "标题大小写 ";
+
+/* Word capitalization style. Written in that style, if possible. */
+"[PasswordGenerator/WordCase/upperCase]" = "大写";
+
+/* Number of words in a generated passphrase. In context: 'Words: 5' */
+"[PasswordGenerator/WordCount/title]" = "词数";
+
+/* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
+"[PasswordGenerator/Wordlist/EFFLarge/title]" = "EFF 大词表（7776 个单词）";
+
+/* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
+"[PasswordGenerator/Wordlist/EFFShort/title]" = "EFF 短词表 #%d（1296 个单词）";
+
+/* Error message when importing a text file [lineNumber: Int, problemDescription: String] */
+"[PasswordGenerator/Wordlist/ImportError/reason]" = "无法导入文件，因为第 %1$d 行出现问题 (%2$@)";
+
+/* List of words to be used for a passphrase. */
+"[PasswordGenerator/Wordlist/title]" = "词表";
+
+/* Title of a premium feature */
+"[Premium/Benefits/BusinessClouds/title]" = "与企业存储同步";
+
 /* Explanation of the premium feature */
 "[Premium/Benefits/HardwareKeys/details]" = "使用硬件密钥保护您的资料，比如 YubiKey 等。";
 
 /* Title of a premium feature */
 "[Premium/Benefits/HardwareKeys/title]" = "使用硬件密钥";
+
+/* Explanation of the premium feature */
+"[Premium/Benefits/LinkedDatabases/details]" = "使用存储在条目中的凭据，一步打开其他数据库。";
+
+/* Title of a premium feature */
+"[Premium/Benefits/LinkedDatabases/title]" = "打开链接的数据库";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/MultiDB/details]" = "添加多个数据库并快速切换它们。";
@@ -1257,6 +1446,9 @@
 
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Negative/header] " = "您缺少的内容";
+
+/* Title of a premium feature */
+"[Premium/Benefits/PasswordAudit/title]" = "检查您的密码";
 
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Positive/header] " = "您得到的内容";
@@ -1402,6 +1594,12 @@
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "程序已使用: %1$@/月, 大约%2$@/年";
 
+/* Description/call to action for the `Business Cloud Storage` premium feature. */
+"[PremiumFeature/BusinessClouds/description]" = "直接连接到企业存储账户，如 OneDrive for Business。";
+
+/* Title of a premium feature: access to company's cloud accounts like 'OneDrive for Business' */
+"[PremiumFeature/BusinessClouds/title]" = "企业云存储";
+
 /* A generic description of a premium feature */
 "[PremiumFeature/Generic/description]" = "升级到高级版并享受最好的KeePassium。";
 
@@ -1414,14 +1612,35 @@
 /* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
 "[PremiumFeature/HardwareKeys/title] Hardware Keys" = "硬件密钥";
 
+/* Description/advertisement for the `Linked Databases` premium feature */
+"[PremiumFeature/LinkedDatabases/description]" = "升级到高级版，一步打开链接的数据库。";
+
+/* Title of a premium feature: ability to open databases referenced in another database (In Title Case) */
+"[PremiumFeature/LinkedDatabases/title]" = "链接的数据库";
+
 /* Description/advertisement for the `Multiple Databases` premium feature */
 "[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "在高级版本中快速切换多个数据库。";
 
 /* Title of a premium feature: ability to use multiple databases (In Title Case) */
 "[PremiumFeature/MultiDB/title] Multiple Databases" = "多个数据库";
 
+/* Description/call to action for the `Password Audit` premium feature. */
+"[PremiumFeature/PasswordAudit/description]" = "了解您的密码是否在已知的数据泄露中遭到泄露。";
+
+/* Title of a premium feature: discover which passwords are known to be compromized */
+"[PremiumFeature/PasswordAudit/title]" = "密码检查器";
+
+/* Description/call to action for the `Quick AutoFill` premium feature. */
+"[PremiumFeature/QuickAutoFill/description]" = "一键填写登录表单，甚至无需打开 KeePassium。";
+
+/* Title of a premium feature: show relevant AutoFill entries right under the input field */
+"[PremiumFeature/QuickAutoFill/title]" = "快速自动填充";
+
 /* A brief summary of the privacy policy (for offline mode) */
 "[PrivacyPolicy/Offline/text]" = "KeePassium不会对任何个人资料收集或分析，也不会与任何人分享。";
+
+/* A brief summary of the privacy policy (for online mode) */
+"[PrivacyPolicy/Online/text]" = "KeePassium 不会收集任何个人或分析数据。\n某些功能可能涉及与外部服务的数据交换（根据您的请求，并且仅为了向您提供这些服务）。此类数据交换受相应服务的隐私政策约束。";
 
 /* Section: privacy policy */
 "[PrivacyPolicy/title]" = "隐私权政策";
@@ -1432,8 +1651,77 @@
 /* Error message when a long-running operation was cancelled due to the lack of free memory (RAM). */
 "[Progress/CancellationReason/lowMemory]" = "没有足够的内存供继续程序继续。\n较大的数据库或过于消耗内存的数据库设置(Argon2内存参数) 可能会发生这种情况。";
 
+/* Description of the Quick AutoFill feature. */
+"[QuickAutoFill/description]" = "快速自动填充会在密码字段旁显示相关条目，无需打开 KeePassium。";
+
+/* Name of a feature that shows relevant entries directly next to the login/password forms. */
+"[QuickAutoFill/title]" = "快速自动填充";
+
+/* Network security setting */
+"[RemoteConnection/AllowUntrusted/title]" = "允许不受信任的证书";
+
+/* Network connection. For example `Connection: WebDAV` or `Connection: MyCloud`. */
+"[RemoteConnection/Connection/title]" = "连接";
+
+/* Action: connect to a network server */
+"[RemoteConnection/connectToServer]" = "连接到服务器";
+
+/* Title of a section: username, password, etc */
+"[RemoteConnection/Credentials]" = "凭据";
+
+/* Description of the `Direct connection` sync method. */
+"[RemoteConnection/Direct/description]" = "KeePassium 将直接与您的在线存储进行通信。这可以确保可靠的文件传输。";
+
+/* Error message: user credentials rejected by the server */
+"[RemoteConnection/Error/AuthenticationFailed/title]" = "身份验证失败";
+
+/* Network address of a file */
+"[RemoteConnection/FileURL]" = "文件 URL";
+
+/* Name of a predefined Google Drive folder which contains user's own files */
+"[RemoteConnection/GoogleDrive/Folder/myDrive]" = "我的云端硬盘";
+
+/* Name of a predefined GoogleDrive folder which contains files shared with this user */
+"[RemoteConnection/GoogleDrive/Folder/sharedWithMe]" = "共享给我";
+
 /* Name of a predefined OneDrive folder which contains user's own files */
 "[RemoteConnection/OneDrive/Folder/files]" = "文件";
+
+/* Name of a predefined OneDrive folder which contains files shared with this user */
+"[RemoteConnection/OneDrive/Folder/sharedWithMe]" = "共享";
+
+/* Network address of a WebDAV server */
+"[RemoteConnection/ServerURL]" = "服务器 URL";
+
+/* Action: authenticate to Dropbox account */
+"[RemoteConnection/SignIn/Dropbox/action]" = "登录 Dropbox";
+
+/* Error description: the user should manually sign in to their Dropbox account */
+"[RemoteConnection/SignIn/Dropbox/authorizationRequried]" = "Dropbox 需要您重新登录。";
+
+/* Action: authenticate to Google Drive account */
+"[RemoteConnection/SignIn/GoogleDrive/action]" = "登录 Google 云端硬盘";
+
+/* Error description: the user should manually sign in to their Google Drive account */
+"[RemoteConnection/SignIn/GoogleDrive/authorizationRequried]" = "Google 云端硬盘需要您重新登录。";
+
+/* Action: authenticate to OneDrive account */
+"[RemoteConnection/SignIn/OneDrive/action]" = "登录 OneDrive";
+
+/* Error description: the user should manually sign in to their OneDrive account */
+"[RemoteConnection/SignIn/OneDrive/authorizationRequried]" = "OneDrive 需要您重新登录。";
+
+/* No comment provided by engineer. */
+"[RemoteConnection/SignIn/PrivateMode/description]" = "在私密网页浏览器模式中打开登录页面";
+
+/* No comment provided by engineer. */
+"[RemoteConnection/SignIn/PrivateMode/title]" = "私密模式";
+
+/* Title: connection to a network storage */
+"[RemoteConnection/title]" = "远程连接";
+
+/* Description of the `Integration via Files app` sync method. */
+"[RemoteConnection/ViaFilesApp/description]" = "KeePassium 会将文件同步分配给存储提供商的应用。有些应用会比其他应用运行得更好。";
 
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "重复密码";
@@ -1561,6 +1849,9 @@
 /* Title of a setting: the time after which databases will be locked. */
 "[Settings/DatabaseLockTimeout/title]" = "数据库自动锁定";
 
+/* Setting switch: whether to lock databases after device reboot. */
+"[Settings/DataProtection/LockOnReboot/title]" = "设备重启时锁定";
+
 /* Subtitle for `Data Protection` section in settings */
 "[Settings/DataProtection/subtitle]" = "主密钥, 密钥文件";
 
@@ -1579,8 +1870,32 @@
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "列表设置";
 
+/* Notification when corporate user tries to use a feature forbidden by organization's IT department. */
+"[Settings/Managed/BlockedFeature/notification]" = "此功能已被您的组织屏蔽。";
+
+/* Notification when corporate user tries to change an app setting controlled by organization's IT department. */
+"[Settings/Managed/notification]" = "此设置由您的组织管理。";
+
+/* Confirmation dialog message */
+"[Settings/NetworkAccess/Confirmation/text]" = "是否允许 KeePassium 与外部服务建立网络连接？";
+
 /* Settings section: how/whether the app is allowed to use networks/Internet */
 "[Settings/NetworkAccess/title]" = "网络访问";
+
+/* Description of the `Stay Offline` mode. */
+"[Settings/NetworkAccessMode/Offline/description]" = "最大私密性";
+
+/* Setting option: the app should work offline */
+"[Settings/NetworkAccessMode/Offline/title]" = "保持离线";
+
+/* Description of the `Allow Network Access` mode. */
+"[Settings/NetworkAccessMode/Online/description]" = "最大功能性";
+
+/* Setting option: the app is permitted to use online features */
+"[Settings/NetworkAccessMode/Online/title]" = "允许网络访问";
+
+/* Action/button which resets some settings to their default state. */
+"[Settings/RestoreDefaults/action]" = "恢复默认";
 
 /* Section title in settings */
 "[Settings/Search/title]" = "搜索​​​​";
@@ -1588,8 +1903,14 @@
 /* Title of the app settings screen */
 "[Settings/title]" = "设置";
 
+/* List sorting option (for file names). Example: 'Sort by: Name' */
+"[SortBy/FileName]" = "名称";
+
 /* List sorting option, when no sorting is selected. Example: 'Sort by: None' */
 "[SortBy/None]" = "无";
+
+/* List sorting option, when items are manually ordered by the user. Example: 'Sort order: Custom' */
+"[SortOrder/Custom]" = "自定义";
 
 /* Name of a cloud storage service */
 "[StorageService/DropboxBusiness/title]" = "Dropbox Business";
@@ -1597,8 +1918,14 @@
 /* Name of a cloud storage service */
 "[StorageService/DropboxPro/title]" = "Dropbox Pro";
 
+/* Name of a cloud storage service */
+"[StorageService/GoogleWorkspace/title]" = "Google Workspace";
+
 /* Name of a cloud storage service. Must match Microsoft's translation, see  https://partner.microsoft.com/solutions/onedrive-for-business */
 "[StorageService/OneDriveForBusiness/title]" = "OneDrive 商业版";
+
+/* Title of a file storage service option (for example: Dropbox, OneDrive, Other Services) */
+"[StorageService/OtherServices/title]" = "其他服务";
 
 /* Template text of a bug report email */
 "[Support/template] (Please describe the problem here)" = "(请在此处描述问题)";

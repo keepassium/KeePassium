@@ -10,6 +10,12 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "Attiva per ascoltare.";
 
+/* Action which resets the app as if it was just installed. */
+"[App/ResetEverything/action]" = "Inizializza";
+
+/* Confirmation message before resetting the app to just-installed state. */
+"[App/ResetEverything/title]" = "Inizializzare l'app?";
+
 /* Section in settings: icon for the app */
 "[Appearance/AppIcon/title]" = "Icona app";
 
@@ -17,7 +23,7 @@
 "[Appearance/DatabaseIcons/title]" = "Icone database";
 
 /* Short name of the default/system font. For example: `Font: Default` */
-"[Appearance/DefaultFont/shortTitle]" = "Predefinito";
+"[Appearance/DefaultFont/shortTitle]" = "Default";
 
 /* Title of a setting option: font */
 "[Appearance/Font/title]" = "Font";
@@ -196,6 +202,18 @@
 /* Info message for entries that contain information for opening a different database. */
 "[Database/Entry/LinkedDatabase/message]" = "Questa voce punta a un altro database.";
 
+/* Notification message about external changes to the loaded file. */
+"[Database/ExternalChange/notification]" = "Il file database è cambiato. Ricaricare?";
+
+/* Status message: checking if currently loaded database is the latest version */
+"[Database/ExternalChange/Status/checkInProgress]" = "Verifico modifiche…";
+
+/* Status message: failed to check if currently loaded database is the latest version */
+"[Database/ExternalChange/Status/failed]" = "Ricaricamento fallito";
+
+/* Status message: currently loaded database is the latest version */
+"[Database/ExternalChange/Status/upToDate]" = "Aggiornato";
+
 /* Info message when changing database file format. */
 "[Database/FormatVersion/Conversion/allDataPreserved]" = "Tutti i tuoi dati saranno conservati.";
 
@@ -345,6 +363,18 @@
 
 /* File settings parameter: time after which file will be considered unreachable. Example: `Consider File Unreachable: in 10 seconds`.) */
 "[Database/Settings/ConsiderFileUnreachable/title]" = "Considera file irraggiungibile";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Don't check`) */
+"[Database/Settings/ExternalChanges/dontCheck]" = "Non controllare";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Notify`) */
+"[Database/Settings/ExternalChanges/notify]" = "Notifica";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Reload Automatically`) */
+"[Database/Settings/ExternalChanges/reload]" = "Ricarica in automatico";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Notify`) */
+"[Database/Settings/ExternalChanges/title]" = "Database modificato esternamente";
 
 /* Title: what to do when a cloud-stored file cannot be loaded. (For example: `If File is Unreachable: Re-add File`.) */
 "[Database/Settings/FallbackStrategy/ReAddFile/title]" = "Aggiungi di nuovo il file";
@@ -630,6 +660,9 @@
 
 /* Name of an entry field */
 "[Entry/Field/name] User Name" = "Nome utente";
+
+/* Title of a setting: whether the entry's field is protected (shown as asterisks). */
+"[Entry/Field/Protected/title]" = "Campo protetto";
 
 /* Name of an entry field */
 "[Entry/Field/tags] Tags" = "Tag";
@@ -1027,6 +1060,9 @@
 /* Title of a menu with various utilities */
 "[Generic/Tools/title]" = "Strumenti";
 
+/* Action/button to open an online support article (about a specific error) */
+"[Generic/ViewHelpArticle/action]" = "Visualizza articolo di assistenza";
+
 /* Title of a screen/list view configuration: sort order, visible items, etc */
 "[Generic/ViewOptions/title]" = "Opzioni visualizzazione";
 
@@ -1057,6 +1093,12 @@
 /* Title of the confirmation dialog for `Empty Recycle Bin` action */
 "[Group/RecycleBin/Empty/confirmTitle]" = "Eliminare definitivamente gli elementi contenuti nel Cestino?";
 
+/* Title of the Entries section visible while editing */
+"[Group/Section/Entries/title]" = "Voci";
+
+/* Title of the Groups section visible while editing */
+"[Group/Section/Groups/title]" = "Gruppi";
+
 /* VoiceOver description of a smart group [groupTitle: String] */
 "[Group/Smart/a11y/description]" = "%@, gruppo smart";
 
@@ -1068,6 +1110,15 @@
 
 /* Default name of a new smart group */
 "[Group/Smart/New/defaultName]" = "Nuovo gruppo smart";
+
+/* Title of a list: all entries in the database */
+"[Group/Smart/Preset/allEntries]" = "Tutte le voci";
+
+/* Title of a list: entries that are beyond their expiration date. */
+"[Group/Smart/Preset/expiredEntries]" = "Voci scadute";
+
+/* Title of a list: entries with one-time passwords (OTP) */
+"[Group/Smart/Preset/otpEntries]" = "Voci con OTP";
 
 /* Title for the Smart Group search conditions in group editor */
 "[Group/Smart/Query/title]" = "Filtro gruppo smart";
@@ -1169,7 +1220,7 @@
 "[Item/Properties/title]" = "Proprietà";
 
 /* Name of an entry/group category (visual style): default one, like in KeePass */
-"[ItemCategory] Default (KeePass)" = "Predefinito (KeePass)";
+"[ItemCategory] Default (KeePass)" = "Default (KeePass)";
 
 /* Title of a list with custom (user-imported) icons for groups and entries */
 "[ItemIconPicker/CustomIcons]" = "Icone personalizzate";
@@ -1819,6 +1870,9 @@
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "Impostazioni lista";
 
+/* Notification when corporate user tries to use a feature forbidden by organization's IT department. */
+"[Settings/Managed/BlockedFeature/notification]" = "Questa funzione è bloccata dalla tua organizzazione.";
+
 /* Notification when corporate user tries to change an app setting controlled by organization's IT department. */
 "[Settings/Managed/notification]" = "Questa impostazione è gestita dalla tua istituzione.";
 
@@ -1841,7 +1895,7 @@
 "[Settings/NetworkAccessMode/Online/title]" = "Consenti accesso alla rete";
 
 /* Action/button which resets some settings to their default state. */
-"[Settings/RestoreDefaults/action]" = "Ripristina predefiniti";
+"[Settings/RestoreDefaults/action]" = "Ripristina default";
 
 /* Section title in settings */
 "[Settings/Search/title]" = "Cerca";

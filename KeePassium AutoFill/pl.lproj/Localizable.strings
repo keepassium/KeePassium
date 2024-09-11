@@ -7,11 +7,41 @@
 /* Must match Apple's translation, as found in iOS 15 Settings → Passwords → AutoFill Passwords. If unsure, leave untranslated. */
 "[AutoFill/Setup/UncheckKeychain/allowFillingFrom]" = "Pozwalaj wypełniać z:";
 
+/* Call to action: deselect the `Keychain` option. Keychain is a glossary term. */
+"[AutoFill/Setup/UncheckKeychain/callToAction]" = "Odznacz wybór pęku kluczy";
+
+/* Instruction to deselect the `Keychain` option. Keychain is a glossary term. */
+"[AutoFill/Setup/UncheckKeychain/message]" = "Aby aplikacja KeePassium stała się Twoim domyślnym menadżerem haseł, odznacz wybór pęku kluczy.";
+
 /* Must match Apple's translation, as found in iOS 17 Settings → Passwords → Password Options. If unsure, leave untranslated. */
 "[AutoFill/Setup/UncheckKeychain/usePasswordsAndPasskeysFrom]" = "Dostawcy haseł i kluczy:";
 
 /* Apple Keychain software; is a glossary term. */
 "[Generic/Keychain/title]" = "Pęk kluczy";
+
+/* Menu action to add a user-provided word list file to the app. */
+"[PasswordGenerator/Wordlist/Import/menuAction]" = "Importuj listę słów…";
+
+/* Password quality description. For example: `Password quality: Weak`. [level: String] */
+"[PasswordQuality/description]" = "Jakość hasła: %@";
+
+/* Good password quality */
+"[PasswordQuality/Level] Good" = "Dobre";
+
+/* Very good password quality */
+"[PasswordQuality/Level] Very good" = "Bardzo dobre";
+
+/* Very weak password quality */
+"[PasswordQuality/Level] Very weak" = "Bardzo słabe";
+
+/* Weak password quality */
+"[PasswordQuality/Level] Weak" = "Słabe";
+
+/* Password quality description. Note the tilda that refers to an estimated/approximate value. For example: `Very good (~123 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithApproximateEntropy/description]" = "%1$@ (~%2$@ entropii)";
+
+/* Password quality description. For example: `Very good (234 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithEntropy/description]" = "%1$@ (%2$@ entropii)";
 
 /* Action/button to make password visible as plain-text */
 "[ProtectedTextField] Show Password" = "Pokaż hasło";

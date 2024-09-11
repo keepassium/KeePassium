@@ -79,6 +79,12 @@
 /* Action/button to set up the Password AutoFill feature. Not a call to action. */
 "[Onboarding/AutoFill/activate]" = "Ativar Preenchimento Automático";
 
+/* Text in the Password AutoFill onboarding screen. */
+"[Onboarding/AutoFill/text1]" = "Com o Preenchimento automático, você poderá abrir páginas de login com um único pressionar de botão.";
+
+/* Text in the Password AutoFill onboarding screen. */
+"[Onboarding/AutoFill/text2]" = "Para iniciar, ative o Preenchimento Automático de Senha nas configurações do sistema.";
+
 /* Title of the Password AutoFill onboarding screen */
 "[Onboarding/AutoFill/title]" = "Preenchimento automático de senha";
 

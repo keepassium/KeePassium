@@ -43,7 +43,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>other</key>
-			<string>%d items selected</string>
+			<string>%d項目を選択</string>
 			<key>zero</key>
 			<string>%d items selected</string>
 		</dict>
@@ -59,7 +59,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>other</key>
-			<string>%d threads</string>
+			<string>%d スレッド</string>
 			<key>zero</key>
 			<string>%d threads</string>
 		</dict>

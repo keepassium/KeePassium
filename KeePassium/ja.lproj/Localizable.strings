@@ -4,6 +4,9 @@
 /* Hint shown when both password and key file are empty. */
 "[Database/Create] Please enter a password or choose a key file." = "パスワードを入力するか、キーファイルを選択してください。";
 
+/* Notification for business users when they set up too weak database password. */
+"[Database/Create/orgRequiresStronger]" = "あなたの組織では、より複雑なデータベースパスワードが必要です。";
+
 /* Note for a sample entry */
 "[Database/Create/TemplateEntry/notes] You can also store some notes, if you like." = "メモも保存できます。";
 
@@ -52,6 +55,9 @@
 /* Title of entry viewer's tab with previous revisions of the entry */
 "[Entry/Tab/History/title]" = "履歴";
 
+/* Title of entry viewer's tab with advanced/secondary properties */
+"[Entry/Tab/More/title]" = "詳細";
+
 /* Menu title. For example: `About KeePassium`. [appName: String] */
 "[Menu/About/title]" = "%@について";
 
@@ -64,11 +70,59 @@
 /* Action/button to set up the App Protection feature. Not a call to action. */
 "[Onboarding/AppProtection/activate]" = "Appロックを使用";
 
+/* Text in the App Protection onboarding screen. */
+"[Onboarding/AppProtection/text1]" = "KeePassiumは保管庫です。アプリを保護することで、開くことができるのはあなただけです。";
+
+/* Title of the App Protection onboarding screen */
+"[Onboarding/AppProtection/title]" = "見られる人はあなただけ";
+
 /* Action/button to set up the Password AutoFill feature. Not a call to action. */
 "[Onboarding/AutoFill/activate]" = "自動入力をオン";
 
+/* Text in the Password AutoFill onboarding screen. */
+"[Onboarding/AutoFill/text1]" = "AutoFillを使用すると、ボタンを1回押すだけでサインインできます。";
+
+/* Text in the Password AutoFill onboarding screen. */
+"[Onboarding/AutoFill/text2]" = "利用するには、設定で「パスワードの自動入力」をオンにします。";
+
+/* Title of the Password AutoFill onboarding screen */
+"[Onboarding/AutoFill/title]" = "パスワードの自動入力";
+
 /* Action/button */
 "[Onboarding/CreateNewDatabase/action]" = "新規データベースを作成";
+
+/* Text in the Data Encryption intro screen */
+"[Onboarding/DataEncryption/text1]" = "セーフボックスは暗号化されたデータベースです。";
+
+/* Text in the Data Encryption intro screen */
+"[Onboarding/DataEncryption/text2]" = "お気に入りのクラウドまたはローカルデバイスにデータベースを保存できます。";
+
+/* Title of the Data Encryption intro screen */
+"[Onboarding/DataEncryption/title]" = "データの暗号化";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text1]" = "KeePassium はパスワードやその他の機密情報を安全に暗号化します。";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text2]" = "広告はなく、トラッキングもしません。";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text3]" = "あなたについて何も知ることはありません。";
+
+/* Text in the introductory onboarding screen. */
+"[Onboarding/Intro/text4]" = "あなたのデータはあなたのものです。";
+
+/* Title of the introductory onboarding screen. */
+"[Onboarding/Intro/title]" = "はじめに";
+
+/* Text in the Security intro screen */
+"[Onboarding/Security/text1]" = "あなたの情報はセーフボックス（データベース）で暗号化されます。セーフボックスは保管庫（KeePassium）に保存されます。";
+
+/* Text in the Security intro screen */
+"[Onboarding/Security/text2]" = "金庫室とセーフボックスには異なる鍵があり、あなただけがそれらを知っています。";
+
+/* Title of the Security intro screen */
+"[Onboarding/Security/title]" = "強固なセキュリティ";
 
 /* Action to skip selected item/items in future password audits. */
 "[PasswordAudit/Action/Exclude]" = "監査から除外";
@@ -97,6 +151,9 @@
 /* Title of a screen to check which passwords are known to be compromised. */
 "[PasswordAudit/title]" = "パスワードの監査";
 
+/* Menu action to add a user-provided word list file to the app. */
+"[PasswordGenerator/Wordlist/Import/menuAction]" = "ワードリストを読み込む...";
+
 /* Password quality description. For example: `Password quality: Weak`. [level: String] */
 "[PasswordQuality/description]" = "パスワードの強度: %@";
 
@@ -112,6 +169,9 @@
 /* Weak password quality */
 "[PasswordQuality/Level] Weak" = "弱い";
 
+/* Password quality description. Note the tilda that refers to an estimated/approximate value. For example: `Very good (~123 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithApproximateEntropy/description]" = "%1$@ (%2$@ のエントロピー)";
+
 /* Password quality description. For example: `Very good (234 bits of entropy)`. [level: String, formattedBitCount: String] */
 "[PasswordQuality/LevelWithEntropy/description]" = "%1$@ (%2$@ のエントロピー)";
 
@@ -123,4 +183,37 @@
 
 /* Title of the confirmation dialog for `Exclude from audit` action for several items */
 "[Selection/ExcludeFromAudit/confirmation]" = "選択範囲を監査から除外しますか？";
+
+/* Action/button to create a new item tag */
+"[Tags/Create/action]" = "タグを作成";
+
+/* Call to action/hint inside a text input */
+"[Tags/Create/placeholder]" = "タグ名を入力";
+
+/* Title of the tag creation dialog */
+"[Tags/Create/title]" = "新規タグ";
+
+/* Question to confirm global deletion */
+"[Tags/Delete/Confirm/message]" = "すべてのグループとエントリからこのタグを削除しますか？";
+
+/* Title of a dialog for editing a tag */
+"[Tags/Edit/title]" = "タグを編集";
+
+/* Status message with a call to action */
+"[Tags/None/placeholder]" = "データベースにタグがありません。追加してください。";
+
+/* Status message: tag search result is empty */
+"[Tags/Search/emptyResult]" = "見つかりませんでした";
+
+/* Title of a list with all the tags existing in the database. */
+"[Tags/Section/All]" = "すべてのタグ";
+
+/* Title of a list with tags used by parent groups. */
+"[Tags/Section/Inherited]" = "継承されたタグ";
+
+/* Title of a list with tags chosen by the user for a specific entry or group. */
+"[Tags/Section/Selected]" = "選択したタグ";
+
+/* Title: the number of times a tag is encountered in the database. */
+"[Tags/UsageCount/title]" = "使用回数";
 

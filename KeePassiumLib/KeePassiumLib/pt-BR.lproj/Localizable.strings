@@ -10,6 +10,12 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "Ative para ouvir.";
 
+/* Action which resets the app as if it was just installed. */
+"[App/ResetEverything/action]" = "Redefinir";
+
+/* Confirmation message before resetting the app to just-installed state. */
+"[App/ResetEverything/title]" = "Redefinir o aplicativo?";
+
 /* Section in settings: icon for the app */
 "[Appearance/AppIcon/title]" = "Ícone do aplicativo";
 
@@ -193,6 +199,21 @@
 /* Title: database encryption settings. */
 "[Database/EncryptionSettings/title]" = "Configurações de criptografia";
 
+/* Info message for entries that contain information for opening a different database. */
+"[Database/Entry/LinkedDatabase/message]" = "Esta entrada aponta para outro banco de dados.";
+
+/* Notification message about external changes to the loaded file. */
+"[Database/ExternalChange/notification]" = "Arquivo de banco de dados alterado. Recarregar?";
+
+/* Status message: checking if currently loaded database is the latest version */
+"[Database/ExternalChange/Status/checkInProgress]" = "Verificando alterações…";
+
+/* Status message: failed to check if currently loaded database is the latest version */
+"[Database/ExternalChange/Status/failed]" = "Falha ao atualizar";
+
+/* Status message: currently loaded database is the latest version */
+"[Database/ExternalChange/Status/upToDate]" = "Atualizado";
+
 /* Info message when changing database file format. */
 "[Database/FormatVersion/Conversion/allDataPreserved]" = "Todos os seus dados serão mantidos.";
 
@@ -210,6 +231,9 @@
 
 /* Notification when user tries to copy data from KDBX to older KDB database. */
 "[Database/LesserTargetFormat/warning]" = "Alguns dados podem ser perdidos pois o banco de dados de destino está em um formato mais antigo.";
+
+/* Recommendation for solving a problem with a list of files. */
+"[Database/List/LocalMissing/message]" = "Se alguns arquivos locais não forem listados, abra o aplicativo principal KeePassium primeiro.";
 
 /* Title of the database picker list */
 "[Database/List/title]" = "Bancos de dados";
@@ -261,6 +285,9 @@
 
 /* Glossary term: noun, a master key for encrypting the database */
 "[Database/MasterKey/title]" = "Chave-mestra";
+
+/* Title of database creation dialog */
+"[Database/New/title]" = "Novo banco de dados";
 
 /* Action/button */
 "[Database/Open/action] Open Database" = "Abrir banco de dados";
@@ -336,6 +363,18 @@
 
 /* File settings parameter: time after which file will be considered unreachable. Example: `Consider File Unreachable: in 10 seconds`.) */
 "[Database/Settings/ConsiderFileUnreachable/title]" = "Considerar arquivo inacessível";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Don't check`) */
+"[Database/Settings/ExternalChanges/dontCheck]" = "Não verificar";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Notify`) */
+"[Database/Settings/ExternalChanges/notify]" = "Notificar";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Reload Automatically`) */
+"[Database/Settings/ExternalChanges/reload]" = "Recarregar automaticamente";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Notify`) */
+"[Database/Settings/ExternalChanges/title]" = "Banco de dados modificado externamente";
 
 /* Title: what to do when a cloud-stored file cannot be loaded. (For example: `If File is Unreachable: Re-add File`.) */
 "[Database/Settings/FallbackStrategy/ReAddFile/title]" = "Readicionar arquivo";
@@ -622,6 +661,9 @@
 /* Name of an entry field */
 "[Entry/Field/name] User Name" = "Nome de usuário";
 
+/* Title of a setting: whether the entry's field is protected (shown as asterisks). */
+"[Entry/Field/Protected/title]" = "Campo protegido";
+
 /* Name of an entry field */
 "[Entry/Field/tags] Tags" = "Etiquetas";
 
@@ -639,6 +681,9 @@
 
 /* Title of a field with entry's last modification date and time */
 "[Entry/History] Last Modification Date" = "Última modificação";
+
+/* Title of a field with entry's modification date and time */
+"[Entry/History] Modification Date" = "Data da modificação";
 
 /* Title of a list with previous versions/revisions of an entry. */
 "[Entry/History] Previous Versions" = "Versões anteriores";
@@ -711,6 +756,15 @@
 
 /* Error message: file provider does not respond to requests (quickly enough). For example: `Google Drive does not respond` */
 "[FileAccessError/Timeout/knownFileProvider]" = "%@ não está respondendo.";
+
+/* Section header for attributes of a file (e.g. hidden, excluded from backup, etc) */
+"[FileInfo/Attributes/header]" = "Atributos do arquivo";
+
+/* Title of a setting: is the file hidden */
+"[FileInfo/Attributes/Hidden/title]" = "Oculto";
+
+/* Warning message for 'hidden' files. */
+"[FileInfo/Attributes/Hidden/warning]" = "Arquivos ocultos são menos visíveis para um usuário casual, mas não melhoram a segurança dos dados.";
 
 /* Section header: file backup settings */
 "[FileInfo/Backup/header]" = "Cópias de segurança";
@@ -949,6 +1003,9 @@
 /* Action/button to skip the current step and proceed with the next one */
 "[Generic] Skip" = "Pular";
 
+/* Action/button to change the order of items in a list (move them higher/lower). */
+"[Generic/Action/ReorderItems]" = "Reordenar";
+
 /* Action/button to select some items in a list. */
 "[Generic/Action/SelectItems]" = "Selecionar";
 
@@ -1000,6 +1057,12 @@
 /* Title of an warning message */
 "[Generic/title] Warning" = "Atenção";
 
+/* Title of a menu with various utilities */
+"[Generic/Tools/title]" = "Ferramentas";
+
+/* Action/button to open an online support article (about a specific error) */
+"[Generic/ViewHelpArticle/action]" = "Ver artigo de ajuda";
+
 /* Title of a screen/list view configuration: sort order, visible items, etc */
 "[Generic/ViewOptions/title]" = "Opções de Visualização";
 
@@ -1015,6 +1078,9 @@
 /* Title of a form for editing a group */
 "[Group/Edit/title] Edit Group" = "Editar Grupo";
 
+/* VoiceOver description of a menu with group-related actions */
+"[Group/Menu/a11y/title]" = "Menu do grupo";
+
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "Novo grupo";
 
@@ -1026,6 +1092,39 @@
 
 /* Title of the confirmation dialog for `Empty Recycle Bin` action */
 "[Group/RecycleBin/Empty/confirmTitle]" = "Apagar permanentemente tudo na lixeira?";
+
+/* Title of the Entries section visible while editing */
+"[Group/Section/Entries/title]" = "Entradas";
+
+/* Title of the Groups section visible while editing */
+"[Group/Section/Groups/title]" = "Grupos";
+
+/* VoiceOver description of a smart group [groupTitle: String] */
+"[Group/Smart/a11y/description]" = "%@, Grupo inteligente";
+
+/* Action/button to show a help article */
+"[Group/Smart/about]" = "Sobre os Grupos inteligentes…";
+
+/* Action/button to create a new Smart Group */
+"[Group/Smart/Create/action]" = "Criar Grupo inteligente";
+
+/* Default name of a new smart group */
+"[Group/Smart/New/defaultName]" = "Novo Grupo inteligente";
+
+/* Title of a list: all entries in the database */
+"[Group/Smart/Preset/allEntries]" = "Todas as entradas";
+
+/* Title of a list: entries that are beyond their expiration date. */
+"[Group/Smart/Preset/expiredEntries]" = "Entradas expiradas";
+
+/* Title of a list: entries with one-time passwords (OTP) */
+"[Group/Smart/Preset/otpEntries]" = "Entradas com OTP";
+
+/* Title for the Smart Group search conditions in group editor */
+"[Group/Smart/Query/title]" = "Filtro de Grupo inteligente";
+
+/* Glossary term: noun, a smart group in database. */
+"[Group/Smart/title]" = "Grupo inteligente";
 
 /* Glossary term: noun, a group in database. */
 "[Group/title]" = "Grupo";
@@ -1334,6 +1433,12 @@
 "[Premium/Benefits/HardwareKeys/title]" = "Use chaves físicas";
 
 /* Explanation of the premium feature */
+"[Premium/Benefits/LinkedDatabases/details]" = "Abra outro banco de dados em um passo: usando as credenciais armazenadas em uma entrada.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/LinkedDatabases/title]" = "Abrir bancos de dados vinculados";
+
+/* Explanation of the premium feature */
 "[Premium/Benefits/MultiDB/details]" = "Adicione vários bancos de dados e alterne facilmente entre eles.";
 
 /* Title of a premium feature */
@@ -1506,6 +1611,12 @@
 
 /* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
 "[PremiumFeature/HardwareKeys/title] Hardware Keys" = "Chaves Físicas";
+
+/* Description/advertisement for the `Linked Databases` premium feature */
+"[PremiumFeature/LinkedDatabases/description]" = "Atualize para a versão premium e abra bancos de dados vinculados em um passo.";
+
+/* Title of a premium feature: ability to open databases referenced in another database (In Title Case) */
+"[PremiumFeature/LinkedDatabases/title]" = "Bancos de dados vinculados";
 
 /* Description/advertisement for the `Multiple Databases` premium feature */
 "[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "Alterne facilmente entre bancos de dados na versão Premium.";
@@ -1759,6 +1870,9 @@
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "Ajustes de lista";
 
+/* Notification when corporate user tries to use a feature forbidden by organization's IT department. */
+"[Settings/Managed/BlockedFeature/notification]" = "Este recurso está bloqueado pela sua organização.";
+
 /* Notification when corporate user tries to change an app setting controlled by organization's IT department. */
 "[Settings/Managed/notification]" = "Esta configuração é gerenciada pela sua organização.";
 
@@ -1794,6 +1908,9 @@
 
 /* List sorting option, when no sorting is selected. Example: 'Sort by: None' */
 "[SortBy/None]" = "Nenhum";
+
+/* List sorting option, when items are manually ordered by the user. Example: 'Sort order: Custom' */
+"[SortOrder/Custom]" = "Personalizado";
 
 /* Name of a cloud storage service */
 "[StorageService/DropboxBusiness/title]" = "Dropbox Business";

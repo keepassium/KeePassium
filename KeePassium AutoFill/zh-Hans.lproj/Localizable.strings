@@ -7,11 +7,20 @@
 /* Must match Apple's translation, as found in iOS 15 Settings → Passwords → AutoFill Passwords. If unsure, leave untranslated. */
 "[AutoFill/Setup/UncheckKeychain/allowFillingFrom]" = "允许的填充来源：";
 
+/* Call to action: deselect the `Keychain` option. Keychain is a glossary term. */
+"[AutoFill/Setup/UncheckKeychain/callToAction]" = "取消选中钥匙串";
+
+/* Instruction to deselect the `Keychain` option. Keychain is a glossary term. */
+"[AutoFill/Setup/UncheckKeychain/message]" = "要使 KeePassium 成为您的默认密码管理器，请取消选中钥匙串。";
+
 /* Must match Apple's translation, as found in iOS 17 Settings → Passwords → Password Options. If unsure, leave untranslated. */
 "[AutoFill/Setup/UncheckKeychain/usePasswordsAndPasskeysFrom]" = "使用来自下列提供者的密码和通行密钥";
 
 /* Apple Keychain software; is a glossary term. */
-"[Generic/Keychain/title]" = "钥匙圈";
+"[Generic/Keychain/title]" = "钥匙串";
+
+/* Menu action to add a user-provided word list file to the app. */
+"[PasswordGenerator/Wordlist/Import/menuAction]" = "导入词表…";
 
 /* Password quality description. For example: `Password quality: Weak`. [level: String] */
 "[PasswordQuality/description]" = "密码安全性：%@";
@@ -27,6 +36,9 @@
 
 /* Weak password quality */
 "[PasswordQuality/Level] Weak" = "较差";
+
+/* Password quality description. Note the tilda that refers to an estimated/approximate value. For example: `Very good (~123 bits of entropy)`. [level: String, formattedBitCount: String] */
+"[PasswordQuality/LevelWithApproximateEntropy/description]" = "%1$@（熵值约为 %2$@）";
 
 /* Password quality description. For example: `Very good (234 bits of entropy)`. [level: String, formattedBitCount: String] */
 "[PasswordQuality/LevelWithEntropy/description]" = "%1$@ (%2$@ 熵值)";

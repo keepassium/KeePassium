@@ -454,6 +454,9 @@
 /* Name of an entry field */
 "[Entry/Field/name] User Name" = "Kullanıcı Adı";
 
+/* Title of a setting: whether the entry's field is protected (shown as asterisks). */
+"[Entry/Field/Protected/title]" = "Korunmuş alan";
+
 /* Status message: loading file to be attached to an entry */
 "[Entry/Files/Add] Loading attachment file" = "Dosya yükleniyor...";
 
@@ -807,6 +810,12 @@
 
 /* Title for the Notes field in group editor */
 "[Group/Notes/title]" = "Notlar";
+
+/* Title of the Entries section visible while editing */
+"[Group/Section/Entries/title]" = "Girdiler";
+
+/* Title of the Groups section visible while editing */
+"[Group/Section/Groups/title]" = "Gruplar";
 
 /* Glossary term: noun, a group in database. */
 "[Group/title]" = "Grup";

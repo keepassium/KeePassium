@@ -7,6 +7,12 @@
 /* Must match Apple's translation, as found in iOS 15 Settings → Passwords → AutoFill Passwords. If unsure, leave untranslated. */
 "[AutoFill/Setup/UncheckKeychain/allowFillingFrom]" = "Permitir preenchimento de:";
 
+/* Call to action: deselect the `Keychain` option. Keychain is a glossary term. */
+"[AutoFill/Setup/UncheckKeychain/callToAction]" = "Desmarcar Keychain";
+
+/* Instruction to deselect the `Keychain` option. Keychain is a glossary term. */
+"[AutoFill/Setup/UncheckKeychain/message]" = "Para tornar o KeePassium seu gerenciador de senhas padrão, desmarque o Keychain.";
+
 /* Must match Apple's translation, as found in iOS 17 Settings → Passwords → Password Options. If unsure, leave untranslated. */
 "[AutoFill/Setup/UncheckKeychain/usePasswordsAndPasskeysFrom]" = "Usar senhas e chaves‑senha de:";
 

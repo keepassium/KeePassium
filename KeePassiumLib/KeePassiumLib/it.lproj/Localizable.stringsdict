@@ -13,7 +13,7 @@
 			<key>one</key>
 			<string>%d bit</string>
 			<key>other</key>
-			<string>%d bits</string>
+			<string>%d bit</string>
 			<key>zero</key>
 			<string>%d bits</string>
 		</dict>

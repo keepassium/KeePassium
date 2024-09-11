@@ -7,11 +7,26 @@
 /* Suggestion/hint for available user action */
 "[Accessibility] Double tap to copy to clipboard" = "Dvojitým poklepáním zkopírujete do schránky";
 
+/* Call to action: perform accessibilty `activate` action to listen to text/content. */
+"[Accessibility/activateToListen]" = "Aktivujte pro poslech.";
+
+/* Action which resets the app as if it was just installed. */
+"[App/ResetEverything/action]" = "Obnovit";
+
+/* Confirmation message before resetting the app to just-installed state. */
+"[App/ResetEverything/title]" = "Obnovit aplikaci?";
+
 /* Section in settings: icon for the app */
 "[Appearance/AppIcon/title]" = "Ikona aplikace";
 
 /* Section in settings: icons for database */
 "[Appearance/DatabaseIcons/title]" = "Ikony databáze";
+
+/* Short name of the default/system font. For example: `Font: Default` */
+"[Appearance/DefaultFont/shortTitle]" = "Výchozí";
+
+/* Title of a setting option: font */
+"[Appearance/Font/title]" = "Písmo";
 
 /* Title of a setting option: font size */
 "[Appearance/TextSize/title]" = "Velikost písma";
@@ -45,6 +60,12 @@
 
 /* Type of keyboard to show for App Lock passcode: digits only (PIN code). */
 "[AppLock/Passcode/KeyboardType/title] Numeric" = "Numerická";
+
+/* Notification for business users when they set up too weak app protection passcode. */
+"[AppLock/Passcode/orgRequiresStonger]" = "Vaše organizace vyžaduje složitější kód aplikace.";
+
+/* Hint/call to action about keyboard shortcut */
+"[AppLock/Passcode/pressEscForTouchID]" = "Pro použití Touch ID stiskněte Esc";
 
 /* Notification that the modified AppLock passcode has been saved. */
 "[AppLock/passcodeUpdated/title]" = "Přístupový kód byl úspěšně aktualizován.";
@@ -133,14 +154,86 @@
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "Přidat vlastní ikonu";
 
+/* Action: download icon of a website */
+"[Database/CustomIcon/DownloadFavicon/action]" = "Stáhnout Faviconu";
+
+/* Action/button to download favicons of websites mentioned in selected entries. */
+"[Database/CustomIcon/DownloadFavicons/action]" = "Stáhnout Favicony";
+
+/* Report of favicon download results. */
+"[Database/CustomIcon/DownloadFavicons/stats]" = "Zpracované záznamy: %1$d\nAktualizované ikony: %2$d";
+
+/* Status message: multiple website favicons are being downloaded */
+"[Database/CustomIcon/DownloadFavicons/status]" = "Stáhují se Favicony";
+
+/* Status message: a website favicon is being downloaded */
+"[Database/CustomIcon/DownloadOneFavicon/status]" = "Stáhuje se Favicona";
+
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Odstranit databázový soubor?\n Ujistěte se, že máte zálohu.";
+
+/* Action to modify database encryption settings. */
+"[Database/EncryptionSettings/Change/action]" = "Změnit nastavení šifrování";
+
+/* Parameter name in database encryption settings. Example: 'Encryption Algorithm: AES-256' */
+"[Database/EncryptionSettings/dataCipher]" = "Šifrovací algoritmus";
+
+/* Parameter name in database encryption settings. Defines the number of times/iterations a calculation (transform) should be executed. Example: 'Transform Rounds: 100' */
+"[Database/EncryptionSettings/iterations]" = "Opakování transformace";
 
 /* Parameter name in database encryption settings. This is a term, see https://en.wikipedia.org/wiki/Key_derivation_function. Example: 'Key Derivation Function: Argon2' */
 "[Database/EncryptionSettings/kdf]" = "Funkce pro vytvoření klíče";
 
+/* Parameter name in database encryption settings. Defines the amount of memory that should be used by an algorithm. Example: 'Memory Usage: 16 MB' */
+"[Database/EncryptionSettings/memory]" = "Využití paměti";
+
+/* Warning for too high value of the `Memory usage` parameter in database encryption settings. */
+"[Database/EncryptionSettings/memoryAutoFillWarning]" = "Vysoké nároky na paměť mohou způsobit, že tato databáze nebude kompatibilní s funkcí automatického vyplňování hesla.";
+
+/* Action/button button in database encryption settings. Resets the settings to recommended values. */
+"[Database/EncryptionSettings/reset]" = "Obnovit do doporučeného nastavení";
+
+/* Parameter name in database encryption settings. Defines the number of computations to run in parallel/simultaneously. Example: 'Parallelism: 2 threads' */
+"[Database/EncryptionSettings/threads]" = "Souběžnost";
+
+/* Title: database encryption settings. */
+"[Database/EncryptionSettings/title]" = "Nastavení šifrování";
+
+/* Info message for entries that contain information for opening a different database. */
+"[Database/Entry/LinkedDatabase/message]" = "Tento záznam odkazuje na jinou databázi.";
+
+/* Notification message about external changes to the loaded file. */
+"[Database/ExternalChange/notification]" = "Databázový soubor se změnil. Načíst znovu?";
+
+/* Status message: checking if currently loaded database is the latest version */
+"[Database/ExternalChange/Status/checkInProgress]" = "Kontrola změn…";
+
+/* Status message: failed to check if currently loaded database is the latest version */
+"[Database/ExternalChange/Status/failed]" = "Obnovení se nezdařilo";
+
+/* Status message: currently loaded database is the latest version */
+"[Database/ExternalChange/Status/upToDate]" = "Aktuální";
+
+/* Info message when changing database file format. */
+"[Database/FormatVersion/Conversion/allDataPreserved]" = "Všechna vaše data budou zachována.";
+
+/* Info message when the app needs to change database file format. [oldFormat, newFormat: String] */
+"[Database/FormatVersion/Upgrade/text]" = "KeePassium potřebuje aktualizovat formát vašeho databázového souboru (z %1$@ na %2$@). Možná bude nutné aktualizovat i další aplikace, které tuto databázi používají.";
+
+/* Title of an info message when the app needs to change database file format. */
+"[Database/FormatVersion/Upgrade/title]" = "Než budeme pokračovat";
+
+/* Title of an icon collection: icons provided by the system */
+"[Database/IconSet/System/title]" = "Systém";
+
+/* Status of a database item (entry or group) after it was edited. */
+"[Database/Item/Edited/state]" = "Upraveno";
+
 /* Notification when user tries to copy data from KDBX to older KDB database. */
 "[Database/LesserTargetFormat/warning]" = "Formát této databáze je zastaralý, některá data mohou být ztracena.";
+
+/* Recommendation for solving a problem with a list of files. */
+"[Database/List/LocalMissing/message]" = "Pokud některé lokální soubory nejsou uvedeny, nejprve spusťte hlavní aplikaci KeePassium.";
 
 /* Title of the database picker list */
 "[Database/List/title]" = "Databáze";
@@ -157,11 +250,17 @@
 /* Error message */
 "[Database/Load/Error] Cannot open key file" = "Klíčový soubor nelze otevřít";
 
+/* Error message, when the real file format is recognized. For example: 'Incorrect database format: JPEG.' */
+"[Database/Load/Error] Incorrect database format" = "Nesprávný formát databáze: %@.";
+
 /* Error shown when both master password and key file are empty */
 "[Database/Load/Error] Please provide at least a password or a key file" = "Prosím, vložte heslo nebo klíčový soubor";
 
 /* Error message */
 "[Database/Load/Error] Unrecognized database format" = "Nerozpoznaný formát databáze";
+
+/* Error message */
+"[Database/Load/Error/encryptedByIntune]" = "Tato databáze je chráněna firemními zásadami IT a nástrojem Microsoft Intune.";
 
 /* Message shown after we show a cached local database instead of the (unavailable) original database. */
 "[Database/Loading/FromCache/text]" = "Databáze je nedostupná.\nToto je její nejnovější lokální kopie.";
@@ -187,6 +286,9 @@
 /* Glossary term: noun, a master key for encrypting the database */
 "[Database/MasterKey/title]" = "Hlavní klíč";
 
+/* Title of database creation dialog */
+"[Database/New/title]" = "Nová databáze";
+
 /* Action/button */
 "[Database/Open/action] Open Database" = "Otevřít databázi";
 
@@ -205,11 +307,20 @@
 /* Title of a warning message, shown after opening a problematic database */
 "[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "Vaše databáze je otevřena, nicméně vše neproběhlo úplně v pořádku.";
 
+/* Title of a list with database-related actions (e.g. lock database, change master key, etc) */
+"[Database/Operations/title]" = "Operace databáze";
+
+/* Status message: preparing database print preview. */
+"[Database/Print/preparingPreview]" = "Příprava náhledu…";
+
 /* Progress status: finished loading database */
 "[Database/Progress] Done" = "Hotovo";
 
 /* Progress status */
 "[Database/Progress] Loading key file..." = "Načítání klíčového souboru...";
+
+/* Database loading/saving status: checking whether our database was modified from another device. */
+"[Database/Progress/checkingDatabaseForModifications]" = "Kontrola změn v databázi…";
 
 /* Database loading status: fetching the database file from disk/cloud */
 "[Database/Progress/downloading]" = "Stahování databázového souboru...";
@@ -223,11 +334,26 @@
 /* Database loading/saving status: replacing field references with their values */
 "[Database/Progress/resolvingFieldReferences]" = "Řešení odkazů na pole…";
 
+/* Database saving status: deciding how to handle conflicting changes. */
+"[Database/Progress/resolvingSyncConflict]" = "Řešení konfliktu synchronizace…";
+
+/* Database saving status */
+"[Database/Progress/writingDatabaseFile]" = "Zapisování databázového souboru…";
+
+/* Suggested solution/call to action when intermediate sync app fails. */
+"[Database/RecommendRemote/callToAction]" = "Zkuste se připojit k vašemu vzdálenému úložišti přímo z KeePassium.";
+
+/* Action/button */
+"[Database/Reload/action]" = "Znovu načíst databázi";
+
 /* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
 "[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "Odstranit databázi ze seznamu?\nSoubor nebude ostraněn a můžete jej znovu přidat později.";
 
 /* Action/button to save the current database. */
 "[Database/Save/action] Save Database" = "Uložit databázi";
+
+/* Action/button to save file to a remote server. */
+"[Database/SaveToServer/action]" = "Uložit na server";
 
 /* Status message: finished saving a database */
 "[Database/Saving/Status] Done" = "Hotovo";
@@ -237,6 +363,21 @@
 
 /* File settings parameter: time after which file will be considered unreachable. Example: `Consider File Unreachable: in 10 seconds`.) */
 "[Database/Settings/ConsiderFileUnreachable/title]" = "Považovat soubor za nedostupný";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Don't check`) */
+"[Database/Settings/ExternalChanges/dontCheck]" = "Nekontrolovat";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Notify`) */
+"[Database/Settings/ExternalChanges/notify]" = "Upozornit";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Reload Automatically`) */
+"[Database/Settings/ExternalChanges/reload]" = "Znovu načíst automaticky";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Notify`) */
+"[Database/Settings/ExternalChanges/title]" = "Databáze externě upravena";
+
+/* Title: what to do when a cloud-stored file cannot be loaded. (For example: `If File is Unreachable: Re-add File`.) */
+"[Database/Settings/FallbackStrategy/ReAddFile/title]" = "Znovu přidat soubor";
 
 /* Title: what to do when (remote) file cannot be loaded. (For example: `If File is Unreachable: Show Error`.) */
 "[Database/Settings/FallbackStrategy/ShowError/title]" = "Zobrazit chybu";
@@ -493,6 +634,18 @@
 /* Default name of a newly created entry field */
 "[Entry/Edit/CreateField/defaultName] Field Name" = "Název pole";
 
+/* Notification: a reference to an entry field has been copied to clipboard */
+"[Entry/Field/CopyReference/acknowledgement]" = "Odkaz na pole zkopírován do schránky";
+
+/* Action: copy a reference to the selected entry field to clipboard */
+"[Entry/Field/CopyReference/action]" = "Kopírovat odkaz na pole";
+
+/* Action: display text using large font */
+"[Entry/Field/LargeType/action]" = "Zobrazit velkými písmeny";
+
+/* Name of an entry field */
+"[Entry/Field/name] Icon" = "Ikona";
+
 /* Name of an entry field */
 "[Entry/Field/name] Notes" = "Poznámky";
 
@@ -508,6 +661,12 @@
 /* Name of an entry field */
 "[Entry/Field/name] User Name" = "Uživatelské jméno";
 
+/* Title of a setting: whether the entry's field is protected (shown as asterisks). */
+"[Entry/Field/Protected/title]" = "Chráněné pole";
+
+/* Name of an entry field */
+"[Entry/Field/tags] Tags" = "Štítky";
+
 /* Status message: loading file to be attached to an entry */
 "[Entry/Files/Add] Loading attachment file" = "Nahrávám přílohu";
 
@@ -522,6 +681,9 @@
 
 /* Title of a field with entry's last modification date and time */
 "[Entry/History] Last Modification Date" = "Datum poslední změny";
+
+/* Title of a field with entry's modification date and time */
+"[Entry/History] Modification Date" = "Datum změny";
 
 /* Title of a list with previous versions/revisions of an entry. */
 "[Entry/History] Previous Versions" = "Předchozí revize";
@@ -562,6 +724,12 @@
 /* Error message shown when there's internal inconsistency in KeePassium. */
 "[FileAccessError/internalError]" = "Interní chyba v KeePassium, prosím, řekněte nám o ní.";
 
+/* Error message: organization's IT administrator has forbidden access to a data storage location. */
+"[FileAccessError/ManagedAccessDenied/title]" = "Přístup k tomuto úložišti je zakázán vaší organizací.";
+
+/* Error message: network access is forbidden by system or app settings. */
+"[FileAccessError/NetworkAccessDenied/generic]" = "Přístup k síti je zablokován nastavením.";
+
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests. */
 "[FileAccessError/NoResponse/genericFileProvider]" = "Poskytovatel úložiště neodpovídá.";
 
@@ -577,11 +745,26 @@
 /* Suggestion for error recovery */
 "[FileAccessError/OneDriveReadOnly/recoverySuggestion]" = "Použijte možnost Export pro uložení souboru do jiné lokace.";
 
+/* Error message for file with an expired access permission [fileName: String]. */
+"[FileAccessError/PermissionRequired/reason]" = "KeePassium potřebuje vaše oprávnění k přístupu k „%@“.";
+
+/* Action/button for error recovery */
+"[FileAccessError/PermissionRequired/recoveryAction]" = "Pro povolení přístupu vyberte soubor znovu";
+
 /* Error message: storage provider app (e.g. Google Drive) does not respond to requests (quickly enough). */
 "[FileAccessError/Timeout/genericFileProvider]" = "Poskytovatel úložiště neodpovídá.";
 
 /* Error message: file provider does not respond to requests (quickly enough). For example: `Google Drive does not respond` */
 "[FileAccessError/Timeout/knownFileProvider]" = "%@ neodpovídá.";
+
+/* Section header for attributes of a file (e.g. hidden, excluded from backup, etc) */
+"[FileInfo/Attributes/header]" = "Atributy souboru";
+
+/* Title of a setting: is the file hidden */
+"[FileInfo/Attributes/Hidden/title]" = "Skryté";
+
+/* Warning message for 'hidden' files. */
+"[FileInfo/Attributes/Hidden/warning]" = "Skryté soubory jsou méně viditelné pro bežné uživatele, ale nezlepšují zabezpečení dat.";
 
 /* Section header: file backup settings */
 "[FileInfo/Backup/header]" = "Záloha";
@@ -649,6 +832,9 @@
 /* Localized name of the storage service iCloud Drive (https://icloud.com/iclouddrive) */
 "[FileProvider/iCloud Drive/name]" = "iCloud Drive";
 
+/* Localized name of the storage service: MagentaCLOUD (https://www.telekom.de/zubuchoptionen/magenta-cloud) */
+"[FileProvider/MagentaCloud/name]" = "MagentaCLOUD";
+
 /* Localized name of the storage service: MEGA (https://mega.nz) */
 "[FileProvider/Mega.nz/name]" = "MEGA.nz";
 
@@ -685,6 +871,9 @@
 /* Localized name of the storage app: Seafile Pro (https://apps.apple.com/us/app/seafile-pro/id639202512) */
 "[FileProvider/Seafile Pro/name]" = "Seafile Pro";
 
+/* Localized name of the storage app: Secure ShellFish (https://apps.apple.com/app/ssh-files-secure-shellfish/id1336634154) */
+"[FileProvider/Secure ShellFish/name]" = "Secure ShellFish";
+
 /* Localized name of the storage service: SMB server (network share) via native iOS integration. */
 "[FileProvider/SMB/name]" = "SMB server";
 
@@ -711,6 +900,15 @@
 
 /* Title of the dialog for picking the destination group for move/copy operations */
 "[General/DestinationGroup/title] Choose a Destination" = "Vyberte cíl";
+
+/* Feature status: disabled/inactive. Keep it short, possibly abbreviated. */
+"[General/Feature/Off]" = "Vypnuto";
+
+/* Feature status: enabled/active. Keep it short, possibly abbreviated. */
+"[General/Feature/On]" = "Zapnuto";
+
+/* Placeholder for folders without files */
+"[General/FileList/Empty/title]" = "Složka je prázdná";
 
 /* Action/button to cancel whatever is going on */
 "[Generic] Cancel" = "Zrušit";
@@ -751,6 +949,9 @@
 /* Action/button to export an item to another app */
 "[Generic] Export" = "Exportovat";
 
+/* Action/button shown below error messages. Tapping the button will start the fixing/repairing workflow described in the error message. */
+"[Generic] Fix this" = "Opravit";
+
 /* Action/button to view more help/info about some topic */
 "[Generic] Learn more" = "Více informací…";
 
@@ -769,6 +970,9 @@
 /* Action/button to replace/overwrite an item */
 "[Generic] Overwrite" = "Přepsat";
 
+/* Action/button to print a document */
+"[Generic] Print" = "Tisk";
+
 /* Action/button to rename an item */
 "[Generic] Rename" = "Přejmenovat";
 
@@ -777,6 +981,9 @@
 
 /* Action/button to restore a backup/archived item in its original place */
 "[Generic] Restore" = "Obnovit";
+
+/* Action: repeat the previous (failed) action */
+"[Generic] Retry" = "Opakovat";
 
 /* Action/button to open Finder (macOS file manager) and highlight a given file */
 "[Generic] Reveal in Finder" = "Zobrazit ve Finderu";
@@ -795,6 +1002,12 @@
 
 /* Action/button to skip the current step and proceed with the next one */
 "[Generic] Skip" = "Přeskočit";
+
+/* Action/button to change the order of items in a list (move them higher/lower). */
+"[Generic/Action/ReorderItems]" = "Změnit pořadí";
+
+/* Action/button to select some items in a list. */
+"[Generic/Action/SelectItems]" = "Vybrat";
 
 /* Message to confirm deletion of an item. */
 "[Generic/ConfirmDelete/title] Are you sure?" = "Jste si jisti?";
@@ -829,6 +1042,9 @@
 /* Title of a list with predefined quick-choice values (for example: 'Presets: 1 week, 1 months, 1 year') */
 "[Generic/Presets]" = "Předvolené";
 
+/* Action: refresh list of items, usually files */
+"[Generic/RefreshList/action]" = "Obnovit seznam";
+
 /* Title of a search field (a noun, not verb) */
 "[Generic/Search/title]" = "Vyhledávání";
 
@@ -840,6 +1056,12 @@
 
 /* Title of an warning message */
 "[Generic/title] Warning" = "Varování";
+
+/* Title of a menu with various utilities */
+"[Generic/Tools/title]" = "Nástroje";
+
+/* Action/button to open an online support article (about a specific error) */
+"[Generic/ViewHelpArticle/action]" = "Zobrazit článek s nápovědou";
 
 /* Title of a screen/list view configuration: sort order, visible items, etc */
 "[Generic/ViewOptions/title]" = "Volby zobrazení";
@@ -856,11 +1078,53 @@
 /* Title of a form for editing a group */
 "[Group/Edit/title] Edit Group" = "Upravit skupinu";
 
+/* VoiceOver description of a menu with group-related actions */
+"[Group/Menu/a11y/title]" = "Nabídka skupiny";
+
 /* Default name of a new group */
 "[Group/New/defaultName] New Group" = "Nová skupina";
 
 /* Title for the Notes field in group editor */
 "[Group/Notes/title]" = "Poznámky";
+
+/* Action/button to delete everything inside the Recycle Bin */
+"[Group/RecycleBin/Empty/action]" = "Vyprázdnit koš";
+
+/* Title of the confirmation dialog for `Empty Recycle Bin` action */
+"[Group/RecycleBin/Empty/confirmTitle]" = "Trvale odstranit vše v Koši?";
+
+/* Title of the Entries section visible while editing */
+"[Group/Section/Entries/title]" = "Záznamy";
+
+/* Title of the Groups section visible while editing */
+"[Group/Section/Groups/title]" = "Skupiny";
+
+/* VoiceOver description of a smart group [groupTitle: String] */
+"[Group/Smart/a11y/description]" = "%@, inteligentní skupina";
+
+/* Action/button to show a help article */
+"[Group/Smart/about]" = "O inteligentních skupinách…";
+
+/* Action/button to create a new Smart Group */
+"[Group/Smart/Create/action]" = "Vytvořit inteligentní skupinu";
+
+/* Default name of a new smart group */
+"[Group/Smart/New/defaultName]" = "Nová inteligentní skupina";
+
+/* Title of a list: all entries in the database */
+"[Group/Smart/Preset/allEntries]" = "Všechny záznamy";
+
+/* Title of a list: entries that are beyond their expiration date. */
+"[Group/Smart/Preset/expiredEntries]" = "Záznamy s prošlou platností";
+
+/* Title of a list: entries with one-time passwords (OTP) */
+"[Group/Smart/Preset/otpEntries]" = "Záznamy s OTP";
+
+/* Title for the Smart Group search conditions in group editor */
+"[Group/Smart/Query/title]" = "Inteligentní filtr skupiny";
+
+/* Glossary term: noun, a smart group in database. */
+"[Group/Smart/title]" = "Inteligentní skupina";
 
 /* Glossary term: noun, a group in database. */
 "[Group/title]" = "Skupina";
@@ -871,8 +1135,17 @@
 /* A notification that hardware keys (e.g. YubiKey) cannot be used in AutoFill (the OS does not allow the AutoFill to use NFC/MFI). */
 "[HardwareKey/AutoFill/NotAvailable] Hardware keys are not available in AutoFill." = "Hardwarové klíče není možné použít pro automatické vyplňování.";
 
+/* Information notice for a list of hardware keys. */
+"[HardwareKey/AutoFill/TheseNotAvailable]" = "Tyto hardwarové klíče není možné použít pro automatické vyplňování.";
+
 /* Name of an input field which shows selected hardware key */
 "[HardwareKey/Field/title]" = "Hardwarový klíč";
+
+/* Connector type for older Apple devices, used through a USB adapter. https://en.wikipedia.org/wiki/Lightning_(connector) */
+"[HardwareKey/Interface/LightningViaUSBAdapter]" = "Lightning (prostřednictvím USB adaptéru)";
+
+/* A notice for hardware keys that need an adapter for physical connection to device. */
+"[HardwareKey/LightningOverUSB/RequiresAdapter]" = "Vyžaduje adaptér z Apple USB-C na Lightning";
 
 /* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
 "[HardwareKey/NFC/OS too old]" = "NFC vyžaduje iOS 13 nebo novější.";
@@ -882,6 +1155,12 @@
 
 /* Title of a list with possible hardware key connections */
 "[HardwareKey/Picker/title]" = "Hardwarové klíče";
+
+/* Information notice. 'Challenge-response' is a glossary term. */
+"[HardwareKey/USB/chalRespNotSupported]" = "Toto zařízení nepodporuje reakci na výzvu přes USB připojení.";
+
+/* Information notice */
+"[HardwareKey/USB/iPadAppOnMac]" = "USB není dostupné, protože se jedná o aplikaci pro iPad, která běží na macOS. Místo toho použijte nativní aplikaci Mac.";
 
 /* Master key/unlock option: use given slot of YubiKey */
 "[HardwareKey/YubiKey/Slot] YubiKey Slot #%d" = "YubiKey slot %d";
@@ -895,14 +1174,50 @@
 /* Info message for enterprise users */
 "[Intune/OrgNeedsToManage]" = "Aby mohla organizace chránit svoje data, musí tuto aplikaci spravovat. Pokud budete chtít správu nastavit, přihlaste se svým pracovním nebo školním účtem.";
 
+/* Info message for users who accidentally installed the enterprise version. */
+"[Intune/PersonalVersionElsewhere]" = "Verze KeePassium pro osobní použití je k dispozici na App Store.";
+
 /* Notification that an archived/historical item (e.g entry) has been successfully restored */
 "[Item/History/Restored]" = "Předchozí verze obnovena";
 
 /* Title of a list with advanced/expert-level properties of a database item (e.g. entry) */
 "[Item/Properties/Advanced/title]" = "Pokročilé";
 
+/* Possible value of the `Password AutoFill` setting. For example: 'Password AutoFill: Allowed' */
+"[Item/Properties/AutoFill/allowed]" = "Povoleno";
+
+/* Possible value of the `Password AutoFill` setting. For example: 'Password AutoFill: Disabled' */
+"[Item/Properties/AutoFill/disabled]" = "Zakázáno";
+
+/* Title of a setting: whether the item (e.g. entry) should be used in AutoFill feature. App-specific setting for KeePassXC. */
+"[Item/Properties/AutoFill/KeePassXC/title]" = "Automatické vyplňování hesla (KeeePassXC)";
+
+/* Title of a setting: whether the item (e.g. entry) should be used in AutoFill feature */
+"[Item/Properties/AutoFill/title]" = "Automatické vyplňování hesla";
+
+/* Default value of an item property. For example: 'Password Audit: Inherit from parent group (Allowed)'. [inheritedValue: String] */
+"[Item/Properties/inheritedValue]" = "Převzít z nadřazené skupiny (%@)";
+
+/* Possible value of the `Password Audit` setting. For example: 'Password Audit: Allowed' */
+"[Item/Properties/PasswordAudit/allowed]" = "Povoleno";
+
+/* Possible value of the `Password Audit` setting. For example: 'Password Audit: Disabled' */
+"[Item/Properties/PasswordAudit/disabled]" = "Zakázáno";
+
+/* Title of a setting: whether the item (e.g. entry) should be included in password audit */
+"[Item/Properties/PasswordAudit/title]" = "Audit hesel";
+
+/* Possible value of the `Search` setting. Example: 'Search: Allowed' */
+"[Item/Properties/Search/allowed]" = "Povoleno";
+
+/* Possible value of the `Search` setting, when the item should be excluded from search results. Example: 'Search: Disabled' */
+"[Item/Properties/Search/disabled]" = "Zakázáno";
+
 /* Title of a setting: whether the item (e.g. entry) should be considered during search. Example: 'Search: Allowed' */
 "[Item/Properties/Search/title] Search" = "Vyhledávání";
+
+/* Title of a list with item (e.g. entry) properties/settings, such as searchability, auto-typing, etc */
+"[Item/Properties/title]" = "Vlastnosti";
 
 /* Name of an entry/group category (visual style): default one, like in KeePass */
 "[ItemCategory] Default (KeePass)" = "Původní (KeePass)";
@@ -922,14 +1237,32 @@
 /* Error message about system keychain. */
 "[KeychainError/unexpectedFormat] Keychain error: unexpected data format" = "Chyba klíčenky: neočekávaný formát dat";
 
+/* Action: create new key file. */
+"[KeyFile/Create/action]" = "Vytvořit soubor s klíčem";
+
+/* Default name for new key files. Should match the `key file` term in the glossary. */
+"[KeyFile/Create/defaultName]" = "soubor_s_klicem.dat";
+
 /* Message to confirm deletion of a key file. */
 "[KeyFile/Delete/Confirm/text] Delete key file?\n Make sure you have a backup." = "Opravdu chcete odstranit soubor s klíčem?\nUjistěte se, že jej máte zálohovaný.";
 
 /* Name of an input field which shows selected key file */
 "[KeyFile/Field/title]" = "Soubor s klíčem";
 
+/* Action: import/add a key file into the app. `Key file` is a glossary term. */
+"[KeyFile/Import/action]" = "Importovat soubor s klíčem";
+
+/* Description of the `Import Key File` action. */
+"[KeyFile/Import/actionDescription]" = "Přidat soubor do aplikace";
+
 /* Message to confirm removal of a key file from the app. (This keeps the file, but removes its reference from the app.) */
 "[KeyFile/Remove/Confirm/text] Remove key file from the list?\n The file will remain intact and you can add it again later." = "Odebrat soubor s klíčem ze seznamu?\nSoubor zůstane neporušený a později jej budete moci znovu přidat.";
+
+/* Action: use a key file at its storage location, without importing to the app. */
+"[KeyFile/Use/action]" = "Vybrat soubor s klíčem";
+
+/* Description of the `Select Key File` action. */
+"[KeyFile/Use/actionDescription]" = "Použít bez přidání";
 
 /* Error message when the key file is misformatted or damaged */
 "[KeyFileError/Corrupted/title]" = "Soubor s klíčem je poškozen";
@@ -943,11 +1276,20 @@
 /* Suggestion/hint on how to fix an accompanying error. */
 "[Org/ContactYourAdmin]" = "Obraťte se prosím na správce IT.";
 
+/* Error message, euphemism for missing corporate license */
+"[Org/LicenseMissing]" = "KeePassium nemohlo najít podnikový účet vaší organizace.";
+
+/* Notification next to the OTP code which was copied to clipboard */
+"[OTP/CopiedToClipboard/title]" = "Jednorázové heslo zkopírováno do schránky";
+
 /* Name of an entry field */
 "[OTP/FieldName]" = "Jednorázové heslo";
 
 /* Error shown when scanned QR code cannot be used for OTP */
 "[OTP/Scan/InvalidData]" = "Tento QR kód není vhodný pro nastavení OTP.";
+
+/* Error shown when a manually entered OTP secret is misformatted. */
+"[OTP/Scan/InvalidSecretCode]" = "Zadaný tajný kód není vhodný pro nastavení OTP.";
 
 /* Message to confirm user intentions */
 "[OTP/Scan/OverwriteWarning]" = "Jednorázové heslo je již pro tuto položku nakonfigurováno. Chcete ji přepsat?";
@@ -955,11 +1297,146 @@
 /* Call for action. Acronym `OTP` should not be translated. */
 "[OTP/Setup]" = "Nastavit jednorázové heslo (OTP)";
 
+/* Button/action: proceed with manual OTP setup */
+"[OTP/Setup/EnterManually]" = "Zadat ručně";
+
+/* Call to action: type in the secret key for OTP setup. */
+"[OTP/Setup/EnterSecretCode/callToAction]" = "Zadejte tajný kód";
+
+/* Button/action: proceed with QR code based OTP setup */
+"[OTP/Setup/ScanQRCode]" = "Načíst QR kód";
+
+/* Description of an OTP code; sentence case. */
+"[OTP/Title/sentenceCase]" = "Jednorázové heslo";
+
+/* Action/button: accept/use the generated password */
+"[PasswordGenerator/Accept/action]" = "Přijmout";
+
+/* Error message from the random text generator. */
+"[PasswordGenerator/CannotGenerateText/title]" = "Nelze vygenerovat text";
+
+/* Description of an empty character set for password generator. 'Empty' as 'there are no characters'. */
+"[PasswordGenerator/CustomSet/Empty/title]" = "Prázdné";
+
+/* User-defined set of characters for password generator. */
+"[PasswordGenerator/CustomSet/title]" = "Vlastní znaky";
+
+/* Error message/call to action from the random text generator. */
+"[PasswordGenerator/DesiredLengthTooShort/title]" = "Zvyšte parametr délky alespoň na %d.";
+
+/* Action/button: generate random text/password/phrase */
+"[PasswordGenerator/Generate/action]" = "Generovat";
+
+/* Description of randomly generated text/password/phrase */
+"[PasswordGenerator/GeneratedText/title]" = "Vygenerovaný text";
+
+/* Inclusion criterion for a password generator. For example: `Digits: Allowed` */
+"[PasswordGenerator/InclusionCondition/allowed]" = "Povoleno";
+
+/* Inclusion criterion for a password generator. For example: `Uppercase Letters: Excluded` */
+"[PasswordGenerator/InclusionCondition/excluded]" = "Vyloučeno";
+
+/* Inclusion criterion for a password generator — a disabled/inactive one that won't be taken into account. For example: `Uppercase Letters: Inactive` */
+"[PasswordGenerator/InclusionCondition/inactive]" = "Neaktivní";
+
+/* Inclusion criterion for a password generator. For example: `Special Symbols: Required` */
+"[PasswordGenerator/InclusionCondition/required]" = "Vyžadováno";
+
+/* Length (number of characters) of the random text to generate */
+"[PasswordGenerator/Length/title]" = "Délka";
+
+/* Description of a password generator parameter. For example, the digit in 'abc222def'. */
+"[PasswordGenerator/MaxConsecutive/description]" = "Maximální počet stejných znaků opakujících se za sebou.";
+
+/* Error message/call to action from the random text generator. */
+"[PasswordGenerator/MaxConsecutiveNotSatisfiable/title]" = "Zvyšte limit pro maximální počet stejných prvků opakujících se za sebou.";
+
+/* One of the operation modes of the random text generator */
+"[PasswordGenerator/Mode/Basic/title]" = "Základní";
+
+/* One of the operation modes of the random text generator */
+"[PasswordGenerator/Mode/Expert/title]" = "Expert";
+
+/* One of the operation modes of the random text generator, where it generates random phrases. */
+"[PasswordGenerator/Mode/Passphrase/title]" = "Přístupová fráze";
+
+/* Operation mode of the random text generator (for example, `Basic`, `Expert`, `Passphrase`) */
+"[PasswordGenerator/Mode/title]" = "Režim";
+
+/* Error message from the random text generator. */
+"[PasswordGenerator/NotEnoughElementsToSample/title]" = "Je potřeba více prvků, ze kterých lze vybírat.";
+
+/* Length (number of characters) of the password to generate */
+"[PasswordGenerator/PasswordLength/title]" = "Délka hesla";
+
+/* Error message from the random text generator. `required` and `excluded` are as in [PasswordGenerator/InclusionCondition/required] and [PasswordGenerator/InclusionCondition/excluded] */
+"[PasswordGenerator/RequiredSetCompletelyExcluded/title]" = "Jedna ze znakových sad je vyžadována i vyloučena.";
+
+/* Title for digits (like '123') */
+"[PasswordGenerator/Set/Digits/title]" = "Číslice";
+
+/* Title for look-alike symbols (like '1lI', that is: digit `1`, small `L`, capital `i`). */
+"[PasswordGenerator/Set/Lookalikes/title]" = "Podobně vypadající znaky";
+
+/* Title for lowercase letters (like 'abc') */
+"[PasswordGenerator/Set/Lowercase/title]" = "Malá písmena";
+
+/* Title for special symbols (like '@#$') */
+"[PasswordGenerator/Set/Specials/title]" = "Zvláštní znaky";
+
+/* Title for uppercase letters (like 'ABC') */
+"[PasswordGenerator/Set/Uppercase/title]" = "Velká písmena";
+
+/* Name of the space character. https://en.wikipedia.org/wiki/Space_(punctuation) */
+"[PasswordGenerator/SpaceCharacter/name]" = "Mezera";
+
+/* Title of the random text/password/username generator dialog. */
+"[PasswordGenerator/title]" = "Náhodný generátor";
+
+/* Character to be inserted between words of a passphrase. */
+"[PasswordGenerator/Word Separtor/title]" = "Oddělovač";
+
+/* Word capitalization style. Written in that style, if possible. */
+"[PasswordGenerator/WordCase/lowerCase]" = "malá písmena";
+
+/* Case of letters in a word (e.g. UPPER, lower, Title Case) */
+"[PasswordGenerator/WordCase/title]" = "Malá a velká písmena";
+
+/* Word capitalization style: first letters of significant words capitalized. Written in that style, if possible. */
+"[PasswordGenerator/WordCase/titleCase]" = "První velké";
+
+/* Word capitalization style. Written in that style, if possible. */
+"[PasswordGenerator/WordCase/upperCase]" = "VELKÁ PÍSMENA";
+
+/* Number of words in a generated passphrase. In context: 'Words: 5' */
+"[PasswordGenerator/WordCount/title]" = "Slova";
+
+/* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
+"[PasswordGenerator/Wordlist/EFFLarge/title]" = "Rozsáhlý seznam slov EFF (7776 slov)";
+
+/* Name of a wordlist for passphrase generator. `EFF` is an organization name. */
+"[PasswordGenerator/Wordlist/EFFShort/title]" = "Krátký seznam slov EFF č.%d (1296 slov)";
+
+/* Error message when importing a text file [lineNumber: Int, problemDescription: String] */
+"[PasswordGenerator/Wordlist/ImportError/reason]" = "Soubor nemohl být importován kvůli problému na řádku %1$d (%2$@)";
+
+/* List of words to be used for a passphrase. */
+"[PasswordGenerator/Wordlist/title]" = "Seznam slov";
+
+/* Title of a premium feature */
+"[Premium/Benefits/BusinessClouds/title]" = "Synchronizovat s firemním úložištěm";
+
 /* Explanation of the premium feature */
 "[Premium/Benefits/HardwareKeys/details]" = "Chraňte svá hesla pomocí hardwarového klíče, jako je YubiKey.";
 
 /* Title of a premium feature */
 "[Premium/Benefits/HardwareKeys/title]" = "Použijte hardwarové klíče";
+
+/* Explanation of the premium feature */
+"[Premium/Benefits/LinkedDatabases/details]" = "Otevřete jinou databázi v jednom kroku – pomocí přihlašovacích údajů uložených v záznamu.";
+
+/* Title of a premium feature */
+"[Premium/Benefits/LinkedDatabases/title]" = "Otevírejte připojené databáze";
 
 /* Explanation of the premium feature */
 "[Premium/Benefits/MultiDB/details]" = "Přidejte více databází a přepínejte se mezi nimi rychleji.";
@@ -969,6 +1446,9 @@
 
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Negative/header] " = "Co vám chybí";
+
+/* Title of a premium feature */
+"[Premium/Benefits/PasswordAudit/title]" = "Kontrolujte svá hesla";
 
 /* List of premium benefits/advantages */
 "[Premium/Benefits/Positive/header] " = "Co obdržíte";
@@ -1114,6 +1594,12 @@
 /* Status: how long the app has been used during some time period. For example: `App being useful: 1hr/month, about 12hr/year`. [monthlyUsage: String, annualUsage: String — already include the time unit (hours, minutes)] */
 "[Premium/usage] App being useful: %@/month, that is around %@/year." = "Aplikace používána %1$@/měsíc, což je %2$@/ročně.";
 
+/* Description/call to action for the `Business Cloud Storage` premium feature. */
+"[PremiumFeature/BusinessClouds/description]" = "Připojujte se přímo k účtům podnikových úložišť, jako je například OneDrive pro firmy.";
+
+/* Title of a premium feature: access to company's cloud accounts like 'OneDrive for Business' */
+"[PremiumFeature/BusinessClouds/title]" = "Firemní cloudové úložiště";
+
 /* A generic description of a premium feature */
 "[PremiumFeature/Generic/description]" = "Upgradujte na Premium a užijte si KeePassium se všemi funkcemi.";
 
@@ -1126,11 +1612,23 @@
 /* Title of a premium feature: ability use hardware keys (e.g. YubiKey) for encryption (In Title Case) */
 "[PremiumFeature/HardwareKeys/title] Hardware Keys" = "Hardwarové klíče";
 
+/* Description/advertisement for the `Linked Databases` premium feature */
+"[PremiumFeature/LinkedDatabases/description]" = "Upgradujte na premium a otevírejte připojené databáze v jednom kroku.";
+
+/* Title of a premium feature: ability to open databases referenced in another database (In Title Case) */
+"[PremiumFeature/LinkedDatabases/title]" = "Připojené databáze";
+
 /* Description/advertisement for the `Multiple Databases` premium feature */
 "[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "V prémiové verzi můžete snadno přepínat mezi více databázemi.";
 
 /* Title of a premium feature: ability to use multiple databases (In Title Case) */
 "[PremiumFeature/MultiDB/title] Multiple Databases" = "Více databází";
+
+/* Description/call to action for the `Password Audit` premium feature. */
+"[PremiumFeature/PasswordAudit/description]" = "Zjistěte, zda některá z vašich hesel nebyla odhalena při známém úniku dat.";
+
+/* Title of a premium feature: discover which passwords are known to be compromized */
+"[PremiumFeature/PasswordAudit/title]" = "Audit hesel";
 
 /* Description/call to action for the `Quick AutoFill` premium feature. */
 "[PremiumFeature/QuickAutoFill/description]" = "Vyplňujte přihlašovací formuláře jediným klepnutím, dokonce i bez otevření KeePassium.";
@@ -1140,6 +1638,9 @@
 
 /* A brief summary of the privacy policy (for offline mode) */
 "[PrivacyPolicy/Offline/text]" = "KeePassium neshromažďuje žádná osobní nebo analytická data a ani je s nikým nesdílí.";
+
+/* A brief summary of the privacy policy (for online mode) */
+"[PrivacyPolicy/Online/text]" = "KeePassium neshromažďuje žádné osobní ani analytické údaje.\nNěkteré funkce mohou zahrnovat výměnu dat s externími službami (na vaši žádost a výhradně za účelem zpřístupnění těchto služeb). Taková výměna se řídí zásadami ochrany osobních údajů příslušné služby.";
 
 /* Section: privacy policy */
 "[PrivacyPolicy/title]" = "Zásady ochrany osobních údajů";
@@ -1156,8 +1657,71 @@
 /* Name of a feature that shows relevant entries directly next to the login/password forms. */
 "[QuickAutoFill/title]" = "Automatické Vyplňování";
 
+/* Network security setting */
+"[RemoteConnection/AllowUntrusted/title]" = "Povolit nedůvěryhodný certifikát";
+
+/* Network connection. For example `Connection: WebDAV` or `Connection: MyCloud`. */
+"[RemoteConnection/Connection/title]" = "Připojení";
+
+/* Action: connect to a network server */
+"[RemoteConnection/connectToServer]" = "Připojit k serveru";
+
+/* Title of a section: username, password, etc */
+"[RemoteConnection/Credentials]" = "Přihlašovací údaje";
+
+/* Description of the `Direct connection` sync method. */
+"[RemoteConnection/Direct/description]" = "KeePassium bude komunikovat přímo s vaším online úložištěm. Tím je zajištěn spolehlivý přenos souborů.";
+
+/* Error message: user credentials rejected by the server */
+"[RemoteConnection/Error/AuthenticationFailed/title]" = "Ověření selhalo";
+
+/* Network address of a file */
+"[RemoteConnection/FileURL]" = "URL souboru";
+
+/* Name of a predefined Google Drive folder which contains user's own files */
+"[RemoteConnection/GoogleDrive/Folder/myDrive]" = "Můj disk";
+
+/* Name of a predefined GoogleDrive folder which contains files shared with this user */
+"[RemoteConnection/GoogleDrive/Folder/sharedWithMe]" = "Sdíleno se mnou";
+
 /* Name of a predefined OneDrive folder which contains user's own files */
 "[RemoteConnection/OneDrive/Folder/files]" = "Soubory";
+
+/* Name of a predefined OneDrive folder which contains files shared with this user */
+"[RemoteConnection/OneDrive/Folder/sharedWithMe]" = "Sdíleno";
+
+/* Network address of a WebDAV server */
+"[RemoteConnection/ServerURL]" = "URL serveru";
+
+/* Action: authenticate to Dropbox account */
+"[RemoteConnection/SignIn/Dropbox/action]" = "Přihlásit se k Dropboxu";
+
+/* Error description: the user should manually sign in to their Dropbox account */
+"[RemoteConnection/SignIn/Dropbox/authorizationRequried]" = "Dropbox potřebuje, abyste se přihlásili znovu.";
+
+/* Action: authenticate to Google Drive account */
+"[RemoteConnection/SignIn/GoogleDrive/action]" = "Přihlásit k Disku Google";
+
+/* Error description: the user should manually sign in to their Google Drive account */
+"[RemoteConnection/SignIn/GoogleDrive/authorizationRequried]" = "Disk Google potřebuje, abyste se přihlásili znovu.";
+
+/* Action: authenticate to OneDrive account */
+"[RemoteConnection/SignIn/OneDrive/action]" = "Přihlásit k OneDrive";
+
+/* Error description: the user should manually sign in to their OneDrive account */
+"[RemoteConnection/SignIn/OneDrive/authorizationRequried]" = "OneDrive potřebuje, abyste se přihlásili znovu.";
+
+/* No comment provided by engineer. */
+"[RemoteConnection/SignIn/PrivateMode/description]" = "Otevřít přihlašovací stránku v soukromém režimu prohlížeče";
+
+/* No comment provided by engineer. */
+"[RemoteConnection/SignIn/PrivateMode/title]" = "Soukromý režim";
+
+/* Title: connection to a network storage */
+"[RemoteConnection/title]" = "Vzdálené připojení";
+
+/* Description of the `Integration via Files app` sync method. */
+"[RemoteConnection/ViaFilesApp/description]" = "KeePassium přiřadí synchronizaci souborů aplikaci poskytovatele úložiště. Některé aplikace fungují lépe než jiné.";
 
 /* Name of an input field for entering the password again */
 "[Repeat Password/Field/title]" = "Zopakujte heslo";
@@ -1218,6 +1782,9 @@
 
 /* Title of AutoFill settings screen */
 "[Settings/AutoFill/title]" = "Vyplňování hesel";
+
+/* No comment provided by engineer. */
+"[Settings/AutoFill/UnavailableInIntune/description]" = "Automatické vyplňování není v KeePassium pro Intune k dispozici.";
 
 /* Title of an option: automatically use the single best match found by AutoFill search */
 "[Settings/AutoFill/UsePerfectMatch/title]" = "Vyplnit přesné výsledky automaticky";
@@ -1282,6 +1849,9 @@
 /* Title of a setting: the time after which databases will be locked. */
 "[Settings/DatabaseLockTimeout/title]" = "Časový limit databáze";
 
+/* Setting switch: whether to lock databases after device reboot. */
+"[Settings/DataProtection/LockOnReboot/title]" = "Zamknout při restartu zařízení";
+
 /* Subtitle for `Data Protection` section in settings */
 "[Settings/DataProtection/subtitle]" = "Hlavní klíče, soubory s klíčem";
 
@@ -1300,6 +1870,33 @@
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "Nastavení";
 
+/* Notification when corporate user tries to use a feature forbidden by organization's IT department. */
+"[Settings/Managed/BlockedFeature/notification]" = "Tato funkce je zablokována vaší organizací.";
+
+/* Notification when corporate user tries to change an app setting controlled by organization's IT department. */
+"[Settings/Managed/notification]" = "Tato nastavení je spravováno vaší organizací.";
+
+/* Confirmation dialog message */
+"[Settings/NetworkAccess/Confirmation/text]" = "Povolit KeePassium vytvářet síťová připojení k externím službám?";
+
+/* Settings section: how/whether the app is allowed to use networks/Internet */
+"[Settings/NetworkAccess/title]" = "Přístup k síti";
+
+/* Description of the `Stay Offline` mode. */
+"[Settings/NetworkAccessMode/Offline/description]" = "Maximální soukromí";
+
+/* Setting option: the app should work offline */
+"[Settings/NetworkAccessMode/Offline/title]" = "Zůstat offline";
+
+/* Description of the `Allow Network Access` mode. */
+"[Settings/NetworkAccessMode/Online/description]" = "Maximální funkčnost";
+
+/* Setting option: the app is permitted to use online features */
+"[Settings/NetworkAccessMode/Online/title]" = "Povolit přístup k síti";
+
+/* Action/button which resets some settings to their default state. */
+"[Settings/RestoreDefaults/action]" = "Obnovit výchozí";
+
 /* Section title in settings */
 "[Settings/Search/title]" = "Vyhledávání";
 
@@ -1312,11 +1909,23 @@
 /* List sorting option, when no sorting is selected. Example: 'Sort by: None' */
 "[SortBy/None]" = "Žádné";
 
+/* List sorting option, when items are manually ordered by the user. Example: 'Sort order: Custom' */
+"[SortOrder/Custom]" = "Vlastní";
+
 /* Name of a cloud storage service */
 "[StorageService/DropboxBusiness/title]" = "Dropbox Business";
 
 /* Name of a cloud storage service */
 "[StorageService/DropboxPro/title]" = "Dropbox Pro";
+
+/* Name of a cloud storage service */
+"[StorageService/GoogleWorkspace/title]" = "Google Workspace";
+
+/* Name of a cloud storage service. Must match Microsoft's translation, see  https://partner.microsoft.com/solutions/onedrive-for-business */
+"[StorageService/OneDriveForBusiness/title]" = "OneDrive pro firmy";
+
+/* Title of a file storage service option (for example: Dropbox, OneDrive, Other Services) */
+"[StorageService/OtherServices/title]" = "Ostatní služby";
 
 /* Template text of a bug report email */
 "[Support/template] (Please describe the problem here)" = "(Zde prosím popište váš problém)";
@@ -1362,6 +1971,9 @@
 
 /* Human-readable file location: the file is on device, inside the app sandbox. Example: 'File Location: Local copy' */
 "[URLReference/Location] Local copy" = "Místní kopie";
+
+/* Human-readable file location. Example: 'File Location: Remote server' */
+"[URLReference/Location/RemoteServer]" = "Vzdálený server";
 
 /* Selector choice: don't use YubiKey to encrypt/decrypt database */
 "[YubiKey] Don't use YubiKey" = "Bez YubiKey";

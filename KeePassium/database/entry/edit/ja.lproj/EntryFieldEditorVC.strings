@@ -1,6 +1,3 @@
-/* Class = "UILabel"; text = "In-memory Protection"; ObjectID = "0pb-xb-fuf"; Note = "Label for a switch, equivalent to KeePass' own `Enable in-memory protection` for custom entry fields."; */
-"0pb-xb-fuf.text" = "メモリー内保護";
-
 /* Class = "UITextView"; accessibilityLabel = "Custom field value"; ObjectID = "7iU-ut-hd7"; */
 "7iU-ut-hd7.accessibilityLabel" = "カスタムフィールドの値";
 
