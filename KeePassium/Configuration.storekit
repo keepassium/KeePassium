@@ -123,6 +123,21 @@
       "productID" : "com.keepassium.ios.iap.version.120",
       "referenceName" : "Version 120",
       "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "29.99",
+      "familyShareable" : false,
+      "internalID" : "A3137839",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "KeePassium 1.53 Premium",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.keepassium.ios.iap.version.154",
+      "referenceName" : "Version 154",
+      "type" : "NonConsumable"
     }
   ],
   "settings" : {
