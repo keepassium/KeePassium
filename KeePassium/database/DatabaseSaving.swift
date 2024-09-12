@@ -40,6 +40,14 @@ extension DatabaseSaving {
     ) {
         assert(databaseSaver == nil)
         saveSuccessHandler = onSuccess
+
+        var tasksToSkip = [DatabaseSaver.RelatedTasks]()
+        if let fileRef = databaseFile.fileReference,
+           DatabaseSettingsManager.shared.getExternalUpdateBehavior(fileRef) == .dontCheck
+        {
+            tasksToSkip.append(.updateChecksum)
+        }
+
         databaseSaver = DatabaseSaver(
             databaseFile: databaseFile,
             timeoutDuration: timeoutDuration,

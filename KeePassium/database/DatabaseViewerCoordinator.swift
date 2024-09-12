@@ -1276,6 +1276,7 @@ extension DatabaseViewerCoordinator {
                 if newHash != currentHash {
                     processDatabaseChange(behavior: behavior, viewController: groupViewerVC)
                 } else {
+                    Diag.info("Database is up to date")
                     groupViewerVC.databaseChangesCheckStatus = .upToDate
                 }
             case let .failure(error):

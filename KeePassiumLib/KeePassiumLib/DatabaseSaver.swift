@@ -51,6 +51,7 @@ public class DatabaseSaver: ProgressObserver {
         case backupOriginal
         case updateLatestBackup
         case updateQuickAutoFill
+        case updateChecksum
     }
 
     fileprivate enum ProgressSteps {
@@ -286,6 +287,10 @@ public class DatabaseSaver: ProgressObserver {
         if relatedTasks.contains(.updateQuickAutoFill) {
             updateQuickAutoFillStorage()
         }
+
+        if relatedTasks.contains(.updateChecksum) {
+            refreshFileInfo()
+        }
     }
 
     private func updateQuickAutoFillStorage() {
@@ -320,6 +325,18 @@ public class DatabaseSaver: ProgressObserver {
             nameTemplate: nameTemplate,
             mode: .overwriteLatest,
             contents: data)
+    }
+
+    private func refreshFileInfo() {
+        assert(self.operationQueue.isCurrent)
+        databaseFile.fileReference?.refreshInfo(completion: { result in
+            switch result {
+            case .success:
+                Diag.debug("Saved file info refreshed")
+            case .failure:
+                Diag.debug("Failed to refresh saved file info")
+            }
+        })
     }
 
     private func finalize(withError error: Error?) {
