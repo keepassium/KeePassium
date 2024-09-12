@@ -1,5 +1,43 @@
 #CHANGELOG
 
+## [1.53.154] - 2024-09-12
+
+### Added
+
+- Support for linked databases aka AutoOpen (#202) [thanks, everyone]
+- Support for extended search syntax (closes #190 and #383) [thanks, everyone]
+- Detecting external DB changes on app activation (related #373)
+- Ability to hide local files from iOS Files / macOS Finder [thanks, everyone]
+- Added OTP overview mode in smart group (closes #8) [thanks, everyone]
+
+### Improved
+
+- Allow entry field references in free version, no longer a premium feature
+- Refined DB viewer and DB picker toolbars and menus
+- New parameters for managed AppConfig: `allowFaviconDownload` and `allowPasswordAudit` [thanks, I.R.]
+- Possibility to disable copy-to-clipboard via managed AppConfig
+- Added presets to Smart Group Editor
+- macOS: Propose app reset if launching with Ctrl pressed
+- Enable cache fallback for local DBs (#381) [thanks, Andreas]
+- AutoFill: notify user if main app's dir unavailable (closes #381) [thanks, Andreas]
+- Improved AutoFill setup workflow
+- Updated all translations [thanks, everyone]
+- Minor UI improvements here and there
+
+### Fixed
+
+- macOS: Copying of URLs (fixes #384) [thanks, Johannes]
+- macOS: Printing in "Designed for iPad" builds [thanks, Bernhard]
+- Processing WebDAV file lists without namespaces [thanks, D.J.]
+- Some toolbar buttons were untranslated in VoiceOver mode [thanks, Michael]
+- Org: Ignore local files if local storage is forbidden via AppConfig [thanks, I.R.]
+- Enforcing clipboard timeout also in text fields' menus
+- macOS: DB saving after drag-and-drop reorder and bulk operations
+- Wrapping of long group titles in DB viewer (regression in 1.53.152)
+- macOS: fixed entry selection (regression in 1.53.153)
+- DB viewer could crash when deleting in mutli-select mode
+
+
 ## [1.53.153] - 2024-07-20
 
 ### Fixed

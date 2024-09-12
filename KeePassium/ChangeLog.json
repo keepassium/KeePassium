@@ -2,17 +2,54 @@
     "sections": [
         {
             "version": "1.53",
-            "releaseDate": "2024-07-18T00:00:00Z",
+            "releaseDate": "2024-09-12T00:00:00Z",
             "items": [
                 {
-                    "title": "Added: Reordering of groups and entries"
+                    "title": "Added: Support for smart groups",
+                    "github": "#8, #190, #264"
+                },
+                {
+                    "title": "Added: Support for linked databases aka AutoOpen",
+                    "github": "#202",
+                    "credits": "everyone",
+                    "type": 2
+                },
+                {
+                    "title": "Added: Support for extended search syntax",
+                    "github": "Closes #190 and #383",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Added: Detecting external DB changes on app activation, suggesting reload",
+                    "github": "Related #373",
+                },
+                {
+                    "title": "Added: Custom reordering of groups and entries"
                 },
                 {
                     "title": "Added: Multi-select and bulk operations on groups and entries"
                 },
                 {
-                    "title": "Added: Support for smart groups",
-                    "github": "#8, #190, #264"
+                    "title": "Added: OTP overview mode (via smart group)",
+                    "github": "Closes #8",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Added: Ability to hide local files from iOS Files/ macOS Finder",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Improved: New parameters for managed AppConfig: `allowFaviconDownload` and `allowPasswordAudit`",
+                    "edition": "org",
+                    "credits": "I.R."
+                },
+                {
+                    "title": "Improved: Org: Possibility to disable copy-to-clipboard via managed AppConfig",
+                    "edition": "org"
+                },
+                {
+                    "title": "Improved: Allow entry field references in free version, no longer a premium feature",
+                    "edition": "free"
                 },
                 {
                     "title": "Improved: AutoFill will use perfect-match entry even if there are partial matches",
@@ -20,13 +57,44 @@
                     "credits": "BoKKeR111"
                 },
                 {
+                    "title": "Improved: Refined DB viewer and DB picker toolbars and menus"
+                },
+                {
+                    "title": "Improved: Added presets to Smart Group Editor"
+                },
+                {
+                    "title": "Improved: macOS: Propose app reset if launching with Ctrl pressed",
+                    "os": "macos"
+                },
+                {
+                    "title": "Improved: Enable cache fallback for local DBs",
+                    "github": "#381",
+                    "credits": "Andreas"
+                },
+                {
+                    "title": "Improved: AutoFill: notify if main app's dir unavailable",
+                    "github": "Closes #381",
+                    "credits": "Andreas"
+                },
+                {
+                    "title": "Improved: Improved AutoFill setup workflow"
+                },
+                {
+                    "title": "Improved: Updated all translations",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Improved: Minor UI improvements here and there"
+                },
+                {
                     "title": "Fixed: Direct Dropbox connection could randomly fail with \"Network connection lost\"",
-                    "github": "Fixes #377"
+                    "github": "Fixes #377",
+                    "credits": "everyone"
                 },
                 {
                     "title": "Fixed: Processing WebDAV file lists with custom namespaces",
                     "github": "Fixes #378",
-                    "credits": "QueenGit"
+                    "credits": "QueenGit and D.J."
                 },
                 {
                     "title": "Fixed: Better protection of user activity timestamp and file references",
@@ -34,8 +102,31 @@
                     "credits": "eonist"
                 },
                 {
-                    "title": "Fixed: Localization of app and DB icon settings",
+                    "title": "Fixed: Ignore local files if local storage is forbidden via AppConfig",
+                    "edition": "org",
+                    "credits": "I.R."
+                },
+                {
+                    "title": "Fixed: Copying of URLs on macOS",
+                    "os": "macos",
+                    "github": "#384",
+                    "credits": "Johannes"
+                },
+                {
+                    "title": "Fixed: Printing in \"Designed for iPad\" builds",
+                    "os": "macos",
+                    "credits": "Bernhard"
+                },
+                {
+                    "title": "Fixed: Some toolbar buttons were untranslated in VoiceOver mode",
+                    "credits": "Michael"
+                },
+                {
+                    "title": "Fixed: Some app settings were untranslated",
                     "credits": "katullo11"
+                },
+                {
+                    "title": "Fixed: Enforcing clipboard timeout also in text fields' menus"
                 },
                 {
                     "title": "Fixed: Minor UI fixes here and there"
