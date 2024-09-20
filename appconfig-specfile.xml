@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <managedAppConfiguration>
   <version>1</version>
-  <bundleId>com.keepassium.intune</bundleId>
+  <bundleId>com.keepassium.ios</bundleId>
   <dict>
     <integer keyName="configVersion">
       <defaultValue>
@@ -134,13 +134,26 @@
       </defaultValue>
       <constraint nullable="true"></constraint>
     </string>
+    <string keyName="allowPasswordAudit">
+      <defaultValue>
+        <value></value>
+      </defaultValue>
+      <constraint nullable="true"></constraint>
+    </string>
+    <string keyName="allowFaviconDownload">
+      <defaultValue>
+        <value></value>
+      </defaultValue>
+      <constraint nullable="true"></constraint>
+    </string>
     <stringArray keyName="allowedFileProviders">
       <constraint nullable="true"></constraint>
     </stringArray>
     <stringArray keyName="requireAppPasscodeSet">
       <defaultValue>
-        <value>no</value>
+        <value></value>
       </defaultValue>
+      <constraint nullable="true"></constraint>
     </stringArray>
     <integer keyName="minimumAppPasscodeEntropy">
       <defaultValue>
@@ -178,20 +191,41 @@
           <language value="en-US">Associates the license to the specific device or user. Select device-based and user-based variable as appropriate for your environment.</language>
         </description>
         <options>
-          <option value="{{serialnumberlast4digits}}" selected="true">
-            <language value="en-US">Intune: Device serial number, last 4 digits</language>
+          <option value="none">
+            <language value="en-US">None (site license)</language>
           </option>
-          <option value="{{accountid}}">
+          <option value="${userUID}" selected="true">
+            <language value="en-US">Ivanti: User login ID</language>
+          </option>
+          <option value="${deviceSN}">
+            <language value="en-US">Ivanti: Device's serial number</language>
+          </option>
+          <option value="$SERIALNUMBER">
+            <language value="en-US">JAMF Pro: Device's serial number</language>
+          </option>
+          <option value="$USERNAME">
+            <language value="en-US">JAMF Pro: Username</language>
+          </option>
+          <option value="%UserId%">
+            <language value="en-US">JAMF School: User's internal ID</language>
+          </option>
+          <option value="%SerialNumber%">
+            <language value="en-US">JAMF School: Device’s serial number</language>
+          </option>
+          <option value="%serialNumber%">
+            <language value="en-US">MaaS360: Device's serial number</language>
+          </option>
+          <option value="{{serial_number}}">
+            <language value="en-US">SimpleMDM: Device's serial number</language>
+          </option>
+          <option value="{{accountid}}" selected="true">
             <language value="en-US">Intune: User account ID</language>
+          </option>
+          <option value="{{serialnumberlast4digits}}">
+            <language value="en-US">Intune: Device serial number, last 4 digits</language>
           </option>
           <option value="{{deviceid}}">
             <language value="en-US">Intune: Device ID</language>
-          </option>
-          <option value="$SERIALNUMBER">
-            <language value="en-US">JAMF Pro: Device serial number</language>
-          </option>
-          <option value="%serialNumber%">
-            <language value="en-US">MaaS360: Device serial number</language>
           </option>
         </options>
       </field>
@@ -213,7 +247,7 @@
           <language value="en-US">Require App Passcode</language>
         </label>
         <description>
-          <language value="en-US">Require that the user configures an app protection passcode. This is enforced by KeePassium, independently from PIN access that may be mandated by Intune.</language>
+          <language value="en-US">Require that the user configures an app protection passcode. This is enforced by KeePassium, independently from PIN access that might be enforced by your MDM or the system.</language>
         </description>
         <options>
           <option value="yes">
@@ -289,25 +323,6 @@
       <name>
         <language value="en-US">App settings</language>
       </name>
-      <field keyName="allowNetworkAccess" type="select">
-        <label>
-          <language value="en-US">Allow network access</language>
-        </label>
-        <description>
-          <language value="en-US">Required for network-dependent features, such as direct connections to online storage, password audit, and so on.</language>
-        </description>
-        <options>
-          <option value="">
-            <language value="en-US">(Not configured)</language>
-          </option>
-          <option value="yes">
-            <language value="en-US">Yes</language>
-          </option>
-          <option value="no">
-            <language value="en-US">No</language>
-          </option>
-        </options>
-      </field>
       <field keyName="autoUnlockLastDatabase" type="select">
         <label>
           <language value="en-US">Auto-unlock last used database</language>
@@ -563,6 +578,9 @@
           <option value="" selected="true">
             <language value="en-US">(Not configured)</language>
           </option>
+          <option value="0">
+            <language value="en-US">Disable cut/copy to clipboard</language>
+          </option>
           <option value="10">
             <language value="en-US">After 10 seconds</language>
           </option>
@@ -735,6 +753,68 @@
         </label>
         <description>
           <language value="en-US"></language>
+        </description>
+        <options>
+          <option value="">
+            <language value="en-US">(Not configured)</language>
+          </option>
+          <option value="yes">
+            <language value="en-US">Yes</language>
+          </option>
+          <option value="no">
+            <language value="en-US">No</language>
+          </option>
+        </options>
+      </field>
+    </fieldGroup>
+    <fieldGroup>
+      <name>
+        <language value="en-US">Networking</language>
+      </name>
+      <field keyName="allowNetworkAccess" type="select">
+        <label>
+          <language value="en-US">Allow network access</language>
+        </label>
+        <description>
+          <language value="en-US">Required for network-dependent features, such as direct connections to online storage, password audit, and so on.</language>
+        </description>
+        <options>
+          <option value="">
+            <language value="en-US">(Not configured)</language>
+          </option>
+          <option value="yes">
+            <language value="en-US">Yes</language>
+          </option>
+          <option value="no">
+            <language value="en-US">No</language>
+          </option>
+        </options>
+      </field>
+      <field keyName="allowPasswordAudit" type="select">
+        <label>
+          <language value="en-US">Allow password audit</language>
+        </label>
+        <description>
+          <language value="en-US">Here you can specifically disable the password audit tool (Have I Been Pwned). By default is allowed. Requires "Allow network access", otherwise has no effect.</language>
+        </description>
+        <options>
+          <option value="">
+            <language value="en-US">(Not configured)</language>
+          </option>
+          <option value="yes">
+            <language value="en-US">Yes</language>
+          </option>
+          <option value="no">
+            <language value="en-US">No</language>
+          </option>
+        </options>
+      </field>
+      <field keyName="allowFaviconDownload" type="select">
+        <label>
+          <language value="en-US">Allow favicon download</language>
+        </label>
+        <description>
+          <language value="en-US">Here you can specifically disable the favicon download feature. By default is allowed. Requires "Allow network access", otherwise has no effect.</language>
         </description>
         <options>
           <option value="">
