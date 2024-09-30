@@ -117,6 +117,7 @@ public enum SymbolName: String {
     case nosign = "nosign"
     case noteText = "note.text"
     case paperclip = "paperclip"
+    case paperclipBadgeEllipsis = "paperclip.badge.ellipsis"
     case pencil = "pencil"
     case person = "person"
     case person2BadgeGearshape = "person.2.badge.gearshape"

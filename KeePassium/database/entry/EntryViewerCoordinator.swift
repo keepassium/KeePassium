@@ -187,6 +187,7 @@ final class EntryViewerCoordinator: NSObject, Coordinator, Refreshable {
             animated: animated)
         pagesVC.setContents(
             from: entry,
+            hasAttachments: !entry.attachments.isEmpty,
             isHistoryEntry: isHistoryEntry,
             canEditEntry: canEditEntry)
         pagesVC.refresh()

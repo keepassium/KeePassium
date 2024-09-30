@@ -34,6 +34,7 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
     private var entryIcon: UIImage?
     private var resolvedEntryTitle = ""
     private var isEntryExpired = false
+    private var hasAttachments = false
     private var entryLastModificationTime = Date.distantPast
 
     private var titleView = DatabaseItemTitleView()
@@ -60,18 +61,7 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
             pagesViewController.dataSource = self
         }
 
-        pageSelector.setImage(
-            UIImage.symbol(.key, accessibilityLabel: LString.titleEntryTabGeneral),
-            forSegmentAt: 0)
-        pageSelector.setImage(
-            UIImage.symbol(.paperclip, accessibilityLabel: LString.titleEntryTabFiles),
-            forSegmentAt: 1)
-        pageSelector.setImage(
-            UIImage.symbol(.clock, accessibilityLabel: LString.titleEntryTabHistory),
-            forSegmentAt: 2)
-        pageSelector.setImage(
-            UIImage.symbol(.ellipsis, accessibilityLabel: LString.titleEntryTabMore),
-            forSegmentAt: 3)
+        updateSegments()
 
         addChild(pagesViewController)
         pagesViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -114,13 +104,31 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
         refresh()
     }
 
-    public func setContents(from entry: Entry, isHistoryEntry: Bool, canEditEntry: Bool) {
+    private func updateSegments() {
+        pageSelector.setImage(
+            UIImage.symbol(.key, accessibilityLabel: LString.titleEntryTabGeneral),
+            forSegmentAt: 0)
+        pageSelector.setImage(
+            UIImage.symbol(
+                hasAttachments ? .paperclipBadgeEllipsis : .paperclip,
+                accessibilityLabel: LString.titleEntryTabFiles),
+            forSegmentAt: 1)
+        pageSelector.setImage(
+            UIImage.symbol(.clock, accessibilityLabel: LString.titleEntryTabHistory),
+            forSegmentAt: 2)
+        pageSelector.setImage(
+            UIImage.symbol(.ellipsis, accessibilityLabel: LString.titleEntryTabMore),
+            forSegmentAt: 3)
+    }
+
+    public func setContents(from entry: Entry, hasAttachments: Bool, isHistoryEntry: Bool, canEditEntry: Bool) {
         entryIcon = UIImage.kpIcon(forEntry: entry)
         resolvedEntryTitle = entry.resolvedTitle
         isEntryExpired = entry.isExpired
         entryLastModificationTime = entry.lastModificationTime
         self.isHistoryEntry = isHistoryEntry
         self.canEditEntry = canEditEntry
+        self.hasAttachments = hasAttachments
         refresh()
     }
 
@@ -174,6 +182,7 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
 
     func refresh() {
         guard isViewLoaded else { return }
+        updateSegments()
         titleView.titleLabel.setText(resolvedEntryTitle, strikethrough: isEntryExpired)
         titleView.iconView.image = entryIcon
         if isHistoryEntry {
