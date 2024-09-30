@@ -60,10 +60,18 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
             pagesViewController.dataSource = self
         }
 
-        pageSelector.setTitle(LString.titleEntryTabGeneral, forSegmentAt: 0)
-        pageSelector.setTitle(LString.titleEntryTabFiles, forSegmentAt: 1)
-        pageSelector.setTitle(LString.titleEntryTabHistory, forSegmentAt: 2)
-        pageSelector.setTitle(LString.titleEntryTabMore, forSegmentAt: 3)
+        pageSelector.setImage(
+            UIImage.symbol(.key, accessibilityLabel: LString.titleEntryTabGeneral),
+            forSegmentAt: 0)
+        pageSelector.setImage(
+            UIImage.symbol(.paperclip, accessibilityLabel: LString.titleEntryTabFiles),
+            forSegmentAt: 1)
+        pageSelector.setImage(
+            UIImage.symbol(.clock, accessibilityLabel: LString.titleEntryTabHistory),
+            forSegmentAt: 2)
+        pageSelector.setImage(
+            UIImage.symbol(.ellipsis, accessibilityLabel: LString.titleEntryTabMore),
+            forSegmentAt: 3)
 
         addChild(pagesViewController)
         pagesViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
