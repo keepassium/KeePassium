@@ -177,8 +177,9 @@ extension DatabaseCreatorVC {
             return
         }
 
-        let passwordEntropy = Float(passwordField.quality?.entropy ?? 0)
-        guard ManagedAppConfig.shared.isAcceptableDatabasePassword(entropy: passwordEntropy) else {
+        let entropy = Float(passwordField.quality?.entropy ?? 0)
+        let length = passwordField.text?.count ?? 0
+        guard ManagedAppConfig.shared.isAcceptableDatabasePassword(length: length, entropy: entropy) else {
             Diag.warning("Database password strength does not meet organization's requirements")
             showNotification(
                 LString.orgRequiresStrongerDatabasePassword,
@@ -190,7 +191,7 @@ extension DatabaseCreatorVC {
             return
         }
 
-        let isGoodEnough = passwordEntropy > PasswordQuality.minDatabasePasswordEntropy
+        let isGoodEnough = entropy > PasswordQuality.minDatabasePasswordEntropy
         if isGoodEnough || hasKeyFile || hasYubiKey {
             successHandler()
             return

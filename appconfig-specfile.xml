@@ -173,11 +173,17 @@
       </defaultValue>
       <constraint nullable="true"></constraint>
     </integer>
+    <integer keyName="minimumAppPasscodeLength">
+      <constraint nullable="true" min="1"></constraint>
+    </integer>
     <integer keyName="minimumDatabasePasswordEntropy">
       <defaultValue>
         <value>0</value>
       </defaultValue>
       <constraint nullable="true"></constraint>
+    </integer>
+    <integer keyName="minimumDatabasePasswordLength">
+      <constraint nullable="true" min="1"></constraint>
     </integer>
   </dict>
   <presentation defaultLocale="en-US">
@@ -272,10 +278,10 @@
       </field>
       <field keyName="minimumAppPasscodeEntropy" type="select">
         <label>
-          <language value="en-US">Minimum complexity of App Passcode</language>
+          <language value="en-US">Minimal complexity of App Passcode</language>
         </label>
         <description>
-          <language value="en-US">Minimum required complexity for user-defined app passcode. Entropy is estimated by Zxcvbn library. </language>
+          <language value="en-US">Minimal required complexity for user-defined app passcode. Entropy is estimated by Zxcvbn library. </language>
         </description>
         <options>
           <option value="0">
@@ -295,12 +301,20 @@
           </option>
         </options>
       </field>
-      <field keyName="minimumDatabasePasswordEntropy" type="select">
+      <field keyName="minimumAppPasscodeLength" type="input">
         <label>
-          <language value="en-US">Minimum complexity of Database Passwords</language>
+          <language value="en-US">Minimal length of App Passcode</language>
         </label>
         <description>
-          <language value="en-US">Minimum required complexity for user-defined database passwords. Is enforced on database creation and when changing the master key. Less complex passwords will be rejected. Entropy is estimated by Zxcvbn library. </language>
+          <language value="en-US">Is enforced together with minimal complexity.</language>
+        </description>
+      </field>
+      <field keyName="minimumDatabasePasswordEntropy" type="select">
+        <label>
+          <language value="en-US">Minimal complexity of Database Passwords</language>
+        </label>
+        <description>
+          <language value="en-US">Minimal required complexity for user-defined database passwords. Is enforced on database creation and when changing the master key. Less complex passwords will be rejected. Entropy is estimated by Zxcvbn library. </language>
         </description>
         <options>
           <option value="0">
@@ -329,6 +343,15 @@
           </option>
         </options>
       </field>
+      <field keyName="minimumDatabasePasswordLength" type="input">
+        <label>
+          <language value="en-US">Minimal length of Database Passwords</language>
+        </label>
+        <description>
+          <language value="en-US">Is enforced together with minimal complexity.</language>
+        </description>
+      </field>
+
 
       <field keyName="allowDatabaseEncryptionSettings" type="select">
         <label>

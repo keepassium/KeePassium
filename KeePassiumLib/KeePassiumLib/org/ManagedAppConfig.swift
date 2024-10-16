@@ -39,7 +39,9 @@ public final class ManagedAppConfig: NSObject {
         case hideAppLockSetupReminder
         case allowedFileProviders
         case minimumAppPasscodeEntropy
+        case minimumAppPasscodeLength
         case minimumDatabasePasswordEntropy
+        case minimumDatabasePasswordLength
         case requireAppPasscodeSet
         case allowPasswordAudit
         case allowFaviconDownload
@@ -162,7 +164,9 @@ extension ManagedAppConfig {
              .clipboardTimeout,
              .backupKeepingDuration,
              .minimumAppPasscodeEntropy,
-             .minimumDatabasePasswordEntropy:
+             .minimumAppPasscodeLength,
+             .minimumDatabasePasswordEntropy,
+             .minimumDatabasePasswordLength:
             return getInt(key) != nil
         case .allowedFileProviders:
             return getStringArray(key) != nil
@@ -251,7 +255,9 @@ extension ManagedAppConfig {
              .clipboardTimeout,
              .backupKeepingDuration,
              .minimumAppPasscodeEntropy,
-             .minimumDatabasePasswordEntropy:
+             .minimumAppPasscodeLength,
+             .minimumDatabasePasswordEntropy,
+             .minimumDatabasePasswordLength:
             result = getInt(key)
         default:
             Diag.error("Key `\(key.rawValue)` is not an integer, ignoring.")

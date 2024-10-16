@@ -211,8 +211,9 @@ final class PasscodeInputVC: UIViewController {
     private func verifyNewPasscode(success successHandler: @escaping () -> Void) {
         assert(mode != .verification, "Should check only newly defined passcodes")
 
-        let passcodeEntropy = Float(passcodeTextField.quality?.entropy ?? 0)
-        guard ManagedAppConfig.shared.isAcceptableAppPasscode(entropy: passcodeEntropy) else {
+        let entropy = Float(passcodeTextField.quality?.entropy ?? 0)
+        let length = passcodeTextField.text?.count ?? 0
+        guard ManagedAppConfig.shared.isAcceptableAppPasscode(length: length, entropy: entropy) else {
             Diag.warning("App passcode strength does not meet organization's requirements")
             showNotification(
                 LString.orgRequiresStrongerPasscode,
@@ -223,7 +224,7 @@ final class PasscodeInputVC: UIViewController {
             )
             return
         }
-        let isGoodEnough = passcodeEntropy > PasswordQuality.minAppPasscodeEntropy
+        let isGoodEnough = entropy > PasswordQuality.minAppPasscodeEntropy
         if isGoodEnough {
             return
         }

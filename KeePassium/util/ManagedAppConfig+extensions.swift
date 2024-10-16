@@ -12,17 +12,25 @@ import Zxcvbn
 private let zxcvbn = DBZxcvbn()
 
 extension ManagedAppConfig {
-    func isAcceptableDatabasePassword(entropy: Float) -> Bool {
-        guard let minRequredEntropy = ManagedAppConfig.shared.minimumDatabasePasswordEntropy else {
-            return true
+    func isAcceptableDatabasePassword(length: Int, entropy: Float) -> Bool {
+        var isGoodEnough = true
+        if let minRequredEntropy = ManagedAppConfig.shared.minimumDatabasePasswordEntropy {
+            isGoodEnough = isGoodEnough && entropy >= Float(minRequredEntropy)
         }
-        return entropy >= Float(minRequredEntropy)
+        if let minRequiredLength = ManagedAppConfig.shared.minimumDatabasePasswordLength {
+            isGoodEnough = isGoodEnough && length >= minRequiredLength
+        }
+        return isGoodEnough
     }
 
-    func isAcceptableAppPasscode(entropy: Float) -> Bool {
-        guard let minRequiredEntropy = ManagedAppConfig.shared.minimumAppPasscodeEntropy else {
-            return true
+    func isAcceptableAppPasscode(length: Int, entropy: Float) -> Bool {
+        var isGoodEnough = true
+        if let minRequiredEntropy = ManagedAppConfig.shared.minimumAppPasscodeEntropy {
+            isGoodEnough = isGoodEnough && entropy >= Float(minRequiredEntropy)
         }
-        return entropy >= Float(minRequiredEntropy)
+        if let minRequiredLength = ManagedAppConfig.shared.minimumAppPasscodeLength {
+            isGoodEnough = isGoodEnough && length >= minRequiredLength
+        }
+        return isGoodEnough
     }
 }

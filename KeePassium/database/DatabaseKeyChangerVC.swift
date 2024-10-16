@@ -151,9 +151,9 @@ final class DatabaseKeyChangerVC: UIViewController {
     }
 
     private func verifyEnteredKey(success successHandler: @escaping () -> Void) {
-        let passwordEntropy = Float(passwordField.quality?.entropy ?? 0)
-
-        guard ManagedAppConfig.shared.isAcceptableDatabasePassword(entropy: passwordEntropy) else {
+        let entropy = Float(passwordField.quality?.entropy ?? 0)
+        let length = passwordField.text?.count ?? 0
+        guard ManagedAppConfig.shared.isAcceptableDatabasePassword(length: length, entropy: entropy) else {
             Diag.warning("Database password strength does not meet organization's requirements")
             showNotification(
                 LString.orgRequiresStrongerDatabasePassword,
@@ -170,7 +170,7 @@ final class DatabaseKeyChangerVC: UIViewController {
             return
         }
 
-        let isGoodEnough = passwordEntropy > PasswordQuality.minDatabasePasswordEntropy
+        let isGoodEnough = entropy > PasswordQuality.minDatabasePasswordEntropy
         if isGoodEnough || keyFileRef != nil || yubiKey != nil {
             successHandler()
             return
