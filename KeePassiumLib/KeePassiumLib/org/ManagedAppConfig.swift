@@ -44,6 +44,7 @@ public final class ManagedAppConfig: NSObject {
         case allowPasswordAudit
         case allowFaviconDownload
         case allowDatabaseEncryptionSettings
+        case allowDatabasePrint
     }
 
     private var currentConfig: [String: Any]? {
@@ -152,7 +153,8 @@ extension ManagedAppConfig {
              .requireAppPasscodeSet,
              .allowPasswordAudit,
              .allowFaviconDownload,
-             .allowDatabaseEncryptionSettings:
+             .allowDatabaseEncryptionSettings,
+             .allowDatabasePrint:
             return getBool(key) != nil
         case .configVersion,
              .appLockTimeout,
@@ -220,7 +222,8 @@ extension ManagedAppConfig {
              .requireAppPasscodeSet,
              .allowPasswordAudit,
              .allowFaviconDownload,
-             .allowDatabaseEncryptionSettings:
+             .allowDatabaseEncryptionSettings,
+             .allowDatabasePrint:
             result = getBool(key)
         default:
             Diag.error("Key `\(key.rawValue)` is not boolean, ignoring")

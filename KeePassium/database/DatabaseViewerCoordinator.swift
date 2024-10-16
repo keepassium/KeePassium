@@ -639,6 +639,11 @@ extension DatabaseViewerCoordinator {
     }
 
     private func showDatabasePrintDialog() {
+        guard ManagedAppConfig.shared.isDatabasePrintAllowed else {
+            getPresenterForModals().showManagedFeatureBlockedNotification()
+            Diag.error("Blocked by organization's policy, cancelling")
+            return
+        }
         Diag.info("Will print database")
         let databaseFormatter = DatabasePrintFormatter()
         guard let formattedText = databaseFormatter.toAttributedString(

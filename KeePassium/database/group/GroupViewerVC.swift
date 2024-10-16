@@ -469,6 +469,9 @@ final class GroupViewerVC:
         if !ManagedAppConfig.shared.isDatabaseEncryptionSettingsAllowed {
             encryptionSettingsAction.attributes.insert(.disabled)
         }
+        if !ManagedAppConfig.shared.isDatabasePrintAllowed {
+            printDatabaseAction.attributes.insert(.disabled)
+        }
         if !actionPermissions.canEditDatabase {
             changeMasterKeyAction.attributes.insert(.disabled)
             faviconsDownloadAction.attributes.insert(.disabled)

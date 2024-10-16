@@ -32,4 +32,8 @@ extension ManagedAppConfig {
     public var isDatabaseEncryptionSettingsAllowed: Bool {
         return getBoolIfLicensed(.allowDatabaseEncryptionSettings) ?? true
     }
+
+    public var isDatabasePrintAllowed: Bool {
+        return getBoolIfLicensed(.allowDatabasePrint) ?? true
+    }
 }

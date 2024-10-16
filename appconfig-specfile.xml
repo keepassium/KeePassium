@@ -152,6 +152,12 @@
       </defaultValue>
       <constraint nullable="true"></constraint>
     </string>
+    <string keyName="allowDatabasePrint">
+      <defaultValue>
+        <value></value>
+      </defaultValue>
+      <constraint nullable="true"></constraint>
+    </string>
     <stringArray keyName="allowedFileProviders">
       <constraint nullable="true"></constraint>
     </stringArray>
@@ -330,6 +336,25 @@
         </label>
         <description>
           <language value="en-US"></language>
+        </description>
+        <options>
+          <option value="">
+            <language value="en-US">(Not configured)</language>
+          </option>
+          <option value="yes">
+            <language value="en-US">Yes</language>
+          </option>
+          <option value="no">
+            <language value="en-US">No</language>
+          </option>
+        </options>
+      </field>
+      <field keyName="allowDatabasePrint" type="select">
+        <label>
+          <language value="en-US">Allow printing complete database</language>
+        </label>
+        <description>
+          <language value="en-US">This parameter controls the "Print" menu in database viewer. Users still can select text and export it to a printer app via context menu.</language>
         </description>
         <options>
           <option value="">
