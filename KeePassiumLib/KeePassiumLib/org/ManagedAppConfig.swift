@@ -173,6 +173,28 @@ extension ManagedAppConfig {
         hasWarnedAboutMissingLicense = true
     }
 
+    internal func getStringIfLicensed(_ key: Key) -> String? {
+        let result: String?
+        switch key {
+        case .allowedFileProviders:
+            result = getString(key)
+        default:
+            Diag.error("Key `\(key.rawValue)` is not a string, ignoring")
+            assertionFailure()
+            return nil
+        }
+
+        guard result != nil else {
+            return nil
+        }
+
+        guard LicenseManager.shared.hasActiveBusinessLicense() else {
+            warnAboutMissingLicenseOnce()
+            return nil
+        }
+        return result
+    }
+
     internal func getBoolIfLicensed(_ key: Key) -> Bool? {
         let result: Bool?
         switch key {
@@ -274,7 +296,7 @@ extension ManagedAppConfig {
 
     internal func isAllowed(_ fileProvider: FileProvider) -> Bool {
         if allowedFileProviders == nil {
-            allowedFileProviders = parseAllowedFileProviders()
+            allowedFileProviders = getAllowedFileProviders()
         }
         switch allowedFileProviders! {
         case .allowAll:
@@ -284,15 +306,34 @@ extension ManagedAppConfig {
         }
     }
 
-    private func parseAllowedFileProviders() -> FileProviderRestrictions {
-        guard let allowedProviderIDs = getStringArrayIfLicensed(.allowedFileProviders) else {
+    private func getAllowedFileProviders() -> FileProviderRestrictions {
+        let allowedFileProvidersString = getStringIfLicensed(.allowedFileProviders)
+        let allowedFileProvidersArray = getStringArrayIfLicensed(.allowedFileProviders)
+        if let allowedFileProvidersString {
+            if allowedFileProvidersArray != nil {
+                Diag.warning("Conflicting allowedFileProviders settings, using the string one.")
+            }
+            return parseAllowedFileProviders(fromString: allowedFileProvidersString)
+        } else if let allowedFileProvidersArray {
+            return parseAllowedFileProviders(fromArray: allowedFileProvidersArray)
+        } else {
             return .allowAll
         }
-        if allowedProviderIDs.contains(Self.fileProvidersAll) {
+    }
+
+    private func parseAllowedFileProviders(fromString string: String) -> FileProviderRestrictions {
+        let array = string
+            .components(separatedBy: [",", " "])
+            .filter { $0.isNotEmpty }
+        return parseAllowedFileProviders(fromArray: array)
+    }
+
+    private func parseAllowedFileProviders(fromArray array: [String]) -> FileProviderRestrictions {
+        if array.contains(Self.fileProvidersAll) {
             return .allowAll
         }
 
-        let allowedProviders = allowedProviderIDs.compactMap {
+        let allowedProviders = array.compactMap {
             FileProvider(rawValue: $0)
         }
         return .allowSome(Set(allowedProviders))
