@@ -28,4 +28,8 @@ extension ManagedAppConfig {
     public var isFaviconDownloadAllowed: Bool {
         return getBoolIfLicensed(.allowFaviconDownload) ?? true
     }
+
+    public var isDatabaseEncryptionSettingsAllowed: Bool {
+        return getBoolIfLicensed(.allowDatabaseEncryptionSettings) ?? true
+    }
 }

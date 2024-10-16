@@ -43,6 +43,7 @@ public final class ManagedAppConfig: NSObject {
         case requireAppPasscodeSet
         case allowPasswordAudit
         case allowFaviconDownload
+        case allowDatabaseEncryptionSettings
     }
 
     private var currentConfig: [String: Any]? {
@@ -150,7 +151,8 @@ extension ManagedAppConfig {
              .hideAppLockSetupReminder,
              .requireAppPasscodeSet,
              .allowPasswordAudit,
-             .allowFaviconDownload:
+             .allowFaviconDownload,
+             .allowDatabaseEncryptionSettings:
             return getBool(key) != nil
         case .configVersion,
              .appLockTimeout,
@@ -217,7 +219,8 @@ extension ManagedAppConfig {
              .hideAppLockSetupReminder,
              .requireAppPasscodeSet,
              .allowPasswordAudit,
-             .allowFaviconDownload:
+             .allowFaviconDownload,
+             .allowDatabaseEncryptionSettings:
             result = getBool(key)
         default:
             Diag.error("Key `\(key.rawValue)` is not boolean, ignoring")
