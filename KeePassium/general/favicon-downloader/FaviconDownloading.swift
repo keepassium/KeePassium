@@ -85,30 +85,54 @@ extension FaviconDownloading {
                 completion(nil)
                 return
             }
-            self.faviconDownloadingProgressHost?.showProgressView(
-                title: LString.statusDownloadingFavicons,
-                allowCancelling: true,
-                animated: true
-            )
 
-            let progressHandler = { [weak self] (progress: ProgressEx) -> Void in
-                self?.faviconDownloadingProgressHost?.updateProgressView(with: progress)
-            }
-            self.faviconDownloader.downloadFavicons(for: entries, progressHandler: progressHandler) {
-                [weak self] result in
-                switch result {
-                case .success(let favicons):
-                    completion(favicons)
-                case .failure(.canceled):
-                    Diag.info("Bulk favicon download canceled")
-                    completion(nil)
-                case let .failure(error):
-                    Diag.error("Bulk favicon download failed [message: \(error.localizedDescription)]")
-                    viewController.showNotification(error.localizedDescription)
-                    completion(nil)
+            let alert = UIAlertController.make(
+                title: LString.actionDownloadFavicons,
+                message: [LString.faviconDownloaderIntro, LString.faviconDownloaderWarning].joined(separator: "\n\n"),
+                dismissButtonTitle: LString.actionCancel
+            )
+            alert.addAction(title: LString.actionContinue, style: .default, preferred: true) {
+                [weak self] _ in
+                guard let self else { return }
+                self.faviconDownloadingProgressHost?.showProgressView(
+                    title: LString.statusDownloadingFavicons,
+                    allowCancelling: true,
+                    animated: true
+                )
+
+                let progressHandler = { [weak self] (progress: ProgressEx) -> Void in
+                    self?.faviconDownloadingProgressHost?.updateProgressView(with: progress)
                 }
-                self?.faviconDownloadingProgressHost?.hideProgressView(animated: true)
+                self.faviconDownloader.downloadFavicons(for: entries, progressHandler: progressHandler) {
+                    [weak self] result in
+                    switch result {
+                    case .success(let favicons):
+                        completion(favicons)
+                    case .failure(.canceled):
+                        Diag.info("Bulk favicon download canceled")
+                        completion(nil)
+                    case let .failure(error):
+                        Diag.error("Bulk favicon download failed [message: \(error.localizedDescription)]")
+                        viewController.showNotification(error.localizedDescription)
+                        completion(nil)
+                    }
+                    self?.faviconDownloadingProgressHost?.hideProgressView(animated: true)
+                }
             }
+            viewController.present(alert, animated: true)
         }
     }
+}
+
+extension LString {
+    public static let faviconDownloaderIntro = NSLocalizedString(
+        "[Database/DownloadFavicons/intro]",
+        value: "KeePassium will contact every website in your database.",
+        comment: "Description of favicon downloader feature."
+    )
+    public static let faviconDownloaderWarning = NSLocalizedString(
+        "[Database/DownloadFavicons/warning]",
+        value: "Doing this on a public or monitored network can expose the list of websites where you have an account.",
+        comment: "Description of favicon downloader feature. 'Doing this' refers to downloading favicons."
+    )
 }
