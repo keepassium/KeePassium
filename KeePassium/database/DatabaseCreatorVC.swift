@@ -63,6 +63,10 @@ class DatabaseCreatorVC: UIViewController, BusyStateIndicating {
     }
     private var progressOverlay: ProgressOverlay?
 
+    private var hasPassword: Bool { passwordField.text?.isNotEmpty ?? false }
+    private var hasKeyFile: Bool { keyFile != nil }
+    private var hasYubiKey: Bool { yubiKey != nil }
+
     public static func create() -> DatabaseCreatorVC {
         return DatabaseCreatorVC.instantiateFromStoryboard()
     }
@@ -161,9 +165,20 @@ extension DatabaseCreatorVC {
         delegate?.didPressErrorDetails(in: self)
     }
 
-    private func verifyEnteredKey() -> Bool {
-        let password = passwordField.text ?? ""
-        guard ManagedAppConfig.shared.isAcceptable(databasePassword: password) else {
+    private func verifyEnteredKey(success successHandler: @escaping () -> Void) {
+        guard hasPassword || hasKeyFile || hasYubiKey else {
+            showErrorMessage(
+                NSLocalizedString(
+                    "[Database/Create] Please enter a password or choose a key file.",
+                    value: "Please enter a password or choose a key file.",
+                    comment: "Hint shown when both password and key file are empty."),
+                haptics: .wrongPassword
+            )
+            return
+        }
+
+        let passwordEntropy = Float(passwordField.quality?.entropy ?? 0)
+        guard ManagedAppConfig.shared.isAcceptableDatabasePassword(entropy: passwordEntropy) else {
             Diag.warning("Database password strength does not meet organization's requirements")
             showNotification(
                 LString.orgRequiresStrongerDatabasePassword,
@@ -172,34 +187,36 @@ extension DatabaseCreatorVC {
                 hidePrevious: true,
                 duration: 3
             )
-            return false
+            return
         }
 
-        let hasPassword = password.isNotEmpty
-        let hasKeyFile = keyFile != nil
-        let hasYubiKey = yubiKey != nil
-        if hasPassword || hasKeyFile || hasYubiKey {
-            return true
+        let isGoodEnough = passwordEntropy > PasswordQuality.minDatabasePasswordEntropy
+        if isGoodEnough || hasKeyFile || hasYubiKey {
+            successHandler()
+            return
         }
-        showErrorMessage(
-            NSLocalizedString(
-                "[Database/Create] Please enter a password or choose a key file.",
-                value: "Please enter a password or choose a key file.",
-                comment: "Hint shown when both password and key file are empty."),
-            haptics: .wrongPassword)
-        return false
+        let confirmationAlert = UIAlertController.make(
+            title: LString.titleWarning,
+            message: LString.databasePasswordTooWeak,
+            dismissButtonTitle: LString.actionCancel)
+        confirmationAlert.addAction(title: LString.actionIgnoreAndContinue) { _ in
+            successHandler()
+        }
+        present(confirmationAlert, animated: true)
     }
 
     @IBAction private func didPressSaveToFiles(_ sender: Any) {
-        if verifyEnteredKey() {
+        verifyEnteredKey(success: { [weak self] in
+            guard let self else { return }
             delegate?.didPressSaveToFiles(in: self)
-        }
+        })
     }
 
     @IBAction private func didPressSaveToServer(_ sender: Any) {
-        if verifyEnteredKey() {
+        verifyEnteredKey(success: { [weak self] in
+            guard let self else { return }
             delegate?.didPressSaveToServer(in: self)
-        }
+        })
     }
 }
 
@@ -217,6 +234,7 @@ extension DatabaseCreatorVC: ValidatingTextFieldDelegate {
     }
     func validatingTextField(_ sender: ValidatingTextField, textDidChange text: String) {
         if sender === passwordField {
+            passwordField.quality = PasswordQuality(password: text)
             hideErrorMessage(animated: true)
         }
     }
@@ -293,4 +311,8 @@ extension LString {
         "[Database/Create/orgRequiresStronger]",
         value: "Your organization requires a more complex database password.",
         comment: "Notification for business users when they set up too weak database password.")
+    public static let databasePasswordTooWeak = NSLocalizedString(
+        "[Database/Create/weakPasswordWarning]",
+        value: "This password is easy to guess. Try entering a stronger one.",
+        comment: "Notification when user sets up too weak a database password.")
 }

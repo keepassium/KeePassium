@@ -199,21 +199,42 @@ final class PasscodeInputVC: UIViewController {
 
         switch mode {
         case .verification:
-            break
+            delegate?.passcodeInput(self, didEnterPasscode: passcode)
         case .setup, .change:
-            guard ManagedAppConfig.shared.isAcceptable(appPasscode: passcode) else {
-                Diag.warning("App passcode strength does not meet organization's requirements")
-                showNotification(
-                    LString.orgRequiresStrongerPasscode,
-                    title: nil,
-                    image: .symbol(.managedParameter)?.withTintColor(.iconTint, renderingMode: .alwaysOriginal),
-                    hidePrevious: true,
-                    duration: 3
-                )
-                return
-            }
+            verifyNewPasscode(success: { [weak self] in
+                guard let self else { return }
+                delegate?.passcodeInput(self, didEnterPasscode: passcode)
+            })
         }
-        delegate?.passcodeInput(self, didEnterPasscode: passcode)
+    }
+
+    private func verifyNewPasscode(success successHandler: @escaping () -> Void) {
+        assert(mode != .verification, "Should check only newly defined passcodes")
+
+        let passcodeEntropy = Float(passcodeTextField.quality?.entropy ?? 0)
+        guard ManagedAppConfig.shared.isAcceptableAppPasscode(entropy: passcodeEntropy) else {
+            Diag.warning("App passcode strength does not meet organization's requirements")
+            showNotification(
+                LString.orgRequiresStrongerPasscode,
+                title: nil,
+                image: .symbol(.managedParameter)?.withTintColor(.iconTint, renderingMode: .alwaysOriginal),
+                hidePrevious: true,
+                duration: 3
+            )
+            return
+        }
+        let isGoodEnough = passcodeEntropy > PasswordQuality.minAppPasscodeEntropy
+        if isGoodEnough {
+            return
+        }
+        let warningAlert = UIAlertController.make(
+            title: LString.titleWarning,
+            message: LString.appPasscodeTooWeak,
+            dismissButtonTitle: LString.actionCancel)
+        warningAlert.addAction(title: LString.actionContinue) { _ in
+            successHandler()
+        }
+        present(warningAlert, animated: true)
     }
 
     @IBAction private func didPressSwitchKeyboard(_ sender: Any) {
@@ -245,13 +266,17 @@ extension PasscodeInputVC: UITextFieldDelegate, ValidatingTextFieldDelegate {
     }
 
     func validatingTextField(_ sender: ValidatingTextField, textDidChange text: String) {
-        guard mode == .verification,
-              sender.isValid
-        else {
-            return
-        }
-        if !Settings.current.isLockAllDatabasesOnFailedPasscode {
-            delegate?.passcodeInput(self, shouldTryPasscode: text)
+        switch mode {
+        case .change, .setup:
+            let quality = PasswordQuality(password: text)
+            passcodeTextField.quality = quality
+        case .verification:
+            guard sender.isValid else {
+                return
+            }
+            if !Settings.current.isLockAllDatabasesOnFailedPasscode {
+                delegate?.passcodeInput(self, shouldTryPasscode: text)
+            }
         }
     }
 }
@@ -262,4 +287,11 @@ extension PasscodeInputVC: UIAdaptivePresentationControllerDelegate {
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
         didPressCancelButton(self)
     }
+}
+
+extension LString {
+    public static let appPasscodeTooWeak = NSLocalizedString(
+        "[AppLock/weakPasscodeWarning]",
+        value: "This passcode is easy to guess. Try entering a stronger one.",
+        comment: "Notification when user tries to set up too weak an app protection passcode.")
 }

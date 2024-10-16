@@ -12,30 +12,16 @@ import Zxcvbn
 private let zxcvbn = DBZxcvbn()
 
 extension ManagedAppConfig {
-    func isAcceptable(databasePassword: String) -> Bool {
+    func isAcceptableDatabasePassword(entropy: Float) -> Bool {
         guard let minRequredEntropy = ManagedAppConfig.shared.minimumDatabasePasswordEntropy else {
             return true
-        }
-        guard let entropyString = zxcvbn.passwordStrength(databasePassword).entropy,
-              let entropy = Float(entropyString)
-        else {
-            Diag.warning("Failed to estimate password complexity")
-            assertionFailure()
-            return false
         }
         return entropy >= Float(minRequredEntropy)
     }
 
-    func isAcceptable(appPasscode: String) -> Bool {
+    func isAcceptableAppPasscode(entropy: Float) -> Bool {
         guard let minRequiredEntropy = ManagedAppConfig.shared.minimumAppPasscodeEntropy else {
             return true
-        }
-        guard let entropyString = zxcvbn.passwordStrength(appPasscode).entropy,
-              let entropy = Float(entropyString)
-        else {
-            Diag.warning("Failed to estimate passcode complexity")
-            assertionFailure()
-            return false
         }
         return entropy >= Float(minRequiredEntropy)
     }

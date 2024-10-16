@@ -19,6 +19,14 @@ class ProtectedTextField: ValidatingTextField {
     private var originalContentType: UITextContentType?
     private var originalAutocorrectionType: UITextAutocorrectionType = .default
 
+    private var qualityIndicator: UIProgressView!
+
+    public var quality: PasswordQuality? {
+        didSet {
+            updateQualityIndicator()
+        }
+    }
+
     override var isSecureTextEntry: Bool {
         didSet {
             toggleButton?.isSelected = !isSecureTextEntry
@@ -72,6 +80,34 @@ class ProtectedTextField: ValidatingTextField {
             comment: "Action/button to make password visible as plain-text")
         self.rightView = toggleButton
         self.rightViewMode = .always
+    }
+
+    private func updateQualityIndicator() {
+        guard let quality else {
+            qualityIndicator?.removeFromSuperview()
+            qualityIndicator = nil
+            return
+        }
+
+        if qualityIndicator == nil {
+            qualityIndicator = UIProgressView(frame: .zero)
+            qualityIndicator.trackTintColor = .clear
+            qualityIndicator.translatesAutoresizingMaskIntoConstraints = false
+            addSubview(qualityIndicator)
+
+            let d = ProcessInfo.isRunningOnMac ? 4.0 : 2.0
+            NSLayoutConstraint.activate([
+                qualityIndicator.leadingAnchor.constraint(equalTo: leadingAnchor, constant: d),
+                qualityIndicator.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -d),
+                qualityIndicator.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -d),
+                qualityIndicator.heightAnchor.constraint(equalToConstant: d),
+            ])
+        }
+        qualityIndicator.progressTintColor = quality.strengthColor
+        qualityIndicator.progress = min(
+            Float(quality.entropy) / Float(PasswordQuality.highestEntropyCutoff),
+            1.0
+        )
     }
 
     override func rightViewRect(forBounds bounds: CGRect) -> CGRect {

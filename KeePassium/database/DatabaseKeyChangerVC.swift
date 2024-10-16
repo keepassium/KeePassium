@@ -20,8 +20,8 @@ final class DatabaseKeyChangerVC: UIViewController {
     @IBOutlet private weak var databaseNameLabel: UILabel!
     @IBOutlet private weak var databaseIcon: UIImageView!
     @IBOutlet private weak var inputPanel: UIView!
-    @IBOutlet private weak var passwordField: ValidatingTextField!
-    @IBOutlet private weak var repeatPasswordField: ValidatingTextField!
+    @IBOutlet private weak var passwordField: ProtectedTextField!
+    @IBOutlet private weak var repeatPasswordField: ProtectedTextField!
     @IBOutlet private weak var keyFileField: ValidatingTextField!
     @IBOutlet private weak var hardwareKeyField: ValidatingTextField!
     @IBOutlet private weak var passwordMismatchImage: UIImageView!
@@ -150,6 +150,41 @@ final class DatabaseKeyChangerVC: UIViewController {
         return result
     }
 
+    private func verifyEnteredKey(success successHandler: @escaping () -> Void) {
+        let passwordEntropy = Float(passwordField.quality?.entropy ?? 0)
+
+        guard ManagedAppConfig.shared.isAcceptableDatabasePassword(entropy: passwordEntropy) else {
+            Diag.warning("Database password strength does not meet organization's requirements")
+            showNotification(
+                LString.orgRequiresStrongerDatabasePassword,
+                title: nil,
+                image: .symbol(.managedParameter)?.withTintColor(.iconTint, renderingMode: .alwaysOriginal),
+                hidePrevious: true,
+                duration: 3
+            )
+            return
+        }
+
+        guard areAllFieldsValid() else {
+            Diag.warning("Not all fields are valid, cannot save")
+            return
+        }
+
+        let isGoodEnough = passwordEntropy > PasswordQuality.minDatabasePasswordEntropy
+        if isGoodEnough || keyFileRef != nil || yubiKey != nil {
+            successHandler()
+            return
+        }
+        let confirmationAlert = UIAlertController.make(
+            title: LString.titleWarning,
+            message: LString.databasePasswordTooWeak,
+            dismissButtonTitle: LString.actionCancel)
+        confirmationAlert.addAction(title: LString.actionContinue) { _ in
+            successHandler()
+        }
+        present(confirmationAlert, animated: true)
+    }
+
     private func shakeInvalidInputs() {
         if areAllFieldsValid() {
             assertionFailure("Everything is ok, why are we here?")
@@ -167,23 +202,10 @@ final class DatabaseKeyChangerVC: UIViewController {
 
 
     @IBAction private func didPressSaveChanges(_ sender: Any) {
-        guard ManagedAppConfig.shared.isAcceptable(databasePassword: password) else {
-            Diag.warning("Database password strength does not meet organization's requirements")
-            showNotification(
-                LString.orgRequiresStrongerDatabasePassword,
-                title: nil,
-                image: .symbol(.managedParameter)?.withTintColor(.iconTint, renderingMode: .alwaysOriginal),
-                hidePrevious: true,
-                duration: 3
-            )
-            return
-        }
-
-        guard areAllFieldsValid() else {
-            Diag.warning("Not all fields are valid, cannot save")
-            return
-        }
-        delegate?.didPressSaveChanges(in: self)
+        verifyEnteredKey(success: { [weak self] in
+            guard let self else { return }
+            delegate?.didPressSaveChanges(in: self)
+        })
     }
 }
 
@@ -265,6 +287,7 @@ extension DatabaseKeyChangerVC: ValidatingTextFieldDelegate {
 
     func validatingTextField(_ sender: ValidatingTextField, textDidChange text: String) {
         if sender === passwordField {
+            passwordField.quality = PasswordQuality(password: text)
             repeatPasswordField.validate()
         }
     }

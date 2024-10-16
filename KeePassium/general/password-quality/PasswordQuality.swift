@@ -11,6 +11,15 @@ import UIKit
 import Zxcvbn
 
 enum PasswordQuality {
+    public static let minDatabasePasswordEntropy = Float(maxEntropyWeak)
+    public static let minAppPasscodeEntropy = Float(maxEntropyVeryWeak)
+
+    private static let maxEntropyVeryWeak = 40
+    private static let maxEntropyWeak = 75
+    private static let maxEntropyGood = 100
+
+    public static let highestEntropyCutoff = maxEntropyGood
+
     case veryWeak(Int32)
     case weak(Int32)
     case good(Int32)
@@ -65,11 +74,11 @@ extension PasswordQuality {
             return nil
         }
 
-        if entropy <= 40 {
+        if entropy <= Self.maxEntropyVeryWeak {
             self = .veryWeak(entropy)
-        } else if entropy < 75 {
+        } else if entropy < Self.maxEntropyWeak {
             self = .weak(entropy)
-        } else if entropy < 100 {
+        } else if entropy < Self.maxEntropyGood {
             self = .good(entropy)
         } else {
             self = .veryGood(entropy)
