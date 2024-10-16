@@ -28,6 +28,9 @@ final class EncryptionSettingsVC: UITableViewController {
             }
         }
         enum Memory {
+            static let argon2RecommendedMinimum = 7 * 1024 * 1024
+            static let argon2Baseline = 8 * 1024 * 1024
+
             static let autoFillWarningThreshold = 32 * 1024 * 1024
             static let controlMinimum: Double = 0
             static let controlMaximum: Double = 8
@@ -39,8 +42,29 @@ final class EncryptionSettingsVC: UITableViewController {
             }
         }
         enum Iterations {
-            static let controlMinimum: Double = 1
-            static let controlMaximum: Double = 82
+            static let argon2Baseline = 10
+            static let argon2Minimum: UInt64 = 1
+            static let argon2Maximum: UInt64 = 1000
+            static let aesKdfMinimum: UInt64 = 100_000
+            static let aesKdfMaximum: UInt64 = 100_000_000
+
+            static func getControlMinimum(kdf: EncryptionSettings.KeyDerivationFunctionType) -> Double {
+                switch kdf {
+                case .aesKdf:
+                    return valueToControl(aesKdfMinimum)
+                case .argon2d, .argon2id:
+                    return valueToControl(argon2Minimum)
+                }
+            }
+
+            static func getControlMaximum(kdf: EncryptionSettings.KeyDerivationFunctionType) -> Double {
+                switch kdf {
+                case .aesKdf:
+                    return valueToControl(aesKdfMaximum)
+                case .argon2d, .argon2id:
+                    return valueToControl(argon2Maximum)
+                }
+            }
             static func valueToControl(_ iterations: UInt64) -> Double {
                 let order = UInt64(log10(Double(iterations)))
                 let position = iterations / UInt64(pow(10, Double(order)))
@@ -126,6 +150,7 @@ final class EncryptionSettingsVC: UITableViewController {
     weak var delegate: EncryptionSettingsVCDelegate?
 
     private var settings: EncryptionSettings
+    private var sanityWarnings = [String]()
 
     init(settings: EncryptionSettings) {
         self.settings = settings
@@ -149,6 +174,10 @@ final class EncryptionSettingsVC: UITableViewController {
         registerCellClasses(tableView)
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        validateAndReload()
+    }
 
     private func registerCellClasses(_ tableView: UITableView) {
         tableView.register(
@@ -179,13 +208,11 @@ final class EncryptionSettingsVC: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         switch Section(rawValue: section) {
         case .kdf:
-            if let memory = settings.memory,
-               memory >= Parameters.Memory.autoFillWarningThreshold
-            {
-                return String.localizedStringWithFormat(
-                    LString.Warning.iconWithMessageTemplate,
-                    LString.encryptionMemoryAutoFillWarning
-                )
+            if sanityWarnings.count > 0 {
+                let footer = sanityWarnings.map {
+                    String.localizedStringWithFormat(LString.Warning.iconWithMessageTemplate, $0)
+                }.joined(separator: "\n")
+                return footer
             }
         default:
             break
@@ -268,8 +295,10 @@ final class EncryptionSettingsVC: UITableViewController {
             applyDisclosureIndicator()
             applyMenu(EncryptionSettings.KeyDerivationFunctionType.allCases.map { kdf in
                 let action = UIAction(title: kdf.description) { [weak self] _ in
-                    self?.settings.kdf = kdf
-                    self?.validateAndReload()
+                    guard let self else { return }
+                    settings.kdf = kdf
+                    enforceParameterBounds(&settings)
+                    validateAndReload()
                 }
                 action.state = settings.kdf == kdf ? .on : .off
                 return action
@@ -280,8 +309,8 @@ final class EncryptionSettingsVC: UITableViewController {
             }
             cell.detailTextLabel?.text = numberFormatter.string(from: iterations as NSNumber)
             let stepper = UIStepper()
-            stepper.minimumValue = Parameters.Iterations.controlMinimum
-            stepper.maximumValue = Parameters.Iterations.controlMaximum
+            stepper.minimumValue = Parameters.Iterations.getControlMinimum(kdf: settings.kdf)
+            stepper.maximumValue = Parameters.Iterations.getControlMaximum(kdf: settings.kdf)
             stepper.value = Parameters.Iterations.valueToControl(iterations)
             stepper.addTarget(self, action: #selector(iterationsValueChanged), for: .valueChanged)
             applyStepper(stepper)
@@ -310,7 +339,22 @@ final class EncryptionSettingsVC: UITableViewController {
         }
     }
 
+    private func enforceParameterBounds(_ settings: inout EncryptionSettings) {
+        if let iterations = settings.iterations {
+            let maxValue = Parameters.Iterations.getControlMaximum(kdf: settings.kdf)
+            let minValue = Parameters.Iterations.getControlMinimum(kdf: settings.kdf)
+            var controlValue = Parameters.Iterations.valueToControl(iterations)
+            if controlValue > maxValue {
+                controlValue = maxValue
+            } else if controlValue < minValue {
+                controlValue = minValue
+            }
+            settings.iterations = Parameters.Iterations.controlToValue(controlValue)
+        }
+    }
+
     private func validateAndReload() {
+        sanityWarnings.removeAll()
         switch settings.kdf {
         case .argon2d, .argon2id:
             if settings.memory == nil {
@@ -319,13 +363,42 @@ final class EncryptionSettingsVC: UITableViewController {
             if settings.parallelism == nil {
                 settings.parallelism = EncryptionSettings.default.parallelism?.magnitude
             }
+            checkArgon2ParamSanity(&sanityWarnings)
         case .aesKdf:
             settings.memory = nil
             settings.parallelism = nil
+            sanityWarnings.append(String.localizedStringWithFormat(
+                LString.kdfConsideredWeakTemplate,
+                EncryptionSettings.KeyDerivationFunctionType.aesKdf.description,  // "this is considered weak
+                EncryptionSettings.KeyDerivationFunctionType.argon2id.description //  use this one instead"
+            ))
         }
         tableView.reloadData()
     }
 
+    private func checkArgon2ParamSanity(_ warnings: inout [String]) {
+        guard let memory = settings.memory,
+              let iterations = settings.iterations
+        else {
+            Diag.warning("One of mandatory parameters is missing.")
+            assertionFailure()
+            warnings.append("Internal error")
+            return
+        }
+
+        if memory >= Parameters.Memory.autoFillWarningThreshold {
+            warnings.append(LString.encryptionMemoryAutoFillWarning)
+        }
+
+        let baseline = Parameters.Memory.argon2Baseline * Parameters.Iterations.argon2Baseline
+        let actual = memory * iterations
+        let quotient = Float(actual) / Float(baseline)
+        if quotient < 0.2 || memory < Parameters.Memory.argon2RecommendedMinimum {
+            warnings.append(LString.kdfParametersTooWeak)
+        } else if quotient > 64 {
+            warnings.append(LString.kdfParametersTooSlow)
+        }
+    }
 
     @objc
     private func parallelismValueChanged(stepper: UIStepper) {
@@ -359,3 +432,20 @@ final class EncryptionSettingsVC: UITableViewController {
         validateAndReload()
     }
 }
+
+// swiftlint:disable line_length
+extension LString {
+    public static let kdfConsideredWeakTemplate = NSLocalizedString(
+        "[Database/KDF/consideredWeak]",
+        value: "%@ is considered weak. Use %@ instead.",
+        comment: "Warning that one key derivation function (KDF) should be preferred to another. Example: 'AES-KDF is considered weak. Use Argon2id instead.'")
+    public static let kdfParametersTooWeak = NSLocalizedString(
+        "[Database/KDF/tooWeak]",
+        value: "Increase the settings for optimal data protection.",
+        comment: "Call to action when encryption settings are too weak.")
+    public static let kdfParametersTooSlow = NSLocalizedString(
+        "[Database/KDF/tooSlow]",
+        value: "These settings may be too slow for some devices.",
+        comment: "Notification message about encryption settings.")
+}
+// swiftlint:enable line_length

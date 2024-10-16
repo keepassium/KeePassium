@@ -28,9 +28,9 @@ class AbstractArgon2KDF {
     fileprivate let minParallelism: UInt32 = 1
     fileprivate let maxParallelism: UInt32 = (1 << 24) - 1
 
-    fileprivate let defaultIterations: UInt64  = 100
-    fileprivate let defaultMemory: UInt64      = 1024 * 1024 
-    fileprivate let defaultParallelism: UInt32 = 2
+    static let defaultIterations: UInt64  = 10
+    static let defaultMemory: UInt64      = 8 * 1024 * 1024
+    static let defaultParallelism: UInt32 = 4
 
     fileprivate var name: String {
         fatalError("Abstract method, override this")
@@ -69,19 +69,19 @@ class AbstractArgon2KDF {
 
     func apply(_ settings: EncryptionSettings, to kdfParams: inout KDFParams) {
         assert(settings.iterations != nil, "Iterations parameter must be defined")
-        let iterations = settings.iterations ?? defaultIterations
+        let iterations = settings.iterations ?? Self.defaultIterations
         kdfParams.setValue(
             key: AbstractArgon2KDF.iterationsParam,
             value: VarDict.TypedValue(value: iterations))
 
         assert(settings.memory != nil, "Memory parameter must be defined")
-        let memory = settings.memory ?? defaultMemory
+        let memory = settings.memory ?? Self.defaultMemory
         kdfParams.setValue(
             key: AbstractArgon2KDF.memoryParam,
             value: VarDict.TypedValue(value: memory))
 
         assert(settings.parallelism != nil, "Parallelism parameter must be defined")
-        let parallelism = settings.parallelism ?? defaultParallelism
+        let parallelism = settings.parallelism ?? Self.defaultParallelism
         kdfParams.setValue(
             key: AbstractArgon2KDF.parallelismParam,
             value: VarDict.TypedValue(value: parallelism))
@@ -91,9 +91,15 @@ class AbstractArgon2KDF {
         let params = KDFParams()
         params.setValue(key: KDFParams.uuidParam, value: VarDict.TypedValue(value: uuid.data))
         params.setValue(key: AbstractArgon2KDF.versionParam, value: VarDict.TypedValue(value: maxVersion))
-        params.setValue(key: AbstractArgon2KDF.iterationsParam, value: VarDict.TypedValue(value: defaultIterations))
-        params.setValue(key: AbstractArgon2KDF.memoryParam, value: VarDict.TypedValue(value: defaultMemory))
-        params.setValue(key: AbstractArgon2KDF.parallelismParam, value: VarDict.TypedValue(value: defaultParallelism))
+        params.setValue(
+            key: AbstractArgon2KDF.iterationsParam,
+            value: VarDict.TypedValue(value: Self.defaultIterations))
+        params.setValue(
+            key: AbstractArgon2KDF.memoryParam,
+            value: VarDict.TypedValue(value: Self.defaultMemory))
+        params.setValue(
+            key: AbstractArgon2KDF.parallelismParam,
+            value: VarDict.TypedValue(value: Self.defaultParallelism))
         return params
     }
 

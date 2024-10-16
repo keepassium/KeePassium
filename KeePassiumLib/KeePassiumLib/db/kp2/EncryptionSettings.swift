@@ -113,9 +113,9 @@ public struct EncryptionSettings: Equatable {
 
     public static let `default`: Self = EncryptionSettings(
         dataCipher: .chaCha20,
-        kdf: .argon2d,
-        iterations: 100,
-        memory: 1 * 1024 * 1024,
-        parallelism: 2
+        kdf: .argon2id,
+        iterations: Argon2idKDF.defaultIterations,
+        memory: Argon2idKDF.defaultMemory,
+        parallelism: Argon2idKDF.defaultParallelism
     )
 }
