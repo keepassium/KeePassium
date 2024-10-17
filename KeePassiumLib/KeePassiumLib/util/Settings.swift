@@ -1420,7 +1420,7 @@ public class Settings {
 
     public var isHideAppLockSetupReminder: Bool {
         get {
-            if let managedValue = ManagedAppConfig.shared.getBoolIfLicensed(.hideAppLockSetupReminder) {
+            if let managedValue = ManagedAppConfig.shared.isHideAppProtectionReminder {
                 return managedValue
             }
             let stored = UserDefaults.appGroupShared

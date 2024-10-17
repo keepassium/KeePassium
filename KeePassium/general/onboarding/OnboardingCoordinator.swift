@@ -125,6 +125,9 @@ final class OnboardingCoordinator: Coordinator {
         if isAutoFillEnabledInSystem() || BusinessModel.isIntuneEdition  {
             onboardingSteps.removeAll(where: { $0.id == .autoFill })
         }
+        if !ManagedAppConfig.shared.isAppProtectionAllowed {
+            onboardingSteps.removeAll(where: { $0.id == .appProtection })
+        }
 
         onboardingStepsVC = OnboardingPagesVC(steps: onboardingSteps)
         onboardingStepsVC.onStateUpdate = { [weak self] onboardingStepsVC in

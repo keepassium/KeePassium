@@ -34,6 +34,12 @@ final class AppProtectionSettingsCoordinator: Coordinator, Refreshable {
     }
 
     func start() {
+        guard ManagedAppConfig.shared.isAppProtectionAllowed else {
+            Diag.error("Blocked by organization's policy, cancelling")
+            dismissHandler?(self)
+            assertionFailure("This action should have been disabled in UI")
+            return
+        }
         router.push(appProtectionSettingsVC, animated: true, onPop: { [weak self] in
             guard let self = self else { return }
             self.removeAllChildCoordinators()

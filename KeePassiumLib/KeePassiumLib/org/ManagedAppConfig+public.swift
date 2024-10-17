@@ -44,4 +44,15 @@ extension ManagedAppConfig {
     public var isDatabasePrintAllowed: Bool {
         return getBoolIfLicensed(.allowDatabasePrint) ?? true
     }
+
+    public var isHideAppProtectionReminder: Bool? {
+        guard isAppProtectionAllowed else {
+            return true
+        }
+        return getBoolIfLicensed(.hideAppLockSetupReminder)
+    }
+
+    public var isAppProtectionAllowed: Bool {
+        return getBoolIfLicensed(.allowAppProtection) ?? true
+    }
 }

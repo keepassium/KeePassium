@@ -152,6 +152,12 @@
       </defaultValue>
       <constraint nullable="true"></constraint>
     </string>
+    <string keyName="allowAppProtection">
+      <defaultValue>
+        <value></value>
+      </defaultValue>
+      <constraint nullable="true"></constraint>
+    </string>
     <string keyName="allowDatabasePrint">
       <defaultValue>
         <value></value>
@@ -260,6 +266,25 @@
       <name>
         <language value="en-US">App and data protection</language>
       </name>
+      <field keyName="allowAppProtection" type="select">
+        <label>
+          <language value="en-US">Disable this to hide App Protection from onboarding and app settings. This is useful if PIN/biometric check is enforced by your MDM.</language>
+        </label>
+        <description>
+          <language value="en-US"></language>
+        </description>
+        <options>
+          <option value="">
+            <language value="en-US">(Not configured)</language>
+          </option>
+          <option value="yes">
+            <language value="en-US">Yes</language>
+          </option>
+          <option value="no">
+            <language value="en-US">No</language>
+          </option>
+        </options>
+      </field>
       <field keyName="requireAppPasscodeSet" type="select">
         <label>
           <language value="en-US">Require App Passcode</language>
@@ -351,7 +376,6 @@
           <language value="en-US">Is enforced together with minimal complexity.</language>
         </description>
       </field>
-
 
       <field keyName="allowDatabaseEncryptionSettings" type="select">
         <label>

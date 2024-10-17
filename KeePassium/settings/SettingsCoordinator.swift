@@ -229,6 +229,11 @@ extension SettingsCoordinator: SettingsViewControllerDelegate {
     }
 
     func didPressAppProtectionSettings(in viewController: SettingsVC) {
+        guard ManagedAppConfig.shared.isAppProtectionAllowed else {
+            viewController.showManagedFeatureBlockedNotification()
+            Diag.error("Blocked by organization's policy")
+            return
+        }
         showAppProtectionSettingsPage()
     }
 
