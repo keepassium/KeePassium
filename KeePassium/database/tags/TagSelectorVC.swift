@@ -418,6 +418,14 @@ extension TagSelectorVC {
     }
 }
 
+#if targetEnvironment(macCatalyst)
+extension TagSelectorVC {
+    override func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
+        return nil
+    }
+}
+#endif
+
 extension TagSelectorVC: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         refresh()

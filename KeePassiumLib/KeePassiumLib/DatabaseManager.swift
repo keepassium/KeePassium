@@ -24,7 +24,7 @@ public class DatabaseManager {
         challengeHandler: ChallengeHandler?,
         template templateSetupHandler: @escaping (Group2) -> Void,
         completionQueue: DispatchQueue = .main,
-        completion: @escaping((Result<DatabaseFile, String>) -> Void)
+        completion: @escaping ((Result<DatabaseFile, String>) -> Void)
     ) {
         let db2 = Database2.makeNewV4()
         guard let root2 = db2.root as? Group2 else { fatalError() }

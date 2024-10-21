@@ -14,7 +14,7 @@ public extension KeyHelper {
         challengeHandler: ChallengeHandler?,
         timeout: Timeout = Timeout(duration: FileDataProvider.defaultTimeoutDuration),
         completionQueue: DispatchQueue = .main,
-        completion: @escaping((Result<CompositeKey, String>) -> Void)
+        completion: @escaping ((Result<CompositeKey, String>) -> Void)
     ) {
         guard let keyFileRef = keyFileRef else {
             buildCompositeKey(
@@ -52,7 +52,7 @@ public extension KeyHelper {
         keyFileData: SecureBytes,
         challengeHandler: ChallengeHandler?,
         completionQueue: DispatchQueue,
-        completion: @escaping((Result<CompositeKey, String>) -> Void)
+        completion: @escaping ((Result<CompositeKey, String>) -> Void)
     ) {
         let passwordData = self.getPasswordData(password: password)
         if passwordData.isEmpty && keyFileData.isEmpty && challengeHandler == nil {
