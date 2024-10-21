@@ -115,7 +115,7 @@ extension LicenseManager {
                 return false
             }
             if aProof == licenseKeyHash {
-                Diag.debug("License key is valid [hash: \(licenseKeyHash.asHexString)]")
+                Diag.debug("License key is valid [hashPrefix: \(licenseKeyHash.prefix(8).asHexString)]")
                 return true
             }
         }
