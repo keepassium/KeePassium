@@ -12,12 +12,13 @@ public final class OneDriveDataSource: RemoteDataSource {
     typealias ItemType = OneDriveItem
     typealias Manager = OneDriveManager
 
-    let usedFileProvider: FileProvider = .keepassiumOneDrive
+    let usedFileProvider: FileProvider
     let recoveryAction: String = LString.actionSignInToOneDrive
 
     let manager: OneDriveManager
 
-    init() {
+    init(fileProvider: FileProvider) {
+        self.usedFileProvider = fileProvider
         manager = OneDriveManager.shared
     }
 }

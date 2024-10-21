@@ -9,8 +9,18 @@
 import Foundation
 
 extension URL {
-    var isOneDriveFileURL: Bool {
+    fileprivate var isOneDriveFileURL: Bool {
         return self.scheme == OneDriveURLHelper.prefixedScheme
+    }
+
+    var isOneDrivePersonalFileURL: Bool {
+        return isOneDriveFileURL
+            && OneDriveURLHelper.getDriveType(from: self) == .personal
+    }
+
+    var isOneDriveBusinessFileURL: Bool {
+        return isOneDriveFileURL
+            && OneDriveURLHelper.getDriveType(from: self) == .business
     }
 
     func getOneDriveLocationDescription() -> String? {
@@ -153,5 +163,15 @@ private enum OneDriveURLHelper {
             return nil
         }
         return .init(driveID: parentDriveID, itemID: parentItemID, name: parentName)
+    }
+
+    fileprivate static func getDriveType(from prefixedURL: URL) -> OneDriveDriveInfo.DriveType? {
+        assert(prefixedURL.isOneDriveFileURL)
+        guard let driveTypeString = prefixedURL.queryItems[Key.driveType],
+              let driveType = OneDriveDriveInfo.DriveType(rawValue: driveTypeString)
+        else {
+            return nil
+        }
+        return driveType
     }
 }

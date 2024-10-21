@@ -6,33 +6,31 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-public enum RemoteConnectionType: String, CustomStringConvertible {
+public enum RemoteConnectionType: CustomStringConvertible {
     public static let allValues: [RemoteConnectionType] = [
         .dropbox,
         .dropboxBusiness,
         .googleDrive,
         .googleWorkspace,
-        .oneDrive,
+        .oneDrivePersonal,
         .oneDriveForBusiness,
         .webdav,
     ]
 
-    // swiftlint:disable redundant_string_enum_value
-    case webdav = "webdav"
-    case oneDrive = "oneDrive"
-    case oneDriveForBusiness = "oneDriveForBusiness"
-    case dropbox = "dropbox"
-    case dropboxBusiness = "dropboxBusiness"
-    case googleDrive = "googleDrive"
-    case googleWorkspace = "googleWorkspace"
-    // swiftlint:enable redundant_string_enum_value
+    case webdav
+    case oneDrivePersonal
+    case oneDriveForBusiness
+    case dropbox
+    case dropboxBusiness
+    case googleDrive
+    case googleWorkspace
 
     public var description: String {
         switch self {
         case .webdav:
             return LString.connectionTypeWebDAV
-        case .oneDrive:
-            return LString.connectionTypeOneDrive
+        case .oneDrivePersonal:
+            return LString.connectionTypeOneDrivePersonal
         case .oneDriveForBusiness:
             return LString.connectionTypeOneDriveForBusiness
         case .dropbox:
@@ -50,9 +48,10 @@ public enum RemoteConnectionType: String, CustomStringConvertible {
         switch self {
         case .webdav:
             return .keepassiumWebDAV
-        case .oneDrive,
-             .oneDriveForBusiness:
-            return .keepassiumOneDrive
+        case .oneDrivePersonal:
+            return .keepassiumOneDrivePersonal
+        case .oneDriveForBusiness:
+            return .keepassiumOneDriveBusiness
         case .dropbox,
              .dropboxBusiness:
             return .keepassiumDropbox
@@ -66,7 +65,7 @@ extension RemoteConnectionType {
     public var isBusinessCloud: Bool {
         switch self {
         case .webdav,
-             .oneDrive,
+             .oneDrivePersonal,
              .dropbox,
              .googleDrive:
             return false

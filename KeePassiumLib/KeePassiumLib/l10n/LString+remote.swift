@@ -28,9 +28,10 @@ extension LString {
         comment: "Error message: user credentials rejected by the server"
     )
 
-    public static let connectionTypeWebDAV = "WebDAV" 
-    public static let connectionTypeOneDrive = "OneDrive" 
-    public static let connectionTypeSharePoint = "OneDrive" 
+    public static let connectionTypeWebDAV = "WebDAV"
+    public static let connectionTypeOneDrive = "OneDrive"
+    public static let connectionTypeOneDrivePersonal = connectionTypeOneDrive
+    public static let connectionTypeSharePoint = "SharePoint"
     public static let connectionTypeOneDriveForBusiness = NSLocalizedString(
         "[StorageService/OneDriveForBusiness/title]",
         bundle: Bundle.framework,

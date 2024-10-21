@@ -54,8 +54,10 @@ final class RemoteFilePickerCoordinator: Coordinator {
             connectionType = .dropbox
         case .some(.keepassiumGoogleDrive):
             connectionType = .googleDrive
-        case .some(.keepassiumOneDrive):
-            connectionType = .oneDrive
+        case .some(.keepassiumOneDrivePersonal):
+            connectionType = .oneDrivePersonal
+        case .some(.keepassiumOneDriveBusiness):
+            connectionType = .oneDriveForBusiness
         default:
             connectionType = nil
         }
@@ -120,7 +122,7 @@ extension RemoteFilePickerCoordinator: ConnectionTypePickerDelegate {
         switch connectionType {
         case .webdav:
             startWebDAVSetup(stateIndicator: viewController)
-        case .oneDrive, .oneDriveForBusiness:
+        case .oneDrivePersonal, .oneDriveForBusiness:
             startOneDriveSetup(stateIndicator: viewController)
         case .dropbox, .dropboxBusiness:
             startDropboxSetup(stateIndicator: viewController)

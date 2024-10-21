@@ -70,7 +70,7 @@ extension OneDriveConnectionSetupCoordinator {
         self.accountInfo = accountInfo
         if let oldRef,
            let url = oldRef.url,
-           oldRef.fileProvider == .keepassiumOneDrive
+           oldRef.fileProvider == accountInfo.type.matchingFileProvider
         {
             trySelectFile(url, onFailure: { [weak self] in
                 guard let self else { return }
@@ -196,6 +196,13 @@ extension OneDriveConnectionSetupCoordinator: RemoteFolderViewerDelegate {
         _ fileItem: OneDriveItem,
         in viewController: RemoteFolderViewerVC
     ) {
+        let driveType = fileItem.driveInfo.type
+        guard driveType.matchingFileProvider.isAllowed else {
+            Diag.error("OneDrive account type is blocked by org settings [type: \(driveType.description)]")
+            viewController.showErrorAlert(FileAccessError.managedAccessDenied)
+            stateIndicator.indicateState(isBusy: false)
+            return
+        }
         if fileItem.driveInfo.type.isCorporate {
             performPremiumActionOrOfferUpgrade(for: .canUseBusinessClouds, in: viewController) { [weak self] in
                 self?.didSelectFile(fileItem, stateIndicator: viewController)

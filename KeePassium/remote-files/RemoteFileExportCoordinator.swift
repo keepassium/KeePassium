@@ -163,7 +163,7 @@ extension RemoteFileExportCoordinator: ConnectionTypePickerDelegate {
             switch connectionType {
             case .webdav:
                 assertionFailure("Not implemented yet")
-            case .oneDrive, .oneDriveForBusiness:
+            case .oneDrivePersonal, .oneDriveForBusiness:
                 startOneDriveSetup(stateIndicator: viewController)
             case .dropbox, .dropboxBusiness:
                 startDropboxSetup(stateIndicator: viewController)

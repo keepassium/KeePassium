@@ -14,7 +14,7 @@ public struct OneDriveDriveInfo: Equatable {
         public var description: String {
             switch self {
             case .personal:
-                return LString.connectionTypeOneDrive
+                return LString.connectionTypeOneDrivePersonal
             case .business:
                 return LString.connectionTypeOneDriveForBusiness
             case .sharepoint:
@@ -28,6 +28,16 @@ public struct OneDriveDriveInfo: Equatable {
                 return false
             case .business, .sharepoint:
                 return true
+            }
+        }
+
+        public var matchingFileProvider: FileProvider {
+            switch self {
+            case .personal:
+                return .keepassiumOneDrivePersonal
+            case .business,
+                 .sharepoint:
+                return .keepassiumOneDriveBusiness
             }
         }
     }

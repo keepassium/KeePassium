@@ -389,7 +389,7 @@ extension ManagedAppConfig {
             return nil
         }
         guard let result = Int(valueString) else {
-            Diag.warning("Managed value `\(key.rawValue)` is not an Int, ignoring it.")
+            Diag.warning("Managed value `\(key.rawValue)` is not an Int.")
             return nil
         }
         return result
@@ -400,7 +400,7 @@ extension ManagedAppConfig {
             return nil
         }
         guard let result = object as? [String] else {
-            Diag.warning("Managed value `\(key.rawValue)` is not a string array, ignoring it.")
+            Diag.warning("Managed value `\(key.rawValue)` is not a string array.")
             return nil
         }
         return result

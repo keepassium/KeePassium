@@ -26,7 +26,11 @@ extension FileProvider {
             return .iCloud
         case .keepassiumWebDAV:
             return .fileProviderWebDAV
-        case .keepassiumOneDrive:
+        case .keepassiumOneDrivePersonal,
+             .keepassiumOneDriveBusiness:
+            return .fileProviderOneDrive
+        case .keepassiumOneDriveLegacy:
+            assertionFailure("Should be either Personal or Business instead")
             return .fileProviderOneDrive
         case .keepassiumDropbox:
             return .fileProviderDropbox

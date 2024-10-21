@@ -15,8 +15,10 @@ internal final class DataSourceFactory {
 
         if url.isWebDAVFileURL {
             return WebDAVDataSource()
-        } else if url.isOneDriveFileURL {
-            return OneDriveDataSource()
+        } else if url.isOneDrivePersonalFileURL {
+            return OneDriveDataSource(fileProvider: .keepassiumOneDrivePersonal)
+        } else if url.isOneDriveBusinessFileURL {
+            return OneDriveDataSource(fileProvider: .keepassiumOneDriveBusiness)
         } else if url.isDropboxFileURL {
             return DropboxDataSource()
         } else if url.isGoogleDriveFileURL {
@@ -30,12 +32,14 @@ internal final class DataSourceFactory {
     public static func findInAppFileProvider(for url: URL) -> FileProvider? {
         if url.isWebDAVFileURL {
             return .keepassiumWebDAV
-        } else if url.isOneDriveFileURL {
-            return .keepassiumOneDrive
         } else if url.isDropboxFileURL {
             return .keepassiumDropbox
         } else if url.isGoogleDriveFileURL {
             return .keepassiumGoogleDrive
+        } else if url.isOneDrivePersonalFileURL {
+            return .keepassiumOneDrivePersonal
+        } else if url.isOneDriveBusinessFileURL {
+            return .keepassiumOneDriveBusiness
         }
         return nil
     }

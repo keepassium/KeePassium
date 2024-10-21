@@ -8,6 +8,14 @@
 
 public extension FileProvider {
     var isAllowed: Bool {
-        return ManagedAppConfig.shared.isAllowed(self)
+        switch self {
+        case .keepassiumOneDrivePersonal, .keepassiumOneDriveBusiness:
+            if ManagedAppConfig.shared.isAllowed(.keepassiumOneDriveLegacy) {
+                return true
+            }
+            return ManagedAppConfig.shared.isAllowed(self)
+        default:
+            return ManagedAppConfig.shared.isAllowed(self)
+        }
     }
 }
