@@ -40,7 +40,6 @@ class CredentialProviderViewController: ASCredentialProviderViewController {
         autoFillCoordinator?.handleMemoryWarning()
     }
 
-    @available(iOS 14, *)
     private func cacheKeyboard() {
         let textField = UITextField()
         self.view.addSubview(textField)
@@ -51,24 +50,27 @@ class CredentialProviderViewController: ASCredentialProviderViewController {
 
     override func prepareCredentialList(for serviceIdentifiers: [ASCredentialServiceIdentifier]) {
         log.trace("prepareCredentialList")
-        autoFillCoordinator.serviceIdentifiers = serviceIdentifiers
-        if ProcessInfo.isRunningOnMac {
-            autoFillCoordinator.start()
-        }
+        prepareCredentialList(for: serviceIdentifiers, mode: .credentials)
     }
 
     override func prepareInterfaceToProvideCredential(
         for credentialIdentity: ASPasswordCredentialIdentity
     ) {
         log.trace("prepareInterfaceToProvideCredential")
-        autoFillCoordinator.prepareUI(for: credentialIdentity)
+        autoFillCoordinator.prepareUI(
+            autoFillMode: .credentials,
+            for: CredentialProviderIdentity(credentialIdentity)
+        )
     }
 
     override func provideCredentialWithoutUserInteraction(
         for credentialIdentity: ASPasswordCredentialIdentity
     ) {
         log.trace("provideCredentialWithoutUserInteraction")
-        autoFillCoordinator.provideWithoutUserInteraction(for: credentialIdentity)
+        autoFillCoordinator.provideWithoutUserInteraction(
+            autoFillMode: .credentials,
+            for: CredentialProviderIdentity(credentialIdentity)
+        )
     }
 
     override func prepareInterfaceForExtensionConfiguration() {
@@ -76,6 +78,74 @@ class CredentialProviderViewController: ASCredentialProviderViewController {
         autoFillCoordinator.prepareConfigurationUI()
         if ProcessInfo.isRunningOnMac {
             autoFillCoordinator.start()
+        }
+    }
+
+    private func prepareCredentialList(
+        for serviceIdentifiers: [ASCredentialServiceIdentifier],
+        mode: AutoFillMode
+    ) {
+        autoFillCoordinator.serviceIdentifiers = serviceIdentifiers
+        autoFillCoordinator.autoFillMode = mode
+        if ProcessInfo.isRunningOnMac {
+            autoFillCoordinator.start()
+        }
+    }
+}
+
+extension CredentialProviderViewController {
+    override func prepareOneTimeCodeCredentialList(for serviceIdentifiers: [ASCredentialServiceIdentifier]) {
+        log.trace("prepareOneTimeCodeCredentialList")
+        prepareCredentialList(for: serviceIdentifiers, mode: .oneTimeCode)
+    }
+
+    @available(iOS 17.0, *)
+    override func prepareInterfaceToProvideCredential(for credentialRequest: ASCredentialRequest) {
+        log.trace("prepareInterfaceToProvideCredential (iOS17+)")
+        switch credentialRequest.type {
+        case .password:
+            autoFillCoordinator.prepareUI(
+                autoFillMode: .credentials,
+                for: CredentialProviderIdentity(credentialRequest.credentialIdentity)
+            )
+        case .oneTimeCode:
+            if #available(iOS 18.0, *) {
+                autoFillCoordinator.prepareUI(
+                    autoFillMode: .oneTimeCode,
+                    for: CredentialProviderIdentity(credentialRequest.credentialIdentity)
+                )
+            } else {
+                log.error("Request type of oneTimeCode called on older iOS than 18")
+                extensionContext.cancelRequest(withError: ASExtensionError(.failed))
+            }
+        default:
+            extensionContext.cancelRequest(withError: ASExtensionError(.failed))
+        }
+    }
+
+    @available(iOS 17.0, *)
+    override func provideCredentialWithoutUserInteraction(for credentialRequest: ASCredentialRequest) {
+        log.trace("provideCredentialWithoutUserInteraction (iOS17+)")
+        switch credentialRequest.type {
+        case .password:
+            autoFillCoordinator.provideWithoutUserInteraction(
+                autoFillMode: .credentials,
+                for: CredentialProviderIdentity(
+                    credentialRequest.credentialIdentity
+                )
+            )
+        case .oneTimeCode:
+            if #available(iOS 18.0, *) {
+                autoFillCoordinator.provideWithoutUserInteraction(
+                    autoFillMode: .oneTimeCode,
+                    for: CredentialProviderIdentity(credentialRequest.credentialIdentity)
+                )
+            } else {
+                log.error("Request type of oneTimeCode called on older iOS than 18")
+                extensionContext.cancelRequest(withError: ASExtensionError(.failed))
+            }
+        default:
+            extensionContext.cancelRequest(withError: ASExtensionError(.failed))
         }
     }
 }

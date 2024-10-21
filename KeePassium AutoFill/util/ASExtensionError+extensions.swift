@@ -19,6 +19,8 @@ extension ASExtensionError.Code: CustomStringConvertible {
             return ".userInteractionRequired"
         case .credentialIdentityNotFound:
             return ".credentialIdentityNotFound"
+        case .matchedExcludedCredential:
+            return ".matchedExcludedCredential"
         @unknown default:
             return "(unknown)"
         }

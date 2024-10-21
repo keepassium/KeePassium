@@ -200,7 +200,6 @@ final class EntryFieldEditorCoordinator: Coordinator {
         addChildCoordinator(passGenCoordinator)
     }
 
-    @available(iOS 14, *)
     private func makeUserNameGeneratorMenu(for field: EditableField) -> UIMenu {
         let applyUserName: UIActionHandler = { action in
             field.value = action.title

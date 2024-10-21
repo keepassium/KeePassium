@@ -1287,6 +1287,8 @@
 		F37CAA492A88F7E30000EF64 /* YubiKit in Frameworks */ = {isa = PBXBuildFile; productRef = F37CAA482A88F7E30000EF64 /* YubiKit */; };
 		F37CAA4B2A88F7E30000EF64 /* Zxcvbn in Frameworks */ = {isa = PBXBuildFile; productRef = F37CAA4A2A88F7E30000EF64 /* Zxcvbn */; };
 		F37CAA4E2A88F8D10000EF64 /* DumpEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37CAA4D2A88F8D10000EF64 /* DumpEquatable.swift */; };
+		F38460332CA813B7004B0A6D /* CredentialProviderIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38460322CA813B7004B0A6D /* CredentialProviderIdentity.swift */; };
+		F38460342CA813B7004B0A6D /* CredentialProviderIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38460322CA813B7004B0A6D /* CredentialProviderIdentity.swift */; };
 		F38A48C42A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38A48C32A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift */; };
 		F38A48C52A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38A48C32A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift */; };
 		F38A48C62A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38A48C32A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift */; };
@@ -1310,6 +1312,8 @@
 		F3C71AAF2AFFAD7A00EEAC8E /* GroupEditorTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C71AAD2AFFAD7A00EEAC8E /* GroupEditorTitleCell.swift */; };
 		F3C71AB02AFFAD7A00EEAC8E /* GroupEditorTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C71AAD2AFFAD7A00EEAC8E /* GroupEditorTitleCell.swift */; };
 		F3C71AB12AFFAD7A00EEAC8E /* GroupEditorTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C71AAD2AFFAD7A00EEAC8E /* GroupEditorTitleCell.swift */; };
+		F3C744462CA5A820005D5429 /* AutoFillMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C744452CA5A820005D5429 /* AutoFillMode.swift */; };
+		F3C744472CA5A820005D5429 /* AutoFillMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C744452CA5A820005D5429 /* AutoFillMode.swift */; };
 		F3D011482B77B96800A9AF96 /* SearchQueryParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D011472B77B96800A9AF96 /* SearchQueryParsingTests.swift */; };
 		F3D0114A2B77CEFB00A9AF96 /* SearchHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D011492B77CEFB00A9AF96 /* SearchHelperTests.swift */; };
 		F3D9DE452AA79CAA00FEAF50 /* FaviconDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377C9AA2AA74A1A00266397 /* FaviconDownloader.swift */; };
@@ -2473,6 +2477,7 @@
 		F37CAA392A88F7330000EF64 /* KeePassiumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeePassiumTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F37CAA422A88F74E0000EF64 /* HIBPServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HIBPServiceTests.swift; sourceTree = "<group>"; };
 		F37CAA4D2A88F8D10000EF64 /* DumpEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DumpEquatable.swift; sourceTree = "<group>"; };
+		F38460322CA813B7004B0A6D /* CredentialProviderIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialProviderIdentity.swift; sourceTree = "<group>"; };
 		F38A48C32A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordQualityIndicatorIconView.swift; sourceTree = "<group>"; };
 		F3A2186C2C27045E006AB8F8 /* GroupEditorNotesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupEditorNotesCell.swift; sourceTree = "<group>"; };
 		F3AFC1B025FB7C38005FF4D7 /* QRCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanner.swift; sourceTree = "<group>"; };
@@ -2483,6 +2488,7 @@
 		F3B5B2DC2A88FC2A0059F2D1 /* PasswordQualityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordQualityTests.swift; sourceTree = "<group>"; };
 		F3B69FCB2B078917006FC966 /* EntryExtraViewerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryExtraViewerVC.swift; sourceTree = "<group>"; };
 		F3C71AAD2AFFAD7A00EEAC8E /* GroupEditorTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupEditorTitleCell.swift; sourceTree = "<group>"; };
+		F3C744452CA5A820005D5429 /* AutoFillMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoFillMode.swift; sourceTree = "<group>"; };
 		F3D011472B77B96800A9AF96 /* SearchQueryParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchQueryParsingTests.swift; sourceTree = "<group>"; };
 		F3D011492B77CEFB00A9AF96 /* SearchHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHelperTests.swift; sourceTree = "<group>"; };
 		F3E194672BCF23DB00FD03EE /* DeleteWordlistAccessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteWordlistAccessory.swift; sourceTree = "<group>"; };
@@ -2654,7 +2660,9 @@
 				75CBABA421C16DD400B8AFE2 /* controllers */,
 				75B24DD321C5239D003C9486 /* util */,
 				7583EA8E2685D720009969E7 /* AutoFillCoordinator.swift */,
+				F3C744452CA5A820005D5429 /* AutoFillMode.swift */,
 				750CFBCA21BA9ACD00E62B09 /* CredentialProviderViewController.swift */,
+				F38460322CA813B7004B0A6D /* CredentialProviderIdentity.swift */,
 				750CFBCC21BA9ACD00E62B09 /* MainInterface.storyboard */,
 				750CFBCF21BA9ACD00E62B09 /* Info.plist */,
 				755E7D9D232008300010E199 /* Localizable.strings */,
@@ -4132,6 +4140,7 @@
 				758BADB624B5EAFF00CC9265 /* GradientSeparatorView.swift in Sources */,
 				75679ACC22F887AB00372301 /* AppInfo.swift in Sources */,
 				75480504238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
+				F38460332CA813B7004B0A6D /* CredentialProviderIdentity.swift in Sources */,
 				7532A24D21C5A035005DF56F /* KeyFilePickerVC.swift in Sources */,
 				75B786FE261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift in Sources */,
 				F38A48C52A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift in Sources */,
@@ -4208,6 +4217,7 @@
 				75779865223023D3006671BD /* ProgressViewHost.swift in Sources */,
 				754E409926306927003E4854 /* DatabaseUnlockerCoordinator.swift in Sources */,
 				7538936A26D3BEBE00CAB107 /* KeyboardDismissable.swift in Sources */,
+				F3C744462CA5A820005D5429 /* AutoFillMode.swift in Sources */,
 				75B24DB821C3C594003C9486 /* ProgressOverlay.swift in Sources */,
 				7524E74B2888B58200ECBEC8 /* TextFieldCell.swift in Sources */,
 				7583EA6C2685D1FA009969E7 /* DatabasePickerVC.swift in Sources */,
@@ -4986,6 +4996,7 @@
 				758BADB824B5EAFF00CC9265 /* GradientSeparatorView.swift in Sources */,
 				75D7DF7F233E5E310029AD87 /* AppInfo.swift in Sources */,
 				75480506238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
+				F38460342CA813B7004B0A6D /* CredentialProviderIdentity.swift in Sources */,
 				75D7DF80233E5E310029AD87 /* KeyFilePickerVC.swift in Sources */,
 				75B78700261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift in Sources */,
 				F38A48C72A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift in Sources */,
@@ -5062,6 +5073,7 @@
 				7524E74D2888B58200ECBEC8 /* TextFieldCell.swift in Sources */,
 				7583EA6F2685D1FB009969E7 /* DatabasePickerVC.swift in Sources */,
 				7526403F28455DC00003DDFA /* PasswordGeneratorVC.swift in Sources */,
+				F3C744472CA5A820005D5429 /* AutoFillMode.swift in Sources */,
 				75604EB526D8F0DB008A2B43 /* DatabaseLoadingWarningsVC.swift in Sources */,
 				75DE677C268F6F69003D4DCC /* BiometricsHelper.swift in Sources */,
 				F305502A2BA4B20600155709 /* RemoteDataSourceSetupCoordinator.swift in Sources */,

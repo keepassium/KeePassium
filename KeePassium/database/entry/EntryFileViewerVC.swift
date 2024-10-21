@@ -125,7 +125,6 @@ final class EntryFileViewerVC: TableViewControllerWithContextActions, Refreshabl
         updateToolbar()
     }
 
-    @available(iOS 14, *)
     private func makeAddAttachmentMenu() -> UIMenu {
         let chooseFileAction = UIAction(
             title: LString.actionChooseFile,

@@ -260,6 +260,7 @@
 		F36FC5B22BA3002F00970B7E /* RemoteDataSourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36FC5B12BA3002F00970B7E /* RemoteDataSourceManager.swift */; };
 		F380E75C2A9E75F10011DF88 /* EntriesSelectedCountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380E75B2A9E75F10011DF88 /* EntriesSelectedCountFormatter.swift */; };
 		F3849DF12BA38B5A00ACC3B5 /* RemoteError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3849DF02BA38B5A00ACC3B5 /* RemoteError.swift */; };
+		F3C744492CA69447005D5429 /* QuickTypeAutoFillStorage+CredentialIndentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C744482CA69447005D5429 /* QuickTypeAutoFillStorage+CredentialIndentity.swift */; };
 		F3CC869B2AEE5EEA00B4DA98 /* EncryptionSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CC869A2AEE5EEA00B4DA98 /* EncryptionSettings.swift */; };
 		F3D604792BECE7DD00F32BF8 /* WebDAVItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D604782BECE7DD00F32BF8 /* WebDAVItem.swift */; };
 		F3E8583D2B7E5C2A00F12DBB /* Searchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E8583C2B7E5C2A00F12DBB /* Searchable.swift */; };
@@ -574,6 +575,7 @@
 		F36FC5B12BA3002F00970B7E /* RemoteDataSourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSourceManager.swift; sourceTree = "<group>"; };
 		F380E75B2A9E75F10011DF88 /* EntriesSelectedCountFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesSelectedCountFormatter.swift; sourceTree = "<group>"; };
 		F3849DF02BA38B5A00ACC3B5 /* RemoteError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteError.swift; sourceTree = "<group>"; };
+		F3C744482CA69447005D5429 /* QuickTypeAutoFillStorage+CredentialIndentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuickTypeAutoFillStorage+CredentialIndentity.swift"; sourceTree = "<group>"; };
 		F3CC869A2AEE5EEA00B4DA98 /* EncryptionSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptionSettings.swift; sourceTree = "<group>"; };
 		F3D604782BECE7DD00F32BF8 /* WebDAVItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebDAVItem.swift; sourceTree = "<group>"; };
 		F3E8583C2B7E5C2A00F12DBB /* Searchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Searchable.swift; sourceTree = "<group>"; };
@@ -777,6 +779,7 @@
 			children = (
 				75AA9B50272FF3FA00863B98 /* QuickTypeAutoFillRecord.swift */,
 				75AA9B52272FFAA600863B98 /* QuickTypeAutoFillStorage.swift */,
+				F3C744482CA69447005D5429 /* QuickTypeAutoFillStorage+CredentialIndentity.swift */,
 			);
 			name = autofill;
 			sourceTree = "<group>";
@@ -1390,6 +1393,7 @@
 				75AF192A282E5B2F00FA4BB5 /* BasicPasswordGeneratorParams.swift in Sources */,
 				75A2677B229045A60097C693 /* PremiumFeature.swift in Sources */,
 				75BFB1442481B2FA0017B980 /* FileProvider.swift in Sources */,
+				F3C744492CA69447005D5429 /* QuickTypeAutoFillStorage+CredentialIndentity.swift in Sources */,
 				75F4ACF421774A6400B22D8B /* URL+extensions.swift in Sources */,
 				75AA9B53272FFAA600863B98 /* QuickTypeAutoFillStorage.swift in Sources */,
 				75B928AF274ADB970082E56C /* LString+settings.swift in Sources */,

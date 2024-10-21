@@ -94,7 +94,6 @@ final class ExpiryDateEditorVC: UIViewController, Refreshable {
     }
 
 
-    @available(iOS 14, *)
     private func makePresetMenuAction(_ delta: DateComponents) -> UIAction {
         let targetDate = Calendar.autoupdatingCurrent.date(byAdding: delta, to: .now) ?? .now
 

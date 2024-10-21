@@ -12,7 +12,6 @@ enum BiometricsHelper {
     public static var biometricPromptLastSeenTime = Date.distantPast
     private static let biometricPromptFadeDuration = 1.0
 
-    @available(iOS 14, *)
     public static var delayBeforeKeyboardAvailable: TimeInterval {
         let result: TimeInterval
         let timeSinceBiometricPromptSeen = -biometricPromptLastSeenTime.timeIntervalSinceNow

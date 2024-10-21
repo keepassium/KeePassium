@@ -165,10 +165,11 @@ final class EntryFinderVC: UITableViewController {
         refresh()
     }
 
-    public func activateManualSearch() {
+    public func activateManualSearch(query: String? = nil) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             self.searchController.isActive = true
+            self.searchController.searchBar.text = query
             self.searchController.searchBar.becomeFirstResponderWhenSafe()
 
             let searchText = self.searchController.searchBar.text ?? ""

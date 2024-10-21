@@ -36,12 +36,15 @@ final class EntryFinderCoordinator: Coordinator {
 
     private let vcAnimationDuration = 0.3
 
+    private let autoFillMode: AutoFillMode?
+
     init(
         router: NavigationRouter,
         originalRef: URLReference,
         databaseFile: DatabaseFile,
         loadingWarnings: DatabaseLoadingWarnings?,
-        serviceIdentifiers: [ASCredentialServiceIdentifier]
+        serviceIdentifiers: [ASCredentialServiceIdentifier],
+        autoFillMode: AutoFillMode?
     ) {
         self.router = router
         self.originalRef = originalRef
@@ -49,6 +52,7 @@ final class EntryFinderCoordinator: Coordinator {
         self.database = databaseFile.database
         self.loadingWarnings = loadingWarnings
         self.serviceIdentifiers = serviceIdentifiers
+        self.autoFillMode = autoFillMode
 
         entryFinderVC = EntryFinderVC.instantiateFromStoryboard()
         entryFinderVC.delegate = self
@@ -132,7 +136,7 @@ extension EntryFinderCoordinator {
     private func setupAutomaticSearchResults() {
         let results = searchHelper.find(database: database, serviceIdentifiers: serviceIdentifiers)
         if results.isEmpty {
-            entryFinderVC.activateManualSearch()
+            entryFinderVC.activateManualSearch(query: autoFillMode?.query)
             return
         }
 

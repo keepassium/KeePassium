@@ -26,6 +26,8 @@ class AutoFillCoordinator: NSObject, Coordinator {
     let extensionContext: ASCredentialProviderExtensionContext
     var router: NavigationRouter
 
+    var autoFillMode: AutoFillMode?
+
     private var hasUI = false
     private var isStarted = false
     private var isInDeviceAutoFillSettings = false
@@ -206,6 +208,14 @@ class AutoFillCoordinator: NSObject, Coordinator {
         return generator.generate()
     }
 
+    private func returnCredentialsOrOneTimeCode(entry: Entry) {
+        if autoFillMode == .oneTimeCode, #available(iOS 18.0, *) {
+            returnOneTimeCode(entry: entry)
+        } else {
+            returnCredentials(entry: entry)
+        }
+    }
+
     private func returnCredentials(entry: Entry) {
         log.info("Will return credentials")
         watchdog.restart()
@@ -234,6 +244,30 @@ class AutoFillCoordinator: NSObject, Coordinator {
             completionHandler: { [self] expired in
                 log.debug("Did return credentials (exp: \(expired))")
             }
+        )
+        if hasUI {
+            HapticFeedback.play(.credentialsPasted)
+        }
+        Settings.current.isAutoFillFinishedOK = true
+        cleanup()
+    }
+
+    @available(iOS 18.0, *)
+    private func returnOneTimeCode(entry: Entry) {
+        log.info("Will return one time code")
+        watchdog.restart()
+
+        guard let generator = TOTPGeneratorFactory.makeGenerator(for: entry) else {
+            log.error("Trying to return one time code from entry with no TOTP")
+            extensionContext.cancelRequest(withError: ASExtensionError(.credentialIdentityNotFound))
+            cleanup()
+            return
+        }
+
+        extensionContext.completeOneTimeCodeRequest(
+            using: ASOneTimeCodeCredential(
+                code: generator.generate()
+            )
         )
         if hasUI {
             HapticFeedback.play(.credentialsPasted)
@@ -329,7 +363,8 @@ extension AutoFillCoordinator {
             originalRef: fileRef,
             databaseFile: databaseFile,
             loadingWarnings: warnings,
-            serviceIdentifiers: serviceIdentifiers
+            serviceIdentifiers: serviceIdentifiers,
+            autoFillMode: autoFillMode
         )
         entryFinderCoordinator.dismissHandler = {[weak self] coordinator in
             self?.removeChildCoordinator(coordinator)
@@ -344,25 +379,26 @@ extension AutoFillCoordinator {
 }
 
 extension AutoFillCoordinator: DatabaseLoaderDelegate {
-    func prepareUI(for credentialIdentity: ASPasswordCredentialIdentity) {
-        log.trace("Preparing UI to return credentials")
-        Diag.debug("Preparing UI to return credentials")
+    func prepareUI(autoFillMode: AutoFillMode, for credentialIdentity: CredentialProviderIdentity) {
+        log.trace("Preparing UI to return \(autoFillMode.debugDescription)")
+        Diag.debug("Preparing UI to return \(autoFillMode.debugDescription)")
         self.serviceIdentifiers = [credentialIdentity.serviceIdentifier]
         if let recordIdentifier = credentialIdentity.recordIdentifier,
            let record = QuickTypeAutoFillRecord.parse(recordIdentifier)
         {
             quickTypeRequiredRecord = record
         }
+        self.autoFillMode = autoFillMode
         if !ProcessInfo.isRunningOnMac {
             assert(!hasUI)
             start()
         }
     }
 
-    func provideWithoutUserInteraction(for credentialIdentity: ASPasswordCredentialIdentity) {
-        log.trace("Will provide without user interaction")
+    func provideWithoutUserInteraction(autoFillMode: AutoFillMode, for credentialIdentity: CredentialProviderIdentity) {
+        log.trace("Will provide \(autoFillMode.debugDescription) without user interaction")
         assert(!hasUI, "This should run in pre-UI mode only")
-        Diag.info("Identity: \(credentialIdentity.debugDescription)")
+        Diag.info("Identity: \(credentialIdentity.description)")
 
         guard let recordIdentifier = credentialIdentity.recordIdentifier,
               let record = QuickTypeAutoFillRecord.parse(recordIdentifier)
@@ -373,6 +409,7 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
             return
         }
         quickTypeRequiredRecord = record
+        self.autoFillMode = autoFillMode
 
         guard let dbRef = findDatabase(for: record) else {
             log.debug("Failed to find the record, aborting")
@@ -441,7 +478,7 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
         if let _ = getOTPForClipboard(for: foundEntry) {
             cancelRequest(.userInteractionRequired)
         } else {
-            returnCredentials(entry: foundEntry)
+            returnCredentialsOrOneTimeCode(entry: foundEntry)
         }
     }
 
@@ -739,7 +776,7 @@ extension AutoFillCoordinator: DatabaseUnlockerCoordinatorDelegate {
         if let targetRecord = quickTypeRequiredRecord,
            let desiredEntry = findEntry(matching: targetRecord, in: databaseFile)
         {
-            returnCredentials(entry: desiredEntry)
+            returnCredentialsOrOneTimeCode(entry: desiredEntry)
         } else {
             showDatabaseViewer(fileRef, databaseFile: databaseFile, warnings: warnings)
         }
@@ -770,7 +807,7 @@ extension AutoFillCoordinator: EntryFinderCoordinatorDelegate {
     }
 
     func didSelectEntry(_ entry: Entry, in coordinator: EntryFinderCoordinator) {
-        returnCredentials(entry: entry)
+        returnCredentialsOrOneTimeCode(entry: entry)
     }
 
     func didPressReinstateDatabase(_ fileRef: URLReference, in coordinator: EntryFinderCoordinator) {
