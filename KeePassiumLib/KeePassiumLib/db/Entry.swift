@@ -29,6 +29,19 @@ public class EntryField: Eraseable {
     }
     public var isProtected: Bool
 
+    public var visibleName: String {
+        switch name {
+        case Self.title: return LString.fieldTitle
+        case Self.userName: return LString.fieldUserName
+        case Self.password: return LString.fieldPassword
+        case Self.url: return LString.fieldURL
+        case Self.notes: return LString.fieldNotes
+        case Self.tags: return LString.fieldTags
+        default:
+            return name
+        }
+    }
+
     internal var resolvedValueInternal: String?
 
     public var resolvedValue: String {

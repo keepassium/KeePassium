@@ -13,6 +13,9 @@ protocol EntryFinderCoordinatorDelegate: AnyObject {
     func didLeaveDatabase(in coordinator: EntryFinderCoordinator)
     func didSelectEntry(_ entry: Entry, in coordinator: EntryFinderCoordinator)
 
+    @available(iOS 18.0, *)
+    func didSelectText(_ text: String, in coordinator: EntryFinderCoordinator)
+
     func didPressReinstateDatabase(_ fileRef: URLReference, in coordinator: EntryFinderCoordinator)
 }
 
@@ -56,6 +59,7 @@ final class EntryFinderCoordinator: Coordinator {
 
         entryFinderVC = EntryFinderVC.instantiateFromStoryboard()
         entryFinderVC.delegate = self
+        entryFinderVC.autoFillMode = autoFillMode
 
         entryFinderVC.navigationItem.title = databaseFile.visibleFileName
     }
@@ -240,6 +244,57 @@ extension EntryFinderCoordinator: EntryFinderDelegate {
 
     func didPressLockDatabase(in viewController: EntryFinderVC) {
         lockDatabase()
+    }
+
+    @available(iOS 18.0, *)
+    func didSelectField(_ field: EntryField, from entry: Entry, in viewController: EntryFinderVC) {
+        var value = field.resolvedValue
+        if field.name == EntryField.otp {
+            value = getUpdatedOTPValue(field, entry: entry)
+        }
+        delegate?.didSelectText(value, in: self)
+    }
+}
+
+@available(iOS 18.0, *)
+extension EntryFinderCoordinator {
+    private static let nonSelectableFieldNames = [
+        EntryField.title,
+        EntryField.otpConfig1,
+        EntryField.otpConfig2Seed,
+        EntryField.otpConfig2Settings,
+        EntryField.timeOtpLength,
+        EntryField.timeOtpPeriod,
+        EntryField.timeOtpSecret,
+        EntryField.timeOtpAlgorithm,
+        EntryField.tags
+    ]
+
+    func getSelectableFields(for entry: Entry) -> [EntryField]? {
+        guard autoFillMode == .text else {
+            return nil
+        }
+        var allFields = entry.fields
+        if let totpGenerator = TOTPGeneratorFactory.makeGenerator(for: entry) {
+            let otpField = EntryField(name: LString.fieldOTP, value: totpGenerator.generate(), isProtected: false)
+            allFields.append(otpField)
+        }
+        let category = ItemCategory.get(for: entry)
+        let selectableFields = allFields
+            .filter { !Self.nonSelectableFieldNames.contains($0.name) }
+            .filter { $0.resolvedValue.isNotEmpty }
+            .sorted(by: { category.compare($0.name, $1.name) })
+        return selectableFields
+    }
+
+    private func getUpdatedOTPValue(_ field: EntryField, entry: Entry) -> String {
+        assert(field.name == EntryField.otp)
+        guard let totpGenerator = TOTPGeneratorFactory.makeGenerator(for: entry) else {
+            Diag.warning("Failed to refresh OTP field value")
+            assertionFailure("Should not really happen")
+            return field.resolvedValue
+        }
+        return totpGenerator.generate()
     }
 }
 

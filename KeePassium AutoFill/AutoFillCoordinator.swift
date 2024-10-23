@@ -810,6 +810,11 @@ extension AutoFillCoordinator: EntryFinderCoordinatorDelegate {
         returnCredentialsOrOneTimeCode(entry: entry)
     }
 
+    @available(iOS 18.0, *)
+    func didSelectText(_ text: String, in coordinator: EntryFinderCoordinator) {
+        extensionContext.completeRequest(withTextToInsert: text)
+    }
+
     func didPressReinstateDatabase(_ fileRef: URLReference, in coordinator: EntryFinderCoordinator) {
         coordinator.stop(animated: true) { [weak self] in
             self?.reinstateDatabase(fileRef)

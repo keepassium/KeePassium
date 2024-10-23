@@ -569,6 +569,8 @@
 		75AA237B26CBCAED00488C4E /* DatabaseFile+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AA237926CBCAED00488C4E /* DatabaseFile+extensions.swift */; };
 		75AA237C26CBCAED00488C4E /* DatabaseFile+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AA237926CBCAED00488C4E /* DatabaseFile+extensions.swift */; };
 		75AA237D26CBCAED00488C4E /* DatabaseFile+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AA237926CBCAED00488C4E /* DatabaseFile+extensions.swift */; };
+		75AC2E992CC7C07700DB93E2 /* ItemCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5FB7820D6101100D402D9 /* ItemCategory.swift */; };
+		75AC2E9A2CC7C07700DB93E2 /* ItemCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5FB7820D6101100D402D9 /* ItemCategory.swift */; };
 		75AD22DC27FDE59200636D66 /* YubiKeyUSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD22DB27FDE59200636D66 /* YubiKeyUSB.swift */; };
 		75AD22DD27FDE59200636D66 /* YubiKeyUSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD22DB27FDE59200636D66 /* YubiKeyUSB.swift */; };
 		75AF1920282B0D6D00FA4BB5 /* PasswordGeneratorCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF191F282B0D6D00FA4BB5 /* PasswordGeneratorCells.swift */; };
@@ -4128,6 +4130,7 @@
 				75BF1966283F9C51006A9826 /* AccessibleStepper.swift in Sources */,
 				75CBABA521C1C2D100B8AFE2 /* FileInfoVC.swift in Sources */,
 				75D5D4012235CD720003CD55 /* CrashReportVC.swift in Sources */,
+				75AC2E992CC7C07700DB93E2 /* ItemCategory.swift in Sources */,
 				F31114B12B9B894D00236632 /* DropboxConnectionSetupCoordinator.swift in Sources */,
 				7590231D2AB45948009E6213 /* Favicon.swift in Sources */,
 				7524E7462888B56600ECBEC8 /* RightDetailCell.swift in Sources */,
@@ -4984,6 +4987,7 @@
 				756DBE2F275994B800E4270B /* ASExtensionError+extensions.swift in Sources */,
 				75BF1968283F9C51006A9826 /* AccessibleStepper.swift in Sources */,
 				75D7DF7D233E5E310029AD87 /* FileInfoVC.swift in Sources */,
+				75AC2E9A2CC7C07700DB93E2 /* ItemCategory.swift in Sources */,
 				75D7DF7E233E5E310029AD87 /* CrashReportVC.swift in Sources */,
 				7590231F2AB4594A009E6213 /* Favicon.swift in Sources */,
 				7524E7482888B56600ECBEC8 /* RightDetailCell.swift in Sources */,

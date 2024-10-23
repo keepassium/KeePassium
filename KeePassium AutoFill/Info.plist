@@ -94,6 +94,8 @@
                 <true/>
                 <key>ProvidesOneTimeCodes</key>
                 <true/>
+                <key>ProvidesTextToInsert</key>
+                <true/>
             </dict>
         </dict>
 	</dict>

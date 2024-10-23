@@ -15,10 +15,25 @@ protocol EntryFinderDelegate: AnyObject {
     func didPressLockDatabase(in viewController: EntryFinderVC)
 
     func getAnnouncements(for viewController: EntryFinderVC) -> [AnnouncementItem]
+
+    @available(iOS 18.0, *)
+    func getSelectableFields(for entry: Entry) -> [EntryField]?
+
+    @available(iOS 18.0, *)
+    func didSelectField(_ field: EntryField, from entry: Entry, in viewController: EntryFinderVC)
 }
 
 final class EntryFinderCell: UITableViewCell {
     fileprivate static let storyboardID = "EntryFinderCell"
+
+    var menu: UIMenu? {
+        didSet {
+            theButton?.menu = menu
+            theButton.isEnabled = menu != nil
+        }
+    }
+
+    private var theButton: UIButton!
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
@@ -36,6 +51,16 @@ final class EntryFinderCell: UITableViewCell {
             subtitleLabel?.text = entry.getField(EntryField.userName)?.decoratedResolvedValue
             iconView?.image = UIImage.kpIcon(forEntry: entry)
         }
+    }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        theButton = UIButton(frame: self.bounds)
+        contentView.addSubview(theButton)
+        theButton.isAccessibilityElement = false
+        theButton.backgroundColor = .clear
+        theButton.showsMenuAsPrimaryAction = true
+        theButton.menu = menu
     }
 }
 
@@ -75,6 +100,8 @@ final class EntryFinderVC: UITableViewController {
     @IBOutlet var callerIDView: CallerIDView!
 
     weak var delegate: EntryFinderDelegate?
+
+    var autoFillMode: AutoFillMode?
 
     var callerID: String? {
         didSet { refreshCallerID() }
@@ -315,16 +342,16 @@ final class EntryFinderVC: UITableViewController {
         case .nothingFound:
             return makeNothingFoundCell(at: indexPath)
         case .exactMatch:
-            return makeExactMatchResultCell(
-                at: indexPath,
-                resultIndex: sectionIndex)
+            let exactMatchSection = searchResults.exactMatch[sectionIndex]
+            let entry = exactMatchSection.scoredItems[indexPath.row].item as? Entry
+            return makeResultCell(at: indexPath, entry: entry)
         case .matchSeparator:
             assertionFailure("Result separator is not supposed to contain cells")
             return makeNothingFoundCell(at: indexPath)
         case .partialMatch:
-            return makePartialMatchResultCell(
-                at: indexPath,
-                resultIndex: sectionIndex)
+            let partialMatchSection = searchResults.partialMatch[sectionIndex]
+            let entry = partialMatchSection.scoredItems[indexPath.row].item as? Entry
+            return makeResultCell(at: indexPath, entry: entry)
         }
     }
 
@@ -344,29 +371,15 @@ final class EntryFinderVC: UITableViewController {
         )
     }
 
-    private func makeExactMatchResultCell(
-        at indexPath: IndexPath,
-        resultIndex: Int
-    ) -> UITableViewCell {
+    private func makeResultCell(at indexPath: IndexPath, entry: Entry?) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: CellID.entry,
             for: indexPath)
             as! EntryFinderCell
-        let exactMatchSection = searchResults.exactMatch[resultIndex]
-        cell.entry = exactMatchSection.scoredItems[indexPath.row].item as? Entry
-        return cell
-    }
-
-    private func makePartialMatchResultCell(
-        at indexPath: IndexPath,
-        resultIndex: Int
-    ) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: CellID.entry,
-            for: indexPath)
-            as! EntryFinderCell
-        let partialMatchSection = searchResults.partialMatch[resultIndex]
-        cell.entry = partialMatchSection.scoredItems[indexPath.row].item as? Entry
+        cell.entry = entry
+        cell.menu = createMenu(for: entry)
+        let hasMenu = cell.menu != nil
+        cell.accessoryType = hasMenu ? .disclosureIndicator : .none
         return cell
     }
 
@@ -404,6 +417,22 @@ final class EntryFinderVC: UITableViewController {
             }
             delegate?.didSelectEntry(entry, in: self)
         }
+    }
+
+    private func createMenu(for entry: Entry?) -> UIMenu? {
+        guard let entry,
+              #available(iOS 18, *),
+              let selectableFields = delegate?.getSelectableFields(for: entry),
+              selectableFields.count > 0
+        else { return nil }
+
+        let actions = selectableFields.map { field in
+            UIAction(title: field.visibleName) { [weak self] _ in
+                guard let self else { return }
+                delegate?.didSelectField(field, from: entry, in: self)
+            }
+        }
+        return UIMenu(title: LString.callToActionSelectField, children: actions)
     }
 
     @IBAction private func didPressManualSearch(_ sender: Any) {
@@ -477,5 +506,12 @@ extension LString {
         "[AutoFill/Search/callerID]",
         value: "Caller ID: %@",
         comment: "An identifier of the app that called AutoFill. The term is intentionally similar to https://ru.wikipedia.org/wiki/Caller_ID. [callerID: String]")
+
+    public static let callToActionSelectField = NSLocalizedString(
+        "[AutoFill/InsertText/select]",
+        value: "Select Field",
+        comment: "Call for action to select an entry field for filling out."
+    )
     // swiftlint:enable line_length
+
 }

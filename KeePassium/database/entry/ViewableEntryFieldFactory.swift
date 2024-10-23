@@ -48,6 +48,7 @@ class BasicViewableField: ViewableField {
     weak var field: EntryField?
 
     var internalName: String { return field?.name ?? "" }
+    var visibleName: String { return field?.visibleName ?? "" }
     var value: String? { return field?.value }
     var resolvedValue: String? { return field?.resolvedValue }
     var decoratedResolvedValue: String? { return field?.decoratedResolvedValue }
@@ -64,19 +65,6 @@ class BasicViewableField: ViewableField {
     var isHeightConstrained: Bool
 
     var isEditable: Bool { return true }
-
-    var visibleName: String {
-        switch internalName {
-        case EntryField.title: return LString.fieldTitle
-        case EntryField.userName: return LString.fieldUserName
-        case EntryField.password: return LString.fieldPassword
-        case EntryField.url: return LString.fieldURL
-        case EntryField.notes: return LString.fieldNotes
-        case EntryField.tags: return LString.fieldTags
-        default:
-            return internalName
-        }
-    }
 
     convenience init(field: EntryField, isValueHidden: Bool) {
         self.init(fieldOrNil: field, isValueHidden: isValueHidden)

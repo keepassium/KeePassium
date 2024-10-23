@@ -99,6 +99,11 @@ extension CredentialProviderViewController {
         prepareCredentialList(for: serviceIdentifiers, mode: .oneTimeCode)
     }
 
+    override func prepareInterfaceForUserChoosingTextToInsert() {
+        log.trace("prepareInterfaceForUserChoosingTextToInsert")
+        prepareCredentialList(for: [], mode: .text)
+    }
+
     @available(iOS 17.0, *)
     override func prepareInterfaceToProvideCredential(for credentialRequest: ASCredentialRequest) {
         log.trace("prepareInterfaceToProvideCredential (iOS17+)")

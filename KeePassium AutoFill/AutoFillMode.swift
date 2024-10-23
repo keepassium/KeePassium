@@ -11,12 +11,13 @@ import Foundation
 enum AutoFillMode {
     case credentials
     case oneTimeCode
+    case text
 }
 
 extension AutoFillMode {
     var query: String? {
         switch self {
-        case .credentials:
+        case .credentials, .text:
             return nil
         case .oneTimeCode:
             return "otp:* "
@@ -31,6 +32,8 @@ extension AutoFillMode: CustomDebugStringConvertible {
             return "credentials"
         case .oneTimeCode:
             return "one time code"
+        case .text:
+            return "text"
         }
     }
 }
