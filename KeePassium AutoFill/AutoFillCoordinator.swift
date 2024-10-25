@@ -280,10 +280,16 @@ class AutoFillCoordinator: NSObject, Coordinator {
     private func returnText(_ text: String) {
         log.info("Will return text")
         watchdog.restart()
-        extensionContext.completeRequest(withTextToInsert: text)
-        if hasUI {
-            HapticFeedback.play(.credentialsPasted)
-        }
+        #if targetEnvironment(macCatalyst)
+            // swiftlint:disable:next line_length
+            let alert = UIAlertController.make(title: nil, message: "This feature is broken in macOS Sequoia.\n\nInstead, use the 'key' button in the password field.")
+            router.present(alert, animated: true, completion: nil)
+        #else
+            extensionContext.completeRequest(withTextToInsert: text)
+            if hasUI {
+                HapticFeedback.play(.credentialsPasted)
+            }
+        #endif
         Settings.current.isAutoFillFinishedOK = true
         cleanup()
     }
