@@ -275,6 +275,18 @@ class AutoFillCoordinator: NSObject, Coordinator {
         Settings.current.isAutoFillFinishedOK = true
         cleanup()
     }
+
+    @available(iOS 18, *)
+    private func returnText(_ text: String) {
+        log.info("Will return text")
+        watchdog.restart()
+        extensionContext.completeRequest(withTextToInsert: text)
+        if hasUI {
+            HapticFeedback.play(.credentialsPasted)
+        }
+        Settings.current.isAutoFillFinishedOK = true
+        cleanup()
+    }
 }
 
 extension AutoFillCoordinator {
@@ -812,7 +824,7 @@ extension AutoFillCoordinator: EntryFinderCoordinatorDelegate {
 
     @available(iOS 18.0, *)
     func didSelectText(_ text: String, in coordinator: EntryFinderCoordinator) {
-        extensionContext.completeRequest(withTextToInsert: text)
+        returnText(text)
     }
 
     func didPressReinstateDatabase(_ fileRef: URLReference, in coordinator: EntryFinderCoordinator) {
