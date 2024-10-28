@@ -7,6 +7,9 @@
 //  For commercial licensing, please contact the author.
 
 import KeePassiumLib
+#if INTUNE
+import IntuneMAMSwift
+#endif
 
 class AppInfo {
     public static var name: String { return nvb.name }
@@ -29,15 +32,19 @@ class AppInfo {
     }
 
     public static var description: String {
-        let deviceInfo: String
+        var envInfo = String()
         if ProcessInfo.isCatalystApp {
-            deviceInfo = "MacCatalyst \(UIDevice.current.systemVersion)"
+            envInfo = "MacCatalyst \(UIDevice.current.systemVersion)"
         } else if ProcessInfo.isiPadAppOnMac {
-            deviceInfo = "Mac, iPadOS \(UIDevice.current.systemVersion)"
+            envInfo = "Mac, iPadOS \(UIDevice.current.systemVersion)"
         } else {
-            deviceInfo = "\(UIDevice.current.model), iOS \(UIDevice.current.systemVersion)"
+            envInfo = "\(UIDevice.current.model), iOS \(UIDevice.current.systemVersion)"
         }
+        #if INTUNE
+        envInfo += ", Intune \(IntuneMAMVersionInfo.sdkVersion())"
+        #endif
+
         let betaMark = Settings.current.isTestEnvironment ? "-beta" : ""
-        return "\(name) v\(version).\(build)\(betaMark) (\(deviceInfo))"
+        return "\(name) v\(version).\(build)\(betaMark) (\(envInfo))"
     }
 }
