@@ -131,7 +131,7 @@ final class MainCoordinator: Coordinator {
 
         #if INTUNE
         setupIntune()
-        guard let currentUser = IntuneMAMEnrollmentManager.instance().enrolledAccount(),
+        guard let currentUser = IntuneMAMEnrollmentManager.instance().enrolledAccountId(),
               !currentUser.isEmpty
         else {
             Diag.debug("Intune account missing, starting enrollment")
@@ -228,7 +228,7 @@ extension MainCoordinator {
         Diag.debug("Starting Intune enrollment")
         let enrollmentManager = IntuneMAMEnrollmentManager.instance()
         enrollmentManager.delegate = enrollmentDelegate
-        enrollmentManager.loginAndEnrollAccount(enrollmentManager.enrolledAccount())
+        enrollmentManager.loginAndEnrollAccount(enrollmentManager.enrolledAccountId())
     }
 
     private func showIntuneMessageAndRestartEnrollment(_ message: String) {
@@ -244,12 +244,12 @@ extension MainCoordinator {
     }
 
     @objc private func applyIntuneAppConfig() {
-        guard let enrolledUser = IntuneMAMEnrollmentManager.instance().enrolledAccount() else {
+        guard let enrolledUserId = IntuneMAMEnrollmentManager.instance().enrolledAccountId() else {
             assertionFailure("There must be an enrolled account by now")
             Diag.warning("No enrolled account found")
             return
         }
-        let config = IntuneMAMAppConfigManager.instance().appConfig(forIdentity: enrolledUser)
+        let config = IntuneMAMAppConfigManager.instance().appConfig(forAccountId: enrolledUserId)
         ManagedAppConfig.shared.setIntuneAppConfig(config.fullData)
     }
 

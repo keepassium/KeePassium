@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/keepassium/microsoft-authentication-library-for-objc/",
       "state" : {
-        "branch" : "keepassium",
-        "revision" : "0e10cbc76a19cd1fd3d8cc4bcaa7fe428a3680ab"
+        "branch" : "keepassium-155",
+        "revision" : "b0ef73fa18ec203ac08dcaa1367c4e6af5334a9a"
       }
     },
     {
