@@ -171,7 +171,7 @@ extension ManagedAppConfig {
              .minimumDatabasePasswordLength:
             return getInt(key) != nil
         case .allowedFileProviders:
-            return getStringArray(key) != nil
+            return getString(key) != nil || getStringArray(key) != nil
         }
     }
 
