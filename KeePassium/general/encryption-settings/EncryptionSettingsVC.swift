@@ -48,7 +48,7 @@ final class EncryptionSettingsVC: UITableViewController {
             static let aesKdfMinimum: UInt64 = 100_000
             static let aesKdfMaximum: UInt64 = 100_000_000
 
-            static func getControlMinimum(kdf: EncryptionSettings.KeyDerivationFunctionType) -> Double {
+            static func getControlMinimum(kdf: EncryptionSettings.KDFType) -> Double {
                 switch kdf {
                 case .aesKdf:
                     return valueToControl(aesKdfMinimum)
@@ -57,7 +57,7 @@ final class EncryptionSettingsVC: UITableViewController {
                 }
             }
 
-            static func getControlMaximum(kdf: EncryptionSettings.KeyDerivationFunctionType) -> Double {
+            static func getControlMaximum(kdf: EncryptionSettings.KDFType) -> Double {
                 switch kdf {
                 case .aesKdf:
                     return valueToControl(aesKdfMaximum)
@@ -103,7 +103,7 @@ final class EncryptionSettingsVC: UITableViewController {
         case memory
         case threads
 
-        static func all(for kdf: EncryptionSettings.KeyDerivationFunctionType) -> [Self] {
+        static func all(for kdf: EncryptionSettings.KDFType) -> [Self] {
             switch kdf {
             case .argon2d, .argon2id:
                 return [.kdf, .iterations, .memory, .threads]
@@ -246,7 +246,7 @@ final class EncryptionSettingsVC: UITableViewController {
                 withIdentifier: CellID.buttonCell,
                 for: indexPath)
                 as! ButtonCell
-            let isDefaultSettings = (settings == EncryptionSettings.default)
+            let isDefaultSettings = (settings == EncryptionSettings.defaultSettings())
             cell.button.isEnabled = !isDefaultSettings
             cell.button.configuration?.title = LString.encryptionSettingsReset
             cell.button.contentHorizontalAlignment = .leading
@@ -293,7 +293,7 @@ final class EncryptionSettingsVC: UITableViewController {
         case .kdf:
             cell.detailTextLabel?.text = settings.kdf.description
             applyDisclosureIndicator()
-            applyMenu(EncryptionSettings.KeyDerivationFunctionType.allCases.map { kdf in
+            applyMenu(EncryptionSettings.KDFType.allCases.map { kdf in
                 let action = UIAction(title: kdf.description) { [weak self] _ in
                     guard let self else { return }
                     settings.kdf = kdf
@@ -355,13 +355,14 @@ final class EncryptionSettingsVC: UITableViewController {
 
     private func validateAndReload() {
         sanityWarnings.removeAll()
+        let defaults = EncryptionSettings.defaultSettings()
         switch settings.kdf {
         case .argon2d, .argon2id:
             if settings.memory == nil {
-                settings.memory = EncryptionSettings.default.memory
+                settings.memory = defaults.memory
             }
             if settings.parallelism == nil {
-                settings.parallelism = EncryptionSettings.default.parallelism?.magnitude
+                settings.parallelism = defaults.parallelism?.magnitude
             }
             checkArgon2ParamSanity(&sanityWarnings)
         case .aesKdf:
@@ -369,8 +370,8 @@ final class EncryptionSettingsVC: UITableViewController {
             settings.parallelism = nil
             sanityWarnings.append(String.localizedStringWithFormat(
                 LString.kdfConsideredWeakTemplate,
-                EncryptionSettings.KeyDerivationFunctionType.aesKdf.description,  // "this is considered weak
-                EncryptionSettings.KeyDerivationFunctionType.argon2id.description //  use this one instead"
+                EncryptionSettings.KDFType.aesKdf.description,  // "this is considered weak
+                EncryptionSettings.KDFType.argon2id.description //  use this one instead"
             ))
         }
         tableView.reloadData()
@@ -428,7 +429,7 @@ final class EncryptionSettingsVC: UITableViewController {
     }
 
     private func didPressReset() {
-        settings = .default
+        settings = .defaultSettings()
         validateAndReload()
     }
 }

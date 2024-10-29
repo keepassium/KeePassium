@@ -29,22 +29,32 @@ protocol KeyDerivationFunction {
 }
 
 final class KDFFactory {
-    private static let argon2dKDF = Argon2dKDF()
-    private static let argon2idKDF = Argon2idKDF()
-    private static let aesKDF = AESKDF()
-
     private init() {
+    }
+
+    public static func create(_ kdfType: EncryptionSettings.KDFType) -> KeyDerivationFunction {
+        switch kdfType {
+        case .argon2d:
+            Diag.info("Creating Argon2d KDF")
+            return Argon2dKDF()
+        case .argon2id:
+            Diag.info("Creating Argon2id KDF")
+            return Argon2idKDF()
+        case .aesKdf:
+            Diag.info("Creating AES KDF")
+            return AESKDF()
+        }
     }
 
     public static func createFor(uuid: UUID) -> KeyDerivationFunction? {
         switch uuid {
-        case argon2dKDF.uuid:
+        case Argon2dKDF._uuid:
             Diag.info("Creating Argon2d KDF")
             return Argon2dKDF()
-        case argon2idKDF.uuid:
+        case Argon2idKDF._uuid:
             Diag.info("Creating Argon2id KDF")
             return Argon2idKDF()
-        case aesKDF.uuid:
+        case AESKDF._uuid:
             Diag.info("Creating AES KDF")
             return AESKDF()
         default:

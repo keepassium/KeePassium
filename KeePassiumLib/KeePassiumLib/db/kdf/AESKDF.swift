@@ -10,7 +10,7 @@ import Foundation
 
 class AESKDF: KeyDerivationFunction {
 
-    private static let _uuid = UUID(uuid: (
+    internal static let _uuid = UUID(uuid: (
         0xC9, 0xD9, 0xF3, 0x9A, 0x62, 0x8A, 0x44, 0x60,
         0xBF, 0x74, 0x0D, 0x08, 0xC1, 0x8A, 0x4F, 0xEA))
     public static let transformSeedParam = "S"
@@ -22,7 +22,7 @@ class AESKDF: KeyDerivationFunction {
     private let subkeySize = 16
     private var progress = ProgressEx()
 
-    fileprivate let defaultIterations: UInt64 = 100_000
+    static let defaultIterations: UInt64 = 100_000
 
     public var defaultParams: KDFParams {
         let params = KDFParams()
@@ -34,7 +34,7 @@ class AESKDF: KeyDerivationFunction {
             value: VarDict.TypedValue(value: transformSeed))
         params.setValue(
             key: AESKDF.transformRoundsParam,
-            value: VarDict.TypedValue(value: defaultIterations))
+            value: VarDict.TypedValue(value: Self.defaultIterations))
         return params
     }
 
@@ -49,7 +49,7 @@ class AESKDF: KeyDerivationFunction {
 
     func apply(_ settings: EncryptionSettings, to kdfParams: inout KDFParams) {
         assert(settings.iterations != nil, "Iterations parameter must be defined")
-        let iterations = settings.iterations ?? defaultIterations
+        let iterations = settings.iterations ?? Self.defaultIterations
         kdfParams.setValue(
             key: AESKDF.transformRoundsParam,
             value: VarDict.TypedValue(value: iterations))

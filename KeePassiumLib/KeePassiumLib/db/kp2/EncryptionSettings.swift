@@ -37,21 +37,10 @@ public struct EncryptionSettings: Equatable {
         }
     }
 
-    public enum KeyDerivationFunctionType: CaseIterable, CustomStringConvertible {
+    public enum KDFType: CaseIterable, CustomStringConvertible {
         case argon2d
         case argon2id
         case aesKdf
-
-        var function: KeyDerivationFunction {
-            switch self {
-            case .aesKdf:
-                return AESKDF()
-            case .argon2d:
-                return Argon2dKDF()
-            case .argon2id:
-                return Argon2idKDF()
-            }
-        }
 
         public var description: String {
             switch self {
@@ -63,10 +52,23 @@ public struct EncryptionSettings: Equatable {
                 return "AES-KDF"
             }
         }
+
+        public static func make(form string: String) -> KDFType? {
+            switch string {
+            case "argon2d":
+                return .argon2d
+            case "argon2id":
+                return .argon2id
+            case "aeskdf":
+                return .aesKdf
+            default:
+                return nil
+            }
+        }
     }
 
     public var dataCipher: DataCipherType
-    public var kdf: KeyDerivationFunctionType
+    public var kdf: KDFType
     public var iterations: UInt64?
     public var memory: UInt64?
     public var parallelism: UInt32?
@@ -99,7 +101,7 @@ public struct EncryptionSettings: Equatable {
 
     init(
         dataCipher: EncryptionSettings.DataCipherType,
-        kdf: EncryptionSettings.KeyDerivationFunctionType,
+        kdf: EncryptionSettings.KDFType,
         iterations: UInt64?,
         memory: UInt64?,
         parallelism: UInt32?
@@ -111,11 +113,49 @@ public struct EncryptionSettings: Equatable {
         self.parallelism = parallelism
     }
 
-    public static let `default`: Self = EncryptionSettings(
-        dataCipher: .chaCha20,
-        kdf: .argon2id,
-        iterations: Argon2idKDF.defaultIterations,
-        memory: Argon2idKDF.defaultMemory,
-        parallelism: Argon2idKDF.defaultParallelism
-    )
+    public static func defaultSettings() -> Self {
+        let appConfig = ManagedAppConfig.shared
+        let defaultCipher = DataCipherType.chaCha20
+        guard let kdfType = appConfig.kdfType else {
+            return EncryptionSettings(
+                dataCipher: defaultCipher,
+                kdf: .argon2id,
+                iterations: Argon2idKDF.defaultIterations,
+                memory: Argon2idKDF.defaultMemory,
+                parallelism: Argon2idKDF.defaultParallelism
+            )
+        }
+
+        switch kdfType {
+        case .argon2d:
+            return EncryptionSettings(
+                dataCipher: defaultCipher,
+                kdf: kdfType,
+                iterations: appConfig.kdfIterations?.asUInt64 ?? Argon2dKDF.defaultIterations,
+                memory: appConfig.kdfMemoryInBytes?.asUInt64 ?? Argon2dKDF.defaultMemory,
+                parallelism: appConfig.kdfParallelism?.asUInt32 ?? Argon2dKDF.defaultParallelism
+            )
+        case .argon2id:
+            return EncryptionSettings(
+                dataCipher: defaultCipher,
+                kdf: kdfType,
+                iterations: appConfig.kdfIterations?.asUInt64 ?? Argon2idKDF.defaultIterations,
+                memory: appConfig.kdfMemoryInBytes?.asUInt64 ?? Argon2idKDF.defaultMemory,
+                parallelism: appConfig.kdfParallelism?.asUInt32 ?? Argon2idKDF.defaultParallelism
+            )
+        case .aesKdf:
+            return EncryptionSettings(
+                dataCipher: defaultCipher,
+                kdf: kdfType,
+                iterations: appConfig.kdfIterations?.asUInt64 ?? AESKDF.defaultIterations,
+                memory: 0,
+                parallelism: 0
+            )
+        }
+    }
+}
+
+private extension Int {
+    var asUInt32: UInt32 { UInt32(self) }
+    var asUInt64: UInt64 { UInt64(self) }
 }

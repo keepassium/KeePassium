@@ -48,6 +48,10 @@ public final class ManagedAppConfig: NSObject {
         case allowDatabaseEncryptionSettings
         case allowDatabasePrint
         case allowAppProtection
+        case kdfType // "argon2d" | "argon2id" | "aeskdf" / [nil]
+        case kdfIterations
+        case kdfMemory
+        case kdfParallelism
     }
 
     private var currentConfig: [String: Any]? {
@@ -134,7 +138,8 @@ extension ManagedAppConfig {
     public func isManaged(key: Key) -> Bool {
         switch key {
         case .license,
-             .supportEmail:
+             .supportEmail,
+             .kdfType:
             return getString(key) != nil
         case .autoUnlockLastDatabase,
              .rememberDatabaseKey,
@@ -168,7 +173,10 @@ extension ManagedAppConfig {
              .minimumAppPasscodeEntropy,
              .minimumAppPasscodeLength,
              .minimumDatabasePasswordEntropy,
-             .minimumDatabasePasswordLength:
+             .minimumDatabasePasswordLength,
+             .kdfIterations,
+             .kdfMemory,
+             .kdfParallelism:
             return getInt(key) != nil
         case .allowedFileProviders:
             return getString(key) != nil || getStringArray(key) != nil
@@ -186,7 +194,8 @@ extension ManagedAppConfig {
     internal func getStringIfLicensed(_ key: Key) -> String? {
         let result: String?
         switch key {
-        case .allowedFileProviders:
+        case .allowedFileProviders,
+             .kdfType:
             result = getString(key)
         default:
             Diag.error("Key `\(key.rawValue)` is not a string, ignoring")
@@ -260,7 +269,10 @@ extension ManagedAppConfig {
              .minimumAppPasscodeEntropy,
              .minimumAppPasscodeLength,
              .minimumDatabasePasswordEntropy,
-             .minimumDatabasePasswordLength:
+             .minimumDatabasePasswordLength,
+             .kdfIterations,
+             .kdfMemory,
+             .kdfParallelism:
             result = getInt(key)
         default:
             Diag.error("Key `\(key.rawValue)` is not an integer, ignoring.")

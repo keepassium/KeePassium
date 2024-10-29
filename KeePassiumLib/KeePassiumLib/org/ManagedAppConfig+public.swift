@@ -55,4 +55,23 @@ extension ManagedAppConfig {
     public var isAppProtectionAllowed: Bool {
         return getBoolIfLicensed(.allowAppProtection) ?? true
     }
+
+    var kdfType: EncryptionSettings.KDFType? {
+        guard let kdfTypeString = getStringIfLicensed(.kdfType) else {
+            return nil
+        }
+        return EncryptionSettings.KDFType.make(form: kdfTypeString)
+    }
+
+    var kdfIterations: Int? {
+        return getIntIfLicensed(.kdfIterations)
+    }
+
+    var kdfMemoryInBytes: Int? {
+        return getIntIfLicensed(.kdfMemory)
+    }
+
+    var kdfParallelism: Int? {
+        return getIntIfLicensed(.kdfParallelism)
+    }
 }

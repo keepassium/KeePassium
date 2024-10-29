@@ -191,6 +191,27 @@
     <integer keyName="minimumDatabasePasswordLength">
       <constraint nullable="true" min="1"></constraint>
     </integer>
+    <string keyName="kdfType">
+      <constraint nullable="true"></constraint>
+    </string>
+    <integer keyName="kdfIterations">
+      <defaultValue>
+        <value>1</value>
+      </defaultValue>
+      <constraint nullable="true"></constraint>
+    </integer>
+    <integer keyName="kdfMemory">
+      <defaultValue>
+        <value>8388608</value>
+      </defaultValue>
+      <constraint nullable="true"></constraint>
+    </integer>
+    <integer keyName="kdfParallelism">
+      <defaultValue>
+        <value>1</value>
+      </defaultValue>
+      <constraint nullable="true"></constraint>
+    </integer>
   </dict>
   <presentation defaultLocale="en-US">
     <field keyName="configVersion" type="hidden">
@@ -980,6 +1001,136 @@
           </option>
           <option value="com.keepassium.fileprovider.webdav">
             <language value="en-US">WebDAV (direct connection)</language>
+          </option>
+        </options>
+      </field>
+    </fieldGroup>
+
+    <fieldGroup>
+      <name>
+        <language value="en-US">Default key derivation function (KDF)</language>
+      </name>
+      <field keyName="kdfType" type="select">
+        <label>
+          <language value="en-US">KDF type</language>
+        </label>
+        <description>
+          <language value="en-US">Type of the key derivation function. Applies to new databases and recommended encryption settings.</language>
+        </description>
+        <options>
+          <option value="">
+            <language value="en-US">(Not configured)</language>
+          </option>
+          <option value="argon2d">
+            <language value="en-US">Argon2d</language>
+          </option>
+          <option value="argon2id">
+            <language value="en-US">Argon2id</language>
+          </option>
+          <option value="aeskdf">
+            <language value="en-US">AES-KDF (not recommended)</language>
+          </option>
+        </options>
+      </field>
+      <field keyName="kdfIterations" type="select">
+        <label>
+          <language value="en-US">KDF Iterations</language>
+        </label>
+        <description>
+          <language value="en-US">Requires "KDF type" to be set, otherwise has no effect.</language>
+        </description>
+        <options>
+          <option value="10">
+            <language value="en-US">10 (Argon2 default)</language>
+          </option>
+          <option value="50">
+            <language value="en-US">50</language>
+          </option>
+          <option value="100">
+            <language value="en-US">100</language>
+          </option>
+          <option value="200">
+            <language value="en-US">200</language>
+          </option>
+          <option value="500">
+            <language value="en-US">500</language>
+          </option>
+          <option value="1000">
+            <language value="en-US">1k</language>
+          </option>
+          <option value="10000">
+            <language value="en-US">10k</language>
+          </option>
+          <option value="100000">
+            <language value="en-US">100k</language>
+          </option>
+          <option value="1000000">
+            <language value="en-US">1M</language>
+          </option>
+          <option value="10000000">
+            <language value="en-US">10M</language>
+          </option>
+          <option value="100000000">
+            <language value="en-US">100M</language>
+          </option>
+        </options>
+      </field>
+      <field keyName="kdfMemory" type="select">
+        <label>
+          <language value="en-US">KDF Memory</language>
+        </label>
+        <description>
+          <language value="en-US">Requires "KDF type" to be set, otherwise has no effect.</language>
+        </description>
+        <options>
+          <option value="1048576">
+            <language value="en-US">1 MB</language>
+          </option>
+          <option value="2097152">
+            <language value="en-US">2 MB</language>
+          </option>
+          <option value="4194304">
+            <language value="en-US">4 MB</language>
+          </option>
+          <option value="8388608"> 
+            <language value="en-US">8 MB (Argon2 default)</language>
+          </option>
+          <option value="16777216"> 
+            <language value="en-US">16 MB</language>
+          </option>
+          <option value="33554432"> 
+            <language value="en-US">32 MB (max for AutoFill)</language>
+          </option>
+          <option value="67108864"> 
+            <language value="en-US">64 MB</language>
+          </option>
+          <option value="134217728"> 
+            <language value="en-US">128 MB</language>
+          </option>
+          <option value="268435456"> 
+            <language value="en-US">256 MB</language>
+          </option>
+        </options>
+      </field>
+      <field keyName="kdfParallelism" type="select">
+        <label>
+          <language value="en-US">KDF Parallelism</language>
+        </label>
+        <description>
+          <language value="en-US">Requires "KDF type" to be set, otherwise has no effect.</language>
+        </description>
+        <options>
+          <option value="1">
+            <language value="en-US">1</language>
+          </option>
+          <option value="2">
+            <language value="en-US">2</language>
+          </option>
+          <option value="4">
+            <language value="en-US">4</language>
+          </option>
+          <option value="8"> 
+            <language value="en-US">8</language>
           </option>
         </options>
       </field>

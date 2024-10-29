@@ -243,7 +243,7 @@ final class Header2: Eraseable {
     func loadDefaultValuesV4(_ version: Database2.FormatVersion = .v4) {
         assert(version == .v4 || version == .v4_1)
         self.formatVersion = version
-        applyEncryptionSettings(settings: EncryptionSettings.default)
+        applyEncryptionSettings(settings: EncryptionSettings.defaultSettings())
 
 
         initialized = true
@@ -253,7 +253,7 @@ final class Header2: Eraseable {
         dataCipher = settings.dataCipher.cipher
         fields[.cipherID] = dataCipher.uuid.data
 
-        kdf = settings.kdf.function
+        kdf = KDFFactory.create(settings.kdf)
         kdfParams = kdf.defaultParams
         kdf.apply(settings, to: &kdfParams)
         fields[.kdfParameters] = kdfParams.data!

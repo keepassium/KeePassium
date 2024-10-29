@@ -168,7 +168,7 @@ class AbstractArgon2KDF {
 }
 
 final class Argon2dKDF: AbstractArgon2KDF, KeyDerivationFunction {
-    public static let _uuid = UUID(
+    internal static let _uuid = UUID(
         uuid: (0xEF, 0x63, 0x6D, 0xDF, 0x8C, 0x29, 0x44, 0x4B, 0x91, 0xF7, 0xA9, 0xA4, 0x03, 0xE3, 0x0A, 0x0C))
 
     override public var uuid: UUID { return Argon2dKDF._uuid }
@@ -178,7 +178,7 @@ final class Argon2dKDF: AbstractArgon2KDF, KeyDerivationFunction {
 }
 
 final class Argon2idKDF: AbstractArgon2KDF, KeyDerivationFunction {
-    public static let _uuid = UUID(
+    internal static let _uuid = UUID(
         uuid: (0x9E, 0x29, 0x8B, 0x19, 0x56, 0xDB, 0x47, 0x73, 0xB2, 0x3D, 0xFC, 0x3E, 0xC6, 0xF0, 0xA1, 0xE6))
 
     override public var uuid: UUID { return Argon2idKDF._uuid }
