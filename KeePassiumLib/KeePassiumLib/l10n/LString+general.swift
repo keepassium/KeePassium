@@ -1182,6 +1182,20 @@ extension LString {
         comment: "Title of a list with custom (user-imported) icons for groups and entries"
     )
 
+    public static let titleUnusedIconsCountTemplate = NSLocalizedString(
+        "[Database/CustomIcon/Unused/count]",
+        bundle: Bundle.framework,
+        value: "Unused icons found: %d",
+        comment: "Notification when some custom icons are not used by any group or entry [iconCount: Int]"
+    )
+
+    public static let actionDeleteUnusedIcons = NSLocalizedString(
+        "[Database/CustomIcon/deleteUnused]",
+        bundle: Bundle.framework,
+        value: "Delete Unused Icons",
+        comment: "Action: delete unused icons"
+    )
+
     public static let actionAddCustomIcon = NSLocalizedString(
         "[Database/CustomIcon/add]",
         bundle: Bundle.framework,

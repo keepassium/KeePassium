@@ -1,3 +1,9 @@
+/* Notification when user tries to set up too weak an app protection passcode. */
+"[AppLock/weakPasscodeWarning]" = "此解锁密码很容易被猜到。请尝试输入一个更强的解锁密码。";
+
+/* Call for action to select an entry field for filling out. */
+"[AutoFill/InsertText/select]" = "选择字段";
+
 /* An identifier of the app that called AutoFill. The term is intentionally similar to https://ru.wikipedia.org/wiki/Caller_ID. [callerID: String] */
 "[AutoFill/Search/callerID]" = "呼叫ID: %@";
 

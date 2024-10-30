@@ -41,10 +41,10 @@
 "[AppLock/Biometric/Hint] Unlock KeePassium" = "Desbloquear KeePassium";
 
 /* Action/button to switch from TouchID/FaceID prompt to manual input of the AppLock passcode. */
-"[AppLock/cancelBiometricAuth] Use Passcode" = "Digitar o código";
+"[AppLock/cancelBiometricAuth] Use Passcode" = "Digitar o código de acesso";
 
 /* Action/button to modify the existing AppLock passcode. */
-"[AppLock/changePasscode]" = "Mudar senha do app";
+"[AppLock/changePasscode]" = "Mudar código de acesso";
 
 /* Call to action in the passcode input dialog. */
 "[AppLock/EnterPasscode/callToAction]" = "Desbloquear KeePassium";
@@ -62,16 +62,16 @@
 "[AppLock/Passcode/KeyboardType/title] Numeric" = "Numérico";
 
 /* Notification for business users when they set up too weak app protection passcode. */
-"[AppLock/Passcode/orgRequiresStonger]" = "Sua organização requer uma senha mais complexa.";
+"[AppLock/Passcode/orgRequiresStonger]" = "Sua organização requer um código de acesso mais complexo.";
 
 /* Hint/call to action about keyboard shortcut */
 "[AppLock/Passcode/pressEscForTouchID]" = "Pressione Esc para usar Touch ID";
 
 /* Notification that the modified AppLock passcode has been saved. */
-"[AppLock/passcodeUpdated/title]" = "Senha do app atualizada com sucesso.";
+"[AppLock/passcodeUpdated/title]" = "Código de acesso atualizado com sucesso.";
 
 /* Action/button to save new or edited AppLock passcode. */
-"[AppLock/savePasscode]" = "Salvar senha do app";
+"[AppLock/savePasscode]" = "Salvar código de acesso";
 
 /* Call to action in the passcode input dialog. */
 "[AppLock/SetupPasscode/callToAction]" = "Proteja KeePassium contra acesso não autorizado";
@@ -622,9 +622,6 @@
 /* Action to preview one or several attached documents or images */
 "[Entry/Attachments/preview]" = "Pré-visualizar";
 
-/* Title of a list with attached files */
-"[Entry/Attachments/title] Attached Files" = "Anexos";
-
 /* Action/button to create a new entry in the current group */
 "[Entry/Create/action] Create Entry" = "Nova entrada";
 
@@ -1009,14 +1006,8 @@
 /* Action/button to select some items in a list. */
 "[Generic/Action/SelectItems]" = "Selecionar";
 
-/* Message to confirm deletion of an item. */
-"[Generic/ConfirmDelete/title] Are you sure?" = "Tem certeza?";
-
 /* Name of the Recently Deleted (Recycle Bin) directory, as shown in the Files app */
 "[Generic/Directory/Recently Deleted/name]" = "Apagados recentemente";
-
-/* Notification text when the user tries to close a document with unsaved changes */
-"[Generic/Edit/Aborting/text] Discard unsaved changes?" = "Descartar alterações não salvas?";
 
 /* Title of a notification when the user tries to close a document with unsaved changes */
 "[Generic/Edit/Aborting/title] There are unsaved changes" = "Há alterações não salvas";
@@ -1745,7 +1736,7 @@
 "[Settings/AppLock/subtitle] App Lock, %@, timeout" = "Bloqueio do app, %@, limite de tempo";
 
 /* Settings: subtitle of the `App Protection` section when biometric auth is not available. */
-"[Settings/AppLock/subtitle] App Lock, passcode, timeout" = "Bloqueio do app, senha, limite de tempo";
+"[Settings/AppLock/subtitle] App Lock, passcode, timeout" = "Bloqueio do app, código de acesso, limite de tempo";
 
 /* Settings section: protection of the app from unauthorized access */
 "[Settings/AppLock/title]" = "Proteção do aplicativo";
@@ -1989,9 +1980,6 @@
 
 /* Action/button to add database to the app */
 "Add Database" = "Adicionar banco de dados";
-
-/* Title of a window where the user selects a file to be opened/added to the app */
-"Choose Database" = "Escolher banco de dados";
 
 /* Warning message when the user tries to use a database as a key file */
 "KeePass database should not be used as key file. Please pick a different file." = "Um banco de dados do KeePass não pode ser usado como arquivo de chave. Por favor, escolha um arquivo diferente.";

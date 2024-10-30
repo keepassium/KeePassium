@@ -5,5 +5,5 @@
 "z0x-Rz-Nfj.normalTitle" = "Cancelar";
 
 /* Class = "UITextField"; placeholder = "Passcode"; ObjectID = "ZTd-Zj-qAs"; Note = "Placeholder text in the AppLock passcode field"; */
-"ZTd-Zj-qAs.placeholder" = "Senha";
+"ZTd-Zj-qAs.placeholder" = "Código de acesso";
 

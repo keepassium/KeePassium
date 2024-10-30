@@ -10,6 +10,12 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "Aktivera för att lyssna.";
 
+/* Action which resets the app as if it was just installed. */
+"[App/ResetEverything/action]" = "Återställ";
+
+/* Confirmation message before resetting the app to just-installed state. */
+"[App/ResetEverything/title]" = "Återställ appen?";
+
 /* Section in settings: icon for the app */
 "[Appearance/AppIcon/title]" = "App-ikon";
 
@@ -59,7 +65,7 @@
 "[AppLock/Passcode/orgRequiresStonger]" = "Din organisation behöver ett mer komplext lösenord.";
 
 /* Hint/call to action about keyboard shortcut */
-"[AppLock/Passcode/pressEscForTouchID]" = "Trysk på Esc för Touch ID";
+"[AppLock/Passcode/pressEscForTouchID]" = "Tryck på Esc för Touch ID";
 
 /* Notification that the modified AppLock passcode has been saved. */
 "[AppLock/passcodeUpdated/title]" = "Pinkoden uppdaterades.";
@@ -195,6 +201,18 @@
 
 /* Info message for entries that contain information for opening a different database. */
 "[Database/Entry/LinkedDatabase/message]" = "Den här posten pekar på en annan databas.";
+
+/* Notification message about external changes to the loaded file. */
+"[Database/ExternalChange/notification]" = "Databasfilen har ändrats. Läs in igen?";
+
+/* Status message: checking if currently loaded database is the latest version */
+"[Database/ExternalChange/Status/checkInProgress]" = "Söker efter ändringar …";
+
+/* Status message: failed to check if currently loaded database is the latest version */
+"[Database/ExternalChange/Status/failed]" = "Uppdatering misslyckades";
+
+/* Status message: currently loaded database is the latest version */
+"[Database/ExternalChange/Status/upToDate]" = "Aktuell";
 
 /* Info message when changing database file format. */
 "[Database/FormatVersion/Conversion/allDataPreserved]" = "All din data kommer bevaras.";
@@ -345,6 +363,18 @@
 
 /* File settings parameter: time after which file will be considered unreachable. Example: `Consider File Unreachable: in 10 seconds`.) */
 "[Database/Settings/ConsiderFileUnreachable/title]" = "Anse fil otillgänglig";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Don't check`) */
+"[Database/Settings/ExternalChanges/dontCheck]" = "Kontrollera inte";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Notify`) */
+"[Database/Settings/ExternalChanges/notify]" = "Meddela";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Reload Automatically`) */
+"[Database/Settings/ExternalChanges/reload]" = "Läs in automatiskt";
+
+/* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Notify`) */
+"[Database/Settings/ExternalChanges/title]" = "Databasen har ändrats externt";
 
 /* Title: what to do when a cloud-stored file cannot be loaded. (For example: `If File is Unreachable: Re-add File`.) */
 "[Database/Settings/FallbackStrategy/ReAddFile/title]" = "Lägg till filen på nytt";
@@ -592,9 +622,6 @@
 /* Action to preview one or several attached documents or images */
 "[Entry/Attachments/preview]" = "Förhandsgranska";
 
-/* Title of a list with attached files */
-"[Entry/Attachments/title] Attached Files" = "Bifogade filer";
-
 /* Action/button to create a new entry in the current group */
 "[Entry/Create/action] Create Entry" = "Skapa post";
 
@@ -630,6 +657,9 @@
 
 /* Name of an entry field */
 "[Entry/Field/name] User Name" = "Användarnamn";
+
+/* Title of a setting: whether the entry's field is protected (shown as asterisks). */
+"[Entry/Field/Protected/title]" = "Skyddat fält";
 
 /* Name of an entry field */
 "[Entry/Field/tags] Tags" = "Taggar";
@@ -976,14 +1006,8 @@
 /* Action/button to select some items in a list. */
 "[Generic/Action/SelectItems]" = "Välj";
 
-/* Message to confirm deletion of an item. */
-"[Generic/ConfirmDelete/title] Are you sure?" = "Är du säker?";
-
 /* Name of the Recently Deleted (Recycle Bin) directory, as shown in the Files app */
 "[Generic/Directory/Recently Deleted/name]" = "Senast raderade";
-
-/* Notification text when the user tries to close a document with unsaved changes */
-"[Generic/Edit/Aborting/text] Discard unsaved changes?" = "Släng osparade ändringar?";
 
 /* Title of a notification when the user tries to close a document with unsaved changes */
 "[Generic/Edit/Aborting/title] There are unsaved changes" = "Det finns osparade ändringar";
@@ -1027,6 +1051,9 @@
 /* Title of a menu with various utilities */
 "[Generic/Tools/title]" = "Verktyg";
 
+/* Action/button to open an online support article (about a specific error) */
+"[Generic/ViewHelpArticle/action]" = "Visa hjälpartikel";
+
 /* Title of a screen/list view configuration: sort order, visible items, etc */
 "[Generic/ViewOptions/title]" = "Visningsalternativ";
 
@@ -1057,6 +1084,12 @@
 /* Title of the confirmation dialog for `Empty Recycle Bin` action */
 "[Group/RecycleBin/Empty/confirmTitle]" = "Radera allt i papperskorgen permanent?";
 
+/* Title of the Entries section visible while editing */
+"[Group/Section/Entries/title]" = "Poster";
+
+/* Title of the Groups section visible while editing */
+"[Group/Section/Groups/title]" = "Grupper";
+
 /* VoiceOver description of a smart group [groupTitle: String] */
 "[Group/Smart/a11y/description]" = "%@, smart grupp";
 
@@ -1068,6 +1101,15 @@
 
 /* Default name of a new smart group */
 "[Group/Smart/New/defaultName]" = "Ny smart grupp";
+
+/* Title of a list: all entries in the database */
+"[Group/Smart/Preset/allEntries]" = "Alla poster";
+
+/* Title of a list: entries that are beyond their expiration date. */
+"[Group/Smart/Preset/expiredEntries]" = "Utgångna poster";
+
+/* Title of a list: entries with one-time passwords (OTP) */
+"[Group/Smart/Preset/otpEntries]" = "Poster med engångslösenord";
 
 /* Title for the Smart Group search conditions in group editor */
 "[Group/Smart/Query/title]" = "Filter för smart grupp";
@@ -1819,6 +1861,9 @@
 /* Title of list view configuration screen */
 "[Settings/ListSettings/title]" = "Listinställningar";
 
+/* Notification when corporate user tries to use a feature forbidden by organization's IT department. */
+"[Settings/Managed/BlockedFeature/notification]" = "Den här funktionen blockeras av din organisation.";
+
 /* Notification when corporate user tries to change an app setting controlled by organization's IT department. */
 "[Settings/Managed/notification]" = "Den här inställningen hanteras av din organisation.";
 
@@ -1935,9 +1980,6 @@
 
 /* Action/button to add database to the app */
 "Add Database" = "Lägg till databas";
-
-/* Title of a window where the user selects a file to be opened/added to the app */
-"Choose Database" = "Välj databas";
 
 /* Warning message when the user tries to use a database as a key file */
 "KeePass database should not be used as key file. Please pick a different file." = "KeePass databaser ska inte användas som nyckelfiler. Var vänlig välj en annan fil.";

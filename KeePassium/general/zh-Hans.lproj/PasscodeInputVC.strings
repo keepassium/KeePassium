@@ -5,5 +5,5 @@
 "z0x-Rz-Nfj.normalTitle" = "取消";
 
 /* Class = "UITextField"; placeholder = "Passcode"; ObjectID = "ZTd-Zj-qAs"; Note = "Placeholder text in the AppLock passcode field"; */
-"ZTd-Zj-qAs.placeholder" = "应用解锁密码";
+"ZTd-Zj-qAs.placeholder" = "解锁密码";
 

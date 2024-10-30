@@ -29,7 +29,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>%d konto markerat</string>
+			<string>%d post markerad</string>
 			<key>other</key>
 			<string>%d poster markerade</string>
 			<key>zero</key>

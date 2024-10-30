@@ -1,6 +1,9 @@
 /* Title of the app history (changelog) screen */
 "[AppHistory/title]" = "Что нового";
 
+/* Notification when user tries to set up too weak an app protection passcode. */
+"[AppLock/weakPasscodeWarning]" = "Этот код доступа легко угадать. Попробуйте ввести более сложный код.";
+
 /* Hint shown when both password and key file are empty. */
 "[Database/Create] Please enter a password or choose a key file." = "Введите пароль или выберите ключевой файл.";
 
@@ -36,6 +39,24 @@
 
 /* Predefined `Operating system` group in a new database */
 "[Database/Create/TemplateGroup/title] OS" = "Система";
+
+/* Notification when user sets up too weak a database password. */
+"[Database/Create/weakPasswordWarning]" = "Этот пароль легко угадать. Попробуйте ввести более сложный пароль.";
+
+/* Description of favicon downloader feature. */
+"[Database/DownloadFavicons/intro]" = "KeePassium свяжется с каждым сайтом в вашей базе данных.";
+
+/* Description of favicon downloader feature. 'Doing this' refers to downloading favicons. */
+"[Database/DownloadFavicons/warning]" = "Используя эту функцию в публичной или небезопасной сети, вы можете раскрыть список сайтов, на которых у вас есть учётная запись.";
+
+/* Warning that one key derivation function (KDF) should be preferred to another. Example: 'AES-KDF is considered weak. Use Argon2id instead.' */
+"[Database/KDF/consideredWeak]" = "Алгоритм %1$@ считается слабым, лучше используйте %2$@.";
+
+/* Notification message about encryption settings. */
+"[Database/KDF/tooSlow]" = "Эти настройки могут быть слишком медленными для некоторых устройств.";
+
+/* Call to action when encryption settings are too weak. */
+"[Database/KDF/tooWeak]" = "Увеличьте параметры для оптимальной защиты данных.";
 
 /* Confirmation message to replace an existing entry attachment with a new one. */
 "[Entry/Files/Add] Replace existing attachment?" = "Заменить существующий файл?";

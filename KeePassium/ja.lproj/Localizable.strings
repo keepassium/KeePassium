@@ -1,6 +1,9 @@
 /* Title of the app history (changelog) screen */
 "[AppHistory/title]" = "バージョン履歴";
 
+/* Notification when user tries to set up too weak an app protection passcode. */
+"[AppLock/weakPasscodeWarning]" = "このパスコードは簡単に推測できます。より強力なパスコードを入力してみてください。";
+
 /* Hint shown when both password and key file are empty. */
 "[Database/Create] Please enter a password or choose a key file." = "パスワードを入力するか、キーファイルを選択してください。";
 
@@ -36,6 +39,24 @@
 
 /* Predefined `Operating system` group in a new database */
 "[Database/Create/TemplateGroup/title] OS" = "OS";
+
+/* Notification when user sets up too weak a database password. */
+"[Database/Create/weakPasswordWarning]" = "このパスワードは簡単に推測できます。より強力なパスコードを入力してみてください。";
+
+/* Description of favicon downloader feature. */
+"[Database/DownloadFavicons/intro]" = "KeePassiumは、データベース内のすべてのウェブサイトに接続します。";
+
+/* Description of favicon downloader feature. 'Doing this' refers to downloading favicons. */
+"[Database/DownloadFavicons/warning]" = "公開または監視されているネットワーク上でこれを行うと、アカウントをお持ちのウェブサイトの一覧が公開される可能性があります。";
+
+/* Warning that one key derivation function (KDF) should be preferred to another. Example: 'AES-KDF is considered weak. Use Argon2id instead.' */
+"[Database/KDF/consideredWeak]" = "%1$@は脆弱であると考えられます。代わりに%2$@を使用してください。";
+
+/* Notification message about encryption settings. */
+"[Database/KDF/tooSlow]" = "これらの設定は、一部のデバイスでは低速すぎる場合があります。";
+
+/* Call to action when encryption settings are too weak. */
+"[Database/KDF/tooWeak]" = "設定を強化してデータを最適に保護します。";
 
 /* Confirmation message to replace an existing entry attachment with a new one. */
 "[Entry/Files/Add] Replace existing attachment?" = "添付ファイルを置き換えますか？";

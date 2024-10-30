@@ -622,9 +622,6 @@
 /* Action to preview one or several attached documents or images */
 "[Entry/Attachments/preview]" = "Náhľad";
 
-/* Title of a list with attached files */
-"[Entry/Attachments/title] Attached Files" = "Priložené súbory";
-
 /* Action/button to create a new entry in the current group */
 "[Entry/Create/action] Create Entry" = "Vytvoriť záznam";
 
@@ -1009,14 +1006,8 @@
 /* Action/button to select some items in a list. */
 "[Generic/Action/SelectItems]" = "Vybrať";
 
-/* Message to confirm deletion of an item. */
-"[Generic/ConfirmDelete/title] Are you sure?" = "Ste si istý?";
-
 /* Name of the Recently Deleted (Recycle Bin) directory, as shown in the Files app */
 "[Generic/Directory/Recently Deleted/name]" = "Nedávno vymazaný";
-
-/* Notification text when the user tries to close a document with unsaved changes */
-"[Generic/Edit/Aborting/text] Discard unsaved changes?" = "Zahodiť neuložené zmeny?";
 
 /* Title of a notification when the user tries to close a document with unsaved changes */
 "[Generic/Edit/Aborting/title] There are unsaved changes" = "Máte neuložené zmeny";
@@ -1989,9 +1980,6 @@
 
 /* Action/button to add database to the app */
 "Add Database" = "Pridať databázu";
-
-/* Title of a window where the user selects a file to be opened/added to the app */
-"Choose Database" = "Vybrať databázu";
 
 /* Warning message when the user tries to use a database as a key file */
 "KeePass database should not be used as key file. Please pick a different file." = "KeePass databáza by nemala byť použitá ako súbor s kľúčom. Prosím, vyberte iný súbor.";

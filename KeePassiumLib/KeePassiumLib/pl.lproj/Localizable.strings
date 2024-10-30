@@ -622,9 +622,6 @@
 /* Action to preview one or several attached documents or images */
 "[Entry/Attachments/preview]" = "Podgląd";
 
-/* Title of a list with attached files */
-"[Entry/Attachments/title] Attached Files" = "Dołączone pliki";
-
 /* Action/button to create a new entry in the current group */
 "[Entry/Create/action] Create Entry" = "Utwórz wpis";
 
@@ -1009,14 +1006,8 @@
 /* Action/button to select some items in a list. */
 "[Generic/Action/SelectItems]" = "Wybierz";
 
-/* Message to confirm deletion of an item. */
-"[Generic/ConfirmDelete/title] Are you sure?" = "Jesteś pewien?";
-
 /* Name of the Recently Deleted (Recycle Bin) directory, as shown in the Files app */
 "[Generic/Directory/Recently Deleted/name]" = "Ostatnio usunięte";
-
-/* Notification text when the user tries to close a document with unsaved changes */
-"[Generic/Edit/Aborting/text] Discard unsaved changes?" = "Odrzucić niezapisane zmiany?";
 
 /* Title of a notification when the user tries to close a document with unsaved changes */
 "[Generic/Edit/Aborting/title] There are unsaved changes" = "Istnieją niezapisane zmiany";
@@ -1989,9 +1980,6 @@
 
 /* Action/button to add database to the app */
 "Add Database" = "Dodaj bazę";
-
-/* Title of a window where the user selects a file to be opened/added to the app */
-"Choose Database" = "Wybierz bazę danych";
 
 /* Warning message when the user tries to use a database as a key file */
 "KeePass database should not be used as key file. Please pick a different file." = "Baza danych KeePass nie powinna być używana jako plik kluczowy. Proszę wybrać inny plik.";

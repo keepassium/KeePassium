@@ -622,9 +622,6 @@
 /* Action to preview one or several attached documents or images */
 "[Entry/Attachments/preview]" = "プレビュー";
 
-/* Title of a list with attached files */
-"[Entry/Attachments/title] Attached Files" = "添付ファイル";
-
 /* Action/button to create a new entry in the current group */
 "[Entry/Create/action] Create Entry" = "エントリーを作成";
 
@@ -1009,14 +1006,8 @@
 /* Action/button to select some items in a list. */
 "[Generic/Action/SelectItems]" = "選択";
 
-/* Message to confirm deletion of an item. */
-"[Generic/ConfirmDelete/title] Are you sure?" = "よろしいですか？";
-
 /* Name of the Recently Deleted (Recycle Bin) directory, as shown in the Files app */
 "[Generic/Directory/Recently Deleted/name]" = "最近削除した項目";
-
-/* Notification text when the user tries to close a document with unsaved changes */
-"[Generic/Edit/Aborting/text] Discard unsaved changes?" = "保存せずに終了しますか？";
 
 /* Title of a notification when the user tries to close a document with unsaved changes */
 "[Generic/Edit/Aborting/title] There are unsaved changes" = "保存していない変更があります";
@@ -1989,9 +1980,6 @@
 
 /* Action/button to add database to the app */
 "Add Database" = "データベースを追加";
-
-/* Title of a window where the user selects a file to be opened/added to the app */
-"Choose Database" = "データベースを選択";
 
 /* Warning message when the user tries to use a database as a key file */
 "KeePass database should not be used as key file. Please pick a different file." = "KeePassのデータベースをキーファイルとして使用しないでください。別のファイルを選択してください。";

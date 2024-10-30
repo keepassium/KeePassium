@@ -16,6 +16,7 @@ protocol ItemIconPickerDelegate: AnyObject {
     func didPressImportIcon(in viewController: ItemIconPicker, at popoverAnchor: PopoverAnchor)
     func didDelete(customIcon uuid: UUID, in viewController: ItemIconPicker)
     func didPressDownloadIcon(in viewController: ItemIconPicker, at popoverAnchor: PopoverAnchor)
+    func didPressDeleteUnusedIcons(in viewController: ItemIconPicker, at popoverAnchor: PopoverAnchor)
 }
 
 final class ItemIconPickerSectionHeader: UICollectionReusableView {
@@ -56,6 +57,8 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
 
     var isDownloadAllowed = true
 
+    var isDeleteUnusedAllowed = true
+
     private let standardIconSet: DatabaseIconSet = Settings.current.databaseIconSet
     private var selectedPath: IndexPath?
 
@@ -74,14 +77,44 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
             navigationItem.setRightBarButton(importIconButton, animated: false)
         }
 
+        setupToolbar()
+    }
+
+    private func setupToolbar() {
+        var items: [UIBarButtonItem] = []
         if isDownloadAllowed {
             let downloadButton = UIBarButtonItem(
                 title: LString.actionDownloadFavicon,
                 style: .plain,
                 target: self,
                 action: #selector(didPressDownloadIcon))
-            setToolbarItems([.flexibleSpace(), downloadButton, .flexibleSpace()], animated: false)
+            items.append(.flexibleSpace())
+            items.append(downloadButton)
+            items.append(.flexibleSpace())
         }
+        if isDeleteUnusedAllowed {
+            let moreButton = UIBarButtonItem(title: LString.titleMoreActions, image: .symbol(.ellipsisCircle))
+            let deleteUnusedAction = UIAction(
+                title: LString.actionDeleteUnusedIcons,
+                image: .symbol(.trash),
+                attributes: customIcons.isEmpty ? [.destructive, .disabled] : [.destructive],
+                handler: { [weak self] _ in
+                    guard let self else { return }
+                    let popoverAnchor = PopoverAnchor(barButtonItem: moreButton)
+                    delegate?.didPressDeleteUnusedIcons(in: self, at: popoverAnchor)
+                }
+            )
+            moreButton.menu = UIMenu.make(children: [deleteUnusedAction])
+
+            if !items.isEmpty {
+                items.remove(at: 0) // remove left padding before "Download"
+            } else {
+                items.append(.flexibleSpace()) // ensure left padding before "More"
+            }
+            items.append(moreButton)
+        }
+
+        setToolbarItems(items, animated: false)
     }
 
     override func viewDidAppear(_ animated: Bool) {

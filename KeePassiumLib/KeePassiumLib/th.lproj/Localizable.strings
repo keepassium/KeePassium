@@ -532,9 +532,6 @@
 /* Action to preview one or several attached documents or images */
 "[Entry/Attachments/preview]" = "แสดงตัวอย่าง";
 
-/* Title of a list with attached files */
-"[Entry/Attachments/title] Attached Files" = "ไฟล์แนบ";
-
 /* Action/button to create a new entry in the current group */
 "[Entry/Create/action] Create Entry" = "สร้างรายการ";
 
@@ -865,14 +862,8 @@
 /* Action/button to skip the current step and proceed with the next one */
 "[Generic] Skip" = "ข้าม";
 
-/* Message to confirm deletion of an item. */
-"[Generic/ConfirmDelete/title] Are you sure?" = "คุณแน่ใจหรือไม่?";
-
 /* Name of the Recently Deleted (Recycle Bin) directory, as shown in the Files app */
 "[Generic/Directory/Recently Deleted/name]" = "ที่เพิ่งลบล่าสุด";
-
-/* Notification text when the user tries to close a document with unsaved changes */
-"[Generic/Edit/Aborting/text] Discard unsaved changes?" = "ละทิ้งการเปลี่ยนแปลงที่ยังไม่บันทึกหรือไม่?";
 
 /* Title of a notification when the user tries to close a document with unsaved changes */
 "[Generic/Edit/Aborting/title] There are unsaved changes" = "มีการเปลี่ยนแปลงที่ยังไม่ได้บันทึก";
@@ -1638,9 +1629,6 @@
 
 /* Action/button to add database to the app */
 "Add Database" = "เพิ่มฐานข้อมูล";
-
-/* Title of a window where the user selects a file to be opened/added to the app */
-"Choose Database" = "เลือกฐานข้อมูล";
 
 /* Warning message when the user tries to use a database as a key file */
 "KeePass database should not be used as key file. Please pick a different file." = "ฐานข้อมูล KeePass ไม่ควรใช้เป็นไฟล์กุญแจ โปรดเลือกไฟล์ใหม่";

@@ -79,6 +79,7 @@ public enum SymbolName: String {
     case dieFace3 = "die.face.3"
     case docOnDoc = "doc.on.doc"
     case docBadgePlus = "doc.badge.plus"
+    case docTextMagnifyingGlass = "doc.text.magnifyingglass"
     case ellipsis = "ellipsis"
     case ellipsisCircle = "ellipsis.circle"
     case externalLink = "external-link" 

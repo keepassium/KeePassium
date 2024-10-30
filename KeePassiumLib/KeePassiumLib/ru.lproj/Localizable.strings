@@ -622,9 +622,6 @@
 /* Action to preview one or several attached documents or images */
 "[Entry/Attachments/preview]" = "Просмотр";
 
-/* Title of a list with attached files */
-"[Entry/Attachments/title] Attached Files" = "Прикреплённые файлы";
-
 /* Action/button to create a new entry in the current group */
 "[Entry/Create/action] Create Entry" = "Создать запись";
 
@@ -1009,14 +1006,8 @@
 /* Action/button to select some items in a list. */
 "[Generic/Action/SelectItems]" = "Выбрать";
 
-/* Message to confirm deletion of an item. */
-"[Generic/ConfirmDelete/title] Are you sure?" = "Вы уверены?";
-
 /* Name of the Recently Deleted (Recycle Bin) directory, as shown in the Files app */
 "[Generic/Directory/Recently Deleted/name]" = "Недавно удалённые";
-
-/* Notification text when the user tries to close a document with unsaved changes */
-"[Generic/Edit/Aborting/text] Discard unsaved changes?" = "Отменить несохранённые изменения?";
 
 /* Title of a notification when the user tries to close a document with unsaved changes */
 "[Generic/Edit/Aborting/title] There are unsaved changes" = "Есть несохранённые изменения";
@@ -1989,9 +1980,6 @@
 
 /* Action/button to add database to the app */
 "Add Database" = "Добавить базу паролей";
-
-/* Title of a window where the user selects a file to be opened/added to the app */
-"Choose Database" = "Выбрать базу паролей";
 
 /* Warning message when the user tries to use a database as a key file */
 "KeePass database should not be used as key file. Please pick a different file." = "База паролей KeePass не должна использоваться в качестве ключевого файла. Выберите другой файл.";

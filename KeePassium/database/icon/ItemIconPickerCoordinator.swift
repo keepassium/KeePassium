@@ -53,10 +53,6 @@ class ItemIconPickerCoordinator: Coordinator {
     }
 
     func start() {
-        iconPicker.isImportAllowed = database is Database2
-        iconPicker.isDownloadAllowed = database is Database2
-            && customFaviconUrl != nil
-            && ManagedAppConfig.shared.isFaviconDownloadAllowed
         refresh()
         iconPicker.selectIcon(for: item)
 
@@ -68,10 +64,18 @@ class ItemIconPickerCoordinator: Coordinator {
     }
 
     private func refresh() {
-        guard let db2 = database as? Database2 else {
-            return
+        let supportsCustomIcons = database is Database2
+        let unusedCustomIcons = findUnusedCustomIcons()
+        iconPicker.isImportAllowed = supportsCustomIcons
+        iconPicker.isDownloadAllowed = supportsCustomIcons
+            && customFaviconUrl != nil
+            && ManagedAppConfig.shared.isFaviconDownloadAllowed
+        iconPicker.isDeleteUnusedAllowed = supportsCustomIcons
+            && unusedCustomIcons.count > 0
+
+        if let db2 = database as? Database2 {
+            iconPicker.customIcons = db2.customIcons
         }
-        iconPicker.customIcons = db2.customIcons
         iconPicker.refresh()
     }
 
@@ -104,6 +108,68 @@ class ItemIconPickerCoordinator: Coordinator {
         saveDatabase(databaseFile)
         delegate?.didDeleteIcon(customIcon: uuid, in: self)
         refresh() 
+    }
+
+    private func findUnusedCustomIcons() -> Set<UUID> {
+        guard let db2 = database as? Database2 else {
+            return []
+        }
+
+        var usedUUIDs = Set<UUID>()
+        db2.root?.applyToAllChildren(
+            groupHandler: {
+                if let group2 = $0 as? Group2 {
+                    usedUUIDs.insert(group2.customIconUUID)
+                }
+            },
+            entryHandler: {
+                if let entry2 = $0 as? Entry2 {
+                    usedUUIDs.insert(entry2.customIconUUID)
+                }
+            }
+        )
+
+        if let iconUUID = (item as? Entry2)?.customIconUUID ?? (item as? Group2)?.customIconUUID {
+            usedUUIDs.insert(iconUUID)
+        }
+
+        let existingUUIDs = db2.customIcons.map { $0.uuid }
+        let unusedUUIDs = Set(existingUUIDs).subtracting(usedUUIDs)
+        return unusedUUIDs
+    }
+
+    private func confirmDeleteUnusedCustomIcons(in viewController: UIViewController) {
+        let unusedCustomIcons = findUnusedCustomIcons()
+        guard unusedCustomIcons.count > 0 else {
+            assertionFailure("Should have been blocked in UI")
+            return
+        }
+        let confirmationAlert = UIAlertController.make(
+            title: LString.itemIconPickerCustomIcons,
+            message: String.localizedStringWithFormat(
+                LString.titleUnusedIconsCountTemplate,
+                unusedCustomIcons.count),
+            dismissButtonTitle: LString.actionCancel
+        )
+        confirmationAlert.addAction(title: LString.actionDelete, style: .destructive) {
+            [weak self, weak viewController] _ in
+            guard let self, let viewController else { return }
+            deleteUnusedCustomIcons(unusedCustomIcons, in: viewController)
+        }
+        viewController.present(confirmationAlert, animated: true)
+    }
+
+    private func deleteUnusedCustomIcons(_ unusedIconUUIDs: Set<UUID>, in viewController: UIViewController) {
+        guard let db2 = database as? Database2 else {
+            assertionFailure()
+            return
+        }
+
+        unusedIconUUIDs.forEach {
+            db2.deleteCustomIcon(uuid: $0)
+        }
+        refresh()
+        saveDatabase(databaseFile)
     }
 }
 
@@ -153,6 +219,10 @@ extension ItemIconPickerCoordinator: ItemIconPickerDelegate {
                 self?.addCustomIcon(image)
             }
         }
+    }
+
+    func didPressDeleteUnusedIcons(in viewController: ItemIconPicker, at popoverAnchor: PopoverAnchor) {
+        confirmDeleteUnusedCustomIcons(in: viewController)
     }
 }
 

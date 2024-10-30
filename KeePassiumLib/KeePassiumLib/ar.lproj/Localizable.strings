@@ -484,9 +484,6 @@
 /* Action to preview one or several attached documents or images */
 "[Entry/Attachments/preview]" = "مُعايَنَة";
 
-/* Title of a list with attached files */
-"[Entry/Attachments/title] Attached Files" = "المرفقات";
-
 /* Action/button to create a new entry in the current group */
 "[Entry/Create/action] Create Entry" = "إنشاء سجل";
 
@@ -799,14 +796,8 @@
 /* Action/button to skip the current step and proceed with the next one */
 "[Generic] Skip" = "تَخطِّي";
 
-/* Message to confirm deletion of an item. */
-"[Generic/ConfirmDelete/title] Are you sure?" = "هل أنتَ مُتأكد؟";
-
 /* Name of the Recently Deleted (Recycle Bin) directory, as shown in the Files app */
 "[Generic/Directory/Recently Deleted/name]" = "سلة المحذوفات";
-
-/* Notification text when the user tries to close a document with unsaved changes */
-"[Generic/Edit/Aborting/text] Discard unsaved changes?" = "هل تريد تجاهل التغييرات الغير محفوظة؟";
 
 /* Title of a notification when the user tries to close a document with unsaved changes */
 "[Generic/Edit/Aborting/title] There are unsaved changes" = "هناك تغييرات غير محفوظة";
@@ -1491,9 +1482,6 @@
 
 /* Action/button to add database to the app */
 "Add Database" = "إضافة قاعدة بيانات";
-
-/* Title of a window where the user selects a file to be opened/added to the app */
-"Choose Database" = "اختيار قاعدة بيانات";
 
 /* Warning message when the user tries to use a database as a key file */
 "KeePass database should not be used as key file. Please pick a different file." = "لا ينبغي استخدام ملف قاعدة بيانات KeePass كملف مفتاح. الرجاء اختيار ملف مختلف.";
