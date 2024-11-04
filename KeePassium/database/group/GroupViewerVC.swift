@@ -68,6 +68,12 @@ protocol GroupViewerDelegate: AnyObject {
         in viewController: GroupViewerVC
     )
 
+    func didPressFaviconsDownload(
+        _ entries: [Entry],
+        at popoverAnchor: PopoverAnchor,
+        in viewController: GroupViewerVC
+    )
+
     func didReorderItems(in group: Group, groups: [Group], entries: [Entry])
 
     func didPressEmptyRecycleBinGroup(
@@ -222,6 +228,16 @@ final class GroupViewerVC:
             target: self,
             action: #selector(didPressBulkRelocate))
         button.title = LString.actionMove
+        return button
+    }()
+
+    private lazy var bulkFaviconDownloadButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(
+            image: .symbol(.wandAndStars),
+            style: .plain,
+            target: self,
+            action: #selector(didPressBulkFaviconDownload))
+        button.title = LString.actionDownloadFavicons
         return button
     }()
 
@@ -1238,6 +1254,20 @@ final class GroupViewerVC:
     private func didPressDoneSelectReorder(_ sender: UIBarButtonItem) {
         stopSelectionMode(animated: true, andSave: true)
     }
+
+    @objc
+    private func didPressBulkFaviconDownload(_ sender: UIBarButtonItem) {
+        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
+        let selectedItems = getSelectedItems()
+
+        let entries = selectedItems.compactMap({ $0 as? Entry })
+        guard !entries.isEmpty else {
+            return
+        }
+
+        stopSelectionMode(animated: true, andSave: false)
+        delegate?.didPressFaviconsDownload(entries, at: popoverAnchor, in: self)
+    }
 }
 
 extension GroupViewerVC {
@@ -1274,11 +1304,12 @@ extension GroupViewerVC {
             animated: animated
         )
         toolbarItems = tableView.isEditing ? [
+            canDownloadFavicons ? bulkFaviconDownloadButton : nil,
             UIBarButtonItem.flexibleSpace(),
             bulkRelocateButton,
             UIBarButtonItem.flexibleSpace(),
             bulkDeleteButton,
-        ] : defaultToolbarItems
+        ].compactMap({ $0 }) : defaultToolbarItems
 
         if animated {
             let sectionCount = numberOfSections(in: tableView)
@@ -1304,10 +1335,16 @@ extension GroupViewerVC {
     }
 
     private func updateBulkSelectionActions() {
-        let selectedCount = tableView.indexPathsForSelectedRows?.count ?? 0
-        let hasSelection = selectedCount > 0
+        let selectedRows = tableView.indexPathsForSelectedRows ?? []
+        let hasSelection = selectedRows.count > 0
         bulkDeleteButton.isEnabled = hasSelection
         bulkRelocateButton.isEnabled = hasSelection
+        bulkFaviconDownloadButton.isEnabled = selectedRows.contains(where: {
+            guard let url = getEntry(at: $0)?.resolvedURL else {
+                return false
+            }
+            return URL.from(malformedString: url) != nil
+        })
     }
 }
 

@@ -503,11 +503,8 @@ extension DatabaseViewerCoordinator {
         addChildCoordinator(encryptionSettingsCoordinator)
     }
 
-    private func downloadFavicons(in viewController: UIViewController) {
-        var allEntries = [Entry]()
-        databaseFile.database.root?.collectAllEntries(to: &allEntries)
-
-        downloadFavicons(for: allEntries, in: viewController) { [weak self] downloadedFavicons in
+    private func downloadFavicons(for entries: [Entry], in viewController: UIViewController) {
+        downloadFavicons(for: entries, in: viewController) { [weak self] downloadedFavicons in
             guard let downloadedFavicons,
                   let db2 = self?.database as? Database2,
                   let databaseFile = self?.databaseFile
@@ -532,7 +529,7 @@ extension DatabaseViewerCoordinator {
                 title: databaseFile.visibleFileName,
                 message: String.localizedStringWithFormat(
                     LString.faviconUpdateStatsTemplate,
-                    allEntries.count,
+                    entries.count,
                     downloadedFavicons.count),
                 preferredStyle: .alert
             )
@@ -541,6 +538,13 @@ extension DatabaseViewerCoordinator {
             }
             viewController.present(alert, animated: true)
         }
+    }
+
+    private func downloadFavicons(in viewController: UIViewController) {
+        var allEntries = [Entry]()
+        databaseFile.database.root?.collectAllEntries(to: &allEntries)
+
+        downloadFavicons(for: allEntries, in: viewController)
     }
 
     private func showMasterKeyChanger(in viewController: UIViewController) {
@@ -895,6 +899,14 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
         result.canDeleteItem = true 
         result.canMoveItem = true
         return result
+    }
+
+    func didPressFaviconsDownload(
+        _ entries: [Entry],
+        at popoverAnchor: PopoverAnchor,
+        in viewController: GroupViewerVC
+    ) {
+        downloadFavicons(for: entries, in: viewController)
     }
 }
 
