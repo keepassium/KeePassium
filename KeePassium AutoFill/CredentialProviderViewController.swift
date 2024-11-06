@@ -99,10 +99,12 @@ extension CredentialProviderViewController {
         prepareCredentialList(for: serviceIdentifiers, mode: .oneTimeCode)
     }
 
+#if !targetEnvironment(macCatalyst)
     override func prepareInterfaceForUserChoosingTextToInsert() {
         log.trace("prepareInterfaceForUserChoosingTextToInsert")
         prepareCredentialList(for: [], mode: .text)
     }
+#endif
 
     @available(iOS 17.0, *)
     override func prepareInterfaceToProvideCredential(for credentialRequest: ASCredentialRequest) {
