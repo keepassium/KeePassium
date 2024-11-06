@@ -134,12 +134,12 @@ public extension URL {
 }
 
 public extension URL {
-    private static let commonSchemePrefixes = ["https://", "http://"]
-    private static let defaultSchemePrefix = "https://"
+    private static let commonSchemePrefixes = ["https://", "http://", "otpauth://"]
+    private static let assumedSchemePrefix = "https://"
 
     static func from(malformedString input: String) -> URL? {
         let hasScheme = URL.commonSchemePrefixes.contains(where: { input.starts(with: $0) })
-        let inputString = hasScheme ? input : URL.defaultSchemePrefix + input
+        let inputString = hasScheme ? input : URL.assumedSchemePrefix + input
 
         guard let urlComponents = URLComponents(string: inputString),
               let urlHost = urlComponents.host,
