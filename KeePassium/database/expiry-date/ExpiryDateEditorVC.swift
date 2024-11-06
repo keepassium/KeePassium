@@ -32,7 +32,6 @@ final class ExpiryDateEditorVC: UIViewController, Refreshable {
         return canExpire != !neverExpiresSwitch.isOn || datePicker.date != expiryDate
     }
 
-    @available(iOS 13, *)
     private lazy var relativeTimeFormatter: RelativeDateTimeFormatter = {
         let formatter = RelativeDateTimeFormatter()
         formatter.formattingContext = .beginningOfSentence
@@ -83,12 +82,7 @@ final class ExpiryDateEditorVC: UIViewController, Refreshable {
         datePicker.isEnabled = !neverExpiresSwitch.isOn
         doneButton.isEnabled = isModified
 
-        guard #available(iOS 13, *) else {
-            remainingTimeLabel.isHidden = true
-            return
-        }
-
-        remainingTimeLabel.text = relativeTimeFormatter.string(for: datePicker.date) 
+        remainingTimeLabel.text = relativeTimeFormatter.string(for: datePicker.date)
         let isRelativeTimeHidden = !datePicker.isEnabled
         self.remainingTimeLabel.isHidden = isRelativeTimeHidden
     }

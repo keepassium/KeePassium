@@ -213,9 +213,6 @@ class RealPricingPlan: PricingPlan {
     }
 
     fileprivate func maybeOfferTrial() {
-        guard #available(iOS 11.2, *) else {
-            return
-        }
         guard PremiumManager.shared.isTrialAvailable else {
             return
         }

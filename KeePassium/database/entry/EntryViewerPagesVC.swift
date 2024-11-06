@@ -69,6 +69,14 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
         containerView.addSubview(pagesViewController.view)
         pagesViewController.didMove(toParent: self)
 
+        registerForTraitChanges([
+            UITraitUserInterfaceStyle.self,
+            UITraitVerticalSizeClass.self,
+            UITraitHorizontalSizeClass.self,
+            UITraitPreferredContentSizeCategory.self
+        ]) { (self: Self, _) in
+            self.refresh()
+        }
         view.addInteraction(UIDropInteraction(delegate: self))
     }
 
@@ -97,11 +105,6 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
             navigationItem.titleView = nil
             navigationItem.titleView = titleView
         }
-    }
-
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        refresh()
     }
 
     private func updateSegments() {

@@ -130,6 +130,15 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
         navigationItem.rightBarButtonItem = editButtonItem
         tableView.allowsMultipleSelectionDuringEditing = true
 
+        registerForTraitChanges([
+            UITraitUserInterfaceStyle.self,
+            UITraitVerticalSizeClass.self,
+            UITraitHorizontalSizeClass.self,
+            UITraitPreferredContentSizeCategory.self
+        ]) { (self: Self, _) in
+            self.refresh()
+        }
+
         deleteBarButton = UIBarButtonItem(
             title: "", 
             image: nil,
@@ -176,10 +185,6 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
         updateToolbar()
     }
 
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        refresh()
-    }
 
 
     override func numberOfSections(in tableView: UITableView) -> Int {

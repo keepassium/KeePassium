@@ -90,11 +90,6 @@ extension LString {
         bundle: Bundle.framework,
         value: "These hardware keys are not available in AutoFill.",
         comment: "Information notice for a list of hardware keys.")
-    public static let iOSVersionTooOldForHardwareKey = NSLocalizedString(
-        "[HardwareKey/NFC/OS too old]",
-        bundle: Bundle.framework,
-        value: "NFC requires iOS 13 or later.",
-        comment: "A notification that NFC (Near Field Communication) interface is not supported by the current iOS version.")
     public static let usbUnavailableIPadAppOnMac = NSLocalizedString(
         "[HardwareKey/USB/iPadAppOnMac]",
         bundle: Bundle.framework,

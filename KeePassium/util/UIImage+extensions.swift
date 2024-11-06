@@ -225,10 +225,6 @@ extension UIImage {
     }
 
     func withGradientUnderlay() -> UIImage? {
-        guard #available(iOS 13, *) else {
-            return self
-        }
-
         UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
         guard let context = UIGraphicsGetCurrentContext() else {
             return nil

@@ -106,7 +106,6 @@ extension CredentialProviderViewController {
     }
 #endif
 
-    @available(iOS 17.0, *)
     override func prepareInterfaceToProvideCredential(for credentialRequest: ASCredentialRequest) {
         log.trace("prepareInterfaceToProvideCredential (iOS17+)")
         switch credentialRequest.type {
@@ -130,7 +129,6 @@ extension CredentialProviderViewController {
         }
     }
 
-    @available(iOS 17.0, *)
     override func provideCredentialWithoutUserInteraction(for credentialRequest: ASCredentialRequest) {
         log.trace("provideCredentialWithoutUserInteraction (iOS17+)")
         switch credentialRequest.type {

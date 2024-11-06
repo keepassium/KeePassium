@@ -23,8 +23,7 @@ extension SKProduct {
     }
 
     var localizedTrialDuration: String? {
-        guard #available(iOS 11.2, *),
-            let period = introductoryPrice?.subscriptionPeriod else { return nil }
+        guard let period = introductoryPrice?.subscriptionPeriod else { return nil }
 
         var dateComponents = DateComponents()
         let timeFormatter = DateComponentsFormatter()

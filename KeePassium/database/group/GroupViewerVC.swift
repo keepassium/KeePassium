@@ -494,16 +494,8 @@ final class GroupViewerVC:
             encryptionSettingsAction.attributes.insert(.disabled)
         }
 
-        let shouldReverseMenu: Bool
-        if #available(iOS 16, *) {
-            barButton.preferredMenuElementOrder = .fixed
-            shouldReverseMenu = false
-        } else {
-            shouldReverseMenu = true
-        }
-
+        barButton.preferredMenuElementOrder = .fixed
         let frequentMenu = UIMenu.make(
-            reverse: shouldReverseMenu,
             options: [.displayInline],
             children: [
                 passwordGeneratorAction,
@@ -513,7 +505,6 @@ final class GroupViewerVC:
             ].compactMap { $0 }
         )
         let rareMenu = UIMenu.make(
-            reverse: shouldReverseMenu,
             options: [.displayInline],
             children: [
                 changeMasterKeyAction,
@@ -523,7 +514,6 @@ final class GroupViewerVC:
         let lockMenu = UIMenu(options: [.displayInline], children: [lockDatabaseAction])
 
         let menu = UIMenu.make(
-            reverse: shouldReverseMenu,
             children: [frequentMenu, rareMenu, lockMenu]
         )
         barButton.menu = menu
@@ -769,7 +759,6 @@ final class GroupViewerVC:
         }
     }
 
-    @available(iOS 13, *)
     private func getAccessibilityActions(for entry: Entry) -> [UIAccessibilityCustomAction] {
         var actions = [UIAccessibilityCustomAction]()
 

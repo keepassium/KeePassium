@@ -27,9 +27,7 @@ class YubiKeyUSB {
     }
 
     public static var isSupported: Bool {
-        guard #available(macCatalyst 12, *),
-              ProcessInfo.isCatalystApp
-        else {
+        guard ProcessInfo.isCatalystApp else {
             return false
         }
         #if MAIN_APP

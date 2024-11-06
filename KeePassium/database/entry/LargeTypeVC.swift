@@ -109,16 +109,13 @@ final class LargeTypeVC: UICollectionViewController {
     }
 
     func detents(for size: CGSize) -> [UISheetPresentationController.Detent] {
-        guard #available(iOS 16.0, *) else {
-            self.computeRowsAndColumns(for: size)
-            return [.medium(), .large()]
-        }
-
-        return [UISheetPresentationController.Detent.custom(identifier: .init("detent")) { [unowned self] context in
+        let customDetent = UISheetPresentationController.Detent.custom(identifier: .init("detent")) {
+            [unowned self] context in
             self.computeRowsAndColumns(for: self.view.frame.size)
             let neededHeight = ceil(Double(text.count) / Double(columns)) * cellHeight
             return neededHeight < size.height ? neededHeight : size.height * 0.9
-        }]
+        }
+        return [customDetent]
     }
 }
 

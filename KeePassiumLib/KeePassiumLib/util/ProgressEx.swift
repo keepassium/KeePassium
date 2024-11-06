@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class ProgressEx: Progress {
+public class ProgressEx: Progress, @unchecked Sendable {
     public enum CancellationReason {
         case userRequest
         case lowMemoryWarning

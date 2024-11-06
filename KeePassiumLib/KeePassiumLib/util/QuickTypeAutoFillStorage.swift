@@ -60,7 +60,7 @@ final public class QuickTypeAutoFillStorage {
                 }
             }
             if replaceExisting {
-                store.replaceCredentialIdentities(with: identities, completion: completion)
+                store.replaceCredentialIdentities(identities, completion: completion)
             } else {
                 store.saveCredentialIdentities(identities, completion: completion)
             }
@@ -69,8 +69,8 @@ final public class QuickTypeAutoFillStorage {
 
     private static func getCredentialIdentities(
         from databaseFile: DatabaseFile
-    ) -> [CredentialIdentity] {
-        var result = [CredentialIdentity]()
+    ) -> [ASCredentialIdentity] {
+        var result = [ASCredentialIdentity]()
         let rootGroup = databaseFile.database.root
         rootGroup?.applyToAllChildren(groupHandler: nil, entryHandler: { entry in
             let parentGroup2 = entry.parent as? Group2
@@ -101,31 +101,32 @@ final public class QuickTypeAutoFillStorage {
         services: [ASCredentialServiceIdentifier],
         containsTOTP: Bool,
         record: QuickTypeAutoFillRecord
-    ) -> [CredentialIdentity] {
+    ) -> [ASCredentialIdentity] {
         guard userName.isNotEmpty else {
             return []
         }
+
+        var result = [ASCredentialIdentity]()
         let recordIdentifier = record.toString()
-        let passwordCredentials = services.map {
+        result.append(contentsOf: services.map {
             ASPasswordCredentialIdentity(
                 serviceIdentifier: $0,
                 user: userName,
                 recordIdentifier: recordIdentifier
             )
-        }
+        })
         if #available(iOS 18.0, *),
             containsTOTP
         {
-            return passwordCredentials + services.map { service -> CredentialIdentity in
+            result.append(contentsOf: services.map {
                 ASOneTimeCodeCredentialIdentity(
-                    serviceIdentifier: service,
+                    serviceIdentifier: $0,
                     label: userName,
                     recordIdentifier: recordIdentifier
                 )
-            }
-        } else {
-            return passwordCredentials
+            })
         }
+        return result
     }
 }
 

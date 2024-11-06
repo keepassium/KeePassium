@@ -106,12 +106,6 @@ extension OnboardingStepVC {
             self.refreshButtonsBackground()
         }
     }
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        DispatchQueue.main.async {
-            self.refreshButtonsBackground()
-        }
-    }
     private func refreshButtonsBackground() {
         let isScrollable = contentScrollView.contentSize.height >= contentScrollView.bounds.height
         buttonsBorderView.isHidden = !isScrollable

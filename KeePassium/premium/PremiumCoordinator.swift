@@ -51,8 +51,6 @@ class PremiumCoordinator: NSObject, Coordinator {
             self.dismissHandler?(self)
         })
 
-        (UIApplication.shared as! KPApplication).showNetworkActivityIndicator()
-
         planPicker.isPurchaseEnabled = false
 
         if tryRestoringPurchasesFirst {
@@ -73,7 +71,6 @@ class PremiumCoordinator: NSObject, Coordinator {
 
     fileprivate func refreshAvailableProducts() {
         premiumManager.requestAvailableProducts(ofKind: .premium) { [weak self] products, error in
-            (UIApplication.shared as! KPApplication).hideNetworkActivityIndicator()
             guard let self = self else { return }
 
             self.planPicker.isPurchaseEnabled = true

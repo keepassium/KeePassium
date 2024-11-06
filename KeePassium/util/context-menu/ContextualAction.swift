@@ -21,7 +21,6 @@ struct ContextualAction {
     var color: UIColor?
     var handler: (() -> Void)
 
-    @available(iOS 13, *)
     public func toMenuAction() -> UIAction {
         var image: UIImage?
         if let imageName {

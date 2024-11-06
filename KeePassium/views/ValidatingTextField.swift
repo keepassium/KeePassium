@@ -208,7 +208,6 @@ extension ValidatingTextField: UITextFieldDelegate {
         return externalDelegate?.textFieldShouldReturn?(textField) ?? true
     }
 
-    @available(iOS 13, *)
     func textFieldDidChangeSelection(_ textField: UITextField) {
         externalDelegate?.textFieldDidChangeSelection?(textField)
     }

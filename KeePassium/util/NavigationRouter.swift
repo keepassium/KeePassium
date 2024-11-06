@@ -45,9 +45,6 @@ final public class RouterNavigationController: UINavigationController {
     }
 
     private func setupBarAppearance() {
-        guard #available(iOS 15.0, *) else {
-            return
-        }
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithDefaultBackground()
         navBarAppearance.backgroundColor = .systemBackground

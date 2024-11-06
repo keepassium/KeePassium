@@ -135,9 +135,6 @@ class ProtectedTextField: ValidatingTextField {
     }
 
     func allowAutoFillPrompt(_ allowed: Bool) {
-        guard #available(iOS 12, *) else {
-            return
-        }
         if allowed {
             if textContentType == .oneTimeCode {
                 textContentType = originalContentType

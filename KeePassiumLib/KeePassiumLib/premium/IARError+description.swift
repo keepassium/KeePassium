@@ -8,7 +8,7 @@
 
 import TPInAppReceipt
 
-extension IARError: LocalizedError {
+extension IARError: @retroactive LocalizedError {
 
     public var errorDescription: String? {
         switch self {
@@ -24,7 +24,7 @@ extension IARError: LocalizedError {
     }
 }
 
-extension IARError.ReceiptInitializationFailureReason: LocalizedError {
+extension IARError.ReceiptInitializationFailureReason: @retroactive LocalizedError {
 
     public var errorDescription: String? {
         switch self {
@@ -38,7 +38,7 @@ extension IARError.ReceiptInitializationFailureReason: LocalizedError {
     }
 }
 
-extension IARError.ValidationFailureReason: LocalizedError {
+extension IARError.ValidationFailureReason: @retroactive LocalizedError {
 
     public var errorDescription: String? {
         switch self {
@@ -54,7 +54,7 @@ extension IARError.ValidationFailureReason: LocalizedError {
     }
 }
 
-extension IARError.SignatureValidationFailureReason: LocalizedError {
+extension IARError.SignatureValidationFailureReason: @retroactive LocalizedError {
 
     public var errorDescription: String? {
         switch self {

@@ -87,10 +87,8 @@ final class MainCoordinator: Coordinator {
         window.rootViewController = rootSplitVC
 
         #if targetEnvironment(macCatalyst)
-        if #available(macCatalyst 16.0, *) { 
-            let titlebar = UIApplication.shared.currentScene?.titlebar
-            titlebar?.titleVisibility = .hidden
-        }
+        let titlebar = UIApplication.shared.currentScene?.titlebar
+        titlebar?.titleVisibility = .hidden
         #endif
     }
 

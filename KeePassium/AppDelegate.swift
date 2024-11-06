@@ -8,7 +8,6 @@
 
 import KeePassiumLib
 
-@available(iOS 13, *)
 enum MenuIdentifier {
     static let databaseFileMenu = UIMenu.Identifier("com.keepassium.menu.databaseFileMenu")
     static let databaseItemsMenu = UIMenu.Identifier("com.keepassium.menu.databaseItemsMenu")
@@ -156,7 +155,6 @@ extension AppDelegate {
         }
     }
 
-    @available(iOS 13, *)
     override func buildMenu(with builder: UIMenuBuilder) {
         guard builder.system == UIMenuSystem.main else {
             return

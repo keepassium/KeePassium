@@ -74,7 +74,6 @@ class ChallengeResponseManager {
             initMFISessionObserver()
         }
 
-        guard #available(iOS 13.0, *) else { return }
         supportsNFC = YubiKitDeviceCapabilities.supportsISO7816NFCTags
         if supportsNFC {
             initNFCSessionObserver()
@@ -93,7 +92,6 @@ class ChallengeResponseManager {
         )
     }
 
-    @available(iOS 13.0, *)
     private func initNFCSessionObserver() {
         let nfcSession = YubiKitManager.shared.nfcSession as! YKFNFCSession
         nfcSessionStateObservation = nfcSession.observe(
@@ -138,7 +136,6 @@ class ChallengeResponseManager {
         }
     }
 
-    @available(iOS 13.0, *)
     private func nfcSessionStateDidChange() {
         let keySession = YubiKitManager.shared.nfcSession as! YKFNFCSession
         switch keySession.iso7816SessionState {
@@ -228,7 +225,7 @@ class ChallengeResponseManager {
         challenge: SecureBytes,
         responseHandler: @escaping ResponseHandler
     ) {
-        guard #available(iOS 13, *), supportsNFC else {
+        guard supportsNFC else {
             #if AUTOFILL_EXT
             returnError(.notAvailableInAutoFill)
             #else
@@ -350,8 +347,6 @@ class ChallengeResponseManager {
     }
 
     private func cancelNFCSession() {
-        guard #available(iOS 13, *) else { assertionFailure(); return }
-
         let nfcSession = YubiKitManager.shared.nfcSession
         nfcSession.cancelCommands()
         nfcSession.stopIso7816Session()
@@ -403,7 +398,6 @@ class ChallengeResponseManager {
         performChallengeResponse(rawCommandService: rawCommandService, slot: slot)
     }
 
-    @available(iOS 13.0, *)
     private func performChallengeResponse(
         _ nfcSession: YKFNFCSession,
         slot: YubiKey.Slot

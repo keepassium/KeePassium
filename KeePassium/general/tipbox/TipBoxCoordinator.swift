@@ -60,10 +60,8 @@ final class TipBoxCoordinator: Coordinator {
     }
 
     private func refreshAvailableProducts() {
-        (UIApplication.shared as! KPApplication).showNetworkActivityIndicator()
         tipBoxVC.setStatus(busy: true, text: LString.statusContactingAppStore, animated: true)
         premiumManager.requestAvailableProducts(ofKind: .donation) { [weak self] products, error in
-            (UIApplication.shared as! KPApplication).hideNetworkActivityIndicator()
             self?.showReceivedProducts(products, error)
         }
     }

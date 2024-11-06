@@ -168,9 +168,6 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
         case .noHardwareKey:
             return nil
         case .yubiKeyNFC:
-            guard #available(iOS 13, *) else {
-                return LString.iOSVersionTooOldForHardwareKey
-            }
             if AppGroup.isAppExtension {
                 return LString.theseHardwareKeyNotAvailableInAutoFill
             }

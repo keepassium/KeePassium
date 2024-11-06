@@ -19,7 +19,6 @@ final class CredentialProviderIdentity: NSObject {
         super.init()
     }
 
-    @available(iOS 17.0, *)
     init(_ credential: ASCredentialIdentity) {
         self.recordIdentifier = credential.recordIdentifier
         self.serviceIdentifier = credential.serviceIdentifier

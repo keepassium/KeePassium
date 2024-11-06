@@ -22,8 +22,6 @@ class CollectionViewControllerWithContextActions: UICollectionViewController {
         return itemActions.count > 0
     }
 
-
-    @available(iOS 13, *)
     override func collectionView(
         _ collectionView: UICollectionView,
         contextMenuConfigurationForItemAt indexPath: IndexPath,

@@ -33,8 +33,6 @@ class TableViewControllerWithContextActions: UITableViewController {
         return UISwipeActionsConfiguration(actions: swipeActions)
     }
 
-
-    @available(iOS 13, *)
     override func tableView(
         _ tableView: UITableView,
         contextMenuConfigurationForRowAt indexPath: IndexPath,
