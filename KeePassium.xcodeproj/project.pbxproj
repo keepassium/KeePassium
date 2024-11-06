@@ -1238,6 +1238,11 @@
 		F321415A2A934ABA007A8D4E /* PasswordAuditResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37CAA312A88DDD00000EF64 /* PasswordAuditResultsVC.swift */; };
 		F321415B2A934ABA007A8D4E /* PasswordAuditVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F37CAA2A2A87DDF60000EF64 /* PasswordAuditVC.storyboard */; };
 		F321415C2A934ABA007A8D4E /* PasswordAuditResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36296882A8B87FC00A1E2B0 /* PasswordAuditResultCell.swift */; };
+		F32228152CCEC4230093BD9C /* KeyFileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32228142CCEC4230093BD9C /* KeyFileTextField.swift */; };
+		F32228162CCEC4230093BD9C /* KeyFileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32228142CCEC4230093BD9C /* KeyFileTextField.swift */; };
+		F32228172CCEC4230093BD9C /* KeyFileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32228142CCEC4230093BD9C /* KeyFileTextField.swift */; };
+		F32228182CCEC4230093BD9C /* KeyFileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32228142CCEC4230093BD9C /* KeyFileTextField.swift */; };
+		F32228192CCEC4230093BD9C /* KeyFileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32228142CCEC4230093BD9C /* KeyFileTextField.swift */; };
 		F331EF282A8509860084473D /* Zxcvbn in Frameworks */ = {isa = PBXBuildFile; productRef = F331EF272A8509860084473D /* Zxcvbn */; };
 		F331EF2A2A8509A10084473D /* Zxcvbn in Frameworks */ = {isa = PBXBuildFile; productRef = F331EF292A8509A10084473D /* Zxcvbn */; };
 		F331EF2C2A8509AC0084473D /* Zxcvbn in Frameworks */ = {isa = PBXBuildFile; productRef = F331EF2B2A8509AC0084473D /* Zxcvbn */; };
@@ -2454,6 +2459,7 @@
 		F30D036E2A7BE83A0047525F /* PasswordQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordQuality.swift; sourceTree = "<group>"; };
 		F31114A72B9B83B300236632 /* DropboxConnectionSetupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxConnectionSetupCoordinator.swift; sourceTree = "<group>"; };
 		F321414B2A90D2CD007A8D4E /* PasswordAuditServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordAuditServiceTests.swift; sourceTree = "<group>"; };
+		F32228142CCEC4230093BD9C /* KeyFileTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFileTextField.swift; sourceTree = "<group>"; };
 		F33F2C502B32DD61009EFB18 /* TagSelectorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSelectorVC.swift; sourceTree = "<group>"; };
 		F33F2C532B32E059009EFB18 /* TagSelectorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSelectorCoordinator.swift; sourceTree = "<group>"; };
 		F34010A22AA1E540005FDF55 /* ExposureCountFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureCountFormatter.swift; sourceTree = "<group>"; };
@@ -3192,6 +3198,7 @@
 				75BFB13E2481553D0017B980 /* DynamicFileList.swift */,
 				758622762A4B798500D50B68 /* ErrorMessageView.swift */,
 				758BADB424B5EAFF00CC9265 /* GradientSeparatorView.swift */,
+				F32228142CCEC4230093BD9C /* KeyFileTextField.swift */,
 				7573FD8A2321664F00DCDA5A /* MultilineButton.swift */,
 				757FDF6126E2519E0023E028 /* OTPView.swift */,
 				75BF5AEC27680D4600809654 /* ParameterValueCell.swift */,
@@ -4229,6 +4236,7 @@
 				75DE677A268F6F69003D4DCC /* BiometricsHelper.swift in Sources */,
 				757ADC5523A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
 				757FB3CB21F8D34A00F016FA /* PasscodeInputVC.swift in Sources */,
+				F32228172CCEC4230093BD9C /* KeyFileTextField.swift in Sources */,
 				75D99DEF269CEE0800D0E9D7 /* DatabaseItemTitleView.swift in Sources */,
 				7502561D283D370000B930D9 /* SpinnerLabel.swift in Sources */,
 				757FDF6326E2519E0023E028 /* OTPView.swift in Sources */,
@@ -4394,6 +4402,7 @@
 				75D3A3AF21BAE53F00255FC3 /* FileListCell.swift in Sources */,
 				75A4948C2B5F0E9C00ED018F /* TagFormatter.swift in Sources */,
 				753A3EEA20D3776D00A1CF70 /* Refreshable.swift in Sources */,
+				F32228192CCEC4230093BD9C /* KeyFileTextField.swift in Sources */,
 				75480503238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
 				75EA64182098FC0500DDB941 /* DatabasePickerVC.swift in Sources */,
 				757FDF6226E2519E0023E028 /* OTPView.swift in Sources */,
@@ -4631,6 +4640,7 @@
 				75B38C26233E5B7C006BDEFC /* Refreshable.swift in Sources */,
 				75480505238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
 				75CF52242B18A60400FF3A3F /* Coordinator+databaseUpgrade.swift in Sources */,
+				F32228162CCEC4230093BD9C /* KeyFileTextField.swift in Sources */,
 				75B38C28233E5B7C006BDEFC /* DatabasePickerVC.swift in Sources */,
 				753FE83724C1A9A400063FBB /* UIViewController+alerts.swift in Sources */,
 				757FDF6426E2519E0023E028 /* OTPView.swift in Sources */,
@@ -4767,6 +4777,7 @@
 				75D075C728B639D200F02E39 /* PricingPlanPickerVC.swift in Sources */,
 				75136B282B67CD6B00214760 /* RemoteFileExportCoordinator.swift in Sources */,
 				75D075C828B639D200F02E39 /* UIViewController+storyboard.swift in Sources */,
+				F32228182CCEC4230093BD9C /* KeyFileTextField.swift in Sources */,
 				75D075C928B639D200F02E39 /* DatabaseUnlockerCoordinator.swift in Sources */,
 				75D075CA28B639D200F02E39 /* FileInfoVC.swift in Sources */,
 				75D075CB28B639D200F02E39 /* URLReference+extensions.swift in Sources */,
@@ -5086,6 +5097,7 @@
 				75D99DF1269CEE0800D0E9D7 /* DatabaseItemTitleView.swift in Sources */,
 				7505F6C82B86430400EA9BFD /* ManagedAppConfig+extensions.swift in Sources */,
 				7502561F283D370000B930D9 /* SpinnerLabel.swift in Sources */,
+				F32228152CCEC4230093BD9C /* KeyFileTextField.swift in Sources */,
 				757FDF6526E2519E0023E028 /* OTPView.swift in Sources */,
 				751DED762847B44B00B6D02E /* UITextInput+extensions.swift in Sources */,
 				75D21BDC2B642E480065D95E /* BusyStateIndicating.swift in Sources */,

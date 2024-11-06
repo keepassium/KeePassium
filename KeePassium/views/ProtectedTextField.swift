@@ -32,6 +32,10 @@ class ProtectedTextField: ValidatingTextField {
             toggleButton?.isSelected = !isSecureTextEntry
         }
     }
+    var isToggleEnabled: Bool {
+        get { toggleButton.isEnabled }
+        set { toggleButton.isEnabled = newValue }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -59,6 +63,8 @@ class ProtectedTextField: ValidatingTextField {
         buttonConfig.imagePadding = 2
         buttonConfig.imageReservation = 32
         buttonConfig.baseBackgroundColor = .clear
+        buttonConfig.background.backgroundColor = .clear
+        buttonConfig.background.backgroundColorTransformer = nil
         buttonConfig.imagePlacement = .all
         buttonConfig.preferredSymbolConfigurationForImage = .init(textStyle: .body, scale: .medium)
         toggleButton = UIButton(configuration: buttonConfig)

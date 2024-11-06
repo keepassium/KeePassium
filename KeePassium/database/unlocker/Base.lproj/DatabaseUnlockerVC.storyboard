@@ -101,7 +101,7 @@
                                                                     <constraint firstAttribute="height" constant="2" id="1li-ig-vuf"/>
                                                                 </constraints>
                                                             </view>
-                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="No Key File" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mYY-hP-3vH" customClass="ValidatingTextField" customModule="KeePassium" customModuleProvider="target">
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="No Key File" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mYY-hP-3vH" customClass="KeyFileTextField" customModule="KeePassium" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="46" width="280" height="44"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="44" id="zgu-ja-9pO"/>

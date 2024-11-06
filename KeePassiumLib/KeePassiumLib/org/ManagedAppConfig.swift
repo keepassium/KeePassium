@@ -21,6 +21,7 @@ public final class ManagedAppConfig: NSObject {
         case rememberDatabaseFinalKey
         case keepKeyFileAssociations
         case keepHardwareKeyAssociations
+        case protectKeyFileInput
         case lockAllDatabasesOnFailedPasscode
         case appLockTimeout
         case lockAppOnLaunch
@@ -146,6 +147,7 @@ extension ManagedAppConfig {
              .rememberDatabaseFinalKey,
              .keepKeyFileAssociations,
              .keepHardwareKeyAssociations,
+             .protectKeyFileInput,
              .lockAllDatabasesOnFailedPasscode,
              .lockAppOnLaunch,
              .lockDatabasesOnTimeout,
@@ -222,6 +224,7 @@ extension ManagedAppConfig {
              .rememberDatabaseFinalKey,
              .keepKeyFileAssociations,
              .keepHardwareKeyAssociations,
+             .protectKeyFileInput,
              .lockAllDatabasesOnFailedPasscode,
              .lockAppOnLaunch,
              .lockDatabasesOnTimeout,

@@ -194,6 +194,12 @@
     <string keyName="kdfType">
       <constraint nullable="true"></constraint>
     </string>
+    <string keyName="protectKeyFileInput">
+      <defaultValue>
+        <value></value>
+      </defaultValue>
+      <constraint nullable="true"></constraint>
+    </string>
     <integer keyName="kdfIterations">
       <defaultValue>
         <value>1</value>
@@ -397,7 +403,25 @@
           <language value="en-US">Is enforced together with minimal complexity.</language>
         </description>
       </field>
-
+      <field keyName="protectKeyFileInput" type="select">
+        <label>
+          <language value="en-US">Protect key file input field</language>
+        </label>
+        <description>
+          <language value="en-US">Hide the name of selected key file behind dots, like a password.</language>
+        </description>
+        <options>
+          <option value="" selected="true">
+            <language value="en-US">(Not configured)</language>
+          </option>
+          <option value="yes">
+            <language value="en-US">Yes</language>
+          </option>
+          <option value="no">
+            <language value="en-US">No</language>
+          </option>
+        </options>
+      </field>
       <field keyName="allowDatabaseEncryptionSettings" type="select">
         <label>
           <language value="en-US">Allow viewing/editing database encryption settings</language>
