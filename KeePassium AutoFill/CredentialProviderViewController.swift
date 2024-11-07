@@ -53,26 +53,6 @@ class CredentialProviderViewController: ASCredentialProviderViewController {
         prepareCredentialList(for: serviceIdentifiers, mode: .credentials)
     }
 
-    override func prepareInterfaceToProvideCredential(
-        for credentialIdentity: ASPasswordCredentialIdentity
-    ) {
-        log.trace("prepareInterfaceToProvideCredential")
-        autoFillCoordinator.prepareUI(
-            autoFillMode: .credentials,
-            for: CredentialProviderIdentity(credentialIdentity)
-        )
-    }
-
-    override func provideCredentialWithoutUserInteraction(
-        for credentialIdentity: ASPasswordCredentialIdentity
-    ) {
-        log.trace("provideCredentialWithoutUserInteraction")
-        autoFillCoordinator.provideWithoutUserInteraction(
-            autoFillMode: .credentials,
-            for: CredentialProviderIdentity(credentialIdentity)
-        )
-    }
-
     override func prepareInterfaceForExtensionConfiguration() {
         log.trace("prepareInterfaceForExtensionConfiguration")
         autoFillCoordinator.prepareConfigurationUI()
