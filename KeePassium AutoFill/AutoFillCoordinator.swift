@@ -45,8 +45,6 @@ class AutoFillCoordinator: NSObject, Coordinator {
     fileprivate var isBiometricAuthShown = false
     fileprivate var isPasscodeInputShown = false
 
-    private let localNotifications = LocalNotifications()
-
     #if INTUNE
     private var enrollmentDelegate: IntuneEnrollmentDelegateImpl?
     private var policyDelegate: IntunePolicyDelegateImpl?
@@ -85,7 +83,6 @@ class AutoFillCoordinator: NSObject, Coordinator {
         Diag.info(AppInfo.description)
 
         watchdog.delegate = self
-        UNUserNotificationCenter.current().delegate = localNotifications
     }
 
     deinit {
@@ -106,11 +103,6 @@ class AutoFillCoordinator: NSObject, Coordinator {
         premiumManager.reloadReceipt()
         premiumManager.usageMonitor.startInterval()
         watchdog.didBecomeActive()
-    }
-
-    func prepareConfigurationUI() {
-        log.trace("Coordinator prepares configuration UI")
-        isInDeviceAutoFillSettings = true
     }
 
     func start() {
@@ -185,111 +177,6 @@ class AutoFillCoordinator: NSObject, Coordinator {
     private func dismissAndQuit() {
         log.trace("Coordinator will clean up and quit")
         cancelRequest(.userCanceled)
-        Settings.current.isAutoFillFinishedOK = true
-        cleanup()
-    }
-
-    internal func cancelRequest(_ code: ASExtensionError.Code) {
-        log.info("Cancelling the request with code \(code)")
-        extensionContext.cancelRequest(
-            withError: NSError(
-                domain: ASExtensionErrorDomain,
-                code: code.rawValue
-            )
-        )
-    }
-
-    private func getOTPForClipboard(for entry: Entry) -> String? {
-        guard Settings.current.isCopyTOTPOnAutoFill,
-              let generator = TOTPGeneratorFactory.makeGenerator(for: entry)
-        else {
-            return nil
-        }
-        return generator.generate()
-    }
-
-    private func returnCredentialsOrOneTimeCode(entry: Entry) {
-        if autoFillMode == .oneTimeCode, #available(iOS 18.0, *) {
-            returnOneTimeCode(entry: entry)
-        } else {
-            returnCredentials(entry: entry)
-        }
-    }
-
-    private func returnCredentials(entry: Entry) {
-        log.info("Will return credentials")
-        watchdog.restart()
-
-        if let otpString = getOTPForClipboard(for: entry) {
-            let isCopied = Clipboard.general.copyWithTimeout(otpString)
-            let formattedOTP = OTPCodeFormatter.decorate(otpCode: otpString)
-            if isCopied {
-                LocalNotifications.showTOTPNotification(
-                    title: formattedOTP,
-                    body: LString.otpCodeCopiedToClipboard
-                )
-            } else {
-                LocalNotifications.showTOTPNotification(
-                    title: formattedOTP,
-                    body: LString.otpCodeHereItIs
-                )
-            }
-        }
-
-        let passwordCredential = ASPasswordCredential(
-            user: entry.resolvedUserName,
-            password: entry.resolvedPassword)
-        extensionContext.completeRequest(
-            withSelectedCredential: passwordCredential,
-            completionHandler: { [self] expired in
-                log.debug("Did return credentials (exp: \(expired))")
-            }
-        )
-        if hasUI {
-            HapticFeedback.play(.credentialsPasted)
-        }
-        Settings.current.isAutoFillFinishedOK = true
-        cleanup()
-    }
-
-    @available(iOS 18.0, *)
-    private func returnOneTimeCode(entry: Entry) {
-        log.info("Will return one time code")
-        watchdog.restart()
-
-        guard let generator = TOTPGeneratorFactory.makeGenerator(for: entry) else {
-            log.error("Trying to return one time code from entry with no TOTP")
-            extensionContext.cancelRequest(withError: ASExtensionError(.credentialIdentityNotFound))
-            cleanup()
-            return
-        }
-
-        extensionContext.completeOneTimeCodeRequest(
-            using: ASOneTimeCodeCredential(
-                code: generator.generate()
-            )
-        )
-        if hasUI {
-            HapticFeedback.play(.credentialsPasted)
-        }
-        Settings.current.isAutoFillFinishedOK = true
-        cleanup()
-    }
-
-    @available(iOS 18, *)
-    private func returnText(_ text: String) {
-        log.info("Will return text")
-        watchdog.restart()
-        #if targetEnvironment(macCatalyst)
-            // swiftlint:disable:next line_length
-            let alert = UIAlertController.make(title: nil, message: "This feature is broken in macOS Sequoia.\n\nInstead, use the 'key' button in the password field.")
-            router.present(alert, animated: true, completion: nil)
-        #else
-            extensionContext.completeRequest(withTextToInsert: text)
-            if hasUI {
-                HapticFeedback.play(.credentialsPasted)
-            }
-        #endif
         Settings.current.isAutoFillFinishedOK = true
         cleanup()
     }
@@ -397,24 +284,37 @@ extension AutoFillCoordinator {
 }
 
 extension AutoFillCoordinator: DatabaseLoaderDelegate {
-    func prepareUI(autoFillMode: AutoFillMode, for credentialIdentity: CredentialProviderIdentity) {
-        log.trace("Preparing UI to return \(autoFillMode.debugDescription)")
-        Diag.debug("Preparing UI to return \(autoFillMode.debugDescription)")
+    func startConfigurationUI() {
+        log.trace("Coordinator prepares configuration UI")
+        isInDeviceAutoFillSettings = true
+        if ProcessInfo.isRunningOnMac {
+            start()
+        }
+    }
+
+    func startUI(forServices serviceIdentifiers: [ASCredentialServiceIdentifier], mode: AutoFillMode) {
+        self.serviceIdentifiers = serviceIdentifiers
+        self.autoFillMode = mode
+        if ProcessInfo.isRunningOnMac {
+            start()
+        }
+    }
+
+    func startUI(forIdentity credentialIdentity: CredentialProviderIdentity, mode: AutoFillMode) {
+        log.trace("Preparing UI to return \(mode.debugDescription)")
+        Diag.debug("Preparing UI to return \(mode.debugDescription)")
         self.serviceIdentifiers = [credentialIdentity.serviceIdentifier]
         if let recordIdentifier = credentialIdentity.recordIdentifier,
            let record = QuickTypeAutoFillRecord.parse(recordIdentifier)
         {
             quickTypeRequiredRecord = record
         }
-        self.autoFillMode = autoFillMode
-        if !ProcessInfo.isRunningOnMac {
-            assert(!hasUI)
-            start()
-        }
+        self.autoFillMode = mode
+        start()
     }
 
-    func provideWithoutUserInteraction(autoFillMode: AutoFillMode, for credentialIdentity: CredentialProviderIdentity) {
-        log.trace("Will provide \(autoFillMode.debugDescription) without user interaction")
+    func provideWithoutUI(forIdentity credentialIdentity: CredentialProviderIdentity, mode: AutoFillMode) {
+        log.trace("Will provide \(mode.debugDescription) without user interaction")
         assert(!hasUI, "This should run in pre-UI mode only")
         Diag.info("Identity: \(credentialIdentity.description)")
 
@@ -427,7 +327,7 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
             return
         }
         quickTypeRequiredRecord = record
-        self.autoFillMode = autoFillMode
+        self.autoFillMode = mode
 
         guard let dbRef = findDatabase(for: record) else {
             log.debug("Failed to find the record, aborting")
@@ -460,7 +360,118 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
         log.trace("Will load database")
         quickTypeDatabaseLoader!.load()
     }
+}
 
+extension AutoFillCoordinator {
+    internal func cancelRequest(_ code: ASExtensionError.Code) {
+        log.info("Cancelling the request with code \(code)")
+        extensionContext.cancelRequest(
+            withError: NSError(
+                domain: ASExtensionErrorDomain,
+                code: code.rawValue
+            )
+        )
+    }
+
+    private func getOTPForClipboard(for entry: Entry) -> String? {
+        guard Settings.current.isCopyTOTPOnAutoFill,
+              let generator = TOTPGeneratorFactory.makeGenerator(for: entry)
+        else {
+            return nil
+        }
+        return generator.generate()
+    }
+
+    private func returnEntry(_ entry: Entry) {
+        switch autoFillMode {
+        case .credentials:
+            returnCredentials(from: entry)
+        case .oneTimeCode:
+            if #available(iOS 18, *) {
+                returnOneTimeCode(from: entry)
+            } else {
+                log.error("Tried to return .oneTimeCode before iOS 18, cancelling")
+                assertionFailure()
+                cancelRequest(.failed)
+            }
+        default:
+            log.error("Unexpected AutoFillMode value, cancelling")
+            assertionFailure()
+            cancelRequest(.failed)
+        }
+    }
+
+    private func returnCredentials(from entry: Entry) {
+        log.info("Will return credentials")
+        watchdog.restart()
+
+        if let otpValue = getOTPForClipboard(for: entry) {
+            guard hasUI else {
+                log.info("Quick entry has OTP, switching to UI to copy it to clipboard")
+                cancelRequest(.userInteractionRequired)
+                return
+            }
+            Clipboard.general.copyWithTimeout(otpValue)
+        }
+
+        let passwordCredential = ASPasswordCredential(
+            user: entry.resolvedUserName,
+            password: entry.resolvedPassword)
+        extensionContext.completeRequest(
+            withSelectedCredential: passwordCredential,
+            completionHandler: { [self] expired in
+                log.debug("Did return credentials (exp: \(expired))")
+            }
+        )
+        if hasUI {
+            HapticFeedback.play(.credentialsPasted)
+        }
+        Settings.current.isAutoFillFinishedOK = true
+        cleanup()
+    }
+
+    @available(iOS 18.0, *)
+    private func returnOneTimeCode(from entry: Entry) {
+        log.info("Will return one time code")
+        watchdog.restart()
+
+        guard let totpGenerator = TOTPGeneratorFactory.makeGenerator(for: entry) else {
+            log.error("Trying to return one time code from entry with no TOTP")
+            extensionContext.cancelRequest(withError: ASExtensionError(.credentialIdentityNotFound))
+            cleanup()
+            return
+        }
+
+        let otp = ASOneTimeCodeCredential(code: totpGenerator.generate())
+        extensionContext.completeOneTimeCodeRequest(using: otp)
+
+        if hasUI {
+            HapticFeedback.play(.credentialsPasted)
+        }
+        Settings.current.isAutoFillFinishedOK = true
+        cleanup()
+    }
+
+    @available(iOS 18, *)
+    private func returnText(_ text: String) {
+        log.info("Will return text")
+        watchdog.restart()
+        #if targetEnvironment(macCatalyst)
+            // swiftlint:disable:next line_length
+            let alert = UIAlertController.make(title: nil, message: "This feature is broken in macOS Sequoia.\n\nInstead, use the 'key' button in the password field.")
+            router.present(alert, animated: true, completion: nil)
+        #else
+            extensionContext.completeRequest(withTextToInsert: text)
+            if hasUI {
+                HapticFeedback.play(.credentialsPasted)
+            }
+        #endif
+        Settings.current.isAutoFillFinishedOK = true
+        cleanup()
+    }
+}
+
+extension AutoFillCoordinator {
     private func findDatabase(for record: QuickTypeAutoFillRecord) -> URLReference? {
         let dbRefs = FileKeeper.shared.getAllReferences(fileType: .database, includeBackup: false)
         let matchingDatabase = dbRefs.first {
@@ -492,12 +503,7 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
             cancelRequest(.credentialIdentityNotFound)
             return
         }
-
-        if let _ = getOTPForClipboard(for: foundEntry) {
-            cancelRequest(.userInteractionRequired)
-        } else {
-            returnCredentialsOrOneTimeCode(entry: foundEntry)
-        }
+        returnEntry(foundEntry)
     }
 
     func databaseLoader(_ databaseLoader: DatabaseLoader, willLoadDatabase dbRef: URLReference) {
@@ -794,7 +800,7 @@ extension AutoFillCoordinator: DatabaseUnlockerCoordinatorDelegate {
         if let targetRecord = quickTypeRequiredRecord,
            let desiredEntry = findEntry(matching: targetRecord, in: databaseFile)
         {
-            returnCredentialsOrOneTimeCode(entry: desiredEntry)
+            returnEntry(desiredEntry)
         } else {
             showDatabaseViewer(fileRef, databaseFile: databaseFile, warnings: warnings)
         }
@@ -825,7 +831,7 @@ extension AutoFillCoordinator: EntryFinderCoordinatorDelegate {
     }
 
     func didSelectEntry(_ entry: Entry, in coordinator: EntryFinderCoordinator) {
-        returnCredentialsOrOneTimeCode(entry: entry)
+        returnEntry(entry)
     }
 
     @available(iOS 18.0, *)

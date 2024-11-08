@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vWt-yt-cgE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vWt-yt-cgE">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--{Databases}-->
+        <!--Database PickerVC-->
         <scene sceneID="ZB8-UY-hSW">
             <objects>
                 <tableViewController storyboardIdentifier="DatabasePickerVC" id="vWt-yt-cgE" customClass="DatabasePickerVC" customModule="KeePassium" customModuleProvider="target" sceneMemberID="viewController">
@@ -119,7 +118,7 @@
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="{Databases}" id="UI0-Lh-wTj">
+                    <navigationItem key="navigationItem" id="UI0-Lh-wTj">
                         <barButtonItem key="leftBarButtonItem" image="info.circle" catalog="system" id="2o3-sG-Pcm" userLabel="About Button">
                             <connections>
                                 <action selector="didPressHelpButton:" destination="vWt-yt-cgE" id="C2G-nG-7ZZ"/>

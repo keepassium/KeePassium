@@ -15,6 +15,7 @@ class CredentialProviderViewController: ASCredentialProviderViewController {
     var autoFillCoordinator: AutoFillCoordinator! 
 
     override func viewDidLoad() {
+        log.trace("I live again /2")
         super.viewDidLoad()
         autoFillCoordinator = AutoFillCoordinator(rootController: self, context: extensionContext)
         autoFillCoordinator.prepare()
@@ -47,89 +48,57 @@ class CredentialProviderViewController: ASCredentialProviderViewController {
         textField.resignFirstResponder()
         textField.removeFromSuperview()
     }
-
-    override func prepareCredentialList(for serviceIdentifiers: [ASCredentialServiceIdentifier]) {
-        log.trace("prepareCredentialList")
-        prepareCredentialList(for: serviceIdentifiers, mode: .credentials)
-    }
-
-    override func prepareInterfaceForExtensionConfiguration() {
-        log.trace("prepareInterfaceForExtensionConfiguration")
-        autoFillCoordinator.prepareConfigurationUI()
-        if ProcessInfo.isRunningOnMac {
-            autoFillCoordinator.start()
-        }
-    }
-
-    private func prepareCredentialList(
-        for serviceIdentifiers: [ASCredentialServiceIdentifier],
-        mode: AutoFillMode
-    ) {
-        autoFillCoordinator.serviceIdentifiers = serviceIdentifiers
-        autoFillCoordinator.autoFillMode = mode
-        if ProcessInfo.isRunningOnMac {
-            autoFillCoordinator.start()
-        }
-    }
 }
 
 extension CredentialProviderViewController {
+    override func prepareInterfaceForExtensionConfiguration() {
+        log.trace("prepareInterfaceForExtensionConfiguration")
+        autoFillCoordinator.startConfigurationUI()
+    }
+
+    override func prepareCredentialList(for serviceIdentifiers: [ASCredentialServiceIdentifier]) {
+        log.trace("prepareCredentialList")
+        autoFillCoordinator.startUI(forServices: serviceIdentifiers, mode: .credentials)
+    }
+
     override func prepareOneTimeCodeCredentialList(for serviceIdentifiers: [ASCredentialServiceIdentifier]) {
         log.trace("prepareOneTimeCodeCredentialList")
-        prepareCredentialList(for: serviceIdentifiers, mode: .oneTimeCode)
+        autoFillCoordinator.startUI(forServices: serviceIdentifiers, mode: .oneTimeCode)
     }
 
 #if !targetEnvironment(macCatalyst)
     override func prepareInterfaceForUserChoosingTextToInsert() {
         log.trace("prepareInterfaceForUserChoosingTextToInsert")
-        prepareCredentialList(for: [], mode: .text)
+        autoFillCoordinator.startUI(forServices: [], mode: .text)
     }
 #endif
 
     override func prepareInterfaceToProvideCredential(for credentialRequest: ASCredentialRequest) {
         log.trace("prepareInterfaceToProvideCredential (iOS17+)")
+        let identity = CredentialProviderIdentity(credentialRequest.credentialIdentity)
         switch credentialRequest.type {
         case .password:
-            autoFillCoordinator.prepareUI(
-                autoFillMode: .credentials,
-                for: CredentialProviderIdentity(credentialRequest.credentialIdentity)
-            )
+            autoFillCoordinator.startUI(forIdentity: identity, mode: .credentials)
         case .oneTimeCode:
-            if #available(iOS 18.0, *) {
-                autoFillCoordinator.prepareUI(
-                    autoFillMode: .oneTimeCode,
-                    for: CredentialProviderIdentity(credentialRequest.credentialIdentity)
-                )
-            } else {
-                log.error("Request type of oneTimeCode called on older iOS than 18")
-                extensionContext.cancelRequest(withError: ASExtensionError(.failed))
-            }
+            autoFillCoordinator.startUI(forIdentity: identity, mode: .oneTimeCode)
         default:
+            log.error("Unexpected credential request type: \(credentialRequest.type.rawValue)")
+            assertionFailure()
             extensionContext.cancelRequest(withError: ASExtensionError(.failed))
         }
     }
 
     override func provideCredentialWithoutUserInteraction(for credentialRequest: ASCredentialRequest) {
         log.trace("provideCredentialWithoutUserInteraction (iOS17+)")
+        let identity = CredentialProviderIdentity(credentialRequest.credentialIdentity)
         switch credentialRequest.type {
         case .password:
-            autoFillCoordinator.provideWithoutUserInteraction(
-                autoFillMode: .credentials,
-                for: CredentialProviderIdentity(
-                    credentialRequest.credentialIdentity
-                )
-            )
+            autoFillCoordinator.provideWithoutUI(forIdentity: identity, mode: .credentials)
         case .oneTimeCode:
-            if #available(iOS 18.0, *) {
-                autoFillCoordinator.provideWithoutUserInteraction(
-                    autoFillMode: .oneTimeCode,
-                    for: CredentialProviderIdentity(credentialRequest.credentialIdentity)
-                )
-            } else {
-                log.error("Request type of oneTimeCode called on older iOS than 18")
-                extensionContext.cancelRequest(withError: ASExtensionError(.failed))
-            }
+            autoFillCoordinator.provideWithoutUI(forIdentity: identity, mode: .oneTimeCode)
         default:
+            log.error("Unexpected credential request type: \(credentialRequest.type.rawValue)")
+            assertionFailure()
             extensionContext.cancelRequest(withError: ASExtensionError(.failed))
         }
     }

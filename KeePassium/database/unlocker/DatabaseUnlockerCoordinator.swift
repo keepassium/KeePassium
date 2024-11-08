@@ -426,6 +426,9 @@ extension DatabaseUnlockerCoordinator: DatabaseUnlockerDelegate {
     }
 
     func willAppear(viewController: DatabaseUnlockerVC) {
+        guard databaseLoader == nil else {
+            return
+        }
         maybeUnlockAutomatically()
     }
 

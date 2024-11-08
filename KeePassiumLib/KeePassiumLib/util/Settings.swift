@@ -1346,7 +1346,12 @@ public class Settings {
             let stored = UserDefaults.appGroupShared
                 .object(forKey: Keys.copyTOTPOnAutoFill.rawValue)
                 as? Bool
-            return stored ?? true
+
+            if #available(iOS 18, *) {
+                return stored ?? false
+            } else {
+                return stored ?? true
+            }
         }
         set {
             updateAndNotify(

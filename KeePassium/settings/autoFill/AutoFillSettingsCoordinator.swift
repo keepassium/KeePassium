@@ -7,7 +7,6 @@
 //  For commercial licensing, please contact the author.
 
 import KeePassiumLib
-import UserNotifications
 
 final class AutoFillSettingsCoordinator: Coordinator, Refreshable {
     var childCoordinators = [Coordinator]()
@@ -75,12 +74,5 @@ extension AutoFillSettingsCoordinator: SettingsAutoFillViewControllerDelegate {
 
     func didToggleCopyTOTP(newValue: Bool, in viewController: SettingsAutoFillVC) {
         Settings.current.isCopyTOTPOnAutoFill = newValue
-        if newValue {
-            LocalNotifications.requestPermission {
-                LocalNotifications.showTOTPNotification(
-                    title: LString.otpCodeCopyToClipboardDemo,
-                    body: LString.otpCodeCopiedToClipboard)
-            }
-        }
     }
 }

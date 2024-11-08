@@ -222,7 +222,6 @@
 		75E74D3426C1D2B00071B151 /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E74D3326C1D2B00071B151 /* TestHelper.swift */; };
 		75E83020251CBAC80061B7DC /* DatabaseSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8301F251CBAC80061B7DC /* DatabaseSaver.swift */; };
 		75E9E2AE290AB9B100B79BE8 /* OTPCodeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9E2AD290AB9B100B79BE8 /* OTPCodeFormatter.swift */; };
-		75E9E2B2290ABB1600B79BE8 /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9E2B1290ABB1600B79BE8 /* LocalNotifications.swift */; };
 		75EA2D1721B2FB4000826FC6 /* Diag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA2D1621B2FB4000826FC6 /* Diag.swift */; };
 		75F11C33288312A3005B3DC0 /* LString+about.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F11C32288312A3005B3DC0 /* LString+about.swift */; };
 		75F11C3C288580D4005B3DC0 /* URL+consts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F11C3B288580D4005B3DC0 /* URL+consts.swift */; };
@@ -532,7 +531,6 @@
 		75E74D3326C1D2B00071B151 /* TestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelper.swift; sourceTree = "<group>"; };
 		75E8301F251CBAC80061B7DC /* DatabaseSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSaver.swift; sourceTree = "<group>"; };
 		75E9E2AD290AB9B100B79BE8 /* OTPCodeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPCodeFormatter.swift; sourceTree = "<group>"; };
-		75E9E2B1290ABB1600B79BE8 /* LocalNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
 		75EA2D1621B2FB4000826FC6 /* Diag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diag.swift; sourceTree = "<group>"; };
 		75F11C32288312A3005B3DC0 /* LString+about.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LString+about.swift"; sourceTree = "<group>"; };
 		75F11C3B288580D4005B3DC0 /* URL+consts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+consts.swift"; sourceTree = "<group>"; };
@@ -1035,7 +1033,6 @@
 				75E74D3326C1D2B00071B151 /* TestHelper.swift */,
 				75B813D325FA6FD000A86B7C /* StoreReviewSuggester.swift */,
 				7599FE1626C2A51100E3DD67 /* TipBox.swift */,
-				75E9E2B1290ABB1600B79BE8 /* LocalNotifications.swift */,
 				75AA237726CA6DA700488C4E /* KeyHelper+loading.swift */,
 				75CD1523285F3929003C11DA /* TimeInterval+constants.swift */,
 				75F11C3B288580D4005B3DC0 /* URL+consts.swift */,
@@ -1469,7 +1466,6 @@
 				75393ABA238D3AC400C63C54 /* ChallengeResponse.swift in Sources */,
 				75AF192E282E5BC000FA4BB5 /* PassphraseGeneratorParams.swift in Sources */,
 				75F4ACEC2177485D00B22D8B /* Weak.swift in Sources */,
-				75E9E2B2290ABB1600B79BE8 /* LocalNotifications.swift in Sources */,
 				75D09C1D2174F77000F7DEF2 /* KDFParams.swift in Sources */,
 				7599FE1726C2A51100E3DD67 /* TipBox.swift in Sources */,
 				75D09BE42174F76500F7DEF2 /* encoding.c in Sources */,

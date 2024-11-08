@@ -20,6 +20,7 @@ final class CrashReportVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = LString.titleError
         learnMoreButton.setTitle(LString.actionLearnMore, for: .normal)
     }
 
