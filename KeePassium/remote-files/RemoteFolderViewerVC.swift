@@ -141,8 +141,12 @@ final class RemoteFolderViewerVC: UITableViewController, BusyStateIndicating {
     private func sortItems() {
         sortedFolders.removeAll(keepingCapacity: true)
         sortedFiles.removeAll(keepingCapacity: true)
+
         sortedFolders = items.filter { $0.isFolder }
         sortedFiles = items.filter { !$0.isFolder }
+
+        sortedFolders.sort { $0.name.localizedStandardCompare($1.name) == .orderedAscending }
+        sortedFiles.sort { $0.name.localizedStandardCompare($1.name) == .orderedAscending }
     }
 
     public func indicateState(isBusy: Bool) {
