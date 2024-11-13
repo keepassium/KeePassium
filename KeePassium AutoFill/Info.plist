@@ -96,6 +96,8 @@
                 <true/>
                 <key>ProvidesTextToInsert</key>
                 <true/>
+                <key>ProvidesPasskeys</key>
+                <true/>
             </dict>
         </dict>
 	</dict>

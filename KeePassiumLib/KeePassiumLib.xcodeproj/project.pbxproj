@@ -52,6 +52,9 @@
 		754025152950700E000ABA73 /* ManagedAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754025142950700E000ABA73 /* ManagedAppConfig.swift */; };
 		754057FB2C54F1B9000700D2 /* FileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754057FA2C54F1B9000700D2 /* FileInfo.swift */; };
 		7544570425CAE2D50011386C /* TPInAppReceipt in Frameworks */ = {isa = PBXBuildFile; productRef = 7544570325CAE2D50011386C /* TPInAppReceipt */; };
+		754485B52CDEBCD600B13309 /* Passkey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754485B42CDEBCD600B13309 /* Passkey.swift */; };
+		754485B82CE0158A00B13309 /* Data+base64url.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754485B72CE0158100B13309 /* Data+base64url.swift */; };
+		754485BF2CE15AFA00B13309 /* Curve25519+pem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754485BE2CE15AFA00B13309 /* Curve25519+pem.swift */; };
 		754840EE2A52C957001EEF21 /* URLQueryItems+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754840ED2A52C957001EEF21 /* URLQueryItems+extensions.swift */; };
 		754ABE9C25AB898B00B98A63 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 754ABE9A25AB898B00B98A63 /* InfoPlist.strings */; };
 		754D7C0E238C26A7005652E1 /* YubiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754D7C0D238C26A7005652E1 /* YubiKey.swift */; };
@@ -217,6 +220,7 @@
 		75D4080523952FD40042122A /* CompositeKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D4080423952FD40042122A /* CompositeKey.swift */; };
 		75D5DC452894931E0021DA52 /* DataSourceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D5DC442894931E0021DA52 /* DataSourceFactory.swift */; };
 		75D6B3BD25C36F5100A6BA0D /* ProcessInfo+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D6B3BC25C36F5100A6BA0D /* ProcessInfo+extensions.swift */; };
+		75D767CF2CE26E9E006C0FC0 /* EntryField+passkey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D767CE2CE26E9E006C0FC0 /* EntryField+passkey.swift */; };
 		75E5B6FB2706004600DFFF4F /* Cloneable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E5B6FA2706004500DFFF4F /* Cloneable.swift */; };
 		75E60AE125CF5D310089219C /* DatabaseIconSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E60AE025CF5D310089219C /* DatabaseIconSet.swift */; };
 		75E74D3426C1D2B00071B151 /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E74D3326C1D2B00071B151 /* TestHelper.swift */; };
@@ -337,6 +341,9 @@
 		753E9A6125FEBE2F00541121 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		754025142950700E000ABA73 /* ManagedAppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedAppConfig.swift; sourceTree = "<group>"; };
 		754057FA2C54F1B9000700D2 /* FileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileInfo.swift; sourceTree = "<group>"; };
+		754485B42CDEBCD600B13309 /* Passkey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Passkey.swift; sourceTree = "<group>"; };
+		754485B72CE0158100B13309 /* Data+base64url.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+base64url.swift"; sourceTree = "<group>"; };
+		754485BE2CE15AFA00B13309 /* Curve25519+pem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Curve25519+pem.swift"; sourceTree = "<group>"; };
 		754840ED2A52C957001EEF21 /* URLQueryItems+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLQueryItems+extensions.swift"; sourceTree = "<group>"; };
 		754A322A244269F500632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		754ABE9B25AB898B00B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -525,6 +532,7 @@
 		75D4080423952FD40042122A /* CompositeKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositeKey.swift; sourceTree = "<group>"; };
 		75D5DC442894931E0021DA52 /* DataSourceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceFactory.swift; sourceTree = "<group>"; };
 		75D6B3BC25C36F5100A6BA0D /* ProcessInfo+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProcessInfo+extensions.swift"; sourceTree = "<group>"; };
+		75D767CE2CE26E9E006C0FC0 /* EntryField+passkey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntryField+passkey.swift"; sourceTree = "<group>"; };
 		75E4CA89232D0B2200EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75E5B6FA2706004500DFFF4F /* Cloneable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloneable.swift; sourceTree = "<group>"; };
 		75E60AE025CF5D310089219C /* DatabaseIconSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseIconSet.swift; sourceTree = "<group>"; };
@@ -656,6 +664,17 @@
 				7505F6BB2B863A2E00EA9BFD /* ManagedAppConfig+public.swift */,
 			);
 			path = org;
+			sourceTree = "<group>";
+		};
+		754485B62CDEBCE300B13309 /* passkey */ = {
+			isa = PBXGroup;
+			children = (
+				754485B42CDEBCD600B13309 /* Passkey.swift */,
+				75D767CE2CE26E9E006C0FC0 /* EntryField+passkey.swift */,
+				754485BE2CE15AFA00B13309 /* Curve25519+pem.swift */,
+				754485B72CE0158100B13309 /* Data+base64url.swift */,
+			);
+			path = passkey;
 			sourceTree = "<group>";
 		};
 		755E14B82B1F73F500651F0D /* onedrive */ = {
@@ -946,6 +965,7 @@
 				75D09C082174F77000F7DEF2 /* cipher */,
 				75D09C122174F77000F7DEF2 /* kp1 */,
 				75D09BEE2174F77000F7DEF2 /* kp2 */,
+				754485B62CDEBCE300B13309 /* passkey */,
 				75F4ACE6217746FF00B22D8B /* util */,
 				752B536B2C62DBF200F883BC /* search */,
 				75F4ACDB2177469500B22D8B /* DatabaseFile.swift */,
@@ -1442,6 +1462,7 @@
 				75E9E2AE290AB9B100B79BE8 /* OTPCodeFormatter.swift in Sources */,
 				75D09C2E2174F77000F7DEF2 /* UUID+extension.swift in Sources */,
 				7524E7342887620A00ECBEC8 /* FileAccessCoordinator.swift in Sources */,
+				754485BF2CE15AFA00B13309 /* Curve25519+pem.swift in Sources */,
 				75241F40274A8F5C00AE15AD /* LString+fileInfo.swift in Sources */,
 				751E0D68230D12660088BB10 /* Bundle+extensions.swift in Sources */,
 				75B8608C2475E2F800C5E6C0 /* LString.swift in Sources */,
@@ -1449,6 +1470,7 @@
 				75D09C202174F77000F7DEF2 /* Header2.swift in Sources */,
 				75D09C472174F77000F7DEF2 /* Database.swift in Sources */,
 				7534443E27842FEC00CC8248 /* Date+http.swift in Sources */,
+				754485B82CE0158A00B13309 /* Data+base64url.swift in Sources */,
 				75D09C5A2174F81900F7DEF2 /* Options.swift in Sources */,
 				F311159B2B9C94E800236632 /* DropboxItem.swift in Sources */,
 				75F4ACF0217749DC00B22D8B /* AppGroup.swift in Sources */,
@@ -1519,6 +1541,7 @@
 				75AA9B51272FF3FA00863B98 /* QuickTypeAutoFillRecord.swift in Sources */,
 				751C7D492BDDABEB006A58F4 /* EntryField2.swift in Sources */,
 				75F4ACEF217749DC00B22D8B /* UserDefaults+appGroupShared.swift in Sources */,
+				754485B52CDEBCD600B13309 /* Passkey.swift in Sources */,
 				75CA6641276BAF07003384FC /* DatabaseError.swift in Sources */,
 				F31114A52B9B807500236632 /* DropboxDataSource.swift in Sources */,
 				75C3CDD92BF391D400C5C8CD /* WebDAVListRequest.swift in Sources */,
@@ -1574,6 +1597,7 @@
 				75241F38274A8D6400AE15AD /* LString+premium.swift in Sources */,
 				75D09BDB2174F76500F7DEF2 /* blake2b.c in Sources */,
 				75F4ACEA2177485D00B22D8B /* Settings.swift in Sources */,
+				75D767CF2CE26E9E006C0FC0 /* EntryField+passkey.swift in Sources */,
 				75D09C5D2174F81900F7DEF2 /* Element.swift in Sources */,
 				75074EC52C44293200AB98CE /* URLReference+Category.swift in Sources */,
 				75EA2D1721B2FB4000826FC6 /* Diag.swift in Sources */,

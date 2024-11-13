@@ -82,15 +82,21 @@ final public class QuickTypeAutoFillStorage {
             if entry.isDeleted || entry.isHiddenFromSearch || entry.isExpired {
                 return
             }
+
+            let record = QuickTypeAutoFillRecord(context: databaseFile, itemID: entry.uuid)
+            let recordID = record.recordIdentifier
             if let serviceIDs = entry.extractSearchableData()?.toCredentialServiceIdentifiers() {
-                let recordID = QuickTypeAutoFillRecord(context: databaseFile, itemID: entry.uuid)
-                let entryCredentialIdentities = makeCredentialIdentities(
+                 let passwordAndOTPIdentities = makeCredentialIdentities(
                     userName: "\(entry.resolvedUserName) | \(entry.resolvedTitle)",
                     services: serviceIDs,
                     containsTOTP: entry.containsTOTP,
-                    record: recordID
+                    recordID: recordID
                 )
-                result.append(contentsOf: entryCredentialIdentities)
+                result.append(contentsOf: passwordAndOTPIdentities)
+            }
+            if let passkey = Passkey.make(from: entry) {
+                let passkeyCredentialIdentity = passkey.asCredentialIdentity(recordIdentifier: recordID)
+                result.append(passkeyCredentialIdentity)
             }
         })
         return result
@@ -100,19 +106,18 @@ final public class QuickTypeAutoFillStorage {
         userName: String,
         services: [ASCredentialServiceIdentifier],
         containsTOTP: Bool,
-        record: QuickTypeAutoFillRecord
+        recordID: String
     ) -> [ASCredentialIdentity] {
         guard userName.isNotEmpty else {
             return []
         }
 
         var result = [ASCredentialIdentity]()
-        let recordIdentifier = record.toString()
         result.append(contentsOf: services.map {
             ASPasswordCredentialIdentity(
                 serviceIdentifier: $0,
                 user: userName,
-                recordIdentifier: recordIdentifier
+                recordIdentifier: recordID
             )
         })
         if #available(iOS 18.0, *),
@@ -122,7 +127,7 @@ final public class QuickTypeAutoFillStorage {
                 ASOneTimeCodeCredentialIdentity(
                     serviceIdentifier: $0,
                     label: userName,
-                    recordIdentifier: recordIdentifier
+                    recordIdentifier: recordID
                 )
             })
         }

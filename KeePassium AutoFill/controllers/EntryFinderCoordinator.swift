@@ -35,6 +35,7 @@ final class EntryFinderCoordinator: Coordinator {
 
     private var shouldAutoSelectFirstMatch: Bool = false
     private var serviceIdentifiers: [ASCredentialServiceIdentifier]
+    private var passkeyRelyingParty: String?
     private let searchHelper = SearchHelper()
 
     private let vcAnimationDuration = 0.3
@@ -47,6 +48,7 @@ final class EntryFinderCoordinator: Coordinator {
         databaseFile: DatabaseFile,
         loadingWarnings: DatabaseLoadingWarnings?,
         serviceIdentifiers: [ASCredentialServiceIdentifier],
+        passkeyRelyingParty: String?,
         autoFillMode: AutoFillMode?
     ) {
         self.router = router
@@ -55,6 +57,7 @@ final class EntryFinderCoordinator: Coordinator {
         self.database = databaseFile.database
         self.loadingWarnings = loadingWarnings
         self.serviceIdentifiers = serviceIdentifiers
+        self.passkeyRelyingParty = passkeyRelyingParty
         self.autoFillMode = autoFillMode
 
         entryFinderVC = EntryFinderVC.instantiateFromStoryboard()
@@ -112,9 +115,12 @@ extension EntryFinderCoordinator {
             return
         }
 
-        let callerID = serviceIdentifiers
+        var callerID = serviceIdentifiers
             .map { $0.identifier }
             .joined(separator: " | ")
+        if let passkeyRelyingParty {
+            callerID += "\nrpID: \(passkeyRelyingParty)"
+        }
         entryFinderVC.callerID = callerID
     }
 
@@ -138,7 +144,10 @@ extension EntryFinderCoordinator {
     }
 
     private func setupAutomaticSearchResults() {
-        let results = searchHelper.find(database: database, serviceIdentifiers: serviceIdentifiers)
+        let results = searchHelper.find(
+            database: database,
+            serviceIdentifiers: serviceIdentifiers,
+            passkeyRelyingParty: passkeyRelyingParty)
         if results.isEmpty {
             entryFinderVC.activateManualSearch(query: autoFillMode?.query)
             return

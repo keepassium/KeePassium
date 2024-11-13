@@ -29,22 +29,26 @@ struct FuzzySearchResults {
 }
 
 extension SearchHelper {
-
     func find(
         database: Database,
-        serviceIdentifiers: [ASCredentialServiceIdentifier]
+        serviceIdentifiers: [ASCredentialServiceIdentifier],
+        passkeyRelyingParty: String?
     ) -> FuzzySearchResults {
         var relevantEntries = [ScoredItem]()
-        for si in serviceIdentifiers {
-            switch si.type {
-            case .domain:
-                let partialResults = performSearch(in: database, domain: si.identifier)
-                relevantEntries.append(contentsOf: partialResults)
-            case .URL:
-                let partialResults = performSearch(in: database, url: si.identifier)
-                relevantEntries.append(contentsOf: partialResults)
-            @unknown default:
-                assertionFailure()
+        if let passkeyRelyingParty {
+            relevantEntries = performSearch(in: database, relyingParty: passkeyRelyingParty)
+        } else {
+            for si in serviceIdentifiers {
+                switch si.type {
+                case .domain:
+                    let partialResults = performSearch(in: database, domain: si.identifier)
+                    relevantEntries.append(contentsOf: partialResults)
+                case .URL:
+                    let partialResults = performSearch(in: database, url: si.identifier)
+                    relevantEntries.append(contentsOf: partialResults)
+                @unknown default:
+                    assertionFailure()
+                }
             }
         }
 
@@ -56,6 +60,9 @@ extension SearchHelper {
         let searchResults = FuzzySearchResults(exactMatch: exactMatch, partialMatch: partialMatch)
         return searchResults
     }
+}
+
+extension SearchHelper {
 
     private func performSearch(in database: Database, url: String) -> [ScoredItem] {
         guard let url = URL.from(malformedString: url) else { return [] }
@@ -120,7 +127,6 @@ extension SearchHelper {
         Diag.verbose("Found \(relevantEntries.count) relevant entries [among \(allEntries.count)]")
         return relevantEntries
     }
-
 
     private func howSimilar(domain: String, with url: URL?) -> Double {
         guard let host = url?.host?.localizedLowercase else { return 0.0 }
@@ -289,5 +295,33 @@ extension SearchHelper {
             }
         }
         return maxScoreSoFar
+    }
+}
+
+extension SearchHelper {
+    private func performSearch(in database: Database, relyingParty: String) -> [ScoredItem] {
+        guard let rootGroup = database.root else { return [] }
+
+        var relevantEntries = [Entry]()
+        rootGroup.applyToAllChildren(
+            groupHandler: nil,
+            entryHandler: { entry in
+                if relyingParty == entry.getField(EntryField.passkeyRelyingParty)?.resolvedValue {
+                    relevantEntries.append(entry)
+                }
+            }
+        )
+
+        relevantEntries = relevantEntries
+            .filter { entry in
+                let parent2 = entry.parent as? Group2
+                let canSearch = parent2?.resolvingIsSearchingEnabled() ?? true
+                let canAutoType = parent2?.resolvingIsAutoTypeEnabled() ?? true
+                return canSearch && canAutoType
+            }
+            .filter { entry in
+                !(entry.isDeleted || entry.isExpired || entry.isHiddenFromSearch)
+            }
+        return relevantEntries.map { ScoredItem(item: $0, similarityScore: 1.0) }
     }
 }

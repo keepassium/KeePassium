@@ -501,6 +501,8 @@
 		7590231E2AB45949009E6213 /* Favicon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F72EEF2AB32C8900C804FC /* Favicon.swift */; };
 		7590231F2AB4594A009E6213 /* Favicon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F72EEF2AB32C8900C804FC /* Favicon.swift */; };
 		759023202AB4594A009E6213 /* Favicon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F72EEF2AB32C8900C804FC /* Favicon.swift */; };
+		759105F12CE4DB89002DEA7B /* ASCredentialRequestType+debugDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759105F02CE4DB7B002DEA7B /* ASCredentialRequestType+debugDescription.swift */; };
+		759105F22CE4DB89002DEA7B /* ASCredentialRequestType+debugDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759105F02CE4DB7B002DEA7B /* ASCredentialRequestType+debugDescription.swift */; };
 		7596771E20FB36BD00E54827 /* SettingsAppTimeoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7596771D20FB36BD00E54827 /* SettingsAppTimeoutVC.swift */; };
 		7597DBD425F58BCF00D1A126 /* SettingsAppearanceVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7597DBD725F58BCF00D1A126 /* SettingsAppearanceVC.storyboard */; };
 		7597DBD525F58BCF00D1A126 /* SettingsAppearanceVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7597DBD725F58BCF00D1A126 /* SettingsAppearanceVC.storyboard */; };
@@ -1294,8 +1296,6 @@
 		F37CAA492A88F7E30000EF64 /* YubiKit in Frameworks */ = {isa = PBXBuildFile; productRef = F37CAA482A88F7E30000EF64 /* YubiKit */; };
 		F37CAA4B2A88F7E30000EF64 /* Zxcvbn in Frameworks */ = {isa = PBXBuildFile; productRef = F37CAA4A2A88F7E30000EF64 /* Zxcvbn */; };
 		F37CAA4E2A88F8D10000EF64 /* DumpEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37CAA4D2A88F8D10000EF64 /* DumpEquatable.swift */; };
-		F38460332CA813B7004B0A6D /* CredentialProviderIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38460322CA813B7004B0A6D /* CredentialProviderIdentity.swift */; };
-		F38460342CA813B7004B0A6D /* CredentialProviderIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38460322CA813B7004B0A6D /* CredentialProviderIdentity.swift */; };
 		F38A48C42A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38A48C32A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift */; };
 		F38A48C52A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38A48C32A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift */; };
 		F38A48C62A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38A48C32A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift */; };
@@ -2045,6 +2045,7 @@
 		758FF6BE28FAE32F007DE8EB /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		758FF6C928FC18E4007DE8EB /* RemoteFolderViewerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFolderViewerVC.swift; sourceTree = "<group>"; };
 		758FF6CE28FC2C9C007DE8EB /* SubtitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleCell.swift; sourceTree = "<group>"; };
+		759105F02CE4DB7B002DEA7B /* ASCredentialRequestType+debugDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASCredentialRequestType+debugDescription.swift"; sourceTree = "<group>"; };
 		7596771D20FB36BD00E54827 /* SettingsAppTimeoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAppTimeoutVC.swift; sourceTree = "<group>"; };
 		75973A4525F58CFC0033D4DA /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
 		7597DBD625F58BCF00D1A126 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SettingsAppearanceVC.storyboard; sourceTree = "<group>"; };
@@ -2485,7 +2486,6 @@
 		F37CAA392A88F7330000EF64 /* KeePassiumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeePassiumTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F37CAA422A88F74E0000EF64 /* HIBPServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HIBPServiceTests.swift; sourceTree = "<group>"; };
 		F37CAA4D2A88F8D10000EF64 /* DumpEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DumpEquatable.swift; sourceTree = "<group>"; };
-		F38460322CA813B7004B0A6D /* CredentialProviderIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialProviderIdentity.swift; sourceTree = "<group>"; };
 		F38A48C32A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordQualityIndicatorIconView.swift; sourceTree = "<group>"; };
 		F3A2186C2C27045E006AB8F8 /* GroupEditorNotesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupEditorNotesCell.swift; sourceTree = "<group>"; };
 		F3AFC1B025FB7C38005FF4D7 /* QRCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanner.swift; sourceTree = "<group>"; };
@@ -2670,7 +2670,6 @@
 				7583EA8E2685D720009969E7 /* AutoFillCoordinator.swift */,
 				F3C744452CA5A820005D5429 /* AutoFillMode.swift */,
 				750CFBCA21BA9ACD00E62B09 /* CredentialProviderViewController.swift */,
-				F38460322CA813B7004B0A6D /* CredentialProviderIdentity.swift */,
 				750CFBCC21BA9ACD00E62B09 /* MainInterface.storyboard */,
 				750CFBCF21BA9ACD00E62B09 /* Info.plist */,
 				755E7D9D232008300010E199 /* Localizable.strings */,
@@ -3224,6 +3223,7 @@
 		75B24DD321C5239D003C9486 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				759105F02CE4DB7B002DEA7B /* ASCredentialRequestType+debugDescription.swift */,
 				7514CC9E22D5D14B00A0D7A4 /* LongPressAwareNavigationController.swift */,
 				7575B24822D8476300B84B3F /* SearchHelper+extensions.swift */,
 				75EEC22027484DD90092505F /* QuickAutoFillPrompt.swift */,
@@ -4150,7 +4150,6 @@
 				758BADB624B5EAFF00CC9265 /* GradientSeparatorView.swift in Sources */,
 				75679ACC22F887AB00372301 /* AppInfo.swift in Sources */,
 				75480504238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
-				F38460332CA813B7004B0A6D /* CredentialProviderIdentity.swift in Sources */,
 				7532A24D21C5A035005DF56F /* KeyFilePickerVC.swift in Sources */,
 				75B786FE261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift in Sources */,
 				F38A48C52A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift in Sources */,
@@ -4251,6 +4250,7 @@
 				75BFB1472481D19B0017B980 /* FileProvider+extensions.swift in Sources */,
 				755E33C62C52A13C0041A199 /* AutoFillSetupMessageVC.swift in Sources */,
 				75151D3423268AB300F3C411 /* UILabel+extensions.swift in Sources */,
+				759105F12CE4DB89002DEA7B /* ASCredentialRequestType+debugDescription.swift in Sources */,
 				75D21BD32B642BB20065D95E /* OneDriveConnectionSetupCoordinator.swift in Sources */,
 				7572665B24CB1B500099B6E1 /* HelpArticle.swift in Sources */,
 				757ADC5123A5180600D708D2 /* DismissablePopover.swift in Sources */,
@@ -5011,7 +5011,6 @@
 				758BADB824B5EAFF00CC9265 /* GradientSeparatorView.swift in Sources */,
 				75D7DF7F233E5E310029AD87 /* AppInfo.swift in Sources */,
 				75480506238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
-				F38460342CA813B7004B0A6D /* CredentialProviderIdentity.swift in Sources */,
 				75D7DF80233E5E310029AD87 /* KeyFilePickerVC.swift in Sources */,
 				75B78700261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift in Sources */,
 				F38A48C72A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift in Sources */,
@@ -5112,6 +5111,7 @@
 				756D94742BA2F2CA0084BDF5 /* MFIKeyActionSheetView.swift in Sources */,
 				755E33C72C52A13C0041A199 /* AutoFillSetupMessageVC.swift in Sources */,
 				75D7DFA3233E5E310029AD87 /* UILabel+extensions.swift in Sources */,
+				759105F22CE4DB89002DEA7B /* ASCredentialRequestType+debugDescription.swift in Sources */,
 				75D21BD52B642BB20065D95E /* OneDriveConnectionSetupCoordinator.swift in Sources */,
 				7572665D24CB1B500099B6E1 /* HelpArticle.swift in Sources */,
 				757ADC5323A5180600D708D2 /* DismissablePopover.swift in Sources */,
@@ -6709,7 +6709,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -6731,7 +6730,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MARKETING_VERSION = 1.0;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.keepassium.ios.KeePassiumTests;

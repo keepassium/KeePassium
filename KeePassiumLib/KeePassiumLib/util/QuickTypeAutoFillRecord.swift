@@ -15,6 +15,7 @@ final public class QuickTypeAutoFillRecord {
     public let fileProvider: FileProvider
     public let fileDescriptor: URLReference.Descriptor
     public let itemID: UUID
+    public var recordIdentifier: String { toString() }
 
     convenience init(context: DatabaseFile, itemID: UUID) {
         self.init(
