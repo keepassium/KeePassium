@@ -62,14 +62,24 @@ open class Database: Eraseable {
     }
 
     public func count(includeGroups: Bool = true, includeEntries: Bool = true) -> Int {
-        var result = 0
-        if let root = self.root {
-            var groups = [Group]()
-            var entries = [Entry]()
-            root.collectAllChildren(groups: &groups, entries: &entries)
-            result += includeGroups ? groups.count : 0
-            result += includeEntries ? entries.count : 0
+        guard let root else {
+            assertionFailure()
+            return 0
         }
+        var result = 0
+        root.applyToAllChildren(
+            includeSelf: false,
+            groupHandler: { _ in
+                if includeGroups {
+                    result += 1
+                }
+            },
+            entryHandler: { _ in
+                if includeEntries {
+                    result += 1
+                }
+            }
+        )
         return result
     }
 

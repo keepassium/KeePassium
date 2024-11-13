@@ -461,13 +461,13 @@ public class Database1: Database {
 
         parentGroup.remove(group: group)
 
-        var subEntries = [Entry]()
-        group.collectAllEntries(to: &subEntries)
-
-        subEntries.forEach { entry in
-            entry.move(to: backupGroup)
-            entry.touch(.accessed, updateParents: false)
-        }
+        group.applyToAllChildren(
+            groupHandler: nil,
+            entryHandler: { entry in
+                entry.move(to: backupGroup)
+                entry.touch(.accessed, updateParents: false)
+            }
+        )
         Diag.debug("Delete group OK")
     }
 

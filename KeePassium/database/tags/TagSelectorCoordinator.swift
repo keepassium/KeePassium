@@ -71,11 +71,11 @@ final class TagSelectorCoordinator: Coordinator {
     private func processData() -> [TagSelectorVC.Section] {
         let inheritedTags = parent?.resolvingTags() ?? []
 
-        var allEntries = [Entry]()
-        var allGroups = [Group]()
-        databaseFile.database.root?.collectAllChildren(groups: &allGroups, entries: &allEntries)
-        let allTags = allEntries.flatMap({ $0.tags }) + allGroups.flatMap({ $0.tags })
-
+        var allTags = [String]()
+        databaseFile.database.root?.applyToAllChildren(
+            groupHandler: { allTags.append(contentsOf: $0.tags) },
+            entryHandler: { allTags.append(contentsOf: $0.tags) }
+        )
         var tagOccurences = [String: Int]()
         tagOccurences.reserveCapacity(Set(allTags).count)
         allTags.forEach { tag in

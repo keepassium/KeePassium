@@ -24,17 +24,19 @@ class UserNameHelper {
     static func getUniqueUserNames(from database: Database) -> [String] {
         let defaultUserName = getDefaultUserName(from: database)
 
-        var allEntries = [Entry]()
-        database.root?.collectAllEntries(to: &allEntries)
-        let allUserNames = allEntries
-            .filter { !$0.isDeleted }
-            .compactMap { $0.resolvedUserName }
-            .filter { $0.isNotEmpty && ($0 != defaultUserName) }
-
         var usageCount = [String: Int]()
-        for userName in allUserNames {
-            usageCount[userName] = (usageCount[userName] ?? 0) + 1
-        }
+        database.root?.applyToAllChildren(
+            groupHandler: nil,
+            entryHandler: { entry in
+                let userName = entry.resolvedUserName
+                if !entry.isDeleted,
+                   userName.isNotEmpty,
+                   userName != defaultUserName
+                {
+                    usageCount[userName] = (usageCount[userName] ?? 0) + 1
+                }
+            }
+        )
 
         let uniqueUserNamesSorted = usageCount
             .sorted { $0.value > $1.value }
