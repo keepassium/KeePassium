@@ -1,5 +1,43 @@
 #CHANGELOG
 
+## [1.54.155] - 2024-11-14
+
+### Added
+
+- AutoFill: Sign in using existing passkeys (#297)
+- AutoFill: Insert any field to any input via context menu (iOS 18+) (#396)
+- AutoFill: Fill out OTP codes (iOS 18+)
+
+### Changed
+
+- This version requires at least iOS 17 / macOS 14
+- Org: Updated to MSAL 1.6.1 and Intune SDK 20.1.2
+
+### Improved
+
+- Protecting key file field like a password [thanks, Jason]
+- Added possibility to download favicons for selected entries (#320)
+- Added possibility to delete unused custom icons
+- Replaced Entry Viewer tab titles with icons
+- Folder lists are sorted for all direct connections now
+- Entry Viewer indicates presence of attachments in Files tab [thanks, u/gripe_and_complain]
+- Removed post-AutoFill popups with OTP codes as redundant
+- Updated all translations [thanks, everyone]
+- Org: New parameters for managed AppConfig: `allowAppProtection`, `minimumAppPasscodeLength`, `minimumDatabasePasswordLength`, `allowDatabasePrint`, `allowDatabaseEncryptionSettings`, and default KDF settings [thanks, S.G.]
+- Org: Managed parameter `allowedFileProviders` can be defined as string [thanks, S.G.]
+- Org: OneDrive Personal and Business can be allowed/blocked separately [thanks, S.G.]
+
+### Fixed
+
+- macOS: AutoFill dialog could get stuck in a blank state (#392)
+- macOS: Tag selection/deselection did not work properly
+- AutoFill could load databases twice sometimes
+- Incorrect processing on `otpauth` URIs
+- Enforce strength checks on new app passcode and DB passwords (KEE-01-001)
+- Warn about risks of bulk favicon download (KEE-01-002)
+- Enforce reasonable KDF parameter limits (KEE-01-003)
+
+
 ## [1.53.154] - 2024-09-12
 
 ### Added
