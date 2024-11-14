@@ -940,9 +940,6 @@
 /* Name of an input field which shows selected hardware key */
 "[HardwareKey/Field/title]" = "ฮาร์ดแวร์คีย์";
 
-/* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
-"[HardwareKey/NFC/OS too old]" = "NFC ต้องการ iOS 13 ขึ้นไป";
-
 /* Master key/unlock option: don't use hardware keys */
 "[HardwareKey/None] No Hardware Key" = "ไม่มีฮาร์ดแวร์คีย์";
 

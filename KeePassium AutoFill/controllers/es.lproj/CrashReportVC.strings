@@ -1,9 +1,3 @@
-/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "ebS-pB-Qan"; */
-"ebS-pB-Qan.title" = "Cerrar";
-
 /* Class = "UILabel"; text = "It seems that AutoFill did not close correctly the last time. \n\nThis can happen with large databases or memory-demanding database settings (Argon2).\n\nPlease contact us if you need help with this."; ObjectID = "kmV-si-Nrg"; */
 "kmV-si-Nrg.text" = "La última vez «Autorrelleno» (AutoFill) no se cerró correctamente.\n\nEsto puede ocurrir con grandes bases de datos o bases de datos que consumen mucha memoria (Argon2).\n\nPóngase en contacto con nosotros si necesita ayuda al respecto.";
-
-/* Class = "UINavigationItem"; title = "We are sorry"; ObjectID = "zvf-PV-5l4"; */
-"zvf-PV-5l4.title" = "Lo sentimos";
 

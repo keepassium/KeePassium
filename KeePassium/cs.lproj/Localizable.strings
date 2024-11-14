@@ -43,9 +43,6 @@
 /* Notification when user sets up too weak a database password. */
 "[Database/Create/weakPasswordWarning]" = "Toto heslo se dá snadno uhodnout. Zkuste zadat nějaké silnější.";
 
-/* Description of favicon downloader feature. */
-"[Database/DownloadFavicons/intro]" = "KeePassium kontaktuje všechny webové stránky ve vaší databázi.";
-
 /* Description of favicon downloader feature. 'Doing this' refers to downloading favicons. */
 "[Database/DownloadFavicons/warning]" = "Pokud tak učiníte ve veřejné nebo monitorované síti, může dojít k odhalení seznamu webových stránek, na kterých máte účet.";
 

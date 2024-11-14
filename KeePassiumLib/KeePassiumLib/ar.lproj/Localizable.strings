@@ -868,9 +868,6 @@
 /* Name of an input field which shows selected hardware key */
 "[HardwareKey/Field/title]" = "جهاز مفتاح";
 
-/* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
-"[HardwareKey/NFC/OS too old]" = "الـNFC يتطلب إصدار ios 13 أو اجدد.";
-
 /* Master key/unlock option: don't use hardware keys */
 "[HardwareKey/None] No Hardware Key" = "عدم استخدام جهاز مفاتيح";
 

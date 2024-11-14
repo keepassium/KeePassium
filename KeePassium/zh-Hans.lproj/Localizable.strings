@@ -43,9 +43,6 @@
 /* Notification when user sets up too weak a database password. */
 "[Database/Create/weakPasswordWarning]" = "此密码很容易被猜到。请尝试输入一个更强的密码。";
 
-/* Description of favicon downloader feature. */
-"[Database/DownloadFavicons/intro]" = "KeePassium 将联系您数据库中的每个网站。";
-
 /* Description of favicon downloader feature. 'Doing this' refers to downloading favicons. */
 "[Database/DownloadFavicons/warning]" = "在公共或受监控的网络上执行此操作可能会暴露您拥有账户的网站列表。";
 

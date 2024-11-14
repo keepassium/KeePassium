@@ -865,9 +865,6 @@
 /* Name of an input field which shows selected hardware key */
 "[HardwareKey/Field/title]" = "硬體金鑰";
 
-/* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
-"[HardwareKey/NFC/OS too old]" = "NFC 需要 iOS 13 或更高版本。";
-
 /* Master key/unlock option: don't use hardware keys */
 "[HardwareKey/None] No Hardware Key" = "沒有硬體金鑰";
 

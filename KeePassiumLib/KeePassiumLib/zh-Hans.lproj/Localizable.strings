@@ -1138,9 +1138,6 @@
 /* A notice for hardware keys that need an adapter for physical connection to device. */
 "[HardwareKey/LightningOverUSB/RequiresAdapter]" = "需要 Apple USB to Lighting 适配器";
 
-/* A notification that NFC (Near Field Communication) interface is not supported by the current iOS version. */
-"[HardwareKey/NFC/OS too old]" = "NFC 需要 iOS 13 或更高版本。";
-
 /* Master key/unlock option: don't use hardware keys */
 "[HardwareKey/None] No Hardware Key" = "没有硬件密钥";
 
