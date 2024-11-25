@@ -24,7 +24,7 @@ public enum DatabasePickerMode {
     case light
 }
 
-final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
+final class DatabasePickerCoordinator: UIResponder, Coordinator, Refreshable {
     var childCoordinators = [Coordinator]()
 
     var dismissHandler: CoordinatorDismissHandler?
@@ -87,17 +87,6 @@ final class DatabasePickerCoordinator: NSObject, Coordinator, Refreshable {
     }
 
     #if MAIN_APP
-    private func showTipBox(in viewController: UIViewController) {
-        let modalRouter = NavigationRouter.createModal(style: .formSheet)
-        let tipBoxCoordinator = TipBoxCoordinator(router: modalRouter)
-        tipBoxCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
-        tipBoxCoordinator.start()
-        addChildCoordinator(tipBoxCoordinator)
-        viewController.present(modalRouter, animated: true, completion: nil)
-    }
-
     func showAboutScreen(
         at popoverAnchor: PopoverAnchor,
         in viewController: UIViewController
@@ -551,5 +540,32 @@ extension DatabasePickerCoordinator: RemoteFilePickerCoordinatorDelegate {
 
     func didSelectSystemFilePicker(in coordinator: RemoteFilePickerCoordinator) {
         maybeAddExternalDatabase(presenter: databasePickerVC)
+    }
+}
+
+extension DatabasePickerCoordinator {
+    func buildMenu(with builder: any UIMenuBuilder, isDatabaseShown: Bool) {
+        if !isDatabaseShown {
+            builder.insertChild(makeFileSortOrderMenu(), atEndOfMenu: .view)
+        }
+    }
+
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        return false
+    }
+
+    private func makeFileSortOrderMenu() -> UIMenu {
+        let actions = UIMenu.makeFileSortMenuItems(current: Settings.current.filesSortOrder) {
+            [weak self] newSortOrder in
+            Settings.current.filesSortOrder = newSortOrder
+            self?.refresh()
+            UIMenu.rebuildMainMenu()
+        }
+        return UIMenu(
+            title: LString.titleSortFilesBy,
+            identifier: .fileSortOrder,
+            options: .singleSelection,
+            children: actions
+        )
     }
 }

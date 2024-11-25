@@ -105,9 +105,14 @@ final class PasswordGeneratorQuickSheetVC: UITableViewController, Refreshable {
                 width: 400,
                 height: self.tableView.contentSize.height
             )
+
+            #if targetEnvironment(macCatalyst)
+            preferredContentSize = newPreferredSize
+            #else
             DispatchQueue.main.async {
                 self.preferredContentSize = newPreferredSize
             }
+            #endif
         }
     }
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1CEC93095649196A21117BC3 /* FaviconDownloading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810530B59228DDD3CEA55C42 /* FaviconDownloading.swift */; };
+		576C2F92F2472658AF625BD0 /* ToolbarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AADC5B78FAF80E53E5C5822 /* ToolbarDelegate.swift */; };
 		75025617283CF3A300B930D9 /* FileInfoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75025616283CF3A300B930D9 /* FileInfoCoordinator.swift */; };
 		75025618283CF3A300B930D9 /* FileInfoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75025616283CF3A300B930D9 /* FileInfoCoordinator.swift */; };
 		75025619283CF3A300B930D9 /* FileInfoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75025616283CF3A300B930D9 /* FileInfoCoordinator.swift */; };
@@ -88,7 +89,6 @@
 		751ABAD12915B739008C18DE /* PremiumBadgeAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759F6A062906BA7C0089FB34 /* PremiumBadgeAccessory.swift */; };
 		751ABAD32915B73D008C18DE /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758FF6BE28FAE32F007DE8EB /* ButtonCell.swift */; };
 		751ABAD52915B745008C18DE /* SubtitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758FF6CE28FC2C9C007DE8EB /* SubtitleCell.swift */; };
-		751ABAD72915B7B5008C18DE /* DatabaseItem+ActionPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9E2B8290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift */; };
 		751ABAD92915B7ED008C18DE /* GroupViewerCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9E2B3290C19FA00B79BE8 /* GroupViewerCells.swift */; };
 		751C7D502BDFE3A0006A58F4 /* XMLParsingSanityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C7D4F2BDFE3A0006A58F4 /* XMLParsingSanityTests.swift */; };
 		751C7D542BE03582006A58F4 /* XMLParsingCompletenessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C7D532BE03582006A58F4 /* XMLParsingCompletenessTests.swift */; };
@@ -747,6 +747,11 @@
 		75C1AF872731E54D00E33AAC /* DatabaseSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C1AF852731E54D00E33AAC /* DatabaseSettingsVC.swift */; };
 		75C1AF882731E54D00E33AAC /* DatabaseSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C1AF852731E54D00E33AAC /* DatabaseSettingsVC.swift */; };
 		75C1AF892731E54D00E33AAC /* DatabaseSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C1AF852731E54D00E33AAC /* DatabaseSettingsVC.swift */; };
+		75C204C32CEE463900E4EDA3 /* UIMenu+customIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C204C22CEE462F00E4EDA3 /* UIMenu+customIdentifiers.swift */; };
+		75C204C42CEE463900E4EDA3 /* UIMenu+customIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C204C22CEE462F00E4EDA3 /* UIMenu+customIdentifiers.swift */; };
+		75C204C52CEE463900E4EDA3 /* UIMenu+customIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C204C22CEE462F00E4EDA3 /* UIMenu+customIdentifiers.swift */; };
+		75C204C62CEE463900E4EDA3 /* UIMenu+customIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C204C22CEE462F00E4EDA3 /* UIMenu+customIdentifiers.swift */; };
+		75C204C72CEE463900E4EDA3 /* UIMenu+customIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C204C22CEE462F00E4EDA3 /* UIMenu+customIdentifiers.swift */; };
 		75C3801B217A0B76006F74C2 /* UIViewController+storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C3801A217A0B76006F74C2 /* UIViewController+storyboard.swift */; };
 		75C3802D217A2650006F74C2 /* AppCoverVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C3802C217A2650006F74C2 /* AppCoverVC.storyboard */; };
 		75C38045217A3204006F74C2 /* PlaceholderVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C38044217A3204006F74C2 /* PlaceholderVC.storyboard */; };
@@ -1162,10 +1167,6 @@
 		75E60AED25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E60AEB25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift */; };
 		75E9E2B4290C19FA00B79BE8 /* GroupViewerCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9E2B3290C19FA00B79BE8 /* GroupViewerCells.swift */; };
 		75E9E2B6290C19FA00B79BE8 /* GroupViewerCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9E2B3290C19FA00B79BE8 /* GroupViewerCells.swift */; };
-		75E9E2B9290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9E2B8290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift */; };
-		75E9E2BA290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9E2B8290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift */; };
-		75E9E2BB290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9E2B8290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift */; };
-		75E9E2BC290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E9E2B8290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift */; };
 		75EA64182098FC0500DDB941 /* DatabasePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA64172098FC0500DDB941 /* DatabasePickerVC.swift */; };
 		75EC7BFD262B05E100D8C7EB /* DatabaseViewerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EC7BFC262B05E100D8C7EB /* DatabaseViewerCoordinator.swift */; };
 		75EC7BFE262B05E100D8C7EB /* DatabaseViewerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EC7BFC262B05E100D8C7EB /* DatabaseViewerCoordinator.swift */; };
@@ -1192,6 +1193,11 @@
 		75F28786245D646B00F03657 /* MFIKeyActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F28781245D646B00F03657 /* MFIKeyActionSheetView.swift */; };
 		75F28787245D646B00F03657 /* MFIKeyActionSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F28782245D646B00F03657 /* MFIKeyActionSheetView.xib */; };
 		75F28788245D646B00F03657 /* MFIKeyActionSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F28782245D646B00F03657 /* MFIKeyActionSheetView.xib */; };
+		75F544B52CEF8E420022BAA4 /* UIKeyCommand+hotkeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F544B42CEF8E420022BAA4 /* UIKeyCommand+hotkeys.swift */; };
+		75F544B62CEF8E420022BAA4 /* UIKeyCommand+hotkeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F544B42CEF8E420022BAA4 /* UIKeyCommand+hotkeys.swift */; };
+		75F544B72CEF8E420022BAA4 /* UIKeyCommand+hotkeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F544B42CEF8E420022BAA4 /* UIKeyCommand+hotkeys.swift */; };
+		75F544B82CEF8E420022BAA4 /* UIKeyCommand+hotkeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F544B42CEF8E420022BAA4 /* UIKeyCommand+hotkeys.swift */; };
+		75F544B92CEF8E420022BAA4 /* UIKeyCommand+hotkeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F544B42CEF8E420022BAA4 /* UIKeyCommand+hotkeys.swift */; };
 		75F5CACD20BD18320056C969 /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F5CACC20BD18320056C969 /* UIView+extension.swift */; };
 		75FC842E2AC87B9E005021F1 /* Coordinator+passGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC842D2AC87B9E005021F1 /* Coordinator+passGen.swift */; };
 		75FC842F2AC87B9E005021F1 /* Coordinator+passGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC842D2AC87B9E005021F1 /* Coordinator+passGen.swift */; };
@@ -1203,6 +1209,8 @@
 		75FCCF862631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FCCF832631D1F70025E86C /* HardwareKeyPickerCoordinator.swift */; };
 		75FCCF872631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FCCF832631D1F70025E86C /* HardwareKeyPickerCoordinator.swift */; };
 		75FEC2232175292C0034334B /* KeePassiumLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75FEC2222175292C0034334B /* KeePassiumLib.framework */; };
+		A6DDE071E0C62D87E83420E5 /* ToolbarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AADC5B78FAF80E53E5C5822 /* ToolbarDelegate.swift */; };
+		CAE0F4EB8D6B1135FCBB22A0 /* ToolbarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AADC5B78FAF80E53E5C5822 /* ToolbarDelegate.swift */; };
 		F30550272BA4B09500155709 /* RemoteDataSourceSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30550262BA4B09500155709 /* RemoteDataSourceSetupCoordinator.swift */; };
 		F30550282BA4B20400155709 /* RemoteDataSourceSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30550262BA4B09500155709 /* RemoteDataSourceSetupCoordinator.swift */; };
 		F30550292BA4B20500155709 /* RemoteDataSourceSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30550262BA4B09500155709 /* RemoteDataSourceSetupCoordinator.swift */; };
@@ -1280,6 +1288,9 @@
 		F35DBC842AED5B2D00B33757 /* EncryptionSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35DBC832AED5B2D00B33757 /* EncryptionSettingsVC.swift */; };
 		F35DBC862AED5C5400B33757 /* EncryptionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35DBC852AED5C5400B33757 /* EncryptionSettingsCoordinator.swift */; };
 		F36296892A8B87FC00A1E2B0 /* PasswordAuditResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36296882A8B87FC00A1E2B0 /* PasswordAuditResultCell.swift */; };
+		F36DB1E32CE4CAF300E58F82 /* DatabaseViewerPermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36DB1E22CE4CAF300E58F82 /* DatabaseViewerPermissionManager.swift */; };
+		F36DB1E42CE4CAF300E58F82 /* DatabaseViewerPermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36DB1E22CE4CAF300E58F82 /* DatabaseViewerPermissionManager.swift */; };
+		F36DB1E52CE4CAF300E58F82 /* DatabaseViewerPermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36DB1E22CE4CAF300E58F82 /* DatabaseViewerPermissionManager.swift */; };
 		F37338FF2AACCAFC007188D2 /* FaviconDownloading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810530B59228DDD3CEA55C42 /* FaviconDownloading.swift */; };
 		F37339002AACCAFD007188D2 /* FaviconDownloading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810530B59228DDD3CEA55C42 /* FaviconDownloading.swift */; };
 		F3741DE82B5966780089F666 /* LargeTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3741DE72B5966780089F666 /* LargeTypeVC.swift */; };
@@ -1452,6 +1463,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6AADC5B78FAF80E53E5C5822 /* ToolbarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarDelegate.swift; sourceTree = "<group>"; };
 		7500193925F58D41002E8DAA /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
 		75025616283CF3A300B930D9 /* FileInfoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileInfoCoordinator.swift; sourceTree = "<group>"; };
 		7502561B283D370000B930D9 /* SpinnerLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerLabel.swift; sourceTree = "<group>"; };
@@ -2229,6 +2241,7 @@
 		75C11F1D22208D6B0042FB2B /* LAContext+biometrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LAContext+biometrics.swift"; sourceTree = "<group>"; };
 		75C1AF802731E46800E33AAC /* DatabaseSettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSettingsCoordinator.swift; sourceTree = "<group>"; };
 		75C1AF852731E54D00E33AAC /* DatabaseSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSettingsVC.swift; sourceTree = "<group>"; };
+		75C204C22CEE462F00E4EDA3 /* UIMenu+customIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIMenu+customIdentifiers.swift"; sourceTree = "<group>"; };
 		75C3801A217A0B76006F74C2 /* UIViewController+storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+storyboard.swift"; sourceTree = "<group>"; };
 		75C3802C217A2650006F74C2 /* AppCoverVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AppCoverVC.storyboard; sourceTree = "<group>"; };
 		75C38044217A3204006F74C2 /* PlaceholderVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlaceholderVC.storyboard; sourceTree = "<group>"; };
@@ -2320,7 +2333,6 @@
 		75E60AE425CF5E090089219C /* DatabaseIconSet+assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabaseIconSet+assets.swift"; sourceTree = "<group>"; };
 		75E60AEB25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseIconSetSwitcherCoordinator.swift; sourceTree = "<group>"; };
 		75E9E2B3290C19FA00B79BE8 /* GroupViewerCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewerCells.swift; sourceTree = "<group>"; };
-		75E9E2B8290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabaseItem+ActionPermissions.swift"; sourceTree = "<group>"; };
 		75EA64172098FC0500DDB941 /* DatabasePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabasePickerVC.swift; sourceTree = "<group>"; };
 		75EC7BFC262B05E100D8C7EB /* DatabaseViewerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseViewerCoordinator.swift; sourceTree = "<group>"; };
 		75EC7C03262B161F00D8C7EB /* DatabaseLoadingWarningsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseLoadingWarningsVC.swift; sourceTree = "<group>"; };
@@ -2356,6 +2368,7 @@
 		75F11C3828836283005B3DC0 /* NetworkAccessSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAccessSettingsVC.swift; sourceTree = "<group>"; };
 		75F28781245D646B00F03657 /* MFIKeyActionSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFIKeyActionSheetView.swift; sourceTree = "<group>"; };
 		75F28782245D646B00F03657 /* MFIKeyActionSheetView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MFIKeyActionSheetView.xib; sourceTree = "<group>"; };
+		75F544B42CEF8E420022BAA4 /* UIKeyCommand+hotkeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKeyCommand+hotkeys.swift"; sourceTree = "<group>"; };
 		75F5CACC20BD18320056C969 /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
 		75FC842D2AC87B9E005021F1 /* Coordinator+passGen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coordinator+passGen.swift"; sourceTree = "<group>"; };
 		75FCA9342638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -2473,6 +2486,7 @@
 		F35DBC832AED5B2D00B33757 /* EncryptionSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptionSettingsVC.swift; sourceTree = "<group>"; };
 		F35DBC852AED5C5400B33757 /* EncryptionSettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptionSettingsCoordinator.swift; sourceTree = "<group>"; };
 		F36296882A8B87FC00A1E2B0 /* PasswordAuditResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordAuditResultCell.swift; sourceTree = "<group>"; };
+		F36DB1E22CE4CAF300E58F82 /* DatabaseViewerPermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseViewerPermissionManager.swift; sourceTree = "<group>"; };
 		F3741DE72B5966780089F666 /* LargeTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeTypeVC.swift; sourceTree = "<group>"; };
 		F377C9AA2AA74A1A00266397 /* FaviconDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaviconDownloader.swift; sourceTree = "<group>"; };
 		F377C9AC2AA74F9000266397 /* FaviconDownloaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaviconDownloaderTests.swift; sourceTree = "<group>"; };
@@ -2881,6 +2895,7 @@
 				755E7DA0232008300010E199 /* Localizable.strings */,
 				755E7D9A232008300010E199 /* InfoPlist.strings */,
 				7579A06C24F0787700C98F24 /* ChangeLog.json */,
+				6AADC5B78FAF80E53E5C5822 /* ToolbarDelegate.swift */,
 			);
 			path = KeePassium;
 			sourceTree = "<group>";
@@ -2941,12 +2956,14 @@
 				75DE6778268F6F69003D4DCC /* BiometricsHelper.swift */,
 				75AA237926CBCAED00488C4E /* DatabaseFile+extensions.swift */,
 				7538936826D3BEBE00CAB107 /* KeyboardDismissable.swift */,
-				7516B0D427292A130042F40E /* UIMenu+extensions.swift */,
 				75264049284653580003DDFA /* TextInput+editMenu.swift */,
 				751DED722847B44B00B6D02E /* UITextInput+extensions.swift */,
 				754CE07A299FA80000C3DE50 /* DatabasePrintFormatter.swift */,
 				75D21BD82B642E480065D95E /* BusyStateIndicating.swift */,
 				7505F6C32B8640F400EA9BFD /* ManagedAppConfig+extensions.swift */,
+				7516B0D427292A130042F40E /* UIMenu+extensions.swift */,
+				75C204C22CEE462F00E4EDA3 /* UIMenu+customIdentifiers.swift */,
+				75F544B42CEF8E420022BAA4 /* UIKeyCommand+hotkeys.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -3057,7 +3074,7 @@
 				75EC7BFC262B05E100D8C7EB /* DatabaseViewerCoordinator.swift */,
 				75EC7C03262B161F00D8C7EB /* DatabaseLoadingWarningsVC.swift */,
 				75876B252646EC2800FB470C /* DatabaseKeyChangerCoordinator.swift */,
-				75E9E2B8290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift */,
+				F36DB1E22CE4CAF300E58F82 /* DatabaseViewerPermissionManager.swift */,
 			);
 			path = database;
 			sourceTree = "<group>";
@@ -4161,7 +4178,6 @@
 				7526404128455DD80003DDFA /* PasswordGeneratorCells.swift in Sources */,
 				7572665124CB17410099B6E1 /* HelpViewerVC.swift in Sources */,
 				F38AA37D2B6017DB0084B485 /* KeyFilePickerCoordinator.swift in Sources */,
-				75E9E2BA290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift in Sources */,
 				750C0D552B64067600821CA4 /* WebDAVConnectionSetupCoordinator.swift in Sources */,
 				75BE05F325DAA4E400B34CC0 /* SupportEmailComposer.swift in Sources */,
 				7526404328455DDC0003DDFA /* PasswordGeneratorLengthCell.swift in Sources */,
@@ -4188,6 +4204,7 @@
 				75025618283CF3A300B930D9 /* FileInfoCoordinator.swift in Sources */,
 				757FB3CD21F9C50700F016FA /* ValidatingTextField.swift in Sources */,
 				75DDB5E5228BF88C0018A50F /* FileInfoReloader.swift in Sources */,
+				75F544B52CEF8E420022BAA4 /* UIKeyCommand+hotkeys.swift in Sources */,
 				7573FD8C2321664F00DCDA5A /* MultilineButton.swift in Sources */,
 				756D94762BA2F2CE0084BDF5 /* YubiKeyUSB.swift in Sources */,
 				75C1AF872731E54D00E33AAC /* DatabaseSettingsVC.swift in Sources */,
@@ -4233,6 +4250,7 @@
 				7526404028455DD30003DDFA /* PasswordGeneratorVC.swift in Sources */,
 				75604EB426D8F0DA008A2B43 /* DatabaseLoadingWarningsVC.swift in Sources */,
 				75DE677A268F6F69003D4DCC /* BiometricsHelper.swift in Sources */,
+				75C204C52CEE463900E4EDA3 /* UIMenu+customIdentifiers.swift in Sources */,
 				757ADC5523A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
 				757FB3CB21F8D34A00F016FA /* PasscodeInputVC.swift in Sources */,
 				F32228172CCEC4230093BD9C /* KeyFileTextField.swift in Sources */,
@@ -4285,7 +4303,6 @@
 				751A565524CCD3FF001227D6 /* AppIconSwitcherCoordinator.swift in Sources */,
 				759894B724620AF6006B6709 /* FileExportHelper.swift in Sources */,
 				75E4CA5D232C455D00EB6805 /* UserNameHelper.swift in Sources */,
-				75E9E2B9290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift in Sources */,
 				7561850320E033DB00EEFAEE /* WatchdogAwareTextView.swift in Sources */,
 				75D3AEB523BDD582003028FB /* DestinationGroupPickerVC.swift in Sources */,
 				75A5312323C0D35500900ED1 /* NavigationRouter.swift in Sources */,
@@ -4332,6 +4349,7 @@
 				758FC18D24CF254000BAD35C /* AppIcon.swift in Sources */,
 				F3AFC1B125FB7C38005FF4D7 /* QRCodeScanner.swift in Sources */,
 				75A94C4328441C5F00A94B94 /* PasswordGeneratorQuickSheetVC.swift in Sources */,
+				75F544B62CEF8E420022BAA4 /* UIKeyCommand+hotkeys.swift in Sources */,
 				750433AF2274CDD5000FE96B /* DatabaseCreatorCoordinator.swift in Sources */,
 				7516B0D527292A130042F40E /* UIMenu+extensions.swift in Sources */,
 				F34AB0712BAF1C7D00BB50A3 /* GoogleDriveConnectionSetupCoordinator.swift in Sources */,
@@ -4447,10 +4465,12 @@
 				7546FBD920C3A3F600C5D834 /* Watchdog.swift in Sources */,
 				75A26776228F02C80097C693 /* PremiumCoordinator.swift in Sources */,
 				757FB3CA21F8D34A00F016FA /* PasscodeInputVC.swift in Sources */,
+				75C204C32CEE463900E4EDA3 /* UIMenu+customIdentifiers.swift in Sources */,
 				7573FD8B2321664F00DCDA5A /* MultilineButton.swift in Sources */,
 				754CE07B299FA80000C3DE50 /* DatabasePrintFormatter.swift in Sources */,
 				F37CAA2D2A87EB110000EF64 /* HIBPService.swift in Sources */,
 				758FF6CA28FC18E4007DE8EB /* RemoteFolderViewerVC.swift in Sources */,
+				F36DB1E42CE4CAF300E58F82 /* DatabaseViewerPermissionManager.swift in Sources */,
 				75060C6A2B8CEC35006C7B50 /* MacUtils.swift in Sources */,
 				755B435B26BC894200C24386 /* TipBoxCoordinator.swift in Sources */,
 				75267CFE25FF75E300A1CC95 /* ContextualAction.swift in Sources */,
@@ -4503,6 +4523,7 @@
 				75814FD225F3D70B00B52A57 /* UIApplication+extensions.swift in Sources */,
 				75E60AE525CF5E090089219C /* DatabaseIconSet+assets.swift in Sources */,
 				1CEC93095649196A21117BC3 /* FaviconDownloading.swift in Sources */,
+				A6DDE071E0C62D87E83420E5 /* ToolbarDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4525,7 +4546,6 @@
 				753E01022B1128A400378C8D /* EncryptionSettingsVC.swift in Sources */,
 				759894B924620AF6006B6709 /* FileExportHelper.swift in Sources */,
 				75B38BFA233E5B7C006BDEFC /* UserNameHelper.swift in Sources */,
-				75E9E2BB290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift in Sources */,
 				75B38BFB233E5B7C006BDEFC /* WatchdogAwareTextView.swift in Sources */,
 				F321414D2A934AAE007A8D4E /* HIBPService.swift in Sources */,
 				75D3AEB623BDD582003028FB /* DestinationGroupPickerVC.swift in Sources */,
@@ -4570,6 +4590,7 @@
 				75C1AF882731E54D00E33AAC /* DatabaseSettingsVC.swift in Sources */,
 				75B38C07233E5B7C006BDEFC /* DatabaseKeyChangerVC.swift in Sources */,
 				75B38C08233E5B7C006BDEFC /* Attachment+extensions.swift in Sources */,
+				75F544B82CEF8E420022BAA4 /* UIKeyCommand+hotkeys.swift in Sources */,
 				758FC18E24CF254000BAD35C /* AppIcon.swift in Sources */,
 				75B38C09233E5B7C006BDEFC /* DatabaseCreatorCoordinator.swift in Sources */,
 				F34AB0742BAF1E7D00BB50A3 /* GoogleDriveConnectionSetupCoordinator.swift in Sources */,
@@ -4685,10 +4706,12 @@
 				75A4948D2B5F0E9C00ED018F /* TagFormatter.swift in Sources */,
 				F32141562A934AB9007A8D4E /* PasswordAuditResultCell.swift in Sources */,
 				754E40872630271D003E4854 /* AppProtectionSettingsCoordinator.swift in Sources */,
+				75C204C42CEE463900E4EDA3 /* UIMenu+customIdentifiers.swift in Sources */,
 				75B38C35233E5B7C006BDEFC /* Watchdog.swift in Sources */,
 				75B38C38233E5B7C006BDEFC /* PremiumCoordinator.swift in Sources */,
 				75B38C39233E5B7C006BDEFC /* PasscodeInputVC.swift in Sources */,
 				75B38C3A233E5B7C006BDEFC /* MultilineButton.swift in Sources */,
+				F36DB1E32CE4CAF300E58F82 /* DatabaseViewerPermissionManager.swift in Sources */,
 				75060C6B2B8CEC35006C7B50 /* MacUtils.swift in Sources */,
 				754CE07C299FA80000C3DE50 /* DatabasePrintFormatter.swift in Sources */,
 				758FF6CC28FC18E4007DE8EB /* RemoteFolderViewerVC.swift in Sources */,
@@ -4741,6 +4764,7 @@
 				75BE05FC25DAA5A200B34CC0 /* URLOpener.swift in Sources */,
 				75814FD425F3D70B00B52A57 /* UIApplication+extensions.swift in Sources */,
 				75E60AE725CF5E090089219C /* DatabaseIconSet+assets.swift in Sources */,
+				576C2F92F2472658AF625BD0 /* ToolbarDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4753,9 +4777,9 @@
 				75D075B328B639D200F02E39 /* WatchdogAwareTextField.swift in Sources */,
 				75D075B428B639D200F02E39 /* AppIconPicker.swift in Sources */,
 				75D075B528B639D200F02E39 /* PasswordGeneratorLengthCell.swift in Sources */,
+				75C204C72CEE463900E4EDA3 /* UIMenu+customIdentifiers.swift in Sources */,
 				75D075B628B639D200F02E39 /* AppDelegate.swift in Sources */,
 				75D075B728B639D200F02E39 /* (null) in Sources */,
-				751ABAD72915B7B5008C18DE /* DatabaseItem+ActionPermissions.swift in Sources */,
 				75D075B828B639D200F02E39 /* AppHistoryViewerVC.swift in Sources */,
 				75D075B928B639D200F02E39 /* SettingsDataProtectionVC.swift in Sources */,
 				75D075BA28B639D200F02E39 /* AppIconSwitcherCoordinator.swift in Sources */,
@@ -4819,6 +4843,7 @@
 				75D075EB28B639D200F02E39 /* DiagnosticsViewerCoordinator.swift in Sources */,
 				75D075EC28B639D200F02E39 /* PasswordGeneratorVC.swift in Sources */,
 				F34AB0722BAF1E7C00BB50A3 /* GoogleDriveConnectionSetupCoordinator.swift in Sources */,
+				F36DB1E52CE4CAF300E58F82 /* DatabaseViewerPermissionManager.swift in Sources */,
 				75D075ED28B639D200F02E39 /* MainCoordinator.swift in Sources */,
 				75D075EE28B639D200F02E39 /* ViewableEntryFieldFactory.swift in Sources */,
 				F32141572A934ABA007A8D4E /* PasswordAuditVC.swift in Sources */,
@@ -4878,6 +4903,7 @@
 				75D0761C28B639D200F02E39 /* EntryFileViewerVC.swift in Sources */,
 				75D0761E28B639D200F02E39 /* CollectionViewControllerWithContextActions.swift in Sources */,
 				75D0762028B639D200F02E39 /* AnnouncementView.swift in Sources */,
+				75F544B72CEF8E420022BAA4 /* UIKeyCommand+hotkeys.swift in Sources */,
 				75CA661029B8E00A0094CBAA /* DatabasePrintFormatter.swift in Sources */,
 				75D0762128B639D200F02E39 /* ProgressOverlay.swift in Sources */,
 				75A4948E2B5F0E9C00ED018F /* TagFormatter.swift in Sources */,
@@ -4983,6 +5009,7 @@
 				F30D03742A7BE8A30047525F /* PasswordQualityIndicatorView.swift in Sources */,
 				F3A2186F2C27045E006AB8F8 /* GroupEditorNotesCell.swift in Sources */,
 				75D0766A28B639D200F02E39 /* DatabaseIconSet+assets.swift in Sources */,
+				CAE0F4EB8D6B1135FCBB22A0 /* ToolbarDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5021,7 +5048,6 @@
 				758FF6D228FC2C9C007DE8EB /* SubtitleCell.swift in Sources */,
 				7526404228455DD80003DDFA /* PasswordGeneratorCells.swift in Sources */,
 				7572665324CB17410099B6E1 /* HelpViewerVC.swift in Sources */,
-				75E9E2BC290C1AEB00B79BE8 /* DatabaseItem+ActionPermissions.swift in Sources */,
 				750C0D572B64067600821CA4 /* WebDAVConnectionSetupCoordinator.swift in Sources */,
 				75BE05F625DAA4E500B34CC0 /* SupportEmailComposer.swift in Sources */,
 				7526404428455DDC0003DDFA /* PasswordGeneratorLengthCell.swift in Sources */,
@@ -5049,6 +5075,7 @@
 				75D7DF8D233E5E310029AD87 /* MultilineButton.swift in Sources */,
 				75C1AF892731E54D00E33AAC /* DatabaseSettingsVC.swift in Sources */,
 				759ADB8A285A22CD00D93BD4 /* AnnouncementView.swift in Sources */,
+				75F544B92CEF8E420022BAA4 /* UIKeyCommand+hotkeys.swift in Sources */,
 				75D7DF8E233E5E310029AD87 /* Refreshable.swift in Sources */,
 				75D7DF8F233E5E310029AD87 /* UITableViewCell+extension.swift in Sources */,
 				75B78711261F916E005BE7B7 /* CollectionViewControllerWithContextActions.swift in Sources */,
@@ -5094,6 +5121,7 @@
 				757ADC5723A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
 				75D7DF9F233E5E310029AD87 /* PasscodeInputVC.swift in Sources */,
 				75D99DF1269CEE0800D0E9D7 /* DatabaseItemTitleView.swift in Sources */,
+				75C204C62CEE463900E4EDA3 /* UIMenu+customIdentifiers.swift in Sources */,
 				7505F6C82B86430400EA9BFD /* ManagedAppConfig+extensions.swift in Sources */,
 				7502561F283D370000B930D9 /* SpinnerLabel.swift in Sources */,
 				F32228152CCEC4230093BD9C /* KeyFileTextField.swift in Sources */,

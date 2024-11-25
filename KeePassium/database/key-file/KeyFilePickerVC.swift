@@ -344,8 +344,7 @@ extension KeyFilePickerVC {
         return [
             UIKeyCommand(
                 action: #selector(refresh),
-                input: "r",
-                modifierFlags: [.command],
+                hotkey: .refreshList,
                 discoverabilityTitle: LString.actionRefreshList
             )
         ]

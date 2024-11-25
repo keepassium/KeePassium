@@ -11,12 +11,12 @@ import UIKit
 extension Coordinator {
 
     func showPasswordGenerator(
-        at popoverAnchor: PopoverAnchor,
+        at popoverAnchor: PopoverAnchor?,
         in viewController: UIViewController
     ) {
         let modalRouter: NavigationRouter
         let isNarrow = viewController.splitViewController?.isCollapsed ?? false
-        if isNarrow {
+        if isNarrow || ProcessInfo.isRunningOnMac{
             modalRouter = NavigationRouter.createModal(style: .pageSheet, at: popoverAnchor)
             let sheet = modalRouter.navigationController.sheetPresentationController
             sheet?.detents = [.medium(), .large()]

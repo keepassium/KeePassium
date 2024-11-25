@@ -48,12 +48,6 @@ protocol DatabaseViewerCoordinatorDelegate: AnyObject {
 final class DatabaseViewerCoordinator: Coordinator {
     private let vcAnimationDuration = 0.3
 
-    enum Action {
-        case lockDatabase
-        case createEntry
-        case createGroup
-    }
-
     var childCoordinators = [Coordinator]()
 
     weak var delegate: DatabaseViewerCoordinatorDelegate?
@@ -77,9 +71,12 @@ final class DatabaseViewerCoordinator: Coordinator {
     }
 
     private var initialGroupUUID: UUID?
-    private weak var currentGroup: Group?
-    private weak var currentEntry: Entry?
+    fileprivate weak var currentGroup: Group?
+    fileprivate weak var currentEntry: Entry?
     private weak var rootGroupViewer: GroupViewerVC?
+    private var topGroupViewer: GroupViewerVC? {
+        primaryRouter.navigationController.topViewController as? GroupViewerVC
+    }
 
     private let splitViewController: RootSplitVC
     private weak var oldSplitDelegate: UISplitViewControllerDelegate?
@@ -101,6 +98,15 @@ final class DatabaseViewerCoordinator: Coordinator {
 
     let faviconDownloader: FaviconDownloader
     let specialEntryParser: SpecialEntryParser
+
+    private(set) var actionsManager: DatabaseViewerActionsManager!
+    var currentGroupPermissions: DatabaseViewerPermissionManager.Permissions {
+        if let currentGroup {
+            return DatabaseViewerPermissionManager.getPermissions(for: currentGroup, in: databaseFile)
+        } else {
+            return []
+        }
+    }
 
     init(
         splitViewController: RootSplitVC,
@@ -126,6 +132,8 @@ final class DatabaseViewerCoordinator: Coordinator {
 
         faviconDownloader = FaviconDownloader()
         specialEntryParser = SpecialEntryParser()
+
+        actionsManager = DatabaseViewerActionsManager(coordinator: self)
     }
 
     deinit {
@@ -188,6 +196,16 @@ final class DatabaseViewerCoordinator: Coordinator {
         if let topSecondaryVC = entryViewerRouter?.navigationController.topViewController {
             (topSecondaryVC as? Refreshable)?.refresh()
         }
+
+        UIMenu.rebuildMainMenu()
+    }
+
+    func reorder() {
+        guard let groupViewerVC = topGroupViewer else {
+            assertionFailure()
+            return
+        }
+        groupViewerVC.reorder()
     }
 
     private func getPresenterForModals() -> UIViewController {
@@ -198,51 +216,6 @@ final class DatabaseViewerCoordinator: Coordinator {
     private func appDidBecomeActive(_ notification: Notification) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
             self?.maybeCheckDatabaseForExternalChanges()
-        }
-    }
-}
-
-extension DatabaseViewerCoordinator {
-    public func canPerform(action: Action) -> Bool {
-        switch action {
-        case .lockDatabase:
-            return true
-        case .createEntry:
-            guard let currentGroup = currentGroup else {
-                assertionFailure()
-                return false
-            }
-            let permissions = getActionPermissions(for: currentGroup)
-            return permissions.canCreateEntry
-        case .createGroup:
-            guard let currentGroup = currentGroup else {
-                assertionFailure()
-                return false
-            }
-            let permissions = getActionPermissions(for: currentGroup)
-            return permissions.canCreateGroup
-        }
-    }
-
-    public func perform(action: Action) {
-        assert(canPerform(action: action))
-        switch action {
-        case .lockDatabase:
-            closeDatabase(shouldLock: true, reason: .userRequest, animated: true, completion: nil)
-        case .createEntry:
-            let popoverAnchor = PopoverAnchor(
-                sourceView: primaryRouter.navigationController.view,
-                sourceRect: primaryRouter.navigationController.view.bounds)
-            primaryRouter.dismissModals(animated: true) { [self] in
-                showEntryEditor(for: nil, at: popoverAnchor)
-            }
-        case .createGroup:
-            let popoverAnchor = PopoverAnchor(
-                sourceView: primaryRouter.navigationController.view,
-                sourceRect: primaryRouter.navigationController.view.bounds)
-            primaryRouter.dismissModals(animated: true) { [self] in
-                showGroupEditor(.create(smart: false), at: popoverAnchor)
-            }
         }
     }
 }
@@ -342,6 +315,7 @@ extension DatabaseViewerCoordinator {
         groupViewerVC.group = group
         groupViewerVC.canDownloadFavicons = database is Database2
         groupViewerVC.canChangeEncryptionSettings = database is Database2
+        groupViewerVC.permissions = currentGroupPermissions
 
         let isCustomTransition = replacingTopVC && animated
         if isCustomTransition {
@@ -366,12 +340,15 @@ extension DatabaseViewerCoordinator {
                     self.dismissHandler?(self)
                     self.delegate?.didLeaveDatabase(in: self)
                 }
+                UIMenu.rebuildMainMenu()
             }
         )
 
         if rootGroupViewer == nil {
             rootGroupViewer = groupViewerVC
         }
+
+        UIMenu.rebuildMainMenu()
     }
 
     private func selectEntry(_ entry: Entry?) {
@@ -380,9 +357,7 @@ extension DatabaseViewerCoordinator {
     }
 
     private func focusOnEntry(_ entry: Entry?) {
-        guard let groupViewerVC = primaryRouter.navigationController.topViewController
-                as? GroupViewerVC
-        else {
+        guard let groupViewerVC = topGroupViewer else {
             assertionFailure()
             return
         }
@@ -390,6 +365,9 @@ extension DatabaseViewerCoordinator {
     }
 
     private func showEntry(_ entry: Entry?) {
+        defer {
+            UIMenu.rebuildMainMenu()
+        }
         currentEntry = entry
         guard let entry = entry else {
             if !splitViewController.isCollapsed {
@@ -438,6 +416,10 @@ extension DatabaseViewerCoordinator {
         splitViewController.setDetailRouter(entryViewerRouter)
     }
 
+    public func reloadDatabase() {
+        delegate?.didPressReloadDatabase(databaseFile, originalRef: originalRef, in: self)
+    }
+
     public func closeDatabase(
         shouldLock: Bool,
         reason: DatabaseCloseReason,
@@ -466,10 +448,11 @@ extension DatabaseViewerCoordinator {
         addChildCoordinator(settingsCoordinator)
     }
 
-    private func showPasswordAudit(in viewController: UIViewController) {
+    func showPasswordAudit(in viewController: UIViewController? = nil) {
+        let presenter = viewController ?? getPresenterForModals()
         guard ManagedAppConfig.shared.isPasswordAuditAllowed else {
             assertionFailure("This action should have been disabled in UI")
-            viewController.showManagedFeatureBlockedNotification()
+            presenter.showManagedFeatureBlockedNotification()
             return
         }
         let modalRouter = NavigationRouter.createModal(style: .formSheet)
@@ -483,11 +466,12 @@ extension DatabaseViewerCoordinator {
             self?.refresh()
         }
         passwordAuditCoordinator.start()
-        viewController.present(modalRouter, animated: true, completion: nil)
+        presenter.present(modalRouter, animated: true, completion: nil)
         addChildCoordinator(passwordAuditCoordinator)
     }
 
-    private func showEncryptionSettings(in viewController: UIViewController) {
+    func showEncryptionSettings(in viewController: UIViewController? = nil) {
+        let presenter = viewController ?? getPresenterForModals()
         let modalRouter = NavigationRouter.createModal(style: .formSheet)
         let encryptionSettingsCoordinator = EncryptionSettingsCoordinator(
             databaseFile: databaseFile,
@@ -499,7 +483,7 @@ extension DatabaseViewerCoordinator {
             self?.refresh()
         }
         encryptionSettingsCoordinator.start()
-        viewController.present(modalRouter, animated: true, completion: nil)
+        presenter.present(modalRouter, animated: true, completion: nil)
         addChildCoordinator(encryptionSettingsCoordinator)
     }
 
@@ -540,15 +524,17 @@ extension DatabaseViewerCoordinator {
         }
     }
 
-    private func downloadFavicons(in viewController: UIViewController) {
+    func downloadFavicons(in viewController: UIViewController? = nil) {
         var allEntries = [Entry]()
         databaseFile.database.root?.collectAllEntries(to: &allEntries)
 
-        downloadFavicons(for: allEntries, in: viewController)
+        let presenter = viewController ?? getPresenterForModals()
+        downloadFavicons(for: allEntries, in: presenter)
     }
 
-    private func showMasterKeyChanger(in viewController: UIViewController) {
+    func showMasterKeyChanger(in viewController: UIViewController? = nil) {
         Diag.info("Will change master key")
+        let presenter = viewController ?? getPresenterForModals()
 
         let modalRouter = NavigationRouter.createModal(style: .formSheet)
         let databaseKeyChangeCoordinator = DatabaseKeyChangerCoordinator(
@@ -560,7 +546,7 @@ extension DatabaseViewerCoordinator {
         }
         databaseKeyChangeCoordinator.delegate = self
         databaseKeyChangeCoordinator.start()
-        viewController.present(modalRouter, animated: true, completion: nil)
+        presenter.present(modalRouter, animated: true, completion: nil)
         addChildCoordinator(databaseKeyChangeCoordinator)
     }
 
@@ -587,6 +573,12 @@ extension DatabaseViewerCoordinator {
 
         getPresenterForModals().present(modalRouter, animated: true, completion: nil)
         addChildCoordinator(groupEditorCoordinator)
+    }
+
+    func showGroupEditor(_ mode: GroupEditorCoordinator.Mode) {
+        primaryRouter.dismissModals(animated: true) { [self] in
+            showGroupEditor(mode, at: nil)
+        }
     }
 
     private func showEntryEditor(
@@ -620,6 +612,12 @@ extension DatabaseViewerCoordinator {
         addChildCoordinator(entryFieldEditorCoordinator)
     }
 
+    func showEntryEditor() {
+        primaryRouter.dismissModals(animated: true) { [self] in
+            showEntryEditor(for: nil, at: nil)
+        }
+    }
+
     private func showItemRelocator(
         for items: [DatabaseItem],
         mode: ItemRelocationMode,
@@ -642,7 +640,7 @@ extension DatabaseViewerCoordinator {
         addChildCoordinator(itemRelocationCoordinator)
     }
 
-    private func showDatabasePrintDialog() {
+    func showDatabasePrintDialog() {
         guard ManagedAppConfig.shared.isDatabasePrintAllowed else {
             getPresenterForModals().showManagedFeatureBlockedNotification()
             Diag.error("Blocked by organization's policy, cancelling")
@@ -685,6 +683,30 @@ extension DatabaseViewerCoordinator {
         })
         Diag.debug("Preparing print preview")
     }
+
+    func canCopyCurrentEntryField(_ fieldName: String) -> Bool {
+        guard let value = currentEntry?.getField(fieldName)?.resolvedValue else {
+            return false
+        }
+        return value.isNotEmpty
+    }
+
+    func copyCurrentEntryField(_ fieldName: String) {
+        guard let currentEntry else { return }
+        guard let value = currentEntry.getField(fieldName)?.resolvedValue else {
+            assertionFailure("Unexpected field name")
+            return
+        }
+        Clipboard.general.copyWithTimeout(value)
+    }
+
+    func startSelection() {
+        guard let groupViewerVC = topGroupViewer else {
+            assertionFailure()
+            return
+        }
+        groupViewerVC.select()
+    }
 }
 
 extension DatabaseViewerCoordinator: SettingsObserver {
@@ -710,7 +732,7 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
     }
 
     func didPressReloadDatabase(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC) {
-        delegate?.didPressReloadDatabase(databaseFile, originalRef: originalRef, in: self)
+        reloadDatabase()
     }
 
     func didPressSettings(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC) {
@@ -855,58 +877,18 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
         }
     }
 
-    func getActionPermissions(for group: Group) -> DatabaseItem.ActionPermissions {
-        guard canEditDatabase else {
-            return DatabaseItem.ActionPermissions.everythingForbidden
-        }
-
-        var result = DatabaseItem.ActionPermissions()
-        result.canEditDatabase = true 
-        result.canCreateGroup = !group.isDeleted
-
-        if group is Group1 {
-            result.canCreateEntry = !group.isDeleted && !group.isRoot
-        } else {
-            result.canCreateEntry = !group.isDeleted
-        }
-
-        let isRecycleBin = (group === group.database?.getBackupGroup(createIfMissing: false))
-        if isRecycleBin {
-            result.canEditItem = group is Group2
-        } else {
-            result.canEditItem = !group.isDeleted && !(group is Group1 && group.isRoot)
-        }
-
-        result.canDeleteItem = !group.isRoot
-
-        result.canMoveItem = !group.isRoot
-        if (group is Group1) && isRecycleBin {
-            result.canMoveItem = false
-        }
-        return result
-    }
-
-    func getActionPermissions(for entry: Entry) -> DatabaseItem.ActionPermissions {
-        guard canEditDatabase else {
-            return DatabaseItem.ActionPermissions.everythingForbidden
-        }
-
-        var result = DatabaseItem.ActionPermissions()
-        result.canEditDatabase = true 
-        result.canCreateGroup = false
-        result.canCreateEntry = false
-        result.canEditItem = !entry.isDeleted
-        result.canDeleteItem = true 
-        result.canMoveItem = true
-        return result
-    }
-
     func didPressFaviconsDownload(
         _ entries: [Entry],
         at popoverAnchor: PopoverAnchor,
         in viewController: GroupViewerVC
     ) {
         downloadFavicons(for: entries, in: viewController)
+    }
+
+    func shouldProvidePermissions(for item: DatabaseItem, in viewController: GroupViewerVC)
+        -> DatabaseViewerPermissionManager.Permissions
+    {
+        return DatabaseViewerPermissionManager.getPermissions(for: item, in: databaseFile)
     }
 }
 
@@ -1249,7 +1231,7 @@ extension DatabaseViewerCoordinator: FaviconDownloading {
 extension DatabaseViewerCoordinator {
     private func maybeCheckDatabaseForExternalChanges() {
         let dbRef = originalRef
-        guard let groupViewerVC = primaryRouter.navigationController.topViewController as? GroupViewerVC else {
+        guard let groupViewerVC = topGroupViewer else {
             return
         }
 
@@ -1325,5 +1307,268 @@ extension DatabaseViewerCoordinator {
             Diag.info("Database changed elsewhere, reloading automatically")
             delegate?.didPressReloadDatabase(databaseFile, originalRef: originalRef, in: self)
         }
+    }
+}
+
+final class DatabaseViewerActionsManager: UIResponder {
+    private weak var coordinator: DatabaseViewerCoordinator?
+
+    init(coordinator: DatabaseViewerCoordinator? = nil) {
+        self.coordinator = coordinator
+    }
+
+    override func buildMenu(with builder: any UIMenuBuilder) {
+        builder.insertChild(makeReloadDatabaseMenu(), atEndOfMenu: .databaseFile)
+        builder.insertChild(makeDatabaseToolsMenu2(), atEndOfMenu: .databaseFile)
+        builder.insertChild(makeLockDatabaseMenu(), atEndOfMenu: .databaseFile)
+        builder.insertSibling(makeDatabaseToolsMenu1(), afterMenu: .passwordGenerator)
+        if coordinator != nil {
+            builder.insertChild(makeDatabaseItemsSortOrderMenu(), atEndOfMenu: .view)
+            builder.insertSibling(makeEntrySubtitleMenu(), afterMenu: .itemsSortOrder)
+        }
+        builder.insertChild(makeCreateMenu(), atEndOfMenu: .edit)
+        builder.insertChild(makeEditGroupMenu(), atEndOfMenu: .edit)
+        builder.insertChild(makeCopyEntryFieldMenu(), atEndOfMenu: .edit)
+        builder.insertChild(makeSelectMenu(), atEndOfMenu: .edit)
+    }
+
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        guard let coordinator else {
+            return false
+        }
+
+        let permissions = coordinator.currentGroupPermissions
+        switch action {
+        case #selector(kpmReloadDatabase),
+             #selector(kpmLockDatabase):
+            return true
+        case #selector(kpmShowPasswordAudit):
+            return permissions.contains(.auditPasswords)
+        case #selector(kpmDownloadFavicons):
+            return permissions.contains(.downloadFavicons)
+        case #selector(kpmPrintDatabase):
+            return permissions.contains(.printDatabase)
+        case #selector(kpmChangeMasterKey):
+            return permissions.contains(.changeMasterKey)
+        case #selector(kpmShowEncryptionSettings):
+            return permissions.contains(.changeEncryptionSettings)
+        case #selector(kpmCreateEntry):
+            return permissions.contains(.createEntry)
+        case #selector(kpmCreateGroup):
+            return permissions.contains(.createGroup)
+        case #selector(kpmCreateSmartGroup):
+            return permissions.contains(.createGroup)
+        case #selector(kpmEditGroup):
+            return permissions.contains(.editItem)
+        case #selector(kpmSelect):
+            return permissions.contains(.selectItems)
+        case #selector(kpmCopyEntryUserName):
+            return coordinator.canCopyCurrentEntryField(EntryField.userName)
+        case #selector(kpmCopyEntryPassword):
+            return coordinator.canCopyCurrentEntryField(EntryField.password)
+        case #selector(kpmCopyEntryURL):
+            return coordinator.canCopyCurrentEntryField(EntryField.url)
+        default:
+            return false
+        }
+    }
+
+    private func makeLockDatabaseMenu() -> UIMenu {
+        let lockDatabaseCommand = UIKeyCommand(
+            title: LString.actionLockDatabase,
+            action: #selector(kpmLockDatabase),
+            hotkey: .lockDatabase
+        )
+        return UIMenu(identifier: .lockDatabase, options: [.displayInline], children: [lockDatabaseCommand])
+    }
+
+    private func makeReloadDatabaseMenu() -> UIMenu {
+        let reloadDatabaseCommand = UIKeyCommand(
+            title: LString.actionReloadDatabase,
+            action: #selector(kpmReloadDatabase),
+            hotkey: .reloadDatabase
+        )
+        return UIMenu(identifier: .reloadDatabase, options: [.displayInline], children: [reloadDatabaseCommand])
+    }
+
+    private func makeDatabaseItemsSortOrderMenu() -> UIMenu {
+        let canReorder = coordinator?.currentGroupPermissions.contains(.reorderItems) ?? false
+        let reorderItemsAction = UIAction(
+            title: LString.actionReorderItems,
+            image: .symbol(.arrowUpArrowDown),
+            attributes: canReorder ? [] : [.disabled],
+            handler: { [weak self] _ in
+                self?.coordinator?.reorder()
+            }
+        )
+        let children = UIMenu.makeDatabaseItemSortMenuItems(
+            current: Settings.current.groupSortOrder,
+            reorderAction: reorderItemsAction,
+            handler: { [weak self] newSortOrder in
+                Settings.current.groupSortOrder = newSortOrder
+                self?.coordinator?.refresh()
+            }
+        )
+        return UIMenu(
+            title: LString.titleSortItemsBy,
+            identifier: .itemsSortOrder,
+            options: .singleSelection,
+            children: children)
+    }
+
+    private func makeEntrySubtitleMenu() -> UIMenu {
+        let children = Settings.EntryListDetail.allValues.map { entryListDetail in
+            let isCurrent = Settings.current.entryListDetail == entryListDetail
+            return UIAction(
+                title: entryListDetail.title,
+                state: isCurrent ? .on : .off,
+                handler: { [weak self] _ in
+                    Settings.current.entryListDetail = entryListDetail
+                    self?.coordinator?.refresh()
+                    UIMenu.rebuildMainMenu()
+                }
+            )
+        }
+        return UIMenu(
+            title: LString.titleEntrySubtitle,
+            options: .singleSelection,
+            children: children
+        )
+    }
+
+    private func makeDatabaseToolsMenu1() -> UIMenu {
+        let passwordAuditAction = UIKeyCommand(
+            title: LString.titlePasswordAudit,
+            action: #selector(kpmShowPasswordAudit),
+            hotkey: .passwordAudit)
+        let downloadFaviconsAction = UICommand(
+            title: LString.actionDownloadFavicons,
+            action: #selector(kpmDownloadFavicons))
+        return UIMenu(inlineChildren: [
+            passwordAuditAction,
+            downloadFaviconsAction,
+        ])
+    }
+
+    private func makeDatabaseToolsMenu2() -> UIMenu {
+        let changeMasterKeyAction = UICommand(
+            title: LString.actionChangeMasterKey,
+            action: #selector(kpmChangeMasterKey))
+        let encryptionSettingsAction = UIKeyCommand(
+            title: LString.titleEncryptionSettings,
+            action: #selector(kpmShowEncryptionSettings),
+            hotkey: .encryptionSettings)
+        let printAction = UIKeyCommand(
+            title: LString.actionPrint,
+            action: #selector(kpmPrintDatabase),
+            hotkey: .printDatabase)
+        return UIMenu(inlineChildren: [
+            changeMasterKeyAction,
+            encryptionSettingsAction,
+            printAction
+        ])
+    }
+
+    private func makeCreateMenu() -> UIMenu {
+        let createEntryMenuItem = UIKeyCommand(
+            title: LString.titleNewEntry,
+            action: #selector(kpmCreateEntry),
+            hotkey: .createEntry)
+        let createGroupMenuItem = UIKeyCommand(
+            title: LString.titleNewGroup,
+            action: #selector(kpmCreateGroup),
+            hotkey: .createGroup)
+        let createSmartGroupMenuItem = UICommand(
+            title: LString.titleNewSmartGroup,
+            action: #selector(kpmCreateSmartGroup))
+        return UIMenu(inlineChildren: [
+            createEntryMenuItem,
+            createGroupMenuItem, createSmartGroupMenuItem
+        ])
+    }
+
+    private func makeEditGroupMenu() -> UIMenu {
+        let editGroupMenuItem = UICommand(
+            title: LString.titleEditGroup,
+            action: #selector(kpmEditGroup))
+        return UIMenu(inlineChildren: [editGroupMenuItem])
+    }
+
+    private func makeCopyEntryFieldMenu() -> UIMenu {
+        let copyUserNameAction = UIKeyCommand(
+            title: String.localizedStringWithFormat(
+                LString.actionCopyToClipboardTemplate,
+                LString.fieldUserName),
+            action: #selector(kpmCopyEntryUserName),
+            hotkey: .copyUserName)
+        let copyPasswordAction = UIKeyCommand(
+            title: String.localizedStringWithFormat(
+                LString.actionCopyToClipboardTemplate,
+                LString.fieldPassword),
+            action: #selector(kpmCopyEntryPassword),
+            hotkey: .copyPassword)
+        let copyURLAction = UIKeyCommand(
+            title: String.localizedStringWithFormat(
+                LString.actionCopyToClipboardTemplate,
+                LString.fieldURL),
+            action: #selector(kpmCopyEntryURL),
+            hotkey: .copyURL)
+        return UIMenu(inlineChildren: [copyUserNameAction, copyPasswordAction, copyURLAction])
+    }
+
+    private func makeSelectMenu() -> UIMenu {
+        let selectAction = UICommand(
+            title: LString.actionSelect,
+            action: #selector(kpmSelect))
+        return UIMenu(inlineChildren: [selectAction])
+    }
+
+    @objc func kpmReloadDatabase() {
+        coordinator?.reloadDatabase()
+    }
+    @objc func kpmLockDatabase() {
+        coordinator?.closeDatabase(shouldLock: true, reason: .userRequest, animated: true, completion: nil)
+    }
+    @objc func kpmShowPasswordAudit() {
+        coordinator?.showPasswordAudit()
+    }
+    @objc func kpmDownloadFavicons() {
+        coordinator?.downloadFavicons()
+    }
+    @objc func kpmPrintDatabase() {
+        coordinator?.showDatabasePrintDialog()
+    }
+    @objc func kpmChangeMasterKey() {
+        coordinator?.showMasterKeyChanger()
+    }
+    @objc func kpmShowEncryptionSettings() {
+        coordinator?.showEncryptionSettings()
+    }
+    @objc func kpmCreateEntry() {
+        coordinator?.showEntryEditor()
+    }
+    @objc func kpmCreateSmartGroup() {
+        coordinator?.showGroupEditor(.create(smart: true))
+    }
+    @objc func kpmCreateGroup() {
+        coordinator?.showGroupEditor(.create(smart: false))
+    }
+    @objc func kpmEditGroup() {
+        guard let currentGroup = coordinator?.currentGroup else {
+            return
+        }
+        coordinator?.showGroupEditor(.modify(group: currentGroup))
+    }
+    @objc func kpmSelect() {
+        coordinator?.startSelection()
+    }
+    @objc func kpmCopyEntryUserName() {
+        coordinator?.copyCurrentEntryField(EntryField.userName)
+    }
+    @objc func kpmCopyEntryPassword() {
+        coordinator?.copyCurrentEntryField(EntryField.password)
+    }
+    @objc func kpmCopyEntryURL() {
+        coordinator?.copyCurrentEntryField(EntryField.url)
     }
 }

@@ -258,6 +258,11 @@ extension LString {
     )
 
 
+    public static let titleSortItemsBy = NSLocalizedString(
+        "[Menu/Sort] Sort Items By",
+        value: "Sort Items By",
+        comment: "Title of a menu: sort order of groups and entries in a list")
+
     public static let titleEntrySubtitle = NSLocalizedString(
         "[Settings/GroupViewer] Entry Subtitle",
         bundle: Bundle.framework,
@@ -350,7 +355,10 @@ extension LString {
         bundle: Bundle.framework,
         value: "If some local files are not listed, launch the main KeePassium app first.",
         comment: "Recommendation for solving a problem with a list of files.")
-
+    public static let titleSortFilesBy = NSLocalizedString(
+        "[Menu/Sort] Sort Files By",
+        value: "Sort Files By",
+        comment: "Title of a menu: sort order of files in a list")
     public static let titleShowBackupFiles = NSLocalizedString(
         "Show Backup Files",
         bundle: Bundle.framework,

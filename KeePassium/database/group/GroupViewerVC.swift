@@ -19,6 +19,9 @@ protocol GroupViewerDelegate: AnyObject {
     func didPressPasswordGenerator(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC)
     func didPressEncryptionSettings(in viewController: GroupViewerVC)
 
+    func shouldProvidePermissions(for item: DatabaseItem, in viewController: GroupViewerVC)
+        -> DatabaseViewerPermissionManager.Permissions
+
     func didSelectGroup(_ group: Group?, in viewController: GroupViewerVC) -> Bool
 
     func didSelectEntry(_ entry: Entry?, in viewController: GroupViewerVC) -> Bool
@@ -83,9 +86,6 @@ protocol GroupViewerDelegate: AnyObject {
     )
 
     func didFinishBulkUpdates(in viewController: GroupViewerVC)
-
-    func getActionPermissions(for group: Group) -> DatabaseItem.ActionPermissions
-    func getActionPermissions(for entry: Entry) -> DatabaseItem.ActionPermissions
 }
 
 final class GroupViewerVC:
@@ -125,6 +125,7 @@ final class GroupViewerVC:
     }
 
     weak var delegate: GroupViewerDelegate?
+    var permissions: DatabaseViewerPermissionManager.Permissions = []
 
     @IBOutlet private weak var toolsMenuButton: UIBarButtonItem!
     @IBOutlet private var reloadDatabaseButton: UIBarButtonItem!
@@ -148,6 +149,8 @@ final class GroupViewerVC:
             refresh()
         }
     }
+
+    var permissionManager: DatabaseViewerPermissionManager?
 
     var isGroupEmpty: Bool {
         return groupsSorted.isEmpty && entriesSorted.isEmpty
@@ -183,8 +186,6 @@ final class GroupViewerVC:
         target: self,
         action: #selector(didPressDoneSelectReorder)
     )
-
-    private var actionPermissions = DatabaseItem.ActionPermissions()
 
     internal var announcements = [AnnouncementItem]() {
         didSet {
@@ -363,8 +364,7 @@ final class GroupViewerVC:
         return [
             UIKeyCommand(
                 action: #selector(activateSearch),
-                input: "f",
-                modifierFlags: [.command],
+                hotkey: .search,
                 discoverabilityTitle: LString.titleSearch
             )
         ]
@@ -393,9 +393,16 @@ final class GroupViewerVC:
         shouldHighlightOTP = isOTPSmartGroup()
         tableView.reloadData()
 
-        actionPermissions = delegate?.getActionPermissions(for: group) ?? DatabaseItem.ActionPermissions()
         updateGroupActionsMenuButton()
         updateToolsMenuButton(toolsMenuButton)
+    }
+
+    func reorder() {
+        startSelectionMode(animated: true)
+    }
+
+    func select() {
+        startSelectionMode(animated: true)
     }
 
     private func refreshDynamicCells() {
@@ -414,6 +421,11 @@ final class GroupViewerVC:
         entriesSorted = group.entries.sorted { groupSortOrder.compare($0, $1) }
     }
 
+    private func makeActionAttributes(with permission: DatabaseViewerPermissionManager.PermissionElement) -> UIMenuElement.Attributes {
+        let isAllowed = permissions.contains(permission)
+        return isAllowed ? [] : [.disabled]
+    }
+
     private func updateToolsMenuButton(_ barButton: UIBarButtonItem) {
         barButton.title = LString.titleTools
         let lockDatabaseAction = UIAction(
@@ -428,6 +440,7 @@ final class GroupViewerVC:
         let printDatabaseAction = UIAction(
             title: LString.actionPrint,
             image: .symbol(.printer),
+            attributes: makeActionAttributes(with: .printDatabase),
             handler: { [weak self] _ in
                 guard let self else { return }
                 self.delegate?.didPressPrintDatabase(in: self)
@@ -436,6 +449,7 @@ final class GroupViewerVC:
         let changeMasterKeyAction = UIAction(
             title: LString.actionChangeMasterKey,
             image: .symbol(.key),
+            attributes: makeActionAttributes(with: .changeMasterKey),
             handler: { [weak self] _ in
                 guard let self else { return }
                 self.delegate?.didPressChangeMasterKey(in: self)
@@ -444,6 +458,7 @@ final class GroupViewerVC:
         let passwordAuditAction = UIAction(
             title: LString.titlePasswordAudit,
             image: .symbol(.networkBadgeShield),
+            attributes: makeActionAttributes(with: .auditPasswords),
             handler: { [weak self] _ in
                 guard let self else { return }
                 self.delegate?.didPressPasswordAudit(in: self)
@@ -452,6 +467,7 @@ final class GroupViewerVC:
         let faviconsDownloadAction = UIAction(
             title: LString.actionDownloadFavicons,
             image: .symbol(.wandAndStars),
+            attributes: makeActionAttributes(with: .downloadFavicons),
             handler: { [weak self] _ in
                 guard let self else { return }
                 self.delegate?.didPressFaviconsDownload(in: self)
@@ -470,29 +486,12 @@ final class GroupViewerVC:
         let encryptionSettingsAction = UIAction(
             title: LString.titleEncryptionSettings,
             image: .symbol(.lockShield),
+            attributes: makeActionAttributes(with: .changeEncryptionSettings),
             handler: { [weak self] _ in
                 guard let self else { return }
                 self.delegate?.didPressEncryptionSettings(in: self)
             }
         )
-
-        if !ManagedAppConfig.shared.isPasswordAuditAllowed {
-            passwordAuditAction.attributes.insert(.disabled)
-        }
-        if !ManagedAppConfig.shared.isFaviconDownloadAllowed {
-            faviconsDownloadAction.attributes.insert(.disabled)
-        }
-        if !ManagedAppConfig.shared.isDatabaseEncryptionSettingsAllowed {
-            encryptionSettingsAction.attributes.insert(.disabled)
-        }
-        if !ManagedAppConfig.shared.isDatabasePrintAllowed {
-            printDatabaseAction.attributes.insert(.disabled)
-        }
-        if !actionPermissions.canEditDatabase {
-            changeMasterKeyAction.attributes.insert(.disabled)
-            faviconsDownloadAction.attributes.insert(.disabled)
-            encryptionSettingsAction.attributes.insert(.disabled)
-        }
 
         barButton.preferredMenuElementOrder = .fixed
         let frequentMenu = UIMenu.make(
@@ -923,18 +922,11 @@ final class GroupViewerVC:
         let reorderItemsAction = UIAction(
             title: LString.actionReorderItems,
             image: .symbol(.arrowUpArrowDown),
+            attributes: makeActionAttributes(with: .reorderItems),
             handler: { [weak self] _ in
-                self?.startSelectionMode(animated: true)
+                self?.reorder()
             }
         )
-        if isSmartGroup
-            || isGroupEmpty
-            || groupSortOrder != .noSorting
-            || !actionPermissions.canEditDatabase
-            || !actionPermissions.canEditItem
-        {
-            reorderItemsAction.attributes.insert(.disabled)
-        }
 
         let sortOrderMenuItems = UIMenu.makeDatabaseItemSortMenuItems(
             current: groupSortOrder,
@@ -965,13 +957,13 @@ final class GroupViewerVC:
         forSwipe: Bool
     ) -> [ContextualAction] {
         var isNonEmptyRecycleBinGroup = false
-        let permissions: DatabaseItem.ActionPermissions
+        let databaseItem: DatabaseItem
         if let group = getGroup(at: indexPath) {
-            permissions = delegate?.getActionPermissions(for: group) ?? DatabaseItem.ActionPermissions()
             let isRecycleBin = (group === group.database?.getBackupGroup(createIfMissing: false))
             isNonEmptyRecycleBinGroup = isRecycleBin && (!group.entries.isEmpty || !group.groups.isEmpty)
+            databaseItem = group
         } else if let entry = getEntry(at: indexPath) {
-            permissions = delegate?.getActionPermissions(for: entry) ?? DatabaseItem.ActionPermissions()
+            databaseItem = entry
         } else {
             return []
         }
@@ -1005,21 +997,24 @@ final class GroupViewerVC:
         )
 
         var actions = [ContextualAction]()
+        guard let itemPermissions = delegate?.shouldProvidePermissions(for: databaseItem, in: self) else {
+            return actions
+        }
 
         if forSwipe {
-            if permissions.canDeleteItem {
+            if itemPermissions.contains(.deleteItem) {
                 actions.append(deleteAction)
             }
-            if permissions.canEditItem {
+            if itemPermissions.contains(.editItem) {
                 actions.append(editAction)
             }
             return actions
         }
 
-        if permissions.canEditItem {
+        if itemPermissions.contains(.editItem) {
             actions.append(editAction)
         }
-        if permissions.canMoveItem {
+        if itemPermissions.contains(.moveItem) {
             let moveAction = ContextualAction(
                 title: LString.actionMove,
                 imageName: .folder,
@@ -1039,7 +1034,7 @@ final class GroupViewerVC:
             actions.append(moveAction)
             actions.append(copyAction)
         }
-        if permissions.canDeleteItem {
+        if itemPermissions.contains(.moveItem) {
             actions.append(deleteAction)
             if isNonEmptyRecycleBinGroup {
                 actions.append(emptyRecycleBinAction)
@@ -1058,7 +1053,7 @@ final class GroupViewerVC:
         let createGroupAction = UIAction(
             title: LString.titleNewGroup,
             image: .symbol(.folderBadgePlus),
-            attributes: actionPermissions.canCreateGroup ? [] : [.disabled],
+            attributes: makeActionAttributes(with: .createGroup),
             handler: { [weak self, popoverAnchor] _ in
                 guard let self else { return }
                 delegate?.didPressCreateGroup(smart: false, at: popoverAnchor, in: self)
@@ -1068,7 +1063,7 @@ final class GroupViewerVC:
         let createSmartGroupAction = UIAction(
             title: LString.titleNewSmartGroup,
             image: .symbol(.folderGridBadgePlus),
-            attributes: actionPermissions.canCreateGroup ? [] : [.disabled],
+            attributes: makeActionAttributes(with: .createGroup),
             handler: { [weak self, popoverAnchor] _ in
                 guard let self = self else { return }
                 delegate?.didPressCreateGroup(smart: true, at: popoverAnchor, in: self)
@@ -1078,7 +1073,7 @@ final class GroupViewerVC:
         let createEntryAction = UIAction(
             title: LString.titleNewEntry,
             image: .symbol(.docBadgePlus),
-            attributes: actionPermissions.canCreateEntry ? [] : [.disabled],
+            attributes: makeActionAttributes(with: .createEntry),
             handler: { [weak self, popoverAnchor] _ in
                 guard let self else { return }
                 delegate?.didPressCreateEntry(at: popoverAnchor, in: self)
@@ -1088,7 +1083,7 @@ final class GroupViewerVC:
         let editGroupAction = UIAction(
             title: LString.titleEditGroup,
             image: .symbol(.squareAndPencil),
-            attributes: actionPermissions.canEditItem ? [] : [.disabled],
+            attributes: makeActionAttributes(with: .editItem),
             handler: { [weak self, popoverAnchor] _ in
                 guard let self,
                       let group = self.group
@@ -1100,20 +1095,11 @@ final class GroupViewerVC:
         let selectItemsAction = UIAction(
             title: LString.actionSelect,
             image: .symbol(.checkmarkCircle),
+            attributes: makeActionAttributes(with: .selectItems),
             handler: { [weak self] _ in
-                self?.startSelectionMode(animated: true)
+                self?.select()
             }
         )
-
-        if isSmartGroup {
-            createGroupAction.attributes.insert(.disabled)
-            createSmartGroupAction.attributes.insert(.disabled)
-            createEntryAction.attributes.insert(.disabled)
-            selectItemsAction.attributes.insert(.disabled)
-        }
-        if !actionPermissions.canEditDatabase || !actionPermissions.canEditItem || isGroupEmpty {
-            selectItemsAction.attributes.insert(.disabled)
-        }
 
         button.menu = UIMenu.make(
             title: "",

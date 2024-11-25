@@ -8,7 +8,35 @@
 
 import KeePassiumLib
 
+extension Notification.Name {
+    static let reloadToolbar = Notification.Name("com.keepassium.toolbar.reloadToolbar")
+}
+
 extension UIMenu {
+    convenience init(
+        title: String = "",
+        subtitle: String? = nil,
+        image: UIImage? = nil,
+        identifier: Identifier? = nil,
+        options: Options = [],
+        preferredElementSize: ElementSize = .automatic,
+        inlineChildren: [UIMenuElement]
+    ) {
+        self.init(
+            title: title,
+            subtitle: subtitle,
+            image: image,
+            identifier: identifier,
+            options: options.union(.displayInline),
+            preferredElementSize: preferredElementSize,
+            children: inlineChildren
+        )
+    }
+
+    static func rebuildMainMenu() {
+        UIMenuSystem.main.setNeedsRebuild()
+        NotificationCenter.default.post(name: .reloadToolbar, object: nil)
+    }
 
     public static func make(
         title: String = "",
@@ -82,7 +110,7 @@ extension UIMenu {
         case ascending:
             return UIAction(
                 title: title,
-                image: .symbol(.chevronUp),
+                image: ProcessInfo.isRunningOnMac ? nil : .symbol(.chevronUp),
                 attributes: [],
                 state: .on,
                 handler: { _ in handler(descending) }
@@ -90,7 +118,7 @@ extension UIMenu {
         case descending:
             return UIAction(
                 title: title,
-                image: .symbol(.chevronDown),
+                image: ProcessInfo.isRunningOnMac ? nil : .symbol(.chevronDown),
                 attributes: [],
                 state: .on,
                 handler: { _ in handler(ascending) }
@@ -165,7 +193,7 @@ extension UIMenu {
         case ascending:
             return UIAction(
                 title: title,
-                image: .symbol(.chevronUp),
+                image: ProcessInfo.isRunningOnMac ? nil : .symbol(.chevronUp),
                 attributes: [],
                 state: .on,
                 handler: { _ in handler(descending) }
@@ -173,7 +201,7 @@ extension UIMenu {
         case descending:
             return UIAction(
                 title: title,
-                image: .symbol(.chevronDown),
+                image: ProcessInfo.isRunningOnMac ? nil : .symbol(.chevronDown),
                 attributes: [],
                 state: .on,
                 handler: { _ in handler(ascending) }
