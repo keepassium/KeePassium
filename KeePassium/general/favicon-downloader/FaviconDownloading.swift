@@ -47,7 +47,7 @@ extension FaviconDownloading {
                 allowCancelling: true,
                 animated: true
             )
-            let progressHandler = { [weak self] (progress: ProgressEx) -> Void in
+            let progressHandler: (ProgressEx) -> Void = { [weak self] progress in
                 self?.faviconDownloadingProgressHost?.updateProgressView(with: progress)
             }
             self.faviconDownloader.downloadFavicon(for: url, progressHandler: progressHandler) { [weak self] result in
@@ -100,7 +100,7 @@ extension FaviconDownloading {
                     animated: true
                 )
 
-                let progressHandler = { [weak self] (progress: ProgressEx) -> Void in
+                let progressHandler: (ProgressEx) -> Void = { [weak self] progress in
                     self?.faviconDownloadingProgressHost?.updateProgressView(with: progress)
                 }
                 self.faviconDownloader.downloadFavicons(for: entries, progressHandler: progressHandler) {

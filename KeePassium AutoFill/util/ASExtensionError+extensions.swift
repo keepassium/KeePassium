@@ -8,7 +8,7 @@
 
 import AuthenticationServices
 
-extension ASExtensionError.Code: CustomStringConvertible {
+extension ASExtensionError.Code: @retroactive CustomStringConvertible {
     public var description: String {
         switch self {
         case .failed:
