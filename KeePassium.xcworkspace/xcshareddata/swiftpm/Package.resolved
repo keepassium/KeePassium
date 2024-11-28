@@ -1,5 +1,5 @@
 {
-  "originHash" : "74d8170815a81f7732b0d6afd070dbb7ffdd4594a71f2c5a153c4035d302e480",
+  "originHash" : "7f5b2f481ce083b4b27ca9bfc941bdd488b028105752a5a62d1afca50f3a5f43",
   "pins" : [
     {
       "identity" : "asn1swift",
@@ -51,8 +51,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/keepassium/yubikit-ios.git",
       "state" : {
-        "branch" : "keepassium",
-        "revision" : "9c710563699a087a233b4659039c9a65f080d1dc"
+        "branch" : "keepassium-156",
+        "revision" : "36537977b644dc70155fbe9862835eb6b82b303b"
       }
     },
     {
