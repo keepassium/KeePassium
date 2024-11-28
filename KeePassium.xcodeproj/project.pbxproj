@@ -1054,7 +1054,7 @@
 		75D076CF28B639D200F02E39 /* AppCoverVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C3802C217A2650006F74C2 /* AppCoverVC.storyboard */; };
 		75D076D328B639D200F02E39 /* KeePassiumLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 75FEC2222175292C0034334B /* KeePassiumLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		75D1674A21464333005E33C3 /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D1674921464333005E33C3 /* AboutVC.swift */; };
-		75D1C58627B415480079E97E /* YubiKit in Frameworks */ = {isa = PBXBuildFile; productRef = 75D1C58527B415480079E97E /* YubiKit */; settings = {ATTRIBUTES = (Weak, ); }; };
+		75D1C58627B415480079E97E /* YubiKit in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = 75D1C58527B415480079E97E /* YubiKit */; settings = {ATTRIBUTES = (Weak, ); }; };
 		75D1C58827B4155E0079E97E /* YubiKit in Frameworks */ = {isa = PBXBuildFile; productRef = 75D1C58727B4155E0079E97E /* YubiKit */; settings = {ATTRIBUTES = (Weak, ); }; };
 		75D218F829C21FCB00D6F327 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75D218F729C21FCB00D6F327 /* MessageUI.framework */; };
 		75D218FA29C2205100D6F327 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75D218F929C2205000D6F327 /* AudioToolbox.framework */; };

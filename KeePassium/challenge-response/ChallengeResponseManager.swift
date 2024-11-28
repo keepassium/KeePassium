@@ -7,7 +7,9 @@
 //  For commercial licensing, please contact the author.
 
 import KeePassiumLib
+#if !targetEnvironment(macCatalyst)
 import YubiKit
+#endif
 
 private let YUBIKEY_SUCCESS: UInt16 = 0x9000
 private let YUBIKEY_MFI_TOUCH_TIMEOUT: UInt16 = 0x6985
@@ -68,21 +70,27 @@ class ChallengeResponseManager {
 
 
     private func initSessionObservers() {
+        #if targetEnvironment(macCatalyst)
+        supportsMFIoverUSB = false
+        supportsMFI = false
+        supportsNFC = false
+        #else
         supportsMFIoverUSB = YubiKitDeviceCapabilities.supportsMFIOverUSBC
         supportsMFI = YubiKitDeviceCapabilities.supportsMFIAccessoryKey
         if supportsMFI {
             initMFISessionObserver()
         }
-
         supportsNFC = YubiKitDeviceCapabilities.supportsISO7816NFCTags
         if supportsNFC {
             initNFCSessionObserver()
         }
+        #endif
 
         supportsUSB = YubiKeyUSB.isSupported
     }
 
     private func initMFISessionObserver() {
+        #if !targetEnvironment(macCatalyst)
         let accessorySession = YubiKitManager.shared.accessorySession as! YKFAccessorySession
         accessorySessionStateObservation = accessorySession.observe(
             \.sessionState,
@@ -90,9 +98,11 @@ class ChallengeResponseManager {
                 self?.accessorySessionStateDidChange()
             }
         )
+        #endif
     }
 
     private func initNFCSessionObserver() {
+        #if !targetEnvironment(macCatalyst)
         let nfcSession = YubiKitManager.shared.nfcSession as! YKFNFCSession
         nfcSessionStateObservation = nfcSession.observe(
             \.iso7816SessionState,
@@ -100,9 +110,11 @@ class ChallengeResponseManager {
                 self?.nfcSessionStateDidChange()
             }
         )
+        #endif
     }
 
 
+#if !targetEnvironment(macCatalyst)
     private func accessorySessionStateDidChange() {
         let keySession = YubiKitManager.shared.accessorySession as! YKFAccessorySession
         switch keySession.sessionState {
@@ -157,6 +169,7 @@ class ChallengeResponseManager {
             assertionFailure()
         }
     }
+#endif
 
 
     private func perform(
@@ -204,6 +217,7 @@ class ChallengeResponseManager {
         challenge: SecureBytes,
         responseHandler: @escaping ResponseHandler
     ) {
+        #if !targetEnvironment(macCatalyst)
         guard supportsMFI else {
             returnError(.notSupportedByDeviceOrSystem(interface: yubiKey.interface.description))
             return
@@ -218,6 +232,7 @@ class ChallengeResponseManager {
                 completion: { }
             )
         }
+        #endif
     }
 
     private func startNFCSession(
@@ -225,6 +240,7 @@ class ChallengeResponseManager {
         challenge: SecureBytes,
         responseHandler: @escaping ResponseHandler
     ) {
+        #if !targetEnvironment(macCatalyst)
         guard supportsNFC else {
             #if AUTOFILL_EXT
             returnError(.notAvailableInAutoFill)
@@ -237,6 +253,7 @@ class ChallengeResponseManager {
         let nfcSession = YubiKitManager.shared.nfcSession as! YKFNFCSession
         Watchdog.shared.ignoreMinimizationOnce()
         nfcSession.startIso7816Session()
+        #endif
     }
 
     private func startUSBSession(
@@ -338,18 +355,22 @@ class ChallengeResponseManager {
     }
 
     private func cancelMFISession() {
+        #if !targetEnvironment(macCatalyst)
         let accessorySession = YubiKitManager.shared.accessorySession
         if accessorySession.sessionState == .opening || accessorySession.sessionState == .open {
             accessorySession.stopSession()
         } else {
             accessorySession.cancelCommands()
         }
+        #endif
     }
 
     private func cancelNFCSession() {
+        #if !targetEnvironment(macCatalyst)
         let nfcSession = YubiKitManager.shared.nfcSession
         nfcSession.cancelCommands()
         nfcSession.stopIso7816Session()
+        #endif
     }
 
     private func cancelUSBSession() {
@@ -382,6 +403,7 @@ class ChallengeResponseManager {
         }
     }
 
+#if !targetEnvironment(macCatalyst)
     private func performChallengeResponse(
         _ accessorySession: YKFAccessorySession,
         slot: YubiKey.Slot
@@ -503,6 +525,7 @@ class ChallengeResponseManager {
             }
         }
     }
+#endif
 
     private func getSlotID(for slot: YubiKey.Slot) -> UInt8 {
         switch slot {

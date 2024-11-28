@@ -9,7 +9,9 @@
 //  Created by Igor Kulman on 12.03.2021.
 
 import KeePassiumLib
+#if !targetEnvironment(macCatalyst)
 import YubiKit
+#endif
 
 protocol QRCodeScanner: AnyObject {
     var deviceSupportsQRScanning: Bool { get }
@@ -19,10 +21,15 @@ protocol QRCodeScanner: AnyObject {
 
 final class YubiKitQRCodeScanner: QRCodeScanner {
     var deviceSupportsQRScanning: Bool {
+        #if targetEnvironment(macCatalyst)
+        return false
+        #else
         return YubiKitDeviceCapabilities.supportsQRCodeScanning
+        #endif
     }
 
     func scanQRCode(presenter: UIViewController, completion: @escaping (Result<String, Error>) -> Void) {
+#if !targetEnvironment(macCatalyst)
         Diag.debug("Showing QR code scanner")
 
         let qrReaderSession = YKFQRReaderSession.shared
@@ -44,5 +51,6 @@ final class YubiKitQRCodeScanner: QRCodeScanner {
             Diag.error("Invalid state with no data and no error")
             assertionFailure()
         }
+#endif
     }
 }
