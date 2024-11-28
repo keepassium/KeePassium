@@ -48,7 +48,7 @@ extension CredentialProviderViewController {
         requestParameters: ASPasskeyCredentialRequestParameters
     ) {
         log.trace("prepareCredentialList for passwords+passkeys")
-        autoFillCoordinator.startPasskeyUI(requestParameters, forServices: serviceIdentifiers)
+        autoFillCoordinator.startPasskeyAssertionUI(requestParameters, forServices: serviceIdentifiers)
     }
 
     override func prepareOneTimeCodeCredentialList(for serviceIdentifiers: [ASCredentialServiceIdentifier]) {
@@ -72,7 +72,7 @@ extension CredentialProviderViewController {
         case .oneTimeCode:
             autoFillCoordinator.startUI(forIdentity: identity, mode: .oneTimeCode)
         case .passkeyAssertion:
-            autoFillCoordinator.startUI(forIdentity: identity, mode: .passkey)
+            autoFillCoordinator.startUI(forIdentity: identity, mode: .passkeyAssertion)
         default:
             log.error("Unexpected credential request type: \(credentialRequest.type.debugDescription, privacy: .public)")
             assertionFailure()
@@ -104,5 +104,16 @@ extension CredentialProviderViewController {
             assertionFailure()
             extensionContext.cancelRequest(withError: ASExtensionError(.failed))
         }
+    }
+
+    override func prepareInterface(forPasskeyRegistration registrationRequest: any ASCredentialRequest) {
+        log.trace("prepareInterfaceForPasskeyRegistration")
+        guard let request = registrationRequest as? ASPasskeyCredentialRequest else {
+            log.error("Unexpected passkey registration request type")
+            assertionFailure()
+            extensionContext.cancelRequest(withError: ASExtensionError(.failed))
+            return
+        }
+        autoFillCoordinator.startPasskeyRegistrationUI(request)
     }
 }

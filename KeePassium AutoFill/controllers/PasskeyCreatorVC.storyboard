@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Passkey CreatorVC-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="PasskeyCreatorVC" id="Y6W-OH-hqX" customClass="PasskeyCreatorVC" customModule="KeePassium_AutoFill" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="{New Passkey}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ar4-Cl-0Uk">
+                                <rect key="frame" x="16" y="24" width="343" height="26.333333333333329"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="{relying.party.id}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0I6-iR-Vpn" userLabel="Relying Party Label">
+                                <rect key="frame" x="43.666666666666657" y="66.333333333333329" width="315.33333333333337" height="20.333333333333329"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="{username}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lrV-qg-evL" userLabel="UserName Label">
+                                <rect key="frame" x="42.666666666666657" y="94.666666666666671" width="316.33333333333337" height="19.333333333333329"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7GR-ZB-SYY" userLabel="Primary Button">
+                                <rect key="frame" x="16" y="130" width="343" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="500" id="6Yb-wP-fcV"/>
+                                    <constraint firstAttribute="height" priority="750" constant="44" id="puW-IL-XfM"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="{Primary}">
+                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleBody"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="didPressPrimary:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="EEB-bh-Cb0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1EH-4x-K4x">
+                                <rect key="frame" x="16" y="182" width="343" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="750" constant="44" id="hPC-CH-dHa"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="{Secondary}">
+                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleBody"/>
+                                </buttonConfiguration>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u1Q-7R-V4M">
+                                <rect key="frame" x="16" y="66.333333333333343" width="19.666666666666671" height="20"/>
+                                <imageReference key="image" image="globe" catalog="system" symbolScale="medium"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                </preferredSymbolConfiguration>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6pp-e6-kdP">
+                                <rect key="frame" x="16" y="95" width="18.666666666666671" height="17.666666666666671"/>
+                                <imageReference key="image" image="person" catalog="system" symbolScale="medium"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                </preferredSymbolConfiguration>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1EH-4x-K4x" firstAttribute="top" secondItem="7GR-ZB-SYY" secondAttribute="bottom" constant="8" symbolic="YES" id="2M5-Bo-1NT"/>
+                            <constraint firstItem="0I6-iR-Vpn" firstAttribute="top" secondItem="Ar4-Cl-0Uk" secondAttribute="bottom" constant="16" id="6LI-bY-oG9"/>
+                            <constraint firstItem="6pp-e6-kdP" firstAttribute="firstBaseline" secondItem="lrV-qg-evL" secondAttribute="firstBaseline" id="7LN-1K-UzT"/>
+                            <constraint firstItem="Ar4-Cl-0Uk" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leadingMargin" id="93S-Bp-fJ9"/>
+                            <constraint firstItem="Ar4-Cl-0Uk" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="24" id="A8r-O6-1WL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ar4-Cl-0Uk" secondAttribute="trailing" id="Fhr-zJ-6XB"/>
+                            <constraint firstItem="6pp-e6-kdP" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leadingMargin" id="FpG-nr-9mw"/>
+                            <constraint firstItem="7GR-ZB-SYY" firstAttribute="top" secondItem="lrV-qg-evL" secondAttribute="bottom" constant="16" id="HJl-2w-dZd"/>
+                            <constraint firstItem="7GR-ZB-SYY" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="IAo-kI-fMN"/>
+                            <constraint firstItem="0I6-iR-Vpn" firstAttribute="leading" secondItem="u1Q-7R-V4M" secondAttribute="trailing" constant="8" id="JFF-f1-3ik"/>
+                            <constraint firstItem="7GR-ZB-SYY" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" priority="750" constant="-32" id="QKM-WG-aZe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0I6-iR-Vpn" secondAttribute="trailing" id="RQi-Ov-OKK"/>
+                            <constraint firstItem="u1Q-7R-V4M" firstAttribute="firstBaseline" secondItem="0I6-iR-Vpn" secondAttribute="firstBaseline" id="VcO-o9-ygx"/>
+                            <constraint firstItem="1EH-4x-K4x" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="e7s-0C-dcW"/>
+                            <constraint firstItem="lrV-qg-evL" firstAttribute="top" secondItem="0I6-iR-Vpn" secondAttribute="bottom" constant="8" symbolic="YES" id="fJM-A9-yp6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lrV-qg-evL" secondAttribute="trailing" id="oTo-Lq-CCK"/>
+                            <constraint firstItem="1EH-4x-K4x" firstAttribute="width" secondItem="7GR-ZB-SYY" secondAttribute="width" id="t00-Bw-19h"/>
+                            <constraint firstItem="lrV-qg-evL" firstAttribute="leading" secondItem="6pp-e6-kdP" secondAttribute="trailing" constant="8" id="urG-0A-PKR"/>
+                            <constraint firstItem="u1Q-7R-V4M" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leadingMargin" id="xsv-8B-Va4"/>
+                        </constraints>
+                    </view>
+                    <size key="freeformSize" width="375" height="300"/>
+                    <connections>
+                        <outlet property="primaryButton" destination="7GR-ZB-SYY" id="bzC-ri-G6G"/>
+                        <outlet property="relyingPartyLabel" destination="0I6-iR-Vpn" id="hKW-ob-nsX"/>
+                        <outlet property="secondaryButton" destination="1EH-4x-K4x" id="Cfv-nc-b6C"/>
+                        <outlet property="titleLabel" destination="Ar4-Cl-0Uk" id="U4Z-IH-EkS"/>
+                        <outlet property="usernameLabel" destination="lrV-qg-evL" id="eXR-gi-tRi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="3.1484257871064472"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="globe" catalog="system" width="128" height="123"/>
+        <image name="person" catalog="system" width="128" height="121"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

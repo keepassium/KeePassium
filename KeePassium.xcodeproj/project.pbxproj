@@ -759,6 +759,16 @@
 		75C51454234A792B00B44512 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 754BF0892082A6BD00E3A292 /* Assets.xcassets */; };
 		75C51455234A792C00B44512 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 754BF0892082A6BD00E3A292 /* Assets.xcassets */; };
 		75C5C3762129DE0800CD7FE3 /* UIAlertController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C5C3752129DE0800CD7FE3 /* UIAlertController+extensions.swift */; };
+		75C7E3B92CE56DF6004B853C /* DatabaseSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758E5EF125F2E22600E06AE7 /* DatabaseSaving.swift */; };
+		75C7E3BA2CE56DF6004B853C /* DatabaseSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758E5EF125F2E22600E06AE7 /* DatabaseSaving.swift */; };
+		75C7E3BB2CE56E7B004B853C /* SyncConflictAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D9913926CEC8E400823331 /* SyncConflictAlert.swift */; };
+		75C7E3BC2CE56E7B004B853C /* SyncConflictAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D9913926CEC8E400823331 /* SyncConflictAlert.swift */; };
+		75C7E3BD2CE56E88004B853C /* SyncConflictAlert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75D9913C26CEEDC800823331 /* SyncConflictAlert.storyboard */; };
+		75C7E3BE2CE56E88004B853C /* SyncConflictAlert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75D9913C26CEEDC800823331 /* SyncConflictAlert.storyboard */; };
+		75C7E3C62CE5EB5D004B853C /* PasskeyCreatorVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C7E3C52CE5EB5D004B853C /* PasskeyCreatorVC.storyboard */; };
+		75C7E3C72CE5EB5D004B853C /* PasskeyCreatorVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C7E3C52CE5EB5D004B853C /* PasskeyCreatorVC.storyboard */; };
+		75C7E3C92CE5EE53004B853C /* PasskeyCreatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C7E3C82CE5EE53004B853C /* PasskeyCreatorVC.swift */; };
+		75C7E3CA2CE5EE53004B853C /* PasskeyCreatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C7E3C82CE5EE53004B853C /* PasskeyCreatorVC.swift */; };
 		75C94C5720B373BA004FA29D /* GroupViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C94C5620B373BA004FA29D /* GroupViewerVC.swift */; };
 		75C94C5B20B4B8C2004FA29D /* EntryViewerPagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C94C5A20B4B8C2004FA29D /* EntryViewerPagesVC.swift */; };
 		75C94C5F20B4BAB0004FA29D /* EntryFileViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C94C5E20B4BAB0004FA29D /* EntryFileViewerVC.swift */; };
@@ -2250,6 +2260,8 @@
 		75C38044217A3204006F74C2 /* PlaceholderVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlaceholderVC.storyboard; sourceTree = "<group>"; };
 		75C4491925F58F2600477558 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
 		75C5C3752129DE0800CD7FE3 /* UIAlertController+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+extensions.swift"; sourceTree = "<group>"; };
+		75C7E3C52CE5EB5D004B853C /* PasskeyCreatorVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PasskeyCreatorVC.storyboard; sourceTree = "<group>"; };
+		75C7E3C82CE5EE53004B853C /* PasskeyCreatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasskeyCreatorVC.swift; sourceTree = "<group>"; };
 		75C94C5620B373BA004FA29D /* GroupViewerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewerVC.swift; sourceTree = "<group>"; };
 		75C94C5A20B4B8C2004FA29D /* EntryViewerPagesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewerPagesVC.swift; sourceTree = "<group>"; };
 		75C94C5E20B4BAB0004FA29D /* EntryFileViewerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFileViewerVC.swift; sourceTree = "<group>"; };
@@ -3325,6 +3337,8 @@
 				758D272326867931006764C0 /* EntryFinderCoordinator.swift */,
 				755E33C22C529C4D0041A199 /* AutoFillSetupMessageVC.storyboard */,
 				755E33C52C52A13C0041A199 /* AutoFillSetupMessageVC.swift */,
+				75C7E3C52CE5EB5D004B853C /* PasskeyCreatorVC.storyboard */,
+				75C7E3C82CE5EE53004B853C /* PasskeyCreatorVC.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -3789,6 +3803,7 @@
 				756AFD64258CF4E40072BEEF /* appstore-family-sharing.html in Resources */,
 				756D94722BA2F2C50084BDF5 /* MFIKeyActionSheetView.xib in Resources */,
 				755B863223054FAD00E9FC83 /* PasscodeInputVC.storyboard in Resources */,
+				75C7E3BD2CE56E88004B853C /* SyncConflictAlert.storyboard in Resources */,
 				75C51454234A792B00B44512 /* Assets.xcassets in Resources */,
 				751E0D352309AFFC0088BB10 /* EntryFinderVC.storyboard in Resources */,
 				756FC99C24F45B13007F9920 /* perpetual-fallback-license.html in Resources */,
@@ -3800,6 +3815,7 @@
 				7526403C28455DBA0003DDFA /* PasswordGeneratorVC.storyboard in Resources */,
 				751E0D382309B0120088BB10 /* KeyFilePickerVC.storyboard in Resources */,
 				755E33C32C529C4D0041A199 /* AutoFillSetupMessageVC.storyboard in Resources */,
+				75C7E3C62CE5EB5D004B853C /* PasskeyCreatorVC.storyboard in Resources */,
 				75BF5AF02768106B00809654 /* ParameterValueCell.xib in Resources */,
 				751E0D262309AFBA0088BB10 /* FileInfoVC.storyboard in Resources */,
 				757D82752C091CDB006C8B96 /* PrivacyInfo.xcprivacy in Resources */,
@@ -4088,6 +4104,7 @@
 				756AFD66258CF4E40072BEEF /* appstore-family-sharing.html in Resources */,
 				756D94732BA2F2C60084BDF5 /* MFIKeyActionSheetView.xib in Resources */,
 				75D7DFAF233E5E310029AD87 /* PasscodeInputVC.storyboard in Resources */,
+				75C7E3BE2CE56E88004B853C /* SyncConflictAlert.storyboard in Resources */,
 				75C51455234A792C00B44512 /* Assets.xcassets in Resources */,
 				75D7DFB0233E5E310029AD87 /* EntryFinderVC.storyboard in Resources */,
 				756FC99E24F45B13007F9920 /* perpetual-fallback-license.html in Resources */,
@@ -4099,6 +4116,7 @@
 				7526403D28455DBA0003DDFA /* PasswordGeneratorVC.storyboard in Resources */,
 				75D7DFB9233E5E310029AD87 /* KeyFilePickerVC.storyboard in Resources */,
 				755E33C42C529C4D0041A199 /* AutoFillSetupMessageVC.storyboard in Resources */,
+				75C7E3C72CE5EB5D004B853C /* PasskeyCreatorVC.storyboard in Resources */,
 				75BF5AEF2768106A00809654 /* ParameterValueCell.xib in Resources */,
 				75D7DFBA233E5E310029AD87 /* FileInfoVC.storyboard in Resources */,
 				757D82742C091CDA006C8B96 /* PrivacyInfo.xcprivacy in Resources */,
@@ -4162,7 +4180,9 @@
 				75AC2E992CC7C07700DB93E2 /* ItemCategory.swift in Sources */,
 				F31114B12B9B894D00236632 /* DropboxConnectionSetupCoordinator.swift in Sources */,
 				7590231D2AB45948009E6213 /* Favicon.swift in Sources */,
+				75C7E3BB2CE56E7B004B853C /* SyncConflictAlert.swift in Sources */,
 				7524E7462888B56600ECBEC8 /* RightDetailCell.swift in Sources */,
+				75C7E3B92CE56DF6004B853C /* DatabaseSaving.swift in Sources */,
 				759ADB8D285A284B00D93BD4 /* AnnouncementCell.swift in Sources */,
 				7526404B284653580003DDFA /* TextInput+editMenu.swift in Sources */,
 				75A94C4428441C5F00A94B94 /* PasswordGeneratorQuickSheetVC.swift in Sources */,
@@ -4214,6 +4234,7 @@
 				756D94762BA2F2CE0084BDF5 /* YubiKeyUSB.swift in Sources */,
 				75C1AF872731E54D00E33AAC /* DatabaseSettingsVC.swift in Sources */,
 				759ADB88285A22CD00D93BD4 /* AnnouncementView.swift in Sources */,
+				75C7E3CA2CE5EE53004B853C /* PasskeyCreatorVC.swift in Sources */,
 				750CFBD921BAD7FF00E62B09 /* Refreshable.swift in Sources */,
 				757FB3D021F9C52600F016FA /* UITableViewCell+extension.swift in Sources */,
 				75B7870F261F916E005BE7B7 /* CollectionViewControllerWithContextActions.swift in Sources */,
@@ -5036,7 +5057,9 @@
 				75AC2E9A2CC7C07700DB93E2 /* ItemCategory.swift in Sources */,
 				75D7DF7E233E5E310029AD87 /* CrashReportVC.swift in Sources */,
 				7590231F2AB4594A009E6213 /* Favicon.swift in Sources */,
+				75C7E3BC2CE56E7B004B853C /* SyncConflictAlert.swift in Sources */,
 				7524E7482888B56600ECBEC8 /* RightDetailCell.swift in Sources */,
+				75C7E3BA2CE56DF6004B853C /* DatabaseSaving.swift in Sources */,
 				759ADB8F285A284B00D93BD4 /* AnnouncementCell.swift in Sources */,
 				756D94712BA2F2BC0084BDF5 /* ChallengeResponseManager.swift in Sources */,
 				7526404D284653580003DDFA /* TextInput+editMenu.swift in Sources */,
@@ -5088,6 +5111,7 @@
 				75D7DF8F233E5E310029AD87 /* UITableViewCell+extension.swift in Sources */,
 				75B78711261F916E005BE7B7 /* CollectionViewControllerWithContextActions.swift in Sources */,
 				7583EA8B2685D372009969E7 /* Coordinator+premium.swift in Sources */,
+				75C7E3C92CE5EE53004B853C /* PasskeyCreatorVC.swift in Sources */,
 				758CA5472569B9EA0034EF10 /* SwitchCell.swift in Sources */,
 				75C1AF842731E46800E33AAC /* DatabaseSettingsCoordinator.swift in Sources */,
 				75D7DF90233E5E310029AD87 /* DatabaseUnlockerVC.swift in Sources */,

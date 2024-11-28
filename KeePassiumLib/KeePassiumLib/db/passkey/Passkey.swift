@@ -10,11 +10,27 @@ import AuthenticationServices
 import CryptoKit
 import Foundation
 import OSLog
+import SwiftCBOR
 
-public final class Passkey {
+enum PasskeyRegistrationError: LocalizedError {
+    case unsupportedAlgorithm
+    
+    var errorDescription: String? {
+        switch self {
+        case .unsupportedAlgorithm:
+            return NSLocalizedString(
+                "[Database/Passkey/Error/UnsupportedAlgorithm/description]",
+                bundle: Bundle.framework,
+                value: "Unsupported passkey algorithm",
+                comment: "Error message about creation of a new passkey.")
+        }
+    }
+}
+
+public class Passkey {
     let log = Logger(subsystem: "com.keepassium.autofill", category: "Passkey")
 
-    enum AuthenticatorDataFlags {
+    enum AuthDataFlags {
         static let up: UInt8   = 0x01
         static let rfu1: UInt8 = 0x02
         static let uv: UInt8   = 0x04
@@ -26,12 +42,12 @@ public final class Passkey {
     }
 
     let credentialID: Data
-    let privateKeyPEM: String
+    private(set) var privateKeyPEM: String
     let relyingParty: String
     let username: String
     let userHandle: Data
 
-    private init(
+    init(
         credentialID: Data,
         privateKeyPEM: String,
         relyingParty: String,
@@ -83,8 +99,32 @@ public final class Passkey {
             recordIdentifier: recordIdentifier)
     }
 
-    public func makeCredential(clientDataHash: Data) -> ASPasskeyAssertionCredential? {
+    public func apply(to entry: Entry2) {
+        entry.setField(
+            name: EntryField.passkeyCredentialID,
+            value: credentialID.base64URLEncodedString(),
+            isProtected: true)
+        entry.setField(
+            name: EntryField.passkeyPrivateKeyPEM,
+            value: privateKeyPEM,
+            isProtected: true)
+        entry.setField(
+            name: EntryField.passkeyRelyingParty,
+            value: relyingParty,
+            isProtected: false)
+        entry.setField(
+            name: EntryField.passkeyUserHandle,
+            value: userHandle.base64URLEncodedString(),
+            isProtected: true)
+        entry.setField(
+            name: EntryField.passkeyUsername,
+            value: username,
+            isProtected: false)
+    }
+}
 
+extension Passkey {
+    public func makeAssertionCredential(clientDataHash: Data) -> ASPasskeyAssertionCredential? {
         let authenticatorData = getAuthenticatorData()
         let challenge = authenticatorData + clientDataHash
 
@@ -106,7 +146,7 @@ public final class Passkey {
     private func getAuthenticatorData() -> Data {
         let rpIDHash = relyingParty.utf8data.sha256.asData
 
-        let flags = AuthenticatorDataFlags.uv | AuthenticatorDataFlags.up
+        let flags = AuthDataFlags.uv | AuthDataFlags.up | AuthDataFlags.be | AuthDataFlags.bs
 
         let counter = Data(repeating: 0, count: 4)
 
@@ -168,5 +208,106 @@ public final class Passkey {
             Diag.error("Failed to sign using EdDSA [message: \(message)]")
             return nil
         }
+    }
+}
+
+public class NewPasskey: Passkey {
+    let aaguid = UUID(uuidString: "23A349A8-0DD1-49C3-8B00-5D36FA3B3C03")!
+
+    private let privateKey: P256.Signing.PrivateKey
+    private let credentialIDSizeInBytes = 32
+    private let publicKeySizeInBytes = 64
+
+    fileprivate init(
+        relyingParty: String,
+        username: String,
+        userHandle: Data
+    ) {
+        self.privateKey = P256.Signing.PrivateKey()
+        let credentialID = (try? CryptoManager.getRandomBytes(count: credentialIDSizeInBytes).asData) ?? Data()
+        super.init(
+            credentialID: credentialID,
+            privateKeyPEM: privateKey.pemRepresentation,
+            relyingParty: relyingParty,
+            username: username,
+            userHandle: userHandle
+        )
+    }
+
+    public static func make(with params: PasskeyRegistrationParams) throws -> NewPasskey {
+        guard params.supportedAlgorithms.contains(.ES256) else {
+            Diag.error("Supported algorithms do not include ES256, cancelling")
+            throw PasskeyRegistrationError.unsupportedAlgorithm
+        }
+        return NewPasskey(
+            relyingParty: params.identity.relyingPartyIdentifier,
+            username: params.identity.userName,
+            userHandle: params.identity.userHandle)
+    }
+
+    @available(iOS 18.0, *)
+    public func makeRegistrationCredential(clientDataHash: Data) -> ASPasskeyRegistrationCredential {
+        let attestationObject = makeAttestationObject()
+        let credential = ASPasskeyRegistrationCredential(
+            relyingParty: relyingParty,
+            clientDataHash: clientDataHash,
+            credentialID: credentialID,
+            attestationObject: attestationObject)
+        return credential
+    }
+
+    private func makeAttestationObject() -> Data {
+        var authData = Data()
+        let rpIdHash = CryptoKit.SHA256.hash(data: relyingParty.data(using: .utf8)!)
+        authData.append(contentsOf: rpIdHash)
+
+        let flags = AuthDataFlags.at
+                  | AuthDataFlags.uv
+                  | AuthDataFlags.up
+                  | AuthDataFlags.be
+                  | AuthDataFlags.bs
+        authData.append(flags)
+
+        authData.append(contentsOf: UInt32(0).bigEndian.bytes)
+
+        authData.append(contentsOf: aaguid.data.asData)
+        authData.append(contentsOf: UInt16(credentialID.count).bigEndian.bytes)
+        authData.append(contentsOf: credentialID.bytes)
+        let encodedPublicKey = cborEncodePublicKey(privateKey.publicKey)
+        authData.append(contentsOf: encodedPublicKey)
+        let attestationObject = cborEncodeAttestation(authData)
+        return attestationObject
+    }
+
+    private func cborEncodePublicKey(_ publicKey: P256.Signing.PublicKey) -> Data {
+        let rawPublicKey = publicKey.rawRepresentation
+        guard rawPublicKey.count == publicKeySizeInBytes else {
+            Diag.error("Unexpected public key size: \(rawPublicKey.count)")
+            log.error("Unexpected public key size")
+            assertionFailure()
+            return Data()
+        }
+
+        let x = Array(rawPublicKey.prefix(upTo: 33))
+        let y = Array(rawPublicKey.suffix(32))
+        let dict: CBOR = [
+            1: CBOR(integerLiteral: 2),
+            3: CBOR(integerLiteral: ASCOSEAlgorithmIdentifier.ES256.rawValue),
+            -1: CBOR(integerLiteral: ASCOSEEllipticCurveIdentifier.P256.rawValue),
+            -2: CBOR.byteString(x),
+            -3: CBOR.byteString(y)
+        ]
+        let encoded = Data(dict.encode())
+        return encoded
+    }
+
+    private func cborEncodeAttestation(_ authData: Data) -> Data {
+        let dict: CBOR = [
+            "fmt": "none",
+            "attStmt": CBOR.map([:]),
+            "authData": CBOR.byteString(authData.bytes)
+        ]
+        let encoded = dict.encode()
+        return Data(encoded)
     }
 }

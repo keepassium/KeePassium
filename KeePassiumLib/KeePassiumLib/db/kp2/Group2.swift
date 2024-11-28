@@ -119,6 +119,15 @@ public class Group2: Group {
         return newEntry
     }
 
+    public func createPasskeyEntry(with passkey: Passkey) -> Entry2 {
+        let entry = createEntry() as! Entry2
+        entry.setField(name: EntryField.title, value: passkey.relyingParty)
+        entry.setField(name: EntryField.userName, value: passkey.username)
+        entry.setField(name: EntryField.url, value: "https://" + passkey.relyingParty)
+        passkey.apply(to: entry)
+        return entry
+    }
+
     override public func createGroup(detached: Bool = false) -> Group {
         let newGroup = Group2(database: database)
         newGroup.uuid = UUID()

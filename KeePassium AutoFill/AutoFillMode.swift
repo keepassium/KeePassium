@@ -12,13 +12,17 @@ enum AutoFillMode {
     case credentials
     case oneTimeCode
     case text
-    case passkey
+    case passkeyRegistration
+    case passkeyAssertion
 }
 
 extension AutoFillMode {
     var query: String? {
         switch self {
-        case .credentials, .text, .passkey:
+        case .credentials,
+             .passkeyRegistration,
+             .passkeyAssertion,
+             .text:
             return nil
         case .oneTimeCode:
             return "otp:* "
@@ -33,8 +37,10 @@ extension AutoFillMode: CustomDebugStringConvertible {
             return "credentials"
         case .oneTimeCode:
             return "one time code"
-        case .passkey:
-            return "passkey"
+        case .passkeyRegistration:
+            return "passkeyRegistration"
+        case .passkeyAssertion:
+            return "passkeyAssertion"
         case .text:
             return "text"
         }

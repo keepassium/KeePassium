@@ -40,6 +40,7 @@ class AutoFillCoordinator: NSObject, Coordinator {
     private var serviceIdentifiers = [ASCredentialServiceIdentifier]()
     private var passkeyRelyingParty: String?
     private var passkeyClientDataHash: Data?
+    private var passkeyRegistrationParams: PasskeyRegistrationParams?
 
     private var quickTypeDatabaseLoader: DatabaseLoader?
     private var quickTypeRequiredRecord: QuickTypeAutoFillRecord?
@@ -48,6 +49,10 @@ class AutoFillCoordinator: NSObject, Coordinator {
     fileprivate var passcodeInputController: PasscodeInputVC?
     fileprivate var isBiometricAuthShown = false
     fileprivate var isPasscodeInputShown = false
+
+    var fileExportHelper: FileExportHelper?
+    var saveSuccessHandler: (() -> Void)?
+    var databaseSaver: DatabaseSaver?
 
     #if INTUNE
     private var enrollmentDelegate: IntuneEnrollmentDelegateImpl?
@@ -285,6 +290,7 @@ extension AutoFillCoordinator {
             loadingWarnings: warnings,
             serviceIdentifiers: serviceIdentifiers,
             passkeyRelyingParty: passkeyRelyingParty,
+            passkeyRegistrationParams: passkeyRegistrationParams,
             autoFillMode: autoFillMode
         )
         entryFinderCoordinator.dismissHandler = {[weak self] coordinator in
@@ -296,6 +302,32 @@ extension AutoFillCoordinator {
         entryFinderCoordinator.start()
         addChildCoordinator(entryFinderCoordinator)
         self.entryFinderCoordinator = entryFinderCoordinator
+    }
+
+    @available(iOS 18, *)
+    func registerPasskey(with params: PasskeyRegistrationParams, in databaseFile: DatabaseFile) {
+        let presenter = router.navigationController
+        guard let db2 = databaseFile.database as? Database2,
+              let rootGroup = db2.root as? Group2
+        else {
+            Diag.error("Tried to register passkey in non-KDBX database, cancelling")
+            presenter.showErrorAlert(LString.titleDatabaseFormatDoesNotSupportPasskeys)
+            return
+        }
+
+        let passkey: NewPasskey
+        do {
+            passkey = try NewPasskey.make(with: params)
+        } catch {
+            log.error("Failed to create passkey. Reason: \(error.localizedDescription, privacy: .public)")
+            presenter.showErrorAlert(error.localizedDescription)
+            return
+        }
+        let entry = rootGroup.createPasskeyEntry(with: passkey)
+        Settings.current.isAutoFillFinishedOK = false
+        saveDatabase(databaseFile, onSuccess: { [weak self, passkey] in
+            self?.returnPasskeyRegistration(passkey: passkey)
+        })
     }
 }
 
@@ -314,13 +346,27 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
         start()
     }
 
-    public func startPasskeyUI(
+    public func startPasskeyRegistrationUI(_ request: ASPasskeyCredentialRequest) {
+        log.trace("Starting passkey registration UI")
+        self.autoFillMode = .passkeyRegistration
+        let identity = request.credentialIdentity as! ASPasskeyCredentialIdentity
+        self.passkeyRelyingParty = identity.relyingPartyIdentifier
+        self.passkeyClientDataHash = request.clientDataHash
+        self.passkeyRegistrationParams = PasskeyRegistrationParams(
+            identity: identity,
+            userVerificationPreference: request.userVerificationPreference,
+            clientDataHash: request.clientDataHash,
+            supportedAlgorithms: request.supportedAlgorithms)
+        start()
+    }
+
+    public func startPasskeyAssertionUI(
         _ passkeyRequest: ASPasskeyCredentialRequestParameters,
         forServices serviceIdentifiers: [ASCredentialServiceIdentifier]
     ) {
-        log.trace("Starting passkey UI")
+        log.trace("Starting passkey assertion UI")
         self.serviceIdentifiers = serviceIdentifiers
-        self.autoFillMode = .passkey
+        self.autoFillMode = .passkeyAssertion
         self.passkeyClientDataHash = passkeyRequest.clientDataHash
         self.passkeyRelyingParty = passkeyRequest.relyingPartyIdentifier
         start()
@@ -345,7 +391,7 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
     ) {
         self.passkeyClientDataHash = clientDataHash
         self.passkeyRelyingParty = credentialIdentity.relyingPartyIdentifier
-        provideWithoutUI(forIdentity: credentialIdentity, mode: .passkey)
+        provideWithoutUI(forIdentity: credentialIdentity, mode: .passkeyAssertion)
     }
 
     func provideWithoutUI(forIdentity credentialIdentity: ASCredentialIdentity, mode: AutoFillMode) {
@@ -428,8 +474,8 @@ extension AutoFillCoordinator {
                 assertionFailure()
                 cancelRequest(.failed)
             }
-        case .passkey:
-            returnPasskey(from: entry)
+        case .passkeyAssertion:
+            returnPasskeyAssertion(from: entry)
         default:
             log.error("Unexpected AutoFillMode value, cancelling")
             assertionFailure()
@@ -506,7 +552,33 @@ extension AutoFillCoordinator {
         cleanup()
     }
 
-    private func returnPasskey(from entry: Entry) {
+    @available(iOS 18, *)
+    private func returnPasskeyRegistration(passkey: NewPasskey) {
+        log.trace("Will return registered passkey")
+        watchdog.restart()
+        guard let passkeyClientDataHash else {
+            log.error("Passkey request parameters unexpectedly missing, cancelling")
+            assertionFailure()
+            cancelRequest(.failed)
+            return
+        }
+
+        let passkeyCredential = passkey.makeRegistrationCredential(clientDataHash: passkeyClientDataHash)
+        extensionContext.completeRegistrationRequest(
+            using: passkeyCredential,
+            completionHandler: { [self] expired in
+                log.info("Did return passkey (exp: \(expired))")
+            }
+        )
+
+        if hasUI {
+            HapticFeedback.play(.credentialsPasted)
+        }
+        Settings.current.isAutoFillFinishedOK = true
+        cleanup()
+    }
+
+    private func returnPasskeyAssertion(from entry: Entry) {
         log.trace("Will return passkey")
         watchdog.restart()
         guard let passkeyClientDataHash else {
@@ -523,7 +595,9 @@ extension AutoFillCoordinator {
             return
         }
 
-        guard let passkeyCredential = passkey.makeCredential(clientDataHash: passkeyClientDataHash) else {
+        guard let passkeyCredential =
+                passkey.makeAssertionCredential(clientDataHash: passkeyClientDataHash)
+        else {
             log.error("Failed to make passkey credential, cancelling")
             assertionFailure()
             cancelRequest(.failed)
@@ -917,6 +991,27 @@ extension AutoFillCoordinator: EntryFinderCoordinatorDelegate {
         coordinator.stop(animated: true) { [weak self] in
             self?.reinstateDatabase(fileRef)
         }
+    }
+
+    @available(iOS 18, *)
+    func didPressCreatePasskey(
+        with params: PasskeyRegistrationParams,
+        in coordinator: EntryFinderCoordinator
+    ) {
+        registerPasskey(with: params, in: coordinator.databaseFile)
+    }
+}
+
+extension AutoFillCoordinator: DatabaseSaving {
+    var savingProgressHost: ProgressViewHost? {
+        return router
+    }
+
+    func didRelocate(databaseFile: KeePassiumLib.DatabaseFile, to newURL: URL) {
+    }
+
+    func getDatabaseSavingErrorParent() -> UIViewController {
+        return router.navigationController
     }
 }
 

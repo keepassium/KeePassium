@@ -37,6 +37,8 @@
 		75241F44274A90AD00AE15AD /* LString+general.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75241F43274A90AD00AE15AD /* LString+general.swift */; };
 		7524E7342887620A00ECBEC8 /* FileAccessCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7593BE6027C45123008D30B5 /* FileAccessCoordinator.swift */; };
 		7524E74F288AA80500ECBEC8 /* LString+remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E74E288AA80500ECBEC8 /* LString+remote.swift */; };
+		7528ABED2CF4CC3400AFA17A /* PasskeyRegistrationParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7528ABEC2CF4CC3400AFA17A /* PasskeyRegistrationParams.swift */; };
+		7528ABF02CF6000800AFA17A /* SwiftCBOR in Frameworks */ = {isa = PBXBuildFile; productRef = 7528ABEF2CF6000800AFA17A /* SwiftCBOR */; };
 		752B536D2C62DC1700F883BC /* SearchQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B536C2C62DC1700F883BC /* SearchQuery.swift */; };
 		752BEC0C2B23AE060072547A /* FileProvider+managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752BEC0B2B23AE060072547A /* FileProvider+managed.swift */; };
 		75335E7E26FF23F300D49422 /* SecureRandomNumberGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75335E7D26FF23F300D49422 /* SecureRandomNumberGenerator.swift */; };
@@ -305,6 +307,7 @@
 		75261DA2263800DA00EE2ED9 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75271962263800A800D68A32 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		75271963263800A800D68A32 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7528ABEC2CF4CC3400AFA17A /* PasskeyRegistrationParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasskeyRegistrationParams.swift; sourceTree = "<group>"; };
 		752B536C2C62DC1700F883BC /* SearchQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchQuery.swift; sourceTree = "<group>"; };
 		752BEC0B2B23AE060072547A /* FileProvider+managed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileProvider+managed.swift"; sourceTree = "<group>"; };
 		752F5DC92643FE6C0099CA6E /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -593,6 +596,7 @@
 			files = (
 				7544570425CAE2D50011386C /* TPInAppReceipt in Frameworks */,
 				757C51CF29F17D3C008986F4 /* DomainParser in Frameworks */,
+				7528ABF02CF6000800AFA17A /* SwiftCBOR in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -670,6 +674,7 @@
 			isa = PBXGroup;
 			children = (
 				754485B42CDEBCD600B13309 /* Passkey.swift */,
+				7528ABEC2CF4CC3400AFA17A /* PasskeyRegistrationParams.swift */,
 				75D767CE2CE26E9E006C0FC0 /* EntryField+passkey.swift */,
 				754485BE2CE15AFA00B13309 /* Curve25519+pem.swift */,
 				754485B72CE0158100B13309 /* Data+base64url.swift */,
@@ -1280,6 +1285,7 @@
 			packageProductDependencies = (
 				7544570325CAE2D50011386C /* TPInAppReceipt */,
 				757C51CE29F17D3C008986F4 /* DomainParser */,
+				7528ABEF2CF6000800AFA17A /* SwiftCBOR */,
 			);
 			productName = KeePassiumLib;
 			productReference = 75D0C76A2174AF1F00C64C93 /* KeePassiumLib.framework */;
@@ -1332,6 +1338,7 @@
 			packageReferences = (
 				7544570225CAE2D50011386C /* XCRemoteSwiftPackageReference "TPInAppReceipt" */,
 				757C51CD29F17D3C008986F4 /* XCRemoteSwiftPackageReference "SwiftDomainParser" */,
+				7528ABEE2CF6000800AFA17A /* XCRemoteSwiftPackageReference "SwiftCBOR" */,
 			);
 			productRefGroup = 75D0C76B2174AF1F00C64C93 /* Products */;
 			projectDirPath = "";
@@ -1428,6 +1435,7 @@
 				75D09C392174F77000F7DEF2 /* TwofishDataCipher.swift in Sources */,
 				75D09C2B2174F77000F7DEF2 /* Meta2.swift in Sources */,
 				75D09C1E2174F77000F7DEF2 /* Argon2KDF.swift in Sources */,
+				7528ABED2CF4CC3400AFA17A /* PasskeyRegistrationParams.swift in Sources */,
 				75AE4FDD2521DA840052251B /* UIDevice+extensions.swift in Sources */,
 				F36FC5B02BA2F95000970B7E /* RemoteDataSource.swift in Sources */,
 				75D09C3A2174F77000F7DEF2 /* DataCipher.swift in Sources */,
@@ -1917,6 +1925,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7528ABEE2CF6000800AFA17A /* XCRemoteSwiftPackageReference "SwiftCBOR" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/keepassium/SwiftCBOR.git";
+			requirement = {
+				branch = "keepassium-156";
+				kind = branch;
+			};
+		};
 		7544570225CAE2D50011386C /* XCRemoteSwiftPackageReference "TPInAppReceipt" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/keepassium/TPInAppReceipt";
@@ -1936,6 +1952,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7528ABEF2CF6000800AFA17A /* SwiftCBOR */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7528ABEE2CF6000800AFA17A /* XCRemoteSwiftPackageReference "SwiftCBOR" */;
+			productName = SwiftCBOR;
+		};
 		7544570325CAE2D50011386C /* TPInAppReceipt */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7544570225CAE2D50011386C /* XCRemoteSwiftPackageReference "TPInAppReceipt" */;

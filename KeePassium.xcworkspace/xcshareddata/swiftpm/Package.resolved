@@ -1,5 +1,5 @@
 {
-  "originHash" : "aa8541a92cdf3aae03bb03172ea3bc1f1cd2f8e2cfdfe17862541d1cdb83a158",
+  "originHash" : "74d8170815a81f7732b0d6afd070dbb7ffdd4594a71f2c5a153c4035d302e480",
   "pins" : [
     {
       "identity" : "asn1swift",
@@ -17,6 +17,15 @@
       "state" : {
         "branch" : "keepassium-155",
         "revision" : "b0ef73fa18ec203ac08dcaa1367c4e6af5334a9a"
+      }
+    },
+    {
+      "identity" : "swiftcbor",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/keepassium/SwiftCBOR.git",
+      "state" : {
+        "branch" : "keepassium-156",
+        "revision" : "04ccff117f6549121d5721ec84fdf0162122b90e"
       }
     },
     {

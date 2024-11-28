@@ -409,6 +409,11 @@ extension LString {
         bundle: Bundle.framework,
         value: "All your data will be preserved.",
         comment: "Info message when changing database file format.")
+    public static let titleDatabaseFormatDoesNotSupportPasskeys = NSLocalizedString(
+        "[Database/FormatVersion/PasskeysNotSupported]",
+        bundle: Bundle.framework,
+        value: "This database format does not support passkeys.",
+        comment: "Error message when creating a new passkey.")
 
 
     public static let statusItemEdited = NSLocalizedString(
