@@ -387,9 +387,9 @@ extension ManagedAppConfig {
             .trimmingCharacters(in: .whitespacesAndNewlines)
             .lowercased()
         switch valueString {
-        case "true", "on", "1":
+        case "true", "yes", "on", "1":
             return true
-        case "false", "off", "0":
+        case "false", "no", "off", "0":
             return false
         default:
             return nil
