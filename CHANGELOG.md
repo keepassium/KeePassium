@@ -1,5 +1,22 @@
 #CHANGELOG
 
+## [1.54.156] - 2024-11-28
+
+### Added
+
+- AutoFill: Create new passkeys (#297)
+
+### Improved
+
+- macOS: Main menu, toolbar and keyboard shortcuts
+- Org: Updated to MSAL 1.6.2 and Intune SDK 20.2.1
+
+### Fixed
+
+- macOS: can be built for Intel again (excluded yubikit-ios from macOS build)
+- Added iPhone 16, iPad Air 6/7 and iPad Pro 7 to YubiKit device recognition
+
+
 ## [1.54.155] - 2024-11-14
 
 ### Added

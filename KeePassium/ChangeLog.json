@@ -5,7 +5,10 @@
             "releaseDate": "2024-11-14T00:00:00Z",
             "items": [
                 {
-                    "title": "Added: AutoFill: Sign in using existing passkeys",
+                    "title": "This version requires at least iOS 17 / macOS 14"
+                },
+                {
+                    "title": "Added: AutoFill: Create and use passkeys",
                     "github": "#297",
                     "edition": "free,pro"
                 },
@@ -20,17 +23,17 @@
                     "edition": "free,pro"
                 },
                 {
-                    "title": "Changed: This version requires at least iOS 17 / macOS 14"
+                    "title": "Changed: Org: Updated to MSAL 1.6.2 and Intune SDK 20.2.1",
+                    "edition": "org"
                 },
                 {
-                    "title": "Changed: Org: Updated to MSAL 1.6.1 and Intune SDK 20.1.2",
-                    "edition": "org"
+                    "title": "Improved: macOS: Main menu, toolbar and keyboard shortcuts",
+                    "os": "macos"
                 },
                 {
                     "title": "Improved: Protecting key file field like a password",
                     "credits": "Jason"
                 },
-
                 {
                     "title": "Improved: Added possibility to download favicons for selected entries",
                     "github": "#320",
@@ -85,6 +88,15 @@
                 {
                     "title": "Fixed: AutoFill could load databases twice sometimes",
                     "edition": "free,pro"
+                },
+                {
+                    "title": "Fixed: Org: parsing of yes/no parameters",
+                    "credits": "Martin",
+                    "edition": "org"
+                },
+                {
+                    "title": "Fixed: macOS: Mac version could not be built for Intel",
+                    "os": "macos"
                 },
                 {
                     "title": "Fixed: Enforce strength checks on new app passcode and DB passwords (KEE-01-001)"
