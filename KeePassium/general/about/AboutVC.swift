@@ -25,38 +25,26 @@ final class AboutVC: UITableViewController {
     @IBOutlet private weak var privacyPolicyCell: UITableViewCell!
     @IBOutlet private weak var privacyPolicyLabel: UILabel!
 
-    weak var delegate: AboutDelegate?
+    private static let creditsSectionIndex = 3
+    private static let credistsCellId = "creditsCell"
 
-    let cellTagToURL: [Int: String] = [
-        10: "https://github.com/keepassium/KeePassium-L10n",
-        20: "https://keepass.info",
-        30: "https://feathericons.com",
-        40: "http://ionicons.com",
-        50: "https://designmodo.com/linecons-free/",
-        53: "https://icons8.com/paid-license-99",
-        55: "https://en.wikipedia.org/wiki/Nuvola",
-        57: "https://github.com/keepassxreboot/keepassxc/pull/4699",
-        60: "http://subtlepatterns.com",
-        70: "http://vicons.superatic.com",
-        80: "https://github.com/tadija/AEXML",
-        90: "",
-        100: "https://github.com/P-H-C/phc-winner-argon2",
-        110: "https://cr.yp.to/salsa20.html",
-        120: "http://www.cartotype.com/downloads/twofish/twofish.cpp",
-        122: "https://github.com/Yubico/yubikit-ios",
-        125: "https://github.com/tikhop/TPInAppReceipt",
-        127: "https://github.com/Dashlane/SwiftDomainParser",
-        130: "https://github.com/1024jp/GzipSwift",
-        140: "https://github.com/norio-nomura/Base32",
-        160: "https://github.com/scalessec/Toast-Swift",
-        165: "https://github.com/dropbox/zxcvbn-ios",
-        170: "https://eff.org/dice",
-    ]
+    private lazy var creditsCellConfiguration: UIListContentConfiguration = {
+        var configuration = UIListContentConfiguration.subtitleCell()
+        configuration.textProperties.font = UIFont.preferredFont(forTextStyle: .body)
+        configuration.textProperties.color = .primaryText
+        configuration.secondaryTextProperties.color = .auxiliaryText
+        configuration.secondaryTextProperties.font = UIFont.preferredFont(forTextStyle: .caption1)
+        configuration.textToSecondaryTextVerticalPadding = 4
+        return configuration
+    }()
+
+    weak var delegate: AboutDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: Self.credistsCellId)
 
         var versionParts = ["v\(AppInfo.version).\(AppInfo.build)"]
         if Settings.current.isTestEnvironment {
@@ -80,17 +68,31 @@ final class AboutVC: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             return 0.1
-        } else {
-            return super.tableView(tableView, heightForHeaderInSection: section)
         }
+        return super.tableView(tableView, heightForHeaderInSection: section)
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == Self.creditsSectionIndex {
+            let item = Credits.all[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: Self.credistsCellId, for: indexPath)
+            configure(cell: cell, item: item)
+            return cell
+        }
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         if cell == acceptInputFromAutoFillCell {
             cell.accessoryType = Settings.current.acceptAutoFillInput ? .checkmark : .none
         }
         return cell
+    }
+
+    private func configure(cell: UITableViewCell, item: Credits) {
+        var configuration = creditsCellConfiguration
+        configuration.text = item.title
+        configuration.secondaryText = item.license.title
+        cell.contentConfiguration = configuration
+        cell.accessoryType = item.url != nil ? .disclosureIndicator : .none
+        cell.selectionStyle = item.url != nil ? .default : .none
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -111,9 +113,28 @@ final class AboutVC: UITableViewController {
             Diag.info("Accept input from AutoFill providers: \(newValue)")
             tableView.reloadData()
         default:
-            if let urlString = cellTagToURL[selectedCell.tag], let url = URL(string: urlString) {
+            if let url = Credits.all[indexPath.row].url {
                 delegate?.didPressOpenURL(url, at: popoverAnchor, in: self)
             }
         }
+    }
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 5
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == Self.creditsSectionIndex {
+            return Credits.all.count
+        }
+        return super.tableView(tableView, numberOfRowsInSection: section)
+    }
+
+    override func tableView(_ tableView: UITableView, indentationLevelForRowAt indexPath: IndexPath) -> Int {
+        return 0
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }
