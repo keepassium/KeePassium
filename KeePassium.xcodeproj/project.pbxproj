@@ -788,7 +788,7 @@
 		75D075B428B639D200F02E39 /* AppIconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751A565124CCD3CD001227D6 /* AppIconPicker.swift */; };
 		75D075B528B639D200F02E39 /* PasswordGeneratorLengthCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF1931282E621600FA4BB5 /* PasswordGeneratorLengthCell.swift */; };
 		75D075B628B639D200F02E39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754BF07E2082A6BD00E3A292 /* AppDelegate.swift */; };
-		75D075B728B639D200F02E39 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		75D075B728B639D200F02E39 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		75D075B828B639D200F02E39 /* AppHistoryViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7579A06624F0730A00C98F24 /* AppHistoryViewerVC.swift */; };
 		75D075B928B639D200F02E39 /* SettingsDataProtectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752ED68C2235547D00C20D3E /* SettingsDataProtectionVC.swift */; };
 		75D075BA28B639D200F02E39 /* AppIconSwitcherCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751A565424CCD3FF001227D6 /* AppIconSwitcherCoordinator.swift */; };
@@ -976,7 +976,7 @@
 		75D0767C28B639D200F02E39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 754BF08B2082A6BD00E3A292 /* LaunchScreen.storyboard */; };
 		75D0767D28B639D200F02E39 /* SettingsBackupVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CF12309AE920088BB10 /* SettingsBackupVC.storyboard */; };
 		75D0767E28B639D200F02E39 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 755E7DA0232008300010E199 /* Localizable.strings */; };
-		75D0767F28B639D200F02E39 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		75D0767F28B639D200F02E39 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		75D0768028B639D200F02E39 /* appicon-atom-black_iPadApp_76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0F324CEF71900BAD35C /* appicon-atom-black_iPadApp_76@2x.png */; };
 		75D0768128B639D200F02E39 /* appicon-atom-white_iPadProApp_83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0FC24CEF71B00BAD35C /* appicon-atom-white_iPadProApp_83.5@2x.png */; };
 		75D0768228B639D200F02E39 /* ItemIconPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D242309AFAC0088BB10 /* ItemIconPicker.storyboard */; };
@@ -987,13 +987,13 @@
 		75D0768728B639D200F02E39 /* appicon-atom-black_iPhoneApp_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC10024CEF71C00BAD35C /* appicon-atom-black_iPhoneApp_60@2x.png */; };
 		75D0768828B639D200F02E39 /* SettingsBackupTimeoutPickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED429423133DEF003DE72E /* SettingsBackupTimeoutPickerVC.storyboard */; };
 		75D0768928B639D200F02E39 /* appstore-family-sharing.html in Resources */ = {isa = PBXBuildFile; fileRef = 756AFD62258CF4E40072BEEF /* appstore-family-sharing.html */; };
-		75D0768A28B639D200F02E39 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		75D0768A28B639D200F02E39 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		75D0768B28B639D200F02E39 /* appicon-keepass_iPadApp_76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0F624CEF71A00BAD35C /* appicon-keepass_iPadApp_76@2x.png */; };
 		75D0768C28B639D200F02E39 /* ChangeLog.json in Resources */ = {isa = PBXBuildFile; fileRef = 7579A06C24F0787700C98F24 /* ChangeLog.json */; };
 		75D0768D28B639D200F02E39 /* appicon-atom-blue_iPadApp_76.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0DD24CEF71500BAD35C /* appicon-atom-blue_iPadApp_76.png */; };
 		75D0768E28B639D200F02E39 /* appicon-atom-black_iPadProApp_83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0E924CEF71700BAD35C /* appicon-atom-black_iPadProApp_83.5@2x.png */; };
 		75D0768F28B639D200F02E39 /* EntryFieldEditorVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D032309AF1B0088BB10 /* EntryFieldEditorVC.storyboard */; };
-		75D0769028B639D200F02E39 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		75D0769028B639D200F02E39 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		75D0769128B639D200F02E39 /* DatabaseKeyChangerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D1B2309AF620088BB10 /* DatabaseKeyChangerVC.storyboard */; };
 		75D0769228B639D200F02E39 /* EntryViewerPagesVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D092309AF250088BB10 /* EntryViewerPagesVC.storyboard */; };
 		75D0769328B639D200F02E39 /* appicon-classic-pro_iPhoneApp_60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0FD24CEF71B00BAD35C /* appicon-classic-pro_iPhoneApp_60@3x.png */; };
@@ -1001,20 +1001,20 @@
 		75D0769528B639D200F02E39 /* SettingsAppearanceVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7597DBD725F58BCF00D1A126 /* SettingsAppearanceVC.storyboard */; };
 		75D0769628B639D200F02E39 /* appicon-keepass_iPhoneApp_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC10D24CEF71F00BAD35C /* appicon-keepass_iPhoneApp_60@2x.png */; };
 		75D0769728B639D200F02E39 /* AppIconPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751A564E24CCD3C0001227D6 /* AppIconPicker.storyboard */; };
-		75D0769828B639D200F02E39 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		75D0769828B639D200F02E39 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		75D0769928B639D200F02E39 /* appicon-classic-pro_iPadProApp_83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0EE24CEF71800BAD35C /* appicon-classic-pro_iPadProApp_83.5@2x.png */; };
 		75D0769A28B639D200F02E39 /* PasswordGeneratorVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 757E78DF282414D5009017BF /* PasswordGeneratorVC.storyboard */; };
 		75D0769B28B639D200F02E39 /* DatabaseCreatorVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D212309AF6B0088BB10 /* DatabaseCreatorVC.storyboard */; };
-		75D0769C28B639D200F02E39 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		75D0769C28B639D200F02E39 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		75D0769D28B639D200F02E39 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 755E7D9A232008300010E199 /* InfoPlist.strings */; };
 		75D0769E28B639D200F02E39 /* KeyFilePickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D3A2309B0120088BB10 /* KeyFilePickerVC.storyboard */; };
 		75D076A028B639D200F02E39 /* GroupViewerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CFD2309AF0D0088BB10 /* GroupViewerVC.storyboard */; };
 		75D076A128B639D200F02E39 /* appicon-atom-white_iPhoneApp_60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0F724CEF71A00BAD35C /* appicon-atom-white_iPhoneApp_60@3x.png */; };
 		75D076A228B639D200F02E39 /* appicon-classic-pro_iPadApp_76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0F124CEF71900BAD35C /* appicon-classic-pro_iPadApp_76@2x.png */; };
-		75D076A328B639D200F02E39 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		75D076A328B639D200F02E39 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		75D076A428B639D200F02E39 /* appicon-atom-black_iPadApp_76.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0E824CEF71700BAD35C /* appicon-atom-black_iPadApp_76.png */; };
 		75D076A528B639D200F02E39 /* appicon-classic-pro_iPhoneApp_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0E324CEF71600BAD35C /* appicon-classic-pro_iPhoneApp_60@2x.png */; };
-		75D076A628B639D200F02E39 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		75D076A628B639D200F02E39 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		75D076A728B639D200F02E39 /* appicon-atom-blue_iPadApp_76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC10B24CEF71F00BAD35C /* appicon-atom-blue_iPadApp_76@2x.png */; };
 		75D076A928B639D200F02E39 /* DatabaseIconSetPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75E60AD625CF3B570089219C /* DatabaseIconSetPicker.storyboard */; };
 		75D076AA28B639D200F02E39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 754BF0892082A6BD00E3A292 /* Assets.xcassets */; };
@@ -1023,20 +1023,20 @@
 		75D076AD28B639D200F02E39 /* appicon-atom-white_iPadApp_76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0F024CEF71900BAD35C /* appicon-atom-white_iPadApp_76@2x.png */; };
 		75D076AE28B639D200F02E39 /* PricingPlanPickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 758BAD9A24B53ABF00CC9265 /* PricingPlanPickerVC.storyboard */; };
 		75D076AF28B639D200F02E39 /* SyncConflictAlert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75D9913C26CEEDC800823331 /* SyncConflictAlert.storyboard */; };
-		75D076B028B639D200F02E39 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		75D076B028B639D200F02E39 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		75D076B228B639D200F02E39 /* appicon-classic-free_iPadApp_76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0DB24CEF71500BAD35C /* appicon-classic-free_iPadApp_76@2x.png */; };
 		75D076B328B639D200F02E39 /* SettingsAppLockVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CF42309AEB00088BB10 /* SettingsAppLockVC.storyboard */; };
 		75D076B528B639D200F02E39 /* appicon-classic-pro_iPadApp_76.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC10324CEF71D00BAD35C /* appicon-classic-pro_iPadApp_76.png */; };
 		75D076B628B639D200F02E39 /* appicon-classic-free_iPhoneApp_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0EA24CEF71700BAD35C /* appicon-classic-free_iPhoneApp_60@2x.png */; };
 		75D076B728B639D200F02E39 /* EntryFileViewerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D0F2309AF400088BB10 /* EntryFileViewerVC.storyboard */; };
-		75D076B828B639D200F02E39 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		75D076B828B639D200F02E39 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		75D076B928B639D200F02E39 /* ParameterValueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75BF5AE927680CC100809654 /* ParameterValueCell.xib */; };
 		75D076BA28B639D200F02E39 /* appicon-atom-blue_iPhoneApp_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0E524CEF71700BAD35C /* appicon-atom-blue_iPhoneApp_60@2x.png */; };
 		75D076BB28B639D200F02E39 /* FileInfoVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D282309AFBA0088BB10 /* FileInfoVC.storyboard */; };
 		75D076BC28B639D200F02E39 /* PlaceholderVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C38044217A3204006F74C2 /* PlaceholderVC.storyboard */; };
 		75D076BD28B639D200F02E39 /* perpetual-fallback-license.html in Resources */ = {isa = PBXBuildFile; fileRef = 756FC99A24F45B13007F9920 /* perpetual-fallback-license.html */; };
 		75D076BE28B639D200F02E39 /* HelpViewerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7572665424CB18520099B6E1 /* HelpViewerVC.storyboard */; };
-		75D076BF28B639D200F02E39 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		75D076BF28B639D200F02E39 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		75D076C128B639D200F02E39 /* appicon-atom-black_iPhoneApp_60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC10E24CEF71F00BAD35C /* appicon-atom-black_iPhoneApp_60@3x.png */; };
 		75D076C228B639D200F02E39 /* appicon-atom-white_iPadApp_76.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0F424CEF71A00BAD35C /* appicon-atom-white_iPadApp_76.png */; };
 		75D076C328B639D200F02E39 /* appicon-keepass_iPhoneApp_60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0DA24CEF71500BAD35C /* appicon-keepass_iPhoneApp_60@3x.png */; };
@@ -4011,7 +4011,7 @@
 				75D0767C28B639D200F02E39 /* LaunchScreen.storyboard in Resources */,
 				75D0767D28B639D200F02E39 /* SettingsBackupVC.storyboard in Resources */,
 				75D0767E28B639D200F02E39 /* Localizable.strings in Resources */,
-				75D0767F28B639D200F02E39 /* BuildFile in Resources */,
+				75D0767F28B639D200F02E39 /* (null) in Resources */,
 				75D0768028B639D200F02E39 /* appicon-atom-black_iPadApp_76@2x.png in Resources */,
 				75D0768128B639D200F02E39 /* appicon-atom-white_iPadProApp_83.5@2x.png in Resources */,
 				75D0768228B639D200F02E39 /* ItemIconPicker.storyboard in Resources */,
@@ -4023,13 +4023,13 @@
 				75D0768728B639D200F02E39 /* appicon-atom-black_iPhoneApp_60@2x.png in Resources */,
 				75D0768828B639D200F02E39 /* SettingsBackupTimeoutPickerVC.storyboard in Resources */,
 				75D0768928B639D200F02E39 /* appstore-family-sharing.html in Resources */,
-				75D0768A28B639D200F02E39 /* BuildFile in Resources */,
+				75D0768A28B639D200F02E39 /* (null) in Resources */,
 				75D0768B28B639D200F02E39 /* appicon-keepass_iPadApp_76@2x.png in Resources */,
 				75D0768C28B639D200F02E39 /* ChangeLog.json in Resources */,
 				75D0768D28B639D200F02E39 /* appicon-atom-blue_iPadApp_76.png in Resources */,
 				75D0768E28B639D200F02E39 /* appicon-atom-black_iPadProApp_83.5@2x.png in Resources */,
 				75D0768F28B639D200F02E39 /* EntryFieldEditorVC.storyboard in Resources */,
-				75D0769028B639D200F02E39 /* BuildFile in Resources */,
+				75D0769028B639D200F02E39 /* (null) in Resources */,
 				75183ED32BB8A20A008F1614 /* PrivacyInfo.xcprivacy in Resources */,
 				75D0769128B639D200F02E39 /* DatabaseKeyChangerVC.storyboard in Resources */,
 				75D0769228B639D200F02E39 /* EntryViewerPagesVC.storyboard in Resources */,
@@ -4038,20 +4038,20 @@
 				75D0769528B639D200F02E39 /* SettingsAppearanceVC.storyboard in Resources */,
 				75D0769628B639D200F02E39 /* appicon-keepass_iPhoneApp_60@2x.png in Resources */,
 				75D0769728B639D200F02E39 /* AppIconPicker.storyboard in Resources */,
-				75D0769828B639D200F02E39 /* BuildFile in Resources */,
+				75D0769828B639D200F02E39 /* (null) in Resources */,
 				75D0769928B639D200F02E39 /* appicon-classic-pro_iPadProApp_83.5@2x.png in Resources */,
 				75D0769A28B639D200F02E39 /* PasswordGeneratorVC.storyboard in Resources */,
 				75D0769B28B639D200F02E39 /* DatabaseCreatorVC.storyboard in Resources */,
-				75D0769C28B639D200F02E39 /* BuildFile in Resources */,
+				75D0769C28B639D200F02E39 /* (null) in Resources */,
 				75D0769D28B639D200F02E39 /* InfoPlist.strings in Resources */,
 				75D0769E28B639D200F02E39 /* KeyFilePickerVC.storyboard in Resources */,
 				75D076A028B639D200F02E39 /* GroupViewerVC.storyboard in Resources */,
 				75D076A128B639D200F02E39 /* appicon-atom-white_iPhoneApp_60@3x.png in Resources */,
 				75D076A228B639D200F02E39 /* appicon-classic-pro_iPadApp_76@2x.png in Resources */,
-				75D076A328B639D200F02E39 /* BuildFile in Resources */,
+				75D076A328B639D200F02E39 /* (null) in Resources */,
 				75D076A428B639D200F02E39 /* appicon-atom-black_iPadApp_76.png in Resources */,
 				75D076A528B639D200F02E39 /* appicon-classic-pro_iPhoneApp_60@2x.png in Resources */,
-				75D076A628B639D200F02E39 /* BuildFile in Resources */,
+				75D076A628B639D200F02E39 /* (null) in Resources */,
 				75D076A728B639D200F02E39 /* appicon-atom-blue_iPadApp_76@2x.png in Resources */,
 				75D076A928B639D200F02E39 /* DatabaseIconSetPicker.storyboard in Resources */,
 				F3340BCE2B2B3E3A00604AED /* OnboardingStepVC.storyboard in Resources */,
@@ -4061,20 +4061,20 @@
 				75D076AD28B639D200F02E39 /* appicon-atom-white_iPadApp_76@2x.png in Resources */,
 				75D076AE28B639D200F02E39 /* PricingPlanPickerVC.storyboard in Resources */,
 				75D076AF28B639D200F02E39 /* SyncConflictAlert.storyboard in Resources */,
-				75D076B028B639D200F02E39 /* BuildFile in Resources */,
+				75D076B028B639D200F02E39 /* (null) in Resources */,
 				75D076B228B639D200F02E39 /* appicon-classic-free_iPadApp_76@2x.png in Resources */,
 				75D076B328B639D200F02E39 /* SettingsAppLockVC.storyboard in Resources */,
 				75D076B528B639D200F02E39 /* appicon-classic-pro_iPadApp_76.png in Resources */,
 				75D076B628B639D200F02E39 /* appicon-classic-free_iPhoneApp_60@2x.png in Resources */,
 				75D076B728B639D200F02E39 /* EntryFileViewerVC.storyboard in Resources */,
-				75D076B828B639D200F02E39 /* BuildFile in Resources */,
+				75D076B828B639D200F02E39 /* (null) in Resources */,
 				75D076B928B639D200F02E39 /* ParameterValueCell.xib in Resources */,
 				75D076BA28B639D200F02E39 /* appicon-atom-blue_iPhoneApp_60@2x.png in Resources */,
 				75D076BB28B639D200F02E39 /* FileInfoVC.storyboard in Resources */,
 				75D076BC28B639D200F02E39 /* PlaceholderVC.storyboard in Resources */,
 				75D076BD28B639D200F02E39 /* perpetual-fallback-license.html in Resources */,
 				75D076BE28B639D200F02E39 /* HelpViewerVC.storyboard in Resources */,
-				75D076BF28B639D200F02E39 /* BuildFile in Resources */,
+				75D076BF28B639D200F02E39 /* (null) in Resources */,
 				75D076C128B639D200F02E39 /* appicon-atom-black_iPhoneApp_60@3x.png in Resources */,
 				75D076C228B639D200F02E39 /* appicon-atom-white_iPadApp_76.png in Resources */,
 				75D076C328B639D200F02E39 /* appicon-keepass_iPhoneApp_60@3x.png in Resources */,
@@ -4807,7 +4807,7 @@
 				75D075B528B639D200F02E39 /* PasswordGeneratorLengthCell.swift in Sources */,
 				75C204C72CEE463900E4EDA3 /* UIMenu+customIdentifiers.swift in Sources */,
 				75D075B628B639D200F02E39 /* AppDelegate.swift in Sources */,
-				75D075B728B639D200F02E39 /* BuildFile in Sources */,
+				75D075B728B639D200F02E39 /* (null) in Sources */,
 				75D075B828B639D200F02E39 /* AppHistoryViewerVC.swift in Sources */,
 				75D075B928B639D200F02E39 /* SettingsDataProtectionVC.swift in Sources */,
 				75D075BA28B639D200F02E39 /* AppIconSwitcherCoordinator.swift in Sources */,

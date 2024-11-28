@@ -14,7 +14,7 @@ import SwiftCBOR
 
 enum PasskeyRegistrationError: LocalizedError {
     case unsupportedAlgorithm
-    
+
     var errorDescription: String? {
         switch self {
         case .unsupportedAlgorithm:

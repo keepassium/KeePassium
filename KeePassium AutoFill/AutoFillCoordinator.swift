@@ -323,7 +323,7 @@ extension AutoFillCoordinator {
             presenter.showErrorAlert(error.localizedDescription)
             return
         }
-        let entry = rootGroup.createPasskeyEntry(with: passkey)
+        _ = rootGroup.createPasskeyEntry(with: passkey)
         Settings.current.isAutoFillFinishedOK = false
         saveDatabase(databaseFile, onSuccess: { [weak self, passkey] in
             self?.returnPasskeyRegistration(passkey: passkey)

@@ -18,7 +18,7 @@ extension LString {
         value: "Preferences…",
         comment: "Menu title: app settings"
     )
-    
+
     public static let actionRestoreDefaults = NSLocalizedString(
         "[Settings/RestoreDefaults/action]",
         bundle: Bundle.framework,

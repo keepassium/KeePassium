@@ -421,7 +421,9 @@ final class GroupViewerVC:
         entriesSorted = group.entries.sorted { groupSortOrder.compare($0, $1) }
     }
 
-    private func makeActionAttributes(with permission: DatabaseViewerPermissionManager.PermissionElement) -> UIMenuElement.Attributes {
+    private func makeActionAttributes(
+        with permission: DatabaseViewerPermissionManager.PermissionElement
+    ) -> UIMenuElement.Attributes {
         let isAllowed = permissions.contains(permission)
         return isAllowed ? [] : [.disabled]
     }

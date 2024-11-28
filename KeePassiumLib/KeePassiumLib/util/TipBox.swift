@@ -58,7 +58,7 @@ final public class TipBox {
         totalAmount = totalAmount + amount.doubleValue
         lastPurchaseDate = Date.now
         lastSeenDate = Date.now
-        currencyCode = locale.currencyCode
+        currencyCode = locale.currency?.identifier
     }
 
     public static func registerTipBoxSeen() {
