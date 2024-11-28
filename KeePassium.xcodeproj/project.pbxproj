@@ -6899,7 +6899,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/keepassium/microsoft-authentication-library-for-objc/";
 			requirement = {
-				branch = "keepassium-155";
+				branch = "keepassium-156";
 				kind = branch;
 			};
 		};
