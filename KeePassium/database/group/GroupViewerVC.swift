@@ -678,6 +678,7 @@ final class GroupViewerVC:
         }
 
         cell.hasAttachments = entry.attachments.count > 0
+        cell.hasPasskey = Passkey.probablyPresent(in: entry)
         cell.accessibilityCustomActions = getAccessibilityActions(for: entry)
     }
 

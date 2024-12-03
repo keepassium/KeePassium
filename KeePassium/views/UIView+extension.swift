@@ -67,4 +67,12 @@ extension UIView {
             self?.becomeFirstResponder()
         }
     }
+
+    func setVisible(_ visible: Bool) {
+        let isAlreadyVisible = !isHidden
+        guard visible != isAlreadyVisible else {
+            return
+        }
+        self.isHidden = !visible
+    }
 }

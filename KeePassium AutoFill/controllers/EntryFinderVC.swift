@@ -35,9 +35,10 @@ final class EntryFinderCell: UITableViewCell {
 
     private var theButton: UIButton!
 
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subtitleLabel: UILabel!
-    @IBOutlet weak var iconView: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var subtitleLabel: UILabel!
+    @IBOutlet private weak var iconView: UIImageView!
+    @IBOutlet private weak var passkeyIndicator: UIImageView!
 
     fileprivate var entry: Entry? {
         didSet {
@@ -45,11 +46,13 @@ final class EntryFinderCell: UITableViewCell {
                 titleLabel?.text = ""
                 subtitleLabel?.text = ""
                 iconView?.image = nil
+                passkeyIndicator.setVisible(false)
                 return
             }
             titleLabel?.text = entry.getField(EntryField.title)?.decoratedResolvedValue
             subtitleLabel?.text = entry.getField(EntryField.userName)?.decoratedResolvedValue
             iconView?.image = UIImage.kpIcon(forEntry: entry)
+            passkeyIndicator.setVisible(Passkey.probablyPresent(in: entry))
         }
     }
 

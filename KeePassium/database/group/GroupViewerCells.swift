@@ -43,10 +43,16 @@ final class GroupViewerEntryCell: UITableViewCell {
     @IBOutlet private weak var showOTPButton: UIButton!
     @IBOutlet private weak var otpView: OTPView!
     @IBOutlet private weak var attachmentIndicator: UIImageView!
+    @IBOutlet private weak var passkeyIndicator: UIImageView!
 
     var hasAttachments: Bool = false {
         didSet {
-            setVisible(attachmentIndicator, hasAttachments)
+            attachmentIndicator.setVisible(hasAttachments)
+        }
+    }
+    var hasPasskey: Bool = false {
+        didSet {
+            passkeyIndicator.setVisible(hasPasskey)
         }
     }
 
@@ -87,29 +93,21 @@ final class GroupViewerEntryCell: UITableViewCell {
         }
     }
 
-    private func setVisible(_ view: UIView, _ visible: Bool) {
-        let isViewAlreadyVisible = !view.isHidden
-        guard visible != isViewAlreadyVisible else {
-            return
-        }
-        view.isHidden = !visible
-    }
-
     public func refresh() {
         guard let totpGenerator = totpGenerator else {
-            setVisible(showOTPButton, false)
-            setVisible(otpView, false)
+            showOTPButton.setVisible(false)
+            otpView.setVisible(false)
             return
         }
 
         if shouldHighlightOTP {
             otpView.normalColor = .actionTint
-            setVisible(showOTPButton, false)
-            setVisible(otpView, true)
+            showOTPButton.setVisible(false)
+            otpView.setVisible(true)
         } else {
             otpView.normalColor = .primaryText
             if otpView.isHidden {
-                setVisible(showOTPButton, true)
+                showOTPButton.setVisible(true)
                 return
             }
         }
@@ -163,7 +161,7 @@ final class GroupViewerEntryCell: UITableViewCell {
     }
 
     @IBAction private func didPressShowOTP(_ sender: UIButton) {
-        setVisible(otpView, true)
+        otpView.setVisible(true)
         refresh()
     }
 }
