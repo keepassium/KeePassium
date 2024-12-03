@@ -21,9 +21,10 @@ extension AutoFillMode {
         switch self {
         case .credentials,
              .passkeyRegistration,
-             .passkeyAssertion,
              .text:
             return nil
+        case .passkeyAssertion:
+            return "is:passkey"
         case .oneTimeCode:
             return "otp:* "
         }
