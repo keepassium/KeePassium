@@ -15,7 +15,7 @@ protocol GroupEditorCoordinatorDelegate: AnyObject {
 }
 
 final class GroupEditorCoordinator: Coordinator {
-    private let smartGroupDefaultQuery = "tag:2FA"
+    private let smartGroupDefaultQuery = "is:entry"
     enum Mode {
         case create(smart: Bool)
         case modify(group: Group)

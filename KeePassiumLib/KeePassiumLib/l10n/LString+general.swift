@@ -643,6 +643,12 @@ extension LString {
         value: "Entries with OTP",
         comment: "Title of a list: entries with one-time passwords (OTP)"
     )
+    public static let titleSmartGroupPasskeyEntries = NSLocalizedString(
+        "[Group/Smart/Preset/passkeyEntries]",
+        bundle: Bundle.framework,
+        value: "Entries with Passkeys",
+        comment: "Title of a list: entries that contain passkeys"
+    )
     public static let titleSmartGroupExpiredEntries = NSLocalizedString(
         "[Group/Smart/Preset/expiredEntries]",
         bundle: Bundle.framework,

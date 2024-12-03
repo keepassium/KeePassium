@@ -127,6 +127,7 @@ final class GroupEditorNotesCell: UITableViewCell {
             makePresetMenuAction(LString.titleSmartGroupAllEntries, query: "is:entry"),
             makePresetMenuAction(LString.titleSmartGroupExpiredEntries, query: "is:entry is:expired"),
             makePresetMenuAction(LString.titleSmartGroupOTPEntries, query: "otp:*"),
+            makePresetMenuAction(LString.titleSmartGroupPasskeyEntries, query: "is:passkey"),
         ])
         return menu
     }
