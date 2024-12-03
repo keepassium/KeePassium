@@ -13,5 +13,10 @@ public extension LString {
             bundle: Bundle.framework,
             value: "Activate to listen.",
             comment: "Call to action: perform accessibilty `activate` action to listen to text/content.")
+        public static let containsPasskey = NSLocalizedString(
+            "[Accessibility/containsPasskey]",
+            bundle: Bundle.framework,
+            value: "Contains a passkey.",
+            comment: "Accessibility notification for entries with a passkey")
     }
 }

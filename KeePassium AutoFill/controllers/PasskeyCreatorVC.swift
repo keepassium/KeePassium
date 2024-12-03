@@ -74,4 +74,9 @@ extension LString {
         value: "Add Passkey to Existing Entry",
         comment: "Action: create a passkey and add it to existing entry"
     )
+    public static let titleConfirmReplacingExistingPasskey = NSLocalizedString(
+        "[Database/Passkey/AddToExisting/confirm]",
+        value: "This entry already has a passkey. Replace it?",
+        comment: "Confirmation message before replacing an existing passkey."
+    )
 }

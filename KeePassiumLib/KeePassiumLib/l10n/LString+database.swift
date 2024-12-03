@@ -415,6 +415,36 @@ extension LString {
         value: "This database format does not support passkeys.",
         comment: "Error message when creating a new passkey.")
 
+    public static let titleUnsavedChanges = NSLocalizedString(
+        "[Database/UnsavedChanges/title]",
+        bundle: Bundle.framework,
+        value: "Unsaved Changes",
+        comment: "Title: there are temporary changes to be saved")
+    public static let titleDatabaseHasUnsavedChanges = NSLocalizedString(
+        "[Database/UnsavedChanges/thisDatabase]",
+        bundle: Bundle.framework,
+        value: "This database has unsaved changes made in AutoFill.",
+        comment: "Notification message")
+    public static let titleAutoFillCouldNotSaveChanges = NSLocalizedString(
+        "[Database/UnsavedChanges/autoFillCrashed]",
+        bundle: Bundle.framework,
+        value: "AutoFill could not save some changes due to a technical limitation.",
+        comment: "Notification message")
+    public static let titleOpenAppToSaveChanges = NSLocalizedString(
+        "[Database/UnsavedChanges/OpenAppCallToAction]",
+        bundle: Bundle.framework,
+        value: "To save changes, open the main KeePassium app.",
+        comment: "Call to action shown in AutoFill module.")
+    public static let titleSomeDatabasesHaveUnsavedChanges = NSLocalizedString(
+        "[Database/UnsavedChanges/someDatabases]",
+        bundle: Bundle.framework,
+        value: "One or more databases have unsaved changes made in AutoFill.",
+        comment: "Notification message")
+    public static let actionSavePendingChanges = NSLocalizedString(
+        "[Database/UnsavedChanges/saveAction]",
+        bundle: Bundle.framework,
+        value: "Save Pending Changes",
+        comment: "Action/button to save accummulated temporary database changes")
 
     public static let statusItemEdited = NSLocalizedString(
         "[Database/Item/Edited/state]",
