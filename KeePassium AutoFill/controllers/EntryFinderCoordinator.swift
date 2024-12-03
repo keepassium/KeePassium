@@ -163,7 +163,7 @@ extension EntryFinderCoordinator {
             database: database,
             serviceIdentifiers: serviceIdentifiers,
             passkeyRelyingParty: passkeyRelyingParty)
-        if results.isEmpty {
+        if results.isEmpty && autoFillMode != .passkeyRegistration {
             entryFinderVC.activateManualSearch(query: autoFillMode?.query)
             return
         }

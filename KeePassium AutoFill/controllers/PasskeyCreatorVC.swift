@@ -50,6 +50,11 @@ final class PasskeyCreatorVC: UIViewController {
         secondaryButton.configuration = secondaryConfig
         secondaryButton.isEnabled = false
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        becomeFirstResponder()
+    }
 
     func detents() -> [UISheetPresentationController.Detent] {
         let customDetent = UISheetPresentationController.Detent.custom(identifier: .init("detent")) { _ in
