@@ -396,6 +396,12 @@ public class Entry: DatabaseItem, Eraseable {
         }
         return groupNames.reversed().joined(separator: " / ")
     }
+
+    public func getAttachmentSize() -> Int {
+        return attachments.reduce(0) { sizeSoFar, att in
+            return sizeSoFar + att.size
+        }
+    }
 }
 
 extension Array where Element == Entry {

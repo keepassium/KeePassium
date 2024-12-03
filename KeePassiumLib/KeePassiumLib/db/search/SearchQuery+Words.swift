@@ -101,6 +101,7 @@ extension SearchQuery {
             case group
             case expired
             case passkey
+            case large
         }
 
         private let qualifier: Qualifier
@@ -132,6 +133,10 @@ extension SearchQuery {
             case .passkey:
                 guard let entry = searchable as? Entry else { return false }
                 return Passkey.probablyPresent(in: entry)
+            case .large:
+                guard let entry = searchable as? Entry else { return false }
+                let attachmentSize = entry.getAttachmentSize()
+                return attachmentSize > 100_000
             }
         }
     }
