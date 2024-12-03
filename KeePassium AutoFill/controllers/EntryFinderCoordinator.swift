@@ -116,18 +116,8 @@ extension EntryFinderCoordinator {
     }
 
     private func updateCallerID() {
-        if serviceIdentifiers.isEmpty {
-            entryFinderVC.callerID = nil
-            return
-        }
-
-        var callerID = serviceIdentifiers
-            .map { $0.identifier }
-            .joined(separator: " | ")
-        if let passkeyRelyingParty {
-            callerID += "\nrpID: \(passkeyRelyingParty)"
-        }
-        entryFinderVC.callerID = callerID
+        let serviceID = serviceIdentifiers.first?.identifier
+        entryFinderVC.callerID = serviceID ?? passkeyRelyingParty
     }
 
     private func showInitialMessages() {
