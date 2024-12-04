@@ -48,10 +48,6 @@ extension ToolbarDelegate: NSToolbarDelegate {
             .newGroup,
             .newSmartGroup,
             .space,
-            .copyUserName,
-            .copyPassword,
-            .copyURL,
-            .space,
             .randomGenerator,
             .settings
         ]
@@ -125,33 +121,6 @@ extension ToolbarDelegate: NSToolbarDelegate {
                 symbol: .folderGridBadgePlus,
                 selector: #selector(DatabaseViewerActionsManager.kpmCreateSmartGroup)
             )
-        case .copyUserName:
-            return createToolbarItem(
-                itemIdentifier: itemIdentifier,
-                label: String.localizedStringWithFormat(
-                    LString.actionCopyToClipboardTemplate,
-                    LString.fieldUserName),
-                symbol: .person,
-                selector: #selector(DatabaseViewerActionsManager.kpmCopyEntryUserName)
-            )
-        case .copyPassword:
-            return createToolbarItem(
-                itemIdentifier: itemIdentifier,
-                label: String.localizedStringWithFormat(
-                    LString.actionCopyToClipboardTemplate,
-                    LString.fieldPassword),
-                symbol: .keyHorizontal,
-                selector: #selector(DatabaseViewerActionsManager.kpmCopyEntryPassword)
-            )
-        case .copyURL:
-            return createToolbarItem(
-                itemIdentifier: itemIdentifier,
-                label: String.localizedStringWithFormat(
-                    LString.actionCopyToClipboardTemplate,
-                    LString.fieldURL),
-                symbol: .link,
-                selector: #selector(DatabaseViewerActionsManager.kpmCopyEntryURL)
-            )
         case .randomGenerator:
             return createToolbarItem(
                 itemIdentifier: itemIdentifier,
@@ -204,9 +173,6 @@ extension NSToolbarItem.Identifier {
     static let newEntry = NSToolbarItem.Identifier("com.keepassium.toolbar.newEntry")
     static let newGroup = NSToolbarItem.Identifier("com.keepassium.toolbar.newGroup")
     static let newSmartGroup = NSToolbarItem.Identifier("com.keepassium.toolbar.newSmartGroup")
-    static let copyUserName = NSToolbarItem.Identifier("com.keepassium.toolbar.copyUserName")
-    static let copyPassword = NSToolbarItem.Identifier("com.keepassium.toolbar.copyPassword")
-    static let copyURL = NSToolbarItem.Identifier("com.keepassium.toolbar.copyURL")
     static let randomGenerator = NSToolbarItem.Identifier("com.keepassium.toolbar.randomGenerator")
     static let settings = NSToolbarItem.Identifier("com.keepassium.toolbar.settings")
 }
