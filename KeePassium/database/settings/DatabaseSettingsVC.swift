@@ -63,6 +63,9 @@ final class DatabaseSettingsVC: UITableViewController, Refreshable {
         super.viewDidLoad()
         title = LString.titleDatabaseSettings
 
+        tableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
+        tableView.estimatedSectionHeaderHeight = 18
+
         registerCellClasses(tableView)
         tableView.alwaysBounceVertical = false
         setupCloseButton()
@@ -71,6 +74,28 @@ final class DatabaseSettingsVC: UITableViewController, Refreshable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         refresh()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        tableView.removeObserver(self, forKeyPath: "contentSize")
+        super.viewWillDisappear(animated)
+    }
+
+    override func observeValue(
+        forKeyPath keyPath: String?,
+        of object: Any?,
+        change: [NSKeyValueChangeKey: Any]?,
+        context: UnsafeMutableRawPointer?
+    ) {
+        var preferredSize = CGSize(
+            width: max(tableView.contentSize.width, self.preferredContentSize.width),
+            height: max(tableView.contentSize.height, self.preferredContentSize.height)
+        )
+
+        preferredSize.width = 400
+        DispatchQueue.main.async { [self] in
+            self.preferredContentSize = preferredSize
+        }
     }
 
     func refresh() {
