@@ -319,7 +319,7 @@ extension ManagedAppConfig {
 
 extension ManagedAppConfig {
     private static let fileProvidersAll = "all"
-    private enum FileProviderRestrictions {
+    internal enum FileProviderRestrictions {
         case allowAll
         case allowSome(Set<FileProvider>)
     }
@@ -336,7 +336,7 @@ extension ManagedAppConfig {
         }
     }
 
-    private func getAllowedFileProviders() -> FileProviderRestrictions {
+    internal func getAllowedFileProviders() -> FileProviderRestrictions {
         let allowedFileProvidersString = getStringIfLicensed(.allowedFileProviders)
         let allowedFileProvidersArray = getStringArrayIfLicensed(.allowedFileProviders)
         if let allowedFileProvidersString {

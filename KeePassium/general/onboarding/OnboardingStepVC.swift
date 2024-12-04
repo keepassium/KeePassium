@@ -23,9 +23,11 @@ final class OnboardingStepVC: UIViewController {
 
         view.backgroundColor = ImageAsset.backgroundPattern.asColor()
 
-        step.actions.forEach {
-            buttonsStackView.addArrangedSubview(createButton(forAction: $0, primary: true))
-        }
+        step.actions
+            .filter { !$0.attributes.contains(.hidden) }
+            .forEach {
+                buttonsStackView.addArrangedSubview(createButton(forAction: $0, primary: true))
+            }
         if step.canSkip,
            let skipAction = step.skipAction
         {

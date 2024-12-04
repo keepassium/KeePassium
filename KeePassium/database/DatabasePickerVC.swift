@@ -327,9 +327,11 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         }
         #endif
 
+        let appConfig = ManagedAppConfig.shared
         let openDatabaseAction = UIAction(
             title: LString.actionOpenDatabase,
             image: needPremium ? .premiumBadge : .symbol(.folder),
+            attributes: appConfig.areSystemFileProvidersAllowed ? [] : [.disabled],
             handler: { [weak self] _ in
                 guard let self = self else { return }
                 self.delegate?.didPressAddExistingDatabase(in: self)
@@ -340,7 +342,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         let addRemoteDatabaseAction = UIAction(
             title: LString.actionConnectToServer,
             image: needPremium ? UIImage.premiumBadge : UIImage.symbol(.network),
-            attributes: [],
+            attributes: appConfig.areInAppFileProvidersAllowed ? [] : [.disabled],
             handler: { [weak self] _ in
                 guard let self = self else { return }
                 self.delegate?.didPressAddRemoteDatabase(in: self)

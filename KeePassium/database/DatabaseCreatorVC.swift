@@ -23,7 +23,7 @@ protocol DatabaseCreatorDelegate: AnyObject {
     func shouldDismissPopovers(in databaseCreatorVC: DatabaseCreatorVC)
 }
 
-class DatabaseCreatorVC: UIViewController, BusyStateIndicating {
+class DatabaseCreatorVC: UIViewController, BusyStateIndicating, Refreshable {
     enum DestinationType {
         case files
         case remoteServer
@@ -62,6 +62,7 @@ class DatabaseCreatorVC: UIViewController, BusyStateIndicating {
         return navigationController?.view ?? self.view
     }
     private var progressOverlay: ProgressOverlay?
+    private var isBusy = false
 
     private var hasPassword: Bool { passwordField.text?.isNotEmpty ?? false }
     private var hasKeyFile: Bool { keyFile != nil }
@@ -103,6 +104,7 @@ class DatabaseCreatorVC: UIViewController, BusyStateIndicating {
 
         passwordField.becomeFirstResponder()
         setupSaveToServerButton()
+        refresh()
     }
 
     private func setupSaveToServerButton() {
@@ -137,8 +139,14 @@ class DatabaseCreatorVC: UIViewController, BusyStateIndicating {
     }
 
     func indicateState(isBusy: Bool) {
-        saveToFilesButton.isEnabled = !isBusy
-        saveToServerButton.isEnabled = !isBusy
+        self.isBusy = isBusy
+        refresh()
+    }
+
+    func refresh() {
+        let appConfig = ManagedAppConfig.shared
+        saveToFilesButton.isEnabled = !isBusy && appConfig.areSystemFileProvidersAllowed
+        saveToServerButton.isEnabled = !isBusy && appConfig.areInAppFileProvidersAllowed
     }
 
     func showErrorMessage(_ message: String, haptics: HapticFeedback.Kind) {

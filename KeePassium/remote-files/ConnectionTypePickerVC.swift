@@ -152,7 +152,7 @@ extension ConnectionTypePickerVC {
         cell.imageView?.image = nil
         cell.detailTextLabel?.text = nil
         cell.accessoryType = .disclosureIndicator
-        cell.setEnabled(true)
+        cell.setEnabled(ManagedAppConfig.shared.areSystemFileProvidersAllowed)
     }
 }
 
@@ -170,6 +170,10 @@ extension ConnectionTypePickerVC {
             }
             return indexPath
         case Cells.otherLocationsSection:
+            guard ManagedAppConfig.shared.areSystemFileProvidersAllowed else {
+                showManagedSettingNotification(text: LString.Error.storageAccessDeniedByOrg)
+                return nil
+            }
             return indexPath
         default:
             fatalError()

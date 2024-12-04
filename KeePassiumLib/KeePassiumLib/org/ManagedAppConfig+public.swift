@@ -75,3 +75,23 @@ extension ManagedAppConfig {
         return getIntIfLicensed(.kdfParallelism)
     }
 }
+
+extension ManagedAppConfig {
+    public var areSystemFileProvidersAllowed: Bool {
+        switch getAllowedFileProviders() {
+        case .allowAll:
+            return true
+        case .allowSome(let allowedFPs):
+            return allowedFPs.contains { $0.isSystemFileProvider }
+        }
+    }
+
+    public var areInAppFileProvidersAllowed: Bool {
+        switch getAllowedFileProviders() {
+        case .allowAll:
+            return true
+        case .allowSome(let allowedFPs):
+            return allowedFPs.contains { $0.isInAppFileProvider }
+        }
+    }
+}

@@ -342,4 +342,22 @@ public enum FileProvider: Hashable {
     public static func find(for url: URL) -> FileProvider? {
         return DataSourceFactory.findInAppFileProvider(for: url)
     }
+
+    public var isInAppFileProvider: Bool {
+        switch self {
+        case .keepassiumWebDAV,
+             .keepassiumOneDriveLegacy,
+             .keepassiumOneDrivePersonal,
+             .keepassiumOneDriveBusiness,
+             .keepassiumDropbox,
+             .keepassiumGoogleDrive:
+            return true
+        default:
+            return false
+        }
+    }
+
+    public var isSystemFileProvider: Bool {
+        return !isInAppFileProvider
+    }
 }
