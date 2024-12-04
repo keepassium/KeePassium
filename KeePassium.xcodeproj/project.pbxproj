@@ -227,6 +227,9 @@
 		754E409926306927003E4854 /* DatabaseUnlockerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754E409726306927003E4854 /* DatabaseUnlockerCoordinator.swift */; };
 		754E409A26306927003E4854 /* DatabaseUnlockerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754E409726306927003E4854 /* DatabaseUnlockerCoordinator.swift */; };
 		754E409B26306927003E4854 /* DatabaseUnlockerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754E409726306927003E4854 /* DatabaseUnlockerCoordinator.swift */; };
+		754EEAB52CFFBBF000404142 /* DatabaseCSVExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754EEAB42CFFBBF000404142 /* DatabaseCSVExporter.swift */; };
+		754EEAB62CFFBBF000404142 /* DatabaseCSVExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754EEAB42CFFBBF000404142 /* DatabaseCSVExporter.swift */; };
+		754EEAB72CFFBBF000404142 /* DatabaseCSVExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754EEAB42CFFBBF000404142 /* DatabaseCSVExporter.swift */; };
 		7550D22B215CC99100360E0C /* DatabaseKeyChangerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550D22A215CC99100360E0C /* DatabaseKeyChangerVC.swift */; };
 		7550D242215D792000360E0C /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7550D231215D758800360E0C /* AuthenticationServices.framework */; };
 		7550D24C215FDEC500360E0C /* AppCoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550D24B215FDEC500360E0C /* AppCoverVC.swift */; };
@@ -1915,6 +1918,7 @@
 		754E409726306927003E4854 /* DatabaseUnlockerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUnlockerCoordinator.swift; sourceTree = "<group>"; };
 		754E74C2260677A70043BBDB /* KeePassium-macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "KeePassium-macOS.entitlements"; sourceTree = "<group>"; };
 		754E74CB26067B730043BBDB /* KeePassium_AutoFill-macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "KeePassium_AutoFill-macOS.entitlements"; sourceTree = "<group>"; };
+		754EEAB42CFFBBF000404142 /* DatabaseCSVExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseCSVExporter.swift; sourceTree = "<group>"; };
 		7550D22A215CC99100360E0C /* DatabaseKeyChangerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseKeyChangerVC.swift; sourceTree = "<group>"; };
 		7550D231215D758800360E0C /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		7550D24B215FDEC500360E0C /* AppCoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoverVC.swift; sourceTree = "<group>"; };
@@ -2926,6 +2930,14 @@
 			path = unlocker;
 			sourceTree = "<group>";
 		};
+		754EEAB32CFFBBDE00404142 /* export */ = {
+			isa = PBXGroup;
+			children = (
+				754EEAB42CFFBBF000404142 /* DatabaseCSVExporter.swift */,
+			);
+			path = export;
+			sourceTree = "<group>";
+		};
 		754FCBAF20A86785004DA0E7 /* util */ = {
 			isa = PBXGroup;
 			children = (
@@ -3066,6 +3078,7 @@
 		756FF64720BAB56A00FF890B /* database */ = {
 			isa = PBXGroup;
 			children = (
+				754EEAB32CFFBBDE00404142 /* export */,
 				F33F2C522B32E03E009EFB18 /* tags */,
 				754E4096263068EB003E4854 /* unlocker */,
 				75D9913826CEC8B900823331 /* merger */,
@@ -4354,6 +4367,7 @@
 				7550D24C215FDEC500360E0C /* AppCoverVC.swift in Sources */,
 				75D7614F262DDE0B00B1DE7F /* AboutCoordinator.swift in Sources */,
 				756F363F260E9668005A35DA /* KeyFilePickerVC.swift in Sources */,
+				754EEAB72CFFBBF000404142 /* DatabaseCSVExporter.swift in Sources */,
 				F3B0C2042B2CA8790001946D /* OnboardingPagesVC.swift in Sources */,
 				758FF6BF28FAE32F007DE8EB /* ButtonCell.swift in Sources */,
 				7524E73B2888A3F500ECBEC8 /* WebDAVConnectionSetupVC.swift in Sources */,
@@ -4596,6 +4610,7 @@
 				7546EC122B17750F00E38DB7 /* GroupEditorVC+Property.swift in Sources */,
 				759BC62E2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
 				75B38C02233E5B7C006BDEFC /* SettingsDatabaseTimeoutVC.swift in Sources */,
+				754EEAB62CFFBBF000404142 /* DatabaseCSVExporter.swift in Sources */,
 				75B38C03233E5B7C006BDEFC /* AppCoverVC.swift in Sources */,
 				75D76150262DDE0B00B1DE7F /* AboutCoordinator.swift in Sources */,
 				756F3642260E9669005A35DA /* KeyFilePickerVC.swift in Sources */,
@@ -4894,6 +4909,7 @@
 				75D0760128B639D200F02E39 /* AboutVC.swift in Sources */,
 				75D0760228B639D200F02E39 /* EntryFieldEditorVC.swift in Sources */,
 				75D0760328B639D200F02E39 /* DatabaseUnlockerVC.swift in Sources */,
+				754EEAB52CFFBBF000404142 /* DatabaseCSVExporter.swift in Sources */,
 				75D0760428B639D200F02E39 /* UILabel+extensions.swift in Sources */,
 				75D0760528B639D200F02E39 /* HelpViewerCoordinator.swift in Sources */,
 				75D0760628B639D200F02E39 /* DatabaseFile+extensions.swift in Sources */,

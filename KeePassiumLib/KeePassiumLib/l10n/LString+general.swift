@@ -316,6 +316,12 @@ extension LString {
         value: "Search",
         comment: "Title of a search field (a noun, not verb)"
     )
+    public static let titleFileExport = NSLocalizedString(
+        "[Generic/File/Export/title]",
+        bundle: Bundle.framework,
+        value: "File Export",
+        comment: "Title of a generic file export screen."
+    )
     public static let titleFileImportError = NSLocalizedString(
         "[Generic/File/title] Import Error",
         bundle: Bundle.framework,
@@ -519,6 +525,12 @@ extension LString {
         bundle: Bundle.framework,
         value: "Lock Database",
         comment: "Action/button to lock current database (the next time, it will ask for the master key)."
+    )
+    public static let titlePlainTextDatabaseExport = NSLocalizedString(
+        "[Database/Export/PlainText/warning]",
+        bundle: Bundle.framework,
+        value: "The exported file will contain your data in plain text, without any protection.",
+        comment: "Notification message before database export."
     )
 
     public static let actionChangeMasterKey = NSLocalizedString(

@@ -684,6 +684,37 @@ extension DatabaseViewerCoordinator {
         Diag.debug("Preparing print preview")
     }
 
+    func confirmAndExportDatabaseToCSV() {
+        let alert = UIAlertController.make(
+            title: LString.titleFileExport,
+            message: LString.titlePlainTextDatabaseExport,
+            dismissButtonTitle: LString.actionCancel
+        )
+        alert.addAction(title: LString.actionContinue, style: .default, preferred: true) { [weak self] _ in
+            self?.exportDatabaseToCSV()
+        }
+        getPresenterForModals().present(alert, animated: true, completion: nil)
+    }
+
+    private func exportDatabaseToCSV() {
+        guard let root = database.root else {
+            Diag.error("Failed to export database, there is no root group")
+            return
+        }
+
+        let csvFileName = databaseFile.fileURL
+            .deletingPathExtension()
+            .appendingPathExtension("csv")
+            .lastPathComponent
+        let exporter = DatabaseCSVExporter()
+        let csv = exporter.export(root: root)
+        fileExportHelper = FileExportHelper(data: ByteArray(utf8String: csv), fileName: csvFileName)
+        fileExportHelper!.handler = { [weak self] _ in
+            self?.fileExportHelper = nil
+        }
+        fileExportHelper!.saveAs(presenter: getPresenterForModals())
+    }
+
     func canCopyCurrentEntryField(_ fieldName: String) -> Bool {
         guard let value = currentEntry?.getField(fieldName)?.resolvedValue else {
             return false
@@ -1321,6 +1352,7 @@ final class DatabaseViewerActionsManager: UIResponder {
         builder.insertChild(makeReloadDatabaseMenu(), atEndOfMenu: .databaseFile)
         builder.insertChild(makeDatabaseToolsMenu2(), atEndOfMenu: .databaseFile)
         builder.insertChild(makeLockDatabaseMenu(), atEndOfMenu: .databaseFile)
+        builder.insertChild(makeExportDatabaseMenu(), atEndOfMenu: .databaseFile)
         builder.insertSibling(makeDatabaseToolsMenu1(), afterMenu: .passwordGenerator)
         if coordinator != nil {
             builder.insertChild(makeDatabaseItemsSortOrderMenu(), atEndOfMenu: .view)
@@ -1340,7 +1372,8 @@ final class DatabaseViewerActionsManager: UIResponder {
         let permissions = coordinator.currentGroupPermissions
         switch action {
         case #selector(kpmReloadDatabase),
-             #selector(kpmLockDatabase):
+             #selector(kpmLockDatabase),
+             #selector(kpmExportDatabaseToCSV):
             return true
         case #selector(kpmShowPasswordAudit):
             return permissions.contains(.auditPasswords)
@@ -1380,6 +1413,17 @@ final class DatabaseViewerActionsManager: UIResponder {
             hotkey: .lockDatabase
         )
         return UIMenu(identifier: .lockDatabase, options: [.displayInline], children: [lockDatabaseCommand])
+    }
+
+    private func makeExportDatabaseMenu() -> UIMenu {
+        let exportDatabaseCSVCommand = UICommand(
+            title: "CSV",
+            action: #selector(kpmExportDatabaseToCSV)
+        )
+        return UIMenu(
+            title: LString.actionExport,
+            identifier: .exportDatabase,
+            children: [exportDatabaseCSVCommand])
     }
 
     private func makeReloadDatabaseMenu() -> UIMenu {
@@ -1528,6 +1572,9 @@ final class DatabaseViewerActionsManager: UIResponder {
     }
     @objc func kpmLockDatabase() {
         coordinator?.closeDatabase(shouldLock: true, reason: .userRequest, animated: true, completion: nil)
+    }
+    @objc func kpmExportDatabaseToCSV() {
+        coordinator?.confirmAndExportDatabaseToCSV()
     }
     @objc func kpmShowPasswordAudit() {
         coordinator?.showPasswordAudit()
