@@ -420,6 +420,11 @@ extension LString {
         bundle: Bundle.framework,
         value: "Unsaved Changes",
         comment: "Title: there are temporary changes to be saved")
+    public static let messageAutoFillCannotModify = NSLocalizedString(
+        "[Database/UnsavedChanges/cannotModifyYet]",
+        bundle: Bundle.framework,
+        value: "Unfortunately, AutoFill cannot modify large databases yet. We are working to resolve this.",
+        comment: "Notification message")
     public static let titleDatabaseHasUnsavedChanges = NSLocalizedString(
         "[Database/UnsavedChanges/thisDatabase]",
         bundle: Bundle.framework,
