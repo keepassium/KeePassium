@@ -16,7 +16,9 @@ extension Coordinator {
     ) {
         let modalRouter: NavigationRouter
         let isNarrow = viewController.splitViewController?.isCollapsed ?? false
-        if isNarrow || ProcessInfo.isRunningOnMac{
+        if ProcessInfo.isRunningOnMac {
+            modalRouter = NavigationRouter.createModal(style: .pageSheet, at: popoverAnchor)
+        } else if isNarrow {
             modalRouter = NavigationRouter.createModal(style: .pageSheet, at: popoverAnchor)
             let sheet = modalRouter.navigationController.sheetPresentationController
             sheet?.detents = [.medium(), .large()]
