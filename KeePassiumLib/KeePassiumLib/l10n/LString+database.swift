@@ -412,7 +412,7 @@ extension LString {
     public static let titleDatabaseFormatDoesNotSupportPasskeys = NSLocalizedString(
         "[Database/FormatVersion/PasskeysNotSupported]",
         bundle: Bundle.framework,
-        value: "This database format does not support passkeys.",
+        value: "Current database format does not support passkeys.",
         comment: "Error message when creating a new passkey.")
 
     public static let titleUnsavedChanges = NSLocalizedString(
@@ -445,11 +445,11 @@ extension LString {
         bundle: Bundle.framework,
         value: "One or more databases have unsaved changes made in AutoFill.",
         comment: "Notification message")
-    public static let actionSavePendingChanges = NSLocalizedString(
+    public static let actionSaveChanges = NSLocalizedString(
         "[Database/UnsavedChanges/saveAction]",
         bundle: Bundle.framework,
-        value: "Save Pending Changes",
-        comment: "Action/button to save accummulated temporary database changes")
+        value: "Save Changes",
+        comment: "Action/button to save accummulated modifications")
 
     public static let statusItemEdited = NSLocalizedString(
         "[Database/Item/Edited/state]",

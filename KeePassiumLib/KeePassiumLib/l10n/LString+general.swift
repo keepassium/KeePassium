@@ -529,7 +529,7 @@ extension LString {
     public static let titlePlainTextDatabaseExport = NSLocalizedString(
         "[Database/Export/PlainText/warning]",
         bundle: Bundle.framework,
-        value: "The exported file will contain your data in plain text, without any protection.",
+        value: "The exported file will contain your data in plaintext, without any protection.",
         comment: "Notification message before database export."
     )
 
