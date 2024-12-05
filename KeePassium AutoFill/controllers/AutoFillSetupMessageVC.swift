@@ -17,6 +17,20 @@ final class AutoFillSetupMessageVC: UIViewController {
     @IBOutlet private weak var button: UIButton!
     private weak var keychainSwitch: UISwitch!
 
+    private var systemAppName: String {
+        if #available(iOS 18, *) {
+            return LString.titleApplePasswordsApp
+        }
+        return LString.titleKeychain
+    }
+
+    private var systemAutoFillSetupHeader: String {
+        if #available(iOS 18, *) {
+            return LString.autoFillSetupSectionHeader_iOS18
+        }
+        return LString.autoFillSetupSectionHeader_iOS17
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = UIBarButtonItem(
@@ -27,7 +41,9 @@ final class AutoFillSetupMessageVC: UIViewController {
         )
 
         title = LString.callToActionUncheckKeychain
-        bodyLabel.text = LString.uncheckKeychainAutoFillMessage
+        bodyLabel.text = String.localizedStringWithFormat(
+            LString.uncheckKeychainAutoFillMessageTemplate,
+            systemAppName)
 
         var buttonConfig = UIButton.Configuration.filled()
         buttonConfig.buttonSize = .large
@@ -57,10 +73,7 @@ extension AutoFillSetupMessageVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if #available(iOS 17, *) {
-            return LString.autoFillSetupSectionHeader_iOS17
-        }
-        return LString.autoFillSetupSectionHeader_iOS15
+        return systemAutoFillSetupHeader
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -69,7 +82,7 @@ extension AutoFillSetupMessageVC: UITableViewDataSource, UITableViewDelegate {
             as! SwitchCell
         switch indexPath.row {
         case 0:
-            cell.textLabel?.text = LString.titleKeychain
+            cell.textLabel?.text = systemAppName
             cell.theSwitch.isOn = false
         case 1:
             cell.textLabel?.text = "KeePassium"
@@ -88,25 +101,30 @@ extension LString {
         value: "Keychain",
         comment: "Apple Keychain software; is a glossary term."
     )
+    public static let titleApplePasswordsApp = NSLocalizedString(
+        "[Generic/ApplePasswordsApp/title]",
+        value: "Passwords",
+        comment: "Name of the Apple Passwords application, see https://support.apple.com/120758"
+    )
     public static let callToActionUncheckKeychain = NSLocalizedString(
         "[AutoFill/Setup/UncheckKeychain/callToAction]",
         value: "Uncheck Keychain",
         comment: "Call to action: deselect the `Keychain` option. Keychain is a glossary term."
     )
-    public static let uncheckKeychainAutoFillMessage = NSLocalizedString(
+    public static let uncheckKeychainAutoFillMessageTemplate = NSLocalizedString(
         "[AutoFill/Setup/UncheckKeychain/message]",
-        value: "To make KeePassium your default password manager, uncheck Keychain.",
-        comment: "Instruction to deselect the `Keychain` option. Keychain is a glossary term."
-    )
-    public static let autoFillSetupSectionHeader_iOS15 = NSLocalizedString(
-        "[AutoFill/Setup/UncheckKeychain/allowFillingFrom]",
-        value: "Allow filling from:",
-        comment: "Must match Apple's translation, as found in iOS 15 Settings → Passwords → AutoFill Passwords. If unsure, leave untranslated."
+        value: "To make KeePassium your default password manager, uncheck \"%@\".",
+        comment: "Instruction to deselect another app in the settings [appName: String]"
     )
     public static let autoFillSetupSectionHeader_iOS17 = NSLocalizedString(
         "[AutoFill/Setup/UncheckKeychain/usePasswordsAndPasskeysFrom]",
         value: "Use passwords and passkeys from:",
         comment: "Must match Apple's translation, as found in iOS 17 Settings → Passwords → Password Options. If unsure, leave untranslated."
+    )
+    public static let autoFillSetupSectionHeader_iOS18 = NSLocalizedString(
+        "[AutoFill/Setup/UncheckKeychain/autofillFrom]",
+        value: "AutoFill from:",
+        comment: "Must match Apple's translation, as found in iOS 18 Settings → General → AutoFill & Passwords. If unsure, leave untranslated."
     )
 }
 // swiftlint:enable line_length
