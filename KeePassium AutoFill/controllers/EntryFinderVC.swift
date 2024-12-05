@@ -174,7 +174,7 @@ final class EntryFinderVC: UITableViewController {
         callerIDView.copyButton.isHidden = !hasCallerID
         let callerIDText = self.callerID ?? "?"
         callerIDView.textLabel.text = String.localizedStringWithFormat(
-            LString.autoFillCallerIDTemplate,
+            LString.autoFillContextTemplate,
             callerIDText
         )
         callerIDView.copyHandler = { (view: CallerIDView) in
@@ -505,10 +505,15 @@ extension EntryFinderVC: UISearchResultsUpdating {
 
 extension LString {
     // swiftlint:disable line_length
+
     public static let autoFillCallerIDTemplate = NSLocalizedString(
         "[AutoFill/Search/callerID]",
         value: "Caller ID: %@",
         comment: "An identifier of the app that called AutoFill. The term is intentionally similar to https://ru.wikipedia.org/wiki/Caller_ID. [callerID: String]")
+    public static let autoFillContextTemplate = NSLocalizedString(
+        "[AutoFill/Search/context]",
+        value: "Context: %@",
+        comment: "Status message, shows which app or webpage launched AutoFill. For example: `Context: google.com`")
 
     public static let callToActionSelectField = NSLocalizedString(
         "[AutoFill/InsertText/select]",
