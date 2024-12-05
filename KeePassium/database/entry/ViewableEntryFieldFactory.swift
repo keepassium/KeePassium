@@ -77,6 +77,29 @@ class BasicViewableField: ViewableField {
     }
 }
 
+class PasskeyViewableField: BasicViewableField {
+    private let passkey: Passkey
+
+    public var relyingParty: String { passkey.relyingParty }
+    public var username: String { passkey.username }
+
+    override var internalName: String { EntryField.passkey }
+    override var visibleName: String { LString.fieldPasskey }
+    override var value: String? {
+        [relyingParty, username].joined(separator: "\n")
+    }
+    override var resolvedValue: String? { value }
+    override var isProtected: Bool { false }
+    override var isFixed: Bool { true }
+    override var isEditable: Bool { false }
+
+    init(passkey: Passkey) {
+        self.passkey = passkey
+        super.init(fieldOrNil: nil, isValueHidden: false)
+        isAuditable = false
+    }
+}
+
 class DynamicViewableField: BasicViewableField, Refreshable {
 
     internal var fields: [Weak<EntryField>]
@@ -129,6 +152,7 @@ class ViewableEntryFieldFactory {
         case emptyValues
         case nonEditable
         case otpConfig
+        case passkeyConfig
     }
 
     static func makeAll(
@@ -139,6 +163,8 @@ class ViewableEntryFieldFactory {
         var result = [ViewableField]()
 
         let hasValidOTPConfig = TOTPGeneratorFactory.makeGenerator(for: entry) != nil
+        let passkey = Passkey.make(from: entry)
+        let hasValidPasskeyConfig = passkey != nil
         let isAuditable = (entry as? Entry2)?.qualityCheck ?? true
 
         var excludedFieldNames = Set<String>()
@@ -153,6 +179,15 @@ class ViewableEntryFieldFactory {
             excludedFieldNames.insert(EntryField.timeOtpPeriod)
             excludedFieldNames.insert(EntryField.timeOtpSecret)
             excludedFieldNames.insert(EntryField.timeOtpAlgorithm)
+        }
+        if hasValidPasskeyConfig && excludedFields.contains(.passkeyConfig) {
+            excludedFieldNames.formUnion([
+                EntryField.passkeyCredentialID,
+                EntryField.passkeyRelyingParty,
+                EntryField.passkeyPrivateKeyPEM,
+                EntryField.passkeyUserHandle,
+                EntryField.passkeyUsername,
+            ])
         }
         let excludeEmptyValues = excludedFields.contains(.emptyValues)
         let excludeNonEditable = excludedFields.contains(.nonEditable)
@@ -172,7 +207,11 @@ class ViewableEntryFieldFactory {
         if hasValidOTPConfig && !excludeNonEditable {
             result.append(TOTPViewableField(fields: entry.fields))
         }
-
+        if let passkey,
+           !excludeNonEditable
+        {
+            result.append(PasskeyViewableField(passkey: passkey))
+        }
         return result
     }
 

@@ -43,8 +43,8 @@ public class Passkey {
 
     let credentialID: Data
     private(set) var privateKeyPEM: String
-    let relyingParty: String
-    let username: String
+    public let relyingParty: String
+    public let username: String
     let userHandle: Data
 
     init(

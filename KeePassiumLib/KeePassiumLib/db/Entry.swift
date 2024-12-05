@@ -21,6 +21,8 @@ public class EntryField: Eraseable {
 
     public static let tags = "tags" + UUID().uuidString
 
+    public static let passkey = "passkey" + UUID().uuidString
+
     public var name: String
     public var value: String {
         didSet {

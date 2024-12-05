@@ -152,7 +152,7 @@ final class EntryViewerCoordinator: NSObject, Coordinator, Refreshable {
         var fields = ViewableEntryFieldFactory.makeAll(
             from: entry,
             in: database,
-            excluding: [.title, .emptyValues, .otpConfig]
+            excluding: [.title, .emptyValues, .otpConfig, .passkeyConfig]
         )
         if database is Database2,
            let (entry, field) = ViewableEntryFieldFactory.makeTags(

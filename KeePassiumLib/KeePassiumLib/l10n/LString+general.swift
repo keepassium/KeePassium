@@ -798,6 +798,12 @@ extension LString {
         value: "Password",
         comment: "Name of an entry field"
     )
+    public static let fieldPasskey = NSLocalizedString(
+        "[Entry/Field/name] Passkey",
+        bundle: Bundle.framework,
+        value: "Passkey",
+        comment: "Title of an entry field"
+    )
     public static let fieldURL = NSLocalizedString(
         "[Entry/Field/name] URL",
         bundle: Bundle.framework,

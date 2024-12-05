@@ -25,6 +25,11 @@ class ViewableFieldCellFactory {
                 withIdentifier: TOTPFieldCell.storyboardID,
                 for: indexPath)
                 as! TOTPFieldCell
+        } else if field is PasskeyViewableField {
+            cell = tableView.dequeueReusableCell(
+                withIdentifier: PasskeyFieldCell.storyboardID,
+                for: indexPath)
+                as! PasskeyFieldCell
         } else if field.isProtected || isPasswordField {
             cell = tableView.dequeueReusableCell(
                 withIdentifier: ProtectedFieldCell.storyboardID,
@@ -97,27 +102,6 @@ class ViewableFieldCell: UITableViewCell, ViewableFieldCellBase {
     weak var delegate: ViewableFieldCellDelegate?
     weak var field: ViewableField?
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        let textTapGestureRecognizer = UITapGestureRecognizer(
-            target: self,
-            action: #selector(didTapValueTextView))
-        textTapGestureRecognizer.numberOfTapsRequired = 1
-        valueText.addGestureRecognizer(textTapGestureRecognizer)
-        let scrollTapGestureRecognizer = UITapGestureRecognizer(
-            target: self,
-            action: #selector(didTapValueTextView))
-        scrollTapGestureRecognizer.numberOfTapsRequired = 1
-        valueScrollView?.addGestureRecognizer(scrollTapGestureRecognizer)
-
-        valueScrollView?.alwaysBounceVertical = false
-        valueScrollView?.alwaysBounceHorizontal = false
-        if ProcessInfo.isCatalystApp {
-            valueScrollView?.isScrollEnabled = false
-            valueScrollView?.showsVerticalScrollIndicator = false
-        }
-    }
-
     func setupCell() {
         let textScale = Settings.current.textScale
         nameLabel.font = UIFont
@@ -125,12 +109,31 @@ class ViewableFieldCell: UITableViewCell, ViewableFieldCellBase {
             .withRelativeSize(textScale)
         nameLabel.adjustsFontForContentSizeCategory = true
 
-        valueText.font = UIFont.entryTextFont().withRelativeSize(textScale)
-        valueText.adjustsFontForContentSizeCategory = true
+        setupValueScroll(valueText: valueText, scrollView: valueScrollView)
 
         nameLabel.text = field?.visibleName
         valueText.text = getUserVisibleValue()
         accessibilityHint = LString.hintDoubleTapToCopyToClipboard
+    }
+
+    func setupValueScroll(valueText: UITextView?, scrollView: UIScrollView?) {
+        guard let valueText, let scrollView else { return }
+        let textScale = Settings.current.textScale
+        valueText.font = UIFont.entryTextFont().withRelativeSize(textScale)
+        valueText.adjustsFontForContentSizeCategory = true
+
+        let textTapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(didTapValueTextView))
+        textTapGestureRecognizer.numberOfTapsRequired = 1
+        valueText.addGestureRecognizer(textTapGestureRecognizer)
+
+        scrollView.alwaysBounceVertical = false
+        scrollView.alwaysBounceHorizontal = false
+        if ProcessInfo.isCatalystApp {
+            scrollView.isScrollEnabled = false
+            scrollView.showsVerticalScrollIndicator = false
+        }
     }
 
     func getUserVisibleValue() -> String? {
@@ -352,6 +355,29 @@ final class TagsCell: ViewableFieldCell {
 
         valueText.attributedText = TagFormatter.format(field?.value)
         valueText.accessibilityLabel = field?.value
+    }
+}
+
+final class PasskeyFieldCell: ViewableFieldCell {
+    override class var storyboardID: String { "PasskeyFieldCell" }
+
+    @IBOutlet private weak var valueScrollView2: UIScrollView!
+    @IBOutlet private weak var valueText2: UITextView!
+
+    override func getUserVisibleValue() -> String? {
+        return field?.value
+    }
+
+    override func setupCell() {
+        super.setupCell()
+        guard let field = field as? PasskeyViewableField else {
+            assertionFailure()
+            return
+        }
+        setupValueScroll(valueText: valueText2, scrollView: valueScrollView2)
+
+        valueText.text = field.relyingParty
+        valueText2.text = field.username
     }
 }
 

@@ -18,6 +18,7 @@ enum ItemCategory: String {
         return [
             EntryField.title,
             EntryField.userName,
+            EntryField.passkey,
             EntryField.password,
             EntryField.totp,
             EntryField.url,
@@ -29,11 +30,12 @@ enum ItemCategory: String {
         return [
             EntryField.title: 1,
             EntryField.userName: 2,
-            EntryField.password: 3,
-            EntryField.totp: 4, 
-            EntryField.url: 5,
-            EntryField.tags: 6,
-            EntryField.notes: 7]
+            EntryField.passkey: 3,
+            EntryField.password: 4,
+            EntryField.totp: 5,
+            EntryField.url: 6,
+            EntryField.tags: 7,
+            EntryField.notes: 8]
     }
 
     public static func get(for entry: Entry) -> ItemCategory {
