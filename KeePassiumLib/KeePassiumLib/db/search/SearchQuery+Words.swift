@@ -134,9 +134,8 @@ extension SearchQuery {
                 guard let entry = searchable as? Entry else { return false }
                 return Passkey.probablyPresent(in: entry)
             case .large:
-                guard let entry = searchable as? Entry else { return false }
-                let attachmentSize = entry.getAttachmentSize()
-                return attachmentSize > 100_000
+                let underestimatedSize = searchable.getUnderestimatedSize()
+                return underestimatedSize > 100_000
             }
         }
     }

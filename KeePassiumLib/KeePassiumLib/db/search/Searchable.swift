@@ -52,6 +52,8 @@ protocol Searchable: Taggable {
     var namedSearchableFields: [NamedSearchableField] { get }
 
     func matches(query: SearchQuery, scope: SearchScope) -> Bool
+
+    func getUnderestimatedSize() -> Int
 }
 
 extension EntryField: NamedSearchableField {}
@@ -62,6 +64,21 @@ extension Entry: Searchable {
     }
     var namedSearchableFields: [NamedSearchableField] {
         return fields
+    }
+
+    func getUnderestimatedSize() -> Int {
+        var size = 0
+        attachments.forEach {
+            size += $0.data.count
+        }
+        if let entry2 = self as? Entry2 {
+            entry2.history.forEach { historyEntry in
+                historyEntry.attachments.forEach {
+                    size += $0.data.count
+                }
+            }
+        }
+        return size
     }
 }
 
@@ -79,6 +96,10 @@ extension Group: Searchable {
             GroupValueField(name: "notes", value: notes),
             GroupValueField(name: "name", value: name)
         ]
+    }
+
+    func getUnderestimatedSize() -> Int {
+        return 0
     }
 }
 
