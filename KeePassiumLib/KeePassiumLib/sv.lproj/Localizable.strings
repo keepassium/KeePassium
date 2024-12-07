@@ -10,6 +10,9 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "Aktivera för att lyssna.";
 
+/* Accessibility notification for entries with a passkey */
+"[Accessibility/containsPasskey]" = "Innehåller en nyckel.";
+
 /* Action which resets the app as if it was just installed. */
 "[App/ResetEverything/action]" = "Återställ";
 
@@ -154,6 +157,9 @@
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "Lägg till egenvald ikon";
 
+/* Action: delete unused icons */
+"[Database/CustomIcon/deleteUnused]" = "Radera oanvända ikoner";
+
 /* Action: download icon of a website */
 "[Database/CustomIcon/DownloadFavicon/action]" = "Ladda ner Favicon";
 
@@ -168,6 +174,9 @@
 
 /* Status message: a website favicon is being downloaded */
 "[Database/CustomIcon/DownloadOneFavicon/status]" = "Laddar ner Favicon";
+
+/* Notification when some custom icons are not used by any group or entry [iconCount: Int] */
+"[Database/CustomIcon/Unused/count]" = "Oanvända ikoner hittades: %d";
 
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Radera databasfil?\nSäkerställ att du har en backup.";
@@ -202,6 +211,9 @@
 /* Info message for entries that contain information for opening a different database. */
 "[Database/Entry/LinkedDatabase/message]" = "Den här posten pekar på en annan databas.";
 
+/* Notification message before database export. */
+"[Database/Export/PlainText/warning]" = "Den exporterade filen innehåller dina data i klartext utan något skydd.";
+
 /* Notification message about external changes to the loaded file. */
 "[Database/ExternalChange/notification]" = "Databasfilen har ändrats. Läs in igen?";
 
@@ -216,6 +228,9 @@
 
 /* Info message when changing database file format. */
 "[Database/FormatVersion/Conversion/allDataPreserved]" = "All din data kommer bevaras.";
+
+/* Error message when creating a new passkey. */
+"[Database/FormatVersion/PasskeysNotSupported]" = "Det nuvarande databasformatet stöder inte nycklar.";
 
 /* Info message when the app needs to change database file format. [oldFormat, newFormat: String] */
 "[Database/FormatVersion/Upgrade/text]" = "KeePassium behöver uppgradera filformatet på din databas (från %1$@ till %2$@). Du kan behöva uppdatera andra program som använder sig av samma databas.";
@@ -309,6 +324,9 @@
 
 /* Title of a list with database-related actions (e.g. lock database, change master key, etc) */
 "[Database/Operations/title]" = "Databasåtgärder";
+
+/* Error message about creation of a new passkey. */
+"[Database/Passkey/Error/UnsupportedAlgorithm/description]" = "Nyckelalgoritm stöds inte";
 
 /* Status message: preparing database print preview. */
 "[Database/Print/preparingPreview]" = "Förbereder förhandsvisning…";
@@ -438,6 +456,27 @@
 
 /* Message shown when user enters an invalid database password */
 "[Database/Unlock/wrongPassword/question]" = "Har du glömt lösenordet?";
+
+/* Notification message */
+"[Database/UnsavedChanges/autoFillCrashed]" = "Autofyll kunde inte spara några ändringar på grund av tekniska begränsningar.";
+
+/* Notification message */
+"[Database/UnsavedChanges/cannotModifyYet]" = "Autofyll kan tyvärr inte modifiera stora databaser än. Vi jobbar på att lösa det.";
+
+/* Call to action shown in AutoFill module. */
+"[Database/UnsavedChanges/OpenAppCallToAction]" = "Öppna KeePassium-huvudappen om du vill spara ändringar.";
+
+/* Action/button to save accummulated modifications */
+"[Database/UnsavedChanges/saveAction]" = "Spara ändringar";
+
+/* Notification message */
+"[Database/UnsavedChanges/someDatabases]" = "En eller flera databaser har osparade ändringar som gjorts i Autofyll.";
+
+/* Notification message */
+"[Database/UnsavedChanges/thisDatabase]" = "Databasen har osparade ändringar som gjorts i Autofyll.";
+
+/* Title: there are temporary changes to be saved */
+"[Database/UnsavedChanges/title]" = "Osparade ändringar";
 
 /* Error message */
 "[Database1/FormatError] Database file is corrupted." = "Databasfilen är skadad.";
@@ -645,6 +684,9 @@
 
 /* Name of an entry field */
 "[Entry/Field/name] Notes" = "Anteckningar";
+
+/* Title of an entry field */
+"[Entry/Field/name] Passkey" = "Nyckel";
 
 /* Name of an entry field */
 "[Entry/Field/name] Password" = "Lösenord";
@@ -1018,6 +1060,9 @@
 /* Action/button to remove a file from the app (the file remains, but the app forgets about it) */
 "[Generic/File] Remove" = "Ta bort";
 
+/* Title of a generic file export screen. */
+"[Generic/File/Export/title]" = "Filexport";
+
 /* Action/button to save data to a different file */
 "[Generic/File/Save as]" = "Spara som…";
 
@@ -1110,6 +1155,9 @@
 
 /* Title of a list: entries with one-time passwords (OTP) */
 "[Group/Smart/Preset/otpEntries]" = "Poster med engångslösenord";
+
+/* Title of a list: entries that contain passkeys */
+"[Group/Smart/Preset/passkeyEntries]" = "Poster med nycklar";
 
 /* Title for the Smart Group search conditions in group editor */
 "[Group/Smart/Query/title]" = "Filter för smart grupp";
@@ -1260,6 +1308,15 @@
 
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "Filinfo";
+
+/* Menu title: app settings */
+"[Menu/Preferences/title]" = "Inställningar…";
+
+/* Title of a menu: sort order of files in a list */
+"[Menu/Sort] Sort Files By" = "Sortera filer efter";
+
+/* Title of a menu: sort order of groups and entries in a list */
+"[Menu/Sort] Sort Items By" = "Sortera objekt efter";
 
 /* Suggestion/hint on how to fix an accompanying error. */
 "[Org/ContactYourAdmin]" = "Var vänlig kontakta din IT-administratör.";

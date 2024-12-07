@@ -7,20 +7,35 @@
 /* An identifier of the app that called AutoFill. The term is intentionally similar to https://ru.wikipedia.org/wiki/Caller_ID. [callerID: String] */
 "[AutoFill/Search/callerID]" = "Gespreksidentiteit: %@";
 
+/* Status message, shows which app or webpage launched AutoFill. For example: `Context: google.com` */
+"[AutoFill/Search/context]" = "Context: %@";
+
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "AutoFill kan niet automatisch toegang krijgen tot de bestanden die je al hebt in de KeePassium-app.\n\nWaarom? Achter de schermen behandelt het systeem AutoFill als een aparte app, onafhankelijk van het KeePassium-proces. Om veiligheidsredenen kan een app niet eenvoudig externe bestanden openen, tenzij je deze bestanden expliciet koppelt aan de app. Het systeem garandeert zo dat de app alleen toegang heeft tot de weinige bestanden die je hebt aangegeven.\n\nAls gevolg hiervan moeten zowel AutoFill als de KeePassium-app hun eigen machtigingen krijgen voor elk extern bestand. Gelukkig is dit een eenmalige procedure.";
 
-/* Must match Apple's translation, as found in iOS 15 Settings → Passwords → AutoFill Passwords. If unsure, leave untranslated. */
-"[AutoFill/Setup/UncheckKeychain/allowFillingFrom]" = "Sta invullen toe van:";
+/* Must match Apple's translation, as found in iOS 18 Settings → General → AutoFill & Passwords. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/autofillFrom]" = "Vul automatisch in vanuit:";
 
 /* Call to action: deselect the `Keychain` option. Keychain is a glossary term. */
 "[AutoFill/Setup/UncheckKeychain/callToAction]" = "Schakel Sleutelhanger uit";
 
-/* Instruction to deselect the `Keychain` option. Keychain is a glossary term. */
-"[AutoFill/Setup/UncheckKeychain/message]" = "Schakel sleutelhanger uit om KeePassium je standaard wachtwoordbeheerder te maken.";
+/* Instruction to deselect another app in the settings [appName: String] */
+"[AutoFill/Setup/UncheckKeychain/message]" = "Om KeePassium je standaard wachtwoordbeheerder te maken, haalt u het vinkje weg \"%@\".";
 
 /* Must match Apple's translation, as found in iOS 17 Settings → Passwords → Password Options. If unsure, leave untranslated. */
 "[AutoFill/Setup/UncheckKeychain/usePasswordsAndPasskeysFrom]" = "Gebruik wachtwoorden en passkeys van:";
+
+/* Action: create a passkey and add it to existing entry */
+"[Database/Passkey/AddToExisting/action]" = "Passkey toevoegen aan bestaand item";
+
+/* Confirmation message before replacing an existing passkey. */
+"[Database/Passkey/AddToExisting/confirm]" = "Dit item heeft al een passkey. Wil je deze vervangen?";
+
+/* Title of an optional dialog for creating new passkeys */
+"[Database/Passkey/Create/title]" = "Passkey maken?";
+
+/* Name of the Apple Passwords application, see https://support.apple.com/120758 */
+"[Generic/ApplePasswordsApp/title]" = "Wachtwoorden";
 
 /* Apple Keychain software; is a glossary term. */
 "[Generic/Keychain/title]" = "Sleutelhanger";

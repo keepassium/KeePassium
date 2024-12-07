@@ -52,12 +52,6 @@
 /* Title of entry viewer's tab with previous revisions of the entry */
 "[Entry/Tab/History/title]" = "التأريخ";
 
-/* Menu title. For example: `About KeePassium`. [appName: String] */
-"[Menu/About/title]" = "حَول %@";
-
-/* Menu title: app settings */
-"[Menu/Preferences/title]" = "تفضيلات…";
-
 /* Action/button to set up the App Protection feature. Not a call to action. */
 "[Onboarding/AppProtection/activate]" = "تمكين قفل التطبيق";
 

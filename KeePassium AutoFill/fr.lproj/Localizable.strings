@@ -7,20 +7,35 @@
 /* An identifier of the app that called AutoFill. The term is intentionally similar to https://ru.wikipedia.org/wiki/Caller_ID. [callerID: String] */
 "[AutoFill/Search/callerID]" = "ID d'appel : %@";
 
+/* Status message, shows which app or webpage launched AutoFill. For example: `Context: google.com` */
+"[AutoFill/Search/context]" = "Contexte: %@";
+
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "La Saisie automatique ne peut pas accéder automatiquement aux fichiers que vous avez déjà dans l'application principale KeePassium.\n\nPourquoi ? En coulisses, le système traite la fonction de Saisie automatique comme une application distincte, indépendante du processus principal de KeePassium. Pour des raisons de sécurité, une application ne peut simplement pas accéder à des fichiers externes – sauf si vous liez explicitement ces fichiers à cette application. Ainsi, le système garantit que l'application ne peut accéder qu'aux quelques fichiers dont vous avez autorisé l'accès.\n\nPar conséquent, la fonction de Saisie automatique et l'application principale KeePassium doivent avoir leurs propres autorisations pour chaque fichier externe. Heureusement, il s'agit d'une procédure unique.";
 
-/* Must match Apple's translation, as found in iOS 15 Settings → Passwords → AutoFill Passwords. If unsure, leave untranslated. */
-"[AutoFill/Setup/UncheckKeychain/allowFillingFrom]" = "Autoriser le remplissage par :";
+/* Must match Apple's translation, as found in iOS 18 Settings → General → AutoFill & Passwords. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/autofillFrom]" = "Remplir depuis :";
 
 /* Call to action: deselect the `Keychain` option. Keychain is a glossary term. */
 "[AutoFill/Setup/UncheckKeychain/callToAction]" = "Décocher Trousseau";
 
-/* Instruction to deselect the `Keychain` option. Keychain is a glossary term. */
-"[AutoFill/Setup/UncheckKeychain/message]" = "Pour faire de KeePassium votre gestionnaire de mots de passe par défaut, décochez Trousseau.";
+/* Instruction to deselect another app in the settings [appName: String] */
+"[AutoFill/Setup/UncheckKeychain/message]" = "Pour faire de KeePassium votre gestionnaire de mots de passe par défaut, décochez \"%@\".";
 
 /* Must match Apple's translation, as found in iOS 17 Settings → Passwords → Password Options. If unsure, leave untranslated. */
 "[AutoFill/Setup/UncheckKeychain/usePasswordsAndPasskeysFrom]" = "Utiliser des mots de passe et des clés d’identification provenant de:";
+
+/* Action: create a passkey and add it to existing entry */
+"[Database/Passkey/AddToExisting/action]" = "Ajouter une clé d'accès à l'entrée existante";
+
+/* Confirmation message before replacing an existing passkey. */
+"[Database/Passkey/AddToExisting/confirm]" = "Cette entrée a déjà une clé d'accès. Souhaitez-vous la remplacer ?";
+
+/* Title of an optional dialog for creating new passkeys */
+"[Database/Passkey/Create/title]" = "Créer une clé d'accès ?";
+
+/* Name of the Apple Passwords application, see https://support.apple.com/120758 */
+"[Generic/ApplePasswordsApp/title]" = "Mots de passe";
 
 /* Apple Keychain software; is a glossary term. */
 "[Generic/Keychain/title]" = "Trousseau";

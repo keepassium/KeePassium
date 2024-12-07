@@ -880,6 +880,9 @@
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "Dosya Bilgisi";
 
+/* Menu title: app settings */
+"[Menu/Preferences/title]" = "Tercihler…";
+
 /* Suggestion/hint on how to fix an accompanying error. */
 "[Org/ContactYourAdmin]" = "Lütfen BT yöneticinize başvurun.";
 

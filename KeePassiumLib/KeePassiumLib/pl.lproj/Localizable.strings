@@ -10,6 +10,9 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "Aktywuj aby słuchać.";
 
+/* Accessibility notification for entries with a passkey */
+"[Accessibility/containsPasskey]" = "Zawiera klucz.";
+
 /* Action which resets the app as if it was just installed. */
 "[App/ResetEverything/action]" = "Zresetuj";
 
@@ -154,6 +157,9 @@
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "Dodaj niestandardową ikonę";
 
+/* Action: delete unused icons */
+"[Database/CustomIcon/deleteUnused]" = "Usuń nieużywane ikony";
+
 /* Action: download icon of a website */
 "[Database/CustomIcon/DownloadFavicon/action]" = "Pobierz ikonę ulubionych";
 
@@ -168,6 +174,9 @@
 
 /* Status message: a website favicon is being downloaded */
 "[Database/CustomIcon/DownloadOneFavicon/status]" = "Pobieranie ikony ulubionych";
+
+/* Notification when some custom icons are not used by any group or entry [iconCount: Int] */
+"[Database/CustomIcon/Unused/count]" = "Znaleziono nieużywane ikony: %d";
 
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Usunąć plik bazy danych?\n Upewnij się, że masz kopię zapasową.";
@@ -202,6 +211,9 @@
 /* Info message for entries that contain information for opening a different database. */
 "[Database/Entry/LinkedDatabase/message]" = "Ten wpis wskazuje na inną bazę danych.";
 
+/* Notification message before database export. */
+"[Database/Export/PlainText/warning]" = "Wyeksportowany plik będzie zawierał Twoje dane w postaci zwykłego tekstu, bez żadnych zabezpieczeń.";
+
 /* Notification message about external changes to the loaded file. */
 "[Database/ExternalChange/notification]" = "Plik bazy danych się zmienił. Przeładować plik?";
 
@@ -216,6 +228,9 @@
 
 /* Info message when changing database file format. */
 "[Database/FormatVersion/Conversion/allDataPreserved]" = "Wszystkie Twoje dane zostaną zachowane.";
+
+/* Error message when creating a new passkey. */
+"[Database/FormatVersion/PasskeysNotSupported]" = "Bieżący format bazy nie obsługuje kluczy.";
 
 /* Info message when the app needs to change database file format. [oldFormat, newFormat: String] */
 "[Database/FormatVersion/Upgrade/text]" = "Aplikacja KeePassium musi zaktualizować format pliku bazy danych (z %1$@ na %2$@). Być może konieczna będzie aktualizacja innych aplikacji, które używają tej bazy danych.";
@@ -309,6 +324,9 @@
 
 /* Title of a list with database-related actions (e.g. lock database, change master key, etc) */
 "[Database/Operations/title]" = "Operacje dotyczące bazy danych";
+
+/* Error message about creation of a new passkey. */
+"[Database/Passkey/Error/UnsupportedAlgorithm/description]" = "Nieobsługiwany algorytm klucza";
 
 /* Status message: preparing database print preview. */
 "[Database/Print/preparingPreview]" = "Przygotowywanie podglądu…";
@@ -438,6 +456,27 @@
 
 /* Message shown when user enters an invalid database password */
 "[Database/Unlock/wrongPassword/question]" = "Nie pamiętasz hasła?";
+
+/* Notification message */
+"[Database/UnsavedChanges/autoFillCrashed]" = "Autouzupełnianie nie mogło zapisać niektórych zmian z powodu ograniczeń technicznych.";
+
+/* Notification message */
+"[Database/UnsavedChanges/cannotModifyYet]" = "Niestety Autouzupełnianie nie może jeszcze modyfikować dużych baz. Pracujemy nad rozwiązaniem tego problemu.";
+
+/* Call to action shown in AutoFill module. */
+"[Database/UnsavedChanges/OpenAppCallToAction]" = "Aby zapisać zmiany, otwórz główną aplikację KeePassium.";
+
+/* Action/button to save accummulated modifications */
+"[Database/UnsavedChanges/saveAction]" = "Zapisz zmiany";
+
+/* Notification message */
+"[Database/UnsavedChanges/someDatabases]" = "Co najmniej jedna baza ma niezapisane zmiany w Autouzupełnianiu.";
+
+/* Notification message */
+"[Database/UnsavedChanges/thisDatabase]" = "Ta baza ma niezapisane zmiany w Autouzupełnianiu.";
+
+/* Title: there are temporary changes to be saved */
+"[Database/UnsavedChanges/title]" = "Niezapisane zmiany";
 
 /* Error message */
 "[Database1/FormatError] Database file is corrupted." = "Plik bazy jest uszkodzony.";
@@ -645,6 +684,9 @@
 
 /* Name of an entry field */
 "[Entry/Field/name] Notes" = "Notatki";
+
+/* Title of an entry field */
+"[Entry/Field/name] Passkey" = "Klucz";
 
 /* Name of an entry field */
 "[Entry/Field/name] Password" = "Hasło";
@@ -1018,6 +1060,9 @@
 /* Action/button to remove a file from the app (the file remains, but the app forgets about it) */
 "[Generic/File] Remove" = "Usuń";
 
+/* Title of a generic file export screen. */
+"[Generic/File/Export/title]" = "Eksport pliku";
+
 /* Action/button to save data to a different file */
 "[Generic/File/Save as]" = "Zapisz jako…";
 
@@ -1110,6 +1155,9 @@
 
 /* Title of a list: entries with one-time passwords (OTP) */
 "[Group/Smart/Preset/otpEntries]" = "Wpisy z OTP";
+
+/* Title of a list: entries that contain passkeys */
+"[Group/Smart/Preset/passkeyEntries]" = "Wpisy z kluczami";
 
 /* Title for the Smart Group search conditions in group editor */
 "[Group/Smart/Query/title]" = "Filtr grupy inteligentnej";
@@ -1260,6 +1308,15 @@
 
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "Informacje o pliku";
+
+/* Menu title: app settings */
+"[Menu/Preferences/title]" = "Ustawienia…";
+
+/* Title of a menu: sort order of files in a list */
+"[Menu/Sort] Sort Files By" = "Sortuj pliki według";
+
+/* Title of a menu: sort order of groups and entries in a list */
+"[Menu/Sort] Sort Items By" = "Sortuj pozycje według";
 
 /* Suggestion/hint on how to fix an accompanying error. */
 "[Org/ContactYourAdmin]" = "Skontaktuj się z administratorem IT.";

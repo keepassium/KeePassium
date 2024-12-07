@@ -10,6 +10,9 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "Aktivujte pro poslech.";
 
+/* Accessibility notification for entries with a passkey */
+"[Accessibility/containsPasskey]" = "Obsahuje přístupový klíč.";
+
 /* Action which resets the app as if it was just installed. */
 "[App/ResetEverything/action]" = "Obnovit";
 
@@ -154,6 +157,9 @@
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "Přidat vlastní ikonu";
 
+/* Action: delete unused icons */
+"[Database/CustomIcon/deleteUnused]" = "Odstranit nepoužívané ikony";
+
 /* Action: download icon of a website */
 "[Database/CustomIcon/DownloadFavicon/action]" = "Stáhnout Faviconu";
 
@@ -168,6 +174,9 @@
 
 /* Status message: a website favicon is being downloaded */
 "[Database/CustomIcon/DownloadOneFavicon/status]" = "Stáhuje se Favicona";
+
+/* Notification when some custom icons are not used by any group or entry [iconCount: Int] */
+"[Database/CustomIcon/Unused/count]" = "Nalezeny nepoužívané ikony: %d";
 
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Odstranit databázový soubor?\n Ujistěte se, že máte zálohu.";
@@ -202,6 +211,9 @@
 /* Info message for entries that contain information for opening a different database. */
 "[Database/Entry/LinkedDatabase/message]" = "Tento záznam odkazuje na jinou databázi.";
 
+/* Notification message before database export. */
+"[Database/Export/PlainText/warning]" = "Exportovaný soubor bude obsahovat vaše data ve formě prostého textu bez jakékoli ochrany.";
+
 /* Notification message about external changes to the loaded file. */
 "[Database/ExternalChange/notification]" = "Databázový soubor se změnil. Načíst znovu?";
 
@@ -216,6 +228,9 @@
 
 /* Info message when changing database file format. */
 "[Database/FormatVersion/Conversion/allDataPreserved]" = "Všechna vaše data budou zachována.";
+
+/* Error message when creating a new passkey. */
+"[Database/FormatVersion/PasskeysNotSupported]" = "Aktuální formát databáze nepodporuje přístupové klíče.";
 
 /* Info message when the app needs to change database file format. [oldFormat, newFormat: String] */
 "[Database/FormatVersion/Upgrade/text]" = "KeePassium potřebuje aktualizovat formát vašeho databázového souboru (z %1$@ na %2$@). Možná bude nutné aktualizovat i další aplikace, které tuto databázi používají.";
@@ -309,6 +324,9 @@
 
 /* Title of a list with database-related actions (e.g. lock database, change master key, etc) */
 "[Database/Operations/title]" = "Operace databáze";
+
+/* Error message about creation of a new passkey. */
+"[Database/Passkey/Error/UnsupportedAlgorithm/description]" = "Nepodporovaný algoritmus přístupového klíče";
 
 /* Status message: preparing database print preview. */
 "[Database/Print/preparingPreview]" = "Příprava náhledu…";
@@ -438,6 +456,27 @@
 
 /* Message shown when user enters an invalid database password */
 "[Database/Unlock/wrongPassword/question]" = "Zapomněli jste heslo?";
+
+/* Notification message */
+"[Database/UnsavedChanges/autoFillCrashed]" = "Automatické vyplňování nemohlo uložit některé změny z důvodu technického omezení.";
+
+/* Notification message */
+"[Database/UnsavedChanges/cannotModifyYet]" = "Automatické vyplňování bohužel zatím neumí upravovat velké databáze. Na vyřešení tohoto problému pracujeme.";
+
+/* Call to action shown in AutoFill module. */
+"[Database/UnsavedChanges/OpenAppCallToAction]" = "Pokud chcete uložit změny, otevřete hlavní aplikaci KeePassium.";
+
+/* Action/button to save accummulated modifications */
+"[Database/UnsavedChanges/saveAction]" = "Uložit změny";
+
+/* Notification message */
+"[Database/UnsavedChanges/someDatabases]" = "Jedna nebo více databází má neuložené změny provedené v Automatickém vyplňování.";
+
+/* Notification message */
+"[Database/UnsavedChanges/thisDatabase]" = "Tato databáze má neuložené změny provedené v Automatickém vyplňování.";
+
+/* Title: there are temporary changes to be saved */
+"[Database/UnsavedChanges/title]" = "Neuložené změny";
 
 /* Error message */
 "[Database1/FormatError] Database file is corrupted." = "Databáze je poškozena.";
@@ -645,6 +684,9 @@
 
 /* Name of an entry field */
 "[Entry/Field/name] Notes" = "Poznámky";
+
+/* Title of an entry field */
+"[Entry/Field/name] Passkey" = "Přístupový klíč";
 
 /* Name of an entry field */
 "[Entry/Field/name] Password" = "Heslo";
@@ -1018,6 +1060,9 @@
 /* Action/button to remove a file from the app (the file remains, but the app forgets about it) */
 "[Generic/File] Remove" = "Odebrat";
 
+/* Title of a generic file export screen. */
+"[Generic/File/Export/title]" = "Export souboru";
+
 /* Action/button to save data to a different file */
 "[Generic/File/Save as]" = "Uložit jako…";
 
@@ -1110,6 +1155,9 @@
 
 /* Title of a list: entries with one-time passwords (OTP) */
 "[Group/Smart/Preset/otpEntries]" = "Záznamy s OTP";
+
+/* Title of a list: entries that contain passkeys */
+"[Group/Smart/Preset/passkeyEntries]" = "Záznamy s přístupovými klíči";
 
 /* Title for the Smart Group search conditions in group editor */
 "[Group/Smart/Query/title]" = "Inteligentní filtr skupiny";
@@ -1260,6 +1308,15 @@
 
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "Informace o souboru";
+
+/* Menu title: app settings */
+"[Menu/Preferences/title]" = "Předvolby…";
+
+/* Title of a menu: sort order of files in a list */
+"[Menu/Sort] Sort Files By" = "Seřadit soubory podle";
+
+/* Title of a menu: sort order of groups and entries in a list */
+"[Menu/Sort] Sort Items By" = "Seřadit položky podle";
 
 /* Suggestion/hint on how to fix an accompanying error. */
 "[Org/ContactYourAdmin]" = "Obraťte se prosím na správce IT.";

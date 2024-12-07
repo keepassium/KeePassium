@@ -1,95 +1,11 @@
 /* Class = "UITableViewSection"; headerTitle = "Feedback"; ObjectID = "7bL-fQ-OUc"; Note = "Section: user feedback about the app"; */
 "7bL-fQ-OUc.headerTitle" = "ข้อเสนอแนะ";
 
-/* Class = "UILabel"; text = "Proprietary license"; ObjectID = "7cl-Fc-8Nf"; */
-"7cl-Fc-8Nf.text" = "ใบอนุญาตที่เป็นกรรมสิทธิ์";
-
-/* Class = "UILabel"; text = "Icons by Icons8"; ObjectID = "7id-QT-w26"; */
-"7id-QT-w26.text" = "ไอคอนโดย Icons8";
-
-/* Class = "UILabel"; text = "Ionicons by Ionic"; ObjectID = "9lh-fA-Xgx"; */
-"9lh-fA-Xgx.text" = "Ionicons โดย Ionic";
-
-/* Class = "UILabel"; text = "Base32 for Swift by Norio Nomura"; ObjectID = "9MZ-zt-75x"; */
-"9MZ-zt-75x.text" = "Base32 for Swift โดย Norio Nomura";
-
-/* Class = "UILabel"; text = "CC BY 3.0"; ObjectID = "86n-Hc-6m7"; */
-"86n-Hc-6m7.text" = "CC BY 3.0";
-
-/* Class = "UILabel"; text = "MIT license"; ObjectID = "Aig-jg-p8B"; */
-"Aig-jg-p8B.text" = "ใบอนุญาต MIT";
-
 /* Class = "UILabel"; text = "Do you like what you see?"; ObjectID = "AMd-x7-PDa"; Note = "First part of the 'Do you like what you see? / Leave an App Store review.\""; */
 "AMd-x7-PDa.text" = "คุณชอบอะไรในแอปนี้ไหม?";
 
-/* Class = "UILabel"; text = "Translation by KeePassium contributors"; ObjectID = "aqX-J9-IzD"; Note = "Replace with a credit to yourself. For example: `German translation by Erika Mustermann and @JohnDoe`."; */
-"aqX-J9-IzD.text" = "แปลโดยผู้มีส่วนร่วมของ KeePassium";
-
-/* Class = "UILabel"; text = "MIT license"; ObjectID = "AWg-lI-BfC"; */
-"AWg-lI-BfC.text" = "ใบอนุญาต MIT";
-
-/* Class = "UILabel"; text = "Twofish implementation by Niels Ferguson"; ObjectID = "axY-gm-XNr"; */
-"axY-gm-XNr.text" = "Twofish implementation โดย Niels Ferguson";
-
-/* Class = "UILabel"; text = "MIT license"; ObjectID = "bAq-tq-nuY"; */
-"bAq-tq-nuY.text" = "ใบอนุญาต MIT";
-
-/* Class = "UILabel"; text = "KeePass by Dominik Reichl"; ObjectID = "CNI-b8-7Da"; */
-"CNI-b8-7Da.text" = "KeePass โดย Dominik Reichl";
-
-/* Class = "UILabel"; text = "MIT license"; ObjectID = "daJ-ma-jhe"; */
-"daJ-ma-jhe.text" = "ใบอนุญาต MIT";
-
-/* Class = "UILabel"; text = "MIT license"; ObjectID = "Erq-Zz-P0N"; */
-"Erq-Zz-P0N.text" = "ใบอนุญาต MIT";
-
-/* Class = "UILabel"; text = "Custom permissive license"; ObjectID = "EWy-OI-IxL"; */
-"EWy-OI-IxL.text" = "สิทธิ์อนุญาตที่กำหนดเอง";
-
-/* Class = "UILabel"; text = "ChaCha20 & Salsa20 implementation by D. J. Bernstein"; ObjectID = "Ha8-Qv-0qg"; */
-"Ha8-Qv-0qg.text" = "ChaCha20 & Salsa20 การดำเนินการโดย D. J. Bernstein";
-
-/* Class = "UILabel"; text = "Rijndael implementation by Szymon Stefanek"; ObjectID = "hDU-6p-Bzr"; */
-"hDU-6p-Bzr.text" = "Rijndael implementation โดย Szymon Stefanek";
-
-/* Class = "UILabel"; text = "MIT license"; ObjectID = "hqP-9y-rXc"; */
-"hqP-9y-rXc.text" = "ใบอนุญาต MIT";
-
-/* Class = "UILabel"; text = "Apache 2.0 license"; ObjectID = "ht7-pj-Dbb"; */
-"ht7-pj-Dbb.text" = "ใบอนุญาต Apache 2.0";
-
-/* Class = "UILabel"; text = "CC BY 3.0"; ObjectID = "hVm-qH-TAI"; */
-"hVm-qH-TAI.text" = "CC BY 3.0";
-
-/* Class = "UILabel"; text = "Icons by KeePassXC team"; ObjectID = "hW0-fR-mIf"; */
-"hW0-fR-mIf.text" = "ไอคอนโดยทีมงาน KeePassXC";
-
-/* Class = "UILabel"; text = "CC BY-ND 3.0"; ObjectID = "iKy-z5-Ox7"; */
-"iKy-z5-Ox7.text" = "CC BY-ND 3.0";
-
 /* Class = "UITableViewSection"; headerTitle = "Privacy Policy"; ObjectID = "JbR-nf-D9o"; Note = "Section: privacy policy"; */
 "JbR-nf-D9o.headerTitle" = "นโยบายความเป็นส่วนตัว";
-
-/* Class = "UILabel"; text = "Public domain"; ObjectID = "JgR-60-OMp"; */
-"JgR-60-OMp.text" = "โดเมนสาธารณะ";
-
-/* Class = "UILabel"; text = "LGPL license"; ObjectID = "JjJ-GT-eoX"; */
-"JjJ-GT-eoX.text" = "ใบอนุญาต LGPL";
-
-/* Class = "UILabel"; text = "GPL license"; ObjectID = "JRy-jy-KXb"; */
-"JRy-jy-KXb.text" = "ใบอนุญาต GPL";
-
-/* Class = "UILabel"; text = "Fancy deboss pattern by Daniel Beaton"; ObjectID = "Kdg-Hz-XOQ"; */
-"Kdg-Hz-XOQ.text" = "Fancy deboss pattern โดย Daniel Beaton";
-
-/* Class = "UILabel"; text = "Passphrase wordlists by EFF"; ObjectID = "kvO-9B-1Sy"; */
-"kvO-9B-1Sy.text" = "ชุดคำศัพท์ โดย EFF";
-
-/* Class = "UILabel"; text = "MIT license"; ObjectID = "KWA-h1-ddu"; */
-"KWA-h1-ddu.text" = "ใบอนุญาต MIT";
-
-/* Class = "UILabel"; text = "MIT license"; ObjectID = "lht-LP-o0Y"; */
-"lht-LP-o0Y.text" = "ใบอนุญาต MIT";
 
 /* Class = "UITableViewSection"; headerTitle = "Credits"; ObjectID = "muG-xI-muo"; Note = "Section: acknowledgements and thank-you notes"; */
 "muG-xI-muo.headerTitle" = "เครดิต";
@@ -97,60 +13,12 @@
 /* Class = "UITableViewController"; title = "About"; ObjectID = "NLN-lQ-bh5"; */
 "NLN-lQ-bh5.title" = "เกี่ยวกับเรา";
 
-/* Class = "UILabel"; text = "CC0 license"; ObjectID = "o9e-qb-mMw"; */
-"o9e-qb-mMw.text" = "ใบอนุญาต CC0";
-
-/* Class = "UILabel"; text = "TPInAppReceipt by Pavel Tikhonenko"; ObjectID = "OaP-Bl-5vR"; */
-"OaP-Bl-5vR.text" = "TPInAppReceipt โดย Pavel Tikhonenko";
-
-/* Class = "UILabel"; text = "Public domain"; ObjectID = "QV5-N8-NRt"; */
-"QV5-N8-NRt.text" = "โดเมนสาธารณะ";
-
-/* Class = "UILabel"; text = "CC BY 3.0"; ObjectID = "Qz4-PJ-Tra"; */
-"Qz4-PJ-Tra.text" = "CC BY 3.0";
-
-/* Class = "UILabel"; text = "Toast-Swift by Charles Scalesse"; ObjectID = "r7M-Gb-1Xd"; */
-"r7M-Gb-1Xd.text" = "Toast-Swift โดย Charles Scalesse";
-
-/* Class = "UILabel"; text = "MIT license"; ObjectID = "Rab-wf-OQe"; */
-"Rab-wf-OQe.text" = "ใบอนุญาต MIT";
-
-/* Class = "UILabel"; text = "Argon2 by Daniel Dinu, Dmitry Khovratovich, Jean-Philippe Aumasson, and Samuel Neves"; ObjectID = "rDJ-4G-8Oz"; */
-"rDJ-4G-8Oz.text" = "Argon2 โดย Daniel Dinu, Dmitry Khovratovich, Jean-Philippe Aumasson, และ Samuel Neves";
-
-/* Class = "UILabel"; text = "MIT license"; ObjectID = "sCk-Se-Vvo"; */
-"sCk-Se-Vvo.text" = "ใบอนุญาต MIT";
-
-/* Class = "UILabel"; text = "GzipSwift by 1024jp"; ObjectID = "sDW-ws-pQf"; */
-"sDW-ws-pQf.text" = "GzipSwift โดย 1024jp";
-
-/* Class = "UILabel"; text = "AEXML by Marko Tadić"; ObjectID = "sI5-AG-Y6p"; */
-"sI5-AG-Y6p.text" = "AEXML โดย Marko Tadić";
-
-/* Class = "UILabel"; text = "Linecons by Andrian Valeanu"; ObjectID = "SOX-Re-yl9"; */
-"SOX-Re-yl9.text" = "Linecons โดย Andrian Valeanu";
-
 /* Class = "UILabel"; text = "Contact Support"; ObjectID = "TOl-DA-gYc"; Note = "Action: contact us"; */
 "TOl-DA-gYc.text" = "ติดต่อฝ่ายสนับสนุน";
-
-/* Class = "UILabel"; text = "Feather icons by Cole Bemis"; ObjectID = "tOr-N9-2UY"; */
-"tOr-N9-2UY.text" = "Feather icons โดย Cole Bemis";
 
 /* Class = "UILabel"; text = "Leave an App Store review."; ObjectID = "uiw-Qh-pNp"; Note = "Second part of the 'Do you like what you see? / Leave an App Store review.\""; */
 "uiw-Qh-pNp.text" = "แสดงความเห็นใน App Store";
 
-/* Class = "UILabel"; text = "Nuvola icons by David Vignoni"; ObjectID = "VuB-ng-Uii"; */
-"VuB-ng-Uii.text" = "Nuvola icons โดย David Vignoni";
-
 /* Class = "UILabel"; text = "KeePassium"; ObjectID = "Wuj-Uw-baK"; */
 "Wuj-Uw-baK.text" = "KeePassium";
-
-/* Class = "UILabel"; text = "System settings icon by Vicons Design"; ObjectID = "wYr-Ya-qAP"; */
-"wYr-Ya-qAP.text" = "ไอคอนการตั้งค่าโดย Vicons Design";
-
-/* Class = "UILabel"; text = "Yubico Mobile iOS SDK by Yubico AB"; ObjectID = "Xee-Y1-Dcw"; */
-"Xee-Y1-Dcw.text" = "Yubico Mobile iOS SDK โดย Yubico AB";
-
-/* Class = "UILabel"; text = "MIT license"; ObjectID = "Z7s-Ch-895"; */
-"Z7s-Ch-895.text" = "ใบอนุญาต MIT";
 

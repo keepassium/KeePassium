@@ -1261,6 +1261,9 @@
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "文件信息";
 
+/* Menu title: app settings */
+"[Menu/Preferences/title]" = "偏好设置…";
+
 /* Suggestion/hint on how to fix an accompanying error. */
 "[Org/ContactYourAdmin]" = "请联系 IT 管理员。";
 

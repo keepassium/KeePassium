@@ -7,20 +7,35 @@
 /* An identifier of the app that called AutoFill. The term is intentionally similar to https://ru.wikipedia.org/wiki/Caller_ID. [callerID: String] */
 "[AutoFill/Search/callerID]" = "Caller ID: %@";
 
+/* Status message, shows which app or webpage launched AutoFill. For example: `Context: google.com` */
+"[AutoFill/Search/context]" = "Kontekst: %@";
+
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "Autouzupełnianie nie może automatycznie uzyskać dostępu do plików znajdujących się w głównej aplikacji KeePassium.\n\nDlaczego? System traktuje Autouzupełnianie jako oddzielną aplikację, niezależną do głównego procesu KeePassium. Ze względów bezpieczeństwa aplikacja nie może mieć dostępu do zewnętrznych plików - chyba, że celowo dołączysz te pliki do tej aplikacji. To gwarantuje, że aplikacja może mieć dostęp do tylko plików, na które zezwolisz.\n\nW rezultacie zarówno Autouzupełnianie, jak i główna aplikacja KeePassium, muszą otrzymać własne uprawnienia do zewnętrznego pliku. Na szczęście jest to jednorazowa procedura.";
 
-/* Must match Apple's translation, as found in iOS 15 Settings → Passwords → AutoFill Passwords. If unsure, leave untranslated. */
-"[AutoFill/Setup/UncheckKeychain/allowFillingFrom]" = "Pozwalaj wypełniać z:";
+/* Must match Apple's translation, as found in iOS 18 Settings → General → AutoFill & Passwords. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/autofillFrom]" = "Wypełnianie";
 
 /* Call to action: deselect the `Keychain` option. Keychain is a glossary term. */
 "[AutoFill/Setup/UncheckKeychain/callToAction]" = "Odznacz wybór pęku kluczy";
 
-/* Instruction to deselect the `Keychain` option. Keychain is a glossary term. */
-"[AutoFill/Setup/UncheckKeychain/message]" = "Aby aplikacja KeePassium stała się Twoim domyślnym menadżerem haseł, odznacz wybór pęku kluczy.";
+/* Instruction to deselect another app in the settings [appName: String] */
+"[AutoFill/Setup/UncheckKeychain/message]" = "Aby aplikacja KeePassium stała się Twoim domyślnym menadżerem haseł, odznacz \"%@\".";
 
 /* Must match Apple's translation, as found in iOS 17 Settings → Passwords → Password Options. If unsure, leave untranslated. */
 "[AutoFill/Setup/UncheckKeychain/usePasswordsAndPasskeysFrom]" = "Dostawcy haseł i kluczy:";
+
+/* Action: create a passkey and add it to existing entry */
+"[Database/Passkey/AddToExisting/action]" = "Dodaj klucz do istniejącego wpisu";
+
+/* Confirmation message before replacing an existing passkey. */
+"[Database/Passkey/AddToExisting/confirm]" = "Ten wpis ma już klucz. Zastąpić go?";
+
+/* Title of an optional dialog for creating new passkeys */
+"[Database/Passkey/Create/title]" = "Utworzyć klucz?";
+
+/* Name of the Apple Passwords application, see https://support.apple.com/120758 */
+"[Generic/ApplePasswordsApp/title]" = "Hasła";
 
 /* Apple Keychain software; is a glossary term. */
 "[Generic/Keychain/title]" = "Pęk kluczy";

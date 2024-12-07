@@ -7,20 +7,35 @@
 /* An identifier of the app that called AutoFill. The term is intentionally similar to https://ru.wikipedia.org/wiki/Caller_ID. [callerID: String] */
 "[AutoFill/Search/callerID]" = "ID do chamador: %@";
 
+/* Status message, shows which app or webpage launched AutoFill. For example: `Context: google.com` */
+"[AutoFill/Search/context]" = "Contexto: %@";
+
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "O Preenchimento Automático precisa ser autorizado a acessar os arquivos que você já tem no app principal do KeePassium.\n\nPor quê? Por trás das cenas, o sistema trata o Preenchimento Automático como um app separado, independente do KeePassium principal. Por segurança, um app não pode acessar arquivos externos, a menos que você vincule explicitamente esses arquivos a ele. Assim, o sistema garante que o app só possa acessar os poucos arquivos que você autorizou.\n\nComo resultado, tanto o Preenchimento Automático quanto o app principal do KeePassium precisam ser autorizados separadamente para cada arquivo externo. Felizmente, você só precisa fazer isso uma vez para cada arquivo.";
 
-/* Must match Apple's translation, as found in iOS 15 Settings → Passwords → AutoFill Passwords. If unsure, leave untranslated. */
-"[AutoFill/Setup/UncheckKeychain/allowFillingFrom]" = "Permitir preenchimento de:";
+/* Must match Apple's translation, as found in iOS 18 Settings → General → AutoFill & Passwords. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/autofillFrom]" = "Preencher automaticamente de:";
 
 /* Call to action: deselect the `Keychain` option. Keychain is a glossary term. */
 "[AutoFill/Setup/UncheckKeychain/callToAction]" = "Desmarcar Keychain";
 
-/* Instruction to deselect the `Keychain` option. Keychain is a glossary term. */
-"[AutoFill/Setup/UncheckKeychain/message]" = "Para tornar o KeePassium seu gerenciador de senhas padrão, desmarque o Keychain.";
+/* Instruction to deselect another app in the settings [appName: String] */
+"[AutoFill/Setup/UncheckKeychain/message]" = "Para tornar o KeePassium seu gerenciador de senhas padrão, desmarque \"%@\".";
 
 /* Must match Apple's translation, as found in iOS 17 Settings → Passwords → Password Options. If unsure, leave untranslated. */
 "[AutoFill/Setup/UncheckKeychain/usePasswordsAndPasskeysFrom]" = "Usar senhas e chaves‑senha de:";
+
+/* Action: create a passkey and add it to existing entry */
+"[Database/Passkey/AddToExisting/action]" = "Adicionar chave-senha a uma entrada existente";
+
+/* Confirmation message before replacing an existing passkey. */
+"[Database/Passkey/AddToExisting/confirm]" = "Esta entrada já tem uma chave-senha. Deseja substituí-la?";
+
+/* Title of an optional dialog for creating new passkeys */
+"[Database/Passkey/Create/title]" = "Criar uma chave-senha?";
+
+/* Name of the Apple Passwords application, see https://support.apple.com/120758 */
+"[Generic/ApplePasswordsApp/title]" = "Senhas";
 
 /* Apple Keychain software; is a glossary term. */
 "[Generic/Keychain/title]" = "Chaves do sistema";

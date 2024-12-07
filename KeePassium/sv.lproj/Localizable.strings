@@ -4,6 +4,105 @@
 /* Notification when user tries to set up too weak an app protection passcode. */
 "[AppLock/weakPasscodeWarning]" = "Det är lätt att gissa den här lösenkoden. Ange en starkare lösenkod.";
 
+/* Item in the credits list */
+"[Credits/Item/aexml]" = "AEXML av Marko Tadić";
+
+/* Item in the credits list */
+"[Credits/Item/argon2]" = "Argon2 av Daniel Dinu, Dmitry Khovratovich, Jean-Philippe Aumasson, och Samuel Neves";
+
+/* Item in the credits list */
+"[Credits/Item/base32]" = "Base32 för Swift av Norio Nomura";
+
+/* Item in the credits list */
+"[Credits/Item/chaCha20]" = "ChaCha20 & Salsa20 implementation av D. J. Bernstein";
+
+/* Item in the credits list */
+"[Credits/Item/fancyDebossPattern]" = "Fancy deboss pattern av Daniel Beaton";
+
+/* Item in the credits list */
+"[Credits/Item/featherIcons]" = "Feather icons av Cole Bemis";
+
+/* Item in the credits list */
+"[Credits/Item/gzipSwift]" = "GzipSwift av 1024jp";
+
+/* Item in the credits list */
+"[Credits/Item/icons8]" = "Ikoner av Icons8";
+
+/* Item in the credits list */
+"[Credits/Item/ionIcons]" = "Ionicons av Ionic";
+
+/* Item in the credits list */
+"[Credits/Item/keePass]" = "KeePass av Dominik Reichl";
+
+/* Item in the credits list */
+"[Credits/Item/keePassXCIcons]" = "Ikoner av KeePassXC-teamet";
+
+/* Item in the credits list */
+"[Credits/Item/lineIcons]" = "Linecons av Andrian Valeanu";
+
+/* Item in the credits list */
+"[Credits/Item/nuvolaIcons]" = "Nuvola icons av David Vignoni";
+
+/* Item in the credits list */
+"[Credits/Item/rijndael]" = "Rijndael implementation av Szymon Stefanek";
+
+/* Item in the credits list */
+"[Credits/Item/swiftDomainParser]" = "SwiftDomainParser av Dashlane";
+
+/* Item in the credits list */
+"[Credits/Item/systemSettingsIcon]" = "System settings icon av Vicons Design";
+
+/* Item in the credits list */
+"[Credits/Item/toastSwift]" = "Toast-Swift av Charles Scalesse";
+
+/* Item in the credits list */
+"[Credits/Item/tpInappReceipt]" = "TPInAppReceipt av Pavel Tikhonenko";
+
+/* Item in the credits list */
+"[Credits/Item/translations]" = "Svensk översättning av Patrik Thunström";
+
+/* Item in the credits list */
+"[Credits/Item/twoFish]" = "Twofish implementation av Niels Ferguson";
+
+/* Item in the credits list */
+"[Credits/Item/wordlists]" = "Lista på lösenordsfraser från EFF";
+
+/* Item in the credits list */
+"[Credits/Item/yubico]" = "Yubico Mobile iOS SDK av Yubico AB";
+
+/* Item in the credits list */
+"[Credits/Item/zxcvbn]" = "zxcvbn-ios av Dropbox";
+
+/* License name for credits */
+"[Credits/License/apache2]" = "Apache 2.0-licens";
+
+/* License name for credits */
+"[Credits/License/cc0]" = "CC0-licens";
+
+/* License name for credits */
+"[Credits/License/ccBy3]" = "CC BY 3.0";
+
+/* License name for credits */
+"[Credits/License/ccByNd]" = "CC BY-ND 3.0";
+
+/* License name for credits */
+"[Credits/License/customPermissiveLicense]" = "Custom permissive license";
+
+/* License name for credits */
+"[Credits/License/gpl]" = "GPL-licens";
+
+/* License name for credits */
+"[Credits/License/lgpl]" = "LGPL-licens";
+
+/* License name for credits */
+"[Credits/License/mit]" = "MIT-licens";
+
+/* License name for credits */
+"[Credits/License/proprietary]" = "Proprietär licens";
+
+/* License name for credits */
+"[Credits/License/publicDomain]" = "Public domain";
+
 /* Hint shown when both password and key file are empty. */
 "[Database/Create] Please enter a password or choose a key file." = "Var vänlig ange ett lösenord eller välj en nyckelfil.";
 
@@ -43,6 +142,9 @@
 /* Notification when user sets up too weak a database password. */
 "[Database/Create/weakPasswordWarning]" = "Det är lätt att gissa det här lösenordet. Ange ett starkare lösenord.";
 
+/* Description of favicon downloader feature. */
+"[Database/DownloadFavicons/intro]" = "KeePassium kontaktar webbplatser som är anslutna till varje post.";
+
 /* Description of favicon downloader feature. 'Doing this' refers to downloading favicons. */
 "[Database/DownloadFavicons/warning]" = "Om du gör det på ett offentligt eller övervakat nätverk kan listan med webbplatser där du har ett konto exponeras.";
 
@@ -75,12 +177,6 @@
 
 /* Title of entry viewer's tab with advanced/secondary properties */
 "[Entry/Tab/More/title]" = "Mer";
-
-/* Menu title. For example: `About KeePassium`. [appName: String] */
-"[Menu/About/title]" = "Om %@";
-
-/* Menu title: app settings */
-"[Menu/Preferences/title]" = "Inställningar…";
 
 /* Action/button */
 "[Onboarding/AddExistingDatabase/action]" = "Lägg till existerande databas";

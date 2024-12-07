@@ -4,9 +4,6 @@
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "การป้อนรหัสผ่านอัตโนมัติไม่สามารถเข้าถึงไฟล์ที่คุณมีอยู่แล้วในแอป KeePassium\n\nทำไมหรือ? เพราะระบบข้างหลังจะแยกการป้อนรหัสผ่านอัตโนมัติเป็นคนละแอปกัน ซึ่งจะมีความอิสระจากกระบวนการของ KeePassium เนื่องจากเหตุผลด้านความปลอดภัย แอปไม่สามารถเข้าถึงไฟล์ภายนอกได้ – เว้นว่าคุณจะลิงค์ไฟล์ให้แอปใช้ได้โดยตรง ดังนั้นสามารถยืนยันได้ว่า ระบบจะอนุญาตให้แอปเข้าถึงเฉพาะไฟล์ที่คุณอนุญาตไว้เท่านั้น\n\nจึงสรุปได้ว่า ทั้งการป้อนรหัสผ่านอัตโนมัติ และตัวแอป KeePassium จำเป็นต้องให้สิทธิ์ในการเข้าถึงไฟล์ภายนอกแต่ละไฟล์ได้ โชคดีที่มันเป็นขั้นตอนที่ทำแค่ครั้งเดียวเท่านั้น";
 
-/* Must match Apple's translation, as found in iOS 15 Settings → Passwords → AutoFill Passwords. If unsure, leave untranslated. */
-"[AutoFill/Setup/UncheckKeychain/allowFillingFrom]" = "อนุญาตการป้อนจาก:";
-
 /* Must match Apple's translation, as found in iOS 17 Settings → Passwords → Password Options. If unsure, leave untranslated. */
 "[AutoFill/Setup/UncheckKeychain/usePasswordsAndPasskeysFrom]" = "ใช้รหัสผ่านและพาสคีย์จาก";
 

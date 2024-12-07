@@ -52,12 +52,6 @@
 /* Title of entry viewer's tab with previous revisions of the entry */
 "[Entry/Tab/History/title]" = "歷史";
 
-/* Menu title. For example: `About KeePassium`. [appName: String] */
-"[Menu/About/title]" = "關於 %@";
-
-/* Menu title: app settings */
-"[Menu/Preferences/title]" = "偏好設定…";
-
 /* Action/button */
 "[Onboarding/AddExistingDatabase/action]" = "添加現有資料庫";
 

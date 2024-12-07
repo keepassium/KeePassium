@@ -7,20 +7,35 @@
 /* An identifier of the app that called AutoFill. The term is intentionally similar to https://ru.wikipedia.org/wiki/Caller_ID. [callerID: String] */
 "[AutoFill/Search/callerID]" = "呼出先ID: %@";
 
+/* Status message, shows which app or webpage launched AutoFill. For example: `Context: google.com` */
+"[AutoFill/Search/context]" = "コンテキスト: %@";
+
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "自動入力は、メインアプリ内のファイルに勝手にはアクセスできません。\n\nなぜか。自動入力はメインアプリとは別のアプリとして扱われており、安全のため外部のファイルに直接はアクセスできない仕組みになっているためです――ユーザーが明示的に指定しない限りは。この指定を通して、ユーザーが意図したファイルだけにしかアプリがアクセスできないことが保証されています。\n\nその結果、メインアプリと自動入力はそれぞれ別々にファイルアクセスの許可を必要とします。ただ、これは一度すれば済む手続きです。";
 
-/* Must match Apple's translation, as found in iOS 15 Settings → Passwords → AutoFill Passwords. If unsure, leave untranslated. */
-"[AutoFill/Setup/UncheckKeychain/allowFillingFrom]" = "入力を許可:";
+/* Must match Apple's translation, as found in iOS 18 Settings → General → AutoFill & Passwords. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/autofillFrom]" = "自動入力の取得元:";
 
 /* Call to action: deselect the `Keychain` option. Keychain is a glossary term. */
 "[AutoFill/Setup/UncheckKeychain/callToAction]" = "キーチェーンの無効化";
 
-/* Instruction to deselect the `Keychain` option. Keychain is a glossary term. */
-"[AutoFill/Setup/UncheckKeychain/message]" = "KeePassiumをデフォルトのパスワードマネージャーにするには、キーチェーンのチェックを外してください。";
+/* Instruction to deselect another app in the settings [appName: String] */
+"[AutoFill/Setup/UncheckKeychain/message]" = "KeePassiumをデフォルトのパスワードマネージャーにするには、「%@」のチェックを外してください。";
 
 /* Must match Apple's translation, as found in iOS 17 Settings → Passwords → Password Options. If unsure, leave untranslated. */
 "[AutoFill/Setup/UncheckKeychain/usePasswordsAndPasskeysFrom]" = "使用するパスワードとパスキーの取得元";
+
+/* Action: create a passkey and add it to existing entry */
+"[Database/Passkey/AddToExisting/action]" = "既存のエントリーにパスキーを追加";
+
+/* Confirmation message before replacing an existing passkey. */
+"[Database/Passkey/AddToExisting/confirm]" = "このエントリーにはすでにパスキーが設定されています。置き換えますか？";
+
+/* Title of an optional dialog for creating new passkeys */
+"[Database/Passkey/Create/title]" = "パスキーを作成しますか？";
+
+/* Name of the Apple Passwords application, see https://support.apple.com/120758 */
+"[Generic/ApplePasswordsApp/title]" = "パスワード";
 
 /* Apple Keychain software; is a glossary term. */
 "[Generic/Keychain/title]" = "キーチェーン";

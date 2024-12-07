@@ -2,7 +2,7 @@
 "aEK-cJ-9bc.text" = "Mostra copie di sicurezza";
 
 /* Class = "UITableViewSection"; footerTitle = "KeePassium can automatically delete old backup files to free up some storage space."; ObjectID = "B3L-Dk-Uq3"; Note = "Settings section of the `Keep Backup Files` option"; */
-"B3L-Dk-Uq3.footerTitle" = "KeePassium può eliminare automaticamente i vecchi file di sicurezza per liberare spazio di archiviazione.";
+"B3L-Dk-Uq3.footerTitle" = "KeePassium può eliminare automaticamente i vecchi file di backup per liberare spazio di archiviazione.";
 
 /* Class = "UITableViewSection"; headerTitle = "Periodic cleanup"; ObjectID = "B3L-Dk-Uq3"; Note = "Settings section of the `Keep Backup Files` option"; */
 "B3L-Dk-Uq3.headerTitle" = "Pulizia periodica";

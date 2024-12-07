@@ -4,6 +4,105 @@
 /* Notification when user tries to set up too weak an app protection passcode. */
 "[AppLock/weakPasscodeWarning]" = "このパスコードは簡単に推測できます。より強力なパスコードを入力してみてください。";
 
+/* Item in the credits list */
+"[Credits/Item/aexml]" = "AEXML by Marko Tadić";
+
+/* Item in the credits list */
+"[Credits/Item/argon2]" = "Argon2 by Daniel Dinu, Dmitry Khovratovich, Jean-Philippe Aumasson, and Samuel Neves";
+
+/* Item in the credits list */
+"[Credits/Item/base32]" = "Base32 for Swift by Norio Nomura";
+
+/* Item in the credits list */
+"[Credits/Item/chaCha20]" = "ChaCha20 & Salsa20 implementation by D. J. Bernstein";
+
+/* Item in the credits list */
+"[Credits/Item/fancyDebossPattern]" = "Fancy deboss pattern by Daniel Beaton";
+
+/* Item in the credits list */
+"[Credits/Item/featherIcons]" = "Feather icons by Cole Bemis";
+
+/* Item in the credits list */
+"[Credits/Item/gzipSwift]" = "GzipSwift by 1024jp";
+
+/* Item in the credits list */
+"[Credits/Item/icons8]" = "Icons by Icons8";
+
+/* Item in the credits list */
+"[Credits/Item/ionIcons]" = "Ionicons by Ionic";
+
+/* Item in the credits list */
+"[Credits/Item/keePass]" = "KeePass by Dominik Reichl";
+
+/* Item in the credits list */
+"[Credits/Item/keePassXCIcons]" = "Icons by KeePassXC team";
+
+/* Item in the credits list */
+"[Credits/Item/lineIcons]" = "Linecons by Andrian Valeanu";
+
+/* Item in the credits list */
+"[Credits/Item/nuvolaIcons]" = "Nuvola icons by David Vignoni";
+
+/* Item in the credits list */
+"[Credits/Item/rijndael]" = "Rijndael implementation by Szymon Stefanek";
+
+/* Item in the credits list */
+"[Credits/Item/swiftDomainParser]" = "SwiftDomainParser by Dashlane";
+
+/* Item in the credits list */
+"[Credits/Item/systemSettingsIcon]" = "System settings icon by Vicons Design";
+
+/* Item in the credits list */
+"[Credits/Item/toastSwift]" = "Toast-Swift by Charles Scalese";
+
+/* Item in the credits list */
+"[Credits/Item/tpInappReceipt]" = "TPInAppReceipt by Pavel Tikhonenko";
+
+/* Item in the credits list */
+"[Credits/Item/translations]" = "Translation by KeePassium contributors";
+
+/* Item in the credits list */
+"[Credits/Item/twoFish]" = "Twofish implementation by Niels Ferguson";
+
+/* Item in the credits list */
+"[Credits/Item/wordlists]" = "Passphrase wordlists by EFF";
+
+/* Item in the credits list */
+"[Credits/Item/yubico]" = "Yubico Mobile iOS SDK by Yubico AB";
+
+/* Item in the credits list */
+"[Credits/Item/zxcvbn]" = "zxcvbn-ios by Dropbox";
+
+/* License name for credits */
+"[Credits/License/apache2]" = "Apache 2.0 license";
+
+/* License name for credits */
+"[Credits/License/cc0]" = "CC0 license";
+
+/* License name for credits */
+"[Credits/License/ccBy3]" = "CC BY 3.0";
+
+/* License name for credits */
+"[Credits/License/ccByNd]" = "CC BY-ND 3.0";
+
+/* License name for credits */
+"[Credits/License/customPermissiveLicense]" = "Custom permissive license";
+
+/* License name for credits */
+"[Credits/License/gpl]" = "GPL license";
+
+/* License name for credits */
+"[Credits/License/lgpl]" = "GPL license";
+
+/* License name for credits */
+"[Credits/License/mit]" = "MIT license";
+
+/* License name for credits */
+"[Credits/License/proprietary]" = "Proprietary license";
+
+/* License name for credits */
+"[Credits/License/publicDomain]" = "パブリック・ドメイン";
+
 /* Hint shown when both password and key file are empty. */
 "[Database/Create] Please enter a password or choose a key file." = "パスワードを入力するか、キーファイルを選択してください。";
 
@@ -43,6 +142,9 @@
 /* Notification when user sets up too weak a database password. */
 "[Database/Create/weakPasswordWarning]" = "このパスワードは簡単に推測できます。より強力なパスコードを入力してみてください。";
 
+/* Description of favicon downloader feature. */
+"[Database/DownloadFavicons/intro]" = "KeePassiumは各エントリーに関連するウェブサイトに連絡します。";
+
 /* Description of favicon downloader feature. 'Doing this' refers to downloading favicons. */
 "[Database/DownloadFavicons/warning]" = "公開または監視されているネットワーク上でこれを行うと、アカウントをお持ちのウェブサイトの一覧が公開される可能性があります。";
 
@@ -75,12 +177,6 @@
 
 /* Title of entry viewer's tab with advanced/secondary properties */
 "[Entry/Tab/More/title]" = "詳細";
-
-/* Menu title. For example: `About KeePassium`. [appName: String] */
-"[Menu/About/title]" = "%@について";
-
-/* Menu title: app settings */
-"[Menu/Preferences/title]" = "環境設定...";
 
 /* Action/button */
 "[Onboarding/AddExistingDatabase/action]" = "既存のデータベースを追加";

@@ -1012,6 +1012,9 @@
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "รายละเอียดไฟล์";
 
+/* Menu title: app settings */
+"[Menu/Preferences/title]" = "ตั้งค่าการทำงาน…";
+
 /* Notification next to the OTP code which was copied to clipboard */
 "[OTP/CopiedToClipboard/title]" = "คัดลอกรหัสผ่านครั้งเดียวไปยังคลิปบอร์ดแล้ว";
 

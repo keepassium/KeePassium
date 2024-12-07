@@ -10,6 +10,9 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "Активируйте, чтобы прослушать.";
 
+/* Accessibility notification for entries with a passkey */
+"[Accessibility/containsPasskey]" = "Содержит ключ доступа.";
+
 /* Action which resets the app as if it was just installed. */
 "[App/ResetEverything/action]" = "Сбросить";
 
@@ -154,6 +157,9 @@
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "Добавить свой значок";
 
+/* Action: delete unused icons */
+"[Database/CustomIcon/deleteUnused]" = "Удалить неиспользуемые значки";
+
 /* Action: download icon of a website */
 "[Database/CustomIcon/DownloadFavicon/action]" = "Загрузить значок сайта";
 
@@ -168,6 +174,9 @@
 
 /* Status message: a website favicon is being downloaded */
 "[Database/CustomIcon/DownloadOneFavicon/status]" = "Загрузка значка сайта";
+
+/* Notification when some custom icons are not used by any group or entry [iconCount: Int] */
+"[Database/CustomIcon/Unused/count]" = "Найдено неиспользуемых значков: %d";
 
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Удалить файл базы паролей?\nУбедитесь, что у вас есть резервная копия.";
@@ -202,6 +211,9 @@
 /* Info message for entries that contain information for opening a different database. */
 "[Database/Entry/LinkedDatabase/message]" = "Эта запись указывает на другую базу паролей.";
 
+/* Notification message before database export. */
+"[Database/Export/PlainText/warning]" = "Экспортируемый файл будет содержать ваши данные в открытом тексте, без какой-либо защиты.";
+
 /* Notification message about external changes to the loaded file. */
 "[Database/ExternalChange/notification]" = "Файл базы был изменён извне. Обновить?";
 
@@ -216,6 +228,9 @@
 
 /* Info message when changing database file format. */
 "[Database/FormatVersion/Conversion/allDataPreserved]" = "Все ваши данные будут сохранены.";
+
+/* Error message when creating a new passkey. */
+"[Database/FormatVersion/PasskeysNotSupported]" = "Текущий формат базы не поддерживает ключи доступа.";
 
 /* Info message when the app needs to change database file format. [oldFormat, newFormat: String] */
 "[Database/FormatVersion/Upgrade/text]" = "Необходимо обновить формат базы данных (с %1$@ на %2$@). Может потребоваться обновить другие приложения, использующие эту базу данных.";
@@ -233,7 +248,7 @@
 "[Database/LesserTargetFormat/warning]" = "Это старый формат базы данных, некоторые данные могут быть потеряны.";
 
 /* Recommendation for solving a problem with a list of files. */
-"[Database/List/LocalMissing/message]" = "Если некоторые локальные файлы отсутствуют, сначала запустите главное приложение KeePassium.";
+"[Database/List/LocalMissing/message]" = "Если некоторые локальные файлы отсутствуют, сначала запустите основное приложение KeePassium.";
 
 /* Title of the database picker list */
 "[Database/List/title]" = "Базы паролей";
@@ -309,6 +324,9 @@
 
 /* Title of a list with database-related actions (e.g. lock database, change master key, etc) */
 "[Database/Operations/title]" = "Операции с базой данных";
+
+/* Error message about creation of a new passkey. */
+"[Database/Passkey/Error/UnsupportedAlgorithm/description]" = "Неподдерживаемый алгоритм ключа доступа";
 
 /* Status message: preparing database print preview. */
 "[Database/Print/preparingPreview]" = "Подготовка просмотра…";
@@ -438,6 +456,27 @@
 
 /* Message shown when user enters an invalid database password */
 "[Database/Unlock/wrongPassword/question]" = "Забыли пароль?";
+
+/* Notification message */
+"[Database/UnsavedChanges/autoFillCrashed]" = "Автозаполнение не смогло сохранить некоторые изменения из-за технических ограничений.";
+
+/* Notification message */
+"[Database/UnsavedChanges/cannotModifyYet]" = "К сожалению, автозаполнение пока не может модифицировать большие базы данных. Мы работаем над решением.";
+
+/* Call to action shown in AutoFill module. */
+"[Database/UnsavedChanges/OpenAppCallToAction]" = "Чтобы сохранить изменения, откройте основное приложение KeePassium.";
+
+/* Action/button to save accummulated modifications */
+"[Database/UnsavedChanges/saveAction]" = "Сохранить изменения";
+
+/* Notification message */
+"[Database/UnsavedChanges/someDatabases]" = "Одна или несколько баз паролей содержат несохраненные изменения, сделанные в Автозаполнении.";
+
+/* Notification message */
+"[Database/UnsavedChanges/thisDatabase]" = "Эта база паролей имеет несохраненные изменения, сделанные в Автозаполнении.";
+
+/* Title: there are temporary changes to be saved */
+"[Database/UnsavedChanges/title]" = "Несохранённые изменения";
 
 /* Error message */
 "[Database1/FormatError] Database file is corrupted." = "Файл базы паролей повреждён.";
@@ -645,6 +684,9 @@
 
 /* Name of an entry field */
 "[Entry/Field/name] Notes" = "Заметки";
+
+/* Title of an entry field */
+"[Entry/Field/name] Passkey" = "Ключ доступа";
 
 /* Name of an entry field */
 "[Entry/Field/name] Password" = "Пароль";
@@ -1018,6 +1060,9 @@
 /* Action/button to remove a file from the app (the file remains, but the app forgets about it) */
 "[Generic/File] Remove" = "Убрать";
 
+/* Title of a generic file export screen. */
+"[Generic/File/Export/title]" = "Экспорт файла";
+
 /* Action/button to save data to a different file */
 "[Generic/File/Save as]" = "Сохранить как…";
 
@@ -1110,6 +1155,9 @@
 
 /* Title of a list: entries with one-time passwords (OTP) */
 "[Group/Smart/Preset/otpEntries]" = "Записи с OTP";
+
+/* Title of a list: entries that contain passkeys */
+"[Group/Smart/Preset/passkeyEntries]" = "Записи с ключом доступа";
 
 /* Title for the Smart Group search conditions in group editor */
 "[Group/Smart/Query/title]" = "Фильтр смарт-группы";
@@ -1260,6 +1308,15 @@
 
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "Информация о файле";
+
+/* Menu title: app settings */
+"[Menu/Preferences/title]" = "Настройки…";
+
+/* Title of a menu: sort order of files in a list */
+"[Menu/Sort] Sort Files By" = "Сортировать файлы по";
+
+/* Title of a menu: sort order of groups and entries in a list */
+"[Menu/Sort] Sort Items By" = "Сортировать элементы по";
 
 /* Suggestion/hint on how to fix an accompanying error. */
 "[Org/ContactYourAdmin]" = "Обратитесь к своему ИТ-администратору.";

@@ -10,6 +10,9 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "Активуйте, щоб слухати.";
 
+/* Accessibility notification for entries with a passkey */
+"[Accessibility/containsPasskey]" = "Містить ключ допуску.";
+
 /* Action which resets the app as if it was just installed. */
 "[App/ResetEverything/action]" = "Скинути";
 
@@ -154,6 +157,9 @@
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "Додати свою іконку";
 
+/* Action: delete unused icons */
+"[Database/CustomIcon/deleteUnused]" = "Видалити невикористані значки";
+
 /* Action: download icon of a website */
 "[Database/CustomIcon/DownloadFavicon/action]" = "Завантажити значок сайту";
 
@@ -168,6 +174,9 @@
 
 /* Status message: a website favicon is being downloaded */
 "[Database/CustomIcon/DownloadOneFavicon/status]" = "Завантаження значка сайту";
+
+/* Notification when some custom icons are not used by any group or entry [iconCount: Int] */
+"[Database/CustomIcon/Unused/count]" = "Знайдено невикористані значки: %d";
 
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Видалити файл бази паролів?\nПереконайтеся, що у вас є резервна копія.";
@@ -202,6 +211,9 @@
 /* Info message for entries that contain information for opening a different database. */
 "[Database/Entry/LinkedDatabase/message]" = "Цей запис указує на іншу базу паролів.";
 
+/* Notification message before database export. */
+"[Database/Export/PlainText/warning]" = "Експортований файл міститиме ваші дані у звичайному текстовому форматі без будь-якого захисту.";
+
 /* Notification message about external changes to the loaded file. */
 "[Database/ExternalChange/notification]" = "Файл бази паролів змінився. Перезавантажити?";
 
@@ -216,6 +228,9 @@
 
 /* Info message when changing database file format. */
 "[Database/FormatVersion/Conversion/allDataPreserved]" = "Усі ваші дані буде збережено.";
+
+/* Error message when creating a new passkey. */
+"[Database/FormatVersion/PasskeysNotSupported]" = "Поточний формат бази паролів не підтримує ключі допуску.";
 
 /* Info message when the app needs to change database file format. [oldFormat, newFormat: String] */
 "[Database/FormatVersion/Upgrade/text]" = "KeePassium необхідно оновити формат файлу бази даних (з %1$@ на %2$@). Можливо, вам доведеться оновити інші застосунки, які використовують цю базу даних.";
@@ -309,6 +324,9 @@
 
 /* Title of a list with database-related actions (e.g. lock database, change master key, etc) */
 "[Database/Operations/title]" = "Операції з базою даних";
+
+/* Error message about creation of a new passkey. */
+"[Database/Passkey/Error/UnsupportedAlgorithm/description]" = "Непідтримуваний алгоритм ключа допуску";
 
 /* Status message: preparing database print preview. */
 "[Database/Print/preparingPreview]" = "Підготовка до попереднього перегляду…";
@@ -438,6 +456,27 @@
 
 /* Message shown when user enters an invalid database password */
 "[Database/Unlock/wrongPassword/question]" = "Забули свій пароль?";
+
+/* Notification message */
+"[Database/UnsavedChanges/autoFillCrashed]" = "В автозаповненні не збережено деякі зміни через технічні обмеження.";
+
+/* Notification message */
+"[Database/UnsavedChanges/cannotModifyYet]" = "На жаль, автозаповнення поки що не може змінити великі бази паролів. Ми працюємо над цим.";
+
+/* Call to action shown in AutoFill module. */
+"[Database/UnsavedChanges/OpenAppCallToAction]" = "Щоб зберегти зміни, відкрийте основний додаток KeePassium.";
+
+/* Action/button to save accummulated modifications */
+"[Database/UnsavedChanges/saveAction]" = "Зберегти зміни";
+
+/* Notification message */
+"[Database/UnsavedChanges/someDatabases]" = "Одна або кілька баз паролів містять незбережені зміни, внесені в автозаповненні.";
+
+/* Notification message */
+"[Database/UnsavedChanges/thisDatabase]" = "Ця база паролів має незбережені зміни, внесені в автозаповненні.";
+
+/* Title: there are temporary changes to be saved */
+"[Database/UnsavedChanges/title]" = "Незбережені зміни";
 
 /* Error message */
 "[Database1/FormatError] Database file is corrupted." = "Файл бази паролів пошкоджено.";
@@ -645,6 +684,9 @@
 
 /* Name of an entry field */
 "[Entry/Field/name] Notes" = "Нотатки";
+
+/* Title of an entry field */
+"[Entry/Field/name] Passkey" = "Ключ допуску";
 
 /* Name of an entry field */
 "[Entry/Field/name] Password" = "Пароль";
@@ -1018,6 +1060,9 @@
 /* Action/button to remove a file from the app (the file remains, but the app forgets about it) */
 "[Generic/File] Remove" = "Вилучити";
 
+/* Title of a generic file export screen. */
+"[Generic/File/Export/title]" = "Експорт файлів";
+
 /* Action/button to save data to a different file */
 "[Generic/File/Save as]" = "Зберегти як…";
 
@@ -1110,6 +1155,9 @@
 
 /* Title of a list: entries with one-time passwords (OTP) */
 "[Group/Smart/Preset/otpEntries]" = "Записи з одноразовим паролем";
+
+/* Title of a list: entries that contain passkeys */
+"[Group/Smart/Preset/passkeyEntries]" = "Записи з ключами допуску";
 
 /* Title for the Smart Group search conditions in group editor */
 "[Group/Smart/Query/title]" = "Фільтр смарт-групи";
@@ -1260,6 +1308,15 @@
 
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "Відомості про файл";
+
+/* Menu title: app settings */
+"[Menu/Preferences/title]" = "Налаштування…";
+
+/* Title of a menu: sort order of files in a list */
+"[Menu/Sort] Sort Files By" = "Сортувати файли за";
+
+/* Title of a menu: sort order of groups and entries in a list */
+"[Menu/Sort] Sort Items By" = "Сортувати елементи за";
 
 /* Suggestion/hint on how to fix an accompanying error. */
 "[Org/ContactYourAdmin]" = "Зв'яжіться з системним адміністратором за допомогою.";

@@ -10,6 +10,9 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "Activer pour écouter.";
 
+/* Accessibility notification for entries with a passkey */
+"[Accessibility/containsPasskey]" = "Contient une clé d'accès.";
+
 /* Action which resets the app as if it was just installed. */
 "[App/ResetEverything/action]" = "Réinitialiser";
 
@@ -154,6 +157,9 @@
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "Ajouter une icône personnalisée";
 
+/* Action: delete unused icons */
+"[Database/CustomIcon/deleteUnused]" = "Supprimer les icônes inutilisées";
+
 /* Action: download icon of a website */
 "[Database/CustomIcon/DownloadFavicon/action]" = "Télécharger la favoricône";
 
@@ -168,6 +174,9 @@
 
 /* Status message: a website favicon is being downloaded */
 "[Database/CustomIcon/DownloadOneFavicon/status]" = "Téléchargement de la favoricône";
+
+/* Notification when some custom icons are not used by any group or entry [iconCount: Int] */
+"[Database/CustomIcon/Unused/count]" = "Icônes inutilisées trouvées : %d";
 
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Supprimer le fichier de la base de données ?\nAssurez-vous d'avoir une sauvegarde.";
@@ -202,6 +211,9 @@
 /* Info message for entries that contain information for opening a different database. */
 "[Database/Entry/LinkedDatabase/message]" = "Cette entrée pointe vers une autre base de données.";
 
+/* Notification message before database export. */
+"[Database/Export/PlainText/warning]" = "Le fichier exporté contiendra vos données en texte brut, sans aucune protection.";
+
 /* Notification message about external changes to the loaded file. */
 "[Database/ExternalChange/notification]" = "Le fichier de la base de données a changé. Recharger ?";
 
@@ -216,6 +228,9 @@
 
 /* Info message when changing database file format. */
 "[Database/FormatVersion/Conversion/allDataPreserved]" = "Toutes vos données seront conservées.";
+
+/* Error message when creating a new passkey. */
+"[Database/FormatVersion/PasskeysNotSupported]" = "Le format actuel de la base de données ne prend pas en charge les clés d'accès.";
 
 /* Info message when the app needs to change database file format. [oldFormat, newFormat: String] */
 "[Database/FormatVersion/Upgrade/text]" = "KeePassium a besoin de mettre à jour le format de votre base de données (de %1$@ à %2$@). Vous pourriez avoir besoin de mettre à jour d'autres applications qui utilisent cette base de données.";
@@ -309,6 +324,9 @@
 
 /* Title of a list with database-related actions (e.g. lock database, change master key, etc) */
 "[Database/Operations/title]" = "Opérations de la base de données";
+
+/* Error message about creation of a new passkey. */
+"[Database/Passkey/Error/UnsupportedAlgorithm/description]" = "Algorithme de clé d'accès non pris en charge";
 
 /* Status message: preparing database print preview. */
 "[Database/Print/preparingPreview]" = "Préparation de l'aperçu";
@@ -438,6 +456,27 @@
 
 /* Message shown when user enters an invalid database password */
 "[Database/Unlock/wrongPassword/question]" = "Mot de passe oublié ?";
+
+/* Notification message */
+"[Database/UnsavedChanges/autoFillCrashed]" = "La saisie automatique n'a pas pu enregistrer certaines modifications en raison d'une limitation technique.";
+
+/* Notification message */
+"[Database/UnsavedChanges/cannotModifyYet]" = "Malheureusement, la saisie automatique ne peut pas encore modifier les grandes bases de données. Nous travaillons pour résoudre ce problème.";
+
+/* Call to action shown in AutoFill module. */
+"[Database/UnsavedChanges/OpenAppCallToAction]" = "Pour enregistrer les modifications, ouvrez l'application principale KeePassium.";
+
+/* Action/button to save accummulated modifications */
+"[Database/UnsavedChanges/saveAction]" = "Enregistrer les modifications";
+
+/* Notification message */
+"[Database/UnsavedChanges/someDatabases]" = "Une ou plusieurs bases de données ont des modifications non enregistrées effectuées avec la saisie automatique.";
+
+/* Notification message */
+"[Database/UnsavedChanges/thisDatabase]" = "Cette base de données contient des modifications non enregistrées effectuées avec la saisie automatique.";
+
+/* Title: there are temporary changes to be saved */
+"[Database/UnsavedChanges/title]" = "Modifications non enregistrées";
 
 /* Error message */
 "[Database1/FormatError] Database file is corrupted." = "Le fichier de la base de données est corrompu.";
@@ -645,6 +684,9 @@
 
 /* Name of an entry field */
 "[Entry/Field/name] Notes" = "Notes";
+
+/* Title of an entry field */
+"[Entry/Field/name] Passkey" = "Clé d'accès";
 
 /* Name of an entry field */
 "[Entry/Field/name] Password" = "Mot de passe";
@@ -1018,6 +1060,9 @@
 /* Action/button to remove a file from the app (the file remains, but the app forgets about it) */
 "[Generic/File] Remove" = "Dissocier";
 
+/* Title of a generic file export screen. */
+"[Generic/File/Export/title]" = "Exportation de fichier";
+
 /* Action/button to save data to a different file */
 "[Generic/File/Save as]" = "Enregistrer sous…";
 
@@ -1110,6 +1155,9 @@
 
 /* Title of a list: entries with one-time passwords (OTP) */
 "[Group/Smart/Preset/otpEntries]" = "Entrées avec OTP";
+
+/* Title of a list: entries that contain passkeys */
+"[Group/Smart/Preset/passkeyEntries]" = "Entrées avec des clés d'accès";
 
 /* Title for the Smart Group search conditions in group editor */
 "[Group/Smart/Query/title]" = "Filtre de groupe intelligent";
@@ -1260,6 +1308,15 @@
 
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "Informations";
+
+/* Menu title: app settings */
+"[Menu/Preferences/title]" = "Préférences…";
+
+/* Title of a menu: sort order of files in a list */
+"[Menu/Sort] Sort Files By" = "Trier les fichiers par";
+
+/* Title of a menu: sort order of groups and entries in a list */
+"[Menu/Sort] Sort Items By" = "Trier les éléments par";
 
 /* Suggestion/hint on how to fix an accompanying error. */
 "[Org/ContactYourAdmin]" = "Contactez votre administrateur informatique.";

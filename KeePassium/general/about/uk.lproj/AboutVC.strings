@@ -1,95 +1,11 @@
 /* Class = "UITableViewSection"; headerTitle = "Feedback"; ObjectID = "7bL-fQ-OUc"; Note = "Section: user feedback about the app"; */
 "7bL-fQ-OUc.headerTitle" = "Зворотній зв’язок";
 
-/* Class = "UILabel"; text = "Proprietary license"; ObjectID = "7cl-Fc-8Nf"; */
-"7cl-Fc-8Nf.text" = "Комерційна ліцензія";
-
-/* Class = "UILabel"; text = "Icons by Icons8"; ObjectID = "7id-QT-w26"; */
-"7id-QT-w26.text" = "Іконки від Icons8";
-
-/* Class = "UILabel"; text = "Ionicons by Ionic"; ObjectID = "9lh-fA-Xgx"; */
-"9lh-fA-Xgx.text" = "Ionicons від Ionic";
-
-/* Class = "UILabel"; text = "Base32 for Swift by Norio Nomura"; ObjectID = "9MZ-zt-75x"; */
-"9MZ-zt-75x.text" = "Base32 for Swift, автор Norio Nomura";
-
-/* Class = "UILabel"; text = "CC BY 3.0"; ObjectID = "86n-Hc-6m7"; */
-"86n-Hc-6m7.text" = "CC BY 3.0";
-
-/* Class = "UILabel"; text = "MIT license"; ObjectID = "Aig-jg-p8B"; */
-"Aig-jg-p8B.text" = "Ліцензія MIT";
-
 /* Class = "UILabel"; text = "Do you like what you see?"; ObjectID = "AMd-x7-PDa"; Note = "First part of the 'Do you like what you see? / Leave an App Store review.\""; */
 "AMd-x7-PDa.text" = "Подобається програма?";
 
-/* Class = "UILabel"; text = "Translation by KeePassium contributors"; ObjectID = "aqX-J9-IzD"; Note = "Replace with a credit to yourself. For example: `German translation by Erika Mustermann and @JohnDoe`."; */
-"aqX-J9-IzD.text" = "Переклад Українською - Максим Пономаренко";
-
-/* Class = "UILabel"; text = "MIT license"; ObjectID = "AWg-lI-BfC"; */
-"AWg-lI-BfC.text" = "Ліцензія MIT";
-
-/* Class = "UILabel"; text = "Twofish implementation by Niels Ferguson"; ObjectID = "axY-gm-XNr"; */
-"axY-gm-XNr.text" = "Реалізація алгоритму Twofish, автор Niels Ferguson";
-
-/* Class = "UILabel"; text = "MIT license"; ObjectID = "bAq-tq-nuY"; */
-"bAq-tq-nuY.text" = "Ліцензія MIT";
-
-/* Class = "UILabel"; text = "KeePass by Dominik Reichl"; ObjectID = "CNI-b8-7Da"; */
-"CNI-b8-7Da.text" = "KeePass, автор Dominik Reichl";
-
-/* Class = "UILabel"; text = "MIT license"; ObjectID = "daJ-ma-jhe"; */
-"daJ-ma-jhe.text" = "Ліцензія MIT";
-
-/* Class = "UILabel"; text = "MIT license"; ObjectID = "Erq-Zz-P0N"; */
-"Erq-Zz-P0N.text" = "Ліцензія MIT";
-
-/* Class = "UILabel"; text = "Custom permissive license"; ObjectID = "EWy-OI-IxL"; */
-"EWy-OI-IxL.text" = "Нестандартна дозвільна ліцензія";
-
-/* Class = "UILabel"; text = "ChaCha20 & Salsa20 implementation by D. J. Bernstein"; ObjectID = "Ha8-Qv-0qg"; */
-"Ha8-Qv-0qg.text" = "Реалізація алгоритмів ChaCha20 та Salsa20, автор D. J. Bernstein";
-
-/* Class = "UILabel"; text = "Rijndael implementation by Szymon Stefanek"; ObjectID = "hDU-6p-Bzr"; */
-"hDU-6p-Bzr.text" = "Реалізація алгоритму Rijndael, автор Szymon Stefanek";
-
-/* Class = "UILabel"; text = "MIT license"; ObjectID = "hqP-9y-rXc"; */
-"hqP-9y-rXc.text" = "Ліцензія MIT";
-
-/* Class = "UILabel"; text = "Apache 2.0 license"; ObjectID = "ht7-pj-Dbb"; */
-"ht7-pj-Dbb.text" = "Ліцензія Apache 2.0";
-
-/* Class = "UILabel"; text = "CC BY 3.0"; ObjectID = "hVm-qH-TAI"; */
-"hVm-qH-TAI.text" = "CC BY 3.0";
-
-/* Class = "UILabel"; text = "Icons by KeePassXC team"; ObjectID = "hW0-fR-mIf"; */
-"hW0-fR-mIf.text" = "Іконки команди KeePassXC";
-
-/* Class = "UILabel"; text = "CC BY-ND 3.0"; ObjectID = "iKy-z5-Ox7"; */
-"iKy-z5-Ox7.text" = "CC BY-ND 3.0";
-
 /* Class = "UITableViewSection"; headerTitle = "Privacy Policy"; ObjectID = "JbR-nf-D9o"; Note = "Section: privacy policy"; */
 "JbR-nf-D9o.headerTitle" = "Політика конфіденційності";
-
-/* Class = "UILabel"; text = "Public domain"; ObjectID = "JgR-60-OMp"; */
-"JgR-60-OMp.text" = "Суспільне надбання";
-
-/* Class = "UILabel"; text = "LGPL license"; ObjectID = "JjJ-GT-eoX"; */
-"JjJ-GT-eoX.text" = "Ліцензія LGPL";
-
-/* Class = "UILabel"; text = "GPL license"; ObjectID = "JRy-jy-KXb"; */
-"JRy-jy-KXb.text" = "Ліцензія GPL";
-
-/* Class = "UILabel"; text = "Fancy deboss pattern by Daniel Beaton"; ObjectID = "Kdg-Hz-XOQ"; */
-"Kdg-Hz-XOQ.text" = "Fancy deboss pattern, автор Daniel Beaton";
-
-/* Class = "UILabel"; text = "Passphrase wordlists by EFF"; ObjectID = "kvO-9B-1Sy"; */
-"kvO-9B-1Sy.text" = "Списки слів для кодових фраз від EFF";
-
-/* Class = "UILabel"; text = "MIT license"; ObjectID = "KWA-h1-ddu"; */
-"KWA-h1-ddu.text" = "Ліцензія MIT";
-
-/* Class = "UILabel"; text = "MIT license"; ObjectID = "lht-LP-o0Y"; */
-"lht-LP-o0Y.text" = "Ліцензія MIT";
 
 /* Class = "UITableViewSection"; headerTitle = "Credits"; ObjectID = "muG-xI-muo"; Note = "Section: acknowledgements and thank-you notes"; */
 "muG-xI-muo.headerTitle" = "Подяки";
@@ -97,66 +13,12 @@
 /* Class = "UITableViewController"; title = "About"; ObjectID = "NLN-lQ-bh5"; */
 "NLN-lQ-bh5.title" = "Про програму";
 
-/* Class = "UILabel"; text = "CC0 license"; ObjectID = "o9e-qb-mMw"; */
-"o9e-qb-mMw.text" = "Ліцензія CC0";
-
-/* Class = "UILabel"; text = "TPInAppReceipt by Pavel Tikhonenko"; ObjectID = "OaP-Bl-5vR"; */
-"OaP-Bl-5vR.text" = "TPInAppReceipt, автор Павел Тихоненко";
-
-/* Class = "UILabel"; text = "Public domain"; ObjectID = "QV5-N8-NRt"; */
-"QV5-N8-NRt.text" = "Суспільне надбання";
-
-/* Class = "UILabel"; text = "CC BY 3.0"; ObjectID = "Qz4-PJ-Tra"; */
-"Qz4-PJ-Tra.text" = "CC BY 3.0";
-
-/* Class = "UILabel"; text = "Toast-Swift by Charles Scalesse"; ObjectID = "r7M-Gb-1Xd"; */
-"r7M-Gb-1Xd.text" = "Toast-Swift, автор Charles Scalesse";
-
-/* Class = "UILabel"; text = "MIT license"; ObjectID = "Rab-wf-OQe"; */
-"Rab-wf-OQe.text" = "Ліцензія MIT";
-
-/* Class = "UILabel"; text = "Argon2 by Daniel Dinu, Dmitry Khovratovich, Jean-Philippe Aumasson, and Samuel Neves"; ObjectID = "rDJ-4G-8Oz"; */
-"rDJ-4G-8Oz.text" = "Алгоритм Argon2 і його реалізація, автори Daniel Dinu, Дмитрий Ховратович, Jean-Philippe Aumasson і Samuel Neves";
-
-/* Class = "UILabel"; text = "MIT license"; ObjectID = "sCk-Se-Vvo"; */
-"sCk-Se-Vvo.text" = "Ліцензія MIT";
-
-/* Class = "UILabel"; text = "GzipSwift by 1024jp"; ObjectID = "sDW-ws-pQf"; */
-"sDW-ws-pQf.text" = "GzipSwift автор 1024jp";
-
-/* Class = "UILabel"; text = "AEXML by Marko Tadić"; ObjectID = "sI5-AG-Y6p"; */
-"sI5-AG-Y6p.text" = "AEXML, автор Marko Tadić";
-
-/* Class = "UILabel"; text = "Linecons by Andrian Valeanu"; ObjectID = "SOX-Re-yl9"; */
-"SOX-Re-yl9.text" = "Linecons, автор Andrian Valeanu";
-
-/* Class = "UILabel"; text = "zxcvbn-ios by Dropbox"; ObjectID = "SUh-L1-IvF"; */
-"SUh-L1-IvF.text" = "zxcvbn-ios від Dropbox";
-
 /* Class = "UILabel"; text = "Contact Support"; ObjectID = "TOl-DA-gYc"; Note = "Action: contact us"; */
 "TOl-DA-gYc.text" = "Напишіть нам";
-
-/* Class = "UILabel"; text = "Feather icons by Cole Bemis"; ObjectID = "tOr-N9-2UY"; */
-"tOr-N9-2UY.text" = "Іконки Feather, автор Cole Bemis";
 
 /* Class = "UILabel"; text = "Leave an App Store review."; ObjectID = "uiw-Qh-pNp"; Note = "Second part of the 'Do you like what you see? / Leave an App Store review.\""; */
 "uiw-Qh-pNp.text" = "Залиште відгук в App Store.";
 
-/* Class = "UILabel"; text = "Nuvola icons by David Vignoni"; ObjectID = "VuB-ng-Uii"; */
-"VuB-ng-Uii.text" = "Іконки Nuvola, автор David Vignoni";
-
 /* Class = "UILabel"; text = "KeePassium"; ObjectID = "Wuj-Uw-baK"; */
 "Wuj-Uw-baK.text" = "KeePassium";
-
-/* Class = "UILabel"; text = "System settings icon by Vicons Design"; ObjectID = "wYr-Ya-qAP"; */
-"wYr-Ya-qAP.text" = "Іконка системних налаштувань від Vicons Design";
-
-/* Class = "UILabel"; text = "Yubico Mobile iOS SDK by Yubico AB"; ObjectID = "Xee-Y1-Dcw"; */
-"Xee-Y1-Dcw.text" = "Yubico Mobile iOS SDK від Yubico AB";
-
-/* Class = "UILabel"; text = "SwiftDomainParser by Dashlane"; ObjectID = "y9Z-rr-JL8"; */
-"y9Z-rr-JL8.text" = "SwiftDomainParser від Dashlane";
-
-/* Class = "UILabel"; text = "MIT license"; ObjectID = "Z7s-Ch-895"; */
-"Z7s-Ch-895.text" = "Ліцензія MIT";
 

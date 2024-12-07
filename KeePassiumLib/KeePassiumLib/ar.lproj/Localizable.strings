@@ -937,6 +937,9 @@
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "معلومات الملف";
 
+/* Menu title: app settings */
+"[Menu/Preferences/title]" = "تفضيلات…";
+
 /* Name of an entry field */
 "[OTP/FieldName]" = "رمز مُرور المرة الواحدة";
 

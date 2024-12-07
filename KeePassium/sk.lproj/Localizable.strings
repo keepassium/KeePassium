@@ -76,12 +76,6 @@
 /* Title of entry viewer's tab with advanced/secondary properties */
 "[Entry/Tab/More/title]" = "Viac";
 
-/* Menu title. For example: `About KeePassium`. [appName: String] */
-"[Menu/About/title]" = "O aplikácii %@";
-
-/* Menu title: app settings */
-"[Menu/Preferences/title]" = "Nastavenia…";
-
 /* Action/button */
 "[Onboarding/AddExistingDatabase/action]" = "Pridať existujúcu databázu";
 

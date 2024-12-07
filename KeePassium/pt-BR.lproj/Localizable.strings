@@ -4,6 +4,105 @@
 /* Notification when user tries to set up too weak an app protection passcode. */
 "[AppLock/weakPasscodeWarning]" = "Este código de acesso é fácil de adivinhar. Tente inserir um código mais forte.";
 
+/* Item in the credits list */
+"[Credits/Item/aexml]" = "AEXML por Marko Tadić";
+
+/* Item in the credits list */
+"[Credits/Item/argon2]" = "Argon2 por Daniel Dinu, Dmitry Khovratovich, Jean-Philippe Aumasson e Samuel Neves";
+
+/* Item in the credits list */
+"[Credits/Item/base32]" = "Base32 for Swift por Norio Nomura";
+
+/* Item in the credits list */
+"[Credits/Item/chaCha20]" = "Implementações ChaCha20 & Salsa20 por D. J. Bernstein";
+
+/* Item in the credits list */
+"[Credits/Item/fancyDebossPattern]" = "Textura Fancy Deboss por Daniel Beaton";
+
+/* Item in the credits list */
+"[Credits/Item/featherIcons]" = "Ícones Feather por Cole Bemis";
+
+/* Item in the credits list */
+"[Credits/Item/gzipSwift]" = "GzipSwift por 1024jp";
+
+/* Item in the credits list */
+"[Credits/Item/icons8]" = "Ícones por Icons8";
+
+/* Item in the credits list */
+"[Credits/Item/ionIcons]" = "Ionicons por Ionic";
+
+/* Item in the credits list */
+"[Credits/Item/keePass]" = "KeePass por Dominik Reichl";
+
+/* Item in the credits list */
+"[Credits/Item/keePassXCIcons]" = "Ícones pela equipe KeePassXC";
+
+/* Item in the credits list */
+"[Credits/Item/lineIcons]" = "Linecons por Andrian Valeanu";
+
+/* Item in the credits list */
+"[Credits/Item/nuvolaIcons]" = "Ícones Nuvola por David Vignoni";
+
+/* Item in the credits list */
+"[Credits/Item/rijndael]" = "Implementação Rijndael por Szymon Stefanek";
+
+/* Item in the credits list */
+"[Credits/Item/swiftDomainParser]" = "SwiftDomainParser por Dashlane";
+
+/* Item in the credits list */
+"[Credits/Item/systemSettingsIcon]" = "Ícone System settings por Vicons Design";
+
+/* Item in the credits list */
+"[Credits/Item/toastSwift]" = "Toast-Swift por Charles Scalesse";
+
+/* Item in the credits list */
+"[Credits/Item/tpInappReceipt]" = "TPInAppReceipt por Pavel Tikhonenko";
+
+/* Item in the credits list */
+"[Credits/Item/translations]" = "Traduzido por Éctor Moreira e claitonjs";
+
+/* Item in the credits list */
+"[Credits/Item/twoFish]" = "Implementação Twofish por Niels Ferguson";
+
+/* Item in the credits list */
+"[Credits/Item/wordlists]" = "Dicionários para frases-senha por EFF";
+
+/* Item in the credits list */
+"[Credits/Item/yubico]" = "Yubico Mobile iOS SDK por Yubico AB";
+
+/* Item in the credits list */
+"[Credits/Item/zxcvbn]" = "zxcvbn-ios por Dropbox";
+
+/* License name for credits */
+"[Credits/License/apache2]" = "Licença Apache 2.0";
+
+/* License name for credits */
+"[Credits/License/cc0]" = "Licença CC0";
+
+/* License name for credits */
+"[Credits/License/ccBy3]" = "CC BY 3.0";
+
+/* License name for credits */
+"[Credits/License/ccByNd]" = "CC BY-ND 3.0";
+
+/* License name for credits */
+"[Credits/License/customPermissiveLicense]" = "Licença permissiva particular";
+
+/* License name for credits */
+"[Credits/License/gpl]" = "Licença GPL";
+
+/* License name for credits */
+"[Credits/License/lgpl]" = "Licença LGPL";
+
+/* License name for credits */
+"[Credits/License/mit]" = "Licença MIT";
+
+/* License name for credits */
+"[Credits/License/proprietary]" = "Licença proprietária";
+
+/* License name for credits */
+"[Credits/License/publicDomain]" = "Domínio público";
+
 /* Hint shown when both password and key file are empty. */
 "[Database/Create] Please enter a password or choose a key file." = "Por favor, insira uma senha ou escolha um arquivo de chave.";
 
@@ -43,6 +142,9 @@
 /* Notification when user sets up too weak a database password. */
 "[Database/Create/weakPasswordWarning]" = "Esta senha é fácil de adivinhar. Tente inserir uma senha mais forte.";
 
+/* Description of favicon downloader feature. */
+"[Database/DownloadFavicons/intro]" = "KeePassium irá contatar os sites associados a cada entrada.";
+
 /* Description of favicon downloader feature. 'Doing this' refers to downloading favicons. */
 "[Database/DownloadFavicons/warning]" = "Fazer isso em uma rede pública ou monitorada pode expor a lista de sites em que você possui conta.";
 
@@ -75,12 +177,6 @@
 
 /* Title of entry viewer's tab with advanced/secondary properties */
 "[Entry/Tab/More/title]" = "Mais";
-
-/* Menu title. For example: `About KeePassium`. [appName: String] */
-"[Menu/About/title]" = "Sobre %@";
-
-/* Menu title: app settings */
-"[Menu/Preferences/title]" = "Preferências…";
 
 /* Action/button */
 "[Onboarding/AddExistingDatabase/action]" = "Adicionar banco de dados existente";

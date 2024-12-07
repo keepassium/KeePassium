@@ -1261,6 +1261,9 @@
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "Informácie o súbore";
 
+/* Menu title: app settings */
+"[Menu/Preferences/title]" = "Nastavenia…";
+
 /* Suggestion/hint on how to fix an accompanying error. */
 "[Org/ContactYourAdmin]" = "Prosím kontaktujte svojho správcu IT.";
 

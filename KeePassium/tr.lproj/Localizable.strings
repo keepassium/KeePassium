@@ -52,9 +52,6 @@
 /* Title of entry viewer's tab with previous revisions of the entry */
 "[Entry/Tab/History/title]" = "Tarihçe";
 
-/* Menu title: app settings */
-"[Menu/Preferences/title]" = "Tercihler…";
-
 /* Action/button */
 "[Onboarding/AddExistingDatabase/action]" = "Varolan Bir Veritabanını Ekle";
 

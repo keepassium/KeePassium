@@ -7,20 +7,35 @@
 /* An identifier of the app that called AutoFill. The term is intentionally similar to https://ru.wikipedia.org/wiki/Caller_ID. [callerID: String] */
 "[AutoFill/Search/callerID]" = "Caller ID: %@";
 
+/* Status message, shows which app or webpage launched AutoFill. For example: `Context: google.com` */
+"[AutoFill/Search/context]" = "Контекст: %@";
+
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "Автозаповнення не може автоматично відкривати файли, котрі вже додані в основну програму.\n\nЧому? З точки зору системи, Автозаповнення - це окремий додаток, незалежне від основного. З метою безпеки, додаток не може просто так відкривати файли в інших додатках, якщо тільки користувач сам не зв'яже ці файли з даним додатком. Таким чином, система гарантує, що додатки можуть працювати тільки з кількома спеціально обраними файлами.\n\nВ результаті і Автозаповнення, і основний додаток повинні отримати \"окремі запрошення\" для роботи з кожним зовнішнім файлом. На щастя, ця процедура потрібна тільки один раз.";
 
-/* Must match Apple's translation, as found in iOS 15 Settings → Passwords → AutoFill Passwords. If unsure, leave untranslated. */
-"[AutoFill/Setup/UncheckKeychain/allowFillingFrom]" = "Дозволити заповнення з:";
+/* Must match Apple's translation, as found in iOS 18 Settings → General → AutoFill & Passwords. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/autofillFrom]" = "Заповнювати з:";
 
 /* Call to action: deselect the `Keychain` option. Keychain is a glossary term. */
 "[AutoFill/Setup/UncheckKeychain/callToAction]" = "Зняти позначку зі Зв’язки ключів";
 
-/* Instruction to deselect the `Keychain` option. Keychain is a glossary term. */
-"[AutoFill/Setup/UncheckKeychain/message]" = "Щоб зробити KeyPassium менеджером паролів за замовчуванням, зніміть позначку зі Зв’язки ключів.";
+/* Instruction to deselect another app in the settings [appName: String] */
+"[AutoFill/Setup/UncheckKeychain/message]" = "Щоб зробити KeyPassium менеджером паролів за замовчуванням, зніміть позначку \"%@\".";
 
 /* Must match Apple's translation, as found in iOS 17 Settings → Passwords → Password Options. If unsure, leave untranslated. */
 "[AutoFill/Setup/UncheckKeychain/usePasswordsAndPasskeysFrom]" = "Використовувати паролі та ключі допуску від:";
+
+/* Action: create a passkey and add it to existing entry */
+"[Database/Passkey/AddToExisting/action]" = "Додати ключ допуску до наявного запису";
+
+/* Confirmation message before replacing an existing passkey. */
+"[Database/Passkey/AddToExisting/confirm]" = "Цей запис уже має ключ допуску. Замінити його?";
+
+/* Title of an optional dialog for creating new passkeys */
+"[Database/Passkey/Create/title]" = "Створити ключ допуску?";
+
+/* Name of the Apple Passwords application, see https://support.apple.com/120758 */
+"[Generic/ApplePasswordsApp/title]" = "Паролі";
 
 /* Apple Keychain software; is a glossary term. */
 "[Generic/Keychain/title]" = "Зв'язка ключів";

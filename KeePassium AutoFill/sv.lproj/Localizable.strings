@@ -7,20 +7,35 @@
 /* An identifier of the app that called AutoFill. The term is intentionally similar to https://ru.wikipedia.org/wiki/Caller_ID. [callerID: String] */
 "[AutoFill/Search/callerID]" = "Anrops-ID: %@";
 
+/* Status message, shows which app or webpage launched AutoFill. For example: `Context: google.com` */
+"[AutoFill/Search/context]" = "Context: %@";
+
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "Autofyll kan inte komma åt filerna du redan lagt till i KeePassium-appen automatiskt.\n\nVarför? Bakom kulisserna hanterar systemet Auotfyll som en separat app, som är oberoende från huvudprocessen. Av säkerhetsskäl kan inte en app komma åt externa filer – om du inte uttryckligen ger appen tillstånd till detta. På så sätt garanterar systemet att appen endast kan komma åt filer du ger tillåtelse till.\n\nDetta leder till att både Autofyll och huvudappen för KeePassium behöver ges tillstånd för varje extern fil som ska användas. Som tur är behöver detta bara göras en gång.";
 
-/* Must match Apple's translation, as found in iOS 15 Settings → Passwords → AutoFill Passwords. If unsure, leave untranslated. */
-"[AutoFill/Setup/UncheckKeychain/allowFillingFrom]" = "Tillåt ifyllning från:";
+/* Must match Apple's translation, as found in iOS 18 Settings → General → AutoFill & Passwords. If unsure, leave untranslated. */
+"[AutoFill/Setup/UncheckKeychain/autofillFrom]" = "Autofyll från:";
 
 /* Call to action: deselect the `Keychain` option. Keychain is a glossary term. */
 "[AutoFill/Setup/UncheckKeychain/callToAction]" = "Avmarkera Nyckelring";
 
-/* Instruction to deselect the `Keychain` option. Keychain is a glossary term. */
-"[AutoFill/Setup/UncheckKeychain/message]" = "Avmarkera Nyckelring om du vill göra KeePassium till din förinställda lösenordshanterare.";
+/* Instruction to deselect another app in the settings [appName: String] */
+"[AutoFill/Setup/UncheckKeychain/message]" = "För att göra KeePassium till standardlösenordshanterare, avmarkera \"%@\".";
 
 /* Must match Apple's translation, as found in iOS 17 Settings → Passwords → Password Options. If unsure, leave untranslated. */
 "[AutoFill/Setup/UncheckKeychain/usePasswordsAndPasskeysFrom]" = "Använd lösenord och nycklar från:";
+
+/* Action: create a passkey and add it to existing entry */
+"[Database/Passkey/AddToExisting/action]" = "Lägg till nycklar i befintlig post";
+
+/* Confirmation message before replacing an existing passkey. */
+"[Database/Passkey/AddToExisting/confirm]" = "Posten har redan en nyckel. Ersätt den?";
+
+/* Title of an optional dialog for creating new passkeys */
+"[Database/Passkey/Create/title]" = "Skapa en nyckel?";
+
+/* Name of the Apple Passwords application, see https://support.apple.com/120758 */
+"[Generic/ApplePasswordsApp/title]" = "Lösenord";
 
 /* Apple Keychain software; is a glossary term. */
 "[Generic/Keychain/title]" = "Nyckelring";

@@ -4,6 +4,105 @@
 /* Notification when user tries to set up too weak an app protection passcode. */
 "[AppLock/weakPasscodeWarning]" = "Этот код доступа легко угадать. Попробуйте ввести более сложный код.";
 
+/* Item in the credits list */
+"[Credits/Item/aexml]" = "AEXML, автор Marko Tadić";
+
+/* Item in the credits list */
+"[Credits/Item/argon2]" = "Алгоритм Argon2 и его реализация, авторы Daniel Dinu, Дмитрий Ховратович, Jean-Philippe Aumasson и Samuel Neves";
+
+/* Item in the credits list */
+"[Credits/Item/base32]" = "Base32 for Swift, автор Norio Nomura";
+
+/* Item in the credits list */
+"[Credits/Item/chaCha20]" = "Реализация алгоритмов ChaCha20 и Salsa20, автор D. J. Bernstein";
+
+/* Item in the credits list */
+"[Credits/Item/fancyDebossPattern]" = "Fancy deboss pattern, автор Daniel Beaton";
+
+/* Item in the credits list */
+"[Credits/Item/featherIcons]" = "Значки Feather, автор Cole Bemis";
+
+/* Item in the credits list */
+"[Credits/Item/gzipSwift]" = "GzipSwift, автор 1024jp";
+
+/* Item in the credits list */
+"[Credits/Item/icons8]" = "Значки от Icons8";
+
+/* Item in the credits list */
+"[Credits/Item/ionIcons]" = "Ionicons от Ionic";
+
+/* Item in the credits list */
+"[Credits/Item/keePass]" = "KeePass, автор Dominik Reichl";
+
+/* Item in the credits list */
+"[Credits/Item/keePassXCIcons]" = "Значки команды KeePassXC";
+
+/* Item in the credits list */
+"[Credits/Item/lineIcons]" = "Linecons, автор Andrian Valeanu";
+
+/* Item in the credits list */
+"[Credits/Item/nuvolaIcons]" = "Значки Nuvola, автор David Vignoni";
+
+/* Item in the credits list */
+"[Credits/Item/rijndael]" = "Реализация алгоритма Rijndael, автор Szymon Stefanek";
+
+/* Item in the credits list */
+"[Credits/Item/swiftDomainParser]" = "SwiftDomainParser от Dashlane";
+
+/* Item in the credits list */
+"[Credits/Item/systemSettingsIcon]" = "Значок системных настроек от Vicons Design";
+
+/* Item in the credits list */
+"[Credits/Item/toastSwift]" = "Toast-Swift, автор Charles Scalesse";
+
+/* Item in the credits list */
+"[Credits/Item/tpInappReceipt]" = "TPInAppReceipt, автор Павел Тихоненко";
+
+/* Item in the credits list */
+"[Credits/Item/translations]" = "Русский перевод — Андрей Поплетеев и Дмитрий Ерохин";
+
+/* Item in the credits list */
+"[Credits/Item/twoFish]" = "Реализация алгоритма Twofish, автор Niels Ferguson";
+
+/* Item in the credits list */
+"[Credits/Item/wordlists]" = "Списки парольных слов от EFF";
+
+/* Item in the credits list */
+"[Credits/Item/yubico]" = "Yubico Mobile iOS SDK от Yubico AB";
+
+/* Item in the credits list */
+"[Credits/Item/zxcvbn]" = "zxcvbn-ios от Dropbox";
+
+/* License name for credits */
+"[Credits/License/apache2]" = "Лицензия Apache 2.0";
+
+/* License name for credits */
+"[Credits/License/cc0]" = "Лицензия CC0";
+
+/* License name for credits */
+"[Credits/License/ccBy3]" = "CC BY 3.0";
+
+/* License name for credits */
+"[Credits/License/ccByNd]" = "CC BY-ND 3.0";
+
+/* License name for credits */
+"[Credits/License/customPermissiveLicense]" = "Нестандартная разрешительная лицензия";
+
+/* License name for credits */
+"[Credits/License/gpl]" = "Лицензия GPL";
+
+/* License name for credits */
+"[Credits/License/lgpl]" = "Лицензия LGPL";
+
+/* License name for credits */
+"[Credits/License/mit]" = "Лицензия MIT";
+
+/* License name for credits */
+"[Credits/License/proprietary]" = "Коммерческая лицензия";
+
+/* License name for credits */
+"[Credits/License/publicDomain]" = "Общественное достояние";
+
 /* Hint shown when both password and key file are empty. */
 "[Database/Create] Please enter a password or choose a key file." = "Введите пароль или выберите ключевой файл.";
 
@@ -43,6 +142,9 @@
 /* Notification when user sets up too weak a database password. */
 "[Database/Create/weakPasswordWarning]" = "Этот пароль легко угадать. Попробуйте ввести более сложный пароль.";
 
+/* Description of favicon downloader feature. */
+"[Database/DownloadFavicons/intro]" = "KeePassium свяжется с веб-сайтами, указанными в каждой записи.";
+
 /* Description of favicon downloader feature. 'Doing this' refers to downloading favicons. */
 "[Database/DownloadFavicons/warning]" = "Используя эту функцию в публичной или небезопасной сети, вы можете раскрыть список сайтов, на которых у вас есть учётная запись.";
 
@@ -75,12 +177,6 @@
 
 /* Title of entry viewer's tab with advanced/secondary properties */
 "[Entry/Tab/More/title]" = "Ещё";
-
-/* Menu title. For example: `About KeePassium`. [appName: String] */
-"[Menu/About/title]" = "О приложении %@";
-
-/* Menu title: app settings */
-"[Menu/Preferences/title]" = "Настройки…";
 
 /* Action/button */
 "[Onboarding/AddExistingDatabase/action]" = "Добавить свою базу";

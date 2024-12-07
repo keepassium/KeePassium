@@ -928,6 +928,9 @@
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "檔案資訊";
 
+/* Menu title: app settings */
+"[Menu/Preferences/title]" = "偏好設定…";
+
 /* Suggestion/hint on how to fix an accompanying error. */
 "[Org/ContactYourAdmin]" = "請連絡您的 IT 系統管理員。";
 

@@ -895,6 +895,9 @@
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "파일 정보";
 
+/* Menu title: app settings */
+"[Menu/Preferences/title]" = "설정…";
+
 /* Suggestion/hint on how to fix an accompanying error. */
 "[Org/ContactYourAdmin]" = "IT 관리자에게 문의하세요.";
 

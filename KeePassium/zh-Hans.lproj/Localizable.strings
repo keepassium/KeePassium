@@ -4,6 +4,105 @@
 /* Notification when user tries to set up too weak an app protection passcode. */
 "[AppLock/weakPasscodeWarning]" = "此解锁密码很容易被猜到。请尝试输入一个更强的解锁密码。";
 
+/* Item in the credits list */
+"[Credits/Item/aexml]" = "AEXML 来自 Marko Tadić";
+
+/* Item in the credits list */
+"[Credits/Item/argon2]" = "Argon2 来自 Daniel Dinu, Dmitry Khovratovich, Jean-Philippe Aumasson, 还有 Samuel Neves";
+
+/* Item in the credits list */
+"[Credits/Item/base32]" = "Swift 的Base32实现 来自 Norio Nomura";
+
+/* Item in the credits list */
+"[Credits/Item/chaCha20]" = "ChaCha20 & Salsa20 由 D. J. Bernstein 实现";
+
+/* Item in the credits list */
+"[Credits/Item/fancyDebossPattern]" = "Fancy deboss pattern 来自 Daniel Beaton";
+
+/* Item in the credits list */
+"[Credits/Item/featherIcons]" = "Feather icons 来自 Cole Bemis";
+
+/* Item in the credits list */
+"[Credits/Item/gzipSwift]" = "GzipSwift 来自 1024jp";
+
+/* Item in the credits list */
+"[Credits/Item/icons8]" = "图标 来自 Icons8";
+
+/* Item in the credits list */
+"[Credits/Item/ionIcons]" = "Ionicons 来自 Ionic";
+
+/* Item in the credits list */
+"[Credits/Item/keePass]" = "KeePass 来自 Dominik Reichl";
+
+/* Item in the credits list */
+"[Credits/Item/keePassXCIcons]" = "Icons 来自 KeePassXC team";
+
+/* Item in the credits list */
+"[Credits/Item/lineIcons]" = "Linecons 来自 Andrian Valeanu";
+
+/* Item in the credits list */
+"[Credits/Item/nuvolaIcons]" = "Nuvola icons 来自 David Vignoni";
+
+/* Item in the credits list */
+"[Credits/Item/rijndael]" = "Rijndael 由 Szymon Stefanek 实现";
+
+/* Item in the credits list */
+"[Credits/Item/swiftDomainParser]" = "SwiftDomainParser 来自 Dashlane";
+
+/* Item in the credits list */
+"[Credits/Item/systemSettingsIcon]" = "系统设置图标 来自 Vicons Design";
+
+/* Item in the credits list */
+"[Credits/Item/toastSwift]" = "由Charles Scalesse提供Toast-Swift";
+
+/* Item in the credits list */
+"[Credits/Item/tpInappReceipt]" = "TPInApprecipt 来自 Pavel Tikhonenko";
+
+/* Item in the credits list */
+"[Credits/Item/translations]" = "简体中文翻译 由 社群 与 3374575857 贡献";
+
+/* Item in the credits list */
+"[Credits/Item/twoFish]" = "Twofish 由 Niels Ferguson 实现";
+
+/* Item in the credits list */
+"[Credits/Item/wordlists]" = "EFF 密码词列表";
+
+/* Item in the credits list */
+"[Credits/Item/yubico]" = "Yubico Mobile iOS SDK 来自 Yubico AB";
+
+/* Item in the credits list */
+"[Credits/Item/zxcvbn]" = "zxcvbn-ios 来自 Dropbox";
+
+/* License name for credits */
+"[Credits/License/apache2]" = "Apache 2.0 许可证";
+
+/* License name for credits */
+"[Credits/License/cc0]" = "CC0 授权";
+
+/* License name for credits */
+"[Credits/License/ccBy3]" = "CC BY 3.0";
+
+/* License name for credits */
+"[Credits/License/ccByNd]" = "CC BY-ND 3.0";
+
+/* License name for credits */
+"[Credits/License/customPermissiveLicense]" = "自定义许可证";
+
+/* License name for credits */
+"[Credits/License/gpl]" = "GPL 授权许可";
+
+/* License name for credits */
+"[Credits/License/lgpl]" = "LGPL 许可证";
+
+/* License name for credits */
+"[Credits/License/mit]" = "MIT 授权许可";
+
+/* License name for credits */
+"[Credits/License/proprietary]" = "专有许可证";
+
+/* License name for credits */
+"[Credits/License/publicDomain]" = "公共领域";
+
 /* Hint shown when both password and key file are empty. */
 "[Database/Create] Please enter a password or choose a key file." = "请输入一个密码或者选择一个密钥文件。";
 
@@ -75,12 +174,6 @@
 
 /* Title of entry viewer's tab with advanced/secondary properties */
 "[Entry/Tab/More/title]" = "更多";
-
-/* Menu title. For example: `About KeePassium`. [appName: String] */
-"[Menu/About/title]" = "关于 %@";
-
-/* Menu title: app settings */
-"[Menu/Preferences/title]" = "偏好设置…";
 
 /* Action/button */
 "[Onboarding/AddExistingDatabase/action]" = "添加现有数据库";

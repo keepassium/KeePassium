@@ -10,6 +10,9 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "有効にする。";
 
+/* Accessibility notification for entries with a passkey */
+"[Accessibility/containsPasskey]" = "パスキーが含まれています。";
+
 /* Action which resets the app as if it was just installed. */
 "[App/ResetEverything/action]" = "リセット";
 
@@ -154,6 +157,9 @@
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "カスタムアイコンを追加";
 
+/* Action: delete unused icons */
+"[Database/CustomIcon/deleteUnused]" = "未使用のアイコンを削除";
+
 /* Action: download icon of a website */
 "[Database/CustomIcon/DownloadFavicon/action]" = "FavIcon をダウンロード";
 
@@ -168,6 +174,9 @@
 
 /* Status message: a website favicon is being downloaded */
 "[Database/CustomIcon/DownloadOneFavicon/status]" = "FavIconをダウンロード中";
+
+/* Notification when some custom icons are not used by any group or entry [iconCount: Int] */
+"[Database/CustomIcon/Unused/count]" = "未使用のアイコンが見つかりました：%d";
 
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "データベースを削除しますか？\n バックアップがあることを確認してください。";
@@ -202,6 +211,9 @@
 /* Info message for entries that contain information for opening a different database. */
 "[Database/Entry/LinkedDatabase/message]" = "このエントリは別のデータベースとリンクしています。";
 
+/* Notification message before database export. */
+"[Database/Export/PlainText/warning]" = "エクスポートされたファイルには、保護されていないプレーンテキストのデータが含まれます。";
+
 /* Notification message about external changes to the loaded file. */
 "[Database/ExternalChange/notification]" = "データベースファイルが変更されました。再読み込みしますか？";
 
@@ -216,6 +228,9 @@
 
 /* Info message when changing database file format. */
 "[Database/FormatVersion/Conversion/allDataPreserved]" = "データはすべて保存されます。";
+
+/* Error message when creating a new passkey. */
+"[Database/FormatVersion/PasskeysNotSupported]" = "現在のデータベース形式ではパスキーはサポートされていません。";
 
 /* Info message when the app needs to change database file format. [oldFormat, newFormat: String] */
 "[Database/FormatVersion/Upgrade/text]" = "データベースファイル形式をアップグレードする必要があります ( %1$@ から %2$@へ)。 このデータベースを使用する他のアプリを更新する必要があるかもしれません。";
@@ -309,6 +324,9 @@
 
 /* Title of a list with database-related actions (e.g. lock database, change master key, etc) */
 "[Database/Operations/title]" = "データベースの操作";
+
+/* Error message about creation of a new passkey. */
+"[Database/Passkey/Error/UnsupportedAlgorithm/description]" = "未サポートのパスキーアルゴリズム";
 
 /* Status message: preparing database print preview. */
 "[Database/Print/preparingPreview]" = "プレビューを準備中...";
@@ -438,6 +456,27 @@
 
 /* Message shown when user enters an invalid database password */
 "[Database/Unlock/wrongPassword/question]" = "パスワードをお忘れですか？";
+
+/* Notification message */
+"[Database/UnsavedChanges/autoFillCrashed]" = "技術的な制限により、自動入力は一部の変更を保存できませんでした。";
+
+/* Notification message */
+"[Database/UnsavedChanges/cannotModifyYet]" = "残念ながら、自動入力はまだ大型データベースを修正することができません。この問題の解決に向けて取り組んでいます。";
+
+/* Call to action shown in AutoFill module. */
+"[Database/UnsavedChanges/OpenAppCallToAction]" = "変更を保存するには、メインのKeePassiumアプリを開いてください。";
+
+/* Action/button to save accummulated modifications */
+"[Database/UnsavedChanges/saveAction]" = "変更を保存";
+
+/* Notification message */
+"[Database/UnsavedChanges/someDatabases]" = "1つ以上のデータベースに、自動入力で行われた未保存の変更があります。";
+
+/* Notification message */
+"[Database/UnsavedChanges/thisDatabase]" = "このデータベースには、自動入力で行われた未保存の変更があります。";
+
+/* Title: there are temporary changes to be saved */
+"[Database/UnsavedChanges/title]" = "保存されていない変更";
 
 /* Error message */
 "[Database1/FormatError] Database file is corrupted." = "データベースが破損しています。";
@@ -645,6 +684,9 @@
 
 /* Name of an entry field */
 "[Entry/Field/name] Notes" = "メモ";
+
+/* Title of an entry field */
+"[Entry/Field/name] Passkey" = "パスキー";
 
 /* Name of an entry field */
 "[Entry/Field/name] Password" = "パスワード";
@@ -1018,6 +1060,9 @@
 /* Action/button to remove a file from the app (the file remains, but the app forgets about it) */
 "[Generic/File] Remove" = "削除";
 
+/* Title of a generic file export screen. */
+"[Generic/File/Export/title]" = "ファイルのエクスポート";
+
 /* Action/button to save data to a different file */
 "[Generic/File/Save as]" = "別名で保存...";
 
@@ -1110,6 +1155,9 @@
 
 /* Title of a list: entries with one-time passwords (OTP) */
 "[Group/Smart/Preset/otpEntries]" = "OTPを使用したエントリー";
+
+/* Title of a list: entries that contain passkeys */
+"[Group/Smart/Preset/passkeyEntries]" = "パスキーを含むエントリー";
 
 /* Title for the Smart Group search conditions in group editor */
 "[Group/Smart/Query/title]" = "スマートグループフィルター";
@@ -1260,6 +1308,15 @@
 
 /* Menu item: show information about file (name, size, dates) */
 "[Menu/FileInfo/title]" = "ファイルの情報";
+
+/* Menu title: app settings */
+"[Menu/Preferences/title]" = "環境設定...";
+
+/* Title of a menu: sort order of files in a list */
+"[Menu/Sort] Sort Files By" = "ファイルの並べ替え";
+
+/* Title of a menu: sort order of groups and entries in a list */
+"[Menu/Sort] Sort Items By" = "項目の並べ替え";
 
 /* Suggestion/hint on how to fix an accompanying error. */
 "[Org/ContactYourAdmin]" = "IT 管理者にお問い合わせください。";

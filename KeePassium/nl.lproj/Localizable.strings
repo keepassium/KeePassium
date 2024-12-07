@@ -4,6 +4,105 @@
 /* Notification when user tries to set up too weak an app protection passcode. */
 "[AppLock/weakPasscodeWarning]" = "Deze toegangscode is makkelijk te raden. Probeer een sterkere in te voeren.";
 
+/* Item in the credits list */
+"[Credits/Item/aexml]" = "AEXML door Marko Tadić";
+
+/* Item in the credits list */
+"[Credits/Item/argon2]" = "Argon2 door Daniel Dinu, Dmitry Khovratovich, Jean-Philippe Aumasson en Samuel Neves";
+
+/* Item in the credits list */
+"[Credits/Item/base32]" = "Base32 voor Swift door Norio Nomura";
+
+/* Item in the credits list */
+"[Credits/Item/chaCha20]" = "ChaCha20- en Salsa20-implementatie door D.J. Bernstein";
+
+/* Item in the credits list */
+"[Credits/Item/fancyDebossPattern]" = "Gelikt deboss-patroon door Daniel Beaton";
+
+/* Item in the credits list */
+"[Credits/Item/featherIcons]" = "Veerpictogrammen door Cole Bemis";
+
+/* Item in the credits list */
+"[Credits/Item/gzipSwift]" = "GzipSwift door 1024jp";
+
+/* Item in the credits list */
+"[Credits/Item/icons8]" = "Pictogrammen door Icons8";
+
+/* Item in the credits list */
+"[Credits/Item/ionIcons]" = "Ionicons door Ionic";
+
+/* Item in the credits list */
+"[Credits/Item/keePass]" = "KeePass door Dominik Reichl";
+
+/* Item in the credits list */
+"[Credits/Item/keePassXCIcons]" = "Pictogrammen door KeePassXC-team";
+
+/* Item in the credits list */
+"[Credits/Item/lineIcons]" = "Linecons door Andrian Valeanu";
+
+/* Item in the credits list */
+"[Credits/Item/nuvolaIcons]" = "Nuvola-pictogrammen door David Vignoni";
+
+/* Item in the credits list */
+"[Credits/Item/rijndael]" = "Rijndael-implementatie door Szymon Stefanek";
+
+/* Item in the credits list */
+"[Credits/Item/swiftDomainParser]" = "SwiftDomainParser door Dashlane";
+
+/* Item in the credits list */
+"[Credits/Item/systemSettingsIcon]" = "Systeeminstellingenpictogram door Vicons Design";
+
+/* Item in the credits list */
+"[Credits/Item/toastSwift]" = "Toast-Swift door Charles Schalen";
+
+/* Item in the credits list */
+"[Credits/Item/tpInappReceipt]" = "TPInAppReceipt door Pavel Tikhonenko";
+
+/* Item in the credits list */
+"[Credits/Item/translations]" = "Nederlandse vertaling door Heimen Stoffels (@Vistaus)";
+
+/* Item in the credits list */
+"[Credits/Item/twoFish]" = "Twovis-implementatie door Niels Ferguson";
+
+/* Item in the credits list */
+"[Credits/Item/wordlists]" = "Wachtzin-woordenlijsten door EFF";
+
+/* Item in the credits list */
+"[Credits/Item/yubico]" = "Yubico Mobile iOS SDK van Yubico AB";
+
+/* Item in the credits list */
+"[Credits/Item/zxcvbn]" = "zxcvbn-ios door Dropbox";
+
+/* License name for credits */
+"[Credits/License/apache2]" = "Apache 2.0-licentie";
+
+/* License name for credits */
+"[Credits/License/cc0]" = "CC0-licentie";
+
+/* License name for credits */
+"[Credits/License/ccBy3]" = "CC BY 3.0";
+
+/* License name for credits */
+"[Credits/License/ccByNd]" = "CC BY-ND 3.0";
+
+/* License name for credits */
+"[Credits/License/customPermissiveLicense]" = "Aangepaste permissieve licentie";
+
+/* License name for credits */
+"[Credits/License/gpl]" = "GPL-licentie";
+
+/* License name for credits */
+"[Credits/License/lgpl]" = "LGPL-licentie";
+
+/* License name for credits */
+"[Credits/License/mit]" = "MIT-licentie";
+
+/* License name for credits */
+"[Credits/License/proprietary]" = "Propriëtaire licentie";
+
+/* License name for credits */
+"[Credits/License/publicDomain]" = "Publiek domein";
+
 /* Hint shown when both password and key file are empty. */
 "[Database/Create] Please enter a password or choose a key file." = "Voer een wachtwoord in of kies een sleutelbestand.";
 
@@ -43,6 +142,9 @@
 /* Notification when user sets up too weak a database password. */
 "[Database/Create/weakPasswordWarning]" = "Dit wachtwoord is makkelijk te raden. Probeer een sterker wachtwoord in te voeren.";
 
+/* Description of favicon downloader feature. */
+"[Database/DownloadFavicons/intro]" = "KeePassium maakt contact met websites die gekoppeld zijn aan elk item.";
+
 /* Description of favicon downloader feature. 'Doing this' refers to downloading favicons. */
 "[Database/DownloadFavicons/warning]" = "Door dit op een openbaar of gecontroleerd netwerk te doen, kan de lijst van websites waar u een account hebt worden onthuld.";
 
@@ -75,12 +177,6 @@
 
 /* Title of entry viewer's tab with advanced/secondary properties */
 "[Entry/Tab/More/title]" = "Meer";
-
-/* Menu title. For example: `About KeePassium`. [appName: String] */
-"[Menu/About/title]" = "Over %@";
-
-/* Menu title: app settings */
-"[Menu/Preferences/title]" = "Voorkeuren…";
 
 /* Action/button */
 "[Onboarding/AddExistingDatabase/action]" = "Voeg bestaande databank toe";
