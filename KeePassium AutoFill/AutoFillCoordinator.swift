@@ -410,11 +410,21 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
         quickTypeRequiredRecord = record
         self.autoFillMode = mode
 
+        var dbStatus = DatabaseFile.Status([.readOnly, .useStreams])
         guard let dbRef = findDatabase(for: record) else {
             log.warning("Failed to find the record, switching to UI")
             QuickTypeAutoFillStorage.removeAll()
             cancelRequest(.userInteractionRequired)
             return
+        }
+
+        var fallbackDBRef: URLReference?
+        if !(dbRef.location.isInternal || dbRef.fileProvider == .localStorage) {
+            fallbackDBRef = DatabaseManager.getFallbackFile(for: dbRef)
+        }
+        if fallbackDBRef != nil {
+            log.info("Found fallback file, using it")
+            dbStatus.insert(.localFallback)
         }
 
         let databaseSettingsManager = DatabaseSettingsManager.shared
@@ -431,9 +441,9 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
 
         assert(self.quickTypeDatabaseLoader == nil)
         quickTypeDatabaseLoader = DatabaseLoader(
-            dbRef: dbRef,
+            dbRef: fallbackDBRef ?? dbRef,
             compositeKey: masterKey,
-            status: [.readOnly, .useStreams],
+            status: dbStatus,
             timeout: Timeout(duration: timeoutDuration),
             delegate: self
         )

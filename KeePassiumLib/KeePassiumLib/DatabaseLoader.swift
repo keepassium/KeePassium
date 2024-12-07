@@ -496,7 +496,9 @@ public class DatabaseLoader: ProgressObserver {
         maybeUpdateLatestBackup(dbFile)
 
         let dbSettingsManager = DatabaseSettingsManager.shared
-        if dbSettingsManager.isQuickTypeEnabled(dbFile) {
+        if dbSettingsManager.isQuickTypeEnabled(dbFile),
+           !dbFile.status.contains(.localFallback)
+        {
             let quickTypeDatabaseCount = dbSettingsManager.getQuickTypeDatabaseCount()
             let isReplaceExisting = quickTypeDatabaseCount == 1
             Diag.debug("Updating QuickType AutoFill records [replacing: \(isReplaceExisting)]")
