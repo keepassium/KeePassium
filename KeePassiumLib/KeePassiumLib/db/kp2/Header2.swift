@@ -196,6 +196,10 @@ final class Header2: Eraseable {
     var protectedStreamKey: SecureBytes?
     var innerStreamAlgorithm: ProtectedStreamAlgorithm
 
+    var peakKDFMemoryFootprint: Int {
+        kdf.getPeakMemoryFootprint(kdfParams)
+    }
+
     class func isSignatureMatches(data: ByteArray) -> Bool {
         let ins = data.asInputStream()
         ins.open()

@@ -59,6 +59,9 @@ public class Database1: Database {
         static let packing: Int64 = 10
     }
 
+    public override var peakKDFMemoryFootprint: Int {
+        return AESKDF.memoryFootprint
+    }
     override public var keyHelper: KeyHelper { return _keyHelper }
     private let _keyHelper = KeyHelper1()
 

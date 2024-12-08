@@ -26,10 +26,6 @@ class CredentialProviderViewController: ASCredentialProviderViewController {
         autoFillCoordinator?.cleanup()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        autoFillCoordinator?.handleMemoryWarning()
-    }
 }
 
 extension CredentialProviderViewController {

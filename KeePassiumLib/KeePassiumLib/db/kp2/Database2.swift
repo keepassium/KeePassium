@@ -142,6 +142,8 @@ public class Database2: Database {
     override public var keyHelper: KeyHelper { return _keyHelper }
     private let _keyHelper = KeyHelper2()
 
+    public override var peakKDFMemoryFootprint: Int { header.peakKDFMemoryFootprint }
+
     override public init() {
         super.init()
         header = Header2(database: self)

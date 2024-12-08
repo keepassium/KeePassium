@@ -17,6 +17,8 @@ protocol KeyDerivationFunction {
 
     func parseParams(_ kdfParams: KDFParams, to settings: inout EncryptionSettings)
 
+    func getPeakMemoryFootprint(_ kdfParams: KDFParams) -> Int
+
     func apply(_ settings: EncryptionSettings, to kdfParams: inout KDFParams)
 
     init()

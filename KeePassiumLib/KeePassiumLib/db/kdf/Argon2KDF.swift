@@ -67,6 +67,14 @@ class AbstractArgon2KDF {
         settings.parallelism = kdfParams.getValue(key: AbstractArgon2KDF.parallelismParam)?.asUInt32()
     }
 
+    func getPeakMemoryFootprint(_ kdfParams: KDFParams) -> Int {
+        guard let value = kdfParams.getValue(key: Self.memoryParam)?.asUInt64() else {
+            assertionFailure("Memory parameter missing or has a wrong type")
+            return 0
+        }
+        return Int(value)
+    }
+
     func apply(_ settings: EncryptionSettings, to kdfParams: inout KDFParams) {
         assert(settings.iterations != nil, "Iterations parameter must be defined")
         let iterations = settings.iterations ?? Self.defaultIterations

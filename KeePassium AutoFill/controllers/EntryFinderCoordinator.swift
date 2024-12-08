@@ -19,7 +19,10 @@ protocol EntryFinderCoordinatorDelegate: AnyObject {
     func didPressReinstateDatabase(_ fileRef: URLReference, in coordinator: EntryFinderCoordinator)
 
     @available(iOS 18, *)
-    func didPressCreatePasskey(with params: PasskeyRegistrationParams, in coordinator: EntryFinderCoordinator)
+    func didPressCreatePasskey(
+        with params: PasskeyRegistrationParams,
+        presenter: UIViewController,
+        in coordinator: EntryFinderCoordinator)
 }
 
 final class EntryFinderCoordinator: Coordinator {
@@ -286,8 +289,9 @@ extension EntryFinderCoordinator: EntryFinderDelegate {
 @available(iOS 18, *)
 extension EntryFinderCoordinator: PasskeyCreatorDelegate {
     func didPressCreatePasskey(with params: PasskeyRegistrationParams, in viewController: PasskeyCreatorVC) {
-        viewController.dismiss(animated: true)
-        delegate?.didPressCreatePasskey(with: params, in: self)
+        viewController.dismiss(animated: true) { [self] in
+            delegate?.didPressCreatePasskey(with: params, presenter: entryFinderVC, in: self)
+        }
     }
 }
 

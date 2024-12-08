@@ -16,6 +16,8 @@ class AESKDF: KeyDerivationFunction {
     public static let transformSeedParam = "S"
     public static let transformRoundsParam = "R"
 
+    public static let memoryFootprint: Int = 32
+
     public var uuid: UUID { return AESKDF._uuid }
     public var name: String { return "AES KDF" }
 
@@ -45,6 +47,10 @@ class AESKDF: KeyDerivationFunction {
         settings.iterations = kdfParams.getValue(key: AESKDF.transformRoundsParam)?.asUInt64()
         settings.memory = nil
         settings.parallelism = nil
+    }
+
+    func getPeakMemoryFootprint(_ kdfParams: KDFParams) -> Int {
+        return Self.memoryFootprint
     }
 
     func apply(_ settings: EncryptionSettings, to kdfParams: inout KDFParams) {

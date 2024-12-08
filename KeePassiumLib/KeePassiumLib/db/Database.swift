@@ -22,6 +22,10 @@ open class Database: Eraseable {
         fatalError("Pure virtual method")
     }
 
+    public var peakKDFMemoryFootprint: Int {
+        fatalError("Pure virtual method")
+    }
+
     internal init() {
     }
 
