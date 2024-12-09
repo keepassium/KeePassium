@@ -42,9 +42,6 @@ class AutoFillCoordinator: NSObject, Coordinator {
     private var passkeyClientDataHash: Data?
     private var passkeyRegistrationParams: PasskeyRegistrationParams?
 
-    private var memoryAvailableBeforeDatabaseLoad: Int?
-    private var databaseMemoryFootprint: Int?
-
     private var quickTypeDatabaseLoader: DatabaseLoader?
     private var quickTypeRequiredRecord: QuickTypeAutoFillRecord?
 
@@ -62,7 +59,8 @@ class AutoFillCoordinator: NSObject, Coordinator {
     private var policyDelegate: IntunePolicyDelegateImpl?
     #endif
 
-    private let memoryWarningThreshold = 24 * 1_048_576
+    private var memoryFootprintBeforeDatabaseMiB: Float?
+    private var databaseMemoryFootprintMiB: Float?
     private let memoryPressureSource = DispatchSource.makeMemoryPressureSource(eventMask: [.warning, .critical])
 
     init(
@@ -115,13 +113,13 @@ class AutoFillCoordinator: NSObject, Coordinator {
             return
         }
 
-        let mibRemaining = Double(os_proc_available_memory()) / 1_048_576
+        let mibFootprint = MemoryMonitor.getMemoryFootprintMiB()
         let event = memoryPressureSource.data
         switch event {
         case .warning:
-            Diag.error(String(format: "Received a memory warning, %.1f MiB remaining", mibRemaining))
+            Diag.error(String(format: "Received a memory warning, using %.1f MiB", mibFootprint))
         case.critical:
-            Diag.error(String(format: "Received a CRITICAL memory warning, %.1f MiB remaining", mibRemaining))
+            Diag.error(String(format: "Received a CRITICAL memory warning, using %.1f MiB", mibFootprint))
             log.warning("Received a CRITICAL memory warning, will cancel loading")
             databaseUnlockerCoordinator?.cancelLoading(reason: .lowMemoryWarning)
         default:
@@ -329,7 +327,7 @@ extension AutoFillCoordinator {
     }
 
     func maybeWarnAboutExcessiveMemory(presenter: UIViewController, _ completion: @escaping () -> Void) {
-        guard let databaseMemoryFootprint,
+        guard let databaseMemoryFootprintMiB,
               let kdfPeak = entryFinderCoordinator?.databaseFile.database.peakKDFMemoryFootprint
         else {
             assertionFailure()
@@ -337,15 +335,19 @@ extension AutoFillCoordinator {
             return
         }
 
-        let memoryRequiredForSaving = kdfPeak + 2 * databaseMemoryFootprint + memoryWarningThreshold
-        let availableMemory = os_proc_available_memory()
+        let kdfPeakMiB = MemoryMonitor.bytesToMiB(kdfPeak)
+        let memoryRequiredForSavingMiB = kdfPeakMiB
+                + 2 * databaseMemoryFootprintMiB
+                + MemoryMonitor.autoFillMemoryWarningThresholdMiB
+        let memoryAvailableMiB = MemoryMonitor.estimateAutoFillMemoryRemainingMiB()
         Diag.debug(String(
             format: "%.1f MiB necessary, %.1f MiB available",
-            Double(memoryRequiredForSaving) / 1_048_576,
-            Double(availableMemory) / 1_048_576
+            memoryRequiredForSavingMiB,
+            memoryAvailableMiB
         ))
+        log.debug("\(memoryRequiredForSavingMiB, format: .fixed(precision: 1), privacy: .public) MiB necessary, \(memoryAvailableMiB, format: .fixed(precision: 1), privacy: .public) MiB available")
 
-        if availableMemory > memoryRequiredForSaving {
+        if memoryAvailableMiB > memoryRequiredForSavingMiB {
             completion()
         } else {
             let alert = UIAlertController.make(
@@ -984,12 +986,9 @@ extension AutoFillCoordinator: DatabaseUnlockerCoordinatorDelegate {
     }
 
     func willUnlockDatabase(_ fileRef: URLReference, in coordinator: DatabaseUnlockerCoordinator) {
-        assert(memoryAvailableBeforeDatabaseLoad == nil)
-        memoryAvailableBeforeDatabaseLoad = os_proc_available_memory()
-        Diag.debug(String(
-            format: "Memory available before loading: %.1f MiB",
-            Double(os_proc_available_memory()) / 1_048_576
-        ))
+        assert(memoryFootprintBeforeDatabaseMiB == nil)
+        memoryFootprintBeforeDatabaseMiB = MemoryMonitor.getMemoryFootprintMiB()
+        Diag.debug(String(format: "Memory use before loading: %.1f MiB", memoryFootprintBeforeDatabaseMiB!))
 
         Settings.current.isAutoFillFinishedOK = false
     }
@@ -1001,7 +1000,7 @@ extension AutoFillCoordinator: DatabaseUnlockerCoordinatorDelegate {
         in coordinator: DatabaseUnlockerCoordinator
     ) {
         Settings.current.isAutoFillFinishedOK = true
-        memoryAvailableBeforeDatabaseLoad = nil
+        memoryFootprintBeforeDatabaseMiB = nil
     }
 
     func shouldChooseFallbackStrategy(
@@ -1017,22 +1016,20 @@ extension AutoFillCoordinator: DatabaseUnlockerCoordinatorDelegate {
         warnings: DatabaseLoadingWarnings,
         in coordinator: DatabaseUnlockerCoordinator
     ) {
-        if let memoryAvailableBeforeDatabaseLoad {
-            Diag.debug(String(
-                format: "Memory available after loading: %.1f MiB",
-                Double(os_proc_available_memory()) / 1_048_576
-            ))
-            databaseMemoryFootprint = max(memoryAvailableBeforeDatabaseLoad - os_proc_available_memory(), 0)
-            let kdfMemoryFootprint = databaseFile.database.peakKDFMemoryFootprint
+        if let memoryFootprintBeforeDatabaseMiB {
+            let currentFootprintMiB = MemoryMonitor.getMemoryFootprintMiB()
+            Diag.debug(String(format: "Memory use after loading: %.1f MiB", currentFootprintMiB))
+            databaseMemoryFootprintMiB = max(currentFootprintMiB - memoryFootprintBeforeDatabaseMiB, 0)
+            let kdfMemoryFootprintMiB = MemoryMonitor.bytesToMiB(databaseFile.database.peakKDFMemoryFootprint)
             Diag.debug(String(
                 format: "DB memory footprint: %.1f MiB KDF + %.1f MiB data",
-                Double(kdfMemoryFootprint) / 1_048_576,
-                Double(databaseMemoryFootprint!) / 1_048_576
+                kdfMemoryFootprintMiB,
+                databaseMemoryFootprintMiB!
             ))
         } else {
             assertionFailure("memoryAvailableBeforeDatabaseLoad is unexpectedly nil")
         }
-        memoryAvailableBeforeDatabaseLoad = nil
+        memoryFootprintBeforeDatabaseMiB = nil
 
         Settings.current.isAutoFillFinishedOK = true
         if let targetRecord = quickTypeRequiredRecord,

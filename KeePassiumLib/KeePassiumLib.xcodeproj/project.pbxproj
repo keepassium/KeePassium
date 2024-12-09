@@ -116,6 +116,7 @@
 		75AF193F282EF76C00FA4BB5 /* PassphraseWordlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF193E282EF76C00FA4BB5 /* PassphraseWordlist.swift */; };
 		75B5F7F5251B7BE100E444F0 /* DatabaseLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5F7F4251B7BE100E444F0 /* DatabaseLoader.swift */; };
 		75B5F7F8251B7CC700E444F0 /* ProgressObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5F7F7251B7CC700E444F0 /* ProgressObserver.swift */; };
+		75B6C9D22D07558A0084F349 /* MemoryMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B6C9D12D07558A0084F349 /* MemoryMonitor.swift */; };
 		75B813D425FA6FD000A86B7C /* StoreReviewSuggester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B813D325FA6FD000A86B7C /* StoreReviewSuggester.swift */; };
 		75B8608C2475E2F800C5E6C0 /* LString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B8608B2475E2F800C5E6C0 /* LString.swift */; };
 		75B928AF274ADB970082E56C /* LString+settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B928AE274ADB970082E56C /* LString+settings.swift */; };
@@ -426,6 +427,7 @@
 		75AF193E282EF76C00FA4BB5 /* PassphraseWordlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassphraseWordlist.swift; sourceTree = "<group>"; };
 		75B5F7F4251B7BE100E444F0 /* DatabaseLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseLoader.swift; sourceTree = "<group>"; };
 		75B5F7F7251B7CC700E444F0 /* ProgressObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressObserver.swift; sourceTree = "<group>"; };
+		75B6C9D12D07558A0084F349 /* MemoryMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryMonitor.swift; sourceTree = "<group>"; };
 		75B813D325FA6FD000A86B7C /* StoreReviewSuggester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreReviewSuggester.swift; sourceTree = "<group>"; };
 		75B8608B2475E2F800C5E6C0 /* LString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LString.swift; sourceTree = "<group>"; };
 		75B928AE274ADB970082E56C /* LString+settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LString+settings.swift"; sourceTree = "<group>"; };
@@ -1072,6 +1074,7 @@
 				753A4A122C80B878008896C6 /* FileHasher.swift */,
 				75BFDCA22C8E4F9000D30A9D /* UITextInput+CopyTimeout.swift */,
 				75BFDCA02C8E4DB700D30A9D /* Swizzler.swift */,
+				75B6C9D12D07558A0084F349 /* MemoryMonitor.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1556,6 +1559,7 @@
 				75F4ACDF2177469500B22D8B /* TemporaryFileURL.swift in Sources */,
 				751F90A9247748A300A7418F /* Result.swift in Sources */,
 				75D09C412174F77000F7DEF2 /* Database1.swift in Sources */,
+				75B6C9D22D07558A0084F349 /* MemoryMonitor.swift in Sources */,
 				75384B9922CCB76800157598 /* UsageMonitor.swift in Sources */,
 				75F594B8221BDC51001729FD /* SettingsMigrator.swift in Sources */,
 				75C3CDD72BF391BA00C5C8CD /* WebDAVUploadRequest.swift in Sources */,

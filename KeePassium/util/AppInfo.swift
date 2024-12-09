@@ -43,6 +43,9 @@ class AppInfo {
         #if INTUNE
         envInfo += ", Intune \(IntuneMAMVersionInfo.sdkVersion())"
         #endif
+        if AppGroup.isAppExtension {
+            envInfo += String(format: ", using %.1f MiB", MemoryMonitor.getMemoryFootprintMiB())
+        }
 
         let betaMark = Settings.current.isTestEnvironment ? "-beta" : ""
         return "\(name) v\(version).\(build)\(betaMark) (\(envInfo))"
