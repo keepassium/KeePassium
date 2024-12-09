@@ -15,7 +15,7 @@ class CredentialProviderViewController: ASCredentialProviderViewController {
     var autoFillCoordinator: AutoFillCoordinator! 
 
     override func viewDidLoad() {
-        log.trace("I live again /3")
+        log.trace("I live again /4")
         super.viewDidLoad()
         autoFillCoordinator = AutoFillCoordinator(rootController: self, context: extensionContext)
     }

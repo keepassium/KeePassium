@@ -306,6 +306,7 @@ extension AutoFillCoordinator {
         databaseFile: DatabaseFile,
         warnings: DatabaseLoadingWarnings
     ) {
+        log.trace("Displaying database viewer")
         let entryFinderCoordinator = EntryFinderCoordinator(
             router: router,
             originalRef: fileRef,
@@ -541,7 +542,8 @@ extension AutoFillCoordinator {
         case .passkeyAssertion:
             returnPasskeyAssertion(from: entry)
         default:
-            log.error("Unexpected AutoFillMode value, cancelling")
+            let mode = autoFillMode?.debugDescription ?? "nil"
+            log.error("Unexpected AutoFillMode value `\(mode, privacy: .public)`, cancelling")
             assertionFailure()
             cancelRequest(.failed)
         }
@@ -712,6 +714,7 @@ extension AutoFillCoordinator {
             cancelRequest(.credentialIdentityNotFound)
             return
         }
+        log.trace("returnQuickTypeEntry")
         returnEntry(foundEntry)
     }
 
@@ -1036,6 +1039,7 @@ extension AutoFillCoordinator: DatabaseUnlockerCoordinatorDelegate {
            let desiredEntry = findEntry(matching: targetRecord, in: databaseFile),
            autoFillMode != .passkeyRegistration
         {
+            log.trace("Unlocked and found a match")
             returnEntry(desiredEntry)
         } else {
             showDatabaseViewer(fileRef, databaseFile: databaseFile, warnings: warnings)
@@ -1067,6 +1071,7 @@ extension AutoFillCoordinator: EntryFinderCoordinatorDelegate {
     }
 
     func didSelectEntry(_ entry: Entry, in coordinator: EntryFinderCoordinator) {
+        log.trace("didSelectEntry")
         returnEntry(entry)
     }
 

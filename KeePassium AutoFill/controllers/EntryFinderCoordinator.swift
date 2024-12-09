@@ -156,7 +156,8 @@ extension EntryFinderCoordinator {
         }
 
         if let perfectMatch = results.perfectMatch,
-           Settings.current.autoFillPerfectMatch
+           Settings.current.autoFillPerfectMatch,
+           autoFillMode != .passkeyRegistration
         {
             delegate?.didSelectEntry(perfectMatch, in: self)
         } else {
