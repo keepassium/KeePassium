@@ -2,10 +2,14 @@
     "sections": [
         {
             "version": "1.54",
-            "releaseDate": "2024-11-14T00:00:00Z",
+            "releaseDate": "2024-12-09T00:00:00Z",
             "items": [
                 {
                     "title": "This version requires at least iOS 17 / macOS 14"
+                },
+                {
+                    "title": "v1.53 completed an independent security audit by Cure53",
+                    "os": "ios"
                 },
                 {
                     "title": "Added: AutoFill: Create and use passkeys",
@@ -23,12 +27,24 @@
                     "edition": "free,pro"
                 },
                 {
+                    "title": "Added: Database export to CSV format",
+                    "github": "#262",
+                    "os": "macos"
+                },
+                {
+                    "title": "Added: Search for passkeys (is:passkey) and large attachments (is:large)"
+                },
+                {
                     "title": "Changed: Org: Updated to MSAL 1.6.2 and Intune SDK 20.2.1",
                     "edition": "org"
                 },
                 {
                     "title": "Improved: macOS: Main menu, toolbar and keyboard shortcuts",
                     "os": "macos"
+                },
+                {
+                    "title": "Improved: Faster Quick AutoFill for remote databases (prefers local cache)",
+                    "edition": "free,pro"
                 },
                 {
                     "title": "Improved: Protecting key file field like a password",
@@ -41,9 +57,6 @@
                 },
                 {
                     "title": "Improved: Added possibility to delete unused custom icons"
-                },
-                {
-                    "title": "Improved: Replaced Entry Viewer tab titles with icons"
                 },
                 {
                     "title": "Improved: Folder lists are sorted for all direct connections now"
@@ -76,6 +89,11 @@
                     "edition": "org"
                 },
                 {
+                    "title": "Improved: Disable UI for storage locations blocked by AppConfig",
+                    "credits": "S.G.",
+                    "edition": "org"
+                },
+                {
                     "title": "Fixed: macOS: AutoFill dialog could get stuck in a blank state",
                     "github": "#392",
                     "credits": "everyone",
@@ -86,6 +104,10 @@
                     "os": "macos"
                 },
                 {
+                    "title": "Fixed: Crash when changing entry/group icon on iOS 18",
+                    "credits": "everyone"
+                },
+                {
                     "title": "Fixed: AutoFill could load databases twice sometimes",
                     "edition": "free,pro"
                 },
@@ -93,10 +115,6 @@
                     "title": "Fixed: Org: parsing of yes/no parameters",
                     "credits": "Martin",
                     "edition": "org"
-                },
-                {
-                    "title": "Fixed: macOS: Mac version could not be built for Intel",
-                    "os": "macos"
                 },
                 {
                     "title": "Fixed: Enforce strength checks on new app passcode and DB passwords (KEE-01-001)"

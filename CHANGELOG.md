@@ -1,5 +1,31 @@
 #CHANGELOG
 
+## [1.54.157] - 2024-12-09
+
+### Added 
+
+- macOS: Database export to CSV format (#262)
+- Search for passkeys (is:passkey) and large attachments (is:large)
+
+### Improved
+
+- AutoFill: faster Quick mode for remote databases (prefers local cache)
+- AutoFill: Warn if not enough memory to save changes
+- Updated all translations [thanks, everyone]
+- Minor UI fixes here and there [thanks, everyone]
+
+### Fixed
+
+- AutoFill: passkey creation on iOS 17 / macOS 14
+- AutoFill: passkey creation when there is already a perfect match
+- AutoFill: Empty Caller ID when creating a passkey [thanks, jasperweiss]
+- AutoFill: Keyboard could cover Passkey creation dialog [thanks, jasperweiss]
+- Crash when changing group/entry icon on iOS 18 [thanks, everyone]
+- AutoFill setup messages updated for iOS 18
+- Possible crash when closing on iOS 18
+- Org: disable UI for storage locations blocked by AppConfig [thanks, S.G.]
+
+
 ## [1.54.156] - 2024-11-28
 
 ### Added
