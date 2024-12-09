@@ -358,7 +358,6 @@ extension AutoFillCoordinator {
         }
     }
 
-    @available(iOS 18, *)
     func registerPasskey(with params: PasskeyRegistrationParams, in databaseFile: DatabaseFile) {
         let presenter = router.navigationController
         guard let db2 = databaseFile.database as? Database2,
@@ -616,7 +615,6 @@ extension AutoFillCoordinator {
         cleanup()
     }
 
-    @available(iOS 18, *)
     private func returnPasskeyRegistration(passkey: NewPasskey) {
         log.trace("Will return registered passkey")
         watchdog.restart()
@@ -1035,7 +1033,8 @@ extension AutoFillCoordinator: DatabaseUnlockerCoordinatorDelegate {
 
         Settings.current.isAutoFillFinishedOK = true
         if let targetRecord = quickTypeRequiredRecord,
-           let desiredEntry = findEntry(matching: targetRecord, in: databaseFile)
+           let desiredEntry = findEntry(matching: targetRecord, in: databaseFile),
+           autoFillMode != .passkeyRegistration
         {
             returnEntry(desiredEntry)
         } else {
@@ -1082,7 +1081,6 @@ extension AutoFillCoordinator: EntryFinderCoordinatorDelegate {
         }
     }
 
-    @available(iOS 18, *)
     func didPressCreatePasskey(
         with params: PasskeyRegistrationParams,
         presenter: UIViewController,

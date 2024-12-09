@@ -9,12 +9,10 @@
 import KeePassiumLib
 import UIKit
 
-@available(iOS 18, *)
 protocol PasskeyCreatorDelegate: AnyObject {
     func didPressCreatePasskey(with params: PasskeyRegistrationParams, in viewController: PasskeyCreatorVC)
 }
 
-@available(iOS 18, *)
 final class PasskeyCreatorVC: UIViewController {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var relyingPartyLabel: UILabel!

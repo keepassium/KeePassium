@@ -268,7 +268,6 @@ public class NewPasskey: Passkey {
             userHandle: params.identity.userHandle)
     }
 
-    @available(iOS 18.0, *)
     public func makeRegistrationCredential(clientDataHash: Data) -> ASPasskeyRegistrationCredential {
         let attestationObject = makeAttestationObject()
         let credential = ASPasskeyRegistrationCredential(

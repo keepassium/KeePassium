@@ -18,7 +18,6 @@ protocol EntryFinderCoordinatorDelegate: AnyObject {
 
     func didPressReinstateDatabase(_ fileRef: URLReference, in coordinator: EntryFinderCoordinator)
 
-    @available(iOS 18, *)
     func didPressCreatePasskey(
         with params: PasskeyRegistrationParams,
         presenter: UIViewController,
@@ -130,11 +129,6 @@ extension EntryFinderCoordinator {
         }
 
         if let passkeyRegistrationParams {
-            guard #available(iOS 18, *) else {
-                Diag.error("Tried to register passkey before iOS 18")
-                assertionFailure()
-                return
-            }
             showPasskeyRegistration(passkeyRegistrationParams)
         }
     }
@@ -178,7 +172,6 @@ extension EntryFinderCoordinator {
         entryFinderVC.setSearchResults(searchResults)
     }
 
-    @available(iOS 18, *)
     private func showPasskeyRegistration(_ params: PasskeyRegistrationParams) {
         let creatorVC = PasskeyCreatorVC.make(with: params)
         creatorVC.modalPresentationStyle = .pageSheet
@@ -286,7 +279,6 @@ extension EntryFinderCoordinator: EntryFinderDelegate {
     }
 }
 
-@available(iOS 18, *)
 extension EntryFinderCoordinator: PasskeyCreatorDelegate {
     func didPressCreatePasskey(with params: PasskeyRegistrationParams, in viewController: PasskeyCreatorVC) {
         viewController.dismiss(animated: true) { [self] in
