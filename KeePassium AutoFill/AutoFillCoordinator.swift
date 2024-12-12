@@ -417,14 +417,15 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
     }
 
     public func startPasskeyAssertionUI(
-        _ passkeyRequest: ASPasskeyCredentialRequestParameters,
+        clientDataHash: Data,
+        relyingParty: String,
         forServices serviceIdentifiers: [ASCredentialServiceIdentifier]
     ) {
         log.trace("Starting passkey assertion UI")
         self.serviceIdentifiers = serviceIdentifiers
         self.autoFillMode = .passkeyAssertion
-        self.passkeyClientDataHash = passkeyRequest.clientDataHash
-        self.passkeyRelyingParty = passkeyRequest.relyingPartyIdentifier
+        self.passkeyClientDataHash = clientDataHash
+        self.passkeyRelyingParty = relyingParty
         start()
     }
 
