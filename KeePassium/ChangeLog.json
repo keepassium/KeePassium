@@ -1,15 +1,17 @@
 {
     "sections": [
         {
-            "version": "1.54",
-            "releaseDate": "2024-12-09T00:00:00Z",
+            "version": "2.0",
+            "releaseDate": "2024-12-12T00:00:00Z",
             "items": [
                 {
-                    "title": "This version requires at least iOS 17 / macOS 14"
+                    "title": "This version requires at least iOS 17 / macOS 14."
                 },
                 {
-                    "title": "v1.53 completed an independent security audit by Cure53",
-                    "os": "ios"
+                    "title": "KeePassium for macOS is now officially available."
+                },
+                {
+                    "title": "KeePassium for iOS has completed an independent security audit by Cure53."
                 },
                 {
                     "title": "Added: AutoFill: Create and use passkeys",

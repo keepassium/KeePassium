@@ -1,5 +1,12 @@
 #CHANGELOG
 
+## [2.0.158] - 2024-12-12
+
+### Changed
+
+- Version bump to celebrate the official release of KeePassium for macOS.
+
+
 ## [1.54.157] - 2024-12-09
 
 ### Added 
