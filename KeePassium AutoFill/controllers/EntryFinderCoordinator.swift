@@ -174,6 +174,10 @@ extension EntryFinderCoordinator {
     }
 
     private func showPasskeyRegistration(_ params: PasskeyRegistrationParams) {
+        guard !databaseFile.status.contains(.readOnly) else {
+            Diag.warning("Database is read-only, cancelling")
+            return
+        }
         let creatorVC = PasskeyCreatorVC.make(with: params)
         creatorVC.modalPresentationStyle = .pageSheet
         creatorVC.delegate = self
@@ -192,7 +196,13 @@ extension EntryFinderCoordinator {
         if databaseFile.status.contains(.localFallback) {
             announcements.append(makeFallbackDatabaseAnnouncement(for: entryFinderVC))
         }
-        if let qafAnnouncment = maybeMakeQuickAutoFillAnnouncment(for: entryFinderVC) {
+        if databaseFile.status.contains(.readOnly) {
+            announcements.append(makeReadOnlyDatabaseAnnouncement(for: entryFinderVC))
+        }
+
+        if announcements.isEmpty,
+           let qafAnnouncment = maybeMakeQuickAutoFillAnnouncment(for: entryFinderVC)
+        {
             announcements.append(qafAnnouncment)
         }
         entryFinderVC.refreshAnnouncements()
@@ -245,6 +255,17 @@ extension EntryFinderCoordinator {
             }
         )
         return announcement
+    }
+
+    private func makeReadOnlyDatabaseAnnouncement(
+        for viewController: EntryFinderVC
+    ) -> AnnouncementItem {
+        return AnnouncementItem(
+            title: nil,
+            body: LString.databaseIsReadOnly,
+            actionTitle: nil,
+            image: nil
+        )
     }
 }
 
