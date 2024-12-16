@@ -200,7 +200,7 @@ extension KeyFilePickerCoordinator: UIDocumentPickerDelegate {
             return
         }
 
-        let addingMode = mode ?? (FileKeeper.canAccessAppSandbox ? .import : .openInPlace)
+        let addingMode = mode ?? (FileKeeper.shared.canActuallyAccessAppSandbox ? .import : .openInPlace)
 
         let fileKeeper = FileKeeper.shared
         fileKeeper.addFile(url: url, fileType: .keyFile, mode: addingMode) { [weak self] result in

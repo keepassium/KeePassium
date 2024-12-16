@@ -206,7 +206,8 @@ class AutoFillCoordinator: NSObject, Coordinator {
         #endif
 
         if Settings.current.isAutoFillFinishedOK {
-            databasePickerCoordinator.shouldSelectDefaultDatabase = true
+            let areLocalFilesAvailable = FileKeeper.shared.canActuallyAccessAppSandbox
+            databasePickerCoordinator.shouldSelectDefaultDatabase = areLocalFilesAvailable
         } else {
             showCrashReport()
         }
@@ -229,7 +230,7 @@ class AutoFillCoordinator: NSObject, Coordinator {
 
 extension AutoFillCoordinator {
     private func isNeedsOnboarding() -> Bool {
-        if FileKeeper.canAccessAppSandbox {
+        if FileKeeper.canPossiblyAccessAppSandbox {
             return false
         }
 

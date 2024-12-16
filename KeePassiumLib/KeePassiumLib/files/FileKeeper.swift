@@ -56,11 +56,37 @@ public class FileKeeper {
         return true
     }()
 
-    public static var canAccessAppSandbox: Bool {
+    public static var canPossiblyAccessAppSandbox: Bool {
         if platformSupportsSharedReferences {
             return true
         } else {
             return AppGroup.isMainApp
+        }
+    }
+
+    public var canActuallyAccessAppSandbox: Bool {
+        guard AppGroup.isAppExtension else {
+            return true
+        }
+        guard Self.platformSupportsSharedReferences else {
+            return false
+        }
+        let extensionSandboxURL = FileManager.default
+            .urls(for: .documentDirectory, in: .userDomainMask)
+            .first!
+            .standardizedFileURL
+        let gotTheRightURL = (docDirURL != extensionSandboxURL)
+        guard gotTheRightURL else {
+            return false
+        }
+        do {
+            try FileManager.default.contentsOfDirectory(
+                at: docDirURL,
+                includingPropertiesForKeys: [.isReadableKey],
+                options: [])
+            return true
+        } catch {
+            return false
         }
     }
 
