@@ -48,7 +48,6 @@ final class GroupEditorTitleCell: UITableViewCell {
 
         textField.delegate = self
         textField.validityDelegate = self
-        textField.addRandomizerEditMenu()
         return textField
     }()
 
@@ -139,6 +138,14 @@ extension GroupEditorTitleCell: UITextFieldDelegate {
         delegate?.didPressReturn(in: self)
         nameTextField.resignFirstResponder()
         return true
+    }
+
+    func textField(
+        _ textField: UITextField,
+        editMenuForCharactersIn range: NSRange,
+        suggestedActions: [UIMenuElement]
+    ) -> UIMenu? {
+        return textField.addRandomizerEditMenu(to: suggestedActions)
     }
 }
 

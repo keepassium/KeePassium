@@ -41,41 +41,17 @@ protocol TextInputEditMenuDelegate: AnyObject {
     func textInputDidRequestRandomizer(_ textInput: TextInputView)
 }
 
-extension UITextField {
-    internal func addRandomizerEditMenu() {
-        assert(delegate is TextInputEditMenuDelegate, "Field delegate does not handle randomizer menu")
+extension TextInputView {
+    internal func addRandomizerEditMenu(to suggestedActions: [UIMenuElement]) -> UIMenu? {
+        let delegate = (self as? UITextView)?.delegate as? TextInputEditMenuDelegate ??
+                       (self as? UITextField)?.delegate as? TextInputEditMenuDelegate
+        assert(delegate != nil, "Field delegate does not handle randomizer menu")
         let menuTitle = ProcessInfo.isRunningOnMac
             ? LString.PasswordGenerator.editMenuTitleFull
             : LString.PasswordGenerator.editMenuTitleShort
-        let randomizerMenu = UIMenuItem(title: menuTitle, action: #selector(didPressRandomizerEditMenu(_:)))
-        UIMenuController.shared.menuItems = [randomizerMenu]
-    }
-
-    @objc private func didPressRandomizerEditMenu(_ sender: Any) {
-        guard let editMenuDelegate = delegate as? TextInputEditMenuDelegate else {
-            assertionFailure("This delegate cannot handle edit menu")
-            return
+        let randomizerMenu = UIAction(title: menuTitle) { [weak delegate] _ in
+            delegate?.textInputDidRequestRandomizer(self)
         }
-        editMenuDelegate.textInputDidRequestRandomizer(self)
-    }
-}
-
-
-extension UITextView {
-    internal func addRandomizerEditMenu() {
-        assert(delegate is TextInputEditMenuDelegate, "Field delegate does not handle randomizer menu")
-        let menuTitle = ProcessInfo.isRunningOnMac
-            ? LString.PasswordGenerator.editMenuTitleFull
-            : LString.PasswordGenerator.editMenuTitleShort
-        let randomizerMenu = UIMenuItem(title: menuTitle, action: #selector(didPressRandomizerEditMenu(_:)))
-        UIMenuController.shared.menuItems = [randomizerMenu]
-    }
-
-    @objc private func didPressRandomizerEditMenu(_ sender: Any) {
-        guard let editMenuDelegate = delegate as? TextInputEditMenuDelegate else {
-            assertionFailure("This delegate cannot handle edit menu")
-            return
-        }
-        editMenuDelegate.textInputDidRequestRandomizer(self)
+        return UIMenu(children: suggestedActions + [randomizerMenu])
     }
 }
