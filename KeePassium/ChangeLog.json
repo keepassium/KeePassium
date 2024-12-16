@@ -46,7 +46,9 @@
                 },
                 {
                     "title": "Improved: Faster Quick AutoFill for remote databases (prefers local cache)",
-                    "edition": "free,pro"
+                    "edition": "free,pro",
+                    "credits": "jasperweiss",
+                    "github": "#391"
                 },
                 {
                     "title": "Improved: Protecting key file field like a password",

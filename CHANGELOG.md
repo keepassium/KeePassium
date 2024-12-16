@@ -16,7 +16,7 @@
 
 ### Improved
 
-- AutoFill: faster Quick mode for remote databases (prefers local cache)
+- AutoFill: faster Quick mode for remote databases, prefers local cache (#391) [thanks, jasperweiss]
 - AutoFill: Warn if not enough memory to save changes
 - Updated all translations [thanks, everyone]
 - Minor UI fixes here and there [thanks, everyone]
