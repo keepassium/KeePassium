@@ -26,7 +26,11 @@ class AutoFillCoordinator: NSObject, Coordinator {
     let extensionContext: ASCredentialProviderExtensionContext
     var router: NavigationRouter
 
-    var autoFillMode: AutoFillMode?
+    var autoFillMode: AutoFillMode? {
+        didSet {
+            Diag.debug("Mode: \(autoFillMode?.debugDescription ?? "nil")")
+        }
+    }
 
     private var hasUI = false
     private var isServicesInitialized = false
@@ -417,13 +421,14 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
     }
 
     public func startPasskeyAssertionUI(
+        allowPasswords: Bool,
         clientDataHash: Data,
         relyingParty: String,
         forServices serviceIdentifiers: [ASCredentialServiceIdentifier]
     ) {
         log.trace("Starting passkey assertion UI")
         self.serviceIdentifiers = serviceIdentifiers
-        self.autoFillMode = .passkeyAssertion
+        self.autoFillMode = .passkeyAssertion(allowPasswords)
         self.passkeyClientDataHash = clientDataHash
         self.passkeyRelyingParty = relyingParty
         start()
@@ -448,7 +453,7 @@ extension AutoFillCoordinator: DatabaseLoaderDelegate {
     ) {
         self.passkeyClientDataHash = clientDataHash
         self.passkeyRelyingParty = credentialIdentity.relyingPartyIdentifier
-        provideWithoutUI(forIdentity: credentialIdentity, mode: .passkeyAssertion)
+        provideWithoutUI(forIdentity: credentialIdentity, mode: .passkeyAssertion(false))
     }
 
     func provideWithoutUI(forIdentity credentialIdentity: ASCredentialIdentity, mode: AutoFillMode) {
@@ -542,8 +547,13 @@ extension AutoFillCoordinator {
                 assertionFailure()
                 cancelRequest(.failed)
             }
-        case .passkeyAssertion:
-            returnPasskeyAssertion(from: entry)
+        case .passkeyAssertion(let allowPasswords):
+            let passkeyReturned = maybeReturnPasskeyAssertion(from: entry)
+            guard passkeyReturned || allowPasswords else {
+                cancelRequest(.credentialIdentityNotFound)
+                return
+            }
+            returnCredentials(from: entry)
         default:
             let mode = autoFillMode?.debugDescription ?? "nil"
             log.error("Unexpected AutoFillMode value `\(mode, privacy: .public)`, cancelling")
@@ -645,25 +655,25 @@ extension AutoFillCoordinator {
         cleanup()
     }
 
-    private func returnPasskeyAssertion(from entry: Entry) {
+    private func maybeReturnPasskeyAssertion(from entry: Entry) -> Bool {
+        guard let passkeyClientDataHash else {
+            log.error("Passkey request parameters missing")
+            return false
+        }
+        guard let passkey = Passkey.make(from: entry) else {
+            log.error("Selected entry does not have passkeys")
+            return false
+        }
+        returnPasskeyAssertion(passkey: passkey, clientDataHash: passkeyClientDataHash)
+        return true
+    }
+
+    private func returnPasskeyAssertion(passkey: Passkey, clientDataHash: Data) {
         log.trace("Will return passkey")
         watchdog.restart()
-        guard let passkeyClientDataHash else {
-            log.error("Passkey request parameters unexpectedly missing, cancelling")
-            assertionFailure()
-            cancelRequest(.failed)
-            return
-        }
-
-        guard let passkey = Passkey.make(from: entry) else {
-            log.error("Selected entry does not have passkeys, cancelling")
-            assertionFailure()
-            cancelRequest(.credentialIdentityNotFound)
-            return
-        }
 
         guard let passkeyCredential =
-                passkey.makeAssertionCredential(clientDataHash: passkeyClientDataHash)
+                passkey.makeAssertionCredential(clientDataHash: clientDataHash)
         else {
             log.error("Failed to make passkey credential, cancelling")
             assertionFailure()

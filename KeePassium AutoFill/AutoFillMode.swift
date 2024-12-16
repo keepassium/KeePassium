@@ -8,12 +8,12 @@
 
 import Foundation
 
-enum AutoFillMode {
+enum AutoFillMode: Equatable {
     case credentials
     case oneTimeCode
     case text
     case passkeyRegistration
-    case passkeyAssertion
+    case passkeyAssertion(_ allowPasswords: Bool)
 }
 
 extension AutoFillMode {
@@ -23,8 +23,12 @@ extension AutoFillMode {
              .passkeyRegistration,
              .text:
             return nil
-        case .passkeyAssertion:
-            return "is:passkey"
+        case .passkeyAssertion(let allowPasswords):
+            if allowPasswords {
+                return nil
+            } else {
+                return "is:passkey"
+            }
         case .oneTimeCode:
             return "otp:* "
         }
@@ -40,8 +44,8 @@ extension AutoFillMode: CustomDebugStringConvertible {
             return "one time code"
         case .passkeyRegistration:
             return "passkeyRegistration"
-        case .passkeyAssertion:
-            return "passkeyAssertion"
+        case .passkeyAssertion(let allowPasswords):
+            return allowPasswords ? "passkeyAssertion + passwords" : "passkeyAssertion"
         case .text:
             return "text"
         }

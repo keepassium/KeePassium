@@ -45,6 +45,7 @@ extension CredentialProviderViewController {
     ) {
         log.trace("prepareCredentialList for passwords+passkeys")
         autoFillCoordinator.startPasskeyAssertionUI(
+            allowPasswords: true,
             clientDataHash: requestParameters.clientDataHash,
             relyingParty: requestParameters.relyingPartyIdentifier,
             forServices: serviceIdentifiers
@@ -81,6 +82,7 @@ extension CredentialProviderViewController {
                 return
             }
             autoFillCoordinator.startPasskeyAssertionUI(
+                allowPasswords: false,
                 clientDataHash: passkeyRequest.clientDataHash,
                 relyingParty: passkeyIdentity.relyingPartyIdentifier,
                 forServices: [passkeyIdentity.serviceIdentifier]
