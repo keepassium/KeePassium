@@ -226,6 +226,7 @@ final class PasscodeInputVC: UIViewController {
         }
         let isGoodEnough = entropy > PasswordQuality.minAppPasscodeEntropy
         if isGoodEnough {
+            successHandler()
             return
         }
         let warningAlert = UIAlertController.make(
