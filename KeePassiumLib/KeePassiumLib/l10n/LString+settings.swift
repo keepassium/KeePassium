@@ -15,6 +15,7 @@ extension LString {
         comment: "Title of the app settings screen")
     public static let titlePreferences = NSLocalizedString(
         "[Menu/Preferences/title]",
+        bundle: Bundle.framework,
         value: "Preferences…",
         comment: "Menu title: app settings"
     )

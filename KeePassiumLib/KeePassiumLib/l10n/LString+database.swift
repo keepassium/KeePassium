@@ -260,6 +260,7 @@ extension LString {
 
     public static let titleSortItemsBy = NSLocalizedString(
         "[Menu/Sort] Sort Items By",
+        bundle: Bundle.framework,
         value: "Sort Items By",
         comment: "Title of a menu: sort order of groups and entries in a list")
 
@@ -357,6 +358,7 @@ extension LString {
         comment: "Recommendation for solving a problem with a list of files.")
     public static let titleSortFilesBy = NSLocalizedString(
         "[Menu/Sort] Sort Files By",
+        bundle: Bundle.framework,
         value: "Sort Files By",
         comment: "Title of a menu: sort order of files in a list")
     public static let titleShowBackupFiles = NSLocalizedString(

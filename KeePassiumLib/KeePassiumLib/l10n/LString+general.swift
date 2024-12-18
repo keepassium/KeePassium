@@ -198,6 +198,7 @@ extension LString {
     )
     public static let actionRefreshList = NSLocalizedString(
         "[Generic/RefreshList/action]",
+        bundle: Bundle.framework,
         value: "Refresh List",
         comment: "Action: refresh list of items, usually files"
     )
@@ -342,6 +343,7 @@ extension LString {
     )
     public static let dontUseDatabaseAsKeyFile = NSLocalizedString(
         "KeePass database should not be used as key file. Please pick a different file.",
+        bundle: Bundle.framework,
         comment: "Warning message when the user tries to use a database as a key file"
     )
     public static let tryToReAddFile = NSLocalizedString(
@@ -1075,22 +1077,27 @@ extension LString {
         comment: "Default name for new key files. Should match the `key file` term in the glossary.")
     public static let importKeyFileAction = NSLocalizedString(
         "[KeyFile/Import/action]",
+        bundle: Bundle.framework,
         value: "Import Key File",
         comment: "Action: import/add a key file into the app. `Key file` is a glossary term.")
     public static let importKeyFileDescription = NSLocalizedString(
         "[KeyFile/Import/actionDescription]",
+        bundle: Bundle.framework,
         value: "Add file to the app",
         comment: "Description of the `Import Key File` action.")
     public static let useKeyFileAction = NSLocalizedString(
         "[KeyFile/Use/action]",
+        bundle: Bundle.framework,
         value: "Select Key File",
         comment: "Action: use a key file at its storage location, without importing to the app.")
     public static let useKeyFileDescription = NSLocalizedString(
         "[KeyFile/Use/actionDescription]",
+        bundle: Bundle.framework,
         value: "Use without adding",
         comment: "Description of the `Select Key File` action.")
     public static let actionCreateKeyFile = NSLocalizedString(
         "[KeyFile/Create/action]",
+        bundle: Bundle.framework,
         value: "Create Key File",
         comment: "Action: create new key file.")
 
