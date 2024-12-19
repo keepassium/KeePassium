@@ -1,6 +1,59 @@
 {
     "sections": [
         {
+            "version": "2.1",
+            "releaseDate": "2024-12-19T00:00:00Z",
+            "items": [
+                {
+                    "title": "Improved: AutoFill: Create passkeys in existing entries",
+                    "edition": "free,pro",
+                    "credits": "everyone",
+                    "github": "#297"
+                },
+                {
+                    "title": "Improved: Updated IT, NL, zh-CN translations",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Fixed: AutoFill: Behavior when local DBs are unavailable",
+                    "edition": "free,pro",
+                    "github": "#381"
+                },
+                {
+                    "title": "Fixed: AutoFill: When appropriate, accept _either_ passkeys or passwords",
+                    "edition": "free,pro",
+                    "credits": "bob-lobster",
+                    "github": "#405"
+                },
+                {
+                    "title": "Fixed: AutoFill: Prevent passkey creation in read-only DBs",
+                    "edition": "free,pro",
+                    "credits": "Jerroder",
+                    "github": "#404"
+                },
+                {
+                    "title": "Fixed: AutoFill: Partial fix for QR-based passkey assertions",
+                    "edition": "free,pro",
+                    "credits": "everyone",
+                    "github": "#408"
+                },
+                {
+                    "title": "Fixed: It was impossible to enter a strong app passcode (regression in 1.54.155)",
+                    "credits": "Jan and Yuri",
+                    "github": "#409"
+                },
+                {
+                    "title": "Fixed: Enforce file timeouts on all direct connections",
+                    "credits": "jasperweiss",
+                    "github": "#398"
+                },
+                {
+                    "title": "Fixed: Some strings were shown untranslated [thanks, Francesco]",
+                    "credits": "Francesco"
+                }
+            ]
+        },
+        {
             "version": "2.0",
             "releaseDate": "2024-12-12T00:00:00Z",
             "items": [

@@ -1,5 +1,24 @@
 #CHANGELOG
 
+## [2.1.159] - 2024-12-19
+
+### Improved
+
+- AutoFill: Create passkeys to an existing entry (#297) [thanks, everyone]
+- Updated IT, NL, zh-CN translations [thanks, everyone]
+
+### Fixed
+
+- AutoFill: Behavior when local DBs are unavailable (#381)
+- AutoFill: When appropriate, accept _either_ passkeys or passwords (#405) [thanks, bob-lobster]
+- AutoFill: Prevent passkey creation in read-only DBs (#404) [thanks, Jerroder]
+- AutoFill: Partial fix for QR-based passkey assertions (#408) [thanks, everyone]
+- It was impossible to enter a strong app passcode (regression in 1.54.155) (#409) [thanks, Jan and Yuri]
+- Enforce file timeouts on all direct connections (#398) [thanks, jasperweiss]
+- Some strings were shown untranslated [thanks, Francesco]
+- Replaced deprecated UIMenuController
+
+
 ## [2.0.158] - 2024-12-12
 
 ### Changed
