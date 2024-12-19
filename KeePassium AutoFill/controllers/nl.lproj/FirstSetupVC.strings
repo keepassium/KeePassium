@@ -1,14 +1,14 @@
 /* Class = "UIButton"; configuration.title = "Add Database"; ObjectID = "enW-gs-tra"; */
-"enW-gs-tra.configuration.title" = "Voeg databank toe";
+"enW-gs-tra.configuration.title" = "Voeg database toe";
 
 /* Class = "UIButton"; normalTitle = "Add Database"; ObjectID = "enW-gs-tra"; */
-"enW-gs-tra.normalTitle" = "Voeg databank toe";
+"enW-gs-tra.normalTitle" = "Voeg database toe";
 
 /* Class = "UIButton"; normalTitle = "Skip"; ObjectID = "Gck-9R-sGq"; Note = "Action: skip setup and proceed to the next step."; */
 "Gck-9R-sGq.normalTitle" = "Overslaan";
 
 /* Class = "UILabel"; text = "Please re-add databases and key files you want to use with the AutoFill feature."; ObjectID = "P0M-N3-ynf"; */
-"P0M-N3-ynf.text" = "Voeg opnieuw de databanken en sleutelbestanden toe die je wilt gebruiken met de AutoFill-functie.";
+"P0M-N3-ynf.text" = "Voeg opnieuw de databases en sleutelbestanden toe die je wilt gebruiken met de AutoFill-functie.";
 
 /* Class = "UILabel"; text = "AutoFill Setup"; ObjectID = "pIl-6L-Msp"; */
 "pIl-6L-Msp.text" = "AutoFill instellen";

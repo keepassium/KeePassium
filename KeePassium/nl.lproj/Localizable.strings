@@ -161,7 +161,7 @@
 "[Entry/Files/Add] Replace existing attachment?" = "Bestaande bijlage vervangen?";
 
 /* Explanation for replacing the only attachment of KeePass1 entry */
-"[Entry/Files/Add] This database supports only one attachment per entry, and there is already one." = "Deze databank ondersteunt slechts één bijlage per item, en er is al een.";
+"[Entry/Files/Add] This database supports only one attachment per entry, and there is already one." = "Deze database ondersteunt slechts één bijlage per item, en er is al een.";
 
 /* Title of a dialog for renaming an attached file */
 "[Entry/Files/Rename/title] Rename File" = "Wijzig bestandsnaam";
@@ -179,7 +179,7 @@
 "[Entry/Tab/More/title]" = "Meer";
 
 /* Action/button */
-"[Onboarding/AddExistingDatabase/action]" = "Voeg bestaande databank toe";
+"[Onboarding/AddExistingDatabase/action]" = "Voeg bestaande database toe";
 
 /* Action/button to set up the App Protection feature. Not a call to action. */
 "[Onboarding/AppProtection/activate]" = "Schakel appbeveiliging in";
@@ -203,7 +203,7 @@
 "[Onboarding/AutoFill/title]" = "Wachtwoord automatisch invullen";
 
 /* Action/button */
-"[Onboarding/CreateNewDatabase/action]" = "Maak nieuwe databank";
+"[Onboarding/CreateNewDatabase/action]" = "Maak nieuwe database";
 
 /* Text in the Data Encryption intro screen */
 "[Onboarding/DataEncryption/text1]" = "Je kluisdoos is een versleutelde database.";

@@ -23,7 +23,7 @@
 "[Appearance/AppIcon/title]" = "App-pictogram";
 
 /* Section in settings: icons for database */
-"[Appearance/DatabaseIcons/title]" = "Databankpictogrammen";
+"[Appearance/DatabaseIcons/title]" = "Databasepictogrammen";
 
 /* Short name of the default/system font. For example: `Font: Default` */
 "[Appearance/DefaultFont/shortTitle]" = "Standaard";
@@ -101,7 +101,7 @@
 "[ChallengeResponseError] notAvailableInAutoFill" = "Hardwarematige sleutels zijn niet beschikbaar in AutoFill.";
 
 /* Error message when trying to use challenge-response with a kdb database. */
-"[ChallengeResponseError] notSupportedByDatabaseFormat" = "Hardwarematige sleutels worden niet ondersteund door dit databankformaat.";
+"[ChallengeResponseError] notSupportedByDatabaseFormat" = "Hardwarematige sleutels worden niet ondersteund door dit databaseformaat.";
 
 /* Error message when trying to use a hardware challenge-response key on unsupported device/iOS version. %@ will be the name of the hardware interface, such as `NFC` or `Lightning`. */
 "[ChallengeResponseError] notSupportedByDeviceOrSystem" = "Dit apparaat of deze iOS-versie ondersteunt geen hardwarematige sleutels (%@)";
@@ -149,10 +149,10 @@
 "[CryptoError] Twofish cipher error (code %d)" = "Twofish-vercijferingsfout (code %d)";
 
 /* Warning when trying to add a random file as a database. [fileName: String] */
-"[Database/Add] Selected file \"%@\" does not look like a database." = "Het geselecteerde bestand ('%@') lijkt geen databank te zijn.";
+"[Database/Add] Selected file \"%@\" does not look like a database." = "Het geselecteerde bestand ('%@') lijkt geen database te zijn.";
 
 /* Action/button to create a new database */
-"[Database/Create/action] Create Database" = "Maak databank";
+"[Database/Create/action] Create Database" = "Maak database";
 
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "Voeg aangepast pictogram toe";
@@ -179,7 +179,7 @@
 "[Database/CustomIcon/Unused/count]" = "Ongebruikte pictogrammen gevonden: %d";
 
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
-"[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Verwijder databankbestand?\n Zorg ervoor dat je een back-up hebt.";
+"[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "Verwijder databasebestand?\n Zorg ervoor dat je een back-up hebt.";
 
 /* Action to modify database encryption settings. */
 "[Database/EncryptionSettings/Change/action]" = "Wijzig encryptie-instellingen";
@@ -197,7 +197,7 @@
 "[Database/EncryptionSettings/memory]" = "Geheugengebruik";
 
 /* Warning for too high value of the `Memory usage` parameter in database encryption settings. */
-"[Database/EncryptionSettings/memoryAutoFillWarning]" = "Bij hoge geheugenvereisten kan het automatisch invullen van wachtwoorden met deze databank mogelijk niet worden gebruikt.";
+"[Database/EncryptionSettings/memoryAutoFillWarning]" = "Bij hoge geheugenvereisten kan het automatisch invullen van wachtwoorden met deze database mogelijk niet worden gebruikt.";
 
 /* Action/button button in database encryption settings. Resets the settings to recommended values. */
 "[Database/EncryptionSettings/reset]" = "Herstel aanbevolen instellingen";
@@ -209,13 +209,13 @@
 "[Database/EncryptionSettings/title]" = "Encryptie-instellingen";
 
 /* Info message for entries that contain information for opening a different database. */
-"[Database/Entry/LinkedDatabase/message]" = "Dit item verwijst naar een andere databank.";
+"[Database/Entry/LinkedDatabase/message]" = "Dit item verwijst naar een andere database.";
 
 /* Notification message before database export. */
 "[Database/Export/PlainText/warning]" = "Het geëxporteerde bestand bevat uw gegevens in platte tekst, zonder enige bescherming.";
 
 /* Notification message about external changes to the loaded file. */
-"[Database/ExternalChange/notification]" = "Databankbestand is gewijzigd. Opnieuw laden?";
+"[Database/ExternalChange/notification]" = "Databasebestand is gewijzigd. Opnieuw laden?";
 
 /* Status message: checking if currently loaded database is the latest version */
 "[Database/ExternalChange/Status/checkInProgress]" = "Controleren op wijzigingen…";
@@ -230,7 +230,7 @@
 "[Database/FormatVersion/Conversion/allDataPreserved]" = "Al uw gegevens zullen worden bewaard.";
 
 /* Error message when creating a new passkey. */
-"[Database/FormatVersion/PasskeysNotSupported]" = "De huidige databankindeling ondersteunt geen passkeys.";
+"[Database/FormatVersion/PasskeysNotSupported]" = "De huidige databaseindeling ondersteunt geen passkeys.";
 
 /* Info message when the app needs to change database file format. [oldFormat, newFormat: String] */
 "[Database/FormatVersion/Upgrade/text]" = "KeePassium moet uw database bestandsindeling bijwerken (van %1$@ naar %2$@). U moet mogelijk andere apps bijwerken die deze database gebruiken.";
@@ -245,43 +245,43 @@
 "[Database/Item/Edited/state]" = "Bewerkt";
 
 /* Notification when user tries to copy data from KDBX to older KDB database. */
-"[Database/LesserTargetFormat/warning]" = "Dit is een ouder databankformaat; bepaalde gegevens gaan mogelijk verloren.";
+"[Database/LesserTargetFormat/warning]" = "Dit is een ouder databaseformaat; bepaalde gegevens gaan mogelijk verloren.";
 
 /* Recommendation for solving a problem with a list of files. */
 "[Database/List/LocalMissing/message]" = "Als sommige lokale bestanden niet in de lijst staan, start dan eerst de KeePassium-app.";
 
 /* Title of the database picker list */
-"[Database/List/title]" = "Databanken";
+"[Database/List/title]" = "Databases";
 
 /* Error message */
-"[Database/Load/Error] Cannot find database file" = "Kan databankbestand niet vinden";
+"[Database/Load/Error] Cannot find database file" = "Kan databasebestand niet vinden";
 
 /* Error message */
 "[Database/Load/Error] Cannot find key file" = "Kan sleutelbestand niet vinden";
 
 /* Error message */
-"[Database/Load/Error] Cannot open database file" = "Kan databankbestand niet openen";
+"[Database/Load/Error] Cannot open database file" = "Kan databasebestand niet openen";
 
 /* Error message */
 "[Database/Load/Error] Cannot open key file" = "Kan sleutelbestand niet openen";
 
 /* Error message, when the real file format is recognized. For example: 'Incorrect database format: JPEG.' */
-"[Database/Load/Error] Incorrect database format" = "Onjuist databankformaat: %@.";
+"[Database/Load/Error] Incorrect database format" = "Onjuist databaseformaat: %@.";
 
 /* Error shown when both master password and key file are empty */
 "[Database/Load/Error] Please provide at least a password or a key file" = "Kies een wachtwoord of sleutelbestand";
 
 /* Error message */
-"[Database/Load/Error] Unrecognized database format" = "Niet-herkend databankformaat";
+"[Database/Load/Error] Unrecognized database format" = "Niet-herkend databaseformaat";
 
 /* Error message */
-"[Database/Load/Error/encryptedByIntune]" = "Deze databank is beveiligd door het zakelijke it-beleid en Microsoft Intune.";
+"[Database/Load/Error/encryptedByIntune]" = "Deze database is beveiligd door het zakelijke it-beleid en Microsoft Intune.";
 
 /* Message shown after we show a cached local database instead of the (unavailable) original database. */
-"[Database/Loading/FromCache/text]" = "De databank is ontoegankelijk.\nDit is de nieuwste lokale kopie.";
+"[Database/Loading/FromCache/text]" = "De database is ontoegankelijk.\nDit is de nieuwste lokale kopie.";
 
 /* Message shown if current database cannot be edited */
-"[Database/Loading/ReadOnly/text]" = "De databank is alleen-lezen";
+"[Database/Loading/ReadOnly/text]" = "De database is alleen-lezen";
 
 /* Status message: loading a database */
 "[Database/Loading/Status] Loading..." = "Bezig met laden...";
@@ -302,25 +302,25 @@
 "[Database/MasterKey/title]" = "Hoofdsleutel";
 
 /* Title of database creation dialog */
-"[Database/New/title]" = "Nieuwe databank";
+"[Database/New/title]" = "Nieuwe database";
 
 /* Action/button */
-"[Database/Open/action] Open Database" = "Open databank";
+"[Database/Open/action] Open Database" = "Open database";
 
 /* Action/button to lock current database (the next time, it will ask for the master key). */
-"[Database/Opened/action] Lock Database" = "Vergrendel databank";
+"[Database/Opened/action] Lock Database" = "Vergrendel database";
 
 /* Action: lock database */
-"[Database/Opened/Warning/action] Close Database" = "Sluit databank";
+"[Database/Opened/Warning/action] Close Database" = "Sluit database";
 
 /* Action: ignore warnings and proceed to work with the database */
 "[Database/Opened/Warning/action] Ignore and Continue" = "Negeer en ga door";
 
 /* Status message: name of the app that was last to write/create the database file. [lastUsedAppName: String] */
-"[Database/Opened/Warning/lastEdited] Database was last edited by: %@" = "De databank is voor het laatst bewerkt door: %@";
+"[Database/Opened/Warning/lastEdited] Database was last edited by: %@" = "De database is voor het laatst bewerkt door: %@";
 
 /* Title of a warning message, shown after opening a problematic database */
-"[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "Je databank is klaar voor gebruik, maar er is een probleem.";
+"[Database/Opened/Warning/title] Your database is ready, but there was an issue." = "Je database is klaar voor gebruik, maar er is een probleem.";
 
 /* Title of a list with database-related actions (e.g. lock database, change master key, etc) */
 "[Database/Operations/title]" = "Database bewerkingen";
@@ -338,10 +338,10 @@
 "[Database/Progress] Loading key file..." = "Bezig met laden van sleutelbestand...";
 
 /* Database loading/saving status: checking whether our database was modified from another device. */
-"[Database/Progress/checkingDatabaseForModifications]" = "Databank controleren op wijzigingen…";
+"[Database/Progress/checkingDatabaseForModifications]" = "Database controleren op wijzigingen…";
 
 /* Database loading status: fetching the database file from disk/cloud */
-"[Database/Progress/downloading]" = "Bezig met ophalen van databankbestand...";
+"[Database/Progress/downloading]" = "Bezig met ophalen van databasebestand...";
 
 /* Database saving status: making a local backup copy of the database */
 "[Database/Progress/makingDatabaseBackup]" = "Bezig met samenstellen van back-up...";
@@ -356,7 +356,7 @@
 "[Database/Progress/resolvingSyncConflict]" = "Synchronisatieconflict oplossen…";
 
 /* Database saving status */
-"[Database/Progress/writingDatabaseFile]" = "Databankbestand schrijven…";
+"[Database/Progress/writingDatabaseFile]" = "Databasebestand schrijven…";
 
 /* Suggested solution/call to action when intermediate sync app fails. */
 "[Database/RecommendRemote/callToAction]" = "Probeer rechtstreeks vanuit KeePassium verbinding te maken met uw externe opslag.";
@@ -365,10 +365,10 @@
 "[Database/Reload/action]" = "Database opnieuw laden";
 
 /* Message to confirm removal of database file from the app. (This keeps the file, but removes its reference from the app.) */
-"[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "Verwijder databank uit de lijst?\n Het bestand blijft intact en je kunt het later nog toevoegen.";
+"[Database/Remove/Confirm/text] Remove database from the list?\n The file will remain intact and you can add it again later." = "Verwijder database uit de lijst?\n Het bestand blijft intact en je kunt het later nog toevoegen.";
 
 /* Action/button to save the current database. */
-"[Database/Save/action] Save Database" = "Sla databank op";
+"[Database/Save/action] Save Database" = "Sla database op";
 
 /* Action/button to save file to a remote server. */
 "[Database/SaveToServer/action]" = "Sla op server op";
@@ -392,7 +392,7 @@
 "[Database/Settings/ExternalChanges/reload]" = "Automatisch opnieuw laden";
 
 /* File settings parameter: what to do when file was changed by another app/device. (For example: `Database Modified Externally: Notify`) */
-"[Database/Settings/ExternalChanges/title]" = "Databank extern gewijzigd";
+"[Database/Settings/ExternalChanges/title]" = "Database extern gewijzigd";
 
 /* Title: what to do when a cloud-stored file cannot be loaded. (For example: `If File is Unreachable: Re-add File`.) */
 "[Database/Settings/FallbackStrategy/ReAddFile/title]" = "Bestand opnieuw toevoegen";
@@ -413,10 +413,10 @@
 "[Database/Settings/ReadOnly/title]" = "Alleen lezen";
 
 /* Title of database-related settings screen */
-"[Database/Settings/title]" = "Databankinstellingen";
+"[Database/Settings/title]" = "Database-instellingen";
 
 /* Action/button to switch from current to some other database. */
-"[Database/Switch/action]" = "Andere databank openen";
+"[Database/Switch/action]" = "Andere database openen";
 
 /* Explanation of the database sync conflict `Cancel` option. */
 "[Database/SyncConflict/Cancel/description]" = "Breek het opslaan af en laat het bestand ongewijzigd.";
@@ -425,7 +425,7 @@
 "[Database/SyncConflict/currentVersion]" = "Huidige versie";
 
 /* Message shown in case of database sync conflict. */
-"[Database/SyncConflict/description]" = "De databank is veranderd sinds deze is geopend in KeePassium.";
+"[Database/SyncConflict/description]" = "De database is veranderd sinds deze is geopend in KeePassium.";
 
 /* Title: the loaded (on-device) database version in case of sync conflict. */
 "[Database/SyncConflict/loadedVersion]" = "Geopende versie";
@@ -461,7 +461,7 @@
 "[Database/UnsavedChanges/autoFillCrashed]" = "Automatisch invullen kon sommige wijzigingen niet opslaan vanwege een technische beperking.";
 
 /* Notification message */
-"[Database/UnsavedChanges/cannotModifyYet]" = "Automatisch invulen kan helaas nog geen grote databanken wijzigen. We werken eraan om dit op te lossen.";
+"[Database/UnsavedChanges/cannotModifyYet]" = "Automatisch invulen kan helaas nog geen grote databases wijzigen. We werken eraan om dit op te lossen.";
 
 /* Call to action shown in AutoFill module. */
 "[Database/UnsavedChanges/OpenAppCallToAction]" = "Open de KeePassium-app om wijzigingen op te slaan.";
@@ -470,37 +470,37 @@
 "[Database/UnsavedChanges/saveAction]" = "Wijzigingen opslaan";
 
 /* Notification message */
-"[Database/UnsavedChanges/someDatabases]" = "Een of meer databanken hebben niet-opgeslagen wijzigingen die zijn aangebracht in Automatisch invullen.";
+"[Database/UnsavedChanges/someDatabases]" = "Een of meer databases hebben niet-opgeslagen wijzigingen die zijn aangebracht in Automatisch invullen.";
 
 /* Notification message */
-"[Database/UnsavedChanges/thisDatabase]" = "Deze databank heeft niet-opgeslagen wijzigingen die zijn aangebracht in Automatisch invullen.";
+"[Database/UnsavedChanges/thisDatabase]" = "Deze database heeft niet-opgeslagen wijzigingen die zijn aangebracht in Automatisch invullen.";
 
 /* Title: there are temporary changes to be saved */
 "[Database/UnsavedChanges/title]" = "Niet-opgeslagen wijzigingen";
 
 /* Error message */
-"[Database1/FormatError] Database file is corrupted." = "Het databankbestand is beschadigd.";
+"[Database1/FormatError] Database file is corrupted." = "Het databasebestand is beschadigd.";
 
 /* Error message [fieldName: String] */
-"[Database1/FormatError] Error parsing field %@. Corrupted database file?" = "Fout tijdens verwerken van het veld '%@'. Is het databankbestand beschadigd?";
+"[Database1/FormatError] Error parsing field %@. Corrupted database file?" = "Fout tijdens verwerken van het veld '%@'. Is het databasebestand beschadigd?";
 
 /* Error message */
-"[Database1/FormatError] Found an entry outside any group. Corrupted DB file?" = "Er is een item zonder groep aangetroffen. Is het databankbestand beschadigd?";
+"[Database1/FormatError] Found an entry outside any group. Corrupted DB file?" = "Er is een item zonder groep aangetroffen. Is het databasebestand beschadigd?";
 
 /* Error message */
-"[Database1/FormatError] Unexpected end of file. Corrupted database file?" = "Onverwachte einde van bestand. Is het databankbestand beschadigd?";
+"[Database1/FormatError] Unexpected end of file. Corrupted database file?" = "Onverwachte einde van bestand. Is het databasebestand beschadigd?";
 
 /* Error message when reading database header */
-"[Database1/Header1/Error] Header reading error. DB file corrupt?" = "Kan kop niet uitlezen. Is het databankbestand beschadigd?";
+"[Database1/Header1/Error] Header reading error. DB file corrupt?" = "Kan kop niet uitlezen. Is het databasebestand beschadigd?";
 
 /* Error message. [flagsHexString: String] */
 "[Database1/Header1/Error] Unsupported cipher. (Code: %@)" = "Niet-ondersteunde vercijfering. (code: %@)";
 
 /* Error message when opening a database. [version: String] */
-"[Database1/Header1/Error] Unsupported database format version: %@." = "Niet-ondersteunde databankformaatversie: %@.";
+"[Database1/Header1/Error] Unsupported database format version: %@." = "Niet-ondersteunde databaseformaatversie: %@.";
 
 /* Error message when opening a database */
-"[Database1/Header1/Error] Wrong file signature. Not a KeePass database?" = "Verkeerde bestandshandtekening. Is het wel een KeePass-databank?";
+"[Database1/Header1/Error] Wrong file signature. Not a KeePass database?" = "Verkeerde bestandshandtekening. Is het wel een KeePass-database?";
 
 /* Status message: collecting database items into a single package */
 "[Database1/Progress] Packing the content" = "Bezig met inpakken";
@@ -512,16 +512,16 @@
 "[Database2/backupGroupName] Recycle Bin" = "Prullenbak";
 
 /* Error message. Parsing refers to the analysis/understanding of file content. [reason: String] */
-"[Database2/FormatError] Cannot parse database. %@" = "Kan databank niet verwerken. %@";
+"[Database2/FormatError] Cannot parse database. %@" = "Kan database niet verwerken. %@";
 
 /* Error message [blockIndex: Int] */
-"[Database2/FormatError] Corrupted database file (block %d has negative size)" = "Beschadigd databankbestand (blok %d heeft een negatieve grootte)";
+"[Database2/FormatError] Corrupted database file (block %d has negative size)" = "Beschadigd databasebestand (blok %d heeft een negatieve grootte)";
 
 /* Error message: hash(checksum) of a data block is wrong. [blockIndex: Int] */
-"[Database2/FormatError] Corrupted database file (hash mismatch in block %d)" = "Beschadigd databankbestand (hash komt niet overeen in blok %d)";
+"[Database2/FormatError] Corrupted database file (hash mismatch in block %d)" = "Beschadigd databasebestand (hash komt niet overeen in blok %d)";
 
 /* Error message: HMAC value (kind of checksum) of a data block is wrong. [blockIndex: Int] */
-"[Database2/FormatError] Corrupted database file (HMAC mismatch in block %d)" = "Beschadigd databankbestand (HMAC komt niet overeen in %d)";
+"[Database2/FormatError] Corrupted database file (HMAC mismatch in block %d)" = "Beschadigd databasebestand (HMAC komt niet overeen in %d)";
 
 /* Error message about Gzip compression algorithm. [reason: String] */
 "[Database2/FormatError] Gzip error: %@" = "Gzip-fout: %@";
@@ -539,13 +539,13 @@
 "[Database2/Header2/Error] Header field %@ is corrupted." = "Kopveld %@ is beschadigd.";
 
 /* Error message */
-"[Database2/Header2/Error] Header hash mismatch. DB file corrupt?" = "Hash komt niet overeen in kop. Is het databankbestand beschadigd?";
+"[Database2/Header2/Error] Header hash mismatch. DB file corrupt?" = "Hash komt niet overeen in kop. Is het databasebestand beschadigd?";
 
 /* Error message. HMAC = https://en.wikipedia.org/wiki/HMAC */
-"[Database2/Header2/Error] Header HMAC mismatch. DB file corrupt?" = "Kop HMAC komt niet overeen. Is het databankbestand beschadigd?";
+"[Database2/Header2/Error] Header HMAC mismatch. DB file corrupt?" = "Kop HMAC komt niet overeen. Is het databasebestand beschadigd?";
 
 /* Error message when reading database header */
-"[Database2/Header2/Error] Header reading error. DB file corrupt?" = "Kan kop niet uitlezen. Is het databankbestand beschadigd?";
+"[Database2/Header2/Error] Header reading error. DB file corrupt?" = "Kan kop niet uitlezen. Is het databasebestand beschadigd?";
 
 /* Error message when opening a database */
 "[Database2/Header2/Error] Unknown compression algorithm." = "Onbekend compressie-algoritme.";
@@ -554,7 +554,7 @@
 "[Database2/Header2/Error] Unsupported data cipher: %@" = "Niet-ondersteunde gegevensvercijfering: %@";
 
 /* Error message when opening a database. [version: String] */
-"[Database2/Header2/Error] Unsupported database format version: %@." = "Niet-ondersteunde databankformaatversie: %@.";
+"[Database2/Header2/Error] Unsupported database format version: %@." = "Niet-ondersteunde databaseformaatversie: %@.";
 
 /* Error message when opening a database. [id: UInt32] */
 "[Database2/Header2/Error] Unsupported inner stream cipher (ID %d)" = "Niet-ondersteunde interne streamvercijfering (id %d)";
@@ -563,40 +563,40 @@
 "[Database2/Header2/Error] Unsupported KDF: %@" = "Niet-ondersteund KDF: %@";
 
 /* Error message when opening a database */
-"[Database2/Header2/Error] Wrong file signature. Not a KeePass database?" = "Verkeerde bestandshandtekening. Is het wel een KeePass-databank?";
+"[Database2/Header2/Error] Wrong file signature. Not a KeePass database?" = "Verkeerde bestandshandtekening. Is het wel een KeePass-database?";
 
 /* Error message about Gzip compression algorithm. [errorMessage: String] */
-"[Database2/Loading/Error] Error unpacking database: %@" = "Fout bij uitpakken van databank: %@";
+"[Database2/Loading/Error] Error unpacking database: %@" = "Fout bij uitpakken van database: %@";
 
 /* A warning about missing attachments after loading the database. [lastUsedAppName: String, attachmentNames: String] */
-"[Database2/Loading/Warning/missingBinaries]" = "Er ontbreken gegevens bij de bijlagen van sommige items. Dit kan duiden op databankbeschadiging, waarschijnlijk veroorzaakt door de laatstgebruikte app (%1$@). KeePassium bewaart de lege bijlagen, maar kan ze niet herstellen. Herstel je databank vanuit een back-up. \n\nOntbrekende bijlagen: %2$@";
+"[Database2/Loading/Warning/missingBinaries]" = "Er ontbreken gegevens bij de bijlagen van sommige items. Dit kan duiden op databasebeschadiging, waarschijnlijk veroorzaakt door de laatstgebruikte app (%1$@). KeePassium bewaart de lege bijlagen, maar kan ze niet herstellen. Herstel je database vanuit een back-up. \n\nOntbrekende bijlagen: %2$@";
 
 /* A warning about nameless attachments, shown after loading the database. [listOfEntryNames: String] */
-"[Database2/Loading/Warning/namelessAttachments]" = "De bijlagen van sommige items zijn naamloos. Dit kan duiden op eerdere databankbeschadiging.\n\n Controleer de bijgevoegde bestanden van de volgende items (en hun geschiedenis):\n%@";
+"[Database2/Loading/Warning/namelessAttachments]" = "De bijlagen van sommige items zijn naamloos. Dit kan duiden op eerdere databasebeschadiging.\n\n Controleer de bijgevoegde bestanden van de volgende items (en hun geschiedenis):\n%@";
 
 /* A warning about misformatted custom fields after loading the database. [entryPaths: String] */
 "[Database2/Loading/Warning/namelessCustomFields]" = "Sommige items hebben aangepast(e) veld(en) met lege namen. Dit kan duiden op gegevensbeschadiging. Controleer de volgende items:\n\n%@";
 
 /* A warning about unused attachments after loading the database. [lastUsedAppName: String] */
-"[Database2/Loading/Warning/unusedAttachments]" = "De databank bevat enkele bijlagen die niet in gebruik zijn bij een item. Waarschijnlijk zijn ze vergeten door de laatstgebruikte app (%@). Dit kan echter ook een teken van gegevensbeschadiging zijn. \nZorg ervoor dat je een back-up van je databank hebt voordat je iets aanpast.";
+"[Database2/Loading/Warning/unusedAttachments]" = "De database bevat enkele bijlagen die niet in gebruik zijn bij een item. Waarschijnlijk zijn ze vergeten door de laatstgebruikte app (%@). Dit kan echter ook een teken van gegevensbeschadiging zijn. \nZorg ervoor dat je een back-up van je database hebt voordat je iets aanpast.";
 
 /* Progress bar status */
-"[Database2/Progress] Loading database" = "Bezig met laden van databank";
+"[Database2/Progress] Loading database" = "Bezig met laden van database";
 
 /* Progress bar status */
-"[Database2/Progress] Reading database content" = "Bezig met uitlezen van databank";
+"[Database2/Progress] Reading database content" = "Bezig met uitlezen van database";
 
 /* Progress bar status */
 "[Database2/Progress] Writing encrypted blocks" = "Bezig met wegschrijven van versleutelde blokken";
 
 /* Progress bar status: un-zipping the database content */
-"[Database2/Progress/decompressing]" = "Bezig met decomprimeren van databank";
+"[Database2/Progress/decompressing]" = "Bezig met decomprimeren van database";
 
 /* Progress bar status */
 "[Database2/Progress/integrityCheck]" = "Bezig met integriteitscontrole";
 
 /* Progress bar status: parsing decrypted XML content */
-"[Database2/Progress/parsingXML]" = "Bezig met verwerken van databank";
+"[Database2/Progress/parsingXML]" = "Bezig met verwerken van database";
 
 /* Error message while saving a database. [errorDescription: String] */
 "[Database2/Saving/Error] Data compression error: %@" = "Fout bij gegevenscompressie: %@";
@@ -620,10 +620,10 @@
 "[Database2/Xml2/ParsingError] XML error: %@" = "XML-fout: %@";
 
 /* Error message while opening a database */
-"[DatabaseError] Cannot open database" = "Kan databank niet openen";
+"[DatabaseError] Cannot open database" = "Kan database niet openen";
 
 /* Error message while saving a database */
-"[DatabaseError] Cannot save database" = "Kan databank niet opslaan";
+"[DatabaseError] Cannot save database" = "Kan database niet opslaan";
 
 /* Error message: user provided a wrong master key for decryption. */
 "[DatabaseError] Invalid password or key file" = "Ongeldig wachtwoord of sleutelbestand";
@@ -1478,13 +1478,13 @@
 "[Premium/Benefits/HardwareKeys/title]" = "Gebruik hardwarematige sleutels";
 
 /* Explanation of the premium feature */
-"[Premium/Benefits/LinkedDatabases/details]" = "Open een andere databank in één stap, met inloggegevens opgeslagen in een item.";
+"[Premium/Benefits/LinkedDatabases/details]" = "Open een andere database in één stap, met inloggegevens opgeslagen in een item.";
 
 /* Title of a premium feature */
-"[Premium/Benefits/LinkedDatabases/title]" = "Gekoppelde databank openen";
+"[Premium/Benefits/LinkedDatabases/title]" = "Gekoppelde database openen";
 
 /* Explanation of the premium feature */
-"[Premium/Benefits/MultiDB/details]" = "Voeg meerdere databanken toe en schakel snel over.";
+"[Premium/Benefits/MultiDB/details]" = "Voeg meerdere databases toe en schakel snel over.";
 
 /* Title of a premium feature */
 "[Premium/Benefits/MultiDB/title]" = "Synchroniseer met het team";
@@ -1658,16 +1658,16 @@
 "[PremiumFeature/HardwareKeys/title] Hardware Keys" = "Hardwarematige sleutels";
 
 /* Description/advertisement for the `Linked Databases` premium feature */
-"[PremiumFeature/LinkedDatabases/description]" = "Upgrade naar premium en open gekoppelde databanken in één stap.";
+"[PremiumFeature/LinkedDatabases/description]" = "Upgrade naar premium en open gekoppelde databases in één stap.";
 
 /* Title of a premium feature: ability to open databases referenced in another database (In Title Case) */
-"[PremiumFeature/LinkedDatabases/title]" = "Gekoppelde databanken";
+"[PremiumFeature/LinkedDatabases/title]" = "Gekoppelde databases";
 
 /* Description/advertisement for the `Multiple Databases` premium feature */
-"[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "In de Premium-versie kun je eenvoudig schakelen tusses databanken.";
+"[PremiumFeature/MultiDB/description] Easily switch between databases in the premium version." = "In de Premium-versie kun je eenvoudig schakelen tusses databases.";
 
 /* Title of a premium feature: ability to use multiple databases (In Title Case) */
-"[PremiumFeature/MultiDB/title] Multiple Databases" = "Meerdere databanken";
+"[PremiumFeature/MultiDB/title] Multiple Databases" = "Meerdere databases";
 
 /* Description/call to action for the `Password Audit` premium feature. */
 "[PremiumFeature/PasswordAudit/description]" = "Ontdek of een van uw wachtwoorden in een bekende gegevenslek zijn gelekt.";
@@ -1694,7 +1694,7 @@
 "[Progress/CancellationReason] Cancelled by user" = "Afgebroken door gebruiker";
 
 /* Error message when a long-running operation was cancelled due to the lack of free memory (RAM). */
-"[Progress/CancellationReason/lowMemory]" = "Niet genoeg geheugen om door te gaan.\nDit kan gebeuren bij grotere databanken of te ambitieuze databankinstellingen (Argon2-geheugenparameter).";
+"[Progress/CancellationReason/lowMemory]" = "Niet genoeg geheugen om door te gaan.\nDit kan gebeuren bij grotere databases of te ambitieuze databaseinstellingen (Argon2-geheugenparameter).";
 
 /* Description of the Quick AutoFill feature. */
 "[QuickAutoFill/description]" = "Deze functie toont relevante items naast het wachtwoordveld zonder KeePassium te openen.";
@@ -1835,7 +1835,7 @@
 "[Settings/AutoFill/UsePerfectMatch/title]" = "Vul het meest overeenkomende resultaat automatisch in";
 
 /* Option in settings: whether to open the last used database automatically on start. */
-"[Settings/AutoOpenPreviousDatabase/title]" = "Open automatisch de vorige databank";
+"[Settings/AutoOpenPreviousDatabase/title]" = "Open automatisch de vorige database";
 
 /* Action to delete all backup files from the app. `ALL` is in capitals as a highlight. [backupFileCount: Int] */
 "[Settings/Backup] Delete ALL Backup Files (%d)" = "Verwijder alle back-upbestanden (%d)";
@@ -1850,7 +1850,7 @@
 "[Settings/BackupKeepingDuration/shortTitle] Forever" = "Voor altijd";
 
 /* Text of the success message for `Clear Key File Associations` button */
-"[Settings/ClearKeyFileAssociations/Cleared/text] Associations between key files and databases have been removed." = "De associaties tussen sleutelbestanden en databanken zijn verwijderd.";
+"[Settings/ClearKeyFileAssociations/Cleared/text] Associations between key files and databases have been removed." = "De associaties tussen sleutelbestanden en databases zijn verwijderd.";
 
 /* Title of the success message for `Clear Key File Associations` button */
 "[Settings/ClearKeyFileAssociations/Cleared/title] Cleared" = "Gewist";
@@ -1871,10 +1871,10 @@
 "[Settings/ClipboardTimeout/shortTitle] Never" = "Nooit";
 
 /* Title of a settings section: backup of databases */
-"[Settings/DatabaseBackup/title]" = "Databankback-up";
+"[Settings/DatabaseBackup/title]" = "Databaseback-up";
 
 /* Description of the Database Lock Timeout */
-"[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again." = "Als je al even niks hebt gedaan in de app, dan wordt de databank omwille van de veiligheid gesloten. Voer je hoofdwachtwoord opnieuw in om de app weer te openen.";
+"[Settings/DatabaseLockTimeout/description] If you are not interacting with the app for some time, the database will be closed for your safety. To open it, you will need to enter its master password again." = "Als je al even niks hebt gedaan in de app, dan wordt de database omwille van de veiligheid gesloten. Voer je hoofdwachtwoord opnieuw in om de app weer te openen.";
 
 /* A description/subtitle for the 'DatabaseLockTimeout: Immediately'. */
 "[Settings/DatabaseLockTimeout/description] When leaving the app" = "Bij het verlaten van de app";
@@ -1892,7 +1892,7 @@
 "[Settings/DatabaseLockTimeout/shortTitle] Never" = "Nooit";
 
 /* Title of a setting: the time after which databases will be locked. */
-"[Settings/DatabaseLockTimeout/title]" = "Databanktime-out";
+"[Settings/DatabaseLockTimeout/title]" = "Databasetime-out";
 
 /* Setting switch: whether to lock databases after device reboot. */
 "[Settings/DataProtection/LockOnReboot/title]" = "Vergrendelen bij opnieuw starten van apparaat";
@@ -2033,13 +2033,13 @@
 "[YubiKey] Use YubiKey Slot %d" = "Gebruik YubiKey-sleuf %d";
 
 /* Action/button to add database to the app */
-"Add Database" = "Voeg databank toe";
+"Add Database" = "Voeg database toe";
 
 /* Warning message when the user tries to use a database as a key file */
-"KeePass database should not be used as key file. Please pick a different file." = "De KeePass-databank mag niet worden gebruikt als sleutelbestand. Kies een ander bestand.";
+"KeePass database should not be used as key file. Please pick a different file." = "De KeePass-database mag niet worden gebruikt als sleutelbestand. Kies een ander bestand.";
 
 /* Placeholder shown when there are no database files available */
-"No database files" = "Geen databankbestanden";
+"No database files" = "Geen databasebestanden";
 
 /* Settings switch: whether to include backup copies in the file list */
 "Show Backup Files" = "Toon back-upbestanden";

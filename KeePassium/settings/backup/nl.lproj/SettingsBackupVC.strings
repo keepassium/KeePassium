@@ -20,7 +20,7 @@
 "G42-gR-eKm.text" = "Bewaar back-upbestanden";
 
 /* Class = "UITableViewSection"; footerTitle = "Before saving a database, KeePassium will automatically make a copy, just in case."; ObjectID = "nBI-OF-9iV"; Note = "Explanation for the `Make Backup Copies` option"; */
-"nBI-OF-9iV.footerTitle" = "Voordat je een databank opslaat, maakt KeePassium automatisch een kopie, gewoon voor het geval dat.";
+"nBI-OF-9iV.footerTitle" = "Voordat je een database opslaat, maakt KeePassium automatisch een kopie, gewoon voor het geval dat.";
 
 /* Class = "UILabel"; text = "Exclude Backup Files from System Backup"; ObjectID = "Qs6-uS-gdS"; Note = "Settings option, on/off"; */
 "Qs6-uS-gdS.text" = "Back-up bestanden niet opnemen in systeemback-up";

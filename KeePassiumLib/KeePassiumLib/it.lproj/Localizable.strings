@@ -1835,7 +1835,7 @@
 "[Settings/AutoFill/UsePerfectMatch/title]" = "Inserisci risultato perfetto in automatico";
 
 /* Option in settings: whether to open the last used database automatically on start. */
-"[Settings/AutoOpenPreviousDatabase/title]" = "Apri database precedente in automatico";
+"[Settings/AutoOpenPreviousDatabase/title]" = "Apri ultimo database";
 
 /* Action to delete all backup files from the app. `ALL` is in capitals as a highlight. [backupFileCount: Int] */
 "[Settings/Backup] Delete ALL Backup Files (%d)" = "Elimina TUTTE le copie di sicurezza (%d)";

@@ -10,6 +10,9 @@
 /* Call to action: perform accessibilty `activate` action to listen to text/content. */
 "[Accessibility/activateToListen]" = "激活辅助功能以收听内容。";
 
+/* Accessibility notification for entries with a passkey */
+"[Accessibility/containsPasskey]" = "包含一个通行密钥。";
+
 /* Action which resets the app as if it was just installed. */
 "[App/ResetEverything/action]" = "重置";
 
@@ -154,6 +157,9 @@
 /* Action: add/import an image as a custom icon */
 "[Database/CustomIcon/add]" = "添加自定义图标";
 
+/* Action: delete unused icons */
+"[Database/CustomIcon/deleteUnused]" = "删除未使用的图标";
+
 /* Action: download icon of a website */
 "[Database/CustomIcon/DownloadFavicon/action]" = "下载图标";
 
@@ -168,6 +174,9 @@
 
 /* Status message: a website favicon is being downloaded */
 "[Database/CustomIcon/DownloadOneFavicon/status]" = "正在下载图标";
+
+/* Notification when some custom icons are not used by any group or entry [iconCount: Int] */
+"[Database/CustomIcon/Unused/count]" = "找到未使用的图标： %d";
 
 /* Message to confirm deletion of a database file. (This deletes the file itself) */
 "[Database/Delete/Confirm/text] Delete database file?\n Make sure you have a backup." = "删除数据库文件?\n 请确保您有备份文件!";
@@ -202,6 +211,9 @@
 /* Info message for entries that contain information for opening a different database. */
 "[Database/Entry/LinkedDatabase/message]" = "此条目指向其他数据库。";
 
+/* Notification message before database export. */
+"[Database/Export/PlainText/warning]" = "您的数据将导出为没有任何保护的纯文本文件。";
+
 /* Notification message about external changes to the loaded file. */
 "[Database/ExternalChange/notification]" = "数据库文件已更改。是否重新载入？";
 
@@ -216,6 +228,9 @@
 
 /* Info message when changing database file format. */
 "[Database/FormatVersion/Conversion/allDataPreserved]" = "您的所有数据都将被保存。";
+
+/* Error message when creating a new passkey. */
+"[Database/FormatVersion/PasskeysNotSupported]" = "当前数据库格式不支持通行密钥。";
 
 /* Info message when the app needs to change database file format. [oldFormat, newFormat: String] */
 "[Database/FormatVersion/Upgrade/text]" = "KeePassium 需要升级您的数据库文件格式 (从 %1$@ 到 %2$@)。您可能需要更新其他使用此数据库的应用。";
@@ -309,6 +324,9 @@
 
 /* Title of a list with database-related actions (e.g. lock database, change master key, etc) */
 "[Database/Operations/title]" = "数据库操作";
+
+/* Error message about creation of a new passkey. */
+"[Database/Passkey/Error/UnsupportedAlgorithm/description]" = "不支持的通行密钥算法";
 
 /* Status message: preparing database print preview. */
 "[Database/Print/preparingPreview]" = "正在准备预览...";
@@ -438,6 +456,27 @@
 
 /* Message shown when user enters an invalid database password */
 "[Database/Unlock/wrongPassword/question]" = "忘记密码？";
+
+/* Notification message */
+"[Database/UnsavedChanges/autoFillCrashed]" = "由于技术限制，自动填充无法保存一些更改。";
+
+/* Notification message */
+"[Database/UnsavedChanges/cannotModifyYet]" = "不幸的是，自动填充还不能修改大型数据库。我们正在努力解决此问题。";
+
+/* Call to action shown in AutoFill module. */
+"[Database/UnsavedChanges/OpenAppCallToAction]" = "若要保存更改，请打开 KeePassium 主程序。";
+
+/* Action/button to save accummulated modifications */
+"[Database/UnsavedChanges/saveAction]" = "保存更改";
+
+/* Notification message */
+"[Database/UnsavedChanges/someDatabases]" = "一个或多个数据库在自动填充中有未保存的更改。";
+
+/* Notification message */
+"[Database/UnsavedChanges/thisDatabase]" = "此数据库在自动填充中有未保存的更改。";
+
+/* Title: there are temporary changes to be saved */
+"[Database/UnsavedChanges/title]" = "未保存的更改";
 
 /* Error message */
 "[Database1/FormatError] Database file is corrupted." = "数据库文件损毁。";
@@ -645,6 +684,9 @@
 
 /* Name of an entry field */
 "[Entry/Field/name] Notes" = "备注";
+
+/* Title of an entry field */
+"[Entry/Field/name] Passkey" = "通行密钥";
 
 /* Name of an entry field */
 "[Entry/Field/name] Password" = "密码";
@@ -1018,6 +1060,9 @@
 /* Action/button to remove a file from the app (the file remains, but the app forgets about it) */
 "[Generic/File] Remove" = "移除";
 
+/* Title of a generic file export screen. */
+"[Generic/File/Export/title]" = "导出文件";
+
 /* Action/button to save data to a different file */
 "[Generic/File/Save as]" = "另存为…";
 
@@ -1110,6 +1155,9 @@
 
 /* Title of a list: entries with one-time passwords (OTP) */
 "[Group/Smart/Preset/otpEntries]" = "带 OTP 的条目";
+
+/* Title of a list: entries that contain passkeys */
+"[Group/Smart/Preset/passkeyEntries]" = "包含通行密钥的条目";
 
 /* Title for the Smart Group search conditions in group editor */
 "[Group/Smart/Query/title]" = "智能群组筛选器";
@@ -1263,6 +1311,12 @@
 
 /* Menu title: app settings */
 "[Menu/Preferences/title]" = "偏好设置…";
+
+/* Title of a menu: sort order of files in a list */
+"[Menu/Sort] Sort Files By" = "文件排序通过";
+
+/* Title of a menu: sort order of groups and entries in a list */
+"[Menu/Sort] Sort Items By" = "项目排序通过";
 
 /* Suggestion/hint on how to fix an accompanying error. */
 "[Org/ContactYourAdmin]" = "请联系 IT 管理员。";
@@ -1784,13 +1838,13 @@
 "[Settings/AutoOpenPreviousDatabase/title]" = "自动打开之前的数据库";
 
 /* Action to delete all backup files from the app. `ALL` is in capitals as a highlight. [backupFileCount: Int] */
-"[Settings/Backup] Delete ALL Backup Files (%d)" = "删除所有备份当案(%d)";
+"[Settings/Backup] Delete ALL Backup Files (%d)" = "删除所有备份文件(%d)";
 
 /* Status message: there are no backup files to delete */
 "[Settings/Backup] No Backup Files Found" = "没有找到备份文件";
 
 /* Confirmation dialog message to delete all backup files */
-"[Settings/Backup/Delete/title] Delete all backup files?" = "删除所有备份当案?";
+"[Settings/Backup/Delete/title] Delete all backup files?" = "删除所有备份文件?";
 
 /* An option in Settings. Please keep it short. Will be shown as 'Keep Backup Files: Forever' */
 "[Settings/BackupKeepingDuration/shortTitle] Forever" = "永远";

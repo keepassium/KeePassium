@@ -7,6 +7,9 @@
 /* An identifier of the app that called AutoFill. The term is intentionally similar to https://ru.wikipedia.org/wiki/Caller_ID. [callerID: String] */
 "[AutoFill/Search/callerID]" = "呼叫ID: %@";
 
+/* Status message, shows which app or webpage launched AutoFill. For example: `Context: google.com` */
+"[AutoFill/Search/context]" = "上下文: %@";
+
 /* No comment provided by engineer. */
 "[AutoFill/Setup/footer]" = "自动填充功能无法自动访问主KeePassium应用程序中已有的数据库。\n\n为什么？ 在系统后台，系统将自动填充视为一个独立的应用程序，独立于主要的KeePassium处理程序。 出于安全原因，应用程序无法简单地访问任何外部文件 - 除非您明确将这些文件添加到该应用程序。系统安全特性保证应用程序只能访问您允许的少数文件。\n\n因此，需要为自动填充和KeePassium应用程序赋予所需的数据库文件以及密钥文件权限。 幸运的是，这只要设置一次。";
 
@@ -21,6 +24,15 @@
 
 /* Must match Apple's translation, as found in iOS 17 Settings → Passwords → Password Options. If unsure, leave untranslated. */
 "[AutoFill/Setup/UncheckKeychain/usePasswordsAndPasskeysFrom]" = "使用来自下列提供者的密码和通行密钥";
+
+/* Action: create a passkey and add it to existing entry */
+"[Database/Passkey/AddToExisting/action]" = "添加通行密钥到现有条目";
+
+/* Confirmation message before replacing an existing passkey. */
+"[Database/Passkey/AddToExisting/confirm]" = "此条目已经有一个通行密钥。是否要替换？";
+
+/* Title of an optional dialog for creating new passkeys */
+"[Database/Passkey/Create/title]" = "创建一个通行密钥？";
 
 /* Name of the Apple Passwords application, see https://support.apple.com/120758 */
 "[Generic/ApplePasswordsApp/title]" = "密码";

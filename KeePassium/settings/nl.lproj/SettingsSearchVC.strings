@@ -5,7 +5,7 @@
 "cCm-E4-L3m.text" = "Doorzoek veldnamen";
 
 /* Class = "UITableViewSection"; footerTitle = "After opening a database, automatically show the search field."; ObjectID = "DJr-hC-DMT"; Note = "A section in search-related settings: what happens when the app is just started or database is just opened."; */
-"DJr-hC-DMT.footerTitle" = "Toon automatisch het zoekveld na het openen van een databank.";
+"DJr-hC-DMT.footerTitle" = "Toon automatisch het zoekveld na het openen van een database.";
 
 /* Class = "UITableViewSection"; headerTitle = "Search Scope"; ObjectID = "Io8-uP-3lF"; Note = "A section in search-related settings: which fields to include in search."; */
 "Io8-uP-3lF.headerTitle" = "Zoekbereik";

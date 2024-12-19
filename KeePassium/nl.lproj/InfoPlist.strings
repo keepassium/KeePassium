@@ -1,8 +1,8 @@
 /* (No Comment) */
-"KeePass Database (kdb)" = "KeePass-databank (kdb)";
+"KeePass Database (kdb)" = "KeePass-database (kdb)";
 
 /* (No Comment) */
-"KeePass Database (kdbx)" = "KeePass-databank (kdbx)";
+"KeePass Database (kdbx)" = "KeePass-database (kdbx)";
 
 /* Privacy - NFC Scan Usage Description */
 "NFCReaderUsageDescription" = "KeePassium heeft toegang nodig tot NFC om te communiceren met je YubiKey.";

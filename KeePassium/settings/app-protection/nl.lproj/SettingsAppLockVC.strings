@@ -1,11 +1,11 @@
 /* Class = "UITableViewSection"; footerTitle = "If you enter a wrong AppLock passcode, KeePassium will close all databases and clear all master keys from the keychain."; ObjectID = "5Dg-KX-m7a"; Note = "AppLock settings section: what to do when the user enters a wrong AppLock passcode."; */
-"5Dg-KX-m7a.footerTitle" = "Als u een verkeerde AppLock-toegangscode invoert, dan sluit KeePassium alle databanken en wist alle hoofdsleutels uit de sleutelhanger.";
+"5Dg-KX-m7a.footerTitle" = "Als u een verkeerde AppLock-toegangscode invoert, dan sluit KeePassium alle databases en wist alle hoofdsleutels uit de sleutelhanger.";
 
 /* Class = "UITableViewSection"; headerTitle = "Wrong Passcode"; ObjectID = "5Dg-KX-m7a"; Note = "AppLock settings section: what to do when the user enters a wrong AppLock passcode."; */
 "5Dg-KX-m7a.headerTitle" = "Onjuiste toegangscode";
 
 /* Class = "UILabel"; text = "Protect Databases"; ObjectID = "6Pk-35-Fx6"; */
-"6Pk-35-Fx6.text" = "Beveilig databanken";
+"6Pk-35-Fx6.text" = "Beveilig databases";
 
 /* Class = "UITableViewSection"; footerTitle = "Allows biometric authentication as a quick (but less secure) alternative to AppLock passcode."; ObjectID = "7ae-8I-LiQ"; Note = "AppLock settings section: biometric auth (Touch ID/Face ID)"; */
 "7ae-8I-LiQ.footerTitle" = "Hiermee kan biometrische verificatie als een snel (maar minder veilig) alternatief voor AppLock-toegangscode worden gebruikt.";

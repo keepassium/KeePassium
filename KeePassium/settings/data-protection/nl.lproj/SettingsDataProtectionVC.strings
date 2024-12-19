@@ -11,7 +11,7 @@
 "e6Y-AP-hag.headerTitle" = "Beveiligde velden";
 
 /* Class = "UITableViewSection"; footerTitle = "Once you unlock a database, its master key can be stored in device's secure keychain. The next time, KeePassium will use that key so you won't have to type your full master password again. \n\n(Master keys are automatically cleared on database timeout.)"; ObjectID = "Faj-km-pM5"; */
-"Faj-km-pM5.footerTitle" = "Zodra je een databank ontgrendelt, kan de hoofdsleutel worden opgeslagen in de beveiligde sleutelhanger van het systeem. De eerstvolgende keer gebruikt KeePassium deze sleutel zodat je je volledige hoofdwachtwoord niet opnieuw hoeft te typen. \n\n(de hoofdsleutels worden automatisch gewist bij een databanktime-out)";
+"Faj-km-pM5.footerTitle" = "Zodra je een database ontgrendelt, kan de hoofdsleutel worden opgeslagen in de beveiligde sleutelhanger van het systeem. De eerstvolgende keer gebruikt KeePassium deze sleutel zodat je je volledige hoofdwachtwoord niet opnieuw hoeft te typen. \n\n(de hoofdsleutels worden automatisch gewist bij een databasetime-out)";
 
 /* Class = "UITableViewSection"; headerTitle = "Quick Unlock"; ObjectID = "Faj-km-pM5"; */
 "Faj-km-pM5.headerTitle" = "Snel ontgrendelen";
@@ -35,13 +35,13 @@
 "JHl-o7-xHI.text" = "Onthoud sleutelbestanden";
 
 /* Class = "UITableViewSection"; footerTitle = "Remember and automatically select the last used key file for each database. Clearing the associations does not affect the files."; ObjectID = "Mxu-GP-FmN"; */
-"Mxu-GP-FmN.footerTitle" = "Onthoud en selecteer automatisch het laatst gebruikte sleutelbestand van elke databank. Het wissen van de associaties heeft geen invloed op de bestanden.";
+"Mxu-GP-FmN.footerTitle" = "Onthoud en selecteer automatisch het laatst gebruikte sleutelbestand van elke database. Het wissen van de associaties heeft geen invloed op de bestanden.";
 
 /* Class = "UITableViewSection"; headerTitle = "Key Files"; ObjectID = "Mxu-GP-FmN"; */
 "Mxu-GP-FmN.headerTitle" = "Sleutelbestanden";
 
 /* Class = "UITableViewSection"; footerTitle = "Database timeout closes any opened databases and clears any remembered master keys after some time."; ObjectID = "neJ-eG-TV7"; */
-"neJ-eG-TV7.footerTitle" = "De databanktime-out sluit alle geopende databanken en wist na enige tijd alle opgeslagen hoofdsleutels.";
+"neJ-eG-TV7.footerTitle" = "De databasetime-out sluit alle geopende databases en wist na enige tijd alle opgeslagen hoofdsleutels.";
 
 /* Class = "UITableViewSection"; headerTitle = "Automatic Lock"; ObjectID = "neJ-eG-TV7"; */
 "neJ-eG-TV7.headerTitle" = "Vergrendel automatisch";
@@ -56,7 +56,7 @@
 "SSu-Sr-MCg.text" = "Klembordtime-out";
 
 /* Class = "UILabel"; text = "Database Timeout"; ObjectID = "weX-SZ-IDB"; */
-"weX-SZ-IDB.text" = "Databanktime-out";
+"weX-SZ-IDB.text" = "Databasetime-out";
 
 /* Class = "UILabel"; text = "Universal Clipboard"; ObjectID = "YL6-U9-FM6"; */
 "YL6-U9-FM6.text" = "Universeel klembord";

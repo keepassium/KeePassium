@@ -1,11 +1,11 @@
 /* Class = "UILabel"; text = "Database File Name"; ObjectID = "2iK-ct-ygq"; */
-"2iK-ct-ygq.text" = "Bestandsnaam van databank";
+"2iK-ct-ygq.text" = "Bestandsnaam van database";
 
 /* Class = "UIButton"; configuration.title = "Save Database"; ObjectID = "h6C-CG-RVI"; Note = "Action: save the new database (will show a file picker dialog)."; */
-"h6C-CG-RVI.configuration.title" = "Sla databank op";
+"h6C-CG-RVI.configuration.title" = "Sla database op";
 
 /* Class = "UIButton"; normalTitle = "Save Database"; ObjectID = "h6C-CG-RVI"; Note = "Action: save the new database (will show a file picker dialog)."; */
-"h6C-CG-RVI.normalTitle" = "Sla databank op";
+"h6C-CG-RVI.normalTitle" = "Sla database op";
 
 /* Class = "UITextField"; placeholder = "No Key File"; ObjectID = "pvt-FS-0Yx"; Note = "Placeholder: don't use key file (should match the No Key File option in key file picker)."; */
 "pvt-FS-0Yx.placeholder" = "Geen sleutelbestand";
