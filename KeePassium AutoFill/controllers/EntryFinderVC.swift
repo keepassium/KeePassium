@@ -228,6 +228,9 @@ final class EntryFinderVC: UITableViewController {
         }
     }
 
+    func setPasskeyTargetSelectionMode() {
+        title = LString.actionAddPasskeyToExistingEntry
+    }
 
     private enum SectionType {
         case announcement

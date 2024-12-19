@@ -56,6 +56,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="{Secondary}">
                                     <fontDescription key="titleFontDescription" style="UICTFontTextStyleBody"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="didPressSecondary:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="IJY-hk-TEW"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u1Q-7R-V4M">
                                 <rect key="frame" x="16" y="66.333333333333343" width="19.666666666666671" height="20"/>

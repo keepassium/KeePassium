@@ -11,6 +11,9 @@ import UIKit
 
 protocol PasskeyCreatorDelegate: AnyObject {
     func didPressCreatePasskey(with params: PasskeyRegistrationParams, in viewController: PasskeyCreatorVC)
+    func didPressAddPasskeyToEntry(
+        with params: PasskeyRegistrationParams,
+        in viewController: PasskeyCreatorVC)
 }
 
 final class PasskeyCreatorVC: UIViewController {
@@ -46,7 +49,7 @@ final class PasskeyCreatorVC: UIViewController {
 
         primaryButton.configuration = primaryConfig
         secondaryButton.configuration = secondaryConfig
-        secondaryButton.isEnabled = false
+        secondaryButton.isEnabled = true
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -63,6 +66,10 @@ final class PasskeyCreatorVC: UIViewController {
 
     @IBAction private func didPressPrimary(_ sender: Any) {
         delegate?.didPressCreatePasskey(with: params, in: self)
+    }
+
+    @IBAction private func didPressSecondary(_ sender: Any) {
+        delegate?.didPressAddPasskeyToEntry(with: params, in: self)
     }
 }
 

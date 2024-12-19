@@ -366,7 +366,12 @@ extension AutoFillCoordinator {
         }
     }
 
-    func registerPasskey(with params: PasskeyRegistrationParams, in databaseFile: DatabaseFile) {
+    private func startPasskeyRegistration(
+        with params: PasskeyRegistrationParams,
+        target entry: Entry?,
+        in databaseFile: DatabaseFile,
+        presenter: UIViewController
+    ) {
         let presenter = router.navigationController
         guard let db2 = databaseFile.database as? Database2,
               let rootGroup = db2.root as? Group2
@@ -384,11 +389,51 @@ extension AutoFillCoordinator {
             presenter.showErrorAlert(error.localizedDescription)
             return
         }
-        _ = rootGroup.createPasskeyEntry(with: passkey)
-        Settings.current.isAutoFillFinishedOK = false
-        saveDatabase(databaseFile, onSuccess: { [weak self, passkey] in
-            self?.returnPasskeyRegistration(passkey: passkey)
-        })
+
+        guard let targetEntry = entry as? Entry2 else {
+            Diag.debug("Creating a new passkey entry")
+            _ = rootGroup.createPasskeyEntry(with: passkey)
+            finishPasskeyRegistration(passkey, in: databaseFile, presenter: presenter)
+            return
+        }
+        guard let _ = Passkey.make(from: targetEntry) else {
+            Diag.debug("Adding passkey to existing entry")
+            db2.setPasskey(passkey, for: targetEntry)
+            finishPasskeyRegistration(passkey, in: databaseFile, presenter: presenter)
+            return
+        }
+
+        let overwriteConfirmationAlert = UIAlertController.make(
+            title: LString.fieldPasskey,
+            message: LString.titleConfirmReplacingExistingPasskey,
+            dismissButtonTitle: LString.actionCancel)
+        overwriteConfirmationAlert.addAction(
+            title: LString.actionReplace,
+            style: .destructive,
+            preferred: false,
+            handler: { [weak self, weak databaseFile, weak presenter] _ in
+                guard let self, let databaseFile, let presenter else { return }
+                Diag.debug("Replacing passkey in existing entry")
+                db2.setPasskey(passkey, for: targetEntry)
+                finishPasskeyRegistration(passkey, in: databaseFile, presenter: presenter)
+            }
+        )
+        presenter.present(overwriteConfirmationAlert, animated: true)
+    }
+
+    private func finishPasskeyRegistration(
+        _ passkey: NewPasskey,
+        in databaseFile: DatabaseFile,
+        presenter: UIViewController
+    ) {
+        maybeWarnAboutExcessiveMemory(presenter: presenter) { [weak self] in
+            guard let self else { return }
+
+            Settings.current.isAutoFillFinishedOK = false
+            saveDatabase(databaseFile, onSuccess: { [weak self, passkey] in
+                self?.returnPasskeyRegistration(passkey: passkey)
+            })
+        }
     }
 }
 
@@ -1097,13 +1142,16 @@ extension AutoFillCoordinator: EntryFinderCoordinatorDelegate {
 
     func didPressCreatePasskey(
         with params: PasskeyRegistrationParams,
+        target entry: Entry?,
         presenter: UIViewController,
         in coordinator: EntryFinderCoordinator
     ) {
-        maybeWarnAboutExcessiveMemory(presenter: presenter) { [weak self, weak coordinator] in
-            guard let self, let coordinator else { return }
-            registerPasskey(with: params, in: coordinator.databaseFile)
-        }
+        startPasskeyRegistration(
+            with: params,
+            target: entry,
+            in: coordinator.databaseFile,
+            presenter: presenter
+        )
     }
 }
 

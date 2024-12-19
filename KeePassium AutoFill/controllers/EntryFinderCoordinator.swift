@@ -20,6 +20,7 @@ protocol EntryFinderCoordinatorDelegate: AnyObject {
 
     func didPressCreatePasskey(
         with params: PasskeyRegistrationParams,
+        target entry: Entry?,
         presenter: UIViewController,
         in coordinator: EntryFinderCoordinator)
 }
@@ -43,6 +44,7 @@ final class EntryFinderCoordinator: Coordinator {
     private var passkeyRelyingParty: String?
     private let passkeyRegistrationParams: PasskeyRegistrationParams?
     private let searchHelper = SearchHelper()
+    private var isSelectingPasskeyCreationTarget = false
 
     private let vcAnimationDuration = 0.3
 
@@ -284,7 +286,20 @@ extension EntryFinderCoordinator: EntryFinderDelegate {
     }
 
     func didSelectEntry(_ entry: Entry, in viewController: EntryFinderVC) {
-        delegate?.didSelectEntry(entry, in: self)
+        if isSelectingPasskeyCreationTarget {
+            guard let passkeyRegistrationParams else {
+                assertionFailure()
+                return
+            }
+            delegate?.didPressCreatePasskey(
+                with: passkeyRegistrationParams,
+                target: entry,
+                presenter: viewController,
+                in: self
+            )
+        } else {
+            delegate?.didSelectEntry(entry, in: self)
+        }
     }
 
     func didPressLockDatabase(in viewController: EntryFinderVC) {
@@ -304,8 +319,16 @@ extension EntryFinderCoordinator: EntryFinderDelegate {
 extension EntryFinderCoordinator: PasskeyCreatorDelegate {
     func didPressCreatePasskey(with params: PasskeyRegistrationParams, in viewController: PasskeyCreatorVC) {
         viewController.dismiss(animated: true) { [self] in
-            delegate?.didPressCreatePasskey(with: params, presenter: entryFinderVC, in: self)
+            delegate?.didPressCreatePasskey(with: params, target: nil, presenter: entryFinderVC, in: self)
         }
+    }
+    func didPressAddPasskeyToEntry(
+        with params: PasskeyRegistrationParams,
+        in viewController: PasskeyCreatorVC
+    ) {
+        viewController.dismiss(animated: true)
+        isSelectingPasskeyCreationTarget = true
+        entryFinderVC.setPasskeyTargetSelectionMode()
     }
 }
 
