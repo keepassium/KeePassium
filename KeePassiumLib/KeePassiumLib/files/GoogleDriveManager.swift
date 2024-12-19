@@ -66,6 +66,7 @@ final public class GoogleDriveManager: NSObject, RemoteDataSourceManager {
 extension GoogleDriveManager {
     public func authenticate(
         presenter: UIViewController,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
     ) {
@@ -77,6 +78,7 @@ extension GoogleDriveManager {
                 handleAuthResponse(
                     callbackURL: callbackURL,
                     error: error,
+                    timeout: timeout,
                     completionQueue: completionQueue,
                     completion: completion
                 )
@@ -106,6 +108,7 @@ extension GoogleDriveManager {
     private func handleAuthResponse(
         callbackURL: URL?,
         error: Error?,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
     ) {
@@ -161,12 +164,14 @@ extension GoogleDriveManager {
         }
         getToken(
             operation: .authorization(code: authCodeString),
+            timeout: timeout,
             completionQueue: completionQueue,
             completion: completion)
     }
 
     public func acquireTokenSilent(
         token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
     ) {
@@ -182,6 +187,7 @@ extension GoogleDriveManager {
         } else {
             getToken(
                 operation: .refresh(token: token),
+                timeout: timeout,
                 completionQueue: completionQueue,
                 completion: completion
             )
@@ -190,6 +196,7 @@ extension GoogleDriveManager {
 
     private func getToken(
         operation: TokenOperation,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
     ) {
@@ -205,6 +212,7 @@ extension GoogleDriveManager {
         urlRequest.setValue(
             "application/x-www-form-urlencoded; charset=UTF-8",
             forHTTPHeaderField: GoogleDriveAPI.Keys.contentType)
+        urlRequest.timeoutInterval = timeout.duration
 
         var postParams = [
             "client_id=\(GoogleDriveAPI.clientID.addingPercentEncoding(withAllowedCharacters: .alphanumerics)!)"
@@ -299,6 +307,7 @@ extension GoogleDriveManager {
 extension GoogleDriveManager {
     public func getAccountInfo(
         freshToken token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<GoogleDriveAccountInfo, RemoteError>) -> Void
     ) {
@@ -348,6 +357,7 @@ extension GoogleDriveManager {
     public func getItems(
         in folder: GoogleDriveItem,
         freshToken token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<[GoogleDriveItem], RemoteError>) -> Void
     ) {
@@ -356,6 +366,7 @@ extension GoogleDriveManager {
             nextPageToken: nil,
             itemsSoFar: [],
             freshToken: token,
+            timeout: timeout,
             completionQueue: completionQueue,
             completion: completion
         )
@@ -366,6 +377,7 @@ extension GoogleDriveManager {
         nextPageToken: String?,
         itemsSoFar: [GoogleDriveItem],
         freshToken token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<[GoogleDriveItem], RemoteError>) -> Void
     ) {
@@ -373,6 +385,7 @@ extension GoogleDriveManager {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "GET"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: GoogleDriveAPI.Keys.authorization)
+        urlRequest.timeoutInterval = timeout.duration
 
         let dataTask = urlSession.dataTask(with: urlRequest) {
             [self] data,
@@ -390,6 +403,7 @@ extension GoogleDriveManager {
                             nextPageToken: nextPageToken,
                             itemsSoFar: itemsSoFar + fileItems,
                             freshToken: token,
+                            timeout: timeout,
                             completionQueue: completionQueue,
                             completion: completion
                         )
@@ -432,6 +446,7 @@ extension GoogleDriveManager {
     public func getFileContents(
         _ item: GoogleDriveItem,
         freshToken token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<Data, RemoteError>) -> Void
     ) {
@@ -483,12 +498,14 @@ extension GoogleDriveManager {
     public func getItemInfo(
         _ item: GoogleDriveItem,
         freshToken token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<GoogleDriveItem, RemoteError>) -> Void
     ) {
         var urlRequest = URLRequest(url: item.getRequestURL(.itemInfo))
         urlRequest.httpMethod = "GET"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: GoogleDriveAPI.Keys.authorization)
+        urlRequest.timeoutInterval = timeout.duration
 
         let dataTask = urlSession.dataTask(with: urlRequest) { [self] data, response, error in
             let result = GoogleDriveAPI.ResponseParser
@@ -575,6 +592,7 @@ extension GoogleDriveManager {
         _ item: GoogleDriveItem,
         contents: ByteArray,
         freshToken token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping UploadCompletionHandler
     ) {
@@ -617,6 +635,7 @@ extension GoogleDriveManager {
         contents: ByteArray,
         fileName: String,
         freshToken token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping CreateCompletionHandler<GoogleDriveItem>
     ) {
@@ -626,6 +645,7 @@ extension GoogleDriveManager {
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: GoogleDriveAPI.Keys.authorization)
         urlRequest.setValue("application/json; charset=UTF-8", forHTTPHeaderField: GoogleDriveAPI.Keys.contentType)
+        urlRequest.timeoutInterval = timeout.duration
 
         var params: [String: Any] = [
             GoogleDriveAPI.Keys.name: fileName,
@@ -649,6 +669,7 @@ extension GoogleDriveManager {
                         newFile,
                         contents: contents,
                         freshToken: token,
+                        timeout: timeout,
                         completionQueue: completionQueue,
                         completion: adaptCreateCompletionAsUploadCompletion(completion)
                     )

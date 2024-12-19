@@ -49,10 +49,16 @@ final public class OneDriveManager: RemoteDataSourceManager {
 
     public func acquireTokenSilent(
         token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
     ) {
-        authProvider.acquireTokenSilent(token: token, completionQueue: completionQueue, completion: completion)
+        authProvider.acquireTokenSilent(
+            token: token,
+            timeout: timeout,
+            completionQueue: completionQueue,
+            completion: completion
+        )
     }
 }
 
@@ -64,11 +70,13 @@ extension OneDriveManager {
 
     public func authenticate(
         presenter: UIViewController,
+        timeout: Timeout,
         completionQueue: OperationQueue = .main,
         completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
     ) {
         authProvider.acquireToken(
             presenter: presenter,
+            timeout: timeout,
             completionQueue: completionQueue,
             completion: completion
         )
@@ -78,6 +86,7 @@ extension OneDriveManager {
 extension OneDriveManager {
     public func getAccountInfo(
         freshToken token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<OneDriveDriveInfo, RemoteError>) -> Void
     ) {
@@ -87,6 +96,7 @@ extension OneDriveManager {
         var urlRequest = URLRequest(url: driveInfoURL)
         urlRequest.httpMethod = "GET"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: OneDriveAPI.Keys.authorization)
+        urlRequest.timeoutInterval = timeout.duration
 
         let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
             let result = OneDriveAPI.ResponseParser
@@ -147,6 +157,7 @@ extension OneDriveManager {
     public func getItems(
         in folder: OneDriveItem,
         freshToken token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<[OneDriveItem], RemoteError>) -> Void
     ) {
@@ -154,6 +165,7 @@ extension OneDriveManager {
         var urlRequest = URLRequest(url: requestURL)
         urlRequest.httpMethod = "GET"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: OneDriveAPI.Keys.authorization)
+        urlRequest.timeoutInterval = timeout.duration
 
         let dataTask = urlSession.dataTask(with: urlRequest) { [self] data, response, error in
             let result = OneDriveAPI.ResponseParser
@@ -280,6 +292,7 @@ extension OneDriveManager {
     public func getItemInfo(
         _ item: OneDriveItem,
         freshToken token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<OneDriveItem, RemoteError>) -> Void
     ) {
@@ -287,6 +300,7 @@ extension OneDriveManager {
         var urlRequest = URLRequest(url: fileInfoRequestURL)
         urlRequest.httpMethod = "GET"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: OneDriveAPI.Keys.authorization)
+        urlRequest.timeoutInterval = timeout.duration
 
         let dataTask = urlSession.dataTask(with: urlRequest) { [self] data, response, error in
             let result = OneDriveAPI.ResponseParser
@@ -369,6 +383,7 @@ extension OneDriveManager {
     public func updateItemInfo(
         _ fileItem: OneDriveItem,
         freshToken token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<OneDriveItem, RemoteError>) -> Void
     ) {
@@ -386,6 +401,7 @@ extension OneDriveManager {
         var urlRequest = URLRequest(url: fileInfoRequestURL)
         urlRequest.httpMethod = "GET"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: OneDriveAPI.Keys.authorization)
+        urlRequest.timeoutInterval = timeout.duration
 
         let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
             let result = OneDriveAPI.ResponseParser
@@ -457,6 +473,7 @@ extension OneDriveManager {
     public func getFileContents(
         _ item: OneDriveItem,
         freshToken token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<Data, RemoteError>) -> Void
     ) {
@@ -464,6 +481,7 @@ extension OneDriveManager {
         var urlRequest = URLRequest(url: fileContentsURL)
         urlRequest.httpMethod = "GET"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: OneDriveAPI.Keys.authorization)
+        urlRequest.timeoutInterval = timeout.duration
 
         let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
             if let error = error {
@@ -510,6 +528,7 @@ extension OneDriveManager {
         _ item: OneDriveItem,
         contents: ByteArray,
         freshToken token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping UploadCompletionHandler
     ) {
@@ -526,6 +545,7 @@ extension OneDriveManager {
         ])
         urlRequest.httpBody = postData
         urlRequest.setValue(String(postData.count), forHTTPHeaderField: OneDriveAPI.Keys.contentLength)
+        urlRequest.timeoutInterval = timeout.duration
 
         let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
             let result = OneDriveAPI.ResponseParser
@@ -537,6 +557,7 @@ extension OneDriveManager {
                     self.uploadData(
                         contents,
                         toURL: uploadURL,
+                        timeout: timeout,
                         completionQueue: completionQueue,
                         completion: completion
                     )
@@ -569,6 +590,7 @@ extension OneDriveManager {
     private func uploadData(
         _ data: ByteArray,
         toURL targetURL: URL,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping UploadCompletionHandler
     ) {
@@ -577,7 +599,7 @@ extension OneDriveManager {
 
         var urlRequest = URLRequest(url: targetURL)
         urlRequest.httpMethod = "PUT"
-
+        urlRequest.timeoutInterval = timeout.duration
         let fileSize = data.count 
         let range = 0..<data.count
         urlRequest.setValue(
@@ -632,6 +654,7 @@ extension OneDriveManager {
         contents: ByteArray,
         fileName: String,
         freshToken token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping CreateCompletionHandler<OneDriveItem>
     ) {
@@ -649,6 +672,7 @@ extension OneDriveManager {
         ])
         urlRequest.httpBody = postData
         urlRequest.setValue(String(postData.count), forHTTPHeaderField: OneDriveAPI.Keys.contentLength)
+        urlRequest.timeoutInterval = timeout.duration
 
         let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
             let result = OneDriveAPI.ResponseParser
@@ -660,6 +684,7 @@ extension OneDriveManager {
                     self.uploadData(
                         contents,
                         toURL: uploadURL,
+                        timeout: timeout,
                         completionQueue: completionQueue,
                         completion: { result in
                             assert(completionQueue.isCurrent)

@@ -55,6 +55,7 @@ final class MSALOneDriveAuthProvider: OneDriveAuthProvider {
 
     func acquireToken(
         presenter: UIViewController,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping CompletionHandler
     ) {
@@ -81,6 +82,7 @@ final class MSALOneDriveAuthProvider: OneDriveAuthProvider {
 
     func acquireTokenSilent(
         token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping CompletionHandler
     ) {

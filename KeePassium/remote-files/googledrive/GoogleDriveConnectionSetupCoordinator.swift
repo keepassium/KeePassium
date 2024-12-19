@@ -96,7 +96,8 @@ final class GoogleDriveConnectionSetupCoordinator: NSObject, RemoteDataSourceSet
             onFailure()
             return
         }
-        manager.getItemInfo(item, token: token, tokenUpdater: nil) { [self, onFailure] result in
+        let timeout = Timeout(duration: FileDataProvider.defaultTimeoutDuration)
+        manager.getItemInfo(item, token: token, tokenUpdater: nil, timeout: timeout) { [self, onFailure] result in
             switch result {
             case .success:
                 Diag.info("Old file reference reinstated successfully")
@@ -125,7 +126,8 @@ extension GoogleDriveConnectionSetupCoordinator: RemoteFolderViewerDelegate {
         guard !googleDriveItem.isShortcut else {
             Diag.debug("Shortcut item selected, requesting its info")
             stateIndicator.indicateState(isBusy: true)
-            manager.getItemInfo(googleDriveItem, freshToken: token, completionQueue: .main) {
+            let timeout = Timeout(duration: FileDataProvider.defaultTimeoutDuration)
+            manager.getItemInfo(googleDriveItem, freshToken: token, timeout: timeout, completionQueue: .main) {
                 [weak self, weak viewController] result in
                 guard let self, let viewController else { return }
                 self.stateIndicator.indicateState(isBusy: false)

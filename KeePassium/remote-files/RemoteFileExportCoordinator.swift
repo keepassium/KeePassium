@@ -53,13 +53,14 @@ final class RemoteFileExportCoordinator: Coordinator {
     private func upload<Coordinator: RemoteDataSourceSetupCoordinator>(
         _ folder: Coordinator.Manager.ItemType,
         oauthToken: OAuthToken,
+        timeout: Timeout,
         manager: Coordinator.Manager,
         stateIndicator: BusyStateIndicating?,
         coordinator: Coordinator
     ) {
         Diag.debug("Will upload new file")
         stateIndicator?.indicateState(isBusy: true)
-        manager.getItems(in: folder, token: oauthToken, tokenUpdater: nil, completionQueue: .main) {
+        manager.getItems(in: folder, token: oauthToken, tokenUpdater: nil, timeout: timeout, completionQueue: .main) {
             [weak self, weak coordinator, weak stateIndicator] result in
             guard let self, let coordinator else { return }
             stateIndicator?.indicateState(isBusy: false)
@@ -70,6 +71,7 @@ final class RemoteFileExportCoordinator: Coordinator {
                     in: folder,
                     existingItems: existingItems,
                     oauthToken: oauthToken,
+                    timeout: timeout,
                     stateIndicator: stateIndicator,
                     manager: manager,
                     presenter: coordinator.getModalPresenter()
@@ -86,6 +88,7 @@ final class RemoteFileExportCoordinator: Coordinator {
         in folder: ItemType,
         existingItems: [ItemType],
         oauthToken: OAuthToken,
+        timeout: Timeout,
         stateIndicator: BusyStateIndicating?,
         manager: some RemoteDataSourceManager<ItemType>,
         presenter: UIViewController
@@ -98,6 +101,7 @@ final class RemoteFileExportCoordinator: Coordinator {
                 fileName: fileName,
                 token: oauthToken,
                 tokenUpdater: nil,
+                timeout: timeout,
                 completion: { [weak self, weak stateIndicator] result in
                     guard let self else { return }
                     stateIndicator?.indicateState(isBusy: false)
@@ -212,6 +216,7 @@ extension RemoteFileExportCoordinator: GoogleDriveConnectionSetupCoordinatorDele
         upload(
             folder,
             oauthToken: oauthToken,
+            timeout: Timeout(duration: FileDataProvider.defaultTimeoutDuration),
             manager: GoogleDriveManager.shared,
             stateIndicator: stateIndicator,
             coordinator: coordinator
@@ -253,6 +258,7 @@ extension RemoteFileExportCoordinator: DropboxConnectionSetupCoordinatorDelegate
         upload(
             folder,
             oauthToken: oauthToken,
+            timeout: Timeout(duration: FileDataProvider.defaultTimeoutDuration),
             manager: DropboxManager.shared,
             stateIndicator: stateIndicator,
             coordinator: coordinator
@@ -294,6 +300,7 @@ extension RemoteFileExportCoordinator: OneDriveConnectionSetupCoordinatorDelegat
         upload(
             folder,
             oauthToken: oauthToken,
+            timeout: Timeout(duration: FileDataProvider.defaultTimeoutDuration),
             manager: OneDriveManager.shared,
             stateIndicator: stateIndicator,
             coordinator: coordinator

@@ -39,6 +39,7 @@ class BasicOneDriveAuthProvider: NSObject, OneDriveAuthProvider {
 extension BasicOneDriveAuthProvider {
     func acquireToken(
         presenter: UIViewController,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
     ) {
@@ -50,6 +51,7 @@ extension BasicOneDriveAuthProvider {
                 handleAuthResponse(
                     callbackURL: callbackURL,
                     error: error,
+                    timeout: timeout,
                     completionQueue: completionQueue,
                     completion: completion
                 )
@@ -65,6 +67,7 @@ extension BasicOneDriveAuthProvider {
     private func handleAuthResponse(
         callbackURL: URL?,
         error: Error?,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
     ) {
@@ -133,6 +136,7 @@ extension BasicOneDriveAuthProvider {
         }
         getToken(
             operation: .authorization(code: authCodeString),
+            timeout: timeout,
             completionQueue: completionQueue,
             completion: completion)
     }
@@ -141,6 +145,7 @@ extension BasicOneDriveAuthProvider {
 extension BasicOneDriveAuthProvider {
     func acquireTokenSilent(
         token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
     ) {
@@ -156,6 +161,7 @@ extension BasicOneDriveAuthProvider {
         } else {
             getToken(
                 operation: .refresh(token: token),
+                timeout: timeout,
                 completionQueue: completionQueue,
                 completion: completion
             )
@@ -181,6 +187,7 @@ extension BasicOneDriveAuthProvider {
 
     private func getToken(
         operation: TokenOperation,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
     ) {
@@ -190,6 +197,7 @@ extension BasicOneDriveAuthProvider {
         urlRequest.setValue(
             "application/x-www-form-urlencoded; charset=UTF-8",
             forHTTPHeaderField: OneDriveAPI.Keys.contentType)
+        urlRequest.timeoutInterval = timeout.duration
 
         var postParams = [
             "client_id=\(config.clientID)",

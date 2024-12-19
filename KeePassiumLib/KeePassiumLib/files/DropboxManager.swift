@@ -61,6 +61,7 @@ final public class DropboxManager: NSObject {
 
     public func authenticate(
         presenter: UIViewController,
+        timeout: Timeout,
         completionQueue: OperationQueue = .main,
         completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
     ) {
@@ -74,6 +75,7 @@ final public class DropboxManager: NSObject {
                     codeVerifier: codeVerifier,
                     callbackURL: callbackURL,
                     error: error,
+                    timeout: timeout,
                     completionQueue: completionQueue,
                     completion: completion
                 )
@@ -167,6 +169,7 @@ final public class DropboxManager: NSObject {
         codeVerifier: String,
         callbackURL: URL?,
         error: Error?,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
     ) {
@@ -221,18 +224,20 @@ final public class DropboxManager: NSObject {
             return
         }
         getToken(
-            operation: .authorization(code: authCodeString, codeVerifier: codeVerifier),
+            operation: .authorization(code: authCodeString, codeVerifier: codeVerifier), timeout: timeout,
             completionQueue: completionQueue,
             completion: completion)
     }
 
     private func getToken(
         operation: TokenOperation,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
     ) {
         Diag.debug("Acquiring OAuth token [operation: \(operation)]")
         var urlRequest = URLRequest(url: DropboxAPI.tokenRequestURL)
+        urlRequest.timeoutInterval = timeout.duration
         urlRequest.httpMethod = "POST"
         urlRequest.setValue(
             "application/x-www-form-urlencoded; charset=UTF-8",
@@ -342,6 +347,7 @@ extension DropboxManager: RemoteDataSourceManager {
 
     public func getAccountInfo(
         freshToken token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<DropboxAccountInfo, RemoteError>) -> Void
     ) {
@@ -349,6 +355,7 @@ extension DropboxManager: RemoteDataSourceManager {
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: DropboxAPI.Keys.authorization)
         urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
+        urlRequest.timeoutInterval = timeout.duration
 
         let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
             let result = DropboxAPI.ResponseParser
@@ -398,6 +405,7 @@ extension DropboxManager: RemoteDataSourceManager {
     public func getItems(
         in folder: DropboxItem,
         freshToken token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<[DropboxItem], RemoteError>) -> Void
     ) {
@@ -406,6 +414,7 @@ extension DropboxManager: RemoteDataSourceManager {
             cursor: nil,
             itemsSoFar: [],
             freshToken: token,
+            timeout: timeout,
             completionQueue: completionQueue,
             completion: completion
         )
@@ -416,11 +425,13 @@ extension DropboxManager: RemoteDataSourceManager {
         cursor: String?,
         itemsSoFar: [DropboxItem],
         freshToken token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<[DropboxItem], RemoteError>) -> Void
     ) {
         let url = cursor == nil ? DropboxAPI.folderListURL : DropboxAPI.folderListContinueURL
         var urlRequest = URLRequest(url: url)
+        urlRequest.timeoutInterval = timeout.duration
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: DropboxAPI.Keys.authorization)
         urlRequest.setValue("application/json", forHTTPHeaderField: DropboxAPI.Keys.contentType)
@@ -466,6 +477,7 @@ extension DropboxManager: RemoteDataSourceManager {
                             cursor: cursor,
                             itemsSoFar: itemsSoFar + fileItems,
                             freshToken: token,
+                            timeout: timeout,
                             completionQueue: completionQueue,
                             completion: completion
                         )
@@ -490,6 +502,7 @@ extension DropboxManager: RemoteDataSourceManager {
 
     public func acquireTokenSilent(
         token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
     ) {
@@ -505,6 +518,7 @@ extension DropboxManager: RemoteDataSourceManager {
         } else {
             getToken(
                 operation: .refresh(token: token),
+                timeout: timeout,
                 completionQueue: completionQueue,
                 completion: completion
             )
@@ -514,6 +528,7 @@ extension DropboxManager: RemoteDataSourceManager {
     public func getItemInfo(
         _ item: DropboxItem,
         freshToken token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<DropboxItem, RemoteError>) -> Void
     ) {
@@ -522,6 +537,7 @@ extension DropboxManager: RemoteDataSourceManager {
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: DropboxAPI.Keys.authorization)
         urlRequest.setValue("application/json", forHTTPHeaderField: DropboxAPI.Keys.contentType)
         urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
+        urlRequest.timeoutInterval = timeout.duration
 
         let json = """
         {
@@ -560,6 +576,7 @@ extension DropboxManager: RemoteDataSourceManager {
     public func getFileContents(
         _ item: DropboxItem,
         freshToken token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<Data, RemoteError>) -> Void
     ) {
@@ -568,6 +585,7 @@ extension DropboxManager: RemoteDataSourceManager {
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: DropboxAPI.Keys.authorization)
         urlRequest.setValue("{\"path\": \"\(item.escapedPath)\"}", forHTTPHeaderField: DropboxAPI.Keys.apiArg)
         urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
+        urlRequest.timeoutInterval = timeout.duration
 
         let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
             if let error = error {
@@ -613,6 +631,7 @@ extension DropboxManager: RemoteDataSourceManager {
         _ item: DropboxItem,
         contents: ByteArray,
         freshToken token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping UploadCompletionHandler
     ) {
@@ -623,6 +642,7 @@ extension DropboxManager: RemoteDataSourceManager {
         urlRequest.setValue(
             "{\"mode\":\"overwrite\",\"path\":\"\(item.escapedPath)\"}",
             forHTTPHeaderField: DropboxAPI.Keys.apiArg)
+        urlRequest.timeoutInterval = timeout.duration
 
         urlRequest.httpBody = contents.asData
 
@@ -656,6 +676,7 @@ extension DropboxManager: RemoteDataSourceManager {
         contents: ByteArray,
         fileName: String,
         freshToken token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping CreateCompletionHandler<ItemType>
     ) {
@@ -665,7 +686,13 @@ extension DropboxManager: RemoteDataSourceManager {
             pathDisplay: "\(folder.pathDisplay)/\(fileName)",
             info: folder.info
         )
-        updateFile(item, contents: contents, freshToken: token, completionQueue: completionQueue) { result in
+        updateFile(
+            item,
+            contents: contents,
+            freshToken: token,
+            timeout: timeout,
+            completionQueue: completionQueue
+        ) { result in
             switch result {
             case let .success(data):
                 completion(.success(data.file))

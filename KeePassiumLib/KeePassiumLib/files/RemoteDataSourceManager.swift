@@ -21,6 +21,7 @@ public protocol RemoteDataSourceManager<ItemType> {
 
     func acquireTokenSilent(
         token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
     )
@@ -28,6 +29,7 @@ public protocol RemoteDataSourceManager<ItemType> {
     func getItems(
         in folder: ItemType,
         freshToken token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<[ItemType], RemoteError>) -> Void
     )
@@ -35,6 +37,7 @@ public protocol RemoteDataSourceManager<ItemType> {
     func getFileContents(
         _ item: ItemType,
         freshToken token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<Data, RemoteError>) -> Void
     )
@@ -42,6 +45,7 @@ public protocol RemoteDataSourceManager<ItemType> {
     func getItemInfo(
         _ item: ItemType,
         freshToken token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<ItemType, RemoteError>) -> Void
     )
@@ -50,6 +54,7 @@ public protocol RemoteDataSourceManager<ItemType> {
         _ item: ItemType,
         contents: ByteArray,
         freshToken token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping UploadCompletionHandler
     )
@@ -59,18 +64,21 @@ public protocol RemoteDataSourceManager<ItemType> {
         contents: ByteArray,
         fileName: String,
         freshToken token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping CreateCompletionHandler<ItemType>
     )
 
     func authenticate(
         presenter: UIViewController,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
     )
 
     func getAccountInfo(
         freshToken token: OAuthToken,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<AccountInfo, RemoteError>) -> Void
     )
@@ -81,17 +89,19 @@ extension RemoteDataSourceManager {
         in folder: ItemType,
         token: OAuthToken,
         tokenUpdater: TokenUpdateCallback?,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping (Result<[ItemType], RemoteError>) -> Void
     ) {
         Diag.debug("Acquiring file list")
-        acquireTokenSilent(token: token, completionQueue: completionQueue) { authResult in
+        acquireTokenSilent(token: token, timeout: timeout, completionQueue: completionQueue) { authResult in
             switch authResult {
             case .success(let newToken):
                 tokenUpdater?(newToken)
                 self.getItems(
                     in: folder,
                     freshToken: newToken,
+                    timeout: timeout,
                     completionQueue: completionQueue,
                     completion: completion
                 )
@@ -108,17 +118,19 @@ extension RemoteDataSourceManager {
         _ item: ItemType,
         token: OAuthToken,
         tokenUpdater: TokenUpdateCallback?,
+        timeout: Timeout,
         completionQueue: OperationQueue = .main,
         completion: @escaping (Result<Data, RemoteError>) -> Void
     ) {
         Diag.debug("Downloading file")
-        acquireTokenSilent(token: token, completionQueue: completionQueue) { authResult in
+        acquireTokenSilent(token: token, timeout: timeout, completionQueue: completionQueue) { authResult in
             switch authResult {
             case .success(let newToken):
                 tokenUpdater?(newToken)
                 self.getFileContents(
                     item,
                     freshToken: newToken,
+                    timeout: timeout,
                     completionQueue: completionQueue,
                     completion: completion
                 )
@@ -136,6 +148,7 @@ extension RemoteDataSourceManager {
         contents: ByteArray,
         token: OAuthToken,
         tokenUpdater: TokenUpdateCallback?,
+        timeout: Timeout,
         completionQueue: OperationQueue,
         completion: @escaping UploadCompletionHandler
     ) {
@@ -150,7 +163,7 @@ extension RemoteDataSourceManager {
             return
         }
 
-        acquireTokenSilent(token: token, completionQueue: completionQueue) { authResult in
+        acquireTokenSilent(token: token, timeout: timeout, completionQueue: completionQueue) { authResult in
             switch authResult {
             case .success(let newToken):
                 tokenUpdater?(newToken)
@@ -158,6 +171,7 @@ extension RemoteDataSourceManager {
                     fileItem,
                     contents: contents,
                     freshToken: newToken,
+                    timeout: timeout,
                     completionQueue: completionQueue,
                     completion: completion
                 )
@@ -174,17 +188,19 @@ extension RemoteDataSourceManager {
         _ item: ItemType,
         token: OAuthToken,
         tokenUpdater: TokenUpdateCallback?,
+        timeout: Timeout,
         completionQueue: OperationQueue = .main,
         completion: @escaping (Result<ItemType, RemoteError>) -> Void
     ) {
         Diag.debug("Acquiring file info")
-        acquireTokenSilent(token: token, completionQueue: completionQueue) { authResult in
+        acquireTokenSilent(token: token, timeout: timeout, completionQueue: completionQueue) { authResult in
             switch authResult {
             case .success(let newToken):
                 tokenUpdater?(newToken)
                 self.getItemInfo(
                     item,
                     freshToken: newToken,
+                    timeout: timeout,
                     completionQueue: completionQueue,
                     completion: completion
                 )
@@ -203,6 +219,7 @@ extension RemoteDataSourceManager {
         fileName: String,
         token: OAuthToken,
         tokenUpdater: TokenUpdateCallback?,
+        timeout: Timeout,
         completionQueue: OperationQueue = .main,
         completion: @escaping CreateCompletionHandler<ItemType>
     ) {
@@ -217,7 +234,7 @@ extension RemoteDataSourceManager {
             return
         }
 
-        acquireTokenSilent(token: token, completionQueue: completionQueue) { authResult in
+        acquireTokenSilent(token: token, timeout: timeout, completionQueue: completionQueue) { authResult in
             switch authResult {
             case .success(let newToken):
                 tokenUpdater?(newToken)
@@ -226,6 +243,7 @@ extension RemoteDataSourceManager {
                     contents: contents,
                     fileName: fileName,
                     freshToken: newToken,
+                    timeout: timeout,
                     completionQueue: completionQueue,
                     completion: completion
                 )

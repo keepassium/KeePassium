@@ -120,6 +120,7 @@ extension RemoteDataSource {
             authorizedItem.item,
             token: authorizedItem.token,
             tokenUpdater: { self.saveUpdatedToken($0, prefixedURL: url) },
+            timeout: timeout,
             completionQueue: completionQueue,
             completion: { result in
                 assert(completionQueue.isCurrent)
@@ -157,6 +158,7 @@ extension RemoteDataSource {
             contents: data,
             token: authorizedItem.token,
             tokenUpdater: { self.saveUpdatedToken($0, prefixedURL: url) },
+            timeout: timeout,
             completionQueue: completionQueue,
             completion: { result in
                 assert(completionQueue.isCurrent)
@@ -194,6 +196,7 @@ extension RemoteDataSource {
             authorizedItem.item,
             token: authorizedItem.token,
             tokenUpdater: { self.saveUpdatedToken($0, prefixedURL: url) },
+            timeout: timeout,
             completionQueue: completionQueue,
             completion: { result in
                 assert(completionQueue.isCurrent)

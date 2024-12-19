@@ -94,7 +94,12 @@ final class DropboxConnectionSetupCoordinator: NSObject, RemoteDataSourceSetupCo
             onFailure()
             return
         }
-        manager.getItemInfo(item, token: token, tokenUpdater: nil) { [self, onFailure] result in
+        manager.getItemInfo(
+            item,
+            token: token,
+            tokenUpdater: nil,
+            timeout: Timeout(duration: FileDataProvider.defaultTimeoutDuration)
+        ) { [self, onFailure] result in
             switch result {
             case .success:
                 Diag.info("Old file reference reinstated successfully")

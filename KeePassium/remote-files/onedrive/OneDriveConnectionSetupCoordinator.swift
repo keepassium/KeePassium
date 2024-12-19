@@ -95,7 +95,8 @@ extension OneDriveConnectionSetupCoordinator {
         manager.getItemInfo(
             oneDriveItem,
             token: token,
-            tokenUpdater: nil
+            tokenUpdater: nil,
+            timeout: Timeout(duration: FileDataProvider.defaultTimeoutDuration)
         ) { [self, onFailure] result in
             switch result {
             case .success(let oneDriveItem):
@@ -177,6 +178,7 @@ extension OneDriveConnectionSetupCoordinator: RemoteFolderViewerDelegate {
         manager.updateItemInfo(
             oneDriveItem,
             freshToken: token,
+            timeout: Timeout(duration: FileDataProvider.defaultTimeoutDuration),
             completionQueue: .main,
             completion: { [weak self, weak viewController] result in
                 guard let self, let viewController  else { return }

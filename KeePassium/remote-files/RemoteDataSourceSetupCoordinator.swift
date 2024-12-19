@@ -57,6 +57,7 @@ extension RemoteDataSourceSetupCoordinator {
             in: folder,
             token: token,
             tokenUpdater: nil,
+            timeout: Timeout(duration: FileDataProvider.defaultTimeoutDuration),
             completionQueue: .main
         ) { [weak self, weak stateIndicator] result in
             guard let self else { return }
@@ -94,7 +95,8 @@ extension RemoteDataSourceSetupCoordinator {
 
         stateIndicator.indicateState(isBusy: true)
         let presenter = router.navigationController
-        manager.authenticate(presenter: presenter, completionQueue: .main) {
+        let timeout = Timeout(duration: FileDataProvider.defaultTimeoutDuration)
+        manager.authenticate(presenter: presenter, timeout: timeout, completionQueue: .main) {
             [weak self] result in
             guard let self else { return }
             stateIndicator.indicateState(isBusy: false)
@@ -116,7 +118,8 @@ extension RemoteDataSourceSetupCoordinator {
 
     func onAuthorized(token: OAuthToken) {
         stateIndicator.indicateState(isBusy: true)
-        manager.getAccountInfo(freshToken: token, completionQueue: .main) { [weak self] result in
+        let timeout = Timeout(duration: FileDataProvider.defaultTimeoutDuration)
+        manager.getAccountInfo(freshToken: token, timeout: timeout, completionQueue: .main) { [weak self] result in
             guard let self else { return }
             self.stateIndicator.indicateState(isBusy: false)
             switch result {
