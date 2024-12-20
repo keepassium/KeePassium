@@ -2,6 +2,17 @@
     "sections": [
         {
             "version": "2.1",
+            "releaseDate": "2024-12-20T00:00:00Z",
+            "items": [
+                {
+                    "title": "Changed: macOS: Removed unused Camera permission (since there is no QR scanner)",
+                    "os": "macos",
+                    "credits": "Apple reviewer"
+                }
+            ]
+        },
+        {
+            "version": "2.1",
             "releaseDate": "2024-12-19T00:00:00Z",
             "items": [
                 {

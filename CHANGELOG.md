@@ -1,5 +1,12 @@
 #CHANGELOG
 
+## [2.2.160] - 2024-12-20
+
+### Removed
+
+- macOS: Removed unused camera permission (since there is no QR scanner)
+
+
 ## [2.1.159] - 2024-12-19
 
 ### Improved
