@@ -12,8 +12,6 @@
 	<array>
         <string>group.com.keepassium.intune</string>
 	</array>
-	<key>com.apple.security.device.camera</key>
-	<true/>
     <key>com.apple.security.print</key>
     <true/>
     <key>com.apple.security.network.client</key>
