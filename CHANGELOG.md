@@ -1,5 +1,12 @@
 #CHANGELOG
 
+## [2.2.162] - 2024-12-22
+
+### Improved
+
+- Minor UI improvements
+
+
 ## [2.2.161] - 2024-12-22
 
 ### Removed

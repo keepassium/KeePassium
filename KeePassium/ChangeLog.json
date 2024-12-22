@@ -2,8 +2,11 @@
     "sections": [
         {
             "version": "2.2",
-            "releaseDate": "2024-12-20T00:00:00Z",
+            "releaseDate": "2024-12-22T00:00:00Z",
             "items": [
+                {
+                    "title": "Improved: Minor UI improvements"
+                },
                 {
                     "title": "Changed: macOS: Removed unused Camera permission (since there is no QR scanner)",
                     "os": "macos",
