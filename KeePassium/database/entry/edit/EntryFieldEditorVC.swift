@@ -150,8 +150,12 @@ final class EntryFieldEditorVC: UITableViewController, Refreshable {
         }
 
         otpSetupButton.setTitle(LString.otpSetUpOTPAction, for: .normal)
-        otpSetupButton.showsMenuAsPrimaryAction = true
-        otpSetupButton.menu = UIMenu(children: [qrCodeSetupAction, manualSetupAction])
+        if ProcessInfo.isRunningOnMac {
+            otpSetupButton.addAction(manualSetupAction, for: .touchUpInside)
+        } else {
+            otpSetupButton.showsMenuAsPrimaryAction = true
+            otpSetupButton.menu = UIMenu(children: [qrCodeSetupAction, manualSetupAction])
+        }
     }
 
 
