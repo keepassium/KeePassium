@@ -1,5 +1,12 @@
 #CHANGELOG
 
+## [2.2.161] - 2024-12-22
+
+### Removed
+
+- macOS: Removed QR-based OTP setup menu, otherwise Apple blocks the update.
+
+
 ## [2.2.160] - 2024-12-20
 
 ### Removed
