@@ -190,6 +190,7 @@ final class DatabaseViewerCoordinator: Coordinator {
     }
 
     func refresh() {
+        updateAnnouncements()
         if let topPrimaryVC = primaryRouter.navigationController.topViewController {
             (topPrimaryVC as? Refreshable)?.refresh()
         }
