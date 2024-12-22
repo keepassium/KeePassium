@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KmH-Rg-WCs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KmH-Rg-WCs">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -146,7 +145,7 @@
                                     <constraint firstItem="ZTd-Zj-qAs" firstAttribute="centerX" secondItem="u9P-fB-zfA" secondAttribute="centerX" id="Xb4-tK-S3a"/>
                                     <constraint firstItem="GK4-6p-jx8" firstAttribute="centerX" secondItem="u9P-fB-zfA" secondAttribute="centerX" id="YaM-aJ-ghi"/>
                                     <constraint firstItem="3mQ-t6-0ty" firstAttribute="top" secondItem="u9P-fB-zfA" secondAttribute="top" priority="250" constant="32" id="b92-nV-xCo"/>
-                                    <constraint firstItem="atY-8z-wKo" firstAttribute="width" relation="lessThanOrEqual" secondItem="u9P-fB-zfA" secondAttribute="width" id="dAk-bF-2QN"/>
+                                    <constraint firstItem="atY-8z-wKo" firstAttribute="width" relation="lessThanOrEqual" secondItem="u9P-fB-zfA" secondAttribute="width" constant="-16" id="dAk-bF-2QN"/>
                                     <constraint firstItem="ZTd-Zj-qAs" firstAttribute="centerY" secondItem="u9P-fB-zfA" secondAttribute="centerY" priority="750" id="dBk-f7-19f"/>
                                     <constraint firstItem="f5U-FH-tld" firstAttribute="leading" secondItem="u9P-fB-zfA" secondAttribute="leadingMargin" id="dZt-k0-KDh"/>
                                     <constraint firstItem="atY-8z-wKo" firstAttribute="top" secondItem="GK4-6p-jx8" secondAttribute="bottom" constant="8" symbolic="YES" id="j55-pZ-UFk"/>
@@ -176,8 +175,8 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="h3e-d3-O0S"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="biometricsHintLabel" destination="atY-8z-wKo" id="ye2-HX-pqh"/>
                         <outlet property="cancelButton" destination="z0x-Rz-Nfj" id="JGh-R2-I7U"/>
+                        <outlet property="hintLabel" destination="atY-8z-wKo" id="6OP-MF-uOa"/>
                         <outlet property="instructionsLabel" destination="3mQ-t6-0ty" id="AtL-ka-xVR"/>
                         <outlet property="instructionsToCancelButtonConstraint" destination="muI-ci-wh6" id="stZ-Mn-YCw"/>
                         <outlet property="mainButton" destination="i2Z-Q7-JRa" id="A8G-LI-2JU"/>

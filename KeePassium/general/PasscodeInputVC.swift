@@ -46,7 +46,7 @@ final class PasscodeInputVC: UIViewController {
     @IBOutlet private weak var switchKeyboardButton: UIButton!
     @IBOutlet private weak var useBiometricsButton: UIButton!
     @IBOutlet private weak var instructionsToCancelButtonConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var biometricsHintLabel: UILabel!
+    @IBOutlet private weak var hintLabel: UILabel!
 
     public var mode: Mode = .setup
     public var shouldActivateKeyboard = true
@@ -86,6 +86,7 @@ final class PasscodeInputVC: UIViewController {
         }
         cancelButton.isHidden = !isCancelAllowed
         instructionsToCancelButtonConstraint.isActive = isCancelAllowed
+        hintLabel.isHidden = true
 
         setupKeyCommands()
         setKeyboardType(Settings.current.passcodeKeyboardType)
@@ -149,9 +150,13 @@ final class PasscodeInputVC: UIViewController {
             for: .normal)
         useBiometricsButton.accessibilityLabel = biometryType.name
 
-        let showMacOSBiometricHint = ProcessInfo.isRunningOnMac && !useBiometricsButton.isHidden
-        biometricsHintLabel.isHidden = !showMacOSBiometricHint
-        biometricsHintLabel.text = LString.hintPressEscForTouchID
+        let showMacOSBiometricHint = ProcessInfo.isRunningOnMac
+            && !useBiometricsButton.isHidden
+            && mode == .verification
+        if showMacOSBiometricHint {
+            hintLabel.isHidden = false
+            hintLabel.text = LString.hintPressEscForTouchID
+        }
     }
 
     public func showKeyboard() {
@@ -224,21 +229,26 @@ final class PasscodeInputVC: UIViewController {
             )
             return
         }
-        let isGoodEnough = entropy > PasswordQuality.minAppPasscodeEntropy
-        if isGoodEnough {
-            successHandler()
-            return
-        }
-        let warningAlert = UIAlertController.make(
-            title: LString.titleWarning,
-            message: LString.appPasscodeTooWeak,
-            dismissButtonTitle: LString.actionCancel)
-        warningAlert.addAction(title: LString.actionContinue) { _ in
-            successHandler()
-        }
-        present(warningAlert, animated: true)
+        successHandler()
     }
 
+    private func refreshPasscodeQualityWarning(_ quality: PasswordQuality?) {
+        switch mode {
+        case .setup, .change:
+            guard let quality else {
+                hintLabel.isHidden = true
+                return
+            }
+            let isGoodEnough = Float(quality.entropy) > PasswordQuality.minAppPasscodeEntropy
+            hintLabel.isHidden = isGoodEnough
+            hintLabel.text = String.localizedStringWithFormat(
+                LString.Warning.iconWithMessageTemplate,
+                LString.appPasscodeTooWeak
+            )
+        default:
+            return
+        }
+    }
     @IBAction private func didPressSwitchKeyboard(_ sender: Any) {
         setKeyboardType(nextKeyboardType)
     }
@@ -272,6 +282,7 @@ extension PasscodeInputVC: UITextFieldDelegate, ValidatingTextFieldDelegate {
         case .change, .setup:
             let quality = PasswordQuality(password: text)
             passcodeTextField.quality = quality
+            refreshPasscodeQualityWarning(quality)
         case .verification:
             guard sender.isValid else {
                 return
