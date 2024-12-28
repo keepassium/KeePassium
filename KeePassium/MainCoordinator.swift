@@ -77,13 +77,7 @@ final class MainCoordinator: UIResponder, Coordinator {
         window.rootViewController = rootSplitVC
 
         #if targetEnvironment(macCatalyst)
-        let titlebar = UIApplication.shared.currentScene?.titlebar
-        let toolbar = NSToolbar(identifier: "main")
-        toolbarDelegate = ToolbarDelegate(mainCoordinator: self)
-        toolbar.delegate = toolbarDelegate
-        toolbar.displayMode = .iconOnly
-        titlebar?.toolbar = toolbar
-        titlebar?.toolbarStyle = .automatic
+        initMacUI()
         #endif
 
         NotificationCenter.default.addObserver(
@@ -92,6 +86,24 @@ final class MainCoordinator: UIResponder, Coordinator {
             name: UIDevice.deviceDidShakeNotification,
             object: nil)
     }
+
+#if targetEnvironment(macCatalyst)
+    private func initMacUI() {
+        guard let scene = UIApplication.shared.currentScene else {
+            assertionFailure()
+            return
+        }
+        let toolbar = NSToolbar(identifier: "main")
+        toolbarDelegate = ToolbarDelegate(mainCoordinator: self)
+        toolbar.delegate = toolbarDelegate
+        toolbar.displayMode = .iconOnly
+
+        let titlebar = scene.titlebar
+        titlebar?.toolbar = toolbar
+        titlebar?.toolbarStyle = .automatic
+        scene.sizeRestrictions?.minimumSize = CGSize(width: 400, height: 600)
+    }
+#endif
 
     deinit {
         NotificationCenter.default.removeObserver(self)
