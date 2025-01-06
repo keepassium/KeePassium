@@ -308,3 +308,31 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
         refresh()
     }
 }
+
+extension ItemIconPicker: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        referenceSizeForHeaderInSection section: Int
+    ) -> CGSize {
+        let horizontalMargins = collectionView.layoutMargins.left + collectionView.layoutMargins.right
+        let targetWidth = collectionView.bounds.width - horizontalMargins
+        let titleLabel = UILabel()
+        titleLabel.font = .preferredFont(forTextStyle: .headline)
+        switch SectionID(rawValue: section) {
+        case .standard:
+            titleLabel.text = LString.itemIconPickerStandardIcons
+        case .custom:
+            titleLabel.text = LString.itemIconPickerCustomIcons
+        default:
+            assertionFailure()
+        }
+        var requiredLabelSize = titleLabel.sizeThatFits(
+            CGSize(width: targetWidth, height: .greatestFiniteMagnitude)
+        )
+        let verticalMargins = CGFloat(8 + 8)
+        requiredLabelSize.height += verticalMargins
+        return requiredLabelSize
+    }
+}
