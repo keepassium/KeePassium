@@ -9,6 +9,7 @@
 import UIKit
 
 extension UIDevice {
+    public static let deviceDidShakeNotification = Notification.Name(rawValue: "deviceDidShakeNotification")
 
     public func hasHomeButton() -> Bool {
         #if targetEnvironment(macCatalyst)

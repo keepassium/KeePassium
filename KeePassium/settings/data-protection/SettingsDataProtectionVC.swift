@@ -13,6 +13,7 @@ protocol SettingsDataProtectionViewCoordinatorDelegate: AnyObject {
     func didPressDatabaseTimeout(in viewController: SettingsDataProtectionVC)
     func didPressClipboardTimeout(in viewController: SettingsDataProtectionVC)
     func didToggleLockDatabasesOnTimeout(newValue: Bool, in viewController: SettingsDataProtectionVC)
+    func didPressShakeGestureAction(in viewController: SettingsDataProtectionVC)
 }
 
 final class SettingsDataProtectionVC: UITableViewController, Refreshable {
@@ -36,6 +37,8 @@ final class SettingsDataProtectionVC: UITableViewController, Refreshable {
 
     @IBOutlet private weak var hideProtectedFieldsSwitch: UISwitch!
 
+    @IBOutlet private weak var shakeGestureCell: UITableViewCell!
+
     weak var delegate: SettingsDataProtectionViewCoordinatorDelegate?
 
     private var settingsNotifications: SettingsNotifications!
@@ -45,6 +48,8 @@ final class SettingsDataProtectionVC: UITableViewController, Refreshable {
         super.viewDidLoad()
         clearsSelectionOnViewWillAppear = true
         settingsNotifications = SettingsNotifications(observer: self)
+
+        shakeGestureCell.textLabel?.text = LString.shakeGestureActionTitle
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -80,6 +85,8 @@ final class SettingsDataProtectionVC: UITableViewController, Refreshable {
             )
 
         clipboardTimeoutCell.detailTextLabel?.text = settings.clipboardTimeout.shortTitle
+
+        shakeGestureCell.detailTextLabel?.text = settings.shakeGestureAction.shortTitle
     }
 
 
@@ -165,9 +172,21 @@ final class SettingsDataProtectionVC: UITableViewController, Refreshable {
             delegate?.didPressDatabaseTimeout(in: self)
         case clipboardTimeoutCell:
             delegate?.didPressClipboardTimeout(in: self)
+        case shakeGestureCell:
+            delegate?.didPressShakeGestureAction(in: self)
         default:
             break
         }
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let number = super.tableView(tableView, numberOfRowsInSection: section)
+        if section == 1 && ProcessInfo.isRunningOnMac { // Hide "When shaken" on macOS
+            return number - 1
+        } else {
+            return number
+        }
+
     }
 }
 

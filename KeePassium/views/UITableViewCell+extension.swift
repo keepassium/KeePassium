@@ -10,7 +10,7 @@ import UIKit
 
 extension UITableViewCell {
 
-    func setEnabled(_ isEnabled: Bool) {
+    @objc func setEnabled(_ isEnabled: Bool) {
         let alpha: CGFloat = isEnabled ? 1.0 : 0.43
         contentView.alpha = alpha
         isUserInteractionEnabled = isEnabled

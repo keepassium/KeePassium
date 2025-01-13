@@ -1328,6 +1328,9 @@
 		F38A48C72A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38A48C32A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift */; };
 		F38A48C82A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38A48C32A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift */; };
 		F38AA37D2B6017DB0084B485 /* KeyFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756F3649260E96A1005A35DA /* KeyFilePickerCoordinator.swift */; };
+		F38DB2292D131568008A8D7A /* SettingsShakeGestureActionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DB2282D131568008A8D7A /* SettingsShakeGestureActionVC.swift */; };
+		F38DB22A2D131568008A8D7A /* SettingsShakeGestureActionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DB2282D131568008A8D7A /* SettingsShakeGestureActionVC.swift */; };
+		F38DB22B2D131568008A8D7A /* SettingsShakeGestureActionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DB2282D131568008A8D7A /* SettingsShakeGestureActionVC.swift */; };
 		F3A2186D2C27045E006AB8F8 /* GroupEditorNotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A2186C2C27045E006AB8F8 /* GroupEditorNotesCell.swift */; };
 		F3A2186E2C27045E006AB8F8 /* GroupEditorNotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A2186C2C27045E006AB8F8 /* GroupEditorNotesCell.swift */; };
 		F3A2186F2C27045E006AB8F8 /* GroupEditorNotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A2186C2C27045E006AB8F8 /* GroupEditorNotesCell.swift */; };
@@ -2521,6 +2524,7 @@
 		F37CAA422A88F74E0000EF64 /* HIBPServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HIBPServiceTests.swift; sourceTree = "<group>"; };
 		F37CAA4D2A88F8D10000EF64 /* DumpEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DumpEquatable.swift; sourceTree = "<group>"; };
 		F38A48C32A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordQualityIndicatorIconView.swift; sourceTree = "<group>"; };
+		F38DB2282D131568008A8D7A /* SettingsShakeGestureActionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsShakeGestureActionVC.swift; sourceTree = "<group>"; };
 		F3A2186C2C27045E006AB8F8 /* GroupEditorNotesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupEditorNotesCell.swift; sourceTree = "<group>"; };
 		F3AFC1B025FB7C38005FF4D7 /* QRCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanner.swift; sourceTree = "<group>"; };
 		F3B0C2032B2CA8790001946D /* OnboardingPagesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPagesVC.swift; sourceTree = "<group>"; };
@@ -2798,6 +2802,7 @@
 				757D336020EF382D000A47F0 /* SettingsDatabaseTimeoutVC.swift */,
 				757D336220EF5081000A47F0 /* SettingsClipboardTimeoutVC.swift */,
 				75ED42A62313C0BB003DE72E /* SettingsClipboardTimeoutVC.storyboard */,
+				F38DB2282D131568008A8D7A /* SettingsShakeGestureActionVC.swift */,
 			);
 			path = "data-protection";
 			sourceTree = "<group>";
@@ -4335,6 +4340,7 @@
 				751A565224CCD3CD001227D6 /* AppIconPicker.swift in Sources */,
 				75AF1932282E621600FA4BB5 /* PasswordGeneratorLengthCell.swift in Sources */,
 				F31114A82B9B83B300236632 /* DropboxConnectionSetupCoordinator.swift in Sources */,
+				F38DB2292D131568008A8D7A /* SettingsShakeGestureActionVC.swift in Sources */,
 				754BF07F2082A6BD00E3A292 /* AppDelegate.swift in Sources */,
 				7579A06724F0730A00C98F24 /* AppHistoryViewerVC.swift in Sources */,
 				752ED68D2235547D00C20D3E /* SettingsDataProtectionVC.swift in Sources */,
@@ -4578,6 +4584,7 @@
 				75B38BF4233E5B7C006BDEFC /* WatchdogAwareTextField.swift in Sources */,
 				751A565324CCD3CD001227D6 /* AppIconPicker.swift in Sources */,
 				F31114AB2B9B84E100236632 /* DropboxConnectionSetupCoordinator.swift in Sources */,
+				F38DB22A2D131568008A8D7A /* SettingsShakeGestureActionVC.swift in Sources */,
 				75AF1933282E621600FA4BB5 /* PasswordGeneratorLengthCell.swift in Sources */,
 				75B38BF5233E5B7C006BDEFC /* AppDelegate.swift in Sources */,
 				7579A06824F0730A00C98F24 /* AppHistoryViewerVC.swift in Sources */,
@@ -4944,6 +4951,7 @@
 				75D0761A28B639D200F02E39 /* FileInfoReloader.swift in Sources */,
 				75D0761B28B639D200F02E39 /* ItemIconPickerCoordinator.swift in Sources */,
 				75D21BD62B642BB20065D95E /* OneDriveConnectionSetupCoordinator.swift in Sources */,
+				F38DB22B2D131568008A8D7A /* SettingsShakeGestureActionVC.swift in Sources */,
 				75D0761C28B639D200F02E39 /* EntryFileViewerVC.swift in Sources */,
 				75D0761E28B639D200F02E39 /* CollectionViewControllerWithContextActions.swift in Sources */,
 				75D0762028B639D200F02E39 /* AnnouncementView.swift in Sources */,

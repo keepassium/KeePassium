@@ -63,6 +63,11 @@ extension DataProtectionSettingsCoordinator {
         clipboardTimeoutVC.delegate = self
         router.push(clipboardTimeoutVC, animated: true, onPop: nil)
     }
+
+    private func showShakeGestureActionSettings() {
+        let shakeGestureActionVC = SettingsShakeGestureActionVC.make(delegate: self)
+        router.push(shakeGestureActionVC, animated: true, onPop: nil)
+    }
 }
 
 extension DataProtectionSettingsCoordinator: SettingsDataProtectionViewCoordinatorDelegate {
@@ -72,6 +77,10 @@ extension DataProtectionSettingsCoordinator: SettingsDataProtectionViewCoordinat
 
     func didPressClipboardTimeout(in viewController: SettingsDataProtectionVC) {
         showClipboardTimeoutSettingsPage()
+    }
+
+    func didPressShakeGestureAction(in viewController: SettingsDataProtectionVC) {
+        showShakeGestureActionSettings()
     }
 
     func didToggleLockDatabasesOnTimeout(
@@ -116,6 +125,32 @@ extension DataProtectionSettingsCoordinator: SettingsClipboardTimeoutVCDelegate 
             DispatchQueue.main.async { [weak router] in
                 router?.pop(viewController: viewController, animated: true)
             }
+        }
+    }
+}
+
+extension DataProtectionSettingsCoordinator: SettingsShakeGestureActionVCDelegate {
+    func didSelectShakeGesture(
+        _ action: Settings.ShakeGestureAction,
+        in viewController: SettingsShakeGestureActionVC
+    ) {
+        Settings.current.shakeGestureAction = action
+        refresh()
+
+        if Settings.current.isManaged(key: .shakeGestureAction) {
+            viewController.showManagedSettingNotification()
+        }
+    }
+
+    func didSetShakeGestureConfirmation(
+        _ shouldConfirm: Bool,
+        in viewController: SettingsShakeGestureActionVC
+    ) {
+        Settings.current.isConfirmShakeGestureAction = shouldConfirm
+        refresh()
+
+        if Settings.current.isManaged(key: .confirmShakeGestureAction) {
+            viewController.showManagedSettingNotification()
         }
     }
 }

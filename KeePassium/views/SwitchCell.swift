@@ -58,4 +58,9 @@ class SwitchCell: UITableViewCell {
         }
         theSwitch.addAction(toggleHandlerAction, for: .valueChanged)
     }
+
+    override func setEnabled(_ isEnabled: Bool) {
+        super.setEnabled(isEnabled)
+        theSwitch.isEnabled = isEnabled
+    }
 }

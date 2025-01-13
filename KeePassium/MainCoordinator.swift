@@ -85,6 +85,12 @@ final class MainCoordinator: UIResponder, Coordinator {
         titlebar?.toolbar = toolbar
         titlebar?.toolbarStyle = .automatic
         #endif
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleShakeGesture),
+            name: UIDevice.deviceDidShakeNotification,
+            object: nil)
     }
 
     deinit {
@@ -615,6 +621,56 @@ extension MainCoordinator {
             guard let self else { return }
             setDatabase(fileRef, autoOpenWith: context)
         }
+    }
+}
+
+extension MainCoordinator {
+    @objc private func handleShakeGesture() {
+        Diag.debug("Device shaken")
+        HapticFeedback.play(.deviceShaken)
+
+        let action = Settings.current.shakeGestureAction
+        switch action {
+        case .nothing:
+            break
+        case .lockAllDatabases:
+            maybeConfirmShakeAction(action) { [weak self] in
+                DatabaseSettingsManager.shared.eraseAllMasterKeys()
+                self?.lockDatabase()
+            }
+        case .lockApp:
+            guard Settings.current.isAppLockEnabled else {
+                Diag.debug("Nothing to lock, ignoring")
+                return
+            }
+            maybeConfirmShakeAction(action) { [weak self] in
+                self?.showAppLockScreen()
+            }
+        case .quitApp:
+            maybeConfirmShakeAction(action) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    exit(-1)
+                }
+            }
+        }
+    }
+
+    private func maybeConfirmShakeAction(
+        _ action: Settings.ShakeGestureAction,
+        confirmed: @escaping () -> Void
+    ) {
+        guard Settings.current.isConfirmShakeGestureAction && !isAppLockVisible else {
+            confirmed()
+            return
+        }
+
+        let alert = UIAlertController
+            .make(title: action.shortTitle, message: nil, dismissButtonTitle: LString.actionCancel)
+            .addAction(title: LString.actionContinue, style: .default) { _ in
+                confirmed()
+            }
+        Diag.debug("Presenting shake gesture confirmation")
+        getPresenterForModals().present(alert, animated: true)
     }
 }
 
