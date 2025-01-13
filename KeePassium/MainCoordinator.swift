@@ -1305,7 +1305,7 @@ extension MainCoordinator {
 
     private func insertPreferencesCommand(to builder: UIMenuBuilder) {
         let preferencesCommand = UIKeyCommand(
-            title: builder.menu(for: .preferences)?.children.first?.title ?? LString.titlePreferences,
+            title: builder.menu(for: .preferences)?.children.first?.title ?? LString.menuSettingsMacOS,
             action: #selector(kpmShowSettingsScreen),
             hotkey: .appPreferences)
         let preferencesMenu = UIMenu(
