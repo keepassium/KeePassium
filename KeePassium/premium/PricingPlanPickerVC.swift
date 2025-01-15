@@ -114,6 +114,7 @@ class PricingPlanPickerVC: UIViewController {
     }
 
     public func scrollToDefaultPlan(animated: Bool) {
+        guard pricingPlans.count > 0 else { return }
         var targetPlanIndex = pricingPlans.count - 1
         if let promotedPlanIndex = pricingPlans.firstIndex(where: { $0.isDefault }) {
             targetPlanIndex = promotedPlanIndex
