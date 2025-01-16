@@ -205,12 +205,20 @@ class AutoFillCoordinator: NSObject, Coordinator {
         }
         #endif
 
-        if Settings.current.isAutoFillFinishedOK {
-            let areLocalFilesAvailable = FileKeeper.shared.canActuallyAccessAppSandbox
-            databasePickerCoordinator.shouldSelectDefaultDatabase = areLocalFilesAvailable
-        } else {
+        guard Settings.current.isAutoFillFinishedOK else {
             showCrashReport()
+            return
         }
+
+        let isDefaultDatabaseReachable: Bool
+        if Settings.current.startupDatabase?.location == .internalDocuments {
+            let areInternalDatabasesLikelyMissing = FileKeeper.canPossiblyAccessAppSandbox
+                    && !FileKeeper.shared.canActuallyAccessAppSandbox
+            isDefaultDatabaseReachable = !areInternalDatabasesLikelyMissing
+        } else {
+            isDefaultDatabaseReachable = true
+        }
+        databasePickerCoordinator.shouldSelectDefaultDatabase = isDefaultDatabaseReachable
     }
 
     internal func cleanup() {
