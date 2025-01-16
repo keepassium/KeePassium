@@ -116,7 +116,7 @@ final class DatabaseUnlockerCoordinator: Coordinator, Refreshable {
             let matchingKeyFile = associatedKeyFileRef.find(
                 in: allKeyFiles,
                 fallbackToNamesake: true)
-            setKeyFile(matchingKeyFile) 
+            setKeyFile(matchingKeyFile ?? associatedKeyFileRef)
         } else {
             setKeyFile(nil)
         }

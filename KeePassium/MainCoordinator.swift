@@ -380,8 +380,7 @@ extension MainCoordinator {
             return
         }
 
-        let dbUnlocker = showDatabaseUnlocker(databaseRef)
-        dbUnlocker.reloadingContext = context
+        let dbUnlocker = showDatabaseUnlocker(databaseRef, context: context)
         dbUnlocker.setDatabase(databaseRef)
     }
 
@@ -411,11 +410,16 @@ extension MainCoordinator {
         deallocateDatabaseUnlocker()
     }
 
-    private func showDatabaseUnlocker(_ databaseRef: URLReference) -> DatabaseUnlockerCoordinator {
+    private func showDatabaseUnlocker(
+        _ databaseRef: URLReference,
+        context: DatabaseReloadContext?
+    ) -> DatabaseUnlockerCoordinator {
         if let databaseUnlockerRouter = databaseUnlockerRouter {
             rootSplitVC.setDetailRouter(databaseUnlockerRouter)
             if let existingDBUnlocker = childCoordinators.first(where: { $0 is DatabaseUnlockerCoordinator }) {
-                return existingDBUnlocker as! DatabaseUnlockerCoordinator
+                let dbUnlocker = existingDBUnlocker as! DatabaseUnlockerCoordinator
+                dbUnlocker.reloadingContext = context
+                return dbUnlocker
             } else {
                 Diag.warning("Internal inconsistency: router without coordinator")
                 assertionFailure()
@@ -434,6 +438,7 @@ extension MainCoordinator {
             self?.databaseUnlockerRouter = nil
         }
         newDBUnlockerCoordinator.delegate = self
+        newDBUnlockerCoordinator.reloadingContext = context
         newDBUnlockerCoordinator.start()
         addChildCoordinator(newDBUnlockerCoordinator)
 

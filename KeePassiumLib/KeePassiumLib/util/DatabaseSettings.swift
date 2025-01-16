@@ -94,8 +94,11 @@ final public class DatabaseSettings: Eraseable {
     }
 
     public func maybeSetAssociatedKeyFile(_ urlRef: URLReference?) {
-        guard isRememberKeyFile ?? Settings.current.isKeepKeyFileAssociations else { return }
-        setAssociatedKeyFile(urlRef)
+        if isRememberKeyFile ?? Settings.current.isKeepKeyFileAssociations {
+            setAssociatedKeyFile(urlRef)
+        } else {
+            setAssociatedKeyFile(nil)
+        }
     }
 
     public func setAssociatedYubiKey(_ yubiKey: YubiKey?) {
@@ -103,8 +106,11 @@ final public class DatabaseSettings: Eraseable {
     }
 
     public func maybeSetAssociatedYubiKey(_ yubiKey: YubiKey?) {
-        guard isRememberHardwareKey ?? Settings.current.isKeepHardwareKeyAssociations else { return }
-        setAssociatedYubiKey(yubiKey)
+        if isRememberHardwareKey ?? Settings.current.isKeepHardwareKeyAssociations {
+            setAssociatedYubiKey(yubiKey)
+        } else {
+            setAssociatedYubiKey(nil)
+        }
     }
 }
 
