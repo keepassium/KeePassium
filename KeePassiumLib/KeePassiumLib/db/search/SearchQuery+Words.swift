@@ -10,22 +10,22 @@ import Foundation
 
 extension SearchQuery {
     protocol Word {
+        var isNegated: Bool { get }
+
         func matches(_ searchable: Searchable, query: SearchQuery, scope: SearchScope) -> Bool
-        func equalsTo(_ anotherWord: any Word) -> Bool
+        func matchesIgnoringNegation(_ searchable: Searchable, query: SearchQuery, scope: SearchScope) -> Bool
     }
 
     public final class TextWord: Word {
-        private let text: Substring
+        let text: Substring
+        let isNegated: Bool
+
         init(text: Substring) {
-            self.text = text
+            isNegated = text.hasPrefix(Prefix.negativeModifier)
+            self.text = isNegated ? text.dropFirst() : text
         }
 
-        func equalsTo(_ anotherWord: any Word) -> Bool {
-            guard let word = anotherWord as? Self else { return false }
-            return self.text == word.text
-        }
-
-        func matches(_ searchable: Searchable, query: SearchQuery, scope: SearchScope) -> Bool {
+        func matchesIgnoringNegation(_ searchable: Searchable, query: SearchQuery, scope: SearchScope) -> Bool {
             if scope.contains(.fields) {
                 for field in searchable.searchableFields {
                     if field.contains(
@@ -49,17 +49,15 @@ extension SearchQuery {
     }
 
     public final class TagWord: Word {
-        private let tag: Substring
-        init(tag: Substring) {
+        let tag: Substring
+        let isNegated: Bool
+
+        init(tag: Substring, isNegated: Bool) {
             self.tag = tag
+            self.isNegated = isNegated
         }
 
-        func equalsTo(_ anotherWord: any Word) -> Bool {
-            guard let word = anotherWord as? Self else { return false }
-            return self.tag == word.tag
-        }
-
-        func matches(_ searchable: any Searchable, query: SearchQuery, scope: SearchScope) -> Bool {
+        func matchesIgnoringNegation(_ searchable: any Searchable, query: SearchQuery, scope: SearchScope) -> Bool {
             guard scope.contains(.tags) else { return false }
             for tag in searchable.tags {
                 if tag.compare(self.tag, options: query.compareOptions) == .orderedSame {
@@ -71,19 +69,23 @@ extension SearchQuery {
     }
 
     public final class FieldWord: Word {
-        private let name: String
-        private let term: Substring
-        init(name: String, term: Substring) {
+        let name: String
+        let term: Substring
+        let isNegated: Bool
+
+        init(name: String, term: Substring, isNegated: Bool) {
             self.name = name
             self.term = term
+            self.isNegated = isNegated
         }
 
-        func equalsTo(_ anotherWord: any Word) -> Bool {
-            guard let word = anotherWord as? Self else { return false }
-            return (self.name == word.name) && (self.term == word.term)
+        convenience init(name: String, term: Substring) {
+            let isNegated = name.hasPrefix(Prefix.negativeModifier)
+            let name = isNegated ? String(name.dropFirst()) : name
+            self.init(name: name, term: term, isNegated: isNegated)
         }
 
-        func matches(_ searchable: any Searchable, query: SearchQuery, scope: SearchScope) -> Bool {
+        func matchesIgnoringNegation(_ searchable: any Searchable, query: SearchQuery, scope: SearchScope) -> Bool {
             guard scope.contains(.fields) else { return false }
             let fieldWithMatchingName = searchable.namedSearchableFields.first(where: {
                 $0.name.compare(self.name, options: query.compareOptions) == .orderedSame
@@ -104,25 +106,22 @@ extension SearchQuery {
             case large
         }
 
-        private let qualifier: Qualifier
+        let qualifier: Qualifier
+        let isNegated: Bool
 
-        init(_ qualifier: Qualifier) {
+        init(_ qualifier: Qualifier, isNegated: Bool) {
             self.qualifier = qualifier
+            self.isNegated = isNegated
         }
 
-        convenience init?(rawValue: Substring) {
+        convenience init?(rawValue: Substring, isNegated: Bool) {
             guard let qualifier = Qualifier(rawValue: rawValue) else {
                 return nil
             }
-            self.init(qualifier)
+            self.init(qualifier, isNegated: isNegated)
         }
 
-        func equalsTo(_ anotherWord: any Word) -> Bool {
-            guard let word = anotherWord as? Self else { return false }
-            return self.qualifier == word.qualifier
-        }
-
-        func matches(_ searchable: any Searchable, query: SearchQuery, scope: SearchScope) -> Bool {
+        func matchesIgnoringNegation(_ searchable: any Searchable, query: SearchQuery, scope: SearchScope) -> Bool {
             switch qualifier {
             case .entry:
                 return (searchable is Entry)
@@ -137,6 +136,17 @@ extension SearchQuery {
                 let underestimatedSize = searchable.getUnderestimatedSize()
                 return underestimatedSize > 100_000
             }
+        }
+    }
+}
+
+extension SearchQuery.Word {
+    func matches(_ searchable: Searchable, query: SearchQuery, scope: SearchScope) -> Bool {
+        let result = matchesIgnoringNegation(searchable, query: query, scope: scope)
+        if isNegated {
+            return !result
+        } else {
+            return result
         }
     }
 }

@@ -9,9 +9,30 @@
 import Foundation
 
 public struct SearchQuery {
+    enum Prefix {
+        static let negativeModifier = "-"
+        private static let tagPrefix = "tag"
+        private static let isPrefix = "is"
+
+        case tag(isNegated: Bool)
+        case `is`(isNegated: Bool)
+
+        init?(value: String) {
+            let isNegated = value.hasPrefix(Self.negativeModifier)
+            let prefix = isNegated ? value.dropFirst() : Substring(value)
+
+            switch prefix {
+            case Self.tagPrefix:
+                self = .tag(isNegated: isNegated)
+            case Self.isPrefix:
+                self = .`is`(isNegated: isNegated)
+            default:
+                return nil
+            }
+        }
+    }
+
     private static let separator = ":" as Character
-    private static let tagPrefix = "tag"
-    private static let isPrefix = "is"
 
     public let excludeGroupUUID: UUID?
 
@@ -63,17 +84,16 @@ public struct SearchQuery {
 
             let prefix = subTokens[0].lowercased()
             let value = subTokens[1].suffix(from: index)
-            switch prefix {
-            case tagPrefix:
-                return TagWord(tag: value)
-            case isPrefix:
-                if let qualifierWord = QualifierWord(rawValue: value)  {
+            switch Prefix(value: prefix) {
+            case let .tag(isNegated):
+                return TagWord(tag: value, isNegated: isNegated)
+            case let .`is`(isNegated):
+                if let qualifierWord = QualifierWord(rawValue: value, isNegated: isNegated)  {
                     return qualifierWord
                 } else {
                     return FieldWord(name: prefix, term: value)
                 }
-
-            default:
+            case .none:
                 return FieldWord(name: subTokens[0], term: value)
             }
         }
