@@ -21,7 +21,7 @@ class PricingPlanTitleCell: UITableViewCell {
 }
 
 protocol PricingPlanConditionCellDelegate: AnyObject {
-    func didPressDetailButton(in cell: PricingPlanConditionCell)
+    func didPressDetailButton(url: URL, in cell: PricingPlanConditionCell)
 }
 class PricingPlanConditionCell: UITableViewCell {
     static let storyboardID = "ConditionCell"
@@ -30,7 +30,7 @@ class PricingPlanConditionCell: UITableViewCell {
     @IBOutlet weak var checkmarkImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailButton: UIButton!
-    var helpReference: PricingPlanCondition.HelpReference = .none
+    var helpURL: URL?
 
     var isChecked: Bool = false {
         didSet {
@@ -49,15 +49,18 @@ class PricingPlanConditionCell: UITableViewCell {
     }
 
     @IBAction private func didPressDetailButton(_ sender: UIButton) {
-        assert(helpReference != .none)
-        delegate?.didPressDetailButton(in: self)
+        guard let helpURL else {
+            assertionFailure()
+            return
+        }
+        delegate?.didPressDetailButton(url: helpURL, in: self)
     }
 }
 
 
 protocol PricingPlanCollectionCellDelegate: AnyObject {
     func didPressPurchaseButton(in cell: PricingPlanCollectionCell, with pricePlan: PricingPlan)
-    func didPressHelpButton(in cell: PricingPlanConditionCell, with pricePlan: PricingPlan)
+    func didPressHelpLink(url: URL, in cell: PricingPlanConditionCell, with pricePlan: PricingPlan)
 }
 
 class PricingPlanCollectionCell: UICollectionViewCell {
@@ -238,9 +241,8 @@ extension PricingPlanCollectionCell: UITableViewDataSource {
         cell.titleLabel?.text = condition.localizedTitle
         cell.titleLabel?.font = .preferredFont(forTextStyle: .body)
         cell.isChecked = condition.isIncluded
-
-        cell.helpReference = condition.moreInfo
-        cell.detailButton.isHidden = (condition.moreInfo == .none)
+        cell.helpURL = condition.infoURL
+        cell.detailButton.isHidden = (condition.infoURL == nil)
         return cell
     }
 
@@ -325,7 +327,7 @@ extension PricingPlanCollectionCell: UITableViewDataSource {
 }
 
 extension PricingPlanCollectionCell: PricingPlanConditionCellDelegate {
-    func didPressDetailButton(in cell: PricingPlanConditionCell) {
-        delegate?.didPressHelpButton(in: cell, with: pricingPlan)
+    func didPressDetailButton(url: URL, in cell: PricingPlanConditionCell) {
+        delegate?.didPressHelpLink(url: url, in: cell, with: pricingPlan)
     }
 }

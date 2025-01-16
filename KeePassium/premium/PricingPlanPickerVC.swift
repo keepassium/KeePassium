@@ -14,8 +14,8 @@ protocol PricingPlanPickerDelegate: AnyObject {
     func didPressCancel(in viewController: PricingPlanPickerVC)
     func didPressRestorePurchases(in viewController: PricingPlanPickerVC)
     func didPressBuy(product: SKProduct, in viewController: PricingPlanPickerVC)
-    func didPressHelpButton(
-        for helpReference: PricingPlanCondition.HelpReference,
+    func didPressHelpLink(
+        url: URL,
         at popoverAnchor: PopoverAnchor,
         in viewController: PricingPlanPickerVC)
 }
@@ -247,17 +247,14 @@ extension PricingPlanPickerVC: PricingPlanCollectionCellDelegate {
         delegate?.didPressBuy(product: realPricingPlan.product, in: self)
     }
 
-    func didPressHelpButton(
+    func didPressHelpLink(
+        url: URL,
         in cell: PricingPlanConditionCell,
         with pricingPlan: PricingPlan
     ) {
-        let helpReference = cell.helpReference
         let popoverAnchor = PopoverAnchor(
             sourceView: cell.detailButton,
             sourceRect: cell.detailButton.bounds)
-        delegate?.didPressHelpButton(
-            for: helpReference,
-            at: popoverAnchor,
-            in: self)
+        delegate?.didPressHelpLink(url: url, at: popoverAnchor, in: self)
     }
 }

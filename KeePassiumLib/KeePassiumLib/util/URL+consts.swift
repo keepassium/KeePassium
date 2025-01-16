@@ -49,6 +49,9 @@ extension URL {
             }
         }
 
+        public static let perpetualFallback = URL(string: "https://keepassium.com/apphelp/perpetual-fallback-license/")!
+        public static let familySharing = URL(string: "https://keepassium.com/apphelp/family-sharing/")!
+
         public static let yubikeySetup = URL(string: "https://keepassium.com/apphelp/yubikey-setup/")!
 
         public static let databaseFileIsInTrashWarning = URL(string: "https://keepassium.com/apphelp/database-recently-deleted-warning/")!

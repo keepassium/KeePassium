@@ -23,25 +23,15 @@ struct PricingPlanCondition {
         case familySharing
     }
 
-    enum HelpReference {
-        case none
-        case perpetualFallback
-        case familySharing
-        var articleKey: HelpArticle.Key {
-            switch self {
-            case .none:
-                fatalError()
-            case .perpetualFallback:
-                return .perpetualFallbackLicense
-            case .familySharing:
-                return .appStoreFamilySharingProgramme
-            }
-        }
-    }
-
     var kind: Kind
     var isIncluded: Bool
-    var moreInfo: HelpReference
+    var infoURL: URL?
+
+    init(kind: Kind, isIncluded: Bool, infoURL: URL? = nil) {
+        self.kind = kind
+        self.isIncluded = isIncluded
+        self.infoURL = infoURL
+    }
 
     var localizedTitle: String {
         switch kind {
@@ -181,11 +171,11 @@ class FreePricingPlan: PricingPlan {
         self.localizedPriceWithPeriod = nil
         self.callToAction = LString.premiumCallToActionFree
         self.conditions = [
-            PricingPlanCondition(kind: .updatesAndFixes, isIncluded: true, moreInfo: .none),
-            PricingPlanCondition(kind: .freemiumReminders, isIncluded: true, moreInfo: .none),
-            PricingPlanCondition(kind: .communitySupport, isIncluded: true, moreInfo: .none),
-            PricingPlanCondition(kind: .emailSupport, isIncluded: false, moreInfo: .none),
-            PricingPlanCondition(kind: .allPremiumFeatures, isIncluded: false, moreInfo: .none),
+            PricingPlanCondition(kind: .updatesAndFixes, isIncluded: true),
+            PricingPlanCondition(kind: .freemiumReminders, isIncluded: true),
+            PricingPlanCondition(kind: .communitySupport, isIncluded: true),
+            PricingPlanCondition(kind: .emailSupport, isIncluded: false),
+            PricingPlanCondition(kind: .allPremiumFeatures, isIncluded: false),
         ]
         self.benefits = [
             PricingPlanBenefit.quickAutoFill,
@@ -240,11 +230,11 @@ class PricingPlanPremiumMonthly: RealPricingPlan {
         self.callToAction = LString.premiumCallToActionUpgradeNow
         self.ctaSubtitle = nil
         self.conditions = [
-            PricingPlanCondition(kind: .allPremiumFeatures, isIncluded: true, moreInfo: .none),
-            PricingPlanCondition(kind: .updatesAndFixes, isIncluded: true, moreInfo: .none),
-            PricingPlanCondition(kind: .perpetualFallback, isIncluded: true, moreInfo: .perpetualFallback),
-            PricingPlanCondition(kind: .emailSupport, isIncluded: true, moreInfo: .none),
-            PricingPlanCondition(kind: .familySharing, isIncluded: true, moreInfo: .familySharing),
+            PricingPlanCondition(kind: .allPremiumFeatures, isIncluded: true),
+            PricingPlanCondition(kind: .updatesAndFixes, isIncluded: true),
+            PricingPlanCondition(kind: .perpetualFallback, isIncluded: true, infoURL: URL.AppHelp.perpetualFallback),
+            PricingPlanCondition(kind: .emailSupport, isIncluded: true),
+            PricingPlanCondition(kind: .familySharing, isIncluded: true, infoURL: URL.AppHelp.familySharing),
         ]
         self.benefits = [
             PricingPlanBenefit.quickAutoFill,
@@ -269,11 +259,11 @@ class PricingPlanPremiumYearly: RealPricingPlan {
         self.callToAction = LString.premiumCallToActionUpgradeNow
         self.ctaSubtitle = nil
         self.conditions = [
-            PricingPlanCondition(kind: .allPremiumFeatures, isIncluded: true, moreInfo: .none),
-            PricingPlanCondition(kind: .updatesAndFixes, isIncluded: true, moreInfo: .none),
-            PricingPlanCondition(kind: .perpetualFallback, isIncluded: true, moreInfo: .perpetualFallback),
-            PricingPlanCondition(kind: .emailSupport, isIncluded: true, moreInfo: .none),
-            PricingPlanCondition(kind: .familySharing, isIncluded: true, moreInfo: .familySharing),
+            PricingPlanCondition(kind: .allPremiumFeatures, isIncluded: true),
+            PricingPlanCondition(kind: .updatesAndFixes, isIncluded: true),
+            PricingPlanCondition(kind: .perpetualFallback, isIncluded: true, infoURL: URL.AppHelp.perpetualFallback),
+            PricingPlanCondition(kind: .emailSupport, isIncluded: true),
+            PricingPlanCondition(kind: .familySharing, isIncluded: true, infoURL: URL.AppHelp.familySharing),
         ]
         self.benefits = [
             PricingPlanBenefit.quickAutoFill,
@@ -296,11 +286,11 @@ class PricingPlanVersionPurchase: RealPricingPlan {
         self.callToAction = LString.premiumCallToActionBuyNow
         self.ctaSubtitle = LString.planConditionFullPriceUpgrade
         self.conditions = [
-            PricingPlanCondition(kind: .currentPremiumFeatures, isIncluded: true, moreInfo: .none),
-            PricingPlanCondition(kind: .updatesAndFixes, isIncluded: true, moreInfo: .none),
-            PricingPlanCondition(kind: .oneYearEmailSupport, isIncluded: true, moreInfo: .none),
-            PricingPlanCondition(kind: .upcomingPremiumFeatures, isIncluded: false, moreInfo: .none),
-            PricingPlanCondition(kind: .familySharing, isIncluded: false, moreInfo: .familySharing),
+            PricingPlanCondition(kind: .currentPremiumFeatures, isIncluded: true),
+            PricingPlanCondition(kind: .updatesAndFixes, isIncluded: true),
+            PricingPlanCondition(kind: .oneYearEmailSupport, isIncluded: true),
+            PricingPlanCondition(kind: .upcomingPremiumFeatures, isIncluded: false),
+            PricingPlanCondition(kind: .familySharing, isIncluded: false, infoURL: URL.AppHelp.familySharing),
         ]
         self.benefits = [
             PricingPlanBenefit.quickAutoFill,
@@ -322,11 +312,11 @@ class PricingPlanPremiumForever: RealPricingPlan {
         self.callToAction = LString.premiumCallToActionBuyNow
         self.ctaSubtitle = nil
         self.conditions = [
-            PricingPlanCondition(kind: .allPremiumFeatures, isIncluded: true, moreInfo: .none),
-            PricingPlanCondition(kind: .upcomingPremiumFeatures, isIncluded: true, moreInfo: .none),
-            PricingPlanCondition(kind: .updatesAndFixes, isIncluded: true, moreInfo: .none),
-            PricingPlanCondition(kind: .emailSupport, isIncluded: true, moreInfo: .none),
-            PricingPlanCondition(kind: .familySharing, isIncluded: false, moreInfo: .familySharing),
+            PricingPlanCondition(kind: .allPremiumFeatures, isIncluded: true),
+            PricingPlanCondition(kind: .upcomingPremiumFeatures, isIncluded: true),
+            PricingPlanCondition(kind: .updatesAndFixes, isIncluded: true),
+            PricingPlanCondition(kind: .emailSupport, isIncluded: true),
+            PricingPlanCondition(kind: .familySharing, isIncluded: false, infoURL: URL.AppHelp.familySharing),
         ]
         self.benefits = [
             PricingPlanBenefit.quickAutoFill,
