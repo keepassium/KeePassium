@@ -1,6 +1,53 @@
 {
     "sections": [
         {
+            "version": "2.3",
+            "releaseDate": "2025-01-17T00:00:00Z",
+            "items": [
+                {
+                    "title": "Added: Use minus sign to exclude terms from search results",
+                    "github": "#401",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Added: iOS: Custom actions when device is shaken (see Data Protection settings)",
+                    "os": "ios"
+                },
+                {
+                    "title": "Fixed: Org: Crash when entering text",
+                    "edition": "org",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Fixed: AutoFill: Opening of last-used database",
+                    "edition": "free,pro",
+                    "github": "#412",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Fixed: Preserve DB association for not-imported key files",
+                    "credits": "Ken"
+                },
+                {
+                    "title": "Fixed: macOS: UI fixes in Premium Upgrade dialog",
+                    "os": "macos",
+                    "github": "#418, #419",
+                    "credits": "vit9696"
+                },
+                {
+                    "title": "Fixed: macOS: Settings menu text",
+                    "os": "macos",
+                    "github": "#414",
+                    "credits": "Eitot"
+                },
+                {
+                    "title": "Fixed: macOS: Allow smaller app window",
+                    "os": "macos",
+                    "credits": "Luke"
+                }
+            ]
+        },
+        {
             "version": "2.2",
             "releaseDate": "2024-12-22T00:00:00Z",
             "items": [

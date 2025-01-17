@@ -1,5 +1,22 @@
 #CHANGELOG
 
+## [2.3.163] - 2025-01-17
+
+### Added
+
+- Use minus sign to exclude terms from search results (#401) [thanks, everyone]
+- iOS: Custom actions when device is shaken (see Data Protection settings)
+
+### Fixed
+
+- AutoFill: Opening of last-used database (#412) [thanks, everyone]
+- Preserve DB association for not-imported key files [thanks, Ken]
+- macOS: UI fixes in Premium Upgrade dialog (#418, #419) [thanks, vit9696]
+- macOS: Allow smaller app window [thanks, Luke] 
+- macOS: Settings menu text (#414) [thanks, Eitot]
+- Org: Crash when entering text [thanks, everyone]
+
+
 ## [2.2.162] - 2024-12-22
 
 ### Improved
