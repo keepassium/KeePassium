@@ -210,13 +210,11 @@ class AutoFillCoordinator: NSObject, Coordinator {
             return
         }
 
-        let isDefaultDatabaseReachable: Bool
-        if Settings.current.startupDatabase?.location == .internalDocuments {
-            let areInternalDatabasesLikelyMissing = FileKeeper.canPossiblyAccessAppSandbox
-                    && !FileKeeper.shared.canActuallyAccessAppSandbox
-            isDefaultDatabaseReachable = !areInternalDatabasesLikelyMissing
-        } else {
-            isDefaultDatabaseReachable = true
+        var isDefaultDatabaseReachable = true
+        if Settings.current.startupDatabase?.location == .internalDocuments,
+           FileKeeper.shared.areSandboxFilesLikelyMissing()
+        {
+            isDefaultDatabaseReachable = false
         }
         databasePickerCoordinator.shouldSelectDefaultDatabase = isDefaultDatabaseReachable
     }

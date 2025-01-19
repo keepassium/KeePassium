@@ -49,47 +49,6 @@ public class FileKeeper {
         case overwrite
     }
 
-    public static let platformSupportsSharedReferences: Bool = {
-        if ProcessInfo.isRunningOnMac {
-            return false 
-        }
-        return true
-    }()
-
-    public static var canPossiblyAccessAppSandbox: Bool {
-        if platformSupportsSharedReferences {
-            return true
-        } else {
-            return AppGroup.isMainApp
-        }
-    }
-
-    public var canActuallyAccessAppSandbox: Bool {
-        guard AppGroup.isAppExtension else {
-            return true
-        }
-        guard Self.platformSupportsSharedReferences else {
-            return false
-        }
-        let extensionSandboxURL = FileManager.default
-            .urls(for: .documentDirectory, in: .userDomainMask)
-            .first!
-            .standardizedFileURL
-        let gotTheRightURL = (docDirURL != extensionSandboxURL)
-        guard gotTheRightURL else {
-            return false
-        }
-        do {
-            try FileManager.default.contentsOfDirectory(
-                at: docDirURL,
-                includingPropertiesForKeys: [.isReadableKey],
-                options: [])
-            return true
-        } catch {
-            return false
-        }
-    }
-
     private static let documentsDirectoryName = "Documents"
     private static let inboxDirectoryName = "Inbox"
     private static let backupDirectoryName = "Backup"
@@ -1121,6 +1080,80 @@ public class FileKeeper {
             completion?()
         }
     }
+}
+
+extension FileKeeper {
+    public static let platformSupportsSharedReferences: Bool = {
+        if ProcessInfo.isRunningOnMac {
+            return false
+        }
+        return true
+    }()
+
+    public static var canPossiblyAccessAppSandbox: Bool {
+        if platformSupportsSharedReferences {
+            return true
+        } else {
+            return AppGroup.isMainApp
+        }
+    }
+
+    public var canActuallyAccessAppSandbox: Bool {
+        guard AppGroup.isAppExtension else {
+            return true
+        }
+        guard Self.platformSupportsSharedReferences else {
+            return false
+        }
+        let extensionSandboxURL = FileManager.default
+            .urls(for: .documentDirectory, in: .userDomainMask)
+            .first!
+            .standardizedFileURL
+        let gotTheRightURL = (docDirURL != extensionSandboxURL)
+        guard gotTheRightURL else {
+            return false
+        }
+        do {
+            try FileManager.default.contentsOfDirectory(
+                at: docDirURL,
+                includingPropertiesForKeys: [.isReadableKey],
+                options: [])
+            Diag.info("App sandbox is reachable")
+            return true
+        } catch {
+            let nsError = error as NSError
+            Diag.error("Failed to access app documents [errorCode: \(nsError.code)]")
+            return false
+        }
+    }
+
+    private func isAppSandboxLikelyEmpty() -> Bool {
+        do {
+            let value = try docDirURL.resourceValues(forKeys: [.directoryEntryCountKey])
+            guard let childrenCount = value.directoryEntryCount else {
+                Diag.warning("App sandbox status unknown, assuming non-empty")
+                return false
+            }
+            if childrenCount > 0 {
+                Diag.debug("App sandbox contains files")
+                return false
+            } else {
+                Diag.debug("App sandbox is empty")
+                return true
+            }
+        } catch {
+            let nsError = error as NSError
+            Diag.warning("App sandbox status unavailable, assuming non-empty [message: \(nsError.description)]")
+            return false
+        }
+    }
+
+    public func areSandboxFilesLikelyMissing() -> Bool {
+        return FileKeeper.canPossiblyAccessAppSandbox
+               && !FileKeeper.shared.isAppSandboxLikelyEmpty()
+               && !FileKeeper.shared.canActuallyAccessAppSandbox
+    }
+
 }
 
 extension FileKeeper {

@@ -200,7 +200,7 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
         UIAccessibility.post(notification: .screenChanged, argument: tableView)
 
         if mode == .autoFill,
-           !FileKeeper.shared.canActuallyAccessAppSandbox
+           FileKeeper.shared.areSandboxFilesLikelyMissing()
         {
             showNotification(
                 LString.messageLocalFilesMissing,
