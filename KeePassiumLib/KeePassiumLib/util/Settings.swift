@@ -148,13 +148,20 @@ public class Settings {
         case after2minutes = 120
         case after5minutes = 300
 
-        public var seconds: Int {
-            return self.rawValue
+        private static let screenLockAdjustment = 1.0
+        public var seconds: TimeInterval {
+            if self.rawValue >= 30 {
+                /* Prevents device lock disruption by app lock / biometric prompt.
+                   https://github.com/keepassium/KeePassium/issues/19 */
+                return TimeInterval(self.rawValue) + Self.screenLockAdjustment
+            } else {
+                return TimeInterval(self.rawValue)
+            }
         }
 
         static func nearest(forSeconds seconds: Int) -> AppLockTimeout {
             let result = Self.allValues.min(by: { item1, item2 in
-                return abs(item1.seconds - seconds) < abs(item2.seconds - seconds)
+                return abs(item1.rawValue - seconds) < abs(item2.rawValue - seconds)
             })
             return result! 
         }

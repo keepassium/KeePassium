@@ -172,7 +172,7 @@ class Watchdog {
                 .timeIntervalSinceReferenceDate
             let timestampNow = Date.now.timeIntervalSinceReferenceDate
             let secondsPassed = timestampNow - timestampOfRecentActivity
-            return secondsPassed > Double(timeout.seconds)
+            return secondsPassed > timeout.seconds
         }
     }
 
