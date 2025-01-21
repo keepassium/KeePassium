@@ -211,6 +211,7 @@ final class EntryExtraViewerVC: UITableViewController, Refreshable {
         switch getSection(rawIndex: indexPath.section) {
         case .info:
             let cell = tableView.dequeueReusableCell(withIdentifier: CellID.uuidCell, for: indexPath)
+            cell.selectionStyle = .none
             var configuration = uuidCellConfiguarion
             configuration.secondaryText = entry?.uuid.uuidString
             cell.contentConfiguration = configuration
@@ -265,12 +266,50 @@ final class EntryExtraViewerVC: UITableViewController, Refreshable {
         let section = getSection(rawIndex: indexPath.section)
         guard section == .info,
               indexPath.row == 0,
-              let entry = entry
+              let entry = entry,
+              let cell = tableView.cellForRow(at: indexPath)
         else {
             return
         }
-        delegate?.didPressCopyField(text: entry.uuid.uuidString, in: self)
-        animateCopyingToClipboard(at: indexPath)
+
+        let actions: [ViewableFieldAction] = [.export, .showLargeType]
+        if #available(iOS 17.4, *),
+           !ProcessInfo.isRunningOnMac
+        {
+            let popoverAnchor = PopoverAnchor(tableView: self.tableView, at: indexPath)
+            showFieldMenu(with: [.copy] + actions, in: cell, at: popoverAnchor)
+        } else {
+            delegate?.didPressCopyField(text: entry.uuid.uuidString, in: self)
+            animateCopyingToClipboard(in: cell, actions: actions)
+        }
+    }
+
+    @available(iOS 17.4, *)
+    private func showFieldMenu(
+        with actions: [ViewableFieldAction],
+        in cell: UITableViewCell,
+        at popoverAnchor: PopoverAnchor
+    ) {
+        let overlayView = EntryFieldMenuButton(actions: actions) { [weak self] selectedAction in
+            guard let self,
+                  let value = self.entry?.uuid.uuidString
+            else {
+                return
+            }
+
+            switch selectedAction {
+            case .copy:
+                delegate?.didPressCopyField(text: value, in: self)
+                animateCopyingToClipboard(in: cell, actions: [])
+            case .export:
+                delegate?.didPressExportField(text: value, at: popoverAnchor, in: self)
+            case .showLargeType:
+                delegate?.didPressShowLargeType(text: value, at: popoverAnchor, in: self)
+            case .copyReference:
+                assertionFailure("Invalid action")
+            }
+        }
+        overlayView.showMenuInCell(cell)
     }
 
     private func update(property: Property, to value: Bool) {
@@ -281,15 +320,11 @@ final class EntryExtraViewerVC: UITableViewController, Refreshable {
         delegate?.didUpdateProperties(properties: properties, in: self)
     }
 
-    private func animateCopyingToClipboard(at indexPath: IndexPath) {
+    private func animateCopyingToClipboard(in cell: UITableViewCell, actions: [ViewableFieldAction]) {
         HapticFeedback.play(.copiedToClipboard)
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.copiedCellView.show(
-                in: self.tableView,
-                at: indexPath,
-                options: [.canExport, .canShowLargeType]
-            )
+        DispatchQueue.main.async { [weak self, weak cell] in
+            guard let self, let cell else { return }
+            self.copiedCellView.show(in: cell, actions: actions)
         }
     }
 }

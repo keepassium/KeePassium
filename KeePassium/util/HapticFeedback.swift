@@ -23,7 +23,7 @@ class HapticFeedback {
         case deviceShaken
     }
 
-    static func play(_ kind: Kind) {
+    static func play(_ kind: Kind?) {
         guard Settings.current.isHapticFeedbackEnabled else { return }
 
         switch kind {
@@ -51,6 +51,8 @@ class HapticFeedback {
         case .deviceShaken:
             let tactileGenerator = UINotificationFeedbackGenerator()
             tactileGenerator.notificationOccurred(.warning)
+        case .none:
+            return
         }
     }
 

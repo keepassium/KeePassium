@@ -10,7 +10,7 @@
 import KeePassiumLib
 import UIKit
 
-struct EntryFieldActionConfiguration {
+struct EditableFieldActionConfiguration {
     static let hidden = Self(state: [.hidden], menu: nil)
 
     enum State {
@@ -41,7 +41,7 @@ internal protocol EditableFieldCellDelegate: AnyObject {
         at popoverAnchor: PopoverAnchor,
         in cell: EditableFieldCell)
 
-    func getActionConfiguration(for field: EditableField) -> EntryFieldActionConfiguration
+    func getActionConfiguration(for field: EditableField) -> EditableFieldActionConfiguration
 }
 
 internal protocol EditableFieldCell: AnyObject {

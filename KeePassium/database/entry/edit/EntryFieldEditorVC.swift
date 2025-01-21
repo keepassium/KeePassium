@@ -556,9 +556,9 @@ extension EntryFieldEditorVC: EditableFieldCellDelegate {
         return (sameNameCount == 1)
     }
 
-    func getActionConfiguration(for field: EditableField) -> EntryFieldActionConfiguration {
+    func getActionConfiguration(for field: EditableField) -> EditableFieldActionConfiguration {
         var menu: UIMenu?
-        var state = Set<EntryFieldActionConfiguration.State>()
+        var state = Set<EditableFieldActionConfiguration.State>()
         switch field.internalName {
         case EntryField.title:
             if isDownloadingFavicon {
@@ -576,7 +576,7 @@ extension EntryFieldEditorVC: EditableFieldCellDelegate {
         default:
             state = [.hidden]
         }
-        return EntryFieldActionConfiguration(state: state, menu: menu)
+        return EditableFieldActionConfiguration(state: state, menu: menu)
     }
 
     private func makeIconButtonMenu() -> UIMenu {

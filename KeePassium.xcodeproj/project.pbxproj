@@ -1260,6 +1260,9 @@
 		F34B0DCB2B2212A0001F7500 /* FreeBadgeAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B0DC92B21D10C001F7500 /* FreeBadgeAccessory.swift */; };
 		F34B0DCC2B2212A2001F7500 /* FreeBadgeAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B0DC92B21D10C001F7500 /* FreeBadgeAccessory.swift */; };
 		F34B0DCE2B22673F001F7500 /* AppHistoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B0DCD2B22673F001F7500 /* AppHistoryTests.swift */; };
+		F35125EB2D37D40C00E74BD0 /* EntryFieldMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35125EA2D37D40C00E74BD0 /* EntryFieldMenuButton.swift */; };
+		F35125EC2D37D40C00E74BD0 /* EntryFieldMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35125EA2D37D40C00E74BD0 /* EntryFieldMenuButton.swift */; };
+		F35125ED2D37D40C00E74BD0 /* EntryFieldMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35125EA2D37D40C00E74BD0 /* EntryFieldMenuButton.swift */; };
 		F35232AA2B36FE6200F17F13 /* LString+tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35232A92B36FE6200F17F13 /* LString+tags.swift */; };
 		F35232AC2B36FE8600F17F13 /* LString+tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35232A92B36FE6200F17F13 /* LString+tags.swift */; };
 		F35232AE2B36FE8700F17F13 /* LString+tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35232A92B36FE6200F17F13 /* LString+tags.swift */; };
@@ -2461,6 +2464,7 @@
 		F34AB0702BAF1C7D00BB50A3 /* GoogleDriveConnectionSetupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleDriveConnectionSetupCoordinator.swift; sourceTree = "<group>"; };
 		F34B0DC92B21D10C001F7500 /* FreeBadgeAccessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeBadgeAccessory.swift; sourceTree = "<group>"; };
 		F34B0DCD2B22673F001F7500 /* AppHistoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHistoryTests.swift; sourceTree = "<group>"; };
+		F35125EA2D37D40C00E74BD0 /* EntryFieldMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFieldMenuButton.swift; sourceTree = "<group>"; };
 		F35232A92B36FE6200F17F13 /* LString+tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LString+tags.swift"; sourceTree = "<group>"; };
 		F35232AF2B36FF2200F17F13 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		F35538902B08DDF600D9F95D /* Coordinator+databaseUpgrade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coordinator+databaseUpgrade.swift"; sourceTree = "<group>"; };
@@ -3007,6 +3011,7 @@
 				751E0D122309AF4C0088BB10 /* EntryHistoryViewerVC.storyboard */,
 				F3B69FCB2B078917006FC966 /* EntryExtraViewerVC.swift */,
 				7589FDCC28B4EA2100CCC76B /* FieldCopiedView.swift */,
+				F35125EA2D37D40C00E74BD0 /* EntryFieldMenuButton.swift */,
 				F3741DE72B5966780089F666 /* LargeTypeVC.swift */,
 			);
 			path = entry;
@@ -4273,6 +4278,7 @@
 				757ADC5023A5180600D708D2 /* DismissablePopover.swift in Sources */,
 				F34B0DCA2B21D10C001F7500 /* FreeBadgeAccessory.swift in Sources */,
 				756F364A260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */,
+				F35125EB2D37D40C00E74BD0 /* EntryFieldMenuButton.swift in Sources */,
 				758BAD9524B5392300CC9265 /* PricingPlanPickerVC.swift in Sources */,
 				F3B69FCC2B078917006FC966 /* EntryExtraViewerVC.swift in Sources */,
 				75C3801B217A0B76006F74C2 /* UIViewController+storyboard.swift in Sources */,
@@ -4514,6 +4520,7 @@
 				75B38BFF233E5B7C006BDEFC /* SKProduct+extension.swift in Sources */,
 				75F11C3A28836283005B3DC0 /* NetworkAccessSettingsVC.swift in Sources */,
 				F34B0DCB2B2212A0001F7500 /* FreeBadgeAccessory.swift in Sources */,
+				F35125ED2D37D40C00E74BD0 /* EntryFieldMenuButton.swift in Sources */,
 				759F6A092906BA7C0089FB34 /* PremiumBadgeAccessory.swift in Sources */,
 				757ADC5223A5180600D708D2 /* DismissablePopover.swift in Sources */,
 				756F364C260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */,
@@ -4729,6 +4736,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75D075B228B639D200F02E39 /* NewsCenter.swift in Sources */,
+				F35125EC2D37D40C00E74BD0 /* EntryFieldMenuButton.swift in Sources */,
 				751ABACD2915B70E008C18DE /* RemoteFolderViewerVC.swift in Sources */,
 				75D075B328B639D200F02E39 /* WatchdogAwareTextField.swift in Sources */,
 				75D075B428B639D200F02E39 /* AppIconPicker.swift in Sources */,

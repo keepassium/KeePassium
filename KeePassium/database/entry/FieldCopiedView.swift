@@ -17,12 +17,6 @@ protocol FieldCopiedViewDelegate: AnyObject {
 final class FieldCopiedView: UIView {
     weak var delegate: FieldCopiedViewDelegate?
 
-    enum Option: CaseIterable {
-        case canExport
-        case canCopyReference
-        case canShowLargeType
-    }
-
     private var indexPath: IndexPath!
     private weak var hidingTimer: Timer?
     private var wasUserInteractionEnabled: Bool?
@@ -48,22 +42,21 @@ final class FieldCopiedView: UIView {
         return label
     }()
 
-    private lazy var actionButtonConfiguration: UIButton.Configuration = {
+    private func actionButtonConfiguration(for action: ViewableFieldAction) -> UIButton.Configuration {
         var config = UIButton.Configuration.plain()
         config.baseForegroundColor = .actionText
         config.preferredSymbolConfigurationForImage = .init(textStyle: .body, scale: .large)
         config.imagePadding = 8
+        config.image = action.icon
         return config
-    }()
+    }
 
     private lazy var exportButton: UIButton = {
         let button = UIButton(primaryAction: UIAction {[weak self] _ in
             guard let self = self else { return }
             self.delegate?.didPressExport(for: self.indexPath, from: self)
         })
-        var buttonConfig = actionButtonConfiguration
-        buttonConfig.image = .symbol(.squareAndArrowUp)
-        button.configuration = buttonConfig
+        button.configuration = actionButtonConfiguration(for: .export)
         button.accessibilityLabel = LString.actionShare
         return button
     }()
@@ -73,9 +66,7 @@ final class FieldCopiedView: UIView {
             guard let self = self else { return }
             self.delegate?.didPressCopyFieldReference(for: self.indexPath, from: self)
         })
-        var buttonConfig = actionButtonConfiguration
-        buttonConfig.image = .symbol(.fieldReference)
-        button.configuration = buttonConfig
+        button.configuration = actionButtonConfiguration(for: .copyReference)
         button.accessibilityLabel = LString.actionCopyFieldReference
         return button
     }()
@@ -85,9 +76,7 @@ final class FieldCopiedView: UIView {
             guard let self = self else { return }
             self.delegate?.didPressShowLargeType(for: self.indexPath, from: self)
         })
-        var buttonConfig = actionButtonConfiguration
-        buttonConfig.image = .symbol(.largeType)
-        button.configuration = buttonConfig
+        button.configuration = actionButtonConfiguration(for: .showLargeType)
         button.tintColor = .actionText
         button.accessibilityLabel = LString.actionShowTextInLargeType
         return button
@@ -129,17 +118,13 @@ final class FieldCopiedView: UIView {
     }
 
     public func show(
-        in tableView: UITableView,
-        at indexPath: IndexPath,
-        options: any Collection<Option> = [.canExport, .canCopyReference, .canShowLargeType]
+        in cell: UITableViewCell,
+        actions: any Collection<ViewableFieldAction>
     ) {
         hide(animated: false)
-        exportButton.isHidden = !options.contains(.canExport)
-        copyFieldReferenceButton.isHidden = !options.contains(.canCopyReference)
-        showLargeTypeButton.isHidden = !options.contains(.canShowLargeType)
-
-        guard let cell = tableView.cellForRow(at: indexPath) else { assertionFailure(); return }
-        self.indexPath = indexPath
+        exportButton.isHidden = !actions.contains(.export)
+        copyFieldReferenceButton.isHidden = !actions.contains(.copyReference)
+        showLargeTypeButton.isHidden = !actions.contains(.showLargeType)
 
         wasUserInteractionEnabled = cell.accessoryView?.isUserInteractionEnabled
         cell.accessoryView?.isUserInteractionEnabled = false
@@ -160,7 +145,6 @@ final class FieldCopiedView: UIView {
             },
             completion: { [weak self] _ in
                 guard let self = self else { return }
-                tableView.deselectRow(at: indexPath, animated: false)
                 self.hidingTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { [weak self] _ in
                     self?.hide(animated: true)
                 }

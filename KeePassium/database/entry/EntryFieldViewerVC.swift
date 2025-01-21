@@ -11,11 +11,9 @@ import KeePassiumLib
 protocol EntryFieldViewerDelegate: AnyObject {
     func didPressCopyField(
         text: String,
-        from viewableField: ViewableField,
         in viewController: EntryFieldViewerVC)
     func didPressExportField(
         text: String,
-        from viewableField: ViewableField,
         at popoverAnchor: PopoverAnchor,
         in viewController: EntryFieldViewerVC)
     func didPressCopyFieldReference(
@@ -23,7 +21,6 @@ protocol EntryFieldViewerDelegate: AnyObject {
         in viewController: EntryFieldViewerVC)
     func didPressShowLargeType(
         text: String,
-        from viewableField: ViewableField,
         at popoverAnchor: PopoverAnchor,
         in viewController: EntryFieldViewerVC)
 
@@ -146,30 +143,62 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
             return
         case .fields:
             guard let field = getField(at: indexPath),
-                  let text = field.resolvedValue
+                  let text = field.resolvedValue,
+                  let cell = tableView.cellForRow(at: indexPath)
             else { return }
 
-            delegate?.didPressCopyField(text: text, from: field, in: self)
-            animateCopyingToClipboard(at: indexPath)
+            let supportsFieldReferencing = getField(at: indexPath)?.field?.isStandardField ?? false
+            let actions: [ViewableFieldAction] = [
+                .export,
+                .showLargeType,
+                supportsFieldReferencing ? .copyReference : nil
+            ].compactMap { $0 }
+
+            if #available(iOS 17.4, *),
+                !ProcessInfo.isRunningOnMac
+            {
+                let popoverAnchor = PopoverAnchor(tableView: self.tableView, at: indexPath)
+                showFieldMenu(for: field, with: [.copy] + actions, in: cell, at: popoverAnchor)
+            } else {
+                delegate?.didPressCopyField(text: text, in: self)
+                animateCopyingToClipboard(in: cell, actions: actions)
+            }
         default:
             fatalError("Unexpected section")
         }
     }
 
-    func animateCopyingToClipboard(at indexPath: IndexPath) {
-        let supportsFieldReferencing = getField(at: indexPath)?.field?.isStandardField ?? false
+    @available(iOS 17.4, *)
+    private func showFieldMenu(
+        for field: ViewableField,
+        with actions: [ViewableFieldAction],
+        in cell: UITableViewCell,
+        at popoverAnchor: PopoverAnchor
+    ) {
+        let overlayView = EntryFieldMenuButton(actions: actions) { [weak self] selectedAction in
+            guard let self else { return }
+
+            let value = field.resolvedValue ?? ""
+            switch selectedAction {
+            case .copy:
+                animateCopyingToClipboard(in: cell, actions: [])
+                delegate?.didPressCopyField(text: value, in: self)
+            case .export:
+                delegate?.didPressExportField(text: value, at: popoverAnchor, in: self)
+            case .showLargeType:
+                delegate?.didPressShowLargeType(text: value, at: popoverAnchor, in: self)
+            case .copyReference:
+                delegate?.didPressCopyFieldReference(from: field, in: self)
+            }
+        }
+        overlayView.showMenuInCell(cell)
+    }
+
+    func animateCopyingToClipboard(in cell: UITableViewCell, actions: [ViewableFieldAction]) {
         HapticFeedback.play(.copiedToClipboard)
         DispatchQueue.main.async { [weak self] in
             guard let self else { return }
-            self.copiedCellView.show(
-                in: self.tableView,
-                at: indexPath,
-                options: [
-                    .canExport,
-                    .canShowLargeType,
-                    supportsFieldReferencing ? .canCopyReference : nil
-                ].compactMap { $0 }
-            )
+            self.copiedCellView.show(in: cell, actions: actions)
         }
     }
 
@@ -210,6 +239,7 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
         let announcement = announcements[indexPath.row]
         cell.announcementView.apply(announcement)
         cell.accessoryType = .detailButton
+        cell.selectionStyle = .none
         return cell
     }
 
@@ -220,6 +250,7 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
             for: indexPath,
             field: field)
         cell.delegate = self
+        cell.selectionStyle = .none
         return cell
     }
 
@@ -299,7 +330,7 @@ extension EntryFieldViewerVC: ViewableFieldCellDelegate {
 
         HapticFeedback.play(.contextMenuOpened)
         let popoverAnchor = PopoverAnchor(sourceView: accessoryView, sourceRect: accessoryView.bounds)
-        delegate?.didPressExportField(text: value, from: field, at: popoverAnchor, in: self)
+        delegate?.didPressExportField(text: value, at: popoverAnchor, in: self)
     }
 }
 
@@ -315,7 +346,7 @@ extension EntryFieldViewerVC: FieldCopiedViewDelegate {
 
         HapticFeedback.play(.contextMenuOpened)
         let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
-        delegate?.didPressExportField(text: value, from: field, at: popoverAnchor, in: self)
+        delegate?.didPressExportField(text: value, at: popoverAnchor, in: self)
     }
 
     func didPressCopyFieldReference(for indexPath: IndexPath, from view: FieldCopiedView) {
@@ -337,6 +368,6 @@ extension EntryFieldViewerVC: FieldCopiedViewDelegate {
 
         HapticFeedback.play(.contextMenuOpened)
         let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
-        delegate?.didPressShowLargeType(text: value, from: field, at: popoverAnchor, in: self)
+        delegate?.didPressShowLargeType(text: value, at: popoverAnchor, in: self)
     }
 }

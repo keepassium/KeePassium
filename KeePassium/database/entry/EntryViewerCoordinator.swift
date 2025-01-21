@@ -609,7 +609,6 @@ extension EntryViewerCoordinator: EntryFieldViewerDelegate {
 
     func didPressCopyField(
         text: String,
-        from viewableField: ViewableField,
         in viewController: EntryFieldViewerVC
     ) {
         copyText(text: text)
@@ -617,7 +616,6 @@ extension EntryViewerCoordinator: EntryFieldViewerDelegate {
 
     func didPressExportField(
         text: String,
-        from viewableField: ViewableField,
         at popoverAnchor: PopoverAnchor,
         in viewController: EntryFieldViewerVC
     ) {
@@ -641,7 +639,6 @@ extension EntryViewerCoordinator: EntryFieldViewerDelegate {
 
     func didPressShowLargeType(
         text: String,
-        from viewableField: ViewableField,
         at popoverAnchor: PopoverAnchor,
         in viewController: EntryFieldViewerVC
     ) {
