@@ -90,6 +90,7 @@ public class Settings {
         case groupSortOrder
         case entryListDetail
         case entryViewerPage
+        case rememberEntryViewerPage
         case hideProtectedFields
         case collapseNotesField
 
@@ -1263,6 +1264,21 @@ public class Settings {
                 oldValue: entryViewerPage,
                 newValue: newValue,
                 key: Keys.entryViewerPage)
+        }
+    }
+
+    public var isRememberEntryViewerPage: Bool {
+        get {
+            let stored = UserDefaults.appGroupShared
+                .object(forKey: Keys.rememberEntryViewerPage.rawValue)
+                as? Bool
+            return stored ?? true
+        }
+        set {
+            updateAndNotify(
+                oldValue: isRememberEntryViewerPage,
+                newValue: newValue,
+                key: .rememberEntryViewerPage)
         }
     }
 

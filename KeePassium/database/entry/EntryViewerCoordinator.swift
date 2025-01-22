@@ -140,6 +140,12 @@ final class EntryViewerCoordinator: NSObject, Coordinator, Refreshable {
         self.entry = entry
         self.isHistoryEntry = isHistoryEntry
         self.canEditEntry = canEditEntry
+
+        if Settings.current.isRememberEntryViewerPage && !isHistoryEntry {
+            pagesVC.startPageIndex = Settings.current.entryViewerPage
+        } else {
+            pagesVC.startPageIndex = 0
+        }
         refresh()
     }
 

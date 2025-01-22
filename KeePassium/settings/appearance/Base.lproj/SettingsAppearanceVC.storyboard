@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -85,8 +84,55 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Entry Viewer" id="MsA-Cd-czb">
                                 <cells>
+                                    <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="P1Z-Qc-f71" userLabel="Open Last Used Tab">
+                                        <rect key="frame" x="0.0" y="199" width="320" height="51.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P1Z-Qc-f71" id="z0r-jV-7Os">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f5j-yN-oco">
+                                                    <rect key="frame" x="16" y="9.5" width="29" height="33"/>
+                                                    <color key="tintColor" name="IconTint"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="29" id="nQc-4N-QAg"/>
+                                                        <constraint firstAttribute="height" constant="29" id="w1I-F7-5th"/>
+                                                    </constraints>
+                                                    <imageReference key="image" image="uiwindow.split.2x1" catalog="system" symbolScale="large"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large" weight="regular">
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    </preferredSymbolConfiguration>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Open Last Used Tab" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qde-Xb-7WE">
+                                                    <rect key="frame" x="61" y="15.5" width="186" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nad-hf-YA4">
+                                                    <rect key="frame" x="255" y="10.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="didToggleOpenLastUsedTab:" destination="4mh-X8-Byq" eventType="valueChanged" id="FVU-Nn-Vlj"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="f5j-yN-oco" firstAttribute="leading" secondItem="z0r-jV-7Os" secondAttribute="leadingMargin" id="DVP-TV-KZ0"/>
+                                                <constraint firstItem="nad-hf-YA4" firstAttribute="centerY" secondItem="z0r-jV-7Os" secondAttribute="centerY" priority="750" id="EfA-ZE-hlR"/>
+                                                <constraint firstItem="nad-hf-YA4" firstAttribute="top" relation="greaterThanOrEqual" secondItem="z0r-jV-7Os" secondAttribute="top" constant="10" id="F80-vz-8v1"/>
+                                                <constraint firstItem="Qde-Xb-7WE" firstAttribute="leading" secondItem="f5j-yN-oco" secondAttribute="trailing" constant="16" id="FcK-lv-CFl"/>
+                                                <constraint firstItem="nad-hf-YA4" firstAttribute="leading" secondItem="Qde-Xb-7WE" secondAttribute="trailing" constant="8" id="G75-BH-5IS"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="nad-hf-YA4" secondAttribute="bottom" constant="10" id="IyE-Lf-d9o"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Qde-Xb-7WE" secondAttribute="bottom" id="L0f-vc-Gu8"/>
+                                                <constraint firstItem="nad-hf-YA4" firstAttribute="trailing" secondItem="z0r-jV-7Os" secondAttribute="trailingMargin" id="OuD-0z-xTp"/>
+                                                <constraint firstItem="Qde-Xb-7WE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="z0r-jV-7Os" secondAttribute="topMargin" id="bWn-Ow-6IU"/>
+                                                <constraint firstItem="Qde-Xb-7WE" firstAttribute="centerY" secondItem="z0r-jV-7Os" secondAttribute="centerY" priority="250" id="jQv-j2-4xZ"/>
+                                                <constraint firstItem="f5j-yN-oco" firstAttribute="centerY" secondItem="z0r-jV-7Os" secondAttribute="centerY" id="zVj-Ey-M7t"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="wGS-Nq-9TY">
-                                        <rect key="frame" x="0.0" y="199" width="320" height="81"/>
+                                        <rect key="frame" x="0.0" y="250.5" width="320" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wGS-Nq-9TY" id="f6W-QG-JTM">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
@@ -140,7 +186,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" tag="10" contentMode="center" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="TEx-Hv-9VE" detailTextLabel="O1w-EU-vrn" style="IBUITableViewCellStyleValue1" id="cTx-nt-ABy" userLabel="Font">
-                                        <rect key="frame" x="0.0" y="280" width="320" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="331.5" width="320" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cTx-nt-ABy" id="zKF-oA-C0d">
                                             <rect key="frame" x="0.0" y="0.0" width="293.5" height="43.5"/>
@@ -167,7 +213,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="WAJ-vb-eFR">
-                                        <rect key="frame" x="0.0" y="323.5" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="375" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WAJ-vb-eFR" id="KOI-NR-vko">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
@@ -201,7 +247,7 @@
                             <tableViewSection headerTitle="Protected Fields" footerTitle="Hide passwords and other protected fields behind asterisks (recommended)." id="Lh3-CB-Urp">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" tag="10" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="LFD-J8-PP9" userLabel="Hide Protected Fields">
-                                        <rect key="frame" x="0.0" y="431.5" width="320" height="51.5"/>
+                                        <rect key="frame" x="0.0" y="483" width="320" height="51.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LFD-J8-PP9" id="dNo-I4-XUP">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
@@ -260,6 +306,7 @@
                         <outlet property="databaseIconsCell" destination="i3u-Xq-xMJ" id="HOX-4u-S16"/>
                         <outlet property="entryTextScaleSlider" destination="MAG-tY-N1o" id="sbQ-Ul-HnG"/>
                         <outlet property="hideProtectedFieldsSwitch" destination="lxT-1h-16d" id="EuR-3p-SOM"/>
+                        <outlet property="openLastUsedTabSwitch" destination="nad-hf-YA4" id="O0b-XP-ypK"/>
                         <outlet property="resetTextParametersButton" destination="Fdn-Dx-Gop" id="c7Y-cO-oJ3"/>
                         <outlet property="textFontCell" destination="cTx-nt-ABy" id="LbM-NC-Gzt"/>
                         <outlet property="textScaleLabel" destination="QbO-y9-3wb" id="M3O-B6-3rr"/>
@@ -275,6 +322,7 @@
         <image name="db-icons/db-icon-loading" width="29" height="29"/>
         <image name="ellipsis.rectangle.eye" width="13" height="13"/>
         <image name="one-to-one" width="15" height="12"/>
+        <image name="uiwindow.split.2x1" catalog="system" width="128" height="93"/>
         <namedColor name="IconTint">
             <color red="0.0" green="0.41176470588235292" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

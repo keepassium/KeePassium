@@ -23,6 +23,7 @@ final class SettingsAppearanceVC: UITableViewController, Refreshable {
     @IBOutlet private weak var textFontCell: UITableViewCell!
     @IBOutlet private weak var resetTextParametersButton: UIButton!
 
+    @IBOutlet private weak var openLastUsedTabSwitch: UISwitch!
     @IBOutlet private weak var textScaleLabel: UILabel!
     @IBOutlet private weak var entryTextScaleSlider: UISlider!
     @IBOutlet private weak var hideProtectedFieldsSwitch: UISwitch!
@@ -63,6 +64,8 @@ final class SettingsAppearanceVC: UITableViewController, Refreshable {
         let settings = Settings.current
 
         hideProtectedFieldsSwitch.isOn = settings.isHideProtectedFields
+
+        openLastUsedTabSwitch.isOn = Settings.current.isRememberEntryViewerPage
 
         let entryTextFont = getEntryTextFont()
         let textScale = settings.textScale
@@ -156,5 +159,10 @@ final class SettingsAppearanceVC: UITableViewController, Refreshable {
 
     @IBAction private func didPressResetTextParameters(_ sender: Any) {
         resetTextParameters()
+    }
+
+    @IBAction private func didToggleOpenLastUsedTab(_ sender: UISwitch) {
+        Settings.current.isRememberEntryViewerPage = sender.isOn
+        showNotificationIfManaged(setting: .rememberEntryViewerPage)
     }
 }

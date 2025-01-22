@@ -29,6 +29,8 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
 
     weak var delegate: EntryViewerPagesVCDelegate?
 
+    public var startPageIndex: Int?
+
     private var isHistoryEntry = false
     private var canEditEntry = false
     private var entryIcon: UIImage?
@@ -84,11 +86,6 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
         super.viewWillAppear(animated)
         assert(dataSource != nil, "dataSource must be defined")
         refresh()
-        if isHistoryEntry {
-            switchTo(page: 0)
-        } else {
-            switchTo(page: Settings.current.entryViewerPage)
-        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -205,6 +202,10 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
             titleView.subtitleLabel.isHidden = true
         }
 
+        if let startPageIndex {
+            switchTo(page: startPageIndex)
+            self.startPageIndex = nil
+        }
         let currentPage = pagesViewController.viewControllers?.first
         (currentPage as? Refreshable)?.refresh()
     }
