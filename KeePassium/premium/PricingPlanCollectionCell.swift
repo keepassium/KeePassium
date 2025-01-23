@@ -59,6 +59,7 @@ class PricingPlanConditionCell: UITableViewCell {
 
 
 protocol PricingPlanCollectionCellDelegate: AnyObject {
+    func didSelectCell(_ cell: PricingPlanCollectionCell)
     func didPressPurchaseButton(in cell: PricingPlanCollectionCell, with pricePlan: PricingPlan)
     func didPressHelpLink(url: URL, in cell: PricingPlanConditionCell, with pricePlan: PricingPlan)
 }
@@ -100,6 +101,10 @@ class PricingPlanCollectionCell: UICollectionViewCell {
         tableView.estimatedRowHeight = 44
 
         tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: CellID.benefitCell)
+
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapCell))
+        tapRecognizer.numberOfTapsRequired = 1
+        addGestureRecognizer(tapRecognizer)
     }
 
     func refresh() {
@@ -125,6 +130,10 @@ class PricingPlanCollectionCell: UICollectionViewCell {
 
     @IBAction private func didPressPurchaseButton(_ sender: Any) {
         delegate?.didPressPurchaseButton(in: self, with: pricingPlan)
+    }
+
+    @objc private func didTapCell(_ sender: Any) {
+        delegate?.didSelectCell(self)
     }
 }
 

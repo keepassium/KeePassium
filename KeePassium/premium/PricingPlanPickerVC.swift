@@ -51,6 +51,7 @@ class PricingPlanPickerVC: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.decelerationRate = .fast
+        collectionView.allowsFocus = true
 
         statusLabel.text = LString.statusContactingAppStore
         activityIndcator.isHidden = false
@@ -238,6 +239,13 @@ extension PricingPlanPickerVC: UICollectionViewDataSource {
 }
 
 extension PricingPlanPickerVC: PricingPlanCollectionCellDelegate {
+    func didSelectCell(_ cell: PricingPlanCollectionCell) {
+        guard let indexPath = collectionView.indexPath(for: cell) else {
+            return
+        }
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+
     func didPressPurchaseButton(in cell: PricingPlanCollectionCell, with pricingPlan: PricingPlan) {
         guard let realPricingPlan = pricingPlan as? RealPricingPlan else {
             assert(pricingPlan.isFree)
