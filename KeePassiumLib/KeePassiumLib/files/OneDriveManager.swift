@@ -238,11 +238,15 @@ extension OneDriveManager {
 
     private func parseFileHash(json: [String: Any]) -> String? {
         guard let file = json[OneDriveAPI.Keys.file] as? [String: Any],
-              let hashes = file[OneDriveAPI.Keys.hashes] as? [String: Any],
-              let hash = hashes[OneDriveAPI.Keys.hash] as? String else {
+              let hashes = file[OneDriveAPI.Keys.hashes] as? [String: Any]
+        else {
             return nil
         }
-        return hash
+        let xorHash = hashes[OneDriveAPI.Keys.quickXorHash] as? String
+        let sha256 = hashes[OneDriveAPI.Keys.sha256hash] as? String
+        let sha1   = hashes[OneDriveAPI.Keys.sha1hash] as? String
+        let crc32  = hashes[OneDriveAPI.Keys.crc32Hash] as? String
+        return xorHash ?? sha256 ?? sha1 ?? crc32
     }
 
     private func updateWithRemoteItemInfo(

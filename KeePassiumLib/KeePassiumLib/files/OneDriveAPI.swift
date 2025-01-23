@@ -65,7 +65,10 @@ internal enum OneDriveAPI {
         static let user = "user"
         static let value = "value"
         static let hashes = "hashes"
-        static let hash = "sha256Hash"
+        static let quickXorHash = "quickXorHash"
+        static let crc32Hash = "crc32Hash"
+        static let sha1hash = "sha1Hash"
+        static let sha256hash = "sha256Hash"
     }
 }
 
