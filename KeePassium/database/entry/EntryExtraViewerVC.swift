@@ -277,10 +277,10 @@ final class EntryExtraViewerVC: UITableViewController, Refreshable {
            !ProcessInfo.isRunningOnMac
         {
             let popoverAnchor = PopoverAnchor(tableView: self.tableView, at: indexPath)
-            showFieldMenu(with: [.copy] + actions, in: cell, at: popoverAnchor)
+            showFieldMenu(with: [.copy] + actions, in: cell, for: indexPath, at: popoverAnchor)
         } else {
             delegate?.didPressCopyField(text: entry.uuid.uuidString, in: self)
-            animateCopyingToClipboard(in: cell, actions: actions)
+            animateCopyingToClipboard(in: cell, at: indexPath, actions: actions)
         }
     }
 
@@ -288,6 +288,7 @@ final class EntryExtraViewerVC: UITableViewController, Refreshable {
     private func showFieldMenu(
         with actions: [ViewableFieldAction],
         in cell: UITableViewCell,
+        for indexPath: IndexPath,
         at popoverAnchor: PopoverAnchor
     ) {
         let overlayView = EntryFieldMenuButton(actions: actions) { [weak self] selectedAction in
@@ -300,7 +301,7 @@ final class EntryExtraViewerVC: UITableViewController, Refreshable {
             switch selectedAction {
             case .copy:
                 delegate?.didPressCopyField(text: value, in: self)
-                animateCopyingToClipboard(in: cell, actions: [])
+                animateCopyingToClipboard(in: cell, at: indexPath, actions: [])
             case .export:
                 delegate?.didPressExportField(text: value, at: popoverAnchor, in: self)
             case .showLargeType:
@@ -320,11 +321,15 @@ final class EntryExtraViewerVC: UITableViewController, Refreshable {
         delegate?.didUpdateProperties(properties: properties, in: self)
     }
 
-    private func animateCopyingToClipboard(in cell: UITableViewCell, actions: [ViewableFieldAction]) {
+    private func animateCopyingToClipboard(
+        in cell: UITableViewCell,
+        at indexPath: IndexPath,
+        actions: [ViewableFieldAction]
+    ) {
         HapticFeedback.play(.copiedToClipboard)
         DispatchQueue.main.async { [weak self, weak cell] in
             guard let self, let cell else { return }
-            self.copiedCellView.show(in: cell, actions: actions)
+            self.copiedCellView.show(in: cell, at: indexPath, actions: actions)
         }
     }
 }

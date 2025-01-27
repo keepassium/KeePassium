@@ -119,8 +119,10 @@ final class FieldCopiedView: UIView {
 
     public func show(
         in cell: UITableViewCell,
+        at indexPath: IndexPath,
         actions: any Collection<ViewableFieldAction>
     ) {
+        self.indexPath = indexPath
         hide(animated: false)
         exportButton.isHidden = !actions.contains(.export)
         copyFieldReferenceButton.isHidden = !actions.contains(.copyReference)
