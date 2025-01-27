@@ -284,7 +284,7 @@ extension OneDriveManager {
         } else {
             fileItem.parent = OneDriveSharedFolder(
                 driveID: remoteDriveID,
-                itemID: "", 
+                itemID: "",
                 name: remotePath ?? ""
             )
         }
