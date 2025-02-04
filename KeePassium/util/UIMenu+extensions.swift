@@ -44,20 +44,22 @@ extension UIMenu {
         reverse: Bool = false,
         options: UIMenu.Options = [],
         macOptions: UIMenu.Options? = nil,
-        children: [UIMenuElement]
+        children: [UIMenuElement?]
     ) -> UIMenu {
+        let validChildren = children.compactMap { $0 }
+        assert(validChildren.count > 0, "Tried to create menu without any items")
         if ProcessInfo.isRunningOnMac {
             return UIMenu(
                 title: title,
                 subtitle: subtitle,
                 options: macOptions ?? options,
-                children: children)
+                children: validChildren)
         } else {
             return UIMenu(
                 title: title,
                 subtitle: subtitle,
                 options: options,
-                children: reverse ? children.reversed() : children)
+                children: reverse ? validChildren.reversed() : validChildren)
         }
     }
 

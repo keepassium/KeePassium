@@ -17,6 +17,8 @@ protocol ItemIconPickerDelegate: AnyObject {
     func didDelete(customIcon uuid: UUID, in viewController: ItemIconPicker)
     func didPressDownloadIcon(in viewController: ItemIconPicker, at popoverAnchor: PopoverAnchor)
     func didPressDeleteUnusedIcons(in viewController: ItemIconPicker, at popoverAnchor: PopoverAnchor)
+    func didPressDeleteAllIcons(in viewController: ItemIconPicker, at popoverAnchor: PopoverAnchor)
+    func didPressDeleteIcons(icons uuids: Set<UUID>, in viewController: ItemIconPicker, at popoverAnchor: PopoverAnchor)
 }
 
 final class ItemIconPickerSectionHeader: UICollectionReusableView {
@@ -59,6 +61,8 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
 
     var isDeleteUnusedAllowed = true
 
+    var isDeleteAllowed = true
+
     private let standardIconSet: DatabaseIconSet = Settings.current.databaseIconSet
     private var selectedPath: IndexPath?
 
@@ -92,7 +96,7 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
             items.append(downloadButton)
             items.append(.flexibleSpace())
         }
-        if isDeleteUnusedAllowed {
+        if isDeleteUnusedAllowed || isDeleteAllowed {
             let moreButton = UIBarButtonItem(title: LString.titleMoreActions, image: .symbol(.ellipsisCircle))
             let deleteUnusedAction = UIAction(
                 title: LString.actionDeleteUnusedIcons,
@@ -104,7 +108,32 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
                     delegate?.didPressDeleteUnusedIcons(in: self, at: popoverAnchor)
                 }
             )
-            moreButton.menu = UIMenu.make(children: [deleteUnusedAction])
+            let deleteAllAction = UIAction(
+                title: LString.actionDeleteAllCustomIcons,
+                image: .symbol(.trash),
+                attributes: customIcons.isEmpty ? [.destructive, .disabled] : [.destructive],
+                handler: { [weak self] _ in
+                    guard let self else { return }
+                    let popoverAnchor = PopoverAnchor(barButtonItem: moreButton)
+                    delegate?.didPressDeleteAllIcons(in: self, at: popoverAnchor)
+                }
+            )
+            let selectAction = UIAction(
+                title: LString.actionSelect,
+                image: .symbol(.checkmarkCircle),
+                attributes: customIcons.isEmpty ? [.disabled] : [],
+                handler: { [weak self] _ in
+                    guard let self = self else { return }
+                    self.refresh()
+                    self.collectionView.allowsMultipleSelection = true
+                    self.updateToolbar()
+                }
+            )
+            moreButton.menu = UIMenu.make(children: [
+                isDeleteUnusedAllowed ? deleteUnusedAction : nil,
+                isDeleteAllowed ? deleteAllAction : nil,
+                isDeleteAllowed ? selectAction : nil,
+            ])
 
             if !items.isEmpty {
                 items.remove(at: 0) // remove left padding before "Download"
@@ -114,7 +143,30 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
             items.append(moreButton)
         }
 
-        setToolbarItems(items, animated: false)
+        setToolbarItems(items.isEmpty ? nil : items, animated: true)
+    }
+
+    private func updateToolbar() {
+        guard collectionView.allowsMultipleSelection else {
+            setupToolbar()
+            return
+        }
+
+        let deleteButton = UIBarButtonItem(
+            title: LString.actionDelete,
+            style: .plain,
+            target: self,
+            action: #selector(didPressDeleteSelectedIcons))
+        deleteButton.tintColor = .destructiveTint
+        deleteButton.isEnabled = !(collectionView.indexPathsForSelectedItems ?? []).isEmpty
+
+        let cancelButton = UIBarButtonItem(
+            title: LString.actionCancel,
+            style: .plain,
+            target: self,
+            action: #selector(didPressCancelSelection))
+
+        setToolbarItems([deleteButton, .flexibleSpace(), cancelButton], animated: true)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -130,6 +182,7 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
     }
 
     func refresh() {
+        collectionView.allowsMultipleSelection = false
         collectionView.reloadData()
     }
 
@@ -172,6 +225,19 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
         return [deleteAction]
     }
 
+    @objc private func didPressDeleteSelectedIcons(_ sender: UIBarButtonItem) {
+        guard let paths = collectionView.indexPathsForSelectedItems, !paths.isEmpty else {
+            return
+        }
+        let selectedCustomIcons = Set(paths.map { customIcons[$0.item].uuid })
+        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
+        delegate?.didPressDeleteIcons(icons: selectedCustomIcons, in: self, at: popoverAnchor)
+    }
+
+    @objc private func didPressCancelSelection(_ sender: UIBarButtonItem) {
+        refresh()
+        updateToolbar()
+    }
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         if customIcons.count > 0 {
@@ -246,6 +312,10 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
             guard indexPath.row < IconID.all.count else {
                 return
             }
+            guard !collectionView.allowsMultipleSelection else {
+                collectionView.deselectItem(at: indexPath, animated: false)
+                return
+            }
             let selectedIconID = IconID.all[indexPath.row]
             delegate?.didSelect(standardIcon: selectedIconID, in: self)
         case .custom:
@@ -253,9 +323,27 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
                 return
             }
             let selectedIcon = customIcons[indexPath.row]
-            delegate?.didSelect(customIcon: selectedIcon.uuid, in: self)
+            if collectionView.allowsMultipleSelection {
+                updateToolbar()
+            } else {
+                delegate?.didSelect(customIcon: selectedIcon.uuid, in: self)
+            }
         default:
             assertionFailure()
+        }
+    }
+
+    override func collectionView(
+        _ collectionView: UICollectionView,
+        didDeselectItemAt indexPath: IndexPath
+    ) {
+        switch SectionID(rawValue: indexPath.section) {
+        case .custom:
+            if collectionView.allowsMultipleSelection {
+                updateToolbar()
+            }
+        default:
+            break
         }
     }
 

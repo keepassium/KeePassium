@@ -503,14 +503,14 @@ final class GroupViewerVC:
                 passwordAuditAction,
                 canDownloadFavicons ? faviconsDownloadAction : nil,
                 printDatabaseAction,
-            ].compactMap { $0 }
+            ]
         )
         let rareMenu = UIMenu.make(
             options: [.displayInline],
             children: [
                 changeMasterKeyAction,
                 canChangeEncryptionSettings ? encryptionSettingsAction : nil,
-            ].compactMap { $0 }
+            ]
         )
         let lockMenu = UIMenu(options: [.displayInline], children: [lockDatabaseAction])
 
@@ -1114,7 +1114,7 @@ final class GroupViewerVC:
                 supportsSmartGroups ? createSmartGroupAction : nil,
                 UIMenu(options: .displayInline, children: [editGroupAction, selectItemsAction]),
                 makeListSettingsMenu()
-            ].compactMap({ $0 })
+            ]
         )
     }
 

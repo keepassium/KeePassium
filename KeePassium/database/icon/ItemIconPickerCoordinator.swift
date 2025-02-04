@@ -75,6 +75,9 @@ class ItemIconPickerCoordinator: Coordinator {
 
         if let db2 = database as? Database2 {
             iconPicker.customIcons = db2.customIcons
+            iconPicker.isDeleteAllowed = !db2.customIcons.isEmpty
+        } else {
+            iconPicker.isDeleteAllowed = false
         }
         iconPicker.refresh()
     }
@@ -159,6 +162,22 @@ class ItemIconPickerCoordinator: Coordinator {
         viewController.present(confirmationAlert, animated: true)
     }
 
+    private func confirmDeleteCustomIcons(_ iconUUIDs: Set<UUID>, in viewController: UIViewController) {
+        let confirmationAlert = UIAlertController.make(
+            title: LString.itemIconPickerCustomIcons,
+            message: String.localizedStringWithFormat(
+                LString.titleAllCustomIconsCountTemplate,
+                iconUUIDs.count),
+            dismissButtonTitle: LString.actionCancel
+        )
+        confirmationAlert.addAction(title: LString.actionDelete, style: .destructive) {
+            [weak self, weak viewController] _ in
+            guard let self, let viewController else { return }
+            deleteCustomIcons(iconUUIDs, in: viewController)
+        }
+        viewController.present(confirmationAlert, animated: true)
+    }
+
     private func deleteUnusedCustomIcons(_ unusedIconUUIDs: Set<UUID>, in viewController: UIViewController) {
         guard let db2 = database as? Database2 else {
             assertionFailure()
@@ -169,6 +188,26 @@ class ItemIconPickerCoordinator: Coordinator {
             db2.deleteCustomIcon(uuid: $0)
         }
         refresh()
+        saveDatabase(databaseFile)
+    }
+
+    private func deleteCustomIcons(_ iconUUIDs: Set<UUID>, in viewController: UIViewController) {
+        guard let db2 = database as? Database2 else {
+            assertionFailure()
+            return
+        }
+        iconUUIDs.forEach {
+            db2.deleteCustomIcon(uuid: $0)
+        }
+        refresh()
+        switch item {
+        case let entry as Entry2 where iconUUIDs.contains(entry.customIconUUID):
+            delegate?.didDeleteIcon(customIcon: entry.customIconUUID, in: self)
+        case let group as Group2 where iconUUIDs.contains(group.customIconUUID):
+            delegate?.didDeleteIcon(customIcon: group.customIconUUID, in: self)
+        default:
+            break
+        }
         saveDatabase(databaseFile)
     }
 }
@@ -223,6 +262,25 @@ extension ItemIconPickerCoordinator: ItemIconPickerDelegate {
 
     func didPressDeleteUnusedIcons(in viewController: ItemIconPicker, at popoverAnchor: PopoverAnchor) {
         confirmDeleteUnusedCustomIcons(in: viewController)
+    }
+
+    func didPressDeleteAllIcons(
+        in viewController: ItemIconPicker,
+        at popoverAnchor: PopoverAnchor
+    ) {
+        guard let db2 = database as? Database2, !db2.customIcons.isEmpty else {
+            assertionFailure("Should have been blocked in UI")
+            return
+        }
+        confirmDeleteCustomIcons(Set(db2.customIcons.map { $0.uuid }), in: viewController)
+    }
+
+    func didPressDeleteIcons(
+        icons uuids: Set<UUID>,
+        in viewController: ItemIconPicker,
+        at popoverAnchor: PopoverAnchor
+    ) {
+        confirmDeleteCustomIcons(uuids, in: viewController)
     }
 }
 
