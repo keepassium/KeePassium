@@ -23,6 +23,11 @@ protocol EntryExtraViewerVCDelegate: AnyObject {
         at popoverAnchor: PopoverAnchor,
         in viewController: EntryExtraViewerVC
     )
+    func didPressShowQRCode(
+        text: String,
+        at popoverAnchor: PopoverAnchor,
+        in viewController: EntryExtraViewerVC
+    )
     func didUpdateProperties(
         properties: [EntryExtraViewerVC.Property],
         in viewController: EntryExtraViewerVC
@@ -272,7 +277,7 @@ final class EntryExtraViewerVC: UITableViewController, Refreshable {
             return
         }
 
-        let actions: [ViewableFieldAction] = [.export, .showLargeType]
+        let actions: [ViewableFieldAction] = [.export, .showLargeType, .showQRCode]
         if #available(iOS 17.4, *),
            !ProcessInfo.isRunningOnMac
         {
@@ -306,6 +311,8 @@ final class EntryExtraViewerVC: UITableViewController, Refreshable {
                 delegate?.didPressExportField(text: value, at: popoverAnchor, in: self)
             case .showLargeType:
                 delegate?.didPressShowLargeType(text: value, at: popoverAnchor, in: self)
+            case .showQRCode:
+                delegate?.didPressShowQRCode(text: value, at: popoverAnchor, in: self)
             case .copyReference:
                 assertionFailure("Invalid action")
             }
@@ -355,5 +362,13 @@ extension EntryExtraViewerVC: FieldCopiedViewDelegate {
         view.hide(animated: true)
         let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
         delegate?.didPressShowLargeType(text: entry.uuid.uuidString, at: popoverAnchor, in: self)
+    }
+
+    func didPressShowQRCode(for indexPath: IndexPath, from view: FieldCopiedView) {
+        guard let entry else { return }
+
+        view.hide(animated: true)
+        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+        delegate?.didPressShowQRCode(text: entry.uuid.uuidString, at: popoverAnchor, in: self)
     }
 }

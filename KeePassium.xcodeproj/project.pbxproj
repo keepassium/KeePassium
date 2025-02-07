@@ -1271,6 +1271,9 @@
 		F35DBC842AED5B2D00B33757 /* EncryptionSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35DBC832AED5B2D00B33757 /* EncryptionSettingsVC.swift */; };
 		F35DBC862AED5C5400B33757 /* EncryptionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35DBC852AED5C5400B33757 /* EncryptionSettingsCoordinator.swift */; };
 		F36296892A8B87FC00A1E2B0 /* PasswordAuditResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36296882A8B87FC00A1E2B0 /* PasswordAuditResultCell.swift */; };
+		F36CFD262D46C655002ACDA7 /* QRCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36CFD252D46C655002ACDA7 /* QRCodeVC.swift */; };
+		F36CFD272D46C655002ACDA7 /* QRCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36CFD252D46C655002ACDA7 /* QRCodeVC.swift */; };
+		F36CFD282D46C655002ACDA7 /* QRCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36CFD252D46C655002ACDA7 /* QRCodeVC.swift */; };
 		F36DB1E32CE4CAF300E58F82 /* DatabaseViewerPermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36DB1E22CE4CAF300E58F82 /* DatabaseViewerPermissionManager.swift */; };
 		F36DB1E42CE4CAF300E58F82 /* DatabaseViewerPermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36DB1E22CE4CAF300E58F82 /* DatabaseViewerPermissionManager.swift */; };
 		F36DB1E52CE4CAF300E58F82 /* DatabaseViewerPermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36DB1E22CE4CAF300E58F82 /* DatabaseViewerPermissionManager.swift */; };
@@ -2471,6 +2474,7 @@
 		F35DBC832AED5B2D00B33757 /* EncryptionSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptionSettingsVC.swift; sourceTree = "<group>"; };
 		F35DBC852AED5C5400B33757 /* EncryptionSettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptionSettingsCoordinator.swift; sourceTree = "<group>"; };
 		F36296882A8B87FC00A1E2B0 /* PasswordAuditResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordAuditResultCell.swift; sourceTree = "<group>"; };
+		F36CFD252D46C655002ACDA7 /* QRCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeVC.swift; sourceTree = "<group>"; };
 		F36DB1E22CE4CAF300E58F82 /* DatabaseViewerPermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseViewerPermissionManager.swift; sourceTree = "<group>"; };
 		F3741DE72B5966780089F666 /* LargeTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeTypeVC.swift; sourceTree = "<group>"; };
 		F377C9AA2AA74A1A00266397 /* FaviconDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaviconDownloader.swift; sourceTree = "<group>"; };
@@ -2997,22 +3001,23 @@
 			isa = PBXGroup;
 			children = (
 				75514A3220DF5B2400202340 /* edit */,
-				753DF2C0263C4B7F0046F185 /* EntryViewerCoordinator.swift */,
-				75B5FB7A20D61BC000D402D9 /* ViewableEntryFieldFactory.swift */,
-				75B5FB7820D6101100D402D9 /* ItemCategory.swift */,
-				75C94C5A20B4B8C2004FA29D /* EntryViewerPagesVC.swift */,
-				751E0D092309AF250088BB10 /* EntryViewerPagesVC.storyboard */,
-				75635F42223A2B250074D745 /* ViewEntryFieldCells.swift */,
-				75B5FB7620D53EA700D402D9 /* EntryFieldViewerVC.swift */,
-				751E0D0C2309AF380088BB10 /* EntryFieldViewerVC.storyboard */,
-				75C94C5E20B4BAB0004FA29D /* EntryFileViewerVC.swift */,
-				751E0D0F2309AF400088BB10 /* EntryFileViewerVC.storyboard */,
-				75C94C6020B4BAC4004FA29D /* EntryHistoryViewerVC.swift */,
-				751E0D122309AF4C0088BB10 /* EntryHistoryViewerVC.storyboard */,
 				F3B69FCB2B078917006FC966 /* EntryExtraViewerVC.swift */,
-				7589FDCC28B4EA2100CCC76B /* FieldCopiedView.swift */,
 				F35125EA2D37D40C00E74BD0 /* EntryFieldMenuButton.swift */,
+				751E0D0C2309AF380088BB10 /* EntryFieldViewerVC.storyboard */,
+				75B5FB7620D53EA700D402D9 /* EntryFieldViewerVC.swift */,
+				751E0D0F2309AF400088BB10 /* EntryFileViewerVC.storyboard */,
+				75C94C5E20B4BAB0004FA29D /* EntryFileViewerVC.swift */,
+				751E0D122309AF4C0088BB10 /* EntryHistoryViewerVC.storyboard */,
+				75C94C6020B4BAC4004FA29D /* EntryHistoryViewerVC.swift */,
+				753DF2C0263C4B7F0046F185 /* EntryViewerCoordinator.swift */,
+				751E0D092309AF250088BB10 /* EntryViewerPagesVC.storyboard */,
+				75C94C5A20B4B8C2004FA29D /* EntryViewerPagesVC.swift */,
+				7589FDCC28B4EA2100CCC76B /* FieldCopiedView.swift */,
+				75B5FB7820D6101100D402D9 /* ItemCategory.swift */,
 				F3741DE72B5966780089F666 /* LargeTypeVC.swift */,
+				F36CFD252D46C655002ACDA7 /* QRCodeVC.swift */,
+				75B5FB7A20D61BC000D402D9 /* ViewableEntryFieldFactory.swift */,
+				75635F42223A2B250074D745 /* ViewEntryFieldCells.swift */,
 			);
 			path = entry;
 			sourceTree = "<group>";
@@ -4367,6 +4372,7 @@
 				75DEE8132AA66C500024AE11 /* LString+passwordAudit.swift in Sources */,
 				755E9C4D20BE5DC200FD7C7A /* UIImage+extensions.swift in Sources */,
 				75F5CACD20BD18320056C969 /* UIView+extension.swift in Sources */,
+				F36CFD272D46C655002ACDA7 /* QRCodeVC.swift in Sources */,
 				7523F71D21C98D620025C706 /* SupportEmailComposer.swift in Sources */,
 				75635F43223A2B250074D745 /* ViewEntryFieldCells.swift in Sources */,
 				75D21BD22B642BB20065D95E /* OneDriveConnectionSetupCoordinator.swift in Sources */,
@@ -4609,6 +4615,7 @@
 				759ADB8E285A284B00D93BD4 /* AnnouncementCell.swift in Sources */,
 				F32141512A934AB9007A8D4E /* PasswordAuditVC.swift in Sources */,
 				75B38C1D233E5B7C006BDEFC /* UIView+extension.swift in Sources */,
+				F36CFD262D46C655002ACDA7 /* QRCodeVC.swift in Sources */,
 				75B38C1E233E5B7C006BDEFC /* SupportEmailComposer.swift in Sources */,
 				75B38C1F233E5B7C006BDEFC /* ViewEntryFieldCells.swift in Sources */,
 				75B38C21233E5B7C006BDEFC /* ItemIconPicker.swift in Sources */,
@@ -4867,6 +4874,7 @@
 				75D0761C28B639D200F02E39 /* EntryFileViewerVC.swift in Sources */,
 				75D0761E28B639D200F02E39 /* CollectionViewControllerWithContextActions.swift in Sources */,
 				75D0762028B639D200F02E39 /* AnnouncementView.swift in Sources */,
+				F36CFD282D46C655002ACDA7 /* QRCodeVC.swift in Sources */,
 				75F544B72CEF8E420022BAA4 /* UIKeyCommand+hotkeys.swift in Sources */,
 				75CA661029B8E00A0094CBAA /* DatabasePrintFormatter.swift in Sources */,
 				75D0762128B639D200F02E39 /* ProgressOverlay.swift in Sources */,

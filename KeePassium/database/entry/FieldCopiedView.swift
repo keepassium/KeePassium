@@ -12,6 +12,7 @@ protocol FieldCopiedViewDelegate: AnyObject {
     func didPressExport(for indexPath: IndexPath, from view: FieldCopiedView)
     func didPressCopyFieldReference(for indexPath: IndexPath, from view: FieldCopiedView)
     func didPressShowLargeType(for indexPath: IndexPath, from view: FieldCopiedView)
+    func didPressShowQRCode(for indexPath: IndexPath, from view: FieldCopiedView)
 }
 
 final class FieldCopiedView: UIView {
@@ -82,6 +83,17 @@ final class FieldCopiedView: UIView {
         return button
     }()
 
+    private lazy var showQRCodeButton: UIButton = {
+        let button = UIButton(primaryAction: UIAction {[weak self] _ in
+            guard let self = self else { return }
+            self.delegate?.didPressShowQRCode(for: self.indexPath, from: self)
+        })
+        button.configuration = actionButtonConfiguration(for: .showQRCode)
+        button.tintColor = .actionText
+        button.accessibilityLabel = LString.actionShowAsQRCode
+        return button
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -100,6 +112,7 @@ final class FieldCopiedView: UIView {
         stackView.addArrangedSubview(copyFieldReferenceButton)
         stackView.addArrangedSubview(exportButton)
         stackView.addArrangedSubview(showLargeTypeButton)
+        stackView.addArrangedSubview(showQRCodeButton)
 
         NSLayoutConstraint.activate([
             stackView.centerYAnchor.constraint(equalTo: layoutMarginsGuide.centerYAnchor),
@@ -127,6 +140,7 @@ final class FieldCopiedView: UIView {
         exportButton.isHidden = !actions.contains(.export)
         copyFieldReferenceButton.isHidden = !actions.contains(.copyReference)
         showLargeTypeButton.isHidden = !actions.contains(.showLargeType)
+        showQRCodeButton.isHidden = !actions.contains(.showQRCode)
 
         wasUserInteractionEnabled = cell.accessoryView?.isUserInteractionEnabled
         cell.accessoryView?.isUserInteractionEnabled = false

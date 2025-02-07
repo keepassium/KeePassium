@@ -712,6 +712,12 @@ extension LString {
         value: "Show in Large Type",
         comment: "Action: display text using large font"
     )
+    public static let actionShowAsQRCode = NSLocalizedString(
+        "[Entry/Field/QRCode/action]",
+        bundle: Bundle.framework,
+        value: "Show as QR Code",
+        comment: "Action: display text using QR code"
+    )
     public static let titleEntry = NSLocalizedString(
         "[Entry/title]",
         bundle: Bundle.framework,

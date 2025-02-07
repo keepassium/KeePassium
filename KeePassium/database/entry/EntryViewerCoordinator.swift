@@ -570,6 +570,28 @@ extension EntryViewerCoordinator {
         viewController.present(largeTypeVC, animated: true, completion: nil)
     }
 
+    private func showQRCode(
+        text: String,
+        at popoverAnchor: PopoverAnchor,
+        in viewController: UIViewController
+    ) {
+        guard let qrCodeVC = QRCodeVC(text: text, maxSize: viewController.view.frame.size) else {
+            Diag.error("Failed to create QR code VC")
+            return
+        }
+
+        qrCodeVC.modalPresentationStyle = .popover
+        guard let popoverPresentationController = qrCodeVC.popoverPresentationController else {
+              assertionFailure()
+              return
+        }
+        popoverPresentationController.permittedArrowDirections = [.up, .down]
+        popoverAnchor.apply(to: popoverPresentationController)
+        popoverPresentationController.delegate = qrCodeVC
+
+        viewController.present(qrCodeVC, animated: true, completion: nil)
+    }
+
     private func showDiagnostics() {
         let modalRouter = NavigationRouter.createModal(style: .pageSheet)
         let diagnosticsCoordinator = DiagnosticsViewerCoordinator(router: modalRouter)
@@ -649,6 +671,14 @@ extension EntryViewerCoordinator: EntryFieldViewerDelegate {
         in viewController: EntryFieldViewerVC
     ) {
         showLargeType(text: text, at: popoverAnchor, in: viewController)
+    }
+
+    func didPressShowQRCode(
+        text: String,
+        at popoverAnchor: PopoverAnchor,
+        in viewController: EntryFieldViewerVC
+    ) {
+        showQRCode(text: text, at: popoverAnchor, in: viewController)
     }
 
     func didPressOpenLinkedDatabase(_ info: LinkedDatabaseInfo, in viewController: EntryFieldViewerVC) {
@@ -755,6 +785,10 @@ extension EntryViewerCoordinator: EntryExtraViewerVCDelegate {
 
     func didPressShowLargeType(text: String, at popoverAnchor: PopoverAnchor, in viewController: EntryExtraViewerVC) {
         showLargeType(text: text, at: popoverAnchor, in: viewController)
+    }
+
+    func didPressShowQRCode(text: String, at popoverAnchor: PopoverAnchor, in viewController: EntryExtraViewerVC) {
+        showQRCode(text: text, at: popoverAnchor, in: viewController)
     }
 
     func didUpdateProperties(properties: [EntryExtraViewerVC.Property], in viewController: EntryExtraViewerVC) {

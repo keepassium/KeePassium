@@ -15,6 +15,7 @@ enum ViewableFieldAction: CaseIterable {
     case export
     case copyReference
     case showLargeType
+    case showQRCode
 
     var title: String {
         switch self {
@@ -26,6 +27,8 @@ enum ViewableFieldAction: CaseIterable {
             return LString.actionCopyFieldReference
         case .showLargeType:
             return LString.actionShowTextInLargeType
+        case .showQRCode:
+            return LString.actionShowAsQRCode
         }
     }
 
@@ -39,6 +42,8 @@ enum ViewableFieldAction: CaseIterable {
             return .symbol(.fieldReference)
         case .showLargeType:
             return .symbol(.largeType)
+        case .showQRCode:
+            return .symbol(.qrcode)
         }
     }
 
@@ -48,7 +53,8 @@ enum ViewableFieldAction: CaseIterable {
              .copyReference:
             return .copiedToClipboard
         case .export,
-             .showLargeType:
+             .showLargeType,
+             .showQRCode:
             return nil
         }
     }

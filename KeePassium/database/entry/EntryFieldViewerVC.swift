@@ -23,6 +23,10 @@ protocol EntryFieldViewerDelegate: AnyObject {
         text: String,
         at popoverAnchor: PopoverAnchor,
         in viewController: EntryFieldViewerVC)
+    func didPressShowQRCode(
+        text: String,
+        at popoverAnchor: PopoverAnchor,
+        in viewController: EntryFieldViewerVC)
 
     func didPressEdit(at popoverAnchor: PopoverAnchor, in viewController: EntryFieldViewerVC)
     func didPressOpenLinkedDatabase(_ info: LinkedDatabaseInfo, in viewController: EntryFieldViewerVC)
@@ -151,6 +155,7 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
             let actions: [ViewableFieldAction] = [
                 .export,
                 .showLargeType,
+                .showQRCode,
                 supportsFieldReferencing ? .copyReference : nil
             ].compactMap { $0 }
 
@@ -188,6 +193,8 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
                 delegate?.didPressExportField(text: value, at: popoverAnchor, in: self)
             case .showLargeType:
                 delegate?.didPressShowLargeType(text: value, at: popoverAnchor, in: self)
+            case .showQRCode:
+                delegate?.didPressShowQRCode(text: value, at: popoverAnchor, in: self)
             case .copyReference:
                 delegate?.didPressCopyFieldReference(from: field, in: self)
             }
@@ -370,5 +377,19 @@ extension EntryFieldViewerVC: FieldCopiedViewDelegate {
         HapticFeedback.play(.contextMenuOpened)
         let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
         delegate?.didPressShowLargeType(text: value, at: popoverAnchor, in: self)
+    }
+
+    func didPressShowQRCode(for indexPath: IndexPath, from view: FieldCopiedView) {
+        guard let field = getField(at: indexPath),
+              let value = field.resolvedValue
+        else {
+            assertionFailure()
+            return
+        }
+        view.hide(animated: true)
+
+        HapticFeedback.play(.contextMenuOpened)
+        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+        delegate?.didPressShowQRCode(text: value, at: popoverAnchor, in: self)
     }
 }
