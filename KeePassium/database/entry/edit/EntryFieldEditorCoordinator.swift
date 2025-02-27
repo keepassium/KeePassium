@@ -88,6 +88,39 @@ final class EntryFieldEditorCoordinator: Coordinator {
         fieldEditorVC.supportsFaviconDownload = database is Database2
         fieldEditorVC.itemCategory = ItemCategory.get(for: entry)
         fieldEditorVC.shouldFocusOnTitleField = isCreationMode
+        fieldEditorVC.mostCommonCustomFields = getMostCommonCustomFields()
+    }
+
+    private func getMostCommonCustomFields() -> [String] {
+        let ignoredCustomFields = [
+            EntryField.otpConfig1,
+            EntryField.otpConfig2Seed,
+            EntryField.otpConfig2Settings,
+            EntryField.timeOtpLength,
+            EntryField.timeOtpPeriod,
+            EntryField.timeOtpPeriod,
+            EntryField.timeOtpSecret,
+            EntryField.timeOtpAlgorithm,
+            EntryField.passkeyCredentialID,
+            EntryField.passkeyRelyingParty,
+            EntryField.passkeyPrivateKeyPEM,
+            EntryField.passkeyUserHandle,
+            EntryField.passkeyUsername
+        ]
+
+        var names: [String: Int] = [:]
+        database.root?.applyToAllChildren(
+            groupHandler: nil,
+            entryHandler: { entry in
+                entry.fields.forEach { field in
+                    guard !field.isStandardField else { return }
+                    guard !ignoredCustomFields.contains(field.name) else { return }
+                    guard !field.isExtraURL else { return }
+
+                    names[field.name, default: 0] += 1
+            }
+        })
+        return names.sorted { $0.value > $1.value }.prefix(5).map { $0.key }
     }
 
     private func setupFields(entry: Entry) -> ([EditableField], EntryField?) {
@@ -344,19 +377,34 @@ extension EntryFieldEditorCoordinator: EntryFieldEditorDelegate {
         isModified = true
     }
 
-    func didPressAddField(in viewController: EntryFieldEditorVC) {
+    func didPressAddField(name: String?, in viewController: EntryFieldEditorVC) -> EntryField? {
         guard let entry2 = entry as? Entry2 else {
             assertionFailure("Tried to add custom field to an entry which does not support them")
-            return
+            return nil
         }
         let newField = entry2.makeEntryField(
-            name: LString.defaultNewCustomFieldName,
+            name: name ?? LString.defaultNewCustomFieldName,
             value: "",
             isProtected: true)
         entry2.fields.append(newField)
         fields.append(EditableField(field: newField))
         fieldEditorVC.fields = fields
         isModified = true
+        return newField
+    }
+
+    func didPressAddURLField(in viewController: EntryFieldEditorVC) -> EntryField? {
+        guard let entry2 = entry as? Entry2 else {
+            assertionFailure("Tried to add custom field to an entry which does not support them")
+            return nil
+        }
+        let newURLField = entry2.makeExtraURLField(value: "https://")
+
+        entry2.fields.append(newURLField)
+        fields.append(EditableField(field: newURLField))
+        fieldEditorVC.fields = fields
+        isModified = true
+        return newURLField
     }
 
     func didPressDeleteField(_ field: EditableField, in viewController: EntryFieldEditorVC) {

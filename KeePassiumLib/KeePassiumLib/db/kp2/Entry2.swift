@@ -132,6 +132,25 @@ public class Entry2: Entry {
         return EntryField2(name: name, value: value, isProtected: isProtected)
     }
 
+    public func makeExtraURLField(value: String = "") -> EntryField {
+        let existingURLIndices = Set(
+            fields.compactMap {
+                EntryField.getExtraURLIndex(from: $0.name)
+            }
+        )
+
+        let fieldName: String
+        let firstUnusedIndex = (0...).first(where: { !existingURLIndices.contains($0) }) ?? 0
+        if firstUnusedIndex > 0 {
+            fieldName = "\(EntryField.kp2aURLPrefix)_\(firstUnusedIndex)"
+        } else {
+            fieldName = EntryField.kp2aURLPrefix
+        }
+
+        let newField = makeEntryField(name: fieldName, value: value, isProtected: false)
+        return newField
+    }
+
     public func addToHistory(entry: Entry) {
         history.insert(entry as! Entry2, at: 0)
     }

@@ -111,7 +111,6 @@ public enum SymbolName: String {
     case keyHorizontal = "key.horizontal"
     case keyboard = "keyboard"
     case listBullet = "list.bullet"
-    case link = "link"
     case lock = "lock"
     case lockShield = "lock.shield"
     case minus = "minus"

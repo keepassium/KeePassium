@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dyC-HY-kh4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dyC-HY-kh4">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -20,27 +19,6 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="ad1-Rf-HyL">
-                            <rect key="frame" x="0.0" y="882.33333587646484" width="414" height="60"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="1Nq-zk-w7B" customClass="MultilineButton" customModule="KeePassium" customModuleProvider="target">
-                                    <rect key="frame" x="16.000000000000007" y="8" width="118.66666666666669" height="21"/>
-                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                    <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="-4" maxY="0.0"/>
-                                    <state key="normal" title="{Set up OTP}" image="clock" catalog="system">
-                                        <color key="titleColor" name="ActionTint"/>
-                                    </state>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <constraints>
-                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="1Nq-zk-w7B" secondAttribute="bottom" id="A5O-rV-uth"/>
-                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1Nq-zk-w7B" secondAttribute="trailing" constant="20" symbolic="YES" id="Bey-aP-cPa"/>
-                                <constraint firstItem="1Nq-zk-w7B" firstAttribute="leading" secondItem="ad1-Rf-HyL" secondAttribute="leadingMargin" constant="8" id="Hji-Ty-Xw8"/>
-                                <constraint firstItem="1Nq-zk-w7B" firstAttribute="top" secondItem="ad1-Rf-HyL" secondAttribute="topMargin" id="RtH-1H-rzd"/>
-                            </constraints>
-                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TitleCell" id="GLB-1c-KE8" customClass="EntryFieldEditorTitleCell" customModule="KeePassium" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="414" height="56"/>
@@ -121,6 +99,12 @@
                                                 <fragment content="#bc-ignore!"/>
                                             </attributedString>
                                         </textField>
+                                        <button hidden="YES" opaque="NO" contentMode="center" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" role="destructive" translatesAutoresizingMaskIntoConstraints="NO" id="FTH-ho-naM">
+                                            <rect key="frame" x="367" y="37.333333333333336" width="35" height="38.000000000000007"/>
+                                            <color key="tintColor" name="DestructiveTint"/>
+                                            <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                            <state key="normal" image="trash" catalog="system"/>
+                                        </button>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="249" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxs-MK-Ca2">
                                             <rect key="frame" x="334" y="4" width="60" height="35.333333333333336"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
@@ -137,9 +121,10 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="yxs-MK-Ca2" firstAttribute="firstBaseline" secondItem="CN9-CU-AJF" secondAttribute="firstBaseline" priority="750" id="A4M-vW-rRZ"/>
+                                        <constraint firstItem="FTH-ho-naM" firstAttribute="centerY" secondItem="zr2-BH-wQ3" secondAttribute="centerY" id="FUj-q6-9Se"/>
                                         <constraint firstAttribute="trailing" secondItem="zo6-9v-QQD" secondAttribute="trailing" id="NKp-Gx-XFk"/>
                                         <constraint firstItem="zr2-BH-wQ3" firstAttribute="top" secondItem="yxs-MK-Ca2" secondAttribute="bottom" id="PTj-t3-edN"/>
-                                        <constraint firstItem="yxs-MK-Ca2" firstAttribute="trailing" secondItem="zr2-BH-wQ3" secondAttribute="trailing" id="Pa6-83-ed7"/>
+                                        <constraint firstItem="yxs-MK-Ca2" firstAttribute="trailing" secondItem="fv0-vc-xOU" secondAttribute="trailing" constant="-20" id="Pa6-83-ed7"/>
                                         <constraint firstItem="zo6-9v-QQD" firstAttribute="leading" secondItem="fv0-vc-xOU" secondAttribute="leading" id="VMh-Ye-oOw"/>
                                         <constraint firstItem="zr2-BH-wQ3" firstAttribute="leading" secondItem="fv0-vc-xOU" secondAttribute="leadingMargin" id="XB0-Mn-9Av"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="zr2-BH-wQ3" secondAttribute="trailing" id="YXl-RR-pqr"/>
@@ -147,6 +132,7 @@
                                         <constraint firstItem="yxs-MK-Ca2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="CN9-CU-AJF" secondAttribute="trailing" constant="8" id="cU9-nc-Tmi"/>
                                         <constraint firstItem="yxs-MK-Ca2" firstAttribute="top" relation="greaterThanOrEqual" secondItem="zo6-9v-QQD" secondAttribute="bottom" id="dWV-ps-qIT"/>
                                         <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="zr2-BH-wQ3" secondAttribute="bottom" id="r3g-HG-5oV"/>
+                                        <constraint firstAttribute="trailing" secondItem="FTH-ho-naM" secondAttribute="trailing" constant="12" id="v1s-nq-82Y"/>
                                         <constraint firstItem="zo6-9v-QQD" firstAttribute="top" secondItem="fv0-vc-xOU" secondAttribute="top" id="y0D-zA-Rob"/>
                                         <constraint firstItem="CN9-CU-AJF" firstAttribute="top" secondItem="zo6-9v-QQD" secondAttribute="bottom" constant="8" id="yW0-WQ-5Cv"/>
                                         <constraint firstItem="CN9-CU-AJF" firstAttribute="leading" secondItem="fv0-vc-xOU" secondAttribute="leadingMargin" id="zSb-gY-Npx"/>
@@ -154,7 +140,9 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="actionButton" destination="yxs-MK-Ca2" id="1UT-Qs-8ZH"/>
+                                    <outlet property="deleteButton" destination="FTH-ho-naM" id="UZV-Ru-y6r"/>
                                     <outlet property="textField" destination="zr2-BH-wQ3" id="Bqm-QR-otS"/>
+                                    <outlet property="textFieldTrailingConstraint" destination="YXl-RR-pqr" id="LHs-Sq-TiV"/>
                                     <outlet property="titleLabel" destination="CN9-CU-AJF" id="W1O-DL-4V6"/>
                                 </connections>
                             </tableViewCell>
@@ -487,9 +475,6 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Add Custom Field" localized="YES"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="didPressAddField:" destination="dyC-HY-kh4" id="bWR-w3-H61"/>
-                                </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
@@ -497,7 +482,6 @@
                     <connections>
                         <outlet property="addFieldButton" destination="HGI-xq-zUf" id="aPE-l1-Fw7"/>
                         <outlet property="doneButton" destination="urr-zn-2MK" id="KNL-EB-lsB"/>
-                        <outlet property="otpSetupButton" destination="1Nq-zk-w7B" id="YeF-mT-2jZ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WWU-SY-Plz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -507,7 +491,6 @@
     </scenes>
     <color key="tintColor" name="ActionTint"/>
     <resources>
-        <image name="clock" catalog="system" width="128" height="123"/>
         <image name="die.face.3" catalog="system" width="128" height="114"/>
         <image name="trash" catalog="system" width="117" height="128"/>
         <namedColor name="ActionTint">

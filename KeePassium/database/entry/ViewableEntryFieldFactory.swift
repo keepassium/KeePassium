@@ -9,7 +9,7 @@
 import KeePassiumLib
 import UIKit
 
-private let singlelineFields: [String] =
+private let standardSingleLineFields: [String] =
     [EntryField.title, EntryField.userName, EntryField.password, EntryField.url]
 
 protocol ViewableField: AnyObject {
@@ -39,9 +39,14 @@ protocol ViewableField: AnyObject {
 
 extension ViewableField {
     var isMultiline: Bool {
-        return !singlelineFields.contains(internalName)
+        if standardSingleLineFields.contains(internalName) {
+            return false
+        }
+        if let _ = EntryField2.getExtraURLIndex(from: internalName) {
+            return false
+        }
+        return true
     }
-
 }
 
 class BasicViewableField: ViewableField {

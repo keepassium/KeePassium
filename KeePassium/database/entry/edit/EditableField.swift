@@ -57,6 +57,9 @@ class EditableField: BasicViewableField {
         case EntryField.url:
             return .URL
         default:
+            if let _ = EntryField.getExtraURLIndex(from: internalName) {
+                return .URL
+            }
             return nil
         }
     }

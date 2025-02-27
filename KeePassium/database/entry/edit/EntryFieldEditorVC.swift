@@ -13,7 +13,8 @@ protocol EntryFieldEditorDelegate: AnyObject {
     func didPressCancel(in viewController: EntryFieldEditorVC)
     func didPressDone(in viewController: EntryFieldEditorVC)
 
-    func didPressAddField(in viewController: EntryFieldEditorVC)
+    func didPressAddField(name: String?, in viewController: EntryFieldEditorVC) -> EntryField?
+    func didPressAddURLField(in viewController: EntryFieldEditorVC) -> EntryField?
     func didPressDeleteField(_ field: EditableField, in viewController: EntryFieldEditorVC)
 
     func didModifyContent(in viewController: EntryFieldEditorVC)
@@ -47,7 +48,6 @@ protocol EntryFieldEditorDelegate: AnyObject {
 final class EntryFieldEditorVC: UITableViewController, Refreshable {
     @IBOutlet private weak var addFieldButton: UIBarButtonItem!
     @IBOutlet private weak var doneButton: UIBarButtonItem!
-    @IBOutlet private weak var otpSetupButton: UIButton!
 
     public var shouldFocusOnTitleField = true
 
@@ -61,6 +61,8 @@ final class EntryFieldEditorVC: UITableViewController, Refreshable {
     var allowsCustomFields = false
     var supportsFaviconDownload = true
 
+    var mostCommonCustomFields: [String] = []
+
     private weak var iconButton: UIButton?
 
 
@@ -69,7 +71,7 @@ final class EntryFieldEditorVC: UITableViewController, Refreshable {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44.0
 
-        configureOTPSetupButton()
+        configureAddMenu()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -95,10 +97,14 @@ final class EntryFieldEditorVC: UITableViewController, Refreshable {
 
     private func refreshControls() {
         addFieldButton.isEnabled = allowsCustomFields
+        sortFields()
+        revalidate()
+    }
+
+    private func sortFields() {
         fields.sort {
             itemCategory.compare($0.internalName, $1.internalName)
         }
-        revalidate()
     }
 
     func revalidate() {
@@ -127,11 +133,63 @@ final class EntryFieldEditorVC: UITableViewController, Refreshable {
         cell.selectNameText()
     }
 
-    private func configureOTPSetupButton() {
+    private func selectCustomFieldValue(at indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? EntryFieldEditorCustomFieldCell else {
+            return
+        }
+        cell.selectValueText()
+    }
+
+    private func configureAddMenu() {
+        let addCustomFieldAction = UIAction(
+            title: LString.titleCustomField,
+            image: .symbol(.plus)
+        ) { [weak self] _ in
+            self?.didPressAddField()
+        }
+
+        let addURLFieldAction = UIAction(
+            title: LString.fieldURL,
+            image: .symbol(.globe)
+        ) { [weak self] _ in
+            self?.didPressAddURLField()
+        }
+
+        var staticActions: [UIMenuElement] = [
+            addCustomFieldAction,
+            addURLFieldAction
+        ]
+        if let otpSetupMenu = makeOTPSetupMenu() {
+            staticActions.append(otpSetupMenu)
+        }
+
+        let commonFieldsMenu: UIMenu?
+        if mostCommonCustomFields.count > 0 {
+            commonFieldsMenu = UIMenu(
+                title: LString.titleFrequentlyUsedFields,
+                children: mostCommonCustomFields.map { fieldName in
+                    UIAction(title: EntryField.getVisibleName(for: fieldName)) { [weak self] _ in
+                        self?.didPressAddField(name: fieldName)
+                    }
+                }
+            )
+        } else {
+            commonFieldsMenu = nil
+        }
+
+        addFieldButton.menu = UIMenu.make(
+            children: [
+                UIMenu.make(options: .displayInline, children: staticActions),
+                commonFieldsMenu
+            ]
+        )
+        addFieldButton.accessibilityLabel = LString.actionAddField
+    }
+
+    private func makeOTPSetupMenu() -> UIMenu? {
         let isOTPSetupSupported = delegate?.isTOTPSetupAvailable(self) ?? false
         guard isOTPSetupSupported else {
-            tableView.tableFooterView = nil
-            return
+            return nil
         }
 
         let isQRScannerAvailable = delegate?.isQRScannerAvailable(self) ?? false
@@ -149,13 +207,17 @@ final class EntryFieldEditorVC: UITableViewController, Refreshable {
             self?.didPressManualOTPSetup()
         }
 
-        otpSetupButton.setTitle(LString.otpSetUpOTPAction, for: .normal)
+        let children: [UIMenuElement]
         if ProcessInfo.isRunningOnMac {
-            otpSetupButton.addAction(manualSetupAction, for: .touchUpInside)
+            children = [manualSetupAction]
         } else {
-            otpSetupButton.showsMenuAsPrimaryAction = true
-            otpSetupButton.menu = UIMenu(children: [qrCodeSetupAction, manualSetupAction])
+            children = [qrCodeSetupAction, manualSetupAction]
         }
+        return UIMenu(
+            title: LString.fieldOTP,
+            image: .symbol(.clock),
+            children: children
+        )
     }
 
 
@@ -216,19 +278,30 @@ final class EntryFieldEditorVC: UITableViewController, Refreshable {
         delegate?.didPressDone(in: self)
     }
 
-    @IBAction private func didPressAddField(_ sender: Any) {
-        assert(allowsCustomFields)
-        let fieldCountBefore = fields.count
-        delegate?.didPressAddField(in: self) 
-        let fieldCountAfter = fields.count
+    private func didPressAddField(name: String? = nil) {
+        addField(maker: { $0.delegate?.didPressAddField(name: name, in: $0) }, selectValue: name != nil)
+    }
 
-        guard fieldCountAfter > fieldCountBefore else {
+    private func didPressAddURLField() {
+        addField(maker: { $0.delegate?.didPressAddURLField(in: $0) }, selectValue: true)
+    }
+
+    private func addField(maker: (EntryFieldEditorVC) -> EntryField?, selectValue: Bool) {
+        assert(allowsCustomFields)
+
+        guard let addedField = maker(self) else {
             Diag.warning("Field was not added")
             assertionFailure()
             return
         }
 
-        let newIndexPath = IndexPath(row: fields.count - 1, section: 0)
+        sortFields()
+        guard let newFieldIndex = fields.firstIndex(where: { $0.field === addedField }) else {
+            Diag.warning("Could not find just added field")
+            assertionFailure()
+            return
+        }
+        let newIndexPath = IndexPath(row: newFieldIndex, section: 0)
         tableView.beginUpdates()
         tableView.insertRows(at: [newIndexPath], with: .fade)
         tableView.endUpdates()
@@ -240,7 +313,11 @@ final class EntryFieldEditorVC: UITableViewController, Refreshable {
             },
             completion: { [weak self] _ in
                 self?.focusOnCell(at: newIndexPath)
-                self?.selectCustomFieldName(at: newIndexPath)
+                if selectValue {
+                    self?.selectCustomFieldValue(at: newIndexPath)
+                } else {
+                    self?.selectCustomFieldName(at: newIndexPath)
+                }
             }
         )
         refreshControls()
@@ -248,6 +325,10 @@ final class EntryFieldEditorVC: UITableViewController, Refreshable {
 
     func didPressDeleteField(at indexPath: IndexPath) {
         assert(allowsCustomFields)
+        tableView.beginUpdates()
+        defer {
+            tableView.endUpdates()
+        }
         let fieldIndex = indexPath.row
         let field = fields[fieldIndex]
         let fieldCountBefore = fields.count
@@ -259,10 +340,8 @@ final class EntryFieldEditorVC: UITableViewController, Refreshable {
             assertionFailure()
             return
         }
-
-        tableView.beginUpdates()
         tableView.deleteRows(at: [indexPath], with: .fade)
-        tableView.endUpdates()
+
         refreshControls()
     }
 
@@ -359,6 +438,10 @@ extension EntryFieldEditorVC {
         tableView: UITableView,
         at indexPath: IndexPath
     ) -> EditableFieldCell & UITableViewCell {
+        let entryField = field.field
+        if entryField?.isExtraURL ?? false {
+            return configureURLCell(field: field, tableView: tableView, at: indexPath)
+        }
         return configureCustomFieldCell(field: field, tableView: tableView, at: indexPath)
     }
 

@@ -159,10 +159,12 @@ class EntryFieldEditorSingleLineCell:
     @IBOutlet weak var textField: ValidatingTextField!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var actionButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var textFieldTrailingConstraint: NSLayoutConstraint!
 
     weak var delegate: EditableFieldCellDelegate? {
         didSet {
-            refreshActionButton()
+            refreshButtons()
         }
     }
     weak var field: EditableField? {
@@ -173,7 +175,7 @@ class EntryFieldEditorSingleLineCell:
                 (field?.isProtected ?? false) && Settings.current.isHideProtectedFields
             textField.accessibilityLabel = field?.visibleName
             textField.textContentType = field?.textContentType
-            refreshActionButton()
+            refreshButtons()
         }
     }
 
@@ -187,14 +189,19 @@ class EntryFieldEditorSingleLineCell:
         textField.validityDelegate = self
         textField.delegate = self
 
+        deleteButton.accessibilityLabel = LString.actionDelete
+        deleteButton.addTarget(self, action: #selector(didPressDelete), for: .touchUpInside)
     }
 
-    private func refreshActionButton() {
+    private func refreshButtons() {
         guard let field = field else {
             return
         }
         let actionConfig = delegate?.getActionConfiguration(for: field) ?? .hidden
         actionConfig.apply(to: actionButton)
+
+        deleteButton.isHidden = field.field?.isStandardField == true
+        textFieldTrailingConstraint.constant = deleteButton.isHidden ? 0 : 27
     }
 
     override func becomeFirstResponder() -> Bool {
@@ -204,7 +211,7 @@ class EntryFieldEditorSingleLineCell:
 
     func validate() {
         textField.validate()
-        refreshActionButton()
+        refreshButtons()
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -217,7 +224,7 @@ class EntryFieldEditorSingleLineCell:
         guard let field = field else { return }
         field.value = textField.text ?? ""
         delegate?.didChangeField(field, in: self)
-        refreshActionButton()
+        refreshButtons()
     }
 
     func validatingTextFieldShouldValidate(_ sender: ValidatingTextField) -> Bool {
@@ -241,6 +248,12 @@ class EntryFieldEditorSingleLineCell:
         suggestedActions: [UIMenuElement]
     ) -> UIMenu? {
         return textField.addRandomizerEditMenu(to: suggestedActions)
+    }
+
+    @objc
+    private func didPressDelete() {
+        guard let field = field else { return }
+        delegate?.didPressDelete(field, in: self)
     }
 }
 
@@ -489,6 +502,11 @@ class EntryFieldEditorCustomFieldCell:
     func selectNameText() {
         nameTextField.selectAll(nil)
     }
+
+    func selectValueText() {
+        valueTextView.selectAll(nil)
+    }
+
     func validate() {
         nameTextField.validate()
         valueTextView.validate()

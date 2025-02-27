@@ -26,16 +26,27 @@ enum ItemCategory: String {
     }
     var name: String { LString.itemCategoryDefault }
 
-    func getFieldRanks() -> [String: Int] {
-        return [
-            EntryField.title: 1,
-            EntryField.userName: 2,
-            EntryField.passkey: 3,
-            EntryField.password: 4,
-            EntryField.totp: 5,
-            EntryField.url: 6,
-            EntryField.tags: 7,
-            EntryField.notes: 8]
+    static let standardFieldRanks: [String: Float] = [
+        EntryField.title: 1,
+        EntryField.userName: 2,
+        EntryField.passkey: 3,
+        EntryField.password: 4,
+        EntryField.totp: 5,
+        EntryField.url: 6,
+        EntryField.tags: 7,
+        EntryField.notes: 8,
+    ]
+
+    public static func getFieldRank(_ fieldName: String) -> Float? {
+        if let staticRank = standardFieldRanks[fieldName] {
+            return staticRank
+        }
+        if let urlIndex = EntryField.getExtraURLIndex(from: fieldName) {
+            let standardURLRank = standardFieldRanks[EntryField.url]!
+            let subRank = 1.0 - 1.0 / (abs(Float(urlIndex)) + 1.1)
+            return standardURLRank + subRank
+        }
+        return nil
     }
 
     public static func get(for entry: Entry) -> ItemCategory {
@@ -51,13 +62,11 @@ enum ItemCategory: String {
     }
 
     public func compare(_ fieldName1: String, _ fieldName2: String) -> Bool {
-        let ranks = getFieldRanks()
-        let rank1 = ranks[fieldName1] ?? Int.max
-        let rank2 = ranks[fieldName2] ?? Int.max
+        let rank1 = Self.getFieldRank(fieldName1) ?? Float.greatestFiniteMagnitude
+        let rank2 = Self.getFieldRank(fieldName2) ?? Float.greatestFiniteMagnitude
         if rank1 != rank2 {
             return rank1 < rank2
-        } else {
-            return false 
         }
+        return false
     }
 }

@@ -23,6 +23,8 @@ public class EntryField: Eraseable {
 
     public static let passkey = "passkey" + UUID().uuidString
 
+    public static let kp2aURLPrefix = "KP2A_URL"
+
     public var name: String
     public var value: String {
         didSet {
@@ -32,7 +34,11 @@ public class EntryField: Eraseable {
     public var isProtected: Bool
 
     public var visibleName: String {
-        switch name {
+        return Self.getVisibleName(for: name)
+    }
+
+    public class func getVisibleName(for fieldName: String) -> String {
+        switch fieldName {
         case Self.title: return LString.fieldTitle
         case Self.userName: return LString.fieldUserName
         case Self.password: return LString.fieldPassword
@@ -40,7 +46,27 @@ public class EntryField: Eraseable {
         case Self.notes: return LString.fieldNotes
         case Self.tags: return LString.fieldTags
         default:
-            return name
+            if let urlIndex = getExtraURLIndex(from: fieldName) {
+                return String.localizedStringWithFormat(LString.titleExtraURLTitleTemplate, urlIndex + 1)
+            }
+            return fieldName
+        }
+    }
+
+    public var isExtraURL: Bool {
+        return Self.getExtraURLIndex(from: name) != nil
+    }
+
+    public static func getExtraURLIndex(from fieldName: String) -> Int? {
+        guard fieldName.hasPrefix(Self.kp2aURLPrefix) else {
+            return nil
+        }
+
+        if fieldName == Self.kp2aURLPrefix {
+            return 0
+        } else {
+            let indexString = String(fieldName.split(separator: "_").last ?? "0")
+            return Int(indexString) ?? 0
         }
     }
 

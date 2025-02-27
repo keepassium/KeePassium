@@ -670,6 +670,12 @@ extension LString {
         value: "Edit Entry",
         comment: "Action/button to modify an entry"
     )
+    public static let actionAddField = NSLocalizedString(
+        "[Entry/Field/Add/action]",
+        bundle: Bundle.framework,
+        value: "Add Field",
+        comment: "Action/button to add a new field to the entry"
+    )
     public static let actionAddAttachment = NSLocalizedString(
         "[Entry/Attachment/add]",
         bundle: Bundle.framework,
@@ -742,6 +748,24 @@ extension LString {
         bundle: Bundle.framework,
         value: "Protected Field",
         comment: "Title of a setting: whether the entry's field is protected (shown as asterisks)."
+    )
+    public static let titleFrequentlyUsedFields = NSLocalizedString(
+        "[Entry/FrequentlyUsedFields/title]",
+        bundle: Bundle.framework,
+        value: "Frequently Used",
+        comment: "Title of a list with frequently used entry fields."
+    )
+    public static let titleCustomField = NSLocalizedString(
+        "[Entry/Field/Custom/title]",
+        bundle: Bundle.framework,
+        value: "Custom Field",
+        comment: "Title for a generic user-defined entry field."
+    )
+    public static let titleExtraURLTitleTemplate = NSLocalizedString(
+        "[Entry/Field/URL/Extra/title]",
+        bundle: Bundle.framework,
+        value: "URL (%d)",
+        comment: "Title of an alternative URL, with a number [number: String]"
     )
     public static let defaultNewPhotoAttachmentName = NSLocalizedString(
         "[Entry/Attachment/Photo/defaultName]",
