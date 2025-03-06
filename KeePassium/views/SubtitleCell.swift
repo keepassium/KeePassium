@@ -8,8 +8,8 @@
 
 import UIKit
 
-final class SubtitleCell: UITableViewCell {
-    public static let reuseIdentifier = "SubtitleCell"
+class SubtitleCell: UITableViewCell {
+    public class var reuseIdentifier: String { "SubtitleCell" }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)

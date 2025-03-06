@@ -11,14 +11,12 @@ import KeePassiumLib
 protocol NetworkAccessSettingsDelegate: AnyObject {
     func didChangeNetworkPermission(isAllowed: Bool, in viewController: NetworkAccessSettingsVC)
     func didPressOpenURL(_ url: URL, in viewController: NetworkAccessSettingsVC)
+    func didChangeAutoDownloadFavicons(isEnabled: Bool, in viewController: NetworkAccessSettingsVC)
 }
 
-final class NetworkAccessSettingsVC: UITableViewController {
-    var isAccessAllowed: Bool = false {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+final class NetworkAccessSettingsVC: UITableViewController, Refreshable {
+    var isAccessAllowed = false
+    var isAutoDownloadEnabled = false
 
     weak var delegate: NetworkAccessSettingsDelegate?
 
@@ -27,9 +25,14 @@ final class NetworkAccessSettingsVC: UITableViewController {
         static let accessDenied = IndexPath(row: 0, section: 0)
         static let accessGranted = IndexPath(row: 1, section: 0)
 
+        static let autoDownloadFaviconsRows = 1
+        static let autoDownloadSection = 1
+        static let autoDownloadFavicons = IndexPath(row: 0, section: 1)
+
+        static let privacyPolicySection = 2
         static let privacyPolicyRows = 2
-        static let privacyPolicySummary = IndexPath(row: 0, section: 1)
-        static let privacyPolicyLink = IndexPath(row: 1, section: 1)
+        static let privacyPolicySummary = IndexPath(row: 0, section: 2)
+        static let privacyPolicyLink = IndexPath(row: 1, section: 2)
     }
 
     static func make() -> NetworkAccessSettingsVC {
@@ -47,16 +50,31 @@ final class NetworkAccessSettingsVC: UITableViewController {
         tableView.register(
             PolicyCell.classForCoder(),
             forCellReuseIdentifier: PolicyCell.reuseIdentifier)
+        tableView.register(
+            SwitchCell.classForCoder(),
+            forCellReuseIdentifier: SwitchCell.reuseIdentifier)
+    }
+
+    func refresh() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak tableView] in
+            tableView?.reloadData()
+        }
+    }
+
+    func refreshImmediately() {
+        tableView.reloadData()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case CellIndex.accessGranted.section:
             return CellIndex.accessSwitchRows
+        case CellIndex.autoDownloadFavicons.section:
+            return CellIndex.autoDownloadFaviconsRows
         case CellIndex.privacyPolicySummary.section:
             return CellIndex.privacyPolicyRows
         default:
@@ -68,6 +86,15 @@ final class NetworkAccessSettingsVC: UITableViewController {
         switch section {
         case CellIndex.privacyPolicySummary.section:
             return LString.About.titlePrivacyPolicy
+        default:
+            return nil
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        switch section {
+        case CellIndex.autoDownloadSection:
+            return LString.descriptionAutoDownloadFavicons
         default:
             return nil
         }
@@ -96,6 +123,19 @@ final class NetworkAccessSettingsVC: UITableViewController {
             modeCell.accessoryType = isAccessAllowed ? .checkmark : .none
             modeCell.imageView?.image = .symbol(.network)
             return modeCell
+        case CellIndex.autoDownloadFavicons:
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: SwitchCell.reuseIdentifier,
+                for: indexPath) as! SwitchCell
+            cell.textLabel?.text = LString.titleAutoDownloadFavicons
+            cell.detailTextLabel?.text = nil
+            cell.theSwitch.isOn = isAutoDownloadEnabled && isAccessAllowed
+            cell.setEnabled(isAccessAllowed)
+            cell.onDidToggleSwitch = { [weak self] theSwitch in
+                guard let self else { return }
+                delegate?.didChangeAutoDownloadFavicons(isEnabled: theSwitch.isOn, in: self)
+            }
+            return cell
         case CellIndex.privacyPolicySummary:
             let policyCell = tableView
                 .dequeueReusableCell(withIdentifier: PolicyCell.reuseIdentifier, for: indexPath)
@@ -128,14 +168,18 @@ final class NetworkAccessSettingsVC: UITableViewController {
         switch indexPath {
         case CellIndex.accessDenied:
             isAccessAllowed = false
+            HapticFeedback.play(.selectionChanged)
             delegate?.didChangeNetworkPermission(isAllowed: isAccessAllowed, in: self)
         case CellIndex.accessGranted:
             isAccessAllowed = true
+            HapticFeedback.play(.selectionChanged)
             delegate?.didChangeNetworkPermission(isAllowed: isAccessAllowed, in: self)
         case CellIndex.privacyPolicySummary:
             return
         case CellIndex.privacyPolicyLink:
             delegate?.didPressOpenURL(URL.AppHelp.currentPrivacyPolicy, in: self)
+        case CellIndex.autoDownloadFavicons:
+            return
         default:
             fatalError("Unexpected cell index")
         }
@@ -143,63 +187,11 @@ final class NetworkAccessSettingsVC: UITableViewController {
 }
 
 extension NetworkAccessSettingsVC {
-    final class ModeCell: UITableViewCell {
-        static let reuseIdentifier = "ModeCell"
-
-        override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-            super.init(style: .subtitle, reuseIdentifier: ModeCell.reuseIdentifier)
-            configureCell()
-        }
-
-        required init?(coder: NSCoder) {
-            fatalError("Not implemented")
-        }
-
-        override func awakeFromNib() {
-            super.awakeFromNib()
-            configureCell()
-        }
-
-        private func configureCell() {
-            textLabel?.font = .preferredFont(forTextStyle: .body)
-            textLabel?.textColor = .label
-            textLabel?.numberOfLines = 0
-            textLabel?.lineBreakMode = .byWordWrapping
-
-            detailTextLabel?.font = .preferredFont(forTextStyle: .footnote)
-            detailTextLabel?.textColor = .secondaryLabel
-            detailTextLabel?.numberOfLines = 0
-            detailTextLabel?.lineBreakMode = .byWordWrapping
-
-            imageView?.preferredSymbolConfiguration =
-                UIImage.SymbolConfiguration(textStyle: .body, scale: .large)
-            imageView?.tintColor = .iconTint
-        }
+    private final class ModeCell: SubtitleCell {
+        override class var reuseIdentifier: String { "ModeCell" }
     }
 
-    final class PolicyCell: UITableViewCell {
-        static let reuseIdentifier = "PolicyCell"
-
-        override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-            super.init(style: .default, reuseIdentifier: PolicyCell.reuseIdentifier)
-            configureCell()
-        }
-
-        required init?(coder: NSCoder) {
-            fatalError("Not implemented")
-        }
-
-        override func awakeFromNib() {
-            super.awakeFromNib()
-            configureCell()
-        }
-
-        private func configureCell() {
-            textLabel?.font = .preferredFont(forTextStyle: .body)
-            textLabel?.textColor = .label
-            textLabel?.numberOfLines = 0
-            textLabel?.lineBreakMode = .byWordWrapping
-        }
+    private final class PolicyCell: SubtitleCell {
+        override class var reuseIdentifier: String { "PolicyCell" }
     }
-
 }

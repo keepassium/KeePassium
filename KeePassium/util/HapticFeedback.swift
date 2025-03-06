@@ -11,6 +11,7 @@ import UIKit
 
 class HapticFeedback {
     enum Kind {
+        case selectionChanged
         case appUnlocked
         case databaseUnlocked
         case contextMenuOpened
@@ -33,7 +34,8 @@ class HapticFeedback {
              .passwordGenerated:
             let tactileGenerator = UIImpactFeedbackGenerator()
             tactileGenerator.impactOccurred()
-        case .copiedToClipboard:
+        case .selectionChanged,
+             .copiedToClipboard:
             let tactileGenerator = UISelectionFeedbackGenerator()
             tactileGenerator.selectionChanged()
         case .credentialsPasted:

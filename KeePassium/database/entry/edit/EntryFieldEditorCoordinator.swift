@@ -161,10 +161,36 @@ final class EntryFieldEditorCoordinator: Coordinator {
         router.pop(animated: true)
     }
 
-    private func saveChangesAndDismiss() {
-        entry.touch(.modified, updateParents: false)
+    private func startSaving() {
         fieldEditorVC.view.endEditing(true)
 
+        let isURLChanged = originalEntry == nil || originalEntry?.resolvedURL != entry.resolvedURL
+        let shouldDownloadFavicon =
+                isURLChanged
+                && !isIconModified()
+                && Settings.current.isAutoDownloadFaviconsEnabled
+                && Settings.current.isNetworkAccessAllowed
+        if shouldDownloadFavicon,
+           let websiteURL = URL.from(malformedString: entry.resolvedURL)
+        {
+            Diag.debug("Auto-downloading favicon")
+            fieldEditorVC.isDownloadingFavicon = true
+            refresh()
+            downloadFavicon(for: websiteURL, in: fieldEditorVC) { [weak self, weak fieldEditorVC] image in
+                guard let self, let fieldEditorVC else { return }
+                fieldEditorVC.isDownloadingFavicon = false
+                if let image {
+                    changeIcon(image: image)
+                }
+                finishSaving()
+            }
+        } else {
+            finishSaving()
+        }
+    }
+
+    private func finishSaving() {
+        entry.touch(.modified, updateParents: false)
         if let originalEntry = originalEntry {
             if originalEntryBeforeSaving == nil {
                 originalEntryBeforeSaving = originalEntry.clone(makeNewUUID: false)
@@ -274,6 +300,22 @@ final class EntryFieldEditorCoordinator: Coordinator {
         addChildCoordinator(diagnosticsViewerCoordinator)
     }
 
+    private func isIconModified() -> Bool {
+        let newIconID = entry.iconID
+        let newCustomIconUUID = (entry as? Entry2)?.customIconUUID
+        let origIconID = originalEntry?.iconID
+        let origCustomIconUUID = (originalEntry as? Entry2)?.customIconUUID
+        if let origIconID {
+            return newIconID != origIconID || newCustomIconUUID != origCustomIconUUID
+        } else {
+            let parent2 = parent as? Group2
+            return
+                (newIconID != Entry.defaultIconID && newIconID != parent.iconID)
+                || (newCustomIconUUID != parent2?.customIconUUID)
+                || newCustomIconUUID != .ZERO
+        }
+    }
+
     private func changeIcon(image: UIImage) {
         guard let db2 = database as? Database2, let entry2 = entry as? Entry2 else {
             return
@@ -370,7 +412,7 @@ extension EntryFieldEditorCoordinator: EntryFieldEditorDelegate {
     }
 
     func didPressDone(in viewController: EntryFieldEditorVC) {
-        saveChangesAndDismiss()
+        startSaving()
     }
 
     func didModifyContent(in viewController: EntryFieldEditorVC) {

@@ -19,6 +19,7 @@ final class NetworkAccessSettingsCoordinator: Coordinator {
         self.router = router
         viewController = NetworkAccessSettingsVC.make()
         viewController.isAccessAllowed = Settings.current.isNetworkAccessAllowed
+        viewController.isAutoDownloadEnabled = Settings.current.isAutoDownloadFaviconsEnabled
         viewController.delegate = self
     }
 
@@ -43,7 +44,19 @@ extension NetworkAccessSettingsCoordinator: NetworkAccessSettingsDelegate {
 
     func didChangeNetworkPermission(isAllowed: Bool, in viewController: NetworkAccessSettingsVC) {
         Settings.current.isNetworkAccessAllowed = isAllowed
-        viewController.isAccessAllowed = Settings.current.isNetworkAccessAllowed
         viewController.showNotificationIfManaged(setting: .networkAccessAllowed)
+        viewController.isAccessAllowed = Settings.current.isNetworkAccessAllowed
+        viewController.refreshImmediately()
+    }
+
+    func didChangeAutoDownloadFavicons(isEnabled: Bool, in viewController: NetworkAccessSettingsVC) {
+        Settings.current.isAutoDownloadFaviconsEnabled = isEnabled
+
+        let wasChangeAccepted = (Settings.current.isAutoDownloadFaviconsEnabled == isEnabled)
+        if !wasChangeAccepted {
+            viewController.showManagedSettingNotification()
+        }
+        viewController.isAutoDownloadEnabled = Settings.current.isAutoDownloadFaviconsEnabled
+        viewController.refresh()
     }
 }

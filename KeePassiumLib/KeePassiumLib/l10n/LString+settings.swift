@@ -355,6 +355,17 @@ extension LString {
         value: "Allow KeePassium to make network connections to external services?",
         comment: "Confirmation dialog message")
 
+    public static let titleAutoDownloadFavicons = NSLocalizedString(
+        "[Settings/AutoDownloadFavicons/title]",
+        bundle: Bundle.framework,
+        value: "Auto-Download Favicons",
+        comment: "Settings option: automatically download website icons/favicons")
+
+    public static let descriptionAutoDownloadFavicons = NSLocalizedString(
+        "[Settings/AutoDownloadFavicons/description]",
+        bundle: Bundle.framework,
+        value: "Automatically download website icon after editing an entry.",
+        comment: "Description of the auto-download favicons feature")
 
     public static let titleDatabaseBackupSettings = NSLocalizedString(
         "[Settings/DatabaseBackup/title]",

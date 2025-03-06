@@ -115,6 +115,8 @@ public class Settings {
 
         case networkAccessAllowed
 
+        case autoDownloadFaviconsEnabled
+
         case hideAppLockSetupReminder
         case textScale
         case entryTextFontDescriptor
@@ -1659,6 +1661,27 @@ public class Settings {
                 newValue: newValue,
                 key: .networkAccessAllowed
             )
+        }
+    }
+
+    public var isAutoDownloadFaviconsEnabled: Bool {
+        get {
+            if let managedValue = ManagedAppConfig.shared.getBoolIfLicensed(.allowFaviconDownload),
+               !managedValue
+            {
+                return false
+            }
+
+            let stored = UserDefaults.appGroupShared
+                .object(forKey: Keys.autoDownloadFaviconsEnabled.rawValue)
+                as? Bool
+            return stored ?? false
+        }
+        set {
+            updateAndNotify(
+                oldValue: isAutoDownloadFaviconsEnabled,
+                newValue: newValue,
+                key: .autoDownloadFaviconsEnabled)
         }
     }
 
