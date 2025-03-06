@@ -258,6 +258,7 @@
 		F311158B2B9C89E800236632 /* DropboxAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311158A2B9C89E800236632 /* DropboxAPI.swift */; };
 		F311159B2B9C94E800236632 /* DropboxItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311159A2B9C94E800236632 /* DropboxItem.swift */; };
 		F3146DD12BB55D75000E2D76 /* DropboxAccountInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3146DD02BB55D75000E2D76 /* DropboxAccountInfo.swift */; };
+		F323AD432D69FBC1007B8E8E /* WebDAVFolderCheckRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323AD422D69FBC1007B8E8E /* WebDAVFolderCheckRequest.swift */; };
 		F35708AD2AEFD52E00FC2208 /* ThreadCountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35708AC2AEFD52E00FC2208 /* ThreadCountFormatter.swift */; };
 		F36065072C67939200AD424B /* ExternalUpdateBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36065062C67939200AD424B /* ExternalUpdateBehavior.swift */; };
 		F36A057A2BB950C30087401F /* GoogleDriveAccountInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36A05792BB950C30087401F /* GoogleDriveAccountInfo.swift */; };
@@ -577,6 +578,7 @@
 		F311158A2B9C89E800236632 /* DropboxAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxAPI.swift; sourceTree = "<group>"; };
 		F311159A2B9C94E800236632 /* DropboxItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxItem.swift; sourceTree = "<group>"; };
 		F3146DD02BB55D75000E2D76 /* DropboxAccountInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxAccountInfo.swift; sourceTree = "<group>"; };
+		F323AD422D69FBC1007B8E8E /* WebDAVFolderCheckRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebDAVFolderCheckRequest.swift; sourceTree = "<group>"; };
 		F35708AC2AEFD52E00FC2208 /* ThreadCountFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadCountFormatter.swift; sourceTree = "<group>"; };
 		F36065062C67939200AD424B /* ExternalUpdateBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalUpdateBehavior.swift; sourceTree = "<group>"; };
 		F36A05792BB950C30087401F /* GoogleDriveAccountInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleDriveAccountInfo.swift; sourceTree = "<group>"; };
@@ -732,6 +734,7 @@
 				75C3CDD62BF391BA00C5C8CD /* WebDAVUploadRequest.swift */,
 				75C3CDD42BF3918A00C5C8CD /* WebDAVDownloadRequest.swift */,
 				75C3CDD82BF391D400C5C8CD /* WebDAVListRequest.swift */,
+				F323AD422D69FBC1007B8E8E /* WebDAVFolderCheckRequest.swift */,
 			);
 			name = webdav;
 			sourceTree = "<group>";
@@ -1546,6 +1549,7 @@
 				758FF6D82902DB07007DE8EB /* RemoteFileItem.swift in Sources */,
 				75F4ACD22177456200B22D8B /* PasswordGenerator.swift in Sources */,
 				758FF6DB2902DB64007DE8EB /* OneDriveManager.swift in Sources */,
+				F323AD432D69FBC1007B8E8E /* WebDAVFolderCheckRequest.swift in Sources */,
 				75AEAFA429871F25008F6F4C /* Timeout.swift in Sources */,
 				75F4ACE12177469500B22D8B /* FileType.swift in Sources */,
 				7524E74F288AA80500ECBEC8 /* LString+remote.swift in Sources */,

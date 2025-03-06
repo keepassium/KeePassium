@@ -151,6 +151,33 @@ public final class WebDAVManager: NSObject {
 
         listTask.resume()
     }
+
+    public func checkIsFolder(
+        url: URL,
+        credential: NetworkCredential,
+        timeout: Timeout,
+        completionQueue: OperationQueue? = nil,
+        completion: @escaping (Result<Bool, FileAccessError>) -> Void
+    ) {
+        let folderCheckRequest = WebDAVFolderCheckRequest(
+            url: url,
+            credential: credential.toURLCredential(),
+            allowUntrustedCertificate: credential.allowUntrustedCertificate,
+            timeout: timeout,
+            completionQueue: completionQueue ?? .main,
+            completion: completion
+        )
+
+        objc_sync_enter(self)
+        let urlSession = getURLSession(for: url)
+        let checkTask = urlSession.dataTask(with: folderCheckRequest.makeURLRequest())
+
+        let requestID = RequestIdentifier(for: checkTask, in: urlSession)
+        webdavRequests[requestID] = folderCheckRequest
+        objc_sync_exit(self)
+
+        checkTask.resume()
+    }
 }
 
 extension WebDAVManager {

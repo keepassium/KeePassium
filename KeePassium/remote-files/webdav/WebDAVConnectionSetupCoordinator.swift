@@ -136,7 +136,51 @@ extension WebDAVConnectionSetupCoordinator: WebDAVConnectionSetupVCDelegate {
         in viewController: WebDAVConnectionSetupVC
     ) {
         self.credential = credential
-        showFolder(folder: .root(url: nakedWebdavURL), credential: credential, stateIndicator: viewController)
+
+        if nakedWebdavURL.hasDirectoryPath {
+            Diag.debug("Target URL has directory path")
+            showFolder(
+                folder: .root(url: nakedWebdavURL),
+                credential: credential,
+                stateIndicator: viewController
+            )
+            return
+        }
+
+        viewController.indicateState(isBusy: true)
+        WebDAVManager.shared.checkIsFolder(
+            url: nakedWebdavURL,
+            credential: credential,
+            timeout: Timeout(duration: FileDataProvider.defaultTimeoutDuration),
+            completionQueue: .main
+        ) { [weak self, weak viewController] result in
+            guard let self = self,
+                  let viewController = viewController
+            else { return }
+
+            viewController.indicateState(isBusy: false)
+            switch result {
+            case .success(let isFolder):
+                if isFolder {
+                    Diag.debug("Target URL is a directory")
+                    self.showFolder(
+                        folder: .root(url: nakedWebdavURL),
+                        credential: credential,
+                        stateIndicator: viewController
+                    )
+                } else {
+                    Diag.debug("Target URL is a file")
+                    let prefixedURL = WebDAVFileURL.build(nakedURL: nakedWebdavURL)
+                    self.checkAndPickWebDAVConnection(
+                        url: prefixedURL,
+                        credential: credential,
+                        viewController: viewController
+                    )
+                }
+            case .failure(let error):
+                viewController.showErrorAlert(error)
+            }
+        }
     }
 
     private func checkAndPickWebDAVConnection(
