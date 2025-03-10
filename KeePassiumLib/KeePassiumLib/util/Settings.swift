@@ -120,6 +120,7 @@ public class Settings {
         case hideAppLockSetupReminder
         case textScale
         case entryTextFontDescriptor
+        case fieldMenuMode
 
         case keyFileEntryProtected
     }
@@ -480,6 +481,11 @@ public class Settings {
             }
             // swiftlint:enable line_length
         }
+    }
+
+    public enum FieldMenuMode: Int, CaseIterable {
+        case full = 0
+        case compact = 1
     }
 
     public enum GroupSortOrder: Int {
@@ -1604,6 +1610,23 @@ public class Settings {
         }
     }
 
+    public var fieldMenuMode: FieldMenuMode {
+        get {
+            if let rawValue = UserDefaults.appGroupShared
+                    .object(forKey: Keys.fieldMenuMode.rawValue) as? Int,
+               let storedMode = FieldMenuMode(rawValue: rawValue)
+            {
+                return storedMode
+            }
+            return .full
+        }
+        set {
+            updateAndNotify(
+                oldValue: fieldMenuMode.rawValue,
+                newValue: newValue.rawValue,
+                key: .fieldMenuMode)
+        }
+    }
 
     public var passwordGeneratorConfig: PasswordGeneratorParams {
         get {

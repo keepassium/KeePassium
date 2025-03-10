@@ -159,13 +159,15 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
                 supportsFieldReferencing ? .copyReference : nil
             ].compactMap { $0 }
 
+            delegate?.didPressCopyField(text: text, in: self)
             if #available(iOS 17.4, *),
-                !ProcessInfo.isRunningOnMac
+               !ProcessInfo.isRunningOnMac,
+               !UIAccessibility.isVoiceOverRunning
             {
                 let popoverAnchor = PopoverAnchor(tableView: self.tableView, at: indexPath)
-                showFieldMenu(for: field, with: [.copy] + actions, in: cell, for: indexPath, at: popoverAnchor)
+                showFieldMenu(for: field, with: actions, in: cell, for: indexPath, at: popoverAnchor)
+                animateCopyingToClipboard(in: cell, at: indexPath, actions: [])
             } else {
-                delegate?.didPressCopyField(text: text, in: self)
                 animateCopyingToClipboard(in: cell, at: indexPath, actions: actions)
             }
         default:
@@ -362,6 +364,7 @@ extension EntryFieldViewerVC: FieldCopiedViewDelegate {
             assertionFailure()
             return
         }
+        HapticFeedback.play(.copiedToClipboard)
         delegate?.didPressCopyFieldReference(from: field, in: self)
     }
 

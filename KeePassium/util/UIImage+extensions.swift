@@ -132,6 +132,7 @@ public enum SymbolName: String {
     case qrcode = "qrcode"
     case questionmarkBubble = "questionmark.bubble"
     case rectangleStack = "rectangle.stack"
+    case rectangleCompressVertical = "rectangle.compress.vertical"
     case `return` = "return"
     case shieldBadgePlus = "shield.badge.plus"
     case sliderVertical3 = "slider.vertical.3"

@@ -724,6 +724,12 @@ extension LString {
         value: "Show as QR Code",
         comment: "Action: display text using QR code"
     )
+    public static let titleFieldMenuCompactView = NSLocalizedString(
+        "[Entry/Field/CompactMenu/title]",
+        bundle: Bundle.framework,
+        value: "Compact View",
+        comment: "On/off state: whether to show full-size or compact menu"
+    )
     public static let titleEntry = NSLocalizedString(
         "[Entry/title]",
         bundle: Bundle.framework,

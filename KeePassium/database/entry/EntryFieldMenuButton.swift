@@ -46,35 +46,65 @@ enum ViewableFieldAction: CaseIterable {
             return .symbol(.qrcode)
         }
     }
-
-    var hapticFeedback: HapticFeedback.Kind? {
-        switch self {
-        case .copy,
-             .copyReference:
-            return .copiedToClipboard
-        case .export,
-             .showLargeType,
-             .showQRCode:
-            return nil
-        }
-    }
 }
 
 @available(iOS 17.4, *)
 final class EntryFieldMenuButton: UIButton {
+    typealias CompletionHandler = (ViewableFieldAction) -> Void
+    private let actions: [ViewableFieldAction]
+    private let completion: CompletionHandler
+
+    private var isReshowing = false
+
     init(
         actions: [ViewableFieldAction],
-        completion: @escaping (ViewableFieldAction) -> Void
+        completion: @escaping CompletionHandler
     ) {
+        self.actions = actions
+        self.completion = completion
         super.init(frame: .zero)
+        configureMenu()
+    }
+
+    private func configureMenu() {
         showsMenuAsPrimaryAction = true
-        menu = UIMenu(children: actions.map { action in
-            UIAction(title: action.title, image: action.icon) { _ in
-                HapticFeedback.play(action.hapticFeedback)
-                completion(action)
+        var fieldActions = actions.map { action in
+            UIAction(title: action.title, image: action.icon) { [weak self] _ in
+                self?.completion(action)
             }
-        })
-        preferredMenuElementOrder = .priority
+        }
+
+        let toggleMenuModeAction = UIAction(
+            title: LString.titleFieldMenuCompactView,
+            image: .symbol(.rectangleCompressVertical)
+        ) { [weak self] _ in
+            guard let self else { return }
+            switch Settings.current.fieldMenuMode {
+            case .full:
+                Settings.current.fieldMenuMode = .compact
+            case .compact:
+                Settings.current.fieldMenuMode = .full
+            }
+
+            isReshowing = true
+            DispatchQueue.main.async {
+                self.configureMenu()
+                self.performPrimaryAction()
+            }
+        }
+
+        switch Settings.current.fieldMenuMode {
+        case .full:
+            toggleMenuModeAction.state = .off
+            menu = UIMenu(options: [.displayInline], children: [
+                UIMenu(options: .displayInline, children: fieldActions),
+                UIMenu(options: .displayInline, children: [toggleMenuModeAction]),
+            ])
+        case .compact:
+            toggleMenuModeAction.state = .on
+            fieldActions.append(toggleMenuModeAction)
+            menu = UIMenu(options: [.displayInline, .displayAsPalette], children: fieldActions)
+        }
     }
 
     required init?(coder: NSCoder) {
@@ -106,6 +136,10 @@ final class EntryFieldMenuButton: UIButton {
         animator: UIContextMenuInteractionAnimating?
     ) {
         super.contextMenuInteraction(interaction, willEndFor: configuration, animator: animator)
-        removeFromSuperview()
+        if isReshowing {
+            isReshowing = false
+        } else {
+            removeFromSuperview()
+        }
     }
 }
