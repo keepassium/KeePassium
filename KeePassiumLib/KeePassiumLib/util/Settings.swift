@@ -137,15 +137,25 @@ public class Settings {
             case appMinimized
         }
 
-        public static let allValues = [
-            immediately,
-            after3seconds, after15seconds, after30seconds,
-            after1minute, after2minutes, after5minutes]
+        public static var allValues: [Self] = {
+            if ProcessInfo.isRunningOnMac {
+                return [
+                    after10seconds, after15seconds, after30seconds,
+                    after1minute, after2minutes, after5minutes]
+            } else {
+                return [
+                    immediately,
+                    after3seconds, after15seconds, after30seconds,
+                    after1minute, after2minutes, after5minutes]
+            }
+        }()
 
         case never = -1 
         case immediately = 0
         case almostImmediately = 2 /* workaround for some bugs with `immediately` */
         case after3seconds = 3
+        case after5seconds = 5
+        case after10seconds = 10
         case after15seconds = 15
         case after30seconds = 30
         case after1minute = 60
@@ -1038,7 +1048,10 @@ public class Settings {
             {
                 return maybeFixAutoFillBiometricIDLoop(timeout)
             }
-            return maybeFixAutoFillBiometricIDLoop(AppLockTimeout.immediately)
+
+            return maybeFixAutoFillBiometricIDLoop(
+                ProcessInfo.isRunningOnMac ? .after10seconds : .immediately
+            )
         }
         set {
             let oldValue = appLockTimeout

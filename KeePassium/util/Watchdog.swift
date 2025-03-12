@@ -41,6 +41,8 @@ class Watchdog {
 
     private let screenIsLockedNotificationName = Notification.Name(rawValue: "com.apple.screenIsLocked")
     private let screenIsUnlockedNotificationName = Notification.Name(rawValue: "com.apple.screenIsUnlocked")
+    private let nsWindowDidBecomeKeyNotificationName = Notification.Name(rawValue: "NSWindowDidBecomeKeyNotification")
+    private let nsWindowDidResignKeyNotificationName = Notification.Name(rawValue: "NSWindowDidResignKeyNotification")
 
     init() {
         NotificationCenter.default.addObserver(
@@ -64,12 +66,33 @@ class Watchdog {
                 selector: #selector(macScreenDidUnlock),
                 name: screenIsUnlockedNotificationName,
                 object: nil)
+
+            NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(macWindowDidBecomeKey),
+                name: nsWindowDidBecomeKeyNotificationName,
+                object: nil)
+            NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(macWindowDidResignKey),
+                name: nsWindowDidResignKeyNotificationName,
+                object: nil)
         #endif
     }
 
 
     @objc private func appDidBecomeActive(_ notification: Notification) {
         didBecomeActive()
+    }
+
+    @objc private func macWindowDidBecomeKey(_notification: Notification) {
+        Diag.debug("Mac window did become key")
+        didBecomeActive()
+    }
+
+    @objc private func macWindowDidResignKey(_notification: Notification) {
+        Diag.debug("Mac window did resign key")
+        willResignActive()
     }
 
     @objc private func macScreenDidUnlock(_notification: Notification) {
@@ -120,10 +143,15 @@ class Watchdog {
             Watchdog.shared.restart() 
         }
 
+        if ProcessInfo.isRunningOnMac {
+            return
+        }
+
         appLockTimer?.invalidate()
         databaseLockTimer?.invalidate()
         appLockTimer = nil
         databaseLockTimer = nil
+        print("   == timer stopped")
     }
 
 
@@ -243,6 +271,7 @@ class Watchdog {
                 selector: #selector(maybeLockApp),
                 userInfo: nil,
                 repeats: false)
+            print("   = timer started")
         }
     }
 
@@ -272,6 +301,7 @@ class Watchdog {
         Diag.info("Engaging App Lock")
         appLockTimer?.invalidate()
         appLockTimer = nil
+        print("   == timeer stopped")
         delegate.showAppLock(self)
     }
 

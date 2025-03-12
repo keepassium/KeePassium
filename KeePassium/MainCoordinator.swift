@@ -730,15 +730,18 @@ extension MainCoordinator: UISplitViewControllerDelegate {
 
 extension MainCoordinator: WatchdogDelegate {
     var isAppCoverVisible: Bool {
+        if ProcessInfo.isRunningOnMac { return false }
         return appCoverWindow != nil
     }
     var isAppLockVisible: Bool {
         return appLockWindow != nil || isBiometricAuthShown
     }
     func showAppCover(_ sender: Watchdog) {
+        if ProcessInfo.isRunningOnMac { return }
         showAppCoverScreen()
     }
     func hideAppCover(_ sender: Watchdog) {
+        if ProcessInfo.isRunningOnMac { return }
         hideAppCoverScreen()
     }
     func showAppLock(_ sender: Watchdog) {
@@ -789,6 +792,9 @@ extension MainCoordinator: WatchdogDelegate {
 
     private func showAppLockScreen() {
         guard !isAppLockVisible else { return }
+        if ProcessInfo.isRunningOnMac {
+            rootSplitVC.dismiss(animated: false)
+        }
         let isRepeatedLockOnMac = ProcessInfo.isRunningOnMac && !isInitialAppLock
         isInitialAppLock = false
         if canUseBiometrics() && !isRepeatedLockOnMac {
