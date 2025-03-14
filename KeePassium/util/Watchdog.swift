@@ -151,7 +151,6 @@ class Watchdog {
         databaseLockTimer?.invalidate()
         appLockTimer = nil
         databaseLockTimer = nil
-        print("   == timer stopped")
     }
 
 
@@ -271,7 +270,6 @@ class Watchdog {
                 selector: #selector(maybeLockApp),
                 userInfo: nil,
                 repeats: false)
-            print("   = timer started")
         }
     }
 
@@ -301,7 +299,6 @@ class Watchdog {
         Diag.info("Engaging App Lock")
         appLockTimer?.invalidate()
         appLockTimer = nil
-        print("   == timeer stopped")
         delegate.showAppLock(self)
     }
 
