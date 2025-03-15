@@ -124,7 +124,7 @@ public class Keychain {
     }
 
     private func getAccounts(service: Service) throws -> [String] {
-        var query = makeQuery(service: .databaseSettings, account: nil)
+        var query = makeQuery(service: service, account: nil)
         query[kSecReturnAttributes as String] = kCFBooleanTrue
         query[kSecMatchLimit as String] = kSecMatchLimitAll
 
