@@ -73,11 +73,22 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
 
         toolbarItems = [] 
         refresh()
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(refresh),
+            name: UIAccessibility.differentiateWithoutColorDidChangeNotification,
+            object: nil
+        )
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         refresh()
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
     func setContents(
@@ -103,6 +114,7 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
         refresh()
     }
 
+    @objc
     func refresh() {
         guard isViewLoaded else { return }
         editButton.isEnabled = canEditEntry

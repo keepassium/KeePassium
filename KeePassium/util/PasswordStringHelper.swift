@@ -17,20 +17,19 @@ public class PasswordStringHelper {
 
     public static func decorate(_ password: String, font: UIFont?) -> NSMutableAttributedString {
         let baseFont = font ?? UIFont.monospaceFont(style: .body)
+        let boldFont = baseFont.addingTraits(.traitBold)
 
         let result = NSMutableAttributedString()
         let letterAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: Color.letter,
             .font: baseFont
         ]
-        let digitAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: Color.digit,
-            .font: baseFont
-        ]
-        let symbolAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: Color.symbol,
-            .font: baseFont
-        ]
+        let digitAttributes: [NSAttributedString.Key: Any] = UIAccessibility.shouldDifferentiateWithoutColor
+            ? [.foregroundColor: Color.letter, .font: boldFont]
+            : [.foregroundColor: Color.digit, .font: baseFont]
+        let symbolAttributes: [NSAttributedString.Key: Any] = UIAccessibility.shouldDifferentiateWithoutColor
+            ? [.foregroundColor: Color.letter, .font: baseFont]
+            : [.foregroundColor: Color.symbol, .font: baseFont]
 
 
         password.forEach { character in

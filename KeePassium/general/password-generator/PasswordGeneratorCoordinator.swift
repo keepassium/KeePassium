@@ -237,7 +237,7 @@ extension PasswordGeneratorCoordinator: PasswordGeneratorQuickSheetDelegate {
 
         router.push(fullModeVC, animated: true, onPop: { [weak self] in
             self?.passGenVC = nil
-            self?.quickSheetVC?.refresh()
+            self?.quickSheetVC?.regenerate()
         })
     }
 }

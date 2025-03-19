@@ -83,7 +83,7 @@ final class PasswordGeneratorQuickSheetVC: UITableViewController, Refreshable {
         let refreshButton = UIBarButtonItem(
             systemItem: .refresh,
             primaryAction: UIAction { [weak self] _ in
-                self?.refresh()
+                self?.regenerate()
             }
         )
         navigationItem.rightBarButtonItem = fullModeButton
@@ -95,10 +95,21 @@ final class PasswordGeneratorQuickSheetVC: UITableViewController, Refreshable {
             ],
             animated: false
         )
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(refresh),
+            name: UIAccessibility.differentiateWithoutColorDidChangeNotification,
+            object: nil
+        )
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -125,8 +136,13 @@ final class PasswordGeneratorQuickSheetVC: UITableViewController, Refreshable {
         }
     }
 
-    func refresh() {
+    func regenerate() {
         items = generateItems()
+        refresh()
+    }
+
+    @objc
+    func refresh() {
         tableView.reloadData()
     }
 
