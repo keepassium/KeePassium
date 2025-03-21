@@ -175,6 +175,7 @@ final class GroupViewerVC:
     private var databaseChangesCheckStatusTimer: Timer?
 
     private var titleView = DatabaseItemTitleView()
+    private let footerLabelView = TableFooterLabelView()
 
     private var groupsSorted = [Group]()
     private var entriesSorted = [Entry]()
@@ -391,6 +392,7 @@ final class GroupViewerVC:
             sortGroupItems()
         }
         shouldHighlightOTP = isOTPSmartGroup()
+        updateTableFooter()
         tableView.reloadData()
 
         updateGroupActionsMenuButton()
@@ -419,6 +421,20 @@ final class GroupViewerVC:
         let groupSortOrder = Settings.current.groupSortOrder
         groupsSorted = group.groups.sorted { groupSortOrder.compare($0, $1) }
         entriesSorted = group.entries.sorted { groupSortOrder.compare($0, $1) }
+    }
+
+    private func updateTableFooter() {
+        guard isSearchActive,
+              searchResults.count > 0
+        else {
+            tableView.tableFooterView = nil
+            return
+        }
+
+        let itemCount = searchResults.reduce(0) { $0 + $1.scoredItems.count }
+        let itemCountText = String.localizedStringWithFormat(LString.itemsCountTemplate, itemCount)
+        footerLabelView.text = itemCountText
+        tableView.tableFooterView = footerLabelView
     }
 
     private func makeActionAttributes(
@@ -1474,6 +1490,7 @@ extension GroupViewerVC: UISearchResultsUpdating {
         )
         searchResults.sort(order: Settings.current.groupSortOrder)
         shouldHighlightOTP = isOTPSmartGroup()
+        updateTableFooter()
         tableView.reloadData()
     }
 }

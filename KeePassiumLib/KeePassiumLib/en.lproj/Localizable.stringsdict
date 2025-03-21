@@ -56,6 +56,24 @@
 			<string>%d items selected</string>
 		</dict>
 	</dict>
+    <key>[Generic/Count/Items]</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@GenericCountItems@</string>
+        <key>GenericCountItems</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>zero</key>
+            <string>%d items</string>
+            <key>one</key>
+            <string>%d item</string>
+            <key>other</key>
+            <string>%d items</string>
+        </dict>
+    </dict>
 	<key>[Generic/Count/Threads]</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>

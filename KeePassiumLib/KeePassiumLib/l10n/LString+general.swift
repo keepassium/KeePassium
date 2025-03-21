@@ -18,8 +18,13 @@ extension LString {
     public static let itemsSelectedCountTemplate = NSLocalizedString(
           "[Generic/Count/ItemsSelected]",
           bundle: Bundle.framework,
-          comment: "Number of list items selected. For example: 'No items selected', '1 entry selected'. IMPORTANT: Please fill out all the plural forms."
-      )
+          comment: "Number of list items selected. For example: 'No items selected', '1 item selected'. IMPORTANT: Please fill out all the plural forms."
+    )
+    public static let itemsCountTemplate = NSLocalizedString(
+        "[Generic/Count/Items]",
+        bundle: Bundle.framework,
+        comment: "Number of items in a list, search results, etc. For example: '0 items', '1 item'. IMPORTANT: Please fill out all the plural forms."
+    )
 
     public static let bitCountTemplate = NSLocalizedString(
         "[Generic/Count/Bits]",
