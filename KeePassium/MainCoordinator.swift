@@ -96,7 +96,7 @@ final class MainCoordinator: UIResponder, Coordinator {
         let toolbar = NSToolbar(identifier: "main")
         toolbarDelegate = ToolbarDelegate(mainCoordinator: self)
         toolbar.delegate = toolbarDelegate
-        toolbar.displayMode = .iconOnly
+        toolbar.autosavesConfiguration = true
 
         let titlebar = scene.titlebar
         titlebar?.toolbar = toolbar
