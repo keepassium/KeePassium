@@ -236,7 +236,11 @@ final class EntryFieldEditorCoordinator: Coordinator {
             return
         }
         let seed = unfilteredSeed.replacingOccurrences(of: " ", with: "")
-        let otpauthURI = TOTPGeneratorFactory.makeOtpauthURI(base32Seed: seed)
+        let otpauthURI = TOTPGeneratorFactory.makeOtpauthURI(
+            base32Seed: seed,
+            issuer: entry.resolvedTitle.isEmpty ? AppInfo.name : entry.resolvedTitle,
+            accountName: entry.resolvedUserName.isEmpty ? nil : entry.resolvedUserName
+        )
         setOTPConfig(uri: otpauthURI.absoluteString, isQRBased: false)
     }
 
