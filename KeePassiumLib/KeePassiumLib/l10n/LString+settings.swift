@@ -8,6 +8,23 @@
 
 // swiftlint:disable line_length
 extension LString {
+    public static let titleYes = NSLocalizedString(
+        "[Settings/Value/Yes/title]",
+        bundle: Bundle.framework,
+        value: "Yes",
+        comment: "Title of a settings value. For example: `Remember Master Keys: Yes`")
+    public static let titleNo = NSLocalizedString(
+        "[Settings/Value/No/title]",
+        bundle: Bundle.framework,
+        value: "No",
+        comment: "Title of a settings value. For example: `Remember Master Keys: No`")
+    public static let titleUseAppSettingsTemplate = NSLocalizedString(
+        "[Settings/Value/UseAppSettings/title]",
+        bundle: Bundle.framework,
+        value: "Use App Settings (%@)",
+        comment: "Title of a settings value, when it is not customized and we default to app's global settings. For example: `Remember Master Keys: Use App Settings (No)`")
+    public static let titleUseAppSettingsShortTemplate = "(%@)"
+
     public static let titleSettings = NSLocalizedString(
         "[Settings/title]",
         bundle: Bundle.framework,

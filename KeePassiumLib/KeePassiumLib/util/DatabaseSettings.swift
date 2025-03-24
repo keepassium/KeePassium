@@ -11,12 +11,50 @@ import Foundation
 final public class DatabaseSettings: Eraseable {
     public var isReadOnlyFile: Bool = false
 
-    public var isRememberMasterKey: Bool?
-    public var isRememberFinalKey: Bool?
+    private var _isRememberMasterKey: Bool?
+    public var isRememberMasterKey: Bool? {
+        get {
+            if let managedValue = ManagedAppConfig.shared.getBoolIfLicensed(.rememberDatabaseKey) {
+                return nil
+            } else {
+                return _isRememberMasterKey
+            }
+        }
+        set {
+            _isRememberMasterKey = newValue
+        }
+    }
+
+    private var _isRememberFinalKey: Bool?
+    public var isRememberFinalKey: Bool? {
+        get {
+            if let managedValue = ManagedAppConfig.shared.getBoolIfLicensed(.rememberDatabaseFinalKey) {
+                return nil
+            } else {
+                return _isRememberFinalKey
+            }
+        }
+        set {
+            _isRememberFinalKey = newValue
+        }
+    }
+
     public private(set) var masterKey: CompositeKey?
     public var hasMasterKey: Bool { return masterKey != nil }
 
-    public var isRememberKeyFile: Bool?
+    private var _isRememberKeyFile: Bool?
+    public var isRememberKeyFile: Bool? {
+        get {
+            if let managedValue = ManagedAppConfig.shared.getBoolIfLicensed(.keepKeyFileAssociations) {
+                return nil
+            } else {
+                return _isRememberKeyFile
+            }
+        }
+        set {
+            _isRememberKeyFile = newValue
+        }
+    }
     public private(set) var associatedKeyFile: URLReference?
 
     public var isRememberHardwareKey: Bool?

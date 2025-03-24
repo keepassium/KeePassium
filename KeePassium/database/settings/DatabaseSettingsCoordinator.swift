@@ -137,4 +137,66 @@ extension DatabaseSettingsCoordinator: DatabaseSettingsDelegate {
         viewController.externalUpdateBehavior = newExternalUpdateBehavior
         delegate?.didChangeDatabaseSettings(in: self)
     }
+
+    func didPressDataProtection(in viewController: DatabaseSettingsVC) {
+        let databaseSettingsDataProtectionVC = DatabaseSettingsDataProtectionVC.make(delegate: self)
+
+        let dbSettings = DatabaseSettingsManager.shared.getSettings(for: dbRef)
+        databaseSettingsDataProtectionVC.rememberMasterKey = dbSettings?.isRememberMasterKey
+        databaseSettingsDataProtectionVC.rememberKeyFile = dbSettings?.isRememberKeyFile
+        databaseSettingsDataProtectionVC.cachesDerivedEncryptionKey = dbSettings?.isRememberFinalKey
+
+        router.push(databaseSettingsDataProtectionVC, animated: true, onPop: nil)
+    }
+}
+
+extension DatabaseSettingsCoordinator: DatabaseSettingsDataProtectionVCDelegate {
+    func didChangeRememberMasterKey(
+        _ rememberMasterKey: Bool?,
+        in viewController: DatabaseSettingsDataProtectionVC
+    ) {
+        DatabaseSettingsManager.shared.updateSettings(for: dbRef) { dbSettings in
+            dbSettings.isRememberMasterKey = rememberMasterKey
+
+            viewController.rememberMasterKey = dbSettings.isRememberMasterKey
+
+            if dbSettings.isRememberMasterKey == false ||
+               (rememberMasterKey == nil && !Settings.current.isRememberDatabaseKey) {
+                dbSettings.clearMasterKey()
+            }
+        }
+        viewController.showNotificationIfManaged(setting: .rememberDatabaseKey)
+        delegate?.didChangeDatabaseSettings(in: self)
+    }
+
+    func didChangeRememberKeyFile(
+        _ rememberKeyFile: Bool?,
+        in viewController: DatabaseSettingsDataProtectionVC
+    ) {
+        DatabaseSettingsManager.shared.updateSettings(for: dbRef) { dbSettings in
+            dbSettings.isRememberKeyFile = rememberKeyFile
+
+            viewController.rememberKeyFile = dbSettings.isRememberKeyFile
+        }
+        viewController.showNotificationIfManaged(setting: .keepKeyFileAssociations)
+        delegate?.didChangeDatabaseSettings(in: self)
+    }
+
+    func didChangeRememberDerivedKey(
+        _ rememberDerivedKey: Bool?,
+        in viewController: DatabaseSettingsDataProtectionVC
+    ) {
+        DatabaseSettingsManager.shared.updateSettings(for: dbRef) { dbSettings in
+            dbSettings.isRememberFinalKey = rememberDerivedKey
+
+            viewController.cachesDerivedEncryptionKey = dbSettings.isRememberFinalKey
+
+            if dbSettings.isRememberFinalKey == false ||
+               (rememberDerivedKey == nil && !Settings.current.isRememberDatabaseFinalKey) {
+                dbSettings.clearFinalKey()
+            }
+        }
+        viewController.showNotificationIfManaged(setting: .rememberDatabaseFinalKey)
+        delegate?.didChangeDatabaseSettings(in: self)
+    }
 }

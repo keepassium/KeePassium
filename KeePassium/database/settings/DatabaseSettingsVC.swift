@@ -31,6 +31,8 @@ protocol DatabaseSettingsDelegate: AnyObject {
         newExternalUpdateBehavior: ExternalUpdateBehavior,
         in viewController: DatabaseSettingsVC
     )
+
+    func didPressDataProtection(in viewController: DatabaseSettingsVC)
 }
 
 final class DatabaseSettingsVC: UITableViewController, Refreshable {
@@ -54,6 +56,14 @@ final class DatabaseSettingsVC: UITableViewController, Refreshable {
         return formatter
     }()
 
+    private lazy var dataProtectionCellConfiguration: UIListContentConfiguration = {
+        var configuration = UIListContentConfiguration.subtitleCell()
+        configuration.textProperties.font = UIFont.preferredFont(forTextStyle: .body)
+        configuration.textProperties.color = .primaryText
+        configuration.text = LString.titleDataProtectionSettings
+        return configuration
+    }()
+
     public static func make() -> DatabaseSettingsVC {
         let vc = DatabaseSettingsVC(style: .insetGrouped)
         return vc
@@ -63,7 +73,6 @@ final class DatabaseSettingsVC: UITableViewController, Refreshable {
         super.viewDidLoad()
         title = LString.titleDatabaseSettings
 
-        tableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         tableView.estimatedSectionHeaderHeight = 18
 
         registerCellClasses(tableView)
@@ -72,6 +81,7 @@ final class DatabaseSettingsVC: UITableViewController, Refreshable {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        tableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         super.viewWillAppear(animated)
         refresh()
     }
@@ -123,11 +133,13 @@ extension DatabaseSettingsVC {
     private enum CellID {
         static let switchCell = "SwitchCell"
         static let parameterValueCell = "ParameterValueCell"
+        static let dataProtectionCell = "DataProtectionCell"
     }
     private enum CellIndex {
-        static let sectionSizes = [1, 3, 3]
+        static let sectionSizes = [2, 3, 3]
 
         static let readOnly = IndexPath(row: 0, section: 0)
+        static let dataProtection = IndexPath(row: 1, section: 0)
         static let externalUpdateBehavior = IndexPath(row: 0, section: 1)
         static let fileUnreachableTimeout = IndexPath(row: 1, section: 1)
         static let fileUnreachableAction = IndexPath(row: 2, section: 1)
@@ -143,6 +155,9 @@ extension DatabaseSettingsVC {
         tableView.register(
             UINib(nibName: ParameterValueCell.reuseIdentifier, bundle: nil),
             forCellReuseIdentifier: CellID.parameterValueCell)
+        tableView.register(
+            UITableViewCell.self,
+            forCellReuseIdentifier: CellID.dataProtectionCell)
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -178,6 +193,12 @@ extension DatabaseSettingsVC {
                 for: indexPath)
                 as! SwitchCell
             configureReadOnlyCell(cell)
+            return cell
+        case CellIndex.dataProtection:
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: CellID.dataProtectionCell,
+                for: indexPath)
+            configureDataProtectionCell(cell)
             return cell
         case CellIndex.fileUnreachableTimeout:
             let cell = tableView.dequeueReusableCell(
@@ -226,6 +247,12 @@ extension DatabaseSettingsVC {
         }
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard indexPath == CellIndex.dataProtection else { return }
+        delegate?.didPressDataProtection(in: self)
+    }
+
     private func configureReadOnlyCell(_ cell: SwitchCell) {
         cell.textLabel?.text = LString.titleFileAccessReadOnly
         let isEnabled = delegate?.canChangeReadOnly(in: self) ?? false
@@ -241,6 +268,11 @@ extension DatabaseSettingsVC {
             self.isReadOnlyAccess = theSwitch.isOn
             self.delegate?.didChangeSettings(isReadOnlyFile: theSwitch.isOn, in: self)
         }
+    }
+
+    private func configureDataProtectionCell(_ cell: UITableViewCell) {
+        cell.contentConfiguration = dataProtectionCellConfiguration
+        cell.accessoryType = .disclosureIndicator
     }
 
     private func configureOfflineAccessCell(
