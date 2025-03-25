@@ -150,16 +150,32 @@ extension DatabaseSaving {
         didFailSaving databaseFile: DatabaseFile,
         with error: Error
     ) {
-        self.databaseSaver = nil
         savingProgressHost?.hideProgressView(animated: true)
 
-        showDatabaseSavingError(
+        askDatabaseSavingErrorResolution(
             error,
-            fileName: databaseFile.visibleFileName,
             databaseFile: databaseFile,
-            diagnosticsHandler: getDiagnosticsHandler(),
             parent: getDatabaseSavingErrorParent()
-        )
+        ) { [weak self] resolution in
+            guard let self else { return }
+            switch resolution {
+            case .retry:
+                Diag.info("Will retry saving")
+                self.databaseSaver!.save()
+            case .saveAs:
+                self.databaseSaver = nil
+                saveToAnotherFile(databaseFile: databaseFile)
+            case .showDiagnostics:
+                self.databaseSaver = nil
+                didFailSaving(databaseFile: databaseFile)
+                let showDiagnosticInfo = getDiagnosticsHandler()
+                showDiagnosticInfo?()
+            case .cancel:
+                self.databaseSaver = nil
+                didFailSaving(databaseFile: databaseFile)
+            }
+            assert(self.databaseSaver == nil || resolution == .retry, "databaseSaver must be deallocated")
+        }
     }
 }
 
@@ -174,6 +190,13 @@ extension DatabaseSaving {
     }
 }
 
+private enum DatabaseSavingErrorResolution {
+    case retry
+    case saveAs
+    case showDiagnostics
+    case cancel
+}
+
 extension DatabaseSaving {
     private func getErrorDetails(_ error: Error) -> String? {
         guard let localizedError = error as? LocalizedError else {
@@ -184,12 +207,11 @@ extension DatabaseSaving {
         return parts.compactMap { $0 }.joined(separator: "\n\n")
     }
 
-    func showDatabaseSavingError(
+    private func askDatabaseSavingErrorResolution(
         _ error: Error,
-        fileName: String,
         databaseFile: DatabaseFile,
-        diagnosticsHandler: (() -> Void)?,
-        parent viewController: UIViewController
+        parent viewController: UIViewController,
+        completion: @escaping (DatabaseSavingErrorResolution) -> Void
     ) {
         StoreReviewSuggester.registerEvent(.trouble)
         let errorAlert = UIAlertController(
@@ -197,19 +219,19 @@ extension DatabaseSaving {
             message: getErrorDetails(error),
             preferredStyle: .alert
         )
-        if let diagnosticsHandler = diagnosticsHandler {
-            errorAlert.addAction(title: LString.actionShowDetails, style: .default) { [weak self] _ in
-                self?.didFailSaving(databaseFile: databaseFile)
-                diagnosticsHandler()
-            }
-        }
         if databaseFile.data.count > 0 {
-            errorAlert.addAction(title: LString.actionFileSaveAs, style: .default) { [weak self] _ in
-                self?.saveToAnotherFile(databaseFile: databaseFile) 
+            errorAlert.addAction(title: LString.actionRetry, style: .default, preferred: true) { _ in
+                completion(.retry)
+            }
+            errorAlert.addAction(title: LString.actionFileSaveAs, style: .default) { _ in
+                completion(.saveAs)
             }
         }
-        errorAlert.addAction(title: LString.actionCancel, style: .cancel) { [weak self] _ in
-            self?.didFailSaving(databaseFile: databaseFile)
+        errorAlert.addAction(title: LString.actionShowDetails, style: .default) { _ in
+            completion(.showDiagnostics)
+        }
+        errorAlert.addAction(title: LString.actionCancel, style: .cancel) { _ in
+            completion(.cancel)
         }
         viewController.present(errorAlert, animated: true, completion: nil)
     }
