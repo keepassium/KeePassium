@@ -33,6 +33,13 @@ extension LString {
         comment: "Number of computation threads. For example: '4 threads'. IMPORTANT: Please fill out all the plural forms."
     )
 
+    public static let importEntriesCountTemplate = NSLocalizedString(
+        "[Generic/Count/ImportedEntries]",
+        bundle: Bundle.framework,
+        value: "Entries found: %d",
+        comment: "Number of entries found in an incoming file. For example: 'Found entries: 42' [itemCount: Int]"
+    )
+
     public static let actionOK = NSLocalizedString(
         "[Generic] OK",
         bundle: Bundle.framework,
@@ -195,6 +202,12 @@ extension LString {
         bundle: Bundle.framework,
         value: "Export",
         comment: "Action/button to export an item to another app"
+    )
+    public static let actionImport = NSLocalizedString(
+        "[Generic] Import",
+        bundle: Bundle.framework,
+        value: "Import",
+        comment: "Action/button to import an item to another app"
     )
     public static let actionRefreshList = NSLocalizedString(
         "[Generic/RefreshList/action]",

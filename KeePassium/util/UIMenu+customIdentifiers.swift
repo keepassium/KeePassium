@@ -18,4 +18,5 @@ extension UIMenu.Identifier {
     static let fileSortOrder = UIMenu.Identifier("com.keepassium.menu.fileSortOrder")
     static let itemsSortOrder = UIMenu.Identifier("com.keepassium.menu.itemsSortOrder")
     static let reloadDatabase = UIMenu.Identifier("com.keepassium.menu.reloadDatabase")
+    static let importDatabase = UIMenu.Identifier("com.keepassium.menu.importDatabase")
 }

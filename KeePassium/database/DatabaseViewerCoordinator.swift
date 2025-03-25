@@ -93,6 +93,7 @@ final class DatabaseViewerCoordinator: Coordinator {
     var hasUnsavedBulkChanges = false
     var databaseSaver: DatabaseSaver?
     var fileExportHelper: FileExportHelper?
+    var fileImportHelper: FileImportHelper?
     var savingProgressHost: ProgressViewHost? { return self }
     var saveSuccessHandler: (() -> Void)?
 
@@ -695,6 +696,57 @@ extension DatabaseViewerCoordinator {
             self?.exportDatabaseToCSV()
         }
         getPresenterForModals().present(alert, animated: true, completion: nil)
+    }
+
+    func importDatabaseFromApplePasswordsCSV() {
+        guard let currentGroup = currentGroup else {
+            assertionFailure("No group selected")
+            return
+        }
+
+        fileImportHelper = FileImportHelper()
+        fileImportHelper?.handler = { [weak self] fileURL in
+            defer {
+                self?.fileImportHelper = nil
+            }
+            guard let self = self, let fileURL = fileURL else {
+                return
+            }
+
+            let importer = ApplePasswordsImporter()
+            do {
+                let entries = try importer.importFromCSV(fileURL: fileURL, group: currentGroup)
+
+                let alert = UIAlertController(
+                    title: fileURL.lastPathComponent,
+                    message: String.localizedStringWithFormat(
+                        LString.importEntriesCountTemplate,
+                        entries.count
+                    ),
+                    preferredStyle: .alert
+                )
+                alert.addAction(title: LString.actionDone, style: .default, preferred: true) { [weak self] _ in
+                    guard let self = self else { return }
+                    entries.forEach { entry in
+                        currentGroup.add(entry: entry)
+                    }
+                    saveDatabase(databaseFile)
+                }
+                alert.addAction(title: LString.actionCancel, style: .cancel, handler: nil)
+                getPresenterForModals().present(alert, animated: true)
+            } catch {
+                Diag.error("CSV import failed [message: \(error.localizedDescription)]")
+                getPresenterForModals().showErrorAlert(
+                    error.localizedDescription,
+                    title: LString.titleFileImportError
+                )
+            }
+        }
+
+        fileImportHelper?.importFile(
+            contentTypes: [.commaSeparatedText],
+            presenter: getPresenterForModals()
+        )
     }
 
     private func exportDatabaseToCSV() {
@@ -1354,6 +1406,7 @@ final class DatabaseViewerActionsManager: UIResponder {
         builder.insertChild(makeDatabaseToolsMenu2(), atEndOfMenu: .databaseFile)
         builder.insertChild(makeLockDatabaseMenu(), atEndOfMenu: .databaseFile)
         builder.insertChild(makeExportDatabaseMenu(), atEndOfMenu: .databaseFile)
+        builder.insertChild(makeImportDatabaseMenu(), atEndOfMenu: .databaseFile)
         builder.insertSibling(makeDatabaseToolsMenu1(), afterMenu: .passwordGenerator)
         if coordinator != nil {
             builder.insertChild(makeDatabaseItemsSortOrderMenu(), atEndOfMenu: .view)
@@ -1374,7 +1427,8 @@ final class DatabaseViewerActionsManager: UIResponder {
         switch action {
         case #selector(kpmReloadDatabase),
              #selector(kpmLockDatabase),
-             #selector(kpmExportDatabaseToCSV):
+             #selector(kpmExportDatabaseToCSV),
+             #selector(kmpImportDatabaseFromApplePasswordsCSV):
             return true
         case #selector(kpmShowPasswordAudit):
             return permissions.contains(.auditPasswords)
@@ -1425,6 +1479,17 @@ final class DatabaseViewerActionsManager: UIResponder {
             title: LString.actionExport,
             identifier: .exportDatabase,
             children: [exportDatabaseCSVCommand])
+    }
+
+    private func makeImportDatabaseMenu() -> UIMenu {
+        let importApplePasswordsCSVCommand = UICommand(
+            title: LString.titleApplePasswordsCSV,
+            action: #selector(kmpImportDatabaseFromApplePasswordsCSV)
+        )
+        return UIMenu(
+            title: LString.actionImport,
+            identifier: .importDatabase,
+            children: [importApplePasswordsCSVCommand])
     }
 
     private func makeReloadDatabaseMenu() -> UIMenu {
@@ -1576,6 +1641,9 @@ final class DatabaseViewerActionsManager: UIResponder {
     }
     @objc func kpmExportDatabaseToCSV() {
         coordinator?.confirmAndExportDatabaseToCSV()
+    }
+    @objc func kmpImportDatabaseFromApplePasswordsCSV() {
+        coordinator?.importDatabaseFromApplePasswordsCSV()
     }
     @objc func kpmShowPasswordAudit() {
         coordinator?.showPasswordAudit()

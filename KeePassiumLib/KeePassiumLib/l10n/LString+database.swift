@@ -395,6 +395,12 @@ extension LString {
         value: "Close Database",
         comment: "Action: lock database")
 
+    public static let titleApplePasswordsCSV = NSLocalizedString(
+        "[Format/ApplePasswordsCSV]",
+        bundle: Bundle.framework,
+        value: "Apple Passwords (.csv)",
+        comment: "Name of Apple Passwords' CSV file format"
+    )
 
     public static let titleDatabaseFormatVersionUpgrade = NSLocalizedString(
         "[Database/FormatVersion/Upgrade/title]",
