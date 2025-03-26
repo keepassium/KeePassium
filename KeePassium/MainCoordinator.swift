@@ -96,7 +96,11 @@ final class MainCoordinator: UIResponder, Coordinator {
         let toolbar = NSToolbar(identifier: "main")
         toolbarDelegate = ToolbarDelegate(mainCoordinator: self)
         toolbar.delegate = toolbarDelegate
-        toolbar.autosavesConfiguration = true
+        if #available(macCatalyst 18.0, *) {
+            toolbar.autosavesConfiguration = toolbar.allowsDisplayModeCustomization
+        } else {
+            toolbar.displayMode = .iconOnly
+        }
 
         let titlebar = scene.titlebar
         titlebar?.toolbar = toolbar
