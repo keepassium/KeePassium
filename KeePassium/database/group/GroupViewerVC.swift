@@ -823,19 +823,43 @@ final class GroupViewerVC:
     }
 
     private func getIndexPath(for group: Group) -> IndexPath? {
-        guard let groupIndex = groupsSorted.firstIndex(where: { $0 === group }) else {
+        if isSearchActive {
+            for iSection in 0..<searchResults.count {
+                let items = searchResults[iSection].scoredItems
+                for iRow in 0..<items.count {
+                    if items[iRow].item === group {
+                        return IndexPath(row: iRow, section: iSection)
+                    }
+                }
+            }
             return nil
+        } else {
+            guard let groupIndex = groupsSorted.firstIndex(where: { $0 === group }) else {
+                return nil
+            }
+            let indexPath = IndexPath(row: groupIndex, section: Section.groups.rawValue)
+            return indexPath
         }
-        let indexPath = IndexPath(row: groupIndex, section: Section.groups.rawValue)
-        return indexPath
     }
 
     private func getIndexPath(for entry: Entry) -> IndexPath? {
-        guard let entryIndex = entriesSorted.firstIndex(where: { $0 === entry }) else {
+        if isSearchActive {
+            for iSection in 0..<searchResults.count {
+                let items = searchResults[iSection].scoredItems
+                for iRow in 0..<items.count {
+                    if items[iRow].item === entry {
+                        return IndexPath(row: iRow, section: iSection)
+                    }
+                }
+            }
             return nil
+        } else {
+            guard let entryIndex = entriesSorted.firstIndex(where: { $0 === entry }) else {
+                return nil
+            }
+            let indexPath = IndexPath(row: entryIndex, section: Section.entries.rawValue)
+            return indexPath
         }
-        let indexPath = IndexPath(row: entryIndex, section: Section.entries.rawValue)
-        return indexPath
     }
 
     func selectEntry(_ entry: Entry?, animated: Bool) {
