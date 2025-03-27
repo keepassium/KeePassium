@@ -63,8 +63,10 @@ extension ToolbarDelegate: NSToolbarDelegate {
             titlebar.toolbar?.removeItem(at: 0)
         }
 
-        for item in allItems.reversed() {
-            titlebar.toolbar?.insertItem(withItemIdentifier: item, at: 0)
+        if mainCoordinator?.isAppLockVisible == false {
+            for item in allItems.reversed() {
+                titlebar.toolbar?.insertItem(withItemIdentifier: item, at: 0)
+            }
         }
     }
 

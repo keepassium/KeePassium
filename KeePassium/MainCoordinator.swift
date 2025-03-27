@@ -77,7 +77,7 @@ final class MainCoordinator: UIResponder, Coordinator {
         window.rootViewController = rootSplitVC
 
         #if targetEnvironment(macCatalyst)
-        initMacUI()
+        setupMacToolbar()
         #endif
 
         NotificationCenter.default.addObserver(
@@ -88,7 +88,7 @@ final class MainCoordinator: UIResponder, Coordinator {
     }
 
 #if targetEnvironment(macCatalyst)
-    private func initMacUI() {
+    private func setupMacToolbar() {
         guard let scene = UIApplication.shared.currentScene else {
             assertionFailure()
             return
@@ -105,7 +105,14 @@ final class MainCoordinator: UIResponder, Coordinator {
         let titlebar = scene.titlebar
         titlebar?.toolbar = toolbar
         titlebar?.toolbarStyle = .automatic
+        titlebar?.titleVisibility = .visible
         scene.sizeRestrictions?.minimumSize = CGSize(width: 400, height: 600)
+    }
+
+    private func removeMacToolbar() {
+        let titlebar = UIApplication.shared.currentScene?.titlebar
+        titlebar?.titleVisibility = .hidden
+        titlebar?.toolbar = nil
     }
 #endif
 
@@ -796,9 +803,11 @@ extension MainCoordinator: WatchdogDelegate {
 
     private func showAppLockScreen() {
         guard !isAppLockVisible else { return }
-        if ProcessInfo.isRunningOnMac {
-            rootSplitVC.dismiss(animated: false)
-        }
+        #if targetEnvironment(macCatalyst)
+        removeMacToolbar()
+        rootSplitVC.dismiss(animated: false)
+        #endif
+
         let isRepeatedLockOnMac = ProcessInfo.isRunningOnMac && !isInitialAppLock
         isInitialAppLock = false
         if canUseBiometrics() && !isRepeatedLockOnMac {
@@ -811,6 +820,9 @@ extension MainCoordinator: WatchdogDelegate {
 
     private func hideAppLockScreen() {
         guard isAppLockVisible else { return }
+        #if targetEnvironment(macCatalyst)
+        setupMacToolbar()
+        #endif
 
         let window = UIApplication.shared.delegate!.window!
         window?.makeKeyAndVisible()
