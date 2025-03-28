@@ -449,7 +449,7 @@ class ChallengeResponseManager {
             guard let self = self else { return }
             if let error = error {
                 Diag.error("YubiKey select applet failed [message: \(error.localizedDescription)]")
-                self.returnError(.communicationError(message: error.localizedDescription))
+                self.returnError(buildCommunicationError(from: error as NSError))
                 return
             }
 
@@ -499,7 +499,7 @@ class ChallengeResponseManager {
             guard let self = self else { return }
             if let error = error {
                 Diag.error("YubiKey error while executing command [message: \(error.localizedDescription)]")
-                self.returnError(.communicationError(message: error.localizedDescription))
+                self.returnError(buildCommunicationError(from: error as NSError))
                 return
             }
 
@@ -524,6 +524,13 @@ class ChallengeResponseManager {
                 self.returnError(.communicationError(message: message))
             }
         }
+    }
+
+    private func buildCommunicationError(from error: NSError) -> ChallengeResponseError {
+        if error.code == YKFKeySessionErrorCode.connectionLost.rawValue {
+            Diag.warning("If this is a new YubiKey, please set it up first.")
+        }
+        return .communicationError(message: error.localizedDescription)
     }
 #endif
 
