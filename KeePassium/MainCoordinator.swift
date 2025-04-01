@@ -1047,6 +1047,12 @@ extension MainCoordinator: DatabasePickerCoordinatorDelegate {
     func shouldKeepSelection(in coordinator: DatabasePickerCoordinator) -> Bool {
         return !rootSplitVC.isCollapsed
     }
+
+    func didActivateDatabase(_ fileRef: URLReference, in coordinator: DatabasePickerCoordinator) {
+        if let dbUnlocker = childCoordinators.compactMap({ $0 as? DatabaseUnlockerCoordinator }).first {
+            dbUnlocker.activateDatabase()
+        }
+    }
 }
 
 extension MainCoordinator: DatabaseUnlockerCoordinatorDelegate {

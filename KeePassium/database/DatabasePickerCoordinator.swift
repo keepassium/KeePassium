@@ -16,6 +16,8 @@ protocol DatabasePickerCoordinatorDelegate: AnyObject {
     func didSelectDatabase(_ fileRef: URLReference?, in coordinator: DatabasePickerCoordinator)
 
     func shouldKeepSelection(in coordinator: DatabasePickerCoordinator) -> Bool
+
+    func didActivateDatabase(_ fileRef: URLReference, in coordinator: DatabasePickerCoordinator)
 }
 
 public enum DatabasePickerMode {
@@ -475,6 +477,11 @@ extension DatabasePickerCoordinator: DatabasePickerDelegate {
                 }
             )
         }
+    }
+
+    func didActivateDatabase(_ fileRef: URLReference, in viewController: DatabasePickerVC) {
+        selectDatabase(fileRef, animated: false)
+        delegate?.didActivateDatabase(fileRef, in: self)
     }
 }
 

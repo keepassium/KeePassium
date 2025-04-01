@@ -1017,6 +1017,10 @@ extension AutoFillCoordinator: FirstSetupDelegate {
 }
 
 extension AutoFillCoordinator: DatabasePickerCoordinatorDelegate {
+    func didActivateDatabase(_ fileRef: KeePassiumLib.URLReference, in coordinator: DatabasePickerCoordinator) {
+        didSelectDatabase(fileRef, in: coordinator)
+    }
+
     func shouldAcceptDatabaseSelection(
         _ fileRef: URLReference,
         in coordinator: DatabasePickerCoordinator

@@ -63,6 +63,8 @@ protocol DatabasePickerDelegate: AnyObject {
         in viewController: DatabasePickerVC) -> Bool
 
     func didSelectDatabase(_ fileRef: URLReference, in viewController: DatabasePickerVC)
+
+    func didActivateDatabase(_ fileRef: URLReference, in viewController: DatabasePickerVC)
 }
 
 final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable {
@@ -689,6 +691,28 @@ final class DatabasePickerVC: TableViewControllerWithContextActions, Refreshable
                 self?.didPressEliminateDatabase(fileRef, at: indexPath)
             }
         )
+    }
+
+    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+        guard let key = presses.first?.key else {
+            super.pressesBegan(presses, with: event)
+            return
+        }
+
+        switch key.keyCode {
+        case .keyboardReturnOrEnter:
+            if let selectedIndexPath = tableView.indexPathForSelectedRow,
+            let selectedDatabaseRef = getFileRef(at: selectedIndexPath)
+            {
+                if delegate?.shouldAcceptDatabaseSelection(selectedDatabaseRef, in: self) ?? true {
+                    delegate?.didActivateDatabase(selectedDatabaseRef, in: self)
+                } else {
+                    showSelectionDeniedAnimation(at: selectedIndexPath)
+                }
+            }
+        default:
+            super.pressesBegan(presses, with: event)
+        }
     }
 }
 

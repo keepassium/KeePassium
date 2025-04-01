@@ -132,6 +132,14 @@ final class DatabaseUnlockerCoordinator: Coordinator, Refreshable {
         }
     }
 
+    func activateDatabase() {
+        if canUnlockAutomatically() {
+            tryToUnlockDatabase()
+        } else {
+            databaseUnlockerVC.maybeFocusOnPassword()
+        }
+    }
+
     private func maybeShowInitialDatabaseError(_ fileRef: URLReference) {
         databaseUnlockerVC.hideErrorMessage(animated: false)
         if let fileAccessError = fileRef.error {

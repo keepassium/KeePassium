@@ -456,6 +456,10 @@ extension ItemRelocationCoordinator {
 }
 
 extension ItemRelocationCoordinator: DatabasePickerCoordinatorDelegate {
+    func didActivateDatabase(_ fileRef: URLReference, in coordinator: DatabasePickerCoordinator) {
+       didSelectDatabase(fileRef, in: coordinator)
+    }
+
     func shouldAcceptDatabaseSelection(
         _ fileRef: URLReference,
         in coordinator: DatabasePickerCoordinator
