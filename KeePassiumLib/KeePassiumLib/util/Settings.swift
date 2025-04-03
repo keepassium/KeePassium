@@ -329,7 +329,7 @@ public class Settings {
 
     public enum ClipboardTimeout: Int, CaseIterable {
         public static let visibleValues = [
-            after10seconds, after20seconds, after30seconds, after1minute, after2minutes,
+            after10seconds, after20seconds, after30seconds, after1minute, after90seconds, after2minutes,
             after3minutes, after5minutes, after10minutes, after20minutes, never]
         case never = -1
         case immediately = 0
@@ -337,6 +337,7 @@ public class Settings {
         case after20seconds = 20
         case after30seconds = 30
         case after1minute = 60
+        case after90seconds = 90
         case after2minutes = 120
         case after3minutes = 180
         case after5minutes = 300
@@ -363,12 +364,13 @@ public class Settings {
                     value: "Never",
                     comment: "An option in Settings. Will be shown as 'Clipboard Timeout: Never'")
             default:
+                let interval = TimeInterval(self.rawValue)
                 let formatter = DateComponentsFormatter()
-                formatter.allowedUnits = [.hour, .minute, .second]
+                formatter.allowedUnits = (interval < 120) ? [.second] : [.minute, .second]
                 formatter.collapsesLargestUnit = true
                 formatter.maximumUnitCount = 2
                 formatter.unitsStyle = .full
-                guard let result = formatter.string(from: TimeInterval(self.rawValue)) else {
+                guard let result = formatter.string(from: interval) else {
                     assertionFailure()
                     return "?"
                 }
@@ -388,7 +390,7 @@ public class Settings {
                 formatter.allowedUnits = [.hour, .minute, .second]
                 formatter.collapsesLargestUnit = true
                 formatter.maximumUnitCount = 2
-                formatter.unitsStyle = .brief
+                formatter.unitsStyle = .abbreviated
                 guard let result = formatter.string(from: TimeInterval(self.rawValue)) else {
                     assertionFailure()
                     return "?"
