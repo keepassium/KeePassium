@@ -381,6 +381,11 @@
 		7588B6C72627351800F5D372 /* EntryFieldEditorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7588B6C52627351800F5D372 /* EntryFieldEditorCoordinator.swift */; };
 		7589FDCD28B4EA2100CCC76B /* FieldCopiedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7589FDCC28B4EA2100CCC76B /* FieldCopiedView.swift */; };
 		7589FDCE28B4EA2100CCC76B /* FieldCopiedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7589FDCC28B4EA2100CCC76B /* FieldCopiedView.swift */; };
+		758AAFD72DA33E3100B5FA41 /* WatchdogAwareWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758AAFD62DA33E3100B5FA41 /* WatchdogAwareWindow.swift */; };
+		758AAFD82DA33E3100B5FA41 /* WatchdogAwareWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758AAFD62DA33E3100B5FA41 /* WatchdogAwareWindow.swift */; };
+		758AAFD92DA33E3100B5FA41 /* WatchdogAwareWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758AAFD62DA33E3100B5FA41 /* WatchdogAwareWindow.swift */; };
+		758AAFDA2DA33E3100B5FA41 /* WatchdogAwareWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758AAFD62DA33E3100B5FA41 /* WatchdogAwareWindow.swift */; };
+		758AAFDB2DA33E3100B5FA41 /* WatchdogAwareWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758AAFD62DA33E3100B5FA41 /* WatchdogAwareWindow.swift */; };
 		758AAFCB2DA2E31B00B5FA41 /* DatabasePickerCoordinator+itemActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758AAFCA2DA2E31B00B5FA41 /* DatabasePickerCoordinator+itemActions.swift */; };
 		758AAFCC2DA2E31B00B5FA41 /* DatabasePickerCoordinator+itemActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758AAFCA2DA2E31B00B5FA41 /* DatabasePickerCoordinator+itemActions.swift */; };
 		758AAFCD2DA2E31B00B5FA41 /* DatabasePickerCoordinator+itemActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758AAFCA2DA2E31B00B5FA41 /* DatabasePickerCoordinator+itemActions.swift */; };
@@ -2066,6 +2071,7 @@
 		75876B252646EC2800FB470C /* DatabaseKeyChangerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseKeyChangerCoordinator.swift; sourceTree = "<group>"; };
 		7588B6C52627351800F5D372 /* EntryFieldEditorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFieldEditorCoordinator.swift; sourceTree = "<group>"; };
 		7589FDCC28B4EA2100CCC76B /* FieldCopiedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldCopiedView.swift; sourceTree = "<group>"; };
+		758AAFD62DA33E3100B5FA41 /* WatchdogAwareWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchdogAwareWindow.swift; sourceTree = "<group>"; };
 		758AAFCA2DA2E31B00B5FA41 /* DatabasePickerCoordinator+itemActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabasePickerCoordinator+itemActions.swift"; sourceTree = "<group>"; };
 		758AAFD02DA3343300B5FA41 /* UIContextualAction+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIContextualAction+extensions.swift"; sourceTree = "<group>"; };
 		758AD0B425F58C3500864030 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SettingsAppearanceVC.strings"; sourceTree = "<group>"; };
@@ -3323,6 +3329,7 @@
 				758BF0DC20D220B300897C83 /* WatchdogAwareTextField.swift */,
 				7561850220E033DB00EEFAEE /* WatchdogAwareTextView.swift */,
 				34AF51CDDEC993ABE7B9E85A /* NullableBoolSettingCell.swift */,
+				758AAFD62DA33E3100B5FA41 /* WatchdogAwareWindow.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -4337,6 +4344,7 @@
 				753FE83624C1A9A400063FBB /* UIViewController+alerts.swift in Sources */,
 				75779865223023D3006671BD /* ProgressViewHost.swift in Sources */,
 				F35D7CD52D639563006DCBF0 /* FileImportHelper.swift in Sources */,
+				758AAFD82DA33E3100B5FA41 /* WatchdogAwareWindow.swift in Sources */,
 				759FD0392D9D1A0400659852 /* FilePickerVC.swift in Sources */,
 				754E409926306927003E4854 /* DatabaseUnlockerCoordinator.swift in Sources */,
 				7538936A26D3BEBE00CAB107 /* KeyboardDismissable.swift in Sources */,
@@ -4495,6 +4503,7 @@
 				75F28785245D646B00F03657 /* MFIKeyActionSheetView.swift in Sources */,
 				F30D036F2A7BE83A0047525F /* PasswordQuality.swift in Sources */,
 				75BF1965283F9C50006A9826 /* AccessibleStepper.swift in Sources */,
+				758AAFD92DA33E3100B5FA41 /* WatchdogAwareWindow.swift in Sources */,
 				75FC40392DA09BDE00C5D1C2 /* DatabasePickerCoordinator+databaseSettings.swift in Sources */,
 				7546EC112B17750F00E38DB7 /* GroupEditorVC+Property.swift in Sources */,
 				75C1AF812731E46800E33AAC /* DatabaseSettingsCoordinator.swift in Sources */,
@@ -4759,6 +4768,7 @@
 				75F28786245D646B00F03657 /* MFIKeyActionSheetView.swift in Sources */,
 				75BF1967283F9C51006A9826 /* AccessibleStepper.swift in Sources */,
 				75839A91246B1A78003DAB7F /* SettingsSearchVC.swift in Sources */,
+				758AAFDB2DA33E3100B5FA41 /* WatchdogAwareWindow.swift in Sources */,
 				75FC403A2DA09BDE00C5D1C2 /* DatabasePickerCoordinator+databaseSettings.swift in Sources */,
 				75C1AF832731E46800E33AAC /* DatabaseSettingsCoordinator.swift in Sources */,
 				758FF6D128FC2C9C007DE8EB /* SubtitleCell.swift in Sources */,
@@ -5082,6 +5092,7 @@
 				F3340BCC2B2B3E3100604AED /* OnboardingStepVC.swift in Sources */,
 				75D0762C28B639D200F02E39 /* PlaceholderVC.swift in Sources */,
 				75060C6C2B8CEC35006C7B50 /* MacUtils.swift in Sources */,
+				758AAFDA2DA33E3100B5FA41 /* WatchdogAwareWindow.swift in Sources */,
 				75D21BDD2B642E480065D95E /* BusyStateIndicating.swift in Sources */,
 				75D0762D28B639D200F02E39 /* InclusionCondition+extensions.swift in Sources */,
 				75D0762E28B639D200F02E39 /* DatabaseKeyChangerCoordinator.swift in Sources */,
@@ -5297,6 +5308,7 @@
 				756D94772BA2F2CF0084BDF5 /* YubiKeyUSB.swift in Sources */,
 				7524E74D2888B58200ECBEC8 /* TextFieldCell.swift in Sources */,
 				F35D7CD22D639563006DCBF0 /* FileImportHelper.swift in Sources */,
+				758AAFD72DA33E3100B5FA41 /* WatchdogAwareWindow.swift in Sources */,
 				759FD03A2D9D1A0400659852 /* FilePickerVC.swift in Sources */,
 				7526403F28455DC00003DDFA /* PasswordGeneratorVC.swift in Sources */,
 				F3C744472CA5A820005D5429 /* AutoFillMode.swift in Sources */,

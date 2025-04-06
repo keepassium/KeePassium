@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         initAppGlobals(application)
 
-        let window = UIWindow(frame: UIScreen.main.bounds)
+        let window = WatchdogAwareWindow(frame: UIScreen.main.bounds)
         let args = ProcessInfo.processInfo.arguments
         if args.contains("darkMode") {
             window.overrideUserInterfaceStyle = .dark
