@@ -121,6 +121,7 @@ public class Settings {
         case textScale
         case entryTextFontDescriptor
         case fieldMenuMode
+        case primaryPaneWidthFraction
 
         case keyFileEntryProtected
     }
@@ -1640,6 +1641,20 @@ public class Settings {
                 oldValue: fieldMenuMode.rawValue,
                 newValue: newValue.rawValue,
                 key: .fieldMenuMode)
+        }
+    }
+
+    public var primaryPaneWidthFraction: CGFloat {
+        get {
+            let storedValue = UserDefaults.appGroupShared
+                .object(forKey: Keys.primaryPaneWidthFraction.rawValue) as? CGFloat
+            return storedValue ?? UISplitViewController.automaticDimension
+        }
+        set {
+            updateAndNotify(
+                oldValue: primaryPaneWidthFraction,
+                newValue: newValue,
+                key: .primaryPaneWidthFraction)
         }
     }
 

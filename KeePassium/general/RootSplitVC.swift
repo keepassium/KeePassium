@@ -9,10 +9,19 @@
 import KeePassiumLib
 
 class RootSplitVC: UISplitViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.preferredDisplayMode = .oneBesideSecondary
+        if ProcessInfo.isRunningOnMac {
+            preferredPrimaryColumnWidthFraction = Settings.current.primaryPaneWidthFraction
+        }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if ProcessInfo.isRunningOnMac {
+            Settings.current.primaryPaneWidthFraction = primaryColumnWidth / view.bounds.width
+        }
     }
 
     public func setDetailRouter(_ router: NavigationRouter) {
