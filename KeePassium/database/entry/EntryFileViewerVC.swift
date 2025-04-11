@@ -203,7 +203,7 @@ final class EntryFileViewerVC: TableViewControllerWithContextActions, Refreshabl
         if isEditing {
             updateToolbar()
         } else {
-            let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+            let popoverAnchor = tableView.popoverAnchor(at: indexPath)
             let attachment = attachments[indexPath.row]
             delegate?.didPressView(file: attachment, at: popoverAnchor, in: self)
             tableView.deselectRow(at: indexPath, animated: true)
@@ -302,25 +302,25 @@ final class EntryFileViewerVC: TableViewControllerWithContextActions, Refreshabl
 private extension EntryFileViewerVC {
 
     @objc private func didPressViewAll(_ sender: UIBarButtonItem) {
-        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
-        delegate?.didPressViewAll(files: attachments, at: popoverAnchor, in: self)
+        delegate?.didPressViewAll(files: attachments, at: sender.asPopoverAnchor, in: self)
     }
 
     @objc private func didPressAddFileAttachment(_ sender: AnyObject) {
         assert(canEditFiles)
         maybeConfirmReplacement(confirmed: { [weak self] in
-            guard let self = self else { return }
-            let popoverAnchor = PopoverAnchor(barButtonItem: self.addFileBarButton)
-            self.delegate?.didPressAddFile(at: popoverAnchor, in: self)
+            guard let self else { return }
+            delegate?.didPressAddFile(at: addFileBarButton.asPopoverAnchor, in: self)
         })
     }
 
     private func didPressAddPhotoAttachment(fromCamera: Bool) {
         assert(canEditFiles)
         maybeConfirmReplacement(confirmed: { [weak self] in
-            guard let self = self else { return }
-            let popoverAnchor = PopoverAnchor(barButtonItem: self.addFileBarButton)
-            self.delegate?.didPressAddPhoto(fromCamera: fromCamera, at: popoverAnchor, in: self)
+            guard let self else { return }
+            delegate?.didPressAddPhoto(
+                fromCamera: fromCamera,
+                at: addFileBarButton.asPopoverAnchor,
+                in: self)
         })
     }
 
@@ -381,7 +381,7 @@ private extension EntryFileViewerVC {
 
     private func didPressSaveAttachment(at indexPath: IndexPath) {
         let attachment = attachments[indexPath.row]
-        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+        let popoverAnchor = tableView.popoverAnchor(at: indexPath)
         delegate?.didPressSave(file: attachment, at: popoverAnchor, in: self)
     }
 

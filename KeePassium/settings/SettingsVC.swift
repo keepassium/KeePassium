@@ -250,7 +250,7 @@ final class SettingsVC: UITableViewController, Refreshable {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+        let popoverAnchor = tableView.popoverAnchor(at: indexPath)
 
         guard let selectedCell = tableView.cellForRow(at: indexPath) else { return }
         switch selectedCell {

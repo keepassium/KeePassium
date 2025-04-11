@@ -137,7 +137,7 @@ final class SettingsAppearanceVC: UITableViewController, Refreshable {
             delegate?.didPressDatabaseIconsSettings(in: self)
         case textFontCell:
             tableView.deselectRow(at: indexPath, animated: true)
-            let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+            let popoverAnchor = tableView.popoverAnchor(at: indexPath)
             delegate?.didPressEntryTextFontSettings(at: popoverAnchor, in: self)
         default:
             break

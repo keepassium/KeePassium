@@ -91,8 +91,10 @@ class DiagnosticsViewerVC: UITableViewController, Refreshable {
     private func didPressContactSupport(_ sender: Any) {
         Watchdog.shared.restart()
         let logText = Diag.toString()
-        let popoverAnchor = PopoverAnchor(barButtonItem: contactSupportButtonItem)
-        delegate?.didPressContactSupport(text: logText, at: popoverAnchor, in: self)
+        delegate?.didPressContactSupport(
+            text: logText,
+            at: contactSupportButtonItem.asPopoverAnchor,
+            in: self)
     }
 
 

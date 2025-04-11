@@ -161,6 +161,7 @@ final class DatabaseViewerCoordinator: Coordinator {
         showInitialGroups(replacingTopVC: splitViewController.isCollapsed)
         showEntry(nil)
 
+        Settings.current.startupDatabase = originalRef
         settingsNotifications.startObserving()
 
         updateAnnouncements()
@@ -429,6 +430,7 @@ extension DatabaseViewerCoordinator {
         completion: (() -> Void)?
     ) {
         if shouldLock {
+            Settings.current.startupDatabase = nil
             DatabaseSettingsManager.shared.updateSettings(for: originalRef) {
                 $0.clearMasterKey()
             }

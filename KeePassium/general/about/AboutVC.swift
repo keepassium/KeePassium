@@ -99,7 +99,7 @@ final class AboutVC: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let selectedCell = tableView.cellForRow(at: indexPath) else { return }
 
-        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+        let popoverAnchor = tableView.popoverAnchor(at: indexPath)
         switch selectedCell {
         case contactSupportCell:
             delegate?.didPressContactSupport(at: popoverAnchor, in: self)

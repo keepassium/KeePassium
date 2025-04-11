@@ -181,7 +181,7 @@ extension GroupEditorCoordinator: GroupEditorDelegate {
         }
     }
 
-    func didPressChangeIcon(at popoverAnchor: PopoverAnchor, in groupEditor: GroupEditorVC) {
+    func didPressChangeIcon(at popoverAnchor: PopoverAnchor?, in groupEditor: GroupEditorVC) {
         showIconPicker()
     }
 

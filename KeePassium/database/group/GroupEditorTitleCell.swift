@@ -11,7 +11,7 @@ import UIKit
 
 protocol GroupEditorTitleCellDelegate: AnyObject {
     func didPressReturn(in cell: GroupEditorTitleCell)
-    func didPressChangeIcon(at popoverAnchor: PopoverAnchor, in cell: GroupEditorTitleCell)
+    func didPressChangeIcon(at popoverAnchor: PopoverAnchor?, in cell: GroupEditorTitleCell)
     func didPressRandomizer(for textInput: TextInputView, in cell: GroupEditorTitleCell)
     func isValid(groupName: String, in cell: GroupEditorTitleCell) -> Bool
     func didChangeName(name: String, in cell: GroupEditorTitleCell)
@@ -22,12 +22,11 @@ final class GroupEditorTitleCell: UITableViewCell {
 
 
     private lazy var iconButton: UIButton = {
-        let buttonAction = UIAction(handler: { [weak self] _ in
+        let button = UIButton(configuration: .tinted(), primaryAction: UIAction { [weak self] action in
             guard let self else { return }
-            let popoverAnchor = PopoverAnchor(sourceView: iconButton, sourceRect: iconButton.bounds)
-            self.delegate?.didPressChangeIcon(at: popoverAnchor, in: self)
+            let popoverAnchor = action.presentationSourceItem?.asPopoverAnchor
+            delegate?.didPressChangeIcon(at: popoverAnchor, in: self)
         })
-        let button = UIButton(configuration: .tinted(), primaryAction: buttonAction)
         button.configuration?.baseForegroundColor = .iconTint
         button.borderColor = .actionTint
         button.borderWidth = 1

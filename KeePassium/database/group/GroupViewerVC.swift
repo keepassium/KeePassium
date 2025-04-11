@@ -496,8 +496,7 @@ final class GroupViewerVC:
             image: .symbol(.dieFace3),
             handler: { [weak self, weak barButton] _ in
                 guard let self, let barButton else { return }
-                let popoverAnchor = PopoverAnchor(barButtonItem: barButton)
-                self.delegate?.didPressPasswordGenerator(at: popoverAnchor, in: self)
+                self.delegate?.didPressPasswordGenerator(at: barButton.asPopoverAnchor, in: self)
             }
         )
 
@@ -1092,7 +1091,7 @@ final class GroupViewerVC:
         button.title = LString.titleGroupMenu
         button.image = .symbol(.ellipsisCircle)
 
-        let popoverAnchor = PopoverAnchor(barButtonItem: button)
+        let popoverAnchor = button.asPopoverAnchor
         let createGroupAction = UIAction(
             title: LString.titleNewGroup,
             image: .symbol(.folderBadgePlus),
@@ -1159,7 +1158,7 @@ final class GroupViewerVC:
     }
 
     func didPressEditItem(at indexPath: IndexPath) {
-        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+        let popoverAnchor = tableView.popoverAnchor(at: indexPath)
         if let targetGroup = getGroup(at: indexPath) {
             delegate?.didPressEditGroup(targetGroup, at: popoverAnchor, in: self)
         } else if let targetEntry = getEntry(at: indexPath) {
@@ -1170,7 +1169,7 @@ final class GroupViewerVC:
     }
 
     func didPressDeleteItem(at indexPath: IndexPath) {
-        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+        let popoverAnchor = tableView.popoverAnchor(at: indexPath)
 
         let confirmationAlert = UIAlertController(title: "", message: nil, preferredStyle: .alert)
         if let targetGroup = getGroup(at: indexPath) {
@@ -1196,7 +1195,7 @@ final class GroupViewerVC:
     }
 
     private func didPressEmptyRecycleBinGroup(at indexPath: IndexPath) {
-        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+        let popoverAnchor = tableView.popoverAnchor(at: indexPath)
         guard let targetGroup = getGroup(at: indexPath) else {
             assertionFailure("Cannot find a group at specified index path")
             return
@@ -1221,24 +1220,22 @@ final class GroupViewerVC:
             return
         }
 
-        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+        let popoverAnchor = tableView.popoverAnchor(at: indexPath)
         delegate?.didPressRelocateItems([selectedItem], mode: mode, at: popoverAnchor, in: self)
     }
 
     @IBAction private func didPressReloadDatabase(_ sender: UIBarButtonItem) {
-        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
-        delegate?.didPressReloadDatabase(at: popoverAnchor, in: self)
+        delegate?.didPressReloadDatabase(at: sender.asPopoverAnchor, in: self)
     }
 
     @IBAction private func didPressSettings(_ sender: UIBarButtonItem) {
-        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
-        delegate?.didPressSettings(at: popoverAnchor, in: self)
+        delegate?.didPressSettings(at: sender.asPopoverAnchor, in: self)
     }
 
     @objc
     private func didPressBulkDelete(_ sender: UIBarButtonItem) {
         let items = getSelectedItems()
-        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
+        let popoverAnchor = sender.asPopoverAnchor
 
         let confirmationAlert = UIAlertController(
             title: String.localizedStringWithFormat(LString.itemsSelectedCountTemplate, items.count),
@@ -1260,12 +1257,11 @@ final class GroupViewerVC:
 
     @objc
     private func didPressBulkRelocate(_ sender: UIBarButtonItem) {
-        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
         let selectedItems = getSelectedItems()
 
         stopSelectionMode(animated: false, andSave: true)
 
-        delegate?.didPressRelocateItems(selectedItems, mode: .move, at: popoverAnchor, in: self)
+        delegate?.didPressRelocateItems(selectedItems, mode: .move, at: sender.asPopoverAnchor, in: self)
     }
 
     @objc
@@ -1275,7 +1271,6 @@ final class GroupViewerVC:
 
     @objc
     private func didPressBulkFaviconDownload(_ sender: UIBarButtonItem) {
-        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
         let selectedItems = getSelectedItems()
 
         let entries = selectedItems.compactMap({ $0 as? Entry })
@@ -1284,7 +1279,7 @@ final class GroupViewerVC:
         }
 
         stopSelectionMode(animated: true, andSave: false)
-        delegate?.didPressFaviconsDownload(entries, at: popoverAnchor, in: self)
+        delegate?.didPressFaviconsDownload(entries, at: sender.asPopoverAnchor, in: self)
     }
 }
 

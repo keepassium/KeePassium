@@ -260,9 +260,7 @@ extension PricingPlanPickerVC: PricingPlanCollectionCellDelegate {
         in cell: PricingPlanConditionCell,
         with pricingPlan: PricingPlan
     ) {
-        let popoverAnchor = PopoverAnchor(
-            sourceView: cell.detailButton,
-            sourceRect: cell.detailButton.bounds)
+        let popoverAnchor = cell.detailButton.asPopoverAnchor
         delegate?.didPressHelpLink(url: url, at: popoverAnchor, in: self)
     }
 }

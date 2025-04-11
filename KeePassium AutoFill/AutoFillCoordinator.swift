@@ -210,13 +210,22 @@ class AutoFillCoordinator: NSObject, Coordinator {
             return
         }
 
-        var isDefaultDatabaseReachable = true
-        if Settings.current.startupDatabase?.location == .internalDocuments,
-           FileKeeper.shared.areSandboxFilesLikelyMissing()
+        if let startupDatabaseRef = Settings.current.startupDatabase,
+           Settings.current.isAutoUnlockStartupDatabase,
+           databasePickerCoordinator.canBeOpenedAutomatically(databaseRef: startupDatabaseRef)
         {
-            isDefaultDatabaseReachable = false
+            databasePickerCoordinator.selectDatabase(startupDatabaseRef, animated: true)
+            showDatabaseUnlocker(startupDatabaseRef, andThen: .unlock)
+            return
         }
-        databasePickerCoordinator.shouldSelectDefaultDatabase = isDefaultDatabaseReachable
+        if databasePickerCoordinator.getListedDatabaseCount() == 1,
+           let theOnlyDatabase = databasePickerCoordinator.getFirstListedDatabase(),
+           databasePickerCoordinator.canBeOpenedAutomatically(databaseRef: theOnlyDatabase)
+        {
+            databasePickerCoordinator.selectDatabase(theOnlyDatabase, animated: true)
+            showDatabaseUnlocker(theOnlyDatabase, andThen: .unlock)
+            return
+        }
     }
 
     internal func cleanup() {
@@ -280,7 +289,10 @@ extension AutoFillCoordinator {
         router.push(crashReportVC, animated: false, onPop: nil)
     }
 
-    private func showDatabaseUnlocker(_ databaseRef: URLReference) {
+    private func showDatabaseUnlocker(
+        _ databaseRef: URLReference,
+        andThen activation: DatabaseUnlockerActivationType
+    ) {
         let databaseUnlockerCoordinator = DatabaseUnlockerCoordinator(
             router: router,
             databaseRef: databaseRef
@@ -290,7 +302,7 @@ extension AutoFillCoordinator {
             self?.databaseUnlockerCoordinator = nil
         }
         databaseUnlockerCoordinator.delegate = self
-        databaseUnlockerCoordinator.setDatabase(databaseRef)
+        databaseUnlockerCoordinator.setDatabase(databaseRef, andThen: activation)
 
         databaseUnlockerCoordinator.start()
         addChildCoordinator(databaseUnlockerCoordinator)
@@ -301,9 +313,9 @@ extension AutoFillCoordinator {
         let presenter = router.navigationController
         switch fileRef.location {
         case .external:
-            databasePickerCoordinator.addExternalDatabase(fileRef, presenter: presenter)
+            databasePickerCoordinator.startExternalDatabasePicker(fileRef, presenter: presenter)
         case .remote:
-            databasePickerCoordinator.addRemoteDatabase(fileRef, presenter: presenter)
+            databasePickerCoordinator.startRemoteDatabasePicker(fileRef, presenter: presenter)
         case .internalInbox, .internalBackup, .internalDocuments:
             assertionFailure("Should not be here. Can reinstate only external or remote files.")
             return
@@ -998,13 +1010,13 @@ extension AutoFillCoordinator: FirstSetupDelegate {
     func didPressAddExistingDatabase(in firstSetup: FirstSetupVC) {
         watchdog.restart()
         firstSetup.dismiss(animated: true, completion: nil)
-        databasePickerCoordinator.addExternalDatabase(presenter: router.navigationController)
+        databasePickerCoordinator.startExternalDatabasePicker(presenter: router.navigationController)
     }
 
     func didPressAddRemoteDatabase(in firstSetup: FirstSetupVC) {
         watchdog.restart()
         firstSetup.dismiss(animated: true, completion: nil)
-        databasePickerCoordinator.maybeAddRemoteDatabase(
+        databasePickerCoordinator.paywalledStartRemoteDatabasePicker(
             bypassPaywall: false,
             presenter: router.navigationController
         )
@@ -1017,26 +1029,20 @@ extension AutoFillCoordinator: FirstSetupDelegate {
 }
 
 extension AutoFillCoordinator: DatabasePickerCoordinatorDelegate {
-    func didActivateDatabase(_ fileRef: KeePassiumLib.URLReference, in coordinator: DatabasePickerCoordinator) {
-        didSelectDatabase(fileRef, in: coordinator)
-    }
-
-    func shouldAcceptDatabaseSelection(
-        _ fileRef: URLReference,
+    func didSelectDatabase(
+        _ fileRef: URLReference?,
+        cause: FileActivationCause?,
         in coordinator: DatabasePickerCoordinator
-    ) -> Bool {
-        return true
-    }
-
-    func didSelectDatabase(_ fileRef: URLReference?, in coordinator: DatabasePickerCoordinator) {
-        guard let fileRef = fileRef else {
-            return
+    ) {
+        assert(cause != nil, "Unexpected for single-panel mode")
+        guard let fileRef else { return }
+        switch cause {
+        case .keyPress, .touch, .app:
+            showDatabaseUnlocker(fileRef, andThen: .unlock)
+        case nil:
+            showDatabaseUnlocker(fileRef, andThen: .doNothing)
         }
-        showDatabaseUnlocker(fileRef)
-    }
 
-    func shouldKeepSelection(in coordinator: DatabasePickerCoordinator) -> Bool {
-        return false
     }
 }
 
@@ -1121,10 +1127,10 @@ extension AutoFillCoordinator: DatabaseUnlockerCoordinatorDelegate {
 
     func didPressAddRemoteDatabase(in coordinator: DatabaseUnlockerCoordinator) {
         router.pop(animated: true, completion: { [weak self] in
-            guard let self = self else { return }
-            self.databasePickerCoordinator.maybeAddRemoteDatabase(
+            guard let self else { return }
+            databasePickerCoordinator.paywalledStartRemoteDatabasePicker(
                 bypassPaywall: true,
-                presenter: self.router.navigationController
+                presenter: router.navigationController
             )
         })
     }

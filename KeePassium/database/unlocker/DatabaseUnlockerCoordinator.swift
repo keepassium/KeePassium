@@ -70,7 +70,6 @@ final class DatabaseUnlockerCoordinator: Coordinator, Refreshable {
 
         databaseUnlockerVC = DatabaseUnlockerVC.instantiateFromStoryboard()
         databaseUnlockerVC.delegate = self
-        databaseUnlockerVC.shouldAutofocus = true
         databaseUnlockerVC.databaseRef = databaseRef
     }
 
@@ -85,7 +84,7 @@ final class DatabaseUnlockerCoordinator: Coordinator, Refreshable {
             self.removeAllChildCoordinators()
             self.dismissHandler?(self)
         })
-        setDatabase(databaseRef)
+        setDatabase(databaseRef, andThen: .doNothing)
     }
 
     func refresh() {
@@ -96,7 +95,7 @@ final class DatabaseUnlockerCoordinator: Coordinator, Refreshable {
         databaseLoader?.cancel(reason: reason)
     }
 
-    func setDatabase(_ fileRef: URLReference) {
+    func setDatabase(_ fileRef: URLReference, andThen activation: DatabaseUnlockerActivationType) {
         databaseRef = fileRef
         fallbackDatabaseRef = DatabaseManager.getFallbackFile(for: databaseRef)
         databaseUnlockerVC.databaseRef = fileRef
@@ -129,14 +128,7 @@ final class DatabaseUnlockerCoordinator: Coordinator, Refreshable {
 
         DispatchQueue.main.async { [self] in
             maybeShowInitialDatabaseError(fileRef)
-        }
-    }
-
-    func activateDatabase() {
-        if canUnlockAutomatically() {
-            tryToUnlockDatabase()
-        } else {
-            databaseUnlockerVC.maybeFocusOnPassword()
+            activateDatabase(activation)
         }
     }
 
@@ -164,6 +156,26 @@ final class DatabaseUnlockerCoordinator: Coordinator, Refreshable {
 }
 
 extension DatabaseUnlockerCoordinator {
+
+    public func activateDatabase(_ activation: DatabaseUnlockerActivationType) {
+        if databaseUnlockerVC.isProgressViewVisible() {
+            return
+        }
+
+        switch activation {
+        case .doNothing:
+            return
+        case .unlock:
+            if canUnlockAutomatically() {
+                tryToUnlockDatabase()
+                return
+            }
+            fallthrough
+        case .focus:
+            databaseUnlockerVC.maybeFocusOnPassword()
+        }
+    }
+
     private func showDiagnostics(
         at popoverAnchor: PopoverAnchor,
         in viewController: UIViewController
@@ -253,21 +265,6 @@ extension DatabaseUnlockerCoordinator {
             return false
         }
         return dbSettings.hasMasterKey
-    }
-
-    private func maybeUnlockAutomatically() {
-        guard canUnlockAutomatically() else {
-            return
-        }
-        guard delegate?.shouldAutoUnlockDatabase(databaseRef, in: self) ?? false else {
-            return
-        }
-        databaseUnlockerVC.showProgressView(
-            title: LString.databaseStatusLoading,
-            allowCancelling: true,
-            animated: false)
-
-        tryToUnlockDatabase()
     }
 
     private func tryToUnlockDatabase() {
@@ -431,13 +428,6 @@ extension DatabaseUnlockerCoordinator {
 extension DatabaseUnlockerCoordinator: DatabaseUnlockerDelegate {
     func shouldDismissFromKeyboard(_ viewController: DatabaseUnlockerVC) -> Bool {
         return delegate?.shouldDismissFromKeyboard(self) ?? false
-    }
-
-    func willAppear(viewController: DatabaseUnlockerVC) {
-        guard databaseLoader == nil else {
-            return
-        }
-        maybeUnlockAutomatically()
     }
 
     func didPressSelectKeyFile(

@@ -149,8 +149,7 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
             assertionFailure()
             return
         }
-        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
-        delegate?.didPressEdit(at: popoverAnchor, in: self)
+        delegate?.didPressEdit(at: sender.asPopoverAnchor, in: self)
     }
 
     private func didTapRow(at indexPath: IndexPath) {
@@ -176,7 +175,7 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
                !ProcessInfo.isRunningOnMac,
                !UIAccessibility.isVoiceOverRunning
             {
-                let popoverAnchor = PopoverAnchor(tableView: self.tableView, at: indexPath)
+                let popoverAnchor = tableView.popoverAnchor(at: indexPath)
                 showFieldMenu(for: field, with: actions, in: cell, for: indexPath, at: popoverAnchor)
                 animateCopyingToClipboard(in: cell, at: indexPath, actions: [])
             } else {
@@ -351,8 +350,7 @@ extension EntryFieldViewerVC: ViewableFieldCellDelegate {
         }
 
         HapticFeedback.play(.contextMenuOpened)
-        let popoverAnchor = PopoverAnchor(sourceView: accessoryView, sourceRect: accessoryView.bounds)
-        delegate?.didPressExportField(text: value, at: popoverAnchor, in: self)
+        delegate?.didPressExportField(text: value, at: accessoryView.asPopoverAnchor, in: self)
     }
 }
 
@@ -367,7 +365,7 @@ extension EntryFieldViewerVC: FieldCopiedViewDelegate {
         view.hide(animated: true)
 
         HapticFeedback.play(.contextMenuOpened)
-        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+        let popoverAnchor = tableView.popoverAnchor(at: indexPath)
         delegate?.didPressExportField(text: value, at: popoverAnchor, in: self)
     }
 
@@ -390,7 +388,7 @@ extension EntryFieldViewerVC: FieldCopiedViewDelegate {
         view.hide(animated: true)
 
         HapticFeedback.play(.contextMenuOpened)
-        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+        let popoverAnchor = tableView.popoverAnchor(at: indexPath)
         delegate?.didPressShowLargeType(text: value, at: popoverAnchor, in: self)
     }
 
@@ -404,7 +402,7 @@ extension EntryFieldViewerVC: FieldCopiedViewDelegate {
         view.hide(animated: true)
 
         HapticFeedback.play(.contextMenuOpened)
-        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+        let popoverAnchor = tableView.popoverAnchor(at: indexPath)
         delegate?.didPressShowQRCode(text: value, at: popoverAnchor, in: self)
     }
 }

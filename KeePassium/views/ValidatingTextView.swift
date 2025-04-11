@@ -22,7 +22,7 @@ extension ValidatingTextViewDelegate {
 
 class ValidatingTextView: WatchdogAwareTextView {
     private let defaultBorderColor = UIColor.gray.withAlphaComponent(0.25)
-    private let focusedBorderColor: UIColor = .tintColor.withAlphaComponent(0.5)
+    private let focusedBorderColor: UIColor = .focusTint
 
     @IBInspectable var invalidBackgroundColor: UIColor? = UIColor.red.withAlphaComponent(0.2)
 

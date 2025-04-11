@@ -50,17 +50,9 @@ final class AnnouncementCell: UITableViewCell {
             .activate()
         announcementView.leadingAnchor
             .constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor)
-            .setPriority(.defaultHigh)
             .activate()
         announcementView.trailingAnchor
             .constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor)
-            .setPriority(.defaultHigh)
-            .activate()
-        announcementView.centerXAnchor
-            .constraint(equalTo: contentView.layoutMarginsGuide.centerXAnchor)
-            .activate()
-        announcementView.widthAnchor
-            .constraint(lessThanOrEqualTo: readableContentGuide.widthAnchor)
             .activate()
     }
 }

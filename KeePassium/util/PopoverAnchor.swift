@@ -8,54 +8,34 @@
 
 import UIKit
 
-struct PopoverAnchor {
-    enum Kind {
-        case barButton
-        case viewRect
-    }
-    public let kind: Kind
-    public let barButtonItem: UIBarButtonItem?
-    public let sourceView: UIView?
-    public let sourceRect: CGRect?
-
-    init(barButtonItem: UIBarButtonItem) {
-        self.kind = .barButton
-        self.barButtonItem = barButtonItem
-        self.sourceView = nil
-        self.sourceRect = nil
-    }
-
-    init(sourceView: UIView, sourceRect: CGRect) {
-        self.kind = .viewRect
-        self.barButtonItem = nil
-        self.sourceView = sourceView
-        self.sourceRect = sourceRect
-    }
-
-    init(tableView: UITableView, at indexPath: IndexPath) {
-        self.kind = .viewRect
-        self.barButtonItem = nil
-        self.sourceView = tableView
-        self.sourceRect = tableView.rectForRow(at: indexPath)
-    }
-
-    init(collectionView: UICollectionView, at indexPath: IndexPath) {
-        self.kind = .viewRect
-        self.barButtonItem = nil
-        self.sourceView = collectionView
-        self.sourceRect = collectionView.layoutAttributesForItem(at: indexPath)?.frame
-    }
+enum PopoverAnchor {
+    case sourceItem(item: UIPopoverPresentationControllerSourceItem)
+    case viewRect(view: UIView, rect: CGRect)
 
     public func apply(to popover: UIPopoverPresentationController?) {
-        guard let popover = popover else { return }
-        switch kind {
-        case .barButton:
-            assert(barButtonItem != nil)
-            popover.barButtonItem = barButtonItem
-        case .viewRect:
-            assert(sourceView != nil && sourceRect != nil)
-            popover.sourceView = sourceView
-            popover.sourceRect = sourceRect ?? CGRect.zero
+        guard let popover else { return }
+        switch self {
+        case .sourceItem(let item):
+            popover.sourceItem = item
+        case let .viewRect(view, rect):
+            popover.sourceView = view
+            popover.sourceRect = rect
         }
+    }
+}
+
+extension UIPopoverPresentationControllerSourceItem {
+    var asPopoverAnchor: PopoverAnchor {
+        return PopoverAnchor.sourceItem(item: self)
+    }
+}
+
+extension UITableView {
+    func popoverAnchor(at indexPath: IndexPath) -> PopoverAnchor {
+        guard let cell = cellForRow(at: indexPath) else {
+            assertionFailure("Cannot create popover for non-existent cell")
+            return PopoverAnchor.sourceItem(item: self)
+        }
+        return PopoverAnchor.sourceItem(item: cell)
     }
 }

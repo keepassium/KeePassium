@@ -102,9 +102,9 @@ class ItemRelocationCoordinator: Coordinator {
         let presenter = router.navigationController
         switch fileRef.location {
         case .external:
-            databasePickerCoordinator?.addExternalDatabase(fileRef, presenter: presenter)
+            databasePickerCoordinator?.startExternalDatabasePicker(fileRef, presenter: presenter)
         case .remote:
-            databasePickerCoordinator?.addRemoteDatabase(fileRef, presenter: presenter)
+            databasePickerCoordinator?.startRemoteDatabasePicker(fileRef, presenter: presenter)
         case .internalBackup, .internalDocuments, .internalInbox:
             assertionFailure("Should not be here. Can reinstate only external or remote files.")
             return
@@ -456,11 +456,7 @@ extension ItemRelocationCoordinator {
 }
 
 extension ItemRelocationCoordinator: DatabasePickerCoordinatorDelegate {
-    func didActivateDatabase(_ fileRef: URLReference, in coordinator: DatabasePickerCoordinator) {
-       didSelectDatabase(fileRef, in: coordinator)
-    }
-
-    func shouldAcceptDatabaseSelection(
+    func shouldAcceptUserSelection(
         _ fileRef: URLReference,
         in coordinator: DatabasePickerCoordinator
     ) -> Bool {
@@ -471,15 +467,16 @@ extension ItemRelocationCoordinator: DatabasePickerCoordinatorDelegate {
         return !isReadOnly
     }
 
-    func didSelectDatabase(_ fileRef: URLReference?, in coordinator: DatabasePickerCoordinator) {
-        guard let fileRef = fileRef else { return }
+    func didSelectDatabase(
+        _ fileRef: URLReference?,
+        cause: FileActivationCause?,
+        in coordinator: DatabasePickerCoordinator
+    ) {
+        assert(cause != nil, "Unexpected for single-panel mode")
+        guard let fileRef else { return }
         assert(!DatabaseSettingsManager.shared.isReadOnly(fileRef), "Cannot relocate to read-only DB")
         router.navigationController.hideAllToasts()
         unlockDatabase(fileRef)
-    }
-
-    func shouldKeepSelection(in coordinator: DatabasePickerCoordinator) -> Bool {
-        return false
     }
 }
 
@@ -537,17 +534,17 @@ extension ItemRelocationCoordinator: DatabaseUnlockerCoordinatorDelegate {
     }
 
     func didPressAddRemoteDatabase(in coordinator: DatabaseUnlockerCoordinator) {
-        guard let databasePickerCoordinator = databasePickerCoordinator else {
+        guard let databasePickerCoordinator else {
             Diag.warning("No database picker found, cancelling")
             assertionFailure()
             return
         }
 
         router.pop(animated: true, completion: { [weak self] in
-            guard let self = self else { return }
-            databasePickerCoordinator.maybeAddRemoteDatabase(
+            guard let self else { return }
+            databasePickerCoordinator.paywalledStartRemoteDatabasePicker(
                 bypassPaywall: true,
-                presenter: self.router.navigationController
+                presenter: router.navigationController
             )
         })
     }

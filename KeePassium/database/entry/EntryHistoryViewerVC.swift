@@ -411,7 +411,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
 
 
     private func didPressEditExpiryDate(at indexPath: IndexPath) {
-        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+        let popoverAnchor = tableView.popoverAnchor(at: indexPath)
         delegate?.didPressEditExpiryDate(at: popoverAnchor, in: self)
     }
 

@@ -424,7 +424,7 @@ extension PasswordGeneratorVC: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+        let popoverAnchor = tableView.popoverAnchor(at: indexPath)
         switch (mode, indexPath) {
         case (_, CellIndex.modeSelector):
             showModeSelector(at: popoverAnchor)

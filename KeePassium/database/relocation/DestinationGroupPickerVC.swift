@@ -345,7 +345,6 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
 
     @objc
     private func didPressSwitchDatabase(_ sender: UIBarButtonItem) {
-        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
-        delegate?.didPressSwitchDatabase(at: popoverAnchor, in: self)
+        delegate?.didPressSwitchDatabase(at: sender.asPopoverAnchor, in: self)
     }
 }

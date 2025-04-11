@@ -49,6 +49,7 @@ public class FileKeeper {
         case overwrite
     }
 
+    private static let docDirPlaceholder = "_"
     private static let documentsDirectoryName = "Documents"
     private static let inboxDirectoryName = "Inbox"
     private static let backupDirectoryName = "Backup"
@@ -311,6 +312,9 @@ public class FileKeeper {
                 includingPropertiesForKeys: nil,
                 options: [])
             for url in dirContents {
+                if url.lastPathComponent == Self.docDirPlaceholder {
+                    continue
+                }
                 let isFileTypeMatch = isIgnoreFileType || FileType(for: url) == fileType
                 if isFileTypeMatch && !url.isDirectory {
                     let urlRef = try URLReference(from: url, location: location)
@@ -459,9 +463,6 @@ public class FileKeeper {
             return false 
         }
 
-        if fileType == .database {
-            Settings.current.startupDatabase = existingRef
-        }
         Diag.info("Added already known external file, deduplicating.")
         FileKeeperNotifier.notifyFileAdded(urlRef: existingRef, fileType: fileType)
         completionQueue.addOperation {
@@ -560,9 +561,6 @@ public class FileKeeper {
                 URLReference.create(for: url, location: location) { refResult in
                     switch refResult {
                     case .success(let urlRef):
-                        if fileType == .database {
-                            Settings.current.startupDatabase = urlRef
-                        }
                         Diag.info("Inbox file added successfully [fileType: \(fileType)]")
                         FileKeeperNotifier.notifyFileAdded(urlRef: urlRef, fileType: fileType)
                         completionQueue.addOperation {
@@ -596,9 +594,6 @@ public class FileKeeper {
         URLReference.create(for: sourceURL, location: location) { result in
             switch result {
             case .success(let urlRef):
-                if fileType == .database {
-                    Settings.current.startupDatabase = urlRef
-                }
                 Diag.info("Internal file processed successfully [fileType: \(fileType), location: \(location)]")
                 FileKeeperNotifier.notifyFileAdded(urlRef: urlRef, fileType: fileType)
                 completionQueue.addOperation {
@@ -808,6 +803,10 @@ public class FileKeeper {
         }
     }
 
+    public func createPlaceholderInDocumentsDir() throws {
+        var fileURL = docDirURL.appendingPathComponent(Self.docDirPlaceholder)
+        try Data().write(to: fileURL, options: [.completeFileProtection, .withoutOverwriting])
+    }
 
     enum BackupMode {
         case overwriteLatest

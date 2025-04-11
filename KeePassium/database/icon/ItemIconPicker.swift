@@ -36,7 +36,7 @@ final class ItemIconPickerCell: UICollectionViewCell {
         selectedBackgroundView.layer.borderColor = UIColor.actionTint.cgColor
         selectedBackgroundView.layer.borderWidth = 1.0
         selectedBackgroundView.layer.cornerRadius = 5.0
-        selectedBackgroundView.backgroundColor = .actionTint.withAlphaComponent(0.3)
+        selectedBackgroundView.backgroundColor = .focusTint
         self.selectedBackgroundView = selectedBackgroundView
     }
 }
@@ -104,8 +104,7 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
                 attributes: customIcons.isEmpty ? [.destructive, .disabled] : [.destructive],
                 handler: { [weak self] _ in
                     guard let self else { return }
-                    let popoverAnchor = PopoverAnchor(barButtonItem: moreButton)
-                    delegate?.didPressDeleteUnusedIcons(in: self, at: popoverAnchor)
+                    delegate?.didPressDeleteUnusedIcons(in: self, at: moreButton.asPopoverAnchor)
                 }
             )
             let deleteAllAction = UIAction(
@@ -114,8 +113,7 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
                 attributes: customIcons.isEmpty ? [.destructive, .disabled] : [.destructive],
                 handler: { [weak self] _ in
                     guard let self else { return }
-                    let popoverAnchor = PopoverAnchor(barButtonItem: moreButton)
-                    delegate?.didPressDeleteAllIcons(in: self, at: popoverAnchor)
+                    delegate?.didPressDeleteAllIcons(in: self, at: moreButton.asPopoverAnchor)
                 }
             )
             let selectAction = UIAction(
@@ -193,13 +191,11 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
     
 
     @objc private func didPressImportIcon(_ sender: UIBarButtonItem) {
-        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
-        delegate?.didPressImportIcon(in: self, at: popoverAnchor)
+        delegate?.didPressImportIcon(in: self, at: sender.asPopoverAnchor)
     }
 
     @objc private func didPressDownloadIcon(_ sender: UIBarButtonItem) {
-        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
-        delegate?.didPressDownloadIcon(in: self, at: popoverAnchor)
+        delegate?.didPressDownloadIcon(in: self, at: sender.asPopoverAnchor)
     }
 
     override func getContextActionsForItem(at indexPath: IndexPath) -> [ContextualAction] {
@@ -230,8 +226,7 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
             return
         }
         let selectedCustomIcons = Set(paths.map { customIcons[$0.item].uuid })
-        let popoverAnchor = PopoverAnchor(barButtonItem: sender)
-        delegate?.didPressDeleteIcons(icons: selectedCustomIcons, in: self, at: popoverAnchor)
+        delegate?.didPressDeleteIcons(icons: selectedCustomIcons, in: self, at: sender.asPopoverAnchor)
     }
 
     @objc private func didPressCancelSelection(_ sender: UIBarButtonItem) {

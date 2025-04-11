@@ -17,12 +17,14 @@ enum ImageAsset: String {
     case yubikeyMFIPhone = "yubikey-mfi-phone"
     case yubikeyMFIKey = "yubikey-mfi-key"
 
+    case noDatabases = "no-databases"
+
     public func asColor() -> UIColor? {
         return UIColor(patternImage: UIImage(asset: self))
     }
 }
 
-public enum SymbolName: String {
+public enum SymbolName: String, Equatable {
     public static let keyFile = Self.keyDocHorizontal
     public static let actionRestore = Self.clockArrowCirclepath
     public static let appProtection = Self.lock
@@ -94,6 +96,7 @@ public enum SymbolName: String {
     case folderBadgePlus = "folder.badge.plus"
     case folderGridBadgePlus = "square.grid.3x1.folder.badge.plus"
     case gear = "gear"
+    case gearshape = "gearshape"
     case gearshape2 = "gearshape.2"
     case globe = "globe"
     case heart = "heart"
@@ -131,6 +134,7 @@ public enum SymbolName: String {
     case printer = "printer"
     case qrcode = "qrcode"
     case questionmarkBubble = "questionmark.bubble"
+    case questionmarkFolder = "questionmark.folder"
     case rectangleStack = "rectangle.stack"
     case rectangleCompressVertical = "rectangle.compress.vertical"
     case `return` = "return"

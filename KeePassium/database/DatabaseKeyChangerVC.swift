@@ -230,7 +230,7 @@ extension DatabaseKeyChangerVC: UITextFieldDelegate {
         guard UIDevice.current.userInterfaceIdiom == .phone else {
             return true
         }
-        let popoverAnchor = PopoverAnchor(sourceView: textField, sourceRect: textField.bounds)
+        let popoverAnchor = textField.asPopoverAnchor
         switch textField {
         case keyFileField:
             delegate?.didPressSelectKeyFile(at: popoverAnchor, in: self)
@@ -249,7 +249,7 @@ extension DatabaseKeyChangerVC: UITextFieldDelegate {
             return
         }
         let isMac = ProcessInfo.isRunningOnMac
-        let popoverAnchor = PopoverAnchor(sourceView: textField, sourceRect: textField.bounds)
+        let popoverAnchor = textField.asPopoverAnchor
         switch textField {
         case keyFileField:
             delegate?.didPressSelectKeyFile(at: popoverAnchor, in: self)

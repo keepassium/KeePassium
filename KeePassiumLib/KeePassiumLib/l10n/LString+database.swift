@@ -356,6 +356,11 @@ extension LString {
         bundle: Bundle.framework,
         value: "If some local files are not listed, launch the main KeePassium app first.",
         comment: "Recommendation for solving a problem with a list of files.")
+    public static let callToActionOpenTheMainApp = NSLocalizedString(
+        "[Database/List/LocalMissing/callToAction]",
+        bundle: Bundle.framework,
+        value: "Open the app",
+        comment: "Call to action. 'Open' here is used as 'launch'.")
     public static let titleSortFilesBy = NSLocalizedString(
         "[Menu/Sort] Sort Files By",
         bundle: Bundle.framework,

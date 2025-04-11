@@ -8,13 +8,31 @@
 
 import UIKit
 
-struct AnnouncementItem {
+struct AnnouncementItem: Hashable {
     var title: String?
     var body: String?
     var actionTitle: String?
     var image: UIImage?
     var onDidPressAction: ((AnnouncementView) -> Void)?
     var onDidPressClose: ((AnnouncementView) -> Void)?
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(title)
+        hasher.combine(body)
+        hasher.combine(actionTitle)
+        hasher.combine(image)
+        hasher.combine(onDidPressAction.debugDescription)
+        hasher.combine(onDidPressClose.debugDescription)
+    }
+
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.title == rhs.title
+            && lhs.body == rhs.body
+            && lhs.actionTitle == rhs.actionTitle
+            && lhs.image == rhs.image
+            && lhs.onDidPressAction.debugDescription == rhs.onDidPressAction.debugDescription
+            && lhs.onDidPressClose.debugDescription == rhs.onDidPressClose.debugDescription
+    }
 }
 
 final class AnnouncementView: UIView {
@@ -80,6 +98,7 @@ final class AnnouncementView: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .headline)
+        label.adjustsFontForContentSizeCategory = true
         label.textColor = .label
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
@@ -90,6 +109,7 @@ final class AnnouncementView: UIView {
     private lazy var bodyLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .callout)
+        label.adjustsFontForContentSizeCategory = true
         label.textColor = .label
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
@@ -144,6 +164,7 @@ final class AnnouncementView: UIView {
         image = announcement.image
         onDidPressClose = announcement.onDidPressClose
         onDidPressActionButton = announcement.onDidPressAction
+        layoutSubviews()
     }
 
     private func setupSubviews() {

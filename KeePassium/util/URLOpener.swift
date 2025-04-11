@@ -48,7 +48,12 @@ class URLOpener: NSObject {
     }
 
     @objc private func openURL(_ url: URL) -> Bool {
-        let result = application?.perform(#selector(openURL(_:)), with: url)
-        return result != nil
+        if #available(iOS 18.0, *) {
+            application?.open(url, options: [:], completionHandler: nil)
+            return true
+        } else {
+            let result = application?.perform(#selector(openURL(_:)), with: url)
+            return result != nil
+        }
     }
 }

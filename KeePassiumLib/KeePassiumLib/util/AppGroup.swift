@@ -29,7 +29,9 @@ public class AppGroup {
         }
     }()
 
-    public static let upgradeToPremiumURL = URL(string: appURLScheme + "://upgradeToPremium")! 
+    public static let launchMainAppURL = URL(string: appURLScheme + "://")!
+
+    public static let upgradeToPremiumURL = URL(string: appURLScheme + "://upgradeToPremium")!
 
     public static let donateURL = URL(string: appURLScheme + "://donate")! 
 

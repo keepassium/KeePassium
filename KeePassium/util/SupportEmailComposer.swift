@@ -46,7 +46,7 @@ class SupportEmailComposer: NSObject {
     static func show(
         subject: Subject,
         parent: UIViewController,
-        popoverAnchor: PopoverAnchor,
+        popoverAnchor: PopoverAnchor?,
         completion: CompletionHandler? = nil
     ) {
         let subjectText = "\(AppInfo.name) - \(subject.rawValue)" 

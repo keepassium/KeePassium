@@ -137,9 +137,8 @@ final class FileInfoVC: UITableViewController, Refreshable {
             primaryAction: UIAction(
                 title: exportActionTitle,
                 handler: { [weak self] _ in
-                    guard let self = self else { return }
-                    let popoverAnchor = PopoverAnchor(barButtonItem: self.exportBarButton)
-                    self.delegate?.didPressExport(at: popoverAnchor, in: self)
+                    guard let self else { return }
+                    delegate?.didPressExport(at: exportBarButton.asPopoverAnchor, in: self)
                 }
             )
         )
@@ -153,9 +152,8 @@ final class FileInfoVC: UITableViewController, Refreshable {
                 title: eliminationActionTitle,
                 attributes: .destructive,
                 handler: { [weak self] _ in
-                    guard let self = self else { return }
-                    let popoverAnchor = PopoverAnchor(barButtonItem: self.eliminateBarButton)
-                    self.delegate?.didPressEliminate(at: popoverAnchor, in: self)
+                    guard let self else { return }
+                    delegate?.didPressEliminate(at: eliminateBarButton.asPopoverAnchor, in: self)
                 }
             )
         )

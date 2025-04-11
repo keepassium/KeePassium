@@ -233,8 +233,7 @@ class EntryFieldEditorSingleLineCell:
 
     @IBAction private func didPressActionButton(_ sender: Any) {
         guard let field = field else { return }
-        let popoverAnchor = PopoverAnchor(sourceView: actionButton, sourceRect: actionButton.bounds)
-        delegate?.didPressButton(for: field, at: popoverAnchor, in: self)
+        delegate?.didPressButton(for: field, at: actionButton.asPopoverAnchor, in: self)
     }
 
     func textInputDidRequestRandomizer(_ textInput: TextInputView) {

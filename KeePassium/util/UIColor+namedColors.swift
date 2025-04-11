@@ -23,6 +23,8 @@ extension UIColor {
     static var iconTint: UIColor {
         return UIColor(named: "IconTint") ?? UIColor.systemBlue
     }
+    static var focusTint = tintColor.withAlphaComponent(0.3)
+
     static var destructiveTint: UIColor {
         return UIColor(named: "DestructiveTint") ?? UIColor.systemRed
     }

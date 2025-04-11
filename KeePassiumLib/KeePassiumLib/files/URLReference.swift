@@ -85,6 +85,8 @@ final public class URLReference:
 
     public var visibleFileName: String { return url?.lastPathComponent ?? "?" }
 
+    public let runtimeUUID = UUID()
+
     public private(set) var error: FileAccessError?
     public var hasError: Bool { return error != nil}
 

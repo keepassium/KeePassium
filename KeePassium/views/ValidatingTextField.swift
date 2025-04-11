@@ -22,7 +22,7 @@ extension ValidatingTextFieldDelegate {
 
 class ValidatingTextField: UITextField {
     private let defaultBorderColor = UIColor.gray.withAlphaComponent(0.25)
-    private let focusedBorderColor: UIColor = .tintColor.withAlphaComponent(0.5)
+    private let focusedBorderColor: UIColor = .focusTint
 
     private weak var externalDelegate: UITextFieldDelegate?
     override var delegate: UITextFieldDelegate? {

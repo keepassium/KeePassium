@@ -342,7 +342,7 @@ extension PasswordAuditResultsVC: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let itemIndex = indexPath.row - announcements.count
         let selectedEntry = items[itemIndex].entry
-        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+        let popoverAnchor = tableView.popoverAnchor(at: indexPath)
         delegate?.didPressEditEntry(selectedEntry, at: popoverAnchor, in: self) {
             tableView.reloadRows(at: [indexPath], with: .automatic)
         }

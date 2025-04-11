@@ -10,7 +10,6 @@ import KeePassiumLib
 
 protocol DatabaseUnlockerDelegate: AnyObject {
     func shouldDismissFromKeyboard(_ viewController: DatabaseUnlockerVC) -> Bool
-    func willAppear(viewController: DatabaseUnlockerVC)
 
     func didPressSelectKeyFile(
         at popoverAnchor: PopoverAnchor,
@@ -44,19 +43,18 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
     @IBOutlet private weak var lockDatabaseButton: UIButton!
 
     weak var delegate: DatabaseUnlockerDelegate?
-    var shouldAutofocus = false
     var databaseRef: URLReference! {
         didSet {
             guard isViewLoaded else { return }
             hideErrorMessage(animated: false)
             refresh()
-            maybeFocusOnPassword()
         }
     }
 
     var password: String { return passwordField?.text ?? "" }
     private(set) var keyFileRef: URLReference?
     private(set) var yubiKey: YubiKey?
+    private var shouldAutofocus = false
 
     private var progressOverlay: ProgressOverlay?
 
@@ -102,7 +100,6 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         clearPasswordField()
-        delegate?.willAppear(viewController: self)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -171,9 +168,7 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
         )
         errorMessageView.shake()
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
-            self?.maybeFocusOnPassword()
-        }
+        maybeFocusOnPassword()
     }
 
     private func showInvalidPasswordHelp() {
@@ -186,6 +181,11 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
     }
 
     func maybeFocusOnPassword() {
+        guard isViewLoaded else {
+            shouldAutofocus = true
+            return
+        }
+        shouldAutofocus = false
         guard progressOverlay == nil else {
             return 
         }
@@ -256,8 +256,7 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
     private func didPressErrorDetails() {
         Watchdog.shared.restart()
         hideErrorMessage(animated: true)
-        let popoverAnchor = PopoverAnchor(sourceView: inputPanel, sourceRect: inputPanel.bounds)
-        delegate?.didPressShowDiagnostics(at: popoverAnchor, in: self)
+        delegate?.didPressShowDiagnostics(at: inputPanel.asPopoverAnchor, in: self)
     }
 
     @IBAction private func didPressUnlock(_ sender: Any) {
@@ -284,16 +283,15 @@ extension DatabaseUnlockerVC: UITextFieldDelegate {
         guard UIDevice.current.userInterfaceIdiom == .phone else {
             return true
         }
-        let popoverAnchor = PopoverAnchor(sourceView: textField, sourceRect: textField.bounds)
         switch textField {
         case keyFileField:
             hideErrorMessage(animated: true)
-            delegate?.didPressSelectKeyFile(at: popoverAnchor, in: self)
-            return false 
+            delegate?.didPressSelectKeyFile(at: textField.asPopoverAnchor, in: self)
+            return false
         case hardwareKeyField:
             hideErrorMessage(animated: true)
-            delegate?.didPressSelectHardwareKey(at: popoverAnchor, in: self)
-            return false 
+            delegate?.didPressSelectHardwareKey(at: textField.asPopoverAnchor, in: self)
+            return false
         default:
             break
         }
@@ -306,17 +304,16 @@ extension DatabaseUnlockerVC: UITextFieldDelegate {
             return
         }
         let isMac = ProcessInfo.isRunningOnMac
-        let popoverAnchor = PopoverAnchor(sourceView: textField, sourceRect: textField.bounds)
         switch textField {
         case keyFileField:
             hideErrorMessage(animated: true)
-            delegate?.didPressSelectKeyFile(at: popoverAnchor, in: self)
+            delegate?.didPressSelectKeyFile(at: textField.asPopoverAnchor, in: self)
             if isMac {
                 passwordField.becomeFirstResponder()
             }
         case hardwareKeyField:
             hideErrorMessage(animated: true)
-            delegate?.didPressSelectHardwareKey(at: popoverAnchor, in: self)
+            delegate?.didPressSelectHardwareKey(at: textField.asPopoverAnchor, in: self)
             if isMac {
                 passwordField.becomeFirstResponder()
             }
@@ -351,6 +348,9 @@ extension DatabaseUnlockerVC: UITextFieldDelegate {
 }
 
 extension DatabaseUnlockerVC: ProgressViewHost {
+    public func isProgressViewVisible() -> Bool {
+        return progressOverlay != nil
+    }
     public func showProgressView(title: String, allowCancelling: Bool, animated: Bool) {
         if progressOverlay != nil {
             progressOverlay?.title = title
@@ -363,9 +363,8 @@ extension DatabaseUnlockerVC: ProgressViewHost {
             animated: animated)
         progressOverlay?.isCancellable = allowCancelling
         progressOverlay?.unresponsiveCancelHandler = { [weak self] in
-            guard let self = self else { return }
-            let popoverAnchor = PopoverAnchor(sourceView: self.view, sourceRect: self.view.bounds)
-            self.delegate?.didPressShowDiagnostics(at: popoverAnchor, in: self)
+            guard let self else { return }
+            delegate?.didPressShowDiagnostics(at: self.view.asPopoverAnchor, in: self)
         }
 
         navigationItem.setHidesBackButton(true, animated: animated)

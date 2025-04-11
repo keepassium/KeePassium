@@ -12,7 +12,7 @@ import UIKit
 protocol GroupEditorDelegate: AnyObject {
     func didPressCancel(in groupEditor: GroupEditorVC)
     func didPressDone(in groupEditor: GroupEditorVC)
-    func didPressChangeIcon(at popoverAnchor: PopoverAnchor, in groupEditor: GroupEditorVC)
+    func didPressChangeIcon(at popoverAnchor: PopoverAnchor?, in groupEditor: GroupEditorVC)
     func didPressRandomizer(for textInput: TextInputView, in groupEditor: GroupEditorVC)
     func didPressTags(in groupEditor: GroupEditorVC)
 }
@@ -315,7 +315,7 @@ extension GroupEditorVC: GroupEditorTitleCellDelegate {
         delegate?.didPressDone(in: self)
     }
 
-    func didPressChangeIcon(at popoverAnchor: PopoverAnchor, in cell: GroupEditorTitleCell) {
+    func didPressChangeIcon(at popoverAnchor: PopoverAnchor?, in cell: GroupEditorTitleCell) {
         delegate?.didPressChangeIcon(at: popoverAnchor, in: self)
     }
 

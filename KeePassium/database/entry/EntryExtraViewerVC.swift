@@ -281,7 +281,7 @@ final class EntryExtraViewerVC: UITableViewController, Refreshable {
         if #available(iOS 17.4, *),
            !ProcessInfo.isRunningOnMac
         {
-            let popoverAnchor = PopoverAnchor(tableView: self.tableView, at: indexPath)
+            let popoverAnchor = tableView.popoverAnchor(at: indexPath)
             showFieldMenu(with: [.copy] + actions, in: cell, for: indexPath, at: popoverAnchor)
         } else {
             delegate?.didPressCopyField(text: entry.uuid.uuidString, in: self)
@@ -349,7 +349,7 @@ extension EntryExtraViewerVC: FieldCopiedViewDelegate {
         view.hide(animated: true)
 
         HapticFeedback.play(.contextMenuOpened)
-        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+        let popoverAnchor = tableView.popoverAnchor(at: indexPath)
         delegate?.didPressExportField(text: entry.uuid.uuidString, at: popoverAnchor, in: self)
     }
 
@@ -360,7 +360,7 @@ extension EntryExtraViewerVC: FieldCopiedViewDelegate {
         guard let entry else { return }
 
         view.hide(animated: true)
-        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+        let popoverAnchor = tableView.popoverAnchor(at: indexPath)
         delegate?.didPressShowLargeType(text: entry.uuid.uuidString, at: popoverAnchor, in: self)
     }
 
@@ -368,7 +368,7 @@ extension EntryExtraViewerVC: FieldCopiedViewDelegate {
         guard let entry else { return }
 
         view.hide(animated: true)
-        let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+        let popoverAnchor = tableView.popoverAnchor(at: indexPath)
         delegate?.didPressShowQRCode(text: entry.uuid.uuidString, at: popoverAnchor, in: self)
     }
 }

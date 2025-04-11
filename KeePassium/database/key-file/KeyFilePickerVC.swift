@@ -82,7 +82,7 @@ final class KeyFilePickerVC: TableViewControllerWithContextActions, Refreshable 
     }
 
     private func setupAddKeyFileBarButton() {
-        let popoverAnchor = PopoverAnchor(barButtonItem: addKeyFileBarButton)
+        let popoverAnchor = addKeyFileBarButton.asPopoverAnchor
         addKeyFileBarButton.primaryAction = nil
         let createMenu = UIMenu(options: [.displayInline], children: [
             UIAction(
@@ -279,7 +279,7 @@ final class KeyFilePickerVC: TableViewControllerWithContextActions, Refreshable 
             assertionFailure("There's no accessory button setup")
         case .knownFiles:
             let fileRef = keyFileRefs[indexPath.row]
-            let popoverAnchor = PopoverAnchor(tableView: tableView, at: indexPath)
+            let popoverAnchor = tableView.popoverAnchor(at: indexPath)
             delegate?.didPressFileInfo(for: fileRef, at: popoverAnchor, in: self)
         }
     }
@@ -311,8 +311,8 @@ final class KeyFilePickerVC: TableViewControllerWithContextActions, Refreshable 
             style: .destructive,
             color: .destructiveTint,
             handler: { [weak self] in
-                guard let self = self else { return }
-                let popoverAnchor = PopoverAnchor(tableView: self.tableView, at: indexPath)
+                guard let self else { return }
+                let popoverAnchor = tableView.popoverAnchor(at: indexPath)
                 self.delegate?.didPressEliminate(
                     keyFile: fileRef,
                     at: popoverAnchor,

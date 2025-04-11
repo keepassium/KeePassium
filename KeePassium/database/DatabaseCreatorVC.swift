@@ -254,7 +254,7 @@ extension DatabaseCreatorVC: UITextFieldDelegate {
         guard UIDevice.current.userInterfaceIdiom == .phone else {
             return true
         }
-        let popoverAnchor = PopoverAnchor(sourceView: textField, sourceRect: textField.bounds)
+        let popoverAnchor = textField.asPopoverAnchor
         switch textField {
         case keyFileField:
             hideErrorMessage(animated: true)
@@ -275,7 +275,7 @@ extension DatabaseCreatorVC: UITextFieldDelegate {
             return
         }
         let isMac = ProcessInfo.isRunningOnMac
-        let popoverAnchor = PopoverAnchor(sourceView: textField, sourceRect: textField.bounds)
+        let popoverAnchor = textField.asPopoverAnchor
         switch textField {
         case keyFileField:
             hideErrorMessage(animated: true)

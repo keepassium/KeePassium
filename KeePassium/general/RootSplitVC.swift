@@ -33,4 +33,13 @@ class RootSplitVC: UISplitViewController {
             viewControllers = _viewControllers
         }
     }
+
+    public func ensurePrimaryVisible() {
+        guard isCollapsed else { return }
+        guard let navVC = viewControllers.first! as? UINavigationController else {
+            assertionFailure()
+            return
+        }
+        navVC.popToRootViewController(animated: false)
+    }
 }
