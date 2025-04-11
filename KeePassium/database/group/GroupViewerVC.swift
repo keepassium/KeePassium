@@ -386,7 +386,9 @@ final class GroupViewerVC:
         titleView.iconView.image = UIImage.kpIcon(forGroup: group)
         navigationItem.title = titleView.titleLabel.text
 
-        if isSearchActive, let searchController = searchController {
+        if isSmartGroup  {
+            updateSearchResults(searchText: group.smartGroupQuery)
+        } else if isSearchActive, let searchController = searchController {
             updateSearchResults(for: searchController)
         } else {
             sortGroupItems()
