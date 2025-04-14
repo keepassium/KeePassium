@@ -162,49 +162,63 @@
                                                 <constraint firstAttribute="height" constant="2" id="YjP-dG-tUY"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="{ViewableFieldCell}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5V-vy-3To">
-                                            <rect key="frame" x="20" y="9.9999999999999982" width="353" height="19.333333333333329"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                            <color key="textColor" name="AuxiliaryText"/>
-                                            <nil key="highlightedColor"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="#bc-ignore!"/>
-                                            </attributedString>
-                                        </label>
-                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KeR-5G-0Dk">
-                                            <rect key="frame" x="16" y="29.333333333333332" width="357" height="35.333333333333343"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pXz-gh-gsy">
+                                            <rect key="frame" x="20" y="10" width="353" height="148.33333333333334"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" scrollEnabled="NO" editable="NO" text="{Field Value}" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4Cc-vV-vTv">
-                                                    <rect key="frame" x="0.0" y="0.0" width="357" height="35.333333333333336"/>
-                                                    <color key="textColor" name="PrimaryText"/>
-                                                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="{ViewableFieldCell}" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5V-vy-3To">
+                                                    <rect key="frame" x="0.0" y="0.0" width="353" height="19.333333333333332"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                    <color key="textColor" name="AuxiliaryText"/>
+                                                    <nil key="highlightedColor"/>
                                                     <attributedString key="userComments">
                                                         <fragment content="#bc-ignore!"/>
                                                     </attributedString>
-                                                </textView>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mke-SN-AY9">
+                                                    <rect key="frame" x="0.0" y="19.333333333333329" width="353" height="129"/>
+                                                    <subviews>
+                                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KeR-5G-0Dk">
+                                                            <rect key="frame" x="-4" y="0.0" width="357" height="129"/>
+                                                            <subviews>
+                                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" scrollEnabled="NO" editable="NO" text="{Field Value}" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4Cc-vV-vTv">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="357" height="129"/>
+                                                                    <color key="textColor" name="PrimaryText"/>
+                                                                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
+                                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                                    <attributedString key="userComments">
+                                                                        <fragment content="#bc-ignore!"/>
+                                                                    </attributedString>
+                                                                </textView>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="4Cc-vV-vTv" firstAttribute="top" secondItem="KeR-5G-0Dk" secondAttribute="top" id="3oi-mB-bLb"/>
+                                                                <constraint firstItem="4Cc-vV-vTv" firstAttribute="width" secondItem="KeR-5G-0Dk" secondAttribute="width" id="9nq-jI-tmx"/>
+                                                                <constraint firstAttribute="bottom" secondItem="4Cc-vV-vTv" secondAttribute="bottom" id="GrY-Kd-Gal"/>
+                                                                <constraint firstItem="4Cc-vV-vTv" firstAttribute="leading" secondItem="KeR-5G-0Dk" secondAttribute="leading" id="bOP-h2-lvu"/>
+                                                                <constraint firstAttribute="trailing" secondItem="4Cc-vV-vTv" secondAttribute="trailing" id="cCX-Ru-DXv"/>
+                                                                <constraint firstItem="4Cc-vV-vTv" firstAttribute="height" secondItem="KeR-5G-0Dk" secondAttribute="height" priority="750" id="toB-DG-lBD"/>
+                                                            </constraints>
+                                                        </scrollView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="KeR-5G-0Dk" secondAttribute="trailing" id="9Lt-tV-CYB"/>
+                                                        <constraint firstItem="KeR-5G-0Dk" firstAttribute="leading" secondItem="mke-SN-AY9" secondAttribute="leading" constant="-4" id="aHf-WK-6UV"/>
+                                                        <constraint firstAttribute="bottom" secondItem="KeR-5G-0Dk" secondAttribute="bottom" id="ije-nU-WS3"/>
+                                                        <constraint firstItem="KeR-5G-0Dk" firstAttribute="top" secondItem="mke-SN-AY9" secondAttribute="top" id="vki-uu-5TK"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="4Cc-vV-vTv" firstAttribute="top" secondItem="KeR-5G-0Dk" secondAttribute="top" id="3oi-mB-bLb"/>
-                                                <constraint firstItem="4Cc-vV-vTv" firstAttribute="width" secondItem="KeR-5G-0Dk" secondAttribute="width" id="9nq-jI-tmx"/>
-                                                <constraint firstAttribute="bottom" secondItem="4Cc-vV-vTv" secondAttribute="bottom" id="GrY-Kd-Gal"/>
-                                                <constraint firstItem="4Cc-vV-vTv" firstAttribute="leading" secondItem="KeR-5G-0Dk" secondAttribute="leading" id="bOP-h2-lvu"/>
-                                                <constraint firstAttribute="trailing" secondItem="4Cc-vV-vTv" secondAttribute="trailing" id="cCX-Ru-DXv"/>
-                                                <constraint firstItem="4Cc-vV-vTv" firstAttribute="height" secondItem="KeR-5G-0Dk" secondAttribute="height" priority="750" id="toB-DG-lBD"/>
-                                            </constraints>
-                                        </scrollView>
+                                        </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="L5V-vy-3To" firstAttribute="top" secondItem="O0b-sr-9BP" secondAttribute="bottom" constant="8" id="0gr-gG-bOZ"/>
                                         <constraint firstItem="O0b-sr-9BP" firstAttribute="top" secondItem="Kvk-Sm-2w4" secondAttribute="top" id="182-Lg-uED"/>
-                                        <constraint firstItem="KeR-5G-0Dk" firstAttribute="leading" secondItem="Kvk-Sm-2w4" secondAttribute="leadingMargin" constant="-4" id="4Xq-wB-z2K"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="pXz-gh-gsy" secondAttribute="bottom" id="2D9-7a-mWI"/>
+                                        <constraint firstItem="pXz-gh-gsy" firstAttribute="leading" secondItem="Kvk-Sm-2w4" secondAttribute="leadingMargin" id="5Fz-rI-lna"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="pXz-gh-gsy" secondAttribute="trailing" id="AEe-3k-iEc"/>
                                         <constraint firstItem="O0b-sr-9BP" firstAttribute="leading" secondItem="Kvk-Sm-2w4" secondAttribute="leading" id="ATa-sq-JHn"/>
                                         <constraint firstAttribute="trailing" secondItem="O0b-sr-9BP" secondAttribute="trailing" id="J0j-bY-ftk"/>
-                                        <constraint firstItem="L5V-vy-3To" firstAttribute="trailing" secondItem="Kvk-Sm-2w4" secondAttribute="trailingMargin" id="YYZ-v9-wnF"/>
-                                        <constraint firstItem="L5V-vy-3To" firstAttribute="bottom" secondItem="KeR-5G-0Dk" secondAttribute="top" id="Yj1-X9-TjR"/>
-                                        <constraint firstItem="L5V-vy-3To" firstAttribute="leading" secondItem="Kvk-Sm-2w4" secondAttribute="leadingMargin" id="eGt-WI-fa6"/>
-                                        <constraint firstItem="KeR-5G-0Dk" firstAttribute="bottom" secondItem="Kvk-Sm-2w4" secondAttribute="bottomMargin" id="qQS-Ng-CYf"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="KeR-5G-0Dk" secondAttribute="trailing" id="wEe-H0-FbG"/>
+                                        <constraint firstItem="pXz-gh-gsy" firstAttribute="top" secondItem="O0b-sr-9BP" secondAttribute="bottom" constant="8" id="xP9-Zb-U5p"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

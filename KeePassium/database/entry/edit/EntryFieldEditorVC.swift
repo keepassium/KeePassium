@@ -1,6 +1,6 @@
 //  KeePassium Password Manager
 //  Copyright © 2018–2024 KeePassium Labs <info@keepassium.com>
-// 
+//
 //  This program is free software: you can redistribute it and/or modify it
 //  under the terms of the GNU General Public License version 3 as published
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
@@ -72,6 +72,9 @@ final class EntryFieldEditorVC: UITableViewController, Refreshable {
         tableView.estimatedRowHeight = 44.0
 
         configureAddMenu()
+        tableView.register(
+            EntryFieldEditorSingleLineCell.self,
+            forCellReuseIdentifier: EntryFieldEditorSingleLineCell.reuseIdentifier)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -440,7 +443,9 @@ extension EntryFieldEditorVC {
     ) -> EditableFieldCell & UITableViewCell {
         let entryField = field.field
         if entryField?.isExtraURL ?? false {
-            return configureURLCell(field: field, tableView: tableView, at: indexPath)
+            let cell = configureURLCell(field: field, tableView: tableView, at: indexPath)
+            cell.isTitleHidden = true
+            return cell
         }
         return configureCustomFieldCell(field: field, tableView: tableView, at: indexPath)
     }
@@ -483,7 +488,7 @@ extension EntryFieldEditorVC {
         at indexPath: IndexPath
     ) -> EntryFieldEditorSingleLineCell {
         let cell = tableView.dequeueReusableCell(
-            withIdentifier: EntryFieldEditorSingleLineCell.storyboardID,
+            withIdentifier: EntryFieldEditorSingleLineCell.reuseIdentifier,
             for: indexPath)
             as! EntryFieldEditorSingleLineCell
         cell.field = field
@@ -504,6 +509,7 @@ extension EntryFieldEditorVC {
     ) -> EntryFieldEditorSingleLineCell {
         let cell = configureSingleLineCell(field: field, tableView: tableView, at: indexPath)
         cell.textField.keyboardType = .URL
+        cell.isTitleHidden = false
         return cell
     }
 
@@ -513,7 +519,7 @@ extension EntryFieldEditorVC {
         at indexPath: IndexPath
     ) -> EntryFieldEditorSingleLineCell {
         let cell = tableView.dequeueReusableCell(
-            withIdentifier: EntryFieldEditorSingleLineCell.storyboardID,
+            withIdentifier: EntryFieldEditorSingleLineCell.reuseIdentifier,
             for: indexPath)
             as! EntryFieldEditorSingleLineCell
         cell.field = field

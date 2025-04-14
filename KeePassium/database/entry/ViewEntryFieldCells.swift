@@ -36,10 +36,12 @@ class ViewableFieldCellFactory {
                 for: indexPath)
                 as! ProtectedFieldCell
         } else if isOpenableURL {
-            cell = tableView.dequeueReusableCell(
+            let urlCell = tableView.dequeueReusableCell(
                 withIdentifier: URLFieldCell.storyboardID,
                 for: indexPath)
                 as! URLFieldCell
+            urlCell.isNameLabelHidden = field.field?.isExtraURL == true
+            cell = urlCell
         } else if field.internalName == EntryField.notes {
             cell = tableView.dequeueReusableCell(
                 withIdentifier: ExpandableFieldCell.storyboardID,
@@ -171,8 +173,16 @@ class URLFieldCell: ViewableFieldCell {
 
     private var url: URL?
 
+    var isNameLabelHidden: Bool = false {
+        didSet {
+            nameLabel?.isHidden = isNameLabelHidden
+        }
+    }
+
     override func setupCell() {
         super.setupCell()
+
+        nameLabel.isHidden = isNameLabelHidden
 
         let urlString = field?.resolvedValue ?? ""
         url = URL(string: urlString)

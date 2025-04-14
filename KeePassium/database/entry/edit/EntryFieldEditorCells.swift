@@ -1,6 +1,6 @@
 //  KeePassium Password Manager
 //  Copyright © 2018–2024 KeePassium Labs <info@keepassium.com>
-// 
+//
 //  This program is free software: you can redistribute it and/or modify it
 //  under the terms of the GNU General Public License version 3 as published
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
@@ -145,114 +145,6 @@ class EntryFieldEditorTitleCell:
         suggestedActions: [UIMenuElement]
     ) -> UIMenu? {
         return textField.addRandomizerEditMenu(to: suggestedActions)
-    }
-}
-
-class EntryFieldEditorSingleLineCell:
-    UITableViewCell,
-    EditableFieldCell,
-    ValidatingTextFieldDelegate,
-    TextInputEditMenuDelegate,
-    UITextFieldDelegate
-{
-    public static let storyboardID = "SingleLineCell"
-    @IBOutlet weak var textField: ValidatingTextField!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var actionButton: UIButton!
-    @IBOutlet weak var deleteButton: UIButton!
-    @IBOutlet weak var textFieldTrailingConstraint: NSLayoutConstraint!
-
-    weak var delegate: EditableFieldCellDelegate? {
-        didSet {
-            refreshButtons()
-        }
-    }
-    weak var field: EditableField? {
-        didSet {
-            titleLabel.text = field?.visibleName
-            textField.text = field?.value
-            textField.isSecureTextEntry =
-                (field?.isProtected ?? false) && Settings.current.isHideProtectedFields
-            textField.accessibilityLabel = field?.visibleName
-            textField.textContentType = field?.textContentType
-            refreshButtons()
-        }
-    }
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        titleLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        titleLabel.adjustsFontForContentSizeCategory = true
-        textField.font = UIFont.entryTextFont()
-        textField.adjustsFontForContentSizeCategory = true
-
-        textField.validityDelegate = self
-        textField.delegate = self
-
-        deleteButton.accessibilityLabel = LString.actionDelete
-        deleteButton.addTarget(self, action: #selector(didPressDelete), for: .touchUpInside)
-    }
-
-    private func refreshButtons() {
-        guard let field = field else {
-            return
-        }
-        let actionConfig = delegate?.getActionConfiguration(for: field) ?? .hidden
-        actionConfig.apply(to: actionButton)
-
-        deleteButton.isHidden = field.field?.isStandardField == true
-        textFieldTrailingConstraint.constant = deleteButton.isHidden ? 0 : 27
-    }
-
-    override func becomeFirstResponder() -> Bool {
-        super.becomeFirstResponder()
-        return textField.becomeFirstResponder()
-    }
-
-    func validate() {
-        textField.validate()
-        refreshButtons()
-    }
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let field = field else { return false }
-        delegate?.didPressReturn(for: field, in: self)
-        return false
-    }
-
-    func validatingTextField(_ sender: ValidatingTextField, textDidChange text: String) {
-        guard let field = field else { return }
-        field.value = textField.text ?? ""
-        delegate?.didChangeField(field, in: self)
-        refreshButtons()
-    }
-
-    func validatingTextFieldShouldValidate(_ sender: ValidatingTextField) -> Bool {
-        return field?.isValid ?? false
-    }
-
-    @IBAction private func didPressActionButton(_ sender: Any) {
-        guard let field = field else { return }
-        delegate?.didPressButton(for: field, at: actionButton.asPopoverAnchor, in: self)
-    }
-
-    func textInputDidRequestRandomizer(_ textInput: TextInputView) {
-        guard textInput === textField else { return }
-        delegate?.didPressRandomize(for: textInput, viaMenu: true, in: self)
-    }
-
-    func textField(
-        _ textField: UITextField,
-        editMenuForCharactersIn range: NSRange,
-        suggestedActions: [UIMenuElement]
-    ) -> UIMenu? {
-        return textField.addRandomizerEditMenu(to: suggestedActions)
-    }
-
-    @objc
-    private func didPressDelete() {
-        guard let field = field else { return }
-        delegate?.didPressDelete(field, in: self)
     }
 }
 

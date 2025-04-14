@@ -1336,6 +1336,9 @@
 		F32228172CCEC4230093BD9C /* KeyFileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32228142CCEC4230093BD9C /* KeyFileTextField.swift */; };
 		F32228182CCEC4230093BD9C /* KeyFileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32228142CCEC4230093BD9C /* KeyFileTextField.swift */; };
 		F32228192CCEC4230093BD9C /* KeyFileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32228142CCEC4230093BD9C /* KeyFileTextField.swift */; };
+		F326756D2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F326756C2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift */; };
+		F326756E2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F326756C2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift */; };
+		F326756F2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F326756C2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift */; };
 		F331EF282A8509860084473D /* Zxcvbn in Frameworks */ = {isa = PBXBuildFile; productRef = F331EF272A8509860084473D /* Zxcvbn */; };
 		F331EF2A2A8509A10084473D /* Zxcvbn in Frameworks */ = {isa = PBXBuildFile; productRef = F331EF292A8509A10084473D /* Zxcvbn */; };
 		F331EF2C2A8509AC0084473D /* Zxcvbn in Frameworks */ = {isa = PBXBuildFile; productRef = F331EF2B2A8509AC0084473D /* Zxcvbn */; };
@@ -2557,6 +2560,7 @@
 		F31114A72B9B83B300236632 /* DropboxConnectionSetupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxConnectionSetupCoordinator.swift; sourceTree = "<group>"; };
 		F321414B2A90D2CD007A8D4E /* PasswordAuditServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordAuditServiceTests.swift; sourceTree = "<group>"; };
 		F32228142CCEC4230093BD9C /* KeyFileTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFileTextField.swift; sourceTree = "<group>"; };
+		F326756C2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFieldEditorSingleLineCell.swift; sourceTree = "<group>"; };
 		F33F2C502B32DD61009EFB18 /* TagSelectorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSelectorVC.swift; sourceTree = "<group>"; };
 		F33F2C532B32E059009EFB18 /* TagSelectorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSelectorCoordinator.swift; sourceTree = "<group>"; };
 		F34010A22AA1E540005FDF55 /* ExposureCountFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureCountFormatter.swift; sourceTree = "<group>"; };
@@ -3073,6 +3077,7 @@
 				7588B6C52627351800F5D372 /* EntryFieldEditorCoordinator.swift */,
 				752B1E9220E8AA070073AABD /* EditableField.swift */,
 				75514A3320DF5B6200202340 /* EntryFieldEditorCells.swift */,
+				F326756C2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift */,
 				750C683120D767F6001A6AA0 /* EntryFieldEditorVC.swift */,
 				751E0D032309AF1B0088BB10 /* EntryFieldEditorVC.storyboard */,
 				75E4CA5C232C455D00EB6805 /* UserNameHelper.swift */,
@@ -4655,6 +4660,7 @@
 				75FCCF842631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */,
 				75FC403E2DA09DBD00C5D1C2 /* DatabasePickerCoordinator+select.swift in Sources */,
 				7520934D2DA3E5AB009711BB /* DatabasePickerCoordinator+mainMenu.swift in Sources */,
+				F326756F2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift in Sources */,
 				75BE05FA25DAA5A200B34CC0 /* URLOpener.swift in Sources */,
 				75814FD225F3D70B00B52A57 /* UIApplication+extensions.swift in Sources */,
 				75E60AE525CF5E090089219C /* DatabaseIconSet+assets.swift in Sources */,
@@ -4924,6 +4930,7 @@
 				757ADC5623A5180600D708D2 /* DismissableNavigationController.swift in Sources */,
 				75FC40402DA09DBD00C5D1C2 /* DatabasePickerCoordinator+select.swift in Sources */,
 				7520934E2DA3E5AB009711BB /* DatabasePickerCoordinator+mainMenu.swift in Sources */,
+				F326756D2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift in Sources */,
 				75FCCF862631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */,
 				75BE05FC25DAA5A200B34CC0 /* URLOpener.swift in Sources */,
 				75814FD425F3D70B00B52A57 /* UIApplication+extensions.swift in Sources */,
@@ -5171,6 +5178,7 @@
 				75D0765628B639D200F02E39 /* NSLayoutContraint+extensions.swift in Sources */,
 				75D0765728B639D200F02E39 /* HardwareKeyPicker.swift in Sources */,
 				75D0765828B639D200F02E39 /* ContextualAction.swift in Sources */,
+				F326756E2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift in Sources */,
 				75D0765928B639D200F02E39 /* EntryViewerPagesVC.swift in Sources */,
 				75D0765A28B639D200F02E39 /* FieldCopiedView.swift in Sources */,
 				75D0765B28B639D200F02E39 /* UITableViewCell+demoEditActions.swift in Sources */,
