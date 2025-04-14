@@ -13,6 +13,11 @@ class FilePickerCoordinator: UIResponder, Coordinator, Refreshable, FilePickerVC
     var dismissHandler: CoordinatorDismissHandler?
 
     internal var _contentUnavailableConfiguration: UIContentUnavailableConfiguration? { nil }
+    internal var noSelectionItem: FilePickerItem.TitleImage? {
+        didSet {
+            _filePickerVC.setNoSelectionItem(noSelectionItem)
+        }
+    }
     internal var announcements: [AnnouncementItem] = [] {
         didSet {
             _filePickerVC.setAnnouncements(announcements)
@@ -34,14 +39,17 @@ class FilePickerCoordinator: UIResponder, Coordinator, Refreshable, FilePickerVC
         router: NavigationRouter,
         fileType: FileType,
         itemDecorator: FilePickerItemDecorator?,
-        toolbarDecorator: FilePickerToolbarDecorator?
+        toolbarDecorator: FilePickerToolbarDecorator?,
+        appearance: FilePickerAppearance
     ) {
         self.router = router
         self.fileType = fileType
         _filePickerVC = FilePickerVC(
             fileType: fileType,
             toolbarDecorator: toolbarDecorator,
-            itemDecorator: itemDecorator)
+            itemDecorator: itemDecorator,
+            appearance: appearance
+        )
         super.init()
         _filePickerVC.delegate = self
         fileKeeperNotifications = FileKeeperNotifications(observer: self)
@@ -61,6 +69,15 @@ class FilePickerCoordinator: UIResponder, Coordinator, Refreshable, FilePickerVC
         })
         refresh()
         fileKeeperNotifications.startObserving()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(appDidBecomeActive),
+            name: UIApplication.didBecomeActiveNotification,
+            object: nil)
+    }
+
+    @objc private func appDidBecomeActive(_ sender: AnyObject?) {
+        refresh()
     }
 
     func dismiss() {
@@ -90,6 +107,11 @@ class FilePickerCoordinator: UIResponder, Coordinator, Refreshable, FilePickerVC
         _filePickerVC.setFileRefs(refs)
     }
 
+    @discardableResult
+    override func becomeFirstResponder() -> Bool {
+        _filePickerVC.becomeFirstResponder()
+    }
+
     public func setEnabled(_ enabled: Bool) {
         _filePickerVC.setEnabled(enabled)
     }
@@ -107,11 +129,14 @@ class FilePickerCoordinator: UIResponder, Coordinator, Refreshable, FilePickerVC
     }
 
     func didSelectFile(
-        _ fileRef: URLReference,
+        _ fileRef: URLReference?,
         cause: FileActivationCause?,
         in viewController: FilePickerVC
     ) {
         assertionFailure("Pure virtual method, override this")
+    }
+
+    func didEliminateFile(_ fileRef: URLReference, in coordinator: FilePickerCoordinator) {
     }
 }
 

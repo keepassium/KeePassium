@@ -10,7 +10,14 @@ import KeePassiumLib
 
 enum FilePickerItem: Hashable {
     case announcement(_ item: AnnouncementItem)
+    case noFile(_ item: TitleImage)
     case file(_ item: FileInfo)
+
+    struct TitleImage: Hashable {
+        var title: String
+        var subtitle: String?
+        var image: UIImage?
+    }
 
     struct FileInfo: Hashable {
         private(set) weak var source: URLReference?
@@ -39,6 +46,8 @@ enum FilePickerItem: Hashable {
         switch self {
         case let .announcement(item):
             hasher.combine(item)
+        case let .noFile(item):
+            hasher.combine(item)
         case let .file(item):
             hasher.combine(item.uuid)
         }
@@ -50,6 +59,8 @@ enum FilePickerItem: Hashable {
             return item1 == item2
         case let (.file(item1), .file(item2)):
             return item1.uuid == item2.uuid
+        case let (.noFile(item1), .noFile(item2)):
+            return item1 == item2
         default:
             return false
         }

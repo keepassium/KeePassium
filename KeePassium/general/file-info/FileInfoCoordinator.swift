@@ -35,7 +35,7 @@ final class FileInfoCoordinator: Coordinator {
         fileInfoVC.delegate = self
         fileInfoVC.fileRef = fileRef
         fileInfoVC.fileType = fileType
-        fileInfoVC.canExport = false 
+        fileInfoVC.canExport = allowExport
     }
 
     deinit {
@@ -134,8 +134,10 @@ extension FileInfoCoordinator: FileInfoDelegate {
             at: popoverAnchor,
             parent: viewController,
             completion: { [weak self] success in
+                guard let self else { return }
                 if success {
-                    self?.dismiss()
+                    delegate?.didEliminateFile(fileRef, in: self)
+                    dismiss()
                 } else {
                 }
             }

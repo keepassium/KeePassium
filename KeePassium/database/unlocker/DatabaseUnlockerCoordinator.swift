@@ -203,16 +203,16 @@ extension DatabaseUnlockerCoordinator {
         at popoverAnchor: PopoverAnchor,
         in viewController: UIViewController
     ) {
-        let targetRouter = getPopoverRouter(at: popoverAnchor)
-        let keyFilePickerCoordinator = KeyFilePickerCoordinator(router: targetRouter)
+        let modalRouter = NavigationRouter.createModal(style: .formSheet, at: popoverAnchor)
+        let keyFilePickerCoordinator = KeyFilePickerCoordinator(router: modalRouter)
         keyFilePickerCoordinator.dismissHandler = { [weak self] coordinator in
             self?.removeChildCoordinator(coordinator)
         }
         keyFilePickerCoordinator.delegate = self
         keyFilePickerCoordinator.start()
         addChildCoordinator(keyFilePickerCoordinator)
-        if targetRouter != router {
-            viewController.present(targetRouter, animated: true, completion: nil)
+        if modalRouter != router {
+            viewController.present(modalRouter, animated: true, completion: nil)
         }
     }
 
@@ -472,9 +472,10 @@ extension DatabaseUnlockerCoordinator: DatabaseUnlockerDelegate {
 }
 
 extension DatabaseUnlockerCoordinator: KeyFilePickerCoordinatorDelegate {
-    func didPickKeyFile(_ keyFile: URLReference?, in coordinator: KeyFilePickerCoordinator) {
+    func didSelectKeyFile(_ fileRef: URLReference?, cause: FileActivationCause?, in coordinator: KeyFilePickerCoordinator) {
+        assert(cause != nil, "File selected but not activated?")
         databaseUnlockerVC.hideErrorMessage(animated: false)
-        setKeyFile(keyFile)
+        setKeyFile(fileRef)
     }
 
     func didEliminateKeyFile(_ keyFile: URLReference, in coordinator: KeyFilePickerCoordinator) {

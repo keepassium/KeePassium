@@ -9,8 +9,28 @@
 // swiftlint:disable line_length
 extension LString {
 
+    public static let titleKeyFiles = NSLocalizedString(
+        "[KeyFile/List/title]",
+        bundle: Bundle.framework,
+        value: "Key Files",
+        comment: "Title of the list with key files.")
+    public static let titleNoKeyFiles = NSLocalizedString(
+        "[KeyFile/List/empty]",
+        bundle: Bundle.framework,
+        value: "No key files",
+        comment: "Placeholder shown when there are no key files available")
+    public static let titleNoKeyFile = NSLocalizedString(
+        "[KeyFile/None/title]",
+        bundle: Bundle.framework,
+        value: "No Key File",
+        comment: "Title: don't use key file")
+    public static let noKeyFileDescription = NSLocalizedString(
+        "[KeyFile/None/description]",
+        bundle: Bundle.framework,
+        value: "Use only password",
+        comment: "Description of the 'No Key File' option.")
     public static let keyFileErrorTemplate = NSLocalizedString(
-        "[Database/Unlock] Key file error: %@",
+        "[KeyFile/error]",
         bundle: Bundle.framework,
         value: "Key file error: %@",
         comment: "Error message related to key file. [errorDetails: String]")
@@ -351,6 +371,11 @@ extension LString {
         bundle: Bundle.framework,
         value: "Databases",
         comment: "Title of the database picker list")
+    public static let titleNoDatabaseFiles = NSLocalizedString(
+        "[Database/List/empty]",
+        bundle: Bundle.framework,
+        value: "No database files",
+        comment: "Placeholder shown when there are no database files available")
     public static let messageLocalFilesMissing = NSLocalizedString(
         "[Database/List/LocalMissing/message]",
         bundle: Bundle.framework,
@@ -366,17 +391,6 @@ extension LString {
         bundle: Bundle.framework,
         value: "Sort Files By",
         comment: "Title of a menu: sort order of files in a list")
-    public static let titleShowBackupFiles = NSLocalizedString(
-        "Show Backup Files",
-        bundle: Bundle.framework,
-        value: "Show Backup Files",
-        comment: "Settings switch: whether to include backup copies in the file list"
-    )
-    public static let titleNoDatabaseFiles = NSLocalizedString(
-        "No database files",
-        bundle: Bundle.framework,
-        value: "No database files",
-        comment: "Placeholder shown when there are no database files available")
 
 
     public static let databaseLastEditedByTemplate = NSLocalizedString(

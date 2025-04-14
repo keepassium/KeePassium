@@ -169,8 +169,13 @@ extension DatabaseKeyChangerCoordinator: DatabaseKeyChangerDelegate {
 }
 
 extension DatabaseKeyChangerCoordinator: KeyFilePickerCoordinatorDelegate {
-    func didPickKeyFile(_ keyFile: URLReference?, in coordinator: KeyFilePickerCoordinator) {
-        databaseKeyChangerVC.setKeyFile(keyFile)
+    func didSelectKeyFile(
+        _ fileRef: URLReference?,
+        cause: FileActivationCause?,
+        in coordinator: KeyFilePickerCoordinator
+    ) {
+        assert(cause != nil, "Unexpected in single-panel mode")
+        databaseKeyChangerVC.setKeyFile(fileRef)
     }
 
     func didEliminateKeyFile(_ keyFile: URLReference, in coordinator: KeyFilePickerCoordinator) {

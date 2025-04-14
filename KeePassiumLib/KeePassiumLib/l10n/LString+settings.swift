@@ -389,6 +389,11 @@ extension LString {
         bundle: Bundle.framework,
         value: "Database Backup",
         comment: "Title of a settings section: backup of databases")
+    public static let titleShowBackupFiles = NSLocalizedString(
+        "[Settings/DatabaseBackup/showBackupFiles]",
+        bundle: Bundle.framework,
+        value: "Show Backup Files",
+        comment: "Settings switch: whether to include backup copies in the file list")
     public static let actionDeleteAllBackupFilesTemplate = NSLocalizedString(
         "[Settings/Backup] Delete ALL Backup Files (%d)",
         bundle: Bundle.framework,

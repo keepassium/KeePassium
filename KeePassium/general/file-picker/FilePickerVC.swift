@@ -21,6 +21,8 @@ protocol FilePickerItemDecorator: AnyObject {
     func getContextMenu(for item: FilePickerItem.FileInfo, at popoverAnchor: PopoverAnchor) -> UIMenu?
 }
 
+typealias FilePickerAppearance = UICollectionLayoutListConfiguration.Appearance
+
 class FilePickerVC: UIViewController {
     protocol Delegate: AnyObject {
         func needsRefresh(_ viewController: FilePickerVC)
@@ -28,7 +30,7 @@ class FilePickerVC: UIViewController {
         func shouldAcceptUserSelection(_ fileRef: URLReference, in viewController: FilePickerVC) -> Bool
 
         func didSelectFile(
-            _ fileRef: URLReference,
+            _ fileRef: URLReference?,
             cause: FileActivationCause?,
             in viewController: FilePickerVC)
     }
@@ -37,6 +39,7 @@ class FilePickerVC: UIViewController {
 
     private enum Section: Int, CaseIterable {
         case announcements
+        case noFile
         case files
     }
     private var dataSource: UICollectionViewDiffableDataSource<Section, FilePickerItem>!
@@ -45,9 +48,11 @@ class FilePickerVC: UIViewController {
     private let fileType: FileType
 
     private var announcementItems = [FilePickerItem]()
+    private var noFileItem: FilePickerItem?
     private var fileItems = [FilePickerItem]()
 
     private var collectionView: UICollectionView!
+    private var refreshControl = UIRefreshControl()
 
     private var isInSinglePanelMode: Bool {
         splitViewController?.isCollapsed ?? true
@@ -57,39 +62,46 @@ class FilePickerVC: UIViewController {
     init(
         fileType: FileType,
         toolbarDecorator: FilePickerToolbarDecorator?,
-        itemDecorator: FilePickerItemDecorator?
+        itemDecorator: FilePickerItemDecorator?,
+        appearance: FilePickerAppearance
     ) {
         self.fileType = fileType
         self.toolbarDecorator = toolbarDecorator
         self.itemDecorator = itemDecorator
         super.init(nibName: nil, bundle: nil)
-        initCollectionView()
+        initCollectionView(appearance: appearance)
         setupCollectionView()
         setupDataSource()
     }
 
-    private func initCollectionView() {
+    private func initCollectionView(appearance: FilePickerAppearance) {
         let trailingActionsProvider = { [weak self] (indexPath: IndexPath) -> UISwipeActionsConfiguration? in
             guard let self else { return nil }
             switch dataSource.itemIdentifier(for: indexPath) {
+            case .announcement, .noFile:
+                return nil
             case .file(let fileItem):
                 if let actions = itemDecorator?.getTrailingSwipeActions(forFile: fileItem) {
                     return UISwipeActionsConfiguration(actions: actions)
                 }
                 return nil
-            default:
+            case .none:
+                assertionFailure()
                 return nil
             }
         }
         let leadingActionsProvider = { [weak self] (indexPath: IndexPath) -> UISwipeActionsConfiguration? in
             guard let self else { return nil }
             switch dataSource.itemIdentifier(for: indexPath) {
+            case .announcement, .noFile:
+                return nil
             case .file(let fileItem):
                 if let actions = itemDecorator?.getLeadingSwipeActions(forFile: fileItem) {
                     return UISwipeActionsConfiguration(actions: actions)
                 }
                 return nil
-            default:
+            case .none:
+                assertionFailure()
                 return nil
             }
         }
@@ -99,12 +111,16 @@ class FilePickerVC: UIViewController {
             case .announcements:
                 let config = UICollectionLayoutListConfiguration(appearance: .sidebarPlain)
                 return NSCollectionLayoutSection.list(using: config, layoutEnvironment: layoutEnvironment)
+            case .noFile:
+                let config = UICollectionLayoutListConfiguration(appearance: appearance)
+                return NSCollectionLayoutSection.list(using: config, layoutEnvironment: layoutEnvironment)
             case .files:
-                var config = UICollectionLayoutListConfiguration(appearance: .plain)
+                var config = UICollectionLayoutListConfiguration(appearance: appearance)
                 config.leadingSwipeActionsConfigurationProvider = leadingActionsProvider
                 config.trailingSwipeActionsConfigurationProvider = trailingActionsProvider
                 return NSCollectionLayoutSection.list(using: config, layoutEnvironment: layoutEnvironment)
-            default:
+            case .none:
+                assertionFailure()
                 return nil
             }
         }
@@ -116,11 +132,6 @@ class FilePickerVC: UIViewController {
 
     required init?(coder: NSCoder) {
         fatalError("Not implemented")
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .systemBackground
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -151,13 +162,13 @@ class FilePickerVC: UIViewController {
 
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
 
-        let refreshControl = UIRefreshControl()
+        refreshControl.backgroundColor = .clear
         refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         collectionView.refreshControl = refreshControl
     }
@@ -167,6 +178,17 @@ class FilePickerVC: UIViewController {
             [weak itemDecorator] cell, indexPath, item in
             let accessories = itemDecorator?.getAccessories(for: item)
             cell.configure(with: item, accessories: accessories)
+        }
+        let noFileCellRegistration = UICollectionView.CellRegistration
+            <SelectableCollectionViewListCell, FilePickerItem.TitleImage>
+        {
+            cell, indexPath, item in
+            var config = UIListContentConfiguration.cell()
+            config.text = item.title
+            config.secondaryText = item.subtitle
+            config.image = item.image
+            config.secondaryTextProperties.color = .secondaryLabel
+            cell.contentConfiguration = config
         }
 
         dataSource = UICollectionViewDiffableDataSource<Section, FilePickerItem>(
@@ -180,6 +202,11 @@ class FilePickerVC: UIViewController {
                 ) as! AnnouncementCollectionCell
                 cell.configure(with: announcement)
                 return cell
+            case .noFile(let item):
+                return collectionView.dequeueConfiguredReusableCell(
+                    using: noFileCellRegistration,
+                    for: indexPath,
+                    item: item)
             case .file(let fileInfo):
                 return collectionView.dequeueConfiguredReusableCell(
                     using: fileCellRegistration,
@@ -191,9 +218,23 @@ class FilePickerVC: UIViewController {
 
     @objc private func didPullToRefresh(_ sender: UIRefreshControl) {
         delegate?.needsRefresh(self)
+        waitUntilDraggingEnds { [weak self] in
+            guard let self else { return }
+            refreshControl.endRefreshing()
+            collectionView.setContentOffset(
+                CGPoint(x: 0, y: -collectionView.adjustedContentInset.top),
+                animated: true)
+        }
+    }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-            sender.endRefreshing()
+    private func waitUntilDraggingEnds(completion: @escaping () -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
+            guard let self else { return }
+            if collectionView.isDragging {
+                waitUntilDraggingEnds(completion: completion)
+            } else {
+                completion()
+            }
         }
     }
 
@@ -229,6 +270,15 @@ class FilePickerVC: UIViewController {
         applySnapshot()
     }
 
+    public func setNoSelectionItem(_ item: FilePickerItem.TitleImage?) {
+        if let item {
+            self.noFileItem = FilePickerItem.noFile(item)
+        } else {
+            self.noFileItem = nil
+        }
+        applySnapshot()
+    }
+
     public func setEnabled(_ enabled: Bool) {
         let alpha: CGFloat = enabled ? 1.0 : 0.5
         navigationController?.navigationBar.isUserInteractionEnabled = enabled
@@ -248,21 +298,31 @@ class FilePickerVC: UIViewController {
     }
 
     public func selectFile(_ fileRef: URLReference?, animated: Bool) {
-        guard let fileRef else {
-            collectionView.selectItem(at: nil, animated: animated, scrollPosition: .centeredVertically)
+        if let fileRef {
+            guard let indexPath = getIndexPath(for: fileRef) else {
+                return
+            }
+            collectionView.selectItem(at: indexPath, animated: animated, scrollPosition: .centeredVertically)
             return
         }
 
-        guard let indexPath = getIndexPath(for: fileRef) else {
-            return
+        if let noFileItem,
+           let noFileIndexPath = dataSource.indexPath(for: noFileItem)
+        {
+            collectionView.selectItem(at: noFileIndexPath, animated: animated, scrollPosition: .top)
+        } else {
+            collectionView.selectItem(at: nil, animated: animated, scrollPosition: .centeredVertically)
         }
-        collectionView.selectItem(at: indexPath, animated: animated, scrollPosition: .centeredVertically)
     }
 
     private func applySnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, FilePickerItem>()
-        snapshot.appendSections(Section.allCases)
-
+        if let noFileItem {
+            snapshot.appendSections([.announcements, .noFile, .files])
+            snapshot.appendItems([noFileItem], toSection: .noFile)
+        } else {
+            snapshot.appendSections([.announcements, .files])
+        }
         snapshot.appendItems(announcementItems, toSection: .announcements)
         snapshot.appendItems(fileItems, toSection: .files)
 
@@ -307,7 +367,12 @@ class FilePickerVC: UIViewController {
 extension FilePickerVC {
     override var keyCommands: [UIKeyCommand]? {
         return [
-            UIKeyCommand(input: "\r", modifierFlags: [], action: #selector(didPressEnter))
+            UIKeyCommand(input: "\r", modifierFlags: [], action: #selector(didPressEnter)),
+            UIKeyCommand(
+                action: #selector(didPressRefresh),
+                hotkey: .refreshList,
+                discoverabilityTitle: LString.actionRefreshList
+            )
         ]
     }
 
@@ -317,25 +382,36 @@ extension FilePickerVC {
         else { return }
         handlePrimaryAction(at: selectedIndexPath, cause: .keyPress)
     }
+
+    @objc private func didPressRefresh() {
+        delegate?.needsRefresh(self)
+    }
 }
 
 extension FilePickerVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, canFocusItemAt indexPath: IndexPath) -> Bool {
-        return trueIfFile(at: indexPath)
+        return isSelectableCell(at: indexPath)
     }
 
     func collectionView(
         _ collectionView: UICollectionView,
         shouldSelectItemAt indexPath: IndexPath
     ) -> Bool {
-        return trueIfFile(at: indexPath)
+        return isSelectableCell(at: indexPath)
     }
 
-    private func trueIfFile(at indexPath: IndexPath) -> Bool {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        canPerformPrimaryActionForItemAt indexPath: IndexPath
+    ) -> Bool {
+        return isSelectableCell(at: indexPath)
+    }
+
+    private func isSelectableCell(at indexPath: IndexPath) -> Bool {
         switch dataSource.itemIdentifier(for: indexPath) {
         case .announcement:
             return false
-        case .file:
+        case .noFile, .file:
             return true
         case .none:
             return false
@@ -349,6 +425,9 @@ extension FilePickerVC: UICollectionViewDelegate {
         switch dataSource.itemIdentifier(for: indexPath) {
         case .announcement:
             return
+        case .noFile:
+            delegate?.didSelectFile(nil, cause: nil, in: self)
+            return
         case .file(let fileItem):
             guard let fileRef = fileItem.source else { assertionFailure(); return }
             guard delegate?.shouldAcceptUserSelection(fileRef, in: self) ?? true else {
@@ -357,6 +436,7 @@ extension FilePickerVC: UICollectionViewDelegate {
             }
             delegate?.didSelectFile(fileRef, cause: nil, in: self)
         case .none:
+            assertionFailure()
             return
         }
     }
@@ -372,6 +452,8 @@ extension FilePickerVC: UICollectionViewDelegate {
         switch dataSource.itemIdentifier(for: indexPath) {
         case .announcement:
             assertionFailure("Announcements should not be selectable")
+        case .noFile:
+            delegate?.didSelectFile(nil, cause: cause, in: self)
         case .file(let fileItem):
             guard let fileRef = fileItem.source else {
                 assertionFailure()
@@ -394,7 +476,7 @@ extension FilePickerVC: UICollectionViewDelegate {
         point: CGPoint
     ) -> UIContextMenuConfiguration? {
         switch dataSource.itemIdentifier(for: indexPath) {
-        case .announcement:
+        case .announcement, .noFile:
             return nil
         case .file(let fileItem):
             guard let popoverAnchor = collectionView.cellForItem(at: indexPath)?.asPopoverAnchor else {
@@ -407,6 +489,16 @@ extension FilePickerVC: UICollectionViewDelegate {
         case .none:
             assertionFailure()
             return nil
+        }
+    }
+}
+
+extension FilePickerVC: BusyStateIndicating {
+    func indicateState(isBusy: Bool) {
+        if isBusy {
+            view.makeToastActivity(.center)
+        } else {
+            view.hideToastActivity()
         }
     }
 }

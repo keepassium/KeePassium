@@ -75,7 +75,7 @@ extension DatabasePickerCoordinator {
         }
 
         func getTrailingItemGroups() -> [UIBarButtonItemGroup]? {
-            guard let coordinator else { assertionFailure(); return [] }
+            guard let coordinator else { assertionFailure(); return nil }
             let needPremium = coordinator.needsPremiumToAddDatabase()
             var menuItems = [UIMenuElement]()
 

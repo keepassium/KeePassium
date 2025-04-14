@@ -288,7 +288,7 @@ public class FileKeeper {
         let internalDocumentFiles = scanLocalDirectory(docDirURL, fileType: fileType)
         result.append(contentsOf: internalDocumentFiles)
 
-        if includeBackup {
+        if includeBackup && fileType == .database {
             let backupFileRefs = scanLocalDirectory(backupDirURL, fileType: fileType)
             result.append(contentsOf: backupFileRefs)
         }

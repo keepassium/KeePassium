@@ -390,13 +390,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DwH-6B-R5v">
-                                                    <rect key="frame" x="16" y="11.5" width="29" height="29"/>
+                                                    <rect key="frame" x="16" y="12" width="29" height="27.5"/>
                                                     <color key="tintColor" name="IconTint"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="29" id="QLe-0h-7Xe"/>
                                                         <constraint firstAttribute="width" constant="29" id="UTd-hV-Xzy"/>
                                                     </constraints>
-                                                    <imageReference key="image" image="key.doc.horizontal" symbolScale="large"/>
+                                                    <imageReference key="image" image="key.horizontal" catalog="system" symbolScale="large"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large" weight="regular">
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     </preferredSymbolConfiguration>
@@ -552,7 +552,7 @@
         <image name="ellipsis.rectangle.eye" width="13" height="13"/>
         <image name="hands.sparkles" catalog="system" width="124" height="128"/>
         <image name="key.diagonal" width="14" height="13"/>
-        <image name="key.doc.horizontal" width="11" height="14"/>
+        <image name="key.horizontal" catalog="system" width="128" height="68"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="trash.badge.clock" width="14" height="15"/>
         <namedColor name="AuxiliaryText">

@@ -8,7 +8,7 @@
 
 import KeePassiumLib
 
-class FilePickerCell: UICollectionViewListCell {
+class FilePickerCell: SelectableCollectionViewListCell {
 
     static let reuseIdentifier = "FilePickerCell"
 
@@ -16,16 +16,6 @@ class FilePickerCell: UICollectionViewListCell {
     private var isSpinnerVisible = false
     private weak var decorator: FilePickerItemDecorator?
     private var fixedAccessories = [UICellAccessory]()
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        automaticallyUpdatesContentConfiguration = false
-        automaticallyUpdatesBackgroundConfiguration = false
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 
     func configure(with item: FilePickerItem.FileInfo, accessories: [UICellAccessory]?) {
         var config = UIListContentConfiguration.cell()
@@ -46,21 +36,6 @@ class FilePickerCell: UICollectionViewListCell {
 
         self.fixedAccessories = accessories ?? []
         updateAccessories()
-    }
-
-    override func updateConfiguration(using state: UICellConfigurationState) {
-        super.updateConfiguration(using: state)
-        var bgConfig = defaultBackgroundConfiguration().updated(for: state)
-        bgConfig.backgroundColorTransformer = .init { color in
-            if state.isFocused {
-                return .focusTint
-            } else if state.isHighlighted || state.isSelected {
-                return .systemFill
-            } else {
-                return color
-            }
-        }
-        self.backgroundConfiguration = bgConfig
     }
 
     private func updateAccessories() {

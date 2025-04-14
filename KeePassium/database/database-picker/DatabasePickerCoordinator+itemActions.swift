@@ -151,7 +151,7 @@ extension DatabasePickerCoordinator {
     }
 
     private func didPressFileInfo(for fileRef: URLReference, at popoverAnchor: PopoverAnchor?) {
-        showFileInfo(fileRef, at: popoverAnchor, in: _filePickerVC)
+        showFileInfo(fileRef, fileType: .database, allowExport: true, at: popoverAnchor, in: _filePickerVC)
     }
 
     private func didPressRevealInFinder(_ fileRef: URLReference, at popoverAnchor: PopoverAnchor?) {

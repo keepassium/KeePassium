@@ -60,21 +60,12 @@ class DatabasePickerCoordinator: FilePickerCoordinator {
             router: router,
             fileType: .database,
             itemDecorator: itemDecorator,
-            toolbarDecorator: toolbarDecorator
+            toolbarDecorator: toolbarDecorator,
+            appearance: .plain
         )
         title = LString.titleDatabases
         itemDecorator.coordinator = self
         toolbarDecorator.coordinator = self
-
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(appDidBecomeActive),
-            name: UIApplication.didBecomeActiveNotification,
-            object: nil)
-    }
-
-    @objc private func appDidBecomeActive(_ sender: AnyObject?) {
-        refresh()
     }
 
     internal func enumerateDatabases(
@@ -104,11 +95,6 @@ class DatabasePickerCoordinator: FilePickerCoordinator {
             excludeNeedingReinstatement: true
         )
         return validDatabases.contains(databaseRef)
-    }
-
-    @discardableResult
-    override func becomeFirstResponder() -> Bool {
-        _filePickerVC.becomeFirstResponder()
     }
 
     public func getListedDatabaseCount() -> Int {
@@ -158,10 +144,15 @@ class DatabasePickerCoordinator: FilePickerCoordinator {
     }
 
     override func didSelectFile(
-        _ fileRef: URLReference,
+        _ fileRef: URLReference?,
         cause: FileActivationCause?,
         in viewController: FilePickerVC
     ) {
+        guard let fileRef else {
+            Diag.warning("Unexpectedly selected no database, ignoring")
+            assertionFailure("DB Picker does not have no-selection option")
+            return
+        }
         if let cause {
             _paywallDatabaseSelection(fileRef, animated: true, in: viewController) { [weak self] fileRef in
                 guard let self else { return }

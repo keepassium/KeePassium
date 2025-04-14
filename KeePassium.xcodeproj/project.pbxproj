@@ -117,7 +117,6 @@
 		751E0D292309AFE50088BB10 /* CrashReportVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D2B2309AFE50088BB10 /* CrashReportVC.storyboard */; };
 		751E0D2C2309AFE90088BB10 /* FirstSetupVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D2E2309AFE90088BB10 /* FirstSetupVC.storyboard */; };
 		751E0D352309AFFC0088BB10 /* EntryFinderVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D372309AFFC0088BB10 /* EntryFinderVC.storyboard */; };
-		751E0D382309B0120088BB10 /* KeyFilePickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D3A2309B0120088BB10 /* KeyFilePickerVC.storyboard */; };
 		7520934A2DA3E5AB009711BB /* DatabasePickerCoordinator+mainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752093492DA3E5AB009711BB /* DatabasePickerCoordinator+mainMenu.swift */; };
 		7520934B2DA3E5AB009711BB /* DatabasePickerCoordinator+mainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752093492DA3E5AB009711BB /* DatabasePickerCoordinator+mainMenu.swift */; };
 		7520934C2DA3E5AB009711BB /* DatabasePickerCoordinator+mainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752093492DA3E5AB009711BB /* DatabasePickerCoordinator+mainMenu.swift */; };
@@ -172,7 +171,6 @@
 		752ED68D2235547D00C20D3E /* SettingsDataProtectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752ED68C2235547D00C20D3E /* SettingsDataProtectionVC.swift */; };
 		752F5887247DCA5F0097ED20 /* SettingsSearchVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 752F588A247DCA5F0097ED20 /* SettingsSearchVC.storyboard */; };
 		752F5888247DCA5F0097ED20 /* SettingsSearchVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 752F588A247DCA5F0097ED20 /* SettingsSearchVC.storyboard */; };
-		7532A24D21C5A035005DF56F /* KeyFilePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532A24C21C5A035005DF56F /* KeyFilePickerVC.swift */; };
 		7533030F23C52A1500F38CC7 /* DestinationGroupPickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7533031223C52A1500F38CC7 /* DestinationGroupPickerVC.storyboard */; };
 		7533031023C52A1500F38CC7 /* DestinationGroupPickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7533031223C52A1500F38CC7 /* DestinationGroupPickerVC.storyboard */; };
 		753376F123CA650C00603F4A /* PasswordStringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753376F023CA650C00603F4A /* PasswordStringHelper.swift */; };
@@ -290,13 +288,6 @@
 		756D94772BA2F2CF0084BDF5 /* YubiKeyUSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD22DB27FDE59200636D66 /* YubiKeyUSB.swift */; };
 		756DBE2E275994B800E4270B /* ASExtensionError+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756DBE2D275994B800E4270B /* ASExtensionError+extensions.swift */; };
 		756DBE2F275994B800E4270B /* ASExtensionError+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756DBE2D275994B800E4270B /* ASExtensionError+extensions.swift */; };
-		756F363F260E9668005A35DA /* KeyFilePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532A24C21C5A035005DF56F /* KeyFilePickerVC.swift */; };
-		756F3642260E9669005A35DA /* KeyFilePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532A24C21C5A035005DF56F /* KeyFilePickerVC.swift */; };
-		756F3645260E9670005A35DA /* KeyFilePickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D3A2309B0120088BB10 /* KeyFilePickerVC.storyboard */; };
-		756F3646260E9671005A35DA /* KeyFilePickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D3A2309B0120088BB10 /* KeyFilePickerVC.storyboard */; };
-		756F364A260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756F3649260E96A1005A35DA /* KeyFilePickerCoordinator.swift */; };
-		756F364C260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756F3649260E96A1005A35DA /* KeyFilePickerCoordinator.swift */; };
-		756F364D260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756F3649260E96A1005A35DA /* KeyFilePickerCoordinator.swift */; };
 		756F365826112A3A005A35DA /* FileDestructionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759894BB24620D33006B6709 /* FileDestructionHelper.swift */; };
 		756F365926112A3B005A35DA /* FileDestructionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759894BB24620D33006B6709 /* FileDestructionHelper.swift */; };
 		756FF64420BAB20300FF890B /* UIColor+namedColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756FF64320BAB20300FF890B /* UIColor+namedColors.swift */; };
@@ -381,11 +372,6 @@
 		7588B6C72627351800F5D372 /* EntryFieldEditorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7588B6C52627351800F5D372 /* EntryFieldEditorCoordinator.swift */; };
 		7589FDCD28B4EA2100CCC76B /* FieldCopiedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7589FDCC28B4EA2100CCC76B /* FieldCopiedView.swift */; };
 		7589FDCE28B4EA2100CCC76B /* FieldCopiedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7589FDCC28B4EA2100CCC76B /* FieldCopiedView.swift */; };
-		758AAFD72DA33E3100B5FA41 /* WatchdogAwareWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758AAFD62DA33E3100B5FA41 /* WatchdogAwareWindow.swift */; };
-		758AAFD82DA33E3100B5FA41 /* WatchdogAwareWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758AAFD62DA33E3100B5FA41 /* WatchdogAwareWindow.swift */; };
-		758AAFD92DA33E3100B5FA41 /* WatchdogAwareWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758AAFD62DA33E3100B5FA41 /* WatchdogAwareWindow.swift */; };
-		758AAFDA2DA33E3100B5FA41 /* WatchdogAwareWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758AAFD62DA33E3100B5FA41 /* WatchdogAwareWindow.swift */; };
-		758AAFDB2DA33E3100B5FA41 /* WatchdogAwareWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758AAFD62DA33E3100B5FA41 /* WatchdogAwareWindow.swift */; };
 		758AAFCB2DA2E31B00B5FA41 /* DatabasePickerCoordinator+itemActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758AAFCA2DA2E31B00B5FA41 /* DatabasePickerCoordinator+itemActions.swift */; };
 		758AAFCC2DA2E31B00B5FA41 /* DatabasePickerCoordinator+itemActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758AAFCA2DA2E31B00B5FA41 /* DatabasePickerCoordinator+itemActions.swift */; };
 		758AAFCD2DA2E31B00B5FA41 /* DatabasePickerCoordinator+itemActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758AAFCA2DA2E31B00B5FA41 /* DatabasePickerCoordinator+itemActions.swift */; };
@@ -396,6 +382,11 @@
 		758AAFD32DA3343300B5FA41 /* UIContextualAction+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758AAFD02DA3343300B5FA41 /* UIContextualAction+extensions.swift */; };
 		758AAFD42DA3343300B5FA41 /* UIContextualAction+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758AAFD02DA3343300B5FA41 /* UIContextualAction+extensions.swift */; };
 		758AAFD52DA3343300B5FA41 /* UIContextualAction+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758AAFD02DA3343300B5FA41 /* UIContextualAction+extensions.swift */; };
+		758AAFD72DA33E3100B5FA41 /* WatchdogAwareWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758AAFD62DA33E3100B5FA41 /* WatchdogAwareWindow.swift */; };
+		758AAFD82DA33E3100B5FA41 /* WatchdogAwareWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758AAFD62DA33E3100B5FA41 /* WatchdogAwareWindow.swift */; };
+		758AAFD92DA33E3100B5FA41 /* WatchdogAwareWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758AAFD62DA33E3100B5FA41 /* WatchdogAwareWindow.swift */; };
+		758AAFDA2DA33E3100B5FA41 /* WatchdogAwareWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758AAFD62DA33E3100B5FA41 /* WatchdogAwareWindow.swift */; };
+		758AAFDB2DA33E3100B5FA41 /* WatchdogAwareWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758AAFD62DA33E3100B5FA41 /* WatchdogAwareWindow.swift */; };
 		758BAD9524B5392300CC9265 /* PricingPlanPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758BAD9424B5392200CC9265 /* PricingPlanPickerVC.swift */; };
 		758BAD9624B5392300CC9265 /* PricingPlanPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758BAD9424B5392200CC9265 /* PricingPlanPickerVC.swift */; };
 		758BAD9724B53ABF00CC9265 /* PricingPlanPickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 758BAD9A24B53ABF00CC9265 /* PricingPlanPickerVC.storyboard */; };
@@ -502,6 +493,41 @@
 		759023202AB4594A009E6213 /* Favicon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F72EEF2AB32C8900C804FC /* Favicon.swift */; };
 		759105F12CE4DB89002DEA7B /* ASCredentialRequestType+debugDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759105F02CE4DB7B002DEA7B /* ASCredentialRequestType+debugDescription.swift */; };
 		759105F22CE4DB89002DEA7B /* ASCredentialRequestType+debugDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759105F02CE4DB7B002DEA7B /* ASCredentialRequestType+debugDescription.swift */; };
+		75917F182DAAADD600EB9375 /* KeyFilePickerCoordinator+emptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F172DAAADD600EB9375 /* KeyFilePickerCoordinator+emptyState.swift */; };
+		75917F192DAAADD600EB9375 /* KeyFilePickerCoordinator+emptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F172DAAADD600EB9375 /* KeyFilePickerCoordinator+emptyState.swift */; };
+		75917F1A2DAAADD600EB9375 /* KeyFilePickerCoordinator+emptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F172DAAADD600EB9375 /* KeyFilePickerCoordinator+emptyState.swift */; };
+		75917F1B2DAAADD600EB9375 /* KeyFilePickerCoordinator+emptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F172DAAADD600EB9375 /* KeyFilePickerCoordinator+emptyState.swift */; };
+		75917F1C2DAAADD600EB9375 /* KeyFilePickerCoordinator+emptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F172DAAADD600EB9375 /* KeyFilePickerCoordinator+emptyState.swift */; };
+		75917F1E2DAAB0FB00EB9375 /* KeyFilePickerCoordinator+toolbars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F1D2DAAB0FB00EB9375 /* KeyFilePickerCoordinator+toolbars.swift */; };
+		75917F1F2DAAB0FB00EB9375 /* KeyFilePickerCoordinator+toolbars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F1D2DAAB0FB00EB9375 /* KeyFilePickerCoordinator+toolbars.swift */; };
+		75917F202DAAB0FB00EB9375 /* KeyFilePickerCoordinator+toolbars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F1D2DAAB0FB00EB9375 /* KeyFilePickerCoordinator+toolbars.swift */; };
+		75917F212DAAB0FB00EB9375 /* KeyFilePickerCoordinator+toolbars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F1D2DAAB0FB00EB9375 /* KeyFilePickerCoordinator+toolbars.swift */; };
+		75917F222DAAB0FB00EB9375 /* KeyFilePickerCoordinator+toolbars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F1D2DAAB0FB00EB9375 /* KeyFilePickerCoordinator+toolbars.swift */; };
+		75917F242DAAB20D00EB9375 /* KeyFilePickerCoordinator+itemActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F232DAAB20D00EB9375 /* KeyFilePickerCoordinator+itemActions.swift */; };
+		75917F252DAAB20D00EB9375 /* KeyFilePickerCoordinator+itemActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F232DAAB20D00EB9375 /* KeyFilePickerCoordinator+itemActions.swift */; };
+		75917F262DAAB20D00EB9375 /* KeyFilePickerCoordinator+itemActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F232DAAB20D00EB9375 /* KeyFilePickerCoordinator+itemActions.swift */; };
+		75917F272DAAB20D00EB9375 /* KeyFilePickerCoordinator+itemActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F232DAAB20D00EB9375 /* KeyFilePickerCoordinator+itemActions.swift */; };
+		75917F282DAAB20D00EB9375 /* KeyFilePickerCoordinator+itemActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F232DAAB20D00EB9375 /* KeyFilePickerCoordinator+itemActions.swift */; };
+		75917F2A2DAB20C500EB9375 /* FilePickerCoordinator+fileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F292DAB20C500EB9375 /* FilePickerCoordinator+fileInfo.swift */; };
+		75917F2B2DAB20C500EB9375 /* FilePickerCoordinator+fileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F292DAB20C500EB9375 /* FilePickerCoordinator+fileInfo.swift */; };
+		75917F2C2DAB20C500EB9375 /* FilePickerCoordinator+fileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F292DAB20C500EB9375 /* FilePickerCoordinator+fileInfo.swift */; };
+		75917F2D2DAB20C500EB9375 /* FilePickerCoordinator+fileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F292DAB20C500EB9375 /* FilePickerCoordinator+fileInfo.swift */; };
+		75917F2E2DAB20C500EB9375 /* FilePickerCoordinator+fileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F292DAB20C500EB9375 /* FilePickerCoordinator+fileInfo.swift */; };
+		75917F362DABC4EB00EB9375 /* KeyFilePickerCoordinator+create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F352DABC4EB00EB9375 /* KeyFilePickerCoordinator+create.swift */; };
+		75917F372DABC4EB00EB9375 /* KeyFilePickerCoordinator+create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F352DABC4EB00EB9375 /* KeyFilePickerCoordinator+create.swift */; };
+		75917F382DABC4EB00EB9375 /* KeyFilePickerCoordinator+create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F352DABC4EB00EB9375 /* KeyFilePickerCoordinator+create.swift */; };
+		75917F392DABC4EB00EB9375 /* KeyFilePickerCoordinator+create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F352DABC4EB00EB9375 /* KeyFilePickerCoordinator+create.swift */; };
+		75917F3A2DABC4EB00EB9375 /* KeyFilePickerCoordinator+create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F352DABC4EB00EB9375 /* KeyFilePickerCoordinator+create.swift */; };
+		75917F3C2DABC59F00EB9375 /* KeyFilePickerCoordinator+add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F3B2DABC59F00EB9375 /* KeyFilePickerCoordinator+add.swift */; };
+		75917F3D2DABC59F00EB9375 /* KeyFilePickerCoordinator+add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F3B2DABC59F00EB9375 /* KeyFilePickerCoordinator+add.swift */; };
+		75917F3E2DABC59F00EB9375 /* KeyFilePickerCoordinator+add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F3B2DABC59F00EB9375 /* KeyFilePickerCoordinator+add.swift */; };
+		75917F3F2DABC59F00EB9375 /* KeyFilePickerCoordinator+add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F3B2DABC59F00EB9375 /* KeyFilePickerCoordinator+add.swift */; };
+		75917F402DABC59F00EB9375 /* KeyFilePickerCoordinator+add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F3B2DABC59F00EB9375 /* KeyFilePickerCoordinator+add.swift */; };
+		75917F422DAC6E8200EB9375 /* SelectableCollectionViewListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F412DAC6E8200EB9375 /* SelectableCollectionViewListCell.swift */; };
+		75917F432DAC6E8200EB9375 /* SelectableCollectionViewListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F412DAC6E8200EB9375 /* SelectableCollectionViewListCell.swift */; };
+		75917F442DAC6E8200EB9375 /* SelectableCollectionViewListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F412DAC6E8200EB9375 /* SelectableCollectionViewListCell.swift */; };
+		75917F452DAC6E8200EB9375 /* SelectableCollectionViewListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F412DAC6E8200EB9375 /* SelectableCollectionViewListCell.swift */; };
+		75917F462DAC6E8200EB9375 /* SelectableCollectionViewListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F412DAC6E8200EB9375 /* SelectableCollectionViewListCell.swift */; };
 		7596771E20FB36BD00E54827 /* SettingsAppTimeoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7596771D20FB36BD00E54827 /* SettingsAppTimeoutVC.swift */; };
 		7597DBD425F58BCF00D1A126 /* SettingsAppearanceVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7597DBD725F58BCF00D1A126 /* SettingsAppearanceVC.storyboard */; };
 		7597DBD525F58BCF00D1A126 /* SettingsAppearanceVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7597DBD725F58BCF00D1A126 /* SettingsAppearanceVC.storyboard */; };
@@ -818,7 +844,6 @@
 		75D075C328B639D200F02E39 /* SKProduct+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F924D2290705D005E496F /* SKProduct+extension.swift */; };
 		75D075C428B639D200F02E39 /* NetworkAccessSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F11C3828836283005B3DC0 /* NetworkAccessSettingsVC.swift */; };
 		75D075C528B639D200F02E39 /* DismissablePopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757ADC4E23A5180600D708D2 /* DismissablePopover.swift */; };
-		75D075C628B639D200F02E39 /* KeyFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756F3649260E96A1005A35DA /* KeyFilePickerCoordinator.swift */; };
 		75D075C728B639D200F02E39 /* PricingPlanPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758BAD9424B5392200CC9265 /* PricingPlanPickerVC.swift */; };
 		75D075C828B639D200F02E39 /* UIViewController+storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C3801A217A0B76006F74C2 /* UIViewController+storyboard.swift */; };
 		75D075C928B639D200F02E39 /* DatabaseUnlockerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754E409726306927003E4854 /* DatabaseUnlockerCoordinator.swift */; };
@@ -827,7 +852,6 @@
 		75D075CC28B639D200F02E39 /* SettingsDatabaseTimeoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757D336020EF382D000A47F0 /* SettingsDatabaseTimeoutVC.swift */; };
 		75D075CD28B639D200F02E39 /* AppCoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550D24B215FDEC500360E0C /* AppCoverVC.swift */; };
 		75D075CE28B639D200F02E39 /* AboutCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D7614E262DDE0B00B1DE7F /* AboutCoordinator.swift */; };
-		75D075CF28B639D200F02E39 /* KeyFilePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532A24C21C5A035005DF56F /* KeyFilePickerVC.swift */; };
 		75D075D028B639D200F02E39 /* WebDAVConnectionSetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E73A2888A3F500ECBEC8 /* WebDAVConnectionSetupVC.swift */; };
 		75D075D128B639D200F02E39 /* FileProvider+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB1452481D19B0017B980 /* FileProvider+extensions.swift */; };
 		75D075D228B639D200F02E39 /* EntryViewerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753DF2C0263C4B7F0046F185 /* EntryViewerCoordinator.swift */; };
@@ -1008,7 +1032,6 @@
 		75D0769A28B639D200F02E39 /* PasswordGeneratorVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 757E78DF282414D5009017BF /* PasswordGeneratorVC.storyboard */; };
 		75D0769B28B639D200F02E39 /* DatabaseCreatorVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D212309AF6B0088BB10 /* DatabaseCreatorVC.storyboard */; };
 		75D0769D28B639D200F02E39 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 755E7D9A232008300010E199 /* InfoPlist.strings */; };
-		75D0769E28B639D200F02E39 /* KeyFilePickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D3A2309B0120088BB10 /* KeyFilePickerVC.storyboard */; };
 		75D076A028B639D200F02E39 /* GroupViewerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CFD2309AF0D0088BB10 /* GroupViewerVC.storyboard */; };
 		75D076A128B639D200F02E39 /* appicon-atom-white_iPhoneApp_60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0F724CEF71A00BAD35C /* appicon-atom-white_iPhoneApp_60@3x.png */; };
 		75D076A228B639D200F02E39 /* appicon-classic-pro_iPadApp_76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0F124CEF71900BAD35C /* appicon-classic-pro_iPadApp_76@2x.png */; };
@@ -1088,7 +1111,6 @@
 		75D7DF7D233E5E310029AD87 /* FileInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529310C21ADA46C00E4B0D2 /* FileInfoVC.swift */; };
 		75D7DF7E233E5E310029AD87 /* CrashReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D5D4002235CD720003CD55 /* CrashReportVC.swift */; };
 		75D7DF7F233E5E310029AD87 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACA22F8095F00372301 /* AppInfo.swift */; };
-		75D7DF80233E5E310029AD87 /* KeyFilePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532A24C21C5A035005DF56F /* KeyFilePickerVC.swift */; };
 		75D7DF81233E5E310029AD87 /* CredentialProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750CFBCA21BA9ACD00E62B09 /* CredentialProviderViewController.swift */; };
 		75D7DF84233E5E310029AD87 /* LongPressAwareNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7514CC9E22D5D14B00A0D7A4 /* LongPressAwareNavigationController.swift */; };
 		75D7DF85233E5E310029AD87 /* NewsCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACD22FD896F00372301 /* NewsCenter.swift */; };
@@ -1126,7 +1148,6 @@
 		75D7DFB6233E5E310029AD87 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 755E7D9D232008300010E199 /* Localizable.strings */; };
 		75D7DFB7233E5E310029AD87 /* CrashReportVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D2B2309AFE50088BB10 /* CrashReportVC.storyboard */; };
 		75D7DFB8233E5E310029AD87 /* FirstSetupVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D2E2309AFE90088BB10 /* FirstSetupVC.storyboard */; };
-		75D7DFB9233E5E310029AD87 /* KeyFilePickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D3A2309B0120088BB10 /* KeyFilePickerVC.storyboard */; };
 		75D7DFBA233E5E310029AD87 /* FileInfoVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D282309AFBA0088BB10 /* FileInfoVC.storyboard */; };
 		75D7DFC7233E5E8C0029AD87 /* KeePassium Pro AutoFill.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 75D7DFBE233E5E310029AD87 /* KeePassium Pro AutoFill.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		75D9913A26CEC8E400823331 /* SyncConflictAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D9913926CEC8E400823331 /* SyncConflictAlert.swift */; };
@@ -1226,21 +1247,16 @@
 		75FC40162DA025EE00C5D1C2 /* DatabasePickerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC40132DA025EE00C5D1C2 /* DatabasePickerMode.swift */; };
 		75FC401B2DA026CA00C5D1C2 /* DatabasePickerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC40132DA025EE00C5D1C2 /* DatabasePickerMode.swift */; };
 		75FC401C2DA026CA00C5D1C2 /* DatabasePickerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC40132DA025EE00C5D1C2 /* DatabasePickerMode.swift */; };
-		75FC40262DA028D600C5D1C2 /* NewKeyFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC40252DA028D600C5D1C2 /* NewKeyFilePickerCoordinator.swift */; };
-		75FC40272DA028D600C5D1C2 /* NewKeyFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC40252DA028D600C5D1C2 /* NewKeyFilePickerCoordinator.swift */; };
-		75FC40282DA028D600C5D1C2 /* NewKeyFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC40252DA028D600C5D1C2 /* NewKeyFilePickerCoordinator.swift */; };
-		75FC40292DA028D600C5D1C2 /* NewKeyFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC40252DA028D600C5D1C2 /* NewKeyFilePickerCoordinator.swift */; };
-		75FC402A2DA028D600C5D1C2 /* NewKeyFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC40252DA028D600C5D1C2 /* NewKeyFilePickerCoordinator.swift */; };
+		75FC40262DA028D600C5D1C2 /* KeyFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC40252DA028D600C5D1C2 /* KeyFilePickerCoordinator.swift */; };
+		75FC40272DA028D600C5D1C2 /* KeyFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC40252DA028D600C5D1C2 /* KeyFilePickerCoordinator.swift */; };
+		75FC40282DA028D600C5D1C2 /* KeyFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC40252DA028D600C5D1C2 /* KeyFilePickerCoordinator.swift */; };
+		75FC40292DA028D600C5D1C2 /* KeyFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC40252DA028D600C5D1C2 /* KeyFilePickerCoordinator.swift */; };
+		75FC402A2DA028D600C5D1C2 /* KeyFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC40252DA028D600C5D1C2 /* KeyFilePickerCoordinator.swift */; };
 		75FC402C2DA087EF00C5D1C2 /* DatabasePickerCoordinator+add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC402B2DA087EF00C5D1C2 /* DatabasePickerCoordinator+add.swift */; };
 		75FC402D2DA087EF00C5D1C2 /* DatabasePickerCoordinator+add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC402B2DA087EF00C5D1C2 /* DatabasePickerCoordinator+add.swift */; };
 		75FC402E2DA087EF00C5D1C2 /* DatabasePickerCoordinator+add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC402B2DA087EF00C5D1C2 /* DatabasePickerCoordinator+add.swift */; };
 		75FC402F2DA087EF00C5D1C2 /* DatabasePickerCoordinator+add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC402B2DA087EF00C5D1C2 /* DatabasePickerCoordinator+add.swift */; };
 		75FC40302DA087EF00C5D1C2 /* DatabasePickerCoordinator+add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC402B2DA087EF00C5D1C2 /* DatabasePickerCoordinator+add.swift */; };
-		75FC40322DA099E500C5D1C2 /* DatabasePickerCoordinator+fileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC40312DA099E500C5D1C2 /* DatabasePickerCoordinator+fileInfo.swift */; };
-		75FC40332DA099E500C5D1C2 /* DatabasePickerCoordinator+fileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC40312DA099E500C5D1C2 /* DatabasePickerCoordinator+fileInfo.swift */; };
-		75FC40342DA099E500C5D1C2 /* DatabasePickerCoordinator+fileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC40312DA099E500C5D1C2 /* DatabasePickerCoordinator+fileInfo.swift */; };
-		75FC40352DA099E500C5D1C2 /* DatabasePickerCoordinator+fileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC40312DA099E500C5D1C2 /* DatabasePickerCoordinator+fileInfo.swift */; };
-		75FC40362DA099E500C5D1C2 /* DatabasePickerCoordinator+fileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC40312DA099E500C5D1C2 /* DatabasePickerCoordinator+fileInfo.swift */; };
 		75FC40382DA09BDE00C5D1C2 /* DatabasePickerCoordinator+databaseSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC40372DA09BDE00C5D1C2 /* DatabasePickerCoordinator+databaseSettings.swift */; };
 		75FC40392DA09BDE00C5D1C2 /* DatabasePickerCoordinator+databaseSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC40372DA09BDE00C5D1C2 /* DatabasePickerCoordinator+databaseSettings.swift */; };
 		75FC403A2DA09BDE00C5D1C2 /* DatabasePickerCoordinator+databaseSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC40372DA09BDE00C5D1C2 /* DatabasePickerCoordinator+databaseSettings.swift */; };
@@ -1392,7 +1408,6 @@
 		F38A48C62A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38A48C32A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift */; };
 		F38A48C72A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38A48C32A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift */; };
 		F38A48C82A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38A48C32A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift */; };
-		F38AA37D2B6017DB0084B485 /* KeyFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756F3649260E96A1005A35DA /* KeyFilePickerCoordinator.swift */; };
 		F38DB2292D131568008A8D7A /* SettingsShakeGestureActionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DB2282D131568008A8D7A /* SettingsShakeGestureActionVC.swift */; };
 		F38DB22A2D131568008A8D7A /* SettingsShakeGestureActionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DB2282D131568008A8D7A /* SettingsShakeGestureActionVC.swift */; };
 		F38DB22B2D131568008A8D7A /* SettingsShakeGestureActionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DB2282D131568008A8D7A /* SettingsShakeGestureActionVC.swift */; };
@@ -1614,7 +1629,6 @@
 		751C41C92700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/ExpiryDateEditorVC.strings; sourceTree = "<group>"; };
 		751C41CB2700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/GroupViewerVC.strings; sourceTree = "<group>"; };
 		751C41CD2700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/ItemIconPicker.strings; sourceTree = "<group>"; };
-		751C41CE2700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/KeyFilePickerVC.strings; sourceTree = "<group>"; };
 		751C41CF2700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/DestinationGroupPickerVC.strings; sourceTree = "<group>"; };
 		751C41D02700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/DatabaseUnlockerVC.strings; sourceTree = "<group>"; };
 		751C41D12700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1655,7 +1669,6 @@
 		751E0D2A2309AFE50088BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CrashReportVC.storyboard; sourceTree = "<group>"; };
 		751E0D2D2309AFE90088BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/FirstSetupVC.storyboard; sourceTree = "<group>"; };
 		751E0D362309AFFC0088BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/EntryFinderVC.storyboard; sourceTree = "<group>"; };
-		751E0D392309B0120088BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/KeyFilePickerVC.storyboard; sourceTree = "<group>"; };
 		751E0D412309B04F0088BB10 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ItemIconPicker.strings; sourceTree = "<group>"; };
 		751E0D5B2309B0520088BB10 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
 		752093492DA3E5AB009711BB /* DatabasePickerCoordinator+mainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabasePickerCoordinator+mainMenu.swift"; sourceTree = "<group>"; };
@@ -1714,7 +1727,6 @@
 		75319126263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/EntryViewerPagesVC.strings; sourceTree = "<group>"; };
 		75319128263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
 		75319129263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/GroupViewerVC.strings; sourceTree = "<group>"; };
-		7531912A263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/KeyFilePickerVC.strings; sourceTree = "<group>"; };
 		7531912C263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
 		7531912E263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/AboutVC.strings; sourceTree = "<group>"; };
 		7531912F263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
@@ -1736,7 +1748,6 @@
 		7532821B24A8049F00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/FileInfoVC.strings; sourceTree = "<group>"; };
 		7532821C24A8049F00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7532821D24A8049F00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/DatabaseKeyChangerVC.strings; sourceTree = "<group>"; };
-		7532821E24A8049F00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/KeyFilePickerVC.strings; sourceTree = "<group>"; };
 		7532821F24A8049F00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7532822024A8049F00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/EntryFieldViewerVC.strings; sourceTree = "<group>"; };
 		7532822124A8049F00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
@@ -1761,7 +1772,6 @@
 		7532824324A804A000A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/PasscodeInputVC.strings; sourceTree = "<group>"; };
 		7532824424A804A000A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SettingsSearchVC.strings; sourceTree = "<group>"; };
 		7532824524A804A000A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SettingsBackupTimeoutPickerVC.strings; sourceTree = "<group>"; };
-		7532A24C21C5A035005DF56F /* KeyFilePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFilePickerVC.swift; sourceTree = "<group>"; };
 		7533031123C52A1500F38CC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/DestinationGroupPickerVC.storyboard; sourceTree = "<group>"; };
 		753376F023CA650C00603F4A /* PasswordStringHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordStringHelper.swift; sourceTree = "<group>"; };
 		7533955C263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1780,7 +1790,6 @@
 		7533956B263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/EntryViewerPagesVC.strings; sourceTree = "<group>"; };
 		7533956D263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
 		7533956E263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/GroupViewerVC.strings; sourceTree = "<group>"; };
-		7533956F263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/KeyFilePickerVC.strings; sourceTree = "<group>"; };
 		75339571263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
 		75339573263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
 		75339574263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/AboutVC.strings; sourceTree = "<group>"; };
@@ -1813,7 +1822,6 @@
 		7534380F2643FE6E0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/EntryViewerPagesVC.strings; sourceTree = "<group>"; };
 		753438112643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
 		753438122643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/GroupViewerVC.strings; sourceTree = "<group>"; };
-		753438132643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/KeyFilePickerVC.strings; sourceTree = "<group>"; };
 		753438152643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
 		753438172643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/AboutVC.strings; sourceTree = "<group>"; };
 		753438182643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
@@ -1853,7 +1861,6 @@
 		754A322D24426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/FileInfoVC.strings; sourceTree = "<group>"; };
 		754A322E24426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		754A322F24426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/DatabaseKeyChangerVC.strings; sourceTree = "<group>"; };
-		754A323024426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/KeyFilePickerVC.strings; sourceTree = "<group>"; };
 		754A323124426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		754A323224426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/EntryFieldViewerVC.strings; sourceTree = "<group>"; };
 		754A323324426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
@@ -1882,7 +1889,6 @@
 		754ABEA125AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/FileInfoVC.strings; sourceTree = "<group>"; };
 		754ABEA225AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/DatabaseKeyChangerVC.strings; sourceTree = "<group>"; };
 		754ABEA325AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
-		754ABEA425AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/KeyFilePickerVC.strings; sourceTree = "<group>"; };
 		754ABEA525AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		754ABEA625AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/EntryFieldViewerVC.strings; sourceTree = "<group>"; };
 		754ABEA725AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
@@ -1913,7 +1919,6 @@
 		754ABED525AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/DatabaseKeyChangerVC.strings; sourceTree = "<group>"; };
 		754ABED625AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/FileInfoVC.strings; sourceTree = "<group>"; };
 		754ABED725AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
-		754ABED825AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/KeyFilePickerVC.strings; sourceTree = "<group>"; };
 		754ABED925AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		754ABEDA25AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/EntryFieldViewerVC.strings; sourceTree = "<group>"; };
 		754ABEDB25AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
@@ -1942,7 +1947,6 @@
 		754ABF0125AB968F00B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		754ABF0225AB968F00B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		754ABF0325AB968F00B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/DatabaseKeyChangerVC.strings"; sourceTree = "<group>"; };
-		754ABF0425AB968F00B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/KeyFilePickerVC.strings"; sourceTree = "<group>"; };
 		754ABF0525AB968F00B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		754ABF0625AB968F00B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		754ABF0725AB968F00B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/SettingsBackupVC.strings"; sourceTree = "<group>"; };
@@ -1998,7 +2002,6 @@
 		755E7D9B232008300010E199 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		755E7D9E232008300010E199 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		755E7DA1232008300010E199 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		755E7DA4232019770010E199 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/KeyFilePickerVC.strings; sourceTree = "<group>"; };
 		755E9C4C20BE5DC200FD7C7A /* UIImage+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+extensions.swift"; sourceTree = "<group>"; };
 		7561850220E033DB00EEFAEE /* WatchdogAwareTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchdogAwareTextView.swift; sourceTree = "<group>"; };
 		7561850420E0379F00EEFAEE /* ValidatingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatingTextView.swift; sourceTree = "<group>"; };
@@ -2012,7 +2015,6 @@
 		756B2435243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/FileInfoVC.strings; sourceTree = "<group>"; };
 		756B2436243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		756B2437243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/DatabaseKeyChangerVC.strings; sourceTree = "<group>"; };
-		756B2438243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/KeyFilePickerVC.strings; sourceTree = "<group>"; };
 		756B2439243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		756B243A243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/EntryFieldViewerVC.strings; sourceTree = "<group>"; };
 		756B243B243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
@@ -2039,7 +2041,6 @@
 		756D15602129AFB60052C728 /* KeePassium.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KeePassium.entitlements; sourceTree = "<group>"; };
 		756D78DD25F58D67003E080E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
 		756DBE2D275994B800E4270B /* ASExtensionError+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASExtensionError+extensions.swift"; sourceTree = "<group>"; };
-		756F3649260E96A1005A35DA /* KeyFilePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFilePickerCoordinator.swift; sourceTree = "<group>"; };
 		756FF64320BAB20300FF890B /* UIColor+namedColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+namedColors.swift"; sourceTree = "<group>"; };
 		7573FD8A2321664F00DCDA5A /* MultilineButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineButton.swift; sourceTree = "<group>"; };
 		7575B24822D8476300B84B3F /* SearchHelper+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchHelper+extensions.swift"; sourceTree = "<group>"; };
@@ -2071,9 +2072,9 @@
 		75876B252646EC2800FB470C /* DatabaseKeyChangerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseKeyChangerCoordinator.swift; sourceTree = "<group>"; };
 		7588B6C52627351800F5D372 /* EntryFieldEditorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFieldEditorCoordinator.swift; sourceTree = "<group>"; };
 		7589FDCC28B4EA2100CCC76B /* FieldCopiedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldCopiedView.swift; sourceTree = "<group>"; };
-		758AAFD62DA33E3100B5FA41 /* WatchdogAwareWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchdogAwareWindow.swift; sourceTree = "<group>"; };
 		758AAFCA2DA2E31B00B5FA41 /* DatabasePickerCoordinator+itemActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabasePickerCoordinator+itemActions.swift"; sourceTree = "<group>"; };
 		758AAFD02DA3343300B5FA41 /* UIContextualAction+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIContextualAction+extensions.swift"; sourceTree = "<group>"; };
+		758AAFD62DA33E3100B5FA41 /* WatchdogAwareWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchdogAwareWindow.swift; sourceTree = "<group>"; };
 		758AD0B425F58C3500864030 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SettingsAppearanceVC.strings"; sourceTree = "<group>"; };
 		758AD0B625F58C4800864030 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SettingsAppearanceVC.strings"; sourceTree = "<group>"; };
 		758BAD9424B5392200CC9265 /* PricingPlanPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricingPlanPickerVC.swift; sourceTree = "<group>"; };
@@ -2134,6 +2135,13 @@
 		758FF6C928FC18E4007DE8EB /* RemoteFolderViewerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFolderViewerVC.swift; sourceTree = "<group>"; };
 		758FF6CE28FC2C9C007DE8EB /* SubtitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleCell.swift; sourceTree = "<group>"; };
 		759105F02CE4DB7B002DEA7B /* ASCredentialRequestType+debugDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASCredentialRequestType+debugDescription.swift"; sourceTree = "<group>"; };
+		75917F172DAAADD600EB9375 /* KeyFilePickerCoordinator+emptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyFilePickerCoordinator+emptyState.swift"; sourceTree = "<group>"; };
+		75917F1D2DAAB0FB00EB9375 /* KeyFilePickerCoordinator+toolbars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyFilePickerCoordinator+toolbars.swift"; sourceTree = "<group>"; };
+		75917F232DAAB20D00EB9375 /* KeyFilePickerCoordinator+itemActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyFilePickerCoordinator+itemActions.swift"; sourceTree = "<group>"; };
+		75917F292DAB20C500EB9375 /* FilePickerCoordinator+fileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilePickerCoordinator+fileInfo.swift"; sourceTree = "<group>"; };
+		75917F352DABC4EB00EB9375 /* KeyFilePickerCoordinator+create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyFilePickerCoordinator+create.swift"; sourceTree = "<group>"; };
+		75917F3B2DABC59F00EB9375 /* KeyFilePickerCoordinator+add.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyFilePickerCoordinator+add.swift"; sourceTree = "<group>"; };
+		75917F412DAC6E8200EB9375 /* SelectableCollectionViewListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableCollectionViewListCell.swift; sourceTree = "<group>"; };
 		7596771D20FB36BD00E54827 /* SettingsAppTimeoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAppTimeoutVC.swift; sourceTree = "<group>"; };
 		75973A4525F58CFC0033D4DA /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
 		7597DBD625F58BCF00D1A126 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SettingsAppearanceVC.storyboard; sourceTree = "<group>"; };
@@ -2175,7 +2183,6 @@
 		75AC35BD23549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		75AC35BE23549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/DatabaseKeyChangerVC.strings; sourceTree = "<group>"; };
 		75AC35BF23549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		75AC35C023549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/KeyFilePickerVC.strings; sourceTree = "<group>"; };
 		75AC35C123549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/SettingsBackupTimeoutPickerVC.strings; sourceTree = "<group>"; };
 		75AC35C223549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75AC35C323549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/EntryFieldViewerVC.strings; sourceTree = "<group>"; };
@@ -2206,7 +2213,6 @@
 		75AC534E2326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75AC534F2326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/FileInfoVC.strings; sourceTree = "<group>"; };
 		75AC53502326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/DatabaseKeyChangerVC.strings; sourceTree = "<group>"; };
-		75AC53512326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/KeyFilePickerVC.strings; sourceTree = "<group>"; };
 		75AC53522326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/EntryFieldViewerVC.strings; sourceTree = "<group>"; };
 		75AC53532326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
 		75AC53542326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/EntryFieldEditorVC.strings; sourceTree = "<group>"; };
@@ -2235,7 +2241,6 @@
 		75AC53792326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		75AC537A2326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/FileInfoVC.strings"; sourceTree = "<group>"; };
 		75AC537B2326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/DatabaseKeyChangerVC.strings"; sourceTree = "<group>"; };
-		75AC537C2326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/KeyFilePickerVC.strings"; sourceTree = "<group>"; };
 		75AC537D2326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/EntryFieldViewerVC.strings"; sourceTree = "<group>"; };
 		75AC537E2326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/CrashReportVC.strings"; sourceTree = "<group>"; };
 		75AC537F2326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/EntryFieldEditorVC.strings"; sourceTree = "<group>"; };
@@ -2264,7 +2269,6 @@
 		75AC53A62327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		75AC53A72327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FileInfoVC.strings"; sourceTree = "<group>"; };
 		75AC53A82327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/DatabaseKeyChangerVC.strings"; sourceTree = "<group>"; };
-		75AC53A92327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/KeyFilePickerVC.strings"; sourceTree = "<group>"; };
 		75AC53AA2327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/EntryFieldViewerVC.strings"; sourceTree = "<group>"; };
 		75AC53AB2327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/CrashReportVC.strings"; sourceTree = "<group>"; };
 		75AC53AC2327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/EntryFieldEditorVC.strings"; sourceTree = "<group>"; };
@@ -2383,7 +2387,6 @@
 		75E4CA61232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75E4CA62232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/DatabaseKeyChangerVC.strings; sourceTree = "<group>"; };
 		75E4CA63232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		75E4CA64232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/KeyFilePickerVC.strings; sourceTree = "<group>"; };
 		75E4CA65232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/EntryFieldViewerVC.strings; sourceTree = "<group>"; };
 		75E4CA66232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
 		75E4CA67232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/EntryFieldEditorVC.strings; sourceTree = "<group>"; };
@@ -2449,9 +2452,8 @@
 		75F5CACC20BD18320056C969 /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
 		75FC400C2DA025C600C5D1C2 /* DatabasePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabasePickerCoordinator.swift; sourceTree = "<group>"; };
 		75FC40132DA025EE00C5D1C2 /* DatabasePickerMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabasePickerMode.swift; sourceTree = "<group>"; };
-		75FC40252DA028D600C5D1C2 /* NewKeyFilePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewKeyFilePickerCoordinator.swift; sourceTree = "<group>"; };
+		75FC40252DA028D600C5D1C2 /* KeyFilePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFilePickerCoordinator.swift; sourceTree = "<group>"; };
 		75FC402B2DA087EF00C5D1C2 /* DatabasePickerCoordinator+add.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabasePickerCoordinator+add.swift"; sourceTree = "<group>"; };
-		75FC40312DA099E500C5D1C2 /* DatabasePickerCoordinator+fileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabasePickerCoordinator+fileInfo.swift"; sourceTree = "<group>"; };
 		75FC40372DA09BDE00C5D1C2 /* DatabasePickerCoordinator+databaseSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabasePickerCoordinator+databaseSettings.swift"; sourceTree = "<group>"; };
 		75FC403D2DA09DBD00C5D1C2 /* DatabasePickerCoordinator+select.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabasePickerCoordinator+select.swift"; sourceTree = "<group>"; };
 		75FC404A2DA1259800C5D1C2 /* DatabasePickerCoordinator+create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabasePickerCoordinator+create.swift"; sourceTree = "<group>"; };
@@ -2473,7 +2475,6 @@
 		75FCA9432638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/EntryViewerPagesVC.strings; sourceTree = "<group>"; };
 		75FCA9452638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/GroupViewerVC.strings; sourceTree = "<group>"; };
 		75FCA9462638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
-		75FCA9472638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/KeyFilePickerVC.strings; sourceTree = "<group>"; };
 		75FCA9492638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/AboutVC.strings; sourceTree = "<group>"; };
 		75FCA94B2638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
 		75FCA94C2638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
@@ -2497,7 +2498,6 @@
 		75FDEF21233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75FDEF22233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/DatabaseKeyChangerVC.strings; sourceTree = "<group>"; };
 		75FDEF23233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
-		75FDEF24233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/KeyFilePickerVC.strings; sourceTree = "<group>"; };
 		75FDEF25233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/EntryFieldViewerVC.strings; sourceTree = "<group>"; };
 		75FDEF26233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
 		75FDEF27233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/EntryFieldEditorVC.strings; sourceTree = "<group>"; };
@@ -2526,7 +2526,6 @@
 		75FDEF4D233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		75FDEF4E233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/DatabaseKeyChangerVC.strings; sourceTree = "<group>"; };
 		75FDEF4F233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
-		75FDEF50233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/KeyFilePickerVC.strings; sourceTree = "<group>"; };
 		75FDEF51233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/EntryFieldViewerVC.strings; sourceTree = "<group>"; };
 		75FDEF52233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
 		75FDEF53233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/EntryFieldEditorVC.strings; sourceTree = "<group>"; };
@@ -3092,10 +3091,12 @@
 		756F363C260E963B005A35DA /* key-file */ = {
 			isa = PBXGroup;
 			children = (
-				7532A24C21C5A035005DF56F /* KeyFilePickerVC.swift */,
-				756F3649260E96A1005A35DA /* KeyFilePickerCoordinator.swift */,
-				75FC40252DA028D600C5D1C2 /* NewKeyFilePickerCoordinator.swift */,
-				751E0D3A2309B0120088BB10 /* KeyFilePickerVC.storyboard */,
+				75FC40252DA028D600C5D1C2 /* KeyFilePickerCoordinator.swift */,
+				75917F172DAAADD600EB9375 /* KeyFilePickerCoordinator+emptyState.swift */,
+				75917F1D2DAAB0FB00EB9375 /* KeyFilePickerCoordinator+toolbars.swift */,
+				75917F232DAAB20D00EB9375 /* KeyFilePickerCoordinator+itemActions.swift */,
+				75917F3B2DABC59F00EB9375 /* KeyFilePickerCoordinator+add.swift */,
+				75917F352DABC4EB00EB9375 /* KeyFilePickerCoordinator+create.swift */,
 			);
 			path = "key-file";
 			sourceTree = "<group>";
@@ -3268,6 +3269,7 @@
 			isa = PBXGroup;
 			children = (
 				759FD03B2D9D1A1200659852 /* FilePickerCoordinator.swift */,
+				75917F292DAB20C500EB9375 /* FilePickerCoordinator+fileInfo.swift */,
 				759FD0352D9D1A0400659852 /* FilePickerVC.swift */,
 				75DEA13C2DA9C39300710088 /* FileActivationCause.swift */,
 				759FD0412D9D1A2100659852 /* FilePickerCell.swift */,
@@ -3317,6 +3319,7 @@
 				75E371932108CA08002602BD /* ProgressOverlay.swift */,
 				7548BC1721B07BFE001B00E9 /* ProtectedTextField.swift */,
 				7524E7442888B56600ECBEC8 /* RightDetailCell.swift */,
+				75917F412DAC6E8200EB9375 /* SelectableCollectionViewListCell.swift */,
 				7502561B283D370000B930D9 /* SpinnerLabel.swift */,
 				758FF6CE28FC2C9C007DE8EB /* SubtitleCell.swift */,
 				758CA5432569B9EA0034EF10 /* SwitchCell.swift */,
@@ -3491,7 +3494,6 @@
 				75FC403D2DA09DBD00C5D1C2 /* DatabasePickerCoordinator+select.swift */,
 				75FC402B2DA087EF00C5D1C2 /* DatabasePickerCoordinator+add.swift */,
 				75FC404A2DA1259800C5D1C2 /* DatabasePickerCoordinator+create.swift */,
-				75FC40312DA099E500C5D1C2 /* DatabasePickerCoordinator+fileInfo.swift */,
 				75FC40372DA09BDE00C5D1C2 /* DatabasePickerCoordinator+databaseSettings.swift */,
 			);
 			path = "database-picker";
@@ -3910,7 +3912,6 @@
 				751E0D292309AFE50088BB10 /* CrashReportVC.storyboard in Resources */,
 				751E0D2C2309AFE90088BB10 /* FirstSetupVC.storyboard in Resources */,
 				7526403C28455DBA0003DDFA /* PasswordGeneratorVC.storyboard in Resources */,
-				751E0D382309B0120088BB10 /* KeyFilePickerVC.storyboard in Resources */,
 				755E33C32C529C4D0041A199 /* AutoFillSetupMessageVC.storyboard in Resources */,
 				75C7E3C62CE5EB5D004B853C /* PasskeyCreatorVC.storyboard in Resources */,
 				75BF5AF02768106B00809654 /* ParameterValueCell.xib in Resources */,
@@ -3957,7 +3958,6 @@
 				757E78E0282414D5009017BF /* PasswordGeneratorVC.storyboard in Resources */,
 				751E0D1F2309AF6B0088BB10 /* DatabaseCreatorVC.storyboard in Resources */,
 				755E7D9C232008300010E199 /* InfoPlist.strings in Resources */,
-				756F3645260E9670005A35DA /* KeyFilePickerVC.storyboard in Resources */,
 				75A7E5FF26BB4FE1000F1443 /* TipBoxVC.storyboard in Resources */,
 				751E0CFB2309AF0D0088BB10 /* GroupViewerVC.storyboard in Resources */,
 				758FC14D24CEF72000BAD35C /* appicon-atom-white_iPhoneApp_60@3x.png in Resources */,
@@ -4041,7 +4041,6 @@
 				757E78E1282414D5009017BF /* PasswordGeneratorVC.storyboard in Resources */,
 				75B38C61233E5B7C006BDEFC /* DatabaseCreatorVC.storyboard in Resources */,
 				75B38C62233E5B7C006BDEFC /* InfoPlist.strings in Resources */,
-				756F3646260E9671005A35DA /* KeyFilePickerVC.storyboard in Resources */,
 				75B38C65233E5B7C006BDEFC /* GroupViewerVC.storyboard in Resources */,
 				758FC14E24CEF72000BAD35C /* appicon-atom-white_iPhoneApp_60@3x.png in Resources */,
 				758FC14224CEF72000BAD35C /* appicon-classic-pro_iPadApp_76@2x.png in Resources */,
@@ -4122,7 +4121,6 @@
 				75D0769A28B639D200F02E39 /* PasswordGeneratorVC.storyboard in Resources */,
 				75D0769B28B639D200F02E39 /* DatabaseCreatorVC.storyboard in Resources */,
 				75D0769D28B639D200F02E39 /* InfoPlist.strings in Resources */,
-				75D0769E28B639D200F02E39 /* KeyFilePickerVC.storyboard in Resources */,
 				75D076A028B639D200F02E39 /* GroupViewerVC.storyboard in Resources */,
 				75D076A128B639D200F02E39 /* appicon-atom-white_iPhoneApp_60@3x.png in Resources */,
 				75D076A228B639D200F02E39 /* appicon-classic-pro_iPadApp_76@2x.png in Resources */,
@@ -4181,7 +4179,6 @@
 				75D7DFB7233E5E310029AD87 /* CrashReportVC.storyboard in Resources */,
 				75D7DFB8233E5E310029AD87 /* FirstSetupVC.storyboard in Resources */,
 				7526403D28455DBA0003DDFA /* PasswordGeneratorVC.storyboard in Resources */,
-				75D7DFB9233E5E310029AD87 /* KeyFilePickerVC.storyboard in Resources */,
 				755E33C42C529C4D0041A199 /* AutoFillSetupMessageVC.storyboard in Resources */,
 				75C7E3C72CE5EB5D004B853C /* PasskeyCreatorVC.storyboard in Resources */,
 				75BF5AEF2768106A00809654 /* ParameterValueCell.xib in Resources */,
@@ -4246,7 +4243,7 @@
 				75D5D4012235CD720003CD55 /* CrashReportVC.swift in Sources */,
 				75AC2E992CC7C07700DB93E2 /* ItemCategory.swift in Sources */,
 				F31114B12B9B894D00236632 /* DropboxConnectionSetupCoordinator.swift in Sources */,
-				75FC40292DA028D600C5D1C2 /* NewKeyFilePickerCoordinator.swift in Sources */,
+				75FC40292DA028D600C5D1C2 /* KeyFilePickerCoordinator.swift in Sources */,
 				7590231D2AB45948009E6213 /* Favicon.swift in Sources */,
 				75C7E3BB2CE56E7B004B853C /* SyncConflictAlert.swift in Sources */,
 				7524E7462888B56600ECBEC8 /* RightDetailCell.swift in Sources */,
@@ -4265,9 +4262,9 @@
 				75FC402E2DA087EF00C5D1C2 /* DatabasePickerCoordinator+add.swift in Sources */,
 				75679ACC22F887AB00372301 /* AppInfo.swift in Sources */,
 				75480504238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
-				7532A24D21C5A035005DF56F /* KeyFilePickerVC.swift in Sources */,
 				75B786FE261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift in Sources */,
 				F38A48C52A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift in Sources */,
+				75917F272DAAB20D00EB9375 /* KeyFilePickerCoordinator+itemActions.swift in Sources */,
 				750CFBCB21BA9ACD00E62B09 /* CredentialProviderViewController.swift in Sources */,
 				75A5312423C0D35500900ED1 /* NavigationRouter.swift in Sources */,
 				75EEC22227484DD90092505F /* QuickAutoFillPrompt.swift in Sources */,
@@ -4275,8 +4272,8 @@
 				758FF6D028FC2C9C007DE8EB /* SubtitleCell.swift in Sources */,
 				75FC40412DA09DBD00C5D1C2 /* DatabasePickerCoordinator+select.swift in Sources */,
 				7526404128455DD80003DDFA /* PasswordGeneratorCells.swift in Sources */,
-				F38AA37D2B6017DB0084B485 /* KeyFilePickerCoordinator.swift in Sources */,
 				750C0D552B64067600821CA4 /* WebDAVConnectionSetupCoordinator.swift in Sources */,
+				75917F192DAAADD600EB9375 /* KeyFilePickerCoordinator+emptyState.swift in Sources */,
 				75BE05F325DAA4E400B34CC0 /* SupportEmailComposer.swift in Sources */,
 				7526404328455DDC0003DDFA /* PasswordGeneratorLengthCell.swift in Sources */,
 				754C2B212D8E289200E12BD2 /* TableFooterLabelView.swift in Sources */,
@@ -4289,6 +4286,7 @@
 				75DEA1412DA9C39300710088 /* FileActivationCause.swift in Sources */,
 				757ADC4623A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				756D94752BA2F2CB0084BDF5 /* MFIKeyActionSheetView.swift in Sources */,
+				75917F3C2DABC59F00EB9375 /* KeyFilePickerCoordinator+add.swift in Sources */,
 				75679ACF22FD897000372301 /* NewsCenter.swift in Sources */,
 				75D3A3B121BAE66F00255FC3 /* FileListCell.swift in Sources */,
 				75267CFF25FF75E300A1CC95 /* ContextualAction.swift in Sources */,
@@ -4306,6 +4304,7 @@
 				7573FD8C2321664F00DCDA5A /* MultilineButton.swift in Sources */,
 				756D94762BA2F2CE0084BDF5 /* YubiKeyUSB.swift in Sources */,
 				75C1AF872731E54D00E33AAC /* DatabaseSettingsVC.swift in Sources */,
+				75917F382DABC4EB00EB9375 /* KeyFilePickerCoordinator+create.swift in Sources */,
 				75FC401B2DA026CA00C5D1C2 /* DatabasePickerMode.swift in Sources */,
 				759ADB88285A22CD00D93BD4 /* AnnouncementView.swift in Sources */,
 				75C7E3CA2CE5EE53004B853C /* PasskeyCreatorVC.swift in Sources */,
@@ -4370,17 +4369,18 @@
 				7582544B2211BB830053FCC9 /* Watchdog.swift in Sources */,
 				75BE064025DB1A1A00B34CC0 /* DiagnosticsViewerVC.swift in Sources */,
 				759FD03F2D9D1A1200659852 /* FilePickerCoordinator.swift in Sources */,
+				75917F2A2DAB20C500EB9375 /* FilePickerCoordinator+fileInfo.swift in Sources */,
 				753376F223CA650C00603F4A /* PasswordStringHelper.swift in Sources */,
 				75D99DEA269CED7D00D0E9D7 /* NSLayoutContraint+extensions.swift in Sources */,
 				753DF2D0263E0EF20046F185 /* PlaceholderVC.swift in Sources */,
 				75BFB1472481D19B0017B980 /* FileProvider+extensions.swift in Sources */,
-				75FC40352DA099E500C5D1C2 /* DatabasePickerCoordinator+fileInfo.swift in Sources */,
 				755E33C62C52A13C0041A199 /* AutoFillSetupMessageVC.swift in Sources */,
 				75151D3423268AB300F3C411 /* UILabel+extensions.swift in Sources */,
 				759105F12CE4DB89002DEA7B /* ASCredentialRequestType+debugDescription.swift in Sources */,
 				75D21BD32B642BB20065D95E /* OneDriveConnectionSetupCoordinator.swift in Sources */,
 				757ADC5123A5180600D708D2 /* DismissablePopover.swift in Sources */,
 				75A2677E22904E0D0097C693 /* PremiumFeature+extension.swift in Sources */,
+				75917F452DAC6E8200EB9375 /* SelectableCollectionViewListCell.swift in Sources */,
 				750CFBDE21BAD7FF00E62B09 /* UIViewController+storyboard.swift in Sources */,
 				75FCCF852631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */,
 				F34AB0752BAF1E7D00BB50A3 /* GoogleDriveConnectionSetupCoordinator.swift in Sources */,
@@ -4393,6 +4393,7 @@
 				750CFBDD21BAD7FF00E62B09 /* UIImage+extensions.swift in Sources */,
 				65365F7041B903844E4B97E1 /* DatabaseSettingsDataProtectionVC.swift in Sources */,
 				758AAFD32DA3343300B5FA41 /* UIContextualAction+extensions.swift in Sources */,
+				75917F202DAAB0FB00EB9375 /* KeyFilePickerCoordinator+toolbars.swift in Sources */,
 				FC0E2F35CFD483DA62C205B4 /* NullableBoolSettingCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4403,6 +4404,7 @@
 			files = (
 				F3E194682BCF23DB00FD03EE /* DeleteWordlistAccessory.swift in Sources */,
 				75679ACE22FD897000372301 /* NewsCenter.swift in Sources */,
+				75917F212DAAB0FB00EB9375 /* KeyFilePickerCoordinator+toolbars.swift in Sources */,
 				758AAFCF2DA2E31B00B5FA41 /* DatabasePickerCoordinator+itemActions.swift in Sources */,
 				758BF0DD20D220B300897C83 /* WatchdogAwareTextField.swift in Sources */,
 				751A565224CCD3CD001227D6 /* AppIconPicker.swift in Sources */,
@@ -4432,7 +4434,6 @@
 				759F6A072906BA7C0089FB34 /* PremiumBadgeAccessory.swift in Sources */,
 				757ADC5023A5180600D708D2 /* DismissablePopover.swift in Sources */,
 				F34B0DCA2B21D10C001F7500 /* FreeBadgeAccessory.swift in Sources */,
-				756F364A260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */,
 				F35125EB2D37D40C00E74BD0 /* EntryFieldMenuButton.swift in Sources */,
 				758BAD9524B5392300CC9265 /* PricingPlanPickerVC.swift in Sources */,
 				F3B69FCC2B078917006FC966 /* EntryExtraViewerVC.swift in Sources */,
@@ -4442,12 +4443,12 @@
 				7529310D21ADA46C00E4B0D2 /* FileInfoVC.swift in Sources */,
 				75E7CAE62DA582EF00511B91 /* DatabasePickerCoordinator+emptyState.swift in Sources */,
 				75136B262B67CD6B00214760 /* RemoteFileExportCoordinator.swift in Sources */,
+				75917F242DAAB20D00EB9375 /* KeyFilePickerCoordinator+itemActions.swift in Sources */,
 				759BC62C2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
 				757D336120EF382D000A47F0 /* SettingsDatabaseTimeoutVC.swift in Sources */,
 				7550D24C215FDEC500360E0C /* AppCoverVC.swift in Sources */,
 				75D7614F262DDE0B00B1DE7F /* AboutCoordinator.swift in Sources */,
 				F35D7CD32D639563006DCBF0 /* FileImportHelper.swift in Sources */,
-				756F363F260E9668005A35DA /* KeyFilePickerVC.swift in Sources */,
 				754EEAB72CFFBBF000404142 /* DatabaseCSVExporter.swift in Sources */,
 				F3B0C2042B2CA8790001946D /* OnboardingPagesVC.swift in Sources */,
 				758FF6BF28FAE32F007DE8EB /* ButtonCell.swift in Sources */,
@@ -4494,6 +4495,7 @@
 				75BE05EB25DA86F200B34CC0 /* DiagnosticsViewerCoordinator.swift in Sources */,
 				7502561C283D370000B930D9 /* SpinnerLabel.swift in Sources */,
 				75B5FB7B20D61BC000D402D9 /* ViewableEntryFieldFactory.swift in Sources */,
+				75917F3D2DABC59F00EB9375 /* KeyFilePickerCoordinator+add.swift in Sources */,
 				759992F324B666F7006CC379 /* PricingPlanCollectionLayout.swift in Sources */,
 				757E78DA2824135D009017BF /* PasswordGeneratorCoordinator.swift in Sources */,
 				7529EAEB211577EA0093B117 /* UITableViewCell+extension.swift in Sources */,
@@ -4567,10 +4569,12 @@
 				F35DBC862AED5C5400B33757 /* EncryptionSettingsCoordinator.swift in Sources */,
 				75FC842E2AC87B9E005021F1 /* Coordinator+passGen.swift in Sources */,
 				7561850520E0379F00EEFAEE /* ValidatingTextView.swift in Sources */,
+				75917F372DABC4EB00EB9375 /* KeyFilePickerCoordinator+create.swift in Sources */,
 				75BF1960283EE1B8006A9826 /* PasswordGeneratorLabel.swift in Sources */,
 				75AF1920282B0D6D00FA4BB5 /* PasswordGeneratorCells.swift in Sources */,
 				75CD364121537A320018AF46 /* AppStoreHelper.swift in Sources */,
 				75B5FB7720D53EA700D402D9 /* EntryFieldViewerVC.swift in Sources */,
+				75917F2E2DAB20C500EB9375 /* FilePickerCoordinator+fileInfo.swift in Sources */,
 				758BADBA24B5F8BF00CC9265 /* PricingPlans.swift in Sources */,
 				75D76159262ED2E200B1DE7F /* Coordinator+premium.swift in Sources */,
 				75A2677D22904E0D0097C693 /* PremiumFeature+extension.swift in Sources */,
@@ -4608,6 +4612,7 @@
 				75A5312123C0D2D400900ED1 /* Coordinator.swift in Sources */,
 				75DACE732573B49700A110DD /* SettingsAppearanceVC.swift in Sources */,
 				753507A023783729003B65C9 /* HapticFeedback.swift in Sources */,
+				75917F1A2DAAADD600EB9375 /* KeyFilePickerCoordinator+emptyState.swift in Sources */,
 				75D9913A26CEC8E400823331 /* SyncConflictAlert.swift in Sources */,
 				758BF0D820D1B1DA00897C83 /* ValidatingTextField.swift in Sources */,
 				75D76154262E1E9000B1DE7F /* SettingsCoordinator.swift in Sources */,
@@ -4618,7 +4623,7 @@
 				75C5C3762129DE0800CD7FE3 /* UIAlertController+extensions.swift in Sources */,
 				75F0BE5326A9BD270076B636 /* YubiKey+extension.swift in Sources */,
 				75A5312823C0DFE900900ED1 /* ItemRelocationCoordinator.swift in Sources */,
-				75FC40282DA028D600C5D1C2 /* NewKeyFilePickerCoordinator.swift in Sources */,
+				75FC40282DA028D600C5D1C2 /* KeyFilePickerCoordinator.swift in Sources */,
 				7558D06223CE2F3E00547621 /* ChallengeResponseManager.swift in Sources */,
 				7524E7362888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift in Sources */,
 				750D127E20CF071600BE0CCE /* GroupEditorVC.swift in Sources */,
@@ -4633,7 +4638,6 @@
 				F35DBC842AED5B2D00B33757 /* EncryptionSettingsVC.swift in Sources */,
 				757ADC4523A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75C94C5B20B4B8C2004FA29D /* EntryViewerPagesVC.swift in Sources */,
-				75FC40362DA099E500C5D1C2 /* DatabasePickerCoordinator+fileInfo.swift in Sources */,
 				7589FDCD28B4EA2100CCC76B /* FieldCopiedView.swift in Sources */,
 				7578487D22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift in Sources */,
 				758E5EF225F2E22600E06AE7 /* DatabaseSaving.swift in Sources */,
@@ -4643,6 +4647,7 @@
 				758BADB524B5EAFF00CC9265 /* GradientSeparatorView.swift in Sources */,
 				7596771E20FB36BD00E54827 /* SettingsAppTimeoutVC.swift in Sources */,
 				7579A07024F1C55B00C98F24 /* AppHistoryCoordinator.swift in Sources */,
+				75917F422DAC6E8200EB9375 /* SelectableCollectionViewListCell.swift in Sources */,
 				7524E7452888B56600ECBEC8 /* RightDetailCell.swift in Sources */,
 				7546FBDB20C3AC5E00C5D834 /* main.swift in Sources */,
 				F30550272BA4B09500155709 /* RemoteDataSourceSetupCoordinator.swift in Sources */,
@@ -4668,6 +4673,7 @@
 			files = (
 				F3E1946A2BCF23DB00FD03EE /* DeleteWordlistAccessory.swift in Sources */,
 				F3340BC92B2B3E2C00604AED /* OnboardingStep.swift in Sources */,
+				75917F1E2DAAB0FB00EB9375 /* KeyFilePickerCoordinator+toolbars.swift in Sources */,
 				758AAFCB2DA2E31B00B5FA41 /* DatabasePickerCoordinator+itemActions.swift in Sources */,
 				75B38BF3233E5B7C006BDEFC /* NewsCenter.swift in Sources */,
 				75B38BF4233E5B7C006BDEFC /* WatchdogAwareTextField.swift in Sources */,
@@ -4701,12 +4707,12 @@
 				F35125ED2D37D40C00E74BD0 /* EntryFieldMenuButton.swift in Sources */,
 				759F6A092906BA7C0089FB34 /* PremiumBadgeAccessory.swift in Sources */,
 				757ADC5223A5180600D708D2 /* DismissablePopover.swift in Sources */,
-				756F364C260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */,
 				7505F6C52B8640F400EA9BFD /* ManagedAppConfig+extensions.swift in Sources */,
 				758BAD9624B5392300CC9265 /* PricingPlanPickerVC.swift in Sources */,
 				F33F2C5A2B32FEFC009EFB18 /* TagSelectorCoordinator.swift in Sources */,
 				75E7CAE72DA582EF00511B91 /* DatabasePickerCoordinator+emptyState.swift in Sources */,
 				75B38C00233E5B7C006BDEFC /* UIViewController+storyboard.swift in Sources */,
+				75917F282DAAB20D00EB9375 /* KeyFilePickerCoordinator+itemActions.swift in Sources */,
 				754E409A26306927003E4854 /* DatabaseUnlockerCoordinator.swift in Sources */,
 				75B38C01233E5B7C006BDEFC /* FileInfoVC.swift in Sources */,
 				7546EC122B17750F00E38DB7 /* GroupEditorVC+Property.swift in Sources */,
@@ -4716,7 +4722,6 @@
 				754EEAB62CFFBBF000404142 /* DatabaseCSVExporter.swift in Sources */,
 				75B38C03233E5B7C006BDEFC /* AppCoverVC.swift in Sources */,
 				75D76150262DDE0B00B1DE7F /* AboutCoordinator.swift in Sources */,
-				756F3642260E9669005A35DA /* KeyFilePickerVC.swift in Sources */,
 				F30D03762A7BE8A40047525F /* PasswordQualityIndicatorView.swift in Sources */,
 				758FF6C128FAE32F007DE8EB /* ButtonCell.swift in Sources */,
 				7524E73D2888A3F500ECBEC8 /* WebDAVConnectionSetupVC.swift in Sources */,
@@ -4759,6 +4764,7 @@
 				75B38C0F233E5B7C006BDEFC /* ViewableEntryFieldFactory.swift in Sources */,
 				7502561E283D370000B930D9 /* SpinnerLabel.swift in Sources */,
 				759992F424B666F7006CC379 /* PricingPlanCollectionLayout.swift in Sources */,
+				75917F3E2DABC59F00EB9375 /* KeyFilePickerCoordinator+add.swift in Sources */,
 				75B38C10233E5B7C006BDEFC /* UITableViewCell+extension.swift in Sources */,
 				757E78DB2824135D009017BF /* PasswordGeneratorCoordinator.swift in Sources */,
 				75B38C12233E5B7C006BDEFC /* EntryHistoryViewerVC.swift in Sources */,
@@ -4832,10 +4838,12 @@
 				75B38C2E233E5B7C006BDEFC /* ValidatingTextView.swift in Sources */,
 				75B38C2F233E5B7C006BDEFC /* AppStoreHelper.swift in Sources */,
 				75BF1962283EE1B8006A9826 /* PasswordGeneratorLabel.swift in Sources */,
+				75917F3A2DABC4EB00EB9375 /* KeyFilePickerCoordinator+create.swift in Sources */,
 				75AF1921282B0D6D00FA4BB5 /* PasswordGeneratorCells.swift in Sources */,
 				75136B2C2B6972CB00214760 /* RemoteItemSelectionMode.swift in Sources */,
 				75B38C30233E5B7C006BDEFC /* EntryFieldViewerVC.swift in Sources */,
 				758BADBB24B5F8BF00CC9265 /* PricingPlans.swift in Sources */,
+				75917F2D2DAB20C500EB9375 /* FilePickerCoordinator+fileInfo.swift in Sources */,
 				75B38C31233E5B7C006BDEFC /* PremiumFeature+extension.swift in Sources */,
 				75D7615A262ED2E200B1DE7F /* Coordinator+premium.swift in Sources */,
 				753E01002B11288E00378C8D /* EncryptionSettingsCoordinator.swift in Sources */,
@@ -4873,6 +4881,7 @@
 				7573DECE26050CF000E8440D /* QRCodeScanner.swift in Sources */,
 				75A5312023C0D2D300900ED1 /* Coordinator.swift in Sources */,
 				75DACE742573B49700A110DD /* SettingsAppearanceVC.swift in Sources */,
+				75917F182DAAADD600EB9375 /* KeyFilePickerCoordinator+emptyState.swift in Sources */,
 				F32141522A934AB9007A8D4E /* PasswordAuditService.swift in Sources */,
 				753507A223783729003B65C9 /* HapticFeedback.swift in Sources */,
 				75B38C3F233E5B7C006BDEFC /* ValidatingTextField.swift in Sources */,
@@ -4883,7 +4892,7 @@
 				758544662351FE8D000D5E5E /* UIFont+extensions.swift in Sources */,
 				75B38C42233E5B7C006BDEFC /* UIAlertController+extensions.swift in Sources */,
 				75A5312923C0DFE900900ED1 /* ItemRelocationCoordinator.swift in Sources */,
-				75FC402A2DA028D600C5D1C2 /* NewKeyFilePickerCoordinator.swift in Sources */,
+				75FC402A2DA028D600C5D1C2 /* KeyFilePickerCoordinator.swift in Sources */,
 				75F0BE5526A9BD270076B636 /* YubiKey+extension.swift in Sources */,
 				7558D06323CE2F4100547621 /* ChallengeResponseManager.swift in Sources */,
 				75B38C44233E5B7C006BDEFC /* GroupEditorVC.swift in Sources */,
@@ -4898,7 +4907,6 @@
 				F3D9DE452AA79CAA00FEAF50 /* FaviconDownloader.swift in Sources */,
 				75267D0025FF75E300A1CC95 /* ContextualAction.swift in Sources */,
 				75B38C46233E5B7C006BDEFC /* EntryViewerPagesVC.swift in Sources */,
-				75FC40332DA099E500C5D1C2 /* DatabasePickerCoordinator+fileInfo.swift in Sources */,
 				7589FDCE28B4EA2100CCC76B /* FieldCopiedView.swift in Sources */,
 				75B38C47233E5B7C006BDEFC /* UITableViewCell+demoEditActions.swift in Sources */,
 				758E5EF325F2E22600E06AE7 /* DatabaseSaving.swift in Sources */,
@@ -4908,6 +4916,7 @@
 				7538936B26D3BEBE00CAB107 /* KeyboardDismissable.swift in Sources */,
 				758BADB724B5EAFF00CC9265 /* GradientSeparatorView.swift in Sources */,
 				75B38C49233E5B7C006BDEFC /* SettingsAppTimeoutVC.swift in Sources */,
+				75917F432DAC6E8200EB9375 /* SelectableCollectionViewListCell.swift in Sources */,
 				7579A07124F1C55B00C98F24 /* AppHistoryCoordinator.swift in Sources */,
 				7524E7472888B56600ECBEC8 /* RightDetailCell.swift in Sources */,
 				F30550292BA4B20500155709 /* RemoteDataSourceSetupCoordinator.swift in Sources */,
@@ -4931,6 +4940,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75917F362DABC4EB00EB9375 /* KeyFilePickerCoordinator+create.swift in Sources */,
 				75D075B228B639D200F02E39 /* NewsCenter.swift in Sources */,
 				F35125EC2D37D40C00E74BD0 /* EntryFieldMenuButton.swift in Sources */,
 				751ABACD2915B70E008C18DE /* RemoteFolderViewerVC.swift in Sources */,
@@ -4949,7 +4959,6 @@
 				75D075BE28B639D200F02E39 /* DestinationGroupPickerVC.swift in Sources */,
 				751ABAD52915B745008C18DE /* SubtitleCell.swift in Sources */,
 				750C0D582B64067600821CA4 /* WebDAVConnectionSetupCoordinator.swift in Sources */,
-				75FC40322DA099E500C5D1C2 /* DatabasePickerCoordinator+fileInfo.swift in Sources */,
 				75D075BF28B639D200F02E39 /* NavigationRouter.swift in Sources */,
 				75D075C028B639D200F02E39 /* SettingsVC.swift in Sources */,
 				75D075C128B639D200F02E39 /* ExpiryDateEditorVC.swift in Sources */,
@@ -4957,9 +4966,9 @@
 				75D075C228B639D200F02E39 /* GroupViewerVC.swift in Sources */,
 				75D075C328B639D200F02E39 /* SKProduct+extension.swift in Sources */,
 				75D075C428B639D200F02E39 /* NetworkAccessSettingsVC.swift in Sources */,
+				75917F1C2DAAADD600EB9375 /* KeyFilePickerCoordinator+emptyState.swift in Sources */,
 				F321415C2A934ABA007A8D4E /* PasswordAuditResultCell.swift in Sources */,
 				75D075C528B639D200F02E39 /* DismissablePopover.swift in Sources */,
-				75D075C628B639D200F02E39 /* KeyFilePickerCoordinator.swift in Sources */,
 				75D075C728B639D200F02E39 /* PricingPlanPickerVC.swift in Sources */,
 				75136B282B67CD6B00214760 /* RemoteFileExportCoordinator.swift in Sources */,
 				75D075C828B639D200F02E39 /* UIViewController+storyboard.swift in Sources */,
@@ -4972,7 +4981,6 @@
 				75D075CD28B639D200F02E39 /* AppCoverVC.swift in Sources */,
 				F3C71AB12AFFAD7A00EEAC8E /* GroupEditorTitleCell.swift in Sources */,
 				75D075CE28B639D200F02E39 /* AboutCoordinator.swift in Sources */,
-				75D075CF28B639D200F02E39 /* KeyFilePickerVC.swift in Sources */,
 				75D075D028B639D200F02E39 /* WebDAVConnectionSetupVC.swift in Sources */,
 				753E01012B11288E00378C8D /* EncryptionSettingsCoordinator.swift in Sources */,
 				75FC404D2DA1259800C5D1C2 /* DatabasePickerCoordinator+create.swift in Sources */,
@@ -5005,6 +5013,7 @@
 				758AAFD42DA3343300B5FA41 /* UIContextualAction+extensions.swift in Sources */,
 				754C2B1F2D8E289200E12BD2 /* TableFooterLabelView.swift in Sources */,
 				75D075EB28B639D200F02E39 /* DiagnosticsViewerCoordinator.swift in Sources */,
+				75917F262DAAB20D00EB9375 /* KeyFilePickerCoordinator+itemActions.swift in Sources */,
 				75D075EC28B639D200F02E39 /* PasswordGeneratorVC.swift in Sources */,
 				F34AB0722BAF1E7C00BB50A3 /* GoogleDriveConnectionSetupCoordinator.swift in Sources */,
 				F36DB1E52CE4CAF300E58F82 /* DatabaseViewerPermissionManager.swift in Sources */,
@@ -5023,6 +5032,7 @@
 				75D075F928B639D200F02E39 /* AccessibleStepper.swift in Sources */,
 				75D075FA28B639D200F02E39 /* SettingsSearchVC.swift in Sources */,
 				75D075FB28B639D200F02E39 /* DatabaseSettingsCoordinator.swift in Sources */,
+				75917F3F2DABC59F00EB9375 /* KeyFilePickerCoordinator+add.swift in Sources */,
 				75D075FC28B639D200F02E39 /* DatabaseViewerCoordinator.swift in Sources */,
 				75D075FD28B639D200F02E39 /* SearchHelper.swift in Sources */,
 				75D075FE28B639D200F02E39 /* SettingsClipboardTimeoutVC.swift in Sources */,
@@ -5074,6 +5084,7 @@
 				F36CFD282D46C655002ACDA7 /* QRCodeVC.swift in Sources */,
 				75F544B72CEF8E420022BAA4 /* UIKeyCommand+hotkeys.swift in Sources */,
 				75CA661029B8E00A0094CBAA /* DatabasePrintFormatter.swift in Sources */,
+				75917F2C2DAB20C500EB9375 /* FilePickerCoordinator+fileInfo.swift in Sources */,
 				75D0762128B639D200F02E39 /* ProgressOverlay.swift in Sources */,
 				75A4948E2B5F0E9C00ED018F /* TagFormatter.swift in Sources */,
 				75D0762228B639D200F02E39 /* LAContext+biometrics.swift in Sources */,
@@ -5084,6 +5095,7 @@
 				75D0762528B639D200F02E39 /* AppStoreHelper.swift in Sources */,
 				75D0762628B639D200F02E39 /* PasswordGeneratorLabel.swift in Sources */,
 				75D0762728B639D200F02E39 /* PasswordGeneratorCells.swift in Sources */,
+				75917F1F2DAAB0FB00EB9375 /* KeyFilePickerCoordinator+toolbars.swift in Sources */,
 				75D0762828B639D200F02E39 /* EntryFieldViewerVC.swift in Sources */,
 				75D0762928B639D200F02E39 /* PricingPlans.swift in Sources */,
 				75D0762A28B639D200F02E39 /* PremiumFeature+extension.swift in Sources */,
@@ -5186,12 +5198,13 @@
 				F3A2186F2C27045E006AB8F8 /* GroupEditorNotesCell.swift in Sources */,
 				75D0766A28B639D200F02E39 /* DatabaseIconSet+assets.swift in Sources */,
 				CAE0F4EB8D6B1135FCBB22A0 /* ToolbarDelegate.swift in Sources */,
-				75FC40272DA028D600C5D1C2 /* NewKeyFilePickerCoordinator.swift in Sources */,
+				75FC40272DA028D600C5D1C2 /* KeyFilePickerCoordinator.swift in Sources */,
 				DA75D3AD1113313C354F271D /* Credits.swift in Sources */,
 				758AAFCD2DA2E31B00B5FA41 /* DatabasePickerCoordinator+itemActions.swift in Sources */,
 				F4390BAD2D1DD5B3EA29E623 /* NullableBoolSettingCell.swift in Sources */,
 				75FC40152DA025EE00C5D1C2 /* DatabasePickerMode.swift in Sources */,
 				1C897E5E121EF32888BFCBE8 /* DatabaseSettingsDataProtectionVC.swift in Sources */,
+				75917F442DAC6E8200EB9375 /* SelectableCollectionViewListCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5210,7 +5223,7 @@
 				75D7DF7D233E5E310029AD87 /* FileInfoVC.swift in Sources */,
 				75AC2E9A2CC7C07700DB93E2 /* ItemCategory.swift in Sources */,
 				75D7DF7E233E5E310029AD87 /* CrashReportVC.swift in Sources */,
-				75FC40262DA028D600C5D1C2 /* NewKeyFilePickerCoordinator.swift in Sources */,
+				75FC40262DA028D600C5D1C2 /* KeyFilePickerCoordinator.swift in Sources */,
 				7590231F2AB4594A009E6213 /* Favicon.swift in Sources */,
 				75C7E3BC2CE56E7B004B853C /* SyncConflictAlert.swift in Sources */,
 				7524E7482888B56600ECBEC8 /* RightDetailCell.swift in Sources */,
@@ -5229,9 +5242,9 @@
 				75FC40302DA087EF00C5D1C2 /* DatabasePickerCoordinator+add.swift in Sources */,
 				75D7DF7F233E5E310029AD87 /* AppInfo.swift in Sources */,
 				75480506238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
-				75D7DF80233E5E310029AD87 /* KeyFilePickerVC.swift in Sources */,
 				75B78700261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift in Sources */,
 				F38A48C72A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift in Sources */,
+				75917F252DAAB20D00EB9375 /* KeyFilePickerCoordinator+itemActions.swift in Sources */,
 				75D7DF81233E5E310029AD87 /* CredentialProviderViewController.swift in Sources */,
 				75A5312623C0D35500900ED1 /* NavigationRouter.swift in Sources */,
 				75EEC22427484DD90092505F /* QuickAutoFillPrompt.swift in Sources */,
@@ -5241,6 +5254,7 @@
 				7526404228455DD80003DDFA /* PasswordGeneratorCells.swift in Sources */,
 				750C0D572B64067600821CA4 /* WebDAVConnectionSetupCoordinator.swift in Sources */,
 				75BE05F625DAA4E500B34CC0 /* SupportEmailComposer.swift in Sources */,
+				75917F1B2DAAADD600EB9375 /* KeyFilePickerCoordinator+emptyState.swift in Sources */,
 				7526404428455DDC0003DDFA /* PasswordGeneratorLengthCell.swift in Sources */,
 				759BC62F2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
 				754C2B202D8E289200E12BD2 /* TableFooterLabelView.swift in Sources */,
@@ -5253,6 +5267,7 @@
 				75DEA13F2DA9C39300710088 /* FileActivationCause.swift in Sources */,
 				75D7DF85233E5E310029AD87 /* NewsCenter.swift in Sources */,
 				75D7DF86233E5E310029AD87 /* FileListCell.swift in Sources */,
+				75917F402DABC59F00EB9375 /* KeyFilePickerCoordinator+add.swift in Sources */,
 				75267D0125FF75E300A1CC95 /* ContextualAction.swift in Sources */,
 				F30D03752A7BE8A30047525F /* PasswordQualityIndicatorView.swift in Sources */,
 				75D7DF88233E5E310029AD87 /* UITableViewCell+demoEditActions.swift in Sources */,
@@ -5270,6 +5285,7 @@
 				75D7DF8E233E5E310029AD87 /* Refreshable.swift in Sources */,
 				75D7DF8F233E5E310029AD87 /* UITableViewCell+extension.swift in Sources */,
 				75B78711261F916E005BE7B7 /* CollectionViewControllerWithContextActions.swift in Sources */,
+				75917F392DABC4EB00EB9375 /* KeyFilePickerCoordinator+create.swift in Sources */,
 				75FC401C2DA026CA00C5D1C2 /* DatabasePickerMode.swift in Sources */,
 				7583EA8B2685D372009969E7 /* Coordinator+premium.swift in Sources */,
 				75C7E3C92CE5EE53004B853C /* PasskeyCreatorVC.swift in Sources */,
@@ -5334,17 +5350,17 @@
 				753376F423CA650C00603F4A /* PasswordStringHelper.swift in Sources */,
 				75D99DEC269CED7D00D0E9D7 /* NSLayoutContraint+extensions.swift in Sources */,
 				759FD03D2D9D1A1200659852 /* FilePickerCoordinator.swift in Sources */,
+				75917F2B2DAB20C500EB9375 /* FilePickerCoordinator+fileInfo.swift in Sources */,
 				753DF2D3263E0EF30046F185 /* PlaceholderVC.swift in Sources */,
-				756F364D260E96A1005A35DA /* KeyFilePickerCoordinator.swift in Sources */,
 				75BFB1492481D19B0017B980 /* FileProvider+extensions.swift in Sources */,
 				756D94742BA2F2CA0084BDF5 /* MFIKeyActionSheetView.swift in Sources */,
-				75FC40342DA099E500C5D1C2 /* DatabasePickerCoordinator+fileInfo.swift in Sources */,
 				755E33C72C52A13C0041A199 /* AutoFillSetupMessageVC.swift in Sources */,
 				75D7DFA3233E5E310029AD87 /* UILabel+extensions.swift in Sources */,
 				759105F22CE4DB89002DEA7B /* ASCredentialRequestType+debugDescription.swift in Sources */,
 				75D21BD52B642BB20065D95E /* OneDriveConnectionSetupCoordinator.swift in Sources */,
 				757ADC5323A5180600D708D2 /* DismissablePopover.swift in Sources */,
 				75D7DFA4233E5E310029AD87 /* PremiumFeature+extension.swift in Sources */,
+				75917F462DAC6E8200EB9375 /* SelectableCollectionViewListCell.swift in Sources */,
 				75D7DFA6233E5E310029AD87 /* UIViewController+storyboard.swift in Sources */,
 				75FCCF872631D1F70025E86C /* HardwareKeyPickerCoordinator.swift in Sources */,
 				F34AB0732BAF1E7C00BB50A3 /* GoogleDriveConnectionSetupCoordinator.swift in Sources */,
@@ -5357,6 +5373,7 @@
 				75D7DFA7233E5E310029AD87 /* UIImage+extensions.swift in Sources */,
 				08106590EF0E00A3FBDB5211 /* DatabaseSettingsDataProtectionVC.swift in Sources */,
 				758AAFD52DA3343300B5FA41 /* UIContextualAction+extensions.swift in Sources */,
+				75917F222DAAB0FB00EB9375 /* KeyFilePickerCoordinator+toolbars.swift in Sources */,
 				89B3CE8067D6026DDEEE4C9D /* NullableBoolSettingCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5965,33 +5982,6 @@
 				751C41BD2700E4260002FB8F /* uk */,
 			);
 			name = EntryFinderVC.storyboard;
-			sourceTree = "<group>";
-		};
-		751E0D3A2309B0120088BB10 /* KeyFilePickerVC.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				751E0D392309B0120088BB10 /* Base */,
-				755E7DA4232019770010E199 /* ru */,
-				75AC53512326FE6E000AA4FB /* nl */,
-				75AC537C2326FF7E000AA4FB /* zh-Hant */,
-				75AC53A92327674B000AA4FB /* zh-Hans */,
-				75E4CA64232D0B0F00EB6805 /* de */,
-				75FDEF24233ABE9A00F17C26 /* cs */,
-				75FDEF50233ABEEC00F17C26 /* sv */,
-				75AC35C023549DE700B60614 /* es */,
-				756B2438243F74E000AA121A /* fr */,
-				754A323024426AA300632B39 /* it */,
-				7532821E24A8049F00A71F87 /* ja */,
-				754ABEA425AB8A5900B98A63 /* ar */,
-				754ABED825AB95D300B98A63 /* pl */,
-				754ABF0425AB968F00B98A63 /* pt-BR */,
-				7533956F263800AA00341D24 /* sk */,
-				7531912A263800DC000A1119 /* tr */,
-				75FCA9472638010D0070405A /* th */,
-				753438132643FE6F0032D284 /* ko */,
-				751C41CE2700E4260002FB8F /* uk */,
-			);
-			name = KeyFilePickerVC.storyboard;
 			sourceTree = "<group>";
 		};
 		752F588A247DCA5F0097ED20 /* SettingsSearchVC.storyboard */ = {

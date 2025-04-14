@@ -363,8 +363,13 @@ extension DatabaseCreatorCoordinator: KeyFilePickerCoordinatorDelegate {
         addChildCoordinator(keyFilePickerCoordinator)
     }
 
-    func didPickKeyFile(_ keyFile: URLReference?, in coordinator: KeyFilePickerCoordinator) {
-        setKeyFile(keyFile)
+    func didSelectKeyFile(
+        _ fileRef: URLReference?,
+        cause: FileActivationCause?,
+        in coordinator: KeyFilePickerCoordinator
+    ) {
+        assert(cause != nil, "File selected but not activated?")
+        setKeyFile(fileRef)
     }
 
     func didEliminateKeyFile(_ keyFile: URLReference, in coordinator: KeyFilePickerCoordinator) {

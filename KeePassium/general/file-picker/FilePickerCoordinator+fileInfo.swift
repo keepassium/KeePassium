@@ -8,17 +8,19 @@
 
 import KeePassiumLib
 
-extension DatabasePickerCoordinator {
+extension FilePickerCoordinator {
     func showFileInfo(
         _ fileRef: URLReference,
+        fileType: FileType,
+        allowExport: Bool,
         at popoverAnchor: PopoverAnchor?,
         in viewController: UIViewController
     ) {
         let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
         let fileInfoCoordinator = FileInfoCoordinator(
             fileRef: fileRef,
-            fileType: .database,
-            allowExport: true,
+            fileType: fileType,
+            allowExport: allowExport,
             router: modalRouter)
         fileInfoCoordinator.delegate = self
         fileInfoCoordinator.dismissHandler = { [weak self] coordinator in
@@ -31,8 +33,9 @@ extension DatabasePickerCoordinator {
     }
 }
 
-extension DatabasePickerCoordinator: FileInfoCoordinatorDelegate {
+extension FilePickerCoordinator: FileInfoCoordinatorDelegate {
     func didEliminateFile(_ fileRef: URLReference, in coordinator: FileInfoCoordinator) {
         refresh()
+        didEliminateFile(fileRef, in: self)
     }
 }

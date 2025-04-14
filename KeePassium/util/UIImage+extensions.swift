@@ -25,7 +25,7 @@ enum ImageAsset: String {
 }
 
 public enum SymbolName: String, Equatable {
-    public static let keyFile = Self.keyDocHorizontal
+    public static let keyFile = Self.keyHorizontal
     public static let actionRestore = Self.clockArrowCirclepath
     public static let appProtection = Self.lock
     public static let autoFill = Self.return
@@ -109,8 +109,6 @@ public enum SymbolName: String, Equatable {
     case iPhone = "iphone"
     case iPhoneHomeButton = "iphone.homebutton"
     case key = "key.diagonal"
-    case keyDoc = "key.doc"
-    case keyDocHorizontal = "key.doc.horizontal"
     case keyHorizontal = "key.horizontal"
     case keyboard = "keyboard"
     case listBullet = "list.bullet"

@@ -1129,7 +1129,12 @@ extension LString {
         bundle: Bundle.framework,
         value: "keyfile.dat",
         comment: "Default name for new key files. Should match the `key file` term in the glossary.")
-    public static let importKeyFileAction = NSLocalizedString(
+    public static let actionAddKeyFile = NSLocalizedString(
+        "[KeyFile/Add/action]",
+        bundle: Bundle.framework,
+        value: "Add Key File",
+        comment: "Action: add a key file into the app, by importing or creating one. `Key file` is a glossary term.")
+    public static let actionImportKeyFile = NSLocalizedString(
         "[KeyFile/Import/action]",
         bundle: Bundle.framework,
         value: "Import Key File",
@@ -1139,7 +1144,7 @@ extension LString {
         bundle: Bundle.framework,
         value: "Add file to the app",
         comment: "Description of the `Import Key File` action.")
-    public static let useKeyFileAction = NSLocalizedString(
+    public static let actionUseKeyFile = NSLocalizedString(
         "[KeyFile/Use/action]",
         bundle: Bundle.framework,
         value: "Select Key File",
