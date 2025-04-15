@@ -141,10 +141,7 @@ class FilePickerCoordinator: UIResponder, Coordinator, Refreshable, FilePickerVC
 }
 
 extension FilePickerCoordinator: FileKeeperObserver {
-    func fileKeeper(didAddFile urlRef: URLReference, fileType: FileType) {
-        refresh()
-    }
-    func fileKeeper(didRemoveFile urlRef: URLReference, fileType: FileType) {
+    func fileKeeperDidUpdate() {
         refresh()
     }
 }

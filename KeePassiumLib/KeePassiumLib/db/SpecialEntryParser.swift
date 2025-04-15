@@ -86,10 +86,7 @@ public final class SpecialEntryParser {
 }
 
 extension SpecialEntryParser: FileKeeperObserver {
-    public func fileKeeper(didAddFile urlRef: URLReference, fileType: FileType) {
-        updateFileRefs()
-    }
-    public func fileKeeper(didRemoveFile urlRef: URLReference, fileType: FileType) {
+    public func fileKeeperDidUpdate() {
         updateFileRefs()
     }
 }

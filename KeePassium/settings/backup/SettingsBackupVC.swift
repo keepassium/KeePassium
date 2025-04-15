@@ -159,10 +159,7 @@ class SettingsBackupVC: UITableViewController {
 
 
 extension SettingsBackupVC: FileKeeperObserver {
-    func fileKeeper(didRemoveFile urlRef: URLReference, fileType: FileType) {
-        refresh()
-    }
-    func fileKeeper(didAddFile urlRef: URLReference, fileType: FileType) {
+    func fileKeeperDidUpdate() {
         refresh()
     }
 }
