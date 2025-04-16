@@ -80,13 +80,14 @@ struct AppHistory: Decodable {
 
         let title: String
         let type: ItemType
+        let github: String?
         let credits: [String]
         let edition: [Edition]
         let change: Change
         let os: [OS]
 
         enum CodingKeys: String, CodingKey {
-            case title, type, credits, edition, os
+            case title, type, github, credits, edition, os
         }
 
         init(from decoder: Decoder) throws {
@@ -101,6 +102,7 @@ struct AppHistory: Decodable {
             type = try container.decodeIfPresent(ItemType.self, forKey: .type) ?? .default
             os = try array(.os)?.compactMap({ OS(rawValue: $0) }) ?? OS.allCases
             edition = try array(.edition)?.compactMap({ Edition(rawValue: $0) }) ?? Edition.allCases
+            github = try container.decodeIfPresent(String.self, forKey: .github)
             credits = try array(.credits) ?? []
 
             let title = try container.decode(String.self, forKey: .title)

@@ -156,11 +156,14 @@ extension AppHistoryViewerVC {
         if item.credits.isEmpty {
             configuration.secondaryText = nil
         } else {
-            let creditsText = item.credits.joined(separator: ", ")
-            configuration.secondaryText = String.localizedStringWithFormat(
+            let creditsText = String.localizedStringWithFormat(
                 LString.appHistoryThanksTemplate,
-                creditsText
+                item.credits.joined(separator: ", ")
             )
+            let subtitle = [item.github, creditsText]
+                .compactMap { $0 }
+                .joined(separator: " • ")
+            configuration.secondaryText = subtitle
         }
         cell.contentConfiguration = configuration
         cell.selectionStyle = .none

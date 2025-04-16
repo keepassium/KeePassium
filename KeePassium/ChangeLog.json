@@ -397,12 +397,12 @@
                 },
                 {
                     "title": "Added: Support for extended search syntax",
-                    "github": "Closes #190 and #383",
+                    "github": "#190, #383",
                     "credits": "everyone"
                 },
                 {
                     "title": "Added: Detecting external DB changes on app activation, suggesting reload",
-                    "github": "Related #373",
+                    "github": "#373",
                 },
                 {
                     "title": "Added: Custom reordering of groups and entries"
@@ -412,7 +412,7 @@
                 },
                 {
                     "title": "Added: OTP overview mode (via smart group)",
-                    "github": "Closes #8",
+                    "github": "#8",
                     "credits": "everyone"
                 },
                 {
@@ -454,7 +454,7 @@
                 },
                 {
                     "title": "Improved: AutoFill: notify if main app's dir unavailable",
-                    "github": "Closes #381",
+                    "github": "#381",
                     "credits": "Andreas"
                 },
                 {
@@ -469,12 +469,12 @@
                 },
                 {
                     "title": "Fixed: Direct Dropbox connection could randomly fail with \"Network connection lost\"",
-                    "github": "Fixes #377",
+                    "github": "#377",
                     "credits": "everyone"
                 },
                 {
                     "title": "Fixed: Processing WebDAV file lists with custom namespaces",
-                    "github": "Fixes #378",
+                    "github": "#378",
                     "credits": "QueenGit and D.J."
                 },
                 {
@@ -533,7 +533,7 @@
                 },
                 {
                     "title": "Added: Option to lock databases on device restart",
-                    "github": "Closes #209",
+                    "github": "#209",
                     "credits": "everyone"
                 },
                 {
@@ -551,7 +551,7 @@
                 },
                 {
                     "title": "Improved: Added tags as entry subtitle option",
-                    "github": "Closes #364",
+                    "github": "#364",
                     "credits": "Stefan"
                 },
                 {
@@ -570,7 +570,7 @@
                 },
                 {
                     "title": "Fixed: Password entropy estimation is now consistent with KeePassXC",
-                    "github": "Fixes #359",
+                    "github": "#359",
                     "credits": "RTClarkV"
                 },
                 {
@@ -579,12 +579,12 @@
                 },
                 {
                     "title": "Fixed: Generated passwords could be silently affected by smart punctuation",
-                    "github": "Fixes #286",
+                    "github": "#286",
                     "credits": "Douglas"
                 },
                 {
                     "title": "Fixed: Improved access to the same WebDAV server using different user accounts",
-                    "github": "Closes #367",
+                    "github": "#367",
                     "credits": "William and Marco"
                 },
                 {
@@ -597,18 +597,18 @@
                 },
                 {
                     "title": "Fixed: Handling of very long passphrases in password generator",
-                    "github": "Fixes #360",
+                    "github": "#360",
                     "credits": "Ironwally"
                 },
                 {
                     "title": "Fixed: Entry title could disappear on iPad",
-                    "github": "Fixes #366",
+                    "github": "#366",
                     "credits": "Tobias"
                 },
                 {
                     "title": "Fixed: Entry tags could disappear after TOTP setup",
                     "credits": "Peter",
-                    "github": "Closes #368",
+                    "github": "#368",
                 },
                 {
                     "title": "Fixed: Added new MTD scheme required by Intune SDK",
@@ -626,7 +626,7 @@
                 },
                 {
                     "title": "Improved: Improved usability of password generator",
-                    "github": "Closes #349",
+                    "github": "#349",
                     "credits": "WinkelCode"
                 },
                 {
@@ -642,12 +642,12 @@
                 },
                 {
                     "title": "Fixed: It was impossible to edit groups in KDB databases (regression in 1.49)",
-                    "github": "Fixes #351",
+                    "github": "#351",
                     "credits": "everyone"
                 },
                 {
                     "title": "Fixed: Large custom icons could be downsized incorrectly",
-                    "github": "Fixes 354",
+                    "github": "#354",
                     "credits": "ixs"
                 },
                 {
@@ -656,7 +656,7 @@
                 },
                 {
                     "title": "Fixed: Possible incorrect processing of YubiKey over USB",
-                    "github": "Fixes #350",
+                    "github": "#350",
                     "os": "macos"
                 }
             ]
@@ -667,7 +667,7 @@
             "items": [
                 {
                     "title": "Added: System icon set for databases",
-                    "github": "Closes #193",
+                    "github": "#193",
                     "credits": "everyone"
                 },
                 {
@@ -675,7 +675,7 @@
                 },
                 {
                     "title": "Fixed: Some storage providers failed with \"Blocked by your organization\" error",
-                    "github": "Closes #346",
+                    "github": "#346",
                     "credits": "everyone"
                 },
                 {
@@ -689,7 +689,7 @@
             "items": [
                 {
                     "title": "Added: Tags for entries and groups",
-                    "github": "Closes #249",
+                    "github": "#249",
                     "credits": "everyone"
                 },
                 {
@@ -714,7 +714,7 @@
                 },
                 {
                     "title": "Improved: Quick AutoFill suggestions now show entry title after username",
-                    "github": "Fixes #334",
+                    "github": "#334",
                     "credits": "Torsten"
                 },
                 {
@@ -804,17 +804,17 @@
                 },
                 {
                     "title": "Improved: Quick AutoFill can again copy TOTP to clipboard instead of simply showing it",
-                    "github": "Closes #242",
+                    "github": "#242",
                     "credits": "David"
                 },
                 {
                     "title": "Fixed: \"Storage does not respond\" error when saving",
-                    "github": "Fixes #327",
+                    "github": "#327",
                     "credits": "everyone"
                 },
                 {
                     "title": "Fixed: Sometimes the database did not lock up properly",
-                    "github": "Fixes #322",
+                    "github": "#322",
                     "credits": "vit9696"
                 },
                 {
@@ -826,7 +826,7 @@
                 },
                 {
                     "title": "Fixed: Favicon was not always refreshed after download",
-                    "github": "Fixes #323",
+                    "github": "#323",
                     "credits": "everyone"
                 }
             ]
@@ -869,13 +869,13 @@
                 },
                 {
                     "title": "Improved: Copied items are marked as concealed for clipboard managers",
-                    "github": "Closes #315",
+                    "github": "#315",
                     "credits": "piercefaulkner",
                     "os": "macos"
                 },
                 {
                     "title": "Improved: Lock app/DB when locking the screen",
-                    "github": "Closes #231",
+                    "github": "#231",
                     "credits": "Rodrigo",
                     "os": "macos"
                 },
@@ -896,7 +896,7 @@
                 },
                 {
                     "title": "Fixed: 'No such file' error when saving to Dropbox",
-                    "github": "Fixes #304",
+                    "github": "#304",
                     "credits": "everyone"
                 },
                 {
@@ -913,7 +913,7 @@
                 },
                 {
                     "title": "Added: Uniform and scalable SF Symbols icons",
-                    "github": "Closes #287",
+                    "github": "#287",
                     "credits": "everyone"
                 },
                 {
@@ -922,7 +922,7 @@
                 },
                 {
                     "title": "Improved: Added expiry option \"Now\"",
-                    "github": "Closes #300",
+                    "github": "#300",
                     "credits": "thejoker8814"
                 },
                 {
@@ -956,7 +956,7 @@
                 },
                 {
                     "title": "Fixed: Excessive WebDAV credential caching",
-                    "github": "Fixes #295",
+                    "github": "#295",
                     "credits": "Henrik"
                 },
                 {
@@ -1009,7 +1009,7 @@
             "items": [
                 {
                     "title": "Added: Manual TOTP setup",
-                    "github": "Closes #150",
+                    "github": "#150",
                     "credits": "everyone"
                 },
                 {
@@ -1066,7 +1066,7 @@
                 },
                 {
                     "title": "Fixed: In-app OneDrive for Business connection could not access shared files",
-                    "github": "Fixes #273",
+                    "github": "#273",
                     "credits": "everyone"
                 },
                 {
@@ -1079,18 +1079,18 @@
                 },
                 {
                     "title": "Fixed: Clipboard timeout had no effect",
-                    "github": "Fixes #278",
+                    "github": "#278",
                     "credits": "S.B.",
                     "os": "macos"
                 },
                 {
                     "title": "Fixed: Revealed TOTP codes could show up on unrelated rows",
-                    "github": "Fixes #277",
+                    "github": "#277",
                     "credits": "Timothy"
                 },
                 {
                     "title": "Fixed: Broken titlebar colors on macOS 13",
-                    "github": "Fixes #265",
+                    "github": "#265",
                     "credits": "enviousjag",
                     "os": "macos"
                 },
@@ -1121,7 +1121,7 @@
                 },
                 {
                     "title": "Added: Resolving KeePass' field placeholders",
-                    "github": "Closes #260",
+                    "github": "#260",
                     "credits": "Mateusz"
                 },
                 {
@@ -1150,12 +1150,12 @@
                 },
                 {
                     "title": "Fixed: Moving items to a YubiKey-protected database could remove that protection",
-                    "github": "Fixes #276",
+                    "github": "#276",
                     "credits": "Santiago"
                 },
                 {
                     "title": "Fixed: Access to files in shared OneDrive folders",
-                    "github": "Fixes #273",
+                    "github": "#273",
                     "credits": "everyone"
                 },
                 {
@@ -1177,7 +1177,7 @@
             "items": [
                 {
                     "title": "Fixed: Connection to personal OneDrive accounts should work in the free version",
-                    "github": "Fixes #270",
+                    "github": "#270",
                     "credits": "Rune"
                 },
                 {
@@ -1191,12 +1191,12 @@
             "items": [
                 {
                     "title": "Fixed: 'Unexpected server response format' after signing in to OneDrive",
-                    "github": "Fixes #268",
+                    "github": "#268",
                     "credits": "everyone"
                 },
                 {
                     "title": "Fixed: Repeating Face ID in AutoFill on some devices with iOS 16.2",
-                    "github": "Closes #266",
+                    "github": "#266",
                     "credits": "everyone"
                 }
             ]
@@ -1211,12 +1211,12 @@
                 },
                 {
                     "title": "Added: Option to search in passwords",
-                    "github": "Closes #196",
+                    "github": "#196",
                     "credits": "everyone"
                 },
                 {
                     "title": "Added: AutoFill can notify you about one-time password in the clipboard. To activate, open app settings → AutoFill Passwords → Copy OTP to Clipboard → turn it off, then back on.",
-                    "github": "Fixes #242",
+                    "github": "#242",
                     "credits": "ixs"
                 },
                 {
@@ -1254,12 +1254,12 @@
                 },
                 {
                     "title": "Fixed: Face ID loop on some devices with iOS 16.2",
-                    "github": "Closes #266",
+                    "github": "#266",
                     "credits": "everyone"
                 },
                 {
                     "title": "Fixed: Replaced some toast notifications with more persistent announcements",
-                    "github": "Fixes #250",
+                    "github": "#250",
                     "credits": "psifertex"
                 },
                 {
@@ -1298,7 +1298,7 @@
                 },
                 {
                     "title": "Improved: In app passcode screen, pressing Esc will show Touch ID prompt",
-                    "github": "Closes #253",
+                    "github": "#253",
                     "credits": "moenodedev",
                     "os": "macos"
                 },
@@ -1311,7 +1311,7 @@
                 },
                 {
                     "title": "Fixed: Excluded expired entries from search",
-                    "github": "Closes #252",
+                    "github": "#252",
                     "credits": "cryptosteve2"
                 },
                 {
@@ -1461,7 +1461,7 @@
                 },
                 {
                     "title": "Fixed: It was impossible to open local files with an unresponsive SMB share in the system",
-                    "github": "Fixes #109",
+                    "github": "#109",
                     "credits": "everyone"
                 },
                 {
@@ -1499,12 +1499,12 @@
                 },
                 {
                     "title": "Improved: Made `TOTP Settings` field optional",
-                    "github": "Closes #225",
+                    "github": "#225",
                     "credits": "plus-or-minus"
                 },
                 {
                     "title": "Improved: Hidden redundant OTP config fields from entry viewer",
-                    "github": "Closes #218",
+                    "github": "#218",
                     "credits": "plus-or-minus"
                 },
                 {
@@ -1518,7 +1518,7 @@
                 },
                 {
                     "title": "Changed: Disabled spelling autocorrection in entry editor",
-                    "github": "Closes #223",
+                    "github": "#223",
                     "credits": "everyone"
                 },
                 {
@@ -1527,7 +1527,7 @@
                 },
                 {
                     "title": "Fixed: Crash on iPod Touch devices running iOS 15",
-                    "github": "Fixes #215",
+                    "github": "#215",
                 },
                 {
                     "title": "Fixed: AutoFill crash when large DBs present in the app",
@@ -1617,7 +1617,7 @@
                 },
                 {
                     "title": "Fixed: Quick AutoFill now also works on macOS",
-                    "github": "Fixes #206",
+                    "github": "#206",
                     "os": "macos"
                 },
                 {
@@ -1649,7 +1649,7 @@
                 },
                 {
                     "title": "Fixed: New attachments did not export properly via `Save As` menu",
-                    "github": "Fixes #211",
+                    "github": "#211",
                     "credits": "Andreas"
                 },
                 {
@@ -1662,7 +1662,7 @@
                 },
                 {
                     "title": "Fixed: AutoFill sometimes mishandled several perfect matches",
-                    "github": "Fixes #212",
+                    "github": "#212",
                     "credits": "loeffelpan"
                 },
                 {
@@ -1713,7 +1713,7 @@
                 },
                 {
                     "title": "Added: Quick AutoFill - fill out login forms with one tap, without even opening AutoFill",
-                    "github": "Closes #50",
+                    "github": "#50",
                     "type": 2
                 },
                 {
@@ -1725,7 +1725,7 @@
                 },
                 {
                     "title": "Improved: All app files are additionally encrypted on disk and cannot be accessed while device is locked (NSFileProtectionComplete). Reinstall the app to activate this.",
-                    "github": "Closes #141",
+                    "github": "#141",
                 },
                 {
                     "title": "Improved: More secure keychain-based biometric authentication"
@@ -1752,7 +1752,7 @@
                 },
                 {
                     "title": "Fixed: AutoFill for ccSLD domains like .co.nz or .co.jp",
-                    "github": "Closes #201",
+                    "github": "#201",
                     "credits": "Adam and waynezhang"
                 },
                 {
@@ -1787,7 +1787,7 @@
             "items": [
                 {
                     "title": "Added: Possibility to copy/move data to other databases",
-                    "github": "Closes #102",
+                    "github": "#102",
                     "credits": "everyone",
                     "type": 2
                 },
@@ -1809,7 +1809,7 @@
                 },
                 {
                     "title": "Fixed: Modulo bias in password generator",
-                    "github": "Fixes #195",
+                    "github": "#195",
                     "credits": "Ben"
                 },
                 {
@@ -1841,7 +1841,7 @@
             "items": [
                 {
                     "title": "Improved: Show OTP codes in entry list",
-                    "github": "Closes #8",
+                    "github": "#8",
                     "credits": "everyone"
                 },
                 {
@@ -1871,7 +1871,7 @@
                 },
                 {
                     "title": "Added: Entry history management",
-                    "github": "Closes #56",
+                    "github": "#56",
                     "credits": "Joahna V, Ivo and A13BioniciOS6"
                 },
                 {
@@ -1879,7 +1879,7 @@
                 },
                 {
                     "title": "Added: Possiblity to attach pictures from Photo Library or camera",
-                    "github": "Closes #162",
+                    "github": "#162",
                     "credits": "everyone"
                 },
                 {
@@ -1887,7 +1887,7 @@
                 },
                 {
                     "title": "Added: Possibility to save attachment files (in addition to view/export)",
-                    "github": "Fixes #189",
+                    "github": "#189",
                     "credits": "Vitaly"
                 },
                 {
@@ -1970,11 +1970,11 @@
                 },
                 {
                     "title": "Fixed: Fixed keyboard occasionally missing in AutoFill. 4th attempt, should do the trick.",
-                    "github": "Fixes #133",
+                    "github": "#133",
                 },
                 {
                     "title": "Fixed: Entry attachment preview on macOS",
-                    "github": "Closes #174",
+                    "github": "#174",
                     "credits": "layandreas",
                     "os": "macos"
                 },
@@ -1986,7 +1986,7 @@
                 },
                 {
                     "title": "Fixed: Double Face ID scan after a failed attempt",
-                    "github": "Fixes #158",
+                    "github": "#158",
                     "credits": "Fotis"
                 },
                 {
@@ -2021,7 +2021,7 @@
                 },
                 {
                     "title": "Fixed: Automatic search did not work in AutoFill",
-                    "github": "Closes #176",
+                    "github": "#176",
                     "credits": "everyone"
                 }
             ]
@@ -2032,7 +2032,7 @@
             "items": [
                 {
                     "title": "Added: Possibility to add and select custom icons for groups and entries",
-                    "github": "Closes #84",
+                    "github": "#84",
                     "credits": "Igor"
                 },
                 {
@@ -2128,7 +2128,7 @@
                 },
                 {
                     "title": "Refined: Text size moved from zoom gesture to Appearance settings",
-                    "github": "Fixes #132",
+                    "github": "#132",
                 },
                 {
                     "title": "Refined: Better handling of database saving errors"
@@ -2165,12 +2165,12 @@
                 },
                 {
                     "title": "Fixed: Filter out invalid low-order ASCII characters from pasted/loaded data",
-                    "github": "Fixes #148",
+                    "github": "#148",
                     "credits": "Mirko"
                 },
                 {
                     "title": "Fixed: AutoFill disappeared immediately on show",
-                    "github": "Fixes #147",
+                    "github": "#147",
                     "credits": "everyone",
                     "os": "macos"
                 },
@@ -2268,7 +2268,7 @@
                 },
                 {
                     "title": "Fixed: In certain conditions, it was possible to open database after a timeout",
-                    "github": "Fixes #140",
+                    "github": "#140",
                     "credits": "Don"
                 },
                 {
@@ -2296,7 +2296,7 @@
                 },
                 {
                     "title": "Fixed: Made entry field text depend on system font size",
-                    "github": "Possibly fixes #132"
+                    "github": "#132"
                 },
                 {
                     "title": "Fixed: iOS 14: could access selected text menu through the passcode screen",
@@ -2327,7 +2327,7 @@
                 },
                 {
                     "title": "Fixed: Version parsing of XML key files",
-                    "github": "Fixes #143",
+                    "github": "#143",
                     "credits": "Kenneth and Ty"
                 },
                 {
@@ -2414,11 +2414,11 @@
             "items": [
                 {
                     "title": "Fixed: Possible database corruption on save in v1.18",
-                    "github": "Fixes #130",
+                    "github": "#130",
                 },
                 {
                     "title": "Fixed: URL fields not recognized on iOS 14 if default browser is not Safari",
-                    "github": "Fixes #129",
+                    "github": "#129",
                     "credits": "Ivo"
                 },
                 {
@@ -2445,7 +2445,7 @@
                 },
                 {
                     "title": "Fixed: Slow decryption of databases",
-                    "github": "Fixes #128",
+                    "github": "#128",
                     "credits": "everyone"
                 },
                 {
