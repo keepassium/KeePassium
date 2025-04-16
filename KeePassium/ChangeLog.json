@@ -1,6 +1,142 @@
 {
     "sections": [
         {
+            "version": "2.4",
+            "releaseDate": "2025-04-16T00:00:00Z",
+            "items": [
+                {
+                    "title": "Added: Support for extra URLs (KP2A_URL_*)",
+                    "github": "#180",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Added: QR-code view for entry fields",
+                    "github": "#420",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Added: Database-specific data protection settings",
+                    "github": "#64",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Added: macOS: Import from Apple Passwords CSV",
+                    "os": "macos"
+                },
+                {
+                    "title": "Improved: Show number of found items, both in search and smart groups",
+                    "credits": "u/binroth"
+                },
+                {
+                    "title": "Improved: WebDAV setup accepts both direct file URL or a folder path"
+                },
+                {
+                    "title": "Improved: Preserve split panel widths between launches",
+                    "os": "macos",
+                    "credits": "Stuart"
+                },
+                {
+                    "title": "Improved: Menu for new custom fields, with frequently used options"
+                },
+                {
+                    "title": "Improved: More usable field actions menu (not in VoiceOver)",
+                    "os": "ios"
+                },
+                {
+                    "title": "Improved: Show \"Retry\" option when DB saving fails",
+                    "github": "#437",
+                    "credits": "Carsten"
+                },
+                {
+                    "title": "Improved: Reopening the last Entry Viewer's tab is optional now",
+                    "github": "#403",
+                    "credits": "u/gripe_and_complain"
+                },
+                {
+                    "title": "Improved: Won't color passwords when \"Differentiate Without Color\" is active in system settings",
+                    "credits": "Adam"
+                },
+                {
+                    "title": "Improved: Added a 90-second clipboard timeout",
+                    "credits": "Brian"
+                },
+                {
+                    "title": "Improved: Select and delete multiple custom icons at once"
+                },
+                {
+                    "title": "Improved: Added an option to auto-download favicons on entry edit"
+                },
+                {
+                    "title": "Improved: Log a setup suggestion for YubiKeys with disabled NFC"
+                },
+                {
+                    "title": "Improved: Modernized database and key file picker UI"
+                },
+                {
+                    "title": "Fixed: Excessive warnings about local files missing in AutoFill",
+                    "github": "#441",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Fixed: Device locking interrupted by Face ID prompt",
+                    "github": "#19",
+                    "credits": "magebarf"
+                },
+                {
+                    "title": "Fixed: Selecting a premium plan with a mouse",
+                    "github": "#420",
+                    "os": "macos",
+                    "credits": "vit9696"
+                },
+                {
+                    "title": "Fixed: Detection of external database changes on OneDrive",
+                    "credits": "Michael"
+                },
+                {
+                    "title": "Fixed: Access to files in root of OneDrive Shared folder",
+                    "github": "#387",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Fixed: Short app protection timeouts did not work properly",
+                    "os": "macos",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Fixed: Preserve toolbar display mode on macOS 15",
+                    "os": "macos",
+                    "credits": "u/binroth"
+                },
+                {
+                    "title": "Fixed: otpauth URI format for manually configured OTPs",
+                    "github": "#435",
+                    "credits": "rasa"
+                },
+                {
+                    "title": "Fixed: Selecting databases with keyboard",
+                    "os": "macos",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Fixed: Crash after editing a found entry",
+                    "github": "#436",
+                    "credits": "Tom"
+                },
+                {
+                    "title": "Fixed: Background of the passcode input dialog",
+                    "os": "macos"
+                },
+                {
+                    "title": "Fixed: App protection now considers key presses as user activity"
+                },
+                {
+                    "title": "Fixed: Smart group update after editing an item",
+                    "github": "#439",
+                    "credits": "Doc-Steve"
+                }
+            ]
+        },
+        {
             "version": "2.3",
             "releaseDate": "2025-01-17T00:00:00Z",
             "items": [

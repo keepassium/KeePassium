@@ -1,5 +1,48 @@
 #CHANGELOG
 
+## [2.4.164] - 2025-04-16
+
+### Added
+
+- Support for extra URLs (KP2A_URL_*) (#180) [thanks, everyone]
+- Added QR-code view for entry fields (#420) [thanks, everyone]
+- Database-specific data protection settings (#64) [thanks, everyone]
+- macOS: Import from Apple Passwords CSV
+
+### Improved
+
+- Show number of found items, both in search and smart groups [thanks, u/binroth]
+- WebDAV setup accepts both direct file URL or a folder path
+- macOS: Preserve split panel widths between launches [thanks, Stuart]
+- Menu for new custom fields, with frequently used options
+- iOS: More usable field actions menu (not in VoiceOver)
+- Show "Retry" option when DB saving fails (#437) [thanks, Carsten]
+- Reopening the last Entry Viewer's tab is optional now (#403) [thanks, u/gripe_and_complain]
+- Won't color passwords when "Differentiate Without Color" is active in system settings [thanks, Adam]
+- Added a 90-second clipboard timeout [thanks, Brian]
+- Select and delete multiple custom icons at once
+- Added an option to auto-download favicons on entry edit
+- Log a setup suggestion for YubiKeys with disabled NFC
+- Modernized database and key file picker UI
+
+
+### Fixed
+
+- Excessive warnings about local files missing in AutoFill (#441) [thanks, everyone]
+- Device locking interrupted by Face ID prompt (#19) [thanks, magebarf]
+- macOS: Selecting a premium plan with a mouse (#420) [thanks, vit9696]
+- Detection of external database changes on OneDrive [thanks, Michael]
+- Access to files in root of OneDrive Shared folder (#387) [thanks, everyone]
+- macOS: Short app protection timeouts did not work properly [thanks, everyone]
+- macOS: Preserve toolbar display mode on macOS 15 [thanks, u/binroth]
+- otpauth URI format for manually configured OTPs (#435) [thanks, rasa]
+- macOS: Selecting databases with keyboard [thanks, everyone]
+- Crash after editing a found entry (#436) [thanks, Tom]
+- macOS: Background of the passcode input dialog
+- App protection now considers key presses as user activity
+- Smart group update after editing an item (#439) [thanks, Doc-Steve]
+
+
 ## [2.3.163] - 2025-01-17
 
 ### Added
