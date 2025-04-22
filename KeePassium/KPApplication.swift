@@ -13,10 +13,16 @@ class KPApplication: UIApplication {
     override func sendEvent(_ event: UIEvent) {
         super.sendEvent(event)
 
-        guard let allTouches = event.allTouches else { return }
-        for touch in allTouches where touch.phase == .began {
+        switch event.type {
+        case .touches:
+            guard let allTouches = event.allTouches else { return }
+            if allTouches.contains(where: { $0.phase == .began }) {
+                Watchdog.shared.restart()
+            }
+        case .scroll:
             Watchdog.shared.restart()
-            break
+        default:
+            return
         }
     }
 }
