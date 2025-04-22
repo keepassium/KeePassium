@@ -52,7 +52,7 @@ extension KeyFilePickerCoordinator {
             buttonConfig.image = .symbol(.ellipsis)
             let fileMenuButton = UIButton(configuration: buttonConfig)
             fileMenuButton.accessibilityLabel = LString.actionShowDetails
-            fileMenuButton.menu = makeFileMenu(for: fileItem)
+            fileMenuButton.menu = makeFileMenu(for: fileItem, at: fileMenuButton.asPopoverAnchor)
             fileMenuButton.showsMenuAsPrimaryAction = true
             fileMenuButton.sizeToFit()
             return fileMenuButton
@@ -60,7 +60,7 @@ extension KeyFilePickerCoordinator {
 
         private func makeFileMenu(
             for fileItem: FilePickerItem.FileInfo,
-            at popoverAnchor: PopoverAnchor? = nil
+            at popoverAnchor: PopoverAnchor?
         ) -> UIMenu? {
             guard let fileRef = fileItem.source else { assertionFailure(); return nil }
             var menuItems = [UIMenuElement]()
