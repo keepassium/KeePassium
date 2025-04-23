@@ -296,6 +296,9 @@ extension PasscodeInputVC: UITextFieldDelegate, ValidatingTextFieldDelegate {
 
 
 extension PasscodeInputVC: UIAdaptivePresentationControllerDelegate {
+    func presentationControllerShouldDismiss(_ presentationController: UIPresentationController) -> Bool {
+        return isCancelAllowed
+    }
 
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
         didPressCancelButton(self)
