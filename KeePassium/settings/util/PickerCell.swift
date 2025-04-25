@@ -28,7 +28,13 @@ final class PickerCell: UICollectionViewListCell {
         config.image = itemConfig.image
         self.contentConfiguration = config
 
+        self.accessibilityTraits.insert(.button)
         isUserInteractionEnabled = itemConfig.isEnabled
+        if itemConfig.isEnabled {
+            accessibilityTraits.remove(.notEnabled)
+        } else {
+            accessibilityTraits.insert(.notEnabled)
+        }
         self.accessories = [.popUpMenu(itemConfig.menu)]
     }
 }

@@ -97,7 +97,7 @@ extension SettingsDatabaseTimeoutVC {
 
     private func configureTimeoutCell(_ cell: SubtitleCell, index: Int) {
         let timeout = Settings.DatabaseLockTimeout.allValues[index]
-        cell.textLabel?.text = timeout.fullTitle
+        cell.textLabel?.text = timeout.title
         cell.detailTextLabel?.text = timeout.description
         if timeout == Settings.current.databaseLockTimeout {
             cell.accessoryType = .checkmark

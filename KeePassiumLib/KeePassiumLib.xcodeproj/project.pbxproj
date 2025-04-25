@@ -79,6 +79,7 @@
 		757B9B822AA0848100FFA6EA /* DatabaseFeature2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757B9B812AA0848100FFA6EA /* DatabaseFeature2.swift */; };
 		757C51CF29F17D3C008986F4 /* DomainParser in Frameworks */ = {isa = PBXBuildFile; productRef = 757C51CE29F17D3C008986F4 /* DomainParser */; };
 		757C51D129F18192008986F4 /* DomainNameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757C51D029F18192008986F4 /* DomainNameHelper.swift */; };
+		757CCFAC2DBAFB05005E6BE6 /* LString+dataProtectionSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757CCFAB2DBAFB05005E6BE6 /* LString+dataProtectionSettings.swift */; };
 		757E78D82822D729009017BF /* PasswordGeneratorParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757E78D72822D729009017BF /* PasswordGeneratorParams.swift */; };
 		75804AAF2A43B5A300A9C985 /* eff-short-wordlist-1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 75804AAE2A43B5A300A9C985 /* eff-short-wordlist-1.txt */; };
 		758F41992B18CC360069BF66 /* OneDriveAuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758F41982B18CC360069BF66 /* OneDriveAuthProvider.swift */; };
@@ -388,6 +389,7 @@
 		75707EC426CE7B3B00BE5EBC /* OperationQueue+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OperationQueue+extensions.swift"; sourceTree = "<group>"; };
 		757B9B812AA0848100FFA6EA /* DatabaseFeature2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseFeature2.swift; sourceTree = "<group>"; };
 		757C51D029F18192008986F4 /* DomainNameHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainNameHelper.swift; sourceTree = "<group>"; };
+		757CCFAB2DBAFB05005E6BE6 /* LString+dataProtectionSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LString+dataProtectionSettings.swift"; sourceTree = "<group>"; };
 		757E78D72822D729009017BF /* PasswordGeneratorParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGeneratorParams.swift; sourceTree = "<group>"; };
 		75804AAE2A43B5A300A9C985 /* eff-short-wordlist-1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "eff-short-wordlist-1.txt"; sourceTree = "<group>"; };
 		758F41982B18CC360069BF66 /* OneDriveAuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDriveAuthProvider.swift; sourceTree = "<group>"; };
@@ -613,6 +615,7 @@
 			isa = PBXGroup;
 			children = (
 				75B8608B2475E2F800C5E6C0 /* LString.swift */,
+				757CCFAB2DBAFB05005E6BE6 /* LString+dataProtectionSettings.swift */,
 				75A0047A2840CF5C000B7B17 /* LString+a11y.swift */,
 				75F11C32288312A3005B3DC0 /* LString+about.swift */,
 				75241F43274A90AD00AE15AD /* LString+general.swift */,
@@ -1642,6 +1645,7 @@
 				B7FFAE29B0F0B41C2A81FF7E /* GoogleDriveAPI.swift in Sources */,
 				0E420EE2D517F463A6BFC562 /* URL+googleDrive.swift in Sources */,
 				88B5DE2FD310B644D7214CB4 /* GoogleDriveManager.swift in Sources */,
+				757CCFAC2DBAFB05005E6BE6 /* LString+dataProtectionSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

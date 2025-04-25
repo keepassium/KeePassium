@@ -232,53 +232,6 @@ public class Settings {
         public static func < (a: DatabaseLockTimeout, b: DatabaseLockTimeout) -> Bool {
             return a.seconds < b.seconds
         }
-
-        public var fullTitle: String {
-            switch self {
-            case .never:
-                return LString.databaseLockTimeoutNeverFull
-            case .immediately:
-                return LString.databaseLockTimeoutImmediatelyFull
-            default:
-                let formatter = DateComponentsFormatter()
-                formatter.allowedUnits = [.weekOfMonth, .day, .hour, .minute, .second]
-                formatter.collapsesLargestUnit = true
-                formatter.maximumUnitCount = 2
-                formatter.unitsStyle = .full
-                guard let result = formatter.string(from: TimeInterval(self.rawValue)) else {
-                    assertionFailure()
-                    return "?"
-                }
-                return result
-            }
-        }
-        public var shortTitle: String {
-            switch self {
-            case .never:
-                return LString.databaseLockTimeoutNeverShort
-            case .immediately:
-                return LString.databaseLockTimeoutImmediatelyShort
-            default:
-                let formatter = DateComponentsFormatter()
-                formatter.allowedUnits = [.weekOfMonth, .day, .hour, .minute, .second]
-                formatter.collapsesLargestUnit = true
-                formatter.maximumUnitCount = 2
-                formatter.unitsStyle = .brief
-                guard let result = formatter.string(from: TimeInterval(self.rawValue)) else {
-                    assertionFailure()
-                    return "?"
-                }
-                return result
-            }
-        }
-        public var description: String? {
-            switch self {
-            case .immediately:
-                return LString.databaseLockTimeoutWhenLeavingApp
-            default:
-                return nil
-            }
-        }
     }
 
     public enum ClipboardTimeout: Int, CaseIterable {
@@ -309,49 +262,6 @@ public class Settings {
             return result! 
         }
 
-        public var fullTitle: String {
-            switch self {
-            case .never:
-                return NSLocalizedString(
-                    "[Settings/ClipboardTimeout/fullTitle] Never",
-                    bundle: Bundle.framework,
-                    value: "Never",
-                    comment: "An option in Settings. Will be shown as 'Clipboard Timeout: Never'")
-            default:
-                let interval = TimeInterval(self.rawValue)
-                let formatter = DateComponentsFormatter()
-                formatter.allowedUnits = (interval < 120) ? [.second] : [.minute, .second]
-                formatter.collapsesLargestUnit = true
-                formatter.maximumUnitCount = 2
-                formatter.unitsStyle = .full
-                guard let result = formatter.string(from: interval) else {
-                    assertionFailure()
-                    return "?"
-                }
-                return result
-            }
-        }
-        public var shortTitle: String {
-            switch self {
-            case .never:
-                return NSLocalizedString(
-                    "[Settings/ClipboardTimeout/shortTitle] Never",
-                    bundle: Bundle.framework,
-                    value: "Never",
-                    comment: "An option in Settings. Will be shown as 'Clipboard Timeout: Never'")
-            default:
-                let formatter = DateComponentsFormatter()
-                formatter.allowedUnits = [.hour, .minute, .second]
-                formatter.collapsesLargestUnit = true
-                formatter.maximumUnitCount = 2
-                formatter.unitsStyle = .abbreviated
-                guard let result = formatter.string(from: TimeInterval(self.rawValue)) else {
-                    assertionFailure()
-                    return "?"
-                }
-                return result
-            }
-        }
     }
 
     public enum BackupKeepingDuration: Int {

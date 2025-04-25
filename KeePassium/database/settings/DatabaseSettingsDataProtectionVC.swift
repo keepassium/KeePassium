@@ -42,7 +42,7 @@ final class DatabaseSettingsDataProtectionVC: UITableViewController, Refreshable
         super.viewDidLoad()
         tableView.estimatedSectionHeaderHeight = 18
 
-        title = LString.titleDataProtectionSettings
+        title = LString.dataProtectionSettingsTitle
         registerCellClasses(tableView)
     }
 
@@ -81,7 +81,7 @@ final class DatabaseSettingsDataProtectionVC: UITableViewController, Refreshable
     }
 
     private func configureMasterKeyCell(_ cell: NullableBoolSettingCell) {
-        cell.title = LString.titleRememberMasterKey
+        cell.title = LString.rememberMasterKeysTitle
         cell.value = rememberMasterKey
         cell.defaultValue = Settings.current.isRememberDatabaseKey
         cell.onStateChanged = { [weak self] newValue in
@@ -93,7 +93,7 @@ final class DatabaseSettingsDataProtectionVC: UITableViewController, Refreshable
     }
 
     private func configureKeyFileCell(_ cell: NullableBoolSettingCell) {
-        cell.title = LString.titleRememberKeyFile
+        cell.title = LString.rememberKeyFilesTitle
         cell.value = rememberKeyFile
         cell.defaultValue = Settings.current.isKeepKeyFileAssociations
         cell.onStateChanged = { [weak self] newValue in
@@ -105,7 +105,7 @@ final class DatabaseSettingsDataProtectionVC: UITableViewController, Refreshable
     }
 
     private func configureDerivedKeyCell(_ cell: NullableBoolSettingCell) {
-        cell.title = LString.titleCacheDerivedKeys
+        cell.title = LString.cacheDerivedKeysTitle
         cell.value = cachesDerivedEncryptionKey
         cell.defaultValue = Settings.current.isRememberDatabaseFinalKey
         cell.onStateChanged = { [weak self] newValue in
@@ -125,19 +125,4 @@ final class DatabaseSettingsDataProtectionVC: UITableViewController, Refreshable
         }
         settingCell.showMenu()
     }
-}
-
-extension LString {
-    public static let titleRememberMasterKey = NSLocalizedString(
-        "[Database/Settings/DataProtection/RememberMasterKey]",
-        value: "Remember Master Key",
-        comment: "Setting: whether to keep master key in memory")
-    public static let titleRememberKeyFile = NSLocalizedString(
-        "[Database/Settings/DataProtection/RememberKeyFile]",
-        value: "Remember Key File",
-        comment: "Setting: whether to keep key file in memory")
-    public static let titleCacheDerivedKeys = NSLocalizedString(
-        "[Database/Settings/DataProtection/CacheDerivedKeys]",
-        value: "Cache Derived Keys",
-        comment: "Setting: whether to keep derived encryption keys in memory")
 }

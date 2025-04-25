@@ -94,7 +94,7 @@ final class SettingsShakeGestureActionVC: UITableViewController, Refreshable {
             guard ManagedAppConfig.shared.isAppProtectionAllowed else {
                 return nil
             }
-            return LString.shakeGestureConfirmationFootnote
+            return LString.shakeGestureConfirmationDescription
         default:
             return nil
         }
@@ -127,19 +127,4 @@ final class SettingsShakeGestureActionVC: UITableViewController, Refreshable {
         let action = visibleActions[indexPath.row]
         delegate?.didSelectShakeGesture(action, in: self)
     }
-}
-
-extension LString {
-    public static let shakeGestureActionTitle = NSLocalizedString(
-        "[Settings/ShakeGestureAction/title]",
-        value: "When Shaken",
-        comment: "Title for a setting: what the app should do when the user shakes the device")
-    public static let shakeGestureConfirmationTitle = NSLocalizedString(
-        "[Settings/ShakeGestureAction/Confirm/title]",
-        value: "Ask for Confirmation",
-        comment: "Title for a setting: whether the app should show an 'Are you sure?' before continuing")
-    public static let shakeGestureConfirmationFootnote = NSLocalizedString(
-        "[Settings/ShakeGestureAction/Confirm/footnote]",
-        value: "If the app is locked, it acts without confirmation.",
-        comment: "Description of the 'Ask for Confirmation' setting.")
 }

@@ -6,7 +6,6 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact us.
 
-
 import UIKit
 
 class SettingsItemConfig: Hashable {

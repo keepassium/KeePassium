@@ -9,7 +9,7 @@
 import KeePassiumLib
 import LocalAuthentication.LABiometryType
 
-final class AppProtectionSettingsVC: UIViewController {
+final class AppProtectionSettingsVC: BaseSettingsViewController<AppProtectionSettingsVC.Section> {
     protocol Delegate: AnyObject {
         func didChangeAppProtectionEnabled(_ isEnabled: Bool, in viewController: AppProtectionSettingsVC)
         func didPressChangePasscode(in viewController: AppProtectionSettingsVC)
@@ -30,7 +30,16 @@ final class AppProtectionSettingsVC: UIViewController {
     var isLockOnAppLaunch: Bool = false
     var isLockOnFailedPasscode: Bool = false
 
-    enum Section: Int, CaseIterable {
+    override init() {
+        super.init()
+        title = LString.titleAppProtectionSettings
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("Not implemented")
+    }
+
+    enum Section: SettingsSection {
         case general
         case biometric
         case timeout
@@ -57,34 +66,7 @@ final class AppProtectionSettingsVC: UIViewController {
         }
     }
 
-    internal var _collectionView: UICollectionView!
-    internal var _dataSource: UICollectionViewDiffableDataSource<Section, SettingsItem>!
-
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        title = LString.titleAppProtectionSettings
-        view.backgroundColor = .systemBackground
-        _setupCollectionView()
-        _setupDataSource()
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("Not implemented")
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        refresh()
-    }
-
-    func refresh() {
-        guard isViewLoaded else { return }
-        applySnapshot()
-    }
-}
-
-extension AppProtectionSettingsVC {
-    private func applySnapshot() {
+    override func refresh() {
         assert(_dataSource != nil)
         assert(_collectionView != nil)
         var snapshot = NSDiffableDataSourceSnapshot<Section, SettingsItem>()
@@ -97,15 +79,15 @@ extension AppProtectionSettingsVC {
                 isOn: isAppProtectionEnabled,
                 handler: { [unowned self] itemConfig in
                     isAppProtectionEnabled = itemConfig.isOn
-                    applySnapshot()
+                    refresh()
                     delegate?.didChangeAppProtectionEnabled(isAppProtectionEnabled, in: self)
                 }
             )),
-            .navigation(.init(
+            .basic(.init(
                 title: LString.actionChangePasscode,
                 image: nil,
                 isEnabled: isAppProtectionEnabled,
-                isButton: true,
+                decorators: [.action],
                 handler: { [unowned self] in
                     delegate?.didPressChangePasscode(in: self)
                 }
@@ -124,7 +106,7 @@ extension AppProtectionSettingsVC {
                 isOn: isUseBiometric,
                 handler: { [unowned self] itemConfig in
                     isUseBiometric = itemConfig.isOn
-                    applySnapshot()
+                    refresh()
                     delegate?.didChangeIsUseBiometric(isUseBiometric, in: self)
                 }
             ))
@@ -150,7 +132,7 @@ extension AppProtectionSettingsVC {
                 isOn: isLockOnAppLaunch,
                 handler: { [unowned self] itemConfig in
                     isLockOnAppLaunch = itemConfig.isOn
-                    applySnapshot()
+                    refresh()
                     delegate?.didChangeIsLockOnAppLaunch(isLockOnAppLaunch, in: self)
                 }
             ))
@@ -165,7 +147,7 @@ extension AppProtectionSettingsVC {
                 isOn: isLockOnFailedPasscode,
                 handler: { [unowned self] itemConfig in
                     isLockOnFailedPasscode = itemConfig.isOn
-                    applySnapshot()
+                    refresh()
                     delegate?.didChangeIsLockOnFailedPasscode(isLockOnFailedPasscode, in: self)
                 }
             ))
@@ -181,30 +163,11 @@ extension AppProtectionSettingsVC {
                 state: timeoutOption == self.timeout ? .on : .off,
                 handler: { [unowned self] _ in
                     self.timeout = timeoutOption
-                    applySnapshot()
+                    refresh()
                     delegate?.didChangeTimeout(timeoutOption, in: self)
                 }
             )
         }
         return UIMenu(inlineChildren: children)
-    }
-}
-
-extension AppProtectionSettingsVC: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, canFocusItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-
-    func collectionView(
-        _ collectionView: UICollectionView,
-        performPrimaryActionForItemAt indexPath: IndexPath
-    ) {
-        let targetItem = _dataSource.itemIdentifier(for: indexPath)
-        switch targetItem {
-        case .navigation(let itemConfig):
-            itemConfig.handler?()
-        case .toggle, .picker, .none:
-            return
-        }
     }
 }

@@ -17,7 +17,7 @@ class BasicCell: UICollectionViewListCell {
     {
         return  UICollectionView.CellRegistration<CellType, SettingsItem> {
             cell, indexPath, item in
-            guard case let .navigation(itemConfig) = item else { assertionFailure(); return }
+            guard case let .basic(itemConfig) = item else { assertionFailure(); return }
             cell.configure(with: itemConfig)
         }
     }
@@ -25,23 +25,44 @@ class BasicCell: UICollectionViewListCell {
     func configure(with itemConfig: Config) {
         self.handler = itemConfig.handler
 
-        var contentConfig = UIListContentConfiguration.cell()
-        contentConfig.text = itemConfig.title
-        contentConfig.secondaryText = itemConfig.subtitle
-        contentConfig.image = itemConfig.image
+        var content: UIListContentConfiguration
+        if itemConfig.decorators.contains(.value) {
+            content = UIListContentConfiguration.valueCell()
+        } else {
+            content = UIListContentConfiguration.cell()
+        }
+        content.text = itemConfig.title
+        content.secondaryText = itemConfig.subtitle
+        content.image = itemConfig.image
 
-        if itemConfig.isButton {
-            contentConfig.textProperties.color = .actionTint
-            contentConfig.textProperties.colorTransformer = .init { color in
+        content.textProperties.font = .preferredFont(forTextStyle: .body)
+        if itemConfig.decorators.contains(.navigation) {
+            accessories.append(.disclosureIndicator())
+        }
+        if itemConfig.decorators.contains(.action) {
+            content.textProperties.color = .actionTint
+            content.textProperties.colorTransformer = .init { color in
                 return itemConfig.isEnabled ? color : .disabledText
             }
-            accessories = []
-        } else {
-            accessories = [.disclosureIndicator()]
         }
-        self.contentConfiguration = contentConfig
+        if itemConfig.decorators.contains(.destructive) {
+            content.textProperties.color = .destructiveTint
+            content.textProperties.colorTransformer = .init { color in
+                return itemConfig.isEnabled ? color : .disabledText
+            }
+        }
+        self.contentConfiguration = content
 
         isUserInteractionEnabled = itemConfig.isEnabled
+        if itemConfig.isEnabled {
+            accessibilityTraits.remove(.notEnabled)
+        } else {
+            accessibilityTraits.insert(.notEnabled)
+        }
+        if itemConfig.handler != nil {
+            self.accessibilityTraits.insert(.button)
+        }
+
     }
 }
 
@@ -58,21 +79,39 @@ extension BasicCell {
 }
 
 extension BasicCell {
+    enum Decorator {
+        case navigation
+        case action
+        case destructive
+        case value
+    }
+
     final class Config: SettingsItemConfig {
         var handler: Handler?
-        var isButton: Bool
+        var decorators: Set<Decorator> = []
 
         init(
             title: String,
             subtitle: String? = nil,
             image: UIImage? = nil,
             isEnabled: Bool = true,
-            isButton: Bool = false,
+            decorators: Set<Decorator> = [],
             handler: Handler?
         ) {
             self.handler = handler
-            self.isButton = isButton
+            self.decorators = decorators
             super.init(title: title, subtitle: subtitle, image: image, isEnabled: isEnabled)
+        }
+
+        override func isEqual(_ another: SettingsItemConfig?) -> Bool {
+            guard let another = another as? Self else { return false }
+            return super.isEqual(another)
+                && self.decorators == another.decorators
+        }
+
+        override func hash(into hasher: inout Hasher) {
+            super.hash(into: &hasher)
+            hasher.combine(decorators)
         }
     }
 }

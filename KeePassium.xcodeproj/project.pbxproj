@@ -298,6 +298,12 @@
 		7561850320E033DB00EEFAEE /* WatchdogAwareTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7561850220E033DB00EEFAEE /* WatchdogAwareTextView.swift */; };
 		7561850520E0379F00EEFAEE /* ValidatingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7561850420E0379F00EEFAEE /* ValidatingTextView.swift */; };
 		75635F43223A2B250074D745 /* ViewEntryFieldCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75635F42223A2B250074D745 /* ViewEntryFieldCells.swift */; };
+		7564FAE82DB940BA0030F3C4 /* NewDataProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7564FAE72DB940BA0030F3C4 /* NewDataProtectionSettingsCoordinator.swift */; };
+		7564FAE92DB940BA0030F3C4 /* NewDataProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7564FAE72DB940BA0030F3C4 /* NewDataProtectionSettingsCoordinator.swift */; };
+		7564FAEA2DB940BA0030F3C4 /* NewDataProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7564FAE72DB940BA0030F3C4 /* NewDataProtectionSettingsCoordinator.swift */; };
+		7564FAEC2DB941D40030F3C4 /* DataProtectionSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7564FAEB2DB941D40030F3C4 /* DataProtectionSettingsVC.swift */; };
+		7564FAED2DB941D40030F3C4 /* DataProtectionSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7564FAEB2DB941D40030F3C4 /* DataProtectionSettingsVC.swift */; };
+		7564FAEE2DB941D40030F3C4 /* DataProtectionSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7564FAEB2DB941D40030F3C4 /* DataProtectionSettingsVC.swift */; };
 		75679ACB22F8095F00372301 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACA22F8095F00372301 /* AppInfo.swift */; };
 		75679ACC22F887AB00372301 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACA22F8095F00372301 /* AppInfo.swift */; };
 		75679ACE22FD897000372301 /* NewsCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACD22FD896F00372301 /* NewsCenter.swift */; };
@@ -350,6 +356,12 @@
 		757ADC5523A5180600D708D2 /* DismissableNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757ADC4F23A5180600D708D2 /* DismissableNavigationController.swift */; };
 		757ADC5623A5180600D708D2 /* DismissableNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757ADC4F23A5180600D708D2 /* DismissableNavigationController.swift */; };
 		757ADC5723A5180600D708D2 /* DismissableNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757ADC4F23A5180600D708D2 /* DismissableNavigationController.swift */; };
+		757CCFA82DBAEB2D005E6BE6 /* LString+dataProtectionSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757CCFA72DBAEB2D005E6BE6 /* LString+dataProtectionSettings.swift */; };
+		757CCFA92DBAEB2D005E6BE6 /* LString+dataProtectionSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757CCFA72DBAEB2D005E6BE6 /* LString+dataProtectionSettings.swift */; };
+		757CCFAA2DBAEB2D005E6BE6 /* LString+dataProtectionSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757CCFA72DBAEB2D005E6BE6 /* LString+dataProtectionSettings.swift */; };
+		757CCFB22DBBB278005E6BE6 /* BaseSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757CCFB12DBBB278005E6BE6 /* BaseSettingsViewController.swift */; };
+		757CCFB32DBBB278005E6BE6 /* BaseSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757CCFB12DBBB278005E6BE6 /* BaseSettingsViewController.swift */; };
+		757CCFB42DBBB278005E6BE6 /* BaseSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757CCFB12DBBB278005E6BE6 /* BaseSettingsViewController.swift */; };
 		757D336120EF382D000A47F0 /* SettingsDatabaseTimeoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757D336020EF382D000A47F0 /* SettingsDatabaseTimeoutVC.swift */; };
 		757D336320EF5081000A47F0 /* SettingsClipboardTimeoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757D336220EF5081000A47F0 /* SettingsClipboardTimeoutVC.swift */; };
 		757D82742C091CDA006C8B96 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 75183ED02BB8A20A008F1614 /* PrivacyInfo.xcprivacy */; };
@@ -807,9 +819,6 @@
 		75BFB1472481D19B0017B980 /* FileProvider+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB1452481D19B0017B980 /* FileProvider+extensions.swift */; };
 		75BFB1482481D19B0017B980 /* FileProvider+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB1452481D19B0017B980 /* FileProvider+extensions.swift */; };
 		75BFB1492481D19B0017B980 /* FileProvider+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB1452481D19B0017B980 /* FileProvider+extensions.swift */; };
-		75C02D7A2DB93BE800A3B351 /* AppProtectionSettingsVC+setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C02D792DB93BE800A3B351 /* AppProtectionSettingsVC+setup.swift */; };
-		75C02D7B2DB93BE800A3B351 /* AppProtectionSettingsVC+setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C02D792DB93BE800A3B351 /* AppProtectionSettingsVC+setup.swift */; };
-		75C02D7C2DB93BE800A3B351 /* AppProtectionSettingsVC+setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C02D792DB93BE800A3B351 /* AppProtectionSettingsVC+setup.swift */; };
 		75C11F1E22208D6B0042FB2B /* LAContext+biometrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C11F1D22208D6B0042FB2B /* LAContext+biometrics.swift */; };
 		75C11F1F22208D6B0042FB2B /* LAContext+biometrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C11F1D22208D6B0042FB2B /* LAContext+biometrics.swift */; };
 		75C1AF812731E46800E33AAC /* DatabaseSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C1AF802731E46800E33AAC /* DatabaseSettingsCoordinator.swift */; };
@@ -2049,6 +2058,8 @@
 		7561850420E0379F00EEFAEE /* ValidatingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatingTextView.swift; sourceTree = "<group>"; };
 		7562BB2826B971E9009836A8 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = Configuration.storekit; path = KeePassium/Configuration.storekit; sourceTree = "<group>"; };
 		75635F42223A2B250074D745 /* ViewEntryFieldCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEntryFieldCells.swift; sourceTree = "<group>"; };
+		7564FAE72DB940BA0030F3C4 /* NewDataProtectionSettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDataProtectionSettingsCoordinator.swift; sourceTree = "<group>"; };
+		7564FAEB2DB941D40030F3C4 /* DataProtectionSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProtectionSettingsVC.swift; sourceTree = "<group>"; };
 		75679ACA22F8095F00372301 /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		75679ACD22FD896F00372301 /* NewsCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCenter.swift; sourceTree = "<group>"; };
 		756AE9D220CF8B5E00995846 /* ItemIconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemIconPicker.swift; sourceTree = "<group>"; };
@@ -2097,6 +2108,8 @@
 		757ADC4423A1047600D708D2 /* HardwareKeyPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardwareKeyPicker.swift; sourceTree = "<group>"; };
 		757ADC4E23A5180600D708D2 /* DismissablePopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissablePopover.swift; sourceTree = "<group>"; };
 		757ADC4F23A5180600D708D2 /* DismissableNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissableNavigationController.swift; sourceTree = "<group>"; };
+		757CCFA72DBAEB2D005E6BE6 /* LString+dataProtectionSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LString+dataProtectionSettings.swift"; sourceTree = "<group>"; };
+		757CCFB12DBBB278005E6BE6 /* BaseSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSettingsViewController.swift; sourceTree = "<group>"; };
 		757CFD7A24892E28001CD231 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		757D336020EF382D000A47F0 /* SettingsDatabaseTimeoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDatabaseTimeoutVC.swift; sourceTree = "<group>"; };
 		757D336220EF5081000A47F0 /* SettingsClipboardTimeoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsClipboardTimeoutVC.swift; sourceTree = "<group>"; };
@@ -2360,7 +2373,6 @@
 		75BF5AEC27680D4600809654 /* ParameterValueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterValueCell.swift; sourceTree = "<group>"; };
 		75BFB13E2481553D0017B980 /* DynamicFileList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicFileList.swift; sourceTree = "<group>"; };
 		75BFB1452481D19B0017B980 /* FileProvider+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileProvider+extensions.swift"; sourceTree = "<group>"; };
-		75C02D792DB93BE800A3B351 /* AppProtectionSettingsVC+setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppProtectionSettingsVC+setup.swift"; sourceTree = "<group>"; };
 		75C11F1D22208D6B0042FB2B /* LAContext+biometrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LAContext+biometrics.swift"; sourceTree = "<group>"; };
 		75C1AF802731E46800E33AAC /* DatabaseSettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSettingsCoordinator.swift; sourceTree = "<group>"; };
 		75C1AF852731E54D00E33AAC /* DatabaseSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSettingsVC.swift; sourceTree = "<group>"; };
@@ -2905,6 +2917,9 @@
 		7527FAAF262F712F00623849 /* data-protection */ = {
 			isa = PBXGroup;
 			children = (
+				7564FAE72DB940BA0030F3C4 /* NewDataProtectionSettingsCoordinator.swift */,
+				7564FAEB2DB941D40030F3C4 /* DataProtectionSettingsVC.swift */,
+				757CCFA72DBAEB2D005E6BE6 /* LString+dataProtectionSettings.swift */,
 				7527FAB2262F71CC00623849 /* DataProtectionSettingsCoordinator.swift */,
 				752ED68C2235547D00C20D3E /* SettingsDataProtectionVC.swift */,
 				751E0CE82309AE5D0088BB10 /* SettingsDataProtectionVC.storyboard */,
@@ -3058,6 +3073,7 @@
 			children = (
 				754F7E532DB144CF004235C8 /* SettingsItem.swift */,
 				754F7E622DB2AC50004235C8 /* SettingsItemConfig.swift */,
+				757CCFB12DBBB278005E6BE6 /* BaseSettingsViewController.swift */,
 				754F7E592DB15D2C004235C8 /* BasicCell.swift */,
 				754F7E412DAFF38D004235C8 /* ToggleCell.swift */,
 				754F7E472DB00820004235C8 /* PickerCell.swift */,
@@ -3463,7 +3479,6 @@
 				75066D412DAF078A00A47446 /* NewAppProtectionSettingsCoordinator.swift */,
 				754F7E4D2DB04908004235C8 /* NewAppProtectionSettingsCoordinator+passcode.swift */,
 				75066D472DAF07ED00A47446 /* AppProtectionSettingsVC.swift */,
-				75C02D792DB93BE800A3B351 /* AppProtectionSettingsVC+setup.swift */,
 				7542421D2DB7E9EA00DF6249 /* LString+appProtectionSettings.swift */,
 				7529EAE8211416170093B117 /* SettingsAppLockVC.swift */,
 				751E0CF42309AEB00088BB10 /* SettingsAppLockVC.storyboard */,
@@ -4608,8 +4623,10 @@
 				75E9E2B4290C19FA00B79BE8 /* GroupViewerCells.swift in Sources */,
 				75D21BD92B642E480065D95E /* BusyStateIndicating.swift in Sources */,
 				7524E74A2888B58200ECBEC8 /* TextFieldCell.swift in Sources */,
+				757CCFB32DBBB278005E6BE6 /* BaseSettingsViewController.swift in Sources */,
 				756AE9D320CF8B5E00995846 /* ItemIconPicker.swift in Sources */,
 				7546FBDD20C3ACFD00C5D834 /* KPApplication.swift in Sources */,
+				7564FAEA2DB940BA0030F3C4 /* NewDataProtectionSettingsCoordinator.swift in Sources */,
 				7548BC1821B07BFE001B00E9 /* ProtectedTextField.swift in Sources */,
 				7526404A284653580003DDFA /* TextInput+editMenu.swift in Sources */,
 				75838481268B55BF000D2E8B /* UIViewController+subviews.swift in Sources */,
@@ -4678,6 +4695,7 @@
 				75267CFE25FF75E300A1CC95 /* ContextualAction.swift in Sources */,
 				758D8E902274D2BE00644FA6 /* DatabaseCreatorVC.swift in Sources */,
 				7529EAE9211416170093B117 /* SettingsAppLockVC.swift in Sources */,
+				757CCFAA2DBAEB2D005E6BE6 /* LString+dataProtectionSettings.swift in Sources */,
 				F37CAA302A87F0E50000EF64 /* PasswordAuditService.swift in Sources */,
 				75A5312123C0D2D400900ED1 /* Coordinator.swift in Sources */,
 				75DACE732573B49700A110DD /* SettingsAppearanceVC.swift in Sources */,
@@ -4699,7 +4717,6 @@
 				750D127E20CF071600BE0CCE /* GroupEditorVC.swift in Sources */,
 				75136B2A2B6972CB00214760 /* RemoteItemSelectionMode.swift in Sources */,
 				75D99DEE269CEE0800D0E9D7 /* DatabaseItemTitleView.swift in Sources */,
-				75C02D7A2DB93BE800A3B351 /* AppProtectionSettingsVC+setup.swift in Sources */,
 				75E60AEC25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift in Sources */,
 				758CA5442569B9EA0034EF10 /* SwitchCell.swift in Sources */,
 				75E60ADC25CF3C890089219C /* DatabaseIconSetPicker.swift in Sources */,
@@ -4710,6 +4727,7 @@
 				757ADC4523A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75066D432DAF078A00A47446 /* NewAppProtectionSettingsCoordinator.swift in Sources */,
 				75C94C5B20B4B8C2004FA29D /* EntryViewerPagesVC.swift in Sources */,
+				7564FAED2DB941D40030F3C4 /* DataProtectionSettingsVC.swift in Sources */,
 				75066D482DAF07ED00A47446 /* AppProtectionSettingsVC.swift in Sources */,
 				7589FDCD28B4EA2100CCC76B /* FieldCopiedView.swift in Sources */,
 				7578487D22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift in Sources */,
@@ -4888,8 +4906,10 @@
 				75E9E2B6290C19FA00B79BE8 /* GroupViewerCells.swift in Sources */,
 				7524E74C2888B58200ECBEC8 /* TextFieldCell.swift in Sources */,
 				F33F2C5C2B32FEFC009EFB18 /* TagSelectorVC.swift in Sources */,
+				757CCFB22DBBB278005E6BE6 /* BaseSettingsViewController.swift in Sources */,
 				75B38C22233E5B7C006BDEFC /* KPApplication.swift in Sources */,
 				75B38C23233E5B7C006BDEFC /* ProtectedTextField.swift in Sources */,
+				7564FAE82DB940BA0030F3C4 /* NewDataProtectionSettingsCoordinator.swift in Sources */,
 				75B38C25233E5B7C006BDEFC /* FileListCell.swift in Sources */,
 				7526404C284653580003DDFA /* TextInput+editMenu.swift in Sources */,
 				75838483268B55BF000D2E8B /* UIViewController+subviews.swift in Sources */,
@@ -4958,6 +4978,7 @@
 				758FF6CC28FC18E4007DE8EB /* RemoteFolderViewerVC.swift in Sources */,
 				755B435F26BD606A00C24386 /* TipBoxCoordinator.swift in Sources */,
 				75B38C3D233E5B7C006BDEFC /* DatabaseCreatorVC.swift in Sources */,
+				757CCFA92DBAEB2D005E6BE6 /* LString+dataProtectionSettings.swift in Sources */,
 				75B38C3E233E5B7C006BDEFC /* SettingsAppLockVC.swift in Sources */,
 				7573DECE26050CF000E8440D /* QRCodeScanner.swift in Sources */,
 				75A5312023C0D2D300900ED1 /* Coordinator.swift in Sources */,
@@ -4979,7 +5000,6 @@
 				75B38C44233E5B7C006BDEFC /* GroupEditorVC.swift in Sources */,
 				7524E7382888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift in Sources */,
 				75E60AED25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift in Sources */,
-				75C02D7C2DB93BE800A3B351 /* AppProtectionSettingsVC+setup.swift in Sources */,
 				75D99DF0269CEE0800D0E9D7 /* DatabaseItemTitleView.swift in Sources */,
 				758CA5462569B9EA0034EF10 /* SwitchCell.swift in Sources */,
 				75E60ADD25CF3C890089219C /* DatabaseIconSetPicker.swift in Sources */,
@@ -4990,6 +5010,7 @@
 				75267D0025FF75E300A1CC95 /* ContextualAction.swift in Sources */,
 				75066D442DAF078A00A47446 /* NewAppProtectionSettingsCoordinator.swift in Sources */,
 				75B38C46233E5B7C006BDEFC /* EntryViewerPagesVC.swift in Sources */,
+				7564FAEE2DB941D40030F3C4 /* DataProtectionSettingsVC.swift in Sources */,
 				75066D492DAF07ED00A47446 /* AppProtectionSettingsVC.swift in Sources */,
 				7589FDCE28B4EA2100CCC76B /* FieldCopiedView.swift in Sources */,
 				75B38C47233E5B7C006BDEFC /* UITableViewCell+demoEditActions.swift in Sources */,
@@ -5172,10 +5193,10 @@
 				75D0761C28B639D200F02E39 /* EntryFileViewerVC.swift in Sources */,
 				75D0761E28B639D200F02E39 /* CollectionViewControllerWithContextActions.swift in Sources */,
 				75D0762028B639D200F02E39 /* AnnouncementView.swift in Sources */,
-				75C02D7B2DB93BE800A3B351 /* AppProtectionSettingsVC+setup.swift in Sources */,
 				F36CFD282D46C655002ACDA7 /* QRCodeVC.swift in Sources */,
 				75F544B72CEF8E420022BAA4 /* UIKeyCommand+hotkeys.swift in Sources */,
 				75CA661029B8E00A0094CBAA /* DatabasePrintFormatter.swift in Sources */,
+				7564FAEC2DB941D40030F3C4 /* DataProtectionSettingsVC.swift in Sources */,
 				75917F2C2DAB20C500EB9375 /* FilePickerCoordinator+fileInfo.swift in Sources */,
 				75D0762128B639D200F02E39 /* ProgressOverlay.swift in Sources */,
 				75A4948E2B5F0E9C00ED018F /* TagFormatter.swift in Sources */,
@@ -5211,6 +5232,7 @@
 				7505F6C62B8640F400EA9BFD /* ManagedAppConfig+extensions.swift in Sources */,
 				F3B69FCE2B078917006FC966 /* EntryExtraViewerVC.swift in Sources */,
 				F3E1946C2BCF23DB00FD03EE /* DeleteWordlistAccessory.swift in Sources */,
+				757CCFB42DBBB278005E6BE6 /* BaseSettingsViewController.swift in Sources */,
 				75D0763628B639D200F02E39 /* SettingsAutoFillVC.swift in Sources */,
 				75D0763728B639D200F02E39 /* AppProtectionSettingsCoordinator.swift in Sources */,
 				F31114A92B9B84E000236632 /* DropboxConnectionSetupCoordinator.swift in Sources */,
@@ -5260,6 +5282,7 @@
 				75DEA13D2DA9C39300710088 /* FileActivationCause.swift in Sources */,
 				75D0765328B639D200F02E39 /* SwitchCell.swift in Sources */,
 				75D0765428B639D200F02E39 /* DatabaseIconSetPicker.swift in Sources */,
+				7564FAE92DB940BA0030F3C4 /* NewDataProtectionSettingsCoordinator.swift in Sources */,
 				F38A48C82A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift in Sources */,
 				75D0765528B639D200F02E39 /* AppHistory.swift in Sources */,
 				75D0765628B639D200F02E39 /* NSLayoutContraint+extensions.swift in Sources */,
@@ -5301,6 +5324,7 @@
 				75FC40152DA025EE00C5D1C2 /* DatabasePickerMode.swift in Sources */,
 				1C897E5E121EF32888BFCBE8 /* DatabaseSettingsDataProtectionVC.swift in Sources */,
 				75917F442DAC6E8200EB9375 /* SelectableCollectionViewListCell.swift in Sources */,
+				757CCFA82DBAEB2D005E6BE6 /* LString+dataProtectionSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

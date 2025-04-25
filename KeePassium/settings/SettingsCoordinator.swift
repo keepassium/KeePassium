@@ -117,7 +117,7 @@ extension SettingsCoordinator {
     }
 
     private func showDataProtectionSettingsPage() {
-        let dataProtectionSettingsCoordinator = DataProtectionSettingsCoordinator(router: router)
+        let dataProtectionSettingsCoordinator = NewDataProtectionSettingsCoordinator(router: router)
         dataProtectionSettingsCoordinator.dismissHandler = { [weak self] coordinator in
             self?.removeChildCoordinator(coordinator)
         }

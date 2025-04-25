@@ -49,30 +49,22 @@ extension LString {
         "[Settings/AppLock/Timeout/description]",
         value: "The app will automatically lock up after this time.",
         comment: "Description of the App Lock Timeout setting")
-    public static let appProtectionTimeoutNeverFull = NSLocalizedString(
-        "[Settings/AppLockTimeout/fullTitle] Never",
+    public static let appProtectionTimeoutNeverTitle = NSLocalizedString(
+        "[Settings/AppLockTimeout/Never/title]",
         value: "Never",
         comment: "An option in Settings. Will be shown as 'App Lock: Timeout: Never'")
-    public static let appProtectionTimeoutNeverShort = NSLocalizedString(
-        "[Settings/AppLockTimeout/shortTitle] Never",
-        value: "Never",
-        comment: "An option in Settings. Will be shown as 'App Lock: Timeout: Never'")
-    public static let appProtectionTimeoutImmediatelyFull = NSLocalizedString(
-        "[Settings/AppLockTimeout/fullTitle] Immediately",
+    public static let appProtectionTimeoutImmediatelyTitle = NSLocalizedString(
+        "[Settings/AppLockTimeout/Immediately/title] ",
         value: "Immediately",
         comment: "An option in Settings. Will be shown as 'App Lock: Timeout: Immediately'")
-    public static let appProtectionTimeoutImmediatelyShort = NSLocalizedString(
-        "[Settings/AppLockTimeout/shortTitle] Immediately",
-        value: "Immediately",
-        comment: "An option in Settings. Will be shown as 'App Lock: Timeout: Immediately'")
-    public static let appProtectionTimeoutAfterLeavingApp = NSLocalizedString(
-        "[Settings/AppLockTimeout/description] After leaving the app",
+    public static let appProtectionTimeoutAfterLeavingAppDescription = NSLocalizedString(
+        "[Settings/AppLockTimeout/AfterLeavingApp/description]",
         value: "After leaving the app",
-        comment: "A description/subtitle for Settings/AppLock/Timeout options that trigger when the app is minimized. For example: 'AppLock Timeout: 3 seconds (After leaving the app)")
-    public static let appProtectionTimeoutAfterLastInteraction = NSLocalizedString(
+        comment: "Description of those 'App Protection Timeout' options that trigger when the app is minimized. For example: 'Timeout: 3 seconds (After leaving the app)")
+    public static let appProtectionTimeoutAfterLastInteractionDescription = NSLocalizedString(
         "[Settings/AppLockTimeout/description] After last interaction",
         value: "After last interaction",
-        comment: "A description/subtitle for Settings/AppLockTimeout options that trigger when the user has been idle for a while. For example: 'AppLock Timeout: 3 seconds (After last interaction)")
+        comment: "Description of those 'App Protection Timeout' options that trigger when the user has been idle for a while. For example: 'Timeout: 3 seconds (After last interaction)")
 
     public static let lockAppOnLaunchTitle = NSLocalizedString(
         "[Settings/AppLock/LockOnLaunch/title]",
@@ -98,9 +90,9 @@ extension Settings.AppLockTimeout {
     public var fullTitle: String {
         switch self {
         case .never:
-            return LString.appProtectionTimeoutNeverFull
+            return LString.appProtectionTimeoutNeverTitle
         case .immediately:
-            return LString.appProtectionTimeoutImmediatelyFull
+            return LString.appProtectionTimeoutImmediatelyTitle
         default:
             let formatter = DateComponentsFormatter()
             formatter.allowedUnits = [.hour, .minute, .second]
@@ -117,9 +109,9 @@ extension Settings.AppLockTimeout {
     public var shortTitle: String {
         switch self {
         case .never:
-            return LString.appProtectionTimeoutNeverShort
+            return LString.appProtectionTimeoutNeverTitle
         case .immediately:
-            return LString.appProtectionTimeoutImmediatelyShort
+            return LString.appProtectionTimeoutImmediatelyTitle
         default:
             let formatter = DateComponentsFormatter()
             formatter.allowedUnits = [.hour, .minute, .second]
@@ -136,9 +128,9 @@ extension Settings.AppLockTimeout {
     public var description: String? {
         switch triggerMode {
         case .appMinimized:
-            return LString.appProtectionTimeoutAfterLeavingApp
+            return LString.appProtectionTimeoutAfterLeavingAppDescription
         case .userIdle:
-            return LString.appProtectionTimeoutAfterLastInteraction
+            return LString.appProtectionTimeoutAfterLastInteractionDescription
         }
     }
 }

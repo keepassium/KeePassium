@@ -9,7 +9,18 @@
 import UIKit
 
 enum SettingsItem: Hashable {
-    case navigation(_ config: BasicCell.Config)
+    case basic(_ config: BasicCell.Config)
     case toggle(_ config: ToggleCell.Config)
     case picker(_ config: PickerCell.Config)
+
+    var canBeHighlighted: Bool {
+        switch self {
+        case .basic:
+            return true
+        case .toggle:
+            return false
+        case .picker:
+            return true
+        }
+    }
 }

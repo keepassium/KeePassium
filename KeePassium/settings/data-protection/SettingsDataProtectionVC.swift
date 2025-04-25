@@ -54,7 +54,7 @@ final class SettingsDataProtectionVC: UITableViewController, Refreshable {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = LString.titleDataProtectionSettings
+        title = LString.dataProtectionSettingsTitle
         settingsNotifications.startObserving()
         refresh()
     }

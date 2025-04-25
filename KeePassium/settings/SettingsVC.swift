@@ -137,8 +137,8 @@ final class SettingsVC: UITableViewController, Refreshable {
         searchCell.textLabel?.text = LString.titleSearchSettings
 
         appSafetyCell.textLabel?.text = LString.titleAppProtectionSettings
-        dataSafetyCell.textLabel?.text = LString.titleDataProtectionSettings
-        dataSafetyCell.detailTextLabel?.text = LString.subtitleDataProtectionSettings
+        dataSafetyCell.textLabel?.text = LString.dataProtectionSettingsTitle
+        dataSafetyCell.detailTextLabel?.text = LString.dataProtectionSettingsSubtitle
 
         networkAccessCell.textLabel?.text = LString.titleNetworkAccessSettings
 

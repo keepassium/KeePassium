@@ -60,7 +60,7 @@ final class DatabaseSettingsVC: UITableViewController, Refreshable {
         var configuration = UIListContentConfiguration.subtitleCell()
         configuration.textProperties.font = UIFont.preferredFont(forTextStyle: .body)
         configuration.textProperties.color = .primaryText
-        configuration.text = LString.titleDataProtectionSettings
+        configuration.text = LString.dataProtectionSettingsTitle
         return configuration
     }()
 
