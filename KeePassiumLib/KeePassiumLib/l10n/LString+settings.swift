@@ -42,17 +42,6 @@ extension LString {
         value: "Restore Defaults",
         comment: "Action/button which resets some settings to their default state.")
 
-    public static let appLockWithBiometricsSubtitleTemplate = NSLocalizedString(
-        "[Settings/AppLock/subtitle] App Lock, %@, timeout",
-        bundle: Bundle.framework,
-        value: "App Lock, %@, timeout",
-        comment: "Settings: subtitle of the `App Protection` section. biometryTypeName will be either 'Touch ID' or 'Face ID'. [biometryTypeName: String]")
-    public static let appLockWithPasscodeSubtitle = NSLocalizedString(
-        "[Settings/AppLock/subtitle] App Lock, passcode, timeout",
-        bundle: Bundle.framework,
-        value: "App Lock, passcode, timeout",
-        comment: "Settings: subtitle of the `App Protection` section when biometric auth is not available.")
-
     public static let premiumVersion = NSLocalizedString(
         "[Premium/Status/title]",
         bundle: Bundle.framework,
@@ -194,70 +183,6 @@ extension LString {
         bundle: Bundle.framework,
         value: "Search",
         comment: "Section title in settings")
-
-
-    public static let titleAppProtection = titleAppProtectionSettings
-    public static let titleAppProtectionSettings = NSLocalizedString(
-        "[Settings/AppLock/title]",
-        bundle: Bundle.framework,
-        value: "App Protection",
-        comment: "Settings section: protection of the app from unauthorized access")
-    public static let callToActionActivateAppProtection = NSLocalizedString(
-        "[Settings/AppLoc/Activate/callToAction]",
-        bundle: Bundle.framework,
-        value: "Activate App Protection",
-        comment: "Call to action (protect the app from unauthorized access)")
-    public static let appProtectionDescription = NSLocalizedString(
-        "[Settings/AppLock/Activate/description]",
-        bundle: Bundle.framework,
-        value: "Protect KeePassium from unauthorized access.",
-        comment: "Description of `Activate app protection` call to action.")
-    public static let titleUseBiometryTypeTemplate = NSLocalizedString(
-        "[Settings/AppLock/Biometric/title] Use %@",
-        bundle: Bundle.framework,
-        value: "Use %@",
-        comment: "Settings switch: whether AppLock is allowed to use Touch ID/Face ID. Example: 'Use Touch ID'. [biometryTypeName: String]")
-
-    public static let lockAppOnLaunchTitle = NSLocalizedString(
-        "[Settings/AppLock/LockOnLaunch/title]",
-        bundle: Bundle.framework,
-        value: "Lock on App Launch",
-        comment: "Setting switch: whether to lock the app after it was terminated and relaunched.")
-    public static let lockAppOnLaunchDescription = NSLocalizedString(
-        "[Settings/AppLock/LockOnLaunch/description]",
-        bundle: Bundle.framework,
-        value: "Ensures KeePassium is locked after you force-close the app or restart the device.",
-        comment: "Explanation for the `Lock on App Launch` setting")
-    public static let appProtectionTimeoutNeverFull = NSLocalizedString(
-        "[Settings/AppLockTimeout/fullTitle] Never",
-        bundle: Bundle.framework,
-        value: "Never",
-        comment: "An option in Settings. Will be shown as 'App Lock: Timeout: Never'")
-    public static let appProtectionTimeoutNeverShort = NSLocalizedString(
-        "[Settings/AppLockTimeout/shortTitle] Never",
-        bundle: Bundle.framework,
-        value: "Never",
-        comment: "An option in Settings. Will be shown as 'App Lock: Timeout: Never'")
-    public static let appProtectionTimeoutImmediatelyFull = NSLocalizedString(
-        "[Settings/AppLockTimeout/fullTitle] Immediately",
-        bundle: Bundle.framework,
-        value: "Immediately",
-        comment: "An option in Settings. Will be shown as 'App Lock: Timeout: Immediately'")
-    public static let appProtectionTimeoutImmediatelyShort = NSLocalizedString(
-        "[Settings/AppLockTimeout/shortTitle] Immediately",
-        bundle: Bundle.framework,
-        value: "Immediately",
-        comment: "An option in Settings. Will be shown as 'App Lock: Timeout: Immediately'")
-    public static let appProtectionTimeoutAfterLeavingApp = NSLocalizedString(
-        "[Settings/AppLockTimeout/description] After leaving the app",
-        bundle: Bundle.framework,
-        value: "After leaving the app",
-        comment: "A description/subtitle for Settings/AppLock/Timeout options that trigger when the app is minimized. For example: 'AppLock Timeout: 3 seconds (After leaving the app)")
-    public static let appProtectionTimeoutAfterLastInteraction = NSLocalizedString(
-        "[Settings/AppLockTimeout/description] After last interaction",
-        bundle: Bundle.framework,
-        value: "After last interaction",
-        comment: "A description/subtitle for Settings/AppLockTimeout options that trigger when the user has been idle for a while. For example: 'AppLock Timeout: 3 seconds (After last interaction)")
 
 
     public static let titleDataProtectionSettings = NSLocalizedString(

@@ -1,0 +1,144 @@
+//  KeePassium Password Manager
+//  Copyright © 2018-2024 KeePassium Labs <info@keepassium.com>
+//
+//  This program is free software: you can redistribute it and/or modify it
+//  under the terms of the GNU General Public License version 3 as published
+//  by the Free Software Foundation: https://www.gnu.org/licenses/).
+//  For commercial licensing, please contact us.
+
+import KeePassiumLib
+
+extension LString {
+    // swiftlint:disable line_length
+    public static let appLockWithBiometricsSubtitleTemplate = NSLocalizedString(
+        "[Settings/AppLock/subtitle] App Lock, %@, timeout",
+        value: "App Lock, %@, timeout",
+        comment: "Settings: subtitle of the `App Protection` section. biometryTypeName will be either 'Touch ID' or 'Face ID'. [biometryTypeName: String]")
+    public static let appLockWithPasscodeSubtitle = NSLocalizedString(
+        "[Settings/AppLock/subtitle] App Lock, passcode, timeout",
+        value: "App Lock, passcode, timeout",
+        comment: "Settings: subtitle of the `App Protection` section when biometric auth is not available.")
+
+    public static let titleAppProtection = titleAppProtectionSettings
+    public static let titleAppProtectionSettings = NSLocalizedString(
+        "[Settings/AppLock/title]",
+        value: "App Protection",
+        comment: "Settings section: protection of the app from unauthorized access")
+    public static let callToActionActivateAppProtection = NSLocalizedString(
+        "[Settings/AppLoc/Activate/callToAction]",
+        value: "Activate App Protection",
+        comment: "Call to action (protect the app from unauthorized access)")
+    public static let appProtectionDescription = NSLocalizedString(
+        "[Settings/AppLock/Activate/description]",
+        value: "Protect KeePassium from unauthorized access.",
+        comment: "Description of `Activate app protection` call to action.")
+    public static let titleUseBiometryTypeTemplate = NSLocalizedString(
+        "[Settings/AppLock/Biometric/title] Use %@",
+        value: "Use %@",
+        comment: "Settings switch: whether App Protection is allowed to use Touch ID/Face ID. Example: 'Use Touch ID'. [biometryTypeName: String]")
+    public static let biometricAppProtectionDescription = NSLocalizedString(
+        "[Settings/AppLock/Biometric/description]",
+        value: "Allows biometric authentication as a quick (but less secure) alternative to passcode.",
+        comment: "Description of biometric unlock settings")
+
+    public static let appProtectionTimeoutTitle = NSLocalizedString(
+        "[Settings/AppLock/Timeout/title]",
+        value: "Timeout",
+        comment: "Title for App Lock Timeout setting")
+    public static let appProtectionTimeoutDescription = NSLocalizedString(
+        "[Settings/AppLock/Timeout/description]",
+        value: "The app will automatically lock up after this time.",
+        comment: "Description of the App Lock Timeout setting")
+    public static let appProtectionTimeoutNeverFull = NSLocalizedString(
+        "[Settings/AppLockTimeout/fullTitle] Never",
+        value: "Never",
+        comment: "An option in Settings. Will be shown as 'App Lock: Timeout: Never'")
+    public static let appProtectionTimeoutNeverShort = NSLocalizedString(
+        "[Settings/AppLockTimeout/shortTitle] Never",
+        value: "Never",
+        comment: "An option in Settings. Will be shown as 'App Lock: Timeout: Never'")
+    public static let appProtectionTimeoutImmediatelyFull = NSLocalizedString(
+        "[Settings/AppLockTimeout/fullTitle] Immediately",
+        value: "Immediately",
+        comment: "An option in Settings. Will be shown as 'App Lock: Timeout: Immediately'")
+    public static let appProtectionTimeoutImmediatelyShort = NSLocalizedString(
+        "[Settings/AppLockTimeout/shortTitle] Immediately",
+        value: "Immediately",
+        comment: "An option in Settings. Will be shown as 'App Lock: Timeout: Immediately'")
+    public static let appProtectionTimeoutAfterLeavingApp = NSLocalizedString(
+        "[Settings/AppLockTimeout/description] After leaving the app",
+        value: "After leaving the app",
+        comment: "A description/subtitle for Settings/AppLock/Timeout options that trigger when the app is minimized. For example: 'AppLock Timeout: 3 seconds (After leaving the app)")
+    public static let appProtectionTimeoutAfterLastInteraction = NSLocalizedString(
+        "[Settings/AppLockTimeout/description] After last interaction",
+        value: "After last interaction",
+        comment: "A description/subtitle for Settings/AppLockTimeout options that trigger when the user has been idle for a while. For example: 'AppLock Timeout: 3 seconds (After last interaction)")
+
+    public static let lockAppOnLaunchTitle = NSLocalizedString(
+        "[Settings/AppLock/LockOnLaunch/title]",
+        value: "Lock on App Launch",
+        comment: "Setting switch: whether to lock the app after it was terminated and relaunched.")
+    public static let lockAppOnLaunchDescription = NSLocalizedString(
+        "[Settings/AppLock/LockOnLaunch/description]",
+        value: "Ensures KeePassium is locked after you force-close the app or restart the device.",
+        comment: "Explanation for the `Lock on App Launch` setting")
+
+    public static let lockOnWrongPasscodeTitle = NSLocalizedString(
+        "[Settings/AppLock/LockOnWrongPasscode/title]",
+        value: "Lock on Wrong Passcode",
+        comment: "Title in the settings: whether to lock databases when user enters a wrong app protection passcode.")
+    public static let lockOnWrongPasscodeDescription = NSLocalizedString(
+        "[Settings/AppLock/LockOnWrongPasscode/description]",
+        value: "If you enter a wrong app protection passcode, KeePassium will close all databases and clear all master keys from the keychain.",
+        comment: "Description of the `Lock on Wrong Passcode` setting")
+    // swiftlint:enable line_length
+}
+
+extension Settings.AppLockTimeout {
+    public var fullTitle: String {
+        switch self {
+        case .never:
+            return LString.appProtectionTimeoutNeverFull
+        case .immediately:
+            return LString.appProtectionTimeoutImmediatelyFull
+        default:
+            let formatter = DateComponentsFormatter()
+            formatter.allowedUnits = [.hour, .minute, .second]
+            formatter.collapsesLargestUnit = true
+            formatter.maximumUnitCount = 2
+            formatter.unitsStyle = .full
+            guard let result = formatter.string(from: TimeInterval(self.rawValue)) else {
+                assertionFailure()
+                return "?"
+            }
+            return result
+        }
+    }
+    public var shortTitle: String {
+        switch self {
+        case .never:
+            return LString.appProtectionTimeoutNeverShort
+        case .immediately:
+            return LString.appProtectionTimeoutImmediatelyShort
+        default:
+            let formatter = DateComponentsFormatter()
+            formatter.allowedUnits = [.hour, .minute, .second]
+            formatter.collapsesLargestUnit = true
+            formatter.maximumUnitCount = 2
+            formatter.unitsStyle = .brief
+            guard let result = formatter.string(from: TimeInterval(self.rawValue)) else {
+                assertionFailure()
+                return "?"
+            }
+            return result
+        }
+    }
+    public var description: String? {
+        switch triggerMode {
+        case .appMinimized:
+            return LString.appProtectionTimeoutAfterLeavingApp
+        case .userIdle:
+            return LString.appProtectionTimeoutAfterLastInteraction
+        }
+    }
+}

@@ -1,0 +1,142 @@
+//  KeePassium Password Manager
+//  Copyright © 2018-2024 KeePassium Labs <info@keepassium.com>
+//
+//  This program is free software: you can redistribute it and/or modify it
+//  under the terms of the GNU General Public License version 3 as published
+//  by the Free Software Foundation: https://www.gnu.org/licenses/).
+//  For commercial licensing, please contact us.
+
+import KeePassiumLib
+import LocalAuthentication.LABiometryType
+
+final class NewAppProtectionSettingsCoordinator: Coordinator, Refreshable {
+    var childCoordinators = [Coordinator]()
+
+    var dismissHandler: CoordinatorDismissHandler?
+
+    private let router: NavigationRouter
+    internal let _appProtectionSettingsVC: AppProtectionSettingsVC
+    private let settingsNotifications: SettingsNotifications
+
+    init(router: NavigationRouter) {
+        self.router = router
+        _appProtectionSettingsVC = AppProtectionSettingsVC()
+        settingsNotifications = SettingsNotifications()
+
+        _appProtectionSettingsVC.delegate = self
+        settingsNotifications.observer = self
+    }
+
+    deinit {
+        settingsNotifications.stopObserving()
+        assert(childCoordinators.isEmpty)
+        removeAllChildCoordinators()
+    }
+
+    func start() {
+        guard ManagedAppConfig.shared.isAppProtectionAllowed else {
+            Diag.error("Blocked by organization's policy, cancelling")
+            dismissHandler?(self)
+            assertionFailure("This action should have been disabled in UI")
+            return
+        }
+        router.push(_appProtectionSettingsVC, animated: true, onPop: { [weak self] in
+            guard let self = self else { return }
+            self.removeAllChildCoordinators()
+            self.dismissHandler?(self)
+        })
+        settingsNotifications.startObserving()
+        applySettingsToVC()
+    }
+
+    func refresh() {
+        applySettingsToVC()
+        _appProtectionSettingsVC.refresh()
+    }
+
+    private func applySettingsToVC() {
+        _appProtectionSettingsVC.isAppProtectionEnabled = Settings.current.isAppLockEnabled
+        _appProtectionSettingsVC.isUseBiometric = Settings.current.isBiometricAppLockEnabled
+        _appProtectionSettingsVC.timeout = Settings.current.appLockTimeout
+        _appProtectionSettingsVC.isLockOnAppLaunch = Settings.current.isLockAppOnLaunch
+        _appProtectionSettingsVC.isLockOnFailedPasscode = Settings.current.isLockAllDatabasesOnFailedPasscode
+        updateBiometricsSupport()
+    }
+
+    private func updateBiometricsSupport() {
+        let context = LAContext()
+        let isSupported = context.canEvaluatePolicy(
+            LAPolicy.deviceOwnerAuthenticationWithBiometrics,
+            error: nil)
+        if !isSupported {
+            Settings.current.isBiometricAppLockEnabled = false
+        }
+        _appProtectionSettingsVC.isBiometricsSupported = isSupported
+
+        _appProtectionSettingsVC.biometryType = context.biometryType
+    }
+}
+
+extension NewAppProtectionSettingsCoordinator: SettingsObserver {
+    func settingsDidChange(key: Settings.Keys) {
+        guard key != .recentUserActivityTimestamp else { return }
+        refresh()
+    }
+}
+
+extension NewAppProtectionSettingsCoordinator: AppProtectionSettingsVC.Delegate {
+    func didChangeAppProtectionEnabled(_ isEnabled: Bool, in viewController: AppProtectionSettingsVC) {
+        if isEnabled {
+            _showChangePasscode(isInitialSetup: true)
+            return
+        }
+
+        guard !ManagedAppConfig.shared.isRequireAppPasscodeSet else {
+            viewController.showManagedSettingNotification()
+            refresh()
+            return
+        }
+        Settings.current.isHideAppLockSetupReminder = false
+        do {
+            try Keychain.shared.removeAppPasscode()
+        } catch {
+            Diag.error(error.localizedDescription)
+            viewController.showErrorAlert(error, title: LString.titleKeychainError)
+        }
+    }
+
+    func didPressChangePasscode(in viewController: AppProtectionSettingsVC) {
+        _showChangePasscode(isInitialSetup: false)
+    }
+
+    func didChangeIsUseBiometric(_ isUseBiometric: Bool, in viewController: AppProtectionSettingsVC) {
+        let keychain = Keychain.shared
+        if keychain.prepareBiometricAuth(isUseBiometric) {
+            Settings.current.isBiometricAppLockEnabled = isUseBiometric
+        } else {
+            Settings.current.isBiometricAppLockEnabled = keychain.isBiometricAuthPrepared()
+        }
+        viewController.showNotificationIfManaged(setting: .biometricAppLockEnabled)
+        refresh()
+    }
+
+    func didChangeTimeout(_ timeout: Settings.AppLockTimeout, in viewController: AppProtectionSettingsVC) {
+        Settings.current.appLockTimeout = timeout
+        viewController.showNotificationIfManaged(setting: .appLockTimeout)
+        Watchdog.shared.restart()
+        refresh()
+    }
+
+    func didChangeIsLockOnAppLaunch(_ isLockOnAppLaunch: Bool, in viewController: AppProtectionSettingsVC) {
+        Settings.current.isLockAppOnLaunch = isLockOnAppLaunch
+        viewController.showNotificationIfManaged(setting: .lockAppOnLaunch)
+        refresh()
+    }
+
+    func didChangeIsLockOnFailedPasscode(_ isLockOnFailedPasscode: Bool, in viewController: AppProtectionSettingsVC) {
+        Settings.current.isLockAllDatabasesOnFailedPasscode = isLockOnFailedPasscode
+        viewController.showNotificationIfManaged(setting: .lockAllDatabasesOnFailedPasscode)
+        refresh()
+    }
+
+}

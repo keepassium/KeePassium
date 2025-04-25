@@ -108,7 +108,7 @@ extension SettingsCoordinator {
     }
 
     private func showAppProtectionSettingsPage() {
-        let appProtectionSettingsCoordinator = AppProtectionSettingsCoordinator(router: router)
+        let appProtectionSettingsCoordinator = NewAppProtectionSettingsCoordinator(router: router)
         appProtectionSettingsCoordinator.dismissHandler = { [weak self] coordinator in
             self?.removeChildCoordinator(coordinator)
         }

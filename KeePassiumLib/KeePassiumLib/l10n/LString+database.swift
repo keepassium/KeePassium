@@ -161,6 +161,12 @@ extension LString {
         value: "Consider File Unreachable",
         comment: "File settings parameter: time after which file will be considered unreachable. Example: `Consider File Unreachable: in 10 seconds`.)")
 
+    public static let titleConsiderUnreachableImmediately = NSLocalizedString(
+        "[Database/Settings/ConsiderFileUnreachable/Immediately]",
+        bundle: Bundle.framework,
+        value: "Immediately",
+        comment: "File access parameter. Will be shown as 'Consider File Unreachable: Immediately'")
+
     public static let titleIfFileIsUnreachable = NSLocalizedString(
         "[Database/Settings/FallbackStrategy/title]",
         bundle: Bundle.framework,

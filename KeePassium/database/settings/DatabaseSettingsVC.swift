@@ -340,7 +340,7 @@ extension DatabaseSettingsVC {
 
     private func formatFallbackTimeout(_ timeout: TimeInterval) -> String {
         if timeout.isZero {
-            return LString.appProtectionTimeoutImmediatelyFull 
+            return LString.titleConsiderUnreachableImmediately
         }
         return fallbackTimeoutFormatter.localizedString(fromTimeInterval: timeout)
     }

@@ -192,53 +192,6 @@ public class Settings {
                 return .userIdle
             }
         }
-
-        public var fullTitle: String {
-            switch self {
-            case .never:
-                return LString.appProtectionTimeoutNeverFull
-            case .immediately:
-                return LString.appProtectionTimeoutImmediatelyFull
-            default:
-                let formatter = DateComponentsFormatter()
-                formatter.allowedUnits = [.hour, .minute, .second]
-                formatter.collapsesLargestUnit = true
-                formatter.maximumUnitCount = 2
-                formatter.unitsStyle = .full
-                guard let result = formatter.string(from: TimeInterval(self.rawValue)) else {
-                    assertionFailure()
-                    return "?"
-                }
-                return result
-            }
-        }
-        public var shortTitle: String {
-            switch self {
-            case .never:
-                return LString.appProtectionTimeoutNeverShort
-            case .immediately:
-                return LString.appProtectionTimeoutImmediatelyShort
-            default:
-                let formatter = DateComponentsFormatter()
-                formatter.allowedUnits = [.hour, .minute, .second]
-                formatter.collapsesLargestUnit = true
-                formatter.maximumUnitCount = 2
-                formatter.unitsStyle = .brief
-                guard let result = formatter.string(from: TimeInterval(self.rawValue)) else {
-                    assertionFailure()
-                    return "?"
-                }
-                return result
-            }
-        }
-        public var description: String? {
-            switch triggerMode {
-            case .appMinimized:
-                return LString.appProtectionTimeoutAfterLeavingApp
-            case .userIdle:
-                return LString.appProtectionTimeoutAfterLastInteraction
-            }
-        }
     }
 
     public enum DatabaseLockTimeout: Int, Comparable {
