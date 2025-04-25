@@ -14,6 +14,7 @@ protocol SettingsDataProtectionViewCoordinatorDelegate: AnyObject {
     func didPressClipboardTimeout(in viewController: SettingsDataProtectionVC)
     func didToggleLockDatabasesOnTimeout(newValue: Bool, in viewController: SettingsDataProtectionVC)
     func didPressShakeGestureAction(in viewController: SettingsDataProtectionVC)
+    func didPressEraseDataAfterFailedAttempts(in viewController: SettingsDataProtectionVC)
 }
 
 final class SettingsDataProtectionVC: UITableViewController, Refreshable {
@@ -38,6 +39,7 @@ final class SettingsDataProtectionVC: UITableViewController, Refreshable {
     @IBOutlet private weak var hideProtectedFieldsSwitch: UISwitch!
 
     @IBOutlet private weak var shakeGestureCell: UITableViewCell!
+    @IBOutlet private weak var eraseDataCell: UITableViewCell!
 
     weak var delegate: SettingsDataProtectionViewCoordinatorDelegate?
 
@@ -50,6 +52,7 @@ final class SettingsDataProtectionVC: UITableViewController, Refreshable {
         settingsNotifications = SettingsNotifications(observer: self)
 
         shakeGestureCell.textLabel?.text = LString.shakeGestureActionTitle
+        eraseDataCell.textLabel?.text = LString.eraseDataAfterFailedAttemptsTitle
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -87,6 +90,8 @@ final class SettingsDataProtectionVC: UITableViewController, Refreshable {
         clipboardTimeoutCell.detailTextLabel?.text = settings.clipboardTimeout.shortTitle
 
         shakeGestureCell.detailTextLabel?.text = settings.shakeGestureAction.shortTitle
+
+        eraseDataCell.detailTextLabel?.text = Settings.current.passcodeAttemptsBeforeAppReset.title
     }
 
 
@@ -174,6 +179,8 @@ final class SettingsDataProtectionVC: UITableViewController, Refreshable {
             delegate?.didPressClipboardTimeout(in: self)
         case shakeGestureCell:
             delegate?.didPressShakeGestureAction(in: self)
+        case eraseDataCell:
+            delegate?.didPressEraseDataAfterFailedAttempts(in: self)
         default:
             break
         }

@@ -969,6 +969,10 @@ extension AutoFillCoordinator: PasscodeInputDelegate {
         }
     }
 
+    func passcodeInputDidRequestBiometrics(_ sender: PasscodeInputVC) {
+        maybeShowBiometricAuth()
+    }
+
     func passcodeInput(_ sender: PasscodeInputVC, didEnterPasscode passcode: String) {
         do {
             if try Keychain.shared.isAppPasscodeMatch(passcode) { 
@@ -979,10 +983,7 @@ extension AutoFillCoordinator: PasscodeInputDelegate {
                 HapticFeedback.play(.wrongPassword)
                 sender.animateWrongPassccode()
                 StoreReviewSuggester.registerEvent(.trouble)
-                if Settings.current.isLockAllDatabasesOnFailedPasscode {
-                    DatabaseSettingsManager.shared.eraseAllMasterKeys()
-                    entryFinderCoordinator?.lockDatabase()
-                }
+                handleFailedPasscode()
             }
         } catch {
             Diag.error(error.localizedDescription)
@@ -990,8 +991,18 @@ extension AutoFillCoordinator: PasscodeInputDelegate {
         }
     }
 
-    func passcodeInputDidRequestBiometrics(_ sender: PasscodeInputVC) {
-        maybeShowBiometricAuth()
+    private func handleFailedPasscode() {
+        let isResetting = AppEraser.registerFailedAppPasscodeAttempt(afterReset: {
+            exit(0)
+        })
+        if isResetting {
+            return
+        }
+
+        if Settings.current.isLockAllDatabasesOnFailedPasscode {
+            DatabaseSettingsManager.shared.eraseAllMasterKeys()
+            entryFinderCoordinator?.lockDatabase()
+        }
     }
 }
 

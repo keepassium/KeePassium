@@ -60,6 +60,7 @@ final class NewAppProtectionSettingsCoordinator: Coordinator, Refreshable {
         _appProtectionSettingsVC.timeout = Settings.current.appLockTimeout
         _appProtectionSettingsVC.isLockOnAppLaunch = Settings.current.isLockAppOnLaunch
         _appProtectionSettingsVC.isLockOnFailedPasscode = Settings.current.isLockAllDatabasesOnFailedPasscode
+        _appProtectionSettingsVC.passcodeAttemptsBeforeAppReset = Settings.current.passcodeAttemptsBeforeAppReset
         updateBiometricsSupport()
     }
 
@@ -139,4 +140,12 @@ extension NewAppProtectionSettingsCoordinator: AppProtectionSettingsVC.Delegate 
         refresh()
     }
 
+    func didChangePasscodeAttemptsBeforeAppReset(
+        _ attempts: Settings.PasscodeAttemptsBeforeAppReset,
+        in viewController: AppProtectionSettingsVC
+    ) {
+        Settings.current.passcodeAttemptsBeforeAppReset = attempts
+        viewController.showNotificationIfManaged(setting: .passcodeAttemptsBeforeAppReset)
+        refresh()
+    }
 }

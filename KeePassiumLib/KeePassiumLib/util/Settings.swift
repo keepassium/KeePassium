@@ -78,6 +78,7 @@ public class Settings {
         case databaseLockTimeout
         case lockDatabasesOnTimeout
         case lockDatabasesOnReboot
+        case passcodeAttemptsBeforeAppReset
         case passcodeKeyboardType
 
         case clipboardTimeout
@@ -617,6 +618,18 @@ public class Settings {
         }
     }
 
+    public enum PasscodeAttemptsBeforeAppReset: Int, CaseIterable {
+        case never = 0
+        case after1 = 1
+        case after3 = 3
+        case after5 = 5
+        case after10 = 10
+
+        public static var allCases: [PasscodeAttemptsBeforeAppReset] {
+            [after1, after3, after5, after10, never]
+        }
+    }
+
     public private(set) var isTestEnvironment: Bool
 
     public private(set) var isFirstLaunch: Bool
@@ -1005,6 +1018,46 @@ public class Settings {
                 oldValue: isLockDatabasesOnReboot,
                 newValue: newValue,
                 key: .lockDatabasesOnReboot)
+        }
+    }
+
+    public var passcodeKeyboardType: PasscodeKeyboardType {
+        get {
+            if let rawValue = UserDefaults.appGroupShared
+                    .object(forKey: Keys.passcodeKeyboardType.rawValue) as? Int,
+               let keyboardType = PasscodeKeyboardType(rawValue: rawValue)
+            {
+                return keyboardType
+            }
+            return PasscodeKeyboardType.numeric
+        }
+        set {
+            let oldValue = passcodeKeyboardType
+            UserDefaults.appGroupShared.set(newValue.rawValue, forKey: Keys.passcodeKeyboardType.rawValue)
+            if newValue != oldValue {
+                postChangeNotification(changedKey: Keys.passcodeKeyboardType)
+            }
+        }
+    }
+
+    public var passcodeAttemptsBeforeAppReset: PasscodeAttemptsBeforeAppReset {
+        get {
+            if let rawValue = UserDefaults.appGroupShared
+                    .object(forKey: Keys.passcodeAttemptsBeforeAppReset.rawValue) as? Int,
+               let value = PasscodeAttemptsBeforeAppReset(rawValue: rawValue)
+            {
+                return value
+            }
+            return .never
+        }
+        set {
+            let oldValue = passcodeAttemptsBeforeAppReset
+            UserDefaults.appGroupShared.set(
+                newValue.rawValue,
+                forKey: Keys.passcodeAttemptsBeforeAppReset.rawValue)
+            if newValue != oldValue {
+                postChangeNotification(changedKey: Keys.passcodeAttemptsBeforeAppReset)
+            }
         }
     }
 
@@ -1541,26 +1594,6 @@ public class Settings {
         }
 
     }
-
-    public var passcodeKeyboardType: PasscodeKeyboardType {
-        get {
-            if let rawValue = UserDefaults.appGroupShared
-                    .object(forKey: Keys.passcodeKeyboardType.rawValue) as? Int,
-               let keyboardType = PasscodeKeyboardType(rawValue: rawValue)
-            {
-                return keyboardType
-            }
-            return PasscodeKeyboardType.numeric
-        }
-        set {
-            let oldValue = passcodeKeyboardType
-            UserDefaults.appGroupShared.set(newValue.rawValue, forKey: Keys.passcodeKeyboardType.rawValue)
-            if newValue != oldValue {
-                postChangeNotification(changedKey: Keys.passcodeKeyboardType)
-            }
-        }
-    }
-
 
     public var isNetworkAccessAllowed: Bool {
         get {

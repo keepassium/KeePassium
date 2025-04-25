@@ -515,6 +515,46 @@
                                     <fragment content="Section title: advanced/expert settings"/>
                                 </attributedString>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Wrong Passcode" footerTitle="If enabled, all databases and keys will be erased after a number of failed passcode attempts." id="WPC-eG-Ft8">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" tag="80" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="scd-Z1-bI4" detailTextLabel="wMY-iK-tfg" imageView="xx2-hF-DKX" style="IBUITableViewCellStyleValue1" id="xTk-ug-9r5" userLabel="Clipboard Timeout Cell">
+                                        <rect key="frame" x="0.0" y="1454.5" width="320" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xTk-ug-9r5" id="r6H-Cu-Yo2">
+                                            <rect key="frame" x="0.0" y="0.0" width="293.5" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Erase data" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="scd-Z1-bI4">
+                                                    <rect key="frame" x="55" y="12" width="80.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="PrimaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xx2-hF-DKX">
+                                                    <rect key="frame" x="16" y="6.5" width="24" height="28"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <color key="tintColor" name="IconTint"/>
+                                                    <imageReference key="image" image="trash" catalog="system" symbolScale="large"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large" weight="regular">
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    </preferredSymbolConfiguration>
+                                                </imageView>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="{Detail}" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="wMY-iK-tfg">
+                                                    <rect key="frame" x="232" y="13" width="53.5" height="19.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                    <color key="textColor" name="AuxiliaryText"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <attributedString key="userComments">
+                                                        <fragment content="#bc-ignore!"/>
+                                                    </attributedString>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="IZZ-aM-g2i" id="saX-Ms-ENf"/>
@@ -527,6 +567,7 @@
                         <outlet property="clearMasterKeysButton" destination="e1v-nv-Mst" id="uRo-08-UjQ"/>
                         <outlet property="clipboardTimeoutCell" destination="pl7-TW-G1h" id="kdi-rO-dBh"/>
                         <outlet property="databaseTimeoutCell" destination="7gS-TC-EzJ" id="3Ue-ZN-LSr"/>
+                        <outlet property="eraseDataCell" destination="xTk-ug-9r5" id="E4l-ji-apZ"/>
                         <outlet property="hideProtectedFieldsSwitch" destination="JCE-bC-bHe" id="P1i-9e-mLQ"/>
                         <outlet property="lockDatabaseOnTimeoutLabel" destination="gTm-F6-EDQ" id="Bw0-Cg-oOg"/>
                         <outlet property="lockDatabaseOnTimeoutPremiumBadge" destination="8yB-X8-xqJ" id="ZNY-Xy-3a2"/>
@@ -554,6 +595,7 @@
         <image name="key.diagonal" width="14" height="13"/>
         <image name="key.horizontal" catalog="system" width="128" height="68"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
+        <image name="trash" catalog="system" width="117" height="128"/>
         <image name="trash.badge.clock" width="14" height="15"/>
         <namedColor name="AuxiliaryText">
             <color red="0.23500001430511475" green="0.23500001430511475" blue="0.2630000114440918" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>

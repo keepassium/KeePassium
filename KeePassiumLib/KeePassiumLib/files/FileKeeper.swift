@@ -808,6 +808,28 @@ public class FileKeeper {
         try Data().write(to: fileURL, options: [.completeFileProtection, .withoutOverwriting])
     }
 
+    public func deleteAllInternalFiles(
+        completionQueue: OperationQueue = .main,
+        completion: (() -> Void)?
+    ) {
+        operationQueue.addOperation { [self] in
+            let fileManager = FileManager()
+            let targetDirectories = [docDirURL, backupDirURL, inboxDirURL, fileManager.temporaryDirectory]
+            for targetDir in targetDirectories {
+                let files = try? fileManager.contentsOfDirectory(
+                    at: targetDir,
+                    includingPropertiesForKeys: nil)
+                files?.forEach {
+                    try? fileManager.removeItem(at: $0)
+                }
+            }
+            if let completion {
+                FileKeeperNotifier.notifyFileListUpdated()
+                completionQueue.addOperation(completion)
+            }
+        }
+    }
+
     enum BackupMode {
         case overwriteLatest
         case renameLatest

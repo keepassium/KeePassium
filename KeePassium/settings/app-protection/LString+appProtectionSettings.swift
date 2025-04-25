@@ -75,6 +75,11 @@ extension LString {
         value: "Ensures KeePassium is locked after you force-close the app or restart the device.",
         comment: "Explanation for the `Lock on App Launch` setting")
 
+    public static let wrongPasscodeTitle = NSLocalizedString(
+        "[Settings/AppLock/WrongPasscode/title]",
+        value: "Wrong Passcode",
+        comment: "Settings section: what happens if user enters incorrect App Protection passcode.")
+
     public static let lockOnWrongPasscodeTitle = NSLocalizedString(
         "[Settings/AppLock/LockOnWrongPasscode/title]",
         value: "Lock on Wrong Passcode",
@@ -83,6 +88,19 @@ extension LString {
         "[Settings/AppLock/LockOnWrongPasscode/description]",
         value: "If you enter a wrong app protection passcode, KeePassium will close all databases and clear all master keys from the keychain.",
         comment: "Description of the `Lock on Wrong Passcode` setting")
+
+    public static let passcodeAttemptsUntilAppResetTitle = NSLocalizedString(
+        "[Settings/AppLock/PasscodeAttemptsUntilAppReset/title]",
+        value: "Attempts Until App Reset",
+        comment: "Title in the settings: number of failed passcode attempts that will reset the app into 'just installed' state.")
+    public static let passcodeAttemptsUntilAppResetDescription = NSLocalizedString(
+        "[Settings/AppLock/PasscodeAttemptsUntilAppReset/description]",
+        value: "App reset will delete all the stored keys, settings, database backups, imported files, and links to external files. However, if app reset is triggered from AutoFill, imported files may remain due to technical limitations.",
+        comment: "Description of the `Passcode Attempts Until App Reset` setting")
+    public static let passcodeAttemptsUntilAppResetNeverTitle = NSLocalizedString(
+        "[Settings/AppLock/PasscodeAttemptsUntilAppReset/Never/title]",
+        value: "Do not reset",
+        comment: "An option in Settings. Will be shown as 'Passcode Attempts Until App Reset: Do not reset'")
     // swiftlint:enable line_length
 }
 
@@ -131,6 +149,17 @@ extension Settings.AppLockTimeout {
             return LString.appProtectionTimeoutAfterLeavingAppDescription
         case .userIdle:
             return LString.appProtectionTimeoutAfterLastInteractionDescription
+        }
+    }
+}
+
+extension Settings.PasscodeAttemptsBeforeAppReset {
+    public var title: String {
+        switch self {
+        case .never:
+            return LString.passcodeAttemptsUntilAppResetNeverTitle
+        case .after1, .after3, .after5, .after10:
+            return String(rawValue)
         }
     }
 }

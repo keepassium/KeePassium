@@ -68,9 +68,18 @@ extension DataProtectionSettingsCoordinator {
         let shakeGestureActionVC = SettingsShakeGestureActionVC.make(delegate: self)
         router.push(shakeGestureActionVC, animated: true, onPop: nil)
     }
+
+    private func showEraseDataFailedAttemptsSettings() {
+        let eraseDataFailedAttemptsVC = SettingsEraseDataFailedAttemptsVC.make(delegate: self)
+        router.push(eraseDataFailedAttemptsVC, animated: true, onPop: nil)
+    }
 }
 
 extension DataProtectionSettingsCoordinator: SettingsDataProtectionViewCoordinatorDelegate {
+    func didPressEraseDataAfterFailedAttempts(in viewController: SettingsDataProtectionVC) {
+        showEraseDataFailedAttemptsSettings()
+    }
+
     func didPressDatabaseTimeout(in viewController: SettingsDataProtectionVC) {
         showDatabaseTimeoutSettingsPage()
     }
@@ -151,6 +160,24 @@ extension DataProtectionSettingsCoordinator: SettingsShakeGestureActionVCDelegat
 
         if Settings.current.isManaged(key: .confirmShakeGestureAction) {
             viewController.showManagedSettingNotification()
+        }
+    }
+}
+
+extension DataProtectionSettingsCoordinator: SettingsEraseDataFailedAttemptsVCDelegate {
+    func didSelectEraseDataAfterFailedAttempts(
+        _ option: Settings.PasscodeAttemptsBeforeAppReset,
+        in viewController: SettingsEraseDataFailedAttemptsVC
+    ) {
+        Settings.current.passcodeAttemptsBeforeAppReset = option
+        refresh()
+
+        if Settings.current.isManaged(key: .passcodeAttemptsBeforeAppReset) {
+            viewController.showManagedSettingNotification()
+        } else {
+            DispatchQueue.main.async { [weak router] in
+                router?.pop(viewController: viewController, animated: true)
+            }
         }
     }
 }

@@ -420,6 +420,12 @@ extension LString {
         value: "Unlock KeePassium",
         comment: "Call to action in the passcode input dialog."
     )
+    public static let eraseDataAfterFailedAttemptsTitle = NSLocalizedString(
+        "[AppLock/EraseData/title]",
+        bundle: Bundle.framework,
+        value: "Erase Data",
+        comment: "Title for setting to erase all data after failed passcode attempts"
+    )
 
     public static let actionCopyToClipboardTemplate = NSLocalizedString(
         "[Clipboard/Copy/namedValue]",

@@ -19,6 +19,9 @@ final class AppProtectionSettingsVC: BaseSettingsViewController<AppProtectionSet
         func didChangeIsLockOnFailedPasscode(
             _ isLockOnFailedPasscode: Bool,
             in viewController: AppProtectionSettingsVC)
+        func didChangePasscodeAttemptsBeforeAppReset(
+            _ attempts: Settings.PasscodeAttemptsBeforeAppReset,
+            in viewController: AppProtectionSettingsVC)
     }
 
     weak var delegate: (any Delegate)?
@@ -29,6 +32,7 @@ final class AppProtectionSettingsVC: BaseSettingsViewController<AppProtectionSet
     var timeout: Settings.AppLockTimeout = .immediately
     var isLockOnAppLaunch: Bool = false
     var isLockOnFailedPasscode: Bool = false
+    var passcodeAttemptsBeforeAppReset: Settings.PasscodeAttemptsBeforeAppReset = .never
 
     override init() {
         super.init()
@@ -44,10 +48,20 @@ final class AppProtectionSettingsVC: BaseSettingsViewController<AppProtectionSet
         case biometric
         case timeout
         case lockOnLaunch
-        case wrongPasscode
+        case lockOnWrongPasscode
+        case resetOnWrongPasscode
 
         var header: String? {
-            return nil
+            switch self {
+            case .lockOnWrongPasscode,
+                 .resetOnWrongPasscode:
+                return LString.wrongPasscodeTitle
+            case .general,
+                 .biometric,
+                 .timeout,
+                 .lockOnLaunch:
+                return nil
+            }
         }
 
         var footer: String? {
@@ -60,8 +74,10 @@ final class AppProtectionSettingsVC: BaseSettingsViewController<AppProtectionSet
                 return LString.appProtectionTimeoutDescription
             case .lockOnLaunch:
                 return LString.lockAppOnLaunchDescription
-            case .wrongPasscode:
+            case .lockOnWrongPasscode:
                 return LString.lockOnWrongPasscodeDescription
+            case .resetOnWrongPasscode:
+                return LString.passcodeAttemptsUntilAppResetDescription
             }
         }
     }
@@ -138,7 +154,7 @@ final class AppProtectionSettingsVC: BaseSettingsViewController<AppProtectionSet
             ))
         ])
 
-        snapshot.appendSections([Section.wrongPasscode])
+        snapshot.appendSections([Section.lockOnWrongPasscode])
         snapshot.appendItems([
             .toggle(.init(
                 title: LString.lockOnWrongPasscodeTitle,
@@ -150,7 +166,17 @@ final class AppProtectionSettingsVC: BaseSettingsViewController<AppProtectionSet
                     refresh()
                     delegate?.didChangeIsLockOnFailedPasscode(isLockOnFailedPasscode, in: self)
                 }
-            ))
+            )),
+        ])
+
+        snapshot.appendSections([Section.resetOnWrongPasscode])
+        snapshot.appendItems([
+            .picker(.init(
+                title: LString.passcodeAttemptsUntilAppResetTitle,
+                isEnabled: isAppProtectionEnabled,
+                value: passcodeAttemptsBeforeAppReset.title,
+                menu: makePasscodeAttemptsMenu()
+            )),
         ])
         _dataSource.apply(snapshot, animatingDifferences: true)
     }
@@ -165,6 +191,22 @@ final class AppProtectionSettingsVC: BaseSettingsViewController<AppProtectionSet
                     self.timeout = timeoutOption
                     refresh()
                     delegate?.didChangeTimeout(timeoutOption, in: self)
+                }
+            )
+        }
+        return UIMenu(inlineChildren: children)
+    }
+
+    private func makePasscodeAttemptsMenu() -> UIMenu {
+        let allOptions = Settings.PasscodeAttemptsBeforeAppReset.allCases
+        let children = allOptions.map { option in
+            UIAction(
+                title: option.title,
+                state: option == self.passcodeAttemptsBeforeAppReset ? .on : .off,
+                handler: { [unowned self] _ in
+                    self.passcodeAttemptsBeforeAppReset = option
+                    refresh()
+                    delegate?.didChangePasscodeAttemptsBeforeAppReset(option, in: self)
                 }
             )
         }

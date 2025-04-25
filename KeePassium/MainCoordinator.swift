@@ -168,8 +168,11 @@ final class MainCoordinator: UIResponder, Coordinator {
             message: LString.confirmAppReset,
             preferredStyle: .alert
         )
-        alert.addAction(title: LString.actionResetApp, style: .destructive, preferred: false) { [weak self] _ in
-            self?.resetApp()
+        alert.addAction(title: LString.actionResetApp, style: .destructive, preferred: false) {
+            [unowned self] _ in
+            AppEraser.resetApp { [unowned self] in
+                start(hasIncomingURL: false, proposeReset: false)
+            }
         }
         alert.addAction(title: LString.actionCancel, style: .cancel) { [weak self] _ in
             self?.start(hasIncomingURL: false, proposeReset: false)
@@ -381,19 +384,6 @@ extension MainCoordinator {
 }
 
 extension MainCoordinator {
-
-    private func resetApp() {
-        Keychain.shared.reset()
-        UserDefaults.eraseAppGroupShared()
-        FileKeeper.shared.deleteBackupFiles(
-            olderThan: -TimeInterval.infinity,
-            keepLatest: false,
-            completionQueue: .main
-        ) { [weak self] in
-            self?.start(hasIncomingURL: false, proposeReset: false)
-        }
-    }
-
     private func ensureAppDocumentsVisible() {
         if ProcessInfo.isRunningOnMac { return }
         guard FileProvider.localStorage.isAllowed else { return }
@@ -1000,6 +990,11 @@ extension MainCoordinator: PasscodeInputDelegate {
         }
     }
 
+    func passcodeInputDidRequestBiometrics(_ sender: PasscodeInputVC) {
+        assert(canUseBiometrics())
+        performBiometricUnlock()
+    }
+
     private func setupPasscode(_ passcode: String, viewController: PasscodeInputVC) {
         Diag.info("Passcode setup successful")
         do {
@@ -1021,15 +1016,7 @@ extension MainCoordinator: PasscodeInputDelegate {
                 HapticFeedback.play(.wrongPassword)
                 viewController.animateWrongPassccode()
                 StoreReviewSuggester.registerEvent(.trouble)
-                if Settings.current.isLockAllDatabasesOnFailedPasscode {
-                    DatabaseSettingsManager.shared.eraseAllMasterKeys()
-                    databaseViewerCoordinator?.closeDatabase(
-                        shouldLock: true,
-                        reason: .databaseTimeout,
-                        animated: false,
-                        completion: nil
-                    )
-                }
+                handleFailedPasscode()
             }
         } catch {
             let alert = UIAlertController.make(
@@ -1039,9 +1026,23 @@ extension MainCoordinator: PasscodeInputDelegate {
         }
     }
 
-    func passcodeInputDidRequestBiometrics(_ sender: PasscodeInputVC) {
-        assert(canUseBiometrics())
-        performBiometricUnlock()
+    private func handleFailedPasscode() {
+        let isResetting = AppEraser.registerFailedAppPasscodeAttempt(afterReset: { 
+            exit(0)
+        })
+        if isResetting {
+            return
+        }
+
+        if Settings.current.isLockAllDatabasesOnFailedPasscode {
+            DatabaseSettingsManager.shared.eraseAllMasterKeys()
+            databaseViewerCoordinator?.closeDatabase(
+                shouldLock: true,
+                reason: .databaseTimeout,
+                animated: false,
+                completion: nil
+            )
+        }
     }
 }
 

@@ -1378,6 +1378,14 @@
 		F326756D2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F326756C2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift */; };
 		F326756E2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F326756C2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift */; };
 		F326756F2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F326756C2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift */; };
+		F32675672D8EDCA50007EA7E /* AppEraser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32675662D8EDCA50007EA7E /* AppEraser.swift */; };
+		F32675682D8EDCA50007EA7E /* AppEraser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32675662D8EDCA50007EA7E /* AppEraser.swift */; };
+		F32675692D8EDCA50007EA7E /* AppEraser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32675662D8EDCA50007EA7E /* AppEraser.swift */; };
+		F326756A2D8EDCA50007EA7E /* AppEraser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32675662D8EDCA50007EA7E /* AppEraser.swift */; };
+		F326756B2D8EDCA50007EA7E /* AppEraser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32675662D8EDCA50007EA7E /* AppEraser.swift */; };
+		F32B53B12D748AC000BAF5C9 /* SettingsEraseDataFailedAttemptsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32B53B02D748AC000BAF5C9 /* SettingsEraseDataFailedAttemptsVC.swift */; };
+		F32B53B22D748AC000BAF5C9 /* SettingsEraseDataFailedAttemptsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32B53B02D748AC000BAF5C9 /* SettingsEraseDataFailedAttemptsVC.swift */; };
+		F32B53B32D748AC000BAF5C9 /* SettingsEraseDataFailedAttemptsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32B53B02D748AC000BAF5C9 /* SettingsEraseDataFailedAttemptsVC.swift */; };
 		F331EF282A8509860084473D /* Zxcvbn in Frameworks */ = {isa = PBXBuildFile; productRef = F331EF272A8509860084473D /* Zxcvbn */; };
 		F331EF2A2A8509A10084473D /* Zxcvbn in Frameworks */ = {isa = PBXBuildFile; productRef = F331EF292A8509A10084473D /* Zxcvbn */; };
 		F331EF2C2A8509AC0084473D /* Zxcvbn in Frameworks */ = {isa = PBXBuildFile; productRef = F331EF2B2A8509AC0084473D /* Zxcvbn */; };
@@ -2613,6 +2621,8 @@
 		F321414B2A90D2CD007A8D4E /* PasswordAuditServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordAuditServiceTests.swift; sourceTree = "<group>"; };
 		F32228142CCEC4230093BD9C /* KeyFileTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFileTextField.swift; sourceTree = "<group>"; };
 		F326756C2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFieldEditorSingleLineCell.swift; sourceTree = "<group>"; };
+		F32675662D8EDCA50007EA7E /* AppEraser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEraser.swift; sourceTree = "<group>"; };
+		F32B53B02D748AC000BAF5C9 /* SettingsEraseDataFailedAttemptsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEraseDataFailedAttemptsVC.swift; sourceTree = "<group>"; };
 		F33F2C502B32DD61009EFB18 /* TagSelectorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSelectorVC.swift; sourceTree = "<group>"; };
 		F33F2C532B32E059009EFB18 /* TagSelectorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSelectorCoordinator.swift; sourceTree = "<group>"; };
 		F34010A22AA1E540005FDF55 /* ExposureCountFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureCountFormatter.swift; sourceTree = "<group>"; };
@@ -2921,6 +2931,7 @@
 				7564FAEB2DB941D40030F3C4 /* DataProtectionSettingsVC.swift */,
 				757CCFA72DBAEB2D005E6BE6 /* LString+dataProtectionSettings.swift */,
 				7527FAB2262F71CC00623849 /* DataProtectionSettingsCoordinator.swift */,
+				F32B53B02D748AC000BAF5C9 /* SettingsEraseDataFailedAttemptsVC.swift */,
 				752ED68C2235547D00C20D3E /* SettingsDataProtectionVC.swift */,
 				751E0CE82309AE5D0088BB10 /* SettingsDataProtectionVC.storyboard */,
 				757D336020EF382D000A47F0 /* SettingsDatabaseTimeoutVC.swift */,
@@ -3136,6 +3147,7 @@
 				75C204C22CEE462F00E4EDA3 /* UIMenu+customIdentifiers.swift */,
 				75F544B42CEF8E420022BAA4 /* UIKeyCommand+hotkeys.swift */,
 				758AAFD02DA3343300B5FA41 /* UIContextualAction+extensions.swift */,
+				F32675662D8EDCA50007EA7E /* AppEraser.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -4411,6 +4423,7 @@
 				75CBAB9D21C166D600B8AFE2 /* Coordinator.swift in Sources */,
 				75CFBE2D21C2FE340029A80A /* UIView+extension.swift in Sources */,
 				F30550282BA4B20400155709 /* RemoteDataSourceSetupCoordinator.swift in Sources */,
+				F32675692D8EDCA50007EA7E /* AppEraser.swift in Sources */,
 				75BE05FB25DAA5A200B34CC0 /* URLOpener.swift in Sources */,
 				75FC40542DA12F7700C5D1C2 /* DatabasePickerCoordinator+toolbars.swift in Sources */,
 				75AA237B26CBCAED00488C4E /* DatabaseFile+extensions.swift in Sources */,
@@ -4597,6 +4610,7 @@
 				75EC7BFD262B05E100D8C7EB /* DatabaseViewerCoordinator.swift in Sources */,
 				F38A48C42A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift in Sources */,
 				75839A90246B1A78003DAB7F /* SettingsSearchVC.swift in Sources */,
+				F32675682D8EDCA50007EA7E /* AppEraser.swift in Sources */,
 				7575B24722D846B900B84B3F /* SearchHelper.swift in Sources */,
 				751DED732847B44B00B6D02E /* UITextInput+extensions.swift in Sources */,
 				757D336320EF5081000A47F0 /* SettingsClipboardTimeoutVC.swift in Sources */,
@@ -4636,6 +4650,7 @@
 				753A3EEA20D3776D00A1CF70 /* Refreshable.swift in Sources */,
 				F32228192CCEC4230093BD9C /* KeyFileTextField.swift in Sources */,
 				75480503238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
+				F32B53B22D748AC000BAF5C9 /* SettingsEraseDataFailedAttemptsVC.swift in Sources */,
 				757FDF6226E2519E0023E028 /* OTPView.swift in Sources */,
 				754F7E5A2DB15D2C004235C8 /* BasicCell.swift in Sources */,
 				753FE83524C1A9A400063FBB /* UIViewController+alerts.swift in Sources */,
@@ -4880,6 +4895,7 @@
 				75EC7BFE262B05E100D8C7EB /* DatabaseViewerCoordinator.swift in Sources */,
 				75B38C15233E5B7C006BDEFC /* SearchHelper.swift in Sources */,
 				75B38C17233E5B7C006BDEFC /* SettingsClipboardTimeoutVC.swift in Sources */,
+				F32675672D8EDCA50007EA7E /* AppEraser.swift in Sources */,
 				751DED752847B44B00B6D02E /* UITextInput+extensions.swift in Sources */,
 				75B38C18233E5B7C006BDEFC /* ItemCategory.swift in Sources */,
 				75B38C19233E5B7C006BDEFC /* AboutVC.swift in Sources */,
@@ -4918,6 +4934,7 @@
 				75FC402D2DA087EF00C5D1C2 /* DatabasePickerCoordinator+add.swift in Sources */,
 				75CF52242B18A60400FF3A3F /* Coordinator+databaseUpgrade.swift in Sources */,
 				F32228162CCEC4230093BD9C /* KeyFileTextField.swift in Sources */,
+				F32B53B12D748AC000BAF5C9 /* SettingsEraseDataFailedAttemptsVC.swift in Sources */,
 				753FE83724C1A9A400063FBB /* UIViewController+alerts.swift in Sources */,
 				757FDF6426E2519E0023E028 /* OTPView.swift in Sources */,
 				754F7E5B2DB15D2C004235C8 /* BasicCell.swift in Sources */,
@@ -5162,6 +5179,7 @@
 				75D0760828B639D200F02E39 /* UIImage+extensions.swift in Sources */,
 				75DEE8152AA66C500024AE11 /* LString+passwordAudit.swift in Sources */,
 				758F41A12B19F2740069BF66 /* MSALOneDriveAuthProvider.swift in Sources */,
+				F326756B2D8EDCA50007EA7E /* AppEraser.swift in Sources */,
 				75D0760928B639D200F02E39 /* QuickAutoFillPrompt.swift in Sources */,
 				75D0760A28B639D200F02E39 /* AnnouncementCell.swift in Sources */,
 				F37339002AACCAFD007188D2 /* FaviconDownloading.swift in Sources */,
@@ -5271,6 +5289,7 @@
 				759FD0382D9D1A0400659852 /* FilePickerVC.swift in Sources */,
 				759FD0442D9D1A2100659852 /* FilePickerCell.swift in Sources */,
 				F30D03732A7BE8A10047525F /* PasswordQuality.swift in Sources */,
+				F32B53B32D748AC000BAF5C9 /* SettingsEraseDataFailedAttemptsVC.swift in Sources */,
 				75D0764E28B639D200F02E39 /* ChallengeResponseManager.swift in Sources */,
 				75D0764F28B639D200F02E39 /* GroupEditorVC.swift in Sources */,
 				F35D7CD42D639563006DCBF0 /* FileImportHelper.swift in Sources */,
@@ -5434,6 +5453,7 @@
 				758FF6CD28FC18E4007DE8EB /* RemoteFolderViewerVC.swift in Sources */,
 				75BE05EE25DA86F200B34CC0 /* DiagnosticsViewerCoordinator.swift in Sources */,
 				753507A323783729003B65C9 /* HapticFeedback.swift in Sources */,
+				F326756A2D8EDCA50007EA7E /* AppEraser.swift in Sources */,
 				753FE83824C1A9A400063FBB /* UIViewController+alerts.swift in Sources */,
 				75FC40532DA12F7700C5D1C2 /* DatabasePickerCoordinator+toolbars.swift in Sources */,
 				75D7DF9B233E5E310029AD87 /* ProgressViewHost.swift in Sources */,

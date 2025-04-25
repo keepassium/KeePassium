@@ -314,9 +314,10 @@ class Watchdog {
         delegate?.mustCloseDatabase(self, animate: animate)
     }
 
-    open func unlockApp() {
+    func unlockApp() {
         guard let delegate = delegate else { return }
         guard delegate.isAppLocked else { return }
+        AppEraser.registerSuccessfulAppUnlock()
         delegate.hideAppCover(self)
         delegate.hideAppLock(self)
         restart()
