@@ -125,7 +125,7 @@ class Watchdog {
 
         if Settings.current.isLockDatabasesOnScreenLock {
             Diag.debug("Screen locked: Database Lock engaged")
-            engageDatabaseLock(animate: false)
+            engageDatabaseLock(reason: .systemEvent, animate: false)
         }
 
         if Settings.current.isAppLockEnabled && Settings.current.isLockAppOnScreenLock {
@@ -145,7 +145,7 @@ class Watchdog {
         let databaseTimeout = Settings.current.databaseLockTimeout
         if databaseTimeout == .immediately && !isIgnoringMinimizationOnce {
             Diag.debug("Going to background: Database Lock engaged")
-            engageDatabaseLock(animate: false)
+            engageDatabaseLock(reason: .timeout, animate: false)
         }
 
         let appTimeout = Settings.current.appLockTimeout
@@ -217,7 +217,7 @@ class Watchdog {
     @objc private func maybeLockDatabase() {
         if hasRebootedSinceLastTime() && Settings.current.isLockDatabasesOnReboot {
             Diag.debug("Device reboot detected, locking the databases")
-            engageDatabaseLock(animate: false)
+            engageDatabaseLock(reason: .systemEvent, animate: false)
             return
         }
 
@@ -226,7 +226,7 @@ class Watchdog {
         case .never:
             return
         case .immediately:
-            engageDatabaseLock(animate: false)
+            engageDatabaseLock(reason: .timeout, animate: false)
             return
         default:
             break
@@ -237,7 +237,7 @@ class Watchdog {
         if intervalSinceLocked > 0 {
             let isLockedJustNow = intervalSinceLocked < 0.2
 
-            engageDatabaseLock(animate: isLockedJustNow)
+            engageDatabaseLock(reason: .timeout, animate: isLockedJustNow)
         }
     }
 
@@ -313,13 +313,19 @@ class Watchdog {
         delegate.showAppLock(self)
     }
 
-    private func engageDatabaseLock(animate: Bool) {
+    private func engageDatabaseLock(reason: DatabaseLockReason, animate: Bool) {
         Diag.info("Engaging Database Lock")
         self.databaseLockTimer?.invalidate()
         self.databaseLockTimer = nil
 
-        let isLockDatabases = Settings.current.isLockDatabasesOnTimeout
-        if isLockDatabases {
+        let mustLock: Bool
+        switch reason {
+        case .systemEvent:
+            mustLock = true
+        case .timeout:
+            mustLock = Settings.current.isLockDatabasesOnTimeout
+        }
+        if mustLock {
             DatabaseSettingsManager.shared.eraseAllMasterKeys()
         }
         delegate?.mustCloseDatabase(self, animate: animate)

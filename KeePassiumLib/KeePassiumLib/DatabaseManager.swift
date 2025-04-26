@@ -8,11 +8,6 @@
 
 import UIKit
 
-enum DatabaseLockReason {
-    case userRequest
-    case timeout
-}
-
 public class DatabaseManager {
     private init() {
     }

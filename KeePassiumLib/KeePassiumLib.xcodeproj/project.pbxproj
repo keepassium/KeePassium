@@ -82,6 +82,7 @@
 		757CCFAC2DBAFB05005E6BE6 /* LString+dataProtectionSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757CCFAB2DBAFB05005E6BE6 /* LString+dataProtectionSettings.swift */; };
 		757E78D82822D729009017BF /* PasswordGeneratorParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757E78D72822D729009017BF /* PasswordGeneratorParams.swift */; };
 		75804AAF2A43B5A300A9C985 /* eff-short-wordlist-1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 75804AAE2A43B5A300A9C985 /* eff-short-wordlist-1.txt */; };
+		7588F0D22DBD95CE00BA7BBF /* DatabaseLockReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7588F0D12DBD95CE00BA7BBF /* DatabaseLockReason.swift */; };
 		758F41992B18CC360069BF66 /* OneDriveAuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758F41982B18CC360069BF66 /* OneDriveAuthProvider.swift */; };
 		758FF6D4290193F0007DE8EB /* OneDriveDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758FF6D3290193F0007DE8EB /* OneDriveDataSource.swift */; };
 		758FF6D82902DB07007DE8EB /* RemoteFileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758FF6D72902DB07007DE8EB /* RemoteFileItem.swift */; };
@@ -392,6 +393,7 @@
 		757CCFAB2DBAFB05005E6BE6 /* LString+dataProtectionSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LString+dataProtectionSettings.swift"; sourceTree = "<group>"; };
 		757E78D72822D729009017BF /* PasswordGeneratorParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGeneratorParams.swift; sourceTree = "<group>"; };
 		75804AAE2A43B5A300A9C985 /* eff-short-wordlist-1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "eff-short-wordlist-1.txt"; sourceTree = "<group>"; };
+		7588F0D12DBD95CE00BA7BBF /* DatabaseLockReason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseLockReason.swift; sourceTree = "<group>"; };
 		758F41982B18CC360069BF66 /* OneDriveAuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDriveAuthProvider.swift; sourceTree = "<group>"; };
 		758FF6D3290193F0007DE8EB /* OneDriveDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDriveDataSource.swift; sourceTree = "<group>"; };
 		758FF6D72902DB07007DE8EB /* RemoteFileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFileItem.swift; sourceTree = "<group>"; };
@@ -1083,6 +1085,7 @@
 				75BFDCA22C8E4F9000D30A9D /* UITextInput+CopyTimeout.swift */,
 				75BFDCA02C8E4DB700D30A9D /* Swizzler.swift */,
 				75B6C9D12D07558A0084F349 /* MemoryMonitor.swift */,
+				7588F0D12DBD95CE00BA7BBF /* DatabaseLockReason.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1581,6 +1584,7 @@
 				75D09C452174F77000F7DEF2 /* Entry1.swift in Sources */,
 				75D09C3F2174F77000F7DEF2 /* Entry.swift in Sources */,
 				756180FC282082D400EA015D /* PasswordGeneratorError.swift in Sources */,
+				7588F0D22DBD95CE00BA7BBF /* DatabaseLockReason.swift in Sources */,
 				757B9B822AA0848100FFA6EA /* DatabaseFeature2.swift in Sources */,
 				75D09BE52174F76500F7DEF2 /* CryptoManager.swift in Sources */,
 				75D09BD62174F76500F7DEF2 /* thread.c in Sources */,
