@@ -8,7 +8,7 @@
 
 import KeePassiumLib
 
-extension NewAppProtectionSettingsCoordinator {
+extension AppProtectionSettingsCoordinator {
 
     internal func _showChangePasscode(isInitialSetup: Bool) {
         let passcodeInputVC = PasscodeInputVC.instantiateFromStoryboard()
@@ -20,7 +20,7 @@ extension NewAppProtectionSettingsCoordinator {
     }
 }
 
-extension NewAppProtectionSettingsCoordinator: PasscodeInputDelegate {
+extension AppProtectionSettingsCoordinator: PasscodeInputDelegate {
     func passcodeInputDidCancel(_ sender: PasscodeInputVC) {
         refresh()
         sender.dismiss(animated: true) { [weak self] in

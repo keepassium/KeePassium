@@ -122,6 +122,17 @@ class Watchdog {
 
     @objc private func macScreenDidLock(_notification: Notification) {
         Diag.debug("Screen locked")
+
+        if Settings.current.isLockDatabasesOnScreenLock {
+            Diag.debug("Screen locked: Database Lock engaged")
+            engageDatabaseLock(animate: false)
+        }
+
+        if Settings.current.isAppLockEnabled && Settings.current.isLockAppOnScreenLock {
+            Diag.debug("Screen locked: App Lock engaged")
+            engageAppLock()
+        }
+
         willResignActive()
     }
 

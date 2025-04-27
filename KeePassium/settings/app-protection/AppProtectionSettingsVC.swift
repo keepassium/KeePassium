@@ -16,6 +16,7 @@ final class AppProtectionSettingsVC: BaseSettingsViewController<AppProtectionSet
         func didChangeIsUseBiometric(_ isUseBiometric: Bool, in viewController: AppProtectionSettingsVC)
         func didChangeTimeout(_ timeout: Settings.AppLockTimeout, in viewController: AppProtectionSettingsVC)
         func didChangeIsLockOnAppLaunch(_ isLockOnAppLaunch: Bool, in viewController: AppProtectionSettingsVC)
+        func didChangeIsLockOnScreenLock(_ isLockOnScreenLock: Bool, in viewController: AppProtectionSettingsVC)
         func didChangeIsLockOnFailedPasscode(
             _ isLockOnFailedPasscode: Bool,
             in viewController: AppProtectionSettingsVC)
@@ -30,6 +31,7 @@ final class AppProtectionSettingsVC: BaseSettingsViewController<AppProtectionSet
     var isAppProtectionEnabled: Bool = false
     var isUseBiometric: Bool = false
     var timeout: Settings.AppLockTimeout = .immediately
+    var isLockOnScreenLock = false
     var isLockOnAppLaunch: Bool = false
     var isLockOnFailedPasscode: Bool = false
     var passcodeAttemptsBeforeAppReset: Settings.PasscodeAttemptsBeforeAppReset = .never
@@ -48,6 +50,7 @@ final class AppProtectionSettingsVC: BaseSettingsViewController<AppProtectionSet
         case biometric
         case timeout
         case lockOnLaunch
+        case lockOnScreenLock
         case lockOnWrongPasscode
         case resetOnWrongPasscode
 
@@ -59,7 +62,8 @@ final class AppProtectionSettingsVC: BaseSettingsViewController<AppProtectionSet
             case .general,
                  .biometric,
                  .timeout,
-                 .lockOnLaunch:
+                 .lockOnLaunch,
+                 .lockOnScreenLock:
                 return nil
             }
         }
@@ -74,6 +78,8 @@ final class AppProtectionSettingsVC: BaseSettingsViewController<AppProtectionSet
                 return LString.appProtectionTimeoutDescription
             case .lockOnLaunch:
                 return LString.lockAppOnLaunchDescription
+            case .lockOnScreenLock:
+                return LString.lockAppOnScreenLockDescription
             case .lockOnWrongPasscode:
                 return LString.lockOnWrongPasscodeDescription
             case .resetOnWrongPasscode:
@@ -138,6 +144,22 @@ final class AppProtectionSettingsVC: BaseSettingsViewController<AppProtectionSet
                 menu: makeTimeoutMenu()
             )),
         ])
+
+        if ProcessInfo.isRunningOnMac {
+            snapshot.appendSections([.lockOnScreenLock])
+            snapshot.appendItems([
+                .toggle(.init(
+                    title: LString.lockAppOnScreenLockTitle,
+                    isEnabled: isAppProtectionEnabled,
+                    isOn: isLockOnScreenLock,
+                    handler: { [unowned self] itemConfig in
+                        isLockOnScreenLock = itemConfig.isOn
+                        refresh()
+                        delegate?.didChangeIsLockOnScreenLock(isLockOnScreenLock, in: self)
+                    }
+                )),
+            ])
+        }
 
         snapshot.appendSections([Section.lockOnLaunch])
         snapshot.appendItems([

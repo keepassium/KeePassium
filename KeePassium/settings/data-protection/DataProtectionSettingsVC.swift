@@ -17,6 +17,10 @@ final class DataProtectionSettingsVC: BaseSettingsViewController<DataProtectionS
             in viewController: DataProtectionSettingsVC)
         func didChangeLockOnReboot(_ isLockOnRestart: Bool, in viewController: DataProtectionSettingsVC)
         func didChangeLockOnTimeout(_ isLockOnTimeout: Bool, in viewController: DataProtectionSettingsVC)
+        func didChangeLockOnScreenLock(
+            _ isLockDatabaseOnScreenLock: Bool,
+            in viewController: DataProtectionSettingsVC
+        )
         func didChangeShakeAction(
             _ action: Settings.ShakeGestureAction,
             in viewController: DataProtectionSettingsVC)
@@ -36,6 +40,7 @@ final class DataProtectionSettingsVC: BaseSettingsViewController<DataProtectionS
     var databaseTimeout: Settings.DatabaseLockTimeout = .immediately
     var isLockOnReboot = false
     var isLockOnTimeout = false
+    var isLockOnScreenLock = false
     var shakeAction: Settings.ShakeGestureAction = .nothing
     var isConfirmShakeAction = false
     var clipboardTimeout: Settings.ClipboardTimeout = .immediately
@@ -55,6 +60,7 @@ final class DataProtectionSettingsVC: BaseSettingsViewController<DataProtectionS
 
     enum Section: SettingsSection {
         case masterKeys
+        case timeout
         case lockConditions
         case clipboard
         case universalClipboard
@@ -67,8 +73,10 @@ final class DataProtectionSettingsVC: BaseSettingsViewController<DataProtectionS
             switch self {
             case .masterKeys:
                 return LString.quickUnlockTitle
-            case .lockConditions:
+            case .timeout:
                 return LString.dataProtectionAutomaticLockTitle
+            case .lockConditions:
+                return nil
             case .clipboard:
                 return LString.clipboardTitle
             case .universalClipboard:
@@ -88,8 +96,10 @@ final class DataProtectionSettingsVC: BaseSettingsViewController<DataProtectionS
             switch self {
             case .masterKeys:
                 return LString.rememberMasterKeysDescription
-            case .lockConditions:
+            case .timeout:
                 return LString.databaseTimeoutDescription
+            case .lockConditions:
+                return nil
             case .clipboard:
                 return LString.clipboardTimeoutDescription
             case .universalClipboard:
@@ -137,7 +147,7 @@ final class DataProtectionSettingsVC: BaseSettingsViewController<DataProtectionS
             )),
         ])
 
-        snapshot.appendSections([.lockConditions])
+        snapshot.appendSections([.timeout])
         snapshot.appendItems([
             .picker(.init(
                 title: LString.databaseTimeoutTitle,
@@ -155,6 +165,10 @@ final class DataProtectionSettingsVC: BaseSettingsViewController<DataProtectionS
                     delegate?.didChangeLockOnTimeout(isLockOnTimeout, in: self)
                 }
             )),
+        ])
+
+        snapshot.appendSections([.lockConditions])
+        snapshot.appendItems([
             .toggle(.init(
                 title: LString.lockDatabasesOnRebootTitle,
                 image: nil,
@@ -166,6 +180,20 @@ final class DataProtectionSettingsVC: BaseSettingsViewController<DataProtectionS
                 }
             )),
         ])
+        if ProcessInfo.isRunningOnMac {
+            snapshot.appendItems([
+                .toggle(.init(
+                    title: LString.lockDatabasesOnScreenLockTitle,
+                    image: nil,
+                    isOn: isLockOnScreenLock,
+                    handler: { [unowned self] itemConfig in
+                        isLockOnScreenLock = itemConfig.isOn
+                        refresh()
+                        delegate?.didChangeLockOnScreenLock(isLockOnScreenLock, in: self)
+                    }
+                )),
+            ])
+        }
 
         if !ProcessInfo.isRunningOnMac {
             let canConfirmShakeAction = shakeAction != .nothing

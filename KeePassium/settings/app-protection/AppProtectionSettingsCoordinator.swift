@@ -1,12 +1,13 @@
 //  KeePassium Password Manager
-//  Copyright © 2018–2024 KeePassium Labs <info@keepassium.com>
+//  Copyright © 2018-2024 KeePassium Labs <info@keepassium.com>
 //
 //  This program is free software: you can redistribute it and/or modify it
 //  under the terms of the GNU General Public License version 3 as published
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
-//  For commercial licensing, please contact the author.
+//  For commercial licensing, please contact us.
 
 import KeePassiumLib
+import LocalAuthentication.LABiometryType
 
 final class AppProtectionSettingsCoordinator: Coordinator, Refreshable {
     var childCoordinators = [Coordinator]()
@@ -14,21 +15,20 @@ final class AppProtectionSettingsCoordinator: Coordinator, Refreshable {
     var dismissHandler: CoordinatorDismissHandler?
 
     private let router: NavigationRouter
-    private let appProtectionSettingsVC: SettingsAppLockVC
+    internal let _appProtectionSettingsVC: AppProtectionSettingsVC
     private let settingsNotifications: SettingsNotifications
 
     init(router: NavigationRouter) {
         self.router = router
-        appProtectionSettingsVC = SettingsAppLockVC.instantiateFromStoryboard()
+        _appProtectionSettingsVC = AppProtectionSettingsVC()
         settingsNotifications = SettingsNotifications()
 
-        appProtectionSettingsVC.delegate = self
+        _appProtectionSettingsVC.delegate = self
         settingsNotifications.observer = self
     }
 
     deinit {
         settingsNotifications.stopObserving()
-
         assert(childCoordinators.isEmpty)
         removeAllChildCoordinators()
     }
@@ -40,94 +40,119 @@ final class AppProtectionSettingsCoordinator: Coordinator, Refreshable {
             assertionFailure("This action should have been disabled in UI")
             return
         }
-        router.push(appProtectionSettingsVC, animated: true, onPop: { [weak self] in
+        router.push(_appProtectionSettingsVC, animated: true, onPop: { [weak self] in
             guard let self = self else { return }
             self.removeAllChildCoordinators()
             self.dismissHandler?(self)
         })
         settingsNotifications.startObserving()
-        startObservingPremiumStatus(#selector(premiumStatusDidChange))
-    }
-
-    @objc
-    private func premiumStatusDidChange() {
-        refresh()
+        applySettingsToVC()
     }
 
     func refresh() {
-        guard let topVC = router.navigationController.topViewController,
-              let topRefreshable = topVC as? Refreshable
-        else {
-            return
+        applySettingsToVC()
+        _appProtectionSettingsVC.refresh()
+    }
+
+    private func applySettingsToVC() {
+        _appProtectionSettingsVC.isAppProtectionEnabled = Settings.current.isAppLockEnabled
+        _appProtectionSettingsVC.isUseBiometric = Settings.current.isBiometricAppLockEnabled
+        _appProtectionSettingsVC.timeout = Settings.current.appLockTimeout
+        _appProtectionSettingsVC.isLockOnScreenLock = Settings.current.isLockAppOnScreenLock
+        _appProtectionSettingsVC.isLockOnAppLaunch = Settings.current.isLockAppOnLaunch
+        _appProtectionSettingsVC.isLockOnFailedPasscode = Settings.current.isLockAllDatabasesOnFailedPasscode
+        _appProtectionSettingsVC.passcodeAttemptsBeforeAppReset = Settings.current.passcodeAttemptsBeforeAppReset
+        updateBiometricsSupport()
+    }
+
+    private func updateBiometricsSupport() {
+        let context = LAContext()
+        let isSupported = context.canEvaluatePolicy(
+            LAPolicy.deviceOwnerAuthenticationWithBiometrics,
+            error: nil)
+        if !isSupported {
+            Settings.current.isBiometricAppLockEnabled = false
         }
-        topRefreshable.refresh()
-    }
-}
+        _appProtectionSettingsVC.isBiometricsSupported = isSupported
 
-extension AppProtectionSettingsCoordinator {
-    private func showChangePasscode(isInitialSetup: Bool) {
-        let passcodeInputVC = PasscodeInputVC.instantiateFromStoryboard()
-        passcodeInputVC.delegate = self
-        passcodeInputVC.mode = isInitialSetup ? .setup : .change
-        passcodeInputVC.modalPresentationStyle = .formSheet
-        passcodeInputVC.isCancelAllowed = true
-        appProtectionSettingsVC.present(passcodeInputVC, animated: true, completion: nil)
-    }
-
-    private func showAppTimeoutSettingsPage() {
-        let appTimeoutVC = SettingsAppTimeoutVC.instantiateFromStoryboard()
-        router.push(appTimeoutVC, animated: true, onPop: nil)
+        _appProtectionSettingsVC.biometryType = context.biometryType
     }
 }
 
 extension AppProtectionSettingsCoordinator: SettingsObserver {
     func settingsDidChange(key: Settings.Keys) {
-        guard key != .recentUserActivityTimestamp else {
+        guard key != .recentUserActivityTimestamp else { return }
+        refresh()
+    }
+}
+
+extension AppProtectionSettingsCoordinator: AppProtectionSettingsVC.Delegate {
+    func didChangeAppProtectionEnabled(_ isEnabled: Bool, in viewController: AppProtectionSettingsVC) {
+        if isEnabled {
+            _showChangePasscode(isInitialSetup: true)
             return
         }
+
+        guard !ManagedAppConfig.shared.isRequireAppPasscodeSet else {
+            viewController.showManagedSettingNotification()
+            refresh()
+            return
+        }
+        Settings.current.isHideAppLockSetupReminder = false
+        do {
+            try Keychain.shared.removeAppPasscode()
+        } catch {
+            Diag.error(error.localizedDescription)
+            viewController.showErrorAlert(error, title: LString.titleKeychainError)
+        }
+    }
+
+    func didPressChangePasscode(in viewController: AppProtectionSettingsVC) {
+        _showChangePasscode(isInitialSetup: false)
+    }
+
+    func didChangeIsUseBiometric(_ isUseBiometric: Bool, in viewController: AppProtectionSettingsVC) {
+        let keychain = Keychain.shared
+        if keychain.prepareBiometricAuth(isUseBiometric) {
+            Settings.current.isBiometricAppLockEnabled = isUseBiometric
+        } else {
+            Settings.current.isBiometricAppLockEnabled = keychain.isBiometricAuthPrepared()
+        }
+        viewController.showNotificationIfManaged(setting: .biometricAppLockEnabled)
         refresh()
     }
-}
 
-extension AppProtectionSettingsCoordinator: SettingsAppLockViewControllerDelegate {
-    func didPressAppTimeout(in viewController: SettingsAppLockVC) {
-        showAppTimeoutSettingsPage()
-    }
-
-    func didPressChangePasscode(isInitialSetup: Bool, in viewController: SettingsAppLockVC) {
-        showChangePasscode(isInitialSetup: isInitialSetup)
-    }
-}
-
-extension AppProtectionSettingsCoordinator: PasscodeInputDelegate {
-    func passcodeInputDidCancel(_ sender: PasscodeInputVC) {
-        if sender.mode == .setup {
-            do {
-                try Keychain.shared.removeAppPasscode() 
-            } catch {
-                Diag.error(error.localizedDescription)
-                sender.showErrorAlert(error, title: LString.titleKeychainError)
-                return
-            }
-        }
+    func didChangeTimeout(_ timeout: Settings.AppLockTimeout, in viewController: AppProtectionSettingsVC) {
+        Settings.current.appLockTimeout = timeout
+        viewController.showNotificationIfManaged(setting: .appLockTimeout)
+        Watchdog.shared.restart()
         refresh()
-        sender.dismiss(animated: true, completion: nil)
     }
 
-    func passcodeInput(_sender: PasscodeInputVC, canAcceptPasscode passcode: String) -> Bool {
-        return passcode.count > 0
+    func didChangeIsLockOnScreenLock(_ isLockAppOnScreenLock: Bool, in viewController: AppProtectionSettingsVC) {
+        Settings.current.isLockAppOnScreenLock = isLockAppOnScreenLock
+        viewController.showNotificationIfManaged(setting: .lockAppOnScreenLock)
+        refresh()
     }
 
-    func passcodeInput(_ sender: PasscodeInputVC, didEnterPasscode passcode: String) {
-        sender.dismiss(animated: true) { [weak self] in
-            guard let self = self else { return }
-            do {
-                try Keychain.shared.setAppPasscode(passcode)
-                self.appProtectionSettingsVC.showNotification(LString.titleNewPasscodeSaved)
-            } catch {
-                Diag.error(error.localizedDescription)
-                self.appProtectionSettingsVC.showErrorAlert(error, title: LString.titleKeychainError)
-            }
-        }
+    func didChangeIsLockOnAppLaunch(_ isLockOnAppLaunch: Bool, in viewController: AppProtectionSettingsVC) {
+        Settings.current.isLockAppOnLaunch = isLockOnAppLaunch
+        viewController.showNotificationIfManaged(setting: .lockAppOnLaunch)
+        refresh()
+    }
+
+    func didChangeIsLockOnFailedPasscode(_ isLockOnFailedPasscode: Bool, in viewController: AppProtectionSettingsVC) {
+        Settings.current.isLockAllDatabasesOnFailedPasscode = isLockOnFailedPasscode
+        viewController.showNotificationIfManaged(setting: .lockAllDatabasesOnFailedPasscode)
+        refresh()
+    }
+
+    func didChangePasscodeAttemptsBeforeAppReset(
+        _ attempts: Settings.PasscodeAttemptsBeforeAppReset,
+        in viewController: AppProtectionSettingsVC
+    ) {
+        Settings.current.passcodeAttemptsBeforeAppReset = attempts
+        viewController.showNotificationIfManaged(setting: .passcodeAttemptsBeforeAppReset)
+        refresh()
     }
 }

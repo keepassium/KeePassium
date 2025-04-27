@@ -37,9 +37,9 @@
 		75060C6D2B8CEC35006C7B50 /* MacUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75060C692B8CEC35006C7B50 /* MacUtils.swift */; };
 		75060C6F2B8CECB4006C7B50 /* MacUtilsImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75060C6E2B8CECB4006C7B50 /* MacUtilsImpl.swift */; };
 		75065A3522C41B5200958243 /* SettingsAutoFillVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75065A3422C41B5200958243 /* SettingsAutoFillVC.swift */; };
-		75066D422DAF078A00A47446 /* NewAppProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75066D412DAF078A00A47446 /* NewAppProtectionSettingsCoordinator.swift */; };
-		75066D432DAF078A00A47446 /* NewAppProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75066D412DAF078A00A47446 /* NewAppProtectionSettingsCoordinator.swift */; };
-		75066D442DAF078A00A47446 /* NewAppProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75066D412DAF078A00A47446 /* NewAppProtectionSettingsCoordinator.swift */; };
+		75066D422DAF078A00A47446 /* AppProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75066D412DAF078A00A47446 /* AppProtectionSettingsCoordinator.swift */; };
+		75066D432DAF078A00A47446 /* AppProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75066D412DAF078A00A47446 /* AppProtectionSettingsCoordinator.swift */; };
+		75066D442DAF078A00A47446 /* AppProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75066D412DAF078A00A47446 /* AppProtectionSettingsCoordinator.swift */; };
 		75066D482DAF07ED00A47446 /* AppProtectionSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75066D472DAF07ED00A47446 /* AppProtectionSettingsVC.swift */; };
 		75066D492DAF07ED00A47446 /* AppProtectionSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75066D472DAF07ED00A47446 /* AppProtectionSettingsVC.swift */; };
 		75066D4A2DAF07ED00A47446 /* AppProtectionSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75066D472DAF07ED00A47446 /* AppProtectionSettingsVC.swift */; };
@@ -103,10 +103,8 @@
 		751DED742847B44B00B6D02E /* UITextInput+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751DED722847B44B00B6D02E /* UITextInput+extensions.swift */; };
 		751DED752847B44B00B6D02E /* UITextInput+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751DED722847B44B00B6D02E /* UITextInput+extensions.swift */; };
 		751DED762847B44B00B6D02E /* UITextInput+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751DED722847B44B00B6D02E /* UITextInput+extensions.swift */; };
-		751E0CE62309AE5D0088BB10 /* SettingsDataProtectionVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CE82309AE5D0088BB10 /* SettingsDataProtectionVC.storyboard */; };
 		751E0CEC2309AE8D0088BB10 /* SettingsVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CEE2309AE8D0088BB10 /* SettingsVC.storyboard */; };
 		751E0CEF2309AE920088BB10 /* SettingsBackupVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CF12309AE920088BB10 /* SettingsBackupVC.storyboard */; };
-		751E0CF22309AEB00088BB10 /* SettingsAppLockVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CF42309AEB00088BB10 /* SettingsAppLockVC.storyboard */; };
 		751E0CF52309AEBB0088BB10 /* SettingsAutoFillVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CF72309AEBB0088BB10 /* SettingsAutoFillVC.storyboard */; };
 		751E0CFB2309AF0D0088BB10 /* GroupViewerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CFD2309AF0D0088BB10 /* GroupViewerVC.storyboard */; };
 		751E0D012309AF1B0088BB10 /* EntryFieldEditorVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D032309AF1B0088BB10 /* EntryFieldEditorVC.storyboard */; };
@@ -167,14 +165,10 @@
 		75267D0125FF75E300A1CC95 /* ContextualAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75267CFD25FF75E300A1CC95 /* ContextualAction.swift */; };
 		7527601B2B7A5C8F0016B528 /* OnboardingPagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0C2032B2CA8790001946D /* OnboardingPagesVC.swift */; };
 		7527601C2B7A5C900016B528 /* OnboardingPagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0C2032B2CA8790001946D /* OnboardingPagesVC.swift */; };
-		7527FAB3262F71CC00623849 /* DataProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7527FAB2262F71CC00623849 /* DataProtectionSettingsCoordinator.swift */; };
-		7527FAB4262F71CC00623849 /* DataProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7527FAB2262F71CC00623849 /* DataProtectionSettingsCoordinator.swift */; };
 		7528C72728C532530037760C /* YubiKeyUSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD22DB27FDE59200636D66 /* YubiKeyUSB.swift */; };
 		7529310D21ADA46C00E4B0D2 /* FileInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529310C21ADA46C00E4B0D2 /* FileInfoVC.swift */; };
-		7529EAE9211416170093B117 /* SettingsAppLockVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529EAE8211416170093B117 /* SettingsAppLockVC.swift */; };
 		7529EAEB211577EA0093B117 /* UITableViewCell+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529EAEA211577EA0093B117 /* UITableViewCell+extension.swift */; };
 		752B1E9320E8AA070073AABD /* EditableField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B1E9220E8AA070073AABD /* EditableField.swift */; };
-		752ED68D2235547D00C20D3E /* SettingsDataProtectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752ED68C2235547D00C20D3E /* SettingsDataProtectionVC.swift */; };
 		752F5887247DCA5F0097ED20 /* SettingsSearchVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 752F588A247DCA5F0097ED20 /* SettingsSearchVC.storyboard */; };
 		752F5888247DCA5F0097ED20 /* SettingsSearchVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 752F588A247DCA5F0097ED20 /* SettingsSearchVC.storyboard */; };
 		7533030F23C52A1500F38CC7 /* DestinationGroupPickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7533031223C52A1500F38CC7 /* DestinationGroupPickerVC.storyboard */; };
@@ -240,8 +234,6 @@
 		754C2B222D8E289200E12BD2 /* TableFooterLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754C2B1D2D8E289200E12BD2 /* TableFooterLabelView.swift */; };
 		754CE07B299FA80000C3DE50 /* DatabasePrintFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754CE07A299FA80000C3DE50 /* DatabasePrintFormatter.swift */; };
 		754CE07C299FA80000C3DE50 /* DatabasePrintFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754CE07A299FA80000C3DE50 /* DatabasePrintFormatter.swift */; };
-		754E40862630271D003E4854 /* AppProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754E40852630271D003E4854 /* AppProtectionSettingsCoordinator.swift */; };
-		754E40872630271D003E4854 /* AppProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754E40852630271D003E4854 /* AppProtectionSettingsCoordinator.swift */; };
 		754E408C263067DD003E4854 /* DatabaseUnlockerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CFBE2921C2BDDF0029A80A /* DatabaseUnlockerVC.swift */; };
 		754E408F263067DE003E4854 /* DatabaseUnlockerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CFBE2921C2BDDF0029A80A /* DatabaseUnlockerVC.swift */; };
 		754E409826306927003E4854 /* DatabaseUnlockerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754E409726306927003E4854 /* DatabaseUnlockerCoordinator.swift */; };
@@ -257,9 +249,9 @@
 		754F7E482DB00820004235C8 /* PickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754F7E472DB00820004235C8 /* PickerCell.swift */; };
 		754F7E492DB00820004235C8 /* PickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754F7E472DB00820004235C8 /* PickerCell.swift */; };
 		754F7E4A2DB00820004235C8 /* PickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754F7E472DB00820004235C8 /* PickerCell.swift */; };
-		754F7E4E2DB04909004235C8 /* NewAppProtectionSettingsCoordinator+passcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754F7E4D2DB04908004235C8 /* NewAppProtectionSettingsCoordinator+passcode.swift */; };
-		754F7E4F2DB04909004235C8 /* NewAppProtectionSettingsCoordinator+passcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754F7E4D2DB04908004235C8 /* NewAppProtectionSettingsCoordinator+passcode.swift */; };
-		754F7E502DB04909004235C8 /* NewAppProtectionSettingsCoordinator+passcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754F7E4D2DB04908004235C8 /* NewAppProtectionSettingsCoordinator+passcode.swift */; };
+		754F7E4E2DB04909004235C8 /* AppProtectionSettingsCoordinator+passcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754F7E4D2DB04908004235C8 /* AppProtectionSettingsCoordinator+passcode.swift */; };
+		754F7E4F2DB04909004235C8 /* AppProtectionSettingsCoordinator+passcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754F7E4D2DB04908004235C8 /* AppProtectionSettingsCoordinator+passcode.swift */; };
+		754F7E502DB04909004235C8 /* AppProtectionSettingsCoordinator+passcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754F7E4D2DB04908004235C8 /* AppProtectionSettingsCoordinator+passcode.swift */; };
 		754F7E542DB144CF004235C8 /* SettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754F7E532DB144CF004235C8 /* SettingsItem.swift */; };
 		754F7E552DB144CF004235C8 /* SettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754F7E532DB144CF004235C8 /* SettingsItem.swift */; };
 		754F7E562DB144CF004235C8 /* SettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754F7E532DB144CF004235C8 /* SettingsItem.swift */; };
@@ -298,9 +290,9 @@
 		7561850320E033DB00EEFAEE /* WatchdogAwareTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7561850220E033DB00EEFAEE /* WatchdogAwareTextView.swift */; };
 		7561850520E0379F00EEFAEE /* ValidatingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7561850420E0379F00EEFAEE /* ValidatingTextView.swift */; };
 		75635F43223A2B250074D745 /* ViewEntryFieldCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75635F42223A2B250074D745 /* ViewEntryFieldCells.swift */; };
-		7564FAE82DB940BA0030F3C4 /* NewDataProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7564FAE72DB940BA0030F3C4 /* NewDataProtectionSettingsCoordinator.swift */; };
-		7564FAE92DB940BA0030F3C4 /* NewDataProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7564FAE72DB940BA0030F3C4 /* NewDataProtectionSettingsCoordinator.swift */; };
-		7564FAEA2DB940BA0030F3C4 /* NewDataProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7564FAE72DB940BA0030F3C4 /* NewDataProtectionSettingsCoordinator.swift */; };
+		7564FAE82DB940BA0030F3C4 /* DataProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7564FAE72DB940BA0030F3C4 /* DataProtectionSettingsCoordinator.swift */; };
+		7564FAE92DB940BA0030F3C4 /* DataProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7564FAE72DB940BA0030F3C4 /* DataProtectionSettingsCoordinator.swift */; };
+		7564FAEA2DB940BA0030F3C4 /* DataProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7564FAE72DB940BA0030F3C4 /* DataProtectionSettingsCoordinator.swift */; };
 		7564FAEC2DB941D40030F3C4 /* DataProtectionSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7564FAEB2DB941D40030F3C4 /* DataProtectionSettingsVC.swift */; };
 		7564FAED2DB941D40030F3C4 /* DataProtectionSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7564FAEB2DB941D40030F3C4 /* DataProtectionSettingsVC.swift */; };
 		7564FAEE2DB941D40030F3C4 /* DataProtectionSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7564FAEB2DB941D40030F3C4 /* DataProtectionSettingsVC.swift */; };
@@ -362,8 +354,6 @@
 		757CCFB22DBBB278005E6BE6 /* BaseSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757CCFB12DBBB278005E6BE6 /* BaseSettingsViewController.swift */; };
 		757CCFB32DBBB278005E6BE6 /* BaseSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757CCFB12DBBB278005E6BE6 /* BaseSettingsViewController.swift */; };
 		757CCFB42DBBB278005E6BE6 /* BaseSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757CCFB12DBBB278005E6BE6 /* BaseSettingsViewController.swift */; };
-		757D336120EF382D000A47F0 /* SettingsDatabaseTimeoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757D336020EF382D000A47F0 /* SettingsDatabaseTimeoutVC.swift */; };
-		757D336320EF5081000A47F0 /* SettingsClipboardTimeoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757D336220EF5081000A47F0 /* SettingsClipboardTimeoutVC.swift */; };
 		757D82742C091CDA006C8B96 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 75183ED02BB8A20A008F1614 /* PrivacyInfo.xcprivacy */; };
 		757D82752C091CDB006C8B96 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 75183ED02BB8A20A008F1614 /* PrivacyInfo.xcprivacy */; };
 		757E78DA2824135D009017BF /* PasswordGeneratorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757E78D92824135D009017BF /* PasswordGeneratorCoordinator.swift */; };
@@ -567,7 +557,6 @@
 		75917F442DAC6E8200EB9375 /* SelectableCollectionViewListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F412DAC6E8200EB9375 /* SelectableCollectionViewListCell.swift */; };
 		75917F452DAC6E8200EB9375 /* SelectableCollectionViewListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F412DAC6E8200EB9375 /* SelectableCollectionViewListCell.swift */; };
 		75917F462DAC6E8200EB9375 /* SelectableCollectionViewListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75917F412DAC6E8200EB9375 /* SelectableCollectionViewListCell.swift */; };
-		7596771E20FB36BD00E54827 /* SettingsAppTimeoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7596771D20FB36BD00E54827 /* SettingsAppTimeoutVC.swift */; };
 		7597DBD425F58BCF00D1A126 /* SettingsAppearanceVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7597DBD725F58BCF00D1A126 /* SettingsAppearanceVC.storyboard */; };
 		7597DBD525F58BCF00D1A126 /* SettingsAppearanceVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7597DBD725F58BCF00D1A126 /* SettingsAppearanceVC.storyboard */; };
 		759894B724620AF6006B6709 /* FileExportHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759894B624620AF6006B6709 /* FileExportHelper.swift */; };
@@ -671,7 +660,6 @@
 		75B38BF3233E5B7C006BDEFC /* NewsCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACD22FD896F00372301 /* NewsCenter.swift */; };
 		75B38BF4233E5B7C006BDEFC /* WatchdogAwareTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758BF0DC20D220B300897C83 /* WatchdogAwareTextField.swift */; };
 		75B38BF5233E5B7C006BDEFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754BF07E2082A6BD00E3A292 /* AppDelegate.swift */; };
-		75B38BF8233E5B7C006BDEFC /* SettingsDataProtectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752ED68C2235547D00C20D3E /* SettingsDataProtectionVC.swift */; };
 		75B38BFA233E5B7C006BDEFC /* UserNameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E4CA5C232C455D00EB6805 /* UserNameHelper.swift */; };
 		75B38BFB233E5B7C006BDEFC /* WatchdogAwareTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7561850220E033DB00EEFAEE /* WatchdogAwareTextView.swift */; };
 		75B38BFC233E5B7C006BDEFC /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBC520C1027700C5D834 /* SettingsVC.swift */; };
@@ -679,7 +667,6 @@
 		75B38BFF233E5B7C006BDEFC /* SKProduct+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F924D2290705D005E496F /* SKProduct+extension.swift */; };
 		75B38C00233E5B7C006BDEFC /* UIViewController+storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C3801A217A0B76006F74C2 /* UIViewController+storyboard.swift */; };
 		75B38C01233E5B7C006BDEFC /* FileInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529310C21ADA46C00E4B0D2 /* FileInfoVC.swift */; };
-		75B38C02233E5B7C006BDEFC /* SettingsDatabaseTimeoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757D336020EF382D000A47F0 /* SettingsDatabaseTimeoutVC.swift */; };
 		75B38C03233E5B7C006BDEFC /* AppCoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550D24B215FDEC500360E0C /* AppCoverVC.swift */; };
 		75B38C05233E5B7C006BDEFC /* EntryFieldEditorCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75514A3320DF5B6200202340 /* EntryFieldEditorCells.swift */; };
 		75B38C06233E5B7C006BDEFC /* RootSplitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BCEAF2144E6E7002FC18B /* RootSplitVC.swift */; };
@@ -693,7 +680,6 @@
 		75B38C10233E5B7C006BDEFC /* UITableViewCell+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529EAEA211577EA0093B117 /* UITableViewCell+extension.swift */; };
 		75B38C12233E5B7C006BDEFC /* EntryHistoryViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C94C6020B4BAC4004FA29D /* EntryHistoryViewerVC.swift */; };
 		75B38C15233E5B7C006BDEFC /* SearchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B24DD421C523AE003C9486 /* SearchHelper.swift */; };
-		75B38C17233E5B7C006BDEFC /* SettingsClipboardTimeoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757D336220EF5081000A47F0 /* SettingsClipboardTimeoutVC.swift */; };
 		75B38C18233E5B7C006BDEFC /* ItemCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5FB7820D6101100D402D9 /* ItemCategory.swift */; };
 		75B38C19233E5B7C006BDEFC /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D1674921464333005E33C3 /* AboutVC.swift */; };
 		75B38C1A233E5B7C006BDEFC /* EntryFieldEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750C683120D767F6001A6AA0 /* EntryFieldEditorVC.swift */; };
@@ -723,7 +709,6 @@
 		75B38C39233E5B7C006BDEFC /* PasscodeInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757FB3C721F8D34A00F016FA /* PasscodeInputVC.swift */; };
 		75B38C3A233E5B7C006BDEFC /* MultilineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7573FD8A2321664F00DCDA5A /* MultilineButton.swift */; };
 		75B38C3D233E5B7C006BDEFC /* DatabaseCreatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D8E8F2274D2BE00644FA6 /* DatabaseCreatorVC.swift */; };
-		75B38C3E233E5B7C006BDEFC /* SettingsAppLockVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529EAE8211416170093B117 /* SettingsAppLockVC.swift */; };
 		75B38C3F233E5B7C006BDEFC /* ValidatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758BF0D720D1B1DA00897C83 /* ValidatingTextField.swift */; };
 		75B38C41233E5B7C006BDEFC /* SettingsBackupTimeoutPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578488E22C1DFF400BBEF9A /* SettingsBackupTimeoutPickerVC.swift */; };
 		75B38C42233E5B7C006BDEFC /* UIAlertController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C5C3752129DE0800CD7FE3 /* UIAlertController+extensions.swift */; };
@@ -731,7 +716,6 @@
 		75B38C46233E5B7C006BDEFC /* EntryViewerPagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C94C5A20B4B8C2004FA29D /* EntryViewerPagesVC.swift */; };
 		75B38C47233E5B7C006BDEFC /* UITableViewCell+demoEditActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578487C22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift */; };
 		75B38C48233E5B7C006BDEFC /* ProgressViewHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75779863223023D3006671BD /* ProgressViewHost.swift */; };
-		75B38C49233E5B7C006BDEFC /* SettingsAppTimeoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7596771D20FB36BD00E54827 /* SettingsAppTimeoutVC.swift */; };
 		75B38C4A233E5B7C006BDEFC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBDA20C3AC5E00C5D834 /* main.swift */; };
 		75B38C4D233E5B7C006BDEFC /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7550D231215D758800360E0C /* AuthenticationServices.framework */; };
 		75B38C4E233E5B7C006BDEFC /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75CD363E21521FAE0018AF46 /* LocalAuthentication.framework */; };
@@ -742,7 +726,6 @@
 		75B38C55233E5B7C006BDEFC /* SettingsBackupVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CF12309AE920088BB10 /* SettingsBackupVC.storyboard */; };
 		75B38C56233E5B7C006BDEFC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 755E7DA0232008300010E199 /* Localizable.strings */; };
 		75B38C59233E5B7C006BDEFC /* ItemIconPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D242309AFAC0088BB10 /* ItemIconPicker.storyboard */; };
-		75B38C5A233E5B7C006BDEFC /* SettingsAppTimeoutVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED428B23132A80003DE72E /* SettingsAppTimeoutVC.storyboard */; };
 		75B38C5B233E5B7C006BDEFC /* EntryFieldViewerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D0C2309AF380088BB10 /* EntryFieldViewerVC.storyboard */; };
 		75B38C5C233E5B7C006BDEFC /* SettingsBackupTimeoutPickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED429423133DEF003DE72E /* SettingsBackupTimeoutPickerVC.storyboard */; };
 		75B38C5E233E5B7C006BDEFC /* EntryFieldEditorVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D032309AF1B0088BB10 /* EntryFieldEditorVC.storyboard */; };
@@ -753,14 +736,11 @@
 		75B38C65233E5B7C006BDEFC /* GroupViewerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CFD2309AF0D0088BB10 /* GroupViewerVC.storyboard */; };
 		75B38C68233E5B7C006BDEFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 754BF0892082A6BD00E3A292 /* Assets.xcassets */; };
 		75B38C69233E5B7C006BDEFC /* PasscodeInputVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755B863423054FAD00E9FC83 /* PasscodeInputVC.storyboard */; };
-		75B38C6C233E5B7C006BDEFC /* SettingsAppLockVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CF42309AEB00088BB10 /* SettingsAppLockVC.storyboard */; };
 		75B38C6E233E5B7C006BDEFC /* EntryFileViewerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D0F2309AF400088BB10 /* EntryFileViewerVC.storyboard */; };
 		75B38C6F233E5B7C006BDEFC /* FileInfoVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D282309AFBA0088BB10 /* FileInfoVC.storyboard */; };
 		75B38C70233E5B7C006BDEFC /* PlaceholderVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C38044217A3204006F74C2 /* PlaceholderVC.storyboard */; };
 		75B38C73233E5B7C006BDEFC /* SettingsAutoFillVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CF72309AEBB0088BB10 /* SettingsAutoFillVC.storyboard */; };
 		75B38C74233E5B7C006BDEFC /* DatabaseUnlockerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D1E2309AF670088BB10 /* DatabaseUnlockerVC.storyboard */; };
-		75B38C75233E5B7C006BDEFC /* SettingsClipboardTimeoutVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED42A62313C0BB003DE72E /* SettingsClipboardTimeoutVC.storyboard */; };
-		75B38C76233E5B7C006BDEFC /* SettingsDataProtectionVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CE82309AE5D0088BB10 /* SettingsDataProtectionVC.storyboard */; };
 		75B38C77233E5B7C006BDEFC /* SettingsVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CEE2309AE8D0088BB10 /* SettingsVC.storyboard */; };
 		75B38C78233E5B7C006BDEFC /* AppCoverVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C3802C217A2650006F74C2 /* AppCoverVC.storyboard */; };
 		75B3B7BC20EABD9D007E8FA9 /* PlaceholderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B3B7BB20EABD9D007E8FA9 /* PlaceholderVC.swift */; };
@@ -870,7 +850,6 @@
 		75D075B528B639D200F02E39 /* PasswordGeneratorLengthCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF1931282E621600FA4BB5 /* PasswordGeneratorLengthCell.swift */; };
 		75D075B628B639D200F02E39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754BF07E2082A6BD00E3A292 /* AppDelegate.swift */; };
 		75D075B828B639D200F02E39 /* AppHistoryViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7579A06624F0730A00C98F24 /* AppHistoryViewerVC.swift */; };
-		75D075B928B639D200F02E39 /* SettingsDataProtectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752ED68C2235547D00C20D3E /* SettingsDataProtectionVC.swift */; };
 		75D075BA28B639D200F02E39 /* AppIconSwitcherCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751A565424CCD3FF001227D6 /* AppIconSwitcherCoordinator.swift */; };
 		75D075BB28B639D200F02E39 /* FileExportHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759894B624620AF6006B6709 /* FileExportHelper.swift */; };
 		75D075BC28B639D200F02E39 /* UserNameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E4CA5C232C455D00EB6805 /* UserNameHelper.swift */; };
@@ -888,7 +867,6 @@
 		75D075C928B639D200F02E39 /* DatabaseUnlockerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754E409726306927003E4854 /* DatabaseUnlockerCoordinator.swift */; };
 		75D075CA28B639D200F02E39 /* FileInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529310C21ADA46C00E4B0D2 /* FileInfoVC.swift */; };
 		75D075CB28B639D200F02E39 /* URLReference+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BC62B2487FE5200E88111 /* URLReference+extensions.swift */; };
-		75D075CC28B639D200F02E39 /* SettingsDatabaseTimeoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757D336020EF382D000A47F0 /* SettingsDatabaseTimeoutVC.swift */; };
 		75D075CD28B639D200F02E39 /* AppCoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550D24B215FDEC500360E0C /* AppCoverVC.swift */; };
 		75D075CE28B639D200F02E39 /* AboutCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D7614E262DDE0B00B1DE7F /* AboutCoordinator.swift */; };
 		75D075D028B639D200F02E39 /* WebDAVConnectionSetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E73A2888A3F500ECBEC8 /* WebDAVConnectionSetupVC.swift */; };
@@ -933,7 +911,6 @@
 		75D075FB28B639D200F02E39 /* DatabaseSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C1AF802731E46800E33AAC /* DatabaseSettingsCoordinator.swift */; };
 		75D075FC28B639D200F02E39 /* DatabaseViewerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EC7BFC262B05E100D8C7EB /* DatabaseViewerCoordinator.swift */; };
 		75D075FD28B639D200F02E39 /* SearchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B24DD421C523AE003C9486 /* SearchHelper.swift */; };
-		75D075FE28B639D200F02E39 /* SettingsClipboardTimeoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757D336220EF5081000A47F0 /* SettingsClipboardTimeoutVC.swift */; };
 		75D075FF28B639D200F02E39 /* UITextInput+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751DED722847B44B00B6D02E /* UITextInput+extensions.swift */; };
 		75D0760028B639D200F02E39 /* ItemCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5FB7820D6101100D402D9 /* ItemCategory.swift */; };
 		75D0760128B639D200F02E39 /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D1674921464333005E33C3 /* AboutVC.swift */; };
@@ -984,14 +961,12 @@
 		75D0763328B639D200F02E39 /* DiagnosticsViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BE063E25DB1A1A00B34CC0 /* DiagnosticsViewerVC.swift */; };
 		75D0763428B639D200F02E39 /* EntryFieldEditorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7588B6C52627351800F5D372 /* EntryFieldEditorCoordinator.swift */; };
 		75D0763628B639D200F02E39 /* SettingsAutoFillVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75065A3422C41B5200958243 /* SettingsAutoFillVC.swift */; };
-		75D0763728B639D200F02E39 /* AppProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754E40852630271D003E4854 /* AppProtectionSettingsCoordinator.swift */; };
 		75D0763828B639D200F02E39 /* Watchdog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBD820C3A3F600C5D834 /* Watchdog.swift */; };
 		75D0763A28B639D200F02E39 /* PremiumCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A26775228F02C70097C693 /* PremiumCoordinator.swift */; };
 		75D0763B28B639D200F02E39 /* PasscodeInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757FB3C721F8D34A00F016FA /* PasscodeInputVC.swift */; };
 		75D0763C28B639D200F02E39 /* MultilineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7573FD8A2321664F00DCDA5A /* MultilineButton.swift */; };
 		75D0763E28B639D200F02E39 /* TipBoxCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755B435A26BC894200C24386 /* TipBoxCoordinator.swift */; };
 		75D0763F28B639D200F02E39 /* DatabaseCreatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D8E8F2274D2BE00644FA6 /* DatabaseCreatorVC.swift */; };
-		75D0764028B639D200F02E39 /* SettingsAppLockVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529EAE8211416170093B117 /* SettingsAppLockVC.swift */; };
 		75D0764128B639D200F02E39 /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AFC1B025FB7C38005FF4D7 /* QRCodeScanner.swift */; };
 		75D0764228B639D200F02E39 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CBAB9C21C166D600B8AFE2 /* Coordinator.swift */; };
 		75D0764328B639D200F02E39 /* SettingsAppearanceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DACE722573B49700A110DD /* SettingsAppearanceVC.swift */; };
@@ -1020,11 +995,9 @@
 		75D0765A28B639D200F02E39 /* FieldCopiedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7589FDCC28B4EA2100CCC76B /* FieldCopiedView.swift */; };
 		75D0765B28B639D200F02E39 /* UITableViewCell+demoEditActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578487C22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift */; };
 		75D0765C28B639D200F02E39 /* DatabaseSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758E5EF125F2E22600E06AE7 /* DatabaseSaving.swift */; };
-		75D0765D28B639D200F02E39 /* DataProtectionSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7527FAB2262F71CC00623849 /* DataProtectionSettingsCoordinator.swift */; };
 		75D0765F28B639D200F02E39 /* ProgressViewHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75779863223023D3006671BD /* ProgressViewHost.swift */; };
 		75D0766028B639D200F02E39 /* KeyboardDismissable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538936826D3BEBE00CAB107 /* KeyboardDismissable.swift */; };
 		75D0766128B639D200F02E39 /* GradientSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758BADB424B5EAFF00CC9265 /* GradientSeparatorView.swift */; };
-		75D0766228B639D200F02E39 /* SettingsAppTimeoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7596771D20FB36BD00E54827 /* SettingsAppTimeoutVC.swift */; };
 		75D0766328B639D200F02E39 /* AppHistoryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7579A06F24F1C55B00C98F24 /* AppHistoryCoordinator.swift */; };
 		75D0766428B639D200F02E39 /* RightDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E7442888B56600ECBEC8 /* RightDetailCell.swift */; };
 		75D0766528B639D200F02E39 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBDA20C3AC5E00C5D834 /* main.swift */; };
@@ -1051,7 +1024,6 @@
 		75D0768228B639D200F02E39 /* ItemIconPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D242309AFAC0088BB10 /* ItemIconPicker.storyboard */; };
 		75D0768328B639D200F02E39 /* ExpiryDateEditorVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 750E72D126A4D32600CDBFFA /* ExpiryDateEditorVC.storyboard */; };
 		75D0768428B639D200F02E39 /* appicon-classic-free_iPhoneApp_60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0E024CEF71600BAD35C /* appicon-classic-free_iPhoneApp_60@3x.png */; };
-		75D0768528B639D200F02E39 /* SettingsAppTimeoutVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED428B23132A80003DE72E /* SettingsAppTimeoutVC.storyboard */; };
 		75D0768628B639D200F02E39 /* EntryFieldViewerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D0C2309AF380088BB10 /* EntryFieldViewerVC.storyboard */; };
 		75D0768728B639D200F02E39 /* appicon-atom-black_iPhoneApp_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC10024CEF71C00BAD35C /* appicon-atom-black_iPhoneApp_60@2x.png */; };
 		75D0768828B639D200F02E39 /* SettingsBackupTimeoutPickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED429423133DEF003DE72E /* SettingsBackupTimeoutPickerVC.storyboard */; };
@@ -1085,7 +1057,6 @@
 		75D076AE28B639D200F02E39 /* PricingPlanPickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 758BAD9A24B53ABF00CC9265 /* PricingPlanPickerVC.storyboard */; };
 		75D076AF28B639D200F02E39 /* SyncConflictAlert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75D9913C26CEEDC800823331 /* SyncConflictAlert.storyboard */; };
 		75D076B228B639D200F02E39 /* appicon-classic-free_iPadApp_76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0DB24CEF71500BAD35C /* appicon-classic-free_iPadApp_76@2x.png */; };
-		75D076B328B639D200F02E39 /* SettingsAppLockVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CF42309AEB00088BB10 /* SettingsAppLockVC.storyboard */; };
 		75D076B528B639D200F02E39 /* appicon-classic-pro_iPadApp_76.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC10324CEF71D00BAD35C /* appicon-classic-pro_iPadApp_76.png */; };
 		75D076B628B639D200F02E39 /* appicon-classic-free_iPhoneApp_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0EA24CEF71700BAD35C /* appicon-classic-free_iPhoneApp_60@2x.png */; };
 		75D076B728B639D200F02E39 /* EntryFileViewerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D0F2309AF400088BB10 /* EntryFileViewerVC.storyboard */; };
@@ -1103,8 +1074,6 @@
 		75D076C828B639D200F02E39 /* appicon-atom-white_iPhoneApp_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0DC24CEF71500BAD35C /* appicon-atom-white_iPhoneApp_60@2x.png */; };
 		75D076C928B639D200F02E39 /* SettingsAutoFillVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CF72309AEBB0088BB10 /* SettingsAutoFillVC.storyboard */; };
 		75D076CA28B639D200F02E39 /* DatabaseUnlockerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0D1E2309AF670088BB10 /* DatabaseUnlockerVC.storyboard */; };
-		75D076CB28B639D200F02E39 /* SettingsClipboardTimeoutVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED42A62313C0BB003DE72E /* SettingsClipboardTimeoutVC.storyboard */; };
-		75D076CC28B639D200F02E39 /* SettingsDataProtectionVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CE82309AE5D0088BB10 /* SettingsDataProtectionVC.storyboard */; };
 		75D076CD28B639D200F02E39 /* appicon-classic-free_iPadProApp_83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 758FC0F824CEF71A00BAD35C /* appicon-classic-free_iPadProApp_83.5@2x.png */; };
 		75D076CE28B639D200F02E39 /* SettingsVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751E0CEE2309AE8D0088BB10 /* SettingsVC.storyboard */; };
 		75D076CF28B639D200F02E39 /* AppCoverVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C3802C217A2650006F74C2 /* AppCoverVC.storyboard */; };
@@ -1249,9 +1218,7 @@
 		75EC7BFE262B05E100D8C7EB /* DatabaseViewerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EC7BFC262B05E100D8C7EB /* DatabaseViewerCoordinator.swift */; };
 		75EC7C04262B161F00D8C7EB /* DatabaseLoadingWarningsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EC7C03262B161F00D8C7EB /* DatabaseLoadingWarningsVC.swift */; };
 		75EC7C05262B161F00D8C7EB /* DatabaseLoadingWarningsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EC7C03262B161F00D8C7EB /* DatabaseLoadingWarningsVC.swift */; };
-		75ED428923132A80003DE72E /* SettingsAppTimeoutVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED428B23132A80003DE72E /* SettingsAppTimeoutVC.storyboard */; };
 		75ED429223133DEF003DE72E /* SettingsBackupTimeoutPickerVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED429423133DEF003DE72E /* SettingsBackupTimeoutPickerVC.storyboard */; };
-		75ED42A42313C0BB003DE72E /* SettingsClipboardTimeoutVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ED42A62313C0BB003DE72E /* SettingsClipboardTimeoutVC.storyboard */; };
 		75EEC20F2747EE6A0092505F /* AutoFillSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EEC20E2747EE6A0092505F /* AutoFillSettingsCoordinator.swift */; };
 		75EEC2102747EE6A0092505F /* AutoFillSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EEC20E2747EE6A0092505F /* AutoFillSettingsCoordinator.swift */; };
 		75EEC22127484DD90092505F /* QuickAutoFillPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EEC22027484DD90092505F /* QuickAutoFillPrompt.swift */; };
@@ -1375,17 +1342,14 @@
 		F32228172CCEC4230093BD9C /* KeyFileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32228142CCEC4230093BD9C /* KeyFileTextField.swift */; };
 		F32228182CCEC4230093BD9C /* KeyFileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32228142CCEC4230093BD9C /* KeyFileTextField.swift */; };
 		F32228192CCEC4230093BD9C /* KeyFileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32228142CCEC4230093BD9C /* KeyFileTextField.swift */; };
-		F326756D2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F326756C2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift */; };
-		F326756E2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F326756C2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift */; };
-		F326756F2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F326756C2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift */; };
 		F32675672D8EDCA50007EA7E /* AppEraser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32675662D8EDCA50007EA7E /* AppEraser.swift */; };
 		F32675682D8EDCA50007EA7E /* AppEraser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32675662D8EDCA50007EA7E /* AppEraser.swift */; };
 		F32675692D8EDCA50007EA7E /* AppEraser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32675662D8EDCA50007EA7E /* AppEraser.swift */; };
 		F326756A2D8EDCA50007EA7E /* AppEraser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32675662D8EDCA50007EA7E /* AppEraser.swift */; };
 		F326756B2D8EDCA50007EA7E /* AppEraser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32675662D8EDCA50007EA7E /* AppEraser.swift */; };
-		F32B53B12D748AC000BAF5C9 /* SettingsEraseDataFailedAttemptsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32B53B02D748AC000BAF5C9 /* SettingsEraseDataFailedAttemptsVC.swift */; };
-		F32B53B22D748AC000BAF5C9 /* SettingsEraseDataFailedAttemptsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32B53B02D748AC000BAF5C9 /* SettingsEraseDataFailedAttemptsVC.swift */; };
-		F32B53B32D748AC000BAF5C9 /* SettingsEraseDataFailedAttemptsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32B53B02D748AC000BAF5C9 /* SettingsEraseDataFailedAttemptsVC.swift */; };
+		F326756D2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F326756C2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift */; };
+		F326756E2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F326756C2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift */; };
+		F326756F2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F326756C2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift */; };
 		F331EF282A8509860084473D /* Zxcvbn in Frameworks */ = {isa = PBXBuildFile; productRef = F331EF272A8509860084473D /* Zxcvbn */; };
 		F331EF2A2A8509A10084473D /* Zxcvbn in Frameworks */ = {isa = PBXBuildFile; productRef = F331EF292A8509A10084473D /* Zxcvbn */; };
 		F331EF2C2A8509AC0084473D /* Zxcvbn in Frameworks */ = {isa = PBXBuildFile; productRef = F331EF2B2A8509AC0084473D /* Zxcvbn */; };
@@ -1458,9 +1422,6 @@
 		F38A48C62A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38A48C32A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift */; };
 		F38A48C72A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38A48C32A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift */; };
 		F38A48C82A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38A48C32A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift */; };
-		F38DB2292D131568008A8D7A /* SettingsShakeGestureActionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DB2282D131568008A8D7A /* SettingsShakeGestureActionVC.swift */; };
-		F38DB22A2D131568008A8D7A /* SettingsShakeGestureActionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DB2282D131568008A8D7A /* SettingsShakeGestureActionVC.swift */; };
-		F38DB22B2D131568008A8D7A /* SettingsShakeGestureActionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DB2282D131568008A8D7A /* SettingsShakeGestureActionVC.swift */; };
 		F3A2186D2C27045E006AB8F8 /* GroupEditorNotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A2186C2C27045E006AB8F8 /* GroupEditorNotesCell.swift */; };
 		F3A2186E2C27045E006AB8F8 /* GroupEditorNotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A2186C2C27045E006AB8F8 /* GroupEditorNotesCell.swift */; };
 		F3A2186F2C27045E006AB8F8 /* GroupEditorNotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A2186C2C27045E006AB8F8 /* GroupEditorNotesCell.swift */; };
@@ -1627,7 +1588,7 @@
 		75060C692B8CEC35006C7B50 /* MacUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacUtils.swift; sourceTree = "<group>"; };
 		75060C6E2B8CECB4006C7B50 /* MacUtilsImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacUtilsImpl.swift; sourceTree = "<group>"; };
 		75065A3422C41B5200958243 /* SettingsAutoFillVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAutoFillVC.swift; sourceTree = "<group>"; };
-		75066D412DAF078A00A47446 /* NewAppProtectionSettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAppProtectionSettingsCoordinator.swift; sourceTree = "<group>"; };
+		75066D412DAF078A00A47446 /* AppProtectionSettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppProtectionSettingsCoordinator.swift; sourceTree = "<group>"; };
 		75066D472DAF07ED00A47446 /* AppProtectionSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppProtectionSettingsVC.swift; sourceTree = "<group>"; };
 		750BA15224BE624B00BDF1CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		750C0D532B64067600821CA4 /* WebDAVConnectionSetupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebDAVConnectionSetupCoordinator.swift; sourceTree = "<group>"; };
@@ -1689,23 +1650,17 @@
 		751C41D42700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/FileInfoVC.strings; sourceTree = "<group>"; };
 		751C41D52700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/PasscodeInputVC.strings; sourceTree = "<group>"; };
 		751C41DA2700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/PricingPlanPickerVC.strings; sourceTree = "<group>"; };
-		751C41DB2700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SettingsAppLockVC.strings; sourceTree = "<group>"; };
-		751C41DC2700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
 		751C41DD2700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
 		751C41DE2700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
 		751C41DF2700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SettingsBackupTimeoutPickerVC.strings; sourceTree = "<group>"; };
 		751C41E02700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SettingsBackupVC.strings; sourceTree = "<group>"; };
 		751C41E12700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SettingsSearchVC.strings; sourceTree = "<group>"; };
 		751C41E22700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SettingsVC.strings; sourceTree = "<group>"; };
-		751C41E32700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SettingsClipboardTimeoutVC.strings; sourceTree = "<group>"; };
-		751C41E52700E4260002FB8F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SettingsDataProtectionVC.strings; sourceTree = "<group>"; };
 		751C7D4F2BDFE3A0006A58F4 /* XMLParsingSanityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParsingSanityTests.swift; sourceTree = "<group>"; };
 		751C7D532BE03582006A58F4 /* XMLParsingCompletenessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParsingCompletenessTests.swift; sourceTree = "<group>"; };
 		751DED722847B44B00B6D02E /* UITextInput+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextInput+extensions.swift"; sourceTree = "<group>"; };
-		751E0CE72309AE5D0088BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SettingsDataProtectionVC.storyboard; sourceTree = "<group>"; };
 		751E0CED2309AE8D0088BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SettingsVC.storyboard; sourceTree = "<group>"; };
 		751E0CF02309AE920088BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SettingsBackupVC.storyboard; sourceTree = "<group>"; };
-		751E0CF32309AEB00088BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SettingsAppLockVC.storyboard; sourceTree = "<group>"; };
 		751E0CF62309AEBB0088BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SettingsAutoFillVC.storyboard; sourceTree = "<group>"; };
 		751E0CFC2309AF0D0088BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/GroupViewerVC.storyboard; sourceTree = "<group>"; };
 		751E0D022309AF1B0088BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/EntryFieldEditorVC.storyboard; sourceTree = "<group>"; };
@@ -1746,12 +1701,9 @@
 		7527CC5F25F52D96000E8661 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/DestinationGroupPickerVC.strings"; sourceTree = "<group>"; };
 		7527CC6025F52DA5000E8661 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/DestinationGroupPickerVC.strings"; sourceTree = "<group>"; };
 		7527E6CC25F58E6800CB9AA0 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/SettingsAppearanceVC.strings"; sourceTree = "<group>"; };
-		7527FAB2262F71CC00623849 /* DataProtectionSettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProtectionSettingsCoordinator.swift; sourceTree = "<group>"; };
 		7529310C21ADA46C00E4B0D2 /* FileInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileInfoVC.swift; sourceTree = "<group>"; };
-		7529EAE8211416170093B117 /* SettingsAppLockVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAppLockVC.swift; sourceTree = "<group>"; };
 		7529EAEA211577EA0093B117 /* UITableViewCell+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+extension.swift"; sourceTree = "<group>"; };
 		752B1E9220E8AA070073AABD /* EditableField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableField.swift; sourceTree = "<group>"; };
-		752ED68C2235547D00C20D3E /* SettingsDataProtectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDataProtectionVC.swift; sourceTree = "<group>"; };
 		752F5889247DCA5F0097ED20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SettingsSearchVC.storyboard; sourceTree = "<group>"; };
 		752F588E247DCA660097ED20 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SettingsSearchVC.strings"; sourceTree = "<group>"; };
 		752F5890247DCA670097ED20 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SettingsSearchVC.strings"; sourceTree = "<group>"; };
@@ -1769,17 +1721,14 @@
 		7531911A263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/DatabaseKeyChangerVC.strings; sourceTree = "<group>"; };
 		7531911B263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7531911C263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		7531911D263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/SettingsDataProtectionVC.strings; sourceTree = "<group>"; };
 		7531911E263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/EntryFieldViewerVC.strings; sourceTree = "<group>"; };
 		7531911F263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
 		75319120263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/SettingsBackupTimeoutPickerVC.strings; sourceTree = "<group>"; };
-		75319121263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/SettingsAppLockVC.strings; sourceTree = "<group>"; };
 		75319122263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/SettingsBackupVC.strings; sourceTree = "<group>"; };
 		75319125263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/DatabaseUnlockerVC.strings; sourceTree = "<group>"; };
 		75319126263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/EntryViewerPagesVC.strings; sourceTree = "<group>"; };
 		75319128263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
 		75319129263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/GroupViewerVC.strings; sourceTree = "<group>"; };
-		7531912C263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
 		7531912E263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/AboutVC.strings; sourceTree = "<group>"; };
 		7531912F263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
 		75319131263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/FirstSetupVC.strings; sourceTree = "<group>"; };
@@ -1788,7 +1737,6 @@
 		75319134263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/EntryFileViewerVC.strings; sourceTree = "<group>"; };
 		75319137263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/DatabaseCreatorVC.strings; sourceTree = "<group>"; };
 		75319138263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/SettingsVC.strings; sourceTree = "<group>"; };
-		7531913C263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/SettingsClipboardTimeoutVC.strings; sourceTree = "<group>"; };
 		7531913D263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/PasscodeInputVC.strings; sourceTree = "<group>"; };
 		7531913E263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/EntryFieldEditorVC.strings; sourceTree = "<group>"; };
 		7531913F263800DC000A1119 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/ItemIconPicker.strings; sourceTree = "<group>"; };
@@ -1804,15 +1752,12 @@
 		7532822024A8049F00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/EntryFieldViewerVC.strings; sourceTree = "<group>"; };
 		7532822124A8049F00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
 		7532822224A8049F00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/EntryFieldEditorVC.strings; sourceTree = "<group>"; };
-		7532822324A8049F00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SettingsAppLockVC.strings; sourceTree = "<group>"; };
 		7532822424A8049F00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SettingsBackupVC.strings; sourceTree = "<group>"; };
 		7532822624A8049F00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/ItemIconPicker.strings; sourceTree = "<group>"; };
-		7532822824A8049F00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SettingsDataProtectionVC.strings; sourceTree = "<group>"; };
 		7532822A24A8049F00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/DatabaseUnlockerVC.strings; sourceTree = "<group>"; };
 		7532822B24A8049F00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/EntryViewerPagesVC.strings; sourceTree = "<group>"; };
 		7532822E24A8049F00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
 		7532822F24A8049F00A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/GroupViewerVC.strings; sourceTree = "<group>"; };
-		7532823224A804A000A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
 		7532823424A804A000A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
 		7532823524A804A000A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/AboutVC.strings; sourceTree = "<group>"; };
 		7532823624A804A000A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/EntryFileViewerVC.strings; sourceTree = "<group>"; };
@@ -1820,7 +1765,6 @@
 		7532823824A804A000A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/EntryHistoryViewerVC.strings; sourceTree = "<group>"; };
 		7532823C24A804A000A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/DatabaseCreatorVC.strings; sourceTree = "<group>"; };
 		7532823E24A804A000A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SettingsVC.strings; sourceTree = "<group>"; };
-		7532824124A804A000A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SettingsClipboardTimeoutVC.strings; sourceTree = "<group>"; };
 		7532824324A804A000A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/PasscodeInputVC.strings; sourceTree = "<group>"; };
 		7532824424A804A000A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SettingsSearchVC.strings; sourceTree = "<group>"; };
 		7532824524A804A000A71F87 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SettingsBackupTimeoutPickerVC.strings; sourceTree = "<group>"; };
@@ -1836,13 +1780,10 @@
 		75339563263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/EntryFieldViewerVC.strings; sourceTree = "<group>"; };
 		75339564263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
 		75339565263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/SettingsBackupVC.strings; sourceTree = "<group>"; };
-		75339566263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/SettingsAppLockVC.strings; sourceTree = "<group>"; };
-		75339567263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/SettingsDataProtectionVC.strings; sourceTree = "<group>"; };
 		7533956A263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/DatabaseUnlockerVC.strings; sourceTree = "<group>"; };
 		7533956B263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/EntryViewerPagesVC.strings; sourceTree = "<group>"; };
 		7533956D263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
 		7533956E263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/GroupViewerVC.strings; sourceTree = "<group>"; };
-		75339571263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
 		75339573263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
 		75339574263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/AboutVC.strings; sourceTree = "<group>"; };
 		75339576263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/FirstSetupVC.strings; sourceTree = "<group>"; };
@@ -1851,7 +1792,6 @@
 		75339579263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/EntryFileViewerVC.strings; sourceTree = "<group>"; };
 		7533957C263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/DatabaseCreatorVC.strings; sourceTree = "<group>"; };
 		7533957D263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/SettingsVC.strings; sourceTree = "<group>"; };
-		75339581263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/SettingsClipboardTimeoutVC.strings; sourceTree = "<group>"; };
 		75339582263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/PasscodeInputVC.strings; sourceTree = "<group>"; };
 		75339583263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/EntryFieldEditorVC.strings; sourceTree = "<group>"; };
 		75339584263800AA00341D24 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/ItemIconPicker.strings; sourceTree = "<group>"; };
@@ -1868,13 +1808,10 @@
 		753438072643FE6E0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/EntryFieldViewerVC.strings; sourceTree = "<group>"; };
 		753438082643FE6E0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
 		753438092643FE6E0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
-		7534380A2643FE6E0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SettingsAppLockVC.strings; sourceTree = "<group>"; };
-		7534380B2643FE6E0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SettingsDataProtectionVC.strings; sourceTree = "<group>"; };
 		7534380E2643FE6E0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/DatabaseUnlockerVC.strings; sourceTree = "<group>"; };
 		7534380F2643FE6E0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/EntryViewerPagesVC.strings; sourceTree = "<group>"; };
 		753438112643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
 		753438122643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/GroupViewerVC.strings; sourceTree = "<group>"; };
-		753438152643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
 		753438172643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/AboutVC.strings; sourceTree = "<group>"; };
 		753438182643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
 		7534381A2643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/FirstSetupVC.strings; sourceTree = "<group>"; };
@@ -1883,7 +1820,6 @@
 		7534381E2643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/DestinationGroupPickerVC.strings; sourceTree = "<group>"; };
 		753438212643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/DatabaseCreatorVC.strings; sourceTree = "<group>"; };
 		753438222643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SettingsVC.strings; sourceTree = "<group>"; };
-		753438262643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SettingsClipboardTimeoutVC.strings; sourceTree = "<group>"; };
 		753438272643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/PasscodeInputVC.strings; sourceTree = "<group>"; };
 		753438282643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/EntryFieldEditorVC.strings; sourceTree = "<group>"; };
 		753438292643FE6F0032D284 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/ItemIconPicker.strings; sourceTree = "<group>"; };
@@ -1918,15 +1854,12 @@
 		754A323224426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/EntryFieldViewerVC.strings; sourceTree = "<group>"; };
 		754A323324426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
 		754A323424426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/EntryFieldEditorVC.strings; sourceTree = "<group>"; };
-		754A323524426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/SettingsAppLockVC.strings; sourceTree = "<group>"; };
 		754A323624426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/SettingsBackupVC.strings; sourceTree = "<group>"; };
 		754A323824426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/ItemIconPicker.strings; sourceTree = "<group>"; };
-		754A323A24426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/SettingsDataProtectionVC.strings; sourceTree = "<group>"; };
 		754A323C24426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/DatabaseUnlockerVC.strings; sourceTree = "<group>"; };
 		754A323D24426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/EntryViewerPagesVC.strings; sourceTree = "<group>"; };
 		754A324024426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
 		754A324124426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/GroupViewerVC.strings; sourceTree = "<group>"; };
-		754A324424426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
 		754A324624426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
 		754A324724426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/AboutVC.strings; sourceTree = "<group>"; };
 		754A324824426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/EntryFileViewerVC.strings; sourceTree = "<group>"; };
@@ -1934,7 +1867,6 @@
 		754A324A24426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/EntryHistoryViewerVC.strings; sourceTree = "<group>"; };
 		754A324E24426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/DatabaseCreatorVC.strings; sourceTree = "<group>"; };
 		754A325024426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/SettingsVC.strings; sourceTree = "<group>"; };
-		754A325324426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/SettingsClipboardTimeoutVC.strings; sourceTree = "<group>"; };
 		754A325524426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/PasscodeInputVC.strings; sourceTree = "<group>"; };
 		754A325624426AA300632B39 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/SettingsBackupTimeoutPickerVC.strings; sourceTree = "<group>"; };
 		754ABE9F25AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1946,14 +1878,11 @@
 		754ABEA625AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/EntryFieldViewerVC.strings; sourceTree = "<group>"; };
 		754ABEA725AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
 		754ABEA825AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/EntryFieldEditorVC.strings; sourceTree = "<group>"; };
-		754ABEA925AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/SettingsAppLockVC.strings; sourceTree = "<group>"; };
-		754ABEAA25AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/SettingsDataProtectionVC.strings; sourceTree = "<group>"; };
 		754ABEAD25AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/SettingsBackupVC.strings; sourceTree = "<group>"; };
 		754ABEAF25AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/DatabaseUnlockerVC.strings; sourceTree = "<group>"; };
 		754ABEB025AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/EntryViewerPagesVC.strings; sourceTree = "<group>"; };
 		754ABEB325AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
 		754ABEB425AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/GroupViewerVC.strings; sourceTree = "<group>"; };
-		754ABEB725AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
 		754ABEB925AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
 		754ABEBA25AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/AboutVC.strings; sourceTree = "<group>"; };
 		754ABEBB25AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/EntryFileViewerVC.strings; sourceTree = "<group>"; };
@@ -1961,7 +1890,6 @@
 		754ABEBD25AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/EntryHistoryViewerVC.strings; sourceTree = "<group>"; };
 		754ABEC025AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/DatabaseCreatorVC.strings; sourceTree = "<group>"; };
 		754ABEC125AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/SettingsVC.strings; sourceTree = "<group>"; };
-		754ABEC425AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/SettingsClipboardTimeoutVC.strings; sourceTree = "<group>"; };
 		754ABEC625AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/PasscodeInputVC.strings; sourceTree = "<group>"; };
 		754ABEC725AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/SettingsSearchVC.strings; sourceTree = "<group>"; };
 		754ABEC825AB8A5900B98A63 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/PricingPlanPickerVC.strings; sourceTree = "<group>"; };
@@ -1976,14 +1904,11 @@
 		754ABEDA25AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/EntryFieldViewerVC.strings; sourceTree = "<group>"; };
 		754ABEDB25AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
 		754ABEDC25AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/EntryFieldEditorVC.strings; sourceTree = "<group>"; };
-		754ABEDD25AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/SettingsAppLockVC.strings; sourceTree = "<group>"; };
 		754ABEDE25AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/SettingsBackupVC.strings; sourceTree = "<group>"; };
-		754ABEE125AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/SettingsDataProtectionVC.strings; sourceTree = "<group>"; };
 		754ABEE325AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/DatabaseUnlockerVC.strings; sourceTree = "<group>"; };
 		754ABEE425AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/EntryViewerPagesVC.strings; sourceTree = "<group>"; };
 		754ABEE725AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
 		754ABEE825AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/GroupViewerVC.strings; sourceTree = "<group>"; };
-		754ABEEB25AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
 		754ABEED25AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/AboutVC.strings; sourceTree = "<group>"; };
 		754ABEEE25AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
 		754ABEEF25AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/EntryFileViewerVC.strings; sourceTree = "<group>"; };
@@ -1991,7 +1916,6 @@
 		754ABEF125AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/EntryHistoryViewerVC.strings; sourceTree = "<group>"; };
 		754ABEF425AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/DatabaseCreatorVC.strings; sourceTree = "<group>"; };
 		754ABEF525AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/SettingsVC.strings; sourceTree = "<group>"; };
-		754ABEF825AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/SettingsClipboardTimeoutVC.strings; sourceTree = "<group>"; };
 		754ABEFA25AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/PasscodeInputVC.strings; sourceTree = "<group>"; };
 		754ABEFB25AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/ItemIconPicker.strings; sourceTree = "<group>"; };
 		754ABEFC25AB95D300B98A63 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/SettingsSearchVC.strings; sourceTree = "<group>"; };
@@ -2006,14 +1930,11 @@
 		754ABF0825AB968F00B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/EntryFieldViewerVC.strings"; sourceTree = "<group>"; };
 		754ABF0925AB968F00B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/CrashReportVC.strings"; sourceTree = "<group>"; };
 		754ABF0A25AB968F00B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/EntryFieldEditorVC.strings"; sourceTree = "<group>"; };
-		754ABF0B25AB969000B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/SettingsAppLockVC.strings"; sourceTree = "<group>"; };
 		754ABF0C25AB969000B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/FileInfoVC.strings"; sourceTree = "<group>"; };
-		754ABF0F25AB969000B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/SettingsDataProtectionVC.strings"; sourceTree = "<group>"; };
 		754ABF1125AB969000B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/DatabaseUnlockerVC.strings"; sourceTree = "<group>"; };
 		754ABF1225AB969000B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/EntryViewerPagesVC.strings"; sourceTree = "<group>"; };
 		754ABF1525AB969000B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/EntryFinderVC.strings"; sourceTree = "<group>"; };
 		754ABF1625AB969000B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/GroupViewerVC.strings"; sourceTree = "<group>"; };
-		754ABF1925AB969000B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/SettingsAppTimeoutVC.strings"; sourceTree = "<group>"; };
 		754ABF1B25AB969000B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/SettingsAutoFillVC.strings"; sourceTree = "<group>"; };
 		754ABF1C25AB969000B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/AboutVC.strings"; sourceTree = "<group>"; };
 		754ABF1D25AB969000B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/EntryFileViewerVC.strings"; sourceTree = "<group>"; };
@@ -2021,7 +1942,6 @@
 		754ABF1F25AB969000B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/EntryHistoryViewerVC.strings"; sourceTree = "<group>"; };
 		754ABF2225AB969000B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/DatabaseCreatorVC.strings"; sourceTree = "<group>"; };
 		754ABF2325AB969000B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/SettingsVC.strings"; sourceTree = "<group>"; };
-		754ABF2625AB969000B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/SettingsClipboardTimeoutVC.strings"; sourceTree = "<group>"; };
 		754ABF2825AB969000B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/PasscodeInputVC.strings"; sourceTree = "<group>"; };
 		754ABF2925AB969000B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/ItemIconPicker.strings"; sourceTree = "<group>"; };
 		754ABF2A25AB969000B98A63 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/SettingsSearchVC.strings"; sourceTree = "<group>"; };
@@ -2035,14 +1955,13 @@
 		754C2B1D2D8E289200E12BD2 /* TableFooterLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableFooterLabelView.swift; sourceTree = "<group>"; };
 		754CE07A299FA80000C3DE50 /* DatabasePrintFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabasePrintFormatter.swift; sourceTree = "<group>"; };
 		754D7C1E238C384A005652E1 /* KeePassium-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KeePassium-Bridging-Header.h"; sourceTree = "<group>"; };
-		754E40852630271D003E4854 /* AppProtectionSettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppProtectionSettingsCoordinator.swift; sourceTree = "<group>"; };
 		754E409726306927003E4854 /* DatabaseUnlockerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUnlockerCoordinator.swift; sourceTree = "<group>"; };
 		754E74C2260677A70043BBDB /* KeePassium-macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "KeePassium-macOS.entitlements"; sourceTree = "<group>"; };
 		754E74CB26067B730043BBDB /* KeePassium_AutoFill-macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "KeePassium_AutoFill-macOS.entitlements"; sourceTree = "<group>"; };
 		754EEAB42CFFBBF000404142 /* DatabaseCSVExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseCSVExporter.swift; sourceTree = "<group>"; };
 		754F7E412DAFF38D004235C8 /* ToggleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleCell.swift; sourceTree = "<group>"; };
 		754F7E472DB00820004235C8 /* PickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerCell.swift; sourceTree = "<group>"; };
-		754F7E4D2DB04908004235C8 /* NewAppProtectionSettingsCoordinator+passcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewAppProtectionSettingsCoordinator+passcode.swift"; sourceTree = "<group>"; };
+		754F7E4D2DB04908004235C8 /* AppProtectionSettingsCoordinator+passcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppProtectionSettingsCoordinator+passcode.swift"; sourceTree = "<group>"; };
 		754F7E532DB144CF004235C8 /* SettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsItem.swift; sourceTree = "<group>"; };
 		754F7E592DB15D2C004235C8 /* BasicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCell.swift; sourceTree = "<group>"; };
 		754F7E622DB2AC50004235C8 /* SettingsItemConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsItemConfig.swift; sourceTree = "<group>"; };
@@ -2066,7 +1985,7 @@
 		7561850420E0379F00EEFAEE /* ValidatingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatingTextView.swift; sourceTree = "<group>"; };
 		7562BB2826B971E9009836A8 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = Configuration.storekit; path = KeePassium/Configuration.storekit; sourceTree = "<group>"; };
 		75635F42223A2B250074D745 /* ViewEntryFieldCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEntryFieldCells.swift; sourceTree = "<group>"; };
-		7564FAE72DB940BA0030F3C4 /* NewDataProtectionSettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDataProtectionSettingsCoordinator.swift; sourceTree = "<group>"; };
+		7564FAE72DB940BA0030F3C4 /* DataProtectionSettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProtectionSettingsCoordinator.swift; sourceTree = "<group>"; };
 		7564FAEB2DB941D40030F3C4 /* DataProtectionSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProtectionSettingsVC.swift; sourceTree = "<group>"; };
 		75679ACA22F8095F00372301 /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		75679ACD22FD896F00372301 /* NewsCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCenter.swift; sourceTree = "<group>"; };
@@ -2080,15 +1999,12 @@
 		756B243A243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/EntryFieldViewerVC.strings; sourceTree = "<group>"; };
 		756B243B243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
 		756B243C243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/EntryFieldEditorVC.strings; sourceTree = "<group>"; };
-		756B243D243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SettingsAppLockVC.strings; sourceTree = "<group>"; };
 		756B243E243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SettingsBackupVC.strings; sourceTree = "<group>"; };
 		756B2440243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ItemIconPicker.strings; sourceTree = "<group>"; };
-		756B2442243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SettingsDataProtectionVC.strings; sourceTree = "<group>"; };
 		756B2444243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/DatabaseUnlockerVC.strings; sourceTree = "<group>"; };
 		756B2445243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/EntryViewerPagesVC.strings; sourceTree = "<group>"; };
 		756B2448243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
 		756B2449243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/GroupViewerVC.strings; sourceTree = "<group>"; };
-		756B244C243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
 		756B244E243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
 		756B244F243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AboutVC.strings; sourceTree = "<group>"; };
 		756B2450243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/EntryFileViewerVC.strings; sourceTree = "<group>"; };
@@ -2096,7 +2012,6 @@
 		756B2452243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/EntryHistoryViewerVC.strings; sourceTree = "<group>"; };
 		756B2456243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/DatabaseCreatorVC.strings; sourceTree = "<group>"; };
 		756B2458243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SettingsVC.strings; sourceTree = "<group>"; };
-		756B245B243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SettingsClipboardTimeoutVC.strings; sourceTree = "<group>"; };
 		756B245D243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/PasscodeInputVC.strings; sourceTree = "<group>"; };
 		756B245E243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SettingsBackupTimeoutPickerVC.strings; sourceTree = "<group>"; };
 		756D15602129AFB60052C728 /* KeePassium.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KeePassium.entitlements; sourceTree = "<group>"; };
@@ -2119,8 +2034,6 @@
 		757CCFA72DBAEB2D005E6BE6 /* LString+dataProtectionSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LString+dataProtectionSettings.swift"; sourceTree = "<group>"; };
 		757CCFB12DBBB278005E6BE6 /* BaseSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSettingsViewController.swift; sourceTree = "<group>"; };
 		757CFD7A24892E28001CD231 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		757D336020EF382D000A47F0 /* SettingsDatabaseTimeoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDatabaseTimeoutVC.swift; sourceTree = "<group>"; };
-		757D336220EF5081000A47F0 /* SettingsClipboardTimeoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsClipboardTimeoutVC.swift; sourceTree = "<group>"; };
 		757E78D92824135D009017BF /* PasswordGeneratorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGeneratorCoordinator.swift; sourceTree = "<group>"; };
 		757E78DF282414D5009017BF /* PasswordGeneratorVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PasswordGeneratorVC.storyboard; sourceTree = "<group>"; };
 		757E78E22824150B009017BF /* PasswordGeneratorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGeneratorVC.swift; sourceTree = "<group>"; };
@@ -2205,7 +2118,6 @@
 		75917F352DABC4EB00EB9375 /* KeyFilePickerCoordinator+create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyFilePickerCoordinator+create.swift"; sourceTree = "<group>"; };
 		75917F3B2DABC59F00EB9375 /* KeyFilePickerCoordinator+add.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyFilePickerCoordinator+add.swift"; sourceTree = "<group>"; };
 		75917F412DAC6E8200EB9375 /* SelectableCollectionViewListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableCollectionViewListCell.swift; sourceTree = "<group>"; };
-		7596771D20FB36BD00E54827 /* SettingsAppTimeoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAppTimeoutVC.swift; sourceTree = "<group>"; };
 		75973A4525F58CFC0033D4DA /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
 		7597DBD625F58BCF00D1A126 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SettingsAppearanceVC.storyboard; sourceTree = "<group>"; };
 		7597DBDB25F58BD300D1A126 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
@@ -2251,15 +2163,12 @@
 		75AC35C323549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/EntryFieldViewerVC.strings; sourceTree = "<group>"; };
 		75AC35C423549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
 		75AC35C523549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/EntryFieldEditorVC.strings; sourceTree = "<group>"; };
-		75AC35C623549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/SettingsAppLockVC.strings; sourceTree = "<group>"; };
-		75AC35C723549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/SettingsDataProtectionVC.strings; sourceTree = "<group>"; };
 		75AC35C923549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/ItemIconPicker.strings; sourceTree = "<group>"; };
 		75AC35CB23549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/SettingsBackupVC.strings; sourceTree = "<group>"; };
 		75AC35CD23549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/DatabaseUnlockerVC.strings; sourceTree = "<group>"; };
 		75AC35CE23549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/EntryViewerPagesVC.strings; sourceTree = "<group>"; };
 		75AC35D123549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/GroupViewerVC.strings; sourceTree = "<group>"; };
 		75AC35D223549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
-		75AC35D523549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
 		75AC35D723549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
 		75AC35D823549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/AboutVC.strings; sourceTree = "<group>"; };
 		75AC35D923549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/EntryFileViewerVC.strings; sourceTree = "<group>"; };
@@ -2267,7 +2176,6 @@
 		75AC35DB23549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/EntryHistoryViewerVC.strings; sourceTree = "<group>"; };
 		75AC35DF23549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/DatabaseCreatorVC.strings; sourceTree = "<group>"; };
 		75AC35E123549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/SettingsVC.strings; sourceTree = "<group>"; };
-		75AC35E423549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/SettingsClipboardTimeoutVC.strings; sourceTree = "<group>"; };
 		75AC35E623549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/PasscodeInputVC.strings; sourceTree = "<group>"; };
 		75AC35E723549DE700B60614 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/FileInfoVC.strings; sourceTree = "<group>"; };
 		75AC534B2326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -2279,15 +2187,12 @@
 		75AC53522326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/EntryFieldViewerVC.strings; sourceTree = "<group>"; };
 		75AC53532326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
 		75AC53542326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/EntryFieldEditorVC.strings; sourceTree = "<group>"; };
-		75AC53552326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/SettingsAppLockVC.strings; sourceTree = "<group>"; };
 		75AC53562326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/SettingsBackupVC.strings; sourceTree = "<group>"; };
 		75AC53582326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/ItemIconPicker.strings; sourceTree = "<group>"; };
-		75AC535A2326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/SettingsDataProtectionVC.strings; sourceTree = "<group>"; };
 		75AC535C2326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/DatabaseUnlockerVC.strings; sourceTree = "<group>"; };
 		75AC535D2326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/EntryViewerPagesVC.strings; sourceTree = "<group>"; };
 		75AC53612326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
 		75AC53622326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/GroupViewerVC.strings; sourceTree = "<group>"; };
-		75AC53652326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
 		75AC53672326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
 		75AC53682326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/AboutVC.strings; sourceTree = "<group>"; };
 		75AC53692326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/EntryFileViewerVC.strings; sourceTree = "<group>"; };
@@ -2295,7 +2200,6 @@
 		75AC536B2326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/EntryHistoryViewerVC.strings; sourceTree = "<group>"; };
 		75AC536E2326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/DatabaseCreatorVC.strings; sourceTree = "<group>"; };
 		75AC53702326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/SettingsVC.strings; sourceTree = "<group>"; };
-		75AC53722326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/SettingsClipboardTimeoutVC.strings; sourceTree = "<group>"; };
 		75AC53742326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/PasscodeInputVC.strings; sourceTree = "<group>"; };
 		75AC53752326FE6E000AA4FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/SettingsBackupTimeoutPickerVC.strings; sourceTree = "<group>"; };
 		75AC53762326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -2307,15 +2211,12 @@
 		75AC537D2326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/EntryFieldViewerVC.strings"; sourceTree = "<group>"; };
 		75AC537E2326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/CrashReportVC.strings"; sourceTree = "<group>"; };
 		75AC537F2326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/EntryFieldEditorVC.strings"; sourceTree = "<group>"; };
-		75AC53802326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SettingsAppLockVC.strings"; sourceTree = "<group>"; };
 		75AC53812326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SettingsBackupVC.strings"; sourceTree = "<group>"; };
 		75AC53832326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/ItemIconPicker.strings"; sourceTree = "<group>"; };
-		75AC53852326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SettingsDataProtectionVC.strings"; sourceTree = "<group>"; };
 		75AC53872326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/DatabaseUnlockerVC.strings"; sourceTree = "<group>"; };
 		75AC53882326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/EntryViewerPagesVC.strings"; sourceTree = "<group>"; };
 		75AC538C2326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/EntryFinderVC.strings"; sourceTree = "<group>"; };
 		75AC538D2326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/GroupViewerVC.strings"; sourceTree = "<group>"; };
-		75AC53902326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SettingsAppTimeoutVC.strings"; sourceTree = "<group>"; };
 		75AC53922326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SettingsAutoFillVC.strings"; sourceTree = "<group>"; };
 		75AC53932326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/AboutVC.strings"; sourceTree = "<group>"; };
 		75AC53942326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/EntryFileViewerVC.strings"; sourceTree = "<group>"; };
@@ -2323,7 +2224,6 @@
 		75AC53962326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/EntryHistoryViewerVC.strings"; sourceTree = "<group>"; };
 		75AC53992326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/DatabaseCreatorVC.strings"; sourceTree = "<group>"; };
 		75AC539B2326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SettingsVC.strings"; sourceTree = "<group>"; };
-		75AC539D2326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SettingsClipboardTimeoutVC.strings"; sourceTree = "<group>"; };
 		75AC539F2326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/PasscodeInputVC.strings"; sourceTree = "<group>"; };
 		75AC53A02326FF7E000AA4FB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SettingsBackupTimeoutPickerVC.strings"; sourceTree = "<group>"; };
 		75AC53A32327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -2335,15 +2235,12 @@
 		75AC53AA2327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/EntryFieldViewerVC.strings"; sourceTree = "<group>"; };
 		75AC53AB2327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/CrashReportVC.strings"; sourceTree = "<group>"; };
 		75AC53AC2327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/EntryFieldEditorVC.strings"; sourceTree = "<group>"; };
-		75AC53AD2327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SettingsAppLockVC.strings"; sourceTree = "<group>"; };
 		75AC53AE2327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SettingsBackupVC.strings"; sourceTree = "<group>"; };
 		75AC53B02327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ItemIconPicker.strings"; sourceTree = "<group>"; };
-		75AC53B22327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SettingsDataProtectionVC.strings"; sourceTree = "<group>"; };
 		75AC53B42327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/DatabaseUnlockerVC.strings"; sourceTree = "<group>"; };
 		75AC53B52327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/EntryViewerPagesVC.strings"; sourceTree = "<group>"; };
 		75AC53B92327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/EntryFinderVC.strings"; sourceTree = "<group>"; };
 		75AC53BA2327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/GroupViewerVC.strings"; sourceTree = "<group>"; };
-		75AC53BD2327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SettingsAppTimeoutVC.strings"; sourceTree = "<group>"; };
 		75AC53BF2327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SettingsAutoFillVC.strings"; sourceTree = "<group>"; };
 		75AC53C02327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AboutVC.strings"; sourceTree = "<group>"; };
 		75AC53C12327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/EntryFileViewerVC.strings"; sourceTree = "<group>"; };
@@ -2351,7 +2248,6 @@
 		75AC53C32327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/EntryHistoryViewerVC.strings"; sourceTree = "<group>"; };
 		75AC53C62327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/DatabaseCreatorVC.strings"; sourceTree = "<group>"; };
 		75AC53C82327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SettingsVC.strings"; sourceTree = "<group>"; };
-		75AC53CA2327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SettingsClipboardTimeoutVC.strings"; sourceTree = "<group>"; };
 		75AC53CC2327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PasscodeInputVC.strings"; sourceTree = "<group>"; };
 		75AC53CD2327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SettingsBackupTimeoutPickerVC.strings"; sourceTree = "<group>"; };
 		75AD22DB27FDE59200636D66 /* YubiKeyUSB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YubiKeyUSB.swift; sourceTree = "<group>"; };
@@ -2454,22 +2350,18 @@
 		75E4CA66232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
 		75E4CA67232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/EntryFieldEditorVC.strings; sourceTree = "<group>"; };
 		75E4CA68232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/SettingsBackupVC.strings; sourceTree = "<group>"; };
-		75E4CA69232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/SettingsAppLockVC.strings; sourceTree = "<group>"; };
 		75E4CA6B232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/ItemIconPicker.strings; sourceTree = "<group>"; };
-		75E4CA6D232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/SettingsDataProtectionVC.strings; sourceTree = "<group>"; };
 		75E4CA6F232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/DatabaseUnlockerVC.strings; sourceTree = "<group>"; };
 		75E4CA70232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/EntryViewerPagesVC.strings; sourceTree = "<group>"; };
 		75E4CA74232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
 		75E4CA75232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/GroupViewerVC.strings; sourceTree = "<group>"; };
 		75E4CA78232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/AboutVC.strings; sourceTree = "<group>"; };
 		75E4CA7A232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
-		75E4CA7B232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
 		75E4CA7C232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/EntryFileViewerVC.strings; sourceTree = "<group>"; };
 		75E4CA7D232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/FirstSetupVC.strings; sourceTree = "<group>"; };
 		75E4CA7E232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/EntryHistoryViewerVC.strings; sourceTree = "<group>"; };
 		75E4CA81232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/DatabaseCreatorVC.strings; sourceTree = "<group>"; };
 		75E4CA83232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/SettingsVC.strings; sourceTree = "<group>"; };
-		75E4CA85232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/SettingsClipboardTimeoutVC.strings; sourceTree = "<group>"; };
 		75E4CA87232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/PasscodeInputVC.strings; sourceTree = "<group>"; };
 		75E4CA88232D0B0F00EB6805 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/SettingsBackupTimeoutPickerVC.strings; sourceTree = "<group>"; };
 		75E60AD625CF3B570089219C /* DatabaseIconSetPicker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DatabaseIconSetPicker.storyboard; sourceTree = "<group>"; };
@@ -2493,16 +2385,10 @@
 		75ED427C231177C8003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/DatabaseUnlockerVC.strings; sourceTree = "<group>"; };
 		75ED428023117EAE003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/DatabaseCreatorVC.strings; sourceTree = "<group>"; };
 		75ED428623126D5A003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
-		75ED42882312EEC4003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/SettingsAppLockVC.strings; sourceTree = "<group>"; };
-		75ED428A23132A80003DE72E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SettingsAppTimeoutVC.storyboard; sourceTree = "<group>"; };
-		75ED428D23132A86003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
 		75ED429123133C1B003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/SettingsBackupVC.strings; sourceTree = "<group>"; };
 		75ED429323133DEF003DE72E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SettingsBackupTimeoutPickerVC.storyboard; sourceTree = "<group>"; };
 		75ED429623133DF3003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/SettingsBackupTimeoutPickerVC.strings; sourceTree = "<group>"; };
 		75ED429A2313A1E5003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/SettingsVC.strings; sourceTree = "<group>"; };
-		75ED42A52313C0BB003DE72E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SettingsClipboardTimeoutVC.storyboard; sourceTree = "<group>"; };
-		75ED42A82313C0C5003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/SettingsClipboardTimeoutVC.strings; sourceTree = "<group>"; };
-		75ED42AF2313C267003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/SettingsDataProtectionVC.strings; sourceTree = "<group>"; };
 		75ED42B12315896C003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/FirstSetupVC.strings; sourceTree = "<group>"; };
 		75EEC20E2747EE6A0092505F /* AutoFillSettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoFillSettingsCoordinator.swift; sourceTree = "<group>"; };
 		75EEC22027484DD90092505F /* QuickAutoFillPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAutoFillPrompt.swift; sourceTree = "<group>"; };
@@ -2532,22 +2418,18 @@
 		75FCA93B2638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/EntryFieldViewerVC.strings; sourceTree = "<group>"; };
 		75FCA93C2638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/SettingsBackupVC.strings; sourceTree = "<group>"; };
 		75FCA93D2638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
-		75FCA93E2638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/SettingsAppLockVC.strings; sourceTree = "<group>"; };
-		75FCA93F2638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/SettingsDataProtectionVC.strings; sourceTree = "<group>"; };
 		75FCA9422638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/DatabaseUnlockerVC.strings; sourceTree = "<group>"; };
 		75FCA9432638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/EntryViewerPagesVC.strings; sourceTree = "<group>"; };
 		75FCA9452638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/GroupViewerVC.strings; sourceTree = "<group>"; };
 		75FCA9462638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
 		75FCA9492638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/AboutVC.strings; sourceTree = "<group>"; };
 		75FCA94B2638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
-		75FCA94C2638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
 		75FCA94E2638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/FirstSetupVC.strings; sourceTree = "<group>"; };
 		75FCA94F2638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/EntryHistoryViewerVC.strings; sourceTree = "<group>"; };
 		75FCA9502638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/DestinationGroupPickerVC.strings; sourceTree = "<group>"; };
 		75FCA9512638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/EntryFileViewerVC.strings; sourceTree = "<group>"; };
 		75FCA9542638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/DatabaseCreatorVC.strings; sourceTree = "<group>"; };
 		75FCA9552638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/SettingsVC.strings; sourceTree = "<group>"; };
-		75FCA9592638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/SettingsClipboardTimeoutVC.strings; sourceTree = "<group>"; };
 		75FCA95A2638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/PasscodeInputVC.strings; sourceTree = "<group>"; };
 		75FCA95B2638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/EntryFieldEditorVC.strings; sourceTree = "<group>"; };
 		75FCA95C2638010D0070405A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/ItemIconPicker.strings; sourceTree = "<group>"; };
@@ -2564,15 +2446,12 @@
 		75FDEF25233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/EntryFieldViewerVC.strings; sourceTree = "<group>"; };
 		75FDEF26233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
 		75FDEF27233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/EntryFieldEditorVC.strings; sourceTree = "<group>"; };
-		75FDEF28233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/SettingsAppLockVC.strings; sourceTree = "<group>"; };
 		75FDEF29233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/SettingsBackupVC.strings; sourceTree = "<group>"; };
 		75FDEF2B233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/ItemIconPicker.strings; sourceTree = "<group>"; };
-		75FDEF2D233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/SettingsDataProtectionVC.strings; sourceTree = "<group>"; };
 		75FDEF2F233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/DatabaseUnlockerVC.strings; sourceTree = "<group>"; };
 		75FDEF30233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/EntryViewerPagesVC.strings; sourceTree = "<group>"; };
 		75FDEF34233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
 		75FDEF35233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/GroupViewerVC.strings; sourceTree = "<group>"; };
-		75FDEF38233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
 		75FDEF39233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/AboutVC.strings; sourceTree = "<group>"; };
 		75FDEF3B233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
 		75FDEF3C233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/EntryFileViewerVC.strings; sourceTree = "<group>"; };
@@ -2580,7 +2459,6 @@
 		75FDEF3E233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/EntryHistoryViewerVC.strings; sourceTree = "<group>"; };
 		75FDEF41233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/DatabaseCreatorVC.strings; sourceTree = "<group>"; };
 		75FDEF43233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/SettingsVC.strings; sourceTree = "<group>"; };
-		75FDEF45233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/SettingsClipboardTimeoutVC.strings; sourceTree = "<group>"; };
 		75FDEF47233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/PasscodeInputVC.strings; sourceTree = "<group>"; };
 		75FDEF48233ABE9A00F17C26 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/SettingsBackupTimeoutPickerVC.strings; sourceTree = "<group>"; };
 		75FDEF4A233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -2592,15 +2470,12 @@
 		75FDEF51233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/EntryFieldViewerVC.strings; sourceTree = "<group>"; };
 		75FDEF52233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/CrashReportVC.strings; sourceTree = "<group>"; };
 		75FDEF53233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/EntryFieldEditorVC.strings; sourceTree = "<group>"; };
-		75FDEF54233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/SettingsAppLockVC.strings; sourceTree = "<group>"; };
-		75FDEF55233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/SettingsDataProtectionVC.strings; sourceTree = "<group>"; };
 		75FDEF57233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/ItemIconPicker.strings; sourceTree = "<group>"; };
 		75FDEF59233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/SettingsBackupVC.strings; sourceTree = "<group>"; };
 		75FDEF5B233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/DatabaseUnlockerVC.strings; sourceTree = "<group>"; };
 		75FDEF5C233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/EntryViewerPagesVC.strings; sourceTree = "<group>"; };
 		75FDEF60233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/EntryFinderVC.strings; sourceTree = "<group>"; };
 		75FDEF61233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/GroupViewerVC.strings; sourceTree = "<group>"; };
-		75FDEF64233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/SettingsAppTimeoutVC.strings; sourceTree = "<group>"; };
 		75FDEF66233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/SettingsAutoFillVC.strings; sourceTree = "<group>"; };
 		75FDEF67233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/AboutVC.strings; sourceTree = "<group>"; };
 		75FDEF68233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/EntryFileViewerVC.strings; sourceTree = "<group>"; };
@@ -2608,7 +2483,6 @@
 		75FDEF6A233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/EntryHistoryViewerVC.strings; sourceTree = "<group>"; };
 		75FDEF6D233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/DatabaseCreatorVC.strings; sourceTree = "<group>"; };
 		75FDEF6F233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/SettingsVC.strings; sourceTree = "<group>"; };
-		75FDEF71233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/SettingsClipboardTimeoutVC.strings; sourceTree = "<group>"; };
 		75FDEF73233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/PasscodeInputVC.strings; sourceTree = "<group>"; };
 		75FDEF74233ABEEC00F17C26 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/SettingsBackupTimeoutPickerVC.strings; sourceTree = "<group>"; };
 		75FEC2222175292C0034334B /* KeePassiumLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2620,9 +2494,8 @@
 		F31114A72B9B83B300236632 /* DropboxConnectionSetupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxConnectionSetupCoordinator.swift; sourceTree = "<group>"; };
 		F321414B2A90D2CD007A8D4E /* PasswordAuditServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordAuditServiceTests.swift; sourceTree = "<group>"; };
 		F32228142CCEC4230093BD9C /* KeyFileTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFileTextField.swift; sourceTree = "<group>"; };
-		F326756C2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFieldEditorSingleLineCell.swift; sourceTree = "<group>"; };
 		F32675662D8EDCA50007EA7E /* AppEraser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEraser.swift; sourceTree = "<group>"; };
-		F32B53B02D748AC000BAF5C9 /* SettingsEraseDataFailedAttemptsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEraseDataFailedAttemptsVC.swift; sourceTree = "<group>"; };
+		F326756C2D9160230007EA7E /* EntryFieldEditorSingleLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFieldEditorSingleLineCell.swift; sourceTree = "<group>"; };
 		F33F2C502B32DD61009EFB18 /* TagSelectorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSelectorVC.swift; sourceTree = "<group>"; };
 		F33F2C532B32E059009EFB18 /* TagSelectorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSelectorCoordinator.swift; sourceTree = "<group>"; };
 		F34010A22AA1E540005FDF55 /* ExposureCountFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureCountFormatter.swift; sourceTree = "<group>"; };
@@ -2655,7 +2528,6 @@
 		F37CAA422A88F74E0000EF64 /* HIBPServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HIBPServiceTests.swift; sourceTree = "<group>"; };
 		F37CAA4D2A88F8D10000EF64 /* DumpEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DumpEquatable.swift; sourceTree = "<group>"; };
 		F38A48C32A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordQualityIndicatorIconView.swift; sourceTree = "<group>"; };
-		F38DB2282D131568008A8D7A /* SettingsShakeGestureActionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsShakeGestureActionVC.swift; sourceTree = "<group>"; };
 		F3A2186C2C27045E006AB8F8 /* GroupEditorNotesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupEditorNotesCell.swift; sourceTree = "<group>"; };
 		F3AFC1B025FB7C38005FF4D7 /* QRCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanner.swift; sourceTree = "<group>"; };
 		F3B0C2032B2CA8790001946D /* OnboardingPagesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPagesVC.swift; sourceTree = "<group>"; };
@@ -2927,17 +2799,9 @@
 		7527FAAF262F712F00623849 /* data-protection */ = {
 			isa = PBXGroup;
 			children = (
-				7564FAE72DB940BA0030F3C4 /* NewDataProtectionSettingsCoordinator.swift */,
+				7564FAE72DB940BA0030F3C4 /* DataProtectionSettingsCoordinator.swift */,
 				7564FAEB2DB941D40030F3C4 /* DataProtectionSettingsVC.swift */,
 				757CCFA72DBAEB2D005E6BE6 /* LString+dataProtectionSettings.swift */,
-				7527FAB2262F71CC00623849 /* DataProtectionSettingsCoordinator.swift */,
-				F32B53B02D748AC000BAF5C9 /* SettingsEraseDataFailedAttemptsVC.swift */,
-				752ED68C2235547D00C20D3E /* SettingsDataProtectionVC.swift */,
-				751E0CE82309AE5D0088BB10 /* SettingsDataProtectionVC.storyboard */,
-				757D336020EF382D000A47F0 /* SettingsDatabaseTimeoutVC.swift */,
-				757D336220EF5081000A47F0 /* SettingsClipboardTimeoutVC.swift */,
-				75ED42A62313C0BB003DE72E /* SettingsClipboardTimeoutVC.storyboard */,
-				F38DB2282D131568008A8D7A /* SettingsShakeGestureActionVC.swift */,
 			);
 			path = "data-protection";
 			sourceTree = "<group>";
@@ -3487,15 +3351,10 @@
 		75C3800F217A0497006F74C2 /* app-protection */ = {
 			isa = PBXGroup;
 			children = (
-				754E40852630271D003E4854 /* AppProtectionSettingsCoordinator.swift */,
-				75066D412DAF078A00A47446 /* NewAppProtectionSettingsCoordinator.swift */,
-				754F7E4D2DB04908004235C8 /* NewAppProtectionSettingsCoordinator+passcode.swift */,
+				75066D412DAF078A00A47446 /* AppProtectionSettingsCoordinator.swift */,
+				754F7E4D2DB04908004235C8 /* AppProtectionSettingsCoordinator+passcode.swift */,
 				75066D472DAF07ED00A47446 /* AppProtectionSettingsVC.swift */,
 				7542421D2DB7E9EA00DF6249 /* LString+appProtectionSettings.swift */,
-				7529EAE8211416170093B117 /* SettingsAppLockVC.swift */,
-				751E0CF42309AEB00088BB10 /* SettingsAppLockVC.storyboard */,
-				7596771D20FB36BD00E54827 /* SettingsAppTimeoutVC.swift */,
-				75ED428B23132A80003DE72E /* SettingsAppTimeoutVC.storyboard */,
 			);
 			path = "app-protection";
 			sourceTree = "<group>";
@@ -4027,7 +3886,6 @@
 				751E0D222309AFAC0088BB10 /* ItemIconPicker.storyboard in Resources */,
 				750E72CE26A4D32600CDBFFA /* ExpiryDateEditorVC.storyboard in Resources */,
 				758FC11F24CEF72000BAD35C /* appicon-classic-free_iPhoneApp_60@3x.png in Resources */,
-				75ED428923132A80003DE72E /* SettingsAppTimeoutVC.storyboard in Resources */,
 				751E0D0A2309AF380088BB10 /* EntryFieldViewerVC.storyboard in Resources */,
 				758FC15F24CEF72000BAD35C /* appicon-atom-black_iPhoneApp_60@2x.png in Resources */,
 				75ED429223133DEF003DE72E /* SettingsBackupTimeoutPickerVC.storyboard in Resources */,
@@ -4064,7 +3922,6 @@
 				75D9913D26CEEDC800823331 /* SyncConflictAlert.storyboard in Resources */,
 				758BAD9724B53ABF00CC9265 /* PricingPlanPickerVC.storyboard in Resources */,
 				758FC11524CEF72000BAD35C /* appicon-classic-free_iPadApp_76@2x.png in Resources */,
-				751E0CF22309AEB00088BB10 /* SettingsAppLockVC.storyboard in Resources */,
 				75183ED12BB8A20A008F1614 /* PrivacyInfo.xcprivacy in Resources */,
 				758FC16524CEF72000BAD35C /* appicon-classic-pro_iPadApp_76.png in Resources */,
 				758FC13324CEF72000BAD35C /* appicon-classic-free_iPhoneApp_60@2x.png in Resources */,
@@ -4083,8 +3940,6 @@
 				758FC11724CEF72000BAD35C /* appicon-atom-white_iPhoneApp_60@2x.png in Resources */,
 				751E0CF52309AEBB0088BB10 /* SettingsAutoFillVC.storyboard in Resources */,
 				751E0D1C2309AF670088BB10 /* DatabaseUnlockerVC.storyboard in Resources */,
-				75ED42A42313C0BB003DE72E /* SettingsClipboardTimeoutVC.storyboard in Resources */,
-				751E0CE62309AE5D0088BB10 /* SettingsDataProtectionVC.storyboard in Resources */,
 				758FC14F24CEF72000BAD35C /* appicon-classic-free_iPadProApp_83.5@2x.png in Resources */,
 				751E0CEC2309AE8D0088BB10 /* SettingsVC.storyboard in Resources */,
 				75C3802D217A2650006F74C2 /* AppCoverVC.storyboard in Resources */,
@@ -4109,7 +3964,6 @@
 				75B38C59233E5B7C006BDEFC /* ItemIconPicker.storyboard in Resources */,
 				750E72CF26A4D32600CDBFFA /* ExpiryDateEditorVC.storyboard in Resources */,
 				758FC12024CEF72000BAD35C /* appicon-classic-free_iPhoneApp_60@3x.png in Resources */,
-				75B38C5A233E5B7C006BDEFC /* SettingsAppTimeoutVC.storyboard in Resources */,
 				75B38C5B233E5B7C006BDEFC /* EntryFieldViewerVC.storyboard in Resources */,
 				758FC16024CEF72000BAD35C /* appicon-atom-black_iPhoneApp_60@2x.png in Resources */,
 				75B38C5C233E5B7C006BDEFC /* SettingsBackupTimeoutPickerVC.storyboard in Resources */,
@@ -4145,7 +3999,6 @@
 				758BAD9824B53ABF00CC9265 /* PricingPlanPickerVC.storyboard in Resources */,
 				75D9913E26CEEDC800823331 /* SyncConflictAlert.storyboard in Resources */,
 				758FC11624CEF72000BAD35C /* appicon-classic-free_iPadApp_76@2x.png in Resources */,
-				75B38C6C233E5B7C006BDEFC /* SettingsAppLockVC.storyboard in Resources */,
 				75183ED22BB8A20A008F1614 /* PrivacyInfo.xcprivacy in Resources */,
 				758FC16624CEF72000BAD35C /* appicon-classic-pro_iPadApp_76.png in Resources */,
 				758FC13424CEF72000BAD35C /* appicon-classic-free_iPhoneApp_60@2x.png in Resources */,
@@ -4164,8 +4017,6 @@
 				758FC11824CEF72000BAD35C /* appicon-atom-white_iPhoneApp_60@2x.png in Resources */,
 				75B38C73233E5B7C006BDEFC /* SettingsAutoFillVC.storyboard in Resources */,
 				75B38C74233E5B7C006BDEFC /* DatabaseUnlockerVC.storyboard in Resources */,
-				75B38C75233E5B7C006BDEFC /* SettingsClipboardTimeoutVC.storyboard in Resources */,
-				75B38C76233E5B7C006BDEFC /* SettingsDataProtectionVC.storyboard in Resources */,
 				758FC15024CEF72000BAD35C /* appicon-classic-free_iPadProApp_83.5@2x.png in Resources */,
 				75B38C77233E5B7C006BDEFC /* SettingsVC.storyboard in Resources */,
 				75B38C78233E5B7C006BDEFC /* AppCoverVC.storyboard in Resources */,
@@ -4190,7 +4041,6 @@
 				F321415B2A934ABA007A8D4E /* PasswordAuditVC.storyboard in Resources */,
 				75D0768328B639D200F02E39 /* ExpiryDateEditorVC.storyboard in Resources */,
 				75D0768428B639D200F02E39 /* appicon-classic-free_iPhoneApp_60@3x.png in Resources */,
-				75D0768528B639D200F02E39 /* SettingsAppTimeoutVC.storyboard in Resources */,
 				75D0768628B639D200F02E39 /* EntryFieldViewerVC.storyboard in Resources */,
 				75D0768728B639D200F02E39 /* appicon-atom-black_iPhoneApp_60@2x.png in Resources */,
 				75D0768828B639D200F02E39 /* SettingsBackupTimeoutPickerVC.storyboard in Resources */,
@@ -4226,7 +4076,6 @@
 				75D076AE28B639D200F02E39 /* PricingPlanPickerVC.storyboard in Resources */,
 				75D076AF28B639D200F02E39 /* SyncConflictAlert.storyboard in Resources */,
 				75D076B228B639D200F02E39 /* appicon-classic-free_iPadApp_76@2x.png in Resources */,
-				75D076B328B639D200F02E39 /* SettingsAppLockVC.storyboard in Resources */,
 				75D076B528B639D200F02E39 /* appicon-classic-pro_iPadApp_76.png in Resources */,
 				75D076B628B639D200F02E39 /* appicon-classic-free_iPhoneApp_60@2x.png in Resources */,
 				75D076B728B639D200F02E39 /* EntryFileViewerVC.storyboard in Resources */,
@@ -4244,8 +4093,6 @@
 				75D076C828B639D200F02E39 /* appicon-atom-white_iPhoneApp_60@2x.png in Resources */,
 				75D076C928B639D200F02E39 /* SettingsAutoFillVC.storyboard in Resources */,
 				75D076CA28B639D200F02E39 /* DatabaseUnlockerVC.storyboard in Resources */,
-				75D076CB28B639D200F02E39 /* SettingsClipboardTimeoutVC.storyboard in Resources */,
-				75D076CC28B639D200F02E39 /* SettingsDataProtectionVC.storyboard in Resources */,
 				75D076CD28B639D200F02E39 /* appicon-classic-free_iPadProApp_83.5@2x.png in Resources */,
 				F32141592A934ABA007A8D4E /* PasswordAuditResultsVC.storyboard in Resources */,
 				75D076CE28B639D200F02E39 /* SettingsVC.storyboard in Resources */,
@@ -4501,10 +4348,8 @@
 				751A565224CCD3CD001227D6 /* AppIconPicker.swift in Sources */,
 				75AF1932282E621600FA4BB5 /* PasswordGeneratorLengthCell.swift in Sources */,
 				F31114A82B9B83B300236632 /* DropboxConnectionSetupCoordinator.swift in Sources */,
-				F38DB2292D131568008A8D7A /* SettingsShakeGestureActionVC.swift in Sources */,
 				754BF07F2082A6BD00E3A292 /* AppDelegate.swift in Sources */,
 				7579A06724F0730A00C98F24 /* AppHistoryViewerVC.swift in Sources */,
-				752ED68D2235547D00C20D3E /* SettingsDataProtectionVC.swift in Sources */,
 				7542421E2DB7E9EA00DF6249 /* LString+appProtectionSettings.swift in Sources */,
 				759F69FD29066E110089FB34 /* ConnectionTypePickerVC.swift in Sources */,
 				751A565524CCD3FF001227D6 /* AppIconSwitcherCoordinator.swift in Sources */,
@@ -4537,7 +4382,6 @@
 				75136B262B67CD6B00214760 /* RemoteFileExportCoordinator.swift in Sources */,
 				75917F242DAAB20D00EB9375 /* KeyFilePickerCoordinator+itemActions.swift in Sources */,
 				759BC62C2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
-				757D336120EF382D000A47F0 /* SettingsDatabaseTimeoutVC.swift in Sources */,
 				7550D24C215FDEC500360E0C /* AppCoverVC.swift in Sources */,
 				75D7614F262DDE0B00B1DE7F /* AboutCoordinator.swift in Sources */,
 				F35D7CD32D639563006DCBF0 /* FileImportHelper.swift in Sources */,
@@ -4571,7 +4415,7 @@
 				F34AB0712BAF1C7D00BB50A3 /* GoogleDriveConnectionSetupCoordinator.swift in Sources */,
 				759FD0422D9D1A2100659852 /* FilePickerCell.swift in Sources */,
 				75BF5AED27680D4600809654 /* ParameterValueCell.swift in Sources */,
-				754F7E4E2DB04909004235C8 /* NewAppProtectionSettingsCoordinator+passcode.swift in Sources */,
+				754F7E4E2DB04909004235C8 /* AppProtectionSettingsCoordinator+passcode.swift in Sources */,
 				75DE6779268F6F69003D4DCC /* BiometricsHelper.swift in Sources */,
 				75679ACB22F8095F00372301 /* AppInfo.swift in Sources */,
 				F3B157D72B29B4A6003F5075 /* OnboardingStepVC.swift in Sources */,
@@ -4613,7 +4457,6 @@
 				F32675682D8EDCA50007EA7E /* AppEraser.swift in Sources */,
 				7575B24722D846B900B84B3F /* SearchHelper.swift in Sources */,
 				751DED732847B44B00B6D02E /* UITextInput+extensions.swift in Sources */,
-				757D336320EF5081000A47F0 /* SettingsClipboardTimeoutVC.swift in Sources */,
 				75B5FB7920D6101100D402D9 /* ItemCategory.swift in Sources */,
 				75D1674A21464333005E33C3 /* AboutVC.swift in Sources */,
 				754E408C263067DD003E4854 /* DatabaseUnlockerVC.swift in Sources */,
@@ -4640,7 +4483,7 @@
 				757CCFB32DBBB278005E6BE6 /* BaseSettingsViewController.swift in Sources */,
 				756AE9D320CF8B5E00995846 /* ItemIconPicker.swift in Sources */,
 				7546FBDD20C3ACFD00C5D834 /* KPApplication.swift in Sources */,
-				7564FAEA2DB940BA0030F3C4 /* NewDataProtectionSettingsCoordinator.swift in Sources */,
+				7564FAEA2DB940BA0030F3C4 /* DataProtectionSettingsCoordinator.swift in Sources */,
 				7548BC1821B07BFE001B00E9 /* ProtectedTextField.swift in Sources */,
 				7526404A284653580003DDFA /* TextInput+editMenu.swift in Sources */,
 				75838481268B55BF000D2E8B /* UIViewController+subviews.swift in Sources */,
@@ -4650,7 +4493,6 @@
 				753A3EEA20D3776D00A1CF70 /* Refreshable.swift in Sources */,
 				F32228192CCEC4230093BD9C /* KeyFileTextField.swift in Sources */,
 				75480503238E51AF0068C863 /* PopoverAnchor.swift in Sources */,
-				F32B53B22D748AC000BAF5C9 /* SettingsEraseDataFailedAttemptsVC.swift in Sources */,
 				757FDF6226E2519E0023E028 /* OTPView.swift in Sources */,
 				754F7E5A2DB15D2C004235C8 /* BasicCell.swift in Sources */,
 				753FE83524C1A9A400063FBB /* UIViewController+alerts.swift in Sources */,
@@ -4692,7 +4534,6 @@
 				7588B6C62627351800F5D372 /* EntryFieldEditorCoordinator.swift in Sources */,
 				75BE063F25DB1A1A00B34CC0 /* DiagnosticsViewerVC.swift in Sources */,
 				F36296892A8B87FC00A1E2B0 /* PasswordAuditResultCell.swift in Sources */,
-				754E40862630271D003E4854 /* AppProtectionSettingsCoordinator.swift in Sources */,
 				75065A3522C41B5200958243 /* SettingsAutoFillVC.swift in Sources */,
 				75FC400D2DA025C600C5D1C2 /* DatabasePickerCoordinator.swift in Sources */,
 				7546FBD920C3A3F600C5D834 /* Watchdog.swift in Sources */,
@@ -4709,7 +4550,6 @@
 				755B435B26BC894200C24386 /* TipBoxCoordinator.swift in Sources */,
 				75267CFE25FF75E300A1CC95 /* ContextualAction.swift in Sources */,
 				758D8E902274D2BE00644FA6 /* DatabaseCreatorVC.swift in Sources */,
-				7529EAE9211416170093B117 /* SettingsAppLockVC.swift in Sources */,
 				757CCFAA2DBAEB2D005E6BE6 /* LString+dataProtectionSettings.swift in Sources */,
 				F37CAA302A87F0E50000EF64 /* PasswordAuditService.swift in Sources */,
 				75A5312123C0D2D400900ED1 /* Coordinator.swift in Sources */,
@@ -4740,18 +4580,16 @@
 				F377C9AB2AA74A1A00266397 /* FaviconDownloader.swift in Sources */,
 				F35DBC842AED5B2D00B33757 /* EncryptionSettingsVC.swift in Sources */,
 				757ADC4523A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
-				75066D432DAF078A00A47446 /* NewAppProtectionSettingsCoordinator.swift in Sources */,
+				75066D432DAF078A00A47446 /* AppProtectionSettingsCoordinator.swift in Sources */,
 				75C94C5B20B4B8C2004FA29D /* EntryViewerPagesVC.swift in Sources */,
 				7564FAED2DB941D40030F3C4 /* DataProtectionSettingsVC.swift in Sources */,
 				75066D482DAF07ED00A47446 /* AppProtectionSettingsVC.swift in Sources */,
 				7589FDCD28B4EA2100CCC76B /* FieldCopiedView.swift in Sources */,
 				7578487D22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift in Sources */,
 				758E5EF225F2E22600E06AE7 /* DatabaseSaving.swift in Sources */,
-				7527FAB3262F71CC00623849 /* DataProtectionSettingsCoordinator.swift in Sources */,
 				75779864223023D3006671BD /* ProgressViewHost.swift in Sources */,
 				7538936926D3BEBE00CAB107 /* KeyboardDismissable.swift in Sources */,
 				758BADB524B5EAFF00CC9265 /* GradientSeparatorView.swift in Sources */,
-				7596771E20FB36BD00E54827 /* SettingsAppTimeoutVC.swift in Sources */,
 				7579A07024F1C55B00C98F24 /* AppHistoryCoordinator.swift in Sources */,
 				75917F422DAC6E8200EB9375 /* SelectableCollectionViewListCell.swift in Sources */,
 				7524E7452888B56600ECBEC8 /* RightDetailCell.swift in Sources */,
@@ -4786,12 +4624,10 @@
 				75B38BF4233E5B7C006BDEFC /* WatchdogAwareTextField.swift in Sources */,
 				751A565324CCD3CD001227D6 /* AppIconPicker.swift in Sources */,
 				F31114AB2B9B84E100236632 /* DropboxConnectionSetupCoordinator.swift in Sources */,
-				F38DB22A2D131568008A8D7A /* SettingsShakeGestureActionVC.swift in Sources */,
 				75AF1933282E621600FA4BB5 /* PasswordGeneratorLengthCell.swift in Sources */,
 				75B38BF5233E5B7C006BDEFC /* AppDelegate.swift in Sources */,
 				7579A06824F0730A00C98F24 /* AppHistoryViewerVC.swift in Sources */,
 				754242202DB7E9EA00DF6249 /* LString+appProtectionSettings.swift in Sources */,
-				75B38BF8233E5B7C006BDEFC /* SettingsDataProtectionVC.swift in Sources */,
 				759F69FF29066E110089FB34 /* ConnectionTypePickerVC.swift in Sources */,
 				75FC404F2DA1259800C5D1C2 /* DatabasePickerCoordinator+create.swift in Sources */,
 				751A565624CCD3FF001227D6 /* AppIconSwitcherCoordinator.swift in Sources */,
@@ -4827,7 +4663,6 @@
 				759BC62E2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
 				F35D7CD12D639563006DCBF0 /* FileImportHelper.swift in Sources */,
 				754F7E482DB00820004235C8 /* PickerCell.swift in Sources */,
-				75B38C02233E5B7C006BDEFC /* SettingsDatabaseTimeoutVC.swift in Sources */,
 				754EEAB62CFFBBF000404142 /* DatabaseCSVExporter.swift in Sources */,
 				75B38C03233E5B7C006BDEFC /* AppCoverVC.swift in Sources */,
 				75D76150262DDE0B00B1DE7F /* AboutCoordinator.swift in Sources */,
@@ -4856,7 +4691,7 @@
 				F34AB0742BAF1E7D00BB50A3 /* GoogleDriveConnectionSetupCoordinator.swift in Sources */,
 				759FD0452D9D1A2100659852 /* FilePickerCell.swift in Sources */,
 				75A94C4528441C5F00A94B94 /* PasswordGeneratorQuickSheetVC.swift in Sources */,
-				754F7E4F2DB04909004235C8 /* NewAppProtectionSettingsCoordinator+passcode.swift in Sources */,
+				754F7E4F2DB04909004235C8 /* AppProtectionSettingsCoordinator+passcode.swift in Sources */,
 				75B38C0A233E5B7C006BDEFC /* AppInfo.swift in Sources */,
 				7516B0D727292A130042F40E /* UIMenu+extensions.swift in Sources */,
 				75BF5AEE27680D4600809654 /* ParameterValueCell.swift in Sources */,
@@ -4894,7 +4729,6 @@
 				75A4948F2B60619E00ED018F /* Tag.swift in Sources */,
 				75EC7BFE262B05E100D8C7EB /* DatabaseViewerCoordinator.swift in Sources */,
 				75B38C15233E5B7C006BDEFC /* SearchHelper.swift in Sources */,
-				75B38C17233E5B7C006BDEFC /* SettingsClipboardTimeoutVC.swift in Sources */,
 				F32675672D8EDCA50007EA7E /* AppEraser.swift in Sources */,
 				751DED752847B44B00B6D02E /* UITextInput+extensions.swift in Sources */,
 				75B38C18233E5B7C006BDEFC /* ItemCategory.swift in Sources */,
@@ -4925,7 +4759,7 @@
 				757CCFB22DBBB278005E6BE6 /* BaseSettingsViewController.swift in Sources */,
 				75B38C22233E5B7C006BDEFC /* KPApplication.swift in Sources */,
 				75B38C23233E5B7C006BDEFC /* ProtectedTextField.swift in Sources */,
-				7564FAE82DB940BA0030F3C4 /* NewDataProtectionSettingsCoordinator.swift in Sources */,
+				7564FAE82DB940BA0030F3C4 /* DataProtectionSettingsCoordinator.swift in Sources */,
 				75B38C25233E5B7C006BDEFC /* FileListCell.swift in Sources */,
 				7526404C284653580003DDFA /* TextInput+editMenu.swift in Sources */,
 				75838483268B55BF000D2E8B /* UIViewController+subviews.swift in Sources */,
@@ -4934,7 +4768,6 @@
 				75FC402D2DA087EF00C5D1C2 /* DatabasePickerCoordinator+add.swift in Sources */,
 				75CF52242B18A60400FF3A3F /* Coordinator+databaseUpgrade.swift in Sources */,
 				F32228162CCEC4230093BD9C /* KeyFileTextField.swift in Sources */,
-				F32B53B12D748AC000BAF5C9 /* SettingsEraseDataFailedAttemptsVC.swift in Sources */,
 				753FE83724C1A9A400063FBB /* UIViewController+alerts.swift in Sources */,
 				757FDF6426E2519E0023E028 /* OTPView.swift in Sources */,
 				754F7E5B2DB15D2C004235C8 /* BasicCell.swift in Sources */,
@@ -4982,7 +4815,6 @@
 				75FC400E2DA025C600C5D1C2 /* DatabasePickerCoordinator.swift in Sources */,
 				75A4948D2B5F0E9C00ED018F /* TagFormatter.swift in Sources */,
 				F32141562A934AB9007A8D4E /* PasswordAuditResultCell.swift in Sources */,
-				754E40872630271D003E4854 /* AppProtectionSettingsCoordinator.swift in Sources */,
 				75C204C42CEE463900E4EDA3 /* UIMenu+customIdentifiers.swift in Sources */,
 				75B38C35233E5B7C006BDEFC /* Watchdog.swift in Sources */,
 				75B38C38233E5B7C006BDEFC /* PremiumCoordinator.swift in Sources */,
@@ -4996,7 +4828,6 @@
 				755B435F26BD606A00C24386 /* TipBoxCoordinator.swift in Sources */,
 				75B38C3D233E5B7C006BDEFC /* DatabaseCreatorVC.swift in Sources */,
 				757CCFA92DBAEB2D005E6BE6 /* LString+dataProtectionSettings.swift in Sources */,
-				75B38C3E233E5B7C006BDEFC /* SettingsAppLockVC.swift in Sources */,
 				7573DECE26050CF000E8440D /* QRCodeScanner.swift in Sources */,
 				75A5312023C0D2D300900ED1 /* Coordinator.swift in Sources */,
 				75DACE742573B49700A110DD /* SettingsAppearanceVC.swift in Sources */,
@@ -5025,7 +4856,7 @@
 				757ADC4723A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				F3D9DE452AA79CAA00FEAF50 /* FaviconDownloader.swift in Sources */,
 				75267D0025FF75E300A1CC95 /* ContextualAction.swift in Sources */,
-				75066D442DAF078A00A47446 /* NewAppProtectionSettingsCoordinator.swift in Sources */,
+				75066D442DAF078A00A47446 /* AppProtectionSettingsCoordinator.swift in Sources */,
 				75B38C46233E5B7C006BDEFC /* EntryViewerPagesVC.swift in Sources */,
 				7564FAEE2DB941D40030F3C4 /* DataProtectionSettingsVC.swift in Sources */,
 				75066D492DAF07ED00A47446 /* AppProtectionSettingsVC.swift in Sources */,
@@ -5033,11 +4864,9 @@
 				75B38C47233E5B7C006BDEFC /* UITableViewCell+demoEditActions.swift in Sources */,
 				758E5EF325F2E22600E06AE7 /* DatabaseSaving.swift in Sources */,
 				F321414F2A934AB5007A8D4E /* PasswordAuditCoordinator.swift in Sources */,
-				7527FAB4262F71CC00623849 /* DataProtectionSettingsCoordinator.swift in Sources */,
 				75B38C48233E5B7C006BDEFC /* ProgressViewHost.swift in Sources */,
 				7538936B26D3BEBE00CAB107 /* KeyboardDismissable.swift in Sources */,
 				758BADB724B5EAFF00CC9265 /* GradientSeparatorView.swift in Sources */,
-				75B38C49233E5B7C006BDEFC /* SettingsAppTimeoutVC.swift in Sources */,
 				75917F432DAC6E8200EB9375 /* SelectableCollectionViewListCell.swift in Sources */,
 				7579A07124F1C55B00C98F24 /* AppHistoryCoordinator.swift in Sources */,
 				7524E7472888B56600ECBEC8 /* RightDetailCell.swift in Sources */,
@@ -5064,7 +4893,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75917F362DABC4EB00EB9375 /* KeyFilePickerCoordinator+create.swift in Sources */,
-				75066D422DAF078A00A47446 /* NewAppProtectionSettingsCoordinator.swift in Sources */,
+				75066D422DAF078A00A47446 /* AppProtectionSettingsCoordinator.swift in Sources */,
 				75066D4A2DAF07ED00A47446 /* AppProtectionSettingsVC.swift in Sources */,
 				75D075B228B639D200F02E39 /* NewsCenter.swift in Sources */,
 				F35125EC2D37D40C00E74BD0 /* EntryFieldMenuButton.swift in Sources */,
@@ -5075,7 +4904,6 @@
 				75C204C72CEE463900E4EDA3 /* UIMenu+customIdentifiers.swift in Sources */,
 				75D075B628B639D200F02E39 /* AppDelegate.swift in Sources */,
 				75D075B828B639D200F02E39 /* AppHistoryViewerVC.swift in Sources */,
-				75D075B928B639D200F02E39 /* SettingsDataProtectionVC.swift in Sources */,
 				75D075BA28B639D200F02E39 /* AppIconSwitcherCoordinator.swift in Sources */,
 				759FD0402D9D1A1200659852 /* FilePickerCoordinator.swift in Sources */,
 				75D075BB28B639D200F02E39 /* FileExportHelper.swift in Sources */,
@@ -5103,7 +4931,6 @@
 				75D075C928B639D200F02E39 /* DatabaseUnlockerCoordinator.swift in Sources */,
 				75D075CA28B639D200F02E39 /* FileInfoVC.swift in Sources */,
 				75D075CB28B639D200F02E39 /* URLReference+extensions.swift in Sources */,
-				75D075CC28B639D200F02E39 /* SettingsDatabaseTimeoutVC.swift in Sources */,
 				7546EC132B17750F00E38DB7 /* GroupEditorVC+Property.swift in Sources */,
 				75D075CD28B639D200F02E39 /* AppCoverVC.swift in Sources */,
 				F3C71AB12AFFAD7A00EEAC8E /* GroupEditorTitleCell.swift in Sources */,
@@ -5144,7 +4971,7 @@
 				75D075EC28B639D200F02E39 /* PasswordGeneratorVC.swift in Sources */,
 				F34AB0722BAF1E7C00BB50A3 /* GoogleDriveConnectionSetupCoordinator.swift in Sources */,
 				F36DB1E52CE4CAF300E58F82 /* DatabaseViewerPermissionManager.swift in Sources */,
-				754F7E502DB04909004235C8 /* NewAppProtectionSettingsCoordinator+passcode.swift in Sources */,
+				754F7E502DB04909004235C8 /* AppProtectionSettingsCoordinator+passcode.swift in Sources */,
 				75FC402F2DA087EF00C5D1C2 /* DatabasePickerCoordinator+add.swift in Sources */,
 				75D075ED28B639D200F02E39 /* MainCoordinator.swift in Sources */,
 				75D075EE28B639D200F02E39 /* ViewableEntryFieldFactory.swift in Sources */,
@@ -5163,7 +4990,6 @@
 				75917F3F2DABC59F00EB9375 /* KeyFilePickerCoordinator+add.swift in Sources */,
 				75D075FC28B639D200F02E39 /* DatabaseViewerCoordinator.swift in Sources */,
 				75D075FD28B639D200F02E39 /* SearchHelper.swift in Sources */,
-				75D075FE28B639D200F02E39 /* SettingsClipboardTimeoutVC.swift in Sources */,
 				7520934C2DA3E5AB009711BB /* DatabasePickerCoordinator+mainMenu.swift in Sources */,
 				75D075FF28B639D200F02E39 /* UITextInput+extensions.swift in Sources */,
 				75D0760028B639D200F02E39 /* ItemCategory.swift in Sources */,
@@ -5207,7 +5033,6 @@
 				75D0761A28B639D200F02E39 /* FileInfoReloader.swift in Sources */,
 				75D0761B28B639D200F02E39 /* ItemIconPickerCoordinator.swift in Sources */,
 				75D21BD62B642BB20065D95E /* OneDriveConnectionSetupCoordinator.swift in Sources */,
-				F38DB22B2D131568008A8D7A /* SettingsShakeGestureActionVC.swift in Sources */,
 				75D0761C28B639D200F02E39 /* EntryFileViewerVC.swift in Sources */,
 				75D0761E28B639D200F02E39 /* CollectionViewControllerWithContextActions.swift in Sources */,
 				75D0762028B639D200F02E39 /* AnnouncementView.swift in Sources */,
@@ -5252,7 +5077,6 @@
 				F3E1946C2BCF23DB00FD03EE /* DeleteWordlistAccessory.swift in Sources */,
 				757CCFB42DBBB278005E6BE6 /* BaseSettingsViewController.swift in Sources */,
 				75D0763628B639D200F02E39 /* SettingsAutoFillVC.swift in Sources */,
-				75D0763728B639D200F02E39 /* AppProtectionSettingsCoordinator.swift in Sources */,
 				F31114A92B9B84E000236632 /* DropboxConnectionSetupCoordinator.swift in Sources */,
 				75D0763828B639D200F02E39 /* Watchdog.swift in Sources */,
 				75D0763A28B639D200F02E39 /* PremiumCoordinator.swift in Sources */,
@@ -5262,7 +5086,6 @@
 				F32141502A934AB6007A8D4E /* PasswordAuditCoordinator.swift in Sources */,
 				75D0763F28B639D200F02E39 /* DatabaseCreatorVC.swift in Sources */,
 				F3C0A6362B6D777B007F4D9E /* LargeTypeVC.swift in Sources */,
-				75D0764028B639D200F02E39 /* SettingsAppLockVC.swift in Sources */,
 				75D0764128B639D200F02E39 /* QRCodeScanner.swift in Sources */,
 				F321414E2A934AAF007A8D4E /* HIBPService.swift in Sources */,
 				75D0764228B639D200F02E39 /* Coordinator.swift in Sources */,
@@ -5289,7 +5112,6 @@
 				759FD0382D9D1A0400659852 /* FilePickerVC.swift in Sources */,
 				759FD0442D9D1A2100659852 /* FilePickerCell.swift in Sources */,
 				F30D03732A7BE8A10047525F /* PasswordQuality.swift in Sources */,
-				F32B53B32D748AC000BAF5C9 /* SettingsEraseDataFailedAttemptsVC.swift in Sources */,
 				75D0764E28B639D200F02E39 /* ChallengeResponseManager.swift in Sources */,
 				75D0764F28B639D200F02E39 /* GroupEditorVC.swift in Sources */,
 				F35D7CD42D639563006DCBF0 /* FileImportHelper.swift in Sources */,
@@ -5301,7 +5123,7 @@
 				75DEA13D2DA9C39300710088 /* FileActivationCause.swift in Sources */,
 				75D0765328B639D200F02E39 /* SwitchCell.swift in Sources */,
 				75D0765428B639D200F02E39 /* DatabaseIconSetPicker.swift in Sources */,
-				7564FAE92DB940BA0030F3C4 /* NewDataProtectionSettingsCoordinator.swift in Sources */,
+				7564FAE92DB940BA0030F3C4 /* DataProtectionSettingsCoordinator.swift in Sources */,
 				F38A48C82A80E987006B3B21 /* PasswordQualityIndicatorIconView.swift in Sources */,
 				75D0765528B639D200F02E39 /* AppHistory.swift in Sources */,
 				75D0765628B639D200F02E39 /* NSLayoutContraint+extensions.swift in Sources */,
@@ -5314,13 +5136,11 @@
 				75D0765B28B639D200F02E39 /* UITableViewCell+demoEditActions.swift in Sources */,
 				75FC403F2DA09DBD00C5D1C2 /* DatabasePickerCoordinator+select.swift in Sources */,
 				75D0765C28B639D200F02E39 /* DatabaseSaving.swift in Sources */,
-				75D0765D28B639D200F02E39 /* DataProtectionSettingsCoordinator.swift in Sources */,
 				75CF52252B18A60500FF3A3F /* Coordinator+databaseUpgrade.swift in Sources */,
 				75D0765F28B639D200F02E39 /* ProgressViewHost.swift in Sources */,
 				75D0766028B639D200F02E39 /* KeyboardDismissable.swift in Sources */,
 				75D0766128B639D200F02E39 /* GradientSeparatorView.swift in Sources */,
 				F32141582A934ABA007A8D4E /* PasswordAuditService.swift in Sources */,
-				75D0766228B639D200F02E39 /* SettingsAppTimeoutVC.swift in Sources */,
 				75DEE8112AA6183C0024AE11 /* ExposureCountFormatter.swift in Sources */,
 				F34B0DCC2B2212A2001F7500 /* FreeBadgeAccessory.swift in Sources */,
 				75D0766328B639D200F02E39 /* AppHistoryCoordinator.swift in Sources */,
@@ -5611,33 +5431,6 @@
 			name = ExpiryDateEditorVC.storyboard;
 			sourceTree = "<group>";
 		};
-		751E0CE82309AE5D0088BB10 /* SettingsDataProtectionVC.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				751E0CE72309AE5D0088BB10 /* Base */,
-				75ED42AF2313C267003DE72E /* ru */,
-				75AC535A2326FE6E000AA4FB /* nl */,
-				75AC53852326FF7E000AA4FB /* zh-Hant */,
-				75AC53B22327674B000AA4FB /* zh-Hans */,
-				75E4CA6D232D0B0F00EB6805 /* de */,
-				75FDEF2D233ABE9A00F17C26 /* cs */,
-				75FDEF55233ABEEC00F17C26 /* sv */,
-				75AC35C723549DE700B60614 /* es */,
-				756B2442243F74E000AA121A /* fr */,
-				754A323A24426AA300632B39 /* it */,
-				7532822824A8049F00A71F87 /* ja */,
-				754ABEAA25AB8A5900B98A63 /* ar */,
-				754ABEE125AB95D300B98A63 /* pl */,
-				754ABF0F25AB969000B98A63 /* pt-BR */,
-				75339567263800AA00341D24 /* sk */,
-				7531911D263800DC000A1119 /* tr */,
-				75FCA93F2638010D0070405A /* th */,
-				7534380B2643FE6E0032D284 /* ko */,
-				751C41E52700E4260002FB8F /* uk */,
-			);
-			name = SettingsDataProtectionVC.storyboard;
-			sourceTree = "<group>";
-		};
 		751E0CEE2309AE8D0088BB10 /* SettingsVC.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -5690,33 +5483,6 @@
 				751C41E02700E4260002FB8F /* uk */,
 			);
 			name = SettingsBackupVC.storyboard;
-			sourceTree = "<group>";
-		};
-		751E0CF42309AEB00088BB10 /* SettingsAppLockVC.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				751E0CF32309AEB00088BB10 /* Base */,
-				75ED42882312EEC4003DE72E /* ru */,
-				75AC53552326FE6E000AA4FB /* nl */,
-				75AC53802326FF7E000AA4FB /* zh-Hant */,
-				75AC53AD2327674B000AA4FB /* zh-Hans */,
-				75E4CA69232D0B0F00EB6805 /* de */,
-				75FDEF28233ABE9A00F17C26 /* cs */,
-				75FDEF54233ABEEC00F17C26 /* sv */,
-				75AC35C623549DE700B60614 /* es */,
-				756B243D243F74E000AA121A /* fr */,
-				754A323524426AA300632B39 /* it */,
-				7532822324A8049F00A71F87 /* ja */,
-				754ABEA925AB8A5900B98A63 /* ar */,
-				754ABEDD25AB95D300B98A63 /* pl */,
-				754ABF0B25AB969000B98A63 /* pt-BR */,
-				75339566263800AA00341D24 /* sk */,
-				75319121263800DC000A1119 /* tr */,
-				75FCA93E2638010D0070405A /* th */,
-				7534380A2643FE6E0032D284 /* ko */,
-				751C41DB2700E4260002FB8F /* uk */,
-			);
-			name = SettingsAppLockVC.storyboard;
 			sourceTree = "<group>";
 		};
 		751E0CF72309AEBB0088BB10 /* SettingsAutoFillVC.storyboard */ = {
@@ -6401,33 +6167,6 @@
 			name = SettingsAppearanceVC.storyboard;
 			sourceTree = "<group>";
 		};
-		75ED428B23132A80003DE72E /* SettingsAppTimeoutVC.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				75ED428A23132A80003DE72E /* Base */,
-				75ED428D23132A86003DE72E /* ru */,
-				75AC53652326FE6E000AA4FB /* nl */,
-				75AC53902326FF7E000AA4FB /* zh-Hant */,
-				75AC53BD2327674B000AA4FB /* zh-Hans */,
-				75E4CA7B232D0B0F00EB6805 /* de */,
-				75FDEF38233ABE9A00F17C26 /* cs */,
-				75FDEF64233ABEEC00F17C26 /* sv */,
-				75AC35D523549DE700B60614 /* es */,
-				756B244C243F74E000AA121A /* fr */,
-				754A324424426AA300632B39 /* it */,
-				7532823224A804A000A71F87 /* ja */,
-				754ABEB725AB8A5900B98A63 /* ar */,
-				754ABEEB25AB95D300B98A63 /* pl */,
-				754ABF1925AB969000B98A63 /* pt-BR */,
-				75339571263800AA00341D24 /* sk */,
-				7531912C263800DC000A1119 /* tr */,
-				75FCA94C2638010D0070405A /* th */,
-				753438152643FE6F0032D284 /* ko */,
-				751C41DC2700E4260002FB8F /* uk */,
-			);
-			name = SettingsAppTimeoutVC.storyboard;
-			sourceTree = "<group>";
-		};
 		75ED429423133DEF003DE72E /* SettingsBackupTimeoutPickerVC.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -6453,33 +6192,6 @@
 				751C41DF2700E4260002FB8F /* uk */,
 			);
 			name = SettingsBackupTimeoutPickerVC.storyboard;
-			sourceTree = "<group>";
-		};
-		75ED42A62313C0BB003DE72E /* SettingsClipboardTimeoutVC.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				75ED42A52313C0BB003DE72E /* Base */,
-				75ED42A82313C0C5003DE72E /* ru */,
-				75AC53722326FE6E000AA4FB /* nl */,
-				75AC539D2326FF7E000AA4FB /* zh-Hant */,
-				75AC53CA2327674B000AA4FB /* zh-Hans */,
-				75E4CA85232D0B0F00EB6805 /* de */,
-				75FDEF45233ABE9A00F17C26 /* cs */,
-				75FDEF71233ABEEC00F17C26 /* sv */,
-				75AC35E423549DE700B60614 /* es */,
-				756B245B243F74E000AA121A /* fr */,
-				754A325324426AA300632B39 /* it */,
-				7532824124A804A000A71F87 /* ja */,
-				754ABEC425AB8A5900B98A63 /* ar */,
-				754ABEF825AB95D300B98A63 /* pl */,
-				754ABF2625AB969000B98A63 /* pt-BR */,
-				75339581263800AA00341D24 /* sk */,
-				7531913C263800DC000A1119 /* tr */,
-				75FCA9592638010D0070405A /* th */,
-				753438262643FE6F0032D284 /* ko */,
-				751C41E32700E4260002FB8F /* uk */,
-			);
-			name = SettingsClipboardTimeoutVC.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

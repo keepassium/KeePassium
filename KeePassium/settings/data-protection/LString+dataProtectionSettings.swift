@@ -56,6 +56,10 @@ extension LString {
         "[Settings/DataProtection/LockOnReboot/title]",
         value: "Lock on Device Restart",
         comment: "Setting switch: whether to lock databases after device reboot.")
+    public static let lockDatabasesOnScreenLockTitle = NSLocalizedString(
+        "[Settings/DataProtection/LockOnScreenLock/title]",
+        value: "Lock on macOS Screen Lock",
+        comment: "Title of a yes/no setting: whether to lock databases when computer screen is locked (see https://support.apple.com/en-gb/guide/mac-help/mchl8e8b6a34/mac)")
     public static let clearMasterKeysOnTimeoutTitle = NSLocalizedString(
         "[Settings/MasterKeys/ClearOnTimeout/title]",
         value: "Clear Master Keys on Timeout",

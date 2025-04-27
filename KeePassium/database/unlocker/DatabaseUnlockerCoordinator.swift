@@ -472,13 +472,20 @@ extension DatabaseUnlockerCoordinator: DatabaseUnlockerDelegate {
 }
 
 extension DatabaseUnlockerCoordinator: KeyFilePickerCoordinatorDelegate {
-    func didSelectKeyFile(_ fileRef: URLReference?, cause: FileActivationCause?, in coordinator: KeyFilePickerCoordinator) {
+    func didSelectKeyFile(
+        _ fileRef: URLReference?,
+        cause: FileActivationCause?,
+        in coordinator: KeyFilePickerCoordinator
+    ) {
         assert(cause != nil, "File selected but not activated?")
         databaseUnlockerVC.hideErrorMessage(animated: false)
         setKeyFile(fileRef)
     }
 
-    func didEliminateKeyFile(_ keyFile: URLReference, in coordinator: KeyFilePickerCoordinator) {
+    func didEliminateKeyFile(
+        _ keyFile: URLReference,
+        in coordinator: KeyFilePickerCoordinator
+    ) {
         if keyFile == selectedKeyFileRef {
             databaseUnlockerVC.hideErrorMessage(animated: false)
             setKeyFile(nil)

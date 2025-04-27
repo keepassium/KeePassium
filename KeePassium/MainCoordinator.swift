@@ -1027,7 +1027,8 @@ extension MainCoordinator: PasscodeInputDelegate {
     }
 
     private func handleFailedPasscode() {
-        let isResetting = AppEraser.registerFailedAppPasscodeAttempt(afterReset: { 
+        // swiftlint:disable:next trailing_closure
+        let isResetting = AppEraser.registerFailedAppPasscodeAttempt(afterReset: {
             exit(0)
         })
         if isResetting {

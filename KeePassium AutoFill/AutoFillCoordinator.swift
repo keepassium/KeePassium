@@ -992,6 +992,7 @@ extension AutoFillCoordinator: PasscodeInputDelegate {
     }
 
     private func handleFailedPasscode() {
+        // swiftlint:disable:next trailing_closure
         let isResetting = AppEraser.registerFailedAppPasscodeAttempt(afterReset: {
             exit(0)
         })

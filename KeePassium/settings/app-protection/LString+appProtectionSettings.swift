@@ -66,6 +66,14 @@ extension LString {
         value: "After last interaction",
         comment: "Description of those 'App Protection Timeout' options that trigger when the user has been idle for a while. For example: 'Timeout: 3 seconds (After last interaction)")
 
+    public static let lockAppOnScreenLockTitle = NSLocalizedString(
+        "[Settings/AppLock/LockOnScreenLock/title]",
+        value: "Lock on macOS Screen Lock",
+        comment: "Title of a yes/no setting: whether to lock app when computer screen is locked (see https://support.apple.com/en-gb/guide/mac-help/mchl8e8b6a34/mac)")
+    public static let lockAppOnScreenLockDescription = NSLocalizedString(
+        "[Settings/AppLock/LockOnScreenLock/description]",
+        value: "Ensures KeePassium is locked when you lock your Mac.",
+        comment: "Explanation for the `Lock on macOS Screen Lock` setting")
     public static let lockAppOnLaunchTitle = NSLocalizedString(
         "[Settings/AppLock/LockOnLaunch/title]",
         value: "Lock on App Launch",

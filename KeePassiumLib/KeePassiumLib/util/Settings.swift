@@ -75,9 +75,11 @@ public class Settings {
         case recentUserActivityTimestamp
         case appLockTimeout
         case lockAppOnLaunch
+        case lockAppOnScreenLock
         case databaseLockTimeout
         case lockDatabasesOnTimeout
         case lockDatabasesOnReboot
+        case lockDatabasesOnScreenLock
         case passcodeAttemptsBeforeAppReset
         case passcodeKeyboardType
 
@@ -959,6 +961,22 @@ public class Settings {
         }
     }
 
+    public var isLockAppOnScreenLock: Bool {
+        get {
+            let stored = UserDefaults.appGroupShared
+                .object(forKey: Keys.lockAppOnScreenLock.rawValue)
+                as? Bool
+            return stored ?? true
+        }
+        set {
+            updateAndNotify(
+                oldValue: isLockAppOnScreenLock,
+                newValue: newValue,
+                key: .lockAppOnScreenLock
+            )
+        }
+    }
+
     public var databaseLockTimeout: DatabaseLockTimeout {
         get {
             if let managedValue = ManagedAppConfig.shared.getIntIfLicensed(.databaseLockTimeout) {
@@ -1018,6 +1036,22 @@ public class Settings {
                 oldValue: isLockDatabasesOnReboot,
                 newValue: newValue,
                 key: .lockDatabasesOnReboot)
+        }
+    }
+
+    public var isLockDatabasesOnScreenLock: Bool {
+        get {
+            let stored = UserDefaults.appGroupShared
+                .object(forKey: Keys.lockDatabasesOnScreenLock.rawValue)
+                as? Bool
+            return stored ?? false
+        }
+        set {
+            updateAndNotify(
+                oldValue: isLockDatabasesOnScreenLock,
+                newValue: newValue,
+                key: .lockDatabasesOnScreenLock
+            )
         }
     }
 

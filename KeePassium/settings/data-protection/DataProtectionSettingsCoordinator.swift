@@ -1,183 +1,206 @@
 //  KeePassium Password Manager
-//  Copyright © 2018–2024 KeePassium Labs <info@keepassium.com>
+//  Copyright © 2018-2024 KeePassium Labs <info@keepassium.com>
 //
 //  This program is free software: you can redistribute it and/or modify it
 //  under the terms of the GNU General Public License version 3 as published
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
-//  For commercial licensing, please contact the author.
+//  For commercial licensing, please contact us.
 
 import KeePassiumLib
 
 final class DataProtectionSettingsCoordinator: Coordinator, Refreshable {
     var childCoordinators = [Coordinator]()
-
     var dismissHandler: CoordinatorDismissHandler?
 
     private let router: NavigationRouter
-    private let dataProtectionSettingsVC: SettingsDataProtectionVC
+    internal let _dataProtectionSettingsVC: DataProtectionSettingsVC
+    private let settingsNotifications: SettingsNotifications
 
     init(router: NavigationRouter) {
         self.router = router
-        dataProtectionSettingsVC = SettingsDataProtectionVC.instantiateFromStoryboard()
-        dataProtectionSettingsVC.delegate = self
+        _dataProtectionSettingsVC = DataProtectionSettingsVC()
+        settingsNotifications = SettingsNotifications()
+
+        _dataProtectionSettingsVC.delegate = self
+        settingsNotifications.observer = self
     }
 
     deinit {
+        settingsNotifications.stopObserving()
         assert(childCoordinators.isEmpty)
         removeAllChildCoordinators()
     }
 
     func start() {
-        router.push(dataProtectionSettingsVC, animated: true, onPop: { [weak self] in
+        router.push(_dataProtectionSettingsVC, animated: true, onPop: { [weak self] in
             guard let self = self else { return }
             self.removeAllChildCoordinators()
             self.dismissHandler?(self)
         })
-        startObservingPremiumStatus(#selector(premiumStatusDidChange))
-    }
-
-    @objc
-    private func premiumStatusDidChange() {
-        refresh()
+        settingsNotifications.startObserving()
+        applySettingsToVC()
     }
 
     func refresh() {
-        guard let topVC = router.navigationController.topViewController,
-              let topRefreshable = topVC as? Refreshable
-        else {
-            return
-        }
-        topRefreshable.refresh()
+        applySettingsToVC()
+        _dataProtectionSettingsVC.refresh()
+    }
+
+    private func applySettingsToVC() {
+        let vc = _dataProtectionSettingsVC
+        let s = Settings.current
+        vc.isRememberMasterKeys = s.isRememberDatabaseKey
+        vc.databaseTimeout = s.databaseLockTimeout
+        vc.isLockOnReboot = s.isLockDatabasesOnReboot
+        vc.isLockOnTimeout = s.isLockDatabasesOnTimeout
+        vc.isLockOnScreenLock = s.isLockDatabasesOnScreenLock
+        vc.shakeAction = s.shakeGestureAction
+        vc.isConfirmShakeAction = s.isConfirmShakeGestureAction
+        vc.clipboardTimeout = s.clipboardTimeout
+        vc.isUseUniversalClipboard = s.isUniversalClipboardEnabled
+        vc.isHideProtectedFields = s.isHideProtectedFields
+        vc.isRememberKeyFiles = s.isKeepKeyFileAssociations
+        vc.isRememberFinalKeys = s.isRememberDatabaseFinalKey
+    }
+}
+
+extension DataProtectionSettingsCoordinator: SettingsObserver {
+    func settingsDidChange(key: Settings.Keys) {
+        guard key != .recentUserActivityTimestamp else { return }
+        refresh()
     }
 }
 
 extension DataProtectionSettingsCoordinator {
-    private func showDatabaseTimeoutSettingsPage() {
-        let databaseTimeoutVC = SettingsDatabaseTimeoutVC.make()
-        databaseTimeoutVC.delegate = self
-        router.push(databaseTimeoutVC, animated: true, onPop: nil)
+    internal func _clearMasterKeys(notify: Bool, presenter: UIViewController) {
+        DatabaseSettingsManager.shared.eraseAllMasterKeys()
+        if notify {
+            presenter.showNotification(
+                LString.masterKeysClearedTitle,
+                image: .symbol(.key, tint: .iconTint),
+                hidePrevious: true,
+                duration: 1
+            )
+        }
     }
 
-    private func showClipboardTimeoutSettingsPage() {
-        let clipboardTimeoutVC = SettingsClipboardTimeoutVC.instantiateFromStoryboard()
-        clipboardTimeoutVC.delegate = self
-        router.push(clipboardTimeoutVC, animated: true, onPop: nil)
-    }
-
-    private func showShakeGestureActionSettings() {
-        let shakeGestureActionVC = SettingsShakeGestureActionVC.make(delegate: self)
-        router.push(shakeGestureActionVC, animated: true, onPop: nil)
-    }
-
-    private func showEraseDataFailedAttemptsSettings() {
-        let eraseDataFailedAttemptsVC = SettingsEraseDataFailedAttemptsVC.make(delegate: self)
-        router.push(eraseDataFailedAttemptsVC, animated: true, onPop: nil)
+    internal func _clearKeyFileAssociations(notify: Bool, presenter: UIViewController) {
+        DatabaseSettingsManager.shared.forgetAllKeyFiles()
+        if notify {
+            presenter.showNotification(
+                LString.keyFileAssociationsClearedTitle,
+                image: .symbol(.keyFile, tint: .iconTint),
+                hidePrevious: true,
+                duration: 1
+            )
+        }
     }
 }
 
-extension DataProtectionSettingsCoordinator: SettingsDataProtectionViewCoordinatorDelegate {
-    func didPressEraseDataAfterFailedAttempts(in viewController: SettingsDataProtectionVC) {
-        showEraseDataFailedAttemptsSettings()
-    }
-
-    func didPressDatabaseTimeout(in viewController: SettingsDataProtectionVC) {
-        showDatabaseTimeoutSettingsPage()
-    }
-
-    func didPressClipboardTimeout(in viewController: SettingsDataProtectionVC) {
-        showClipboardTimeoutSettingsPage()
-    }
-
-    func didPressShakeGestureAction(in viewController: SettingsDataProtectionVC) {
-        showShakeGestureActionSettings()
-    }
-
-    func didToggleLockDatabasesOnTimeout(
-        newValue: Bool,
-        in viewController: SettingsDataProtectionVC
-    ) {
-        Settings.current.isLockDatabasesOnTimeout = newValue
+extension DataProtectionSettingsCoordinator: DataProtectionSettingsVC.Delegate {
+    func didChangeRememberMasterKeys(_ isRemember: Bool, in viewController: DataProtectionSettingsVC) {
+        Settings.current.isRememberDatabaseKey = isRemember
+        viewController.showNotificationIfManaged(setting: .rememberDatabaseKey)
         refresh()
+        if !Settings.current.isRememberDatabaseKey {
+            let isManaged = ManagedAppConfig.shared.isManaged(key: .rememberDatabaseKey)
+            _clearMasterKeys(notify: !isManaged, presenter: viewController)
+        }
     }
-}
 
-extension DataProtectionSettingsCoordinator: SettingsDatabaseTimeoutVCDelegate {
-    func didSelectTimeout(
+    func didPressClearMasterKeys(in viewController: DataProtectionSettingsVC) {
+        _clearMasterKeys(notify: true, presenter: viewController)
+    }
+
+    func didChangeDatabaseTimeout(
         _ timeout: Settings.DatabaseLockTimeout,
-        in viewController: SettingsDatabaseTimeoutVC
+        in viewController: DataProtectionSettingsVC
     ) {
         Settings.current.databaseLockTimeout = timeout
-
-        Watchdog.shared.restart() 
-
-        if Settings.current.isManaged(key: .databaseLockTimeout) {
-            viewController.showManagedSettingNotification()
-        } else {
-            DispatchQueue.main.async { [weak router] in
-                router?.pop(viewController: viewController, animated: true)
-            }
-        }
-    }
-}
-
-extension DataProtectionSettingsCoordinator: SettingsClipboardTimeoutVCDelegate {
-    func didSelectTimeout(
-        _ timeout: Settings.ClipboardTimeout,
-        in viewController: SettingsClipboardTimeoutVC
-    ) {
-        Settings.current.clipboardTimeout = timeout
+        Watchdog.shared.restart()
+        viewController.showNotificationIfManaged(setting: .databaseLockTimeout)
         refresh()
-
-        if Settings.current.isManaged(key: .clipboardTimeout) {
-            viewController.showManagedSettingNotification()
-        } else {
-            DispatchQueue.main.async { [weak router] in
-                router?.pop(viewController: viewController, animated: true)
-            }
-        }
     }
-}
 
-extension DataProtectionSettingsCoordinator: SettingsShakeGestureActionVCDelegate {
-    func didSelectShakeGesture(
+    func didChangeLockOnReboot(_ isLockOnRestart: Bool, in viewController: DataProtectionSettingsVC) {
+        Settings.current.isLockDatabasesOnReboot = isLockOnRestart
+        viewController.showNotificationIfManaged(setting: .lockDatabasesOnReboot)
+        refresh()
+    }
+
+    func didChangeLockOnTimeout(_ isLockOnTimeout: Bool, in viewController: DataProtectionSettingsVC) {
+        Settings.current.isLockDatabasesOnTimeout = isLockOnTimeout
+        viewController.showNotificationIfManaged(setting: .lockDatabasesOnTimeout)
+        refresh()
+    }
+
+    func didChangeLockOnScreenLock(
+        _ isLockOnScreenLock: Bool,
+        in viewController: DataProtectionSettingsVC
+    ) {
+        Settings.current.isLockDatabasesOnScreenLock = isLockOnScreenLock
+        viewController.showNotificationIfManaged(setting: .lockDatabasesOnScreenLock)
+        refresh()
+    }
+
+    func didChangeShakeAction(
         _ action: Settings.ShakeGestureAction,
-        in viewController: SettingsShakeGestureActionVC
+        in viewController: DataProtectionSettingsVC
     ) {
         Settings.current.shakeGestureAction = action
+        viewController.showNotificationIfManaged(setting: .shakeGestureAction)
         refresh()
+    }
 
-        if Settings.current.isManaged(key: .shakeGestureAction) {
-            viewController.showManagedSettingNotification()
+    func didChangeConfirmShakeAction(_ isConfirm: Bool, in viewController: DataProtectionSettingsVC) {
+        Settings.current.isConfirmShakeGestureAction = isConfirm
+        viewController.showNotificationIfManaged(setting: .confirmShakeGestureAction)
+        refresh()
+    }
+
+    func didChangeClipboardTimeout(
+        _ timeout: Settings.ClipboardTimeout,
+        in viewController: DataProtectionSettingsVC
+    ) {
+        Settings.current.clipboardTimeout = timeout
+        viewController.showNotificationIfManaged(setting: .clipboardTimeout)
+        refresh()
+    }
+
+    func didChangeUseUniversalClipboard(_ isUse: Bool, in viewController: DataProtectionSettingsVC) {
+        Settings.current.isUniversalClipboardEnabled = isUse
+        viewController.showNotificationIfManaged(setting: .universalClipboardEnabled)
+        refresh()
+    }
+
+    func didChangeHideProtectedFields(_ isHide: Bool, in viewController: DataProtectionSettingsVC) {
+        Settings.current.isHideProtectedFields = isHide
+        viewController.showNotificationIfManaged(setting: .hideProtectedFields)
+        refresh()
+    }
+
+    func didChangeRememberKeyFiles(_ isRemember: Bool, in viewController: DataProtectionSettingsVC) {
+        Settings.current.isKeepKeyFileAssociations = isRemember
+        refresh()
+        viewController.showNotificationIfManaged(setting: .keepKeyFileAssociations)
+        if !Settings.current.isKeepKeyFileAssociations {
+            let isManaged = ManagedAppConfig.shared.isManaged(key: .keepKeyFileAssociations)
+            _clearKeyFileAssociations(notify: !isManaged, presenter: viewController)
         }
     }
 
-    func didSetShakeGestureConfirmation(
-        _ shouldConfirm: Bool,
-        in viewController: SettingsShakeGestureActionVC
-    ) {
-        Settings.current.isConfirmShakeGestureAction = shouldConfirm
-        refresh()
+    func didPressClearKeyFileAssociations(in viewController: DataProtectionSettingsVC) {
+        _clearKeyFileAssociations(notify: true, presenter: viewController)
 
-        if Settings.current.isManaged(key: .confirmShakeGestureAction) {
-            viewController.showManagedSettingNotification()
-        }
     }
-}
 
-extension DataProtectionSettingsCoordinator: SettingsEraseDataFailedAttemptsVCDelegate {
-    func didSelectEraseDataAfterFailedAttempts(
-        _ option: Settings.PasscodeAttemptsBeforeAppReset,
-        in viewController: SettingsEraseDataFailedAttemptsVC
-    ) {
-        Settings.current.passcodeAttemptsBeforeAppReset = option
+    func didChangeRememberFinalKeys(_ isRemember: Bool, in viewController: DataProtectionSettingsVC) {
+        Settings.current.isRememberDatabaseFinalKey = isRemember
         refresh()
-
-        if Settings.current.isManaged(key: .passcodeAttemptsBeforeAppReset) {
-            viewController.showManagedSettingNotification()
-        } else {
-            DispatchQueue.main.async { [weak router] in
-                router?.pop(viewController: viewController, animated: true)
-            }
+        viewController.showNotificationIfManaged(setting: .rememberDatabaseFinalKey)
+        if !Settings.current.isRememberDatabaseFinalKey {
+            DatabaseSettingsManager.shared.eraseAllFinalKeys()
+            Diag.info("Final keys erased successfully")
         }
     }
 }
