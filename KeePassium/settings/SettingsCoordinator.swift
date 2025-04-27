@@ -94,8 +94,12 @@ extension SettingsCoordinator {
     }
 
     private func showSearchSettingsPage() {
-        let searchSettingsVC = SettingsSearchVC.instantiateFromStoryboard()
-        router.push(searchSettingsVC, animated: true, onPop: nil)
+        let searchSettingsCoordinator = SearchSettingsCoordinator(router: router)
+        searchSettingsCoordinator.dismissHandler = { [weak self] coordinator in
+            self?.removeChildCoordinator(coordinator)
+        }
+        searchSettingsCoordinator.start()
+        addChildCoordinator(searchSettingsCoordinator)
     }
 
     private func showAutoFillSettingsPage() {

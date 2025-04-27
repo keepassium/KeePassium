@@ -134,7 +134,7 @@ final class SettingsVC: UITableViewController, Refreshable {
 
         appearanceCell.textLabel?.text = LString.titleAppearanceSettings
         autoFillCell.textLabel?.text = LString.titleAutoFillSettings
-        searchCell.textLabel?.text = LString.titleSearchSettings
+        searchCell.textLabel?.text = LString.searchSettingsTitle
 
         appSafetyCell.textLabel?.text = LString.titleAppProtectionSettings
         dataSafetyCell.textLabel?.text = LString.dataProtectionSettingsTitle

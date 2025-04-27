@@ -177,13 +177,6 @@ extension LString {
         value: "Copy OTP to Clipboard",
         comment: "Title of an option: copy one-time password to clipboard when using AutoFill")
 
-
-    public static let titleSearchSettings = NSLocalizedString(
-        "[Settings/Search/title]",
-        bundle: Bundle.framework,
-        value: "Search",
-        comment: "Section title in settings")
-
     public static let titleNetworkAccessSettings = NSLocalizedString(
         "[Settings/NetworkAccess/title]",
         bundle: Bundle.framework,

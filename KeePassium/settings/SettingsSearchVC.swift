@@ -24,7 +24,7 @@ class SettingsSearchVC: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = LString.titleSearchSettings
+        title = LString.searchSettingsTitle
         settingsNotifications.startObserving()
         refresh()
     }
