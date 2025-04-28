@@ -126,6 +126,7 @@
 		7520934C2DA3E5AB009711BB /* DatabasePickerCoordinator+mainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752093492DA3E5AB009711BB /* DatabasePickerCoordinator+mainMenu.swift */; };
 		7520934D2DA3E5AB009711BB /* DatabasePickerCoordinator+mainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752093492DA3E5AB009711BB /* DatabasePickerCoordinator+mainMenu.swift */; };
 		7520934E2DA3E5AB009711BB /* DatabasePickerCoordinator+mainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752093492DA3E5AB009711BB /* DatabasePickerCoordinator+mainMenu.swift */; };
+		752232482DBFD154007641CB /* LString+searchSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7571697B2DBCFDD200FD6A6C /* LString+searchSettings.swift */; };
 		7523F71D21C98D620025C706 /* SupportEmailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7523F71C21C98D620025C706 /* SupportEmailComposer.swift */; };
 		7524E7362888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E7352888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift */; };
 		7524E7372888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E7352888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift */; };
@@ -320,7 +321,6 @@
 		757169792DBCFDBB00FD6A6C /* SearchSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757169772DBCFDBB00FD6A6C /* SearchSettingsCoordinator.swift */; };
 		7571697A2DBCFDBB00FD6A6C /* SearchSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757169772DBCFDBB00FD6A6C /* SearchSettingsCoordinator.swift */; };
 		7571697C2DBCFDD200FD6A6C /* LString+searchSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7571697B2DBCFDD200FD6A6C /* LString+searchSettings.swift */; };
-		7571697D2DBCFDD200FD6A6C /* LString+searchSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7571697B2DBCFDD200FD6A6C /* LString+searchSettings.swift */; };
 		7571697E2DBCFDD200FD6A6C /* LString+searchSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7571697B2DBCFDD200FD6A6C /* LString+searchSettings.swift */; };
 		757169802DBCFDE800FD6A6C /* SearchSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7571697F2DBCFDE800FD6A6C /* SearchSettingsVC.swift */; };
 		757169812DBCFDE800FD6A6C /* SearchSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7571697F2DBCFDE800FD6A6C /* SearchSettingsVC.swift */; };
@@ -4407,6 +4407,7 @@
 				759BC62C2487FE5200E88111 /* URLReference+extensions.swift in Sources */,
 				7550D24C215FDEC500360E0C /* AppCoverVC.swift in Sources */,
 				75D7614F262DDE0B00B1DE7F /* AboutCoordinator.swift in Sources */,
+				752232482DBFD154007641CB /* LString+searchSettings.swift in Sources */,
 				F35D7CD32D639563006DCBF0 /* FileImportHelper.swift in Sources */,
 				754F7E4A2DB00820004235C8 /* PickerCell.swift in Sources */,
 				754EEAB72CFFBBF000404142 /* DatabaseCSVExporter.swift in Sources */,
