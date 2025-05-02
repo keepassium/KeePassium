@@ -159,6 +159,15 @@ extension RemoteFilePickerCoordinator: WebDAVConnectionSetupCoordinatorDelegate 
         delegate?.didPickRemoteFile(url: url, credential: credential, in: self)
         dismiss()
     }
+
+    func didPickRemoteFolder(
+        _ folder: WebDAVItem,
+        credential: NetworkCredential,
+        stateIndicator: (any BusyStateIndicating)?,
+        in coordinator: WebDAVConnectionSetupCoordinator
+    ) {
+        assertionFailure("Expected didPickRemoteItem instead")
+    }
 }
 
 extension RemoteFilePickerCoordinator: GoogleDriveConnectionSetupCoordinatorDelegate {

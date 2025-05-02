@@ -95,11 +95,11 @@ final class WebDAVConnectionSetupVC: UITableViewController {
 
     private func setupDoneButton() {
         doneButton = UIBarButtonItem(
-            systemItem: .done,
+            title: LString.actionContinue,
             primaryAction: UIAction { [weak self] _ in
                 self?.didPressDone()
-            },
-            menu: nil)
+            }
+        )
         navigationItem.rightBarButtonItem = doneButton
     }
 

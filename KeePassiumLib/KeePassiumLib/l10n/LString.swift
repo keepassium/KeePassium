@@ -99,6 +99,12 @@ public enum LString {
             value: "Invalid CSV format at line %d.",
             comment: "Error message when CSV parsing fails [lineNumber: Int]"
         )
+        public static let webDAVExportNeedsFolder = NSLocalizedString(
+            "[WebDAV/Export/NeedsFolder]",
+            bundle: Bundle.framework,
+            value: "Please select path to a folder",
+            comment: "Error shown when user selects a file path instead of folder path in WebDAV."
+        )
     }
 
 
