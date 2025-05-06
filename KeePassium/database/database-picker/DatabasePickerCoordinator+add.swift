@@ -81,13 +81,10 @@ extension DatabasePickerCoordinator {
             router: modalRouter
         )
         remoteFilePickerCoordinator.delegate = self
-        remoteFilePickerCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
         remoteFilePickerCoordinator.start()
 
         presenter.present(modalRouter, animated: true, completion: nil)
-        addChildCoordinator(remoteFilePickerCoordinator)
+        addChildCoordinator(remoteFilePickerCoordinator, onDismiss: nil)
     }
 }
 

@@ -8,39 +8,23 @@
 
 import KeePassiumLib
 
-final class SearchSettingsCoordinator: Coordinator, Refreshable {
-    var childCoordinators = [Coordinator]()
-    var dismissHandler: CoordinatorDismissHandler?
-
-    private let router: NavigationRouter
+final class SearchSettingsCoordinator: BaseCoordinator {
     internal let _searchSettingsVC: SearchSettingsVC
-    private let settingsNotification: SettingsNotifications
 
-    init(router: NavigationRouter) {
-        self.router = router
+    override init(router: NavigationRouter) {
         _searchSettingsVC = SearchSettingsVC()
-        settingsNotification = SettingsNotifications()
+        super.init(router: router)
         _searchSettingsVC.delegate = self
-        settingsNotification.observer = self
     }
 
-    deinit {
-        settingsNotification.stopObserving()
-        assert(childCoordinators.isEmpty)
-        removeAllChildCoordinators()
-    }
-
-    func start() {
-        router.push(_searchSettingsVC, animated: true, onPop: { [weak self] in
-            guard let self else { return }
-            removeAllChildCoordinators()
-            dismissHandler?(self)
-        })
-        settingsNotification.startObserving()
+    override func start() {
+        super.start()
+        _pushInitialViewController(_searchSettingsVC, animated: true)
         applySettingsToVC()
     }
 
-    func refresh() {
+    override func refresh() {
+        super.refresh()
         applySettingsToVC()
         _searchSettingsVC.refresh()
     }
@@ -51,13 +35,6 @@ final class SearchSettingsCoordinator: Coordinator, Refreshable {
         _searchSettingsVC.isSearchFieldNames = s.isSearchFieldNames
         _searchSettingsVC.isSearchProtectedValues = s.isSearchProtectedValues
         _searchSettingsVC.isSearchPasswords = s.isSearchPasswords
-    }
-}
-
-extension SearchSettingsCoordinator: SettingsObserver {
-    func settingsDidChange(key: Settings.Keys) {
-        guard key != .recentUserActivityTimestamp else { return }
-        refresh()
     }
 }
 

@@ -12,33 +12,22 @@ protocol DatabaseSettingsCoordinatorDelegate: AnyObject {
     func didChangeDatabaseSettings(in coordinator: DatabaseSettingsCoordinator)
 }
 
-final class DatabaseSettingsCoordinator: Coordinator {
-    var childCoordinators = [Coordinator]()
-    var dismissHandler: CoordinatorDismissHandler?
+final class DatabaseSettingsCoordinator: BaseCoordinator {
     weak var delegate: DatabaseSettingsCoordinatorDelegate?
 
-    private let router: NavigationRouter
     private let dbRef: URLReference
     private let dbSettingsVC: DatabaseSettingsVC
 
     init(fileRef: URLReference, router: NavigationRouter) {
         self.dbRef = fileRef
-        self.router = router
         dbSettingsVC = DatabaseSettingsVC.make()
+        super.init(router: router)
         dbSettingsVC.delegate = self
     }
 
-    deinit {
-        assert(childCoordinators.isEmpty)
-        removeAllChildCoordinators()
-    }
-
-    func start() {
-        router.push(dbSettingsVC, animated: true, onPop: { [weak self] in
-            guard let self = self else { return }
-            self.removeAllChildCoordinators()
-            self.dismissHandler?(self)
-        })
+    override func start() {
+        super.start()
+        _pushInitialViewController(dbSettingsVC, animated: true)
         let dsm = DatabaseSettingsManager.shared
         dbSettingsVC.isReadOnlyAccess = dsm.isReadOnly(dbRef)
         dbSettingsVC.isQuickTypeEnabled = dsm.isQuickTypeEnabled(dbRef)
@@ -53,7 +42,7 @@ final class DatabaseSettingsCoordinator: Coordinator {
 
 extension DatabaseSettingsCoordinator: DatabaseSettingsDelegate {
     func didPressClose(in viewController: DatabaseSettingsVC) {
-        router.pop(viewController: dbSettingsVC, animated: true, completion: nil)
+        _router.pop(viewController: dbSettingsVC, animated: true, completion: nil)
     }
 
     func canChangeReadOnly(in viewController: DatabaseSettingsVC) -> Bool {
@@ -146,7 +135,7 @@ extension DatabaseSettingsCoordinator: DatabaseSettingsDelegate {
         databaseSettingsDataProtectionVC.rememberKeyFile = dbSettings?.isRememberKeyFile
         databaseSettingsDataProtectionVC.cachesDerivedEncryptionKey = dbSettings?.isRememberFinalKey
 
-        router.push(databaseSettingsDataProtectionVC, animated: true, onPop: nil)
+        _router.push(databaseSettingsDataProtectionVC, animated: true, onPop: nil)
     }
 }
 

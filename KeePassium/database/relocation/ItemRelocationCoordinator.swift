@@ -19,14 +19,8 @@ protocol ItemRelocationCoordinatorDelegate: AnyObject {
     func didRelocateDatabase(_ databaseFile: DatabaseFile, to url: URL)
 }
 
-class ItemRelocationCoordinator: Coordinator {
-
-    var childCoordinators = [Coordinator]()
-    var dismissHandler: CoordinatorDismissHandler?
-
+class ItemRelocationCoordinator: BaseCoordinator {
     public weak var delegate: ItemRelocationCoordinatorDelegate?
-
-    private let router: NavigationRouter
 
     private let sourceDatabaseFile: DatabaseFile
     private let sourceDatabase: Database
@@ -42,7 +36,7 @@ class ItemRelocationCoordinator: Coordinator {
 
     var databaseSaver: DatabaseSaver?
     var fileExportHelper: FileExportHelper?
-    var savingProgressHost: ProgressViewHost? { return router }
+    var savingProgressHost: ProgressViewHost? { return _router }
     var saveSuccessHandler: (() -> Void)?
 
     private var postSavingPhase: (() -> Void)?
@@ -53,35 +47,26 @@ class ItemRelocationCoordinator: Coordinator {
         mode: ItemRelocationMode,
         itemsToRelocate: [Weak<DatabaseItem>]
     ) {
-        self.router = router
         self.sourceDatabaseFile = databaseFile
         self.sourceDatabase = databaseFile.database
         self.targetDatabaseFile = databaseFile
         self.targetDatabase = databaseFile.database
         self.mode = mode
         self.itemsToRelocate = itemsToRelocate
-
         self.groupPicker = DestinationGroupPickerVC.create(mode: mode)
+        super.init(router: router)
         groupPicker.delegate = self
     }
 
-    deinit {
-        assert(childCoordinators.isEmpty)
-        removeAllChildCoordinators()
-    }
-
-    func start() {
+    override func start() {
+        super.start()
         guard let rootGroup = targetDatabase.root else {
             assertionFailure()
             return
         }
 
         groupPicker.rootGroup = rootGroup
-        router.push(groupPicker, animated: true, onPop: { [weak self] in
-            guard let self = self else { return }
-            self.removeAllChildCoordinators()
-            self.dismissHandler?(self)
-        })
+        _pushInitialViewController(groupPicker, animated: true)
 
         let currentGroup = itemsToRelocate.first?.value?.parent
         groupPicker.expandGroup(currentGroup)
@@ -90,16 +75,13 @@ class ItemRelocationCoordinator: Coordinator {
     private func showDiagnostics() {
         let modalRouter = NavigationRouter.createModal(style: .formSheet)
         let diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: modalRouter)
-        diagnosticsViewerCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
-        addChildCoordinator(diagnosticsViewerCoordinator)
+        addChildCoordinator(diagnosticsViewerCoordinator, onDismiss: nil)
         diagnosticsViewerCoordinator.start()
-        router.present(modalRouter, animated: true, completion: nil)
+        _router.present(modalRouter, animated: true, completion: nil)
     }
 
     private func reinstateDatabase(_ fileRef: URLReference) {
-        let presenter = router.navigationController
+        let presenter = _router.navigationController
         switch fileRef.location {
         case .external:
             databasePickerCoordinator?.startExternalDatabasePicker(fileRef, presenter: presenter)
@@ -319,7 +301,7 @@ extension ItemRelocationCoordinator {
 
 extension ItemRelocationCoordinator: DestinationGroupPickerDelegate {
     func didPressCancel(in groupPicker: DestinationGroupPickerVC) {
-        router.dismiss(animated: true, completion: nil)
+        dismiss()
     }
 
     func shouldSelectGroup(_ group: Group, in groupPicker: DestinationGroupPickerVC) -> Bool {
@@ -363,7 +345,7 @@ extension ItemRelocationCoordinator: DatabaseSaving {
             return
         }
         delegate?.didRelocateItems(in: self)
-        router.pop(viewController: groupPicker, animated: true)
+        _router.pop(viewController: groupPicker, animated: true)
     }
 
     func didRelocate(databaseFile: DatabaseFile, to newURL: URL) {
@@ -371,7 +353,7 @@ extension ItemRelocationCoordinator: DatabaseSaving {
     }
 
     func getDatabaseSavingErrorParent() -> UIViewController {
-        return router.navigationController
+        return _router.navigationController
     }
 
     func getDiagnosticsHandler() -> (() -> Void)? {
@@ -381,29 +363,24 @@ extension ItemRelocationCoordinator: DatabaseSaving {
 
 extension ItemRelocationCoordinator {
     private func pickDifferentDatabase() {
-        let databasePickerCoordinator = DatabasePickerCoordinator(router: router, mode: .light)
+        let databasePickerCoordinator = DatabasePickerCoordinator(router: _router, mode: .light)
         databasePickerCoordinator.delegate = self
-        databasePickerCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.databasePickerCoordinator = nil
-            self?.removeChildCoordinator(coordinator)
-        }
         databasePickerCoordinator.start()
-        addChildCoordinator(databasePickerCoordinator)
+        addChildCoordinator(databasePickerCoordinator, onDismiss: { [weak self] _ in
+            self?.databasePickerCoordinator = nil
+        })
 
         self.databasePickerCoordinator = databasePickerCoordinator
     }
 
     private func unlockDatabase(_ fileRef: URLReference) {
         let databaseUnlockerCoordinator = DatabaseUnlockerCoordinator(
-            router: router,
+            router: _router,
             databaseRef: fileRef
         )
-        databaseUnlockerCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
         databaseUnlockerCoordinator.delegate = self
         databaseUnlockerCoordinator.start()
-        addChildCoordinator(databaseUnlockerCoordinator)
+        addChildCoordinator(databaseUnlockerCoordinator, onDismiss: nil)
     }
 
     private func showTargetDatabase(
@@ -422,11 +399,11 @@ extension ItemRelocationCoordinator {
         externalGroupPicker.rootGroup = databaseFile.database.root
         externalGroupPicker.expandGroup(databaseFile.database.root)
         externalGroupPicker.refresh()
-        router.push(externalGroupPicker, animated: true, replaceTopViewController: true, onPop: { [weak self] in
-            guard let self = self else { return }
-            self.removeAllChildCoordinators()
-            self.dismissHandler?(self)
-        })
+        _pushInitialViewController(
+            externalGroupPicker,
+            to: _router,
+            replaceTopViewController: true,
+            animated: true)
         self.externalGroupPicker = externalGroupPicker
 
         if targetDatabase is Database1 && sourceDatabase is Database2 {
@@ -448,7 +425,7 @@ extension ItemRelocationCoordinator {
             warnings,
             in: externalGroupPicker ?? groupPicker,
             onLockDatabase: { [weak self] in
-                self?.router.dismiss(animated: true, completion: nil)
+                self?.dismiss()
             }
         )
         StoreReviewSuggester.registerEvent(.trouble)
@@ -462,7 +439,7 @@ extension ItemRelocationCoordinator: DatabasePickerCoordinatorDelegate {
     ) -> Bool {
         let isReadOnly = DatabaseSettingsManager.shared.isReadOnly(fileRef)
         if isReadOnly {
-            router.navigationController.showNotification(LString.databaseIsReadOnly)
+            _router.navigationController.showNotification(LString.databaseIsReadOnly)
         }
         return !isReadOnly
     }
@@ -475,7 +452,7 @@ extension ItemRelocationCoordinator: DatabasePickerCoordinatorDelegate {
         assert(cause != nil, "Unexpected for single-panel mode")
         guard let fileRef else { return }
         assert(!DatabaseSettingsManager.shared.isReadOnly(fileRef), "Cannot relocate to read-only DB")
-        router.navigationController.hideAllToasts()
+        _router.navigationController.hideAllToasts()
         unlockDatabase(fileRef)
     }
 }
@@ -528,7 +505,7 @@ extension ItemRelocationCoordinator: DatabaseUnlockerCoordinatorDelegate {
             return
         }
 
-        router.pop(animated: true, completion: { [weak self] in
+        _router.pop(animated: true, completion: { [weak self] in
             self?.reinstateDatabase(fileRef)
         })
     }
@@ -540,11 +517,11 @@ extension ItemRelocationCoordinator: DatabaseUnlockerCoordinatorDelegate {
             return
         }
 
-        router.pop(animated: true, completion: { [weak self] in
+        _router.pop(animated: true, completion: { [weak self] in
             guard let self else { return }
             databasePickerCoordinator.paywalledStartRemoteDatabasePicker(
                 bypassPaywall: true,
-                presenter: router.navigationController
+                presenter: _router.navigationController
             )
         })
     }

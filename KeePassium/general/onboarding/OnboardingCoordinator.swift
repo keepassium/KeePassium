@@ -16,13 +16,9 @@ protocol OnboardingCoordinatorDelegate: AnyObject {
     func didPressConnectToServer(in coordinator: OnboardingCoordinator)
 }
 
-final class OnboardingCoordinator: Coordinator {
-    var childCoordinators = [Coordinator]()
-    var dismissHandler: CoordinatorDismissHandler?
-
+final class OnboardingCoordinator: BaseCoordinator {
     weak var delegate: OnboardingCoordinatorDelegate?
 
-    private let router: NavigationRouter
     private var onboardingStepsVC: OnboardingPagesVC!
     private var autoFillCheckTimer: Timer?
 
@@ -125,9 +121,8 @@ final class OnboardingCoordinator: Coordinator {
         }
     }
 
-    init(router: NavigationRouter) {
-        self.router = router
-
+    override init(router: NavigationRouter) {
+        super.init(router: router)
         if isAutoFillEnabledInSystem() || BusinessModel.isIntuneEdition  {
             onboardingSteps.removeAll(where: { $0.id == .autoFill })
         }
@@ -137,7 +132,7 @@ final class OnboardingCoordinator: Coordinator {
 
         onboardingStepsVC = OnboardingPagesVC(steps: onboardingSteps)
         onboardingStepsVC.onStateUpdate = { [weak self] onboardingStepsVC in
-            self?.router.isModalInPresentation = !onboardingStepsVC.canSkipRemainingSteps
+            self?._router.isModalInPresentation = !onboardingStepsVC.canSkipRemainingSteps
         }
         NotificationCenter.default.addObserver(
             self,
@@ -146,21 +141,9 @@ final class OnboardingCoordinator: Coordinator {
             object: nil)
     }
 
-    deinit {
-        assert(childCoordinators.isEmpty)
-        removeAllChildCoordinators()
-    }
-
-    func start() {
-        router.push(onboardingStepsVC, animated: true, onPop: { [weak self] in
-            guard let self = self else { return }
-            self.removeAllChildCoordinators()
-            self.dismissHandler?(self)
-        })
-    }
-
-    func dismiss(completion: (() -> Void)? = nil) {
-        router.pop(animated: true, completion: completion)
+    override func start() {
+        super.start()
+        _pushInitialViewController(onboardingStepsVC, animated: true)
     }
 
     private func startAppProtectionSetup() {
@@ -169,7 +152,7 @@ final class OnboardingCoordinator: Coordinator {
         passcodeInputVC.mode = .setup
         passcodeInputVC.modalPresentationStyle = .formSheet
         passcodeInputVC.isCancelAllowed = true
-        router.present(passcodeInputVC, animated: true, completion: nil)
+        _router.present(passcodeInputVC, animated: true, completion: nil)
     }
 
     private func showNext() {

@@ -25,24 +25,7 @@ protocol DropboxConnectionSetupCoordinatorDelegate: AnyObject {
     )
 }
 
-final class DropboxConnectionSetupCoordinator: NSObject, RemoteDataSourceSetupCoordinator {
-    typealias Manager = DropboxManager
-
-    var childCoordinators = [Coordinator]()
-    var dismissHandler: CoordinatorDismissHandler?
-
-    let router: NavigationRouter
-
-    let stateIndicator: BusyStateIndicating
-    let selectionMode: RemoteItemSelectionMode
-    let manager = DropboxManager.shared
-
-    var token: OAuthToken?
-    var accountInfo: DropboxAccountInfo?
-
-    weak var firstVC: UIViewController?
-    private var oldRef: URLReference?
-
+final class DropboxConnectionSetupCoordinator: RemoteDataSourceSetupCoordinator<DropboxManager> {
     weak var delegate: DropboxConnectionSetupCoordinatorDelegate?
 
     init(
@@ -51,50 +34,43 @@ final class DropboxConnectionSetupCoordinator: NSObject, RemoteDataSourceSetupCo
         oldRef: URLReference?,
         selectionMode: RemoteItemSelectionMode = .file
     ) {
-        self.router = router
-        self.stateIndicator = stateIndicator
-        self.oldRef = oldRef
-        self.selectionMode = selectionMode
+        super.init(
+            mode: selectionMode,
+            manager: DropboxManager.shared,
+            oldRef: oldRef,
+            stateIndicator: stateIndicator,
+            router: router)
     }
 
-    deinit {
-        assert(childCoordinators.isEmpty)
-        removeAllChildCoordinators()
-    }
-
-    func start() {
-        startSignIn()
-    }
-
-    func onAccountInfoAcquired(_ accountInfo: DropboxAccountInfo) {
-        self.accountInfo = accountInfo
-        if let oldRef,
-           let url = oldRef.url,
-           oldRef.fileProvider == .keepassiumDropbox
+    override func onAccountInfoAcquired(_ accountInfo: DropboxAccountInfo) {
+        self._accountInfo = accountInfo
+        if let _oldRef,
+           let url = _oldRef.url,
+           _oldRef.fileProvider == .keepassiumDropbox
         {
             trySelectFile(url, onFailure: { [weak self] in
                 guard let self else { return }
-                self.oldRef = nil
+                self._oldRef = nil
                 self.onAccountInfoAcquired(accountInfo)
             })
         }
-        maybeSuggestPremium(isCorporateStorage: accountInfo.type.isCorporate) { [weak self] _ in
+        maybeSuggestPremium(isCorporateStorage: accountInfo.type.isCorporate) { [weak self] in
             guard let self else { return }
             self.showFolder(
                 folder: DropboxItem.root(info: accountInfo),
-                stateIndicator: self.stateIndicator
+                stateIndicator: _stateIndicator
             )
         }
     }
 
     private func trySelectFile(_ fileURL: URL, onFailure: @escaping () -> Void) {
-        guard let token,
+        guard let token = _token,
               let item = DropboxItem.fromURL(fileURL)
         else {
             onFailure()
             return
         }
-        manager.getItemInfo(
+        _manager.getItemInfo(
             item,
             token: token,
             tokenUpdater: nil,
@@ -103,28 +79,35 @@ final class DropboxConnectionSetupCoordinator: NSObject, RemoteDataSourceSetupCo
             switch result {
             case .success:
                 Diag.info("Old file reference reinstated successfully")
-                delegate?.didPickRemoteFile(url: fileURL, oauthToken: token, stateIndicator: stateIndicator, in: self)
+                delegate?.didPickRemoteFile(
+                    url: fileURL,
+                    oauthToken: token,
+                    stateIndicator: _stateIndicator,
+                    in: self
+                )
             case .failure(let remoteError):
                 Diag.debug("Failed to reinstate old file reference [message: \(remoteError.localizedDescription)]")
                 onFailure()
             }
         }
     }
-}
 
-extension DropboxConnectionSetupCoordinator: RemoteFolderViewerDelegate {
-    func didSelectItem(_ item: RemoteFileItem, in viewController: RemoteFolderViewerVC) {
+    override func didSelectItem(_ item: RemoteFileItem, in viewController: RemoteFolderViewerVC) {
         selectItem(item, in: viewController) { [weak self] fileURL, token in
             guard let self = self else {
                 return
             }
-            self.delegate?.didPickRemoteFile(url: fileURL, oauthToken: token, stateIndicator: stateIndicator, in: self)
+            self.delegate?.didPickRemoteFile(
+                url: fileURL,
+                oauthToken: token,
+                stateIndicator: _stateIndicator,
+                in: self)
             self.dismiss()
         }
     }
 
-    func didPressSave(to folder: RemoteFileItem, in viewController: RemoteFolderViewerVC) {
-        guard let token else {
+    override func didPressSave(to folder: RemoteFileItem, in viewController: RemoteFolderViewerVC) {
+        guard let token = _token else {
             Diag.warning("Not signed into any Dropbox account, cancelling")
             assertionFailure()
             return

@@ -8,67 +8,23 @@
 
 import KeePassiumLib
 
-final class SettingsCoordinator: NSObject, Coordinator, Refreshable {
-    var childCoordinators = [Coordinator]()
-
-    var dismissHandler: CoordinatorDismissHandler?
-
-    private let router: NavigationRouter
+final class SettingsCoordinator: BaseCoordinator {
     private let settingsVC: SettingsVC
-    private let settingsNotifications: SettingsNotifications
 
-    init(router: NavigationRouter) {
-        self.router = router
+    override init(router: NavigationRouter) {
         settingsVC = SettingsVC.instantiateFromStoryboard()
-        settingsNotifications = SettingsNotifications()
-        super.init()
-
-        settingsNotifications.observer = self
+        super.init(router: router)
         settingsVC.delegate = self
     }
 
-    deinit {
-        settingsNotifications.stopObserving()
-
-        assert(childCoordinators.isEmpty)
-        removeAllChildCoordinators()
+    override func start() {
+        super.start()
+        _pushInitialViewController(settingsVC, dismissButtonStyle: .close, animated: true)
     }
 
-    func start() {
-        setupCloseButton(in: settingsVC)
-        router.push(settingsVC, animated: true, onPop: { [weak self] in
-            guard let self = self else { return }
-            self.removeAllChildCoordinators()
-            self.dismissHandler?(self)
-        })
-        settingsNotifications.startObserving()
-        startObservingPremiumStatus(#selector(premiumStatusDidChange))
-    }
-
-    private func setupCloseButton(in viewController: UIViewController) {
-        guard router.navigationController.topViewController == nil else {
-            return
-        }
-
-        let closeButton = UIBarButtonItem(
-            barButtonSystemItem: .close,
-            target: self,
-            action: #selector(didPressDismiss))
-        viewController.navigationItem.leftBarButtonItem = closeButton
-    }
-
-    @objc
-    private func didPressDismiss(_ sender: UIBarButtonItem) {
-        router.dismiss(animated: true)
-    }
-
-    @objc
-    private func premiumStatusDidChange() {
-        refresh()
-    }
-
-    func refresh() {
-        guard let topVC = router.navigationController.topViewController,
+    override func refresh() {
+        super.refresh()
+        guard let topVC = _router.navigationController.topViewController,
               let topRefreshable = topVC as? Refreshable
         else {
             return
@@ -79,113 +35,80 @@ final class SettingsCoordinator: NSObject, Coordinator, Refreshable {
 
 extension SettingsCoordinator {
     private func showAppHistoryPage() {
-        let appHistoryCoordinator = AppHistoryCoordinator(router: router)
-        appHistoryCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
+        let appHistoryCoordinator = AppHistoryCoordinator(router: _router)
         appHistoryCoordinator.start()
-        addChildCoordinator(appHistoryCoordinator)
+        addChildCoordinator(appHistoryCoordinator, onDismiss: nil)
     }
 
     private func showAppearanceSettingsPage() {
         let appearanceVC = SettingsAppearanceVC.instantiateFromStoryboard()
         appearanceVC.delegate = self
-        router.push(appearanceVC, animated: true, onPop: nil)
+        _router.push(appearanceVC, animated: true, onPop: nil)
     }
 
     private func showSearchSettingsPage() {
-        let searchSettingsCoordinator = SearchSettingsCoordinator(router: router)
-        searchSettingsCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
+        let searchSettingsCoordinator = SearchSettingsCoordinator(router: _router)
         searchSettingsCoordinator.start()
-        addChildCoordinator(searchSettingsCoordinator)
+        addChildCoordinator(searchSettingsCoordinator, onDismiss: nil)
     }
 
     private func showAutoFillSettingsPage() {
-        let autoFillSettingsCoordinator = AutoFillSettingsCoordinator(router: router)
-        autoFillSettingsCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
+        let autoFillSettingsCoordinator = AutoFillSettingsCoordinator(router: _router)
         autoFillSettingsCoordinator.start()
-        addChildCoordinator(autoFillSettingsCoordinator)
+        addChildCoordinator(autoFillSettingsCoordinator, onDismiss: nil)
     }
 
     private func showAppProtectionSettingsPage() {
-        let appProtectionSettingsCoordinator = AppProtectionSettingsCoordinator(router: router)
-        appProtectionSettingsCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
+        let appProtectionSettingsCoordinator = AppProtectionSettingsCoordinator(router: _router)
         appProtectionSettingsCoordinator.start()
-        addChildCoordinator(appProtectionSettingsCoordinator)
+        addChildCoordinator(appProtectionSettingsCoordinator, onDismiss: nil)
     }
 
     private func showDataProtectionSettingsPage() {
-        let dataProtectionSettingsCoordinator = DataProtectionSettingsCoordinator(router: router)
-        dataProtectionSettingsCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
+        let dataProtectionSettingsCoordinator = DataProtectionSettingsCoordinator(router: _router)
         dataProtectionSettingsCoordinator.start()
-        addChildCoordinator(dataProtectionSettingsCoordinator)
+        addChildCoordinator(dataProtectionSettingsCoordinator, onDismiss: nil)
     }
 
     private func showNetworkAccessSettingsPage() {
-        let networkAccessSettingsCoordinator = NetworkAccessSettingsCoordinator(router: router)
-        networkAccessSettingsCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
+        let networkAccessSettingsCoordinator = NetworkAccessSettingsCoordinator(router: _router)
         networkAccessSettingsCoordinator.start()
-        addChildCoordinator(networkAccessSettingsCoordinator)
+        addChildCoordinator(networkAccessSettingsCoordinator, onDismiss: nil)
     }
 
     private func showBackupSettingsPage() {
         let dataBackupSettingsVC = SettingsBackupVC.instantiateFromStoryboard()
-        router.push(dataBackupSettingsVC, animated: true, onPop: nil)
+        _router.push(dataBackupSettingsVC, animated: true, onPop: nil)
     }
 
     private func showDiagnosticsPage() {
-        let diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: router)
-        diagnosticsViewerCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
+        let diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: _router)
         diagnosticsViewerCoordinator.start()
-        addChildCoordinator(diagnosticsViewerCoordinator)
+        addChildCoordinator(diagnosticsViewerCoordinator, onDismiss: nil)
     }
 
     private func showDonationsPage() {
-        let tipBoxCoordinator = TipBoxCoordinator(router: router)
-        tipBoxCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
+        let tipBoxCoordinator = TipBoxCoordinator(router: _router)
         tipBoxCoordinator.start()
-        addChildCoordinator(tipBoxCoordinator)
+        addChildCoordinator(tipBoxCoordinator, onDismiss: nil)
     }
 
     private func showAboutAppPage() {
-        let aboutCoordinator = AboutCoordinator(router: router)
-        aboutCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
+        let aboutCoordinator = AboutCoordinator(router: _router)
         aboutCoordinator.start()
-        addChildCoordinator(aboutCoordinator)
+        addChildCoordinator(aboutCoordinator, onDismiss: nil)
     }
 
     private func showAppIconSettingsPage() {
-        let appIconSwitcherCoordinator = AppIconSwitcherCoordinator(router: router)
-        appIconSwitcherCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
+        let appIconSwitcherCoordinator = AppIconSwitcherCoordinator(router: _router)
         appIconSwitcherCoordinator.start()
-        addChildCoordinator(appIconSwitcherCoordinator)
+        addChildCoordinator(appIconSwitcherCoordinator, onDismiss: nil)
     }
 
     private func showDatabaseIconsSettingsPage() {
-        let databaseIconSwitcherCoordinator = DatabaseIconSetSwitcherCoordinator(router: router)
-        databaseIconSwitcherCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
+        let databaseIconSwitcherCoordinator = DatabaseIconSetSwitcherCoordinator(router: _router)
         databaseIconSwitcherCoordinator.start()
-        addChildCoordinator(databaseIconSwitcherCoordinator)
+        addChildCoordinator(databaseIconSwitcherCoordinator, onDismiss: nil)
     }
 
     private func showEntryTextFontPicker(at popoverAnchor: PopoverAnchor) {
@@ -194,16 +117,7 @@ extension SettingsCoordinator {
         fontPicker.delegate = self
         fontPicker.modalPresentationStyle = .popover
         popoverAnchor.apply(to: fontPicker.popoverPresentationController)
-        router.present(fontPicker, animated: true, completion: nil)
-    }
-}
-
-extension SettingsCoordinator: SettingsObserver {
-    func settingsDidChange(key: Settings.Keys) {
-        guard key != .recentUserActivityTimestamp else {
-            return
-        }
-        refresh()
+        _router.present(fontPicker, animated: true, completion: nil)
     }
 }
 

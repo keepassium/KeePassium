@@ -15,58 +15,29 @@ protocol DatabaseCreatorCoordinatorDelegate: AnyObject {
         database urlRef: URLReference)
 }
 
-class DatabaseCreatorCoordinator: NSObject, Coordinator {
+class DatabaseCreatorCoordinator: BaseCoordinator {
     enum DestinationType {
         case files
         case remoteServer
     }
 
-    var childCoordinators = [Coordinator]()
-    var dismissHandler: CoordinatorDismissHandler?
-
     weak var delegate: DatabaseCreatorCoordinatorDelegate?
 
-    private let router: NavigationRouter
     private let databaseCreatorVC: DatabaseCreatorVC
     private var isPasswordResetWarningShown = false
     private var destination: DestinationType = .files
 
     var databaseSaver: DatabaseSaver?
 
-    init(router: NavigationRouter) {
-        self.router = router
+    override init(router: NavigationRouter) {
         databaseCreatorVC = DatabaseCreatorVC.create()
-        super.init()
-
+        super.init(router: router)
         databaseCreatorVC.delegate = self
     }
 
-    deinit {
-        assert(childCoordinators.isEmpty)
-        removeAllChildCoordinators()
-    }
-
-    func start() {
-        if router.navigationController.topViewController == nil {
-            let leftButton = UIBarButtonItem(
-                barButtonSystemItem: .cancel,
-                target: self,
-                action: #selector(didPressDismissButton))
-            databaseCreatorVC.navigationItem.leftBarButtonItem = leftButton
-        }
-        router.push(databaseCreatorVC, animated: true, onPop: { [weak self] in
-            guard let self = self else { return }
-            self.removeAllChildCoordinators()
-            self.dismissHandler?(self)
-        })
-    }
-
-    @objc private func didPressDismissButton() {
-        dismiss()
-    }
-
-    private func dismiss() {
-        router.pop(viewController: databaseCreatorVC, animated: true)
+    override func start() {
+        super.start()
+        _pushInitialViewController(databaseCreatorVC, dismissButtonStyle: .cancel, animated: true)
     }
 
 
@@ -110,7 +81,7 @@ class DatabaseCreatorCoordinator: NSObject, Coordinator {
 
         let _challengeHandler = ChallengeResponseManager.makeHandler(
             for: databaseCreatorVC.yubiKey,
-            presenter: router.navigationController.view
+            presenter: _router.navigationController.view
         )
         DatabaseManager.createDatabase(
             databaseURL: tmpFileURL,
@@ -219,21 +190,18 @@ class DatabaseCreatorCoordinator: NSObject, Coordinator {
             let tmpDatabaseURL = databaseFile.fileURL
             let picker = UIDocumentPickerViewController(forExporting: [tmpDatabaseURL], asCopy: true)
             picker.delegate = self
-            picker.modalPresentationStyle = router.navigationController.modalPresentationStyle
+            picker.modalPresentationStyle = _router.navigationController.modalPresentationStyle
             databaseCreatorVC.present(picker, animated: true, completion: nil)
         case .remoteServer:
             let fileName = databaseFile.fileURL.lastPathComponent
             let exportCoordinator = RemoteFileExportCoordinator(
                 data: databaseFile.data,
                 fileName: fileName,
-                router: router
+                router: _router
             )
-            exportCoordinator.dismissHandler = { [weak self] coordinator in
-                self?.removeChildCoordinator(coordinator)
-            }
             exportCoordinator.delegate = self
             exportCoordinator.start()
-            addChildCoordinator(exportCoordinator)
+            addChildCoordinator(exportCoordinator, onDismiss: nil)
         }
     }
 
@@ -245,8 +213,8 @@ class DatabaseCreatorCoordinator: NSObject, Coordinator {
             case .success(let addedRef):
                 DatabaseSettingsManager.shared.removeSettings(for: addedRef, onlyIfUnused: false)
 
-                self.dismiss()
-                self.delegate?.didCreateDatabase(in: self, database: addedRef)
+                dismiss()
+                delegate?.didCreateDatabase(in: self, database: addedRef)
             case .failure(let fileKeeperError):
                 Diag.error("Failed to add created file [mesasge: \(fileKeeperError.localizedDescription)]")
                 self.databaseCreatorVC.showErrorMessage(fileKeeperError.localizedDescription, haptics: .error)
@@ -255,18 +223,15 @@ class DatabaseCreatorCoordinator: NSObject, Coordinator {
     }
 
     private func showDiagnostics() {
-        let diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: router)
-        diagnosticsViewerCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
-        addChildCoordinator(diagnosticsViewerCoordinator)
+        let diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: _router)
+        addChildCoordinator(diagnosticsViewerCoordinator, onDismiss: nil)
         diagnosticsViewerCoordinator.start()
     }
 
 
     private func hideProgress() {
         databaseCreatorVC.indicateState(isBusy: false)
-        router.hideProgressView()
+        _router.hideProgressView()
     }
 }
 
@@ -323,7 +288,7 @@ extension DatabaseCreatorCoordinator: DatabaseCreatorDelegate {
     }
 
     func didPressPickKeyFile(in databaseCreatorVC: DatabaseCreatorVC, at popoverAnchor: PopoverAnchor) {
-        router.dismissModals(animated: false, completion: { [weak self] in
+        _router.dismissModals(animated: false, completion: { [weak self] in
             self?.showKeyFilePicker(at: popoverAnchor)
         })
     }
@@ -332,13 +297,13 @@ extension DatabaseCreatorCoordinator: DatabaseCreatorDelegate {
         in databaseCreatorVC: DatabaseCreatorVC,
         at popoverAnchor: PopoverAnchor
     ) {
-        router.dismissModals(animated: false, completion: { [weak self] in
+        _router.dismissModals(animated: false, completion: { [weak self] in
             self?.showHardwareKeyPicker(at: popoverAnchor)
         })
     }
 
     func shouldDismissPopovers(in databaseCreatorVC: DatabaseCreatorVC) {
-        router.dismissModals(animated: false, completion: nil)
+        _router.dismissModals(animated: false, completion: nil)
     }
 }
 
@@ -353,14 +318,11 @@ extension DatabaseCreatorCoordinator: KeyFilePickerCoordinatorDelegate {
 
         let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
         let keyFilePickerCoordinator = KeyFilePickerCoordinator(router: modalRouter)
-        keyFilePickerCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
         keyFilePickerCoordinator.delegate = self
         keyFilePickerCoordinator.start()
-        router.present(modalRouter, animated: true, completion: nil)
+        _router.present(modalRouter, animated: true, completion: nil)
 
-        addChildCoordinator(keyFilePickerCoordinator)
+        addChildCoordinator(keyFilePickerCoordinator, onDismiss: nil)
     }
 
     func didSelectKeyFile(
@@ -387,7 +349,7 @@ extension DatabaseCreatorCoordinator: KeyFilePickerCoordinatorDelegate {
 extension DatabaseCreatorCoordinator: DatabaseSaverDelegate {
     func databaseSaver(_ databaseSaver: DatabaseSaver, willSave databaseFile: DatabaseFile) {
         databaseCreatorVC.indicateState(isBusy: true)
-        router.showProgressView(
+        _router.showProgressView(
             title: LString.databaseStatusSaving,
             allowCancelling: true,
             animated: true
@@ -399,7 +361,7 @@ extension DatabaseCreatorCoordinator: DatabaseSaverDelegate {
         didChangeProgress progress: ProgressEx,
         for databaseFile: DatabaseFile
     ) {
-        router.updateProgressView(with: progress)
+        _router.updateProgressView(with: progress)
     }
 
     func databaseSaverResolveConflict(
@@ -419,14 +381,14 @@ extension DatabaseCreatorCoordinator: DatabaseSaverDelegate {
         didCancelSaving databaseFile: DatabaseFile
     ) {
         self.databaseSaver = nil
-        router.hideProgressView(animated: true)
+        _router.hideProgressView(animated: true)
         databaseCreatorVC.indicateState(isBusy: false)
     }
 
     func databaseSaver(_ databaseSaver: DatabaseSaver, didSave databaseFile: DatabaseFile) {
         self.databaseSaver = nil
         databaseCreatorVC.indicateState(isBusy: false)
-        router.hideProgressView(animated: true)
+        _router.hideProgressView(animated: true)
 
         pickTargetLocation(for: databaseFile)
     }
@@ -437,7 +399,7 @@ extension DatabaseCreatorCoordinator: DatabaseSaverDelegate {
         with error: Error
     ) {
         self.databaseSaver = nil
-        router.hideProgressView(animated: true)
+        _router.hideProgressView(animated: true)
         databaseCreatorVC.indicateState(isBusy: false)
 
         guard let localizedError = error as? LocalizedError else {
@@ -497,15 +459,12 @@ extension DatabaseCreatorCoordinator: HardwareKeyPickerCoordinatorDelegate {
     func showHardwareKeyPicker(at popoverAnchor: PopoverAnchor) {
         let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
         let hardwareKeyPickerCoordinator = HardwareKeyPickerCoordinator(router: modalRouter)
-        hardwareKeyPickerCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
         hardwareKeyPickerCoordinator.delegate = self
         hardwareKeyPickerCoordinator.setSelectedKey(databaseCreatorVC.yubiKey)
         hardwareKeyPickerCoordinator.start()
         databaseCreatorVC.present(modalRouter, animated: true, completion: nil)
 
-        addChildCoordinator(hardwareKeyPickerCoordinator)
+        addChildCoordinator(hardwareKeyPickerCoordinator, onDismiss: nil)
     }
 
     func didSelectKey(_ yubiKey: YubiKey?, in coordinator: HardwareKeyPickerCoordinator) {

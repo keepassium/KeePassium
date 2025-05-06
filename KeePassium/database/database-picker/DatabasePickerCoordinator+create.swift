@@ -26,13 +26,10 @@ extension DatabasePickerCoordinator {
         let modalRouter = NavigationRouter.createModal(style: .formSheet)
         let databaseCreatorCoordinator = DatabaseCreatorCoordinator(router: modalRouter)
         databaseCreatorCoordinator.delegate = self
-        databaseCreatorCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
         databaseCreatorCoordinator.start()
 
         presenter.present(modalRouter, animated: true, completion: nil)
-        addChildCoordinator(databaseCreatorCoordinator)
+        addChildCoordinator(databaseCreatorCoordinator, onDismiss: nil)
     }
 }
 

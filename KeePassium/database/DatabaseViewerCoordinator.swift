@@ -45,17 +45,14 @@ protocol DatabaseViewerCoordinatorDelegate: AnyObject {
     )
 }
 
-final class DatabaseViewerCoordinator: Coordinator {
+final class DatabaseViewerCoordinator: BaseCoordinator {
     private let vcAnimationDuration = 0.3
 
-    var childCoordinators = [Coordinator]()
-
     weak var delegate: DatabaseViewerCoordinatorDelegate?
-    var dismissHandler: CoordinatorDismissHandler?
 
     public var currentGroupUUID: UUID? { currentGroup?.uuid }
 
-    private let primaryRouter: NavigationRouter
+    private var primaryRouter: NavigationRouter { _router }
     private let placeholderRouter: NavigationRouter
     private var entryViewerRouter: NavigationRouter?
 
@@ -88,7 +85,6 @@ final class DatabaseViewerCoordinator: Coordinator {
         NavigationRouter.CollapsedDetailDismissalHandler?
 
     private var progressOverlay: ProgressOverlay?
-    private var settingsNotifications: SettingsNotifications!
 
     var hasUnsavedBulkChanges = false
     var databaseSaver: DatabaseSaver?
@@ -118,8 +114,6 @@ final class DatabaseViewerCoordinator: Coordinator {
         loadingWarnings: DatabaseLoadingWarnings?
     ) {
         self.splitViewController = splitViewController
-        self.primaryRouter = primaryRouter
-
         self.originalRef = originalRef
         self.databaseFile = databaseFile
         self.database = databaseFile.database
@@ -133,18 +127,13 @@ final class DatabaseViewerCoordinator: Coordinator {
 
         faviconDownloader = FaviconDownloader()
         specialEntryParser = SpecialEntryParser()
+        super.init(router: primaryRouter)
 
         actionsManager = DatabaseViewerActionsManager(coordinator: self)
     }
 
-    deinit {
-        settingsNotifications.stopObserving()
-
-        assert(childCoordinators.isEmpty)
-        removeAllChildCoordinators()
-    }
-
-    func start() {
+    override func start() {
+        super.start()
         oldSplitDelegate = splitViewController.delegate
         splitViewController.delegate = self
 
@@ -156,13 +145,10 @@ final class DatabaseViewerCoordinator: Coordinator {
             }
         }
 
-        settingsNotifications = SettingsNotifications(observer: self)
-
         showInitialGroups(replacingTopVC: splitViewController.isCollapsed)
         showEntry(nil)
 
         Settings.current.startupDatabase = originalRef
-        settingsNotifications.startObserving()
 
         updateAnnouncements()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2 * vcAnimationDuration) { [weak self] in
@@ -191,7 +177,8 @@ final class DatabaseViewerCoordinator: Coordinator {
         }
     }
 
-    func refresh() {
+    override func refresh() {
+        super.refresh()
         updateAnnouncements()
         if let topPrimaryVC = primaryRouter.navigationController.topViewController {
             (topPrimaryVC as? Refreshable)?.refresh()
@@ -258,13 +245,10 @@ extension DatabaseViewerCoordinator {
     private func showDiagnostics() {
         let modalRouter = NavigationRouter.createModal(style: .formSheet)
         let diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: modalRouter)
-        diagnosticsViewerCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
         diagnosticsViewerCoordinator.start()
 
         getPresenterForModals().present(modalRouter, animated: true, completion: nil)
-        addChildCoordinator(diagnosticsViewerCoordinator)
+        addChildCoordinator(diagnosticsViewerCoordinator, onDismiss: nil)
     }
 
     private func startAppProtectionSetup() {
@@ -340,7 +324,7 @@ extension DatabaseViewerCoordinator {
                     self.splitViewController.delegate = self.oldSplitDelegate
                     self.primaryRouter.collapsedDetailDismissalHandler =
                         self.oldPrimaryRouterDetailDismissalHandler
-                    self.dismissHandler?(self)
+                    self._dismissHandler?(self)
                     self.delegate?.didLeaveDatabase(in: self)
                 }
                 UIMenu.rebuildMainMenu()
@@ -407,13 +391,11 @@ extension DatabaseViewerCoordinator {
             router: entryViewerRouter,
             progressHost: self 
         )
-        entryViewerCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-            self?.entryViewerRouter = nil
-        }
         entryViewerCoordinator.delegate = self
         entryViewerCoordinator.start()
-        addChildCoordinator(entryViewerCoordinator)
+        addChildCoordinator(entryViewerCoordinator, onDismiss: { [weak self] _ in
+            self?.entryViewerRouter = nil
+        })
 
         self.entryViewerRouter = entryViewerRouter
         splitViewController.setDetailRouter(entryViewerRouter)
@@ -444,12 +426,9 @@ extension DatabaseViewerCoordinator {
             style: ProcessInfo.isRunningOnMac ? .formSheet : .popover,
             at: popoverAnchor)
         let settingsCoordinator = SettingsCoordinator(router: modalRouter)
-        settingsCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
         settingsCoordinator.start()
         viewController.present(modalRouter, animated: true, completion: nil)
-        addChildCoordinator(settingsCoordinator)
+        addChildCoordinator(settingsCoordinator, onDismiss: nil)
     }
 
     func showPasswordAudit(in viewController: UIViewController? = nil) {
@@ -465,13 +444,11 @@ extension DatabaseViewerCoordinator {
             router: modalRouter
         )
         passwordAuditCoordinator.delegate = self
-        passwordAuditCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-            self?.refresh()
-        }
         passwordAuditCoordinator.start()
         presenter.present(modalRouter, animated: true, completion: nil)
-        addChildCoordinator(passwordAuditCoordinator)
+        addChildCoordinator(passwordAuditCoordinator, onDismiss: { [weak self] _ in
+            self?.refresh()
+        })
     }
 
     func showEncryptionSettings(in viewController: UIViewController? = nil) {
@@ -482,13 +459,11 @@ extension DatabaseViewerCoordinator {
             router: modalRouter
         )
         encryptionSettingsCoordinator.delegate = self
-        encryptionSettingsCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-            self?.refresh()
-        }
         encryptionSettingsCoordinator.start()
         presenter.present(modalRouter, animated: true, completion: nil)
-        addChildCoordinator(encryptionSettingsCoordinator)
+        addChildCoordinator(encryptionSettingsCoordinator, onDismiss: { [weak self] _ in
+            self?.refresh()
+        })
     }
 
     private func downloadFavicons(for entries: [Entry], in viewController: UIViewController) {
@@ -545,13 +520,10 @@ extension DatabaseViewerCoordinator {
             databaseFile: databaseFile,
             router: modalRouter
         )
-        databaseKeyChangeCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
         databaseKeyChangeCoordinator.delegate = self
         databaseKeyChangeCoordinator.start()
         presenter.present(modalRouter, animated: true, completion: nil)
-        addChildCoordinator(databaseKeyChangeCoordinator)
+        addChildCoordinator(databaseKeyChangeCoordinator, onDismiss: nil)
     }
 
     private func showGroupEditor(_ mode: GroupEditorCoordinator.Mode, at popoverAnchor: PopoverAnchor?) {
@@ -569,14 +541,11 @@ extension DatabaseViewerCoordinator {
             parent: parent,
             mode: mode
         )
-        groupEditorCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
         groupEditorCoordinator.delegate = self
         groupEditorCoordinator.start()
 
         getPresenterForModals().present(modalRouter, animated: true, completion: nil)
-        addChildCoordinator(groupEditorCoordinator)
+        addChildCoordinator(groupEditorCoordinator, onDismiss: nil)
     }
 
     func showGroupEditor(_ mode: GroupEditorCoordinator.Mode) {
@@ -604,16 +573,14 @@ extension DatabaseViewerCoordinator {
             parent: parent,
             target: entryToEdit
         )
-        entryFieldEditorCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-            onDismiss?()
-        }
         entryFieldEditorCoordinator.delegate = self
         entryFieldEditorCoordinator.start()
         modalRouter.dismissAttemptDelegate = entryFieldEditorCoordinator
 
         getPresenterForModals().present(modalRouter, animated: true, completion: nil)
-        addChildCoordinator(entryFieldEditorCoordinator)
+        addChildCoordinator(entryFieldEditorCoordinator, onDismiss: { [onDismiss] _ in
+            onDismiss?()
+        })
     }
 
     func showEntryEditor() {
@@ -634,14 +601,11 @@ extension DatabaseViewerCoordinator {
             databaseFile: databaseFile,
             mode: mode,
             itemsToRelocate: items.map({ Weak($0) }))
-        itemRelocationCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
         itemRelocationCoordinator.delegate = self
         itemRelocationCoordinator.start()
 
         getPresenterForModals().present(modalRouter, animated: true, completion: nil)
-        addChildCoordinator(itemRelocationCoordinator)
+        addChildCoordinator(itemRelocationCoordinator, onDismiss: nil)
     }
 
     func showDatabasePrintDialog() {
@@ -792,15 +756,6 @@ extension DatabaseViewerCoordinator {
             return
         }
         groupViewerVC.select()
-    }
-}
-
-extension DatabaseViewerCoordinator: SettingsObserver {
-    func settingsDidChange(key: Settings.Keys) {
-        guard key != .recentUserActivityTimestamp else {
-            return
-        }
-        refresh()
     }
 }
 
@@ -1289,11 +1244,8 @@ extension DatabaseViewerCoordinator {
     func showTipBox() {
         let modalRouter = NavigationRouter.createModal(style: .formSheet)
         let tipBoxCoordinator = TipBoxCoordinator(router: modalRouter)
-        tipBoxCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
         tipBoxCoordinator.start()
-        addChildCoordinator(tipBoxCoordinator)
+        addChildCoordinator(tipBoxCoordinator, onDismiss: nil)
         getPresenterForModals().present(modalRouter, animated: true, completion: nil)
     }
 }

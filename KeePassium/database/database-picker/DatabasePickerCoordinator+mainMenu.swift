@@ -15,10 +15,6 @@ extension DatabasePickerCoordinator {
         }
     }
 
-    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        return false
-    }
-
     private func makeFileSortOrderMenu() -> UIMenu {
         let actions = UIMenu.makeFileSortMenuItems(current: Settings.current.filesSortOrder) {
             [weak self] newSortOrder in

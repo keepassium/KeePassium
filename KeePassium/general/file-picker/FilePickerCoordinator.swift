@@ -8,10 +8,7 @@
 
 import KeePassiumLib
 
-class FilePickerCoordinator: UIResponder, Coordinator, Refreshable, FilePickerVC.Delegate {
-    var childCoordinators = [Coordinator]()
-    var dismissHandler: CoordinatorDismissHandler?
-
+class FilePickerCoordinator: BaseCoordinator, FilePickerVC.Delegate {
     internal var _contentUnavailableConfiguration: UIContentUnavailableConfiguration? { nil }
     internal var noSelectionItem: FilePickerItem.TitleImage? {
         didSet {
@@ -28,7 +25,6 @@ class FilePickerCoordinator: UIResponder, Coordinator, Refreshable, FilePickerVC
         set { _filePickerVC.title = newValue }
     }
 
-    private let router: NavigationRouter
     private let fileType: FileType
     private var fileKeeperNotifications: FileKeeperNotifications!
     private let fileInfoReloader = FileInfoReloader()
@@ -42,7 +38,6 @@ class FilePickerCoordinator: UIResponder, Coordinator, Refreshable, FilePickerVC
         toolbarDecorator: FilePickerToolbarDecorator?,
         appearance: FilePickerAppearance
     ) {
-        self.router = router
         self.fileType = fileType
         _filePickerVC = FilePickerVC(
             fileType: fileType,
@@ -50,23 +45,18 @@ class FilePickerCoordinator: UIResponder, Coordinator, Refreshable, FilePickerVC
             itemDecorator: itemDecorator,
             appearance: appearance
         )
-        super.init()
+        super.init(router: router)
         _filePickerVC.delegate = self
         fileKeeperNotifications = FileKeeperNotifications(observer: self)
     }
 
     deinit {
         fileKeeperNotifications.stopObserving()
-        assert(childCoordinators.isEmpty)
-        removeAllChildCoordinators()
     }
 
-    func start() {
-        router.push(_filePickerVC, animated: false, onPop: { [weak self] in
-            guard let self = self else { return }
-            self.removeAllChildCoordinators()
-            self.dismissHandler?(self)
-        })
+    override func start() {
+        super.start()
+        _pushInitialViewController(_filePickerVC, animated: false)
         refresh()
         fileKeeperNotifications.startObserving()
         NotificationCenter.default.addObserver(
@@ -80,11 +70,9 @@ class FilePickerCoordinator: UIResponder, Coordinator, Refreshable, FilePickerVC
         refresh()
     }
 
-    func dismiss() {
-        router.pop(viewController: _filePickerVC, animated: true)
-    }
+    override func refresh() {
+        super.refresh()
 
-    func refresh() {
         let refs: [URLReference] = FileKeeper.shared.getAllReferences(
             fileType: fileType,
             includeBackup: Settings.current.isBackupFilesVisible)
@@ -108,8 +96,8 @@ class FilePickerCoordinator: UIResponder, Coordinator, Refreshable, FilePickerVC
     }
 
     @discardableResult
-    override func becomeFirstResponder() -> Bool {
-        _filePickerVC.becomeFirstResponder()
+    func becomeFirstResponder() -> Bool {
+        return _filePickerVC.becomeFirstResponder()
     }
 
     public func setEnabled(_ enabled: Bool) {

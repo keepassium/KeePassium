@@ -16,15 +16,11 @@ import IntuneMAMSwift
 import MSAL
 #endif
 
-class AutoFillCoordinator: NSObject, Coordinator {
+class AutoFillCoordinator: BaseCoordinator {
     let log = Logger(subsystem: "com.keepassium.autofill", category: "AutoFillCoordinator")
-
-    var childCoordinators = [Coordinator]()
-    var dismissHandler: CoordinatorDismissHandler? 
 
     unowned var rootController: CredentialProviderViewController
     let extensionContext: ASCredentialProviderExtensionContext
-    var router: NavigationRouter
 
     var autoFillMode: AutoFillMode? {
         didSet {
@@ -77,10 +73,10 @@ class AutoFillCoordinator: NSObject, Coordinator {
 
         let navigationController = RouterNavigationController()
         navigationController.view.backgroundColor = .clear
-        router = NavigationRouter(navigationController)
+        let router = NavigationRouter(navigationController)
 
-        watchdog = Watchdog.shared 
-        super.init()
+        watchdog = Watchdog.shared
+        super.init(router: router)
 
         #if PREPAID_VERSION
         BusinessModel.type = .prepaid
@@ -107,8 +103,6 @@ class AutoFillCoordinator: NSObject, Coordinator {
 
     deinit {
         log.trace("Coordinator is deinitializing")
-        assert(childCoordinators.isEmpty)
-        removeAllChildCoordinators()
         memoryPressureSource.cancel()
     }
 
@@ -146,7 +140,8 @@ class AutoFillCoordinator: NSObject, Coordinator {
         isServicesInitialized = true
     }
 
-    func start() {
+    override func start() {
+        super.start()
         if isStarted {
             return
         } else {
@@ -158,7 +153,7 @@ class AutoFillCoordinator: NSObject, Coordinator {
 
         log.trace("Coordinator is starting the UI")
         if isInDeviceAutoFillSettings {
-            rootController.showChildViewController(router.navigationController)
+            rootController.showChildViewController(_router.navigationController)
             DispatchQueue.main.async { [weak self] in
                 self?.showUncheckKeychainMessage()
             }
@@ -166,7 +161,7 @@ class AutoFillCoordinator: NSObject, Coordinator {
         }
 
         if !isAppLockVisible {
-            rootController.showChildViewController(router.navigationController)
+            rootController.showChildViewController(_router.navigationController)
             if isNeedsOnboarding() {
                 DispatchQueue.main.async { [weak self] in
                     self?.presentOnboarding()
@@ -231,7 +226,7 @@ class AutoFillCoordinator: NSObject, Coordinator {
     internal func cleanup() {
         PremiumManager.shared.usageMonitor.stopInterval()
         Watchdog.shared.willResignActive()
-        router.popToRoot(animated: false)
+        _router.popToRoot(animated: false)
         removeAllChildCoordinators()
     }
 
@@ -256,21 +251,20 @@ extension AutoFillCoordinator {
     }
 
     private func showDatabasePicker() {
-        databasePickerCoordinator = DatabasePickerCoordinator(router: router, mode: .autoFill)
+        databasePickerCoordinator = DatabasePickerCoordinator(router: _router, mode: .autoFill)
         databasePickerCoordinator.delegate = self
-        databasePickerCoordinator.dismissHandler = {[weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-            self?.databasePickerCoordinator = nil
-            self?.dismissAndQuit()
-        }
         databasePickerCoordinator.start()
-        addChildCoordinator(databasePickerCoordinator)
+        addChildCoordinator(databasePickerCoordinator, onDismiss: { [weak self] _ in
+            guard let self else { return }
+            databasePickerCoordinator = nil
+            dismissAndQuit()
+        })
     }
 
     private func presentOnboarding() {
         let firstSetupVC = FirstSetupVC.make(delegate: self)
         firstSetupVC.navigationItem.hidesBackButton = true
-        router.present(firstSetupVC, animated: false, completion: nil)
+        _router.present(firstSetupVC, animated: false, completion: nil)
     }
 
     private func showUncheckKeychainMessage() {
@@ -278,7 +272,7 @@ extension AutoFillCoordinator {
         setupMessageVC.completionHanlder = { [weak self] in
             self?.extensionContext.completeExtensionConfigurationRequest()
         }
-        router.push(setupMessageVC, animated: true, onPop: nil)
+        _router.push(setupMessageVC, animated: true, onPop: nil)
     }
 
     private func showCrashReport() {
@@ -286,7 +280,7 @@ extension AutoFillCoordinator {
 
         let crashReportVC = CrashReportVC.instantiateFromStoryboard()
         crashReportVC.delegate = self
-        router.push(crashReportVC, animated: false, onPop: nil)
+        _router.push(crashReportVC, animated: false, onPop: nil)
     }
 
     private func showDatabaseUnlocker(
@@ -294,23 +288,21 @@ extension AutoFillCoordinator {
         andThen activation: DatabaseUnlockerActivationType
     ) {
         let databaseUnlockerCoordinator = DatabaseUnlockerCoordinator(
-            router: router,
+            router: _router,
             databaseRef: databaseRef
         )
-        databaseUnlockerCoordinator.dismissHandler = {[weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-            self?.databaseUnlockerCoordinator = nil
-        }
         databaseUnlockerCoordinator.delegate = self
         databaseUnlockerCoordinator.setDatabase(databaseRef, andThen: activation)
 
         databaseUnlockerCoordinator.start()
-        addChildCoordinator(databaseUnlockerCoordinator)
+        addChildCoordinator(databaseUnlockerCoordinator, onDismiss: { [weak self] _ in
+            self?.databaseUnlockerCoordinator = nil
+        })
         self.databaseUnlockerCoordinator = databaseUnlockerCoordinator
     }
 
     private func reinstateDatabase(_ fileRef: URLReference) {
-        let presenter = router.navigationController
+        let presenter = _router.navigationController
         switch fileRef.location {
         case .external:
             databasePickerCoordinator.startExternalDatabasePicker(fileRef, presenter: presenter)
@@ -329,7 +321,7 @@ extension AutoFillCoordinator {
     ) {
         log.trace("Displaying database viewer")
         let entryFinderCoordinator = EntryFinderCoordinator(
-            router: router,
+            router: _router,
             originalRef: fileRef,
             databaseFile: databaseFile,
             loadingWarnings: warnings,
@@ -338,14 +330,12 @@ extension AutoFillCoordinator {
             passkeyRegistrationParams: passkeyRegistrationParams,
             autoFillMode: autoFillMode
         )
-        entryFinderCoordinator.dismissHandler = {[weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-            self?.entryFinderCoordinator = nil
-        }
         entryFinderCoordinator.delegate = self
 
         entryFinderCoordinator.start()
-        addChildCoordinator(entryFinderCoordinator)
+        addChildCoordinator(entryFinderCoordinator, onDismiss: { [weak self] _ in
+            self?.entryFinderCoordinator = nil
+        })
         self.entryFinderCoordinator = entryFinderCoordinator
     }
 
@@ -390,7 +380,7 @@ extension AutoFillCoordinator {
         in databaseFile: DatabaseFile,
         presenter: UIViewController
     ) {
-        let presenter = router.navigationController
+        let presenter = _router.navigationController
         guard let db2 = databaseFile.database as? Database2,
               let rootGroup = db2.root as? Group2
         else {
@@ -683,7 +673,7 @@ extension AutoFillCoordinator {
         #if targetEnvironment(macCatalyst)
             // swiftlint:disable:next line_length
             let alert = UIAlertController.make(title: nil, message: "This feature is broken in macOS Sequoia.\n\nInstead, use the 'key' button in the password field.")
-            router.present(alert, animated: true, completion: nil)
+            _router.present(alert, animated: true, completion: nil)
         #else
             extensionContext.completeRequest(withTextToInsert: text)
             if hasUI {
@@ -876,10 +866,10 @@ extension AutoFillCoordinator: WatchdogDelegate {
         passcodeInputVC.shouldActivateKeyboard = !shouldUseBiometrics
 
         rootController.swapChildViewControllers(
-            from: router.navigationController,
+            from: _router.navigationController,
             to: passcodeInputVC,
             options: .transitionCrossDissolve)
-        router.dismissModals(animated: false, completion: nil)
+        _router.dismissModals(animated: false, completion: nil)
         passcodeInputVC.shouldActivateKeyboard = false
         maybeShowBiometricAuth()
         passcodeInputVC.shouldActivateKeyboard = !isBiometricAuthShown
@@ -903,7 +893,7 @@ extension AutoFillCoordinator: WatchdogDelegate {
         if let passcodeInputVC = passcodeInputController {
             rootController.swapChildViewControllers(
                 from: passcodeInputVC,
-                to: router.navigationController,
+                to: _router.navigationController,
                 options: .transitionCrossDissolve,
                 completion: { [weak self] _ in
                     guard let self = self else { return }
@@ -1010,7 +1000,7 @@ extension AutoFillCoordinator: PasscodeInputDelegate {
 extension AutoFillCoordinator: CrashReportDelegate {
     func didPressDismiss(in crashReport: CrashReportVC) {
         Settings.current.isAutoFillFinishedOK = true
-        router.pop(animated: true)
+        _router.pop(animated: true)
     }
 }
 
@@ -1022,7 +1012,7 @@ extension AutoFillCoordinator: FirstSetupDelegate {
     func didPressAddExistingDatabase(in firstSetup: FirstSetupVC) {
         watchdog.restart()
         firstSetup.dismiss(animated: true, completion: nil)
-        databasePickerCoordinator.startExternalDatabasePicker(presenter: router.navigationController)
+        databasePickerCoordinator.startExternalDatabasePicker(presenter: _router.navigationController)
     }
 
     func didPressAddRemoteDatabase(in firstSetup: FirstSetupVC) {
@@ -1030,7 +1020,7 @@ extension AutoFillCoordinator: FirstSetupDelegate {
         firstSetup.dismiss(animated: true, completion: nil)
         databasePickerCoordinator.paywalledStartRemoteDatabasePicker(
             bypassPaywall: false,
-            presenter: router.navigationController
+            presenter: _router.navigationController
         )
     }
 
@@ -1132,17 +1122,17 @@ extension AutoFillCoordinator: DatabaseUnlockerCoordinatorDelegate {
         _ fileRef: URLReference,
         in coordinator: DatabaseUnlockerCoordinator
     ) {
-        router.pop(animated: true, completion: { [weak self] in
+        _router.pop(animated: true, completion: { [weak self] in
             self?.reinstateDatabase(fileRef)
         })
     }
 
     func didPressAddRemoteDatabase(in coordinator: DatabaseUnlockerCoordinator) {
-        router.pop(animated: true, completion: { [weak self] in
+        _router.pop(animated: true, completion: { [weak self] in
             guard let self else { return }
             databasePickerCoordinator.paywalledStartRemoteDatabasePicker(
                 bypassPaywall: true,
-                presenter: router.navigationController
+                presenter: _router.navigationController
             )
         })
     }
@@ -1185,14 +1175,14 @@ extension AutoFillCoordinator: EntryFinderCoordinatorDelegate {
 
 extension AutoFillCoordinator: DatabaseSaving {
     var savingProgressHost: ProgressViewHost? {
-        return router
+        return _router
     }
 
     func didRelocate(databaseFile: KeePassiumLib.DatabaseFile, to newURL: URL) {
     }
 
     func getDatabaseSavingErrorParent() -> UIViewController {
-        return router.navigationController
+        return _router.navigationController
     }
 }
 

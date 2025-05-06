@@ -31,11 +31,8 @@ extension Coordinator {
             quickMode: true,
             hasTarget: false
         )
-        passGenCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
         passGenCoordinator.start()
-        addChildCoordinator(passGenCoordinator)
+        addChildCoordinator(passGenCoordinator, onDismiss: nil)
         viewController.present(modalRouter, animated: true, completion: nil)
     }
 }

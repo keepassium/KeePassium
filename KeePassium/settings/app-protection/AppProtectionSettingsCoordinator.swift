@@ -9,47 +9,29 @@
 import KeePassiumLib
 import LocalAuthentication.LABiometryType
 
-final class AppProtectionSettingsCoordinator: Coordinator, Refreshable {
-    var childCoordinators = [Coordinator]()
-
-    var dismissHandler: CoordinatorDismissHandler?
-
-    private let router: NavigationRouter
+final class AppProtectionSettingsCoordinator: BaseCoordinator {
     internal let _appProtectionSettingsVC: AppProtectionSettingsVC
-    private let settingsNotifications: SettingsNotifications
 
-    init(router: NavigationRouter) {
-        self.router = router
+    override init(router: NavigationRouter) {
         _appProtectionSettingsVC = AppProtectionSettingsVC()
-        settingsNotifications = SettingsNotifications()
-
+        super.init(router: router)
         _appProtectionSettingsVC.delegate = self
-        settingsNotifications.observer = self
     }
 
-    deinit {
-        settingsNotifications.stopObserving()
-        assert(childCoordinators.isEmpty)
-        removeAllChildCoordinators()
-    }
-
-    func start() {
+    override func start() {
         guard ManagedAppConfig.shared.isAppProtectionAllowed else {
             Diag.error("Blocked by organization's policy, cancelling")
-            dismissHandler?(self)
+            _dismissHandler?(self)
             assertionFailure("This action should have been disabled in UI")
             return
         }
-        router.push(_appProtectionSettingsVC, animated: true, onPop: { [weak self] in
-            guard let self = self else { return }
-            self.removeAllChildCoordinators()
-            self.dismissHandler?(self)
-        })
-        settingsNotifications.startObserving()
+        super.start()
+        _pushInitialViewController(_appProtectionSettingsVC, animated: true)
         applySettingsToVC()
     }
 
-    func refresh() {
+    override func refresh() {
+        super.refresh()
         applySettingsToVC()
         _appProtectionSettingsVC.refresh()
     }
@@ -76,13 +58,6 @@ final class AppProtectionSettingsCoordinator: Coordinator, Refreshable {
         _appProtectionSettingsVC.isBiometricsSupported = isSupported
 
         _appProtectionSettingsVC.biometryType = context.biometryType
-    }
-}
-
-extension AppProtectionSettingsCoordinator: SettingsObserver {
-    func settingsDidChange(key: Settings.Keys) {
-        guard key != .recentUserActivityTimestamp else { return }
-        refresh()
     }
 }
 

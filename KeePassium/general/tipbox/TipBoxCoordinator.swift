@@ -9,54 +9,29 @@
 import KeePassiumLib
 import StoreKit
 
-final class TipBoxCoordinator: Coordinator {
-    var childCoordinators = [Coordinator]()
-    var dismissHandler: CoordinatorDismissHandler?
-
-    private let router: NavigationRouter
-
+final class TipBoxCoordinator: BaseCoordinator {
     private let premiumManager: PremiumManager
     private let tipBoxVC: TipBoxVC
     private var availableProducts = [SKProduct]()
 
-    init(router: NavigationRouter) {
-        self.router = router
-
+    override init(router: NavigationRouter) {
         self.premiumManager = PremiumManager.shared
         tipBoxVC = TipBoxVC.instantiateFromStoryboard()
+        super.init(router: router)
         tipBoxVC.delegate = self
     }
 
     deinit {
-        assert(childCoordinators.isEmpty)
-        removeAllChildCoordinators()
         premiumManager.delegate = nil
     }
 
-    func start() {
-        setupCloseButton(in: tipBoxVC)
-        router.push(tipBoxVC, animated: true, onPop: { [weak self] in
-            guard let self = self else { return }
-            self.removeAllChildCoordinators()
-            self.premiumManager.delegate = nil
-            self.dismissHandler?(self)
-        })
+    override func start() {
+        super.start()
+        _pushInitialViewController(tipBoxVC, dismissButtonStyle: .close, animated: true)
         premiumManager.delegate = self
 
         Diag.info(TipBox.getStatus())
         TipBox.registerTipBoxSeen()
-    }
-
-    private func setupCloseButton(in viewController: UIViewController) {
-        guard router.navigationController.topViewController == nil else {
-            return
-        }
-
-        let closeButton = UIBarButtonItem(
-            barButtonSystemItem: .close,
-            target: self,
-            action: #selector(didPressDismiss))
-        viewController.navigationItem.leftBarButtonItem = closeButton
     }
 
     private func refreshAvailableProducts() {
@@ -81,12 +56,6 @@ final class TipBoxCoordinator: Coordinator {
         tipBoxVC.setStatus(busy: false, text: nil, animated: true)
         tipBoxVC.setProducts(sortedProducts)
         availableProducts = sortedProducts
-    }
-
-
-    @objc
-    private func didPressDismiss(_ sender: UIBarButtonItem) {
-        router.pop(viewController: tipBoxVC, animated: true)
     }
 }
 

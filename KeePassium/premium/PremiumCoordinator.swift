@@ -10,12 +10,8 @@ import KeePassiumLib
 import StoreKit
 import UIKit
 
-class PremiumCoordinator: NSObject, Coordinator {
+class PremiumCoordinator: BaseCoordinator {
     public static let desiredModalPresentationStyle = UIModalPresentationStyle.pageSheet
-
-    var childCoordinators = [Coordinator]()
-    var dismissHandler: CoordinatorDismissHandler?
-    private let router: NavigationRouter
 
     private let premiumManager: PremiumManager
     private let planPicker: PricingPlanPickerVC
@@ -24,32 +20,21 @@ class PremiumCoordinator: NSObject, Coordinator {
     private var isProductsRefreshed: Bool = false
     private var hadSubscriptionBeforePurchase = false
 
-    init(router: NavigationRouter) {
-        self.router = router
-        self.premiumManager = PremiumManager.shared
-
+    override init(router: NavigationRouter) {
         planPicker = PricingPlanPickerVC.create()
-        super.init()
-
+        self.premiumManager = PremiumManager.shared
+        super.init(router: router)
         planPicker.delegate = self
     }
 
-    deinit {
-        assert(childCoordinators.isEmpty)
-        removeAllChildCoordinators()
-    }
-
-    func start() {
-        self.start(tryRestoringPurchasesFirst: false)
+    override func start() {
+        super.start()
+        start(tryRestoringPurchasesFirst: false)
     }
 
     func start(tryRestoringPurchasesFirst: Bool) {
         premiumManager.delegate = self
-        router.push(planPicker, animated: true, onPop: { [weak self] in
-            guard let self = self else { return }
-            self.removeAllChildCoordinators()
-            self.dismissHandler?(self)
-        })
+        _pushInitialViewController(planPicker, animated: true)
 
         planPicker.isPurchaseEnabled = false
 
@@ -62,7 +47,7 @@ class PremiumCoordinator: NSObject, Coordinator {
 
     public func stop(completion: (() -> Void)?) {
         premiumManager.delegate = nil
-        router.pop(viewController: planPicker, animated: true, completion: completion)
+        _router.pop(viewController: planPicker, animated: true, completion: completion)
     }
 
     fileprivate func restorePurchases() {

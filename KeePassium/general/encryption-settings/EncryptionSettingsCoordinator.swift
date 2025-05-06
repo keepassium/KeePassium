@@ -13,60 +13,45 @@ protocol EncryptionSettingsCoordinatorDelegate: AnyObject {
     func didRelocateDatabase(_ databaseFile: DatabaseFile, to url: URL)
 }
 
-final class EncryptionSettingsCoordinator: Coordinator {
+final class EncryptionSettingsCoordinator: BaseCoordinator {
 
-
-    var childCoordinators = [Coordinator]()
-    var dismissHandler: CoordinatorDismissHandler?
 
     var databaseSaver: DatabaseSaver?
     var fileExportHelper: FileExportHelper?
-    var savingProgressHost: ProgressViewHost? { return router }
+    var savingProgressHost: ProgressViewHost? { return _router }
     var saveSuccessHandler: (() -> Void)?
 
     weak var delegate: EncryptionSettingsCoordinatorDelegate?
 
-    private let router: NavigationRouter
     private let databaseFile: DatabaseFile
     private let encryptionSettingsVC: EncryptionSettingsVC
 
     init(databaseFile: DatabaseFile, router: NavigationRouter) {
         self.databaseFile = databaseFile
-        self.router = router
-
         guard let db2 = databaseFile.database as? Database2 else {
             fatalError("Requested format upgrade for KDB format, this should be blocked in UI.")
         }
-
         encryptionSettingsVC = EncryptionSettingsVC(settings: db2.encryptionSettings)
+        super.init(router: router)
         encryptionSettingsVC.delegate = self
     }
 
-    deinit {
-        assert(childCoordinators.isEmpty)
-        removeAllChildCoordinators()
-    }
-
-    func start() {
+    override func start() {
         guard ManagedAppConfig.shared.isDatabaseEncryptionSettingsAllowed else {
             Diag.error("Blocked by organization's policy, cancelling")
-            dismissHandler?(self)
+            _dismissHandler?(self)
             assertionFailure("This action should have been disabled in UI")
             return
         }
-
-        router.push(encryptionSettingsVC, animated: true, onPop: { [weak self] in
-            guard let self = self else { return }
-            self.removeAllChildCoordinators()
-            self.dismissHandler?(self)
-        })
+        super.start()
+        _pushInitialViewController(encryptionSettingsVC, animated: true)
     }
 }
 
 
 extension EncryptionSettingsCoordinator: EncryptionSettingsVCDelegate {
     func didPressDismiss(in viewController: EncryptionSettingsVC) {
-        router.dismiss(animated: true)
+        dismiss()
     }
 
     func didPressDone(in viewController: EncryptionSettingsVC, settings: EncryptionSettings) {
@@ -85,7 +70,7 @@ extension EncryptionSettingsCoordinator: EncryptionSettingsVCDelegate {
         db2.applyEncryptionSettings(settings: settings)
 
         saveDatabase(databaseFile) { [weak self] in
-            self?.router.dismiss(animated: true)
+            self?.dismiss()
         }
     }
 }

@@ -8,32 +8,21 @@
 
 import KeePassiumLib
 
-final class NetworkAccessSettingsCoordinator: Coordinator {
-    var childCoordinators = [Coordinator]()
-    var dismissHandler: CoordinatorDismissHandler?
-
-    private let router: NavigationRouter
+final class NetworkAccessSettingsCoordinator: BaseCoordinator {
     private let viewController: NetworkAccessSettingsVC
 
-    init(router: NavigationRouter) {
-        self.router = router
+    override init(router: NavigationRouter) {
         viewController = NetworkAccessSettingsVC.make()
+        super.init(router: router)
+
         viewController.isAccessAllowed = Settings.current.isNetworkAccessAllowed
         viewController.isAutoDownloadEnabled = Settings.current.isAutoDownloadFaviconsEnabled
         viewController.delegate = self
     }
 
-    deinit {
-        assert(childCoordinators.isEmpty)
-        removeAllChildCoordinators()
-    }
-
-    func start() {
-        router.push(viewController, animated: true, onPop: { [weak self] in
-            guard let self = self else { return }
-            self.removeAllChildCoordinators()
-            self.dismissHandler?(self)
-        })
+    override func start() {
+        super.start()
+        _pushInitialViewController(viewController, animated: true)
     }
 }
 

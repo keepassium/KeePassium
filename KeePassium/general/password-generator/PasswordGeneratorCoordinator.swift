@@ -12,16 +12,12 @@ protocol PasswordGeneratorCoordinatorDelegate: AnyObject {
     func didAcceptPassword(_ password: String, in coordinator: PasswordGeneratorCoordinator)
 }
 
-final class PasswordGeneratorCoordinator: Coordinator {
-    var childCoordinators = [Coordinator]()
-    var dismissHandler: CoordinatorDismissHandler?
-
+final class PasswordGeneratorCoordinator: BaseCoordinator {
     weak var context: AnyObject?
     weak var delegate: PasswordGeneratorCoordinatorDelegate?
 
     public private(set) var generatedPassword = ""
 
-    private let router: NavigationRouter
     private let firstVC: UIViewController
     private var passGenVC: PasswordGeneratorVC?
     private var quickSheetVC: PasswordGeneratorQuickSheetVC?
@@ -31,7 +27,6 @@ final class PasswordGeneratorCoordinator: Coordinator {
     private let passphraseGenerator = PassphraseGenerator()
 
     init(router: NavigationRouter, quickMode: Bool, hasTarget: Bool) {
-        self.router = router
         self.hasTarget = hasTarget
         if quickMode {
             let quickModeVC = PasswordGeneratorQuickSheetVC()
@@ -41,47 +36,23 @@ final class PasswordGeneratorCoordinator: Coordinator {
             let fullModeVC = PasswordGeneratorVC.make(standaloneMode: !hasTarget)
             self.passGenVC = fullModeVC
             firstVC = fullModeVC
-            prepareFullModeGenerator(fullModeVC)
+        }
+        super.init(router: router)
+        if let passGenVC {
+            prepareFullModeGenerator(passGenVC)
         }
         quickSheetVC?.delegate = self
         passGenVC?.delegate = self
     }
 
-    deinit {
-        assert(childCoordinators.isEmpty)
-        removeAllChildCoordinators()
-    }
-
-    func start() {
-        setupDismissButton()
-        router.push(firstVC, animated: true, onPop: { [weak self] in
-            guard let self = self else { return }
-            self.removeAllChildCoordinators()
-            self.dismissHandler?(self)
-        })
-    }
-
-    private func setupDismissButton() {
-        guard router.navigationController.topViewController == nil else {
-            return
-        }
-
-        let closeButton = UIBarButtonItem(
-            systemItem: .close,
-            primaryAction: UIAction { [weak self] _ in
-                self?.dismiss()
-            },
-            menu: nil)
-        firstVC.navigationItem.leftBarButtonItem = closeButton
+    override func start() {
+        super.start()
+        _pushInitialViewController(firstVC, dismissButtonStyle: .close, animated: true)
     }
 
     private func prepareFullModeGenerator(_ passGenVC: PasswordGeneratorVC) {
         passGenVC.config = Settings.current.passwordGeneratorConfig
         passGenVC.mode = Settings.current.passwordGeneratorConfig.lastMode
-    }
-
-    private func dismiss() {
-        router.pop(viewController: firstVC, animated: true)
     }
 }
 
@@ -235,7 +206,7 @@ extension PasswordGeneratorCoordinator: PasswordGeneratorQuickSheetDelegate {
             }
         }
 
-        router.push(fullModeVC, animated: true, onPop: { [weak self] in
+        _router.push(fullModeVC, animated: true, onPop: { [weak self] in
             self?.passGenVC = nil
             self?.quickSheetVC?.regenerate()
         })

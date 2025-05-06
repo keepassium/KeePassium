@@ -16,7 +16,7 @@ import MSAL
 final class MainCoordinator: UIResponder, Coordinator {
     var childCoordinators = [Coordinator]()
 
-    var dismissHandler: CoordinatorDismissHandler? {
+    var _dismissHandler: CoordinatorDismissHandler? {
         didSet {
             fatalError("Don't set dismiss handler in MainCoordinator, it is never called.")
         }
@@ -138,16 +138,13 @@ final class MainCoordinator: UIResponder, Coordinator {
         assert(databasePickerCoordinator == nil)
         databasePickerCoordinator = DatabasePickerCoordinator(router: primaryRouter, mode: .full)
         databasePickerCoordinator.delegate = self
-        databasePickerCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
         databasePickerCoordinator.start()
-        addChildCoordinator(databasePickerCoordinator)
+        addChildCoordinator(databasePickerCoordinator, onDismiss: nil)
 
         showPlaceholder()
 
         #if INTUNE
-        setupIntune()
+        setupIntune(hasIncomingURL: hasIncomingURL)
         guard let currentUser = IntuneMAMEnrollmentManager.instance().enrolledAccountId(),
               !currentUser.isEmpty
         else {
@@ -228,7 +225,7 @@ final class MainCoordinator: UIResponder, Coordinator {
 
 #if INTUNE
 extension MainCoordinator {
-    private func setupIntune() {
+    private func setupIntune(hasIncomingURL: Bool) {
         assert(policyDelegate == nil && enrollmentDelegate == nil, "Repeated call to Intune setup")
 
         policyDelegate = IntunePolicyDelegateImpl()
@@ -240,7 +237,7 @@ extension MainCoordinator {
                 switch enrollmentResult {
                 case .success:
                     Diag.info("Intune enrollment successful")
-                    self.runAfterStartTasks()
+                    self.runAfterStartTasks(hasIncomingURL: hasIncomingURL)
                 case .cancelledByUser:
                     let message = [
                             LString.Intune.orgNeedsToManage,
@@ -310,13 +307,13 @@ extension MainCoordinator {
             preferredStyle: .alert
         )
         alert.addAction(title: LString.actionRetry, style: .default) { [weak self] _ in
-            self?.runAfterStartTasks()
+            self?.runAfterStartTasks(hasIncomingURL: false)
         }
         alert.addAction(title: LString.titleDiagnosticLog, style: .default) { [weak self] _ in
             guard let self else { return }
             DispatchQueue.main.async {
-                self.showDiagnostics(onDismiss: { [weak self] in
-                    self?.runAfterStartTasks()
+                self.showDiagnostics(in: self.getPresenterForModals(), onDismiss: { [weak self] in
+                    self?.runAfterStartTasks(hasIncomingURL: false)
                 })
             }
         }
@@ -421,12 +418,9 @@ extension MainCoordinator {
 
         let modalRouter = NavigationRouter.createModal(style: .formSheet)
         let onboardingCoordinator = OnboardingCoordinator(router: modalRouter)
-        onboardingCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
         onboardingCoordinator.delegate = self
         onboardingCoordinator.start()
-        addChildCoordinator(onboardingCoordinator)
+        addChildCoordinator(onboardingCoordinator, onDismiss: nil)
 
         rootSplitVC.present(modalRouter, animated: true, completion: nil)
     }
@@ -461,14 +455,12 @@ extension MainCoordinator {
             router: router,
             databaseRef: databaseRef
         )
-        newDBUnlockerCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-            self?.databaseUnlockerRouter = nil
-        }
         newDBUnlockerCoordinator.delegate = self
         newDBUnlockerCoordinator.reloadingContext = context
         newDBUnlockerCoordinator.start()
-        addChildCoordinator(newDBUnlockerCoordinator)
+        addChildCoordinator(newDBUnlockerCoordinator, onDismiss: { [weak self] _ in
+            self?.databaseUnlockerRouter = nil
+        })
 
         rootSplitVC.setDetailRouter(router)
 
@@ -489,14 +481,12 @@ extension MainCoordinator {
             context: context,
             loadingWarnings: warnings
         )
-        databaseViewerCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-            self?.databaseViewerCoordinator = nil
-            UIMenu.rebuildMainMenu()
-        }
         databaseViewerCoordinator.delegate = self
         databaseViewerCoordinator.start()
-        addChildCoordinator(databaseViewerCoordinator)
+        addChildCoordinator(databaseViewerCoordinator, onDismiss: { [weak self] _ in
+            self?.databaseViewerCoordinator = nil
+            UIMenu.rebuildMainMenu()
+        })
         self.databaseViewerCoordinator = databaseViewerCoordinator
 
         deallocateDatabaseUnlocker()
@@ -529,11 +519,8 @@ extension MainCoordinator {
     private func showDonationScreen(in viewController: UIViewController) {
         let modalRouter = NavigationRouter.createModal(style: .formSheet)
         let tipBoxCoordinator = TipBoxCoordinator(router: modalRouter)
-        tipBoxCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
         tipBoxCoordinator.start()
-        addChildCoordinator(tipBoxCoordinator)
+        addChildCoordinator(tipBoxCoordinator, onDismiss: nil)
 
         viewController.present(modalRouter, animated: true, completion: nil)
     }
@@ -547,11 +534,8 @@ extension MainCoordinator {
             style: ProcessInfo.isRunningOnMac ? .formSheet : .popover,
             at: popoverAnchor)
         let aboutCoordinator = AboutCoordinator(router: modalRouter)
-        aboutCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
         aboutCoordinator.start()
-        addChildCoordinator(aboutCoordinator)
+        addChildCoordinator(aboutCoordinator, onDismiss: nil)
         viewController.present(modalRouter, animated: true, completion: nil)
     }
 
@@ -564,25 +548,20 @@ extension MainCoordinator {
             style: ProcessInfo.isRunningOnMac ? .formSheet : .popover,
             at: popoverAnchor)
         let settingsCoordinator = SettingsCoordinator(router: modalRouter)
-        settingsCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
         settingsCoordinator.start()
-        addChildCoordinator(settingsCoordinator)
+        addChildCoordinator(settingsCoordinator, onDismiss: nil)
         viewController.present(modalRouter, animated: true, completion: nil)
     }
 
     func showDiagnostics(in viewController: UIViewController, onDismiss: (() -> Void)? = nil) {
         let modalRouter = NavigationRouter.createModal(style: .formSheet)
         let diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: modalRouter)
-        diagnosticsViewerCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-            onDismiss?()
-        }
         diagnosticsViewerCoordinator.start()
 
         viewController.present(modalRouter, animated: true, completion: nil)
-        addChildCoordinator(diagnosticsViewerCoordinator)
+        addChildCoordinator(diagnosticsViewerCoordinator, onDismiss: { [onDismiss] _ in
+            onDismiss?()
+        })
     }
 
     func createDatabase() {
@@ -1049,26 +1028,26 @@ extension MainCoordinator: PasscodeInputDelegate {
 
 extension MainCoordinator: OnboardingCoordinatorDelegate {
     func didPressCreateDatabase(in coordinator: OnboardingCoordinator) {
-        coordinator.dismiss(completion: { [weak self] in
+        coordinator.dismiss { [weak self] in
             guard let self else { return }
             databasePickerCoordinator.startDatabaseCreator(presenter: rootSplitVC)
-        })
+        }
     }
 
     func didPressAddExistingDatabase(in coordinator: OnboardingCoordinator) {
-        coordinator.dismiss(completion: { [weak self] in
+        coordinator.dismiss { [weak self] in
             guard let self else { return }
             databasePickerCoordinator.startExternalDatabasePicker(presenter: rootSplitVC)
-        })
+        }
     }
 
     func didPressConnectToServer(in coordinator: OnboardingCoordinator) {
         Diag.info("Network access permission implied by user action")
         Settings.current.isNetworkAccessAllowed = true
-        coordinator.dismiss(completion: { [weak self] in
+        coordinator.dismiss { [weak self] in
             guard let self else { return }
             databasePickerCoordinator.startRemoteDatabasePicker(presenter: rootSplitVC)
-        })
+        }
     }
 }
 

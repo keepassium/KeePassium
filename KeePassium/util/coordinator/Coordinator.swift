@@ -13,14 +13,39 @@ typealias CoordinatorDismissHandler = (Coordinator) -> Void
 protocol Coordinator: AnyObject {
     var childCoordinators: [Coordinator] { get set }
 
-    var dismissHandler: CoordinatorDismissHandler? { get set }
+    var _dismissHandler: CoordinatorDismissHandler? { get set }
 
-    func addChildCoordinator(_ coordinator: Coordinator)
+    func addChildCoordinator(_ coordinator: Coordinator, onDismiss: CoordinatorDismissHandler?)
     func removeChildCoordinator(_ coordinator: Coordinator)
 }
 
 extension Coordinator {
-    func addChildCoordinator(_ coordinator: Coordinator) {
+    func _pushInitialViewController(
+        _ viewController: UIViewController,
+        to router: NavigationRouter,
+        replaceTopViewController: Bool = false,
+        animated: Bool
+    ) {
+        router.push(
+            viewController,
+            animated: animated,
+            replaceTopViewController: replaceTopViewController,
+            onPop: { [weak self] in
+                guard let self else { return }
+                removeAllChildCoordinators()
+                _dismissHandler?(self)
+            }
+        )
+    }
+
+    func addChildCoordinator(_ coordinator: Coordinator, onDismiss: CoordinatorDismissHandler?) {
+        assert(
+            coordinator._dismissHandler == nil,
+            "Coordinator already has a dismiss handler; avoid setting it directly")
+        coordinator._dismissHandler = { [weak self, onDismiss] child in
+            onDismiss?(child)
+            self?.removeChildCoordinator(child)
+        }
         assert(
             !childCoordinators.contains(where: { $0 === coordinator }),
             "Tried to re-add an existing child coordinator")

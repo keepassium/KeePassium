@@ -8,44 +8,23 @@
 
 import KeePassiumLib
 
-final class AutoFillSettingsCoordinator: Coordinator, Refreshable {
-    var childCoordinators = [Coordinator]()
-    var dismissHandler: CoordinatorDismissHandler?
-
-    private let router: NavigationRouter
+final class AutoFillSettingsCoordinator: BaseCoordinator {
     private let autoFillSettingsVC: SettingsAutoFillVC
 
-    init(router: NavigationRouter) {
-        self.router = router
+    override init(router: NavigationRouter) {
         autoFillSettingsVC = SettingsAutoFillVC.instantiateFromStoryboard()
+        super.init(router: router)
         autoFillSettingsVC.delegate = self
     }
 
-    deinit {
-        assert(childCoordinators.isEmpty)
-        removeAllChildCoordinators()
+    override func start() {
+        super.start()
+        _pushInitialViewController(autoFillSettingsVC, animated: true)
     }
 
-    func start() {
-        router.push(autoFillSettingsVC, animated: true, onPop: { [weak self] in
-            guard let self = self else { return }
-            self.removeAllChildCoordinators()
-            self.dismissHandler?(self)
-        })
-        startObservingPremiumStatus(#selector(premiumStatusDidChange))
-    }
-
-    @objc
-    private func premiumStatusDidChange() {
-        refresh()
-    }
-
-    func refresh() {
-        if let topVC = router.navigationController.topViewController,
-           let topRefreshable = topVC as? Refreshable
-        {
-            topRefreshable.refresh()
-        }
+    override func refresh() {
+        super.refresh()
+        autoFillSettingsVC.refresh()
     }
 }
 

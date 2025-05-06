@@ -16,14 +16,10 @@ protocol ItemIconPickerCoordinatorDelegate: AnyObject {
     func didRelocateDatabase(_ databaseFile: DatabaseFile, to url: URL)
 }
 
-class ItemIconPickerCoordinator: Coordinator {
-    var childCoordinators = [Coordinator]()
-    var dismissHandler: CoordinatorDismissHandler?
-
+class ItemIconPickerCoordinator: BaseCoordinator {
     weak var delegate: ItemIconPickerCoordinatorDelegate?
     weak var item: DatabaseItem?
 
-    private let router: NavigationRouter
     private let databaseFile: DatabaseFile
     private let database: Database
     private let iconPicker: ItemIconPicker
@@ -32,38 +28,29 @@ class ItemIconPickerCoordinator: Coordinator {
 
     var databaseSaver: DatabaseSaver?
     var fileExportHelper: FileExportHelper?
-    var savingProgressHost: ProgressViewHost? { return router }
+    var savingProgressHost: ProgressViewHost? { return _router }
     var saveSuccessHandler: (() -> Void)?
 
     let faviconDownloader: FaviconDownloader
 
     init(router: NavigationRouter, databaseFile: DatabaseFile, customFaviconUrl: URL?) {
-        self.router = router
         self.databaseFile = databaseFile
         self.database = databaseFile.database
         self.faviconDownloader = FaviconDownloader()
         self.customFaviconUrl = customFaviconUrl
         iconPicker = ItemIconPicker.instantiateFromStoryboard()
+        super.init(router: router)
         iconPicker.delegate = self
     }
 
-    deinit {
-        assert(childCoordinators.isEmpty)
-        removeAllChildCoordinators()
-    }
-
-    func start() {
+    override func start() {
         refresh()
         iconPicker.selectIcon(for: item)
-
-        router.push(iconPicker, animated: true, onPop: { [weak self] in
-            guard let self = self else { return }
-            self.removeAllChildCoordinators()
-            self.dismissHandler?(self)
-        })
+        _pushInitialViewController(iconPicker, animated: true)
     }
 
-    private func refresh() {
+    override func refresh() {
+        super.refresh()
         let supportsCustomIcons = database is Database2
         let unusedCustomIcons = findUnusedCustomIcons()
         iconPicker.isImportAllowed = supportsCustomIcons
@@ -97,8 +84,8 @@ class ItemIconPickerCoordinator: Coordinator {
 
         saveDatabase(databaseFile, onSuccess: { [weak self] in
             guard let self else { return }
-            self.delegate?.didSelectIcon(customIcon: newIcon.uuid, in: self)
-            self.router.pop(animated: true)
+            delegate?.didSelectIcon(customIcon: newIcon.uuid, in: self)
+            _router.pop(animated: true)
         })
     }
 
@@ -214,17 +201,17 @@ class ItemIconPickerCoordinator: Coordinator {
 
 extension ItemIconPickerCoordinator: ItemIconPickerDelegate {
     func didPressCancel(in viewController: ItemIconPicker) {
-        router.pop(animated: true)
+        _router.pop(animated: true)
     }
 
     func didSelect(standardIcon iconID: IconID, in viewController: ItemIconPicker) {
         delegate?.didSelectIcon(standardIcon: iconID, in: self)
-        router.pop(animated: true)
+        _router.pop(animated: true)
     }
 
     func didSelect(customIcon uuid: UUID, in viewController: ItemIconPicker) {
         delegate?.didSelectIcon(customIcon: uuid, in: self)
-        router.pop(animated: true)
+        _router.pop(animated: true)
     }
 
     func didDelete(customIcon uuid: UUID, in viewController: ItemIconPicker) {
@@ -298,5 +285,5 @@ extension ItemIconPickerCoordinator: DatabaseSaving {
 }
 
 extension ItemIconPickerCoordinator: FaviconDownloading {
-    var faviconDownloadingProgressHost: ProgressViewHost? { return router }
+    var faviconDownloadingProgressHost: ProgressViewHost? { return _router }
 }

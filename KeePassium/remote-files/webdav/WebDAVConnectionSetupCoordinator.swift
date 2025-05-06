@@ -23,15 +23,10 @@ protocol WebDAVConnectionSetupCoordinatorDelegate: AnyObject {
     )
 }
 
-final class WebDAVConnectionSetupCoordinator: Coordinator {
-    var childCoordinators = [Coordinator]()
-    var dismissHandler: CoordinatorDismissHandler?
-
+final class WebDAVConnectionSetupCoordinator: BaseCoordinator {
     weak var delegate: WebDAVConnectionSetupCoordinatorDelegate?
 
-    private let router: NavigationRouter
     private let setupVC: WebDAVConnectionSetupVC
-    private var firstVC: UIViewController?
     private var selectionMode: RemoteItemSelectionMode
     private var credential: NetworkCredential?
 
@@ -39,34 +34,22 @@ final class WebDAVConnectionSetupCoordinator: Coordinator {
         router: NavigationRouter,
         selectionMode: RemoteItemSelectionMode = .file
     ) {
-        self.router = router
         self.selectionMode = selectionMode
         self.setupVC = WebDAVConnectionSetupVC.make()
+        super.init(router: router)
         setupVC.delegate = self
     }
 
-    deinit {
-        assert(childCoordinators.isEmpty)
-        removeAllChildCoordinators()
+    override func start() {
+        super.start()
+        _pushInitialViewController(setupVC, animated: true)
     }
 
-    func start() {
-        router.push(setupVC, animated: true, onPop: { [weak self] in
-            guard let self else { return }
-            self.removeAllChildCoordinators()
-            self.dismissHandler?(self)
-        })
-    }
-
-    func dismiss() {
-        router.pop(viewController: setupVC, animated: true)
-    }
-
-    func getModalPresenter() -> UIViewController {
-        return router.navigationController
-    }
-
-    private func showFolder(folder: WebDAVItem, credential: NetworkCredential, stateIndicator: BusyStateIndicating) {
+    private func showFolder(
+        folder: WebDAVItem,
+        credential: NetworkCredential,
+        stateIndicator: BusyStateIndicating
+    ) {
         stateIndicator.indicateState(isBusy: true)
         WebDAVManager.shared.getItems(
             in: folder,
@@ -80,7 +63,7 @@ final class WebDAVConnectionSetupCoordinator: Coordinator {
             case .success(let items):
                 showFolder(items: items, parent: folder, title: folder.name)
             case .failure(let remoteError):
-                showErrorAlert(remoteError)
+                _presenterForModals.showErrorAlert(remoteError)
             }
         }
     }
@@ -96,14 +79,7 @@ final class WebDAVConnectionSetupCoordinator: Coordinator {
         vc.folderName = title
         vc.delegate = self
         vc.selectionMode = selectionMode
-        if self.firstVC == nil {
-            self.firstVC = vc
-        }
-        router.push(vc, animated: true, onPop: nil)
-    }
-
-    private func showErrorAlert(_ error: Error) {
-        getModalPresenter().showErrorAlert(error)
+        _router.push(vc, animated: true, onPop: nil)
     }
 }
 
@@ -144,7 +120,12 @@ extension WebDAVConnectionSetupCoordinator: RemoteFolderViewerDelegate {
             return
         }
 
-        delegate?.didPickRemoteFolder(webDAVFolder, credential: credential, stateIndicator: viewController, in: self)
+        delegate?.didPickRemoteFolder(
+            webDAVFolder,
+            credential: credential,
+            stateIndicator: viewController,
+            in: self
+        )
     }
 }
 

@@ -20,13 +20,10 @@ extension DatabasePickerCoordinator {
             router: modalRouter
         )
         databaseSettingsCoordinator.delegate = self
-        databaseSettingsCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
         databaseSettingsCoordinator.start()
 
         viewController.present(modalRouter, animated: true, completion: nil)
-        addChildCoordinator(databaseSettingsCoordinator)
+        addChildCoordinator(databaseSettingsCoordinator, onDismiss: nil)
     }
 }
 

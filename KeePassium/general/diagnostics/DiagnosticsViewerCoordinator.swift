@@ -8,43 +8,18 @@
 
 import KeePassiumLib
 
-class DiagnosticsViewerCoordinator: NSObject, Coordinator {
-    var childCoordinators = [Coordinator]()
-    var dismissHandler: CoordinatorDismissHandler?
-
-    private var router: NavigationRouter
+class DiagnosticsViewerCoordinator: BaseCoordinator {
     private var diagnosticsViewerVC: DiagnosticsViewerVC
 
-    init(router: NavigationRouter) {
-        self.router = router
+    override init(router: NavigationRouter) {
         diagnosticsViewerVC = DiagnosticsViewerVC.create()
-        super.init()
-
+        super.init(router: router)
         diagnosticsViewerVC.delegate = self
     }
 
-    deinit {
-        assert(childCoordinators.isEmpty)
-        removeAllChildCoordinators()
-    }
-
-    func start() {
-        if router.navigationController.topViewController == nil {
-            let leftButton = UIBarButtonItem(
-                barButtonSystemItem: .cancel,
-                target: self,
-                action: #selector(didPressDismissButton))
-            diagnosticsViewerVC.navigationItem.leftBarButtonItem = leftButton
-        }
-        router.push(diagnosticsViewerVC, animated: true, onPop: { [weak self] in
-            guard let self = self else { return }
-            self.removeAllChildCoordinators()
-            self.dismissHandler?(self)
-        })
-    }
-
-    @objc private func didPressDismissButton() {
-        router.dismiss(animated: true)
+    override func start() {
+        super.start()
+        _pushInitialViewController(diagnosticsViewerVC, dismissButtonStyle: .cancel, animated: true)
     }
 }
 

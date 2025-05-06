@@ -23,13 +23,10 @@ extension FilePickerCoordinator {
             allowExport: allowExport,
             router: modalRouter)
         fileInfoCoordinator.delegate = self
-        fileInfoCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
         fileInfoCoordinator.start()
 
         viewController.present(modalRouter, animated: true, completion: nil)
-        addChildCoordinator(fileInfoCoordinator)
+        addChildCoordinator(fileInfoCoordinator, onDismiss: nil)
     }
 }
 

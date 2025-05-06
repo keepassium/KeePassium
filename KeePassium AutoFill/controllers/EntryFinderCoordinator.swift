@@ -25,12 +25,9 @@ protocol EntryFinderCoordinatorDelegate: AnyObject {
         in coordinator: EntryFinderCoordinator)
 }
 
-final class EntryFinderCoordinator: Coordinator {
-    var childCoordinators = [Coordinator]()
-    var dismissHandler: CoordinatorDismissHandler?
+final class EntryFinderCoordinator: BaseCoordinator {
     weak var delegate: EntryFinderCoordinatorDelegate?
 
-    private let router: NavigationRouter
     private let entryFinderVC: EntryFinderVC
 
     private let originalRef: URLReference
@@ -60,7 +57,6 @@ final class EntryFinderCoordinator: Coordinator {
         passkeyRegistrationParams: PasskeyRegistrationParams?,
         autoFillMode: AutoFillMode?
     ) {
-        self.router = router
         self.originalRef = originalRef
         self.databaseFile = databaseFile
         self.database = databaseFile.database
@@ -69,32 +65,29 @@ final class EntryFinderCoordinator: Coordinator {
         self.passkeyRelyingParty = passkeyRelyingParty
         self.passkeyRegistrationParams = passkeyRegistrationParams
         self.autoFillMode = autoFillMode
-
         entryFinderVC = EntryFinderVC.instantiateFromStoryboard()
+        super.init(router: router)
+
         entryFinderVC.delegate = self
         entryFinderVC.autoFillMode = autoFillMode
 
         entryFinderVC.navigationItem.title = databaseFile.visibleFileName
     }
 
-    deinit {
-        assert(childCoordinators.isEmpty)
-        removeAllChildCoordinators()
-    }
-
-    func start() {
-        router.prepareCustomTransition(
+    override func start() {
+        super.start()
+        _router.prepareCustomTransition(
             duration: vcAnimationDuration,
             type: .fade,
             timingFunction: .easeOut
         )
-        router.push(
+        _router.push(
             entryFinderVC,
             animated: false, 
             replaceTopViewController: true,
             onPop: { [weak self] in
                 guard let self = self else { return }
-                self.dismissHandler?(self)
+                self._dismissHandler?(self)
                 self.delegate?.didLeaveDatabase(in: self)
             }
         )
@@ -106,7 +99,7 @@ final class EntryFinderCoordinator: Coordinator {
     }
 
     func stop(animated: Bool, completion: (() -> Void)?) {
-        router.pop(viewController: entryFinderVC, animated: animated, completion: completion)
+        _router.pop(viewController: entryFinderVC, animated: animated, completion: completion)
     }
 }
 
@@ -115,7 +108,7 @@ extension EntryFinderCoordinator {
         DatabaseSettingsManager.shared.updateSettings(for: originalRef) {
             $0.clearMasterKey()
         }
-        router.pop(viewController: entryFinderVC, animated: true)
+        _router.pop(viewController: entryFinderVC, animated: true)
         Diag.info("Database locked")
     }
 
@@ -188,7 +181,7 @@ extension EntryFinderCoordinator {
             sheet.prefersGrabberVisible = true
             sheet.detents = creatorVC.detents()
         }
-        router.present(creatorVC, animated: true, completion: nil)
+        _router.present(creatorVC, animated: true, completion: nil)
     }
 }
 

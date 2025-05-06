@@ -8,32 +8,20 @@
 
 import KeePassiumLib
 
-final class AppHistoryCoordinator: Coordinator {
-    var childCoordinators = [Coordinator]()
-    var dismissHandler: CoordinatorDismissHandler?
-
-    private let router: NavigationRouter
+final class AppHistoryCoordinator: BaseCoordinator {
     private let viewer: AppHistoryViewerVC
 
-    init(router: NavigationRouter) {
-        self.router = router
+    override init(router: NavigationRouter) {
         viewer = AppHistoryViewerVC()
+        super.init(router: router)
     }
 
-    deinit {
-        assert(childCoordinators.isEmpty)
-        removeAllChildCoordinators()
-    }
-
-    func start() {
-         AppHistory.load { [weak self] appHistory in
+    override func start() {
+        super.start()
+        AppHistory.load { [weak self] appHistory in
              self?.viewer.appHistory = self?.filter(appHistory: appHistory)
         }
-        router.push(viewer, animated: true) { [weak self] in
-            guard let self = self else { return }
-            self.removeAllChildCoordinators()
-            self.dismissHandler?(self)
-        }
+        _pushInitialViewController(viewer, animated: true)
     }
 
     private func filter(appHistory: AppHistory?) -> AppHistory? {

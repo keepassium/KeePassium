@@ -40,19 +40,16 @@ protocol DatabaseUnlockerCoordinatorDelegate: AnyObject {
     func didPressAddRemoteDatabase(in coordinator: DatabaseUnlockerCoordinator)
 }
 
-final class DatabaseUnlockerCoordinator: Coordinator, Refreshable {
+final class DatabaseUnlockerCoordinator: BaseCoordinator {
     enum State {
         case unlockOriginalFileFast
         case unlockOriginalFileSlow
         case unlockFallbackFile
     }
-    var childCoordinators = [Coordinator]()
-    var dismissHandler: CoordinatorDismissHandler?
     weak var delegate: DatabaseUnlockerCoordinatorDelegate?
 
     var reloadingContext: DatabaseReloadContext?
 
-    private let router: NavigationRouter
     private let databaseUnlockerVC: DatabaseUnlockerVC
 
     private var databaseRef: URLReference
@@ -64,30 +61,23 @@ final class DatabaseUnlockerCoordinator: Coordinator, Refreshable {
     private var databaseLoader: DatabaseLoader?
 
     init(router: NavigationRouter, databaseRef: URLReference) {
-        self.router = router
         self.databaseRef = databaseRef
         self.fallbackDatabaseRef = DatabaseManager.getFallbackFile(for: databaseRef)
-
         databaseUnlockerVC = DatabaseUnlockerVC.instantiateFromStoryboard()
+        super.init(router: router)
+
         databaseUnlockerVC.delegate = self
         databaseUnlockerVC.databaseRef = databaseRef
     }
 
-    deinit {
-        assert(childCoordinators.isEmpty)
-        removeAllChildCoordinators()
-    }
-
-    func start() {
-        router.push(databaseUnlockerVC, animated: true, onPop: { [weak self] in
-            guard let self = self else { return }
-            self.removeAllChildCoordinators()
-            self.dismissHandler?(self)
-        })
+    override func start() {
+        super.start()
+        _pushInitialViewController(databaseUnlockerVC, animated: true)
         setDatabase(databaseRef, andThen: .doNothing)
     }
 
-    func refresh() {
+    override func refresh() {
+        super.refresh()
         databaseUnlockerVC.refresh()
     }
 
@@ -182,18 +172,15 @@ extension DatabaseUnlockerCoordinator {
     ) {
         let modalRouter = NavigationRouter.createModal(style: .formSheet, at: popoverAnchor)
         let diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: modalRouter)
-        diagnosticsViewerCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
         diagnosticsViewerCoordinator.start()
         viewController.present(modalRouter, animated: true, completion: nil)
-        addChildCoordinator(diagnosticsViewerCoordinator)
+        addChildCoordinator(diagnosticsViewerCoordinator, onDismiss: nil)
     }
 
     private func getPopoverRouter(at popoverAnchor: PopoverAnchor) -> NavigationRouter {
         #if AUTOFILL_EXT
         if ProcessInfo.isRunningOnMac {
-            return router
+            return _router
         }
         #endif
         return NavigationRouter.createModal(style: .popover, at: popoverAnchor)
@@ -205,13 +192,10 @@ extension DatabaseUnlockerCoordinator {
     ) {
         let modalRouter = NavigationRouter.createModal(style: .formSheet, at: popoverAnchor)
         let keyFilePickerCoordinator = KeyFilePickerCoordinator(router: modalRouter)
-        keyFilePickerCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
         keyFilePickerCoordinator.delegate = self
         keyFilePickerCoordinator.start()
-        addChildCoordinator(keyFilePickerCoordinator)
-        if modalRouter != router {
+        addChildCoordinator(keyFilePickerCoordinator, onDismiss: nil)
+        if modalRouter != _router {
             viewController.present(modalRouter, animated: true, completion: nil)
         }
     }
@@ -222,14 +206,11 @@ extension DatabaseUnlockerCoordinator {
     ) {
         let targetRouter = getPopoverRouter(at: popoverAnchor)
         let hardwareKeyPickerCoordinator = HardwareKeyPickerCoordinator(router: targetRouter)
-        hardwareKeyPickerCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
         hardwareKeyPickerCoordinator.delegate = self
         hardwareKeyPickerCoordinator.setSelectedKey(selectedHardwareKey)
         hardwareKeyPickerCoordinator.start()
-        addChildCoordinator(hardwareKeyPickerCoordinator)
-        if targetRouter != router {
+        addChildCoordinator(hardwareKeyPickerCoordinator, onDismiss: nil)
+        if targetRouter != _router {
             viewController.present(targetRouter, animated: true, completion: nil)
         }
     }
@@ -280,7 +261,7 @@ extension DatabaseUnlockerCoordinator {
 
         let challengeHandler = ChallengeResponseManager.makeHandler(
             for: selectedHardwareKey,
-            presenter: router.navigationController.view
+            presenter: _router.navigationController.view
         )
 
         let databaseSettingsManager = DatabaseSettingsManager.shared
@@ -434,7 +415,7 @@ extension DatabaseUnlockerCoordinator: DatabaseUnlockerDelegate {
         at popoverAnchor: PopoverAnchor,
         in viewController: DatabaseUnlockerVC
     ) {
-        router.dismissModals(animated: false, completion: { [weak self] in
+        _router.dismissModals(animated: false, completion: { [weak self] in
             self?.selectKeyFile(at: popoverAnchor, in: viewController)
         })
     }
@@ -443,13 +424,13 @@ extension DatabaseUnlockerCoordinator: DatabaseUnlockerDelegate {
         at popoverAnchor: PopoverAnchor,
         in viewController: DatabaseUnlockerVC
     ) {
-        router.dismissModals(animated: false, completion: { [weak self] in
+        _router.dismissModals(animated: false, completion: { [weak self] in
             self?.selectHardwareKey(at: popoverAnchor, in: viewController)
         })
     }
 
     func shouldDismissPopovers(in viewController: DatabaseUnlockerVC) {
-        router.dismissModals(animated: false, completion: nil)
+        _router.dismissModals(animated: false, completion: nil)
     }
 
     func canUnlockAutomatically(_ viewController: DatabaseUnlockerVC) -> Bool {

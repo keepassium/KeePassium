@@ -14,11 +14,9 @@ protocol EntryFieldEditorCoordinatorDelegate: AnyObject {
     func didRelocateDatabase(_ databaseFile: DatabaseFile, to url: URL)
 }
 
-final class EntryFieldEditorCoordinator: Coordinator {
+final class EntryFieldEditorCoordinator: BaseCoordinator {
     private typealias RollbackRoutine = () -> Void
 
-    var childCoordinators = [Coordinator]()
-    var dismissHandler: CoordinatorDismissHandler?
     weak var delegate: EntryFieldEditorCoordinatorDelegate?
 
     public var isCreating: Bool {
@@ -38,7 +36,6 @@ final class EntryFieldEditorCoordinator: Coordinator {
 
     private var qrCodeScanner = { YubiKitQRCodeScanner() }()
 
-    private let router: NavigationRouter
     private let fieldEditorVC: EntryFieldEditorVC
 
     private var isModified = false {
@@ -51,17 +48,17 @@ final class EntryFieldEditorCoordinator: Coordinator {
 
     var databaseSaver: DatabaseSaver?
     var fileExportHelper: FileExportHelper?
-    var savingProgressHost: ProgressViewHost? { return router }
+    var savingProgressHost: ProgressViewHost? { return _router }
     var saveSuccessHandler: (() -> Void)?
 
     private var tagsField: EntryField?
 
     init(router: NavigationRouter, databaseFile: DatabaseFile, parent: Group, target: Entry?) {
-        self.router = router
         self.databaseFile = databaseFile
         self.database = databaseFile.database
         self.parent = parent
         self.originalEntry = target
+        fieldEditorVC = EntryFieldEditorVC.instantiateFromStoryboard()
 
         let isCreationMode: Bool
         if let _target = target {
@@ -75,7 +72,7 @@ final class EntryFieldEditorCoordinator: Coordinator {
             entry.rawTitle = LString.defaultNewEntryName
         }
 
-        fieldEditorVC = EntryFieldEditorVC.instantiateFromStoryboard()
+        super.init(router: router)
         fieldEditorVC.title = isCreationMode ? LString.titleNewEntry : LString.titleEntry
 
         entry.touch(.accessed)
@@ -138,27 +135,20 @@ final class EntryFieldEditorCoordinator: Coordinator {
         return (fields, tagsField)
     }
 
-    deinit {
-        assert(childCoordinators.isEmpty)
-        removeAllChildCoordinators()
-    }
-
-    func start() {
-        router.push(fieldEditorVC, animated: true, onPop: { [weak self] in
-            guard let self = self else { return }
-            self.removeAllChildCoordinators()
-            self.dismissHandler?(self)
-        })
+    override func start() {
+        super.start()
+        _pushInitialViewController(fieldEditorVC, animated: true)
         refresh()
     }
 
-    private func refresh() {
+    override func refresh() {
+        super.refresh()
         fieldEditorVC.entryIcon = UIImage.kpIcon(forEntry: entry)
         fieldEditorVC.refresh()
     }
 
     private func abortAndDismiss() {
-        router.pop(animated: true)
+        _router.pop(animated: true)
     }
 
     private func startSaving() {
@@ -250,17 +240,14 @@ final class EntryFieldEditorCoordinator: Coordinator {
         in viewController: UIViewController
     ) {
         let passGenCoordinator = PasswordGeneratorCoordinator(
-            router: router,
+            router: _router,
             quickMode: quickMode,
             hasTarget: true
         )
-        passGenCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
         passGenCoordinator.delegate = self
         passGenCoordinator.context = textInput
         passGenCoordinator.start()
-        addChildCoordinator(passGenCoordinator)
+        addChildCoordinator(passGenCoordinator, onDismiss: nil)
     }
 
     private func makeUserNameGeneratorMenu(for field: EditableField) -> UIMenu {
@@ -296,12 +283,9 @@ final class EntryFieldEditorCoordinator: Coordinator {
     }
 
     private func showDiagnostics() {
-        let diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: router)
-        diagnosticsViewerCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
+        let diagnosticsViewerCoordinator = DiagnosticsViewerCoordinator(router: _router)
         diagnosticsViewerCoordinator.start()
-        addChildCoordinator(diagnosticsViewerCoordinator)
+        addChildCoordinator(diagnosticsViewerCoordinator, onDismiss: nil)
     }
 
     private func isIconModified() -> Bool {
@@ -336,17 +320,14 @@ final class EntryFieldEditorCoordinator: Coordinator {
 
     func showIconPicker() {
         let iconPickerCoordinator = ItemIconPickerCoordinator(
-            router: router,
+            router: _router,
             databaseFile: databaseFile,
             customFaviconUrl: URL.from(malformedString: entry.resolvedURL)
         )
         iconPickerCoordinator.item = entry
-        iconPickerCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
         iconPickerCoordinator.delegate = self
         iconPickerCoordinator.start()
-        addChildCoordinator(iconPickerCoordinator)
+        addChildCoordinator(iconPickerCoordinator, onDismiss: nil)
     }
 }
 
@@ -399,7 +380,7 @@ extension EntryFieldEditorCoordinator: EntryFieldEditorDelegate {
 
     func didPressCancel(in viewController: EntryFieldEditorVC) {
         guard isModified else {
-            router.pop(animated: true)
+            _router.pop(animated: true)
             return
         }
 
@@ -409,10 +390,9 @@ extension EntryFieldEditorCoordinator: EntryFieldEditorDelegate {
             preferredStyle: .alert)
         alert.addAction(title: LString.actionEdit, style: .cancel, handler: nil)
         alert.addAction(title: LString.actionDiscard, style: .destructive) { [weak self] _ in
-            guard let self = self else { return }
-            self.router.pop(animated: true)
+            self?._router.pop(animated: true)
         }
-        router.present(alert, animated: true, completion: nil)
+        _router.present(alert, animated: true, completion: nil)
     }
 
     func didPressDone(in viewController: EntryFieldEditorVC) {
@@ -515,15 +495,14 @@ extension EntryFieldEditorCoordinator: EntryFieldEditorDelegate {
             item: entry,
             parent: originalEntry?.parent,
             databaseFile: databaseFile,
-            router: router
+            router: _router
         )
         tagsCoordinator.delegate = self
-        tagsCoordinator.dismissHandler = { [weak self, tagsCoordinator] coordinator in
-            self?.applyTags(tags: tagsCoordinator.selectedTags)
-            self?.removeChildCoordinator(coordinator)
-        }
         tagsCoordinator.start()
-        addChildCoordinator(tagsCoordinator)
+        addChildCoordinator(tagsCoordinator, onDismiss: { [weak self, weak tagsCoordinator] _ in
+            guard let self, let tagsCoordinator else { return }
+            applyTags(tags: tagsCoordinator.selectedTags)
+        })
     }
 
     private func applyTags(tags: [String]) {
@@ -628,7 +607,7 @@ extension EntryFieldEditorCoordinator: DatabaseSaving {
         let changedEntry = originalEntry ?? entry
         delegate?.didUpdateEntry(changedEntry, in: self)
 
-        router.pop(animated: true)
+        _router.pop(animated: true)
     }
 
     func didFailSaving(databaseFile: DatabaseFile) {

@@ -262,6 +262,11 @@
 		754F7E632DB2AC50004235C8 /* SettingsItemConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754F7E622DB2AC50004235C8 /* SettingsItemConfig.swift */; };
 		754F7E642DB2AC50004235C8 /* SettingsItemConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754F7E622DB2AC50004235C8 /* SettingsItemConfig.swift */; };
 		754F7E652DB2AC50004235C8 /* SettingsItemConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754F7E622DB2AC50004235C8 /* SettingsItemConfig.swift */; };
+		75506D9C2DBE5CE700AC26C6 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75506D9B2DBE5CE700AC26C6 /* BaseCoordinator.swift */; };
+		75506D9D2DBE5CE700AC26C6 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75506D9B2DBE5CE700AC26C6 /* BaseCoordinator.swift */; };
+		75506D9E2DBE5CE700AC26C6 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75506D9B2DBE5CE700AC26C6 /* BaseCoordinator.swift */; };
+		75506D9F2DBE5CE700AC26C6 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75506D9B2DBE5CE700AC26C6 /* BaseCoordinator.swift */; };
+		75506DA02DBE5CE700AC26C6 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75506D9B2DBE5CE700AC26C6 /* BaseCoordinator.swift */; };
 		7550D22B215CC99100360E0C /* DatabaseKeyChangerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550D22A215CC99100360E0C /* DatabaseKeyChangerVC.swift */; };
 		7550D242215D792000360E0C /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7550D231215D758800360E0C /* AuthenticationServices.framework */; };
 		7550D24C215FDEC500360E0C /* AppCoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550D24B215FDEC500360E0C /* AppCoverVC.swift */; };
@@ -1974,6 +1979,7 @@
 		754F7E532DB144CF004235C8 /* SettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsItem.swift; sourceTree = "<group>"; };
 		754F7E592DB15D2C004235C8 /* BasicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCell.swift; sourceTree = "<group>"; };
 		754F7E622DB2AC50004235C8 /* SettingsItemConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsItemConfig.swift; sourceTree = "<group>"; };
+		75506D9B2DBE5CE700AC26C6 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		7550D22A215CC99100360E0C /* DatabaseKeyChangerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseKeyChangerVC.swift; sourceTree = "<group>"; };
 		7550D231215D758800360E0C /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		7550D24B215FDEC500360E0C /* AppCoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoverVC.swift; sourceTree = "<group>"; };
@@ -2839,7 +2845,6 @@
 				758BADB124B5408F00CC9265 /* PricingPlanCollectionCell.swift */,
 				759992F224B666F7006CC379 /* PricingPlanCollectionLayout.swift */,
 				758BADB924B5F8BF00CC9265 /* PricingPlans.swift */,
-				75D76158262ED2E200B1DE7F /* Coordinator+premium.swift */,
 			);
 			path = premium;
 			sourceTree = "<group>";
@@ -2919,7 +2924,6 @@
 				7546FBDC20C3ACFD00C5D834 /* KPApplication.swift */,
 				754BF07E2082A6BD00E3A292 /* AppDelegate.swift */,
 				75D76130262CC19700B1DE7F /* MainCoordinator.swift */,
-				75CBAB9C21C166D600B8AFE2 /* Coordinator.swift */,
 				7546FBDA20C3AC5E00C5D834 /* main.swift */,
 				754BF08B2082A6BD00E3A292 /* LaunchScreen.storyboard */,
 				754BF0892082A6BD00E3A292 /* Assets.xcassets */,
@@ -2972,6 +2976,7 @@
 		754FCBAF20A86785004DA0E7 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				75506D992DBE568E00AC26C6 /* coordinator */,
 				75F0BE5126A9BD0E0076B636 /* hardware-key */,
 				75BC562725818702002B4395 /* a11y */,
 				75B78705261F8979005BE7B7 /* context-menu */,
@@ -2994,7 +2999,6 @@
 				75C3801A217A0B76006F74C2 /* UIViewController+storyboard.swift */,
 				75838480268B55BF000D2E8B /* UIViewController+subviews.swift */,
 				753FE83424C1A9A400063FBB /* UIViewController+alerts.swift */,
-				F35538902B08DDF600D9F95D /* Coordinator+databaseUpgrade.swift */,
 				7523F71C21C98D620025C706 /* SupportEmailComposer.swift */,
 				75CD364021537A310018AF46 /* AppStoreHelper.swift */,
 				75C11F1D22208D6B0042FB2B /* LAContext+biometrics.swift */,
@@ -3027,6 +3031,18 @@
 				F32675662D8EDCA50007EA7E /* AppEraser.swift */,
 			);
 			path = util;
+			sourceTree = "<group>";
+		};
+		75506D992DBE568E00AC26C6 /* coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				75CBAB9C21C166D600B8AFE2 /* Coordinator.swift */,
+				F35538902B08DDF600D9F95D /* Coordinator+databaseUpgrade.swift */,
+				75FC842D2AC87B9E005021F1 /* Coordinator+passGen.swift */,
+				75D76158262ED2E200B1DE7F /* Coordinator+premium.swift */,
+				75506D9B2DBE5CE700AC26C6 /* BaseCoordinator.swift */,
+			);
+			path = coordinator;
 			sourceTree = "<group>";
 		};
 		75514A3220DF5B2400202340 /* edit */ = {
@@ -3180,7 +3196,6 @@
 		7588B6C02627319700F5D372 /* password-generator */ = {
 			isa = PBXGroup;
 			children = (
-				75FC842D2AC87B9E005021F1 /* Coordinator+passGen.swift */,
 				F3E194672BCF23DB00FD03EE /* DeleteWordlistAccessory.swift */,
 				75AF1922282B0DBF00FA4BB5 /* InclusionCondition+extensions.swift */,
 				75AF191F282B0D6D00FA4BB5 /* PasswordGeneratorCells.swift */,
@@ -4322,6 +4337,7 @@
 				F32228172CCEC4230093BD9C /* KeyFileTextField.swift in Sources */,
 				75D99DEF269CEE0800D0E9D7 /* DatabaseItemTitleView.swift in Sources */,
 				7502561D283D370000B930D9 /* SpinnerLabel.swift in Sources */,
+				75506D9D2DBE5CE700AC26C6 /* BaseCoordinator.swift in Sources */,
 				758AAFCE2DA2E31B00B5FA41 /* DatabasePickerCoordinator+itemActions.swift in Sources */,
 				757FDF6326E2519E0023E028 /* OTPView.swift in Sources */,
 				751DED742847B44B00B6D02E /* UITextInput+extensions.swift in Sources */,
@@ -4523,6 +4539,7 @@
 				75DDB5E4228BF88C0018A50F /* FileInfoReloader.swift in Sources */,
 				757169822DBCFDE800FD6A6C /* SearchSettingsVC.swift in Sources */,
 				75BE091F2509905300C436C2 /* ItemIconPickerCoordinator.swift in Sources */,
+				75506D9E2DBE5CE700AC26C6 /* BaseCoordinator.swift in Sources */,
 				F35232AA2B36FE6200F17F13 /* LString+tags.swift in Sources */,
 				75C94C5F20B4BAB0004FA29D /* EntryFileViewerVC.swift in Sources */,
 				759FD0372D9D1A0400659852 /* FilePickerVC.swift in Sources */,
@@ -4709,6 +4726,7 @@
 				758BADB324B5408F00CC9265 /* PricingPlanCollectionCell.swift in Sources */,
 				75D21BD42B642BB20065D95E /* OneDriveConnectionSetupCoordinator.swift in Sources */,
 				75C1AF882731E54D00E33AAC /* DatabaseSettingsVC.swift in Sources */,
+				75506DA02DBE5CE700AC26C6 /* BaseCoordinator.swift in Sources */,
 				75B38C07233E5B7C006BDEFC /* DatabaseKeyChangerVC.swift in Sources */,
 				75B38C08233E5B7C006BDEFC /* Attachment+extensions.swift in Sources */,
 				75F544B82CEF8E420022BAA4 /* UIKeyCommand+hotkeys.swift in Sources */,
@@ -5144,6 +5162,7 @@
 				759FD0382D9D1A0400659852 /* FilePickerVC.swift in Sources */,
 				759FD0442D9D1A2100659852 /* FilePickerCell.swift in Sources */,
 				F30D03732A7BE8A10047525F /* PasswordQuality.swift in Sources */,
+				75506D9C2DBE5CE700AC26C6 /* BaseCoordinator.swift in Sources */,
 				75D0764E28B639D200F02E39 /* ChallengeResponseManager.swift in Sources */,
 				75D0764F28B639D200F02E39 /* GroupEditorVC.swift in Sources */,
 				F35D7CD42D639563006DCBF0 /* FileImportHelper.swift in Sources */,
@@ -5333,6 +5352,7 @@
 				7502561F283D370000B930D9 /* SpinnerLabel.swift in Sources */,
 				F32228152CCEC4230093BD9C /* KeyFileTextField.swift in Sources */,
 				757FDF6526E2519E0023E028 /* OTPView.swift in Sources */,
+				75506D9F2DBE5CE700AC26C6 /* BaseCoordinator.swift in Sources */,
 				751DED762847B44B00B6D02E /* UITextInput+extensions.swift in Sources */,
 				758AAFCC2DA2E31B00B5FA41 /* DatabasePickerCoordinator+itemActions.swift in Sources */,
 				75D21BDC2B642E480065D95E /* BusyStateIndicating.swift in Sources */,

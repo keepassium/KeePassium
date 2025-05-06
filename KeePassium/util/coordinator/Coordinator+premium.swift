@@ -84,12 +84,9 @@ extension Coordinator {
             style: PremiumCoordinator.desiredModalPresentationStyle
         )
         let premiumCoordinator = PremiumCoordinator(router: modalRouter)
-        premiumCoordinator.dismissHandler = { [weak self] coordinator in
-            self?.removeChildCoordinator(coordinator)
-        }
         premiumCoordinator.start()
         viewController.present(modalRouter, animated: true, completion: nil)
-        addChildCoordinator(premiumCoordinator)
+        addChildCoordinator(premiumCoordinator, onDismiss: nil)
     }
 }
 #endif

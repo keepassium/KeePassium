@@ -18,20 +18,16 @@ protocol PasswordAuditCoordinatorDelegate: AnyObject {
     func didRelocateDatabase(_ databaseFile: DatabaseFile, to url: URL)
 }
 
-final class PasswordAuditCoordinator: Coordinator {
+final class PasswordAuditCoordinator: BaseCoordinator {
 
-
-    var childCoordinators = [Coordinator]()
-    var dismissHandler: CoordinatorDismissHandler?
 
     var databaseSaver: DatabaseSaver?
     var fileExportHelper: FileExportHelper?
-    var savingProgressHost: ProgressViewHost? { return router }
+    var savingProgressHost: ProgressViewHost? { return _router }
     var saveSuccessHandler: (() -> Void)?
 
     weak var delegate: PasswordAuditCoordinatorDelegate?
 
-    private let router: NavigationRouter
     private let databaseFile: DatabaseFile
     private let passwordAuditIntroVC: PasswordAuditVC
     private let passwordAuditService: PasswordAuditService
@@ -40,34 +36,26 @@ final class PasswordAuditCoordinator: Coordinator {
 
     init(databaseFile: DatabaseFile, router: NavigationRouter) {
         self.databaseFile = databaseFile
-        self.router = router
         self.passwordAuditIntroVC = PasswordAuditVC.instantiateFromStoryboard()
 
         var allEntries = [Entry]()
         databaseFile.database.root?.collectAllEntries(to: &allEntries)
-        self.passwordAuditService = PasswordAuditService(
+        passwordAuditService = PasswordAuditService(
             hibpService: HIBPService(),
             entries: allEntries)
-        self.passwordAuditService.delegate = self
+        super.init(router: router)
 
+        passwordAuditService.delegate = self
         passwordAuditIntroVC.delegate = self
     }
 
-    deinit {
-        assert(childCoordinators.isEmpty)
-        removeAllChildCoordinators()
+    override func start() {
+        super.start()
+        _pushInitialViewController(passwordAuditIntroVC, animated: true)
     }
 
-    func start() {
-        router.push(passwordAuditIntroVC, animated: true, onPop: { [weak self] in
-            guard let self = self else { return }
-            self.removeAllChildCoordinators()
-            self.dismissHandler?(self)
-        })
-        startObservingPremiumStatus(#selector(premiumStatusDidChange))
-    }
-
-    @objc private func premiumStatusDidChange() {
+    override func refresh() {
+        super.refresh()
         passwordAuditIntroVC.refresh()
     }
 
@@ -77,7 +65,7 @@ final class PasswordAuditCoordinator: Coordinator {
         passwordAuditResultsVC.items = results
         passwordAuditResultsVC.allowedActions = getAllowedActionsForResults()
         passwordAuditResultsVC.delegate = self
-        router.push(passwordAuditResultsVC, animated: true, onPop: nil)
+        _router.push(passwordAuditResultsVC, animated: true, onPop: nil)
     }
 
     private func getAllowedActionsForResults() -> [PasswordAuditResultsVC.AllowedAction] {
@@ -92,7 +80,7 @@ final class PasswordAuditCoordinator: Coordinator {
     }
 
     private func performAudit() {
-        router.showProgressView(
+        _router.showProgressView(
             title: LString.statusAuditingPasswords,
             allowCancelling: true,
             animated: true
@@ -102,10 +90,10 @@ final class PasswordAuditCoordinator: Coordinator {
             guard let self else { return }
             switch result {
             case let .success(results):
-                self.router.hideProgressView()
+                self._router.hideProgressView()
                 self.showResults(results: results)
             case .failure(.canceled):
-                self.router.hideProgressView(animated: true)
+                self._router.hideProgressView(animated: true)
             case let .failure(error):
                 Diag.error("Password audit failed [message: \(error.localizedDescription)]")
                 self.showError(error.localizedDescription)
@@ -122,20 +110,20 @@ final class PasswordAuditCoordinator: Coordinator {
             preferredStyle: .alert
         )
         alert.addAction(title: LString.actionCancel, style: .cancel) { [weak self] _ in
-            self?.router.hideProgressView(animated: true)
+            self?._router.hideProgressView(animated: true)
         }
         alert.addAction(title: LString.actionRetry, style: .default) { [weak self] _ in
             Diag.info("Retrying password audit")
             self?.performAudit()
         }
-        router.present(alert, animated: true, completion: nil)
+        _router.present(alert, animated: true, completion: nil)
     }
 }
 
 
 extension PasswordAuditCoordinator: PasswordAuditVCDelegate {
     func didPressDismiss(in viewController: PasswordAuditVC) {
-        router.dismiss(animated: true)
+        dismiss()
     }
 
     func didPressStartAudit(in viewController: PasswordAuditVC) {
@@ -152,14 +140,14 @@ extension PasswordAuditCoordinator: PasswordAuditVCDelegate {
         self.passwordAuditResultsVC = passwordAuditResultsVC
         passwordAuditResultsVC.items = results
         passwordAuditResultsVC.delegate = self
-        router.push(passwordAuditResultsVC, animated: true, onPop: nil)
+        _router.push(passwordAuditResultsVC, animated: true, onPop: nil)
     }
 }
 
 
 extension PasswordAuditCoordinator: PasswordAuditResultsVCDelegate {
     func didPressDismiss(in viewController: PasswordAuditResultsVC) {
-        router.dismiss(animated: true)
+        dismiss()
     }
 
     func didPressDeleteEntries(entries: [Entry], in viewController: PasswordAuditResultsVC) {
@@ -213,6 +201,6 @@ extension PasswordAuditCoordinator: DatabaseSaving {
 
 extension PasswordAuditCoordinator: PasswordAuditServiceDelegate {
     func progressDidUpdate(progress: ProgressEx) {
-        router.updateProgressView(with: progress)
+        _router.updateProgressView(with: progress)
     }
 }

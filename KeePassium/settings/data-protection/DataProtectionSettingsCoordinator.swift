@@ -8,40 +8,23 @@
 
 import KeePassiumLib
 
-final class DataProtectionSettingsCoordinator: Coordinator, Refreshable {
-    var childCoordinators = [Coordinator]()
-    var dismissHandler: CoordinatorDismissHandler?
-
-    private let router: NavigationRouter
+final class DataProtectionSettingsCoordinator: BaseCoordinator {
     internal let _dataProtectionSettingsVC: DataProtectionSettingsVC
-    private let settingsNotifications: SettingsNotifications
 
-    init(router: NavigationRouter) {
-        self.router = router
+    override init(router: NavigationRouter) {
         _dataProtectionSettingsVC = DataProtectionSettingsVC()
-        settingsNotifications = SettingsNotifications()
-
+        super.init(router: router)
         _dataProtectionSettingsVC.delegate = self
-        settingsNotifications.observer = self
     }
 
-    deinit {
-        settingsNotifications.stopObserving()
-        assert(childCoordinators.isEmpty)
-        removeAllChildCoordinators()
-    }
-
-    func start() {
-        router.push(_dataProtectionSettingsVC, animated: true, onPop: { [weak self] in
-            guard let self = self else { return }
-            self.removeAllChildCoordinators()
-            self.dismissHandler?(self)
-        })
-        settingsNotifications.startObserving()
+    override func start() {
+        super.start()
+        _pushInitialViewController(_dataProtectionSettingsVC, animated: true)
         applySettingsToVC()
     }
 
-    func refresh() {
+    override func refresh() {
+        super.refresh()
         applySettingsToVC()
         _dataProtectionSettingsVC.refresh()
     }
@@ -61,13 +44,6 @@ final class DataProtectionSettingsCoordinator: Coordinator, Refreshable {
         vc.isHideProtectedFields = s.isHideProtectedFields
         vc.isRememberKeyFiles = s.isKeepKeyFileAssociations
         vc.isRememberFinalKeys = s.isRememberDatabaseFinalKey
-    }
-}
-
-extension DataProtectionSettingsCoordinator: SettingsObserver {
-    func settingsDidChange(key: Settings.Keys) {
-        guard key != .recentUserActivityTimestamp else { return }
-        refresh()
     }
 }
 

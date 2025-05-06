@@ -8,31 +8,19 @@
 
 import KeePassiumLib
 
-class DatabaseIconSetSwitcherCoordinator: Coordinator {
-    var childCoordinators = [Coordinator]()
-    var dismissHandler: CoordinatorDismissHandler?
-
-    private let router: NavigationRouter
+class DatabaseIconSetSwitcherCoordinator: BaseCoordinator {
     private let picker: DatabaseIconSetPicker
 
-    init(router: NavigationRouter) {
-        self.router = router
+    override init(router: NavigationRouter) {
         picker = DatabaseIconSetPicker.instantiateFromStoryboard()
+        super.init(router: router)
         picker.delegate = self
     }
 
-    deinit {
-        assert(childCoordinators.isEmpty)
-        removeAllChildCoordinators()
-    }
-
-    func start() {
+    override func start() {
+        super.start()
         picker.selectedItem = Settings.current.databaseIconSet
-        router.push(picker, animated: true, onPop: { [weak self] in
-            guard let self = self else { return }
-            self.removeAllChildCoordinators()
-            self.dismissHandler?(self)
-        })
+        _pushInitialViewController(picker, animated: true)
     }
 }
 
@@ -40,6 +28,6 @@ class DatabaseIconSetSwitcherCoordinator: Coordinator {
 extension DatabaseIconSetSwitcherCoordinator: DatabaseIconSetPickerDelegate {
     func didSelect(iconSet: DatabaseIconSet, in picker: DatabaseIconSetPicker) {
         Settings.current.databaseIconSet = iconSet
-        router.pop(animated: true)
+        _router.pop(animated: true)
     }
 }
