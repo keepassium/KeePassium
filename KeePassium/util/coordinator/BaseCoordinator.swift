@@ -71,7 +71,12 @@ class BaseCoordinator: NSObject, Coordinator, Refreshable {
         if let _initialViewController {
             _router.pop(viewController: _initialViewController, animated: animated, completion: completion)
         } else {
-            assertionFailure("Dismissing a router without the initial view controller")
+            _dismissHandler?(self)
+            if _router.isEmpty {
+                _router.dismiss(animated: animated, completion: completion)
+            } else {
+                completion?()
+            }
         }
     }
 }

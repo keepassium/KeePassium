@@ -99,6 +99,10 @@ final public class NavigationRouter: NSObject {
         }
     }
 
+    public var isEmpty: Bool {
+        return navigationController.viewControllers.isEmpty
+    }
+
     public var isHorizontallyCompact: Bool {
         return navigationController.traitCollection.horizontalSizeClass == .compact
     }
