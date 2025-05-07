@@ -1058,7 +1058,7 @@ public class FileKeeper {
         completion: (() -> Void)?
     ) {
         operationQueue.addOperation { [weak self] in
-            self?.deleteBackupFilesAsync(
+            self?.deleteBackupFilesSync(
                 olderThan: maxAge,
                 keepLatest: keepLatest,
                 completionQueue: completionQueue,
@@ -1067,7 +1067,7 @@ public class FileKeeper {
         }
     }
 
-    private func deleteBackupFilesAsync(
+    private func deleteBackupFilesSync(
         olderThan maxAge: TimeInterval,
         keepLatest: Bool,
         completionQueue: OperationQueue,

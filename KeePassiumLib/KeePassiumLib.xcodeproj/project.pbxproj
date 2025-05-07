@@ -250,6 +250,7 @@
 		75F4ACF0217749DC00B22D8B /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACEE217749DB00B22D8B /* AppGroup.swift */; };
 		75F4ACF321774A6400B22D8B /* Clipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACF121774A6300B22D8B /* Clipboard.swift */; };
 		75F4ACF421774A6400B22D8B /* URL+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4ACF221774A6300B22D8B /* URL+extensions.swift */; };
+		75F56FAC2DCABEA40008DA89 /* LString+backupSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F56FAB2DCABEA40008DA89 /* LString+backupSettings.swift */; };
 		75F594B8221BDC51001729FD /* SettingsMigrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F594B7221BDC51001729FD /* SettingsMigrator.swift */; };
 		75F74ABA24C082F90071281E /* ReceiptAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F74AB924C082F90071281E /* ReceiptAnalyzer.swift */; };
 		75F74ABC24C0EF370071281E /* IARError+description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F74ABB24C0EF370071281E /* IARError+description.swift */; };
@@ -571,6 +572,7 @@
 		75F4ACEE217749DB00B22D8B /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
 		75F4ACF121774A6300B22D8B /* Clipboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clipboard.swift; sourceTree = "<group>"; };
 		75F4ACF221774A6300B22D8B /* URL+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+extensions.swift"; sourceTree = "<group>"; };
+		75F56FAB2DCABEA40008DA89 /* LString+backupSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LString+backupSettings.swift"; sourceTree = "<group>"; };
 		75F594B7221BDC51001729FD /* SettingsMigrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMigrator.swift; sourceTree = "<group>"; };
 		75F74AB924C082F90071281E /* ReceiptAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptAnalyzer.swift; sourceTree = "<group>"; };
 		75F74ABB24C0EF370071281E /* IARError+description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IARError+description.swift"; sourceTree = "<group>"; };
@@ -617,6 +619,7 @@
 			isa = PBXGroup;
 			children = (
 				75B8608B2475E2F800C5E6C0 /* LString.swift */,
+				75F56FAB2DCABEA40008DA89 /* LString+backupSettings.swift */,
 				757CCFAB2DBAFB05005E6BE6 /* LString+dataProtectionSettings.swift */,
 				75A0047A2840CF5C000B7B17 /* LString+a11y.swift */,
 				75F11C32288312A3005B3DC0 /* LString+about.swift */,
@@ -1525,6 +1528,7 @@
 				75D09C1B2174F77000F7DEF2 /* KDFFactory.swift in Sources */,
 				755E14BE2B1F754A00651F0D /* OneDriveAuthConfig.swift in Sources */,
 				75F4ACEB2177485D00B22D8B /* Keychain.swift in Sources */,
+				75F56FAC2DCABEA40008DA89 /* LString+backupSettings.swift in Sources */,
 				75D09C2C2174F77000F7DEF2 /* IconID.swift in Sources */,
 				75D09BD42174F76500F7DEF2 /* twofish.cpp in Sources */,
 				75D09BD32174F76500F7DEF2 /* Twofish.swift in Sources */,

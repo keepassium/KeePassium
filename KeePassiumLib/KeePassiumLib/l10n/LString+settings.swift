@@ -220,34 +220,6 @@ extension LString {
         value: "Automatically download website icon after editing an entry.",
         comment: "Description of the auto-download favicons feature")
 
-    public static let titleDatabaseBackupSettings = NSLocalizedString(
-        "[Settings/DatabaseBackup/title]",
-        bundle: Bundle.framework,
-        value: "Database Backup",
-        comment: "Title of a settings section: backup of databases")
-    public static let titleShowBackupFiles = NSLocalizedString(
-        "[Settings/DatabaseBackup/showBackupFiles]",
-        bundle: Bundle.framework,
-        value: "Show Backup Files",
-        comment: "Settings switch: whether to include backup copies in the file list")
-    public static let actionDeleteAllBackupFilesTemplate = NSLocalizedString(
-        "[Settings/Backup] Delete ALL Backup Files (%d)",
-        bundle: Bundle.framework,
-        value: "Delete ALL Backup Files (%d)",
-        comment: "Action to delete all backup files from the app. `ALL` is in capitals as a highlight. [backupFileCount: Int]")
-    public static let noBackupFilesFound = NSLocalizedString(
-        "[Settings/Backup] No Backup Files Found",
-        bundle: Bundle.framework,
-        value: "No Backup Files Found",
-        comment: "Status message: there are no backup files to delete")
-
-    public static let confirmDeleteAllBackupFiles = NSLocalizedString(
-        "[Settings/Backup/Delete/title] Delete all backup files?",
-        bundle: Bundle.framework,
-        value: "Delete all backup files?",
-        comment: "Confirmation dialog message to delete all backup files")
-
-
     public static let subtitleContactUs = NSLocalizedString(
         "[ContactUs/subtitle]",
         bundle: Bundle.framework,

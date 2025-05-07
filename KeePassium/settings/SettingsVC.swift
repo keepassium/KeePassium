@@ -142,7 +142,7 @@ final class SettingsVC: UITableViewController, Refreshable {
 
         networkAccessCell.textLabel?.text = LString.titleNetworkAccessSettings
 
-        dataBackupCell.textLabel?.text = LString.titleDatabaseBackupSettings
+        dataBackupCell.textLabel?.text = LString.databaseBackupSettingsTitle
         contactSupportCell.textLabel?.text = LString.actionContactUs
         contactSupportCell.detailTextLabel?.text = LString.subtitleContactUs
         tipBoxCell.textLabel?.text = LString.tipBoxTitle2

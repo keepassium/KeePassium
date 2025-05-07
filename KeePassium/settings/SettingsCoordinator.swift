@@ -77,8 +77,9 @@ extension SettingsCoordinator {
     }
 
     private func showBackupSettingsPage() {
-        let dataBackupSettingsVC = SettingsBackupVC.instantiateFromStoryboard()
-        _router.push(dataBackupSettingsVC, animated: true, onPop: nil)
+        let backupSettingsCoordinator = BackupSettingsCoordinator(router: _router)
+        backupSettingsCoordinator.start()
+        addChildCoordinator(backupSettingsCoordinator, onDismiss: nil)
     }
 
     private func showDiagnosticsPage() {

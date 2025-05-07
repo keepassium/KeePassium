@@ -296,33 +296,6 @@ public class Settings {
             })
             return result! 
         }
-
-        public var shortTitle: String {
-            switch self {
-            case .forever:
-                return NSLocalizedString(
-                    "[Settings/BackupKeepingDuration/shortTitle] Forever",
-                    bundle: Bundle.framework,
-                    value: "Forever",
-                    comment: "An option in Settings. Please keep it short. Will be shown as 'Keep Backup Files: Forever'")
-                    // swiftlint:disable:previous line_length
-            default:
-                let formatter = DateComponentsFormatter()
-                formatter.allowedUnits = [.year, .month, .day, .hour]
-                formatter.collapsesLargestUnit = true
-                formatter.maximumUnitCount = 1
-                formatter.unitsStyle = .full
-                guard let result = formatter.string(from: TimeInterval(self.rawValue)) else {
-                    assertionFailure()
-                    return "?"
-                }
-                return result
-            }
-        }
-
-        public var fullTitle: String {
-            return shortTitle
-        }
     }
 
     public enum EntryListDetail: Int {
