@@ -1407,12 +1407,40 @@ final class DatabaseViewerActionsManager: UIResponder {
         case #selector(kpmCopyEntryUserName):
             return coordinator.canCopyCurrentEntryField(EntryField.userName)
         case #selector(kpmCopyEntryPassword):
+            if isFirstResponderReadyToCopy() {
+                return false
+            }
             return coordinator.canCopyCurrentEntryField(EntryField.password)
         case #selector(kpmCopyEntryURL):
             return coordinator.canCopyCurrentEntryField(EntryField.url)
         default:
             return false
         }
+    }
+
+    private func isFirstResponderReadyToCopy() -> Bool {
+        let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
+        guard let firstResponder = keyWindow?.findFirstResponder() else {
+            return false
+        }
+
+        let responderToCheck: UIResponder?
+        if firstResponder is UITextView || firstResponder is UITextField {
+            responderToCheck = firstResponder
+        } else if let searchBar = firstResponder as? UISearchBar {
+            responderToCheck = searchBar.searchTextField
+        } else {
+            return false
+        }
+
+        guard let actualInputView = responderToCheck else {
+            return false
+        }
+
+        let canPerform = actualInputView.canPerformAction(
+            #selector(UIResponderStandardEditActions.copy(_:)),
+            withSender: nil)
+        return canPerform
     }
 
     private func makeLockDatabaseMenu() -> UIMenu {
@@ -1577,6 +1605,9 @@ final class DatabaseViewerActionsManager: UIResponder {
                 LString.fieldURL),
             action: #selector(kpmCopyEntryURL),
             hotkey: .copyURL)
+
+        assert(Hotkey.copyPassword == Hotkey.systemCopyToClipboard)
+
         return UIMenu(inlineChildren: [copyUserNameAction, copyPasswordAction, copyURLAction])
     }
 

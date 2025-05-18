@@ -8,9 +8,11 @@
 
 import UIKit
 
-struct Hotkey {
+struct Hotkey: Equatable {
     fileprivate let input: String
     fileprivate let modifiers: UIKeyModifierFlags
+
+    static let systemCopyToClipboard = Self(input: "C", modifiers: [.command])
 
     static let appPreferences = Self(input: ",", modifiers: [.command])
     static let refreshList    = Self(input: "r", modifiers: [.command])

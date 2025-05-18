@@ -21,4 +21,21 @@ extension UIWindow {
             NotificationCenter.default.post(name: UIDevice.deviceDidShakeNotification, object: nil)
         }
     }
+
+    func findFirstResponder() -> UIResponder? {
+        return findFirstResponder(in: self)
+    }
+
+    private func findFirstResponder(in view: UIView) -> UIResponder? {
+        for subview in view.subviews {
+            if subview.isFirstResponder {
+                return subview
+            }
+
+            if let responder = findFirstResponder(in: subview) {
+                return responder
+            }
+        }
+        return nil
+    }
 }
