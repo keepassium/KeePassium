@@ -7,7 +7,7 @@
 //  For commercial licensing, please contact the author.
 
 import KeePassiumLib
-import UIKit
+import LocalAuthentication.LAContext
 
 enum ImageAsset: String {
     case appCoverPattern = "app-cover-pattern" 
@@ -27,7 +27,7 @@ enum ImageAsset: String {
 public enum SymbolName: String, Equatable {
     public static let keyFile = Self.keyHorizontal
     public static let actionRestore = Self.clockArrowCirclepath
-    public static let appProtection = Self.lock
+    public static let appPasscode = Self.entryLeverKeypad
     public static let autoFill = Self.return
     public static let fieldReference = Self.arrowRightCircle
     public static let largeType = Self.characterMagnify
@@ -62,6 +62,8 @@ public enum SymbolName: String, Equatable {
     case arrowUpArrowDown = "arrow.up.arrow.down"
     case arrowUpCircleFill = "arrow.up.circle.fill"
     case asterisk = "asterisk"
+    case at = "at"
+    case autoStartStop = "autostartstop"
     case bellSlash = "bell.slash"
     case bolt = "bolt"
     case bookClosed = "book.closed"
@@ -84,7 +86,8 @@ public enum SymbolName: String, Equatable {
     case docTextMagnifyingGlass = "doc.text.magnifyingglass"
     case ellipsis = "ellipsis"
     case ellipsisCircle = "ellipsis.circle"
-    case externalLink = "external-link" 
+    case entryLeverKeypad = "entry.lever.keypad"
+    case externalLink = "external-link"
     case exclamationMarkOctagonFill = "exclamationmark.octagon.fill"
     case exclamationMarkTriangle = "exclamationmark.triangle" 
     case exclamationMarkTriangleFill = "exclamationmark.triangle.fill"
@@ -114,11 +117,14 @@ public enum SymbolName: String, Equatable {
     case listBullet = "list.bullet"
     case lock = "lock"
     case lockShield = "lock.shield"
+    case magnifyingGlass = "magnifyingglass"
     case minus = "minus"
     case network = "network"
     case networkBadgeShield = "network.badge.shield"
+    case newspaper = "newspaper"
     case nosign = "nosign"
     case noteText = "note.text"
+    case paintbrush = "paintbrush"
     case paperclip = "paperclip"
     case paperclipBadgeEllipsis = "paperclip.badge.ellipsis"
     case pencil = "pencil"
@@ -149,6 +155,7 @@ public enum SymbolName: String, Equatable {
     case trashBadgeClock = "trash.badge.clock"
     case usbDongle = "usb.dongle"
     case wandAndStars = "wand.and.stars"
+    case waveformPathEcg = "waveform.path.ecg"
     case wifiSlash = "wifi.slash"
     case xmark = "xmark"
     case xmarkICloud = "xmark.icloud"
@@ -174,6 +181,12 @@ extension UIImage {
         UIImage.symbol(.starFill)?
             .applyingSymbolConfiguration(UIImage.SymbolConfiguration(scale: .large))?
             .withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
+    }
+}
+
+extension SymbolName {
+    static var appProtection: SymbolName {
+        LAContext.getBiometryType().symbolName ?? .appPasscode
     }
 }
 

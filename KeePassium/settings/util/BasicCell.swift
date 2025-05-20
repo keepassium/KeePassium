@@ -48,6 +48,7 @@ class BasicCell: UICollectionViewListCell {
                 return itemConfig.isEnabled ? color : .disabledText
             }
         }
+        content.secondaryTextProperties.color = .secondaryLabel
         self.contentConfiguration = content
 
         var accessories = itemConfig.fixedAccessories

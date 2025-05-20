@@ -421,11 +421,9 @@ extension DatabaseViewerCoordinator {
         stop(animated: animated, completion: completion)
     }
 
-    private func showAppSettings(at popoverAnchor: PopoverAnchor, in viewController: UIViewController) {
-        let modalRouter = NavigationRouter.createModal(
-            style: ProcessInfo.isRunningOnMac ? .formSheet : .popover,
-            at: popoverAnchor)
-        let settingsCoordinator = SettingsCoordinator(router: modalRouter)
+    private func showAppSettings(in viewController: UIViewController) {
+        let modalRouter = NavigationRouter.createModal(style: .formSheet)
+        let settingsCoordinator = MainSettingsCoordinator(router: modalRouter)
         settingsCoordinator.start()
         viewController.present(modalRouter, animated: true, completion: nil)
         addChildCoordinator(settingsCoordinator, onDismiss: nil)
@@ -777,7 +775,7 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
     }
 
     func didPressSettings(at popoverAnchor: PopoverAnchor, in viewController: GroupViewerVC) {
-        showAppSettings(at: popoverAnchor, in: viewController)
+        showAppSettings(in: viewController)
     }
 
     func didPressPasswordAudit(in viewController: GroupViewerVC) {

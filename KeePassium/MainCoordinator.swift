@@ -539,15 +539,9 @@ extension MainCoordinator {
         viewController.present(modalRouter, animated: true, completion: nil)
     }
 
-    func showSettingsScreen(
-        at popoverAnchor: PopoverAnchor?,
-        in viewController: UIViewController
-    ) {
-        let popoverAnchor = popoverAnchor ?? mainWindow.asPopoverAnchor
-        let modalRouter = NavigationRouter.createModal(
-            style: ProcessInfo.isRunningOnMac ? .formSheet : .popover,
-            at: popoverAnchor)
-        let settingsCoordinator = SettingsCoordinator(router: modalRouter)
+    func showSettingsScreen(in viewController: UIViewController) {
+        let modalRouter = NavigationRouter.createModal(style: .formSheet)
+        let settingsCoordinator = MainSettingsCoordinator(router: modalRouter)
         settingsCoordinator.start()
         addChildCoordinator(settingsCoordinator, onDismiss: nil)
         viewController.present(modalRouter, animated: true, completion: nil)
@@ -1106,7 +1100,7 @@ extension MainCoordinator: DatabasePickerCoordinatorDelegate {
     }
 
     func didPressShowAppSettings(at popoverAnchor: PopoverAnchor?, in viewController: UIViewController) {
-        showSettingsScreen(at: popoverAnchor, in: viewController)
+        showSettingsScreen(in: viewController)
     }
 
     func didPressShowAboutApp(at popoverAnchor: PopoverAnchor?, in viewController: UIViewController) {
@@ -1383,7 +1377,7 @@ extension MainCoordinator {
 
     private func insertAboutAppCommand(to builder: UIMenuBuilder) {
         let title = builder.menu(for: .about)?.children.first?.title
-            ?? String.localizedStringWithFormat(LString.titleAboutKeePassium, AppInfo.name)
+            ?? String.localizedStringWithFormat(LString.aboutKeePassiumTitle, AppInfo.name)
         let actionAbout = UICommand(title: title, action: #selector(MainCoordinator.kpmShowAboutScreen))
         let menuAbout = UIMenu(identifier: .about, options: .displayInline, children: [actionAbout])
 
@@ -1428,7 +1422,7 @@ extension MainCoordinator {
         showAboutScreen(at: nil, in: getPresenterForModals())
     }
     @objc func kpmShowSettingsScreen() {
-        showSettingsScreen(at: nil, in: getPresenterForModals())
+        showSettingsScreen(in: getPresenterForModals())
     }
     @objc func kpmShowRandomGenerator() {
         showPasswordGenerator(at: nil, in: getPresenterForModals())

@@ -7,6 +7,11 @@
 //  For commercial licensing, please contact the author.
 
 extension LString {
+    public static let titleDiagnosticLog = NSLocalizedString(
+        "[DiagLog/title]",
+        value: "Diagnostic Log",
+        comment: "Title of the diagnostic info screen")
+
     public static let diagnosticLogCopiedToClipboard = NSLocalizedString(
         "[Diagnostics] Diagnostic log has been copied to clipboard.",
         bundle: Bundle.framework,
