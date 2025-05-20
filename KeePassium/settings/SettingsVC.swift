@@ -133,7 +133,7 @@ final class SettingsVC: UITableViewController, Refreshable {
         autoUnlockStartupDatabaseLabel.text = LString.autoOpenPreviousDatabase
 
         appearanceCell.textLabel?.text = LString.titleAppearanceSettings
-        autoFillCell.textLabel?.text = LString.titleAutoFillSettings
+        autoFillCell.textLabel?.text = LString.autoFillSettingsTitle
         searchCell.textLabel?.text = LString.searchSettingsTitle
 
         appSafetyCell.textLabel?.text = LString.titleAppProtectionSettings

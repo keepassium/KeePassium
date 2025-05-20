@@ -33,9 +33,19 @@ final class ToggleCell: UICollectionViewListCell {
         let toggleSwitch = UISwitch()
         toggleSwitch.isOn = itemConfig.isOn
         toggleSwitch.addTarget(self, action: #selector(didToggleSwitch), for: .valueChanged)
-        self.accessories = [
+
+        var accessories = [UICellAccessory]()
+        if itemConfig.needsPremium {
+            let badge = PremiumBadgeAccessory()
+            let premiumAccessory = UICellAccessory.customView(
+                configuration: .init(customView: badge, placement: .trailing())
+            )
+            accessories.append(premiumAccessory)
+        }
+        accessories.append(
             .customView(configuration: .init(customView: toggleSwitch, placement: .trailing()))
-        ]
+        )
+        self.accessories = accessories
 
         isUserInteractionEnabled = itemConfig.isEnabled
         toggleSwitch.isEnabled = itemConfig.isEnabled
@@ -75,11 +85,18 @@ extension ToggleCell {
             image: UIImage? = nil,
             isEnabled: Bool = true,
             isOn: Bool,
+            needsPremium: Bool = false,
             handler: Handler? = nil
         ) {
             self.isOn = isOn
             self.handler = handler
-            super.init(title: title, subtitle: subtitle, image: image, isEnabled: isEnabled)
+            super.init(
+                title: title,
+                subtitle: subtitle,
+                image: image,
+                isEnabled: isEnabled,
+                needsPremium: needsPremium
+            )
         }
 
         override func isEqual(_ another: SettingsItemConfig?) -> Bool {

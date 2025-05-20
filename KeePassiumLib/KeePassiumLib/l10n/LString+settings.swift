@@ -127,56 +127,6 @@ extension LString {
         value: "Default",
         comment: "Short name of the default/system font. For example: `Font: Default`")
 
-
-    public static let titleAutoFillSettings = NSLocalizedString(
-        "[Settings/AutoFill/title]",
-        bundle: Bundle.framework,
-        value: "AutoFill Passwords",
-        comment: "Title of AutoFill settings screen")
-
-    public static let actionActivateAutoFill = NSLocalizedString(
-        "[Settings/AutoFill/Activate/action]",
-        bundle: Bundle.framework,
-        value: "Activate AutoFill",
-        comment: "Action that opens system settings or instructions")
-    public static let titleAutoFillSetupGuide = NSLocalizedString(
-        "[Settings/AutoFill/Setup Guide/title]",
-        bundle: Bundle.framework,
-        value: "AutoFill Setup Guide",
-        comment: "Title of a help article on how to activate AutoFill.")
-    public static let howToActivateAutoFillDescription = NSLocalizedString(
-        "[Settings/AutoFill/Activate/description]",
-        bundle: Bundle.framework,
-        value: "Before first use, you need to activate AutoFill in system settings.",
-        comment: "Description for the AutoFill setup instructions")
-    public static let autoFillUnavailableInIntuneDescription = NSLocalizedString(
-        "[Settings/AutoFill/UnavailableInIntune/description]",
-        bundle: Bundle.framework,
-        value: "AutoFill is not available in KeePassium for Intune.",
-        comment: "")
-
-    public static let titleQuickAutoFill = NSLocalizedString(
-        "[QuickAutoFill/title]",
-        bundle: Bundle.framework,
-        value: "Quick AutoFill",
-        comment: "Name of a feature that shows relevant entries directly next to the login/password forms.")
-    public static let quickAutoFillDescription = NSLocalizedString(
-        "[QuickAutoFill/description]",
-        bundle: Bundle.framework,
-        value: "Quick AutoFill shows relevant entries right next to the password field, without opening KeePassium.",
-        comment: "Description of the Quick AutoFill feature.")
-
-    public static let titleAutoFillPerfectMatch = NSLocalizedString(
-        "[Settings/AutoFill/UsePerfectMatch/title]",
-        bundle: Bundle.framework,
-        value: "Fill-In Perfect Result Automatically",
-        comment: "Title of an option: automatically use the single best match found by AutoFill search")
-    public static let titleCopyOTPtoClipboard = NSLocalizedString(
-        "[Settings/AutoFill/CopyOTP/title]",
-        bundle: Bundle.framework,
-        value: "Copy OTP to Clipboard",
-        comment: "Title of an option: copy one-time password to clipboard when using AutoFill")
-
     public static let titleNetworkAccessSettings = NSLocalizedString(
         "[Settings/NetworkAccess/title]",
         bundle: Bundle.framework,

@@ -48,6 +48,7 @@
 		75384B9922CCB76800157598 /* UsageMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75384B9822CCB76800157598 /* UsageMonitor.swift */; };
 		753858DB291957BF006ADA21 /* FileFormatRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753858DA291957BF006ADA21 /* FileFormatRecognizer.swift */; };
 		7538871D28BD59B500BE41B5 /* LString+intune.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538871C28BD59B500BE41B5 /* LString+intune.swift */; };
+		7538E3B32DCD7381002766BF /* LString+autoFillSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538E3B22DCD7381002766BF /* LString+autoFillSettings.swift */; };
 		75393ABA238D3AC400C63C54 /* ChallengeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75393AB9238D3AC400C63C54 /* ChallengeResponse.swift */; };
 		753A4A132C80B878008896C6 /* FileHasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753A4A122C80B878008896C6 /* FileHasher.swift */; };
 		753E9A6225FEBE3000541121 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753E9A6125FEBE2F00541121 /* Toast.swift */; };
@@ -345,6 +346,7 @@
 		753878042ACE0604007D212A /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = tr; path = tr.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		753878052ACE0606007D212A /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = uk; path = uk.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		7538871C28BD59B500BE41B5 /* LString+intune.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LString+intune.swift"; sourceTree = "<group>"; };
+		7538E3B22DCD7381002766BF /* LString+autoFillSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LString+autoFillSettings.swift"; sourceTree = "<group>"; };
 		75393AB9238D3AC400C63C54 /* ChallengeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeResponse.swift; sourceTree = "<group>"; };
 		753A4A122C80B878008896C6 /* FileHasher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHasher.swift; sourceTree = "<group>"; };
 		753E9A6125FEBE2F00541121 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
@@ -619,6 +621,7 @@
 			isa = PBXGroup;
 			children = (
 				75B8608B2475E2F800C5E6C0 /* LString.swift */,
+				7538E3B22DCD7381002766BF /* LString+autoFillSettings.swift */,
 				75F56FAB2DCABEA40008DA89 /* LString+backupSettings.swift */,
 				757CCFAB2DBAFB05005E6BE6 /* LString+dataProtectionSettings.swift */,
 				75A0047A2840CF5C000B7B17 /* LString+a11y.swift */,
@@ -1412,6 +1415,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7538E3B32DCD7381002766BF /* LString+autoFillSettings.swift in Sources */,
 				755E14C02B1F75DB00651F0D /* OneDriveAPI.swift in Sources */,
 				75D09C482174F77000F7DEF2 /* Group.swift in Sources */,
 				7538871D28BD59B500BE41B5 /* LString+intune.swift in Sources */,

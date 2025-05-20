@@ -13,12 +13,20 @@ class SettingsItemConfig: Hashable {
     var subtitle: String?
     var image: UIImage?
     var isEnabled: Bool
+    var needsPremium: Bool
 
-    init(title: String, subtitle: String? = nil, image: UIImage? = nil, isEnabled: Bool) {
+    init(
+        title: String,
+        subtitle: String? = nil,
+        image: UIImage? = nil,
+        isEnabled: Bool,
+        needsPremium: Bool = false
+    ) {
         self.title = title
         self.subtitle = subtitle
         self.image = image
         self.isEnabled = isEnabled
+        self.needsPremium = needsPremium
     }
 
     static func == (lhs: SettingsItemConfig, rhs: SettingsItemConfig) -> Bool {
@@ -30,6 +38,7 @@ class SettingsItemConfig: Hashable {
             && self.subtitle == another?.subtitle
             && self.image == another?.image
             && self.isEnabled == another?.isEnabled
+            && self.needsPremium == another?.needsPremium
     }
 
     func hash(into hasher: inout Hasher) {
@@ -37,5 +46,6 @@ class SettingsItemConfig: Hashable {
         hasher.combine(subtitle)
         hasher.combine(image)
         hasher.combine(isEnabled)
+        hasher.combine(needsPremium)
     }
 }

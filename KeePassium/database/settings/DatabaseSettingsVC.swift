@@ -176,7 +176,7 @@ extension DatabaseSettingsVC {
         case CellIndex.fileUnreachableAction.section:
             return nil
         case CellIndex.autoFillFileUnreachableAction.section:
-            return LString.titleAutoFillSettings
+            return LString.autoFillSettingsTitle
         default:
             return nil
         }
@@ -346,14 +346,14 @@ extension DatabaseSettingsVC {
     }
 
     private func configureQuickTypeEnabledCell(_ cell: SwitchCell) {
-        cell.textLabel?.text = LString.titleQuickAutoFill
+        cell.textLabel?.text = LString.quickAutoFillTitle
         let isEnabled = delegate?.canChangeQuickTypeEnabled(in: self) ?? false
         cell.setEnabled(isEnabled)
         cell.theSwitch.isEnabled = isEnabled
         cell.theSwitch.isOn = isQuickTypeEnabled
 
         cell.textLabel?.isAccessibilityElement = false
-        cell.theSwitch.accessibilityLabel = LString.titleQuickAutoFill
+        cell.theSwitch.accessibilityLabel = LString.quickAutoFillTitle
 
         cell.onDidToggleSwitch = { [weak self, weak cell] theSwitch in
             guard let self = self else { return }

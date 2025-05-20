@@ -28,6 +28,16 @@ final class PickerCell: UICollectionViewListCell {
         config.image = itemConfig.image
         self.contentConfiguration = config
 
+        var accessories = [UICellAccessory]()
+        if itemConfig.needsPremium {
+            let badge = PremiumBadgeAccessory()
+            let premiumAccessory = UICellAccessory.customView(
+                configuration: .init(customView: badge, placement: .trailing())
+            )
+            accessories.append(premiumAccessory)
+        }
+        self.accessories = accessories
+
         self.accessibilityTraits.insert(.button)
         isUserInteractionEnabled = itemConfig.isEnabled
         if itemConfig.isEnabled {

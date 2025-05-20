@@ -36,9 +36,6 @@ class BasicCell: UICollectionViewListCell {
         content.image = itemConfig.image
 
         content.textProperties.font = .preferredFont(forTextStyle: .body)
-        if itemConfig.decorators.contains(.navigation) {
-            accessories.append(.disclosureIndicator())
-        }
         if itemConfig.decorators.contains(.action) {
             content.textProperties.color = .actionTint
             content.textProperties.colorTransformer = .init { color in
@@ -52,6 +49,16 @@ class BasicCell: UICollectionViewListCell {
             }
         }
         self.contentConfiguration = content
+
+        var accessories = itemConfig.fixedAccessories
+        if itemConfig.needsPremium {
+            let badge = PremiumBadgeAccessory()
+            let premiumAccessory = UICellAccessory.customView(
+                configuration: .init(customView: badge, placement: .trailing())
+            )
+            accessories.append(premiumAccessory)
+        }
+        self.accessories = accessories
 
         isUserInteractionEnabled = itemConfig.isEnabled
         if itemConfig.isEnabled {
@@ -80,7 +87,6 @@ extension BasicCell {
 
 extension BasicCell {
     enum Decorator {
-        case navigation
         case action
         case destructive
         case value
@@ -90,16 +96,20 @@ extension BasicCell {
         var handler: Handler?
         var decorators: Set<Decorator> = []
 
+        var fixedAccessories: [UICellAccessory] = []
+
         init(
             title: String,
             subtitle: String? = nil,
             image: UIImage? = nil,
             isEnabled: Bool = true,
             decorators: Set<Decorator> = [],
+            fixedAccessories: [UICellAccessory] = [],
             handler: Handler?
         ) {
             self.handler = handler
             self.decorators = decorators
+            self.fixedAccessories = fixedAccessories
             super.init(title: title, subtitle: subtitle, image: image, isEnabled: isEnabled)
         }
 
