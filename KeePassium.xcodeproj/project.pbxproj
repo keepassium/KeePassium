@@ -1334,6 +1334,9 @@
 		F31114AB2B9B84E100236632 /* DropboxConnectionSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31114A72B9B83B300236632 /* DropboxConnectionSetupCoordinator.swift */; };
 		F31114B02B9B894C00236632 /* DropboxConnectionSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31114A72B9B83B300236632 /* DropboxConnectionSetupCoordinator.swift */; };
 		F31114B12B9B894D00236632 /* DropboxConnectionSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31114A72B9B83B300236632 /* DropboxConnectionSetupCoordinator.swift */; };
+		F3139C2B2DDB0F0E008F381B /* AutoTypeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3139C2A2DDB0F0E008F381B /* AutoTypeHelper.swift */; };
+		F3139C2C2DDB0F0E008F381B /* AutoTypeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3139C2A2DDB0F0E008F381B /* AutoTypeHelper.swift */; };
+		F3139C2E2DDB0F0E008F381B /* AutoTypeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3139C2A2DDB0F0E008F381B /* AutoTypeHelper.swift */; };
 		F321414C2A90D2CD007A8D4E /* PasswordAuditServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F321414B2A90D2CD007A8D4E /* PasswordAuditServiceTests.swift */; };
 		F321414D2A934AAE007A8D4E /* HIBPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37CAA2C2A87EB110000EF64 /* HIBPService.swift */; };
 		F321414E2A934AAF007A8D4E /* HIBPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37CAA2C2A87EB110000EF64 /* HIBPService.swift */; };
@@ -2415,6 +2418,7 @@
 		F30D035C2A7BD3CF0047525F /* PasswordQualityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordQualityIndicatorView.swift; sourceTree = "<group>"; };
 		F30D036E2A7BE83A0047525F /* PasswordQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordQuality.swift; sourceTree = "<group>"; };
 		F31114A72B9B83B300236632 /* DropboxConnectionSetupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxConnectionSetupCoordinator.swift; sourceTree = "<group>"; };
+		F3139C2A2DDB0F0E008F381B /* AutoTypeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoTypeHelper.swift; sourceTree = "<group>"; };
 		F321414B2A90D2CD007A8D4E /* PasswordAuditServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordAuditServiceTests.swift; sourceTree = "<group>"; };
 		F32228142CCEC4230093BD9C /* KeyFileTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFileTextField.swift; sourceTree = "<group>"; };
 		F32675662D8EDCA50007EA7E /* AppEraser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEraser.swift; sourceTree = "<group>"; };
@@ -2603,6 +2607,7 @@
 				75060C682B8CEC34006C7B50 /* MacUtils-Bridging-Header.h */,
 				75060C692B8CEC35006C7B50 /* MacUtils.swift */,
 				75060C6E2B8CECB4006C7B50 /* MacUtilsImpl.swift */,
+				F3139C2A2DDB0F0E008F381B /* AutoTypeHelper.swift */,
 			);
 			path = macos;
 			sourceTree = "<group>";
@@ -4328,6 +4333,7 @@
 				754F7E4A2DB00820004235C8 /* PickerCell.swift in Sources */,
 				754EEAB72CFFBBF000404142 /* DatabaseCSVExporter.swift in Sources */,
 				F3B0C2042B2CA8790001946D /* OnboardingPagesVC.swift in Sources */,
+				F3139C2B2DDB0F0E008F381B /* AutoTypeHelper.swift in Sources */,
 				758FF6BF28FAE32F007DE8EB /* ButtonCell.swift in Sources */,
 				7524E73B2888A3F500ECBEC8 /* WebDAVConnectionSetupVC.swift in Sources */,
 				F37CAA272A87D4F20000EF64 /* PasswordAuditCoordinator.swift in Sources */,
@@ -4613,6 +4619,7 @@
 				F35D7CD12D639563006DCBF0 /* FileImportHelper.swift in Sources */,
 				754F7E482DB00820004235C8 /* PickerCell.swift in Sources */,
 				754EEAB62CFFBBF000404142 /* DatabaseCSVExporter.swift in Sources */,
+				F3139C2E2DDB0F0E008F381B /* AutoTypeHelper.swift in Sources */,
 				75B38C03233E5B7C006BDEFC /* AppCoverVC.swift in Sources */,
 				75D76150262DDE0B00B1DE7F /* AboutCoordinator.swift in Sources */,
 				F30D03762A7BE8A40047525F /* PasswordQualityIndicatorView.swift in Sources */,
@@ -4965,6 +4972,7 @@
 				758F41A12B19F2740069BF66 /* MSALOneDriveAuthProvider.swift in Sources */,
 				F326756B2D8EDCA50007EA7E /* AppEraser.swift in Sources */,
 				75D0760928B639D200F02E39 /* QuickAutoFillPrompt.swift in Sources */,
+				F3139C2C2DDB0F0E008F381B /* AutoTypeHelper.swift in Sources */,
 				75D0760A28B639D200F02E39 /* AnnouncementCell.swift in Sources */,
 				F37339002AACCAFD007188D2 /* FaviconDownloading.swift in Sources */,
 				75D0760B28B639D200F02E39 /* UIView+extension.swift in Sources */,

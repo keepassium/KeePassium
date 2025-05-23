@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private var mainCoordinator: MainCoordinator!
 
     #if targetEnvironment(macCatalyst)
-    private var macUtils: MacUtils?
+    var macUtils: MacUtils?
     #endif
 
     override var next: UIResponder? { mainCoordinator }
@@ -48,12 +48,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         )
         #endif
 
+        let autoTypeHelper = AutoTypeHelper(macUtils: macUtils)
+
         if UIDevice.current.userInterfaceIdiom == .pad {
             window.makeKeyAndVisible()
-            mainCoordinator = MainCoordinator(window: window)
+            mainCoordinator = MainCoordinator(window: window, autoTypeHelper: autoTypeHelper)
             mainCoordinator.start(hasIncomingURL: hasIncomingURL, proposeReset: proposeAppReset)
         } else {
-            mainCoordinator = MainCoordinator(window: window)
+            mainCoordinator = MainCoordinator(window: window, autoTypeHelper: autoTypeHelper)
             mainCoordinator.start(hasIncomingURL: hasIncomingURL, proposeReset: proposeAppReset)
             window.makeKeyAndVisible()
         }

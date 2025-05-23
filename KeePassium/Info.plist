@@ -301,6 +301,8 @@
     <string>Use FaceID to unlock KeePassium</string>
     <key>NSPhotoLibraryAddUsageDescription</key>
     <string>KeePassium needs permission to export files to your Photo Library.</string>
+    <key>NSAppleEventsUsageDescription</key>
+    <string>KeePassium needs to control other applications to auto-type your credentials.</string>
     <key>UIFileSharingEnabled</key>
     <true/>
     <key>UILaunchStoryboardName</key>
@@ -506,5 +508,7 @@
         <string>A000000527200101</string>
         <string>A0000005272001</string>
     </array>
+    <key>com.apple.security.automation.apple-events</key>
+    <true/>
 </dict>
 </plist>

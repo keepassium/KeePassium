@@ -85,6 +85,10 @@ protocol GroupViewerDelegate: AnyObject {
         in viewController: GroupViewerVC
     )
 
+    #if targetEnvironment(macCatalyst)
+    func didPressAutoType(_ entry: Entry, in viewController: GroupViewerVC)
+    #endif
+
     func didFinishBulkUpdates(in viewController: GroupViewerVC)
 }
 
@@ -1055,6 +1059,19 @@ final class GroupViewerVC:
             return actions
         }
 
+        #if targetEnvironment(macCatalyst)
+        let autoTypeAction = ContextualAction(
+            title: LString.actionAutoType,
+            imageName: .keyboard,
+            style: .default,
+            color: UIColor.actionTint,
+            handler: { [weak self, indexPath] in
+                self?.didPressAutoType(at: indexPath)
+            }
+        )
+        actions.append(autoTypeAction)
+        #endif
+
         if itemPermissions.contains(.editItem) {
             actions.append(editAction)
         }
@@ -1225,6 +1242,17 @@ final class GroupViewerVC:
         let popoverAnchor = tableView.popoverAnchor(at: indexPath)
         delegate?.didPressRelocateItems([selectedItem], mode: mode, at: popoverAnchor, in: self)
     }
+
+    #if targetEnvironment(macCatalyst)
+    func didPressAutoType(at indexPath: IndexPath) {
+        guard let entry = getEntry(at: indexPath) else {
+            Diag.warning("No entry selected for Auto-Type")
+            assertionFailure()
+            return
+        }
+        delegate?.didPressAutoType(entry, in: self)
+    }
+    #endif
 
     @IBAction private func didPressReloadDatabase(_ sender: UIBarButtonItem) {
         delegate?.didPressReloadDatabase(at: sender.asPopoverAnchor, in: self)

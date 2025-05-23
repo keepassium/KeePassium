@@ -54,8 +54,11 @@ final class MainCoordinator: UIResponder, Coordinator {
 
     private var toolbarDelegate: ToolbarDelegate?
 
-    init(window: UIWindow) {
+    private let autoTypeHelper: AutoTypeHelper?
+
+    init(window: UIWindow, autoTypeHelper: AutoTypeHelper?) {
         self.mainWindow = window
+        self.autoTypeHelper = autoTypeHelper
         self.rootSplitVC = RootSplitVC()
 
         let primaryNavVC = RouterNavigationController()
@@ -479,7 +482,8 @@ extension MainCoordinator {
             originalRef: fileRef, 
             databaseFile: databaseFile, 
             context: context,
-            loadingWarnings: warnings
+            loadingWarnings: warnings,
+            autoTypeHelper: autoTypeHelper
         )
         databaseViewerCoordinator.delegate = self
         databaseViewerCoordinator.start()

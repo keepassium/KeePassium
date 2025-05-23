@@ -17,4 +17,16 @@ protocol MacUtils: NSObjectProtocol {
     func isSecureEventInputEnabled() -> Bool
 
     func isControlKeyPressed() -> Bool
+
+    func isAccessibilityPermissionGranted() -> Bool
+
+    func requestAccessibilityPermission()
+
+    func openAccessibilityPermissionSettings()
+
+    func hideApplication()
+
+    func activate()
+
+    func performAutoType(username: String, password: String, completion: @escaping (Bool) -> Void)
 }

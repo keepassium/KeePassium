@@ -48,6 +48,8 @@ extension ToolbarDelegate: NSToolbarDelegate {
             .newGroup,
             .newSmartGroup,
             .space,
+            .autoType,
+            .space,
             .randomGenerator,
             .settings
         ]
@@ -123,6 +125,13 @@ extension ToolbarDelegate: NSToolbarDelegate {
                 symbol: .folderGridBadgePlus,
                 selector: #selector(DatabaseViewerActionsManager.kpmCreateSmartGroup)
             )
+        case .autoType:
+            return createToolbarItem(
+                itemIdentifier: itemIdentifier,
+                label: LString.actionAutoType,
+                symbol: .keyboard,
+                selector: #selector(DatabaseViewerActionsManager.kpmPerformAutoType)
+            )
         case .randomGenerator:
             return createToolbarItem(
                 itemIdentifier: itemIdentifier,
@@ -175,6 +184,7 @@ extension NSToolbarItem.Identifier {
     static let newEntry = NSToolbarItem.Identifier("com.keepassium.toolbar.newEntry")
     static let newGroup = NSToolbarItem.Identifier("com.keepassium.toolbar.newGroup")
     static let newSmartGroup = NSToolbarItem.Identifier("com.keepassium.toolbar.newSmartGroup")
+    static let autoType = NSToolbarItem.Identifier("com.keepassium.toolbar.autoType")
     static let randomGenerator = NSToolbarItem.Identifier("com.keepassium.toolbar.randomGenerator")
     static let settings = NSToolbarItem.Identifier("com.keepassium.toolbar.settings")
 }

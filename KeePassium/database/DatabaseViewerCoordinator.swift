@@ -86,6 +86,8 @@ final class DatabaseViewerCoordinator: BaseCoordinator {
 
     private var progressOverlay: ProgressOverlay?
 
+    private let autoTypeHelper: AutoTypeHelper?
+
     var hasUnsavedBulkChanges = false
     var databaseSaver: DatabaseSaver?
     var fileExportHelper: FileExportHelper?
@@ -111,13 +113,15 @@ final class DatabaseViewerCoordinator: BaseCoordinator {
         originalRef: URLReference,
         databaseFile: DatabaseFile,
         context: DatabaseReloadContext?,
-        loadingWarnings: DatabaseLoadingWarnings?
+        loadingWarnings: DatabaseLoadingWarnings?,
+        autoTypeHelper: AutoTypeHelper?
     ) {
         self.splitViewController = splitViewController
         self.originalRef = originalRef
         self.databaseFile = databaseFile
         self.database = databaseFile.database
         self.loadingWarnings = loadingWarnings
+        self.autoTypeHelper = autoTypeHelper
 
         self.initialGroupUUID = context?.groupUUID
 
@@ -755,6 +759,21 @@ extension DatabaseViewerCoordinator {
         }
         groupViewerVC.select()
     }
+
+    func canPerformAutoType() -> Bool {
+        guard let currentEntry = currentEntry else {
+            return false
+        }
+        return !currentEntry.resolvedUserName.isEmpty || !currentEntry.resolvedPassword.isEmpty
+    }
+
+    func performAutoType() {
+        guard let topGroupViewer = topGroupViewer, let entry = currentEntry else {
+            return
+        }
+
+        didPressAutoType(entry, in: topGroupViewer)
+    }
 }
 
 extension DatabaseViewerCoordinator: GroupViewerDelegate {
@@ -877,6 +896,20 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
         }
         hasUnsavedBulkChanges = true
     }
+
+    #if targetEnvironment(macCatalyst)
+    func didPressAutoType(_ entry: Entry, in viewController: GroupViewerVC) {
+        guard let autoTypeHelper = autoTypeHelper else {
+            assertionFailure("AutoTypeHelper not available")
+            return
+        }
+
+        let username = entry.getField(EntryField.userName)?.resolvedValue ?? ""
+        let password = entry.getField(EntryField.password)?.resolvedValue ?? ""
+
+        autoTypeHelper.tryPerformAutoType(from: viewController, username: username, password: password)
+    }
+    #endif
 
     func didPressEmptyRecycleBinGroup(
         _ recycleBinGroup: Group,
@@ -1411,6 +1444,8 @@ final class DatabaseViewerActionsManager: UIResponder {
             return coordinator.canCopyCurrentEntryField(EntryField.password)
         case #selector(kpmCopyEntryURL):
             return coordinator.canCopyCurrentEntryField(EntryField.url)
+        case #selector(kpmPerformAutoType):
+            return coordinator.canPerformAutoType()
         default:
             return false
         }
@@ -1669,5 +1704,8 @@ final class DatabaseViewerActionsManager: UIResponder {
     }
     @objc func kpmCopyEntryURL() {
         coordinator?.copyCurrentEntryField(EntryField.url)
+    }
+    @objc func kpmPerformAutoType() {
+        coordinator?.performAutoType()
     }
 }

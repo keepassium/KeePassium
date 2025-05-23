@@ -281,6 +281,41 @@ extension LString {
         value: "Upgrade to Premium",
         comment: "Action/button to start choosing premium versions and possibly buying one")
 
+    public static let actionAutoType = NSLocalizedString(
+        "[AutoType/action]",
+        bundle: Bundle.framework,
+        value: "Perform Auto-Type",
+        comment: "Action: send key presses to 'type in' entry data into another app")
+
+    public static let titleAutoTypeAccessibility = NSLocalizedString(
+        "[AutoType/AccessibilityPrompt/title]",
+        bundle: Bundle.framework,
+        value: "KeePassium needs your permission",
+        comment: "Title of a dialog asking user to provide a security permission")
+
+    public static let messageAutoTypeAccessibilityNeeded1 = NSLocalizedString(
+        "[AutoType/AccessibilityPrompt/message]",
+        bundle: Bundle.framework,
+        value: "KeePassium needs your permission to send key presses to other apps.",
+        comment: "Message explaining why accessibility permission is needed")
+    public static let messageAutoTypeAccessibilityNeeded2 = NSLocalizedString(
+        "[AutoType/AccessibilityPrompt/callToAction]",
+        bundle: Bundle.framework,
+        value: "Open system settings → Privacy & Security → Accessibility and enable KeePassium there.",
+        comment: "Call to action / instruction on how to enable accessibility permission")
+
+    public static let actionOpenAccessibilitySettings = NSLocalizedString(
+        "[AutoType/Action/OpenSettings]",
+        bundle: Bundle.framework,
+        value: "Open Settings",
+        comment: "Button to open system accessibility settings")
+
+    public static let titleAutoTypeFailed = NSLocalizedString(
+        "[AutoType/Error/Title]",
+        bundle: Bundle.framework,
+        value: "Auto-type Failed",
+        comment: "Title for error when auto-type fails")
+
     public static let titleTools = NSLocalizedString(
         "[Generic/Tools/title]",
         bundle: Bundle.framework,
