@@ -81,24 +81,6 @@ public enum LString {
             bundle: Bundle.framework,
             value: "Not a file URL",
             comment: "Error message: tried to import URL which does not point to a file")
-        public static let emptyIncomingFile = NSLocalizedString(
-            "[Import/Error/EmptyFile]",
-            bundle: Bundle.framework,
-            value: "Incoming file is empty.",
-            comment: "Error shown when trying to import from an empty file"
-        )
-        public static let csvInvalidFormatWithColumnTemplate = NSLocalizedString(
-            "[Import/CSV/Error/InvalidFormat/withColumn]",
-            bundle: Bundle.framework,
-            value: "Invalid CSV format at line %d, column %d.",
-            comment: "Error message when CSV parsing fails [lineNumber: Int, colNumber: Int]"
-        )
-        public static let csvInvalidFormatTemplate = NSLocalizedString(
-            "[Import/CSV/Error/InvalidFormat]",
-            bundle: Bundle.framework,
-            value: "Invalid CSV format at line %d.",
-            comment: "Error message when CSV parsing fails [lineNumber: Int]"
-        )
         public static let webDAVExportNeedsFolder = NSLocalizedString(
             "[WebDAV/Export/NeedsFolder]",
             bundle: Bundle.framework,

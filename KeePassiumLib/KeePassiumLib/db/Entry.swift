@@ -275,7 +275,7 @@ public class Entry: DatabaseItem, Eraseable {
 
     public var description: String { return "Entry[\(rawTitle)]" }
 
-    init(database: Database?) {
+    init(database: Database?, creationDate: Date = Date()) {
         self.database = database
         attachments = []
         fields = []
@@ -284,11 +284,10 @@ public class Entry: DatabaseItem, Eraseable {
         iconID = Entry.defaultIconID
         isDeleted = false
 
-        let now = Date()
-        creationTime = now
-        lastModificationTime = now
-        lastAccessTime = now
-        expiryTime = now
+        creationTime = creationDate
+        lastModificationTime = creationDate
+        lastAccessTime = creationDate
+        expiryTime = creationDate
 
         super.init()
 
@@ -396,8 +395,13 @@ public class Entry: DatabaseItem, Eraseable {
 
     override public func touch(_ mode: DatabaseItem.TouchMode, updateParents: Bool = true) {
         lastAccessTime = Date.now
-        if mode == .modified {
+        switch mode {
+        case .accessed:
+            break
+        case .modified:
             lastModificationTime = Date.now
+        case let .modifiedAt(date):
+            lastModificationTime = date
         }
         if updateParents {
             parent?.touch(mode, updateParents: true)

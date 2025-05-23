@@ -50,20 +50,20 @@ public class Entry2: Entry {
         }
     }
 
-    override init(database: Database?) {
+    override init(database: Database?, creationDate: Date = Date()) {
         _canExpire = false
         customIconUUID = UUID.ZERO
         autoType = AutoType()
         history = []
         usageCount = 0
-        locationChangedTime = Date.now
+        locationChangedTime = creationDate
         foregroundColor = ""
         backgroundColor = ""
         overrideURL = ""
         previousParentGroupUUID = UUID.ZERO
         qualityCheck = true
         customData = CustomData2(database: database)
-        super.init(database: database)
+        super.init(database: database, creationDate: creationDate)
         tags = []
     }
     deinit {

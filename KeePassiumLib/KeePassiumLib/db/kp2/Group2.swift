@@ -103,8 +103,8 @@ public class Group2: Group {
         return parent2.resolvingIsAutoTypeEnabled()
     }
 
-    override public func createEntry(detached: Bool = false) -> Entry {
-        let newEntry = Entry2(database: database)
+    override public func createEntry(creationDate: Date = Date(), detached: Bool = false) -> Entry {
+        let newEntry = Entry2(database: database, creationDate: creationDate)
         newEntry.uuid = UUID()
         newEntry.isDeleted = self.isDeleted
 

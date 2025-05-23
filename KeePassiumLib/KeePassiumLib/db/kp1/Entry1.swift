@@ -67,9 +67,9 @@ public class Entry1: Entry {
             (rawTitle == MetaStreamID.title)
     }
 
-    override init(database: Database?) {
+    override init(database: Database?, creationDate: Date = Date()) {
         groupID = 0
-        super.init(database: database)
+        super.init(database: database, creationDate: creationDate)
 
         canExpire = false
     }

@@ -1,4 +1,12 @@
-import Foundation
+//  KeePassium Password Manager
+//  Copyright © 2018-2024 KeePassium Labs <info@keepassium.com>
+//
+//  This program is free software: you can redistribute it and/or modify it
+//  under the terms of the GNU General Public License version 3 as published
+//  by the Free Software Foundation: https://www.gnu.org/licenses/).
+//  For commercial licensing, please contact us.
+
+import KeePassiumLib
 
 public class ApplePasswordsImporter {
     private enum CSVColumn: Int, CaseIterable {
@@ -34,17 +42,17 @@ public class ApplePasswordsImporter {
         public var errorDescription: String? {
             switch self {
             case .emptyFile:
-                return LString.Error.emptyIncomingFile
+                return LString.Error.importEmptyIncomingFile
             case let .invalidFormat(lineNumber, columnNumber):
                 if let columnNumber {
                     return String.localizedStringWithFormat(
-                        LString.Error.csvInvalidFormatWithColumnTemplate,
+                        LString.Error.importCSVInvalidFormatWithColumnTemplate,
                         lineNumber,
                         columnNumber
                     )
                 } else {
                     return String.localizedStringWithFormat(
-                        LString.Error.csvInvalidFormatTemplate,
+                        LString.Error.importCSVInvalidFormatTemplate,
                         lineNumber
                     )
 

@@ -8,9 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		08106590EF0E00A3FBDB5211 /* DatabaseSettingsDataProtectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167DDFC0D609B73410DF2F2A /* DatabaseSettingsDataProtectionVC.swift */; };
+		0ED5A77E91FFC2D221C81027 /* EnpassImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B43EE120A8BE16A21ECAD53 /* EnpassImporter.swift */; };
 		1C897E5E121EF32888BFCBE8 /* DatabaseSettingsDataProtectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167DDFC0D609B73410DF2F2A /* DatabaseSettingsDataProtectionVC.swift */; };
 		1CEC93095649196A21117BC3 /* FaviconDownloading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810530B59228DDD3CEA55C42 /* FaviconDownloading.swift */; };
+		1FBAA36A18F006A68758F8DA /* EnpassImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B43EE120A8BE16A21ECAD53 /* EnpassImporter.swift */; };
 		32F20E78C4050C3BD00AB812 /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8014D5A9B570F8EB49B6FB5D /* Credits.swift */; };
+		3F70B9A79081ED31B195DEB5 /* LString+import.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1CA523E5EFAEAFEA1F46FC /* LString+import.swift */; };
+		476E1ED045DEBAA88851B105 /* EnpassImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B43EE120A8BE16A21ECAD53 /* EnpassImporter.swift */; };
 		513D7843001658E2C2A5CCF6 /* DatabaseSettingsDataProtectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167DDFC0D609B73410DF2F2A /* DatabaseSettingsDataProtectionVC.swift */; };
 		576C2F92F2472658AF625BD0 /* ToolbarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AADC5B78FAF80E53E5C5822 /* ToolbarDelegate.swift */; };
 		65365F7041B903844E4B97E1 /* DatabaseSettingsDataProtectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167DDFC0D609B73410DF2F2A /* DatabaseSettingsDataProtectionVC.swift */; };
@@ -1309,11 +1313,17 @@
 		75FEC2232175292C0034334B /* KeePassiumLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75FEC2222175292C0034334B /* KeePassiumLib.framework */; };
 		7718B82C59679ED748D24BB3 /* NullableBoolSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AF51CDDEC993ABE7B9E85A /* NullableBoolSettingCell.swift */; };
 		89B3CE8067D6026DDEEE4C9D /* NullableBoolSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AF51CDDEC993ABE7B9E85A /* NullableBoolSettingCell.swift */; };
+		984136AA6C3F65F854BA179D /* LString+import.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1CA523E5EFAEAFEA1F46FC /* LString+import.swift */; };
+		A61EFB6C62CE8CF614DD9320 /* ApplePasswordsImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFF92BFF4AAE8B618E948BC /* ApplePasswordsImporter.swift */; };
 		A6DDE071E0C62D87E83420E5 /* ToolbarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AADC5B78FAF80E53E5C5822 /* ToolbarDelegate.swift */; };
+		C27CF4EB1A098BB2F3A5A782 /* LString+import.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1CA523E5EFAEAFEA1F46FC /* LString+import.swift */; };
 		C2F65EEA0F5F30ABA5B71F78 /* NullableBoolSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AF51CDDEC993ABE7B9E85A /* NullableBoolSettingCell.swift */; };
+		C7618E1DDC5205DA44364A08 /* EnpassImporterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008C2460825FCC2A8E247CC2 /* EnpassImporterTests.swift */; };
 		CAE0F4EB8D6B1135FCBB22A0 /* ToolbarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AADC5B78FAF80E53E5C5822 /* ToolbarDelegate.swift */; };
+		D6E05E129F05A3A57714636F /* ApplePasswordsImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFF92BFF4AAE8B618E948BC /* ApplePasswordsImporter.swift */; };
 		D7CA83AB4C8EBA41F870FAF0 /* DatabaseSettingsDataProtectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167DDFC0D609B73410DF2F2A /* DatabaseSettingsDataProtectionVC.swift */; };
 		DA75D3AD1113313C354F271D /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8014D5A9B570F8EB49B6FB5D /* Credits.swift */; };
+		E970D511A71FD0D52F463444 /* ApplePasswordsImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFF92BFF4AAE8B618E948BC /* ApplePasswordsImporter.swift */; };
 		F30550272BA4B09500155709 /* RemoteDataSourceSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30550262BA4B09500155709 /* RemoteDataSourceSetupCoordinator.swift */; };
 		F30550282BA4B20400155709 /* RemoteDataSourceSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30550262BA4B09500155709 /* RemoteDataSourceSetupCoordinator.swift */; };
 		F30550292BA4B20500155709 /* RemoteDataSourceSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30550262BA4B09500155709 /* RemoteDataSourceSetupCoordinator.swift */; };
@@ -1592,8 +1602,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		008C2460825FCC2A8E247CC2 /* EnpassImporterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnpassImporterTests.swift; sourceTree = "<group>"; };
 		167DDFC0D609B73410DF2F2A /* DatabaseSettingsDataProtectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSettingsDataProtectionVC.swift; sourceTree = "<group>"; };
 		34AF51CDDEC993ABE7B9E85A /* NullableBoolSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NullableBoolSettingCell.swift; sourceTree = "<group>"; };
+		3A1CA523E5EFAEAFEA1F46FC /* LString+import.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LString+import.swift"; sourceTree = "<group>"; };
+		5FFF92BFF4AAE8B618E948BC /* ApplePasswordsImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePasswordsImporter.swift; sourceTree = "<group>"; };
 		6AADC5B78FAF80E53E5C5822 /* ToolbarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarDelegate.swift; sourceTree = "<group>"; };
 		7500193925F58D41002E8DAA /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/SettingsAppearanceVC.strings; sourceTree = "<group>"; };
 		75025616283CF3A300B930D9 /* FileInfoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileInfoCoordinator.swift; sourceTree = "<group>"; };
@@ -2414,6 +2427,7 @@
 		75FEC2222175292C0034334B /* KeePassiumLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeePassiumLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8014D5A9B570F8EB49B6FB5D /* Credits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
 		810530B59228DDD3CEA55C42 /* FaviconDownloading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaviconDownloading.swift; sourceTree = "<group>"; };
+		8B43EE120A8BE16A21ECAD53 /* EnpassImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnpassImporter.swift; sourceTree = "<group>"; };
 		F30550262BA4B09500155709 /* RemoteDataSourceSetupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSourceSetupCoordinator.swift; sourceTree = "<group>"; };
 		F30D035C2A7BD3CF0047525F /* PasswordQualityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordQualityIndicatorView.swift; sourceTree = "<group>"; };
 		F30D036E2A7BE83A0047525F /* PasswordQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordQuality.swift; sourceTree = "<group>"; };
@@ -2565,6 +2579,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0795D9503CE2B4ABA13ECFFA /* import */ = {
+			isa = PBXGroup;
+			children = (
+				5FFF92BFF4AAE8B618E948BC /* ApplePasswordsImporter.swift */,
+				8B43EE120A8BE16A21ECAD53 /* EnpassImporter.swift */,
+				3A1CA523E5EFAEAFEA1F46FC /* LString+import.swift */,
+			);
+			path = import;
+			sourceTree = "<group>";
+		};
 		16DE7C3A873A37E1B4636309 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -3066,6 +3090,7 @@
 				75EC7C03262B161F00D8C7EB /* DatabaseLoadingWarningsVC.swift */,
 				75876B252646EC2800FB470C /* DatabaseKeyChangerCoordinator.swift */,
 				F36DB1E22CE4CAF300E58F82 /* DatabaseViewerPermissionManager.swift */,
+				0795D9503CE2B4ABA13ECFFA /* import */,
 			);
 			path = database;
 			sourceTree = "<group>";
@@ -3501,6 +3526,9 @@
 				F3D011492B77CEFB00A9AF96 /* SearchHelperTests.swift */,
 				751C7D4F2BDFE3A0006A58F4 /* XMLParsingSanityTests.swift */,
 				751C7D532BE03582006A58F4 /* XMLParsingCompletenessTests.swift */,
+				756A64BE2C467E2400999FC6 /* WebDAVListParsingTest.swift */,
+				F358CFEF2CF0BA760098936E /* DatabaseCSVExporterTests.swift */,
+				008C2460825FCC2A8E247CC2 /* EnpassImporterTests.swift */,
 			);
 			path = KeePassiumTests;
 			sourceTree = "<group>";
@@ -4561,6 +4589,9 @@
 				C2F65EEA0F5F30ABA5B71F78 /* NullableBoolSettingCell.swift in Sources */,
 				7538E3BA2DD0D1BF002766BF /* MainSettingsCoordinator.swift in Sources */,
 				513D7843001658E2C2A5CCF6 /* DatabaseSettingsDataProtectionVC.swift in Sources */,
+				0ED5A77E91FFC2D221C81027 /* EnpassImporter.swift in Sources */,
+				E970D511A71FD0D52F463444 /* ApplePasswordsImporter.swift in Sources */,
+				984136AA6C3F65F854BA179D /* LString+import.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4847,6 +4878,9 @@
 				7718B82C59679ED748D24BB3 /* NullableBoolSettingCell.swift in Sources */,
 				7538E3B92DD0D1BF002766BF /* MainSettingsCoordinator.swift in Sources */,
 				D7CA83AB4C8EBA41F870FAF0 /* DatabaseSettingsDataProtectionVC.swift in Sources */,
+				1FBAA36A18F006A68758F8DA /* EnpassImporter.swift in Sources */,
+				D6E05E129F05A3A57714636F /* ApplePasswordsImporter.swift in Sources */,
+				3F70B9A79081ED31B195DEB5 /* LString+import.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5136,6 +5170,9 @@
 				1C897E5E121EF32888BFCBE8 /* DatabaseSettingsDataProtectionVC.swift in Sources */,
 				75917F442DAC6E8200EB9375 /* SelectableCollectionViewListCell.swift in Sources */,
 				757CCFA82DBAEB2D005E6BE6 /* LString+dataProtectionSettings.swift in Sources */,
+				476E1ED045DEBAA88851B105 /* EnpassImporter.swift in Sources */,
+				A61EFB6C62CE8CF614DD9320 /* ApplePasswordsImporter.swift in Sources */,
+				C27CF4EB1A098BB2F3A5A782 /* LString+import.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5326,6 +5363,7 @@
 				F3D011482B77B96800A9AF96 /* SearchQueryParsingTests.swift in Sources */,
 				F34B0DCE2B22673F001F7500 /* AppHistoryTests.swift in Sources */,
 				F377C9AD2AA74F9000266397 /* FaviconDownloaderTests.swift in Sources */,
+				C7618E1DDC5205DA44364A08 /* EnpassImporterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

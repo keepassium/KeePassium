@@ -10,6 +10,7 @@ open class DatabaseItem: Taggable {
     public enum TouchMode {
         case accessed
         case modified
+        case modifiedAt(_ date: Date)
     }
 
     public weak var parent: Group?

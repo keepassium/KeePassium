@@ -7,6 +7,7 @@
 //  For commercial licensing, please contact the author.
 
 import KeePassiumLib
+import UniformTypeIdentifiers
 
 public enum DatabaseCloseReason: CustomStringConvertible {
     case userRequest
@@ -666,7 +667,21 @@ extension DatabaseViewerCoordinator {
         getPresenterForModals().present(alert, animated: true, completion: nil)
     }
 
+    func importDatabaseFromEnpassJSON() {
+        importGroupsAndEntries(type: .json) { fileURL, group in
+            let importer = EnpassImporter()
+            return try importer.importFromJSON(fileURL: fileURL, group: group)
+        }
+    }
+
     func importDatabaseFromApplePasswordsCSV() {
+        importGroupsAndEntries(type: .commaSeparatedText) { fileURL, group in
+            let importer = ApplePasswordsImporter()
+            return (try importer.importFromCSV(fileURL: fileURL, group: group), [])
+        }
+    }
+
+    private func importGroupsAndEntries(type: UTType, provider: @escaping (URL, Group) throws -> ([Entry], [Group])) {
         guard let currentGroup = currentGroup else {
             assertionFailure("No group selected")
             return
@@ -681,20 +696,22 @@ extension DatabaseViewerCoordinator {
                 return
             }
 
-            let importer = ApplePasswordsImporter()
             do {
-                let entries = try importer.importFromCSV(fileURL: fileURL, group: currentGroup)
+                let (entries, groups) = try provider(fileURL, currentGroup)
 
                 let alert = UIAlertController(
                     title: fileURL.lastPathComponent,
                     message: String.localizedStringWithFormat(
                         LString.importEntriesCountTemplate,
-                        entries.count
+                        entries.count + groups.map({ $0.entries.count }).reduce(0, +)
                     ),
                     preferredStyle: .alert
                 )
                 alert.addAction(title: LString.actionDone, style: .default, preferred: true) { [weak self] _ in
                     guard let self = self else { return }
+                    groups.forEach { group in
+                        currentGroup.add(group: group)
+                    }
                     entries.forEach { entry in
                         currentGroup.add(entry: entry)
                     }
@@ -703,7 +720,7 @@ extension DatabaseViewerCoordinator {
                 alert.addAction(title: LString.actionCancel, style: .cancel, handler: nil)
                 getPresenterForModals().present(alert, animated: true)
             } catch {
-                Diag.error("CSV import failed [message: \(error.localizedDescription)]")
+                Diag.error("Import failed [message: \(error.localizedDescription)]")
                 getPresenterForModals().showErrorAlert(
                     error.localizedDescription,
                     title: LString.titleFileImportError
@@ -712,7 +729,7 @@ extension DatabaseViewerCoordinator {
         }
 
         fileImportHelper?.importFile(
-            contentTypes: [.commaSeparatedText],
+            contentTypes: [type],
             presenter: getPresenterForModals()
         )
     }
@@ -1413,7 +1430,8 @@ final class DatabaseViewerActionsManager: UIResponder {
         case #selector(kpmReloadDatabase),
              #selector(kpmLockDatabase),
              #selector(kpmExportDatabaseToCSV),
-             #selector(kmpImportDatabaseFromApplePasswordsCSV):
+             #selector(kmpImportDatabaseFromApplePasswordsCSV),
+             #selector(kmpImportDatabaseFromEnpassJSON):
             return true
         case #selector(kpmShowPasswordAudit):
             return permissions.contains(.auditPasswords)
@@ -1501,10 +1519,14 @@ final class DatabaseViewerActionsManager: UIResponder {
             title: LString.titleApplePasswordsCSV,
             action: #selector(kmpImportDatabaseFromApplePasswordsCSV)
         )
+        let importEnpassJSONCommand = UICommand(
+            title: LString.titleEnpassJSON,
+            action: #selector(kmpImportDatabaseFromEnpassJSON)
+        )
         return UIMenu(
             title: LString.actionImport,
             identifier: .importDatabase,
-            children: [importApplePasswordsCSVCommand])
+            children: [importApplePasswordsCSVCommand, importEnpassJSONCommand])
     }
 
     private func makeReloadDatabaseMenu() -> UIMenu {
@@ -1662,6 +1684,9 @@ final class DatabaseViewerActionsManager: UIResponder {
     }
     @objc func kmpImportDatabaseFromApplePasswordsCSV() {
         coordinator?.importDatabaseFromApplePasswordsCSV()
+    }
+    @objc func kmpImportDatabaseFromEnpassJSON() {
+        coordinator?.importDatabaseFromEnpassJSON()
     }
     @objc func kpmShowPasswordAudit() {
         coordinator?.showPasswordAudit()
