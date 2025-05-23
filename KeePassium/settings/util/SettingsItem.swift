@@ -12,6 +12,7 @@ enum SettingsItem: Hashable {
     case basic(_ config: BasicCell.Config)
     case toggle(_ config: ToggleCell.Config)
     case picker(_ config: PickerCell.Config)
+    case textScale(_ config: TextScaleCell.Config)
 
     var canBeHighlighted: Bool {
         switch self {
@@ -21,6 +22,8 @@ enum SettingsItem: Hashable {
             return false
         case .picker:
             return true
+        case .textScale:
+            return false
         }
     }
 }

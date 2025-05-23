@@ -1511,7 +1511,7 @@ public class Settings {
         }
     }
 
-    public let textScaleAllowedRange: ClosedRange<CGFloat> = 0.5...2.0
+    public static let textScaleAllowedRange: ClosedRange<CGFloat> = 0.5...2.0
 
     public var textScale: CGFloat {
         get {
@@ -1519,7 +1519,7 @@ public class Settings {
                 .object(forKey: Keys.textScale.rawValue)
                 as? CGFloat
             if let value = storedValueOrNil {
-                return value.clamped(to: textScaleAllowedRange)
+                return value.clamped(to: Self.textScaleAllowedRange)
             } else {
                 return 1.0
             }
@@ -1527,7 +1527,7 @@ public class Settings {
         set {
             updateAndNotify(
                 oldValue: textScale,
-                newValue: newValue.clamped(to: textScaleAllowedRange),
+                newValue: newValue.clamped(to: Self.textScaleAllowedRange),
                 key: .textScale)
         }
     }

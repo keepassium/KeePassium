@@ -30,7 +30,7 @@ class DatabaseIconSetPicker: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = LString.titleDatabaseIcons
+        title = LString.appearanceDatabaseIconsTitle
     }
 
     override func viewDidAppear(_ animated: Bool) {

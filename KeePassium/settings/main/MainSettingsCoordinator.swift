@@ -68,9 +68,9 @@ extension MainSettingsCoordinator: MainSettingsVC.Delegate {
     }
 
     func didPressAppearanceSettings(in viewController: MainSettingsVC) {
-        let appearanceVC = SettingsAppearanceVC.instantiateFromStoryboard()
-        appearanceVC.delegate = self
-        _router.push(appearanceVC, animated: true, onPop: nil)
+        let coordinator = AppearanceSettingsCoordinator(router: _router)
+        coordinator.start()
+        addChildCoordinator(coordinator, onDismiss: nil)
     }
 
     func didPressSearchSettings(in viewController: MainSettingsVC) {

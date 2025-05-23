@@ -69,6 +69,7 @@ class BaseSettingsViewController<Section: SettingsSection>:
         let basicCellRegistration = BasicCell.makeRegistration()
         let toggleCellRegistration = ToggleCell.makeRegistration()
         let pickerCellRegistration = PickerCell.makeRegistration()
+        let textScaleCellRegistration = TextScaleCell.makeRegistration()
 
         let dataSource = UICollectionViewDiffableDataSource<Section, SettingsItem>(collectionView: _collectionView) {
             collectionView, indexPath, item in
@@ -88,6 +89,12 @@ class BaseSettingsViewController<Section: SettingsSection>:
             case .picker:
                 return collectionView.dequeueConfiguredReusableCell(
                     using: pickerCellRegistration,
+                    for: indexPath,
+                    item: item
+                )
+            case .textScale:
+                return collectionView.dequeueConfiguredReusableCell(
+                    using: textScaleCellRegistration,
                     for: indexPath,
                     item: item
                 )
@@ -171,7 +178,7 @@ class BaseSettingsViewController<Section: SettingsSection>:
         switch targetItem {
         case .basic(let itemConfig):
             itemConfig.handler?()
-        case .toggle, .picker, .none:
+        case .toggle, .picker, .textScale, .none:
             return
         }
     }

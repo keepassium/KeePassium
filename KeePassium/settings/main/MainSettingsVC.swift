@@ -122,7 +122,7 @@ final class MainSettingsVC: BaseSettingsViewController<MainSettingsVC.Section> {
         snapshot.appendSections([.various])
         snapshot.appendItems([
             .basic(.init(
-                title: LString.titleAppearanceSettings,
+                title: LString.appearanceSettingsTitle,
                 image: .symbol(.paintbrush),
                 fixedAccessories: [.disclosureIndicator()],
                 handler: { [unowned self] in

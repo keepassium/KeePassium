@@ -42,41 +42,6 @@ extension LString {
         value: "Restore Defaults",
         comment: "Action/button which resets some settings to their default state.")
 
-    public static let titleAppearanceSettings = NSLocalizedString(
-        "[Appearance/title]",
-        bundle: Bundle.framework,
-        value: "Appearance",
-        comment: "Group of settings for user interface appearance (text size, icons, etc)")
-
-    public static let titleAppIcon = NSLocalizedString(
-        "[Appearance/AppIcon/title]",
-        bundle: Bundle.framework,
-        value: "App Icon",
-        comment: "Section in settings: icon for the app")
-    public static let titleDatabaseIcons = NSLocalizedString(
-        "[Appearance/DatabaseIcons/title]",
-        bundle: Bundle.framework,
-        value: "Database Icons",
-        comment: "Section in settings: icons for database")
-
-    public static let titleTextSize = NSLocalizedString(
-        "[Appearance/TextSize/title]",
-        bundle: Bundle.framework,
-        value: "Text Size",
-        comment: "Title of a setting option: font size")
-
-    public static let titleTextFont = NSLocalizedString(
-        "[Appearance/Font/title]",
-        bundle: Bundle.framework,
-        value: "Font",
-        comment: "Title of a setting option: font")
-
-    public static let titleDefaultFont = NSLocalizedString(
-        "[Appearance/DefaultFont/shortTitle]",
-        bundle: Bundle.framework,
-        value: "Default",
-        comment: "Short name of the default/system font. For example: `Font: Default`")
-
     public static let titleNetworkAccessSettings = NSLocalizedString(
         "[Settings/NetworkAccess/title]",
         bundle: Bundle.framework,

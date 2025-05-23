@@ -63,6 +63,7 @@ public enum SymbolName: String, Equatable {
     case arrowUpCircleFill = "arrow.up.circle.fill"
     case asterisk = "asterisk"
     case at = "at"
+    case atom = "atom"
     case autoStartStop = "autostartstop"
     case bellSlash = "bell.slash"
     case bolt = "bolt"
