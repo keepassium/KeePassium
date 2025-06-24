@@ -40,15 +40,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let macUtils, macUtils.isControlKeyPressed() {
             proposeAppReset = true
         }
+        let autoTypeHelper = AutoTypeHelper(macUtils: macUtils)
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(sceneWillDeactivate),
             name: UIScene.willDeactivateNotification,
             object: nil
         )
+        #else
+        let autoTypeHelper = AutoTypeHelper(macUtils: nil)
         #endif
-
-        let autoTypeHelper = AutoTypeHelper(macUtils: macUtils)
 
         if UIDevice.current.userInterfaceIdiom == .pad {
             window.makeKeyAndVisible()

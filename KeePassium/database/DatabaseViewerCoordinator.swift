@@ -778,7 +778,9 @@ extension DatabaseViewerCoordinator {
     }
 
     func canPerformAutoType() -> Bool {
-        guard let currentEntry = currentEntry else {
+        guard let currentEntry = currentEntry,
+              autoTypeHelper != nil
+        else {
             return false
         }
         return !currentEntry.resolvedUserName.isEmpty || !currentEntry.resolvedPassword.isEmpty
@@ -788,7 +790,6 @@ extension DatabaseViewerCoordinator {
         guard let topGroupViewer = topGroupViewer, let entry = currentEntry else {
             return
         }
-
         didPressAutoType(entry, in: topGroupViewer)
     }
 }
@@ -914,7 +915,6 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
         hasUnsavedBulkChanges = true
     }
 
-    #if targetEnvironment(macCatalyst)
     func didPressAutoType(_ entry: Entry, in viewController: GroupViewerVC) {
         guard let autoTypeHelper = autoTypeHelper else {
             assertionFailure("AutoTypeHelper not available")
@@ -926,7 +926,6 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
 
         autoTypeHelper.tryPerformAutoType(from: viewController, username: username, password: password)
     }
-    #endif
 
     func didPressEmptyRecycleBinGroup(
         _ recycleBinGroup: Group,
