@@ -23,7 +23,7 @@ protocol WebDAVConnectionSetupCoordinatorDelegate: AnyObject {
     )
 }
 
-final class WebDAVConnectionSetupCoordinator: BaseCoordinator {
+final class WebDAVConnectionSetupCoordinator: BaseCoordinator, RemoteConnectionSetupAlertPresenting {
     weak var delegate: WebDAVConnectionSetupCoordinatorDelegate?
 
     private let setupVC: WebDAVConnectionSetupVC

@@ -12,6 +12,7 @@ import UIKit
 
 class RemoteDataSourceSetupCoordinator<Manager: RemoteDataSourceManager>:
     BaseCoordinator,
+    RemoteConnectionSetupAlertPresenting,
     RemoteFolderViewerDelegate
 {
     let _manager: Manager

@@ -38,19 +38,19 @@ final class RemoteFileExportCoordinator: BaseCoordinator {
         _pushInitialViewController(connectionTypePicker, animated: true)
     }
 
-    private func upload<Manager: RemoteDataSourceManager, Coordinator: RemoteDataSourceSetupCoordinator<Manager> > (
+    private func upload<Manager: RemoteDataSourceManager> (
         _ folder: Manager.ItemType,
         oauthToken: OAuthToken,
         timeout: Timeout,
         manager: Manager,
         stateIndicator: BusyStateIndicating?,
-        coordinator: Coordinator
+        alertPresenter: RemoteConnectionSetupAlertPresenting
     ) {
         Diag.debug("Will upload new file")
         stateIndicator?.indicateState(isBusy: true)
         manager.getItems(in: folder, token: oauthToken, tokenUpdater: nil, timeout: timeout, completionQueue: .main) {
-            [weak self, weak coordinator, weak stateIndicator] result in
-            guard let self, let coordinator else { return }
+            [weak self, weak alertPresenter, weak stateIndicator] result in
+            guard let self, let alertPresenter else { return }
             stateIndicator?.indicateState(isBusy: false)
             switch result {
             case .success(let existingItems):
@@ -60,13 +60,13 @@ final class RemoteFileExportCoordinator: BaseCoordinator {
                     existingItems: existingItems,
                     oauthToken: oauthToken,
                     timeout: timeout,
-                    stateIndicator: stateIndicator,
                     manager: manager,
-                    presenter: coordinator._presenterForModals
+                    stateIndicator: stateIndicator,
+                    alertPresenter: alertPresenter
                 )
             case .failure(let error):
                 Diag.debug("Failed to get existing items [message: \(error.localizedDescription)]")
-                coordinator._presenterForModals.showErrorAlert(error)
+                alertPresenter.showErrorAlert(error)
             }
         }
     }
@@ -76,7 +76,7 @@ final class RemoteFileExportCoordinator: BaseCoordinator {
         credential: NetworkCredential,
         timeout: Timeout,
         stateIndicator: BusyStateIndicating?,
-        coordinator: WebDAVConnectionSetupCoordinator
+        alertPresenter: RemoteConnectionSetupAlertPresenting
     ) {
         Diag.debug("Will upload new file to WebDAV")
         stateIndicator?.indicateState(isBusy: true)
@@ -87,60 +87,95 @@ final class RemoteFileExportCoordinator: BaseCoordinator {
             credential: credential,
             timeout: timeout,
             completionQueue: .main
-        ) { [weak self, weak stateIndicator, weak coordinator] result in
-            guard let self, let coordinator else { return }
+        ) { [weak self, weak stateIndicator, weak alertPresenter] result in
+            guard let self, let alertPresenter else { return }
             stateIndicator?.indicateState(isBusy: false)
 
             switch result {
             case .success(let existingItems):
-                let fileAlreadyExists = existingItems.contains { !$0.isFolder && $0.name == self.fileName }
-
-                let doCreateFile = { [weak stateIndicator] in
-                    stateIndicator?.indicateState(isBusy: true)
-
-                    let url = folder.url.appendingPathComponent(self.fileName)
-                    webDAVManager.uploadFile(
-                        data: self.data,
-                        url: url,
-                        credential: credential,
-                        timeout: timeout,
-                        completionQueue: .main
-                    ) { [weak self, weak stateIndicator, weak coordinator] result in
-                        guard let self, let coordinator else { return }
-                        stateIndicator?.indicateState(isBusy: false)
-
-                        switch result {
-                        case .success:
-                            Diag.debug("File created successfully on WebDAV")
-                            self.delegate?.didFinishExport(
-                                to: WebDAVFileURL.build(nakedURL: url),
-                                credential: credential,
-                                in: self
-                            )
-                        case .failure(let error):
-                            Diag.debug("WebDAV file upload failed [message: \(error.localizedDescription)]")
-                            coordinator._presenterForModals.showErrorAlert(error)
-                        }
-                    }
-                }
-
-                if !fileAlreadyExists {
-                    doCreateFile()
-                    return
-                }
-
-                let overwriteAlert = UIAlertController(
-                    title: LString.fileAlreadyExists,
-                    message: self.fileName,
-                    preferredStyle: .alert)
-                overwriteAlert.addAction(title: LString.actionOverwrite, style: .destructive) { _ in
-                    doCreateFile()
-                }
-                overwriteAlert.addAction(title: LString.actionCancel, style: .cancel, handler: nil)
-                coordinator._presenterForModals.present(overwriteAlert, animated: true)
+                self.handleExistingWebDAVItemsAndUpload(
+                    existingItems: existingItems,
+                    in: folder,
+                    credential: credential,
+                    timeout: timeout,
+                    webDAVManager: webDAVManager,
+                    stateIndicator: stateIndicator,
+                    alertPresenter: alertPresenter
+                )
             case .failure(let error):
                 Diag.debug("Failed to get WebDAV folder contents [message: \(error.localizedDescription)]")
-                coordinator._presenterForModals.showErrorAlert(error)
+                alertPresenter.showErrorAlert(error)
+            }
+        }
+    }
+
+    private func handleExistingWebDAVItemsAndUpload(
+        existingItems: [WebDAVItem],
+        in folder: WebDAVItem,
+        credential: NetworkCredential,
+        timeout: Timeout,
+        webDAVManager: WebDAVManager,
+        stateIndicator: BusyStateIndicating?,
+        alertPresenter: RemoteConnectionSetupAlertPresenting
+    ) {
+        let fileAlreadyExists = existingItems.contains { !$0.isFolder && $0.name == self.fileName }
+        if !fileAlreadyExists {
+            performWebDAVUpload(
+                to: folder,
+                credential: credential,
+                timeout: timeout,
+                webDAVManager: webDAVManager,
+                stateIndicator: stateIndicator,
+                alertPresenter: alertPresenter
+            )
+            return
+        }
+
+        alertPresenter.showOverwriteConfirmation(fileName: fileName, onConfirm: {
+            [weak self, weak stateIndicator, weak alertPresenter] _ in
+            guard let self, let alertPresenter else { return }
+            performWebDAVUpload(
+                to: folder,
+                credential: credential,
+                timeout: timeout,
+                webDAVManager: webDAVManager,
+                stateIndicator: stateIndicator,
+                alertPresenter: alertPresenter
+            )
+        })
+    }
+
+    private func performWebDAVUpload(
+        to folder: WebDAVItem,
+        credential: NetworkCredential,
+        timeout: Timeout,
+        webDAVManager: WebDAVManager,
+        stateIndicator: BusyStateIndicating?,
+        alertPresenter: RemoteConnectionSetupAlertPresenting
+    ) {
+        stateIndicator?.indicateState(isBusy: true)
+        let url = folder.url.appendingPathComponent(self.fileName)
+
+        webDAVManager.uploadFile(
+            data: self.data,
+            url: url,
+            credential: credential,
+            timeout: timeout,
+            completionQueue: .main
+        ) { [weak self, weak stateIndicator, weak alertPresenter] result in
+            guard let self, let alertPresenter else { return }
+            stateIndicator?.indicateState(isBusy: false)
+            switch result {
+            case .success:
+                Diag.debug("File created successfully on WebDAV")
+                self.delegate?.didFinishExport(
+                    to: WebDAVFileURL.build(nakedURL: url),
+                    credential: credential,
+                    in: self
+                )
+            case .failure(let error):
+                Diag.debug("Failed to get WebDAV folder contents [message: \(error.localizedDescription)]")
+                alertPresenter.showErrorAlert(error)
             }
         }
     }
@@ -151,11 +186,11 @@ final class RemoteFileExportCoordinator: BaseCoordinator {
         existingItems: [ItemType],
         oauthToken: OAuthToken,
         timeout: Timeout,
-        stateIndicator: BusyStateIndicating?,
         manager: some RemoteDataSourceManager<ItemType>,
-        presenter: UIViewController
+        stateIndicator: BusyStateIndicating?,
+        alertPresenter: RemoteConnectionSetupAlertPresenting
     ) {
-        let doCreateFile = { [weak presenter] in
+        let doCreateFile = { [weak alertPresenter] in
             stateIndicator?.indicateState(isBusy: true)
             manager.createFile(
                 in: folder,
@@ -175,7 +210,7 @@ final class RemoteFileExportCoordinator: BaseCoordinator {
                         self.delegate?.didFinishExport(to: itemURL, credential: credential, in: self)
                     case .failure(let error):
                         Diag.debug("File creation failed [message: \(error.localizedDescription)]")
-                        presenter?.showErrorAlert(error)
+                        alertPresenter?.showErrorAlert(error)
                     }
                 }
             )
@@ -189,15 +224,9 @@ final class RemoteFileExportCoordinator: BaseCoordinator {
             return
         }
 
-        let overwriteAlert = UIAlertController(
-            title: LString.fileAlreadyExists,
-            message: fileName,
-            preferredStyle: .alert)
-        overwriteAlert.addAction(title: LString.actionOverwrite, style: .destructive) { _ in
+        alertPresenter.showOverwriteConfirmation(fileName: fileName, onConfirm: { _ in
             doCreateFile()
-        }
-        overwriteAlert.addAction(title: LString.actionCancel, style: .cancel, handler: nil)
-        presenter.present(overwriteAlert, animated: true)
+        })
     }
 }
 
@@ -278,7 +307,7 @@ extension RemoteFileExportCoordinator: GoogleDriveConnectionSetupCoordinatorDele
             timeout: Timeout(duration: FileDataProvider.defaultTimeoutDuration),
             manager: GoogleDriveManager.shared,
             stateIndicator: stateIndicator,
-            coordinator: coordinator
+            alertPresenter: coordinator
         )
     }
 }
@@ -317,7 +346,7 @@ extension RemoteFileExportCoordinator: DropboxConnectionSetupCoordinatorDelegate
             timeout: Timeout(duration: FileDataProvider.defaultTimeoutDuration),
             manager: DropboxManager.shared,
             stateIndicator: stateIndicator,
-            coordinator: coordinator
+            alertPresenter: coordinator
         )
     }
 }
@@ -356,7 +385,7 @@ extension RemoteFileExportCoordinator: OneDriveConnectionSetupCoordinatorDelegat
             timeout: Timeout(duration: FileDataProvider.defaultTimeoutDuration),
             manager: OneDriveManager.shared,
             stateIndicator: stateIndicator,
-            coordinator: coordinator
+            alertPresenter: coordinator
         )
     }
 }
@@ -391,7 +420,7 @@ extension RemoteFileExportCoordinator: WebDAVConnectionSetupCoordinatorDelegate 
             credential: credential,
             timeout: Timeout(duration: FileDataProvider.defaultTimeoutDuration),
             stateIndicator: stateIndicator,
-            coordinator: coordinator
+            alertPresenter: coordinator
         )
     }
 }

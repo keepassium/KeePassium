@@ -1220,6 +1220,11 @@
 		75E60AE825CF5E090089219C /* DatabaseIconSet+assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E60AE425CF5E090089219C /* DatabaseIconSet+assets.swift */; };
 		75E60AEC25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E60AEB25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift */; };
 		75E60AED25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E60AEB25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift */; };
+		75E658552E0B6DFE007C977A /* RemoteConnectionSetupAlertPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E658542E0B6DFE007C977A /* RemoteConnectionSetupAlertPresenting.swift */; };
+		75E658562E0B6DFE007C977A /* RemoteConnectionSetupAlertPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E658542E0B6DFE007C977A /* RemoteConnectionSetupAlertPresenting.swift */; };
+		75E658572E0B6DFE007C977A /* RemoteConnectionSetupAlertPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E658542E0B6DFE007C977A /* RemoteConnectionSetupAlertPresenting.swift */; };
+		75E658582E0B6DFE007C977A /* RemoteConnectionSetupAlertPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E658542E0B6DFE007C977A /* RemoteConnectionSetupAlertPresenting.swift */; };
+		75E658592E0B6DFE007C977A /* RemoteConnectionSetupAlertPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E658542E0B6DFE007C977A /* RemoteConnectionSetupAlertPresenting.swift */; };
 		75E7CAE52DA582EF00511B91 /* DatabasePickerCoordinator+emptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E7CAE42DA582EF00511B91 /* DatabasePickerCoordinator+emptyState.swift */; };
 		75E7CAE62DA582EF00511B91 /* DatabasePickerCoordinator+emptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E7CAE42DA582EF00511B91 /* DatabasePickerCoordinator+emptyState.swift */; };
 		75E7CAE72DA582EF00511B91 /* DatabasePickerCoordinator+emptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E7CAE42DA582EF00511B91 /* DatabasePickerCoordinator+emptyState.swift */; };
@@ -2307,6 +2312,7 @@
 		75E60ADB25CF3C880089219C /* DatabaseIconSetPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseIconSetPicker.swift; sourceTree = "<group>"; };
 		75E60AE425CF5E090089219C /* DatabaseIconSet+assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabaseIconSet+assets.swift"; sourceTree = "<group>"; };
 		75E60AEB25D0037D0089219C /* DatabaseIconSetSwitcherCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseIconSetSwitcherCoordinator.swift; sourceTree = "<group>"; };
+		75E658542E0B6DFE007C977A /* RemoteConnectionSetupAlertPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConnectionSetupAlertPresenting.swift; sourceTree = "<group>"; };
 		75E7CAE42DA582EF00511B91 /* DatabasePickerCoordinator+emptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabasePickerCoordinator+emptyState.swift"; sourceTree = "<group>"; };
 		75E9E2B3290C19FA00B79BE8 /* GroupViewerCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewerCells.swift; sourceTree = "<group>"; };
 		75EC7BFC262B05E100D8C7EB /* DatabaseViewerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseViewerCoordinator.swift; sourceTree = "<group>"; };
@@ -3174,6 +3180,7 @@
 				7524E7352888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift */,
 				759F69FC29066E110089FB34 /* ConnectionTypePickerVC.swift */,
 				F30550262BA4B09500155709 /* RemoteDataSourceSetupCoordinator.swift */,
+				75E658542E0B6DFE007C977A /* RemoteConnectionSetupAlertPresenting.swift */,
 				758FF6C928FC18E4007DE8EB /* RemoteFolderViewerVC.swift */,
 				75136B252B67CD6B00214760 /* RemoteFileExportCoordinator.swift */,
 				75136B292B6972CB00214760 /* RemoteItemSelectionMode.swift */,
@@ -4238,6 +4245,7 @@
 				7538936A26D3BEBE00CAB107 /* KeyboardDismissable.swift in Sources */,
 				F3C744462CA5A820005D5429 /* AutoFillMode.swift in Sources */,
 				75B24DB821C3C594003C9486 /* ProgressOverlay.swift in Sources */,
+				75E658552E0B6DFE007C977A /* RemoteConnectionSetupAlertPresenting.swift in Sources */,
 				7524E74B2888B58200ECBEC8 /* TextFieldCell.swift in Sources */,
 				759FD04C2D9D245000659852 /* FilePickerItem.swift in Sources */,
 				75E7CAE82DA582EF00511B91 /* DatabasePickerCoordinator+emptyState.swift in Sources */,
@@ -4428,6 +4436,7 @@
 				7598D79126BBFD5C0019C625 /* TipBoxVC.swift in Sources */,
 				75EEC22127484DD90092505F /* QuickAutoFillPrompt.swift in Sources */,
 				759ADB8C285A284B00D93BD4 /* AnnouncementCell.swift in Sources */,
+				75E658572E0B6DFE007C977A /* RemoteConnectionSetupAlertPresenting.swift in Sources */,
 				75DEE8132AA66C500024AE11 /* LString+passwordAudit.swift in Sources */,
 				755E9C4D20BE5DC200FD7C7A /* UIImage+extensions.swift in Sources */,
 				75F5CACD20BD18320056C969 /* UIView+extension.swift in Sources */,
@@ -4719,6 +4728,7 @@
 				755B435E26BD606700C24386 /* TipBoxVC.swift in Sources */,
 				75B38C1C233E5B7C006BDEFC /* UIImage+extensions.swift in Sources */,
 				75EEC22327484DD90092505F /* QuickAutoFillPrompt.swift in Sources */,
+				75E658582E0B6DFE007C977A /* RemoteConnectionSetupAlertPresenting.swift in Sources */,
 				75DEE8142AA66C500024AE11 /* LString+passwordAudit.swift in Sources */,
 				759ADB8E285A284B00D93BD4 /* AnnouncementCell.swift in Sources */,
 				F32141512A934AB9007A8D4E /* PasswordAuditVC.swift in Sources */,
@@ -4932,6 +4942,7 @@
 				75D075D628B639D200F02E39 /* DynamicFileList.swift in Sources */,
 				75D075D728B639D200F02E39 /* RootSplitVC.swift in Sources */,
 				75D075D828B639D200F02E39 /* UIWindow+extensions.swift in Sources */,
+				75E658562E0B6DFE007C977A /* RemoteConnectionSetupAlertPresenting.swift in Sources */,
 				75D075D928B639D200F02E39 /* TableViewControllerWithContextActions.swift in Sources */,
 				75D075DA28B639D200F02E39 /* PricingPlanCollectionCell.swift in Sources */,
 				750991732DDFD5F8007CBB38 /* LString+appearanceSettings.swift in Sources */,
@@ -5286,6 +5297,7 @@
 				7526403F28455DC00003DDFA /* PasswordGeneratorVC.swift in Sources */,
 				F3C744472CA5A820005D5429 /* AutoFillMode.swift in Sources */,
 				75604EB526D8F0DB008A2B43 /* DatabaseLoadingWarningsVC.swift in Sources */,
+				75E658592E0B6DFE007C977A /* RemoteConnectionSetupAlertPresenting.swift in Sources */,
 				75DE677C268F6F69003D4DCC /* BiometricsHelper.swift in Sources */,
 				F305502A2BA4B20600155709 /* RemoteDataSourceSetupCoordinator.swift in Sources */,
 				759FD04B2D9D245000659852 /* FilePickerItem.swift in Sources */,
