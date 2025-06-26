@@ -11,7 +11,11 @@ import KeePassiumLib
 
 protocol EntryFinderCoordinatorDelegate: AnyObject {
     func didLeaveDatabase(in coordinator: EntryFinderCoordinator)
-    func didSelectEntry(_ entry: Entry, in coordinator: EntryFinderCoordinator)
+    func didSelectEntry(
+        _ entry: Entry,
+        autoCopyOverride: AutoFillClipboardField?,
+        in coordinator: EntryFinderCoordinator
+    )
 
     @available(iOS 18.0, *)
     func didSelectText(_ text: String, in coordinator: EntryFinderCoordinator)
@@ -46,6 +50,8 @@ final class EntryFinderCoordinator: BaseCoordinator {
     private let vcAnimationDuration = 0.3
 
     private let autoFillMode: AutoFillMode?
+
+    private var autoCopyOverrides: [UUID: AutoFillClipboardField] = [:]
 
     init(
         router: NavigationRouter,
@@ -154,7 +160,7 @@ extension EntryFinderCoordinator {
            Settings.current.autoFillPerfectMatch,
            autoFillMode != .passkeyRegistration
         {
-            delegate?.didSelectEntry(perfectMatch, in: self)
+            delegate?.didSelectEntry(perfectMatch, autoCopyOverride: nil, in: self)
         } else {
             entryFinderVC.setSearchResults(results)
         }
@@ -291,7 +297,8 @@ extension EntryFinderCoordinator: EntryFinderDelegate {
                 in: self
             )
         } else {
-            delegate?.didSelectEntry(entry, in: self)
+            let autoCopyOverride = autoCopyOverrides[entry.uuid]
+            delegate?.didSelectEntry(entry, autoCopyOverride: autoCopyOverride, in: self)
         }
     }
 
@@ -306,6 +313,27 @@ extension EntryFinderCoordinator: EntryFinderDelegate {
             value = getUpdatedOTPValue(field, entry: entry)
         }
         delegate?.didSelectText(value, in: self)
+    }
+
+    func getAutoCopyOverride(for entry: Entry, in viewController: EntryFinderVC) -> AutoFillClipboardField? {
+        if let autoCopyOverride = autoCopyOverrides[entry.uuid] {
+            return autoCopyOverride
+        }
+
+        guard Settings.current.isCopyTOTPOnAutoFill,
+              TOTPGeneratorFactory.makeGenerator(for: entry) != nil else {
+            return nil
+        }
+
+        return .totp
+    }
+
+    func didSelectAutoCopyOverride(
+        _ field: AutoFillClipboardField,
+        from entry: Entry,
+        in viewController: EntryFinderVC
+    ) {
+        autoCopyOverrides[entry.uuid] = field
     }
 }
 

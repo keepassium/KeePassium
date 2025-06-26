@@ -580,19 +580,36 @@ extension AutoFillCoordinator {
         cleanup()
     }
 
-    private func getOTPForClipboard(for entry: Entry) -> String? {
-        guard Settings.current.isCopyTOTPOnAutoFill,
-              let generator = TOTPGeneratorFactory.makeGenerator(for: entry)
-        else {
+    private func getValueForClipboard(for entry: Entry, userOverride: AutoFillClipboardField?) -> String? {
+        let totpGenerator = TOTPGeneratorFactory.makeGenerator(for: entry)
+
+        switch userOverride {
+        case .totp:
+            if let totpGenerator {
+                log.info("Auto-copying TOTP to clipboard (selected).")
+                return totpGenerator.generate()
+            }
+            log.warning("Selected auto-copy TOTP, but no generator found for entry.")
+            assertionFailure()
+            return nil
+        case .custom(let customEntryField):
+            log.info("Auto-copying custom field to clipboard.")
+            return customEntryField.resolvedValue
+        case nil:
+            if let totpGenerator,
+                Settings.current.isCopyTOTPOnAutoFill
+            {
+                log.info("Auto-copying TOTP to clipboard (by default).")
+                return totpGenerator.generate()
+            }
             return nil
         }
-        return generator.generate()
     }
 
-    private func returnEntry(_ entry: Entry) {
+    private func returnEntry(_ entry: Entry, clipboardOverride: AutoFillClipboardField?) {
         switch autoFillMode {
         case .credentials:
-            returnCredentials(from: entry)
+            returnCredentials(from: entry, clipboardOverride: clipboardOverride)
         case .oneTimeCode:
             if #available(iOS 18, *) {
                 returnOneTimeCode(from: entry)
@@ -607,7 +624,7 @@ extension AutoFillCoordinator {
                 cancelRequest(.credentialIdentityNotFound)
                 return
             }
-            returnCredentials(from: entry)
+            returnCredentials(from: entry, clipboardOverride: clipboardOverride)
         default:
             let mode = autoFillMode?.debugDescription ?? "nil"
             log.error("Unexpected AutoFillMode value `\(mode, privacy: .public)`, cancelling")
@@ -616,17 +633,17 @@ extension AutoFillCoordinator {
         }
     }
 
-    private func returnCredentials(from entry: Entry) {
+    private func returnCredentials(from entry: Entry, clipboardOverride: AutoFillClipboardField?) {
         log.trace("Will return credentials")
         watchdog.restart()
 
-        if let otpValue = getOTPForClipboard(for: entry) {
+        if let value = getValueForClipboard(for: entry, userOverride: clipboardOverride) {
             guard hasUI else {
                 log.info("Quick entry has OTP, switching to UI to copy it to clipboard")
                 cancelRequest(.userInteractionRequired)
                 return
             }
-            Clipboard.general.copyWithTimeout(otpValue)
+            Clipboard.general.copyWithTimeout(value)
         }
 
         let passwordCredential = ASPasswordCredential(
@@ -782,7 +799,7 @@ extension AutoFillCoordinator {
             return
         }
         log.trace("returnQuickTypeEntry")
-        returnEntry(foundEntry)
+        returnEntry(foundEntry, clipboardOverride: nil)
     }
 
     func databaseLoader(_ databaseLoader: DatabaseLoader, willLoadDatabase dbRef: URLReference) {
@@ -1112,7 +1129,7 @@ extension AutoFillCoordinator: DatabaseUnlockerCoordinatorDelegate {
            autoFillMode != .passkeyRegistration
         {
             log.trace("Unlocked and found a match")
-            returnEntry(desiredEntry)
+            returnEntry(desiredEntry, clipboardOverride: nil)
         } else {
             showDatabaseViewer(fileRef, databaseFile: databaseFile, warnings: warnings)
         }
@@ -1142,9 +1159,13 @@ extension AutoFillCoordinator: EntryFinderCoordinatorDelegate {
     func didLeaveDatabase(in coordinator: EntryFinderCoordinator) {
     }
 
-    func didSelectEntry(_ entry: Entry, in coordinator: EntryFinderCoordinator) {
-        log.trace("didSelectEntry")
-        returnEntry(entry)
+    func didSelectEntry(
+        _ entry: Entry,
+        autoCopyOverride: AutoFillClipboardField?,
+        in coordinator: EntryFinderCoordinator
+    ) {
+        log.trace("didSelectEntry, via clipboard: \(String(describing: autoCopyOverride))")
+        returnEntry(entry, clipboardOverride: autoCopyOverride)
     }
 
     @available(iOS 18.0, *)
