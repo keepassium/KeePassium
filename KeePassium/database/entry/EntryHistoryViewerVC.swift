@@ -528,4 +528,21 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
         deleteBarButton.menu = makeConfirmDeleteSelectionMenu(for: deleteBarButton)
     }
 
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+
+    override var keyCommands: [UIKeyCommand]? {
+        var commands = super.keyCommands ?? []
+        commands.append(UIKeyCommand(
+            action: #selector(handleEditCommand),
+            hotkey: .editEntry,
+            discoverabilityTitle: LString.actionEdit
+        ))
+        return commands
+    }
+
+    @objc private func handleEditCommand() {
+        setEditing(!isEditing, animated: true)
+    }
 }

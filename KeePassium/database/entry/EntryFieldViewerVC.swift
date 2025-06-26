@@ -28,7 +28,7 @@ protocol EntryFieldViewerDelegate: AnyObject {
         at popoverAnchor: PopoverAnchor,
         in viewController: EntryFieldViewerVC)
 
-    func didPressEdit(at popoverAnchor: PopoverAnchor, in viewController: EntryFieldViewerVC)
+    func didPressEdit(in viewController: EntryFieldViewerVC)
     func didPressOpenLinkedDatabase(_ info: LinkedDatabaseInfo, in viewController: EntryFieldViewerVC)
 }
 
@@ -85,6 +85,10 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         refresh()
+    }
+
+    override var canBecomeFirstResponder: Bool {
+        return true
     }
 
     deinit {
@@ -149,7 +153,7 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
             assertionFailure()
             return
         }
-        delegate?.didPressEdit(at: sender.asPopoverAnchor, in: self)
+        delegate?.didPressEdit(in: self)
     }
 
     private func didTapRow(at indexPath: IndexPath) {
@@ -351,6 +355,22 @@ extension EntryFieldViewerVC: ViewableFieldCellDelegate {
 
         HapticFeedback.play(.contextMenuOpened)
         delegate?.didPressExportField(text: value, at: accessoryView.asPopoverAnchor, in: self)
+    }
+
+    override var keyCommands: [UIKeyCommand]? {
+        var commands = super.keyCommands ?? []
+        if canEditEntry {
+            commands.append(UIKeyCommand(
+                action: #selector(handleEditCommand),
+                hotkey: .editEntry,
+                discoverabilityTitle: LString.actionEdit
+            ))
+        }
+        return commands
+    }
+
+    @objc private func handleEditCommand() {
+        delegate?.didPressEdit(in: self)
     }
 }
 

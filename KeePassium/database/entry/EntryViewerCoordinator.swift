@@ -595,10 +595,7 @@ extension EntryViewerCoordinator {
 }
 
 extension EntryViewerCoordinator: EntryFieldViewerDelegate {
-    func didPressEdit(
-        at popoverAnchor: PopoverAnchor,
-        in viewController: EntryFieldViewerVC
-    ) {
+    func didPressEdit(in viewController: EntryFieldViewerVC) {
         guard canEditEntry else {
             Diag.warning("Tried to modify non-editable entry")
             assertionFailure()

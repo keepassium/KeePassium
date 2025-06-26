@@ -93,6 +93,8 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
 
         navigationItem.rightBarButtonItem =
             pagesViewController.viewControllers?.first?.navigationItem.rightBarButtonItem
+
+        pagesViewController.viewControllers?.first?.becomeFirstResponder()
     }
 
     override func viewWillLayoutSubviews() {
@@ -169,8 +171,11 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
         to targetPageVC: UIViewController,
         index: Int
     ) {
+        previousPageVC?.resignFirstResponder()
         previousPageVC?.didMove(toParent: nil)
         targetPageVC.didMove(toParent: pagesViewController)
+        targetPageVC.becomeFirstResponder()
+
         pageSelector.selectedSegmentIndex = index
         currentPageIndex = index
         navigationItem.rightBarButtonItem =

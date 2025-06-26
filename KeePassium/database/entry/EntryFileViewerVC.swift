@@ -297,6 +297,24 @@ final class EntryFileViewerVC: TableViewControllerWithContextActions, Refreshabl
         super.setEditing(editing, animated: animated)
         updateToolbar()
     }
+
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+
+    override var keyCommands: [UIKeyCommand]? {
+        var commands = super.keyCommands ?? []
+        commands.append(UIKeyCommand(
+            action: #selector(handleEditCommand),
+            hotkey: .editEntry,
+            discoverabilityTitle: LString.actionEdit
+        ))
+        return commands
+    }
+
+    @objc private func handleEditCommand() {
+        setEditing(!isEditing, animated: true)
+    }
 }
 
 private extension EntryFileViewerVC {

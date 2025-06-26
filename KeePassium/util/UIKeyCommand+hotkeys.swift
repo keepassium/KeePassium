@@ -32,6 +32,8 @@ struct Hotkey: Equatable {
     static let createEntry       = Self(input: "n", modifiers: [.command])
     static let createGroup       = Self(input: "n", modifiers: [.command, .control])
 
+    static let editEntry         = Self(input: "e", modifiers: [.command])
+
     static let copyUserName = Self(input: "B", modifiers: [.command])
     static let copyPassword = Self(input: "C", modifiers: [.command])
     static let copyURL      = Self(input: "U", modifiers: [.command])
