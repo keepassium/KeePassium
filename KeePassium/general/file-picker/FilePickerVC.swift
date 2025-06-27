@@ -107,22 +107,21 @@ class FilePickerVC: UIViewController {
         }
 
         let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
+            var config: UICollectionLayoutListConfiguration
             switch Section(rawValue: sectionIndex) {
             case .announcements:
-                let config = UICollectionLayoutListConfiguration(appearance: .sidebarPlain)
-                return NSCollectionLayoutSection.list(using: config, layoutEnvironment: layoutEnvironment)
+                config = UICollectionLayoutListConfiguration(appearance: .sidebarPlain)
             case .noFile:
-                let config = UICollectionLayoutListConfiguration(appearance: appearance)
-                return NSCollectionLayoutSection.list(using: config, layoutEnvironment: layoutEnvironment)
+                config = UICollectionLayoutListConfiguration(appearance: appearance)
             case .files:
-                var config = UICollectionLayoutListConfiguration(appearance: appearance)
-                config.leadingSwipeActionsConfigurationProvider = leadingActionsProvider
-                config.trailingSwipeActionsConfigurationProvider = trailingActionsProvider
-                return NSCollectionLayoutSection.list(using: config, layoutEnvironment: layoutEnvironment)
+                config = UICollectionLayoutListConfiguration(appearance: appearance)
             case .none:
                 assertionFailure()
                 return nil
             }
+            config.leadingSwipeActionsConfigurationProvider = leadingActionsProvider
+            config.trailingSwipeActionsConfigurationProvider = trailingActionsProvider
+            return NSCollectionLayoutSection.list(using: config, layoutEnvironment: layoutEnvironment)
         }
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.allowsSelection = true
