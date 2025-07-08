@@ -304,11 +304,12 @@ extension LString {
         value: "Open system settings → Privacy & Security → Accessibility and enable KeePassium there.",
         comment: "Call to action / instruction on how to enable accessibility permission")
 
-    public static let actionOpenAccessibilitySettings = NSLocalizedString(
+    public static let actionOpenAccessibilitySettings = actionOpenSystemSettings
+    public static let actionOpenSystemSettings = NSLocalizedString(
         "[AutoType/Action/OpenSettings]",
         bundle: Bundle.framework,
         value: "Open Settings",
-        comment: "Button to open system accessibility settings")
+        comment: "Button to open system settings (accessibility, permissions, etc)")
 
     public static let titleAutoTypeFailed = NSLocalizedString(
         "[AutoType/Error/Title]",

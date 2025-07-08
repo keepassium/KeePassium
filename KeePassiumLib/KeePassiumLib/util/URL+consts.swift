@@ -15,11 +15,24 @@ extension URL {
 
         private static let autoFillPreferencesURL_iOS = URL(string: "App-prefs:PASSWORDS&path=PASSWORD_OPTIONS")!
 
+        private static let appPermissionsURL_iOS = URL(string: UIApplication.openSettingsURLString)!
+
+        private static let cameraPermissionPreferencesURL_macOS =
+            URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Camera")!
+
         public static var autoFillPreferences: URL {
             if ProcessInfo.isRunningOnMac {
                 return autoFillPreferencesURL_macOS
             } else {
                 return autoFillPreferencesURL_iOS
+            }
+        }
+
+        public static var cameraPermissionsURL: URL {
+            if ProcessInfo.isRunningOnMac {
+                return cameraPermissionPreferencesURL_macOS
+            } else {
+                return appPermissionsURL_iOS
             }
         }
     }

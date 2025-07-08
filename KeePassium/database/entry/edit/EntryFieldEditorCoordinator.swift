@@ -34,7 +34,7 @@ final class EntryFieldEditorCoordinator: BaseCoordinator {
     private var originalEntryBeforeSaving: Entry?
     private var rollbackPreSaveActions: RollbackRoutine?
 
-    private var qrCodeScanner = { YubiKitQRCodeScanner() }()
+    private var qrCodeScanner = { QRCodeScanner() }()
 
     private let fieldEditorVC: EntryFieldEditorVC
 

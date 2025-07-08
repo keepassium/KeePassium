@@ -847,6 +847,15 @@
 		75C3801B217A0B76006F74C2 /* UIViewController+storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C3801A217A0B76006F74C2 /* UIViewController+storyboard.swift */; };
 		75C3802D217A2650006F74C2 /* AppCoverVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C3802C217A2650006F74C2 /* AppCoverVC.storyboard */; };
 		75C38045217A3204006F74C2 /* PlaceholderVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C38044217A3204006F74C2 /* PlaceholderVC.storyboard */; };
+		75C50AC12E1D486B001D6DA7 /* QRCodeScannerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C50AC02E1D486B001D6DA7 /* QRCodeScannerVC.swift */; };
+		75C50AC22E1D486B001D6DA7 /* QRCodeScannerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C50AC02E1D486B001D6DA7 /* QRCodeScannerVC.swift */; };
+		75C50AC32E1D486B001D6DA7 /* QRCodeScannerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C50AC02E1D486B001D6DA7 /* QRCodeScannerVC.swift */; };
+		75C50AC52E1D48BD001D6DA7 /* QRCodeScannerVC+strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C50AC42E1D48BD001D6DA7 /* QRCodeScannerVC+strings.swift */; };
+		75C50AC62E1D48BD001D6DA7 /* QRCodeScannerVC+strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C50AC42E1D48BD001D6DA7 /* QRCodeScannerVC+strings.swift */; };
+		75C50AC72E1D48BD001D6DA7 /* QRCodeScannerVC+strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C50AC42E1D48BD001D6DA7 /* QRCodeScannerVC+strings.swift */; };
+		75C50AC92E1D4905001D6DA7 /* QRScannerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C50AC82E1D4905001D6DA7 /* QRScannerError.swift */; };
+		75C50ACA2E1D4905001D6DA7 /* QRScannerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C50AC82E1D4905001D6DA7 /* QRScannerError.swift */; };
+		75C50ACB2E1D4905001D6DA7 /* QRScannerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C50AC82E1D4905001D6DA7 /* QRScannerError.swift */; };
 		75C51454234A792B00B44512 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 754BF0892082A6BD00E3A292 /* Assets.xcassets */; };
 		75C51455234A792C00B44512 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 754BF0892082A6BD00E3A292 /* Assets.xcassets */; };
 		75C5C3762129DE0800CD7FE3 /* UIAlertController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C5C3752129DE0800CD7FE3 /* UIAlertController+extensions.swift */; };
@@ -2235,6 +2244,9 @@
 		75C3801A217A0B76006F74C2 /* UIViewController+storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+storyboard.swift"; sourceTree = "<group>"; };
 		75C3802C217A2650006F74C2 /* AppCoverVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AppCoverVC.storyboard; sourceTree = "<group>"; };
 		75C38044217A3204006F74C2 /* PlaceholderVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlaceholderVC.storyboard; sourceTree = "<group>"; };
+		75C50AC02E1D486B001D6DA7 /* QRCodeScannerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerVC.swift; sourceTree = "<group>"; };
+		75C50AC42E1D48BD001D6DA7 /* QRCodeScannerVC+strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QRCodeScannerVC+strings.swift"; sourceTree = "<group>"; };
+		75C50AC82E1D4905001D6DA7 /* QRScannerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerError.swift; sourceTree = "<group>"; };
 		75C5C3752129DE0800CD7FE3 /* UIAlertController+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+extensions.swift"; sourceTree = "<group>"; };
 		75C7E3C52CE5EB5D004B853C /* PasskeyCreatorVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PasskeyCreatorVC.storyboard; sourceTree = "<group>"; };
 		75C7E3C82CE5EE53004B853C /* PasskeyCreatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasskeyCreatorVC.swift; sourceTree = "<group>"; };
@@ -2915,13 +2927,13 @@
 				75BC562725818702002B4395 /* a11y */,
 				75B78705261F8979005BE7B7 /* context-menu */,
 				75060C622B8CEBEA006C7B50 /* macos */,
+				75C50ABF2E1D483B001D6DA7 /* qr-scanner */,
 				753376F023CA650C00603F4A /* PasswordStringHelper.swift */,
 				75679ACA22F8095F00372301 /* AppInfo.swift */,
 				7546FBD820C3A3F600C5D834 /* Watchdog.swift */,
 				759894B624620AF6006B6709 /* FileExportHelper.swift */,
 				F35D7CD02D639563006DCBF0 /* FileImportHelper.swift */,
 				759894BB24620D33006B6709 /* FileDestructionHelper.swift */,
-				F3AFC1B025FB7C38005FF4D7 /* QRCodeScanner.swift */,
 				753A3EE920D3776D00A1CF70 /* Refreshable.swift */,
 				75779863223023D3006671BD /* ProgressViewHost.swift */,
 				754804FA238E51AF0068C863 /* PopoverAnchor.swift */,
@@ -3330,6 +3342,17 @@
 				7542421D2DB7E9EA00DF6249 /* LString+appProtectionSettings.swift */,
 			);
 			path = "app-protection";
+			sourceTree = "<group>";
+		};
+		75C50ABF2E1D483B001D6DA7 /* qr-scanner */ = {
+			isa = PBXGroup;
+			children = (
+				F3AFC1B025FB7C38005FF4D7 /* QRCodeScanner.swift */,
+				75C50AC82E1D4905001D6DA7 /* QRScannerError.swift */,
+				75C50AC02E1D486B001D6DA7 /* QRCodeScannerVC.swift */,
+				75C50AC42E1D48BD001D6DA7 /* QRCodeScannerVC+strings.swift */,
+			);
+			path = "qr-scanner";
 			sourceTree = "<group>";
 		};
 		75CBABA421C16DD400B8AFE2 /* controllers */ = {
@@ -4471,6 +4494,7 @@
 				757169822DBCFDE800FD6A6C /* SearchSettingsVC.swift in Sources */,
 				75BE091F2509905300C436C2 /* ItemIconPickerCoordinator.swift in Sources */,
 				75506D9E2DBE5CE700AC26C6 /* BaseCoordinator.swift in Sources */,
+				75C50AC32E1D486B001D6DA7 /* QRCodeScannerVC.swift in Sources */,
 				F35232AA2B36FE6200F17F13 /* LString+tags.swift in Sources */,
 				75C94C5F20B4BAB0004FA29D /* EntryFileViewerVC.swift in Sources */,
 				759FD0372D9D1A0400659852 /* FilePickerVC.swift in Sources */,
@@ -4561,6 +4585,7 @@
 				758E5EF225F2E22600E06AE7 /* DatabaseSaving.swift in Sources */,
 				75779864223023D3006671BD /* ProgressViewHost.swift in Sources */,
 				7538936926D3BEBE00CAB107 /* KeyboardDismissable.swift in Sources */,
+				75C50ACB2E1D4905001D6DA7 /* QRScannerError.swift in Sources */,
 				758BADB524B5EAFF00CC9265 /* GradientSeparatorView.swift in Sources */,
 				7579A07024F1C55B00C98F24 /* AppHistoryCoordinator.swift in Sources */,
 				75917F422DAC6E8200EB9375 /* SelectableCollectionViewListCell.swift in Sources */,
@@ -4577,6 +4602,7 @@
 				75E60AE525CF5E090089219C /* DatabaseIconSet+assets.swift in Sources */,
 				1CEC93095649196A21117BC3 /* FaviconDownloading.swift in Sources */,
 				A6DDE071E0C62D87E83420E5 /* ToolbarDelegate.swift in Sources */,
+				75C50AC72E1D48BD001D6DA7 /* QRCodeScannerVC+strings.swift in Sources */,
 				758AAFD22DA3343300B5FA41 /* UIContextualAction+extensions.swift in Sources */,
 				F6EE16804A7CB8A732EA7D55 /* Credits.swift in Sources */,
 				C2F65EEA0F5F30ABA5B71F78 /* NullableBoolSettingCell.swift in Sources */,
@@ -4763,6 +4789,7 @@
 				F35232AC2B36FE8600F17F13 /* LString+tags.swift in Sources */,
 				757169812DBCFDE800FD6A6C /* SearchSettingsVC.swift in Sources */,
 				75BE09202509905300C436C2 /* ItemIconPickerCoordinator.swift in Sources */,
+				75C50AC22E1D486B001D6DA7 /* QRCodeScannerVC.swift in Sources */,
 				75B38C2A233E5B7C006BDEFC /* EntryFileViewerVC.swift in Sources */,
 				F3C0A6352B6D777A007F4D9E /* LargeTypeVC.swift in Sources */,
 				759FD0362D9D1A0400659852 /* FilePickerVC.swift in Sources */,
@@ -4853,6 +4880,7 @@
 				758E5EF325F2E22600E06AE7 /* DatabaseSaving.swift in Sources */,
 				F321414F2A934AB5007A8D4E /* PasswordAuditCoordinator.swift in Sources */,
 				75B38C48233E5B7C006BDEFC /* ProgressViewHost.swift in Sources */,
+				75C50ACA2E1D4905001D6DA7 /* QRScannerError.swift in Sources */,
 				7538936B26D3BEBE00CAB107 /* KeyboardDismissable.swift in Sources */,
 				758BADB724B5EAFF00CC9265 /* GradientSeparatorView.swift in Sources */,
 				75917F432DAC6E8200EB9375 /* SelectableCollectionViewListCell.swift in Sources */,
@@ -4869,6 +4897,7 @@
 				75814FD425F3D70B00B52A57 /* UIApplication+extensions.swift in Sources */,
 				75E60AE725CF5E090089219C /* DatabaseIconSet+assets.swift in Sources */,
 				576C2F92F2472658AF625BD0 /* ToolbarDelegate.swift in Sources */,
+				75C50AC52E1D48BD001D6DA7 /* QRCodeScannerVC+strings.swift in Sources */,
 				758AAFD12DA3343300B5FA41 /* UIContextualAction+extensions.swift in Sources */,
 				32F20E78C4050C3BD00AB812 /* Credits.swift in Sources */,
 				7718B82C59679ED748D24BB3 /* NullableBoolSettingCell.swift in Sources */,
@@ -5026,6 +5055,7 @@
 				F35232AE2B36FE8700F17F13 /* LString+tags.swift in Sources */,
 				75D0761328B639D200F02E39 /* TextInput+editMenu.swift in Sources */,
 				753E01032B1128A500378C8D /* EncryptionSettingsVC.swift in Sources */,
+				75C50AC62E1D48BD001D6DA7 /* QRCodeScannerVC+strings.swift in Sources */,
 				75D0761428B639D200F02E39 /* UIViewController+subviews.swift in Sources */,
 				75D0761528B639D200F02E39 /* Refreshable.swift in Sources */,
 				75D0761628B639D200F02E39 /* PopoverAnchor.swift in Sources */,
@@ -5146,6 +5176,7 @@
 				F32141582A934ABA007A8D4E /* PasswordAuditService.swift in Sources */,
 				75DEE8112AA6183C0024AE11 /* ExposureCountFormatter.swift in Sources */,
 				F34B0DCC2B2212A2001F7500 /* FreeBadgeAccessory.swift in Sources */,
+				75C50AC12E1D486B001D6DA7 /* QRCodeScannerVC.swift in Sources */,
 				75D0766328B639D200F02E39 /* AppHistoryCoordinator.swift in Sources */,
 				75D0766428B639D200F02E39 /* RightDetailCell.swift in Sources */,
 				751ABAD32915B73D008C18DE /* ButtonCell.swift in Sources */,
@@ -5153,6 +5184,7 @@
 				75D0766628B639D200F02E39 /* DismissableNavigationController.swift in Sources */,
 				F3D9DE462AA79CAB00FEAF50 /* FaviconDownloader.swift in Sources */,
 				75D0766728B639D200F02E39 /* HardwareKeyPickerCoordinator.swift in Sources */,
+				75C50AC92E1D4905001D6DA7 /* QRScannerError.swift in Sources */,
 				75D0766828B639D200F02E39 /* URLOpener.swift in Sources */,
 				7538E3A62DCC09E9002766BF /* AutoFillSettingsVC.swift in Sources */,
 				75D0766928B639D200F02E39 /* UIApplication+extensions.swift in Sources */,

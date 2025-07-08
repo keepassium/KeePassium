@@ -210,16 +210,10 @@ final class EntryFieldEditorVC: UITableViewController, Refreshable {
             self?.didPressManualOTPSetup()
         }
 
-        let children: [UIMenuElement]
-        if ProcessInfo.isRunningOnMac {
-            children = [manualSetupAction]
-        } else {
-            children = [qrCodeSetupAction, manualSetupAction]
-        }
         return UIMenu(
             title: LString.fieldOTP,
             image: .symbol(.clock),
-            children: children
+            children: [qrCodeSetupAction, manualSetupAction]
         )
     }
 
