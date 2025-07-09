@@ -50,7 +50,7 @@ public class Clipboard {
         }
 
         let isLocalOnly = !Settings.current.isUniversalClipboardEnabled
-        if let timeout = timeout, timeout > 0.0 {
+        if let timeout, timeout > 0.0 {
             UIPasteboard.general.setItems(
                 [pasteboardItem],
                 options: [
@@ -71,7 +71,7 @@ public class Clipboard {
 
     private func scheduleCleanup(text: String, after timeout: TimeInterval?) {
         guard ProcessInfo.isRunningOnMac,
-              let timeout = timeout,
+              let timeout,
               timeout > 0
         else {
             return

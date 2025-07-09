@@ -60,7 +60,7 @@ final public class RouterNavigationController: UINavigationController {
 
     @objc
     private func didPressEscapeKey() {
-        if let router = router, router.canPopTopViewControllerFromKeyboard() {
+        if let router, router.canPopTopViewControllerFromKeyboard() {
             router.pop(animated: true)
         }
     }
@@ -438,7 +438,7 @@ extension NavigationRouter: ProgressViewHost {
         navigationController.isModalInPresentation = wasModalInPresentation
 
         progressOverlay?.dismiss(animated: animated) { [weak self] _ in
-            guard let self = self else { return }
+            guard let self else { return }
             self.progressOverlay?.removeFromSuperview()
             self.progressOverlay = nil
         }

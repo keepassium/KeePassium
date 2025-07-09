@@ -119,7 +119,7 @@ final class AnnouncementView: UIView {
 
     private lazy var closeButton: UIButton = {
         let button = UIButton(type: .close, primaryAction: UIAction {[weak self] _ in
-            guard let self = self else { return }
+            guard let self else { return }
             self.onDidPressClose?(self)
         })
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -130,7 +130,7 @@ final class AnnouncementView: UIView {
 
     private lazy var actionButton: UIButton = {
         let button = UIButton(primaryAction: UIAction {[weak self] _ in
-            guard let self = self else { return }
+            guard let self else { return }
             self.onDidPressActionButton?(self)
         })
         button.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.leading

@@ -85,7 +85,7 @@ final class DatabaseSettingsDataProtectionVC: UITableViewController, Refreshable
         cell.value = rememberMasterKey
         cell.defaultValue = Settings.current.isRememberDatabaseKey
         cell.onStateChanged = { [weak self] newValue in
-            guard let self = self else { return }
+            guard let self else { return }
 
             self.rememberMasterKey = newValue
             self.delegate?.didChangeRememberMasterKey(newValue, in: self)
@@ -97,7 +97,7 @@ final class DatabaseSettingsDataProtectionVC: UITableViewController, Refreshable
         cell.value = rememberKeyFile
         cell.defaultValue = Settings.current.isKeepKeyFileAssociations
         cell.onStateChanged = { [weak self] newValue in
-            guard let self = self else { return }
+            guard let self else { return }
 
             self.rememberKeyFile = newValue
             self.delegate?.didChangeRememberKeyFile(newValue, in: self)
@@ -109,7 +109,7 @@ final class DatabaseSettingsDataProtectionVC: UITableViewController, Refreshable
         cell.value = cachesDerivedEncryptionKey
         cell.defaultValue = Settings.current.isRememberDatabaseFinalKey
         cell.onStateChanged = { [weak self] newValue in
-            guard let self = self else { return }
+            guard let self else { return }
 
             self.cachesDerivedEncryptionKey = newValue
             self.delegate?.didChangeRememberDerivedKey(newValue, in: self)

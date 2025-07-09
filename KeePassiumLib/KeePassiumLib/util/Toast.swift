@@ -563,7 +563,7 @@ public extension UIView {
             wrapperView.layer.borderWidth = 1.0
         }
 
-        if let image = image {
+        if let image {
             let _imageView = UIImageView(image: image)
             _imageView.adjustsImageSizeForAccessibilityContentSizeCategory = true
             _imageView.preferredSymbolConfiguration = UIImage.SymbolConfiguration(textStyle: .body, scale: .large)
@@ -575,14 +575,14 @@ public extension UIView {
 
         var imageRect = CGRect.zero
 
-        if let imageView = imageView {
+        if let imageView {
             imageRect.origin.x = style.horizontalPadding
             imageRect.origin.y = style.verticalPadding
             imageRect.size.width = imageView.bounds.width
             imageRect.size.height = imageView.bounds.height
         }
 
-        if let title = title {
+        if let title {
             titleLabel = UILabel()
             titleLabel?.numberOfLines = style.titleNumberOfLines
             titleLabel?.font = style.titleFont
@@ -596,7 +596,7 @@ public extension UIView {
                 width: (self.bounds.width * style.maxWidthPercentage) - imageRect.size.width,
                 height: self.bounds.height * style.maxHeightPercentage)
             let titleSize = titleLabel?.sizeThatFits(maxTitleSize)
-            if let titleSize = titleSize {
+            if let titleSize {
                 titleLabel?.frame = CGRect(origin: CGPoint.zero, size: titleSize)
             }
         }
@@ -673,7 +673,7 @@ public extension UIView {
         var titleRect = CGRect.zero
         titleRect.origin.x = imageRect.origin.x + imageRect.width + style.horizontalPadding
         titleRect.origin.y = style.verticalPadding
-        if let titleLabel = titleLabel {
+        if let titleLabel {
             titleRect.size.width = titleLabel.bounds.width
             titleRect.size.height = titleLabel.bounds.height
         }
@@ -721,7 +721,7 @@ public extension UIView {
 
         wrapperView.frame = CGRect(x: 0.0, y: 0.0, width: wrapperWidth, height: wrapperHeight)
 
-        if let titleLabel = titleLabel {
+        if let titleLabel {
             titleRect.size.width = longerWidth
             titleLabel.frame = titleRect
             wrapperView.addSubview(titleLabel)
@@ -740,7 +740,7 @@ public extension UIView {
             wrapperView.addSubview(button)
         }
 
-        if let imageView = imageView {
+        if let imageView {
             imageRect.origin.y = (wrapperHeight - imageRect.height) / 2
             imageView.frame = imageRect
             wrapperView.addSubview(imageView)

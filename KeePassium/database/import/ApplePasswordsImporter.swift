@@ -75,7 +75,6 @@ public class ApplePasswordsImporter {
         let headerRow = parsedRows[0]
         guard headerRow.count == CSVColumn.allCases.count else {
             Diag.error("Unexpected number of columns in header [expected: \(CSVColumn.allCases.count), actual: \(headerRow.count)]")
-            let colIndex = Self.getStartPosition(ofColumn: headerRow.count, in: headerRow)
             throw ImportError.invalidFormat(lineNumber: 1, columnNumber: nil)
         }
 

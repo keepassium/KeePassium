@@ -62,7 +62,7 @@ extension PasswordQuality {
 
 extension PasswordQuality {
     init?(password: String?) {
-        guard let password = password,
+        guard let password,
               !password.isEmpty,
               password.count < 1000
         else {

@@ -271,7 +271,7 @@ final class EntryExtraViewerVC: UITableViewController, Refreshable {
         let section = getSection(rawIndex: indexPath.section)
         guard section == .info,
               indexPath.row == 0,
-              let entry = entry,
+              let entry,
               let cell = tableView.cellForRow(at: indexPath)
         else {
             return
@@ -343,7 +343,7 @@ final class EntryExtraViewerVC: UITableViewController, Refreshable {
 
 extension EntryExtraViewerVC: FieldCopiedViewDelegate {
     func didPressExport(for indexPath: IndexPath, from view: FieldCopiedView) {
-        guard let entry = entry else {
+        guard let entry else {
             return
         }
         view.hide(animated: true)

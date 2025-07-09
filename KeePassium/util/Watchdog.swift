@@ -111,7 +111,7 @@ class Watchdog {
             maybeLockSomething()
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
-            guard let self = self else { return }
+            guard let self else { return }
             self.delegate?.hideAppCover(self)
         }
     }
@@ -138,7 +138,7 @@ class Watchdog {
 
     internal func willResignActive() {
         Diag.debug("App will resign active")
-        guard let delegate = delegate else { return }
+        guard let delegate else { return }
         delegate.showAppCover(self)
         if delegate.isAppLocked { return }
 
@@ -182,7 +182,7 @@ class Watchdog {
     }
 
     open func restart() {
-        guard let delegate = delegate else { return }
+        guard let delegate else { return }
         guard !delegate.isAppLocked else { return }
         Settings.current.recentUserActivityTimestamp = Date.now
         restartAppTimer()
@@ -266,7 +266,7 @@ class Watchdog {
     }
 
     private func restartAppTimer() {
-        if let appLockTimer = appLockTimer {
+        if let appLockTimer {
             appLockTimer.invalidate()
         }
 
@@ -285,7 +285,7 @@ class Watchdog {
     }
 
     private func restartDatabaseTimer() {
-        if let databaseLockTimer = databaseLockTimer {
+        if let databaseLockTimer {
             databaseLockTimer.invalidate()
         }
 
@@ -305,7 +305,7 @@ class Watchdog {
     }
 
     private func engageAppLock() {
-        guard let delegate = delegate else { return }
+        guard let delegate else { return }
         guard !delegate.isAppLocked else { return }
         Diag.info("Engaging App Lock")
         appLockTimer?.invalidate()
@@ -332,7 +332,7 @@ class Watchdog {
     }
 
     func unlockApp() {
-        guard let delegate = delegate else { return }
+        guard let delegate else { return }
         guard delegate.isAppLocked else { return }
         AppEraser.registerSuccessfulAppUnlock()
         delegate.hideAppCover(self)

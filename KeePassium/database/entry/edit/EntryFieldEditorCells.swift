@@ -118,7 +118,7 @@ class EntryFieldEditorTitleCell:
     }
 
     func validatingTextField(_ sender: ValidatingTextField, textDidChange text: String) {
-        guard let field = field else { return }
+        guard let field else { return }
         field.value = titleTextField.text ?? ""
         field.isValid = field.value?.isNotEmpty ?? false
         delegate?.didChangeField(field, in: self)
@@ -129,7 +129,7 @@ class EntryFieldEditorTitleCell:
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let field = field else { return false }
+        guard let field else { return false }
         delegate?.didPressReturn(for: field, in: self)
         return false
     }
@@ -196,7 +196,7 @@ final class PasswordEntryFieldCell:
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let field = field else { return false }
+        guard let field else { return false }
         delegate?.didPressReturn(for: field, in: self)
         return false
     }
@@ -210,7 +210,7 @@ final class PasswordEntryFieldCell:
     }
 
     func validatingTextField(_ sender: ValidatingTextField, textDidChange text: String) {
-        guard let field = field else { return }
+        guard let field else { return }
         field.value = textField.text ?? ""
         passwordQualityIndicatorView.quality = .init(password: textField.text)
         delegate?.didChangeField(field, in: self)
@@ -313,7 +313,7 @@ class EntryFieldEditorMultiLineCell:
     }
 
     func validatingTextView(_ sender: ValidatingTextView, textDidChange text: String) {
-        guard let field = field else { return }
+        guard let field else { return }
         field.value = textView.text ?? ""
         delegate?.didChangeField(field, in: self)
     }
@@ -405,7 +405,7 @@ class EntryFieldEditorCustomFieldCell:
 
     func validatingTextField(_ sender: ValidatingTextField, textDidChange text: String) {
         guard sender == nameTextField else { assertionFailure(); return }
-        guard let field = field else { return }
+        guard let field else { return }
         field.internalName = text
         field.isValid = nameTextField.isValid
         delegate?.didChangeField(field, in: self)
@@ -418,7 +418,7 @@ class EntryFieldEditorCustomFieldCell:
 
     func validatingTextView(_ sender: ValidatingTextView, textDidChange text: String) {
         guard sender == valueTextView else { assertionFailure(); return }
-        guard let field = field else { return }
+        guard let field else { return }
         field.value = valueTextView.text ?? ""
         delegate?.didChangeField(field, in: self)
     }
@@ -451,14 +451,14 @@ class EntryFieldEditorCustomFieldCell:
 
     @objc
     private func protectionDidChange() {
-        guard let field = field else { return }
+        guard let field else { return }
         field.isProtected = protectionSwitch.isOn
         delegate?.didChangeField(field, in: self)
     }
 
     @objc
     private func didPressDelete() {
-        guard let field = field else { return }
+        guard let field else { return }
         delegate?.didPressDelete(field, in: self)
     }
 }

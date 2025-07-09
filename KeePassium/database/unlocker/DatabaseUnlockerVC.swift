@@ -219,7 +219,7 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
             return
         }
 
-        if let yubiKey = yubiKey {
+        if let yubiKey {
             hardwareKeyField.text = YubiKey.getTitle(for: yubiKey)
             Diag.info("Hardware key selected [key: \(yubiKey)]")
         } else {
@@ -378,7 +378,7 @@ extension DatabaseUnlockerVC: ProgressViewHost {
         guard progressOverlay != nil else { return }
         navigationItem.setHidesBackButton(false, animated: animated)
         progressOverlay?.dismiss(animated: animated) { [weak self] _ in
-            guard let self = self else { return }
+            guard let self else { return }
             self.progressOverlay?.removeFromSuperview()
             self.progressOverlay = nil
         }

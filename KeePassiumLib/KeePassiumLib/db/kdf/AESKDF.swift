@@ -110,7 +110,7 @@ class AESKDF: KeyDerivationFunction {
                     transformRounds,
                     {
                         (round: UInt64, progressPtr: Optional<UnsafeRawPointer>) -> Int32 in
-                        guard let progressPtr = progressPtr else {
+                        guard let progressPtr else {
                             return 0 /* continue transformations */
                         }
                         let progress = Unmanaged<ProgressEx>

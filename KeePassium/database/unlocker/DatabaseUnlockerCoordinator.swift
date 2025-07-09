@@ -8,8 +8,6 @@
 
 import KeePassiumLib
 
-typealias DatabaseUnlockResult = Result<Database, Error>
-
 protocol DatabaseUnlockerCoordinatorDelegate: AnyObject {
     func shouldDismissFromKeyboard(_ coordinator: DatabaseUnlockerCoordinator) -> Bool
 
@@ -131,7 +129,7 @@ final class DatabaseUnlockerCoordinator: BaseCoordinator {
 
         let timeout = Timeout(duration: 2.0)
         fileRef.refreshInfo(timeout: timeout) { [weak self] result in
-            guard let self = self else { return }
+            guard let self else { return }
             switch result {
             case .success:
                 self.refresh()
@@ -292,7 +290,7 @@ extension DatabaseUnlockerCoordinator {
              .unlockOriginalFileSlow:
             currentDatabaseRef = databaseRef
         case .unlockFallbackFile:
-            guard let fallbackDatabaseRef = fallbackDatabaseRef else {
+            guard let fallbackDatabaseRef else {
                 assertionFailure("Tried to open non-existent database")
                 return
             }
@@ -338,7 +336,7 @@ extension DatabaseUnlockerCoordinator {
                 action: .init(
                     title: error.recoverySuggestion ?? LString.actionFixThis,
                     handler: { [weak self] in
-                        guard let self = self else { return }
+                        guard let self else { return }
                         Diag.debug("Will reinstate database")
                         self.delegate?.didPressReinstateDatabase(self.databaseRef, in: self)
                     }
@@ -380,7 +378,7 @@ extension DatabaseUnlockerCoordinator {
             action: .init(
                 title: error.recoverySuggestion ?? LString.actionFixThis,
                 handler: { [weak self] in
-                    guard let self = self else { return }
+                    guard let self else { return }
                     Diag.debug("Will reinstate database")
                     self.delegate?.didPressReinstateDatabase(self.databaseRef, in: self)
                 }
@@ -397,7 +395,7 @@ extension DatabaseUnlockerCoordinator {
             action: .init(
                 title: LString.actionConnectToServer,
                 handler: { [weak self] in
-                    guard let self = self else { return }
+                    guard let self else { return }
                     Diag.debug("Will add remote database")
                     self.delegate?.didPressAddRemoteDatabase(in: self)
                 }

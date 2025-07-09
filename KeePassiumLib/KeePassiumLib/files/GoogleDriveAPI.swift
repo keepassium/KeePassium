@@ -98,11 +98,11 @@ extension GoogleDriveAPI {
             data: Data?,
             error: Error?
         ) -> Result<[String: Any], RemoteError> {
-            if let error = error {
+            if let error {
                 Diag.error("Google Drive request failed [operation: \(operation), message: \(error.localizedDescription)]")
                 return .failure(.general(error: error))
             }
-            guard let data = data else {
+            guard let data else {
                 Diag.error("Google Drive request failed: no data received [operation: \(operation)]")
                 return .failure(.emptyResponse)
             }

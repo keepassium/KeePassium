@@ -37,7 +37,7 @@ extension ProcessInfo {
         /* Based on https://gist.github.com/lukaskubanek/cbfcab29c0c93e0e9e0a16ab09586996 */
         var code: SecStaticCode?
         var status = SecStaticCodeCreateWithPath(Bundle.main.bundleURL as CFURL, [], &code)
-        guard status == noErr, let code = code else {
+        guard status == noErr, let code else {
             return false
         }
 
@@ -48,7 +48,7 @@ extension ProcessInfo {
             &requirement
         )
 
-        guard status == noErr, let requirement = requirement else {
+        guard status == noErr, let requirement else {
             return false
         }
         status = SecStaticCodeCheckValidity(code, [], requirement)

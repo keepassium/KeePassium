@@ -233,7 +233,7 @@ final class PasswordGeneratorStepperCell: UITableViewCell {
     }
 
     private func getDescription(for value: Int?) -> String {
-        if let value = value {
+        if let value {
             return String(value)
         } else {
             return "∞"

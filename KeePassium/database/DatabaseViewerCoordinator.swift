@@ -144,7 +144,7 @@ final class DatabaseViewerCoordinator: BaseCoordinator {
 
         oldPrimaryRouterDetailDismissalHandler = primaryRouter.collapsedDetailDismissalHandler
         primaryRouter.collapsedDetailDismissalHandler = { [weak self] dismissedVC in
-            guard let self = self else { return }
+            guard let self else { return }
             if dismissedVC === self.entryViewerRouter?.navigationController {
                 self.showEntry(nil)
             }
@@ -168,7 +168,7 @@ final class DatabaseViewerCoordinator: BaseCoordinator {
     }
 
     public func stop(animated: Bool, completion: (() -> Void)?) {
-        guard let rootGroupViewer = rootGroupViewer else {
+        guard let rootGroupViewer else {
             assertionFailure("Group viewer already deallocated")
             Diag.debug("Group viewer is already deallocated, ignoring")
             return
@@ -292,7 +292,7 @@ extension DatabaseViewerCoordinator {
     }
 
     private func showGroup(_ group: Group?, replacingTopVC: Bool = false, animated: Bool) {
-        guard let group = group else {
+        guard let group else {
             Diag.error("The group is nil")
             assertionFailure()
             return
@@ -322,7 +322,7 @@ extension DatabaseViewerCoordinator {
             animated: animated && !isCustomTransition,
             replaceTopViewController: replacingTopVC,
             onPop: { [weak self, previousGroup] in
-                guard let self = self else { return }
+                guard let self else { return }
                 self.currentGroup = previousGroup
                 if previousGroup == nil { 
                     self.showEntry(nil) 
@@ -361,7 +361,7 @@ extension DatabaseViewerCoordinator {
             UIMenu.rebuildMainMenu()
         }
         currentEntry = entry
-        guard let entry = entry else {
+        guard let entry else {
             if !splitViewController.isCollapsed {
                 splitViewController.setDetailRouter(placeholderRouter)
             }
@@ -682,7 +682,7 @@ extension DatabaseViewerCoordinator {
     }
 
     private func importGroupsAndEntries(type: UTType, provider: @escaping (URL, Group) throws -> ([Entry], [Group])) {
-        guard let currentGroup = currentGroup else {
+        guard let currentGroup else {
             assertionFailure("No group selected")
             return
         }
@@ -692,7 +692,7 @@ extension DatabaseViewerCoordinator {
             defer {
                 self?.fileImportHelper = nil
             }
-            guard let self = self, let fileURL = fileURL else {
+            guard let self, let fileURL else {
                 return
             }
 
@@ -708,7 +708,7 @@ extension DatabaseViewerCoordinator {
                     preferredStyle: .alert
                 )
                 alert.addAction(title: LString.actionDone, style: .default, preferred: true) { [weak self] _ in
-                    guard let self = self else { return }
+                    guard let self else { return }
                     groups.forEach { group in
                         currentGroup.add(group: group)
                     }
@@ -778,7 +778,7 @@ extension DatabaseViewerCoordinator {
     }
 
     func canPerformAutoType() -> Bool {
-        guard let currentEntry = currentEntry,
+        guard let currentEntry,
               autoTypeHelper != nil
         else {
             return false
@@ -787,7 +787,7 @@ extension DatabaseViewerCoordinator {
     }
 
     func performAutoType() {
-        guard let topGroupViewer = topGroupViewer, let entry = currentEntry else {
+        guard let topGroupViewer, let entry = currentEntry else {
             return
         }
         didPressAutoType(entry, in: topGroupViewer)
@@ -916,7 +916,7 @@ extension DatabaseViewerCoordinator: GroupViewerDelegate {
     }
 
     func didPressAutoType(_ entry: Entry, in viewController: GroupViewerVC) {
-        guard let autoTypeHelper = autoTypeHelper else {
+        guard let autoTypeHelper else {
             assertionFailure("AutoTypeHelper not available")
             return
         }
@@ -1004,7 +1004,7 @@ extension DatabaseViewerCoordinator: ProgressViewHost {
 
     public func hideProgressView(animated: Bool) {
         progressOverlay?.dismiss(animated: animated) { [weak self] _ in
-            guard let self = self else { return }
+            guard let self else { return }
             self.progressOverlay?.removeFromSuperview()
             self.progressOverlay = nil
         }
@@ -1153,7 +1153,7 @@ extension DatabaseViewerCoordinator: UISplitViewControllerDelegate {
         _ splitViewController: UISplitViewController,
         separateSecondaryFrom primaryViewController: UIViewController
     ) -> UIViewController? {
-        if let entryViewerRouter = entryViewerRouter {
+        if let entryViewerRouter {
             return entryViewerRouter.navigationController
         }
         return placeholderRouter.navigationController
@@ -1170,7 +1170,7 @@ extension DatabaseViewerCoordinator: UISplitViewControllerDelegate {
 extension DatabaseViewerCoordinator {
 
     private func updateAnnouncements() {
-        guard let rootGroupViewer = rootGroupViewer else {
+        guard let rootGroupViewer else {
             assertionFailure()
             return
         }
@@ -1243,7 +1243,7 @@ extension DatabaseViewerCoordinator {
             actionTitle: actionTitle,
             image: .symbol(.iCloudSlash),
             onDidPressAction: { [weak self] _ in
-                guard let self = self else { return }
+                guard let self else { return }
                 self.delegate?.didPressReinstateDatabase(originalRef, in: self)
                 self.updateAnnouncements()
             }

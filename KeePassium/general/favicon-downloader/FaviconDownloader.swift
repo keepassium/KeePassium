@@ -216,7 +216,7 @@ final class FaviconDownloader {
 
         Diag.debug("Checking HTML for favicon links")
         let task = urlSession.dataTask(with: URLRequest(url: url)) { [weak self] probablyHtmlData, _, error in
-            if let error = error {
+            if let error {
                 Diag.error("Favicon request failed [error: \(error)]")
                 DispatchQueue.main.async {
                     let nsError = error as NSError

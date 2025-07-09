@@ -201,7 +201,7 @@ class ProgressOverlay: UIView {
             delay: 0.0,
             options: [.allowUserInteraction, .beginFromCurrentState],
             animations: { [weak self] in
-                guard let self = self else { return }
+                guard let self else { return }
                 self.spinner.alpha = spinnerAlpha
                 self.animatingStatusConstraint.isActive = isConstraintActive
                 self.setNeedsLayout()

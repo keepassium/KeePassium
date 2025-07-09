@@ -119,7 +119,7 @@ final class QRCodeScannerVC: UIViewController, AVCaptureMetadataOutputObjectsDel
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        guard let previewLayer = previewLayer else { return }
+        guard let previewLayer else { return }
 
         let frameChanged = !previewLayer.frame.equalTo(view.layer.bounds)
         if !frameChanged {
@@ -313,8 +313,7 @@ final class QRCodeScannerVC: UIViewController, AVCaptureMetadataOutputObjectsDel
     }
 
     private func updatePreviewOrientation() {
-        guard let previewLayer = previewLayer,
-              let connection = previewLayer.connection else {
+        guard let connection = previewLayer?.connection else {
             return
         }
 

@@ -63,10 +63,10 @@ public final class Argon2 {
         let progressCallback: progress_fptr!   
         let progressObject: UnsafeRawPointer?  
 
-        if let progress = progress {
+        if let progress {
             progressObject = UnsafeRawPointer(Unmanaged.passUnretained(progress).toOpaque())
             progressCallback = { (pass: UInt32, observer: Optional<UnsafeRawPointer>) -> Int32 in
-                guard let observer = observer else { return 0 /* continue hashing */ }
+                guard let observer else { return 0 /* continue hashing */ }
                 let progress = Unmanaged<Progress>.fromOpaque(observer).takeUnretainedValue()
                 progress.completedUnitCount = Int64(pass)
                 let isShouldStop: Int32 = progress.isCancelled ? 1 : 0
@@ -102,8 +102,8 @@ public final class Argon2 {
         }
 
         progressKVO?.invalidate()
-        if let progress = progress {
-            progress.completedUnitCount = Int64(params.iterations) 
+        if let progress {
+            progress.completedUnitCount = Int64(params.iterations)
             if progress.isCancelled {
                 throw ProgressInterruption.cancelled(reason: progress.cancellationReason)
             }

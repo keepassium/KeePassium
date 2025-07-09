@@ -168,10 +168,6 @@ extension DatabasePickerCoordinator {
         delegate?.didPressShowAppSettings(at: popoverAnchor, in: _filePickerVC)
     }
 
-    private func didPressShowAboutApp(at popoverAnchor: PopoverAnchor?) {
-        delegate?.didPressShowAboutApp(at: popoverAnchor, in: _filePickerVC)
-    }
-
     private func didPressShowDiagnostics() {
         delegate?.didPressShowDiagnostics(at: nil, in: _filePickerVC)
     }

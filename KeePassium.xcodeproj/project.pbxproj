@@ -340,8 +340,7 @@
 		7564FAEE2DB941D40030F3C4 /* DataProtectionSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7564FAEB2DB941D40030F3C4 /* DataProtectionSettingsVC.swift */; };
 		75679ACB22F8095F00372301 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACA22F8095F00372301 /* AppInfo.swift */; };
 		75679ACC22F887AB00372301 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACA22F8095F00372301 /* AppInfo.swift */; };
-		75679ACE22FD897000372301 /* NewsCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACD22FD896F00372301 /* NewsCenter.swift */; };
-		75679ACF22FD897000372301 /* NewsCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACD22FD896F00372301 /* NewsCenter.swift */; };
+		756A64BF2C467E2400999FC6 /* WebDAVListParsingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756A64BE2C467E2400999FC6 /* WebDAVListParsingTest.swift */; };
 		756AE9D320CF8B5E00995846 /* ItemIconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756AE9D220CF8B5E00995846 /* ItemIconPicker.swift */; };
 		756D946D2BA2F27D0084BDF5 /* YubiKit in Frameworks */ = {isa = PBXBuildFile; productRef = 756D946C2BA2F27D0084BDF5 /* YubiKit */; settings = {ATTRIBUTES = (Weak, ); }; };
 		756D946F2BA2F29F0084BDF5 /* YubiKit in Frameworks */ = {isa = PBXBuildFile; productRef = 756D946E2BA2F29F0084BDF5 /* YubiKit */; };
@@ -374,8 +373,6 @@
 		757687DE21940CEB00305F97 /* KeePassiumLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 75FEC2222175292C0034334B /* KeePassiumLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		75779864223023D3006671BD /* ProgressViewHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75779863223023D3006671BD /* ProgressViewHost.swift */; };
 		75779865223023D3006671BD /* ProgressViewHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75779863223023D3006671BD /* ProgressViewHost.swift */; };
-		7578487D22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578487C22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift */; };
-		7578487E22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578487C22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift */; };
 		7579A06724F0730A00C98F24 /* AppHistoryViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7579A06624F0730A00C98F24 /* AppHistoryViewerVC.swift */; };
 		7579A06824F0730A00C98F24 /* AppHistoryViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7579A06624F0730A00C98F24 /* AppHistoryViewerVC.swift */; };
 		7579A06A24F074D500C98F24 /* AppHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7579A06924F074D500C98F24 /* AppHistory.swift */; };
@@ -701,7 +698,6 @@
 		75B24DB821C3C594003C9486 /* ProgressOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E371932108CA08002602BD /* ProgressOverlay.swift */; };
 		75B24DBA21C3CADB003C9486 /* EntryFinderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B24DB921C3CADB003C9486 /* EntryFinderVC.swift */; };
 		75B24DD521C523AE003C9486 /* SearchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B24DD421C523AE003C9486 /* SearchHelper.swift */; };
-		75B38BF3233E5B7C006BDEFC /* NewsCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACD22FD896F00372301 /* NewsCenter.swift */; };
 		75B38BF4233E5B7C006BDEFC /* WatchdogAwareTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758BF0DC20D220B300897C83 /* WatchdogAwareTextField.swift */; };
 		75B38BF5233E5B7C006BDEFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754BF07E2082A6BD00E3A292 /* AppDelegate.swift */; };
 		75B38BFA233E5B7C006BDEFC /* UserNameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E4CA5C232C455D00EB6805 /* UserNameHelper.swift */; };
@@ -734,7 +730,6 @@
 		75B38C21233E5B7C006BDEFC /* ItemIconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756AE9D220CF8B5E00995846 /* ItemIconPicker.swift */; };
 		75B38C22233E5B7C006BDEFC /* KPApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBDC20C3ACFD00C5D834 /* KPApplication.swift */; };
 		75B38C23233E5B7C006BDEFC /* ProtectedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7548BC1721B07BFE001B00E9 /* ProtectedTextField.swift */; };
-		75B38C25233E5B7C006BDEFC /* FileListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3A3AE21BAE53F00255FC3 /* FileListCell.swift */; };
 		75B38C26233E5B7C006BDEFC /* Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753A3EE920D3776D00A1CF70 /* Refreshable.swift */; };
 		75B38C29233E5B7C006BDEFC /* FileInfoReloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DDB5E3228BF88C0018A50F /* FileInfoReloader.swift */; };
 		75B38C2A233E5B7C006BDEFC /* EntryFileViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C94C5E20B4BAB0004FA29D /* EntryFileViewerVC.swift */; };
@@ -754,7 +749,6 @@
 		75B38C42233E5B7C006BDEFC /* UIAlertController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C5C3752129DE0800CD7FE3 /* UIAlertController+extensions.swift */; };
 		75B38C44233E5B7C006BDEFC /* GroupEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750D127D20CF071600BE0CCE /* GroupEditorVC.swift */; };
 		75B38C46233E5B7C006BDEFC /* EntryViewerPagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C94C5A20B4B8C2004FA29D /* EntryViewerPagesVC.swift */; };
-		75B38C47233E5B7C006BDEFC /* UITableViewCell+demoEditActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578487C22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift */; };
 		75B38C48233E5B7C006BDEFC /* ProgressViewHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75779863223023D3006671BD /* ProgressViewHost.swift */; };
 		75B38C4A233E5B7C006BDEFC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBDA20C3AC5E00C5D834 /* main.swift */; };
 		75B38C4D233E5B7C006BDEFC /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7550D231215D758800360E0C /* AuthenticationServices.framework */; };
@@ -827,10 +821,6 @@
 		75BF5AF02768106B00809654 /* ParameterValueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75BF5AE927680CC100809654 /* ParameterValueCell.xib */; };
 		75BF5AF12768106F00809654 /* ParameterValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BF5AEC27680D4600809654 /* ParameterValueCell.swift */; };
 		75BF5AF22768106F00809654 /* ParameterValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BF5AEC27680D4600809654 /* ParameterValueCell.swift */; };
-		75BFB13F2481553D0017B980 /* DynamicFileList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB13E2481553D0017B980 /* DynamicFileList.swift */; };
-		75BFB1402481553D0017B980 /* DynamicFileList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB13E2481553D0017B980 /* DynamicFileList.swift */; };
-		75BFB1412481553D0017B980 /* DynamicFileList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB13E2481553D0017B980 /* DynamicFileList.swift */; };
-		75BFB1422481553D0017B980 /* DynamicFileList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB13E2481553D0017B980 /* DynamicFileList.swift */; };
 		75BFB1462481D19B0017B980 /* FileProvider+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB1452481D19B0017B980 /* FileProvider+extensions.swift */; };
 		75BFB1472481D19B0017B980 /* FileProvider+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB1452481D19B0017B980 /* FileProvider+extensions.swift */; };
 		75BFB1482481D19B0017B980 /* FileProvider+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB1452481D19B0017B980 /* FileProvider+extensions.swift */; };
@@ -889,7 +879,6 @@
 		75CF52252B18A60500FF3A3F /* Coordinator+databaseUpgrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35538902B08DDF600D9F95D /* Coordinator+databaseUpgrade.swift */; };
 		75CFBE2A21C2BDDF0029A80A /* DatabaseUnlockerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CFBE2921C2BDDF0029A80A /* DatabaseUnlockerVC.swift */; };
 		75CFBE2D21C2FE340029A80A /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F5CACC20BD18320056C969 /* UIView+extension.swift */; };
-		75D075B228B639D200F02E39 /* NewsCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACD22FD896F00372301 /* NewsCenter.swift */; };
 		75D075B328B639D200F02E39 /* WatchdogAwareTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758BF0DC20D220B300897C83 /* WatchdogAwareTextField.swift */; };
 		75D075B428B639D200F02E39 /* AppIconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751A565124CCD3CD001227D6 /* AppIconPicker.swift */; };
 		75D075B528B639D200F02E39 /* PasswordGeneratorLengthCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF1931282E621600FA4BB5 /* PasswordGeneratorLengthCell.swift */; };
@@ -918,7 +907,6 @@
 		75D075D228B639D200F02E39 /* EntryViewerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753DF2C0263C4B7F0046F185 /* EntryViewerCoordinator.swift */; };
 		75D075D428B639D200F02E39 /* AccessibilityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC56282581872B002B4395 /* AccessibilityHelper.swift */; };
 		75D075D528B639D200F02E39 /* EntryFieldEditorCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75514A3320DF5B6200202340 /* EntryFieldEditorCells.swift */; };
-		75D075D628B639D200F02E39 /* DynamicFileList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFB13E2481553D0017B980 /* DynamicFileList.swift */; };
 		75D075D728B639D200F02E39 /* RootSplitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BCEAF2144E6E7002FC18B /* RootSplitVC.swift */; };
 		75D075D828B639D200F02E39 /* UIWindow+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DDA56525F3E19900708750 /* UIWindow+extensions.swift */; };
 		75D075D928B639D200F02E39 /* TableViewControllerWithContextActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B786FC261F88DD005BE7B7 /* TableViewControllerWithContextActions.swift */; };
@@ -972,7 +960,6 @@
 		75D0760F28B639D200F02E39 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E7492888B58200ECBEC8 /* TextFieldCell.swift */; };
 		75D0761028B639D200F02E39 /* KPApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546FBDC20C3ACFD00C5D834 /* KPApplication.swift */; };
 		75D0761128B639D200F02E39 /* ProtectedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7548BC1721B07BFE001B00E9 /* ProtectedTextField.swift */; };
-		75D0761228B639D200F02E39 /* FileListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3A3AE21BAE53F00255FC3 /* FileListCell.swift */; };
 		75D0761328B639D200F02E39 /* TextInput+editMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75264049284653580003DDFA /* TextInput+editMenu.swift */; };
 		75D0761428B639D200F02E39 /* UIViewController+subviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75838480268B55BF000D2E8B /* UIViewController+subviews.swift */; };
 		75D0761528B639D200F02E39 /* Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753A3EE920D3776D00A1CF70 /* Refreshable.swift */; };
@@ -1031,7 +1018,6 @@
 		75D0765828B639D200F02E39 /* ContextualAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75267CFD25FF75E300A1CC95 /* ContextualAction.swift */; };
 		75D0765928B639D200F02E39 /* EntryViewerPagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C94C5A20B4B8C2004FA29D /* EntryViewerPagesVC.swift */; };
 		75D0765A28B639D200F02E39 /* FieldCopiedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7589FDCC28B4EA2100CCC76B /* FieldCopiedView.swift */; };
-		75D0765B28B639D200F02E39 /* UITableViewCell+demoEditActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578487C22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift */; };
 		75D0765C28B639D200F02E39 /* DatabaseSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758E5EF125F2E22600E06AE7 /* DatabaseSaving.swift */; };
 		75D0765F28B639D200F02E39 /* ProgressViewHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75779863223023D3006671BD /* ProgressViewHost.swift */; };
 		75D0766028B639D200F02E39 /* KeyboardDismissable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7538936826D3BEBE00CAB107 /* KeyboardDismissable.swift */; };
@@ -1134,8 +1120,6 @@
 		75D21BDB2B642E480065D95E /* BusyStateIndicating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D21BD82B642E480065D95E /* BusyStateIndicating.swift */; };
 		75D21BDC2B642E480065D95E /* BusyStateIndicating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D21BD82B642E480065D95E /* BusyStateIndicating.swift */; };
 		75D21BDD2B642E480065D95E /* BusyStateIndicating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D21BD82B642E480065D95E /* BusyStateIndicating.swift */; };
-		75D3A3AF21BAE53F00255FC3 /* FileListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3A3AE21BAE53F00255FC3 /* FileListCell.swift */; };
-		75D3A3B121BAE66F00255FC3 /* FileListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3A3AE21BAE53F00255FC3 /* FileListCell.swift */; };
 		75D3AEB523BDD582003028FB /* DestinationGroupPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3AEB423BDD582003028FB /* DestinationGroupPickerVC.swift */; };
 		75D3AEB623BDD582003028FB /* DestinationGroupPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3AEB423BDD582003028FB /* DestinationGroupPickerVC.swift */; };
 		75D5D4012235CD720003CD55 /* CrashReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D5D4002235CD720003CD55 /* CrashReportVC.swift */; };
@@ -1151,9 +1135,6 @@
 		75D7DF7F233E5E310029AD87 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACA22F8095F00372301 /* AppInfo.swift */; };
 		75D7DF81233E5E310029AD87 /* CredentialProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750CFBCA21BA9ACD00E62B09 /* CredentialProviderViewController.swift */; };
 		75D7DF84233E5E310029AD87 /* LongPressAwareNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7514CC9E22D5D14B00A0D7A4 /* LongPressAwareNavigationController.swift */; };
-		75D7DF85233E5E310029AD87 /* NewsCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75679ACD22FD896F00372301 /* NewsCenter.swift */; };
-		75D7DF86233E5E310029AD87 /* FileListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3A3AE21BAE53F00255FC3 /* FileListCell.swift */; };
-		75D7DF88233E5E310029AD87 /* UITableViewCell+demoEditActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578487C22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift */; };
 		75D7DF89233E5E310029AD87 /* EntryFinderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B24DB921C3CADB003C9486 /* EntryFinderVC.swift */; };
 		75D7DF8B233E5E310029AD87 /* ValidatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758BF0D720D1B1DA00897C83 /* ValidatingTextField.swift */; };
 		75D7DF8C233E5E310029AD87 /* FileInfoReloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DDB5E3228BF88C0018A50F /* FileInfoReloader.swift */; };
@@ -1987,7 +1968,7 @@
 		7564FAE72DB940BA0030F3C4 /* DataProtectionSettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProtectionSettingsCoordinator.swift; sourceTree = "<group>"; };
 		7564FAEB2DB941D40030F3C4 /* DataProtectionSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProtectionSettingsVC.swift; sourceTree = "<group>"; };
 		75679ACA22F8095F00372301 /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
-		75679ACD22FD896F00372301 /* NewsCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCenter.swift; sourceTree = "<group>"; };
+		756A64BE2C467E2400999FC6 /* WebDAVListParsingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebDAVListParsingTest.swift; sourceTree = "<group>"; };
 		756AE9D220CF8B5E00995846 /* ItemIconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemIconPicker.swift; sourceTree = "<group>"; };
 		756B2433243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		756B2434243F74E000AA121A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -2018,7 +1999,6 @@
 		7573FD8A2321664F00DCDA5A /* MultilineButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineButton.swift; sourceTree = "<group>"; };
 		7575B24822D8476300B84B3F /* SearchHelper+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchHelper+extensions.swift"; sourceTree = "<group>"; };
 		75779863223023D3006671BD /* ProgressViewHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewHost.swift; sourceTree = "<group>"; };
-		7578487C22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+demoEditActions.swift"; sourceTree = "<group>"; };
 		7579A06624F0730A00C98F24 /* AppHistoryViewerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHistoryViewerVC.swift; sourceTree = "<group>"; };
 		7579A06924F074D500C98F24 /* AppHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHistory.swift; sourceTree = "<group>"; };
 		7579A06C24F0787700C98F24 /* ChangeLog.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ChangeLog.json; sourceTree = "<group>"; };
@@ -2243,7 +2223,6 @@
 		75BF1964283F9C50006A9826 /* AccessibleStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibleStepper.swift; sourceTree = "<group>"; };
 		75BF5AE927680CC100809654 /* ParameterValueCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParameterValueCell.xib; sourceTree = "<group>"; };
 		75BF5AEC27680D4600809654 /* ParameterValueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterValueCell.swift; sourceTree = "<group>"; };
-		75BFB13E2481553D0017B980 /* DynamicFileList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicFileList.swift; sourceTree = "<group>"; };
 		75BFB1452481D19B0017B980 /* FileProvider+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileProvider+extensions.swift"; sourceTree = "<group>"; };
 		75C11F1D22208D6B0042FB2B /* LAContext+biometrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LAContext+biometrics.swift"; sourceTree = "<group>"; };
 		75C1AF802731E46800E33AAC /* DatabaseSettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSettingsCoordinator.swift; sourceTree = "<group>"; };
@@ -2282,7 +2261,6 @@
 		75D2190E29C2210000D6F327 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/System/Library/Frameworks/LocalAuthentication.framework; sourceTree = DEVELOPER_DIR; };
 		75D21BD12B642BB20065D95E /* OneDriveConnectionSetupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDriveConnectionSetupCoordinator.swift; sourceTree = "<group>"; };
 		75D21BD82B642E480065D95E /* BusyStateIndicating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyStateIndicating.swift; sourceTree = "<group>"; };
-		75D3A3AE21BAE53F00255FC3 /* FileListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileListCell.swift; sourceTree = "<group>"; };
 		75D3AEB423BDD582003028FB /* DestinationGroupPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationGroupPickerVC.swift; sourceTree = "<group>"; };
 		75D5D4002235CD720003CD55 /* CrashReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashReportVC.swift; sourceTree = "<group>"; };
 		75D65E7A26A4D433004E5948 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/ExpiryDateEditorVC.strings"; sourceTree = "<group>"; };
@@ -2960,7 +2938,6 @@
 				756FF64320BAB20300FF890B /* UIColor+namedColors.swift */,
 				75E60AE425CF5E090089219C /* DatabaseIconSet+assets.swift */,
 				755E9C4C20BE5DC200FD7C7A /* UIImage+extensions.swift */,
-				7578487C22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift */,
 				75C3801A217A0B76006F74C2 /* UIViewController+storyboard.swift */,
 				75838480268B55BF000D2E8B /* UIViewController+subviews.swift */,
 				753FE83424C1A9A400063FBB /* UIViewController+alerts.swift */,
@@ -3022,14 +2999,6 @@
 				75E4CA5C232C455D00EB6805 /* UserNameHelper.swift */,
 			);
 			path = edit;
-			sourceTree = "<group>";
-		};
-		75679AD022FD963200372301 /* news */ = {
-			isa = PBXGroup;
-			children = (
-				75679ACD22FD896F00372301 /* NewsCenter.swift */,
-			);
-			path = news;
 			sourceTree = "<group>";
 		};
 		756F363C260E963B005A35DA /* key-file */ = {
@@ -3099,9 +3068,9 @@
 				750E72C726A4277500CDBFFA /* expiry-date */,
 				75C1AF7F2731E43B00E33AAC /* settings */,
 				7533032523C52AB600F38CC7 /* relocation */,
+				0795D9503CE2B4ABA13ECFFA /* import */,
 				756FF64620BAB55000FF890B /* group */,
 				756FF64520BAB52C00FF890B /* entry */,
-				75D3A3AE21BAE53F00255FC3 /* FileListCell.swift */,
 				7550D22A215CC99100360E0C /* DatabaseKeyChangerVC.swift */,
 				751E0D1B2309AF620088BB10 /* DatabaseKeyChangerVC.storyboard */,
 				750433AE2274CDD5000FE96B /* DatabaseCreatorCoordinator.swift */,
@@ -3112,7 +3081,6 @@
 				75EC7C03262B161F00D8C7EB /* DatabaseLoadingWarningsVC.swift */,
 				75876B252646EC2800FB470C /* DatabaseKeyChangerCoordinator.swift */,
 				F36DB1E22CE4CAF300E58F82 /* DatabaseViewerPermissionManager.swift */,
-				0795D9503CE2B4ABA13ECFFA /* import */,
 			);
 			path = database;
 			sourceTree = "<group>";
@@ -3186,7 +3154,6 @@
 				7579A06224F0728F00C98F24 /* changelog */,
 				75BE05DB25DA83DF00B34CC0 /* diagnostics */,
 				75025610283CF17A00B930D9 /* file-info */,
-				75679AD022FD963200372301 /* news */,
 				750E15A6269C95140040D599 /* onboarding */,
 				7588B6C02627319700F5D372 /* password-generator */,
 				75A7E5FD26BB4F9E000F1443 /* tipbox */,
@@ -3261,7 +3228,6 @@
 				75D99DED269CEE0800D0E9D7 /* DatabaseItemTitleView.swift */,
 				757ADC4F23A5180600D708D2 /* DismissableNavigationController.swift */,
 				757ADC4E23A5180600D708D2 /* DismissablePopover.swift */,
-				75BFB13E2481553D0017B980 /* DynamicFileList.swift */,
 				758622762A4B798500D50B68 /* ErrorMessageView.swift */,
 				758BADB424B5EAFF00CC9265 /* GradientSeparatorView.swift */,
 				F32228142CCEC4230093BD9C /* KeyFileTextField.swift */,
@@ -4223,11 +4189,8 @@
 				757ADC4623A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				756D94752BA2F2CB0084BDF5 /* MFIKeyActionSheetView.swift in Sources */,
 				75917F3C2DABC59F00EB9375 /* KeyFilePickerCoordinator+add.swift in Sources */,
-				75679ACF22FD897000372301 /* NewsCenter.swift in Sources */,
-				75D3A3B121BAE66F00255FC3 /* FileListCell.swift in Sources */,
 				75267CFF25FF75E300A1CC95 /* ContextualAction.swift in Sources */,
 				F30D03772A7BE8A40047525F /* PasswordQualityIndicatorView.swift in Sources */,
-				7578487E22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift in Sources */,
 				75BF5AF22768106F00809654 /* ParameterValueCell.swift in Sources */,
 				75814FD325F3D70B00B52A57 /* UIApplication+extensions.swift in Sources */,
 				75BC562A2581872B002B4395 /* AccessibilityHelper.swift in Sources */,
@@ -4262,7 +4225,6 @@
 				757FB3CC21F9B4AF00F016FA /* ProtectedTextField.swift in Sources */,
 				759F6A082906BA7C0089FB34 /* PremiumBadgeAccessory.swift in Sources */,
 				758FF6C028FAE32F007DE8EB /* ButtonCell.swift in Sources */,
-				75BFB1402481553D0017B980 /* DynamicFileList.swift in Sources */,
 				7520934B2DA3E5AB009711BB /* DatabasePickerCoordinator+mainMenu.swift in Sources */,
 				750CFBDB21BAD7FF00E62B09 /* UIAlertController+extensions.swift in Sources */,
 				75FC84312AC87C51005021F1 /* Coordinator+passGen.swift in Sources */,
@@ -4342,7 +4304,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3E194682BCF23DB00FD03EE /* DeleteWordlistAccessory.swift in Sources */,
-				75679ACE22FD897000372301 /* NewsCenter.swift in Sources */,
 				75917F212DAAB0FB00EB9375 /* KeyFilePickerCoordinator+toolbars.swift in Sources */,
 				758AAFCF2DA2E31B00B5FA41 /* DatabasePickerCoordinator+itemActions.swift in Sources */,
 				758BF0DD20D220B300897C83 /* WatchdogAwareTextField.swift in Sources */,
@@ -4405,7 +4366,6 @@
 				753DF2C1263C4B7F0046F185 /* EntryViewerCoordinator.swift in Sources */,
 				75BC56292581872B002B4395 /* AccessibilityHelper.swift in Sources */,
 				75514A3420DF5B6200202340 /* EntryFieldEditorCells.swift in Sources */,
-				75BFB13F2481553D0017B980 /* DynamicFileList.swift in Sources */,
 				759BCEB02144E6E8002FC18B /* RootSplitVC.swift in Sources */,
 				75DDA56625F3E19900708750 /* UIWindow+extensions.swift in Sources */,
 				75DEA1332DA9570700710088 /* DatabaseUnlockerActivationType.swift in Sources */,
@@ -4500,7 +4460,6 @@
 				7548BC1821B07BFE001B00E9 /* ProtectedTextField.swift in Sources */,
 				7526404A284653580003DDFA /* TextInput+editMenu.swift in Sources */,
 				75838481268B55BF000D2E8B /* UIViewController+subviews.swift in Sources */,
-				75D3A3AF21BAE53F00255FC3 /* FileListCell.swift in Sources */,
 				75A4948C2B5F0E9C00ED018F /* TagFormatter.swift in Sources */,
 				75FC402C2DA087EF00C5D1C2 /* DatabasePickerCoordinator+add.swift in Sources */,
 				753A3EEA20D3776D00A1CF70 /* Refreshable.swift in Sources */,
@@ -4601,7 +4560,6 @@
 				7564FAED2DB941D40030F3C4 /* DataProtectionSettingsVC.swift in Sources */,
 				75066D482DAF07ED00A47446 /* AppProtectionSettingsVC.swift in Sources */,
 				7589FDCD28B4EA2100CCC76B /* FieldCopiedView.swift in Sources */,
-				7578487D22C02A9100BBEF9A /* UITableViewCell+demoEditActions.swift in Sources */,
 				758E5EF225F2E22600E06AE7 /* DatabaseSaving.swift in Sources */,
 				75779864223023D3006671BD /* ProgressViewHost.swift in Sources */,
 				7538936926D3BEBE00CAB107 /* KeyboardDismissable.swift in Sources */,
@@ -4642,7 +4600,6 @@
 				F3340BC92B2B3E2C00604AED /* OnboardingStep.swift in Sources */,
 				75917F1E2DAAB0FB00EB9375 /* KeyFilePickerCoordinator+toolbars.swift in Sources */,
 				758AAFCB2DA2E31B00B5FA41 /* DatabasePickerCoordinator+itemActions.swift in Sources */,
-				75B38BF3233E5B7C006BDEFC /* NewsCenter.swift in Sources */,
 				75B38BF4233E5B7C006BDEFC /* WatchdogAwareTextField.swift in Sources */,
 				751A565324CCD3CD001227D6 /* AppIconPicker.swift in Sources */,
 				F31114AB2B9B84E100236632 /* DropboxConnectionSetupCoordinator.swift in Sources */,
@@ -4704,7 +4661,6 @@
 				753DF2C2263C4B7F0046F185 /* EntryViewerCoordinator.swift in Sources */,
 				75BC562B2581872B002B4395 /* AccessibilityHelper.swift in Sources */,
 				75B38C05233E5B7C006BDEFC /* EntryFieldEditorCells.swift in Sources */,
-				75BFB1412481553D0017B980 /* DynamicFileList.swift in Sources */,
 				75DEA1312DA9570700710088 /* DatabaseUnlockerActivationType.swift in Sources */,
 				75B38C06233E5B7C006BDEFC /* RootSplitVC.swift in Sources */,
 				75DDA56725F3E19900708750 /* UIWindow+extensions.swift in Sources */,
@@ -4795,7 +4751,6 @@
 				75B38C23233E5B7C006BDEFC /* ProtectedTextField.swift in Sources */,
 				7538E3BC2DD0D1C8002766BF /* MainSettingsVC.swift in Sources */,
 				7564FAE82DB940BA0030F3C4 /* DataProtectionSettingsCoordinator.swift in Sources */,
-				75B38C25233E5B7C006BDEFC /* FileListCell.swift in Sources */,
 				7526404C284653580003DDFA /* TextInput+editMenu.swift in Sources */,
 				75838483268B55BF000D2E8B /* UIViewController+subviews.swift in Sources */,
 				75B38C26233E5B7C006BDEFC /* Refreshable.swift in Sources */,
@@ -4898,7 +4853,6 @@
 				7564FAEE2DB941D40030F3C4 /* DataProtectionSettingsVC.swift in Sources */,
 				75066D492DAF07ED00A47446 /* AppProtectionSettingsVC.swift in Sources */,
 				7589FDCE28B4EA2100CCC76B /* FieldCopiedView.swift in Sources */,
-				75B38C47233E5B7C006BDEFC /* UITableViewCell+demoEditActions.swift in Sources */,
 				758E5EF325F2E22600E06AE7 /* DatabaseSaving.swift in Sources */,
 				F321414F2A934AB5007A8D4E /* PasswordAuditCoordinator.swift in Sources */,
 				75B38C48233E5B7C006BDEFC /* ProgressViewHost.swift in Sources */,
@@ -4941,7 +4895,6 @@
 				7538E3C82DD33319002766BF /* SettingsPremiumState.swift in Sources */,
 				75066D4A2DAF07ED00A47446 /* AppProtectionSettingsVC.swift in Sources */,
 				757169792DBCFDBB00FD6A6C /* SearchSettingsCoordinator.swift in Sources */,
-				75D075B228B639D200F02E39 /* NewsCenter.swift in Sources */,
 				F35125EC2D37D40C00E74BD0 /* EntryFieldMenuButton.swift in Sources */,
 				751ABACD2915B70E008C18DE /* RemoteFolderViewerVC.swift in Sources */,
 				75D075B328B639D200F02E39 /* WatchdogAwareTextField.swift in Sources */,
@@ -4990,7 +4943,6 @@
 				75D075D428B639D200F02E39 /* AccessibilityHelper.swift in Sources */,
 				F33F2C572B32FEFB009EFB18 /* TagSelectorCoordinator.swift in Sources */,
 				75D075D528B639D200F02E39 /* EntryFieldEditorCells.swift in Sources */,
-				75D075D628B639D200F02E39 /* DynamicFileList.swift in Sources */,
 				75D075D728B639D200F02E39 /* RootSplitVC.swift in Sources */,
 				75D075D828B639D200F02E39 /* UIWindow+extensions.swift in Sources */,
 				75E658562E0B6DFE007C977A /* RemoteConnectionSetupAlertPresenting.swift in Sources */,
@@ -5074,7 +5026,6 @@
 				75D0760F28B639D200F02E39 /* TextFieldCell.swift in Sources */,
 				75D0761028B639D200F02E39 /* KPApplication.swift in Sources */,
 				75D0761128B639D200F02E39 /* ProtectedTextField.swift in Sources */,
-				75D0761228B639D200F02E39 /* FileListCell.swift in Sources */,
 				F35232AE2B36FE8700F17F13 /* LString+tags.swift in Sources */,
 				75D0761328B639D200F02E39 /* TextInput+editMenu.swift in Sources */,
 				753E01032B1128A500378C8D /* EncryptionSettingsVC.swift in Sources */,
@@ -5190,7 +5141,6 @@
 				754F7E562DB144CF004235C8 /* SettingsItem.swift in Sources */,
 				75D0765928B639D200F02E39 /* EntryViewerPagesVC.swift in Sources */,
 				75D0765A28B639D200F02E39 /* FieldCopiedView.swift in Sources */,
-				75D0765B28B639D200F02E39 /* UITableViewCell+demoEditActions.swift in Sources */,
 				75FC403F2DA09DBD00C5D1C2 /* DatabasePickerCoordinator+select.swift in Sources */,
 				75D0765C28B639D200F02E39 /* DatabaseSaving.swift in Sources */,
 				75CF52252B18A60500FF3A3F /* Coordinator+databaseUpgrade.swift in Sources */,
@@ -5288,12 +5238,9 @@
 				75D7DF84233E5E310029AD87 /* LongPressAwareNavigationController.swift in Sources */,
 				757ADC4823A1047600D708D2 /* HardwareKeyPicker.swift in Sources */,
 				75DEA13F2DA9C39300710088 /* FileActivationCause.swift in Sources */,
-				75D7DF85233E5E310029AD87 /* NewsCenter.swift in Sources */,
-				75D7DF86233E5E310029AD87 /* FileListCell.swift in Sources */,
 				75917F402DABC59F00EB9375 /* KeyFilePickerCoordinator+add.swift in Sources */,
 				75267D0125FF75E300A1CC95 /* ContextualAction.swift in Sources */,
 				F30D03752A7BE8A30047525F /* PasswordQualityIndicatorView.swift in Sources */,
-				75D7DF88233E5E310029AD87 /* UITableViewCell+demoEditActions.swift in Sources */,
 				75BF5AF12768106F00809654 /* ParameterValueCell.swift in Sources */,
 				75814FD525F3D70B00B52A57 /* UIApplication+extensions.swift in Sources */,
 				75BC562C2581872B002B4395 /* AccessibilityHelper.swift in Sources */,
@@ -5326,7 +5273,6 @@
 				75D7DF97233E5E310029AD87 /* ProtectedTextField.swift in Sources */,
 				759F6A0A2906BA7C0089FB34 /* PremiumBadgeAccessory.swift in Sources */,
 				758FF6C228FAE32F007DE8EB /* ButtonCell.swift in Sources */,
-				75BFB1422481553D0017B980 /* DynamicFileList.swift in Sources */,
 				75D7DF98233E5E310029AD87 /* UIAlertController+extensions.swift in Sources */,
 				75FC84322AC87C52005021F1 /* Coordinator+passGen.swift in Sources */,
 				75D7DF99233E5E310029AD87 /* Coordinator.swift in Sources */,

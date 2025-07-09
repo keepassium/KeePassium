@@ -182,20 +182,20 @@ final class EntryFieldEditorCoordinator: BaseCoordinator {
 
     private func finishSaving() {
         entry.touch(.modified, updateParents: false)
-        if let originalEntry = originalEntry {
+        if let originalEntry {
             if originalEntryBeforeSaving == nil {
                 originalEntryBeforeSaving = originalEntry.clone(makeNewUUID: false)
                 originalEntry.backupState()
             }
             entry.applyPreservingHistory(to: originalEntry, makeNewUUID: false)
             rollbackPreSaveActions = { [weak self] in
-                guard let self = self else { return }
+                guard let self else { return }
                 self.originalEntryBeforeSaving?.apply(to: self.originalEntry!, makeNewUUID: false)
             }
         } else {
             parent.add(entry: entry)
             rollbackPreSaveActions = { [weak self] in
-                guard let self = self else { return }
+                guard let self else { return }
                 self.parent.remove(entry: self.entry)
             }
         }

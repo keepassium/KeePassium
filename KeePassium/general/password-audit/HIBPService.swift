@@ -66,13 +66,13 @@ final class HIBPService {
         let url = Constants.hibpRangeURL.appendingPathComponent(hashPrefix)
 
         let task = urlSession.dataTask(with: .init(url: url)) { data, _, error in
-            if let error = error {
+            if let error {
                 Diag.error("HIBP request failed [hasPrefix: \(hashPrefix), error: \(error)]")
                 completionHandler(.failure(.requestError(error)))
                 return
             }
 
-            guard let data = data,
+            guard let data,
                   let string = String(data: data, encoding: .utf8)
             else {
                 Diag.error("HIBP request failed because of empty response [hashPrefix: \(hashPrefix)]")

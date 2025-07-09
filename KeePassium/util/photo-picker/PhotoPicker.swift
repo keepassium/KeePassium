@@ -26,7 +26,7 @@ struct PhotoPickerImage {
     }
 
     public static func from(_ image: UIImage?, name: String?) -> PhotoPickerImage? {
-        guard let image = image else {
+        guard let image else {
             return nil
         }
         return PhotoPickerImage(image: image, name: name)

@@ -338,7 +338,7 @@ extension ItemRelocationCoordinator: DatabaseSaving {
     }
 
     func didSave(databaseFile: DatabaseFile) {
-        if let postSavingPhase = postSavingPhase {
+        if let postSavingPhase {
             Diag.info("Starting post-save phase")
             self.postSavingPhase = nil
             postSavingPhase()

@@ -10,7 +10,7 @@ import Foundation
 
 public extension Bool {
     init?(optString value: String?) {
-        guard let value = value else {
+        guard let value else {
             return nil
         }
 

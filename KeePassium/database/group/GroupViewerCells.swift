@@ -94,7 +94,7 @@ final class GroupViewerEntryCell: UITableViewCell {
     }
 
     public func refresh() {
-        guard let totpGenerator = totpGenerator else {
+        guard let totpGenerator else {
             showOTPButton.setVisible(false)
             otpView.setVisible(false)
             return
@@ -147,7 +147,7 @@ final class GroupViewerEntryCell: UITableViewCell {
             delay: 0,
             options: .beginFromCurrentState,
             animations: { [weak self] in
-                guard let self = self else { return }
+                guard let self else { return }
                 if animateValue {
                     self.otpView.isHidden = !visible
                 }

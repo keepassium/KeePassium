@@ -488,14 +488,14 @@ extension OneDriveManager {
         urlRequest.timeoutInterval = timeout.duration
 
         let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
-            if let error = error {
+            if let error {
                 completionQueue.addOperation {
                     Diag.error("Failed to download file [message: \(error.localizedDescription)]")
                     completion(.failure(.general(error: error)))
                 }
                 return
             }
-            guard let data = data else {
+            guard let data else {
                 completionQueue.addOperation {
                     Diag.error("Failed to download file: no data returned")
                     completion(.failure(.emptyResponse))

@@ -208,7 +208,7 @@ class DatabaseCreatorCoordinator: BaseCoordinator {
     private func addCreatedDatabase(at finalURL: URL) {
         let fileKeeper = FileKeeper.shared
         fileKeeper.addFile(url: finalURL, fileType: .database, mode: .openInPlace) { [weak self] result in
-            guard let self = self else { return }
+            guard let self else { return }
             switch result {
             case .success(let addedRef):
                 DatabaseSettingsManager.shared.removeSettings(for: addedRef, onlyIfUnused: false)
@@ -281,10 +281,6 @@ extension DatabaseCreatorCoordinator: DatabaseCreatorDelegate {
             databaseCreatorVC.present(alert, animated: true, completion: nil)
             return
         }
-    }
-
-    func didPressErrorDetails(in databaseCreatorVC: DatabaseCreatorVC) {
-        showDiagnostics()
     }
 
     func didPressPickKeyFile(in databaseCreatorVC: DatabaseCreatorVC, at popoverAnchor: PopoverAnchor) {
@@ -431,7 +427,7 @@ extension DatabaseCreatorCoordinator: UIDocumentPickerDelegate {
         guard let url = urls.first else { return }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
-            guard let self = self else { return }
+            guard let self else { return }
             self.hideProgress()
             self.addCreatedDatabase(at: url)
         }
@@ -439,11 +435,6 @@ extension DatabaseCreatorCoordinator: UIDocumentPickerDelegate {
 }
 
 extension DatabaseCreatorCoordinator: RemoteFileExportCoordinatorDelegate {
-    func didCancelExport(in coordinator: RemoteFileExportCoordinator) {
-        hideProgress()
-        dismiss()
-    }
-
     func didFinishExport(
         to remoteURL: URL,
         credential: NetworkCredential,

@@ -264,7 +264,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
             timestamp = lastAccessTime
         }
 
-        if let timestamp = timestamp {
+        if let timestamp {
             cell.valueLabel?.text = dateFormatter.string(from: timestamp)
         } else {
             cell.valueLabel?.text = LString.expiryDateNever
@@ -273,7 +273,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
     }
 
     private func setupHistoryEntryCell(indexPath: IndexPath) -> UITableViewCell {
-        guard let historyEntries = historyEntries,
+        guard let historyEntries,
               historyEntries.count > 0
         else {
             return tableView.dequeueReusableCell(withIdentifier: CellID.emptyHistory, for: indexPath)
@@ -287,7 +287,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
         cell.subtitleLabel?.text = dateFormatter.string(from: historyEntry.lastModificationTime)
         cell.restoreButton.isHidden = !canEditEntry
         cell.buttonHandler = { [weak self, indexPath] in
-            guard let self = self else { return }
+            guard let self else { return }
             self.tableView(self.tableView, accessoryButtonTappedForRowWith: indexPath)
         }
         return cell
@@ -352,7 +352,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
                 didPressEditExpiryDate(at: indexPath)
             }
         case .historyEntries:
-            guard let historyEntries = historyEntries,
+            guard let historyEntries,
                   historyEntries.count > 0
             else {
                 return
@@ -370,7 +370,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         guard let section = Section(rawValue: indexPath.section),
               section == .historyEntries,
-              let historyEntries = historyEntries
+              let historyEntries
         else {
             assertionFailure()
             return
@@ -397,7 +397,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
         case .timestamps:
             return
         case .historyEntries:
-            guard let historyEntries = historyEntries,
+            guard let historyEntries,
                   !historyEntries.isEmpty
             else {
                 return
@@ -421,8 +421,8 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
     ) -> [ContextualAction] {
         guard let section = Section(rawValue: indexPath.section),
               section == .historyEntries,
-              let historyEntries = historyEntries,  
-              indexPath.row < historyEntries.count, 
+              let historyEntries,
+              indexPath.row < historyEntries.count,
               canEditEntry
         else {
             return []
@@ -459,7 +459,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
             assertionFailure()
             return
         }
-        guard let historyEntries = historyEntries else {
+        guard let historyEntries else {
             assertionFailure("There are no history entries")
             return
         }
@@ -473,7 +473,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
             assertionFailure()
             return
         }
-        guard let historyEntries = historyEntries else {
+        guard let historyEntries else {
             assertionFailure("There are no history entries")
             return
         }
@@ -499,7 +499,7 @@ final class EntryHistoryViewerVC: TableViewControllerWithContextActions, Refresh
             assertionFailure()
             return
         }
-        guard let historyEntries = historyEntries else {
+        guard let historyEntries else {
             assertionFailure("There are no history entries")
             return
         }

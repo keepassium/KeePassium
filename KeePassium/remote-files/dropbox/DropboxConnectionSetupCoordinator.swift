@@ -94,7 +94,7 @@ final class DropboxConnectionSetupCoordinator: RemoteDataSourceSetupCoordinator<
 
     override func didSelectItem(_ item: RemoteFileItem, in viewController: RemoteFolderViewerVC) {
         selectItem(item, in: viewController) { [weak self] fileURL, token in
-            guard let self = self else {
+            guard let self else {
                 return
             }
             self.delegate?.didPickRemoteFile(

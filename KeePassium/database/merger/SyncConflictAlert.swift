@@ -80,7 +80,7 @@ final class SyncConflictAlert: UIViewController, Refreshable {
                 timeout: Timeout(duration: FileDataProvider.defaultTimeoutDuration),
                 completionQueue: .main,
                 completion: { [weak self] result in
-                    guard let self = self else { return }
+                    guard let self else { return }
                     switch result {
                     case .success(let fileInfo):
                         self.remoteFileInfo = fileInfo
@@ -204,7 +204,7 @@ extension SyncConflictAlert: UITableViewDataSource {
         cell.subtitleLabel?.text = LString.syncConflictMessage
         cell.toggleButton.setTitle(LString.actionShowDetails, for: .normal)
         cell.buttonHandler = { [weak self] button in
-            guard let self = self else { return }
+            guard let self else { return }
             self.isShowFileInfo = !self.isShowFileInfo
             button.isHidden = true
             self.refresh()
@@ -222,7 +222,7 @@ extension SyncConflictAlert: UITableViewDataSource {
         cell.textLabel?.text = LString.syncConflictCurrentVersion
 
         let currentVersionDescription: String
-        if let remoteFileInfo = remoteFileInfo {
+        if let remoteFileInfo {
             currentVersionDescription = formatDescription(remoteFileInfo)
         } else {
             currentVersionDescription = remoteFileError?.localizedDescription

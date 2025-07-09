@@ -109,7 +109,7 @@ final class FileInfoVC: UITableViewController, Refreshable {
     public func updateFileInfo(_ fileInfo: FileInfo?, error: FileAccessError?) {
         attributes = fileInfo?.attributes ?? [:]
         var newFields = makeFields(fileInfo: fileInfo)
-        if let error = error {
+        if let error {
             newFields.append(FileInfoField(
                 name: LString.FileInfo.fieldError,
                 value: error.localizedDescription
@@ -176,7 +176,7 @@ final class FileInfoVC: UITableViewController, Refreshable {
             value: fileRef.getLocationDescription()
         ))
 
-        guard let fileInfo = fileInfo else { 
+        guard let fileInfo else {
             return fields
         }
 

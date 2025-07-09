@@ -149,7 +149,7 @@ final class Meta2: Eraseable {
 
         switch formatVersion {
         case .v3:
-            if let headerHash = headerHash {
+            if let headerHash {
                 xmlMeta.addChild(name: Xml2.headerHash, value: headerHash.base64EncodedString())
             }
         case .v4, .v4_1:

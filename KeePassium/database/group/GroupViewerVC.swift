@@ -207,7 +207,7 @@ final class GroupViewerVC:
         if isSmartGroup {
             return true
         }
-        guard let searchController = searchController else { return false }
+        guard let searchController else { return false }
         return searchController.isActive && (searchController.searchBar.text?.isNotEmpty ?? false)
     }
 
@@ -345,7 +345,7 @@ final class GroupViewerVC:
     }
 
     private func setupSearch() {
-        if let group = group, group.isSmartGroup {
+        if let group, group.isSmartGroup {
             updateSearchResults(searchText: group.smartGroupQuery)
             return
         }
@@ -377,14 +377,14 @@ final class GroupViewerVC:
 
     @objc func activateSearch() {
         DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
+            guard let self else { return }
             self.searchController?.isActive = true
             self.searchController?.searchBar.becomeFirstResponderWhenSafe()
         }
     }
 
     func refresh() {
-        guard isViewLoaded, let group = group else { return }
+        guard isViewLoaded, let group else { return }
 
         titleView.titleLabel.setText(group.name, strikethrough: group.isExpired)
         titleView.iconView.image = UIImage.kpIcon(forGroup: group)
@@ -392,7 +392,7 @@ final class GroupViewerVC:
 
         if isSmartGroup  {
             updateSearchResults(searchText: group.smartGroupQuery)
-        } else if isSearchActive, let searchController = searchController {
+        } else if isSearchActive, let searchController {
             updateSearchResults(for: searchController)
         } else {
             sortGroupItems()
@@ -868,7 +868,7 @@ final class GroupViewerVC:
     }
 
     func selectEntry(_ entry: Entry?, animated: Bool) {
-        guard let entry = entry else {
+        guard let entry else {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 tableView.deselectRow(at: selectedIndexPath, animated: animated)
             }
@@ -1126,7 +1126,7 @@ final class GroupViewerVC:
             image: .symbol(.folderGridBadgePlus),
             attributes: makeActionAttributes(with: .createGroup),
             handler: { [weak self, popoverAnchor] _ in
-                guard let self = self else { return }
+                guard let self else { return }
                 delegate?.didPressCreateGroup(smart: true, at: popoverAnchor, in: self)
             }
         )
@@ -1194,13 +1194,13 @@ final class GroupViewerVC:
         if let targetGroup = getGroup(at: indexPath) {
             confirmationAlert.title = targetGroup.name
             confirmationAlert.addAction(title: LString.actionDelete, style: .destructive) { [weak self] _ in
-                guard let self = self else { return }
+                guard let self else { return }
                 self.delegate?.didPressDeleteGroup(targetGroup, at: popoverAnchor, in: self)
             }
         } else if let targetEntry = getEntry(at: indexPath) {
             confirmationAlert.title = targetEntry.resolvedTitle
             confirmationAlert.addAction(title: LString.actionDelete, style: .destructive) { [weak self] _ in
-                guard let self = self else { return }
+                guard let self else { return }
                 self.delegate?.didPressDeleteEntry(targetEntry, at: popoverAnchor, in: self)
             }
         } else {
@@ -1224,7 +1224,7 @@ final class GroupViewerVC:
             message: nil,
             dismissButtonTitle: LString.actionCancel)
         confirmationAlert.addAction(title: LString.actionEmptyRecycleBinGroup, style: .destructive) { [weak self] _ in
-            guard let self = self else { return }
+            guard let self else { return }
             self.delegate?.didPressEmptyRecycleBinGroup(targetGroup, at: popoverAnchor, in: self)
         }
         confirmationAlert.modalPresentationStyle = .popover
@@ -1320,7 +1320,7 @@ extension GroupViewerVC {
             return
         }
 
-        guard let group = group else {
+        guard let group else {
             return
         }
 

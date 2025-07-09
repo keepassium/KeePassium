@@ -263,15 +263,3 @@ extension DatabasePrintFormatter {
         return result
     }
 }
-
-fileprivate extension Group {
-    func getLevel() -> DatabasePrintFormatter.Level {
-        var result = 0
-        var p = self.parent
-        while p != nil {
-            p = p?.parent
-            result += 1
-        }
-        return result
-    }
-}

@@ -36,7 +36,7 @@ class FileInfoReloader: Synchronizable {
             }
             synchronized { refreshingRefsCount += 1 }
             ref.refreshInfo { [weak self] result in
-                guard let self = self else { return }
+                guard let self else { return }
                 self.synchronized {
                     self.refreshingRefsCount -= 1
                 }

@@ -247,7 +247,7 @@ final public class URLReference:
 
     public func hash(into hasher: inout Hasher) {
         hasher.combine(location)
-        guard let originalURL = originalURL else {
+        guard let originalURL else {
             assertionFailure()
             return
         }
@@ -325,7 +325,7 @@ final public class URLReference:
     ) {
         guard !data.isEmpty else {
             callbackQueue.addOperation { [self] in
-                if let originalURL = originalURL {
+                if let originalURL {
                     callback(.success(originalURL))
                 } else {
                     Diag.error("Both reference data and original URL are empty")
@@ -416,7 +416,7 @@ final public class URLReference:
     ) {
         registerInfoRefreshRequest(.added)
         resolveAsync(timeout: timeout, callbackQueue: completionQueue) { [weak self] result in
-            guard let self = self else { return }
+            guard let self else { return }
 
             assert(completionQueue.isCurrent)
             switch result {
@@ -450,7 +450,7 @@ final public class URLReference:
             timeout: timeout,
             completionQueue: completionQueue,
             completion: { [weak self] result in
-                guard let self = self else { return }
+                guard let self else { return }
                 self.registerInfoRefreshRequest(.completed)
                 switch result {
                 case .success(let fileInfo):
@@ -477,7 +477,7 @@ final public class URLReference:
         }
 
         if Settings.current.isNetworkAccessAllowed,
-           let originalURL = originalURL,
+           let originalURL,
            originalURL.isRemoteURL
         {
             self.resolvedURL = originalURL
@@ -647,7 +647,7 @@ final public class URLReference:
             return FileProvider(rawValue: fileProviderID)
         }
 
-        if let url = url,
+        if let url,
            let fileProviderDedicatedToSuchURLs = DataSourceFactory.findInAppFileProvider(for: url)
         {
             return fileProviderDedicatedToSuchURLs

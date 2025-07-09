@@ -130,7 +130,7 @@ class SupportEmailComposer: NSObject {
     }
 
     private func showExportSheet(for url: URL, completion: CompletionHandler?) {
-        guard let parent = parent else {
+        guard let parent else {
             completion?(false)
             return
         }

@@ -25,7 +25,7 @@ final class AppHistoryCoordinator: BaseCoordinator {
     }
 
     private func filter(appHistory: AppHistory?) -> AppHistory? {
-        guard var appHistory = appHistory else {
+        guard var appHistory else {
             return nil
         }
 

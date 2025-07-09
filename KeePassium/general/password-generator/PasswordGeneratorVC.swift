@@ -24,8 +24,6 @@ public protocol PasswordGeneratorDelegate: AnyObject {
 }
 
 final public class PasswordGeneratorVC: UIViewController, Refreshable {
-    private typealias Mode = PasswordGeneratorMode
-
     private enum CellID {
         static let wideCell = "WideCell"
         static let fixedSetCell = "FixedSetCell"
@@ -647,7 +645,7 @@ extension PasswordGeneratorVC {
             textField.accessibilityLabel = LString.PasswordGenerator.titleCustomCharacters
         }
         alert.addAction(title: LString.actionOK, style: .default) { [weak self, weak alert] _ in
-            guard let self = self else { return }
+            guard let self else { return }
             let text = alert?.textFields!.first!.text ?? ""
             self.config.customModeConfig.customLists[condition] = text.removingRepetitions()
             self.saveConfig()

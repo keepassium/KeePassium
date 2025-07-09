@@ -90,7 +90,7 @@ extension DatabaseKeyChangerCoordinator {
                 presenter: _router.navigationController.view
             ),
             completion: { [weak self] result in
-                guard let self = self else { return }
+                guard let self else { return }
                 switch result {
                 case .success(let newCompositeKey):
                     self.database.changeCompositeKey(to: newCompositeKey)

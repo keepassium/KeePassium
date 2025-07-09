@@ -113,7 +113,7 @@ final class DatabaseKeyChangerVC: UIViewController {
     func setYubiKey(_ yubiKey: YubiKey?) {
         self.yubiKey = yubiKey
 
-        if let yubiKey = yubiKey {
+        if let yubiKey {
             hardwareKeyField.text = YubiKey.getTitle(for: yubiKey)
             Diag.info("Hardware key selected [key: \(yubiKey)]")
         } else {

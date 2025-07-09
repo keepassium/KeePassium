@@ -144,7 +144,7 @@ final class EntryFieldEditorSingleLineCell: UITableViewCell, EditableFieldCell {
     }
 
     private func refreshContent() {
-        guard let field = field else { return }
+        guard let field else { return }
 
         titleLabel.text = field.visibleName
         textField.text = field.value
@@ -154,7 +154,7 @@ final class EntryFieldEditorSingleLineCell: UITableViewCell, EditableFieldCell {
     }
 
     private func refreshLayout() {
-        guard let field = field else { return }
+        guard let field else { return }
 
         let actionConfig = delegate?.getActionConfiguration(for: field) ?? .hidden
         actionConfig.apply(to: actionButton)
@@ -189,19 +189,19 @@ final class EntryFieldEditorSingleLineCell: UITableViewCell, EditableFieldCell {
     }
 
     @objc private func didPressActionButton() {
-        guard let field = field else { return }
+        guard let field else { return }
         delegate?.didPressButton(for: field, at: actionButton.asPopoverAnchor, in: self)
     }
 
     @objc private func didPressDelete() {
-        guard let field = field else { return }
+        guard let field else { return }
         delegate?.didPressDelete(field, in: self)
     }
 }
 
 extension EntryFieldEditorSingleLineCell: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let field = field else { return false }
+        guard let field else { return false }
         delegate?.didPressReturn(for: field, in: self)
         return false
     }
@@ -217,7 +217,7 @@ extension EntryFieldEditorSingleLineCell: UITextFieldDelegate {
 
 extension EntryFieldEditorSingleLineCell: ValidatingTextFieldDelegate {
     func validatingTextField(_ sender: ValidatingTextField, textDidChange text: String) {
-        guard let field = field else { return }
+        guard let field else { return }
         field.value = textField.text ?? ""
         delegate?.didChangeField(field, in: self)
         refreshLayout()

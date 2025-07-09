@@ -16,7 +16,7 @@ public extension KeyHelper {
         completionQueue: DispatchQueue = .main,
         completion: @escaping ((Result<CompositeKey, String>) -> Void)
     ) {
-        guard let keyFileRef = keyFileRef else {
+        guard let keyFileRef else {
             buildCompositeKey(
                 password: password,
                 keyFileData: SecureBytes.empty(),

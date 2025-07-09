@@ -383,8 +383,8 @@ private extension EntryFileViewerVC {
         }
         renameController.addAction(title: LString.actionCancel, style: .cancel, handler: nil)
         renameController.addAction(title: LString.actionRename, style: .default) {
-            [weak renameController, weak self] _ in 
-            guard let self = self,
+            [weak renameController, weak self] _ in
+            guard let self,
                   let textField = renameController?.textFields?.first,
                   let newName = textField.text,
                   newName.isNotEmpty

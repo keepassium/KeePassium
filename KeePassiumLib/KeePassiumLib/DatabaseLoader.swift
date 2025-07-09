@@ -231,7 +231,7 @@ public class DatabaseLoader: ProgressObserver {
 
     private func endBackgroundTask() {
         guard let appShared = AppGroup.applicationShared else { return }
-        if let startTime = startTime {
+        if let startTime {
             let duration = Date.now.timeIntervalSince(startTime)
             print(String(format: "Done in %.2f s", arguments: [duration]))
         }
@@ -292,7 +292,7 @@ public class DatabaseLoader: ProgressObserver {
             timeout: timeout,
             completionQueue: operationQueue,
             completion: { [weak self] result in
-                guard let self = self else { return }
+                guard let self else { return }
                 switch result {
                 case .success(let docData):
                     self.onDatabaseDocumentReadComplete(data: docData, fileURL: url, fileProvider: fileProvider)
@@ -376,7 +376,7 @@ public class DatabaseLoader: ProgressObserver {
             timeout: timeout,
             completionQueue: operationQueue,
             completion: { [weak self] result in
-                guard let self = self else { return }
+                guard let self else { return }
                 switch result {
                 case .success(let docData):
                     self.onKeyFileDataReady(dbFile: dbFile, keyFileData: SecureBytes.from(docData))
@@ -545,21 +545,21 @@ public class DatabaseLoader: ProgressObserver {
 extension DatabaseLoader {
     private func notifyWillLoadDatabase() {
         delegateQueue.async { [weak self] in
-            guard let self = self else { return }
+            guard let self else { return }
             self.delegate?.databaseLoader(self, willLoadDatabase: self.dbRef)
         }
     }
 
     private func notifyDidChangeProgress(_ progress: ProgressEx) {
         delegateQueue.async { [weak self] in
-            guard let self = self else { return }
+            guard let self else { return }
             self.delegate?.databaseLoader(self, didChangeProgress: progress, for: self.dbRef)
         }
     }
 
     private func notifyDidFailLoading(with error: Error) {
         delegateQueue.async { [weak self] in
-            guard let self = self else { return }
+            guard let self else { return }
             self.delegate?.databaseLoader(
                 self,
                 didFailLoading: self.dbRef,
@@ -573,7 +573,7 @@ extension DatabaseLoader {
         warnings: DatabaseLoadingWarnings
     ) {
         delegateQueue.async { [weak self] in
-            guard let self = self else { return }
+            guard let self else { return }
             self.delegate?.databaseLoader(
                 self,
                 didLoadDatabase: self.dbRef,

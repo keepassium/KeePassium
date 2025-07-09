@@ -389,10 +389,10 @@ class ReceiptAnalyzer {
 
 fileprivate extension Date {
     static func max(_ one: Date?, _ two: Date?) -> Date? {
-        guard let one = one else {
+        guard let one else {
             return two
         }
-        guard let two = two else {
+        guard let two else {
             return one
         }
         if one > two {

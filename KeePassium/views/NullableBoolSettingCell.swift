@@ -52,7 +52,7 @@ final class NullableBoolSettingCell: UITableViewCell {
         button.showsMenuAsPrimaryAction = true
         button.changesSelectionAsPrimaryAction = true
         button.configurationUpdateHandler = { [weak self] button in
-            guard let self = self else { return }
+            guard let self else { return }
             var config = button.configuration
             switch (value, defaultValue) {
             case (true, _):

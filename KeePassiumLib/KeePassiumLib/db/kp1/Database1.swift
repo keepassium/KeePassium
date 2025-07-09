@@ -93,7 +93,7 @@ public class Database1: Database {
     func createNewGroupID() -> Group1ID {
         var groups = [Group]()
         var entries = [Entry]()
-        if let root = root {
+        if let root {
             root.collectAllChildren(groups: &groups, entries: &entries)
         } else {
             Diag.warning("Creating a new Group1ID for an empty database")
@@ -119,7 +119,7 @@ public class Database1: Database {
     }
 
     override public func getBackupGroup(createIfMissing: Bool) -> Group? {
-        guard let root = root else {
+        guard let root else {
             Diag.warning("Tried to get Backup group without the root one")
             assertionFailure()
             return nil
@@ -347,7 +347,7 @@ public class Database1: Database {
         Diag.info("Saving KP1 database")
         let contentStream = ByteArray.makeOutputStream()
         contentStream.open()
-        guard let root = root else { fatalError("Tried to save without root group") }
+        guard let root else { fatalError("Tried to save without root group") }
 
         progress.completedUnitCount = 0
         progress.totalUnitCount = ProgressSteps.all

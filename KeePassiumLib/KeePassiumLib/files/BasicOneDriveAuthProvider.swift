@@ -89,7 +89,7 @@ extension BasicOneDriveAuthProvider {
             return
         }
 
-        guard let callbackURL = callbackURL,
+        guard let callbackURL,
               let urlComponents = URLComponents(url: callbackURL, resolvingAgainstBaseURL: true),
               let queryItems = urlComponents.queryItems
         else {

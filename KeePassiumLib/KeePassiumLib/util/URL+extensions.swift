@@ -193,7 +193,7 @@ public extension URL {
         {
             mainScheme = String(_mainScheme)
         }
-        if let prefix = prefix {
+        if let prefix {
             components.scheme = prefix + String(urlSchemePrefixSeparator) + mainScheme
         } else {
             components.scheme = mainScheme

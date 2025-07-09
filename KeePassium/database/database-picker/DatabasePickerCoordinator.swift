@@ -9,7 +9,6 @@
 import KeePassiumLib
 
 protocol DatabasePickerCoordinatorDelegate: AnyObject {
-    func didPressShowAboutApp(at popoverAnchor: PopoverAnchor?, in viewController: UIViewController)
     func didPressShowDiagnostics(at popoverAnchor: PopoverAnchor?, in viewController: UIViewController)
     func didPressShowAppSettings(at popoverAnchor: PopoverAnchor?, in viewController: UIViewController)
     func didPressShowRandomGenerator(at popoverAnchor: PopoverAnchor?, in viewController: UIViewController)
@@ -31,9 +30,6 @@ extension DatabasePickerCoordinatorDelegate {
         in coordinator: DatabasePickerCoordinator
     ) -> Bool {
         return true
-    }
-    func didPressShowAboutApp(at popoverAnchor: PopoverAnchor?, in viewController: UIViewController) {
-        assertionFailure("Called a method not implemented by delegate")
     }
     func didPressShowDiagnostics(at popoverAnchor: PopoverAnchor?, in viewController: UIViewController) {
         assertionFailure("Called a method not implemented by delegate")

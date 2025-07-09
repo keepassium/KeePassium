@@ -105,7 +105,7 @@ final class GroupEditorCoordinator: BaseCoordinator {
 
     private func saveChangesAndDismiss() {
         group.touch(.modified, updateParents: false)
-        if let originalGroup = originalGroup {
+        if let originalGroup {
             group.apply(to: originalGroup, makeNewUUID: false)
             delegate?.didUpdateGroup(originalGroup, in: self)
         } else {

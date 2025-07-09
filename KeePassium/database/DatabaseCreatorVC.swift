@@ -13,7 +13,6 @@ protocol DatabaseCreatorDelegate: AnyObject {
     func didPressCancel(in databaseCreatorVC: DatabaseCreatorVC)
     func didPressSaveToFiles(in databaseCreatorVC: DatabaseCreatorVC)
     func didPressSaveToServer(in databaseCreatorVC: DatabaseCreatorVC)
-    func didPressErrorDetails(in databaseCreatorVC: DatabaseCreatorVC)
     func didPressPickKeyFile(
         in databaseCreatorVC: DatabaseCreatorVC,
         at popoverAnchor: PopoverAnchor)
@@ -24,11 +23,6 @@ protocol DatabaseCreatorDelegate: AnyObject {
 }
 
 class DatabaseCreatorVC: UIViewController, BusyStateIndicating, Refreshable {
-    enum DestinationType {
-        case files
-        case remoteServer
-    }
-
     public var databaseFileName: String { return fileNameField.text ?? "" }
     public var password: String { return passwordField.text ?? ""}
     public var keyFile: URLReference? {
@@ -123,7 +117,7 @@ class DatabaseCreatorVC: UIViewController, BusyStateIndicating, Refreshable {
     }
 
     private func showKeyFile(_ keyFileRef: URLReference?) {
-        guard let keyFileRef = keyFileRef else {
+        guard let keyFileRef else {
             keyFileField.text = nil
             return
         }
@@ -166,11 +160,6 @@ class DatabaseCreatorVC: UIViewController, BusyStateIndicating, Refreshable {
 extension DatabaseCreatorVC {
     @IBAction private func didPressCancel(_ sender: Any) {
         delegate?.didPressCancel(in: self)
-    }
-
-    private func didPressErrorDetails() {
-        hideErrorMessage(animated: true)
-        delegate?.didPressErrorDetails(in: self)
     }
 
     private func verifyEnteredKey(success successHandler: @escaping () -> Void) {

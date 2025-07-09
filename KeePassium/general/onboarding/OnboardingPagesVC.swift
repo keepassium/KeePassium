@@ -150,7 +150,7 @@ extension OnboardingPagesVC: UIPageViewControllerDataSource {
 
     @discardableResult
     func showNext() -> Bool {
-        guard let currentIndex = currentIndex,
+        guard let currentIndex,
               currentIndex + 1 < pages.count
         else {
             return false

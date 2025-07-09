@@ -38,7 +38,7 @@ extension Coordinator {
                     db2.formatVersion.description,
                     newFormat.description),
                 LString.titleDatabaseFormatConversionAllDataPreserved
-            ].joined(separator: "\n\n") 
+        ].joined(separator: "\n\n")
         let confirmationAlert = UIAlertController.make(
             title: LString.titleDatabaseFormatVersionUpgrade,
             message: message,

@@ -46,7 +46,7 @@ final class TipBoxCoordinator: BaseCoordinator {
             tipBoxVC.setStatus(busy: false, text: error!.localizedDescription, animated: true)
             return
         }
-        guard let products = products, products.count > 0 else {
+        guard let products, products.count > 0 else {
             tipBoxVC.setStatus(busy: false, text: LString.errorNoPurchasesAvailable, animated: true)
             return
         }
@@ -88,7 +88,7 @@ extension TipBoxCoordinator: PremiumManagerDelegate {
 
         Watchdog.shared.ignoreMinimizationOnce()
 
-        guard let skProduct = skProduct else {
+        guard let skProduct else {
             Diag.warning("SKProduct is unexpectedly nil")
             assertionFailure()
             return

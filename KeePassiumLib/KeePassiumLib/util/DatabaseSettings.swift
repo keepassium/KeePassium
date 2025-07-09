@@ -14,7 +14,7 @@ final public class DatabaseSettings: Eraseable {
     private var _isRememberMasterKey: Bool?
     public var isRememberMasterKey: Bool? {
         get {
-            if let managedValue = ManagedAppConfig.shared.getBoolIfLicensed(.rememberDatabaseKey) {
+            if ManagedAppConfig.shared.getBoolIfLicensed(.rememberDatabaseKey) != nil {
                 return nil
             } else {
                 return _isRememberMasterKey
@@ -28,7 +28,7 @@ final public class DatabaseSettings: Eraseable {
     private var _isRememberFinalKey: Bool?
     public var isRememberFinalKey: Bool? {
         get {
-            if let managedValue = ManagedAppConfig.shared.getBoolIfLicensed(.rememberDatabaseFinalKey) {
+            if ManagedAppConfig.shared.getBoolIfLicensed(.rememberDatabaseFinalKey) != nil {
                 return nil
             } else {
                 return _isRememberFinalKey
@@ -45,7 +45,7 @@ final public class DatabaseSettings: Eraseable {
     private var _isRememberKeyFile: Bool?
     public var isRememberKeyFile: Bool? {
         get {
-            if let managedValue = ManagedAppConfig.shared.getBoolIfLicensed(.keepKeyFileAssociations) {
+            if ManagedAppConfig.shared.getBoolIfLicensed(.keepKeyFileAssociations) != nil {
                 return nil
             } else {
                 return _isRememberKeyFile
@@ -179,7 +179,7 @@ extension DatabaseSettings: Codable {
     }
 
     internal static func deserialize(from data: Data?) -> DatabaseSettings? {
-        guard let data = data else { return nil }
+        guard let data else { return nil }
         let decoder = JSONDecoder()
         do {
             let result = try decoder.decode(DatabaseSettings.self, from: data)

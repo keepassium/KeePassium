@@ -88,7 +88,7 @@ public class DatabaseFile: Eraseable {
         completionQueue: OperationQueue = .main,
         completion: @escaping (() -> Void)
     ) {
-        guard let fileReference = fileReference else {
+        guard let fileReference else {
             completion()
             return
         }

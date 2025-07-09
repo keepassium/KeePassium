@@ -26,21 +26,21 @@ class EditableField: BasicViewableField {
     override var internalName: String {
         get { return field?.name ?? "" }
         set {
-            if let field = field { field.name = newValue }
+            if let field { field.name = newValue }
         }
     }
 
     override var value: String? {
         get { return field?.value }
         set {
-            if let field = field { field.value = newValue ?? "" }
+            if let field { field.value = newValue ?? "" }
         }
     }
 
     override var isProtected: Bool {
         get { return field?.isProtected ?? false }
         set {
-            if let field = field { field.isProtected = newValue }
+            if let field { field.isProtected = newValue }
         }
     }
 

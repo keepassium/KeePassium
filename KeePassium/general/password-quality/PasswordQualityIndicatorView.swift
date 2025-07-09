@@ -93,7 +93,7 @@ final class PasswordQualityIndicatorView: UIView {
     }
 
     private func refresh() {
-        guard let quality = quality else {
+        guard let quality else {
             isHidden = true
             return
         }

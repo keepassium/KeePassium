@@ -36,7 +36,7 @@ extension AppIconSwitcherCoordinator: AppIconPickerDelegate {
 
     private func setAppIcon(_ appIcon: AppIcon) {
         UIApplication.shared.setAlternateIconName(appIcon.key) { [weak self] error in
-            if let error = error {
+            if let error {
                 Diag.error("Failed to switch app icon [message: \(error.localizedDescription)")
             } else {
                 Diag.info("App icon switched to \(appIcon.key ?? "default")")

@@ -58,15 +58,15 @@ extension Coordinator {
             preferredStyle: .alert
         )
         upgradeNotice.addAction(title: LString.actionUpgradeToPremium, style: .default) {
-            [weak self, weak viewController] _ in 
-            guard let self = self,
-                  let viewController = viewController
+            [weak self, weak viewController] _ in
+            guard let self,
+                  let viewController
             else {
                 return
             }
             self.showPremiumUpgrade(in: viewController)
         }
-        if let bypassAction = bypassAction {
+        if let bypassAction {
             upgradeNotice.addAction(title: bypassTitle, style: .default) { _ in
                 bypassAction()
             }

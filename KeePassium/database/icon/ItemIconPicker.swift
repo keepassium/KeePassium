@@ -121,7 +121,7 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
                 image: .symbol(.checkmarkCircle),
                 attributes: customIcons.isEmpty ? [.disabled] : [],
                 handler: { [weak self] _ in
-                    guard let self = self else { return }
+                    guard let self else { return }
                     self.refresh()
                     self.collectionView.allowsMultipleSelection = true
                     self.updateToolbar()
@@ -170,7 +170,7 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        guard let selectedPath = selectedPath else {
+        guard let selectedPath else {
             return
         }
 
@@ -213,7 +213,7 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
             style: .destructive,
             color: .destructiveTint,
             handler: { [weak self] in
-                guard let self = self else { return }
+                guard let self else { return }
                 let targetIcon = self.customIcons[iconIndex]
                 self.delegate?.didDelete(customIcon: targetIcon.uuid, in: self)
             }
@@ -290,7 +290,7 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
             }
         }
 
-        if let selectedPath = selectedPath, selectedPath == indexPath {
+        if let selectedPath, selectedPath == indexPath {
             cell.isHighlighted = true
         } else {
             cell.isHighlighted = false
@@ -366,7 +366,7 @@ final class ItemIconPicker: CollectionViewControllerWithContextActions, Refresha
     }
 
     func selectIcon(for item: DatabaseItem?) {
-        guard let item = item else {
+        guard let item else {
             selectedPath = nil
             refresh()
             return

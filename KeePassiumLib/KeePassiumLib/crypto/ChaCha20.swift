@@ -66,7 +66,7 @@ public final class ChaCha20: StreamCipher {
             }
         }
 
-        if let progress = progress {
+        if let progress {
             progress.completedUnitCount = progress.totalUnitCount
             if progress.isCancelled {
                 throw ProgressInterruption.cancelled(reason: progress.cancellationReason)

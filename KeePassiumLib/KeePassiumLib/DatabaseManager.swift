@@ -70,7 +70,7 @@ public class DatabaseManager {
             mode: .overwriteLatest,
             timestamp: .now
         )
-        guard let latestBackupURL = latestBackupURL else {
+        guard let latestBackupURL else {
             return nil
         }
         do {

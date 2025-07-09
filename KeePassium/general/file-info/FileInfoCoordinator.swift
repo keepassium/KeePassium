@@ -47,7 +47,7 @@ final class FileInfoCoordinator: BaseCoordinator {
         fileInfoVC.updateFileInfo(fileInfo, error: nil)
 
         fileRef.refreshInfo { [weak self] result in
-            guard let self = self else { return }
+            guard let self else { return }
             let fileInfoVC = self.fileInfoVC
             fileInfoVC.showBusyIndicator(false, animated: true)
             switch result {

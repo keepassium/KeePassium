@@ -21,7 +21,7 @@ class PricingPlanCollectionLayout: UICollectionViewFlowLayout {
         forProposedContentOffset proposedContentOffset: CGPoint,
         withScrollingVelocity velocity: CGPoint
     ) -> CGPoint {
-        guard let collectionView = collectionView else {
+        guard let collectionView else {
             return super.targetContentOffset(
                 forProposedContentOffset: proposedContentOffset,
                 withScrollingVelocity: velocity)

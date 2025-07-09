@@ -339,7 +339,7 @@ public class Entry: DatabaseItem, Eraseable {
         let existingField = fields.first { $0.name == name }
         if let field = existingField {
             field.value = value
-            if let isProtected = isProtected {
+            if let isProtected {
                 field.isProtected = isProtected
             } else {
             }

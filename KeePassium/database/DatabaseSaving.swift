@@ -63,10 +63,10 @@ extension DatabaseSaving {
             data: databaseFile.data,
             fileName: databaseFile.fileURL.lastPathComponent)
         fileExportHelper!.handler = { [weak self] newURL in
-            guard let self = self else { return }
+            guard let self else { return }
             self.fileExportHelper = nil
             self.savingProgressHost?.hideProgressView(animated: true)
-            guard let newURL = newURL else { 
+            guard let newURL else {
                 return
             }
             databaseFile.setData(databaseFile.data, updateHash: true)
@@ -112,7 +112,7 @@ extension DatabaseSaving {
         let alert = SyncConflictAlert.instantiateFromStoryboard()
         alert.setData(local: local, remote: remoteURL)
         alert.responseHandler = { [weak self, completion] strategy in
-            guard let self = self else { return }
+            guard let self else { return }
             switch strategy {
             case .cancelSaving:
                 completion(.cancel)

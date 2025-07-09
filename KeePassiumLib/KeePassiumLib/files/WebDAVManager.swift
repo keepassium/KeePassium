@@ -310,7 +310,7 @@ extension WebDAVManager: URLSessionDataDelegate, URLSessionTaskDelegate {
             preconditionFailure()
         }
 
-        if let error = error {
+        if let error {
             webdavRequest.handleClientError(error)
             return
         }

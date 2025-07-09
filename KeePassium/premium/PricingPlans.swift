@@ -209,7 +209,7 @@ class RealPricingPlan: PricingPlan {
         guard let localizedTrialDuration = product.localizedTrialDuration else {
             return
         }
-        guard let localizedPriceWithPeriod = localizedPriceWithPeriod else {
+        guard let localizedPriceWithPeriod else {
             assertionFailure("Need a subscription price")
             return
         }

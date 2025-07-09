@@ -30,10 +30,6 @@ final class MainSettingsCoordinator: BaseCoordinator {
         super.refresh()
         applySettingsToVC()
         mainSettingsVC.refresh()
-
-        if let topRefreshable = _router.navigationController.topViewController as? Refreshable {
-            topRefreshable.refresh()
-        }
     }
 
     private func applySettingsToVC() {

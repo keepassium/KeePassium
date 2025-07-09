@@ -173,7 +173,7 @@ extension SearchHelper {
         parsedHost parsedHost1: ParsedHost?,
         with url2: URL?
     ) -> Double {
-        guard let url2 = url2 else { return 0.0 }
+        guard let url2 else { return 0.0 }
 
         if url1 == url2 { return 1.0 }
 

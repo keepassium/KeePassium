@@ -92,7 +92,7 @@ final class EntryFinderCoordinator: BaseCoordinator {
             animated: false, 
             replaceTopViewController: true,
             onPop: { [weak self] in
-                guard let self = self else { return }
+                guard let self else { return }
                 self._dismissHandler?(self)
                 self.delegate?.didLeaveDatabase(in: self)
             }
@@ -250,7 +250,7 @@ extension EntryFinderCoordinator {
             actionTitle: actionTitle,
             image: .symbol(.iCloudSlash),
             onDidPressAction: { [weak self, weak viewController] _ in
-                guard let self = self else { return }
+                guard let self else { return }
                 self.delegate?.didPressReinstateDatabase(originalRef, in: self)
                 viewController?.refreshAnnouncements()
             }

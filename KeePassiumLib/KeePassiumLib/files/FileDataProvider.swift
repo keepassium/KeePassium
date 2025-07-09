@@ -324,7 +324,7 @@ extension FileDataProvider {
                 return
             }
 
-            if let coordinatorError = coordinatorError {
+            if let coordinatorError {
                 completionQueue.addOperation {
                     let nsError = coordinatorError as NSError
                     Diag.error("File coordination failed [message: \(nsError.debugDescription)]")

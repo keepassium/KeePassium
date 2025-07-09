@@ -120,7 +120,7 @@ final class DatabaseSettingsVC: UITableViewController, Refreshable {
                 image: nil,
                 attributes: [],
                 handler: { [weak self] _ in
-                    guard let self = self else { return }
+                    guard let self else { return }
                     self.delegate?.didPressClose(in: self)
                 }
             ),
@@ -264,7 +264,7 @@ extension DatabaseSettingsVC {
         cell.theSwitch.accessibilityLabel = LString.titleFileAccessReadOnly
 
         cell.onDidToggleSwitch = { [weak self] theSwitch in
-            guard let self = self else { return }
+            guard let self else { return }
             self.isReadOnlyAccess = theSwitch.isOn
             self.delegate?.didChangeSettings(isReadOnlyFile: theSwitch.isOn, in: self)
         }
@@ -289,7 +289,7 @@ extension DatabaseSettingsVC {
                 attributes: availableFallbackStrategies.contains(strategy) ? [] : .disabled,
                 state: strategy == fallbackStrategy ? .on : .off,
                 handler: { [weak self] _ in
-                    guard let self = self else { return }
+                    guard let self else { return }
                     self.delegate?.didChangeSettings(
                         newFallbackStrategy: strategy,
                         forAutoFill: forAutoFill,
@@ -321,7 +321,7 @@ extension DatabaseSettingsVC {
                 attributes: [],
                 state: isCurrent ? .on : .off,
                 handler: { [weak self] _ in
-                    guard let self = self else { return }
+                    guard let self else { return }
                     self.delegate?.didChangeSettings(
                         newFallbackTimeout: timeout,
                         forAutoFill: forAutoFill,
@@ -356,7 +356,7 @@ extension DatabaseSettingsVC {
         cell.theSwitch.accessibilityLabel = LString.quickAutoFillTitle
 
         cell.onDidToggleSwitch = { [weak self, weak cell] theSwitch in
-            guard let self = self else { return }
+            guard let self else { return }
             self.isQuickTypeEnabled = theSwitch.isOn
             if !theSwitch.isOn {
                 cell?.textLabel?.flashColor(to: .destructiveTint, duration: 0.7)
@@ -377,7 +377,7 @@ extension DatabaseSettingsVC {
                 title: behavior.title,
                 state: behavior == externalUpdateBehavior ? .on : .off,
                 handler: { [weak self] _ in
-                    guard let self = self else { return }
+                    guard let self else { return }
                     self.delegate?.didChangeSettings(
                         newExternalUpdateBehavior: behavior,
                         in: self

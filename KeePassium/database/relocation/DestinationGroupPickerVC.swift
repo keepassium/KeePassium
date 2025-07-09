@@ -94,7 +94,7 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
 
     public private(set) weak var selectedGroup: Group? {
         didSet {
-            if let selectedGroup = selectedGroup {
+            if let selectedGroup {
                 let isAllowedDestination = delegate?.shouldSelectGroup(selectedGroup, in: self) ?? false
                 doneButton?.isEnabled = isAllowedDestination
             } else {
@@ -105,7 +105,7 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
 
     public weak var rootGroup: Group? {
         didSet {
-            if let rootGroup = rootGroup {
+            if let rootGroup {
                 rootNode = Node(group: rootGroup, level: 0)
                 buildNodeTree(parent: rootNode!)
             } else {
@@ -158,7 +158,7 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
     }
 
     func refresh() {
-        if let rootGroup = rootGroup {
+        if let rootGroup {
             title = rootGroup.name
         } else {
             title = nil
@@ -168,7 +168,7 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
     }
 
     public func expandGroup(_ group: Group?) {
-        guard let group = group, let rootNode = rootNode else { return }
+        guard let group, let rootNode else { return }
 
         guard let expandedNode = expandNode(for: group, in: rootNode) else { return }
         refresh()
@@ -200,7 +200,7 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
 
     private func rebuildFlatNodes() {
         flatNodes.removeAll(keepingCapacity: true)
-        if let rootNode = rootNode {
+        if let rootNode {
             flatten(rootNode, to: &flatNodes)
         }
     }
@@ -336,7 +336,7 @@ class DestinationGroupPickerVC: UITableViewController, Refreshable {
     }
 
     @IBAction private func didPressDoneButton(_ sender: Any) {
-        guard let selectedGroup = selectedGroup else {
+        guard let selectedGroup else {
             assertionFailure()
             return
         }

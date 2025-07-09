@@ -33,7 +33,7 @@ extension PasswordGeneratorParams {
     }
 
     public static func deserialize(from data: Data?) -> PasswordGeneratorParams? {
-        guard let data = data else { return nil }
+        guard let data else { return nil }
         let decoder = JSONDecoder()
         do {
             let result = try decoder.decode(PasswordGeneratorParams.self, from: data)

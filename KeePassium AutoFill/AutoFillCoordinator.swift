@@ -913,7 +913,7 @@ extension AutoFillCoordinator: WatchdogDelegate {
                 to: _router.navigationController,
                 options: .transitionCrossDissolve,
                 completion: { [weak self] _ in
-                    guard let self = self else { return }
+                    guard let self else { return }
                     if self.isNeedsOnboarding() {
                         self.presentOnboarding()
                     }
@@ -949,7 +949,7 @@ extension AutoFillCoordinator: WatchdogDelegate {
 
         Diag.debug("Biometric auth: showing request")
         Keychain.shared.performBiometricAuth { [weak self] success in
-            guard let self = self else { return }
+            guard let self else { return }
             BiometricsHelper.biometricPromptLastSeenTime = Date.now
             self.isBiometricAuthShown = false
             if success {
@@ -1222,7 +1222,7 @@ extension AutoFillCoordinator {
 
         enrollmentDelegate = IntuneEnrollmentDelegateImpl(
             onEnrollment: { [weak self] enrollmentResult in
-                guard let self = self else { return }
+                guard let self else { return }
                 switch enrollmentResult {
                 case .success:
                     self.runAfterStartTasks()
@@ -1230,8 +1230,7 @@ extension AutoFillCoordinator {
                     let message = [
                             LString.Intune.orgNeedsToManage,
                             LString.Intune.personalVersionInAppStore,
-                        ].joined(separator: "\n\n")
-                    // swiftlint:disable:previous literal_expression_end_indentation
+                    ].joined(separator: "\n\n")
                     self.showIntuneMessageAndRestartEnrollment(message)
                 case .failure(let errorMessage):
                     self.showIntuneMessageAndRestartEnrollment(errorMessage)
@@ -1283,8 +1282,7 @@ extension AutoFillCoordinator {
         let message = [
                 LString.Intune.orgLicenseMissing,
                 LString.Intune.hintContactYourAdmin,
-            ].joined(separator: "\n\n")
-        // swiftlint:disable:previous literal_expression_end_indentation
+        ].joined(separator: "\n\n")
         let alert = UIAlertController(
             title: AppInfo.name,
             message: message,

@@ -100,7 +100,7 @@ extension RemoteFilePickerCoordinator: ConnectionTypePickerDelegate {
     }
 
     func didSelectOtherLocations(in viewController: ConnectionTypePickerVC) {
-        dismiss() { [self] in
+        dismiss { [self] in
             delegate?.didSelectSystemFilePicker(in: self)
         }
     }

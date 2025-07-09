@@ -48,7 +48,7 @@ class ChallengeResponseManager {
     }
 
     public static func makeHandler(for yubiKey: YubiKey?, presenter: UIView) -> ChallengeHandler? {
-        guard let yubiKey = yubiKey else {
+        guard let yubiKey else {
             Diag.debug("Challenge-response is not used")
             return nil
         }
@@ -123,7 +123,7 @@ class ChallengeResponseManager {
         case .open:
             print("Accessory session -> open")
             queue.async { [weak self] in
-                guard let self = self else { return }
+                guard let self else { return }
                 guard let key = self.currentKey else { assertionFailure(); return }
                 self.presentMFIActionSheet(
                     state: .touchKey,
@@ -195,7 +195,7 @@ class ChallengeResponseManager {
 
     private func returnResponse(_ response: SecureBytes) {
         queue.async { [weak self] in
-            guard let self = self else { return }
+            guard let self else { return }
             self.responseHandler?(response, nil)
             self.isResponseSent = true
             self.cancel()
@@ -204,7 +204,7 @@ class ChallengeResponseManager {
 
     private func returnError(_ error: ChallengeResponseError) {
         queue.async { [weak self] in
-            guard let self = self else { return }
+            guard let self else { return }
             self.responseHandler?(SecureBytes.empty(), error)
             self.isResponseSent = true
             self.cancel()
@@ -335,7 +335,7 @@ class ChallengeResponseManager {
     }
 
     private func cancel() {
-        guard let currentKey = currentKey else {
+        guard let currentKey else {
             challenge?.erase()
             responseHandler = nil
             return
@@ -446,8 +446,8 @@ class ChallengeResponseManager {
             else { fatalError() }
 
         rawCommandService.executeSyncCommand(selectAppletAPDU) { [weak self] response, error in
-            guard let self = self else { return }
-            if let error = error {
+            guard let self else { return }
+            if let error {
                 Diag.error("YubiKey select applet failed [message: \(error.localizedDescription)]")
                 self.returnError(buildCommunicationError(from: error as NSError))
                 return
@@ -496,8 +496,8 @@ class ChallengeResponseManager {
             else { fatalError() }
 
         rawCommandService.executeSyncCommand(chalRespAPDU) { [weak self] response, error in
-            guard let self = self else { return }
-            if let error = error {
+            guard let self else { return }
+            if let error {
                 Diag.error("YubiKey error while executing command [message: \(error.localizedDescription)]")
                 self.returnError(buildCommunicationError(from: error as NSError))
                 return
@@ -557,7 +557,7 @@ class ChallengeResponseManager {
         completion: @escaping () -> Void
     ) {
         DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
+            guard let self else { return }
             guard self.mfiKeyActionSheetView == nil else {
                 self.setMFIActionSheet(state: state, message: message)
                 completion()
@@ -565,7 +565,7 @@ class ChallengeResponseManager {
             }
             self.mfiKeyActionSheetView = MFIKeyActionSheetView.loadViewFromNib()
             guard let actionSheet = self.mfiKeyActionSheetView,
-                  let sheetPresenter = sheetPresenter
+                  let sheetPresenter
             else {
                 Diag.error("Internal error, cannot present YubiKey dialog. Cancelling")
                 assertionFailure()
@@ -581,13 +581,13 @@ class ChallengeResponseManager {
 
     private func dismissMFIActionSheet(delayed: Bool, completion: @escaping () -> Void = {}) {
         DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
+            guard let self else { return }
             guard let actionSheet = self.mfiKeyActionSheetView else {
                 completion()
                 return
             }
             actionSheet.dismiss(animated: true, delayed: delayed) { [weak self] in
-                guard let self = self else { return }
+                guard let self else { return }
                 self.mfiKeyActionSheetView?.removeFromSuperview()
                 self.mfiKeyActionSheetView = nil
                 completion()

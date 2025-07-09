@@ -236,7 +236,7 @@ extension MainCoordinator {
 
         enrollmentDelegate = IntuneEnrollmentDelegateImpl(
             onEnrollment: { [weak self] enrollmentResult in
-                guard let self = self else { return }
+                guard let self else { return }
                 switch enrollmentResult {
                 case .success:
                     Diag.info("Intune enrollment successful")
@@ -245,8 +245,7 @@ extension MainCoordinator {
                     let message = [
                             LString.Intune.orgNeedsToManage,
                             LString.Intune.personalVersionInAppStore
-                        ].joined(separator: "\n\n")
-                    // swiftlint:disable:previous literal_expression_end_indentation
+                    ].joined(separator: "\n\n")
                     Diag.error("Intune enrollment cancelled")
                     self.showIntuneMessageAndRestartEnrollment(message)
                 case .failure(let errorMessage):
@@ -301,8 +300,7 @@ extension MainCoordinator {
         let message = [
                 LString.Intune.orgLicenseMissing,
                 LString.Intune.hintContactYourAdmin,
-            ].joined(separator: "\n\n")
-        // swiftlint:disable:previous literal_expression_end_indentation
+        ].joined(separator: "\n\n")
         Diag.error(message)
         let alert = UIAlertController(
             title: "",
@@ -439,7 +437,7 @@ extension MainCoordinator {
         _ databaseRef: URLReference,
         context: DatabaseReloadContext?
     ) -> DatabaseUnlockerCoordinator {
-        if let databaseUnlockerRouter = databaseUnlockerRouter {
+        if let databaseUnlockerRouter {
             rootSplitVC.setDetailRouter(databaseUnlockerRouter)
             if let existingDBUnlocker = childCoordinators.first(where: { $0 is DatabaseUnlockerCoordinator }) {
                 let dbUnlocker = existingDBUnlocker as! DatabaseUnlockerCoordinator
@@ -807,7 +805,7 @@ extension MainCoordinator: WatchdogDelegate {
     }
 
     private func hideAppCoverScreen() {
-        guard let appCoverWindow = appCoverWindow else { return }
+        guard let appCoverWindow else { return }
         appCoverWindow.isHidden = true
         self.appCoverWindow = nil
         print("App cover hidden")
@@ -898,7 +896,7 @@ extension MainCoordinator: WatchdogDelegate {
         showBiometricsBackground()
         lastSuccessfulBiometricAuthTime = .distantPast
         Keychain.shared.performBiometricAuth { [weak self] success in
-            guard let self = self else { return }
+            guard let self else { return }
             if success {
                 Diag.warning("Biometric auth successful")
                 self.lastSuccessfulBiometricAuthTime = Date.now
@@ -1105,10 +1103,6 @@ extension MainCoordinator: DatabasePickerCoordinatorDelegate {
 
     func didPressShowAppSettings(at popoverAnchor: PopoverAnchor?, in viewController: UIViewController) {
         showSettingsScreen(in: viewController)
-    }
-
-    func didPressShowAboutApp(at popoverAnchor: PopoverAnchor?, in viewController: UIViewController) {
-        showAboutScreen(at: popoverAnchor, in: viewController)
     }
 
     func didPressShowDiagnostics(at popoverAnchor: PopoverAnchor?, in viewController: UIViewController) {

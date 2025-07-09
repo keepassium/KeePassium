@@ -10,7 +10,7 @@ import KeePassiumLib
 
 extension YubiKey {
     static func getTitle(for yubiKey: YubiKey?) -> String {
-        guard let yubiKey = yubiKey else {
+        guard let yubiKey else {
             return LString.noHardwareKey
         }
         return String.localizedStringWithFormat(

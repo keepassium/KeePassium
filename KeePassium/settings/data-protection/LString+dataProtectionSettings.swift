@@ -35,10 +35,6 @@ extension LString {
         "[Settings/ClearMasterKeys/Cleared/title]",
         value: "Cleared",
         comment: "Title of the success message for `Clear Master Keys` button")
-    public static let masterKeysClearedMessage = NSLocalizedString(
-        "[Settings/ClearMasterKeys/Cleared/text]",
-        value: "All master keys have been deleted.",
-        comment: "Text of the success message for `Clear Master Keys` button")
 
     public static let dataProtectionAutomaticLockTitle = NSLocalizedString(
         "[Settings/DataProtection/AutomaticLock/title]",
@@ -146,10 +142,6 @@ extension LString {
         "[Settings/ClearKeyFileAssociations/Cleared/title]",
         value: "Cleared",
         comment: "Title of the success message for `Clear Key File Associations` button")
-    public static let keyFileAssociationsClearedMessage = NSLocalizedString(
-        "[Settings/ClearKeyFileAssociations/Cleared/text]",
-        value: "Associations between key files and databases have been removed.",
-        comment: "Text of the success message for `Clear Key File Associations` button")
 
     public static let dataProtectionAdvancedTitle = NSLocalizedString(
         "[Settings/DataProtection/Advanced/title]",

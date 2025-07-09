@@ -54,7 +54,7 @@ final class FieldCopiedView: UIView {
 
     private lazy var exportButton: UIButton = {
         let button = UIButton(primaryAction: UIAction {[weak self] _ in
-            guard let self = self else { return }
+            guard let self else { return }
             self.delegate?.didPressExport(for: self.indexPath, from: self)
         })
         button.configuration = actionButtonConfiguration(for: .export)
@@ -64,7 +64,7 @@ final class FieldCopiedView: UIView {
 
     private lazy var copyFieldReferenceButton: UIButton = {
         let button = UIButton(primaryAction: UIAction {[weak self] _ in
-            guard let self = self else { return }
+            guard let self else { return }
             self.delegate?.didPressCopyFieldReference(for: self.indexPath, from: self)
         })
         button.configuration = actionButtonConfiguration(for: .copyReference)
@@ -74,7 +74,7 @@ final class FieldCopiedView: UIView {
 
     private lazy var showLargeTypeButton: UIButton = {
         let button = UIButton(primaryAction: UIAction {[weak self] _ in
-            guard let self = self else { return }
+            guard let self else { return }
             self.delegate?.didPressShowLargeType(for: self.indexPath, from: self)
         })
         button.configuration = actionButtonConfiguration(for: .showLargeType)
@@ -85,7 +85,7 @@ final class FieldCopiedView: UIView {
 
     private lazy var showQRCodeButton: UIButton = {
         let button = UIButton(primaryAction: UIAction {[weak self] _ in
-            guard let self = self else { return }
+            guard let self else { return }
             self.delegate?.didPressShowQRCode(for: self.indexPath, from: self)
         })
         button.configuration = actionButtonConfiguration(for: .showQRCode)
@@ -160,7 +160,7 @@ final class FieldCopiedView: UIView {
                 self?.alpha = 0.9
             },
             completion: { [weak self] _ in
-                guard let self = self else { return }
+                guard let self else { return }
                 self.hidingTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { [weak self] _ in
                     self?.hide(animated: true)
                 }

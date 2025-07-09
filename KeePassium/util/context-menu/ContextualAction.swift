@@ -36,26 +36,6 @@ struct ContextualAction {
         )
     }
 
-    public func toAlertAction() -> UIAlertAction {
-        let alertActionStyle: UIAlertAction.Style
-        switch style {
-        case .default:
-            alertActionStyle = .default
-        case .destructive:
-            alertActionStyle = .destructive
-        case .cancel:
-            alertActionStyle = .cancel
-        }
-
-        return UIAlertAction(
-            title: title,
-            style: alertActionStyle,
-            handler: { _ in
-                handler()
-            }
-        )
-    }
-
     public func toContextualAction(tableView: UITableView) -> UIContextualAction {
         let contextualAction: UIContextualAction
         switch style {

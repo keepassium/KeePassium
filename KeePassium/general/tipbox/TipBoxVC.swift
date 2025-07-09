@@ -49,7 +49,7 @@ final class TipBoxVC: UIViewController {
             delay: 0,
             options: [.beginFromCurrentState],
             animations: { [weak self] in
-                guard let self = self else { return }
+                guard let self else { return }
                 if self.statusLabel.isHidden != shouldHideText {
                     self.statusLabel.isHidden = shouldHideText
                 }
@@ -59,7 +59,7 @@ final class TipBoxVC: UIViewController {
                 self.rootStackView.layoutIfNeeded()
             },
             completion: { [weak self] _ in
-                guard let self = self else { return }
+                guard let self else { return }
                 if !self.statusLabel.isHidden {
                     UIAccessibility.post(notification: .layoutChanged, argument: self.statusLabel)
                 }
@@ -80,7 +80,7 @@ final class TipBoxVC: UIViewController {
             delay: shouldHide ? 0 : 0.5, 
             options: [.curveEaseInOut],
             animations: { [weak self] in
-                guard let self = self else { return }
+                guard let self else { return }
                 self.thankYouLabel.isHidden = shouldHide
                 self.rootStackView.layoutIfNeeded()
             },

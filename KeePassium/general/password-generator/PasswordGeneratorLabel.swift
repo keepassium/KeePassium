@@ -29,7 +29,7 @@ final class PasswordGeneratorLabel: UILabel {
     }
 
     override func accessibilityActivate() -> Bool {
-        guard let text = text else {
+        guard let text else {
             return false
         }
         if accessibilityIsPhrase {

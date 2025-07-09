@@ -621,7 +621,7 @@ public class FileKeeper {
         let location = getLocation(for: sourceURL)
         assert(!location.isInternal, "Must be an external or remote location")
         URLReference.create(for: sourceURL, location: location) { [weak self] result in
-            guard let self = self else { return }
+            guard let self else { return }
             switch result {
             case .success(let newRef):
                 var storedRefs = self.getStoredReferences(
@@ -804,7 +804,7 @@ public class FileKeeper {
     }
 
     public func createPlaceholderInDocumentsDir() throws {
-        var fileURL = docDirURL.appendingPathComponent(Self.docDirPlaceholder)
+        let fileURL = docDirURL.appendingPathComponent(Self.docDirPlaceholder)
         try Data().write(to: fileURL, options: [.completeFileProtection, .withoutOverwriting])
     }
 
@@ -891,7 +891,7 @@ public class FileKeeper {
 
             let isExcludeFromBackup = Settings.current.isExcludeBackupFilesFromSystemBackup
             backupFileURL.setFileAttribute(.excludedFromBackup, to: isExcludeFromBackup)
-            if let newlyTimestampedSHA256 = newlyTimestampedSHA256 {
+            if let newlyTimestampedSHA256 {
                 do {
                     try backupFileURL.setExtendedAttribute(
                         name: lastTimestampedSHA256Attribute,
@@ -1081,8 +1081,8 @@ public class FileKeeper {
                 continue
             }
             getBackupFileDate(fileRef) { [weak self] fileDate in
-                guard let self = self else { return }
-                guard let fileDate = fileDate else {
+                guard let self else { return }
+                guard let fileDate else {
                     Diag.warning("Failed to get backup file age.")
                     return
                 }

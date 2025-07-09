@@ -194,9 +194,6 @@ final class EntryViewerCoordinator: BaseCoordinator {
 }
 
 extension EntryViewerCoordinator: EntryViewerPagesDataSource {
-    func getPageCount(for viewController: EntryViewerPagesVC) -> Int {
-        return Pages.allCases.count
-    }
 
     func getPage(index: Int, for viewController: EntryViewerPagesVC) -> UIViewController? {
         guard let page = Pages(rawValue: index) else {
@@ -257,11 +254,11 @@ extension EntryViewerCoordinator {
             photoPicker = GalleryPhotoPicker()
         }
         photoPicker?.pickImage(from: viewController) { [weak self] result in
-            guard let self = self else { return }
+            guard let self else { return }
             self.photoPicker = nil
             switch result {
             case .success(let pickerImage):
-                guard let pickerImage = pickerImage else { 
+                guard let pickerImage else {
                     return
                 }
                 Diag.debug("Converting image data to jpeg")
@@ -295,7 +292,7 @@ extension EntryViewerCoordinator {
             completionQueue: .main
         ) { [weak self] result in
             assert(Thread.isMainThread)
-            guard let self = self else { return }
+            guard let self else { return }
             switch result {
             case .success(let docData):
                 success(docData)
@@ -338,22 +335,6 @@ extension EntryViewerCoordinator {
         viewController.present(activityVC, animated: true)
     }
 
-    private func showExportDialog(
-        for attachment: Attachment,
-        at popoverAnchor: PopoverAnchor,
-        in viewController: UIViewController
-    ) {
-        Diag.debug("Will export attachment")
-        do {
-            let temporaryURL = try saveToTemporaryURL(attachment) 
-            FileExportHelper.showFileExportSheet(temporaryURL.url, at: popoverAnchor, parent: viewController)
-
-            self.temporaryAttachmentURLs = [temporaryURL]
-        } catch {
-            Diag.error("Failed to export attachment [reason: \(error.localizedDescription)]")
-            viewController.showErrorAlert(error, title: LString.titleFileExportError)
-        }
-    }
 
     private func showSaveDialog(
         for attachment: Attachment,
@@ -421,7 +402,7 @@ extension EntryViewerCoordinator {
     }
 
     private func dismissPreview(animated: Bool) {
-        guard let previewController = previewController else { return }
+        guard let previewController else { return }
         if ProcessInfo.isRunningOnMac {
             previewController.dismiss(animated: animated, completion: nil)
         } else {
@@ -484,7 +465,7 @@ extension EntryViewerCoordinator {
     }
 
     private func showHistoryEntry(_ entry: Entry) {
-        guard let progressHost = progressHost else { return }
+        guard let progressHost else { return }
 
         let historyEntryViewerCoordinator = EntryViewerCoordinator(
             entry: entry,
@@ -767,7 +748,7 @@ extension EntryViewerCoordinator: EntryExtraViewerVCDelegate {
         }
 
         let action = { [weak self] in
-            guard let self = self else {
+            guard let self else {
                 return
             }
 

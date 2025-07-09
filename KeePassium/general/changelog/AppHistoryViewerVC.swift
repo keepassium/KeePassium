@@ -68,7 +68,7 @@ final class AppHistoryViewerVC: UITableViewController {
             tableView.reloadData()
         }
 
-        guard let appHistory = appHistory else { return }
+        guard let appHistory else { return }
 
         sections = appHistory.sections.map { return TableSection.historySection(section: $0) }
         if let perpetualFallbackDate = fallbackDate {
@@ -218,7 +218,7 @@ extension AppHistoryViewerVC {
                 return section.releaseDate < date
             }
         })
-        guard let sectionIndex = sectionIndex else {
+        guard let sectionIndex else {
             return
         }
         tableView.scrollToRow(

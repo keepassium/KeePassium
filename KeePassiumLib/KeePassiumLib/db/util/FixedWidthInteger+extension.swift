@@ -14,7 +14,7 @@ public func sizeof<T: FixedWidthInteger>(_ value: T) -> Int {
 
 extension FixedWidthInteger {
     init?(data: ByteArray?) {
-        guard let data = data else { return nil }
+        guard let data else { return nil }
         guard data.count == MemoryLayout<Self>.size else { return nil }
 
 
@@ -26,7 +26,7 @@ extension FixedWidthInteger {
     }
 
     init?(_ value: String?) {
-        guard let value = value else {
+        guard let value else {
             return nil
         }
         self.init(value)

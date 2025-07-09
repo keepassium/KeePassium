@@ -70,7 +70,7 @@ public final class Twofish {
         }
         Twofish_clear_key(&internalKey)
 
-        if let progress = progress {
+        if let progress {
             progress.completedUnitCount = progress.totalUnitCount
             if progress.isCancelled {
                 throw ProgressInterruption.cancelled(reason: progress.cancellationReason)
@@ -123,7 +123,7 @@ public final class Twofish {
         }
         Twofish_clear_key(&internalKey)
 
-        if let progress = progress {
+        if let progress {
             progress.completedUnitCount = progress.totalUnitCount
             if progress.isCancelled {
                 throw ProgressInterruption.cancelled(reason: progress.cancellationReason)

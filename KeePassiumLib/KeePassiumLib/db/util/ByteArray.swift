@@ -183,7 +183,7 @@ public class ByteArray: Eraseable, Cloneable, Codable, CustomDebugStringConverti
         self.init(data: utf8String.data(using: .utf8)!) 
     }
     convenience public init?(base64Encoded: String?) {
-        if let base64Encoded = base64Encoded {
+        if let base64Encoded {
             guard let data = Data(base64Encoded: base64Encoded) else { return nil }
             self.init(data: data)
         } else {
@@ -407,7 +407,7 @@ public final class SecureBytes: Eraseable, Cloneable, Codable {
 
     deinit {
         erase()
-        bytes.withUnsafeBufferPointer { ptr -> Void in
+        bytes.withUnsafeBufferPointer { ptr in
             munlock(ptr.baseAddress, ptr.count)
         }
     }
@@ -504,7 +504,7 @@ public final class SecureBytes: Eraseable, Cloneable, Codable {
 
         assert(!bytes.allSatisfy { $0 == 0 }, "All bytes are zero. Possibly erased too early?")
 
-        guard let key = key else {
+        guard let key else {
             var bytesCopy = bytes.clone()
             defer {
                 bytesCopy.erase()
@@ -624,7 +624,7 @@ public final class SecureBytes: Eraseable, Cloneable, Codable {
 
         let plainTextData = Data(bytes: plainText, count: plainText.count) as CFData
         let outData = SecKeyCreateEncryptedData(publicKey, algorithm, plainTextData, &error) as Data?
-        guard let outData = outData else {
+        guard let outData else {
             let err = error!.takeRetainedValue() as Error
             Diag.warning("Cannot encrypt [message: \(err.localizedDescription)]")
             key = nil
@@ -637,7 +637,7 @@ public final class SecureBytes: Eraseable, Cloneable, Codable {
         guard encrypted.count > 0 else {
             return []
         }
-        guard let key = key else {
+        guard let key else {
             return Array(encrypted)
         }
 
@@ -653,7 +653,7 @@ public final class SecureBytes: Eraseable, Cloneable, Codable {
             Data(bytes: encrypted, count: encrypted.count) as CFData,
             &error
         ) as Data?
-        guard let plainTextData = plainTextData else {
+        guard let plainTextData else {
             let err = error!.takeRetainedValue() as Error
             let nsError = err as NSError
             let message = "\(err.localizedDescription): \(nsError.userInfo)"

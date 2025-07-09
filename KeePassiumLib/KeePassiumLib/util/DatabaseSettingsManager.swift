@@ -194,7 +194,7 @@ public class DatabaseSettingsManager {
     }
 
     private func getSettings(for descriptor: URLReference.Descriptor?) -> DatabaseSettings? {
-        guard let descriptor = descriptor else {
+        guard let descriptor else {
             Diag.warning("Cannot get database descriptor")
             assertionFailure()
             return nil
@@ -211,7 +211,7 @@ public class DatabaseSettingsManager {
     }
 
     private func getOrMakeSettings(for descriptor: URLReference.Descriptor?) -> DatabaseSettings {
-        guard let descriptor = descriptor else {
+        guard let descriptor else {
             Diag.warning("Cannot get database descriptor")
             assertionFailure()
             return DatabaseSettings()
@@ -224,7 +224,7 @@ public class DatabaseSettingsManager {
     }
 
     private func setSettings(_ dbSettings: DatabaseSettings, for descriptor: URLReference.Descriptor?) {
-        guard let descriptor = descriptor else {
+        guard let descriptor else {
             Diag.warning("Cannot get database descriptor")
             assertionFailure()
             return
@@ -248,7 +248,7 @@ public class DatabaseSettingsManager {
     }
 
     private func removeSettings(for descriptor: URLReference.Descriptor?, onlyIfUnused: Bool) {
-        guard let descriptor = descriptor else {
+        guard let descriptor else {
             Diag.warning("Cannot get database descriptor")
             assertionFailure()
             return

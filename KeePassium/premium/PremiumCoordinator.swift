@@ -56,7 +56,7 @@ class PremiumCoordinator: BaseCoordinator {
 
     fileprivate func refreshAvailableProducts() {
         premiumManager.requestAvailableProducts(ofKind: .premium) { [weak self] products, error in
-            guard let self = self else { return }
+            guard let self else { return }
 
             self.planPicker.isPurchaseEnabled = true
 
@@ -65,7 +65,7 @@ class PremiumCoordinator: BaseCoordinator {
                 return
             }
 
-            guard let products = products, products.count > 0 else {
+            guard let products, products.count > 0 else {
                 let message = LString.errorNoPurchasesAvailable
                 self.planPicker.showMessage(message)
                 return

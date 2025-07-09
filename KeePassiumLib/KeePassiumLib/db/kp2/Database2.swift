@@ -614,7 +614,7 @@ public class Database2: Database {
             return nil
         }
 
-        guard let root = root else {
+        guard let root else {
             Diag.warning("Tried to get RecycleBin group without the root one")
             assertionFailure()
             return nil

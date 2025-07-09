@@ -187,11 +187,6 @@ final class NetworkAccessSettingsVC: UITableViewController, Refreshable {
 }
 
 extension NetworkAccessSettingsVC {
-    private final class ModeCell: SubtitleCell {
-        override class var reuseIdentifier: String { "ModeCell" }
-    }
-
-    private final class PolicyCell: SubtitleCell {
-        override class var reuseIdentifier: String { "PolicyCell" }
-    }
+    private final class ModeCell: SubtitleCell {}
+    private final class PolicyCell: SubtitleCell {}
 }

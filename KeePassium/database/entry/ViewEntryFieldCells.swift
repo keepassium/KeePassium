@@ -64,7 +64,6 @@ class ViewableFieldCellFactory {
     }
 }
 
-
 protocol ViewableFieldCellDelegate: AnyObject {
     func cellHeightDidChange(_ cell: ViewableFieldCell)
 
@@ -96,7 +95,10 @@ protocol ViewableFieldCellBase: AnyObject {
 }
 
 class ViewableFieldCell: UITableViewCell, ViewableFieldCellBase {
-    class var storyboardID: String { "ViewableFieldCell" }
+    static var storyboardID: String {
+        return String(describing: self)
+    }
+
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var valueText: UITextView!
     @IBOutlet weak var valueScrollView: UIScrollView!
@@ -169,7 +171,6 @@ class OpenURLAccessoryButton: UIButton {
 }
 
 class URLFieldCell: ViewableFieldCell {
-    override class var storyboardID: String { "URLFieldCell" }
 
     private var url: URL?
 
@@ -223,7 +224,7 @@ class URLFieldCell: ViewableFieldCell {
 
     @objc
     private func didPressOpenURLButton(_ sender: UIButton) {
-        guard let url = url else { return }
+        guard let url else { return }
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 }
@@ -248,7 +249,6 @@ class ToggleVisibilityAccessoryButton: UIButton {
 }
 
 class ProtectedFieldCell: ViewableFieldCell {
-    override class var storyboardID: String { "ProtectedFieldCell" }
     private let hiddenValueMask = "* * * *"
     private var toggleButton: ToggleVisibilityAccessoryButton? 
 
@@ -309,7 +309,7 @@ class ProtectedFieldCell: ViewableFieldCell {
     }
 
     override func getUserVisibleValue() -> String? {
-        guard let field = field else { return nil }
+        guard let field else { return nil }
         return field.isValueHidden ? hiddenValueMask : field.decoratedResolvedValue
     }
 
@@ -327,7 +327,7 @@ class ProtectedFieldCell: ViewableFieldCell {
     }
 
     @objc func toggleValueHidden() {
-        guard let toggleButton = toggleButton, let field = field else { return }
+        guard let toggleButton, let field else { return }
 
         toggleButton.isSelected = !toggleButton.isSelected
         field.isValueHidden = !toggleButton.isSelected
@@ -340,7 +340,7 @@ class ProtectedFieldCell: ViewableFieldCell {
                 self?.valueText.alpha = 0.0
             },
             completion: { [weak self] _ in
-                guard let self = self else { return }
+                guard let self else { return }
                 self.refreshTextView()
                 self.delegate?.cellHeightDidChange(self)
                 UIView.animate(
@@ -358,8 +358,6 @@ class ProtectedFieldCell: ViewableFieldCell {
 }
 
 final class TagsCell: ViewableFieldCell {
-    override class var storyboardID: String { "TagsCell" }
-
     override func setupCell() {
         super.setupCell()
 
@@ -369,8 +367,6 @@ final class TagsCell: ViewableFieldCell {
 }
 
 final class PasskeyFieldCell: ViewableFieldCell {
-    override class var storyboardID: String { "PasskeyFieldCell" }
-
     @IBOutlet private weak var valueScrollView2: UIScrollView!
     @IBOutlet private weak var valueText2: UITextView!
 
@@ -392,7 +388,6 @@ final class PasskeyFieldCell: ViewableFieldCell {
 }
 
 class ExpandableFieldCell: ViewableFieldCell {
-    override class var storyboardID: String { "ExpandableFieldCell" }
 
     @IBOutlet weak var showMoreButton: UIButton!
     @IBOutlet weak var showMoreContainer: UIView!
@@ -421,7 +416,7 @@ class ExpandableFieldCell: ViewableFieldCell {
     }
 
     private func setupExpandButton() {
-        guard let field = field,
+        guard let field,
             field.isMultiline else { return }
 
         let canViewMore = canBeTruncated && field.isHeightConstrained
@@ -447,7 +442,7 @@ class ExpandableFieldCell: ViewableFieldCell {
 
     @IBAction private func didPressShowMore(_ button: UIButton) {
         assert(canBeTruncated)
-        guard let field = field else { return }
+        guard let field else { return }
 
         let isToBeConstrained = !field.isHeightConstrained
         heightConstraint.isActive = isToBeConstrained
@@ -472,7 +467,6 @@ protocol DynamicFieldCell: ViewableFieldCell, Refreshable {
 
 
 class TOTPFieldCell: ViewableFieldCell, DynamicFieldCell {
-    override class var storyboardID: String { "TOTPFieldCell" }
     private let refreshInterval = 1.0
 
     @IBOutlet weak var progressView: UIProgressView!

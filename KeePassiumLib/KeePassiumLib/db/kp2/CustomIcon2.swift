@@ -112,13 +112,13 @@ extension CustomIcon2 {
         xmlIcon.addChild(name: Xml2.data, value: data.base64EncodedString())
 
         if formatVersion.supports(.customIconName),
-           let name = name
+           let name
         {
             xmlIcon.addChild(name: Xml2.name, value: name)
         }
 
         if formatVersion.supports(.customIconModificationTime),
-           let lastModificationTime = lastModificationTime
+           let lastModificationTime
         {
             xmlIcon.addChild(
                 name: Xml2.lastModificationTime,

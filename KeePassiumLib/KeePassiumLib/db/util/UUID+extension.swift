@@ -26,7 +26,7 @@ extension UUID {
     }
 
     internal init?(data: ByteArray?) {
-        guard let data = data else { return nil }
+        guard let data else { return nil }
         guard data.count == UUID.byteWidth else { return nil }
         let nsuuid = data.withBytes {
             NSUUID(uuidBytes: $0)

@@ -10,7 +10,6 @@ import KeePassiumLib
 import UniformTypeIdentifiers
 
 protocol EntryViewerPagesDataSource: AnyObject {
-    func getPageCount(for viewController: EntryViewerPagesVC) -> Int
     func getPage(index: Int, for viewController: EntryViewerPagesVC) -> UIViewController?
     func getPageIndex(of page: UIViewController, for viewController: EntryViewerPagesVC) -> Int?
 }
@@ -135,7 +134,7 @@ final class EntryViewerPagesVC: UIViewController, Refreshable {
     }
 
     public func switchTo(page index: Int) {
-        guard let dataSource = dataSource,
+        guard let dataSource,
               let targetPageVC = dataSource.getPage(index: index, for: self)
         else {
             assertionFailure()
@@ -225,7 +224,7 @@ extension EntryViewerPagesVC: UIPageViewControllerDelegate {
     ) {
         guard finished && completed else { return }
 
-        guard let dataSource = dataSource,
+        guard let dataSource,
               let selectedVC = pageViewController.viewControllers?.first,
               let selectedIndex = dataSource.getPageIndex(of: selectedVC, for: self)
         else {
@@ -290,13 +289,13 @@ extension EntryViewerPagesVC: UIDropInteractionDelegate {
             dispatchGroup.enter()
 
             dragItem.itemProvider.loadFileRepresentation(forTypeIdentifier: UTType.item.identifier) { url, error in
-                if let error = error {
+                if let error {
                     Diag.error("Failed to load dropped file [error: \(error.localizedDescription)]")
                     dispatchGroup.leave()
                     return
                 }
 
-                guard let url = url else {
+                guard let url else {
                     Diag.error("Dropped file URL is invalid")
                     dispatchGroup.leave()
                     return

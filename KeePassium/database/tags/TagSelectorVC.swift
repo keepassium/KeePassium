@@ -271,7 +271,7 @@ final class TagSelectorVC: TableViewControllerWithContextActions {
                     actionTitle: LString.actionRename,
                     value: tag.title
                 ) {  [weak self] title in
-                    guard let self = self else { return }
+                    guard let self else { return }
                     self.delegate?.didPressRenameTag(tag, newTitle: title, in: self)
                 }
             }

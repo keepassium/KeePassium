@@ -76,7 +76,7 @@ final class PasswordGeneratorQuickSheetVC: UITableViewController, Refreshable {
             title: LString.PasswordGenerator.titleRandomGenerator,
             image: .symbol(.gearshape2),
             primaryAction: UIAction { [weak self] _ in
-                guard let self = self else { return }
+                guard let self else { return }
                 self.delegate?.didRequestFullMode(in: self)
             }
         )
@@ -147,7 +147,7 @@ final class PasswordGeneratorQuickSheetVC: UITableViewController, Refreshable {
     }
 
     private func generateItems() -> [DataItem] {
-        guard let delegate = delegate else {
+        guard let delegate else {
             assertionFailure("This won't work without a delegate.")
             return []
         }
@@ -236,7 +236,7 @@ extension PasswordGeneratorQuickSheetVC {
             attributes: [.accessibilitySpeechSpellOut: item.mode.accessibilityShouldSpellOut]
         )
         cell.onDidPressCopy = { [weak self] contentView in
-            guard let self = self else { return }
+            guard let self else { return }
             self.delegate?.didPressCopy(item.text, inView: contentView, in: self)
         }
         return cell

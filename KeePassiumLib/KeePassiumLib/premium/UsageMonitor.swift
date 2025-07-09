@@ -79,7 +79,7 @@ public class UsageMonitor {
     }
 
     @objc public func stopInterval() {
-        guard let startTime = startTime else { return }
+        guard let startTime else { return }
         let endTime = Date.now
         let secondsElapsed = abs(endTime.timeIntervalSince(startTime))
         self.startTime = nil 

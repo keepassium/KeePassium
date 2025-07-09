@@ -9,7 +9,6 @@
 import KeePassiumLib
 
 protocol RemoteFileExportCoordinatorDelegate: AnyObject {
-    func didCancelExport(in coordinator: RemoteFileExportCoordinator)
     func didFinishExport(
         to remoteURL: URL,
         credential: NetworkCredential,

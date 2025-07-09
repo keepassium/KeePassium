@@ -81,7 +81,7 @@ public class PasswordGenerator {
     }
 
     private func canSatisfy(maxConsecutive: Int?, with elements: [String]) -> Bool {
-        guard let maxConsecutive = maxConsecutive else {
+        guard let maxConsecutive else {
             return true
         }
         guard maxConsecutive > 0 else {
@@ -92,7 +92,7 @@ public class PasswordGenerator {
     }
 
     private func isSatisfied(maxConsecutive: Int?, with elements: [String]) -> Bool {
-        guard let maxConsecutive = maxConsecutive else {
+        guard let maxConsecutive else {
             return true
         }
         guard maxConsecutive > 0 else {

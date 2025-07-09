@@ -89,7 +89,7 @@ extension WebDAVConnectionSetupCoordinator: RemoteFolderViewerDelegate {
     }
 
     func didSelectItem(_ item: RemoteFileItem, in viewController: RemoteFolderViewerVC) {
-        guard let credential = credential else {
+        guard let credential else {
             Diag.warning("Not signed into WebDav, cancelling")
             assertionFailure()
             return
@@ -115,7 +115,7 @@ extension WebDAVConnectionSetupCoordinator: RemoteFolderViewerDelegate {
 
     func didPressSave(to folder: RemoteFileItem, in viewController: RemoteFolderViewerVC) {
         guard let webDAVFolder = folder as? WebDAVItem,
-              let credential = credential else {
+              let credential else {
             assertionFailure()
             return
         }
@@ -154,8 +154,8 @@ extension WebDAVConnectionSetupCoordinator: WebDAVConnectionSetupVCDelegate {
             timeout: Timeout(duration: FileDataProvider.defaultTimeoutDuration),
             completionQueue: .main
         ) { [weak self, weak viewController] result in
-            guard let self = self,
-                  let viewController = viewController
+            guard let self,
+                  let viewController
             else { return }
 
             viewController.indicateState(isBusy: false)
@@ -201,7 +201,7 @@ extension WebDAVConnectionSetupCoordinator: WebDAVConnectionSetupVCDelegate {
             credential: credential,
             timeout: Timeout(duration: FileDataProvider.defaultTimeoutDuration),
             completion: { [weak self, weak viewController] result in
-                guard let self = self, let viewController = viewController else { return }
+                guard let self, let viewController else { return }
                 viewController.indicateState(isBusy: false)
                 switch result {
                 case .success:

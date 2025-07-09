@@ -109,7 +109,7 @@ struct AppHistory: Decodable {
             let change = Change.allCases.first(where: { title.hasPrefix($0.rawValue) })
             self.change = change ?? .default
 
-            if let change = change {
+            if let change {
                 self.title = title.dropFirst(change.rawValue.count + 1).trimmingCharacters(in: .whitespaces)
             } else {
                 self.title = title

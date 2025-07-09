@@ -539,7 +539,7 @@ final class Header2: Eraseable {
     }
 
     internal func initStreamCipher() {
-        guard let protectedStreamKey = protectedStreamKey else {
+        guard let protectedStreamKey else {
             fatalError()
         }
         self.streamCipher = StreamCipherFactory.create(
@@ -673,7 +673,7 @@ final class Header2: Eraseable {
         fields[.cipherID] = self.dataCipher.uuid.data
         fields[.transformSeed] = transformSeedData
         fields[.transformRounds] = transformRoundsData
-        if let protectedStreamKey = protectedStreamKey {
+        if let protectedStreamKey {
             protectedStreamKey.withDecryptedBytes {
                 fields[.protectedStreamKey] = ByteArray(bytes: $0.clone())
             }
@@ -718,7 +718,7 @@ final class Header2: Eraseable {
 
     func writeInner(to stream: ByteArray.OutputStream) throws {
         assert(formatVersion >= .v4)
-        guard let protectedStreamKey = protectedStreamKey else { fatalError() }
+        guard let protectedStreamKey else { fatalError() }
 
         Diag.verbose("Writing kdbx4 inner header")
         stream.write(value: InnerFieldID.innerRandomStreamID.rawValue) 

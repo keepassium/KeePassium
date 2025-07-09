@@ -53,7 +53,7 @@ final class EntryFinderCell: UITableViewCell {
 
     fileprivate var entry: Entry? {
         didSet {
-            guard let entry = entry else {
+            guard let entry else {
                 titleLabel?.text = ""
                 subtitleLabel?.text = ""
                 iconView?.image = nil
@@ -208,7 +208,7 @@ final class EntryFinderVC: UITableViewController {
 
     public func activateManualSearch(query: String? = nil) {
         DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
+            guard let self else { return }
             self.searchController.isActive = true
             self.searchController.searchBar.text = query
             self.searchController.searchBar.becomeFirstResponderWhenSafe()
@@ -366,7 +366,7 @@ final class EntryFinderVC: UITableViewController {
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        let (sectionType, sectionIndex) = getSectionTypeAndIndex(indexPath.section)
+        let (sectionType, _) = getSectionTypeAndIndex(indexPath.section)
         switch sectionType {
         case .announcement:
             return makeAnnouncementCell(at: indexPath)
@@ -532,7 +532,7 @@ final class EntryFinderVC: UITableViewController {
         let confirmationAlert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let lockDatabaseAction = UIAlertAction(title: LString.actionLockDatabase, style: .destructive) {
             [weak self] _ in
-            guard let self = self else { return }
+            guard let self else { return }
             self.delegate?.didPressLockDatabase(in: self)
         }
         let cancelAction = UIAlertAction(title: LString.actionCancel, style: .cancel, handler: nil)

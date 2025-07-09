@@ -125,7 +125,7 @@ final class GoogleDriveConnectionSetupCoordinator: RemoteDataSourceSetupCoordina
         }
 
         selectItem(item, in: viewController) { [weak self] fileURL, token in
-            guard let self = self else {
+            guard let self else {
                 return
             }
             self.delegate?.didPickRemoteFile(

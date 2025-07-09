@@ -87,7 +87,7 @@ public class Keychain {
         var result = [String: AnyObject]()
         result[kSecClass as String] = kSecClassGenericPassword
         result[kSecAttrService as String] = service.rawValue as AnyObject?
-        if let account = account {
+        if let account {
             result[kSecAttrAccount as String] = account as AnyObject?
         }
         if let accessGroup = Keychain.accessGroup {
