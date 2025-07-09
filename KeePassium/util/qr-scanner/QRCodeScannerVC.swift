@@ -19,7 +19,7 @@ final class QRCodeScannerVC: UIViewController, AVCaptureMetadataOutputObjectsDel
             : UIColor.black.withAlphaComponent(0.7)
     }
 
-    var completion: ((Result<String, QRScannerError>) -> Void)?
+    var completion: QRCodeScanner.Completion?
 
     private lazy var instructionContainerView: UIView = {
         let view = UIView()
@@ -233,7 +233,7 @@ final class QRCodeScannerVC: UIViewController, AVCaptureMetadataOutputObjectsDel
 
         guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else {
             Diag.error("No suitable video capture device found.")
-            showError(.noCameraDevice)
+            showError(.imageSourceNotAvailable)
             return
         }
 
@@ -291,7 +291,7 @@ final class QRCodeScannerVC: UIViewController, AVCaptureMetadataOutputObjectsDel
 
     @objc private func dismissScanner() {
         assert(Thread.isMainThread)
-        completion?(.failure(.userCancelled))
+        completion?(.success(nil))
     }
 
     @objc private func openPermissionsSettings() {

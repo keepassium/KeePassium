@@ -97,6 +97,12 @@
 		7516B0D627292A130042F40E /* UIMenu+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7516B0D427292A130042F40E /* UIMenu+extensions.swift */; };
 		7516B0D727292A130042F40E /* UIMenu+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7516B0D427292A130042F40E /* UIMenu+extensions.swift */; };
 		7516B0D827292A130042F40E /* UIMenu+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7516B0D427292A130042F40E /* UIMenu+extensions.swift */; };
+		75176D052E1E8F92001795B8 /* CameraPhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75176D042E1E8F92001795B8 /* CameraPhotoPicker.swift */; };
+		75176D062E1E8F92001795B8 /* CameraPhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75176D042E1E8F92001795B8 /* CameraPhotoPicker.swift */; };
+		75176D072E1E8F92001795B8 /* CameraPhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75176D042E1E8F92001795B8 /* CameraPhotoPicker.swift */; };
+		75176D092E1E8FC9001795B8 /* GalleryPhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75176D082E1E8FC9001795B8 /* GalleryPhotoPicker.swift */; };
+		75176D0A2E1E8FC9001795B8 /* GalleryPhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75176D082E1E8FC9001795B8 /* GalleryPhotoPicker.swift */; };
+		75176D0B2E1E8FC9001795B8 /* GalleryPhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75176D082E1E8FC9001795B8 /* GalleryPhotoPicker.swift */; };
 		75183ED12BB8A20A008F1614 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 75183ED02BB8A20A008F1614 /* PrivacyInfo.xcprivacy */; };
 		75183ED22BB8A20A008F1614 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 75183ED02BB8A20A008F1614 /* PrivacyInfo.xcprivacy */; };
 		75183ED32BB8A20A008F1614 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 75183ED02BB8A20A008F1614 /* PrivacyInfo.xcprivacy */; };
@@ -1670,6 +1676,8 @@
 		7514CC9E22D5D14B00A0D7A4 /* LongPressAwareNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressAwareNavigationController.swift; sourceTree = "<group>"; };
 		75151D3223268AB300F3C411 /* UILabel+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+extensions.swift"; sourceTree = "<group>"; };
 		7516B0D427292A130042F40E /* UIMenu+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIMenu+extensions.swift"; sourceTree = "<group>"; };
+		75176D042E1E8F92001795B8 /* CameraPhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPhotoPicker.swift; sourceTree = "<group>"; };
+		75176D082E1E8FC9001795B8 /* GalleryPhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPhotoPicker.swift; sourceTree = "<group>"; };
 		75183ED02BB8A20A008F1614 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		751A564E24CCD3C0001227D6 /* AppIconPicker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppIconPicker.storyboard; sourceTree = "<group>"; };
 		751A565124CCD3CD001227D6 /* AppIconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconPicker.swift; sourceTree = "<group>"; };
@@ -2698,6 +2706,16 @@
 			path = "expiry-date";
 			sourceTree = "<group>";
 		};
+		75176D032E1E8F6E001795B8 /* photo-picker */ = {
+			isa = PBXGroup;
+			children = (
+				7544A184261610DE000C0492 /* PhotoPicker.swift */,
+				75176D082E1E8FC9001795B8 /* GalleryPhotoPicker.swift */,
+				75176D042E1E8F92001795B8 /* CameraPhotoPicker.swift */,
+			);
+			path = "photo-picker";
+			sourceTree = "<group>";
+		};
 		751A564D24CCD375001227D6 /* appearance */ = {
 			isa = PBXGroup;
 			children = (
@@ -2927,6 +2945,7 @@
 				75BC562725818702002B4395 /* a11y */,
 				75B78705261F8979005BE7B7 /* context-menu */,
 				75060C622B8CEBEA006C7B50 /* macos */,
+				75176D032E1E8F6E001795B8 /* photo-picker */,
 				75C50ABF2E1D483B001D6DA7 /* qr-scanner */,
 				753376F023CA650C00603F4A /* PasswordStringHelper.swift */,
 				75679ACA22F8095F00372301 /* AppInfo.swift */,
@@ -3315,7 +3334,6 @@
 		75BE091D25098F3500C436C2 /* icon */ = {
 			isa = PBXGroup;
 			children = (
-				7544A184261610DE000C0492 /* PhotoPicker.swift */,
 				756AE9D220CF8B5E00995846 /* ItemIconPicker.swift */,
 				751E0D242309AFAC0088BB10 /* ItemIconPicker.storyboard */,
 				75BE091E2509905300C436C2 /* ItemIconPickerCoordinator.swift */,
@@ -4346,6 +4364,7 @@
 				75FC40162DA025EE00C5D1C2 /* DatabasePickerMode.swift in Sources */,
 				75A5312323C0D35500900ED1 /* NavigationRouter.swift in Sources */,
 				750E72C926A427A200CDBFFA /* ExpiryDateEditorVC.swift in Sources */,
+				75176D0B2E1E8FC9001795B8 /* GalleryPhotoPicker.swift in Sources */,
 				7538E3B12DCD6FFF002766BF /* LString+autoFillSettings.swift in Sources */,
 				75C94C5720B373BA004FA29D /* GroupViewerVC.swift in Sources */,
 				F34010A32AA1E540005FDF55 /* ExposureCountFormatter.swift in Sources */,
@@ -4376,6 +4395,7 @@
 				754F7E4A2DB00820004235C8 /* PickerCell.swift in Sources */,
 				754EEAB72CFFBBF000404142 /* DatabaseCSVExporter.swift in Sources */,
 				F3B0C2042B2CA8790001946D /* OnboardingPagesVC.swift in Sources */,
+				75176D062E1E8F92001795B8 /* CameraPhotoPicker.swift in Sources */,
 				F3139C2B2DDB0F0E008F381B /* AutoTypeHelper.swift in Sources */,
 				758FF6BF28FAE32F007DE8EB /* ButtonCell.swift in Sources */,
 				7524E73B2888A3F500ECBEC8 /* WebDAVConnectionSetupVC.swift in Sources */,
@@ -4641,6 +4661,7 @@
 				75FC40142DA025EE00C5D1C2 /* DatabasePickerMode.swift in Sources */,
 				75B38BFB233E5B7C006BDEFC /* WatchdogAwareTextView.swift in Sources */,
 				F321414D2A934AAE007A8D4E /* HIBPService.swift in Sources */,
+				75176D092E1E8FC9001795B8 /* GalleryPhotoPicker.swift in Sources */,
 				75D3AEB623BDD582003028FB /* DestinationGroupPickerVC.swift in Sources */,
 				7538E3B02DCD6FFF002766BF /* LString+autoFillSettings.swift in Sources */,
 				75A5312523C0D35500900ED1 /* NavigationRouter.swift in Sources */,
@@ -4671,6 +4692,7 @@
 				F35D7CD12D639563006DCBF0 /* FileImportHelper.swift in Sources */,
 				754F7E482DB00820004235C8 /* PickerCell.swift in Sources */,
 				754EEAB62CFFBBF000404142 /* DatabaseCSVExporter.swift in Sources */,
+				75176D052E1E8F92001795B8 /* CameraPhotoPicker.swift in Sources */,
 				F3139C2E2DDB0F0E008F381B /* AutoTypeHelper.swift in Sources */,
 				75B38C03233E5B7C006BDEFC /* AppCoverVC.swift in Sources */,
 				75D76150262DDE0B00B1DE7F /* AboutCoordinator.swift in Sources */,
@@ -4981,6 +5003,7 @@
 				75D075DF28B639D200F02E39 /* AppIcon.swift in Sources */,
 				75D075E028B639D200F02E39 /* DatabaseCreatorCoordinator.swift in Sources */,
 				75D075E128B639D200F02E39 /* PasswordGeneratorQuickSheetVC.swift in Sources */,
+				75176D0A2E1E8FC9001795B8 /* GalleryPhotoPicker.swift in Sources */,
 				75D075E228B639D200F02E39 /* AppInfo.swift in Sources */,
 				75D075E328B639D200F02E39 /* UIMenu+extensions.swift in Sources */,
 				75D075E428B639D200F02E39 /* ParameterValueCell.swift in Sources */,
@@ -5071,6 +5094,7 @@
 				F36CFD282D46C655002ACDA7 /* QRCodeVC.swift in Sources */,
 				75F544B72CEF8E420022BAA4 /* UIKeyCommand+hotkeys.swift in Sources */,
 				75CA661029B8E00A0094CBAA /* DatabasePrintFormatter.swift in Sources */,
+				75176D072E1E8F92001795B8 /* CameraPhotoPicker.swift in Sources */,
 				7564FAEC2DB941D40030F3C4 /* DataProtectionSettingsVC.swift in Sources */,
 				75917F2C2DAB20C500EB9375 /* FilePickerCoordinator+fileInfo.swift in Sources */,
 				75D0762128B639D200F02E39 /* ProgressOverlay.swift in Sources */,

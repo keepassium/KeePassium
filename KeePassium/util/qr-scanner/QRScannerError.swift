@@ -10,31 +10,45 @@ import AVFoundation
 import KeePassiumLib
 
 enum QRScannerError: LocalizedError {
-    case noCameraDevice
+    case imageSourceNotAvailable
     case cameraBusy
-    case userCancelled
+    case imageCorrupted
+    case internalError
+    case noQRCodeFound
     case other(Error)
 
     var errorDescription: String? {
         switch self {
-        case .noCameraDevice:
+        case .imageSourceNotAvailable:
             return NSLocalizedString(
-                "[QRCodeScanner/Error/NoCameraDevice]",
+                "[QRCodeScanner/Error/SourceNoAvailable]",
                 bundle: Bundle.main,
-                value: "No camera device found.",
-                comment: "Error message when no camera is available for QR scanning.")
+                value: "Image source is not available.",
+                comment: "Error message when camera/gallery/etc is either missing or forbidden.")
         case .cameraBusy:
             return NSLocalizedString(
                 "[QRCodeScanner/Error/CameraBusy]",
                 bundle: Bundle.main,
                 value: "Camera is already in use.",
                 comment: "Error message when the app cannot use the camera.")
-        case .userCancelled:
+        case .imageCorrupted:
             return NSLocalizedString(
-                "[QRCodeScanner/Error/UserCancelled]",
+                "[QRCodeScanner/Error/ImageCorrupted]",
                 bundle: Bundle.main,
-                value: "QR code scanning was cancelled by the user.",
-                comment: "Error message when user cancels QR code scanning.")
+                value: "Selected image is corrupted.",
+                comment: "Error message")
+        case .internalError:
+            return NSLocalizedString(
+                "[QRCodeScanner/Error/Internal]",
+                bundle: Bundle.main,
+                value: "Internal error in QR code reader. Check diagnostic log for details.",
+                comment: "Error message with a suggested action.")
+        case .noQRCodeFound:
+            return NSLocalizedString(
+                "[QRCodeScanner/Error/NoQRCodeFound]",
+                bundle: Bundle.main,
+                value: "Looks like there’s no QR code in that image.",
+                comment: "Notification message")
         case .other(let systemError):
             return systemError.localizedDescription
         }

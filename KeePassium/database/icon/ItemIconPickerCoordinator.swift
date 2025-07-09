@@ -220,7 +220,7 @@ extension ItemIconPickerCoordinator: ItemIconPickerDelegate {
 
     func didPressImportIcon(in viewController: ItemIconPicker, at popoverAnchor: PopoverAnchor) {
         if photoPicker == nil {
-            photoPicker = PhotoPickerFactory.makePhotoPicker()
+            photoPicker = GalleryPhotoPicker()
         }
         photoPicker?.pickImage(from: iconPicker) { [weak self] result in
             guard let self = self else { return }

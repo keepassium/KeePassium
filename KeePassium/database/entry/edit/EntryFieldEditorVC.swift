@@ -20,8 +20,8 @@ protocol EntryFieldEditorDelegate: AnyObject {
     func didModifyContent(in viewController: EntryFieldEditorVC)
 
     func isTOTPSetupAvailable(_ viewController: EntryFieldEditorVC) -> Bool
-    func isQRScannerAvailable(_ viewController: EntryFieldEditorVC) -> Bool
-    func didPressQRCodeOTPSetup(in viewController: EntryFieldEditorVC)
+    func shouldProvideAvailableQRSources(for viewController: EntryFieldEditorVC) -> Set<QRCodeSource>
+    func didPressPickOTPQRCode(from source: QRCodeSource, in viewController: EntryFieldEditorVC)
     func didPressManualOTPSetup(in viewController: EntryFieldEditorVC)
 
     func getUserNameGeneratorMenu(
@@ -195,14 +195,31 @@ final class EntryFieldEditorVC: UITableViewController, Refreshable {
             return nil
         }
 
-        let isQRScannerAvailable = delegate?.isQRScannerAvailable(self) ?? false
-        let qrCodeSetupAction = UIAction(
+        let availableQRSources = delegate?.shouldProvideAvailableQRSources(for: self) ?? []
+        let scanQRCodeAction = UIAction(
             title: LString.otpSetupScanQRCode,
             image: .symbol(.qrcode),
-            attributes: isQRScannerAvailable ? [] : [.disabled]
+            attributes: availableQRSources.contains(.camera) ? [] : [.disabled]
         ) { [weak self] _ in
-            self?.didPressQRCodeOTPSetup()
+            self?.didPressPickOTPQRCode(from: .camera)
         }
+
+        let pickQRPhotoAction = UIAction(
+            title: LString.otpSetupScanQRPhoto,
+            image: .symbol(.photo),
+            attributes: availableQRSources.contains(.imageLibrary) ? [] : [.disabled]
+        ) { [weak self] _ in
+            self?.didPressPickOTPQRCode(from: .imageLibrary)
+        }
+
+        let pickQRImageFileAction = UIAction(
+            title: LString.otpSetupScanQRImageFile,
+            image: .symbol(.folder),
+            attributes: availableQRSources.contains(.files) ? [] : [.disabled]
+        ) { [weak self] _ in
+            self?.didPressPickOTPQRCode(from: .files)
+        }
+
         let manualSetupAction = UIAction(
             title: LString.otpSetupEnterManually,
             image: .symbol(.keyboard)
@@ -210,11 +227,13 @@ final class EntryFieldEditorVC: UITableViewController, Refreshable {
             self?.didPressManualOTPSetup()
         }
 
-        return UIMenu(
-            title: LString.fieldOTP,
-            image: .symbol(.clock),
-            children: [qrCodeSetupAction, manualSetupAction]
-        )
+        let actions: [UIAction]
+        if ProcessInfo.isRunningOnMac {
+            actions = [scanQRCodeAction, pickQRImageFileAction, manualSetupAction]
+        } else {
+            actions = [scanQRCodeAction, pickQRPhotoAction, pickQRImageFileAction, manualSetupAction]
+        }
+        return UIMenu(title: LString.fieldOTP, image: .symbol(.clock), children: actions)
     }
 
 
@@ -238,20 +257,11 @@ final class EntryFieldEditorVC: UITableViewController, Refreshable {
         present(choiceAlert, animated: true, completion: nil)
     }
 
-    private func didPressQRCodeOTPSetup() {
-        guard let isTOTPSetupSupported = delegate?.isTOTPSetupAvailable(self),
-              let isQRScannerAvailable = delegate?.isQRScannerAvailable(self),
-              isTOTPSetupSupported,
-              isQRScannerAvailable
-        else {
-            assertionFailure("Tried to use an unavailable TOTP setup option")
-            return
-        }
+    private func didPressPickOTPQRCode(from source: QRCodeSource) {
         confirmOverwritingOTPConfig { [weak self] in
             guard let self else { return }
-            self.delegate?.didPressQRCodeOTPSetup(in: self)
+            delegate?.didPressPickOTPQRCode(from: source, in: self)
         }
-
     }
 
     private func didPressManualOTPSetup() {

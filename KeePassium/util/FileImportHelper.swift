@@ -9,6 +9,9 @@
 import Foundation
 import KeePassiumLib
 import UniformTypeIdentifiers
+#if INTUNE
+import IntuneMAMSwift
+#endif
 
 final class FileImportHelper: NSObject {
     var handler: ((_ selectedURL: URL?) -> Void)?
@@ -19,6 +22,23 @@ final class FileImportHelper: NSObject {
     ) {
         assert(handler != nil, "The `handler` callback must be defined for processing user choice")
 
+        guard ManagedAppConfig.shared.areSystemFileProvidersAllowed else {
+            Diag.error("Import from local file system is forbidden by organizational policy.")
+            viewController.showManagedFeatureBlockedNotification()
+            return
+        }
+        #if INTUNE
+        let accountID = IntuneMAMEnrollmentManager.instance().enrolledAccountId()
+        if let policy = IntuneMAMPolicyManager.instance().policy(forAccountId: accountID) {
+            guard policy.isDocumentPickerAllowed(.import) else {
+                Diag.error("Document picker is blocked by Intune policy.")
+                IntuneMAMUIHelper.showSharingBlockedMessage { [weak self] in
+                    self?.handler?(nil)
+                }
+                return
+            }
+        }
+        #endif
         let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: contentTypes)
         documentPicker.delegate = self
         documentPicker.modalPresentationStyle = .formSheet

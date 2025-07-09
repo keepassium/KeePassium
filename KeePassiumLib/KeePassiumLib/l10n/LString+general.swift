@@ -1247,13 +1247,25 @@ extension LString {
     public static let otpSetupScanQRCode = NSLocalizedString(
         "[OTP/Setup/ScanQRCode]",
         bundle: Bundle.framework,
-        value: "Scan QR code",
+        value: "Scan QR Code",
         comment: "Button/action: proceed with QR code based OTP setup"
+    )
+    public static let otpSetupScanQRPhoto = NSLocalizedString(
+        "[OTP/Setup/ScanQRPhoto]",
+        bundle: Bundle.framework,
+        value: "Scan QR from Photo",
+        comment: "Action: pick a photo (from gallery) to scan as QR code"
+    )
+    public static let otpSetupScanQRImageFile = NSLocalizedString(
+        "[OTP/Setup/ScanQRImageFile]",
+        bundle: Bundle.framework,
+        value: "Scan QR from File",
+        comment: "Action: pick an image (from files) to scan as QR code"
     )
     public static let otpSetupEnterManually = NSLocalizedString(
         "[OTP/Setup/EnterManually]",
         bundle: Bundle.framework,
-        value: "Enter manually",
+        value: "Enter Manually",
         comment: "Button/action: proceed with manual OTP setup"
     )
 

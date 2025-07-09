@@ -252,9 +252,9 @@ extension EntryViewerCoordinator {
         assert(photoPicker == nil)
 
         if fromCamera {
-            photoPicker = PhotoPickerFactory.makeCameraPhotoPicker()
+            photoPicker = CameraPhotoPicker()
         } else {
-            photoPicker = PhotoPickerFactory.makePhotoPicker()
+            photoPicker = GalleryPhotoPicker()
         }
         photoPicker?.pickImage(from: viewController) { [weak self] result in
             guard let self = self else { return }

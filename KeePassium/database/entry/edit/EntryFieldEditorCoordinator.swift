@@ -7,6 +7,7 @@
 //  For commercial licensing, please contact the author.
 
 import KeePassiumLib
+import UIKit
 
 protocol EntryFieldEditorCoordinatorDelegate: AnyObject {
     func didUpdateEntry(_ entry: Entry, in coordinator: EntryFieldEditorCoordinator)
@@ -218,6 +219,12 @@ final class EntryFieldEditorCoordinator: BaseCoordinator {
             fieldEditorVC.fields = fields
         }
         refresh()
+
+        fieldEditorVC.showNotification(
+            LString.actionDone,
+            image: .symbol(.clock),
+            duration: 1
+        )
     }
 
     private func setOTPConfig(unfilteredSeed: String) {
@@ -342,17 +349,26 @@ extension EntryFieldEditorCoordinator: EntryFieldEditorDelegate {
         return database is Database2
     }
 
-    func isQRScannerAvailable(_ viewController: EntryFieldEditorVC) -> Bool {
-        return qrCodeScanner.deviceSupportsQRScanning
+    func shouldProvideAvailableQRSources(for viewController: EntryFieldEditorVC) -> Set<QRCodeSource> {
+        return qrCodeScanner.getSupportedSources()
     }
 
-    func didPressQRCodeOTPSetup(in viewController: EntryFieldEditorVC) {
-        qrCodeScanner.scanQRCode(presenter: viewController) { [weak self] result in
+    func didPressPickOTPQRCode(from source: QRCodeSource, in viewController: EntryFieldEditorVC) {
+        qrCodeScanner.pickQRCode(source: source, presenter: viewController) {
+            [weak self, weak viewController] result in
+            guard let self, let viewController else { return }
+
             switch result {
-            case .failure(let error):
-                self?.fieldEditorVC.showNotification(error.localizedDescription)
             case .success(let scannedText):
-                self?.setOTPConfig(uri: scannedText, isQRBased: true)
+                if let scannedText {
+                    setOTPConfig(uri: scannedText, isQRBased: true)
+                }
+            case .failure(let scannerError):
+                viewController.showNotification(
+                    scannerError.localizedDescription,
+                    image: .symbol(.exclamationMarkTriangle, tint: .errorMessage),
+                    hidePrevious: true
+                )
             }
         }
     }
