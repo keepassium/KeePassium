@@ -160,18 +160,79 @@ public class Entry2: Entry {
     }
 
     func maintainHistorySize() {
-        let meta: Meta2 = (self.database as! Database2).meta
-        if meta.historyMaxItems >= 0 {
+        guard let meta = (database as! Database2).meta else {
+            assertionFailure("How come Meta is nil?")
+            return
+        }
 
-            history.sort(by: { return $0.lastModificationTime < $1.lastModificationTime })
-            let oldEntryCount = history.count - Int(meta.historyMaxItems)
-            guard oldEntryCount > 0 else { return }
-            for oldEntry in history.prefix(oldEntryCount) {
-                oldEntry.erase()
+        history.sort { $0.lastModificationTime > $1.lastModificationTime }
+
+        let maxItems = Int(meta.historyMaxItems)
+        var overnumberEntryCount = 0
+        if maxItems >= 0 {
+            overnumberEntryCount = history.count - maxItems
+        }
+
+        let maxSize = Int(meta.historyMaxSize)
+        var oversizeEntryCount = 0
+        if maxSize >= 0 {
+            var sizeSoFar = 0
+            var entriesToKeep = 0
+
+            for entry in history {
+                let entrySize = entry.estimatedSize()
+                if sizeSoFar + entrySize > maxSize {
+                    break
+                }
+                sizeSoFar += entrySize
+                entriesToKeep += 1
             }
-            history = Array(history.dropFirst(oldEntryCount))
+            oversizeEntryCount = history.count - entriesToKeep
+        }
+
+        let entriesToRemove = max(overnumberEntryCount, oversizeEntryCount)
+        if entriesToRemove > 0 {
+            history = Array(history.dropLast(entriesToRemove))
         }
     }
+
+    private func estimatedSize() -> Int {
+        assert(history.isEmpty, "Size estimation does not account history entries")
+        var size = 0
+
+        for field in fields {
+            size += field.name.utf8.count
+            size += field.value.utf8.count
+        }
+
+        size += autoType.defaultSequence.utf8.count
+        for association in autoType.associations {
+            size += association.window.utf8.count
+            size += association.keystrokeSequence.utf8.count
+        }
+
+        for (key, item) in customData {
+            size += key.utf8.count
+            size += item.value.utf8.count
+        }
+
+        for attachment in attachments {
+            size += attachment.name.utf8.count
+            size += attachment.size
+        }
+
+        size += foregroundColor.utf8.count
+        size += backgroundColor.utf8.count
+        size += overrideURL.utf8.count
+
+        return size
+    }
+
+    #if DEBUG
+    internal func _estimatedSize() -> Int {
+        return estimatedSize()
+    }
+    #endif
 
     override public func backupState() {
         let entryClone = self.clone(makeNewUUID: false) as! Entry2

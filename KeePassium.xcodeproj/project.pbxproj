@@ -1472,6 +1472,7 @@
 		F3C71AB12AFFAD7A00EEAC8E /* GroupEditorTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C71AAD2AFFAD7A00EEAC8E /* GroupEditorTitleCell.swift */; };
 		F3C744462CA5A820005D5429 /* AutoFillMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C744452CA5A820005D5429 /* AutoFillMode.swift */; };
 		F3C744472CA5A820005D5429 /* AutoFillMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C744452CA5A820005D5429 /* AutoFillMode.swift */; };
+		F3C912A22DE76A80000EFECE /* EntryHistoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C912A12DE76A80000EFECE /* EntryHistoryTests.swift */; };
 		F3D011482B77B96800A9AF96 /* SearchQueryParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D011472B77B96800A9AF96 /* SearchQueryParsingTests.swift */; };
 		F3D0114A2B77CEFB00A9AF96 /* SearchHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D011492B77CEFB00A9AF96 /* SearchHelperTests.swift */; };
 		F3D9DE452AA79CAA00FEAF50 /* FaviconDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377C9AA2AA74A1A00266397 /* FaviconDownloader.swift */; };
@@ -2467,6 +2468,7 @@
 		F3B69FCB2B078917006FC966 /* EntryExtraViewerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryExtraViewerVC.swift; sourceTree = "<group>"; };
 		F3C71AAD2AFFAD7A00EEAC8E /* GroupEditorTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupEditorTitleCell.swift; sourceTree = "<group>"; };
 		F3C744452CA5A820005D5429 /* AutoFillMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoFillMode.swift; sourceTree = "<group>"; };
+		F3C912A12DE76A80000EFECE /* EntryHistoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryHistoryTests.swift; sourceTree = "<group>"; };
 		F3D011472B77B96800A9AF96 /* SearchQueryParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchQueryParsingTests.swift; sourceTree = "<group>"; };
 		F3D011492B77CEFB00A9AF96 /* SearchHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHelperTests.swift; sourceTree = "<group>"; };
 		F3E194672BCF23DB00FD03EE /* DeleteWordlistAccessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteWordlistAccessory.swift; sourceTree = "<group>"; };
@@ -3521,6 +3523,7 @@
 				F321414B2A90D2CD007A8D4E /* PasswordAuditServiceTests.swift */,
 				F3B5B2DC2A88FC2A0059F2D1 /* PasswordQualityTests.swift */,
 				F3D011472B77B96800A9AF96 /* SearchQueryParsingTests.swift */,
+				F3C912A12DE76A80000EFECE /* EntryHistoryTests.swift */,
 				F35D7CD62D63AB7F006DCBF0 /* ApplePasswordsImporterTests.swift */,
 				F3D011492B77CEFB00A9AF96 /* SearchHelperTests.swift */,
 				751C7D4F2BDFE3A0006A58F4 /* XMLParsingSanityTests.swift */,
@@ -5357,6 +5360,8 @@
 				751C7D542BE03582006A58F4 /* XMLParsingCompletenessTests.swift in Sources */,
 				F321414C2A90D2CD007A8D4E /* PasswordAuditServiceTests.swift in Sources */,
 				F37CAA4E2A88F8D10000EF64 /* DumpEquatable.swift in Sources */,
+				F3C912A22DE76A80000EFECE /* EntryHistoryTests.swift in Sources */,
+				F358CFF02CF0BA760098936E /* DatabaseCSVExporterTests.swift in Sources */,
 				F37CAA432A88F74E0000EF64 /* HIBPServiceTests.swift in Sources */,
 				751C7D502BDFE3A0006A58F4 /* XMLParsingSanityTests.swift in Sources */,
 				F35D7CD72D63AB7F006DCBF0 /* ApplePasswordsImporterTests.swift in Sources */,
