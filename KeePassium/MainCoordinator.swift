@@ -1119,22 +1119,6 @@ extension MainCoordinator: DatabaseUnlockerCoordinatorDelegate {
         }
     }
 
-    func shouldAutoUnlockDatabase(
-        _ fileRef: URLReference,
-        in coordinator: DatabaseUnlockerCoordinator
-    ) -> Bool {
-        if isReloadingDatabase {
-            return true
-        }
-        guard databasePickerCoordinator.canBeOpenedAutomatically(databaseRef: fileRef) else {
-            return false
-        }
-        if isInitialDatabase {
-            return Settings.current.isAutoUnlockStartupDatabase
-        } else {
-            return rootSplitVC.isCollapsed
-        }
-    }
 
     func willUnlockDatabase(_ fileRef: URLReference, in coordinator: DatabaseUnlockerCoordinator) {
         databasePickerCoordinator.setEnabled(false)

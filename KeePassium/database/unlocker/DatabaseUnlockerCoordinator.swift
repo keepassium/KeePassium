@@ -11,10 +11,6 @@ import KeePassiumLib
 protocol DatabaseUnlockerCoordinatorDelegate: AnyObject {
     func shouldDismissFromKeyboard(_ coordinator: DatabaseUnlockerCoordinator) -> Bool
 
-    func shouldAutoUnlockDatabase(
-        _ fileRef: URLReference,
-        in coordinator: DatabaseUnlockerCoordinator
-    ) -> Bool
     func willUnlockDatabase(_ fileRef: URLReference, in coordinator: DatabaseUnlockerCoordinator)
     func didNotUnlockDatabase(
         _ fileRef: URLReference,
