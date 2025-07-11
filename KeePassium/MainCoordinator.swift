@@ -207,16 +207,21 @@ final class MainCoordinator: UIResponder, Coordinator {
     }
 
     private func maybeOpenInitialDatabase() -> Bool {
-        if let startDatabaseRef = Settings.current.startupDatabase,
-           Settings.current.isAutoUnlockStartupDatabase
+        if Settings.current.isAutoUnlockStartupDatabase,
+           let startDatabaseRef = Settings.current.startupDatabase,
+           databasePickerCoordinator.isKnownDatabase(startDatabaseRef)
         {
-            setDatabase(startDatabaseRef, andThen: .unlock)
+            if startDatabaseRef.hasError || startDatabaseRef.needsReinstatement {
+                setDatabase(startDatabaseRef, andThen: .doNothing)
+            } else {
+                setDatabase(startDatabaseRef, andThen: .unlock)
+            }
             return true
         }
         if rootSplitVC.isCollapsed {
             return false
         }
-        let defaultDB = Settings.current.startupDatabase ?? databasePickerCoordinator.getFirstListedDatabase()
+        let defaultDB = databasePickerCoordinator.getFirstListedDatabase()
         setDatabase(defaultDB, andThen: .focus)
         return false
     }

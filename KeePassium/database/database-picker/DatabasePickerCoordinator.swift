@@ -84,6 +84,15 @@ class DatabasePickerCoordinator: FilePickerCoordinator {
         return result
     }
 
+    public func isKnownDatabase(_ databaseRef: URLReference) -> Bool {
+        let knownDatabases = enumerateDatabases(
+            excludeBackup: false,
+            excludeWithErrors: false,
+            excludeNeedingReinstatement: false
+        )
+        return knownDatabases.contains(databaseRef)
+    }
+
     public func canBeOpenedAutomatically(databaseRef: URLReference) -> Bool {
         let validDatabases = enumerateDatabases(
             excludeBackup: !Settings.current.isBackupFilesVisible,
