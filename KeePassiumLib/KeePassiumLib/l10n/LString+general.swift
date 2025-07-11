@@ -1207,23 +1207,11 @@ extension LString {
         bundle: Bundle.framework,
         value: "No Hardware Key",
         comment: "Master key/unlock option: don't use hardware keys")
-    public static let yubikeySlotNTemplate = NSLocalizedString(
-        "[HardwareKey/YubiKey/Slot] YubiKey Slot #%d",
+    public static let hardwareKeySlotNTemplate = NSLocalizedString(
+        "[HardwareKey/Slot/title]",
         bundle: Bundle.framework,
-        value: "YubiKey Slot %d",
-        comment: "Master key/unlock option: use given slot of YubiKey")
-
-    public static let dontUseYubikey = NSLocalizedString(
-        "[YubiKey] Don't use YubiKey",
-        bundle: Bundle.framework,
-        value: "Without YubiKey",
-        comment: "Selector choice: don't use YubiKey to encrypt/decrypt database")
-
-    public static let useYubikeySlotN = NSLocalizedString(
-        "[YubiKey] Use YubiKey Slot %d",
-        bundle: Bundle.framework,
-        value: "Use YubiKey Slot %d",
-        comment: "Selector choice: use YubiKey to encrypt/decrypt database. For example: `Use YubiKey Slot 1`. [slotID: Int]")
+        value: "%@ Slot %d",
+        comment: "Title of a slot of a hardware key. For example: `YubiKey Slot 1`.")
 
     public static let insertMFIYubikey = NSLocalizedString(
         "[YubiKey] Insert the key",

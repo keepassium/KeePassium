@@ -53,7 +53,7 @@ final class DatabaseUnlockerCoordinator: BaseCoordinator {
     private var databaseRef: URLReference
     private var fallbackDatabaseRef: URLReference?
     private var selectedKeyFileRef: URLReference?
-    private var selectedHardwareKey: YubiKey?
+    private var selectedHardwareKey: HardwareKey?
 
     private var state: State = .unlockOriginalFileFast
     private var databaseLoader: DatabaseLoader?
@@ -108,8 +108,8 @@ final class DatabaseUnlockerCoordinator: BaseCoordinator {
             setKeyFile(nil)
         }
 
-        let associatedYubiKey = dbSettings.associatedYubiKey
-        setHardwareKey(associatedYubiKey) 
+        let associatedHardwareKey = dbSettings.associatedHardwareKey
+        setHardwareKey(associatedHardwareKey)
 
         state = .unlockOriginalFileFast
         refresh()
@@ -225,14 +225,14 @@ extension DatabaseUnlockerCoordinator {
         databaseUnlockerVC.refresh()
     }
 
-    private func setHardwareKey(_ yubiKey: YubiKey?) {
-        selectedHardwareKey = yubiKey
+    private func setHardwareKey(_ hardwareKey: HardwareKey?) {
+        selectedHardwareKey = hardwareKey
         if reloadingContext == nil {
             DatabaseSettingsManager.shared.updateSettings(for: databaseRef) { dbSettings in
-                dbSettings.maybeSetAssociatedYubiKey(yubiKey)
+                dbSettings.maybeSetAssociatedHardwareKey(hardwareKey)
             }
         }
-        databaseUnlockerVC.setYubiKey(yubiKey)
+        databaseUnlockerVC.setHardwareKey(hardwareKey)
         databaseUnlockerVC.refresh()
     }
 
@@ -474,9 +474,9 @@ extension DatabaseUnlockerCoordinator: KeyFilePickerCoordinatorDelegate {
 }
 
 extension DatabaseUnlockerCoordinator: HardwareKeyPickerCoordinatorDelegate {
-    func didSelectKey(_ yubiKey: YubiKey?, in coordinator: HardwareKeyPickerCoordinator) {
+    func didSelectKey(_ hardwareKey: HardwareKey?, in coordinator: HardwareKeyPickerCoordinator) {
         databaseUnlockerVC.hideErrorMessage(animated: false)
-        setHardwareKey(yubiKey)
+        setHardwareKey(hardwareKey)
     }
 }
 

@@ -184,7 +184,7 @@
 		75267D0125FF75E300A1CC95 /* ContextualAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75267CFD25FF75E300A1CC95 /* ContextualAction.swift */; };
 		7527601B2B7A5C8F0016B528 /* OnboardingPagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0C2032B2CA8790001946D /* OnboardingPagesVC.swift */; };
 		7527601C2B7A5C900016B528 /* OnboardingPagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0C2032B2CA8790001946D /* OnboardingPagesVC.swift */; };
-		7528C72728C532530037760C /* YubiKeyUSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD22DB27FDE59200636D66 /* YubiKeyUSB.swift */; };
+		7528C72728C532530037760C /* USBHardwareKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD22DB27FDE59200636D66 /* USBHardwareKey.swift */; };
 		7529310D21ADA46C00E4B0D2 /* FileInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529310C21ADA46C00E4B0D2 /* FileInfoVC.swift */; };
 		7529EAEB211577EA0093B117 /* UITableViewCell+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7529EAEA211577EA0093B117 /* UITableViewCell+extension.swift */; };
 		752B1E9320E8AA070073AABD /* EditableField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B1E9220E8AA070073AABD /* EditableField.swift */; };
@@ -350,8 +350,8 @@
 		756D94732BA2F2C60084BDF5 /* MFIKeyActionSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F28782245D646B00F03657 /* MFIKeyActionSheetView.xib */; };
 		756D94742BA2F2CA0084BDF5 /* MFIKeyActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F28781245D646B00F03657 /* MFIKeyActionSheetView.swift */; };
 		756D94752BA2F2CB0084BDF5 /* MFIKeyActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F28781245D646B00F03657 /* MFIKeyActionSheetView.swift */; };
-		756D94762BA2F2CE0084BDF5 /* YubiKeyUSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD22DB27FDE59200636D66 /* YubiKeyUSB.swift */; };
-		756D94772BA2F2CF0084BDF5 /* YubiKeyUSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD22DB27FDE59200636D66 /* YubiKeyUSB.swift */; };
+		756D94762BA2F2CE0084BDF5 /* USBHardwareKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD22DB27FDE59200636D66 /* USBHardwareKey.swift */; };
+		756D94772BA2F2CF0084BDF5 /* USBHardwareKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD22DB27FDE59200636D66 /* USBHardwareKey.swift */; };
 		756DBE2E275994B800E4270B /* ASExtensionError+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756DBE2D275994B800E4270B /* ASExtensionError+extensions.swift */; };
 		756DBE2F275994B800E4270B /* ASExtensionError+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756DBE2D275994B800E4270B /* ASExtensionError+extensions.swift */; };
 		756F365826112A3A005A35DA /* FileDestructionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759894BB24620D33006B6709 /* FileDestructionHelper.swift */; };
@@ -687,8 +687,8 @@
 		75AA237D26CBCAED00488C4E /* DatabaseFile+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AA237926CBCAED00488C4E /* DatabaseFile+extensions.swift */; };
 		75AC2E992CC7C07700DB93E2 /* ItemCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5FB7820D6101100D402D9 /* ItemCategory.swift */; };
 		75AC2E9A2CC7C07700DB93E2 /* ItemCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5FB7820D6101100D402D9 /* ItemCategory.swift */; };
-		75AD22DC27FDE59200636D66 /* YubiKeyUSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD22DB27FDE59200636D66 /* YubiKeyUSB.swift */; };
-		75AD22DD27FDE59200636D66 /* YubiKeyUSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD22DB27FDE59200636D66 /* YubiKeyUSB.swift */; };
+		75AD22DC27FDE59200636D66 /* USBHardwareKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD22DB27FDE59200636D66 /* USBHardwareKey.swift */; };
+		75AD22DD27FDE59200636D66 /* USBHardwareKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD22DB27FDE59200636D66 /* USBHardwareKey.swift */; };
 		75AF1920282B0D6D00FA4BB5 /* PasswordGeneratorCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF191F282B0D6D00FA4BB5 /* PasswordGeneratorCells.swift */; };
 		75AF1921282B0D6D00FA4BB5 /* PasswordGeneratorCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF191F282B0D6D00FA4BB5 /* PasswordGeneratorCells.swift */; };
 		75AF1923282B0DBF00FA4BB5 /* InclusionCondition+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF1922282B0DBF00FA4BB5 /* InclusionCondition+extensions.swift */; };
@@ -1004,7 +1004,6 @@
 		75D0764A28B639D200F02E39 /* UIFont+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758544632351FE8D000D5E5E /* UIFont+extensions.swift */; };
 		75D0764B28B639D200F02E39 /* UIAlertController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C5C3752129DE0800CD7FE3 /* UIAlertController+extensions.swift */; };
 		75D0764C28B639D200F02E39 /* ItemRelocationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A5312723C0DFE900900ED1 /* ItemRelocationCoordinator.swift */; };
-		75D0764D28B639D200F02E39 /* YubiKey+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F0BE5226A9BD270076B636 /* YubiKey+extension.swift */; };
 		75D0764E28B639D200F02E39 /* ChallengeResponseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558D06123CE2F3E00547621 /* ChallengeResponseManager.swift */; };
 		75D0764F28B639D200F02E39 /* GroupEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750D127D20CF071600BE0CCE /* GroupEditorVC.swift */; };
 		75D0765028B639D200F02E39 /* RemoteFilePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524E7352888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift */; };
@@ -1238,10 +1237,6 @@
 		75EEC22227484DD90092505F /* QuickAutoFillPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EEC22027484DD90092505F /* QuickAutoFillPrompt.swift */; };
 		75EEC22327484DD90092505F /* QuickAutoFillPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EEC22027484DD90092505F /* QuickAutoFillPrompt.swift */; };
 		75EEC22427484DD90092505F /* QuickAutoFillPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EEC22027484DD90092505F /* QuickAutoFillPrompt.swift */; };
-		75F0BE5326A9BD270076B636 /* YubiKey+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F0BE5226A9BD270076B636 /* YubiKey+extension.swift */; };
-		75F0BE5426A9BD270076B636 /* YubiKey+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F0BE5226A9BD270076B636 /* YubiKey+extension.swift */; };
-		75F0BE5526A9BD270076B636 /* YubiKey+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F0BE5226A9BD270076B636 /* YubiKey+extension.swift */; };
-		75F0BE5626A9BD270076B636 /* YubiKey+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F0BE5226A9BD270076B636 /* YubiKey+extension.swift */; };
 		75F11C362883625D005B3DC0 /* NetworkAccessSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F11C352883625D005B3DC0 /* NetworkAccessSettingsCoordinator.swift */; };
 		75F11C372883625D005B3DC0 /* NetworkAccessSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F11C352883625D005B3DC0 /* NetworkAccessSettingsCoordinator.swift */; };
 		75F11C3928836283005B3DC0 /* NetworkAccessSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F11C3828836283005B3DC0 /* NetworkAccessSettingsVC.swift */; };
@@ -2202,7 +2197,7 @@
 		75AC53C32327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/EntryHistoryViewerVC.strings"; sourceTree = "<group>"; };
 		75AC53C62327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/DatabaseCreatorVC.strings"; sourceTree = "<group>"; };
 		75AC53CC2327674B000AA4FB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PasscodeInputVC.strings"; sourceTree = "<group>"; };
-		75AD22DB27FDE59200636D66 /* YubiKeyUSB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YubiKeyUSB.swift; sourceTree = "<group>"; };
+		75AD22DB27FDE59200636D66 /* USBHardwareKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USBHardwareKey.swift; sourceTree = "<group>"; };
 		75AF191F282B0D6D00FA4BB5 /* PasswordGeneratorCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGeneratorCells.swift; sourceTree = "<group>"; };
 		75AF1922282B0DBF00FA4BB5 /* InclusionCondition+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InclusionCondition+extensions.swift"; sourceTree = "<group>"; };
 		75AF1931282E621600FA4BB5 /* PasswordGeneratorLengthCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGeneratorLengthCell.swift; sourceTree = "<group>"; };
@@ -2331,7 +2326,6 @@
 		75ED42B12315896C003DE72E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/FirstSetupVC.strings; sourceTree = "<group>"; };
 		75EEC20E2747EE6A0092505F /* AutoFillSettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoFillSettingsCoordinator.swift; sourceTree = "<group>"; };
 		75EEC22027484DD90092505F /* QuickAutoFillPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAutoFillPrompt.swift; sourceTree = "<group>"; };
-		75F0BE5226A9BD270076B636 /* YubiKey+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YubiKey+extension.swift"; sourceTree = "<group>"; };
 		75F11C352883625D005B3DC0 /* NetworkAccessSettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAccessSettingsCoordinator.swift; sourceTree = "<group>"; };
 		75F11C3828836283005B3DC0 /* NetworkAccessSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAccessSettingsVC.swift; sourceTree = "<group>"; };
 		75F28781245D646B00F03657 /* MFIKeyActionSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFIKeyActionSheetView.swift; sourceTree = "<group>"; };
@@ -2921,7 +2915,6 @@
 			isa = PBXGroup;
 			children = (
 				75506D992DBE568E00AC26C6 /* coordinator */,
-				75F0BE5126A9BD0E0076B636 /* hardware-key */,
 				75BC562725818702002B4395 /* a11y */,
 				75B78705261F8979005BE7B7 /* context-menu */,
 				75060C622B8CEBEA006C7B50 /* macos */,
@@ -3121,7 +3114,7 @@
 		757ADC4323A1045C00D708D2 /* challenge-response */ = {
 			isa = PBXGroup;
 			children = (
-				75AD22DA27FDE57400636D66 /* YubiKeyUSB */,
+				75AD22DA27FDE57400636D66 /* usb */,
 				75F2877F245D646B00F03657 /* MFIKeyActionSheet */,
 				7558D06123CE2F3E00547621 /* ChallengeResponseManager.swift */,
 			);
@@ -3211,12 +3204,12 @@
 			path = tipbox;
 			sourceTree = "<group>";
 		};
-		75AD22DA27FDE57400636D66 /* YubiKeyUSB */ = {
+		75AD22DA27FDE57400636D66 /* usb */ = {
 			isa = PBXGroup;
 			children = (
-				75AD22DB27FDE59200636D66 /* YubiKeyUSB.swift */,
+				75AD22DB27FDE59200636D66 /* USBHardwareKey.swift */,
 			);
-			path = YubiKeyUSB;
+			path = usb;
 			sourceTree = "<group>";
 		};
 		75AD9FB3212EE35300F49C23 /* views */ = {
@@ -3385,14 +3378,6 @@
 				75D9913C26CEEDC800823331 /* SyncConflictAlert.storyboard */,
 			);
 			path = merger;
-			sourceTree = "<group>";
-		};
-		75F0BE5126A9BD0E0076B636 /* hardware-key */ = {
-			isa = PBXGroup;
-			children = (
-				75F0BE5226A9BD270076B636 /* YubiKey+extension.swift */,
-			);
-			path = "hardware-key";
 			sourceTree = "<group>";
 		};
 		75F11C3428836229005B3DC0 /* network-access */ = {
@@ -4204,7 +4189,7 @@
 				75DDB5E5228BF88C0018A50F /* FileInfoReloader.swift in Sources */,
 				75F544B52CEF8E420022BAA4 /* UIKeyCommand+hotkeys.swift in Sources */,
 				7573FD8C2321664F00DCDA5A /* MultilineButton.swift in Sources */,
-				756D94762BA2F2CE0084BDF5 /* YubiKeyUSB.swift in Sources */,
+				756D94762BA2F2CE0084BDF5 /* USBHardwareKey.swift in Sources */,
 				75C1AF872731E54D00E33AAC /* DatabaseSettingsVC.swift in Sources */,
 				75917F382DABC4EB00EB9375 /* KeyFilePickerCoordinator+create.swift in Sources */,
 				75FC401B2DA026CA00C5D1C2 /* DatabasePickerMode.swift in Sources */,
@@ -4221,7 +4206,6 @@
 				750CFBDC21BAD7FF00E62B09 /* UIColor+namedColors.swift in Sources */,
 				75CBABA121C16CD000B8AFE2 /* FirstSetupVC.swift in Sources */,
 				75C11F1F22208D6B0042FB2B /* LAContext+biometrics.swift in Sources */,
-				75F0BE5426A9BD270076B636 /* YubiKey+extension.swift in Sources */,
 				7526403A28455DAD0003DDFA /* PasswordGeneratorCoordinator.swift in Sources */,
 				758D272426867931006764C0 /* EntryFinderCoordinator.swift in Sources */,
 				756F365826112A3A005A35DA /* FileDestructionHelper.swift in Sources */,
@@ -4509,7 +4493,7 @@
 				F37CAA322A88DDD00000EF64 /* PasswordAuditResultsVC.swift in Sources */,
 				75B3B7BC20EABD9D007E8FA9 /* PlaceholderVC.swift in Sources */,
 				750E15A8269C95370040D599 /* OnboardingCoordinator.swift in Sources */,
-				75AD22DC27FDE59200636D66 /* YubiKeyUSB.swift in Sources */,
+				75AD22DC27FDE59200636D66 /* USBHardwareKey.swift in Sources */,
 				75F11C362883625D005B3DC0 /* NetworkAccessSettingsCoordinator.swift in Sources */,
 				7588B6C62627351800F5D372 /* EntryFieldEditorCoordinator.swift in Sources */,
 				75BE063F25DB1A1A00B34CC0 /* DiagnosticsViewerVC.swift in Sources */,
@@ -4542,7 +4526,6 @@
 				753376F123CA650C00603F4A /* PasswordStringHelper.swift in Sources */,
 				758544642351FE8D000D5E5E /* UIFont+extensions.swift in Sources */,
 				75C5C3762129DE0800CD7FE3 /* UIAlertController+extensions.swift in Sources */,
-				75F0BE5326A9BD270076B636 /* YubiKey+extension.swift in Sources */,
 				75A5312823C0DFE900900ED1 /* ItemRelocationCoordinator.swift in Sources */,
 				75FC40282DA028D600C5D1C2 /* KeyFilePickerCoordinator.swift in Sources */,
 				7558D06223CE2F3E00547621 /* ChallengeResponseManager.swift in Sources */,
@@ -4803,7 +4786,7 @@
 				75876B272646EC2800FB470C /* DatabaseKeyChangerCoordinator.swift in Sources */,
 				F32141542A934AB9007A8D4E /* PasswordAuditResultsVC.swift in Sources */,
 				750E15A9269C95370040D599 /* OnboardingCoordinator.swift in Sources */,
-				75AD22DD27FDE59200636D66 /* YubiKeyUSB.swift in Sources */,
+				75AD22DD27FDE59200636D66 /* USBHardwareKey.swift in Sources */,
 				75F11C372883625D005B3DC0 /* NetworkAccessSettingsCoordinator.swift in Sources */,
 				75BE064125DB1A1A00B34CC0 /* DiagnosticsViewerVC.swift in Sources */,
 				75D21BDB2B642E480065D95E /* BusyStateIndicating.swift in Sources */,
@@ -4838,7 +4821,6 @@
 				75B38C42233E5B7C006BDEFC /* UIAlertController+extensions.swift in Sources */,
 				75A5312923C0DFE900900ED1 /* ItemRelocationCoordinator.swift in Sources */,
 				75FC402A2DA028D600C5D1C2 /* KeyFilePickerCoordinator.swift in Sources */,
-				75F0BE5526A9BD270076B636 /* YubiKey+extension.swift in Sources */,
 				7558D06323CE2F4100547621 /* ChallengeResponseManager.swift in Sources */,
 				75B38C44233E5B7C006BDEFC /* GroupEditorVC.swift in Sources */,
 				7524E7382888A3D100ECBEC8 /* RemoteFilePickerCoordinator.swift in Sources */,
@@ -5102,7 +5084,7 @@
 				75D0764528B639D200F02E39 /* ValidatingTextField.swift in Sources */,
 				75D0764628B639D200F02E39 /* SyncConflictAlert.swift in Sources */,
 				7542421F2DB7E9EA00DF6249 /* LString+appProtectionSettings.swift in Sources */,
-				7528C72728C532530037760C /* YubiKeyUSB.swift in Sources */,
+				7528C72728C532530037760C /* USBHardwareKey.swift in Sources */,
 				754313B328B830F500D5F252 /* IntunePolicyDelegateImpl.swift in Sources */,
 				75FC40512DA12F7700C5D1C2 /* DatabasePickerCoordinator+toolbars.swift in Sources */,
 				75FC84302AC87B9E005021F1 /* Coordinator+passGen.swift in Sources */,
@@ -5113,7 +5095,6 @@
 				75D0764C28B639D200F02E39 /* ItemRelocationCoordinator.swift in Sources */,
 				75DEA1342DA9570700710088 /* DatabaseUnlockerActivationType.swift in Sources */,
 				7538E3AF2DCD6FFF002766BF /* LString+autoFillSettings.swift in Sources */,
-				75D0764D28B639D200F02E39 /* YubiKey+extension.swift in Sources */,
 				759023202AB4594A009E6213 /* Favicon.swift in Sources */,
 				F305502B2BA4B20700155709 /* RemoteDataSourceSetupCoordinator.swift in Sources */,
 				75FC400F2DA025C600C5D1C2 /* DatabasePickerCoordinator.swift in Sources */,
@@ -5269,7 +5250,6 @@
 				75D7DF92233E5E310029AD87 /* UIColor+namedColors.swift in Sources */,
 				75D7DF93233E5E310029AD87 /* FirstSetupVC.swift in Sources */,
 				75D7DF96233E5E310029AD87 /* LAContext+biometrics.swift in Sources */,
-				75F0BE5626A9BD270076B636 /* YubiKey+extension.swift in Sources */,
 				7526403B28455DAF0003DDFA /* PasswordGeneratorCoordinator.swift in Sources */,
 				758D272526867931006764C0 /* EntryFinderCoordinator.swift in Sources */,
 				756F365926112A3B005A35DA /* FileDestructionHelper.swift in Sources */,
@@ -5294,7 +5274,7 @@
 				75FC403C2DA09BDE00C5D1C2 /* DatabasePickerCoordinator+databaseSettings.swift in Sources */,
 				7538936C26D3BEBE00CAB107 /* KeyboardDismissable.swift in Sources */,
 				75D7DF9E233E5E310029AD87 /* ProgressOverlay.swift in Sources */,
-				756D94772BA2F2CF0084BDF5 /* YubiKeyUSB.swift in Sources */,
+				756D94772BA2F2CF0084BDF5 /* USBHardwareKey.swift in Sources */,
 				7524E74D2888B58200ECBEC8 /* TextFieldCell.swift in Sources */,
 				F35D7CD22D639563006DCBF0 /* FileImportHelper.swift in Sources */,
 				758AAFD72DA33E3100B5FA41 /* WatchdogAwareWindow.swift in Sources */,

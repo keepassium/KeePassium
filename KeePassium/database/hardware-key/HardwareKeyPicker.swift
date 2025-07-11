@@ -9,7 +9,7 @@
 import KeePassiumLib
 
 protocol HardwareKeyPickerDelegate: AnyObject {
-    func didSelectKey(_ yubiKey: YubiKey?, in picker: HardwareKeyPicker)
+    func didSelectKey(_ hardwareKey: HardwareKey?, in picker: HardwareKeyPicker)
 }
 
 private final class HardwareKeyPickerCell: UITableViewCell {
@@ -19,30 +19,35 @@ private final class HardwareKeyPickerCell: UITableViewCell {
 class HardwareKeyPicker: UITableViewController, Refreshable {
     weak var delegate: HardwareKeyPickerDelegate?
 
-    public var selectedKey: YubiKey? {
+    public var selectedKey: HardwareKey? {
         didSet { refresh() }
     }
 
     public let dismissablePopoverDelegate = DismissablePopover(leftButton: .cancel, rightButton: nil)
 
-    private let nfcKeys: [YubiKey] = [
-        YubiKey(interface: .nfc, slot: .slot1),
-        YubiKey(interface: .nfc, slot: .slot2)]
-    private let mfiKeys: [YubiKey] = [
-        YubiKey(interface: .mfi, slot: .slot1),
-        YubiKey(interface: .mfi, slot: .slot2)]
-    private let usbKeys: [YubiKey] = [
-        YubiKey(interface: .usb, slot: .slot1),
-        YubiKey(interface: .usb, slot: .slot2)]
+    private let nfcKeys: [HardwareKey] = [
+        HardwareKey(.yubikey, interface: .nfc, slot: .slot1),
+        HardwareKey(.yubikey, interface: .nfc, slot: .slot2)]
+    private let mfiKeys: [HardwareKey] = [
+        HardwareKey(.yubikey, interface: .mfi, slot: .slot1),
+        HardwareKey(.yubikey, interface: .mfi, slot: .slot2)]
+    private let usbKeys: [HardwareKey] = [
+        HardwareKey(.yubikey, interface: .usb, slot: .slot1),
+        HardwareKey(.yubikey, interface: .usb, slot: .slot2),
+        HardwareKey(.onlykey, interface: .usb, slot: .slot1),
+        HardwareKey(.onlykey, interface: .usb, slot: .slot2),
+    ]
 
     private enum Section {
-        private static let macOSValues: [Section] = [.noHardwareKey, .yubiKeyUSB]
-        private static let iOSValues: [Section] = [.noHardwareKey, .yubiKeyNFC, .yubiKeyMFI, .yubiKeyUSB]
+        private static let macOSValues: [Section] =
+            [.noHardwareKey, .hwKeyUSB]
+        private static let iOSValues: [Section] =
+            [.noHardwareKey, .yubiKeyNFC, .yubiKeyMFI, .hwKeyUSB]
 
         case noHardwareKey
         case yubiKeyNFC
         case yubiKeyMFI
-        case yubiKeyUSB
+        case hwKeyUSB
 
         static var allValues: [Section] {
             if ProcessInfo.isRunningOnMac {
@@ -141,7 +146,7 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
             return nfcKeys.count
         case .yubiKeyMFI:
             return mfiKeys.count
-        case .yubiKeyUSB:
+        case .hwKeyUSB:
             return usbKeys.count
         }
     }
@@ -158,7 +163,7 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
             } else {
                 return LString.hardwareKeyPortLightning
             }
-        case .yubiKeyUSB:
+        case .hwKeyUSB:
             return LString.hardwareKeyPortUSB
         }
     }
@@ -175,7 +180,7 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
             if isMFIoverUSB {
                 return LString.hardwareKeyRequiresUSBtoLightningAdapter
             }
-        case .yubiKeyUSB:
+        case .hwKeyUSB:
             if ProcessInfo.isCatalystApp {
                 if AppGroup.isAppExtension {
                     return LString.theseHardwareKeyNotAvailableInAutoFill
@@ -196,7 +201,7 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
             withIdentifier: HardwareKeyPickerCell.reuseIdentifier,
             for: indexPath)
 
-        let key: YubiKey?
+        let key: HardwareKey?
         var showPremiumBadge = requiresPremium
         let isEnabled: Bool
         switch Section.allValues[indexPath.section] {
@@ -212,7 +217,7 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
             key = mfiKeys[indexPath.row]
             isEnabled = isMFIAvailable
             showPremiumBadge = showPremiumBadge && isMFIAvailable
-        case .yubiKeyUSB:
+        case .hwKeyUSB:
             key = usbKeys[indexPath.row]
             isEnabled = isUSBAvailable
             showPremiumBadge = showPremiumBadge && isUSBAvailable
@@ -233,7 +238,7 @@ class HardwareKeyPicker: UITableViewController, Refreshable {
             selectedKey = nfcKeys[indexPath.row]
         case .yubiKeyMFI:
             selectedKey = mfiKeys[indexPath.row]
-        case .yubiKeyUSB:
+        case .hwKeyUSB:
             selectedKey = usbKeys[indexPath.row]
         }
         delegate?.didSelectKey(selectedKey, in: self)

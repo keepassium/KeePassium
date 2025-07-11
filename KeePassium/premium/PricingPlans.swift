@@ -69,7 +69,7 @@ struct PricingPlanBenefit {
         title: LString.premiumBenefitMultipleDatabasesTitle,
         description: LString.premiumBenefitMultipleDatabasesDescription
     )
-    static let yubikeyChallengeResponse = PricingPlanBenefit(
+    static let hardwareKeyChallengeResponse = PricingPlanBenefit(
         symbolName: .premiumBenefitHardwareKeys,
         title: LString.premiumBenefitHardwareKeysTitle,
         description: LString.premiumBenefitHardwareKeysDescription
@@ -180,7 +180,7 @@ class FreePricingPlan: PricingPlan {
         self.benefits = [
             PricingPlanBenefit.quickAutoFill,
             PricingPlanBenefit.multipleDatabases,
-            PricingPlanBenefit.yubikeyChallengeResponse,
+            PricingPlanBenefit.hardwareKeyChallengeResponse,
             PricingPlanBenefit.passwordAudit,
             PricingPlanBenefit.businessClouds,
             PricingPlanBenefit.linkedDatabases,
@@ -239,7 +239,7 @@ class PricingPlanPremiumMonthly: RealPricingPlan {
         self.benefits = [
             PricingPlanBenefit.quickAutoFill,
             PricingPlanBenefit.multipleDatabases,
-            PricingPlanBenefit.yubikeyChallengeResponse,
+            PricingPlanBenefit.hardwareKeyChallengeResponse,
             PricingPlanBenefit.passwordAudit,
             PricingPlanBenefit.businessClouds,
             PricingPlanBenefit.linkedDatabases,
@@ -268,7 +268,7 @@ class PricingPlanPremiumYearly: RealPricingPlan {
         self.benefits = [
             PricingPlanBenefit.quickAutoFill,
             PricingPlanBenefit.multipleDatabases,
-            PricingPlanBenefit.yubikeyChallengeResponse,
+            PricingPlanBenefit.hardwareKeyChallengeResponse,
             PricingPlanBenefit.passwordAudit,
             PricingPlanBenefit.businessClouds,
             PricingPlanBenefit.linkedDatabases,
@@ -295,7 +295,7 @@ class PricingPlanVersionPurchase: RealPricingPlan {
         self.benefits = [
             PricingPlanBenefit.quickAutoFill,
             PricingPlanBenefit.multipleDatabases,
-            PricingPlanBenefit.yubikeyChallengeResponse,
+            PricingPlanBenefit.hardwareKeyChallengeResponse,
             PricingPlanBenefit.passwordAudit,
             PricingPlanBenefit.businessClouds,
             PricingPlanBenefit.linkedDatabases,
@@ -321,7 +321,7 @@ class PricingPlanPremiumForever: RealPricingPlan {
         self.benefits = [
             PricingPlanBenefit.quickAutoFill,
             PricingPlanBenefit.multipleDatabases,
-            PricingPlanBenefit.yubikeyChallengeResponse,
+            PricingPlanBenefit.hardwareKeyChallengeResponse,
             PricingPlanBenefit.passwordAudit,
             PricingPlanBenefit.businessClouds,
             PricingPlanBenefit.linkedDatabases,

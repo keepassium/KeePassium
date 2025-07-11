@@ -12,7 +12,7 @@ import IOKit.hid
 #endif
 import KeePassiumLib
 
-class YubiKeyUSB {
+final class USBHardwareKey {
 
     public enum ConfigSlot: UInt8 {
         case deviceSerial = 0x10 
@@ -68,6 +68,7 @@ class YubiKeyUSB {
 
     private enum YubiKeyLayer {
         static let YubicoVendorID = 0x1050
+        static let OnlyKeyVendorID = 0x1d50
         static let YubicoOTPUsage = (1, 6)
 
         static let majorVersionOffset = 0x01
@@ -92,37 +93,61 @@ class YubiKeyUSB {
         static let hmacResponseSize = 20
     }
 
+    public let kind: HardwareKey.Kind
+
     public let isOTPEnabled: Bool
 
     private var hidDevice: IOHIDDevice
     private var isDeviceOpen = false
     private var isCancelled = false
 
-    private init(hidDevice: IOHIDDevice, isOTPEnabled: Bool) {
+    private init(_ kind: HardwareKey.Kind, hidDevice: IOHIDDevice, isOTPEnabled: Bool) {
+        self.kind = kind
         self.hidDevice = hidDevice
         self.isOTPEnabled = isOTPEnabled
     }
 
-    public static func getConnectedKeys() -> [YubiKeyUSB] {
+    public static func getConnectedKeys(_ kind: HardwareKey.Kind) -> [USBHardwareKey] {
         let hidManager = IOHIDManagerCreate(
             kCFAllocatorDefault,
             IOOptionBits(kIOHIDOptionsTypeNone)
         )
 
-        let filterDict = [kIOHIDVendorIDKey as CFString: YubiKeyLayer.YubicoVendorID]
+        switch kind {
+        case .yubikey:
+            return findHardwareKeys(
+                kind: .yubikey,
+                vendorID: YubiKeyLayer.YubicoVendorID,
+                hidManager: hidManager)
+        case .onlykey:
+            return findHardwareKeys(
+                kind: .onlykey,
+                vendorID: YubiKeyLayer.OnlyKeyVendorID,
+                hidManager: hidManager)
+        }
+    }
+
+    private static func findHardwareKeys(
+        kind: HardwareKey.Kind,
+        vendorID: Int,
+        hidManager: IOHIDManager
+    ) -> [USBHardwareKey] {
+        let filterDict = [kIOHIDVendorIDKey as CFString: vendorID]
+
         IOHIDManagerSetDeviceMatching(hidManager, filterDict as CFDictionary)
         guard let deviceCFSet = IOHIDManagerCopyDevices(hidManager),
               let deviceSet = deviceCFSet as? Set<IOHIDDevice>
         else {
-            Diag.debug("Failed to get YubiKey USB devices")
+            Diag.debug(String(
+                format: "Failed to get USB devices with VID %04x",
+                vendorID))
             return []
         }
 
-        var yubiKeyDevices = [YubiKeyUSB]()
+        var result: [USBHardwareKey] = []
         let hidDevices = Array(deviceSet)
         for hidDevice in hidDevices {
-            let vendorID = hidDevice.getVendorID()
-            assert(vendorID == YubiKeyLayer.YubicoVendorID)
+            assert(hidDevice.getVendorID() == vendorID, "HID manager returned an unexpected VID.")
             let productID = hidDevice.getProductID()
             let productName = hidDevice.getProductName()
             let primaryUsage = hidDevice.getPrimaryUsagePair()
@@ -133,10 +158,11 @@ class YubiKeyUSB {
                 primaryUsage.0, primaryUsage.1)
             )
             let isOTPEnabled = (primaryUsage == YubiKeyLayer.YubicoOTPUsage)
-            let yubiKeyDevice = YubiKeyUSB(hidDevice: hidDevice, isOTPEnabled: isOTPEnabled)
-            yubiKeyDevices.append(yubiKeyDevice)
+
+            let hardwareKeyDevice = USBHardwareKey(kind, hidDevice: hidDevice, isOTPEnabled: isOTPEnabled)
+            result.append(hardwareKeyDevice)
         }
-        return yubiKeyDevices
+        return result
     }
 
 
@@ -147,7 +173,8 @@ class YubiKeyUSB {
         }
         let result = IOHIDDeviceOpen(hidDevice, IOOptionBits(kIOHIDOptionsTypeNone))
         guard result == kIOReturnSuccess else {
-            Diag.error("Failed to open USB HID device [code: \(result)]")
+            let hexCode = String(format: "%08X", UInt32(bitPattern: result))
+            Diag.error("Failed to open USB HID device [code: \(hexCode)]")
             throw Error.communicationFailure
         }
         isDeviceOpen = true

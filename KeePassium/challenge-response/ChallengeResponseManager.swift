@@ -30,11 +30,11 @@ class ChallengeResponseManager {
 
     private var challenge: SecureBytes?
     private var responseHandler: ResponseHandler?
-    private var currentKey: YubiKey?
+    private var currentKey: HardwareKey?
     private var isResponseSent = false
 
     private var queue: DispatchQueue
-    private var usbYubiKey: YubiKeyUSB?
+    private var usbHardwareKey: USBHardwareKey?
     private weak var sheetPresenter: UIView?
 
     private init() {
@@ -47,8 +47,8 @@ class ChallengeResponseManager {
         nfcSessionStateObservation = nil
     }
 
-    public static func makeHandler(for yubiKey: YubiKey?, presenter: UIView) -> ChallengeHandler? {
-        guard let yubiKey else {
+    public static func makeHandler(for hardwareKey: HardwareKey?, presenter: UIView) -> ChallengeHandler? {
+        guard let hardwareKey else {
             Diag.debug("Challenge-response is not used")
             return nil
         }
@@ -59,7 +59,7 @@ class ChallengeResponseManager {
         }
         let challengeHandler: ChallengeHandler = { [weak topPresenter] challenge, responseHandler in
             instance.perform(
-                with: yubiKey,
+                with: hardwareKey,
                 challenge: challenge,
                 presenter: topPresenter,
                 responseHandler: responseHandler
@@ -86,7 +86,7 @@ class ChallengeResponseManager {
         }
         #endif
 
-        supportsUSB = YubiKeyUSB.isSupported
+        supportsUSB = USBHardwareKey.isSupported
     }
 
     private func initMFISessionObserver() {
@@ -173,7 +173,7 @@ class ChallengeResponseManager {
 
 
     private func perform(
-        with yubiKey: YubiKey,
+        with hardwareKey: HardwareKey,
         challenge: SecureBytes,
         presenter: UIView?,
         responseHandler: @escaping ResponseHandler
@@ -183,13 +183,13 @@ class ChallengeResponseManager {
         self.sheetPresenter = presenter
 
         isResponseSent = false
-        switch yubiKey.interface {
+        switch hardwareKey.interface {
         case .nfc:
-            startNFCSession(with: yubiKey, challenge: challenge, responseHandler: responseHandler)
+            startNFCSession(with: hardwareKey, challenge: challenge, responseHandler: responseHandler)
         case .mfi:
-            startMFISession(with: yubiKey, challenge: challenge, responseHandler: responseHandler)
+            startMFISession(with: hardwareKey, challenge: challenge, responseHandler: responseHandler)
         case .usb:
-            startUSBSession(with: yubiKey, challenge: challenge, responseHandler: responseHandler)
+            startUSBSession(with: hardwareKey, challenge: challenge, responseHandler: responseHandler)
         }
     }
 
@@ -213,16 +213,17 @@ class ChallengeResponseManager {
 
 
     private func startMFISession(
-        with yubiKey: YubiKey,
+        with hardwareKey: HardwareKey,
         challenge: SecureBytes,
         responseHandler: @escaping ResponseHandler
     ) {
         #if !targetEnvironment(macCatalyst)
         guard supportsMFI else {
-            returnError(.notSupportedByDeviceOrSystem(interface: yubiKey.interface.description))
+            returnError(.notSupportedByDeviceOrSystem(interface: hardwareKey.interface.description))
             return
         }
-        currentKey = yubiKey
+        currentKey = hardwareKey
+        assert(hardwareKey.kind == .yubikey, "Only YubiKeys are expected via MFi")
         let keySession = YubiKitManager.shared.accessorySession
         keySession.startSession()
         if !keySession.isKeyConnected {
@@ -236,7 +237,7 @@ class ChallengeResponseManager {
     }
 
     private func startNFCSession(
-        with yubiKey: YubiKey,
+        with hardwareKey: HardwareKey,
         challenge: SecureBytes,
         responseHandler: @escaping ResponseHandler
     ) {
@@ -245,11 +246,12 @@ class ChallengeResponseManager {
             #if AUTOFILL_EXT
             returnError(.notAvailableInAutoFill)
             #else
-            returnError(.notSupportedByDeviceOrSystem(interface: yubiKey.interface.description))
+            returnError(.notSupportedByDeviceOrSystem(interface: hardwareKey.interface.description))
             #endif
             return
         }
-        currentKey = yubiKey
+        currentKey = hardwareKey
+        assert(hardwareKey.kind == .yubikey, "Only YubiKeys are expected via NFC")
         let nfcSession = YubiKitManager.shared.nfcSession as! YKFNFCSession
         Watchdog.shared.ignoreMinimizationOnce()
         nfcSession.startIso7816Session()
@@ -257,7 +259,7 @@ class ChallengeResponseManager {
     }
 
     private func startUSBSession(
-        with yubiKey: YubiKey,
+        with hardwareKey: HardwareKey,
         challenge: SecureBytes,
         responseHandler: @escaping ResponseHandler
     ) {
@@ -265,15 +267,15 @@ class ChallengeResponseManager {
             #if AUTOFILL_EXT
             returnError(.notAvailableInAutoFill)
             #else
-            returnError(.notSupportedByDeviceOrSystem(interface: yubiKey.interface.description))
+            returnError(.notSupportedByDeviceOrSystem(interface: hardwareKey.interface.description))
             #endif
             return
         }
         #if !targetEnvironment(macCatalyst)
-        assertionFailure("Unexpected USB YubiKey support on non-Catalyst platform")
+        assertionFailure("Unexpected USB hardware key support on non-Catalyst platform")
         #else
-        currentKey = yubiKey
-        let connectedKeys = YubiKeyUSB.getConnectedKeys()
+        currentKey = hardwareKey
+        let connectedKeys = USBHardwareKey.getConnectedKeys(hardwareKey.kind)
         guard connectedKeys.count > 0 else {
             returnError(.keyNotConnected)
             return
@@ -283,16 +285,16 @@ class ChallengeResponseManager {
             return
         }
 
-        let commandSlot: YubiKeyUSB.ConfigSlot
-        switch yubiKey.slot {
+        let commandSlot: USBHardwareKey.ConfigSlot
+        switch hardwareKey.slot {
         case .slot1:
             commandSlot = .chalHMAC1
         case .slot2:
             commandSlot = .chalHMAC2
         }
         do {
-            try otpEnabledKey.open() 
-            usbYubiKey = otpEnabledKey
+            try otpEnabledKey.open()
+            usbHardwareKey = otpEnabledKey
             defer {
                 otpEnabledKey.close()
             }
@@ -308,13 +310,13 @@ class ChallengeResponseManager {
                     slot: commandSlot,
                     challenge: challengeData,
                     observer: { status in
-                        print("YK status: \(status)")
+                        print("HK status: \(status)")
                     }
                 )
             }
             dismissMFIActionSheet(delayed: false)
             returnResponse(SecureBytes.from(response))
-        } catch let error as YubiKeyUSB.Error {
+        } catch let error as USBHardwareKey.Error {
             dismissMFIActionSheet(delayed: false)
             switch error {
             case .slotNotConfigured:
@@ -328,7 +330,7 @@ class ChallengeResponseManager {
             }
         } catch {
             assertionFailure("Unexpected error type")
-            Diag.error("Unexpected YubiKey error [message: \(error.localizedDescription)]")
+            Diag.error("Unexpected hardware key error [message: \(error.localizedDescription)]")
             returnError(.cancelled)
         }
         #endif
@@ -375,8 +377,8 @@ class ChallengeResponseManager {
 
     private func cancelUSBSession() {
         #if targetEnvironment(macCatalyst)
-        usbYubiKey?.cancel()
-        usbYubiKey = nil
+        usbHardwareKey?.cancel()
+        usbHardwareKey = nil
         #endif
     }
 
@@ -406,7 +408,7 @@ class ChallengeResponseManager {
 #if !targetEnvironment(macCatalyst)
     private func performChallengeResponse(
         _ accessorySession: YKFAccessorySession,
-        slot: YubiKey.Slot
+        slot: HardwareKey.Slot
     ) {
         assert(accessorySession.sessionState == .open)
         let keyName = accessorySession.accessoryDescription?.name ?? "(unknown)"
@@ -422,7 +424,7 @@ class ChallengeResponseManager {
 
     private func performChallengeResponse(
         _ nfcSession: YKFNFCSession,
-        slot: YubiKey.Slot
+        slot: HardwareKey.Slot
     ) {
         assert(nfcSession.iso7816SessionState == .open)
         let keyName = nfcSession.tagDescription?.identifier.description ?? "(unknown)"
@@ -438,7 +440,7 @@ class ChallengeResponseManager {
 
     private func performChallengeResponse(
         rawCommandService: YKFKeyRawCommandServiceProtocol,
-        slot: YubiKey.Slot
+        slot: HardwareKey.Slot
     ) {
         let appletID = Data([0xA0, 0x00, 0x00, 0x05, 0x27, 0x20, 0x01])
         guard let selectAppletAPDU =
@@ -534,7 +536,7 @@ class ChallengeResponseManager {
     }
 #endif
 
-    private func getSlotID(for slot: YubiKey.Slot) -> UInt8 {
+    private func getSlotID(for slot: HardwareKey.Slot) -> UInt8 {
         switch slot {
         case .slot1:
             return 0x30

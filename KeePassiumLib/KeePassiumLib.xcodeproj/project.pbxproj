@@ -60,7 +60,7 @@
 		754485BF2CE15AFA00B13309 /* Curve25519+pem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754485BE2CE15AFA00B13309 /* Curve25519+pem.swift */; };
 		754840EE2A52C957001EEF21 /* URLQueryItems+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754840ED2A52C957001EEF21 /* URLQueryItems+extensions.swift */; };
 		754ABE9C25AB898B00B98A63 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 754ABE9A25AB898B00B98A63 /* InfoPlist.strings */; };
-		754D7C0E238C26A7005652E1 /* YubiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754D7C0D238C26A7005652E1 /* YubiKey.swift */; };
+		754D7C0E238C26A7005652E1 /* HardwareKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754D7C0D238C26A7005652E1 /* HardwareKey.swift */; };
 		755015ED2C4BE9C5000B7254 /* SpecialEntryParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755015EC2C4BE9C5000B7254 /* SpecialEntryParser.swift */; };
 		75567F092A9DEE2300BBA528 /* UIFontDescriptor+serialize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75567F082A9DEE2300BBA528 /* UIFontDescriptor+serialize.swift */; };
 		7558700722E5857C00E1DD89 /* TOTPGeneratorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558700622E5857C00E1DD89 /* TOTPGeneratorFactory.swift */; };
@@ -373,7 +373,7 @@
 		754ABF2F25AB96BC00B98A63 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		754ABF3025AB973D00B98A63 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		754ABF3125AB976E00B98A63 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		754D7C0D238C26A7005652E1 /* YubiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YubiKey.swift; sourceTree = "<group>"; };
+		754D7C0D238C26A7005652E1 /* HardwareKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardwareKey.swift; sourceTree = "<group>"; };
 		755015EC2C4BE9C5000B7254 /* SpecialEntryParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialEntryParser.swift; sourceTree = "<group>"; };
 		75567F082A9DEE2300BBA528 /* UIFontDescriptor+serialize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFontDescriptor+serialize.swift"; sourceTree = "<group>"; };
 		7558700622E5857C00E1DD89 /* TOTPGeneratorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOTPGeneratorFactory.swift; sourceTree = "<group>"; };
@@ -1065,7 +1065,7 @@
 				75F4ACE92177485D00B22D8B /* Weak.swift */,
 				751E0D67230D12660088BB10 /* Bundle+extensions.swift */,
 				75E9E2AD290AB9B100B79BE8 /* OTPCodeFormatter.swift */,
-				754D7C0D238C26A7005652E1 /* YubiKey.swift */,
+				754D7C0D238C26A7005652E1 /* HardwareKey.swift */,
 				751F90A8247748A300A7418F /* Result.swift */,
 				75C8471824FAE7B50064A4EC /* Comparable+extensions.swift */,
 				75AE4FDC2521DA840052251B /* UIDevice+extensions.swift */,
@@ -1534,7 +1534,7 @@
 				75D09BD32174F76500F7DEF2 /* Twofish.swift in Sources */,
 				75205FA5239C01CF00C1DEAA /* DatabaseSettingsManager.swift in Sources */,
 				756180FA2820827D00EA015D /* StringSet.swift in Sources */,
-				754D7C0E238C26A7005652E1 /* YubiKey.swift in Sources */,
+				754D7C0E238C26A7005652E1 /* HardwareKey.swift in Sources */,
 				7505E8D12236FA0F00E5202E /* StringExtension.swift in Sources */,
 				753A4A132C80B878008896C6 /* FileHasher.swift in Sources */,
 				75CF4C8A2A666D8B0054B05B /* LicenseManager.swift in Sources */,

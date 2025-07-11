@@ -30,7 +30,7 @@ final class DatabaseKeyChangerVC: UIViewController {
 
     internal var password: String { return passwordField.text ?? ""}
     internal private(set) var keyFileRef: URLReference?
-    internal private(set) var yubiKey: YubiKey?
+    internal private(set) var hardwareKey: HardwareKey?
     private var databaseFile: DatabaseFile!
 
     static func make(for databaseFile: DatabaseFile) -> DatabaseKeyChangerVC {
@@ -110,12 +110,12 @@ final class DatabaseKeyChangerVC: UIViewController {
         refresh()
     }
 
-    func setYubiKey(_ yubiKey: YubiKey?) {
-        self.yubiKey = yubiKey
+    func setHardwareKey(_ hardwareKey: HardwareKey?) {
+        self.hardwareKey = hardwareKey
 
-        if let yubiKey {
-            hardwareKeyField.text = YubiKey.getTitle(for: yubiKey)
-            Diag.info("Hardware key selected [key: \(yubiKey)]")
+        if let hardwareKey {
+            hardwareKeyField.text = hardwareKey.localizedDescription
+            Diag.info("Hardware key selected [key: \(hardwareKey)]")
         } else {
             hardwareKeyField.text = "" // use "No Hardware Key" placeholder
             Diag.info("No hardware key selected")
@@ -129,8 +129,8 @@ final class DatabaseKeyChangerVC: UIViewController {
         case passwordField, keyFileField, hardwareKeyField:
             let gotPassword = passwordField.text?.isNotEmpty ?? false
             let gotKeyFile = keyFileRef != nil
-            let gotYubiKey = yubiKey != nil
-            return gotPassword || gotKeyFile || gotYubiKey
+            let gotHardwareKey = hardwareKey != nil
+            return gotPassword || gotKeyFile || gotHardwareKey
         case repeatPasswordField:
             let isPasswordsMatch = (passwordField.text == repeatPasswordField.text)
             UIView.animate(withDuration: 0.5) {
@@ -171,7 +171,7 @@ final class DatabaseKeyChangerVC: UIViewController {
         }
 
         let isGoodEnough = entropy > PasswordQuality.minDatabasePasswordEntropy
-        if isGoodEnough || keyFileRef != nil || yubiKey != nil {
+        if isGoodEnough || keyFileRef != nil || hardwareKey != nil {
             successHandler()
             return
         }

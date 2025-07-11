@@ -62,7 +62,7 @@ extension DatabaseKeyChangerCoordinator {
         let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
         let hardwareKeyPickerCoordinator = HardwareKeyPickerCoordinator(router: modalRouter)
         hardwareKeyPickerCoordinator.delegate = self
-        hardwareKeyPickerCoordinator.setSelectedKey(databaseKeyChangerVC.yubiKey)
+        hardwareKeyPickerCoordinator.setSelectedKey(databaseKeyChangerVC.hardwareKey)
         hardwareKeyPickerCoordinator.start()
         _router.present(modalRouter, animated: true, completion: nil)
         addChildCoordinator(hardwareKeyPickerCoordinator, onDismiss: nil)
@@ -80,13 +80,13 @@ extension DatabaseKeyChangerCoordinator {
     private func applyChangesAndSaveDatabase() {
         let newPassword = databaseKeyChangerVC.password
         let newKeyFile = databaseKeyChangerVC.keyFileRef
-        let newYubiKey = databaseKeyChangerVC.yubiKey
+        let newHardwareKey = databaseKeyChangerVC.hardwareKey
 
         database.keyHelper.createCompositeKey(
             password: newPassword,
             keyFile: newKeyFile,
             challengeHandler: ChallengeResponseManager.makeHandler(
-                for: newYubiKey,
+                for: newHardwareKey,
                 presenter: _router.navigationController.view
             ),
             completion: { [weak self] result in
@@ -97,7 +97,7 @@ extension DatabaseKeyChangerCoordinator {
                     DatabaseSettingsManager.shared.updateSettings(for: self.databaseFile) { dbSettings in
                         dbSettings.maybeSetMasterKey(newCompositeKey)
                         dbSettings.maybeSetAssociatedKeyFile(newKeyFile)
-                        dbSettings.maybeSetAssociatedYubiKey(newYubiKey)
+                        dbSettings.maybeSetAssociatedHardwareKey(newHardwareKey)
                     }
                     self.saveDatabase(self.databaseFile)
                 case .failure(let errorMessage):
@@ -155,8 +155,8 @@ extension DatabaseKeyChangerCoordinator: KeyFilePickerCoordinatorDelegate {
 }
 
 extension DatabaseKeyChangerCoordinator: HardwareKeyPickerCoordinatorDelegate {
-    func didSelectKey(_ yubiKey: YubiKey?, in coordinator: HardwareKeyPickerCoordinator) {
-        databaseKeyChangerVC.setYubiKey(yubiKey)
+    func didSelectKey(_ hardwareKey: HardwareKey?, in coordinator: HardwareKeyPickerCoordinator) {
+        databaseKeyChangerVC.setHardwareKey(hardwareKey)
     }
 }
 

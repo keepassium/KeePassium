@@ -30,10 +30,10 @@ class DatabaseCreatorVC: UIViewController, BusyStateIndicating, Refreshable {
             showKeyFile(keyFile)
         }
     }
-    public var yubiKey: YubiKey? {
+    public var hardwareKey: HardwareKey? {
         didSet {
-            if yubiKey != nil {
-                hardwareKeyField.text = YubiKey.getTitle(for: yubiKey)
+            if let hardwareKey {
+                hardwareKeyField.text = hardwareKey.localizedDescription
             } else {
                 hardwareKeyField.text = nil // use the "No Hardware Key" placeholder
             }
@@ -60,7 +60,7 @@ class DatabaseCreatorVC: UIViewController, BusyStateIndicating, Refreshable {
 
     private var hasPassword: Bool { passwordField.text?.isNotEmpty ?? false }
     private var hasKeyFile: Bool { keyFile != nil }
-    private var hasYubiKey: Bool { yubiKey != nil }
+    private var hasHardwareKey: Bool { hardwareKey != nil }
 
     public static func create() -> DatabaseCreatorVC {
         return DatabaseCreatorVC.instantiateFromStoryboard()
@@ -163,7 +163,7 @@ extension DatabaseCreatorVC {
     }
 
     private func verifyEnteredKey(success successHandler: @escaping () -> Void) {
-        guard hasPassword || hasKeyFile || hasYubiKey else {
+        guard hasPassword || hasKeyFile || hasHardwareKey else {
             showErrorMessage(
                 NSLocalizedString(
                     "[Database/Create] Please enter a password or choose a key file.",
@@ -189,7 +189,7 @@ extension DatabaseCreatorVC {
         }
 
         let isGoodEnough = entropy > PasswordQuality.minDatabasePasswordEntropy
-        if isGoodEnough || hasKeyFile || hasYubiKey {
+        if isGoodEnough || hasKeyFile || hasHardwareKey {
             successHandler()
             return
         }

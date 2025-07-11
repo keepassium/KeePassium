@@ -80,7 +80,7 @@ class DatabaseCreatorCoordinator: BaseCoordinator {
         }
 
         let _challengeHandler = ChallengeResponseManager.makeHandler(
-            for: databaseCreatorVC.yubiKey,
+            for: databaseCreatorVC.hardwareKey,
             presenter: _router.navigationController.view
         )
         DatabaseManager.createDatabase(
@@ -451,23 +451,23 @@ extension DatabaseCreatorCoordinator: HardwareKeyPickerCoordinatorDelegate {
         let modalRouter = NavigationRouter.createModal(style: .popover, at: popoverAnchor)
         let hardwareKeyPickerCoordinator = HardwareKeyPickerCoordinator(router: modalRouter)
         hardwareKeyPickerCoordinator.delegate = self
-        hardwareKeyPickerCoordinator.setSelectedKey(databaseCreatorVC.yubiKey)
+        hardwareKeyPickerCoordinator.setSelectedKey(databaseCreatorVC.hardwareKey)
         hardwareKeyPickerCoordinator.start()
         databaseCreatorVC.present(modalRouter, animated: true, completion: nil)
 
         addChildCoordinator(hardwareKeyPickerCoordinator, onDismiss: nil)
     }
 
-    func didSelectKey(_ yubiKey: YubiKey?, in coordinator: HardwareKeyPickerCoordinator) {
-        setYubiKey(yubiKey)
+    func didSelectKey(_ hardwareKey: HardwareKey?, in coordinator: HardwareKeyPickerCoordinator) {
+        setHardwareKey(hardwareKey)
         databaseCreatorVC.becomeFirstResponder()
         databaseCreatorVC.hideErrorMessage(animated: false)
     }
 
-    func setYubiKey(_ yubiKey: YubiKey?) {
-        databaseCreatorVC.yubiKey = yubiKey
-        if let _yubiKey = yubiKey {
-            Diag.info("Hardware key selected [key: \(_yubiKey)]")
+    func setHardwareKey(_ hardwareKey: HardwareKey?) {
+        databaseCreatorVC.hardwareKey = hardwareKey
+        if let hardwareKey {
+            Diag.info("Hardware key selected [key: \(hardwareKey)]")
         } else {
             Diag.info("No hardware key selected")
         }

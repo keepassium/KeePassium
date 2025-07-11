@@ -53,7 +53,7 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
 
     var password: String { return passwordField?.text ?? "" }
     private(set) var keyFileRef: URLReference?
-    private(set) var yubiKey: YubiKey?
+    private(set) var hardwareKey: HardwareKey?
     private var shouldAutofocus = false
 
     private var progressOverlay: ProgressOverlay?
@@ -94,7 +94,7 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
         hardwareKeyField.accessibilityLabel = LString.fieldHardwareKey
 
         setKeyFile(keyFileRef)
-        setYubiKey(yubiKey)
+        setHardwareKey(hardwareKey)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -213,15 +213,15 @@ final class DatabaseUnlockerVC: UIViewController, Refreshable {
         inputPanel.isHidden = !shouldInputMasterKey
     }
 
-    func setYubiKey(_ yubiKey: YubiKey?) {
-        self.yubiKey = yubiKey
+    func setHardwareKey(_ hardwareKey: HardwareKey?) {
+        self.hardwareKey = hardwareKey
         guard isViewLoaded else {
             return
         }
 
-        if let yubiKey {
-            hardwareKeyField.text = YubiKey.getTitle(for: yubiKey)
-            Diag.info("Hardware key selected [key: \(yubiKey)]")
+        if let hardwareKey {
+            hardwareKeyField.text = hardwareKey.localizedDescription
+            Diag.info("Hardware key selected [key: \(hardwareKey)]")
         } else {
             hardwareKeyField.text = nil // shows "No Hardware Key" placeholder
             Diag.info("No hardware key selected")

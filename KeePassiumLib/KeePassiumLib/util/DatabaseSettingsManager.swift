@@ -63,7 +63,7 @@ public class DatabaseSettingsManager {
 
     public func forgetAllHardwareKeys() {
         do {
-            try updateAllSettings { $0.setAssociatedYubiKey(nil) }
+            try updateAllSettings { $0.setAssociatedHardwareKey(nil) }
         } catch {
             Diag.error("Failed to forget all hardware key associations [message: \(error.localizedDescription)]")
         }

@@ -58,7 +58,7 @@ final public class DatabaseSettings: Eraseable {
     public private(set) var associatedKeyFile: URLReference?
 
     public var isRememberHardwareKey: Bool?
-    public private(set) var associatedYubiKey: YubiKey?
+    public private(set) var associatedHardwareKey: HardwareKey?
 
     public var isQuickTypeEnabled: Bool?
 
@@ -88,7 +88,7 @@ final public class DatabaseSettings: Eraseable {
         associatedKeyFile = nil
 
         isRememberHardwareKey = nil
-        associatedYubiKey = nil
+        associatedHardwareKey = nil
 
         isQuickTypeEnabled = nil
 
@@ -139,15 +139,15 @@ final public class DatabaseSettings: Eraseable {
         }
     }
 
-    public func setAssociatedYubiKey(_ yubiKey: YubiKey?) {
-        associatedYubiKey = yubiKey
+    public func setAssociatedHardwareKey(_ hardwareKey: HardwareKey?) {
+        associatedHardwareKey = hardwareKey
     }
 
-    public func maybeSetAssociatedYubiKey(_ yubiKey: YubiKey?) {
+    public func maybeSetAssociatedHardwareKey(_ hardwareKey: HardwareKey?) {
         if isRememberHardwareKey ?? Settings.current.isKeepHardwareKeyAssociations {
-            setAssociatedYubiKey(yubiKey)
+            setAssociatedHardwareKey(hardwareKey)
         } else {
-            setAssociatedYubiKey(nil)
+            setAssociatedHardwareKey(nil)
         }
     }
 }
@@ -164,6 +164,7 @@ extension DatabaseSettings: Codable {
         case associatedKeyFile
         case isRememberHardwareKey
         case associatedYubiKey
+        case associatedHardwareKey
         case isQuickTypeEnabled
         case fallbackStrategy
         case fallbackTimeout
@@ -201,7 +202,11 @@ extension DatabaseSettings: Codable {
         self.isRememberKeyFile = try container.decodeIfPresent(Bool.self, forKey: .isRememberKeyFile)
         self.associatedKeyFile = try container.decodeIfPresent(URLReference.self, forKey: .associatedKeyFile)
         self.isRememberHardwareKey = try container.decodeIfPresent(Bool.self, forKey: .isRememberHardwareKey)
-        self.associatedYubiKey = try container.decodeIfPresent(YubiKey.self, forKey: .associatedYubiKey)
+        if let associatedHardwareKey = try container.decodeIfPresent(HardwareKey.self, forKey: .associatedHardwareKey) {
+            self.associatedHardwareKey = associatedHardwareKey
+        } else {
+            self.associatedHardwareKey = try container.decodeIfPresent(HardwareKey.self, forKey: .associatedYubiKey)
+        }
         self.isQuickTypeEnabled = try container.decodeIfPresent(Bool.self, forKey: .isQuickTypeEnabled)
         self.fallbackStrategy = try container.decodeIfPresent(UnreachableFileFallbackStrategy.self, forKey: .fallbackStrategy)
         self.fallbackTimeout = try container.decodeIfPresent(TimeInterval.self, forKey: .fallbackTimeout)
@@ -235,8 +240,8 @@ extension DatabaseSettings: Codable {
         if let _isRememberHardwareKey = isRememberHardwareKey {
             try container.encode(_isRememberHardwareKey, forKey: .isRememberHardwareKey)
         }
-        if let _associatedYubiKey = associatedYubiKey {
-            try container.encode(_associatedYubiKey, forKey: .associatedYubiKey)
+        if let _associatedHardwareKey = associatedHardwareKey {
+            try container.encode(_associatedHardwareKey, forKey: .associatedHardwareKey)
         }
         if let _isQuickTypeEnabled = isQuickTypeEnabled {
             try container.encode(_isQuickTypeEnabled, forKey: .isQuickTypeEnabled)

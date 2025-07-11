@@ -9,13 +9,13 @@
 import KeePassiumLib
 
 protocol HardwareKeyPickerCoordinatorDelegate: AnyObject {
-    func didSelectKey(_ yubiKey: YubiKey?, in coordinator: HardwareKeyPickerCoordinator)
+    func didSelectKey(_ hardwareKey: HardwareKey?, in coordinator: HardwareKeyPickerCoordinator)
 }
 
 final class HardwareKeyPickerCoordinator: BaseCoordinator {
     weak var delegate: HardwareKeyPickerCoordinatorDelegate?
 
-    private var selectedKey: YubiKey?
+    private var selectedKey: HardwareKey?
     private let hardwareKeyPickerVC: HardwareKeyPicker
 
     override init(router: NavigationRouter) {
@@ -38,15 +38,15 @@ final class HardwareKeyPickerCoordinator: BaseCoordinator {
 
 extension HardwareKeyPickerCoordinator {
 
-    public func setSelectedKey(_ yubiKey: YubiKey?) {
-        self.selectedKey = yubiKey
-        hardwareKeyPickerVC.selectedKey = yubiKey
+    public func setSelectedKey(_ hardwareKey: HardwareKey?) {
+        self.selectedKey = hardwareKey
+        hardwareKeyPickerVC.selectedKey = hardwareKey
     }
 
-    private func maybeSelectKey(_ yubiKey: YubiKey?) {
+    private func maybeSelectKey(_ hardwareKey: HardwareKey?) {
         if PremiumManager.shared.isAvailable(feature: .canUseHardwareKeys) {
-            setSelectedKey(yubiKey)
-            delegate?.didSelectKey(yubiKey, in: self)
+            setSelectedKey(hardwareKey)
+            delegate?.didSelectKey(hardwareKey, in: self)
             dismiss()
         } else {
             setSelectedKey(nil) // reset visual selection to "No key"
@@ -56,7 +56,7 @@ extension HardwareKeyPickerCoordinator {
 }
 
 extension HardwareKeyPickerCoordinator: HardwareKeyPickerDelegate {
-    func didSelectKey(_ yubiKey: YubiKey?, in picker: HardwareKeyPicker) {
-        maybeSelectKey(yubiKey)
+    func didSelectKey(_ hardwareKey: HardwareKey?, in picker: HardwareKeyPicker) {
+        maybeSelectKey(hardwareKey)
     }
 }
