@@ -2,16 +2,22 @@
     "sections": [
         {
             "version": "2.4",
-            "releaseDate": "2025-04-16T00:00:00Z",
+            "releaseDate": "2025-07-13T00:00:00Z",
             "items": [
                 {
-                    "title": "Added: Support for extra URLs (KP2A_URL_*)",
-                    "github": "#180",
+                    "title": "Added: Auto-Type via emulated key presses",
+                    "os": "macos",
+                    "github": "#415, #210",
                     "credits": "everyone"
                 },
                 {
-                    "title": "Added: QR-code view for entry fields",
-                    "github": "#420",
+                    "title": "Added: Support for OnlyKey challenge-response",
+                    "os": "macos",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Added: Support for extra URLs (KP2A_URL_*)",
+                    "github": "#180",
                     "credits": "everyone"
                 },
                 {
@@ -20,8 +26,52 @@
                     "credits": "everyone"
                 },
                 {
+                    "title": "Added: Scanning QR codes from camera",
+                    "os": "macos",
+                    "github": "#421",
+                    "credits": "vit9696"
+                },
+                {
+                    "title": "Added: Reading OTP setup QR codes from images",
+                    "github": "#422",
+                    "credits": "vit9696"
+                },
+                {
+                    "title": "Added: Option to reset the app after N failed app passcode attempts",
+                    "github": "#356",
+                    "credits": "O35dE"
+                },
+                {
+                    "title": "Added: Option to lock app and/or database on macOS screen lock",
+                    "os": "macos",
+                    "credits": "everyone"
+                },
+
+                {
+                    "title": "Added: QR-code view for entry fields",
+                    "github": "#420",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Added: Added possibility to export databases to WebDAV"
+                },
+                {
                     "title": "Added: macOS: Import from Apple Passwords CSV",
                     "os": "macos"
+                },
+                {
+                    "title": "Added: Added import from Enpass JSON",
+                    "os": "macos",
+                },
+                {
+                    "title": "Improved: Press Cmd+E to edit selected entry",
+                    "github": "#224",
+                    "credits": "plus-or-minus"
+                },
+                {
+                    "title": "Improved: AutoFill: long-press to select which field to copy to clipboard",
+                    "github": "#7, #388",
+                    "credits": "Stuart"
                 },
                 {
                     "title": "Improved: Show number of found items, both in search and smart groups",
@@ -36,7 +86,7 @@
                     "credits": "Stuart"
                 },
                 {
-                    "title": "Improved: Menu for new custom fields, with frequently used options"
+                    "title": "Improved: Added menu for new custom fields, with frequently used options"
                 },
                 {
                     "title": "Improved: More usable field actions menu (not in VoiceOver)",
@@ -70,7 +120,28 @@
                     "title": "Improved: Log a setup suggestion for YubiKeys with disabled NFC"
                 },
                 {
-                    "title": "Improved: Modernized database and key file picker UI"
+                    "title": "Improved: Modernized UI for app settings, database and key file picker; now with keyboard navigation."
+                },
+                {
+                    "title": "Fixed: macOS: Cmd+C copied password instead of selected text",
+                    "os": "macos",
+                    "github": "#426",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Fixed: Enforce max history size for entries, if defined (`historyMaxSize` parameter in DB file)"
+                },
+                {
+                    "title": "Fixed: \"Clear Master Keys on Timeout\" setting no longer affects non-timeout locks"
+                },
+                {
+                    "title": "Fixed: macOS: Crash on file picker menu actions",
+                    "os": "macos",
+                    "credits": "Stuart"
+                },
+                {
+                    "title": "Fixed: Org: mandatory passcode setup could be dismissed",
+                    "edition": "org"
                 },
                 {
                     "title": "Fixed: Excessive warnings about local files missing in AutoFill",
@@ -127,7 +198,7 @@
                     "os": "macos"
                 },
                 {
-                    "title": "Fixed: App protection now considers key presses as user activity"
+                    "title": "Fixed: App protection now considers key presses and scroll wheel as user activity"
                 },
                 {
                     "title": "Fixed: Smart group update after editing an item",

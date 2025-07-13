@@ -1,5 +1,36 @@
 #CHANGELOG
 
+## [2.4.165] - 2025-07-13
+
+### Added
+
+- macOS: Added Auto-Type via emulated key presses (#415, #210) [thanks, everyone]
+- macOS: Added support for OnlyKey challenge-response [thanks, everyone]
+- macOS: Option to lock app and/or database on macOS screen lock [thanks, everyone]
+- macOS: Scanning QR codes from camera (#421) [thanks, vit9696]
+- Reading OTP setup QR codes from images (#422) [thanks, vit9696]
+- Added option to reset the app after N failed app passcode attempts (#356) [thanks, O35dE]
+- Added possibility to export databases to WebDAV
+- macOS: Added import from Enpass JSON
+
+### Improved
+
+- Press Cmd+E to edit selected entry (#224) [thanks, plus-or-minus]
+- AutoFill: long-press to select which field to copy to clipboard (#7, #388) [thanks, Stuart]
+- App settings UI and keyboard navigation
+
+### Fixed
+
+- macOS: Cmd+C copied password instead of selected text (#426) [thanks, everyone]
+- DB unlocker could start with a previously removed database (regression in 2.4.164)
+- Enforce max history size for entries, if defined (`historyMaxSize` parameter in DB file)
+- Swipe gestures did not work in file pickers (regression in 2.4.164)
+- "Clear Master Keys on Timeout" setting no longer affects non-timeout locks 
+- macOS: Crash on file picker menu actions [thanks, Stuart]
+- macOS: Scrolling counts as user activity [thanks, Stuart]
+- Org: mandatory passcode setup could be dismissed
+
+
 ## [2.4.164] - 2025-04-16
 
 ### Added
