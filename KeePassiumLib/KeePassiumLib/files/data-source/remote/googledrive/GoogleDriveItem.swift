@@ -111,6 +111,7 @@ extension GoogleDriveItem {
             urlComponents.queryItems!.append(URLQueryItem(name: name, value: value))
         }
 
+        var includeSharedDrives = true
         switch endpoint {
         case .children(let nextPageToken):
             urlComponents.path = "/drive/v3/files"
@@ -123,6 +124,7 @@ extension GoogleDriveItem {
                     qParamParts.append("'\(id)' in parents")
                 }
                 addQueryItem(GoogleDriveAPI.Keys.q, qParamParts.joined(separator: " and "))
+                includeSharedDrives = false
             } else {
                 if let sharedDriveID {
                     addQueryItem(GoogleDriveAPI.Keys.includeItemsFromAllDrives, "true")
@@ -145,7 +147,6 @@ extension GoogleDriveItem {
                     break
                 }
                 addQueryItem(GoogleDriveAPI.Keys.q, qParamParts.joined(separator: " and "))
-                addQueryItem(GoogleDriveAPI.Keys.supportsAllDrives, "true")
             }
 
             if let nextPageToken {
@@ -164,6 +165,11 @@ extension GoogleDriveItem {
             assert(isFolder, "Parent item is a file, cannot create a subfile.")
             urlComponents.path = "/drive/v3/files/"
         }
+
+        if includeSharedDrives {
+            addQueryItem(GoogleDriveAPI.Keys.supportsAllDrives, "true")
+        }
+
         return urlComponents.url!
     }
 }
