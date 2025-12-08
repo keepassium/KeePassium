@@ -30,6 +30,7 @@ struct WebDAVProvider {
     let showsAllowUntrusted: Bool
     let showsFullURL: Bool
     let pathPrefix: String?
+    let allowsAnonymous: Bool
     let helpURL: URL?
     let helpButtonTitle: String?
 
@@ -53,6 +54,7 @@ struct WebDAVProvider {
         showsAllowUntrusted: true,
         showsFullURL: false,
         pathPrefix: nil,
+        allowsAnonymous: true,
         helpURL: nil,
         helpButtonTitle: nil
     )
@@ -215,6 +217,7 @@ struct WebDAVProvider {
         showsAllowUntrusted: Bool,
         showsFullURL: Bool,
         pathPrefix: String?,
+        allowsAnonymous: Bool = false,
         helpURL: URL?,
         helpButtonTitle: String?
     ) {
@@ -225,6 +228,7 @@ struct WebDAVProvider {
         self.showsAllowUntrusted = showsAllowUntrusted
         self.showsFullURL = showsFullURL
         self.pathPrefix = pathPrefix
+        self.allowsAnonymous = allowsAnonymous
         self.helpURL = helpURL
         self.helpButtonTitle = helpButtonTitle
     }

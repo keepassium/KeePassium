@@ -72,6 +72,7 @@ public final class NetworkCredential: Codable {
     public enum CredentialType: Int, Codable {
         case usernamePassword = 0
         case oauthToken = 1
+        case anonymous = 2
     }
 
     private let type: CredentialType
@@ -79,6 +80,14 @@ public final class NetworkCredential: Codable {
     public let password: String
     public let allowUntrustedCertificate: Bool
     public let oauthToken: OAuthToken?
+
+    public init(allowUntrustedCertificate: Bool) {
+        self.type = .anonymous
+        self.username = ""
+        self.password = ""
+        self.allowUntrustedCertificate = allowUntrustedCertificate
+        self.oauthToken = nil
+    }
 
     public init(username: String, password: String, allowUntrustedCertificate: Bool) {
         self.type = .usernamePassword
@@ -129,6 +138,13 @@ public final class NetworkCredential: Codable {
             )
         case .oauthToken:
             self.init(oauthToken: try container.decode(OAuthToken.self, forKey: .oauthToken))
+        case .anonymous:
+            self.init(
+                allowUntrustedCertificate: try container.decode(
+                    Bool.self,
+                    forKey: .allowUntrustedCertificate
+                )
+            )
         }
     }
 
@@ -142,6 +158,8 @@ public final class NetworkCredential: Codable {
             try container.encode(allowUntrustedCertificate, forKey: .allowUntrustedCertificate)
         case .oauthToken:
             try container.encode(oauthToken, forKey: .oauthToken)
+        case .anonymous:
+            try container.encode(allowUntrustedCertificate, forKey: .allowUntrustedCertificate)
         }
     }
 

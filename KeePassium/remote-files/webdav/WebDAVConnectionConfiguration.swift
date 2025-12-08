@@ -33,6 +33,9 @@ struct WebDAVConnectionSetupConfig {
         guard let serverURL else { return nil }
         return provider.buildFullURL(from: serverURL, username: username)
     }
+    var allowAnonymous: Bool {
+        provider.allowsAnonymous
+    }
     var showsHelpSection: Bool {
         provider.helpURL != nil
     }
@@ -47,7 +50,14 @@ struct WebDAVConnectionSetupConfig {
     }
 
     var isValid: Bool {
-        return serverURL != nil && username?.isEmpty == false && password?.isEmpty == false
+        guard serverURL != nil else { return false }
+        if allowAnonymous {
+            return true
+        } else {
+            let hasUsername = username?.isEmpty == false
+            let hasPassword = password?.isEmpty == false
+            return hasUsername && hasPassword
+        }
     }
 
     init(
@@ -75,16 +85,19 @@ struct WebDAVConnectionSetupConfig {
 
 extension NetworkCredential {
     convenience init?(_ config: WebDAVConnectionSetupConfig) {
-        guard let username = config.username, !username.isEmpty else {
+        let username = config.username ?? ""
+        let password = config.password ?? ""
+        guard (username.isNotEmpty && password.isNotEmpty) || config.allowAnonymous else {
             return nil
         }
-        guard let password = config.password, !password.isEmpty else {
-            return nil
+        if username.isEmpty && password.isEmpty {
+            self.init(allowUntrustedCertificate: config.allowUntrusted)
+        } else {
+            self.init(
+                username: username,
+                password: password,
+                allowUntrustedCertificate: config.allowUntrusted
+            )
         }
-        self.init(
-            username: username,
-            password: password,
-            allowUntrustedCertificate: config.allowUntrusted
-        )
     }
 }
