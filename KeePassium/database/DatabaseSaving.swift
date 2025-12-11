@@ -17,7 +17,6 @@ protocol DatabaseSaving: DatabaseSaverDelegate {
 
     func saveDatabase(
         _ databaseFile: DatabaseFile,
-        timeoutDuration: TimeInterval,
         onSuccess: (() -> Void)?)
 
     func willStartSaving(databaseFile: DatabaseFile)
@@ -35,7 +34,6 @@ protocol DatabaseSaving: DatabaseSaverDelegate {
 extension DatabaseSaving {
     func saveDatabase(
         _ databaseFile: DatabaseFile,
-        timeoutDuration: TimeInterval = FileDataProvider.defaultTimeoutDuration,
         onSuccess: (() -> Void)? = nil
     ) {
         guard databaseSaver == nil else {
@@ -43,6 +41,9 @@ extension DatabaseSaving {
             return
         }
         saveSuccessHandler = onSuccess
+
+        let dbSettings = DatabaseSettingsManager.shared.getSettings(for: databaseFile)
+        let timeoutDuration = dbSettings?.fallbackTimeout ?? FileDataProvider.defaultTimeoutDuration
 
         var tasksToSkip = [DatabaseSaver.RelatedTasks]()
         if let fileRef = databaseFile.fileReference,
