@@ -247,6 +247,7 @@ final public class DropboxManager: NSObject {
     ) {
         Diag.debug("Acquiring OAuth token [operation: \(operation)]")
         var urlRequest = URLRequest(url: DropboxAPI.tokenRequestURL)
+        urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
         urlRequest.timeoutInterval = timeout.duration
         urlRequest.httpMethod = "POST"
         urlRequest.setValue(
@@ -448,6 +449,7 @@ extension DropboxManager: RemoteDataSourceManager {
     ) {
         let url = cursor == nil ? DropboxAPI.folderListURL : DropboxAPI.folderListContinueURL
         var urlRequest = URLRequest(url: url)
+        urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
         urlRequest.timeoutInterval = timeout.duration
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: DropboxAPI.Keys.authorization)
@@ -670,6 +672,7 @@ extension DropboxManager: RemoteDataSourceManager {
         urlRequest.setValue(
             "{\"mode\":\"overwrite\",\"path\":\"\(item.escapedPath)\"}",
             forHTTPHeaderField: DropboxAPI.Keys.apiArg)
+        urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
         urlRequest.timeoutInterval = timeout.duration
 
         urlRequest.httpBody = contents.asData
