@@ -36,4 +36,6 @@ protocol GroupViewerItemDecorator: AnyObject {
     func getContextMenu(for item: Item, context: Context) -> UIMenu?
 
     func getAccessibilityActions(for item: Item, context: Context) -> [UIAccessibilityCustomAction]?
+    func getAccessibilityActions(for group: Group, context: Context) -> [UIAccessibilityCustomAction]?
+    func getAccessibilityActions(for entry: Entry, context: Context) -> [UIAccessibilityCustomAction]?
 }

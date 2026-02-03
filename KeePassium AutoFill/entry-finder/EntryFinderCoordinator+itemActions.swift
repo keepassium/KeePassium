@@ -62,28 +62,9 @@ extension EntryFinderCoordinator {
 }
 
 extension EntryFinderCoordinator.ItemDecorator {
-    static let fieldExcludedFromCopying = [
-        EntryField.title,
-        EntryField.otpConfig1,
-        EntryField.otpConfig2Seed,
-        EntryField.otpConfig2Settings,
-        EntryField.timeOtpLength,
-        EntryField.timeOtpPeriod,
-        EntryField.timeOtpPeriod,
-        EntryField.timeOtpSecret,
-        EntryField.timeOtpAlgorithm,
-        EntryField.passkeyCredentialID,
-        EntryField.passkeyRelyingParty,
-        EntryField.passkeyPrivateKeyPEM,
-        EntryField.passkeyUserHandle,
-        EntryField.passkeyUsername,
-        EntryField.passkeyFlagBE,
-        EntryField.passkeyFlagBS,
-    ]
-
     func makeCopyEntryFieldMenu(for entry: Entry, inline: Bool) -> UIMenu? {
         let fields = entry.fields.filter {
-            !$0.value.isEmpty && !Self.fieldExcludedFromCopying.contains($0.name)
+            !$0.value.isEmpty && !EntryField.isExcludedFromCopying($0.name)
         }
         guard !fields.isEmpty else { return nil }
 

@@ -27,6 +27,25 @@ public class EntryField: Eraseable, Codable {
 
     public static let protectedValueMask = "* * * *"
 
+    private static let excludedFromCopying: Set<String> = [
+        EntryField.title,
+        EntryField.otpConfig1,
+        EntryField.otpConfig2Seed,
+        EntryField.otpConfig2Settings,
+        EntryField.timeOtpLength,
+        EntryField.timeOtpPeriod,
+        EntryField.timeOtpPeriod,
+        EntryField.timeOtpSecret,
+        EntryField.timeOtpAlgorithm,
+        EntryField.passkeyCredentialID,
+        EntryField.passkeyRelyingParty,
+        EntryField.passkeyPrivateKeyPEM,
+        EntryField.passkeyUserHandle,
+        EntryField.passkeyUsername,
+        EntryField.passkeyFlagBE,
+        EntryField.passkeyFlagBS,
+    ]
+
     public var name: String
     public var value: String {
         didSet {
@@ -46,6 +65,7 @@ public class EntryField: Eraseable, Codable {
         case Self.password: return LString.fieldPassword
         case Self.url: return LString.fieldURL
         case Self.notes: return LString.fieldNotes
+        case Self.otp: return LString.fieldOTP
         case Self.tags: return LString.fieldTags
         default:
             if let urlIndex = getExtraURLIndex(from: fieldName) {
@@ -70,6 +90,10 @@ public class EntryField: Eraseable, Codable {
             let indexString = String(fieldName.split(separator: "_").last ?? "0")
             return Int(indexString) ?? 0
         }
+    }
+
+    public static func isExcludedFromCopying(_ fieldName: String) -> Bool {
+        return excludedFromCopying.contains(fieldName)
     }
 
     internal var resolvedValueInternal: String?

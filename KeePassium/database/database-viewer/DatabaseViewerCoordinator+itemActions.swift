@@ -111,7 +111,11 @@ extension DatabaseViewerCoordinator.ItemDecorator {
             editAction.backgroundColor = .actionTint
             actions.append(editAction)
         }
-        return actions
+        if UIAccessibility.isVoiceOverRunning {
+            return actions.reversed()
+        } else {
+            return actions
+        }
     }
 
     func getContextMenu(for group: Group, context: Context) -> UIMenu? {
@@ -234,7 +238,11 @@ extension DatabaseViewerCoordinator.ItemDecorator {
             editAction.backgroundColor = .actionTint
             actions.append(editAction)
         }
-        return actions
+        if UIAccessibility.isVoiceOverRunning {
+            return actions.reversed()
+        } else {
+            return actions
+        }
     }
 
     func getContextMenu(for entry: Entry, context: Context) -> UIMenu? {
@@ -337,11 +345,14 @@ extension DatabaseViewerCoordinator.ItemDecorator {
     func getAccessibilityActions(for entry: Entry, context: Context) -> [UIAccessibilityCustomAction]? {
         var actions = [UIAccessibilityCustomAction]()
 
-        let nonTitleFields = entry.fields.filter { $0.name != EntryField.title }
-        nonTitleFields.reversed().forEach { field in
+        let category = ItemCategory.default
+        let copyableFields = entry.fields
+            .filter { !$0.value.isEmpty && !EntryField.isExcludedFromCopying($0.name) }
+            .sorted { category.compare($0.name, $1.name) }
+        copyableFields.forEach { field in
             let actionName = String.localizedStringWithFormat(
                 LString.actionCopyToClipboardTemplate,
-                field.name)
+                field.visibleName)
             let action = UIAccessibilityCustomAction(name: actionName) { [weak field] _ -> Bool in
                 if let fieldValue = field?.resolvedValue {
                     Clipboard.general.copyWithTimeout(fieldValue)
@@ -354,6 +365,27 @@ extension DatabaseViewerCoordinator.ItemDecorator {
             }
             actions.append(action)
         }
+
+        if entry.hasValidTOTP {
+            let actionName = String.localizedStringWithFormat(
+                LString.actionCopyToClipboardTemplate,
+                LString.fieldTOTP
+            )
+            let copyOTPAction = UIAccessibilityCustomAction(name: actionName) { [weak entry] _ -> Bool in
+                guard let totpValue = entry?.totpGenerator()?.generate() else {
+                    assertionFailure()
+                    return false
+                }
+                Clipboard.general.copyWithTimeout(totpValue)
+                UIAccessibility.post(
+                    notification: .announcement,
+                    argument: LString.titleCopiedToClipboard
+                )
+                return true
+            }
+            actions.append(copyOTPAction)
+        }
+
         return actions
     }
 }

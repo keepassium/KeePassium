@@ -161,7 +161,9 @@ extension GroupViewerVC {
                 otpDisplayMode: _getOTPDisplayModeForItem(group),
                 contentView: cell.contentView)
             let accessories = _itemDecorator?.getAccessories(for: group, context: context)
+            let accessibilityActions = _itemDecorator?.getAccessibilityActions(for: group, context: context)
             cell.configure(with: group, accessories: accessories)
+            cell.accessibilityCustomActions = accessibilityActions ?? []
         }
     }
 
@@ -175,7 +177,9 @@ extension GroupViewerVC {
                 otpDisplayMode: _getOTPDisplayModeForItem(entry),
                 contentView: cell.contentView)
             let accessories = _itemDecorator?.getAccessories(for: entry, context: context)
+            let accessibilityActions = _itemDecorator?.getAccessibilityActions(for: entry, context: context)
             cell.configure(with: entry, accessories: accessories)
+            cell.accessibilityCustomActions = accessibilityActions ?? []
         }
     }
 
