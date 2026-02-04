@@ -1,13 +1,31 @@
 {
-  "originHash" : "2de0205983087a32442cab968f3ec78a4daeee33028d87ab915ddf1f4904ac7d",
+  "originHash" : "2b51243d2440f95856b4528312c6d157d05f16ef894bb58f258659ba75e9139b",
   "pins" : [
     {
-      "identity" : "asn1swift",
+      "identity" : "swift-asn1",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/keepassium/ASN1Swift",
+      "location" : "https://github.com/apple/swift-asn1",
       "state" : {
-        "revision" : "b53bee03a942623db25afc5bfb80227b2cb3b425",
-        "version" : "1.2.4"
+        "revision" : "810496cf121e525d660cd0ea89a758740476b85f",
+        "version" : "1.5.1"
+      }
+    },
+    {
+      "identity" : "swift-certificates",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-certificates.git",
+      "state" : {
+        "revision" : "7d5f6124c91a2d06fb63a811695a3400d15a100e",
+        "version" : "1.17.1"
+      }
+    },
+    {
+      "identity" : "swift-crypto",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-crypto.git",
+      "state" : {
+        "revision" : "6f70fa9eab24c1fd982af18c281c4525d05e3095",
+        "version" : "4.2.0"
       }
     },
     {
@@ -31,10 +49,10 @@
     {
       "identity" : "tpinappreceipt",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/keepassium/TPInAppReceipt",
+      "location" : "https://github.com/tikhop/TPInAppReceipt",
       "state" : {
-        "branch" : "keepassium",
-        "revision" : "6630e3858f0d0a5803cede6f82afeaed5f5de7b6"
+        "revision" : "3ec500058c3cb62d0e736bf83c22b93b60279bd0",
+        "version" : "4.0.2"
       }
     }
   ],

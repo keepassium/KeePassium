@@ -6,7 +6,7 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-import TPInAppReceipt
+@_spi(Blocking) import TPInAppReceipt
 
 private let dateFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()
@@ -158,7 +158,7 @@ class ReceiptAnalyzer {
 
     static func logPurchaseHistory() {
         do {
-            let receipt = try InAppReceipt.localReceipt()
+            let receipt = try AppReceipt.local_blocking
             guard receipt.hasPurchases else {
                 Diag.debug("No previous purchases found.")
                 return
@@ -201,7 +201,7 @@ class ReceiptAnalyzer {
         }
 
         do {
-            let receipt = try InAppReceipt.localReceipt()
+            let receipt = try AppReceipt.local_blocking
             guard receipt.hasPurchases else {
                 return PurchaseHistory.empty
             }
@@ -223,7 +223,7 @@ class ReceiptAnalyzer {
 
 
     private func processLifetimePurchases(
-        _ receipt: InAppReceipt,
+        _ receipt: AppReceipt,
         _ purchaseHistory: inout PurchaseHistory
     ) {
         for lifetimeProduct in InAppProduct.allForever {
@@ -246,7 +246,7 @@ class ReceiptAnalyzer {
 
 
     private func processVersionPurchases(
-        _ receipt: InAppReceipt,
+        _ receipt: AppReceipt,
         _ purchaseHistory: inout PurchaseHistory
     ) {
         guard let purchasedVersion = getLatestPurchasedVersion(receipt) else {
@@ -293,7 +293,7 @@ class ReceiptAnalyzer {
         }
     }
 
-    private func getLatestPurchasedVersion(_ receipt: InAppReceipt) -> InAppPurchase? {
+    private func getLatestPurchasedVersion(_ receipt: AppReceipt) -> InAppPurchase? {
         let versionPurchases = receipt.purchases.filter { purchase in
             guard purchase.cancellationDate == nil else { return false }
             guard let product = InAppProduct(rawValue: purchase.productIdentifier) else {
@@ -310,7 +310,7 @@ class ReceiptAnalyzer {
 
 
     private func processSubscriptionPurchases(
-        _ receipt: InAppReceipt,
+        _ receipt: AppReceipt,
         _ purchaseHistory: inout PurchaseHistory
     ) {
         purchaseHistory.containsTrial = receipt.autoRenewablePurchases.contains {
