@@ -298,6 +298,8 @@
     <true/>
     <key>LSSupportsOpeningDocumentsInPlace</key>
     <true/>
+    <key>UIDesignRequiresCompatibility</key>
+    <true/>
     <key>NFCReaderUsageDescription</key>
     <string>KeePassium needs access to NFC to communicate with your YubiKey.</string>
     <key>NSAppTransportSecurity</key>
