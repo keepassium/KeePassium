@@ -1,0 +1,55 @@
+/*
+ * Internet Access Policy Localizations
+ * This file provides localized descriptions for KeePassium's network connections
+ * as declared in InternetAccessPolicy.plist
+ *
+ * For more information about Little Snitch's Internet Access Policy:
+ * https://help.obdev.at/littlesnitch6/adv-iap-developer
+ */
+
+/* Top-level application description */
+"ApplicationDescription" = "KeePassium is a password manager for iOS and macOS that keeps your passwords safe and secure.";
+
+/* HIBP Password Breach Check */
+"HIBPPurpose" = "Check if your passwords have been compromised in known data breaches using the Have I Been Pwned service. Only a partial hash of your password is sent to maintain privacy.";
+"HIBPDenyConsequences" = "If you deny these connections, password breach checking will not work. You will need to manually verify password security.";
+
+/* Dropbox Cloud Storage */
+"DropboxOAuthPurpose" = "Authenticate with Dropbox to enable cloud synchronization of your password databases.";
+"DropboxAPIPurpose" = "Access and manage your password database files stored in Dropbox.";
+"DropboxContentPurpose" = "Download and upload password database files to and from Dropbox.";
+"DropboxDenyConsequences" = "If you deny these connections, you will not be able to sync your password databases with Dropbox.";
+
+/* OneDrive Cloud Storage */
+"OneDriveOAuthPurpose" = "Authenticate with Microsoft OneDrive to enable cloud synchronization of your password databases.";
+"OneDriveAPIPurpose" = "Access and manage your password database files stored in OneDrive using Microsoft Graph API.";
+"OneDriveDenyConsequences" = "If you deny these connections, you will not be able to sync your password databases with OneDrive.";
+
+/* Google Drive Cloud Storage */
+"GoogleDriveOAuthPurpose" = "Authenticate with Google Drive to enable cloud synchronization of your password databases.";
+"GoogleDriveAPIPurpose" = "Access and manage your password database files stored in Google Drive.";
+"GoogleDriveDenyConsequences" = "If you deny these connections, you will not be able to sync your password databases with Google Drive.";
+
+/* Help & Documentation */
+"HelpDocsPurpose" = "Access help articles, documentation, and support resources from the KeePassium website.";
+"HelpDocsDenyConsequences" = "If you deny these connections, in-app help articles will not load. You can still use the app normally.";
+
+/* WebDAV Providers - Specific Services */
+"HetznerPurpose" = "Sync password databases with Hetzner Storage Box using WebDAV protocol.";
+"HiDriveIonosPurpose" = "Sync password databases with HiDrive (IONOS) cloud storage using WebDAV protocol.";
+"HiDriveStratoPurpose" = "Sync password databases with HiDrive (Strato) cloud storage using WebDAV protocol.";
+"KoofrPurpose" = "Sync password databases with Koofr cloud storage using WebDAV protocol.";
+"MagentaCloudPurpose" = "Sync password databases with MagentaCloud (Deutsche Telekom) using WebDAV protocol.";
+"WoelkliPurpose" = "Sync password databases with Woelkli Swiss cloud storage using WebDAV protocol.";
+"QNAPCloudPurpose" = "Sync password databases with QNAP NAS cloud service using WebDAV protocol.";
+
+/* Generic WebDAV deny consequences (shared by all WebDAV providers) */
+"WebDAVDenyConsequences" = "If you deny these connections, you will not be able to sync your password databases with this WebDAV server.";
+
+/* User-Configured Servers & Favicons */
+"UserServersHTTPSPurpose" = "Connect to custom servers and websites that you configure: WebDAV servers (Nextcloud, ownCloud, Synology NAS, or generic HTTP servers) for database synchronization, and websites from your saved password entries to download their icons (favicons). These connections only occur to addresses you have explicitly added to KeePassium.";
+"UserServersHTTPPurpose" = "Connect to your custom HTTP servers for database synchronization and download website icons. Only servers and websites you have configured in KeePassium are contacted.";
+"UserServersDenyConsequences" = "If you deny these connections, you will not be able to sync databases with custom-configured servers (self-hosted Nextcloud, ownCloud, Synology NAS, etc.) or download website icons from your saved entries. These are optional features that only connect to addresses you specify.";
+
+/* StoreKit Service */
+"StoreKitPurpose" = "Process in-app purchases and subscriptions through Apple's App Store.";

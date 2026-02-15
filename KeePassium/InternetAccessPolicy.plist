@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ApplicationDescription</key>
+	<string>ApplicationDescription</string>
+	<key>DeveloperName</key>
+	<string>KeePassium Labs</string>
+	<key>Website</key>
+	<string>https://keepassium.com</string>
+	<key>Connections</key>
+	<array>
+		<!-- HIBP Password Breach Check -->
+		<dict>
+			<key>Host</key>
+			<string>api.pwnedpasswords.com</string>
+			<key>NetworkProtocol</key>
+			<string>TCP</string>
+			<key>Port</key>
+			<string>443</string>
+			<key>Relevance</key>
+			<string>Default</string>
+			<key>Purpose</key>
+			<string>HIBPPurpose</string>
+			<key>DenyConsequences</key>
+			<string>HIBPDenyConsequences</string>
+		</dict>
+
+		<!-- Dropbox API - OAuth -->
+		<dict>
+			<key>Host</key>
+			<string>api.dropbox.com</string>
+			<key>NetworkProtocol</key>
+			<string>TCP</string>
+			<key>Port</key>
+			<string>443</string>
+			<key>Relevance</key>
+			<string>Default</string>
+			<key>Purpose</key>
+			<string>DropboxOAuthPurpose</string>
+			<key>DenyConsequences</key>
+			<string>DropboxDenyConsequences</string>
+		</dict>
+
+		<!-- Dropbox API - File Operations -->
+		<dict>
+			<key>Host</key>
+			<string>api.dropboxapi.com</string>
+			<key>NetworkProtocol</key>
+			<string>TCP</string>
+			<key>Port</key>
+			<string>443</string>
+			<key>Relevance</key>
+			<string>Default</string>
+			<key>Purpose</key>
+			<string>DropboxAPIPurpose</string>
+			<key>DenyConsequences</key>
+			<string>DropboxDenyConsequences</string>
+		</dict>
+
+		<!-- Dropbox Content API -->
+		<dict>
+			<key>Host</key>
+			<string>content.dropboxapi.com</string>
+			<key>NetworkProtocol</key>
+			<string>TCP</string>
+			<key>Port</key>
+			<string>443</string>
+			<key>Relevance</key>
+			<string>Default</string>
+			<key>Purpose</key>
+			<string>DropboxContentPurpose</string>
+			<key>DenyConsequences</key>
+			<string>DropboxDenyConsequences</string>
+		</dict>
+
+		<!-- OneDrive - OAuth -->
+		<dict>
+			<key>Host</key>
+			<string>login.microsoftonline.com</string>
+			<key>NetworkProtocol</key>
+			<string>TCP</string>
+			<key>Port</key>
+			<string>443</string>
+			<key>Relevance</key>
+			<string>Default</string>
+			<key>Purpose</key>
+			<string>OneDriveOAuthPurpose</string>
+			<key>DenyConsequences</key>
+			<string>OneDriveDenyConsequences</string>
+		</dict>
+
+		<!-- OneDrive - Microsoft Graph API -->
+		<dict>
+			<key>Host</key>
+			<string>graph.microsoft.com</string>
+			<key>NetworkProtocol</key>
+			<string>TCP</string>
+			<key>Port</key>
+			<string>443</string>
+			<key>Relevance</key>
+			<string>Default</string>
+			<key>Purpose</key>
+			<string>OneDriveAPIPurpose</string>
+			<key>DenyConsequences</key>
+			<string>OneDriveDenyConsequences</string>
+		</dict>
+
+		<!-- Google Drive - OAuth -->
+		<dict>
+			<key>Host</key>
+			<string>oauth2.googleapis.com</string>
+			<key>NetworkProtocol</key>
+			<string>TCP</string>
+			<key>Port</key>
+			<string>443</string>
+			<key>Relevance</key>
+			<string>Default</string>
+			<key>Purpose</key>
+			<string>GoogleDriveOAuthPurpose</string>
+			<key>DenyConsequences</key>
+			<string>GoogleDriveDenyConsequences</string>
+		</dict>
+
+		<!-- Google Drive - API -->
+		<dict>
+			<key>Host</key>
+			<string>www.googleapis.com</string>
+			<key>NetworkProtocol</key>
+			<string>TCP</string>
+			<key>Port</key>
+			<string>443</string>
+			<key>Relevance</key>
+			<string>Default</string>
+			<key>Purpose</key>
+			<string>GoogleDriveAPIPurpose</string>
+			<key>DenyConsequences</key>
+			<string>GoogleDriveDenyConsequences</string>
+		</dict>
+
+		<!-- KeePassium Help & Documentation -->
+		<dict>
+			<key>Host</key>
+			<string>keepassium.com</string>
+			<key>NetworkProtocol</key>
+			<string>TCP</string>
+			<key>Port</key>
+			<string>443</string>
+			<key>Purpose</key>
+			<string>HelpDocsPurpose</string>
+			<key>DenyConsequences</key>
+			<string>HelpDocsDenyConsequences</string>
+		</dict>
+
+		<!-- WebDAV Provider: Hetzner Storage Box -->
+		<dict>
+			<key>Host</key>
+			<string>*.your-storagebox.de</string>
+			<key>NetworkProtocol</key>
+			<string>TCP</string>
+			<key>Port</key>
+			<string>443</string>
+			<key>Relevance</key>
+			<string>Default</string>
+			<key>Purpose</key>
+			<string>HetznerPurpose</string>
+			<key>DenyConsequences</key>
+			<string>WebDAVDenyConsequences</string>
+		</dict>
+
+		<!-- WebDAV Provider: HiDrive (IONOS) -->
+		<dict>
+			<key>Host</key>
+			<string>*.webdav.hidrive.ionos.com</string>
+			<key>NetworkProtocol</key>
+			<string>TCP</string>
+			<key>Port</key>
+			<string>443</string>
+			<key>Relevance</key>
+			<string>Default</string>
+			<key>Purpose</key>
+			<string>HiDriveIonosPurpose</string>
+			<key>DenyConsequences</key>
+			<string>WebDAVDenyConsequences</string>
+		</dict>
+
+		<!-- WebDAV Provider: HiDrive (Strato) -->
+		<dict>
+			<key>Host</key>
+			<string>webdav.hidrive.strato.com</string>
+			<key>NetworkProtocol</key>
+			<string>TCP</string>
+			<key>Port</key>
+			<string>443</string>
+			<key>Relevance</key>
+			<string>Default</string>
+			<key>Purpose</key>
+			<string>HiDriveStratoPurpose</string>
+			<key>DenyConsequences</key>
+			<string>WebDAVDenyConsequences</string>
+		</dict>
+
+		<!-- WebDAV Provider: Koofr -->
+		<dict>
+			<key>Host</key>
+			<string>app.koofr.net</string>
+			<key>NetworkProtocol</key>
+			<string>TCP</string>
+			<key>Port</key>
+			<string>443</string>
+			<key>Relevance</key>
+			<string>Default</string>
+			<key>Purpose</key>
+			<string>KoofrPurpose</string>
+			<key>DenyConsequences</key>
+			<string>WebDAVDenyConsequences</string>
+		</dict>
+
+		<!-- WebDAV Provider: MagentaCloud (Telekom) -->
+		<dict>
+			<key>Host</key>
+			<string>magentacloud.de</string>
+			<key>NetworkProtocol</key>
+			<string>TCP</string>
+			<key>Port</key>
+			<string>443</string>
+			<key>Relevance</key>
+			<string>Default</string>
+			<key>Purpose</key>
+			<string>MagentaCloudPurpose</string>
+			<key>DenyConsequences</key>
+			<string>WebDAVDenyConsequences</string>
+		</dict>
+
+		<!-- WebDAV Provider: Woelkli (Swiss Cloud) -->
+		<dict>
+			<key>Host</key>
+			<string>cloud.woelkli.com</string>
+			<key>NetworkProtocol</key>
+			<string>TCP</string>
+			<key>Port</key>
+			<string>443</string>
+			<key>Relevance</key>
+			<string>Default</string>
+			<key>Purpose</key>
+			<string>WoelkliPurpose</string>
+			<key>DenyConsequences</key>
+			<string>WebDAVDenyConsequences</string>
+		</dict>
+
+		<!-- WebDAV Provider: QNAP Cloud -->
+		<dict>
+			<key>Host</key>
+			<string>*.myqnapcloud.com</string>
+			<key>NetworkProtocol</key>
+			<string>TCP</string>
+			<key>Purpose</key>
+			<string>QNAPCloudPurpose</string>
+			<key>DenyConsequences</key>
+			<string>WebDAVDenyConsequences</string>
+		</dict>
+
+		<!-- User-Configured Servers & Favicons (HTTPS) -->
+		<dict>
+			<key>Host</key>
+			<string>*</string>
+			<key>NetworkProtocol</key>
+			<string>TCP</string>
+			<key>Port</key>
+			<string>443</string>
+			<key>Purpose</key>
+			<string>UserServersHTTPSPurpose</string>
+			<key>DenyConsequences</key>
+			<string>UserServersDenyConsequences</string>
+		</dict>
+
+		<!-- User-Configured Servers & Favicons (HTTP) -->
+		<dict>
+			<key>Host</key>
+			<string>*</string>
+			<key>NetworkProtocol</key>
+			<string>TCP</string>
+			<key>Port</key>
+			<string>80</string>
+			<key>Purpose</key>
+			<string>UserServersHTTPPurpose</string>
+			<key>DenyConsequences</key>
+			<string>UserServersDenyConsequences</string>
+		</dict>
+	</array>
+	<key>Services</key>
+	<array>
+		<!-- Apple StoreKit for In-App Purchases -->
+		<dict>
+			<key>Name</key>
+			<string>StoreKit</string>
+			<key>Identifier</key>
+			<string>com.apple.StoreKit</string>
+			<key>Purpose</key>
+			<string>StoreKitPurpose</string>
+		</dict>
+	</array>
+</dict>
+</plist>
