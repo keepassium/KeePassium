@@ -15,6 +15,12 @@ extension LString {
         comment: "Name of Apple Passwords' CSV file format"
     )
 
+    public static let titleBitwardenJSON = NSLocalizedString(
+        "[Format/BitwardenJSON]",
+        value: "Bitwarden (.json)",
+        comment: "Name of Bitwarden's JSON file format"
+    )
+
     public static let titleEnpassJSON = NSLocalizedString(
         "[Format/EnpassJSON]",
         value: "Enpass (.json)",
@@ -48,6 +54,11 @@ extension LString.Error {
         "[Import/Enpass/Error/CorruptedAttachment]",
         value: "Corrupted data for attachment '%@' in item '%@'.",
         comment: "Error message when Enpass import fails due to corrupted attachment data [attachmentName: String, itemName: String]"
+    )
+    public static let importBitwardenEncryptedExport = NSLocalizedString(
+        "[Import/Bitwarden/Error/EncryptedExport]",
+        value: "This appears to be an encrypted Bitwarden export. Please export as plaintext JSON instead.",
+        comment: "Error message when trying to import an encrypted Bitwarden export"
     )
     // swiftlint:enable line_length
 }

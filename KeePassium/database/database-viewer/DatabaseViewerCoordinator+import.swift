@@ -17,6 +17,13 @@ extension DatabaseViewerCoordinator {
         }
     }
 
+    internal func _importDatabaseFromBitwardenJSON() {
+        importGroupsAndEntries(type: .json) { fileURL, group in
+            let importer = BitwardenImporter()
+            return try importer.importFromJSON(fileURL: fileURL, group: group)
+        }
+    }
+
     internal func _importDatabaseFromApplePasswordsCSV() {
         importGroupsAndEntries(type: .commaSeparatedText) { fileURL, group in
             let importer = ApplePasswordsImporter()
