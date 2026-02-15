@@ -147,6 +147,11 @@ extension LString {
         value: "Copy",
         comment: "Action/button to move an item (to another group/folder/etc)"
     )
+    public static let actionSelectAll = NSLocalizedString(
+        "[Generic] Select All",
+        bundle: Bundle.framework,
+        value: "Select All",
+        comment: "Action: select all items")
     public static let actionDone = NSLocalizedString(
         "[Generic] Done",
         bundle: Bundle.framework,

@@ -72,12 +72,18 @@ protocol ViewableFieldCellDelegate: AnyObject {
     func didTapCellValue(_ cell: ViewableFieldCell)
 
     func didLongTapAccessoryButton(_ cell: ViewableFieldCell)
+
+    func contextMenuConfiguration(for cell: ViewableFieldCell) -> UIContextMenuConfiguration?
 }
 
 extension ViewableFieldCellDelegate {
     func didTapCellValue(_ cell: ViewableFieldCell) {
     }
     func didLongTapAccessoryButton(_ cell: ViewableFieldCell) {
+    }
+
+    func contextMenuConfiguration(for cell: ViewableFieldCell) -> UIContextMenuConfiguration? {
+        return nil
     }
 }
 
@@ -108,7 +114,8 @@ class ViewableFieldCell: UITableViewCell, ViewableFieldCellBase {
 
     func setupCell() {
         let textScale = Settings.current.textScale
-        nameLabel.font = UIFont
+        nameLabel.font =
+            UIFont
             .preferredFont(forTextStyle: .subheadline)
             .withRelativeSize(textScale)
         nameLabel.adjustsFontForContentSizeCategory = true
@@ -118,6 +125,19 @@ class ViewableFieldCell: UITableViewCell, ViewableFieldCellBase {
         nameLabel.text = field?.visibleName
         valueText.text = getUserVisibleValue()
         accessibilityHint = LString.hintDoubleTapToCopyToClipboard
+
+        if ProcessInfo.isRunningOnMac {
+            setupContextMenuInteraction()
+        }
+    }
+
+    private func setupContextMenuInteraction() {
+        contentView.interactions
+            .compactMap { $0 as? UIContextMenuInteraction }
+            .forEach { contentView.removeInteraction($0) }
+
+        let interaction = UIContextMenuInteraction(delegate: self)
+        contentView.addInteraction(interaction)
     }
 
     func setupValueScroll(valueText: UITextView?, scrollView: UIScrollView?) {
@@ -126,11 +146,17 @@ class ViewableFieldCell: UITableViewCell, ViewableFieldCellBase {
         valueText.font = UIFont.entryTextFont().withRelativeSize(textScale)
         valueText.adjustsFontForContentSizeCategory = true
 
-        let textTapGestureRecognizer = UITapGestureRecognizer(
-            target: self,
-            action: #selector(didTapValueTextView))
-        textTapGestureRecognizer.numberOfTapsRequired = 1
-        valueText.addGestureRecognizer(textTapGestureRecognizer)
+        if ProcessInfo.isRunningOnMac {
+            valueText.interactions
+                .compactMap { $0 as? UIContextMenuInteraction }
+                .forEach { valueText.removeInteraction($0) }
+        } else {
+            let textTapGestureRecognizer = UITapGestureRecognizer(
+                target: self,
+                action: #selector(didTapValueTextView))
+            textTapGestureRecognizer.numberOfTapsRequired = 1
+            valueText.addGestureRecognizer(textTapGestureRecognizer)
+        }
 
         scrollView.alwaysBounceVertical = false
         scrollView.alwaysBounceHorizontal = false
@@ -521,5 +547,74 @@ class TOTPFieldCell: ViewableFieldCell, DynamicFieldCell {
         progressView.setProgress(Float(progress), animated: true)
 
         valueText.text = getUserVisibleValue()
+    }
+}
+
+extension ViewableFieldCell: UIContextMenuInteractionDelegate {
+    func contextMenuInteraction(
+        _ interaction: UIContextMenuInteraction,
+        configurationForMenuAtLocation location: CGPoint
+    ) -> UIContextMenuConfiguration? {
+        let locationInTextView = contentView.convert(location, to: valueText)
+        if isLocationOverText(locationInTextView, in: valueText) {
+            return makeTextEditingMenu()
+        }
+        return delegate?.contextMenuConfiguration(for: self)
+    }
+
+    private func makeTextEditingMenu() -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { [weak self] _ in
+            guard let self else { return nil }
+
+            let actions = [
+                UIAction(
+                    title: LString.actionCopy,
+                    image: UIImage(systemName: "doc.on.doc")
+                ) { [weak self] _ in
+                    guard let self else { return }
+                    if let selectedRange = self.valueText.selectedTextRange,
+                        !selectedRange.isEmpty,
+                        let selectedText = self.valueText.text(in: selectedRange)
+                    {
+                        UIPasteboard.general.string = selectedText
+                    } else {
+                        UIPasteboard.general.string = self.valueText.text
+                    }
+                },
+                UIAction(
+                    title: LString.actionSelectAll,
+                    image: UIImage(systemName: "selection.pin.in.out")
+                ) { [weak self] _ in
+                    self?.valueText.selectAll(nil)
+                },
+            ]
+
+            return UIMenu(title: "", children: actions)
+        }
+    }
+
+    private func isLocationOverText(_ location: CGPoint, in textView: UITextView) -> Bool {
+        let textContainer = textView.textContainer
+        let layoutManager = textView.layoutManager
+        let textStorage = textView.textStorage
+
+        var adjustedLocation = location
+        adjustedLocation.x -= textView.textContainerInset.left
+        adjustedLocation.y -= textView.textContainerInset.top
+
+        let characterIndex = layoutManager.characterIndex(
+            for: adjustedLocation,
+            in: textContainer,
+            fractionOfDistanceBetweenInsertionPoints: nil
+        )
+
+        guard characterIndex < textStorage.length else {
+            return false
+        }
+
+        let glyphIndex = layoutManager.glyphIndexForCharacter(at: characterIndex)
+        let range = NSRange(location: glyphIndex, length: 1)
+        let glyphRect = layoutManager.boundingRect(forGlyphRange: range, in: textContainer)
+        return glyphRect.contains(adjustedLocation)
     }
 }

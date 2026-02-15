@@ -162,6 +162,8 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
         case .announcements:
             return
         case .fields:
+            guard !ProcessInfo.isRunningOnMac else { return }
+
             guard let field = getField(at: indexPath),
                   let text = field.resolvedValue,
                   let cell = tableView.cellForRow(at: indexPath)
@@ -348,6 +350,52 @@ extension EntryFieldViewerVC: ViewableFieldCellDelegate {
 
         HapticFeedback.play(.contextMenuOpened)
         delegate?.didPressExportField(text: value, at: accessoryView.asPopoverAnchor, in: self)
+    }
+
+    func contextMenuConfiguration(for cell: ViewableFieldCell) -> UIContextMenuConfiguration? {
+        guard let indexPath = tableView.indexPath(for: cell),
+              let field = getField(at: indexPath),
+              let value = field.resolvedValue
+        else {
+            return nil
+        }
+
+        let supportsFieldReferencing = field.field?.isStandardField ?? false
+        let actions: [ViewableFieldAction] = [
+            .copy,
+            .export,
+            .showLargeType,
+            .showQRCode,
+            supportsFieldReferencing ? .copyReference : nil
+        ].compactMap { $0 }
+
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { [weak self] _ in
+            guard let self else { return nil }
+
+            let menuActions = actions.map { action -> UIAction in
+                UIAction(title: action.title, image: action.icon) { [weak self] _ in
+                    guard let self else { return }
+                    let popoverAnchor = self.tableView.popoverAnchor(at: indexPath)
+
+                    switch action {
+                    case .copy:
+                        self.delegate?.didPressCopyField(text: value, in: self)
+                        HapticFeedback.play(.copiedToClipboard)
+                    case .export:
+                        self.delegate?.didPressExportField(text: value, at: popoverAnchor, in: self)
+                    case .showLargeType:
+                        self.delegate?.didPressShowLargeType(text: value, at: popoverAnchor, in: self)
+                    case .showQRCode:
+                        self.delegate?.didPressShowQRCode(text: value, at: popoverAnchor, in: self)
+                    case .copyReference:
+                        self.delegate?.didPressCopyFieldReference(from: field, in: self)
+                        HapticFeedback.play(.copiedToClipboard)
+                    }
+                }
+            }
+
+            return UIMenu(title: "", children: menuActions)
+        }
     }
 
     override var keyCommands: [UIKeyCommand]? {
