@@ -225,6 +225,9 @@
 				/Localized/database/unlocker/DatabaseUnlockerVC.storyboard,
 				"/Localized/general/file-info/FileInfoVC.storyboard",
 				/Localized/general/PasscodeInputVC.storyboard,
+				"app-icon-emm.icon",
+				"app-icon-pro.icon",
+				"app-icon.icon",
 				Assets.xcassets,
 				"challenge-response/ChallengeResponseManager.swift",
 				"challenge-response/MFIKeyActionSheet/MFIKeyActionSheetView.swift",
@@ -415,6 +418,9 @@
 				/Localized/database/unlocker/DatabaseUnlockerVC.storyboard,
 				"/Localized/general/file-info/FileInfoVC.storyboard",
 				/Localized/general/PasscodeInputVC.storyboard,
+				"app-icon-emm.icon",
+				"app-icon-pro.icon",
+				"app-icon.icon",
 				Assets.xcassets,
 				"challenge-response/ChallengeResponseManager.swift",
 				"challenge-response/MFIKeyActionSheet/MFIKeyActionSheetView.swift",
@@ -1522,6 +1528,7 @@
 			buildSettings = {
 				APP_URL_SCHEME = keepassium;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon";
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "KeePassium/KeePassium-macOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
@@ -1557,6 +1564,7 @@
 			buildSettings = {
 				APP_URL_SCHEME = keepassium;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon";
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "KeePassium/KeePassium-macOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
@@ -1592,6 +1600,7 @@
 			buildSettings = {
 				APP_URL_SCHEME = keepassium.pro;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon-pro";
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "KeePassium/KeePassium-macOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
@@ -1626,6 +1635,7 @@
 			buildSettings = {
 				APP_URL_SCHEME = keepassium.pro;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon-pro";
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassium.entitlements;
 				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "KeePassium/KeePassium-macOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
@@ -1660,6 +1670,7 @@
 			buildSettings = {
 				APP_URL_SCHEME = keepassium.org;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon-emm";
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassiumOrg.entitlements;
 				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "KeePassium/KeePassiumOrg-macOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
@@ -1697,6 +1708,7 @@
 			buildSettings = {
 				APP_URL_SCHEME = keepassium.org;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "app-icon-emm";
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = KeePassium/KeePassiumOrg.entitlements;
 				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "KeePassium/KeePassiumOrg-macOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;

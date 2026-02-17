@@ -1,0 +1,60 @@
+{
+  "fill" : {
+    "solid" : "display-p3:1.00000,1.00000,1.00000,1.00000"
+  },
+  "groups" : [
+    {
+      "hidden" : false,
+      "layers" : [
+        {
+          "glass" : true,
+          "image-name" : "briefcase.svg",
+          "name" : "briefcase"
+        },
+        {
+          "glass" : true,
+          "image-name" : "corner.svg",
+          "name" : "corner"
+        }
+      ],
+      "name" : "Corner",
+      "shadow" : {
+        "kind" : "layer-color",
+        "opacity" : 0.25
+      },
+      "specular" : false,
+      "translucency" : {
+        "enabled" : false,
+        "value" : 0.5
+      }
+    },
+    {
+      "blur-material" : null,
+      "hidden" : false,
+      "layers" : [
+        {
+          "glass" : true,
+          "image-name" : "keepassium.svg",
+          "name" : "keepassium"
+        }
+      ],
+      "lighting" : "combined",
+      "name" : "Logo",
+      "shadow" : {
+        "kind" : "none",
+        "opacity" : 0.5
+      },
+      "specular" : false,
+      "translucency" : {
+        "enabled" : false,
+        "value" : 0.25
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "circles" : [
+      "watchOS"
+    ],
+    "squares" : "shared"
+  }
+}
