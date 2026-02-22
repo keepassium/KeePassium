@@ -1,5 +1,29 @@
 #CHANGELOG
 
+## [2.6.172] - 2026-02-22
+
+### Added
+
+- macOS: Import from 1Password (1PUX format)
+- macOS: Import from Bitwarden (plaintext JSON)
+- macOS: Internet access policy for Little Snitch firewall (#416)
+
+### Improved
+
+- Updated app icons to iOS/macOS 26 style
+- macOS: Left click starts text selection, not copies the whole field [thanks, everyone]
+- macOS: Right click shows field (or text) actions menu [thanks, everyone]
+
+### Fixed
+
+- Re-added accessibility actions to copy entry fields from database viewer (regression in v2.4) [thanks, Vsevolod]
+- Apply database fallback timeout also for saving (fixes #494) [thanks, Will]
+- Direct Dropbox connections: excessive caching of file list requests [thanks, u/sw00sh79]
+- Direct Google Drive connections: access to files in shared drives (regression in 2.4.166) [thanks, Adam]
+- Direct HTTP/S connections: make credentials optional [thanks, Otto]
+- macOS: Fixed Pro app icon [thanks, everyone]
+
+
 ## [2.5.171] - 2025-11-14
 
 ### Improved

@@ -1,6 +1,66 @@
 {
     "sections": [
         {
+            "version": "2.6",
+            "releaseDate": "2026-02-22T00:00:00Z",
+            "items": [
+                {
+                    "title": "Added: macOS: Import from 1Password (1PUX format)",
+                    "os": "macos"
+                },
+                {
+                    "title": "Added: macOS: Import from Bitwarden (plaintext JSON)",
+                    "os": "macos"
+                },
+                {
+                    "title": "Added: macOS: Internet access policy for Little Snitch firewall",
+                    "github": "#416",
+                    "os": "macos"
+                },
+                {
+                    "title": "Improved: Updated app icons to iOS/macOS 26 style",
+                    "credits": "Iiro"
+                },
+                {
+                    "title": "Improved: macOS: Left click starts text selection, not copies the whole field",
+                    "credits": "everyone",
+                    "os": "macos"
+                },
+                {
+                    "title": "Improved: macOS: Right click shows field (or text) actions menu",
+                    "credits": "everyone",
+                    "os": "macos"
+                },
+                {
+                    "title": "Fixed: Re-added accessibility actions to copy entry fields from database viewer (regression in v2.4)",
+                    "credits": "Vsevolod"
+                },
+                {
+                    "title": "Fixed: Apply database fallback timeout also for saving",
+                    "github": "#494",
+                    "credits": "Will"
+                },
+                {
+                    "title": "Fixed: Direct Dropbox connections: excessive caching of file list requests",
+                    "credits": "u/sw00sh79"
+                },
+                {
+                    "title": "Fixed: Direct Google Drive connections: access to files in shared drives (regression in 2.4)",
+                    "credits": "Adam"
+                },
+                {
+                    "title": "Fixed: Direct HTTP/S connections: make credentials optional",
+                    "credits": "Otto"
+                },
+                {
+                    "title": "Fixed: macOS: Fixed Pro app icon",
+                    "credits": "everyone",
+                    "os": "macos",
+                    "edition": "pro"
+                }
+            ]
+        },
+        {
             "version": "2.5",
             "releaseDate": "2025-11-14T00:00:00Z",
             "items": [
