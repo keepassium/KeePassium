@@ -30,6 +30,13 @@ extension DatabaseViewerCoordinator {
             return (try importer.importFromCSV(fileURL: fileURL, group: group), [])
         }
     }
+
+    internal func _importDatabaseFromOnePassword1PUX() {
+        importGroupsAndEntries(type: .data) { fileURL, group in
+            let importer = OnePasswordImporter()
+            return try importer.importFrom1PUX(fileURL: fileURL, group: group)
+        }
+    }
 }
 
 extension DatabaseViewerCoordinator {
