@@ -53,6 +53,7 @@ extension MainCoordinator {
         _lastSuccessfulBiometricAuthTime = .distantPast
         Keychain.shared.performBiometricAuth { [weak self] success in
             guard let self else { return }
+            _isBiometricAuthShown = false
             if success {
                 Diag.warning("Biometric auth successful")
                 _lastSuccessfulBiometricAuthTime = Date.now
@@ -63,7 +64,6 @@ extension MainCoordinator {
                 showPasscodeRequest()
             }
             hideBiometricsBackground()
-            _isBiometricAuthShown = false
         }
         _isBiometricAuthShown = true
     }

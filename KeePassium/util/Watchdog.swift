@@ -82,6 +82,9 @@ class Watchdog {
     @objc private func macWindowDidBecomeKey(_notification: Notification) {
         Diag.debug("Mac window did become key")
         didBecomeActive()
+        DispatchQueue.main.async {
+            self.restart()
+        }
     }
 
     @objc private func macWindowDidResignKey(_notification: Notification) {
