@@ -112,6 +112,19 @@ class FilePickerCoordinator: BaseCoordinator, FilePickerVC.Delegate {
         UIMenu.rebuildMainMenu()
     }
 
+    override func settingsDidChange(key: Settings.Keys) {
+        switch key {
+        case .recentUserActivityTimestamp:
+            return
+        case .backupFilesVisible:
+            refresh(animated: false, reloadInfo: true)
+        case .filesSortOrder:
+            fallthrough
+        default:
+            return
+        }
+    }
+
     internal func _updateAnnouncements() {
     }
 
