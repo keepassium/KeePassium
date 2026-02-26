@@ -170,7 +170,7 @@ final class PasswordEntryFieldCell:
                 (field?.isProtected ?? false) && Settings.current.isHideProtectedFields
             textField.accessibilityLabel = field?.visibleName
             randomizeButton.accessibilityLabel = LString.PasswordGenerator.titleRandomGenerator
-            passwordQualityIndicatorView.quality = .init(password: field?.value)
+            updateQualityIndicator(password: field?.value)
         }
     }
 
@@ -212,12 +212,26 @@ final class PasswordEntryFieldCell:
     func validatingTextField(_ sender: ValidatingTextField, textDidChange text: String) {
         guard let field else { return }
         field.value = textField.text ?? ""
-        passwordQualityIndicatorView.quality = .init(password: textField.text)
+        updateQualityIndicator(password: textField.text)
         delegate?.didChangeField(field, in: self)
     }
 
     func validatingTextFieldShouldValidate(_ sender: ValidatingTextField) -> Bool {
         return field?.isValid ?? false
+    }
+
+    private func updateQualityIndicator(password: String?) {
+        guard let password else {
+            passwordQualityIndicatorView.isHidden = true
+            return
+        }
+        passwordQualityIndicatorView.isHidden = false
+        passwordQualityIndicatorView.isBusy = true
+        PasswordQuality.estimate(for: password) { [weak self] quality in
+            guard let self else { return }
+            passwordQualityIndicatorView?.quality = quality
+            passwordQualityIndicatorView?.isBusy = false
+        }
     }
 
     @IBAction private func didPressRandomizeButton(_ sender: Any) {

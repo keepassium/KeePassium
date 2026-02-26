@@ -242,7 +242,7 @@ extension PasswordGeneratorVC {
         passwordQualityIndicatorView.isBusy = true
         let updateOperation = BlockOperation()
         updateOperation.addExecutionBlock { [weak passwordQualityIndicatorView] in
-            let quality = PasswordQuality(password: password)
+            let quality = PasswordQuality.estimateSync(for: password)
             if updateOperation.isCancelled {
                 return
             }

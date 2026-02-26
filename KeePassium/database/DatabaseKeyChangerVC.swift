@@ -287,7 +287,10 @@ extension DatabaseKeyChangerVC: ValidatingTextFieldDelegate {
 
     func validatingTextField(_ sender: ValidatingTextField, textDidChange text: String) {
         if sender === passwordField {
-            passwordField.quality = PasswordQuality(password: text)
+            passwordField.quality = nil
+            PasswordQuality.estimate(for: text) { [weak self] quality in
+                self?.passwordField.quality = quality
+            }
             repeatPasswordField.validate()
         }
     }

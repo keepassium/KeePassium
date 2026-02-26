@@ -280,9 +280,12 @@ extension PasscodeInputVC: UITextFieldDelegate, ValidatingTextFieldDelegate {
     func validatingTextField(_ sender: ValidatingTextField, textDidChange text: String) {
         switch mode {
         case .change, .setup:
-            let quality = PasswordQuality(password: text)
-            passcodeTextField.quality = quality
-            refreshPasscodeQualityWarning(quality)
+            passcodeTextField.quality = nil
+            PasswordQuality.estimate(for: text) { [weak self] quality in
+                guard let self else { return }
+                passcodeTextField.quality = quality
+                refreshPasscodeQualityWarning(quality)
+            }
         case .verification:
             guard sender.isValid else {
                 return

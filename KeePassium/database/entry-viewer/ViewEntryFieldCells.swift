@@ -295,7 +295,9 @@ class ProtectedFieldCell: ViewableFieldCell {
         }
 
         let indicatorView = PasswordQualityIndicatorIconView()
-        indicatorView.quality = .init(password: field.resolvedValue)
+        PasswordQuality.estimate(for: field.resolvedValue) { [weak indicatorView] quality in
+            indicatorView?.quality = quality
+        }
         indicatorView.onTap = { [weak self] indicator in
             guard let toastHost = self?.contentView,
                   let quality = indicator.quality

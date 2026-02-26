@@ -34,6 +34,14 @@ enum PasswordQuality {
             return entropy
         }
     }
+
+    private static let backgroundQueue: OperationQueue = {
+        let queue = OperationQueue()
+        queue.name = "com.keepassium.PasswordQuality"
+        queue.qualityOfService = .utility
+        queue.maxConcurrentOperationCount = 4
+        return queue
+    }()
 }
 
 extension PasswordQuality: CaseIterable {
@@ -61,10 +69,10 @@ extension PasswordQuality {
 }
 
 extension PasswordQuality {
-    init?(password: String?) {
+    private init?(password: String?, maxLength: Int) {
         guard let password,
               !password.isEmpty,
-              password.count < 1000
+              password.count < maxLength
         else {
             return nil
         }
@@ -83,6 +91,30 @@ extension PasswordQuality {
         } else {
             self = .veryGood(entropy)
         }
+    }
+
+    public static func estimateSync(for password: String?, maxLength: Int = 200) -> Self? {
+        return Self(password: password, maxLength: maxLength)
+    }
+
+    public static func estimate(
+        for password: String?,
+        maxLength: Int = 1000,
+        completion: @escaping (Self?) -> Void
+    ) {
+        Self.backgroundQueue.cancelAllOperations()
+        let operation = BlockOperation()
+        operation.addExecutionBlock {
+            let quality = Self(password: password, maxLength: maxLength)
+            if operation.isCancelled {
+                DispatchQueue.main.async { completion(nil) }
+                return
+            }
+            DispatchQueue.main.async {
+                completion(quality)
+            }
+        }
+        backgroundQueue.addOperation(operation)
     }
 }
 
