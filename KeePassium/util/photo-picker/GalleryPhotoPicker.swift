@@ -24,6 +24,9 @@ final class GalleryPhotoPicker: PhotoPicker {
 
         picker.delegate = self
         picker.presentationController?.delegate = self
+        #if targetEnvironment(macCatalyst)
+        picker.isModalInPresentation = false
+        #endif
     }
 
     override internal func _pickImageInternal() {
@@ -44,7 +47,7 @@ final class GalleryPhotoPicker: PhotoPicker {
     }
 }
 
-extension GalleryPhotoPicker: UIAdaptivePresentationControllerDelegate {
+extension GalleryPhotoPicker: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         guard let result = results.first,
               result.itemProvider.canLoadObject(ofClass: UIImage.self)
@@ -98,7 +101,7 @@ extension GalleryPhotoPicker: UIAdaptivePresentationControllerDelegate {
     }
 }
 
-extension GalleryPhotoPicker: PHPickerViewControllerDelegate {
+extension GalleryPhotoPicker: UIAdaptivePresentationControllerDelegate {
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
         _completion?(.success(nil))
     }
