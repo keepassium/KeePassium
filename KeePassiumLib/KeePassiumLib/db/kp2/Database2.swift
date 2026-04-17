@@ -1213,10 +1213,21 @@ public class Database2: Database {
     }
 
     public func addCustomIcon(_ image: UIImage) -> CustomIcon2? {
-        guard let normalizedImage = image.downscalingToSquare(maxSidePixels: CustomIcon2.maxSidePixels) else {
-            Diag.error("Failed to normalize the image, cancelling")
-            return nil
+        let maxSidePixels = CustomIcon2.maxSidePixels
+        let pixelWidth = image.size.width * image.scale
+        let pixelHeight = image.size.height * image.scale
+
+        let normalizedImage: UIImage
+        if pixelWidth > maxSidePixels || pixelHeight > maxSidePixels {
+            guard let scaled = image.downscalingToSquare(maxSidePixels: maxSidePixels) else {
+                Diag.error("Failed to normalize the image, cancelling")
+                return nil
+            }
+            normalizedImage = scaled
+        } else {
+            normalizedImage = image
         }
+
         guard let pngData = normalizedImage.pngData() else {
             Diag.warning("Failed to get image's PNG data, cancelling")
             return nil

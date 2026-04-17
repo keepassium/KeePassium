@@ -7,6 +7,7 @@
 //  For commercial licensing, please contact the author.
 
 import Foundation
+import ImageIO
 import KeePassiumLib
 import RegexBuilder
 import UIKit
@@ -329,7 +330,7 @@ final class FaviconDownloader {
             }
 
             guard let probablyImageData,
-                  let image = UIImage(data: probablyImageData)
+                  let image = FaviconDownloader.bestImage(from: probablyImageData)
             else {
                 Diag.debug("No valid favicon found [url: \(url.absoluteString)]")
                 DispatchQueue.main.async {
@@ -349,5 +350,33 @@ final class FaviconDownloader {
         }
 
         task.resume()
+    }
+
+    static func bestImage(from data: Data) -> UIImage? {
+        guard let source = CGImageSourceCreateWithData(data as CFData, nil) else {
+            return UIImage(data: data)
+        }
+
+        let count = CGImageSourceGetCount(source)
+        guard count > 1 else {
+            return UIImage(data: data)
+        }
+
+        var bestCGImage: CGImage?
+        var bestArea = 0
+        for index in 0..<count {
+            guard let cgImage = CGImageSourceCreateImageAtIndex(source, index, nil) else { continue }
+            let area = cgImage.width * cgImage.height
+            if area > bestArea {
+                bestArea = area
+                bestCGImage = cgImage
+            }
+        }
+
+        guard let cgImage = bestCGImage else {
+            return UIImage(data: data)
+        }
+        Diag.debug("Loaded largest image variant (\(cgImage.width)×\(cgImage.height)) from \(count)-image container")
+        return UIImage(cgImage: cgImage)
     }
 }
