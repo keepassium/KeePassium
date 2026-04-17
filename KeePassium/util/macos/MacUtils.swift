@@ -18,6 +18,10 @@ protocol MacUtils: NSObjectProtocol {
 
     func isControlKeyPressed() -> Bool
 
+    func startObservingOptionKey(handler: @escaping (Bool) -> Void)
+
+    func stopObservingOptionKey()
+
     func isAccessibilityPermissionGranted() -> Bool
 
     func requestAccessibilityPermission()

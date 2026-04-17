@@ -54,6 +54,9 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
     private var tags: [String] = []
     private var announcements: [AnnouncementItem] = []
 
+    private var optionKeyRevealedFields: [ViewableField] = []
+    private var isOptionKeyHeld = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.clearsSelectionOnViewWillAppear = true
@@ -85,14 +88,56 @@ final class EntryFieldViewerVC: UITableViewController, Refreshable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         refresh()
+        startObservingOptionKey()
     }
 
     override var canBecomeFirstResponder: Bool {
         return true
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        stopObservingOptionKey()
+        setProtectedFieldsRevealedByOptionKey(false)
+    }
+
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+
+    private func startObservingOptionKey() {
+        #if targetEnvironment(macCatalyst)
+        let macUtils = (UIApplication.shared.delegate as? AppDelegate)?.appServices.macUtils
+        macUtils?.startObservingOptionKey { [weak self] pressed in
+            self?.setProtectedFieldsRevealedByOptionKey(pressed)
+        }
+        #endif
+    }
+
+    private func stopObservingOptionKey() {
+        #if targetEnvironment(macCatalyst)
+        let macUtils = (UIApplication.shared.delegate as? AppDelegate)?.appServices.macUtils
+        macUtils?.stopObservingOptionKey()
+        #endif
+    }
+
+    private func setProtectedFieldsRevealedByOptionKey(_ revealed: Bool) {
+        guard revealed != isOptionKeyHeld else { return }
+        isOptionKeyHeld = revealed
+
+        if revealed {
+            optionKeyRevealedFields = sortedFields.filter { $0.isProtected && $0.isValueHidden }
+            optionKeyRevealedFields.forEach { $0.isValueHidden = false }
+        } else {
+            optionKeyRevealedFields.forEach { $0.isValueHidden = true }
+            optionKeyRevealedFields.removeAll()
+        }
+
+        for case let cell as ProtectedFieldCell in tableView.visibleCells {
+            cell.refreshValueVisibility()
+        }
+        tableView.beginUpdates()
+        tableView.endUpdates()
     }
 
     func setContents(

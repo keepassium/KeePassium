@@ -18,7 +18,24 @@ class MacUtilsImpl: NSObject, MacUtils {
         static let autoTypeDelay = 1.5
     }
 
+    private var optionKeyMonitor: Any?
+
     required override init() {
+    }
+
+    func startObservingOptionKey(handler: @escaping (Bool) -> Void) {
+        stopObservingOptionKey()
+        optionKeyMonitor = NSEvent.addLocalMonitorForEvents(matching: .flagsChanged) { event in
+            handler(event.modifierFlags.contains(.option))
+            return event
+        }
+    }
+
+    func stopObservingOptionKey() {
+        if let monitor = optionKeyMonitor {
+            NSEvent.removeMonitor(monitor)
+            optionKeyMonitor = nil
+        }
     }
 
     func disableSecureEventInput() {

@@ -340,6 +340,13 @@ class ProtectedFieldCell: ViewableFieldCell {
         return field.isValueHidden ? EntryField.protectedValueMask : field.decoratedResolvedValue
     }
 
+    func refreshValueVisibility() {
+        guard let toggleButton, let field else { return }
+        toggleButton.isSelected = !field.isValueHidden
+        valueText.isSelectable = !field.isValueHidden
+        refreshTextView()
+    }
+
     private func refreshTextView() {
         let value = getUserVisibleValue()
         if field?.isValueHidden ?? true {
