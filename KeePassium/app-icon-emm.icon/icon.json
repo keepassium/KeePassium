@@ -7,12 +7,12 @@
       "hidden" : false,
       "layers" : [
         {
-          "glass" : true,
+          "glass" : false,
           "image-name" : "briefcase.svg",
           "name" : "briefcase"
         },
         {
-          "glass" : true,
+          "glass" : false,
           "image-name" : "corner.svg",
           "name" : "corner"
         }
@@ -33,7 +33,7 @@
       "hidden" : false,
       "layers" : [
         {
-          "glass" : true,
+          "glass" : false,
           "image-name" : "keepassium.svg",
           "name" : "keepassium"
         }
