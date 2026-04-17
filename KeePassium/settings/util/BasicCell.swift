@@ -34,6 +34,11 @@ class BasicCell: UICollectionViewListCell {
         content.text = itemConfig.title
         content.secondaryText = itemConfig.subtitle
         content.image = itemConfig.image
+        if content.image != nil {
+            let iconSize = CGSize(width: 30, height: 30)
+            content.imageProperties.maximumSize = iconSize
+            content.imageProperties.reservedLayoutSize = iconSize
+        }
 
         content.textProperties.font = .preferredFont(forTextStyle: .body)
         if itemConfig.decorators.contains(.action) {
