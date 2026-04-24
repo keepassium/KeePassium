@@ -86,6 +86,38 @@ public class EnpassImporter {
 
     public init() {}
 
+    private func makeUniqueCustomFieldName(preferredName: String, in entry: Entry) -> String {
+        if entry.getField(preferredName) == nil {
+            return preferredName
+        }
+
+        var index = 1
+        while true {
+            let candidate = "\(preferredName) (\(index))"
+            if entry.getField(candidate) == nil {
+                return candidate
+            }
+            index += 1
+        }
+    }
+
+    private func makeExtraFieldName(label: String, standardName: String, in entry: Entry) -> String {
+        let trimmedLabel = label.trimmingCharacters(in: .whitespacesAndNewlines)
+        let normalizedLabel = trimmedLabel.lowercased()
+        let normalizedStandardName = standardName.lowercased()
+        let equivalentStandardNames: Set<String> = {
+            if normalizedStandardName == EntryField.otp.lowercased() {
+                return [normalizedStandardName, EntryField.totp.lowercased()]
+            } else {
+                return [normalizedStandardName]
+            }
+        }()
+        let preferredName = (trimmedLabel.isEmpty || equivalentStandardNames.contains(normalizedLabel))
+            ? standardName
+            : trimmedLabel
+        return makeUniqueCustomFieldName(preferredName: preferredName, in: entry)
+    }
+
     public func importFromJSON(fileURL: URL, group: Group) throws -> ([Entry], [Group]) {
         let jsonData = try Data(contentsOf: fileURL)
 
@@ -135,6 +167,10 @@ public class EnpassImporter {
                 entry.rawNotes = item.note ?? ""
 
                 if let fields = item.fields {
+                    var hasPassword = false
+                    var hasUserName = false
+                    var hasURL = false
+                    var extraURLIndex = 0
                     for field in fields  {
                         if field.deleted == 1 {
                             continue
@@ -144,20 +180,44 @@ public class EnpassImporter {
 
                         switch field.type {
                         case .password:
-                            entry.rawPassword = value
+                            if !hasPassword {
+                                entry.rawPassword = value
+                                hasPassword = true
+                            } else {
+                                let fieldName = makeExtraFieldName(label: field.label, standardName: EntryField.password, in: entry)
+                                entry.setField(name: fieldName, value: value, isProtected: true)
+                            }
                         case .username:
-                            entry.rawUserName = value
+                            if !hasUserName {
+                                entry.rawUserName = value
+                                hasUserName = true
+                            } else {
+                                let fieldName = makeExtraFieldName(label: field.label, standardName: EntryField.userName, in: entry)
+                                entry.setField(name: fieldName, value: value, isProtected: field.sensitive == 1)
+                            }
                         case .email:
-                            entry.setField(name: "Email", value: value, isProtected: field.sensitive == 1)
+                            let fieldName = makeUniqueCustomFieldName(preferredName: "Email", in: entry)
+                            entry.setField(name: fieldName, value: value, isProtected: field.sensitive == 1)
                         case .url:
-                            entry.rawURL = value
+                            if !hasURL {
+                                entry.rawURL = value
+                                hasURL = true
+                            } else {
+                                let fieldName = extraURLIndex == 0
+                                    ? EntryField.kp2aURLPrefix
+                                    : "\(EntryField.kp2aURLPrefix)_\(extraURLIndex)"
+                                entry.setField(name: fieldName, value: value, isProtected: false)
+                                extraURLIndex += 1
+                            }
                         case .totp:
                             if TOTPGeneratorFactory.isValidURI(value) {
-                                entry.setField(name: EntryField.otp, value: value, isProtected: true)
+                                let fieldName = makeExtraFieldName(label: field.label, standardName: EntryField.otp, in: entry)
+                                entry.setField(name: fieldName, value: value, isProtected: true)
                             }
                         case .phone, .text, .section, .custom:
                             if !field.label.isEmpty {
-                                entry.setField(name: field.label, value: value, isProtected: field.sensitive == 1)
+                                let fieldName = makeUniqueCustomFieldName(preferredName: field.label, in: entry)
+                                entry.setField(name: fieldName, value: value, isProtected: field.sensitive == 1)
                             }
                         }
                     }

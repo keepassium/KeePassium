@@ -184,7 +184,7 @@ public class BitwardenImporter {
                     hasFolder = false
                 }
 
-                let entry: Entry = parentGroup.createEntry(detached: true)
+                let entry: Entry = parentGroup.createEntry(detached: !hasFolder)
 
                 entry.rawTitle = item.name
                 entry.rawNotes = item.notes ?? ""
