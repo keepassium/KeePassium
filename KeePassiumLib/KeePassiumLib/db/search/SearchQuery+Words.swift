@@ -59,8 +59,9 @@ extension SearchQuery {
 
         func matchesIgnoringNegation(_ searchable: any Searchable, query: SearchQuery, scope: SearchScope) -> Bool {
             guard scope.contains(.tags) else { return false }
+            let pattern = String(tag)
             for tag in searchable.tags {
-                if tag.compare(self.tag, options: query.compareOptions) == .orderedSame {
+                if tag.matchesCaseInsensitive(wildcard: pattern) {
                     return true
                 }
             }
