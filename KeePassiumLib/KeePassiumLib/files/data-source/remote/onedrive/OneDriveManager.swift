@@ -35,17 +35,11 @@ final public class OneDriveManager: RemoteDataSourceManager {
     }()
 
     private init() {
-        urlSession = {
-            let config = URLSessionConfiguration.ephemeral
-            config.allowsCellularAccess = true
-            config.multipathServiceType = .none
-            config.waitsForConnectivity = false
-            return URLSession(
-                configuration: config,
-                delegate: nil,
-                delegateQueue: OneDriveManager.backgroundQueue
-            )
-        }()
+        urlSession = URLSession(
+            configuration: .forRemoteDataSource,
+            delegate: nil,
+            delegateQueue: OneDriveManager.backgroundQueue
+        )
         authProvider = BasicOneDriveAuthProvider(urlSession: urlSession)
     }
 
@@ -109,10 +103,13 @@ extension OneDriveManager {
         }
 
         let driveInfoURL = URL(string: OneDriveAPI.mainEndpoint + parentPath)!
-        var urlRequest = URLRequest(url: driveInfoURL)
+        var urlRequest = URLRequest(
+            url: driveInfoURL,
+            cachePolicy: .forAuth,
+            timeout: timeout
+        )
         urlRequest.httpMethod = "GET"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: OneDriveAPI.Keys.authorization)
-        urlRequest.timeoutInterval = timeout.duration
 
         let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
             let result = OneDriveAPI.ResponseParser
@@ -221,10 +218,13 @@ extension OneDriveManager {
         completion: @escaping (Result<[OneDriveItem], RemoteError>) -> Void
     ) {
         let requestURL = folder.getRequestURL(.children)
-        var urlRequest = URLRequest(url: requestURL)
+        var urlRequest = URLRequest(
+            url: requestURL,
+            cachePolicy: .forMetaInfo,
+            timeout: timeout
+        )
         urlRequest.httpMethod = "GET"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: OneDriveAPI.Keys.authorization)
-        urlRequest.timeoutInterval = timeout.duration
 
         let dataTask = urlSession.dataTask(with: urlRequest) { [self] data, response, error in
             let result = OneDriveAPI.ResponseParser
@@ -361,10 +361,13 @@ extension OneDriveManager {
         completion: @escaping (Result<OneDriveItem, RemoteError>) -> Void
     ) {
         let fileInfoRequestURL = item.getRequestURL(.itemInfo)
-        var urlRequest = URLRequest(url: fileInfoRequestURL)
+        var urlRequest = URLRequest(
+            url: fileInfoRequestURL,
+            cachePolicy: .forMetaInfo,
+            timeout: timeout
+        )
         urlRequest.httpMethod = "GET"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: OneDriveAPI.Keys.authorization)
-        urlRequest.timeoutInterval = timeout.duration
 
         let dataTask = urlSession.dataTask(with: urlRequest) { [self] data, response, error in
             let result = OneDriveAPI.ResponseParser
@@ -465,10 +468,13 @@ extension OneDriveManager {
         let urlString = OneDriveAPI.mainEndpoint + parentDrivePath + "/items/\(fileItem.itemID)"
 
         let fileInfoRequestURL = URL(string: urlString)!
-        var urlRequest = URLRequest(url: fileInfoRequestURL)
+        var urlRequest = URLRequest(
+            url: fileInfoRequestURL,
+            cachePolicy: .forMetaInfo,
+            timeout: timeout
+        )
         urlRequest.httpMethod = "GET"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: OneDriveAPI.Keys.authorization)
-        urlRequest.timeoutInterval = timeout.duration
 
         let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
             let result = OneDriveAPI.ResponseParser
@@ -545,10 +551,13 @@ extension OneDriveManager {
         completion: @escaping (Result<Data, RemoteError>) -> Void
     ) {
         let fileContentsURL = item.getRequestURL(.content)
-        var urlRequest = URLRequest(url: fileContentsURL)
+        var urlRequest = URLRequest(
+            url: fileContentsURL,
+            cachePolicy: .forContent,
+            timeout: timeout
+        )
         urlRequest.httpMethod = "GET"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: OneDriveAPI.Keys.authorization)
-        urlRequest.timeoutInterval = timeout.duration
 
         let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
             if let error {
@@ -613,7 +622,11 @@ extension OneDriveManager {
         Diag.debug("Creating upload session")
 
         let createSessionURL = item.getRequestURL(.createUploadSessionForUpdating)
-        var urlRequest = URLRequest(url: createSessionURL)
+        var urlRequest = URLRequest(
+            url: createSessionURL,
+            cachePolicy: .forContent,
+            timeout: timeout
+        )
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: OneDriveAPI.Keys.authorization)
         urlRequest.setValue("application/json; charset=UTF-8", forHTTPHeaderField: OneDriveAPI.Keys.contentType)
@@ -622,7 +635,6 @@ extension OneDriveManager {
         ])
         urlRequest.httpBody = postData
         urlRequest.setValue(String(postData.count), forHTTPHeaderField: OneDriveAPI.Keys.contentLength)
-        urlRequest.timeoutInterval = timeout.duration
 
         let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
             let result = OneDriveAPI.ResponseParser
@@ -674,10 +686,13 @@ extension OneDriveManager {
         Diag.debug("Uploading file contents")
         assert(data.count < OneDriveAPI.maxUploadSize, "Upload request is too large; range uploads are not implemented")
 
-        var urlRequest = URLRequest(url: targetURL)
+        var urlRequest = URLRequest(
+            url: targetURL,
+            cachePolicy: .forContent,
+            timeout: timeout
+        )
         urlRequest.httpMethod = "PUT"
-        urlRequest.timeoutInterval = timeout.duration
-        let fileSize = data.count 
+        let fileSize = data.count
         let range = 0..<data.count
         urlRequest.setValue(
             String(range.count),
@@ -738,7 +753,11 @@ extension OneDriveManager {
         Diag.debug("Creating new file")
         let createSessionURL = folder.getRequestURL(.createUploadSessionForCreating(newFileName: fileName))
 
-        var urlRequest = URLRequest(url: createSessionURL)
+        var urlRequest = URLRequest(
+            url: createSessionURL,
+            cachePolicy: .forContent,
+            timeout: timeout
+        )
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: OneDriveAPI.Keys.authorization)
         urlRequest.setValue("application/json; charset=UTF-8", forHTTPHeaderField: OneDriveAPI.Keys.contentType)
@@ -748,7 +767,6 @@ extension OneDriveManager {
         ])
         urlRequest.httpBody = postData
         urlRequest.setValue(String(postData.count), forHTTPHeaderField: OneDriveAPI.Keys.contentLength)
-        urlRequest.timeoutInterval = timeout.duration
 
         let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
             let result = OneDriveAPI.ResponseParser

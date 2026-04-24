@@ -37,8 +37,8 @@ final class WebDAVListRequest: WebDAVRequestBase {
     override func makeURLRequest() -> URLRequest {
         var request = URLRequest(
             url: url,
-            cachePolicy: .reloadIgnoringLocalCacheData,
-            timeoutInterval: timeout.remainingTimeInterval
+            cachePolicy: .forMetaInfo,
+            timeout: timeout
         )
         request.httpMethod = "PROPFIND"
         request.addValue("1", forHTTPHeaderField: "Depth")
@@ -52,7 +52,6 @@ final class WebDAVListRequest: WebDAVRequestBase {
         </d:propfind>
         """
         request.httpBody = body.data(using: .utf8)
-        request.attribution = .developer
         return request
     }
 

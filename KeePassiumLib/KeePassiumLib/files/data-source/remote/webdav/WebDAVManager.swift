@@ -27,15 +27,12 @@ public final class WebDAVManager: NSObject {
     private var webdavRequests = [RequestIdentifier: WebDAVRequest]()
 
     private let urlSessionConfiguration: URLSessionConfiguration = {
-        var config = URLSessionConfiguration.ephemeral
-        config.urlCache = nil
-        config.requestCachePolicy = .reloadIgnoringLocalCacheData
+        var config = URLSessionConfiguration.forRemoteDataSource
+
         config.urlCredentialStorage = nil
-        config.allowsCellularAccess = true
-        config.multipathServiceType = .none
-        config.waitsForConnectivity = false
         return config
     }()
+
     private var urlSessionPool = [URL: URLSession]()
 
     override private init() {
@@ -49,7 +46,7 @@ public final class WebDAVManager: NSObject {
         completionQueue: OperationQueue? = nil,
         completion: @escaping (Result<FileInfo, FileAccessError>) -> Void
     ) {
-        let webdavRequest = WebDAVInfoRequest(
+        let infoRequest = WebDAVInfoRequest(
             url: url,
             credential: credential.toURLCredential(),
             allowUntrustedCertificate: credential.allowUntrustedCertificate,
@@ -60,10 +57,10 @@ public final class WebDAVManager: NSObject {
 
         objc_sync_enter(self)
         let urlSession = getURLSession(for: url)
-        let dataTask = urlSession.dataTask(with: webdavRequest.makeURLRequest())
+        let dataTask = urlSession.dataTask(with: infoRequest.makeURLRequest())
 
         let requestID = RequestIdentifier(for: dataTask, in: urlSession)
-        webdavRequests[requestID] = webdavRequest
+        webdavRequests[requestID] = infoRequest
         objc_sync_exit(self)
 
         dataTask.resume()

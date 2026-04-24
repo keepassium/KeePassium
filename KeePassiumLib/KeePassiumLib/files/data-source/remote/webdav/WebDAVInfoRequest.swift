@@ -35,11 +35,10 @@ final class WebDAVInfoRequest: WebDAVRequestBase {
     override func makeURLRequest() -> URLRequest {
         var request = URLRequest(
             url: url,
-            cachePolicy: .reloadIgnoringLocalCacheData,
-            timeoutInterval: timeout.remainingTimeInterval
+            cachePolicy: .forMetaInfo,
+            timeout: timeout
         )
         request.httpMethod = "HEAD"
-        request.attribution = .developer
         return request
     }
 

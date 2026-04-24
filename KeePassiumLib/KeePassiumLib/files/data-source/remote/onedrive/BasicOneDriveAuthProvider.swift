@@ -214,12 +214,15 @@ extension BasicOneDriveAuthProvider {
         completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
     ) {
         Diag.debug("Acquiring OAuth token [operation: \(operation)]")
-        var urlRequest = URLRequest(url: OneDriveAPI.tokenRequestURL)
+        var urlRequest = URLRequest(
+            url: OneDriveAPI.tokenRequestURL,
+            cachePolicy: .forAuth,
+            timeout: timeout
+        )
         urlRequest.httpMethod = "POST"
         urlRequest.setValue(
             "application/x-www-form-urlencoded; charset=UTF-8",
             forHTTPHeaderField: OneDriveAPI.Keys.contentType)
-        urlRequest.timeoutInterval = timeout.duration
 
         let postParams: [String]
         let refreshToken: String?

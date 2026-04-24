@@ -48,17 +48,11 @@ final public class DropboxManager: NSObject {
     }()
 
     private override init() {
-        urlSession = {
-            let config = URLSessionConfiguration.ephemeral
-            config.allowsCellularAccess = true
-            config.multipathServiceType = .none
-            config.waitsForConnectivity = false
-            return URLSession(
-                configuration: config,
-                delegate: nil,
-                delegateQueue: DropboxManager.backgroundQueue
-            )
-        }()
+        urlSession = URLSession(
+            configuration: .forRemoteDataSource,
+            delegate: nil,
+            delegateQueue: DropboxManager.backgroundQueue
+        )
         super.init()
     }
 
@@ -246,9 +240,11 @@ final public class DropboxManager: NSObject {
         completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
     ) {
         Diag.debug("Acquiring OAuth token [operation: \(operation)]")
-        var urlRequest = URLRequest(url: DropboxAPI.tokenRequestURL)
-        urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
-        urlRequest.timeoutInterval = timeout.duration
+        var urlRequest = URLRequest(
+            url: DropboxAPI.tokenRequestURL,
+            cachePolicy: .forAuth,
+            timeout: timeout
+        )
         urlRequest.httpMethod = "POST"
         urlRequest.setValue(
             "application/x-www-form-urlencoded; charset=UTF-8",
@@ -369,11 +365,13 @@ extension DropboxManager: RemoteDataSourceManager {
         completionQueue: OperationQueue,
         completion: @escaping (Result<DropboxAccountInfo, RemoteError>) -> Void
     ) {
-        var urlRequest = URLRequest(url: DropboxAPI.accountInfoURL)
+        var urlRequest = URLRequest(
+            url: DropboxAPI.accountInfoURL,
+            cachePolicy: .forMetaInfo,
+            timeout: timeout
+        )
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: DropboxAPI.Keys.authorization)
-        urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
-        urlRequest.timeoutInterval = timeout.duration
 
         let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
             let result = DropboxAPI.ResponseParser
@@ -448,9 +446,11 @@ extension DropboxManager: RemoteDataSourceManager {
         completion: @escaping (Result<[DropboxItem], RemoteError>) -> Void
     ) {
         let url = cursor == nil ? DropboxAPI.folderListURL : DropboxAPI.folderListContinueURL
-        var urlRequest = URLRequest(url: url)
-        urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
-        urlRequest.timeoutInterval = timeout.duration
+        var urlRequest = URLRequest(
+            url: url,
+            cachePolicy: .forMetaInfo,
+            timeout: timeout
+        )
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: DropboxAPI.Keys.authorization)
         urlRequest.setValue("application/json", forHTTPHeaderField: DropboxAPI.Keys.contentType)
@@ -552,12 +552,14 @@ extension DropboxManager: RemoteDataSourceManager {
         completionQueue: OperationQueue,
         completion: @escaping (Result<DropboxItem, RemoteError>) -> Void
     ) {
-        var urlRequest = URLRequest(url: DropboxAPI.itemMetadataURL)
+        var urlRequest = URLRequest(
+            url: DropboxAPI.itemMetadataURL,
+            cachePolicy: .forMetaInfo,
+            timeout: timeout
+        )
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: DropboxAPI.Keys.authorization)
         urlRequest.setValue("application/json", forHTTPHeaderField: DropboxAPI.Keys.contentType)
-        urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
-        urlRequest.timeoutInterval = timeout.duration
 
         let json = """
         {
@@ -600,12 +602,14 @@ extension DropboxManager: RemoteDataSourceManager {
         completionQueue: OperationQueue,
         completion: @escaping (Result<Data, RemoteError>) -> Void
     ) {
-        var urlRequest = URLRequest(url: DropboxAPI.fileDownloadURL)
+        var urlRequest = URLRequest(
+            url: DropboxAPI.fileDownloadURL,
+            cachePolicy: .forContent,
+            timeout: timeout
+        )
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: DropboxAPI.Keys.authorization)
         urlRequest.setValue("{\"path\": \"\(item.escapedPath)\"}", forHTTPHeaderField: DropboxAPI.Keys.apiArg)
-        urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
-        urlRequest.timeoutInterval = timeout.duration
 
         let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
             if let error {
@@ -665,15 +669,17 @@ extension DropboxManager: RemoteDataSourceManager {
         completionQueue: OperationQueue,
         completion: @escaping UploadCompletionHandler
     ) {
-        var urlRequest = URLRequest(url: DropboxAPI.fileUploadURL)
+        var urlRequest = URLRequest(
+            url: DropboxAPI.fileUploadURL,
+            cachePolicy: .forContent,
+            timeout: timeout
+        )
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: DropboxAPI.Keys.authorization)
         urlRequest.setValue("application/octet-stream", forHTTPHeaderField: DropboxAPI.Keys.contentType)
         urlRequest.setValue(
             "{\"mode\":\"overwrite\",\"path\":\"\(item.escapedPath)\"}",
             forHTTPHeaderField: DropboxAPI.Keys.apiArg)
-        urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
-        urlRequest.timeoutInterval = timeout.duration
 
         urlRequest.httpBody = contents.asData
 

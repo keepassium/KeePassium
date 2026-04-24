@@ -51,17 +51,11 @@ final public class GoogleDriveManager: NSObject, RemoteDataSourceManager {
     }()
 
     private override init() {
-        urlSession = {
-            let config = URLSessionConfiguration.ephemeral
-            config.allowsCellularAccess = true
-            config.multipathServiceType = .none
-            config.waitsForConnectivity = false
-            return URLSession(
-                configuration: config,
-                delegate: nil,
-                delegateQueue: GoogleDriveManager.backgroundQueue
-            )
-        }()
+        urlSession = URLSession(
+            configuration: .forRemoteDataSource,
+            delegate: nil,
+            delegateQueue: GoogleDriveManager.backgroundQueue
+        )
         super.init()
     }
 
@@ -221,18 +215,18 @@ extension GoogleDriveManager {
         completion: @escaping (Result<OAuthToken, RemoteError>) -> Void
     ) {
         Diag.debug("Acquiring OAuth token [operation: \(operation)]")
-        var urlRequest: URLRequest
+        let tokenOperationURL: URL
         switch operation {
         case .authorization:
-            urlRequest = URLRequest(url: GoogleDriveAPI.tokenRequestURL)
+            tokenOperationURL = GoogleDriveAPI.tokenRequestURL
         case .refresh:
-            urlRequest = URLRequest(url: GoogleDriveAPI.tokenRefreshURL)
+            tokenOperationURL = GoogleDriveAPI.tokenRefreshURL
         }
+        var urlRequest = URLRequest(url: tokenOperationURL, cachePolicy: .forAuth, timeout: timeout)
         urlRequest.httpMethod = "POST"
         urlRequest.setValue(
             "application/x-www-form-urlencoded; charset=UTF-8",
             forHTTPHeaderField: GoogleDriveAPI.Keys.contentType)
-        urlRequest.timeoutInterval = timeout.duration
 
         var postParams = [
             "client_id=\(GoogleDriveAPI.clientID.addingPercentEncoding(withAllowedCharacters: .alphanumerics)!)"
@@ -331,7 +325,11 @@ extension GoogleDriveManager {
         completionQueue: OperationQueue,
         completion: @escaping (Result<GoogleDriveAccountInfo, RemoteError>) -> Void
     ) {
-        var urlRequest = URLRequest(url: GoogleDriveAPI.accountInfoURL)
+        var urlRequest = URLRequest(
+            url: GoogleDriveAPI.accountInfoURL,
+            cachePolicy: .forAuth,
+            timeout: timeout
+        )
         urlRequest.httpMethod = "GET"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: GoogleDriveAPI.Keys.authorization)
 
@@ -402,10 +400,13 @@ extension GoogleDriveManager {
         completion: @escaping (Result<[GoogleDriveItem], RemoteError>) -> Void
     ) {
         let url = folder.getRequestURL(.children(nextPageToken: nextPageToken))
-        var urlRequest = URLRequest(url: url)
+        var urlRequest = URLRequest(
+            url: url,
+            cachePolicy: .forMetaInfo,
+            timeout: timeout
+        )
         urlRequest.httpMethod = "GET"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: GoogleDriveAPI.Keys.authorization)
-        urlRequest.timeoutInterval = timeout.duration
 
         let dataTask = urlSession.dataTask(with: urlRequest) {
             [self] data,
@@ -470,7 +471,8 @@ extension GoogleDriveManager {
         completionQueue: OperationQueue,
         completion: @escaping (Result<Data, RemoteError>) -> Void
     ) {
-        var urlRequest = URLRequest(url: item.getRequestURL(.content))
+        let requestURL = item.getRequestURL(.content)
+        var urlRequest = URLRequest(url: requestURL, cachePolicy: .forContent, timeout: timeout)
         urlRequest.httpMethod = "GET"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: GoogleDriveAPI.Keys.authorization)
 
@@ -532,10 +534,10 @@ extension GoogleDriveManager {
         completionQueue: OperationQueue,
         completion: @escaping (Result<GoogleDriveItem, RemoteError>) -> Void
     ) {
-        var urlRequest = URLRequest(url: item.getRequestURL(.itemInfo))
+        let requestURL = item.getRequestURL(.itemInfo)
+        var urlRequest = URLRequest(url: requestURL, cachePolicy: .forMetaInfo, timeout: timeout)
         urlRequest.httpMethod = "GET"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: GoogleDriveAPI.Keys.authorization)
-        urlRequest.timeoutInterval = timeout.duration
 
         let dataTask = urlSession.dataTask(with: urlRequest) { [self] data, response, error in
             let result = GoogleDriveAPI.ResponseParser
@@ -633,7 +635,8 @@ extension GoogleDriveManager {
     ) {
         Diag.debug("Uploading file")
 
-        var urlRequest = URLRequest(url: item.getRequestURL(.update))
+        let requestURL = item.getRequestURL(.update)
+        var urlRequest = URLRequest(url: requestURL, cachePolicy: .forContent, timeout: timeout)
         urlRequest.httpMethod = "PATCH"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: GoogleDriveAPI.Keys.authorization)
         urlRequest.setValue("application/octet-stream", forHTTPHeaderField: GoogleDriveAPI.Keys.contentType)
@@ -676,11 +679,11 @@ extension GoogleDriveManager {
     ) {
         Diag.debug("Creating new file")
 
-        var urlRequest = URLRequest(url: folder.getRequestURL(.create))
+        let requestURL = folder.getRequestURL(.create)
+        var urlRequest = URLRequest(url: requestURL, cachePolicy: .forContent, timeout: timeout)
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: GoogleDriveAPI.Keys.authorization)
         urlRequest.setValue("application/json; charset=UTF-8", forHTTPHeaderField: GoogleDriveAPI.Keys.contentType)
-        urlRequest.timeoutInterval = timeout.duration
 
         let parentId = (folder.scope == .appFolder && folder.id == "appfolder") ? "appDataFolder" : folder.id
         var params: [String: Any] = [

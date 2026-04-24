@@ -38,12 +38,11 @@ final class WebDAVUploadRequest: WebDAVRequestBase {
     override func makeURLRequest() -> URLRequest {
         var request = URLRequest(
             url: url,
-            cachePolicy: .reloadIgnoringLocalCacheData,
-            timeoutInterval: timeout.remainingTimeInterval
+            cachePolicy: .forContent,
+            timeout: timeout
         )
         request.httpMethod = "PUT"
         request.httpBody = dataToUpload.asData
-        request.attribution = .developer
         return request
     }
 
