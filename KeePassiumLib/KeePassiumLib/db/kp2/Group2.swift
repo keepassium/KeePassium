@@ -103,6 +103,14 @@ public class Group2: Group {
         return parent2.resolvingIsAutoTypeEnabled()
     }
 
+    public func shouldIncludeInAutoFill(with options: AutoFillInclusionOptions) -> Bool {
+        if options.contains(.groupsWithAutoFillDisabled) {
+            return true
+        }
+
+        return resolvingIsAutoTypeEnabled()
+    }
+
     override public func createEntry(creationDate: Date = Date(), detached: Bool = false, uuid: UUID? = nil) -> Entry {
         let newEntry = Entry2(database: database, creationDate: creationDate)
         newEntry.uuid = uuid ?? UUID()

@@ -69,9 +69,17 @@ final class RecentAutoFillEntryTracker {
                 return nil
             }
 
-            guard let entry = databaseFile.database.root?.findEntry(byUUID: data.uuid),
-                  entry.isAutoFillable
+            let options = Settings.current.autoFillInclusionOptions
+            guard let entry = databaseFile.database.root?.findEntry(byUUID: data.uuid)
             else {
+                Diag.debug("Recent AutoFill entry not found or invalid")
+                clearRecentEntry()
+                return nil
+            }
+
+            let parentGroup2 = entry.parent as? Group2
+            let includeFromGroup = parentGroup2?.shouldIncludeInAutoFill(with: options) ?? true
+            guard includeFromGroup, entry.isAutoFillable(with: options) else {
                 Diag.debug("Recent AutoFill entry not found or invalid")
                 clearRecentEntry()
                 return nil

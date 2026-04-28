@@ -132,3 +132,66 @@ extension Settings {
         }
     }
 }
+
+extension Settings {
+    public var isAutoFillIncludeExpiredEntries: Bool {
+        get {
+            let stored = UserDefaults.appGroupShared
+                .object(forKey: Keys.autoFillIncludeExpiredEntries.rawValue)
+                as? Bool
+            return stored ?? false
+        }
+        set {
+            _updateAndNotify(
+                oldValue: isAutoFillIncludeExpiredEntries,
+                newValue: newValue,
+                key: .autoFillIncludeExpiredEntries)
+        }
+    }
+
+    public var isAutoFillIncludeEntriesWithAutoFillDisabled: Bool {
+        get {
+            let stored = UserDefaults.appGroupShared
+                .object(forKey: Keys.autoFillIncludeEntriesWithAutoFillDisabled.rawValue)
+                as? Bool
+            return stored ?? false
+        }
+        set {
+            _updateAndNotify(
+                oldValue: isAutoFillIncludeEntriesWithAutoFillDisabled,
+                newValue: newValue,
+                key: .autoFillIncludeEntriesWithAutoFillDisabled)
+        }
+    }
+
+    public var isAutoFillIncludeGroupsWithAutoFillDisabled: Bool {
+        get {
+            let stored = UserDefaults.appGroupShared
+                .object(forKey: Keys.autoFillIncludeGroupsWithAutoFillDisabled.rawValue)
+                as? Bool
+            return stored ?? false
+        }
+        set {
+            _updateAndNotify(
+                oldValue: isAutoFillIncludeGroupsWithAutoFillDisabled,
+                newValue: newValue,
+                key: .autoFillIncludeGroupsWithAutoFillDisabled)
+        }
+    }
+
+    public var autoFillInclusionOptions: AutoFillInclusionOptions {
+        var options: AutoFillInclusionOptions = []
+
+        if isAutoFillIncludeExpiredEntries {
+            options.insert(.expiredEntries)
+        }
+        if isAutoFillIncludeEntriesWithAutoFillDisabled {
+            options.insert(.entriesWithAutoFillDisabled)
+        }
+        if isAutoFillIncludeGroupsWithAutoFillDisabled {
+            options.insert(.groupsWithAutoFillDisabled)
+        }
+
+        return options
+    }
+}

@@ -91,9 +91,11 @@ final class SearchHelper {
         Diag.verbose("Found \(foundCount) groups and entries using query")
 
         if query.onlyAutoFillable {
+            let options = Settings.current.autoFillInclusionOptions
             foundEntries = foundEntries.filter { entry in
-                let canAutoType = (entry.parent as? Group2)?.resolvingIsAutoTypeEnabled() ?? true
-                return canAutoType && entry.isAutoFillable
+                let parentGroup2 = entry.parent as? Group2
+                let includeFromGroup = parentGroup2?.shouldIncludeInAutoFill(with: options) ?? true
+                return includeFromGroup && entry.isAutoFillable(with: options)
             }
         }
         let scoredEntries = foundEntries

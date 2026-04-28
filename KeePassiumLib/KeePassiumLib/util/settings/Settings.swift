@@ -74,6 +74,9 @@ public class Settings {
         case quickTypeEnabled
         case autoFillContextSavingMode
         case autoFillContextSavingModeChosenTimestamp
+        case autoFillIncludeExpiredEntries
+        case autoFillIncludeEntriesWithAutoFillDisabled
+        case autoFillIncludeGroupsWithAutoFillDisabled
 
         case hapticFeedbackEnabled
 

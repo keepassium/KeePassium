@@ -65,4 +65,21 @@ extension LString {
         "[Settings/AutoFill/RememberContext/description]",
         value: "KeePassium will remember which entry you select for each website and then suggest it automatically.",
         comment: "Description of the 'Remember Selected Entries' setting.")
+
+    public static let autoFillSearchScopeTitle = NSLocalizedString(
+        "[Settings/AutoFill/SearchScope/title]",
+        value: "Show in AutoFill",
+        comment: "Title of a settings section: types of entries to include in AutoFill")
+    public static let autoFillIncludeExpiredEntriesTitle = NSLocalizedString(
+        "[Settings/AutoFill/IncludeExpiredEntries/title]",
+        value: "Expired Entries",
+        comment: "Title of a yes/no setting: whether to show expired entries in AutoFill")
+    public static let autoFillIncludeEntriesWithAutoFillDisabledTitle = NSLocalizedString(
+        "[Settings/AutoFill/IncludeEntriesWithAutoFillDisabled/title]",
+        value: "Entries with AutoFill Disabled",
+        comment: "Title of a yes/no setting: whether to show entries with AutoFill explicitly disabled")
+    public static let autoFillIncludeGroupsWithAutoFillDisabledTitle = NSLocalizedString(
+        "[Settings/AutoFill/IncludeGroupsWithAutoFillDisabled/title]",
+        value: "Groups with AutoFill Disabled",
+        comment: "Title of a yes/no setting: whether to process groups with AutoFill disabled")
 }

@@ -57,10 +57,16 @@ final class AutoFillSettingsCoordinator: BaseCoordinator {
         autoFillSettingsVC.isFillPerfectResult = settings.autoFillPerfectMatch
         autoFillSettingsVC.isCopyOTPOnFill = settings.isCopyTOTPOnAutoFill
         autoFillSettingsVC.contextSavingMode = settings.autoFillContextSavingMode
+        autoFillSettingsVC.isIncludeExpiredEntries = settings.isAutoFillIncludeExpiredEntries
+        autoFillSettingsVC.isIncludeEntriesWithAutoFillDisabled = settings.isAutoFillIncludeEntriesWithAutoFillDisabled
+        autoFillSettingsVC.isIncludeGroupsWithAutoFillDisabled = settings.isAutoFillIncludeGroupsWithAutoFillDisabled
     }
 }
 
 extension AutoFillSettingsCoordinator {
+    private func refreshQuickTypeIdentities() {
+        QuickTypeAutoFillStorage.removeAll()
+    }
 
     private func openSystemAutoFillSettings() {
         URLOpener(AppGroup.applicationShared).open(
@@ -116,6 +122,7 @@ extension AutoFillSettingsCoordinator {
         }
         refresh()
     }
+
 }
 
 extension AutoFillSettingsCoordinator: AutoFillSettingsVC.Delegate {
@@ -160,6 +167,27 @@ extension AutoFillSettingsCoordinator: AutoFillSettingsVC.Delegate {
         Settings.current.autoFillContextSavingMode = mode
         Settings.current.autoFillContextSavingModeChosenTimestamp = .now
         viewController.showNotificationIfManaged(setting: .autoFillContextSavingMode)
+        refresh()
+    }
+
+    func didChangeIncludeExpiredEntries(_ isOn: Bool, in viewController: AutoFillSettingsVC) {
+        Settings.current.isAutoFillIncludeExpiredEntries = isOn
+        refreshQuickTypeIdentities()
+        viewController.showNotificationIfManaged(setting: .autoFillIncludeExpiredEntries)
+        refresh()
+    }
+
+    func didChangeIncludeEntriesWithAutoFillDisabled(_ isOn: Bool, in viewController: AutoFillSettingsVC) {
+        Settings.current.isAutoFillIncludeEntriesWithAutoFillDisabled = isOn
+        refreshQuickTypeIdentities()
+        viewController.showNotificationIfManaged(setting: .autoFillIncludeEntriesWithAutoFillDisabled)
+        refresh()
+    }
+
+    func didChangeIncludeGroupsWithAutoFillDisabled(_ isOn: Bool, in viewController: AutoFillSettingsVC) {
+        Settings.current.isAutoFillIncludeGroupsWithAutoFillDisabled = isOn
+        refreshQuickTypeIdentities()
+        viewController.showNotificationIfManaged(setting: .autoFillIncludeGroupsWithAutoFillDisabled)
         refresh()
     }
 }

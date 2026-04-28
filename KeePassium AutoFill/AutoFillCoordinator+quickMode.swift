@@ -21,9 +21,15 @@ extension AutoFillCoordinator {
         matching record: QuickTypeAutoFillRecord,
         in databaseFile: DatabaseFile
     ) -> Entry? {
-        guard let entry = databaseFile.database.root?.findEntry(byUUID: record.itemID),
-              entry.isAutoFillable
+        let options = Settings.current.autoFillInclusionOptions
+        guard let entry = databaseFile.database.root?.findEntry(byUUID: record.itemID)
         else {
+            return nil
+        }
+
+        let parentGroup2 = entry.parent as? Group2
+        let includeFromGroup = parentGroup2?.shouldIncludeInAutoFill(with: options) ?? true
+        guard includeFromGroup, entry.isAutoFillable(with: options) else {
             return nil
         }
         return entry

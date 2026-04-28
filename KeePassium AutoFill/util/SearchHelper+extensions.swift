@@ -57,12 +57,15 @@ extension SearchHelper {
         guard let rootGroup = database.root else { return [] }
         rootGroup.collectAllEntries(to: &allEntries)
 
+        let options = Settings.current.autoFillInclusionOptions
         let relevantEntries = allEntries
             .filter { entry in
                 let parent2 = entry.parent as? Group2
                 let canSearch = parent2?.resolvingIsSearchingEnabled() ?? true
-                let canAutoType = parent2?.resolvingIsAutoTypeEnabled() ?? true
-                return canSearch && canAutoType && entry.isAutoFillable
+                guard canSearch else { return false }
+
+                let includeFromGroup = parent2?.shouldIncludeInAutoFill(with: options) ?? true
+                return includeFromGroup && entry.isAutoFillable(with: options)
             }
             .map { entry in
                 return ScoredItem(
@@ -83,13 +86,16 @@ extension SearchHelper {
 
         let mainDomain = DomainNameHelper.shared.getMainDomain(host: domain) ?? domain
         let compareOptions: String.CompareOptions = [.caseInsensitive]
+        let options = Settings.current.autoFillInclusionOptions
 
         let relevantEntries = allEntries
             .filter { entry in
                 let parent2 = entry.parent as? Group2
                 let canSearch = parent2?.resolvingIsSearchingEnabled() ?? true
-                let canAutoType = parent2?.resolvingIsAutoTypeEnabled() ?? true
-                return canSearch && canAutoType && entry.isAutoFillable
+                guard canSearch else { return false }
+
+                let includeFromGroup = parent2?.shouldIncludeInAutoFill(with: options) ?? true
+                return includeFromGroup && entry.isAutoFillable(with: options)
             }
             .map { entry in
                 return ScoredItem(
@@ -291,12 +297,15 @@ extension SearchHelper {
             }
         )
 
+        let options = Settings.current.autoFillInclusionOptions
         relevantEntries = relevantEntries
             .filter { entry in
                 let parent2 = entry.parent as? Group2
                 let canSearch = parent2?.resolvingIsSearchingEnabled() ?? true
-                let canAutoType = parent2?.resolvingIsAutoTypeEnabled() ?? true
-                return canSearch && canAutoType && entry.isAutoFillable
+                guard canSearch else { return false }
+
+                let includeFromGroup = parent2?.shouldIncludeInAutoFill(with: options) ?? true
+                return includeFromGroup && entry.isAutoFillable(with: options)
             }
         return relevantEntries.map { ScoredItem(item: $0, similarityScore: 1.0) }
     }

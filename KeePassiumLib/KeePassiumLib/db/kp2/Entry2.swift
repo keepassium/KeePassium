@@ -45,8 +45,21 @@ public class Entry2: Entry {
         }
     }
 
-    public override var isAutoFillable: Bool {
-        super.isAutoFillable && autoType.isEnabled && !(browserHideEntry ?? false)
+    public override func isAutoFillable(with options: AutoFillInclusionOptions = .strict) -> Bool {
+        guard super.isAutoFillable(with: options) else {
+            return false
+        }
+
+        if !options.contains(.entriesWithAutoFillDisabled) {
+            if !autoType.isEnabled {
+                return false
+            }
+            if browserHideEntry ?? false {
+                return false
+            }
+        }
+
+        return true
     }
 
     override init(database: Database?, creationDate: Date = Date()) {

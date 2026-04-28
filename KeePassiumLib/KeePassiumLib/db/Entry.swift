@@ -8,6 +8,28 @@
 
 import Foundation
 
+public struct AutoFillInclusionOptions: OptionSet {
+    public let rawValue: Int
+
+    public static let expiredEntries = AutoFillInclusionOptions(rawValue: 1 << 0)
+
+    public static let entriesWithAutoFillDisabled = AutoFillInclusionOptions(rawValue: 1 << 1)
+
+    public static let groupsWithAutoFillDisabled = AutoFillInclusionOptions(rawValue: 1 << 2)
+
+    public static let all: AutoFillInclusionOptions = [
+        .expiredEntries,
+        .entriesWithAutoFillDisabled,
+        .groupsWithAutoFillDisabled
+    ]
+
+    public static let strict: AutoFillInclusionOptions = []
+
+    public init(rawValue: Int) {
+        self.rawValue = rawValue
+    }
+}
+
 public class Entry: DatabaseItem, Eraseable {
     public static let defaultIconID = IconID.key
 
@@ -70,8 +92,14 @@ public class Entry: DatabaseItem, Eraseable {
     public var isExpired: Bool { return canExpire && (Date() > expiryTime) }
     public var isDeleted: Bool
 
-    public var isAutoFillable: Bool {
-        !isDeleted && !isExpired
+    public func isAutoFillable(with options: AutoFillInclusionOptions = .strict) -> Bool {
+        guard !isDeleted else { return false }
+
+        if !options.contains(.expiredEntries) && isExpired {
+            return false
+        }
+
+        return true
     }
 
     public var attachments: [Attachment]

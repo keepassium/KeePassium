@@ -104,11 +104,16 @@ final public class QuickTypeAutoFillStorage {
         var result = [ASCredentialIdentity]()
         let parentGroup2 = entry.parent as? Group2
         let canSearch = parentGroup2?.resolvingIsSearchingEnabled() ?? true
-        let canAutoType = parentGroup2?.resolvingIsAutoTypeEnabled() ?? true
-        guard canSearch && canAutoType else {
+        guard canSearch else {
             return []
         }
-        guard entry.isAutoFillable else {
+
+        let options = Settings.current.autoFillInclusionOptions
+        let includeFromGroup = parentGroup2?.shouldIncludeInAutoFill(with: options) ?? true
+        guard includeFromGroup else {
+            return []
+        }
+        guard entry.isAutoFillable(with: options) else {
             return []
         }
 
@@ -187,7 +192,7 @@ private struct SearchableData {
 extension Entry {
 
     fileprivate func extractSearchableData() -> SearchableData? {
-        guard isAutoFillable else {
+        guard isAutoFillable(with: Settings.current.autoFillInclusionOptions) else {
             return nil
         }
 

@@ -18,6 +18,9 @@ final class AutoFillSettingsVC: BaseSettingsViewController<AutoFillSettingsVC.Se
         func didChangeContextSavingMode(
             _ mode: AutoFillContextSavingMode,
             in viewController: AutoFillSettingsVC)
+        func didChangeIncludeExpiredEntries(_ isOn: Bool, in viewController: AutoFillSettingsVC)
+        func didChangeIncludeEntriesWithAutoFillDisabled(_ isOn: Bool, in viewController: AutoFillSettingsVC)
+        func didChangeIncludeGroupsWithAutoFillDisabled(_ isOn: Bool, in viewController: AutoFillSettingsVC)
     }
 
     enum AutoFillState {
@@ -33,6 +36,9 @@ final class AutoFillSettingsVC: BaseSettingsViewController<AutoFillSettingsVC.Se
     var isFillPerfectResult = false
     var isCopyOTPOnFill = false
     var contextSavingMode: AutoFillContextSavingMode = .inactive
+    var isIncludeExpiredEntries = false
+    var isIncludeEntriesWithAutoFillDisabled = false
+    var isIncludeGroupsWithAutoFillDisabled = false
 
     override init() {
         super.init()
@@ -48,6 +54,7 @@ final class AutoFillSettingsVC: BaseSettingsViewController<AutoFillSettingsVC.Se
         case quickAutoFill
         case contextSaving
         case automaticSearch
+        case searchScope
         case otp
 
         var header: String? {
@@ -58,6 +65,8 @@ final class AutoFillSettingsVC: BaseSettingsViewController<AutoFillSettingsVC.Se
                 return LString.automaticSearchTitle
             case .otp:
                 return LString.oneTimePasswordsTitle
+            case .searchScope:
+                return LString.autoFillSearchScopeTitle
             }
         }
 
@@ -80,6 +89,8 @@ final class AutoFillSettingsVC: BaseSettingsViewController<AutoFillSettingsVC.Se
                 return LString.autoFillPerfectMatchDescription
             case .otp:
                 return LString.autoFillCopyOTPtoClipboardDescription
+            case .searchScope:
+                return nil
             }
         }
     }
@@ -172,6 +183,46 @@ final class AutoFillSettingsVC: BaseSettingsViewController<AutoFillSettingsVC.Se
                 }
             ))
         ])
+
+        snapshot.appendSections([.searchScope])
+        snapshot.appendItems([
+            .toggle(.init(
+                title: LString.autoFillIncludeExpiredEntriesTitle,
+                isEnabled: isAutoFillActive,
+                isOn: isIncludeExpiredEntries,
+                handler: { [unowned self] itemConfig in
+                    self.isIncludeExpiredEntries = itemConfig.isOn
+                    refresh()
+                    delegate?.didChangeIncludeExpiredEntries(isIncludeExpiredEntries, in: self)
+                }
+            )),
+            .toggle(.init(
+                title: LString.autoFillIncludeEntriesWithAutoFillDisabledTitle,
+                isEnabled: isAutoFillActive,
+                isOn: isIncludeEntriesWithAutoFillDisabled,
+                handler: { [unowned self] itemConfig in
+                    self.isIncludeEntriesWithAutoFillDisabled = itemConfig.isOn
+                    refresh()
+                    delegate?.didChangeIncludeEntriesWithAutoFillDisabled(
+                        isIncludeEntriesWithAutoFillDisabled,
+                        in: self
+                    )
+                }
+            )),
+            .toggle(.init(
+                title: LString.autoFillIncludeGroupsWithAutoFillDisabledTitle,
+                isEnabled: isAutoFillActive,
+                isOn: isIncludeGroupsWithAutoFillDisabled,
+                handler: { [unowned self] itemConfig in
+                    self.isIncludeGroupsWithAutoFillDisabled = itemConfig.isOn
+                    refresh()
+                    delegate?.didChangeIncludeGroupsWithAutoFillDisabled(
+                        isIncludeGroupsWithAutoFillDisabled,
+                        in: self
+                    )
+                }
+            )),
+        ], toSection: .searchScope)
 
         _dataSource.apply(snapshot, animatingDifferences: true)
     }
