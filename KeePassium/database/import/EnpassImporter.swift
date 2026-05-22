@@ -12,6 +12,7 @@ public class EnpassImporter {
     private struct EnpassVault: Decodable {
         let items: [EnpassItem]
         let folders: [EnpassFolder]?
+        let custom_icons: [EnpassCustomIcon]?
     }
 
     private struct EnpassFolder: Decodable {
@@ -22,6 +23,15 @@ public class EnpassImporter {
     private struct EnpassAttachment: Decodable {
         let name: String
         let data: String
+    }
+
+    private struct EnpassCustomIcon: Decodable {
+        let uuid: String
+        let data: String
+    }
+
+    private struct EnpassItemIcon: Decodable {
+        let uuid: String?
     }
 
     private struct EnpassItem: Decodable {
@@ -35,6 +45,7 @@ public class EnpassImporter {
         let trashed: Int
         let createdAt: Double?
         let updated_at: Double?
+        let icon: EnpassItemIcon?
     }
 
     private struct EnpassField: Decodable {
@@ -129,6 +140,16 @@ public class EnpassImporter {
         do {
             let decoder = JSONDecoder()
             let vault = try decoder.decode(EnpassVault.self, from: jsonData)
+
+            var customIconsByUUID: [String: ByteArray] = [:]
+            if let icons = vault.custom_icons {
+                for icon in icons where !icon.uuid.isEmpty {
+                    guard let pngData = ByteArray(hexString: icon.data) else {
+                        continue
+                    }
+                    customIconsByUUID[icon.uuid] = pngData
+                }
+            }
 
             guard !vault.items.isEmpty else {
                 Diag.error("No items found in the Enpass vault")
@@ -263,6 +284,15 @@ public class EnpassImporter {
                     if !tags.isEmpty {
                         entry.tags = tags
                     }
+                }
+
+                if let iconUUID = item.icon?.uuid,
+                   !iconUUID.isEmpty,
+                   let pngData = customIconsByUUID[iconUUID],
+                   let database2 = group.database as? Database2,
+                   let entry2 = entry as? Entry2 {
+                    let customIcon = database2.addCustomIcon(pngData: pngData)
+                    database2.setCustomIcon(customIcon, for: entry2)
                 }
 
                 if let updatedAt = item.updated_at {
