@@ -9,6 +9,13 @@
 import KeePassiumLib
 
 extension Entry {
+    func canAcceptNewAttachments(count: Int) -> Bool {
+        if isSupportsMultipleAttachments {
+            return true
+        }
+        return count == 1 && attachments.isEmpty
+    }
+
     var resolvedSubtitle: String? {
         switch Settings.current.entryListDetail {
         case .none:

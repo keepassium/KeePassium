@@ -111,6 +111,11 @@ final class EntryViewerCoordinator: BaseCoordinator {
         super.dismiss(animated: animated, completion: completion)
     }
 
+    func switchToFilesTab() {
+        pagesVC.startPageIndex = Pages.files.rawValue
+        pagesVC.refresh()
+    }
+
     public func setEntry(_ entry: Entry, isHistoryEntry: Bool, canEditEntry: Bool) {
         dismissPreview(animated: false)
         if let existingEntryViewerCoo = childCoordinators.first(where: { $0 is EntryViewerCoordinator }) {
@@ -284,7 +289,7 @@ extension EntryViewerCoordinator {
             allowCancelling: false,
             animated: true)
 
-        let fileProvider = FileProvider.find(for: url) 
+        let fileProvider = FileProvider.find(for: url)
         FileDataProvider.read(
             url,
             fileProvider: fileProvider,
@@ -940,13 +945,7 @@ extension EntryViewerCoordinator: EntryViewerPagesVCDelegate {
         guard canEditEntry else {
             return false
         }
-
-        if entry.isSupportsMultipleAttachments {
-            return true
-        }
-
-        let isTooCrowded = files.count > 1 || entry.attachments.count > 0
-        return !isTooCrowded
+        return entry.canAcceptNewAttachments(count: files.count)
     }
 
     func didDropFiles(_ files: [TemporaryFileURL]) {

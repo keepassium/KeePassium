@@ -361,6 +361,12 @@ extension LString {
         value: "Loading attachment file",
         comment: "Status message: loading file to be attached to an entry")
 
+    public static let someIncomingAttachmentsFailedToLoad = NSLocalizedString(
+        "[Entry/Files/Incoming/error]",
+        bundle: Bundle.framework,
+        value: "Some incoming attachments failed to load.",
+        comment: "Error message: some files (to be attached to an entry) could not be loaded.")
+
     public static let itemCategoryDefault = NSLocalizedString(
         "[ItemCategory] Default (KeePass)",
         bundle: Bundle.framework,

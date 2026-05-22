@@ -7,6 +7,7 @@
 //  For commercial licensing, please contact us.
 
 import KeePassiumLib
+import UniformTypeIdentifiers
 
 extension GroupViewerVC: UICollectionViewDragDelegate {
     func collectionView(
@@ -69,7 +70,10 @@ extension GroupViewerVC: UICollectionViewDropDelegate {
         _ collectionView: UICollectionView,
         canHandle session: UIDropSession
     ) -> Bool {
-        return session.localDragSession != nil
+        if session.localDragSession != nil {
+            return true
+        }
+        return session.hasItemsConforming(toTypeIdentifiers: [UTType.item.identifier])
     }
 
     func collectionView(
@@ -79,8 +83,18 @@ extension GroupViewerVC: UICollectionViewDropDelegate {
     ) -> UICollectionViewDropProposal {
         let inSameVC = collectionView.hasActiveDrag
 
-        guard session.localDragSession != nil else {
-            return UICollectionViewDropProposal(operation: .cancel)
+        if session.localDragSession == nil {
+            guard let destinationIndexPath,
+                  let targetItem = _dataSource.itemIdentifier(for: destinationIndexPath),
+                  case .entry(let entry) = targetItem
+            else {
+                return UICollectionViewDropProposal(operation: .cancel)
+            }
+            if delegate?.canDropFiles(session.items, onto: entry, in: self) ?? false {
+                return UICollectionViewDropProposal(operation: .copy, intent: .insertIntoDestinationIndexPath)
+            } else {
+                return UICollectionViewDropProposal(operation: .forbidden)
+            }
         }
 
         guard let destinationIndexPath,
@@ -235,10 +249,19 @@ extension GroupViewerVC: UICollectionViewDropDelegate {
         performDropWith coordinator: any UICollectionViewDropCoordinator
     ) {
         let inSameVC = collectionView.hasActiveDrag
-        let sourceListItems = coordinator.items.map { $0.dragItem.localObject as! Item }
 
         let targetGroup: Group
         switch (coordinator.proposal.operation, coordinator.proposal.intent) {
+        case (.copy, _):
+            guard let destinationIndexPath = coordinator.destinationIndexPath,
+                  let targetItem = _dataSource.itemIdentifier(for: destinationIndexPath),
+                  case .entry(let entry) = targetItem
+            else {
+                Diag.warning("External file drop has no valid entry destination")
+                return
+            }
+            delegate?.didDropFiles(coordinator.items.map(\.dragItem), onto: entry, in: self)
+            return
         case (.move, .insertIntoDestinationIndexPath):
             guard let destinationIndexPath = coordinator.destinationIndexPath,
                   let destinationItem = _dataSource.itemIdentifier(for: destinationIndexPath)
@@ -265,6 +288,7 @@ extension GroupViewerVC: UICollectionViewDropDelegate {
             return
         }
 
+        let sourceListItems = coordinator.items.map { $0.dragItem.localObject as! Item }
         let sourceDatabaseItems = sourceListItems.compactMap { (listItem: Item) -> DatabaseItem? in
             switch listItem {
             case .announcement, .emptyStatePlaceholder:
@@ -278,4 +302,5 @@ extension GroupViewerVC: UICollectionViewDropDelegate {
         }
         delegate?.didDragItems(sourceDatabaseItems, into: targetGroup)
     }
+
 }

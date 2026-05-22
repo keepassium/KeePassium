@@ -43,6 +43,10 @@ final class GroupViewerVC: UIViewController {
         ) -> Bool
 
         func didDragItems(_ items: [DatabaseItem], into targetGroup: Group)
+
+        func canDropFiles(_ files: [UIDragItem], onto entry: Entry, in viewController: GroupViewerVC) -> Bool
+
+        func didDropFiles(_ files: [UIDragItem], onto entry: Entry, in viewController: GroupViewerVC)
     }
 
     weak var delegate: Delegate?

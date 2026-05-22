@@ -6,7 +6,7 @@
 //  by the Free Software Foundation: https://www.gnu.org/licenses/).
 //  For commercial licensing, please contact the author.
 
-public class Database: Eraseable {
+public class Database: Eraseable, AttachmentMaking {
     public internal(set) var root: Group?
 
     public var supportsEntriesInRoot: Bool { fatalError("Pure virtual method") }
