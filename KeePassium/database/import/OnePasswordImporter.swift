@@ -162,7 +162,6 @@ public class OnePasswordImporter {
             }
 
             let cdEntries = data.readUInt16LE(at: eocdOffset + 10)
-            let cdSize = data.readUInt32LE(at: eocdOffset + 12)
             let cdOffset = data.readUInt32LE(at: eocdOffset + 16)
 
             var entries: [Entry] = []
@@ -360,7 +359,13 @@ public class OnePasswordImporter {
             for section in sections {
                 if let fields = section.fields {
                     for field in fields {
-                        try processField(field, for: entry, parentGroup: group, zipFileURL: zipFileURL, itemTitle: item.overview.title)
+                        try processField(
+                            field,
+                            for: entry,
+                            parentGroup: group,
+                            zipFileURL: zipFileURL,
+                            itemTitle: item.overview.title
+                        )
                     }
                 }
             }
@@ -378,7 +383,13 @@ public class OnePasswordImporter {
         }
 
         if let documentAttributes = item.details?.documentAttributes {
-            try addAttachment(documentAttributes, to: entry, parentGroup: group, zipFileURL: zipFileURL, itemTitle: item.overview.title)
+            try addAttachment(
+                documentAttributes,
+                to: entry,
+                parentGroup: group,
+                zipFileURL: zipFileURL,
+                itemTitle: item.overview.title
+            )
         }
 
         return entry

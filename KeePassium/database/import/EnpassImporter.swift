@@ -205,7 +205,11 @@ public class EnpassImporter {
                                 entry.rawPassword = value
                                 hasPassword = true
                             } else {
-                                let fieldName = makeExtraFieldName(label: field.label, standardName: EntryField.password, in: entry)
+                                let fieldName = makeExtraFieldName(
+                                    label: field.label,
+                                    standardName: EntryField.password,
+                                    in: entry
+                                )
                                 entry.setField(name: fieldName, value: value, isProtected: true)
                             }
                         case .username:
@@ -213,7 +217,11 @@ public class EnpassImporter {
                                 entry.rawUserName = value
                                 hasUserName = true
                             } else {
-                                let fieldName = makeExtraFieldName(label: field.label, standardName: EntryField.userName, in: entry)
+                                let fieldName = makeExtraFieldName(
+                                    label: field.label,
+                                    standardName: EntryField.userName,
+                                    in: entry
+                                )
                                 entry.setField(name: fieldName, value: value, isProtected: field.sensitive == 1)
                             }
                         case .email:
@@ -232,7 +240,11 @@ public class EnpassImporter {
                             }
                         case .totp:
                             if TOTPGeneratorFactory.isValidURI(value) {
-                                let fieldName = makeExtraFieldName(label: field.label, standardName: EntryField.otp, in: entry)
+                                let fieldName = makeExtraFieldName(
+                                    label: field.label,
+                                    standardName: EntryField.otp,
+                                    in: entry
+                                )
                                 entry.setField(name: fieldName, value: value, isProtected: true)
                             }
                         case .phone, .text, .section, .custom:

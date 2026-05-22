@@ -698,7 +698,7 @@ final class BitwardenImporterTests: XCTestCase {
         }
         """
 
-        let (entries, groups) = try importJSON(json)
+        let (_, groups) = try importJSON(json)
         XCTAssertEqual(groups.count, 1)
 
         let workGroup = groups.first { $0.name == "Work Accounts" }
