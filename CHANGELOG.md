@@ -1,5 +1,27 @@
 #CHANGELOG
 
+## [2.6.173] - 2025-05-23
+
+### Improved
+
+- Accept file drops onto entries in group viewer
+- AutoFill exclusion criteria are customizable now (#477) [thanks, everyone]
+- Added wildcards support in tag search (e.g. `tag:m*`) [thanks, M.C.]
+- Hold Option to reveal protected fields in entry viewer [thanks, u/xppx99]
+- Cmd+A will Select All in lists
+- Parse and import Enpass custom icons
+
+## Fixed 
+
+- Direct connections: sporadic network loss errors (code -1005) on iOS 26.3+ [thanks, everyone]
+- Speculative fix for excessive app locks (#474) [thanks, everyone]
+- Avoid freezes when estimating quality of very long passwords [thanks, everyone]
+- Avoid excessive file info reloads [thanks, Wolfgang]
+- Import of duplicate fields from Enpass [thanks, Laurent]
+- Downloaded favicons appeared too small in KeePassXC [thanks, Chad]
+- Minor UI fixes here and there
+
+
 ## [2.6.172] - 2026-02-22
 
 ### Added

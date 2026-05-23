@@ -2,7 +2,7 @@
     "sections": [
         {
             "version": "2.6",
-            "releaseDate": "2026-02-22T00:00:00Z",
+            "releaseDate": "2026-05-23T00:00:00Z",
             "items": [
                 {
                     "title": "Added: macOS: Import from 1Password (1PUX format)",
@@ -22,6 +22,25 @@
                     "credits": "Iiro"
                 },
                 {
+                    "title": "Improved: Accept file drops onto entries in group viewer"
+                },
+                {
+                    "title": "Improved: AutoFill exclusion criteria are customizable now",
+                    "github": "#477",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Improved: Added wildcards support in tag search (e.g. `tag:m*`)",
+                    "credits": "M.C."
+                },
+                {
+                    "title": "Improved: Hold Option to reveal protected fields in entry viewer",
+                    "credits": "u/xppx99"
+                },
+                {
+                    "title": "Improved: Cmd+A will Select All in lists"
+                },
+                {
                     "title": "Improved: macOS: Left click starts text selection, not copies the whole field",
                     "credits": "everyone",
                     "os": "macos"
@@ -30,6 +49,9 @@
                     "title": "Improved: macOS: Right click shows field (or text) actions menu",
                     "credits": "everyone",
                     "os": "macos"
+                },
+                {
+                    "title": "Improved: Parse and import Enpass custom icons",
                 },
                 {
                     "title": "Fixed: Re-added accessibility actions to copy entry fields from database viewer (regression in v2.4)",
@@ -51,6 +73,31 @@
                 {
                     "title": "Fixed: Direct HTTP/S connections: make credentials optional",
                     "credits": "Otto"
+                },
+                                {
+                    "title": "Fixed: Direct connections: sporadic network loss errors (code -1005) on iOS 26.3+",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Fixed: Speculative fix for excessive app locks",
+                    "github": "#474",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Fixed: Avoid freezes when estimating quality of very long passwords",
+                    "credits": "everyone"
+                },
+                {
+                    "title": "Fixed: Avoid excessive file info reloads",
+                    "credits": "Wolfgang"
+                },
+                {
+                    "title": "Fixed: Import of duplicate fields from Enpass [thanks, Laurent]",
+                    "credits": "Laurent"
+                },
+                {
+                    "title": "Fixed: Downloaded favicons appeared too small in KeePassXC",
+                    "credits": "Chad",
                 },
                 {
                     "title": "Fixed: macOS: Fixed Pro app icon",
