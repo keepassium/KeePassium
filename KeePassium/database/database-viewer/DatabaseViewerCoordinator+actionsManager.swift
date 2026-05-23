@@ -68,6 +68,8 @@ extension DatabaseViewerCoordinator {
                 return permissions.contains(.editItem)
             case #selector(kpmSelect):
                 return permissions.contains(.selectItems)
+            case #selector(UIResponderStandardEditActions.selectAll(_:)):
+                return permissions.contains(.selectItems) && !isTextInputFirstResponder()
             case #selector(kpmCopyEntryUserName):
                 return coordinator._canCopyCurrentEntryField(EntryField.userName)
             case #selector(kpmCopyEntryPassword):
@@ -88,6 +90,20 @@ extension DatabaseViewerCoordinator {
             default:
                 return false
             }
+        }
+
+        override func selectAll(_ sender: Any?) {
+            coordinator?._topGroupViewer?.selectAll(sender)
+        }
+
+        private func isTextInputFirstResponder() -> Bool {
+            let keyWindow = UIApplication.shared.firstKeyWindow
+            guard let firstResponder = keyWindow?.findFirstResponder() else {
+                return false
+            }
+            return firstResponder is UITextField ||
+                firstResponder is UITextView ||
+                firstResponder is UISearchBar
         }
 
         private func isFirstResponderReadyToCopy() -> Bool {
@@ -321,7 +337,11 @@ extension DatabaseViewerCoordinator {
             let selectAction = UICommand(
                 title: LString.actionSelect,
                 action: #selector(kpmSelect))
-            return UIMenu(inlineChildren: [selectAction])
+            let selectAllAction = UIKeyCommand(
+                title: LString.actionSelectAll,
+                action: #selector(UIResponderStandardEditActions.selectAll(_:)),
+                hotkey: .selectAll)
+            return UIMenu(inlineChildren: [selectAction, selectAllAction])
         }
 
         @objc func kpmReloadDatabase() {

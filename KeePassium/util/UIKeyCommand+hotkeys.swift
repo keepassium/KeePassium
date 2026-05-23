@@ -15,6 +15,7 @@ struct Hotkey: Equatable {
     static let systemCopyToClipboard = Self(input: "C", modifiers: [.command])
 
     static let appPreferences = Self(input: ",", modifiers: [.command])
+    static let selectAll      = Self(input: "a", modifiers: [.command])
     static let refreshList    = Self(input: "r", modifiers: [.command])
     static let search         = Self(input: "f", modifiers: [.command])
 

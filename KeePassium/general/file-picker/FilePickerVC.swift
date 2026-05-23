@@ -437,13 +437,49 @@ extension FilePickerVC {
         delegate?.didPressEliminateFiles(getSelectedFileRefs(), in: self)
     }
 
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        switch action {
+        case #selector(UIResponderStandardEditActions.selectAll(_:)):
+            return canSelectAllItems
+        default:
+            return super.canPerformAction(action, withSender: sender)
+        }
+    }
+
     override func selectAll(_ sender: Any?) {
+        if !isEditing {
+            setEditing(true, animated: false)
+        }
+        let indexPathsToSelect = multiSelectableIndexPaths
+        guard !indexPathsToSelect.isEmpty else {
+            return
+        }
+        deselectAllItems()
+        indexPathsToSelect.forEach {
+            collectionView.selectItem(at: $0, animated: false, scrollPosition: [])
+        }
+        updateToolbars(animated: true)
+    }
+
+    private var canSelectAllItems: Bool {
+        return collectionView.isUserInteractionEnabled &&
+            !isTextInputFirstResponder &&
+            !multiSelectableIndexPaths.isEmpty
+    }
+
+    private var multiSelectableIndexPaths: [IndexPath] {
         let snapshot = dataSource.snapshot()
-        for item in snapshot.itemIdentifiers {
-            if isSelectableItem(item, multiSelection: true) {
-                let indexPath = dataSource.indexPath(for: item)
-                collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
+        return snapshot.itemIdentifiers.compactMap { item in
+            guard isSelectableItem(item, multiSelection: true) else {
+                return nil
             }
+            return dataSource.indexPath(for: item)
+        }
+    }
+
+    private func deselectAllItems() {
+        collectionView.indexPathsForSelectedItems?.forEach {
+            collectionView.deselectItem(at: $0, animated: false)
         }
     }
 
@@ -595,9 +631,7 @@ extension FilePickerVC {
         super.setEditing(editing, animated: animated)
         collectionView.isEditing = editing
         if !editing {
-            collectionView.indexPathsForSelectedItems?.forEach {
-                collectionView.deselectItem(at: $0, animated: false)
-            }
+            deselectAllItems()
         }
         refresh(animated: animated)
         delegate?.didToggleEditing(editing, in: self)

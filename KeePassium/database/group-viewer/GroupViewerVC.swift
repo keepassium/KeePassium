@@ -27,6 +27,8 @@ final class GroupViewerVC: UIViewController {
             in viewController: GroupViewerVC
         ) -> Bool
 
+        func shouldAllowBulkSelection(in viewController: GroupViewerVC) -> Bool
+
         func shouldAllowReorder(in viewController: GroupViewerVC) -> Bool
 
         func didReorderItems(

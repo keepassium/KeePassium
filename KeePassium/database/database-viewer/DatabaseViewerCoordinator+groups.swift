@@ -291,6 +291,10 @@ extension DatabaseViewerCoordinator: GroupViewerVC.Delegate {
         }
     }
 
+    func shouldAllowBulkSelection(in viewController: GroupViewerVC) -> Bool {
+        return _currentGroupPermissions.contains(.selectItems)
+    }
+
     func shouldAllowReorder(in viewController: GroupViewerVC) -> Bool {
         return _canReorderItems
     }

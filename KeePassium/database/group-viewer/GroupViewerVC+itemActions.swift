@@ -35,12 +35,40 @@ extension GroupViewerVC {
     }
 
     override func selectAll(_ sender: Any?) {
+        guard isBulkSelectionAllowed else {
+            return
+        }
+        let indexPathsToSelect = selectableIndexPaths
+        guard !indexPathsToSelect.isEmpty else {
+            return
+        }
+        if !isEditing {
+            setEditing(true, animated: false)
+        }
+        deselectAllItems()
+        indexPathsToSelect.forEach {
+            _collectionView.selectItem(at: $0, animated: false, scrollPosition: [])
+        }
+        _updateToolbars(animated: true)
+    }
+
+    private var isBulkSelectionAllowed: Bool {
+        return delegate?.shouldAllowBulkSelection(in: self) ?? false
+    }
+
+    private var selectableIndexPaths: [IndexPath] {
         let snapshot = _dataSource.snapshot()
-        for item in snapshot.itemIdentifiers {
-            if _isSelectableItem(item) {
-                let indexPath = _dataSource.indexPath(for: item)
-                _collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
+        return snapshot.itemIdentifiers.compactMap { item in
+            guard _isSelectableItem(item) else {
+                return nil
             }
+            return _dataSource.indexPath(for: item)
+        }
+    }
+
+    private func deselectAllItems() {
+        _collectionView.indexPathsForSelectedItems?.forEach {
+            _collectionView.deselectItem(at: $0, animated: false)
         }
     }
 

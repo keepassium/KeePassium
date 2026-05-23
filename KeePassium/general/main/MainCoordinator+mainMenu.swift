@@ -33,9 +33,7 @@ extension MainCoordinator {
         builder.remove(menu: .speech)
         builder.remove(menu: .toolbar)
         builder.remove(menu: .sidebar)
-        builder.replaceChildren(ofMenu: .edit) { _ -> [UIMenuElement] in
-            return []
-        }
+        builder.replaceChildren(ofMenu: .edit) { _ in return [] }
         if isAppLockVisible {
             builder.remove(menu: .edit)
             builder.remove(menu: .view)

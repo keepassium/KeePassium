@@ -9,6 +9,23 @@
 import UIKit
 
 public extension UIViewController {
+    var isTextInputFirstResponder: Bool {
+        guard let window = view.window else {
+            return false
+        }
+        return containsTextInputFirstResponder(in: window)
+    }
+
+    func containsTextInputFirstResponder(in view: UIView) -> Bool {
+        if view.isFirstResponder {
+            return view is UITextField ||
+            view is UITextView ||
+            view is UISearchBar
+        }
+        return view.subviews.contains {
+            containsTextInputFirstResponder(in: $0)
+        }
+    }
 
     func showChildViewController(_ viewController: UIViewController) {
         assert(viewController.parent == nil, "viewController is already used somewhere")
