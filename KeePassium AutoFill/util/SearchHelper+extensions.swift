@@ -114,18 +114,7 @@ extension SearchHelper {
     }
 
     private func howSimilar(domain: String, with url: URL?) -> Double {
-        guard let host = url?.host?.localizedLowercase else { return 0.0 }
-
-        if host == domain {
-            return 1.0
-        }
-        if let simplifiedURLHost = DomainNameHelper.shared.getMainDomain(host: host),
-           domain == simplifiedURLHost
-        {
-            return 0.95
-        }
-
-        return 0.0
+        URLSimilarity.howSimilar(domain: domain, with: url)
     }
 
     private func getSimilarity(domain: String, entry: Entry, options: String.CompareOptions) -> Double {
@@ -158,51 +147,7 @@ extension SearchHelper {
         parsedHost parsedHost1: ParsedHost?,
         with url2: URL?
     ) -> Double {
-        guard let url2 else { return 0.0 }
-
-        if url1 == url2 { return 1.0 }
-
-        var isSimilarHosts = false
-        guard let host1 = url1.host?.localizedLowercase,
-              let host2 = url2.host?.localizedLowercase else { return 0.0 }
-
-        var parsedHost2: ParsedHost?
-        if host1 == host2 {
-            isSimilarHosts = true
-        } else {
-            parsedHost2 = DomainNameHelper.shared.parse(host: host2)
-            if let mainDomain1 = parsedHost1?.domain,
-               let mainDomain2 = parsedHost2?.domain
-            {
-                isSimilarHosts = (mainDomain1 == mainDomain2)
-            }
-        }
-
-        if isSimilarHosts {
-            var portMismatchPenalty = 0.0
-            if let port1 = url1.port,
-               let port2 = url2.port,
-               port1 != port2
-            {
-                portMismatchPenalty = -0.2 
-            }
-            guard url2.path.isNotEmpty else { return 0.7 }
-            let lowercasePath1 = url1.path.localizedLowercase
-            let lowercasePath2 = url2.path.localizedLowercase
-            let commonPrefixCount = Double(lowercasePath1.commonPrefix(with: lowercasePath2).count)
-            let maxPathCount = Double(max(lowercasePath1.count, lowercasePath2.count))
-            let pathSimilarity = commonPrefixCount / maxPathCount 
-
-            return 0.7 + portMismatchPenalty + 0.3 * pathSimilarity
-        } else {
-            if let serviceName1 = parsedHost1?.serviceName,
-               let serviceName2 = parsedHost2?.serviceName,
-               serviceName1 == serviceName2
-            {
-                return 0.5
-            }
-        }
-        return 0.0
+        URLSimilarity.howSimilar(url1, parsedHost1: parsedHost1, with: url2)
     }
 
     private func getSimilarity(url: URL, parsedHost: ParsedHost?, entry: Entry) -> Double {

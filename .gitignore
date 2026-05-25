@@ -20,6 +20,7 @@ xcuserdata/
 **/xcshareddata/WorkspaceSettings.xcsettings
 DerivedData/
 KeePassium.xcodeproj/xcshareddata/
+build/
 
 # License verification files
 KeePassiumLib/KeePassiumLib/resources/licensing/v1-proofs.sha256
