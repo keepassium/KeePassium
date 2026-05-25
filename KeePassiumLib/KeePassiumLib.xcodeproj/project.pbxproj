@@ -433,10 +433,10 @@
 		};
 		7544570225CAE2D50011386C /* XCRemoteSwiftPackageReference "TPInAppReceipt" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/keepassium/TPInAppReceipt";
+			repositoryURL = "https://github.com/tikhop/TPInAppReceipt";
 			requirement = {
-				branch = keepassium;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.2;
 			};
 		};
 		757C51CD29F17D3C008986F4 /* XCRemoteSwiftPackageReference "SwiftDomainParser" */ = {

@@ -8,82 +8,65 @@
 
 import TPInAppReceipt
 
-extension IARError: @retroactive LocalizedError {
-
-    public var errorDescription: String? {
-        switch self {
-        case .initializationFailed(reason: let reason):
-            return "Initialization failed. \(reason.localizedDescription)"
-        case .validationFailed(reason: let reason):
-            return "Validation failed. \(reason.localizedDescription)"
-        case .purchaseExpired:
-            return "Purchase expired."
-        case .receiptRefreshingInProgress:
-            return "Receipt refreshing in progress."
-        }
-    }
-}
-
-extension IARError.ReceiptInitializationFailureReason: @retroactive LocalizedError {
-
+extension AppReceiptError: @retroactive LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .appStoreReceiptNotFound:
             return "App Store receipt not found."
-        case .pkcs7ParsingError:
-            return "PKCS7 parsing error."
-        case .dataIsInvalid:
-            return "Receipt data is invalid."
+        case .receiptContentInvalid(let error):
+            return "Receipt content invalid. \(error.localizedDescription)"
+        case .receiptPayloadMissingOrInvalid:
+            return "Receipt payload missing or invalid."
+        case .decodingFailed(let error):
+            return "Receipt decoding failed. \(error.localizedDescription)"
         }
     }
 }
 
-extension IARError.ValidationFailureReason: @retroactive LocalizedError {
-
+extension ChainVerificationError: @retroactive LocalizedError {
     public var errorDescription: String? {
         switch self {
-        case .hashValidation:
-            return "Hash validation."
-        case .signatureValidation(reason: let reason):
-            return "Signature validation. \(reason.localizedDescription)"
-        case .bundleIdentifierVerification:
-            return "Bundle identifier verification."
-        case .bundleVersionVerification:
-            return "Bundle version verification."
+        case .invalidCertificateData:
+            return "Invalid certificate data."
+        case .chainValidationFailed:
+            return "Certificate chain validation failed."
+        case .revocationCheckFailed:
+            return "Certificate revocation check failed."
         }
     }
 }
 
-extension IARError.SignatureValidationFailureReason: @retroactive LocalizedError {
-
+extension SignatureVerificationError: @retroactive LocalizedError {
     public var errorDescription: String? {
         switch self {
-        case .appleIncRootCertificateNotFound:
-            return "Apple Inc root certificate not found."
-        case .unableToLoadAppleIncRootCertificate:
-            return "Unable to load Apple Inc root certificate."
-        case .unableToLoadAppleIncPublicKey:
-            return "Unable to load Apple Inc public key."
-        case .unableToLoadiTunesCertificate:
-            return "Unable to load iTunes certificate."
-        case .unableToLoadiTunesPublicKey:
-            return "Unable to load iTunes public key."
-        case .unableToLoadWorldwideDeveloperCertificate:
-            return "Unable to load WWDC certificate."
-        case .unableToLoadAppleIncPublicSecKey:
-            return "Unable to load Apple Inc public sec key."
-        case .receiptIsNotSigned:
-            return "Receipt is not signed."
-        case .receiptSignedDataNotFound:
-            return "Receipt signed data not found."
-        case .receiptDataNotFound:
-            return "Receipt data not found."
-        case .signatureNotFound:
-            return "Signature not found."
+        case .invalidKey:
+            return "Invalid signature key."
         case .invalidSignature:
             return "Invalid signature."
-        case .invalidCertificateChainOfTrust:
-            return "Invalid certificate chain of trust."
+        }
+    }
+}
+
+extension HashVerificationError: @retroactive LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .missingDeviceIdentifier:
+            return "Missing device identifier."
+        case .hashMismatch:
+            return "Receipt hash mismatch."
+        }
+    }
+}
+
+extension MetaVerificationError: @retroactive LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .bundleIdentifierMismatch:
+            return "Bundle identifier mismatch."
+        case .versionIdentifierMismatch:
+            return "Bundle version mismatch."
+        case .bundleInfoUnavailable:
+            return "Bundle info unavailable."
         }
     }
 }
