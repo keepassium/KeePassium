@@ -27,8 +27,29 @@ final class GalleryPhotoPicker: PhotoPicker {
     }
 
     override internal func _pickImageInternal() {
-        _presenter?.present(picker, animated: true, completion: nil)
+        _presenter?.present(picker, animated: true) { [weak self] in
+            #if targetEnvironment(macCatalyst)
+            // On macOS, PHPickerViewController shows no close button when the Photos library is
+            // empty, leaving the user with no way to dismiss it (issue #507).
+            // Inject a Cancel button into the navigation bar as a reliable escape hatch.
+            guard let self else { return }
+            let cancelButton = UIBarButtonItem(
+                barButtonSystemItem: .cancel,
+                target: self,
+                action: #selector(self.cancelPicker)
+            )
+            self.picker.navigationItem.leftBarButtonItem = cancelButton
+            #endif
+        }
     }
+
+    #if targetEnvironment(macCatalyst)
+    @objc private func cancelPicker() {
+        _presenter?.dismiss(animated: true) { [weak self] in
+            self?._completion?(.success(nil))
+        }
+    }
+    #endif
 
     override class func isAllowed() -> Bool {
         #if INTUNE
